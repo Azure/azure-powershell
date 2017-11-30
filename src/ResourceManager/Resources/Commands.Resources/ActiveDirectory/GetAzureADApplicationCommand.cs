@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else
                 {
-                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
+                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>();
 
                     if (ApplicationId != Guid.Empty)
                     {

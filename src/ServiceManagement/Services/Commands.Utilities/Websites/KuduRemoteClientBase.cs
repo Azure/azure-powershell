@@ -47,11 +47,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
          
             if (credentials != null)
             {
-                Client = AzureSession.ClientFactory.CreateHttpClient(serviceUrl, ClientFactory.CreateHttpClientHandler(serviceUrl, credentials));
+                Client = AzureSession.Instance.ClientFactory.CreateHttpClient(serviceUrl, ClientFactory.CreateHttpClientHandler(serviceUrl, credentials));
             }
             else
             {
-                Client = AzureSession.ClientFactory.CreateHttpClient(serviceUrl, handler);
+                Client = AzureSession.Instance.ClientFactory.CreateHttpClient(serviceUrl, handler);
             }
         }
 

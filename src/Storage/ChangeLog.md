@@ -18,6 +18,53 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
+
+## Version 4.0.0
+* Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
+* Add File Share Snapshot Support Feature
+    - Add 'SnapshotTime' parameter to Get-AzureStorageShare
+    - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+	
+## Version 3.4.1
+
+## Version 3.4.0
+* Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+* Add PremiumPageBlobTier Support in Upload and Copy Blob API
+    - Set-AzureStorageBlobContent
+	- Start-AzureStorageBlobCopy
+* Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+    - Get-AzureStorageContainer
+    - Get-AzureStorageBlob
+    - Get-AzureStorageQueue
+    - Get-AzureStorageTable
+
+## Version 3.3.1
+
+## Version 3.3.0
+
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+
+* Update help for parameters that accept wildcard characters and update StorageContext type
+
+## Version 3.0.2
+
+## Version 3.0.1
+* Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
+
+## Version 3.0.0
+* Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1
+* Add a new cmdlet to support blob Incremental Copy feature
+    - Start-AzureStorageBlobIncrementalCopy
+## Version 2.8.0
+
+## Version 2.7.0
 
 ## Version 2.6.0
 

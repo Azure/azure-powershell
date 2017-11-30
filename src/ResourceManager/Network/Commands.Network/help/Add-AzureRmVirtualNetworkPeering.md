@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 13901193-8C68-4969-ADCD-2E82EA714354
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -15,8 +16,7 @@ Creates a peering between two virtual networks.
 ```
 Add-AzureRmVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork>
  -RemoteVirtualNetworkId <String> [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit]
- [-UseRemoteGateways] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-UseRemoteGateways] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,87 +24,54 @@ The **Add-AzureRmVirtualNetworkPeering** cmdlet creates a peering between two vi
 
 ## EXAMPLES
 
-### Example 1: Create a peering between two virtual networks
+### Example 1: Create a peering between two virtual networks in the same region
 ```
-PS C:\>$vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "vnet1"
-PS C:\> $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "vnet2"
-PS C:\> Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetwork "MyVirtualNetwork" -RemoteVirtualNetworkId $vnet2.id
-PS C:\> Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet1" -VirtualNetwork "MyVirtualNetwork" -RemoteVirtualNetworkId $vnet1.id
+# Variables for common values used throughout the script.
+$rgName='myResourceGroup'
+$location='eastus'
+
+# Create a resource group.
+New-AzureRmResourceGroup -Name $rgName  -Location $location
+
+# Create virtual network 1.
+$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location $location
+
+# Create virtual network 2.
+$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location $location
+
+# Peer VNet1 to VNet2.
+Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+
+# Peer VNet2 to VNet1.
+Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
 ```
 
-The first command gets a virtual network object named vnet1, and then stores it in the $vnet1 variable.
+Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
 
-The second command gets a virtual network object named vnet2, and then stores it in the $vnet2 variable.
+### Example 2: Create a peering between two virtual networks in different regions
+```
+# Variables for common values used throughout the script.
+$rgName='myResourceGroup'
 
-The third command adds a virtual network peering link from vnet1 to vnet2.
-This link is named LinkToVnet2.
+# Create a resource group.
+New-AzureRmResourceGroup -Name $rgName  -Location westcentralus
 
-The fourth command adds a link from vnet2 to vnet1 named LinkToVnet1.
+# Create virtual network 1.
+$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
 
-Note that vnet1 and vnet2 are assumed to already exist in this example.
-Also note that a link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
+# Create virtual network 2.
+$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
+
+# Peer VNet1 to VNet2.
+Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+
+# Peer VNet2 to VNet1.
+Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+```
+
+Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the virtual network peering.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetwork
-Specifies the parent virtual network.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -RemoteVirtualNetworkId
-Specifies the ID of the remote virtual network.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -BlockVirtualNetworkAccess
-Indicates that this cmdlet blocks the virtual machines in the linked virtual network space to access all the virtual machines in local virtual network space.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AllowForwardedTraffic
 Indicates that this cmdlet allows the forwarded traffic from the virtual machines in the remote virtual network.
@@ -136,6 +103,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BlockVirtualNetworkAccess
+Indicates that this cmdlet blocks the virtual machines in the linked virtual network space to access all the virtual machines in local virtual network space.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the virtual network peering.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteVirtualNetworkId
+Specifies the ID of the remote virtual network.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -UseRemoteGateways
 Indicates that this cmdlet allows remote gateways on this virtual network.
 
@@ -151,42 +178,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -VirtualNetwork
+Specifies the parent virtual network.
 
 ```yaml
-Type: ActionPreference
+Type: PSVirtualNetwork
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -195,7 +198,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+Parameter 'RemoteVirtualNetworkId' accepts value of type 'String' from the pipeline
+
+### PSVirtualNetwork
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 
 ## NOTES
 

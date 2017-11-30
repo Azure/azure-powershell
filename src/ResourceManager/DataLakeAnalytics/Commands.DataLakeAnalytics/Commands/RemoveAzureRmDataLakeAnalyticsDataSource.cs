@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Management.Automation;
 
@@ -24,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Remove-AdlAnalyticsDataSource")]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
-        internal const string BlobParameterSetName = "Remove a Blob storage account";
+        internal const string DataLakeParameterSetName = "RemoveDataLakeStorageAccount";
+        internal const string BlobParameterSetName = "RemoveBlobStorageAccount";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")
@@ -52,8 +53,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(Mandatory = false, Position = 2, ParameterSetName = BlobParameterSetName, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, Position = 3, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
-        [Parameter(Mandatory = false, Position = 3, ParameterSetName = BlobParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Return true upon successful deletion.")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = BlobParameterSetName, HelpMessage = "Return true upon successful deletion.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             ParameterSetName = BlobParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

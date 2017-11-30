@@ -19,14 +19,16 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
+    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
+        OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -64,26 +66,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
                 identity.ResourceProviderApiVersion = "2015-12-01";
                 identity.ResourceType = string.Empty;
+                identity.ParentResourcePath = string.Empty;
 
-                ResourcesNS.Models.ResourceGetResult resource = null;
+                GenericResource resource = null;
                 try
                 {
                     WriteDebug(string.Format("Query Microsoft.ClassicStorage with name = {0}",
                         StorageAccountName));
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
-                        identity, CancellationToken.None).Result;
+                    resource = RmClient.Resources.GetAsync(
+                        StorageAccountResourceGroupName,
+                        identity.ResourceProviderNamespace,
+                        identity.ParentResourcePath,
+                        identity.ResourceType,
+                        identity.ResourceName,
+                        identity.ResourceProviderApiVersion,
+                        CancellationToken.None).Result;
                 }
                 catch (Exception)
                 {
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
-                        identity, CancellationToken.None).Result;
+                    resource = RmClient.Resources.GetAsync(
+                        StorageAccountResourceGroupName,
+                        identity.ResourceProviderNamespace,
+                        identity.ParentResourcePath,
+                        identity.ResourceType,
+                        identity.ResourceName,
+                        identity.ResourceProviderApiVersion,
+                        CancellationToken.None).Result;
                 }
 
-                string storageAccountId = resource.Resource.Id;
-                string storageAccountlocation = resource.Resource.Location;
-                string storageAccountType = resource.Resource.Type;
+                string storageAccountId = resource.Id;
+                string storageAccountlocation = resource.Location;
+                string storageAccountType = resource.Type;
 
                 WriteDebug(string.Format("StorageId = {0}", storageAccountId));
 
@@ -102,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(jobResponse, Resources.RestoreOperation);
-            });
+            }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
     }
 }

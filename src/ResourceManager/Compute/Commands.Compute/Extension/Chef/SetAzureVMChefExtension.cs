@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
         private string JsonAttributeTemplate = "custom_json_attr";
-        private string ChefServiceIntervalTemplate = "chef_service_interval";
+        private string ChefDaemonIntervalTemplate = "chef_daemon_interval";
         private string RunListTemplate = "runlist";
         private string DaemonTemplate = "daemon";
         private string SecretTemplate = "encrypted_data_bag_secret";
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -110,11 +112,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         [ValidateNotNullOrEmpty]
         public string JsonAttribute { get; set; }
 
+        [Alias("ChefServiceInterval")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.")]
         [ValidateNotNullOrEmpty]
-        public string ChefServiceInterval { get; set; }
+        public string ChefDaemonInterval { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -252,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
                     bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
-                    bool IsChefServiceIntervalEmpty = string.IsNullOrEmpty(this.ChefServiceInterval);
+                    bool IsChefDaemonIntervalEmpty = string.IsNullOrEmpty(this.ChefDaemonInterval);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
                     bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
@@ -322,9 +325,9 @@ validation_client_name 	'{1}'
                         hashTable.Add(JsonAttributeTemplate, JsonAttribute);
                     }
 
-                    if (!IsChefServiceIntervalEmpty)
+                    if (!IsChefDaemonIntervalEmpty)
                     {
-                        hashTable.Add(ChefServiceIntervalTemplate, ChefServiceInterval);
+                        hashTable.Add(ChefDaemonIntervalTemplate, ChefDaemonInterval);
                     }
 
                     if (this.Windows.IsPresent && !IsDaemonEmpty)
@@ -381,7 +384,7 @@ validation_client_name 	'{1}'
                         this.Name,
                         parameters).GetAwaiter().GetResult();
 
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 });
         }

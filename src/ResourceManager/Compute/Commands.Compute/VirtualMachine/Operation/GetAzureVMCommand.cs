@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
            ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -79,8 +81,6 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            WriteWarning("Breaking change notice: In upcoming release, top level properties, DataDiskNames and NetworkInterfaceIDs, will be removed from VM object because they are also in StorageProfile and NetworkProfile, respectively.");
 
             ExecuteClientAction(() =>
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResultList = new List<PSVirtualMachineList>();
                         foreach (var item in psResultListStatus)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
                             psResultList.Add(psItem);
                         }
                         WriteObject(psResultList, true);
@@ -142,10 +142,10 @@ namespace Microsoft.Azure.Commands.Compute
                         var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
                             this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
 
-                        var psResult = Mapper.Map<PSVirtualMachine>(result);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
                         {
-                            psResult = Mapper.Map(result.Body, psResult);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                         }
                         psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResultList = new List<PSVirtualMachineList>();
                         foreach (var item in psResultListStatus)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
                             psResultList.Add(psItem);
                         }
                         WriteObject(psResultList, true);
@@ -186,8 +186,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 foreach (var item in vmListResult.Body)
                 {
-                    var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                    psItem = Mapper.Map(item, psItem);
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
                     if (this.Status.IsPresent)
                     {
                         VirtualMachine state = null;
@@ -204,6 +204,7 @@ namespace Microsoft.Azure.Commands.Compute
                         if (state == null)
                         {
                             psItem.PowerState = InfoNotAvailable;
+                            psItem.MaintenanceRedeployStatus = null;
                         }
                         else
                         {
@@ -216,6 +217,7 @@ namespace Microsoft.Azure.Commands.Compute
                             {
                                 psItem.PowerState = InfoNotAvailable;
                             }
+                            psItem.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
                         }
                     }
                     psItem.DisplayHint = this.DisplayHint;

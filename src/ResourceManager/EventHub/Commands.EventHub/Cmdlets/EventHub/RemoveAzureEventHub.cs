@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
@@ -33,21 +35,23 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "EventHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a EventHub 
-            if(ShouldProcess(target:EventHubName, action:string.Format("Deleting EventHub: {0} of NnameSpace{1}",EventHubName,NamespaceName)))
+            if(ShouldProcess(target:Name, action:string.Format(Resources.RemovingEventHub,Name,Namespace)))
             {
-                WriteObject(Client.DeleteEventHub(ResourceGroupName, NamespaceName, EventHubName));
+                WriteObject(Client.DeleteEventHub(ResourceGroupName, Namespace, Name));
             }            
         }
     }

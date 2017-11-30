@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResource")]
+        [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Alias("Name")]
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
@@ -47,6 +50,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -67,41 +72,51 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage account Id.")]
+        [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage path.")]
+        [ValidateNotNullOrEmpty]
         public string StoragePath { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Local file path.")]
+        [ValidateNotNullOrEmpty]
         public string LocalFilePath { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Bytes to capture per packet.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
         public int? BytesToCapturePerPacket { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Total bytes per session.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
         public int? TotalBytesPerSession { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Time limit in seconds.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
         public int? TimeLimitInSeconds { get; set; }
 
         [Parameter(
              Mandatory = false,
              HelpMessage = "Filters for packet capture session.")]
+        [ValidateNotNull]
         public List<PSPacketCaptureFilter> Filter { get; set; }
 
         public override void Execute()
@@ -167,7 +182,7 @@ namespace Microsoft.Azure.Commands.Network
                 packetCaptureProperties.Filters = new List<MNM.PacketCaptureFilter>();
                 foreach (PSPacketCaptureFilter filter in this.Filter)
                 {
-                    MNM.PacketCaptureFilter filterMNM = Mapper.Map<MNM.PacketCaptureFilter>(filter);
+                    MNM.PacketCaptureFilter filterMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.PacketCaptureFilter>(filter);
                     packetCaptureProperties.Filters.Add(filterMNM);
                 }
             }

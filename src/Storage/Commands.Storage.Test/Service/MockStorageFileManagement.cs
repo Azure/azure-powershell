@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Commands.Storage;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
 {
@@ -52,9 +53,9 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
             this.availableDirectoryNames.AddRange(directoryNames);
         }
 
-        public CloudFileShare GetShareReference(string shareName)
+        public CloudFileShare GetShareReference(string shareName, DateTimeOffset? snapshotTime = null)
         {
-            return client.GetShareReference(shareName);
+            return client.GetShareReference(shareName, snapshotTime);
         }
 
         public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
@@ -135,7 +136,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
             return TaskEx.FromResult(true);
         }
 
-        public Task DeleteShareAsync(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task DeleteShareAsync(CloudFileShare share, DeleteShareSnapshotsOption deleteShareSnapshotsOption, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return TaskEx.FromResult(true);
         }

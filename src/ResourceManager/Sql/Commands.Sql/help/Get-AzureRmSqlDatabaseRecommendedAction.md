@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: EF6C862B-A89C-48AB-A590-92CFA387305F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Gets one or more recommended actions for an Azure SQL Database Advisor.
 
 ```
 Get-AzureRmSqlDatabaseRecommendedAction [-RecommendedActionName <String>] -ServerName <String>
- -DatabaseName <String> -AdvisorName <String> [-ResourceGroupName] <String> [<CommonParameters>]
+ -DatabaseName <String> -AdvisorName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,23 +157,8 @@ This command gets the recommended action named IR_\[test_schema\]_\[test_table_0
 
 ## PARAMETERS
 
-### -RecommendedActionName
-Specifies the name of the recommended action that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerName
-Specifies the name of the server the database is in.
+### -AdvisorName
+Specifies the name of the Advisor for which this cmdlet requests recommended actions.
 
 ```yaml
 Type: String
@@ -200,15 +187,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AdvisorName
-Specifies the name of the Advisor for which this cmdlet requests recommended actions.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecommendedActionName
+Specifies the name of the recommended action that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -225,6 +227,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server the database is in.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -250,4 +267,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlDatabaseRecommendedActionState](./Set-AzureRmSqlDatabaseRecommendedActionState.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

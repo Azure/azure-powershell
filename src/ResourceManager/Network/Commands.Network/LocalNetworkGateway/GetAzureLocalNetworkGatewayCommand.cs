@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -48,7 +51,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var localnetGatewayList = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
+                var localnetGatewayPage = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
+
+                // Get all resources by polling on next page link
+                var localnetGatewayList = ListNextLink<LocalNetworkGateway>.GetAllResourcesByPollingNextLink(localnetGatewayPage, this.LocalNetworkGatewayClient.ListNext);
 
                 var psLocalnetGateways = new List<PSLocalNetworkGateway>();
                 foreach (var localNetworkGateway in localnetGatewayList)

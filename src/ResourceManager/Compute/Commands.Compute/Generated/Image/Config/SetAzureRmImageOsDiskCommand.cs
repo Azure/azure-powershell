@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,15 +30,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmImageOsDisk", SupportsShouldProcess = true)]
-    [OutputType(typeof(Image))]
-    public class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSImage))]
+    public partial class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Image Image { get; set; }
+        public PSImage Image { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -66,6 +67,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public int? DiskSizeGB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -167,6 +173,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeGB;
+            }
+
+            if (this.StorageAccountType != null)
+            {
+
+                // StorageProfile
+                if (this.Image.StorageProfile == null)
+                {
+                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                }
+                // OsDisk
+                if (this.Image.StorageProfile.OsDisk == null)
+                {
+                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                }
+                this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
 
             if (this.SnapshotId != null)

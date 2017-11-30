@@ -1,10 +1,9 @@
----
+﻿---
 Module Name: AzureRM.HDInsight
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 10737010-0103-46DE-B381-07A505F6B1EF
 ---
 
 # AzureRM.HDInsight Module
@@ -33,6 +32,12 @@ Adds a security profileto a cluster configuration object.
 ### [Add-AzureRmHDInsightStorage](Add-AzureRmHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
+### [Disable-AzureRmHDInsightOperationsManagementSuite](Disable-AzureRmHDInsightOperationsManagementSuite.md)
+Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will stop flowing to the OMS workspace specified during enable.
+
+### [Enable-AzureRmHDInsightOperationsManagementSuite](Enable-AzureRmHDInsightOperationsManagementSuite.md)
+Enables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will be sent to the OMS workspace specified during enable.
+
 ### [Get-AzureRmHDInsightCluster](Get-AzureRmHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
 
@@ -41,6 +46,9 @@ Gets the list of jobs from a cluster and lists them in reverse chronological ord
 
 ### [Get-AzureRmHDInsightJobOutput](Get-AzureRmHDInsightJobOutput.md)
 Gets the log output for a job from the storage account associated with a specified cluster.
+
+### [Get-AzureRmHDInsightOperationsManagementSuite](Get-AzureRmHDInsightOperationsManagementSuite.md)
+Gets the status of Operations Management Suite (OMS) installation on the cluster.
 
 ### [Get-AzureRmHDInsightPersistedScriptAction](Get-AzureRmHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.

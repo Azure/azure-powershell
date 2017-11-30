@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 979E956B-4C74-426E-A617-E50C4EBC8A20
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption
 schema: 2.0.0
 ---
 
@@ -14,8 +15,9 @@ Disables encryption on an IaaS virtual machine.
 
 ```
 Disable-AzureRmVMDiskEncryption [-ResourceGroupName] <String> [-VMName] <String> [[-VolumeType] <String>]
- [[-Name] <String>] [[-TypeHandlerVersion] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-Name] <String>] [[-TypeHandlerVersion] <String>] [-Force] [-DisableAutoUpgradeMinorVersion]
+ [-ExtensionType <String>] [-ExtensionPublisherName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +31,7 @@ Caution: This cmdlet reboots the virtual machine.
 
 ### Example 1: Disable encryption for all volumes on a Windows virtual machine
 ```
-PS C:\>Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
+PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
 ```
 
 This command disables encryption for volumes of type all for the virtual machine named VM002 that belongs to the resource group named Group001.
@@ -37,7 +39,7 @@ Since the *VolumeType* parameter is not specified, the cmdlet sets the value to 
 
 ### Example 2: Disable encryption for data volumes on a Windows virtual machine
 ```
-PS C:\>$ResourceGroup = "Group002";
+PS C:\> $ResourceGroup = "Group002";
 PS C:\> $VMName = "VM004";
 PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName "VM004" -VolumeType "Data"
 ```
@@ -45,6 +47,21 @@ PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName "V
 This command disables encryption for volumes of type data for the virtual machine named VM004 that belongs to the resource group named Group002.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableAutoUpgradeMinorVersion
 Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.
@@ -55,7 +72,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExtensionPublisherName
+The extension publisher name. Specify this parameter only to override the default value of "Microsoft.Azure.Security".
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExtensionType
+The extension type. Specify this parameter to override its default value of "AzureDiskEncryption" for Windows VMs and "AzureDiskEncryptionForLinux" for Linux VMs.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,7 +133,7 @@ Parameter Sets: (All)
 Aliases: ExtensionName
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -101,7 +148,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -117,7 +164,7 @@ Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -132,7 +179,7 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -155,7 +202,7 @@ Aliases:
 Accepted values: OS, Data, All
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using System;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public DataMaskingEndpointsCommunicator(AzureContext context)
+        public DataMaskingEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Get the data masking policy for a specific database
         /// </summary>
-        public DataMaskingPolicy GetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DataMaskingPolicy GetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingPolicyGetResponse response = operations.GetPolicy(resourceGroupName, serverName, databaseName);
             return response.DataMaskingPolicy;
         }
@@ -65,18 +65,18 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Set (or create) the data masking policy for a specific database
         /// </summary>
-        public void SetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DataMaskingPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, DataMaskingPolicyCreateOrUpdateParameters parameters)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdatePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
         /// Calls to list all the data masking rules for a specific database
         /// </summary>
-        public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingRuleListResponse response = operations.List(resourceGroupName, serverName, databaseName);
             return response.DataMaskingRules;
         }
@@ -84,18 +84,18 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Sets the data masking rules for a specific database
         /// </summary>
-        public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId, DataMaskingRuleCreateOrUpdateParameters parameters)
+        public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, DataMaskingRuleCreateOrUpdateParameters parameters)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdateRule(resourceGroupName, serverName, databaseName, ruleId, parameters);
         }
 
         /// <summary>
         /// Deletes a data masking rule from the list of rules of a specific database
         /// </summary>
-        public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId)
+        public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.Delete(resourceGroupName, serverName, databaseName, ruleId);
         }
 
@@ -104,15 +104,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

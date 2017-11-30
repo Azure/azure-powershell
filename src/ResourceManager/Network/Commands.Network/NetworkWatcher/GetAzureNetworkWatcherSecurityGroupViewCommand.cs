@@ -14,7 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResource")]
+        [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Alias("Name")]
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
@@ -46,6 +48,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     foreach (var rule in customSecurityRulesList)
                     {
-                        PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                        PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                         securityRules.NetworkInterfaceSecurityRules.Add(psRule);
                     }
                 }
@@ -107,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     foreach (var rule in subnetSecurityRulesList)
                     {
-                        PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                        PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                         securityRules.SubnetSecurityRules.Add(psRule);
                     }
                 }
@@ -117,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var rule in defaultSecurityRulesList)
                 {
-                    PSSecurityRule psRule = Mapper.Map<PSSecurityRule>(rule);
+                    PSSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSSecurityRule>(rule);
                     securityRules.DefaultSecurityRules.Add(psRule);
                 }
 
@@ -126,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var rule in effectiveSecurityRulesList)
                 {
-                    PSEffectiveSecurityRule psRule = Mapper.Map<PSEffectiveSecurityRule>(rule);
+                    PSEffectiveSecurityRule psRule = NetworkResourceManagerProfile.Mapper.Map<PSEffectiveSecurityRule>(rule);
                     securityRules.EffectiveSecurityRules.Add(psRule);
                 }
 

@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 using System;
 using System.Globalization;
 using System.Net;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             var response = StreamAnalyticsManagementClient.Transformations.Get(resourceGroupName, jobName, transformationName);
 
-            return new PSTransformation(response.Transformation)
+            return new PSTransformation(response)
             {
                 ResourceGroupName = resourceGroupName,
                 JobName = jobName
@@ -42,14 +43,18 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 throw new ArgumentNullException("rawJsonContent");
             }
 
+            Transformation transformation = SafeJsonConvert.DeserializeObject<Transformation>(
+                rawJsonContent,
+                StreamAnalyticsClientExtensions.DeserializationSettings);
+
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Transformations.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Transformations.CreateOrReplace(
+                    transformation,
                     resourceGroupName,
                     jobName,
-                    transformationName,
-                    new TransformationCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
+                    transformationName);
 
-            return response.Transformation;
+            return response;
         }
 
         public virtual PSTransformation CreatePSTransformation(CreatePSTransformationParameter parameter)

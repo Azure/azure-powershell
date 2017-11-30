@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: BA508F0B-847F-4531-9D5D-A5A044A2D207
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationdscconfiguration
 schema: 2.0.0
 ---
 
@@ -15,7 +16,7 @@ Imports a DSC configuration into Automation.
 ```
 Import-AzureRmAutomationDscConfiguration -SourcePath <String> [-Tags <IDictionary>] [-Description <String>]
  [-Published] [-Force] [-LogVerbose <Boolean>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,9 +30,9 @@ Specify the path of an APS script that contains a single DSC configuration.
 PS C:\>Import-AzureRmAutomationDscConfiguration -AutomationAccountName "Contoso17"-ResourceGroupName "ResourceGroup01" -SourcePath "C:\DSC\client.ps1" -Force
 ```
 
-This command imports the DSC configuration in the file named client.ps1 into the Automation account named Contoso17.
-The command specifies the *Force* parameter.
-If there is an existing DSC configuration, this command replaces it.
+This command imports the DSC configuration in the file named client.ps1 into the Automation account
+named Contoso17. The command specifies the *Force* parameter. If there is an existing DSC
+configuration, this command replaces it.
 
 ## PARAMETERS
 
@@ -44,9 +45,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,8 +97,8 @@ Accept wildcard characters: False
 ```
 
 ### -LogVerbose
-Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC configuration.
-Specify a value of $True to turn verbose logging on or $False to turn it off.
+Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC
+configuration. Specify a value of $True to turn verbose logging on or $False to turn it off.
 
 ```yaml
 Type: Boolean
@@ -120,7 +136,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -142,7 +158,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -194,6 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.DscConfiguration
+
 ## NOTES
 
 ## RELATED LINKS
@@ -201,5 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Export-AzureRmAutomationDscConfiguration](./Export-AzureRmAutomationDscConfiguration.md)
 
 [Get-AzureRmAutomationDscConfiguration](./Get-AzureRmAutomationDscConfiguration.md)
-
-

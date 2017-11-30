@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSearchGetSavedSearchResponse(SearchGetSavedSearchResponse response)
+        public PSSearchGetSavedSearchResponse(SavedSearch response)
         {
             if (response != null)
             {
                 this.Id = response.Id;
-                this.ETag = response.ETag;
-                this.Properties = new PSSavedSearchProperties(response.Properties);
+                this.ETag = response.Etag;
+                this.Properties = new PSSavedSearchProperties(response);
             }
         }
         public string Id { get; set; }

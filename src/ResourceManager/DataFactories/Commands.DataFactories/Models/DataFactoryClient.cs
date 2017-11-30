@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.DataFactories;
 using System.IO;
@@ -23,9 +24,9 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         public IDataFactoryManagementClient DataPipelineManagementClient { get; private set; }
 
-        public DataFactoryClient(AzureContext context)
+        public DataFactoryClient(IAzureContext context)
         {
-            DataPipelineManagementClient = AzureSession.ClientFactory.CreateClient<DataFactoryManagementClient>(
+            DataPipelineManagementClient = AzureSession.Instance.ClientFactory.CreateClient<DataFactoryManagementClient>(
                 context, AzureEnvironment.Endpoint.ResourceManager);
         }
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     public class RemoveAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Analytics account to update the firewall rule in")]
+            HelpMessage = "The Data Lake Analytics account to remove the firewall rule from")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which want to retrieve the account.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

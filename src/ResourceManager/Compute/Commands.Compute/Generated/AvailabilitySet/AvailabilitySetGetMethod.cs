@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -83,19 +82,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(availabilitySetName))
             {
                 var result = AvailabilitySetsClient.Get(resourceGroupName, availabilitySetName);
-                var psObject = new PSAvailabilitySet();
-                Mapper.Map<AvailabilitySet, PSAvailabilitySet>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 var result = AvailabilitySetsClient.List(resourceGroupName);
-                var psObject = new List<PSAvailabilitySetList>();
-                foreach (var r in result)
-                {
-                    psObject.Add(Mapper.Map<AvailabilitySet, PSAvailabilitySetList>(r));
-                }
-                WriteObject(psObject);
+                var resultList = result.ToList();
+                WriteObject(resultList, true);
             }
         }
 

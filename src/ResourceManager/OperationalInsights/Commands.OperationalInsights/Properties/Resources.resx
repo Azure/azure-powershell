@@ -163,10 +163,9 @@ Are you sure you want to continue?</value>
   </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
     <value>HTTP Status Code: {0}
-Error Code: {1}
-Error Message: {2}
-Request Id: {3}
-Timestamp (Utc):{4}</value>
+Error Message: {1}
+Request Id: {2}
+Timestamp (Utc):{3}</value>
   </data>
   <data name="GetWorkspaceDataSourceParameterSetWarning" xml:space="preserve">
     <value>This parameter set will be deprecated in next release, and default parameter set will change to ByWorkspaceNameByKind.</value>

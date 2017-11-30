@@ -15,15 +15,20 @@
 using AutoMapper;
 using Hyak.Common;
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
@@ -170,11 +175,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                currentStorage = Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), Profile.Context.Environment));
             }
             catch (Exception ex) // couldn't access
             {
@@ -288,7 +295,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         null,
                         operationDescription,
                         () => this.ComputeClient.ServiceCertificates.Create(this.ServiceName, parameters),
-                        (s, r) => ContextFactory<OperationStatusResponse, ManagementOperationContext>(r, s));
+                        (s, r) => ContextFactory(r, s,
+                                    ServiceManagementProfile.Mapper.Map<OperationStatusResponse, ManagementOperationContext>,
+                                    ServiceManagementProfile.Mapper.Map));
                 }
 
                 if (X509Certificates != null)
@@ -306,7 +315,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                             null,
                             operationDescription,
                             () => this.ComputeClient.ServiceCertificates.Create(this.ServiceName, current.CertificateFile),
-                            (s, r) => ContextFactory<OperationStatusResponse, ManagementOperationContext>(r, s));
+                            (s, r) => ContextFactory(r, s,
+                                        ServiceManagementProfile.Mapper.Map<OperationStatusResponse, ManagementOperationContext>,
+                                        ServiceManagementProfile.Mapper.Map));
                     }
                 }
             }
@@ -396,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 RoleSize                    = InstanceSize,
                 RoleType                    = "PersistentVMRole",
                 Label                       = ServiceName,
-                OSVirtualHardDisk           = _isVMImage ? null : Mapper.Map<Management.Compute.Models.OSVirtualHardDisk>(
+                OSVirtualHardDisk           = _isVMImage ? null : ServiceManagementProfile.Mapper.Map<Management.Compute.Models.OSVirtualHardDisk>(
                                               new OSVirtualHardDisk
                                               {
                                                   DiskName        = null,
@@ -407,7 +418,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 VMImageName                 = _isVMImage ? this.ImageName : null,
                 MediaLocation               = _isVMImage && !string.IsNullOrEmpty(this.MediaLocation) ? new Uri(this.MediaLocation) : null,
                 ProvisionGuestAgent         = !this.DisableGuestAgent,
-                ResourceExtensionReferences = this.DisableGuestAgent ? null : Mapper.Map<List<Management.Compute.Models.ResourceExtensionReference>>(
+                ResourceExtensionReferences = this.DisableGuestAgent ? null : ServiceManagementProfile.Mapper.Map<List<Management.Compute.Models.ResourceExtensionReference>>(
                     new VirtualMachineExtensionImageFactory(this.ComputeClient).MakeList(
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultPublisher,
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultName,

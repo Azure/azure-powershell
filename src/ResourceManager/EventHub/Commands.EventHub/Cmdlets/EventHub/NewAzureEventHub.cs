@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
+using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -28,6 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
@@ -36,66 +39,63 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Namespace Location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }        
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Eventhub Name.")]
         [ValidateNotNullOrEmpty]
-        public string EventHubName { get; set; }
+        [Alias(AliasEventHubName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false,
+           ParameterSetName = EventhubInputObjectParameterSet,
            ValueFromPipelineByPropertyName = true,           
-           HelpMessage = "EventHub object.")]
+           HelpMessage = "EventHub Input object.")]
         [ValidateNotNullOrEmpty]
-        public EventHubAttributes EventHubObj { get; set; }
+        [Alias(AliasEventHubObj)]
+        public EventHubAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
+           ParameterSetName = EventhubPropertiesParameterSet,
            HelpMessage = "Eventhub Message Retention In Days.")]
         [ValidateNotNullOrEmpty]
         public long? MessageRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
+           ParameterSetName = EventhubPropertiesParameterSet,
            HelpMessage = "Eventhub PartitionCount.")]
         [ValidateNotNullOrEmpty]
-        public long? PartitionCount { get; set; }
+        public long? PartitionCount { get; set; }       
+
 
         public override void ExecuteCmdlet()
         {
             EventHubAttributes eventHub = new EventHubAttributes();
 
-            if (EventHubObj != null)
+            if (InputObject != null)
             {
-                eventHub = EventHubObj;
+                eventHub = InputObject;
             }
             else
             {
-                if (!string.IsNullOrEmpty(EventHubName))
-                    eventHub.Name = EventHubName;
+                if (!string.IsNullOrEmpty(Name))
+                    eventHub.Name = Name;
 
                 if (MessageRetentionInDays.HasValue)
                     eventHub.MessageRetentionInDays = MessageRetentionInDays;
 
                 if (PartitionCount.HasValue)
-                    eventHub.PartitionCount = PartitionCount;
-
-                eventHub.Location = Location;       
+                    eventHub.PartitionCount = PartitionCount;     
             }
 
-            if(ShouldProcess(target:eventHub.Name, action:string.Format("Creating new EventHub:{0} under NameSpace:{1} ",eventHub.Name,NamespaceName)))
+            if(ShouldProcess(target:eventHub.Name, action:string.Format(Resources.CreateEventHub,eventHub.Name,Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub));
+                WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, eventHub.Name, eventHub));
             }
                         
         }

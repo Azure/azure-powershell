@@ -411,7 +411,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 string.Format(CultureInfo.CurrentUICulture, Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscUploadToBlobStorageAction, archivePath),
                 modulesBlob.Uri.AbsoluteUri, () =>
                 {
-                    if (!force && modulesBlob.Exists())
+                    if (!force && modulesBlob.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                     {
                         ThrowTerminatingError(
                             new ErrorRecord(
@@ -424,7 +424,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                                 null));
                     }
 
-                    modulesBlob.UploadFromFile(archivePath, FileMode.Open);
+                    modulesBlob.UploadFromFileAsync(archivePath).ConfigureAwait(false).GetAwaiter().GetResult();
 
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture,
@@ -488,7 +488,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             var blobClient = storageAccount.CreateCloudBlobClient();
 
             CloudBlobContainer containerReference = blobClient.GetContainerReference(containerName);
-            containerReference.CreateIfNotExists();
+            containerReference.CreateIfNotExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
             var blobName = Path.GetFileName(archivePath);
 

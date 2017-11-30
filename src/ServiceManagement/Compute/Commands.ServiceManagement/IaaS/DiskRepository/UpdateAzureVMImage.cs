@@ -117,7 +117,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     null,
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineOSImages.Update(this.ImageName, parameters),
-                    (s, response) => this.ContextFactory<VirtualMachineOSImageUpdateResponse, OSImageContext>(response, s));
+                    (s, response) => this.ContextFactory(response, s,
+                                            ServiceManagementProfile.Mapper.Map<VirtualMachineOSImageUpdateResponse, OSImageContext>,
+                                            ServiceManagementProfile.Mapper.Map));
             }
             else
             {
@@ -133,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     PublishedDate          = this.PublishedDate,
                     PrivacyUri             = this.PrivacyUri,
                     RecommendedVMSize      = this.RecommendedVMSize,
-                    OSDiskConfiguration    = Mapper.Map<OSDiskConfigurationUpdateParameters>(osDiskConfig),
+                    OSDiskConfiguration    = ServiceManagementProfile.Mapper.Map<OSDiskConfigurationUpdateParameters>(osDiskConfig),
                     DataDiskConfigurations = dataDiskConfigs == null ? null : dataDiskConfigs.Select(d => new DataDiskConfigurationUpdateParameters
                     {
                         HostCaching       = d.HostCaching,

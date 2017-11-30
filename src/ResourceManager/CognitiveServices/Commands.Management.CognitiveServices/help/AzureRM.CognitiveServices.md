@@ -1,10 +1,9 @@
----
+﻿---
 Module Name: AzureRM.CognitiveServices
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 8490169A-CC7B-4769-97FE-D86441A4A634
 ---
 
 # AzureRM.CognitiveServices Module

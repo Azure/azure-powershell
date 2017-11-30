@@ -1,6 +1,7 @@
----
-external help file: Microsoft.Azure.Commands.MachineLearning.dll-help.xml
-online version: 
+﻿---
+external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/export-azurermmlwebservice
 schema: 2.0.0
 ---
 
@@ -11,14 +12,16 @@ Exports the web service definition object as a JSON formatted string.
 
 ## SYNTAX
 
-### Export to file.
+### ExportToFile
 ```
-Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force] [-WhatIf] [-Confirm]
+Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Export to JSON string.
+### ExportToJSON
 ```
-Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force] [-WhatIf] [-Confirm]
+Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +33,8 @@ You can return the string immediately or save it to a file.
 ### --------------------------  Example 1: Export as string  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Export-AzureRmMlWebService -WebService $svc -ToJsonString
 ```
@@ -37,11 +42,28 @@ Export-AzureRmMlWebService -WebService $svc -ToJsonString
 ### --------------------------  Example 2: Export to file  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.
@@ -63,7 +85,7 @@ The file path for exported definition.
 
 ```yaml
 Type: String
-Parameter Sets: Export to file.
+Parameter Sets: ExportToFile
 Aliases: 
 
 Required: True
@@ -78,7 +100,7 @@ Specifies that the definition will be exported as a JSON string.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Export to JSON string.
+Parameter Sets: ExportToJSON
 Aliases: 
 
 Required: True
@@ -134,7 +156,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
+
+### WebService
+Parameter 'WebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 

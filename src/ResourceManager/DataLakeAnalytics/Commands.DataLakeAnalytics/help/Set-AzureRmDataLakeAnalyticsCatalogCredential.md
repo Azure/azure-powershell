@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 75E4E0FB-35A8-47DA-B606-45E073D04625
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/set-azurermdatalakeanalyticscatalogcredential
 schema: 2.0.0
 ---
 
@@ -12,18 +13,18 @@ Modifies an Azure Data Lake Analytics catalog credential password.
 
 ## SYNTAX
 
-### Specify host name and port (Default)
+### SetByHostNameAndPort (Default)
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
- [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-Uri] <Uri> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-Uri] <Uri>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Specify full URI
+### SetByFullURI
 ```
 Set-AzureRmDataLakeAnalyticsCatalogCredential [-Account] <String> [-DatabaseName] <String>
  [-CredentialName] <String> [-Credential] <PSCredential> [-NewPassword] <PSCredential> [-DatabaseHost] <String>
- [-Port] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Port] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ The Set-AzureRmDataLakeAnalyticsCatalogCredential cmdlet modifies a credential p
 
 ### Example 1: Modify a credential's password associated with an account
 ```
-PS C:\> Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName "ContosoAdlAccount" `
+PS C:\> Set-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "credName" `
                   -Credential (Get-Credential) `
@@ -95,7 +96,7 @@ Specifies the host name of the external data source the credential can connect t
 
 ```yaml
 Type: String
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullURI
 Aliases: 
 
 Required: True
@@ -106,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-Specifies the name of the database holding the secret.
+Specifies the name of the database in the Data Lake Analytics account holding the credential.
 
 ```yaml
 Type: String
@@ -117,6 +118,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,7 +156,7 @@ Specifies the port number used to connect to the specified DatabaseHost using th
 
 ```yaml
 Type: Int32
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullURI
 Aliases: 
 
 Required: True
@@ -155,7 +171,7 @@ Specifies the full Uniform Resource Identifier (URI) of the external data source
 
 ```yaml
 Type: Uri
-Parameter Sets: Specify host name and port
+Parameter Sets: SetByHostNameAndPort
 Aliases: 
 
 Required: True

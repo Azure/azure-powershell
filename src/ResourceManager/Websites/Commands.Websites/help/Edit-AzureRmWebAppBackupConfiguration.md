@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: BFC38930-DBB4-4EBB-8E29-73B901FAF486
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/edit-azurermwebappbackupconfiguration
 schema: 2.0.0
 ---
 
@@ -15,15 +16,16 @@ schema: 2.0.0
 ```
 Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
  [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup]
- [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-StorageAccountUrl] <String>
- [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
 Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
  [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <Site>
- [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
+ [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,36 @@ The **Edit-AzureRmWebAppBackupConfiguration** cmdlet edits the current configura
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -Databases
+Databases of type DatabaseBackupSetting[]
+
+```yaml
+Type: DatabaseBackupSetting[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FrequencyInterval
 Frequency Interval
@@ -63,36 +95,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionPeriodInDays
-Retention Period In Days
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StartTime
-StartTime in UTC
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -KeepAtLeastOneBackup
 Keep At Least One Backup Option
 
@@ -103,21 +105,6 @@ Aliases:
 
 Required: False
 Position: 9
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: String
-Parameter Sets: FromResourceName
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,6 +125,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: FromResourceName
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RetentionPeriodInDays
+Retention Period In Days
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Slot
 WebApp Slot Name
 
@@ -153,6 +170,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -StartTime
+StartTime in UTC
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -StorageAccountUrl
 Storage Account Url
 
@@ -163,21 +195,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Databases
-Databases of type DatabaseBackupSetting[]
-
-```yaml
-Type: DatabaseBackupSetting[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -203,7 +220,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration
 
 ## NOTES
 

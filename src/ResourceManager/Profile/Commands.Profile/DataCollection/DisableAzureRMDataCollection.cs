@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Profile.Properties;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmDataCollection", SupportsShouldProcess = true)]
-    [Alias("Disable-AzureDataCollection")]
     public class DisableAzureRmDataCollectionCommand : EnableAzureRmDataCollectionCommand
     {
         public override void ExecuteCmdlet()

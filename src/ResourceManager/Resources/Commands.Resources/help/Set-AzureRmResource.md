@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresource
 schema: 2.0.0
 ---
 
@@ -12,27 +13,30 @@ Modifies a resource.
 
 ## SYNTAX
 
-### The resource Id. (Default)
+### ByResourceId (Default)
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceId <String> [-ODataQuery <String>] [-Force]
- [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Resource that resides at the tenant level.
-```
-Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
- [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceName <String> -ResourceType <String>
- [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
- [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Resource that resides at the subscription level.
+### BySubscriptionLevel
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>]
- [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByTenantLevel
+```
+Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
+ [-Tag <Hashtable>] [-UsePatchSemantics] -ResourceName <String> -ResourceType <String>
+ [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
+ [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +47,7 @@ Specify a resource to modify by name and type or by ID.
 
 ### Example 1: Modify a resource
 ```
-PS C:\>$Resource = Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoSite" 
+PS C:\>$Resource = Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoSite"
 PS C:\> $Resource.Properties.Enabled = "False"
 PS C:\> $Resource | Set-AzureRmResource -Force
 ```
@@ -72,78 +76,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Specifies resource tags as an array of hash tables.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Hashtable
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: Tags
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group where this cmdlet modifies the resource.
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the subscription level.
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-Specifies the type of the resource.
-For instance, for a database, the resource type is as follows: 
-
-`Microsoft.Sql/Servers/Databases`
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ExtensionResourceName
 Specifies the name of an extension resource for the resource.
-For instance, to specify a database, use the following format: 
+For instance, to specify a database, use the following format:
 
 server name`/`database name
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -155,13 +111,13 @@ Accept wildcard characters: False
 
 ### -ExtensionResourceType
 Specifies the resource type for an extension resource.
-For instance, if the extension resource is a database specify the following: 
+For instance, if the extension resource is a database specify the following:
 
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: 
 
 Required: False
@@ -262,14 +218,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group where this cmdlet modifies the resource.
+
+```yaml
+Type: String
+Parameter Sets: BySubscriptionLevel
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
-Specifies the fully qualified resource ID, including the subscription, as in the following example: 
+Specifies the fully qualified resource ID, including the subscription, as in the following example:
 
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
 ```yaml
 Type: String
-Parameter Sets: The resource Id.
+Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
@@ -281,14 +252,32 @@ Accept wildcard characters: False
 
 ### -ResourceName
 Specifies the name of the resource.
-For instance, to specify a database, use the following format: 
+For instance, to specify a database, use the following format:
 
 `ContosoServer/ContosoDatabase`
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
 Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceType
+Specifies the type of the resource.
+For instance, for a database, the resource type is as follows:
+
+`Microsoft.Sql/Servers/Databases`
+
+```yaml
+Type: String
+Parameter Sets: BySubscriptionLevel, ByTenantLevel
+Aliases: 
 
 Required: True
 Position: Named
@@ -312,12 +301,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Tag
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TenantLevel
 Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Resource that resides at the tenant level.
+Parameter Sets: ByTenantLevel
 Aliases: 
 
 Required: True
@@ -338,6 +344,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -365,6 +386,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Management.Automation.PSObject
+
 ## NOTES
 
 ## RELATED LINKS
@@ -378,5 +401,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmResource](./New-AzureRmResource.md)
 
 [Remove-AzureRmResource](./Remove-AzureRmResource.md)
-
-

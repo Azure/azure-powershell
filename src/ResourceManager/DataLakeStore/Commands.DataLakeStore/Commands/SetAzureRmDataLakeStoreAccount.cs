@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -67,6 +70,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Optionally allow/block Azure originating IPs through the firewall.")]
         [ValidateNotNull]
         public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, the user can rotate their key version with this parameter.")]
+        [ValidateNotNull]
+        public string KeyVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -103,6 +111,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 AllowAzureIpState = currentAccount.FirewallAllowAzureIps;
             }
 
+            UpdateEncryptionConfig updateConfig = null;
+            if (!string.IsNullOrEmpty(KeyVersion))
+            {
+                if (currentAccount.EncryptionConfig.Type == EncryptionConfigType.ServiceManaged)
+                {
+                    throw new ArgumentException(Resources.IncorrectEncryptionTypeForUpdate);
+                }
+
+                updateConfig = new UpdateEncryptionConfig
+                {
+                    KeyVaultMetaInfo = new UpdateKeyVaultMetaInfo
+                    {
+                        EncryptionKeyVersion = KeyVersion
+                    }
+                };
+            }
+
             WriteObject(
                 new PSDataLakeStoreAccount(
                     DataLakeStoreClient.UpdateAccount(
@@ -113,7 +138,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         FirewallState.GetValueOrDefault(),
                         AllowAzureIpState.GetValueOrDefault(),
                         Tags,
-                        tier: Tier)));
+                        tier: Tier,
+                        userConfig: updateConfig)));
         }
     }
 }

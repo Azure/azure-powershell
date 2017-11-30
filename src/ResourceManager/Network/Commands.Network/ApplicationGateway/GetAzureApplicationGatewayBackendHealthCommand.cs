@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             var backendHealth = this.ApplicationGatewayClient.BackendHealth(ResourceGroupName, Name, ExpandResource);
-            var psBackendHealth = Mapper.Map<PSApplicationGatewayBackendHealth>(backendHealth);
+            var psBackendHealth = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayBackendHealth>(backendHealth);
             WriteObject(psBackendHealth);
         }
     }

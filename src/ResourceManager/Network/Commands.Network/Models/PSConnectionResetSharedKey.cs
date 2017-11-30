@@ -16,6 +16,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSConnectionResetSharedKey
     {
-        public uint KeyLength { get; set; }
+        public int KeyLength { get; set; }
     }
 }

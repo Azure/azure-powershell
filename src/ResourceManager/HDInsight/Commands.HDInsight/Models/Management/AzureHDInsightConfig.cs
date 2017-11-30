@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string WorkerNodeSize { get; set; }
 
         /// <summary>
+        /// Gets or sets the size of the Edge Node if supported by the cluster type.
+        /// </summary>
+        public string EdgeNodeSize { get; set; }
+
+        /// <summary>
         /// Gets or sets the size of the Zookeeper Node.
         /// </summary>
         public string ZookeeperNodeSize { get; set; }
@@ -124,6 +129,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The security profile.
         /// </value>
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of disks for worker node role for the cluster.
+        /// </summary>
+        public int DisksPerWorkerNode { get; set; }
 
         public AzureHDInsightConfig()
         {

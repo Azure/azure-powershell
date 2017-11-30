@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
     /// </summary>
     public class AzureSqlDatabaseModel
     {
+        /// <summary>
+        /// Template to generate database id
+        /// </summary>
+        internal const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
+
         /// <summary>
         /// Gets or sets the name of the resource group
         /// </summary>
@@ -129,6 +134,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DatabaseReadScale? ReadScale { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option of the database.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -136,12 +146,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseModel from Management.Sql.Models.Database object
+        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="database">Database object</param>
-        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
@@ -176,6 +186,49 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
+
+            ZoneRedundant = false;
+        }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
+        /// </summary>
+        /// <param name="resourceGroup">Resource group</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="database">Database object</param>
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        {
+            DatabaseEdition edition = DatabaseEdition.None;
+            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
+
+            ResourceGroupName = resourceGroup;
+            ServerName = serverName;
+            CollationName = database.Collation;
+            CreationDate = database.CreationDate.Value;
+            CurrentServiceObjectiveName = database.ServiceLevelObjective;
+            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
+            DatabaseName = database.Name;
+            Status = database.Status;
+            Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
+            ElasticPoolName = database.ElasticPoolName;
+            Location = database.Location;
+            ResourceId = database.Id;
+            CreateMode = database.CreateMode;
+            EarliestRestoreDate = database.EarliestRestoreDate;
+
+            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
+
+            DatabaseId = database.DatabaseId.Value;
+
+            Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
+            Edition = edition;
+
+            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
+
+            Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
+            ReadScale = readScale;
+
+            ZoneRedundant = database.ZoneRedundant;
         }
     }
 }

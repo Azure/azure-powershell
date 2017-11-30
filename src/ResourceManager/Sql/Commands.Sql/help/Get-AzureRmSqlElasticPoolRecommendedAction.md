@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 3FC9E586-3962-437E-B89F-BB4EA1FBF403
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlelasticpoolrecommendedaction
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
 ```
 Get-AzureRmSqlElasticPoolRecommendedAction [-RecommendedActionName <String>] -ServerName <String>
- -ElasticPoolName <String> -AdvisorName <String> [-ResourceGroupName] <String> [<CommonParameters>]
+ -ElasticPoolName <String> -AdvisorName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,23 +158,8 @@ This command gets the recommended action named IR_\[test_schema\]_\[test_table_0
 
 ## PARAMETERS
 
-### -RecommendedActionName
-Specifies the name of the recommended action that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerName
-Specifies the name of the server the elastic pool is in.
+### -AdvisorName
+Specifies the name of the advisor for which this cmdlet requests recommended actions.
 
 ```yaml
 Type: String
@@ -183,6 +170,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -201,15 +203,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AdvisorName
-Specifies the name of the advisor for which this cmdlet requests recommended actions.
+### -RecommendedActionName
+Specifies the name of the recommended action that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,6 +228,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server the elastic pool is in.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -253,4 +270,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlElasticPoolRecommendedActionState](./Set-AzureRmSqlElasticPoolRecommendedActionState.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

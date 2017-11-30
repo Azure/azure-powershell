@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// starts azure automation compilation job
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscCompilationJob")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscCompilationJob", SupportsShouldProcess = true)]
     [OutputType(typeof(CompilationJob))]
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
+
         /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
@@ -49,24 +50,37 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary ConfigurationData { get; set; }
 
         /// <summary>
+        /// Gets or sets switch parameter to confirm building a new build version of the NodeConfiguration.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Creates a new Node Configuration build version.")] 
+        public SwitchParameter IncrementNodeConfigurationBuild;
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            CompilationJob job = null;
-
-            if (this.Parameters != null && this.Parameters.Contains("ConfigurationData"))
+            if (ShouldProcess(ConfigurationName, VerbsLifecycle.Start))
             {
-                throw new ArgumentException(
-                                          string.Format(
-                                              CultureInfo.CurrentCulture,
-                                              Resources.ConfigurationDataShouldNotBeInJobParameters, "-ConfigurationData"));
+                CompilationJob job = null;
+
+                if (this.Parameters != null && this.Parameters.Contains("ConfigurationData"))
+                {
+                    throw new ArgumentException(string.Format(
+                        CultureInfo.CurrentCulture, Resources.ConfigurationDataShouldNotBeInJobParameters,
+                        "-ConfigurationData"));
+                }
+
+                job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.ConfigurationName,
+                    this.Parameters,
+                    this.ConfigurationData,
+                    this.IncrementNodeConfigurationBuild.IsPresent);
+
+                this.WriteObject(job);
             }
-
-            job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters, this.ConfigurationData);
-
-            this.WriteObject(job);
         }
     }
 }

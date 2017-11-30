@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvm
 schema: 2.0.0
 ---
 
@@ -14,23 +14,24 @@ Gets the properties of a virtual machine.
 
 ### ListAllVirtualMachinesParamSet (Default)
 ```
-Get-AzureRmVM [-Status] [<CommonParameters>]
+Get-AzureRmVM [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListVirtualMachineInResourceGroupParamSet
 ```
-Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [<CommonParameters>]
+Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzureRmVM [-Status] [-NextLink] <Uri> [<CommonParameters>]
+Get-AzureRmVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,14 +44,14 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get model and instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 
 ### Example 2: Get instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 ```
 
 This command gets properties of the virtual machine named VirtualMachine07.
@@ -59,19 +60,34 @@ Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 
 ### Example 4: Get all virtual machines in your subscription
 ```
-PS C:\>Get-AzureRmVM
+PS C:\> Get-AzureRmVM
 ```
 
 This command gets all the virtual machines in your subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisplayHint
 Determines how the virtual machine object is displayed.
@@ -80,10 +96,12 @@ Valid values are:
 
 -- Compact: displays only top level properties
 
--- Expand: displays all properties in all levels```yaml
+-- Expand: displays all properties in all levels
+```yaml
 Type: DisplayHintType
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: 
+Accepted values: Compact, Expand
 
 Required: False
 Position: Named
@@ -101,7 +119,7 @@ Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -116,7 +134,7 @@ Parameter Sets: ListNextLinkVirtualMachinesParamSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,7 +149,7 @@ Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInRe
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,7 +164,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,6 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView
 
 ## NOTES
 

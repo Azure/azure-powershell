@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: A1F949A9-7AEF-41C1-B757-114421B79493
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig
 schema: 2.0.0
 ---
 
@@ -16,8 +17,8 @@ Creates an application gateway path rule.
 ```
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]> [-BackendAddressPoolId <String>]
- [-BackendHttpSettingsId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,8 +26,9 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +44,7 @@ Path map configuration settings are used in application gateway load balancing.
 PS C:\>$Gateway = Get-AzureRmApplicationGateway -Name "ContosoApplicationGateway"
 PS C:\> $AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"
 PS C:\> $HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
-PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Paths "/"-BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
+PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Name "base" -Paths "/base" -BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
 PS C:\> Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gateway -Name "ContosoUrlPathMap" -PathRules $PathRuleConfig -DefaultBackendAddressPool $AddressPool -DefaultBackendHttpSettings $HttpSettings
 ```
 
@@ -58,30 +60,27 @@ The fifth command uses **Add-AzureRmApplicationGatewayUrlPathMapConfig** to add 
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the path rule configuration that this cmdlet creates.
+### -BackendAddressPool
+Specifies an object reference to a collection of backend address pool settings to be added to the gateway path rules configuration settings.
+You can create this object reference by using the New-AzureRmApplicationGatewayBackendAddressPool cmdlet and syntax similar to this:
+
+`$AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"`
+
+The preceding command adds two IP addresses (192.16.1.1 and 192.168.1.2) to the address pool.
+Note that the IP address are enclosed in quote marks and separated by using commas.
+
+The resulting variable, $AddressPool, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter.
+
+The backend address pool represents the IP addresses on the backend servers.
+These IP addresses should either belong to the virtual network subnet or should be public IP addresses.
+If you use this parameter you cannot use the *DefaultBackendAddressPoolId* parameter in the same command.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSApplicationGatewayBackendAddressPool
+Parameter Sets: SetByResource
 Aliases: 
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Paths
-Specifies one or more application gateway path rules.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,6 +101,31 @@ These IP addresses should either belong to the virtual network subnet or should 
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendHttpSettings
+Specifies an object reference to a collection of backend HTTP settings to be added to the gateway path rule configuration settings.
+You can create this object reference by using the New-AzureRmApplicationGatewayBackendHttpSettings cmdlet and syntax similar to this:
+
+$HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
+
+The resulting variable, $HttpSettings, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter:
+
+-DefaultBackendHttpSettings $HttpSettings
+
+The backend HTTP settings configure properties such as port, protocol, and cookie-based affinity for a backend pool.
+If you use this parameter you cannot use the *DefaultBackendHttpSettingsId* parameter in the same command.
+
+```yaml
+Type: PSApplicationGatewayBackendHttpSettings
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -134,22 +158,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: ActionPreference
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -158,38 +173,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the path rule configuration that this cmdlet creates.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendAddressPool
-Specifies an object reference to a collection of backend address pool settings to be added to the gateway path rules configuration settings.
-You can create this object reference by using the New-AzureRmApplicationGatewayBackendAddressPool cmdlet and syntax similar to this:
-
-`$AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"`
-
-The preceding command adds two IP addresses (192.16.1.1 and 192.168.1.2) to the address pool.
-Note that the IP address are enclosed in quote marks and separated by using commas.
-
-The resulting variable, $AddressPool, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter.
-
-The backend address pool represents the IP addresses on the backend servers.
-These IP addresses should either belong to the virtual network subnet or should be public IP addresses.
-If you use this parameter you cannot use the *DefaultBackendAddressPoolId* parameter in the same command.
+### -Paths
+Specifies one or more application gateway path rules.
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectConfiguration
+Application gateway RedirectConfiguration
+
+```yaml
+Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases: 
 
@@ -200,22 +218,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendHttpSettings
-Specifies an object reference to a collection of backend HTTP settings to be added to the gateway path rule configuration settings.
-You can create this object reference by using the New-AzureRmApplicationGatewayBackendHttpSettings cmdlet and syntax similar to this:
-
-$HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
-
-The resulting variable, $HttpSettings, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter:
-
--DefaultBackendHttpSettings $HttpSettings
-
-The backend HTTP settings configure properties such as port, protocol, and cookie-based affinity for a backend pool.
-If you use this parameter you cannot use the *DefaultBackendHttpSettingsId* parameter in the same command.
+### -RedirectConfigurationId
+ID of the application gateway RedirectConfiguration
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

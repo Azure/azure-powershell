@@ -1130,7 +1130,7 @@ Update-AzureRmApiManagementDeployment –ResourceGroupName ContosoGroup –Name 
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>Name of API Management.</Description>
+          <Description>Name of the API Management instance that will be restored with the backup.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="AzureStorageContext" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="1" globbing="false">

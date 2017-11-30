@@ -1,29 +1,28 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: BB0D6373-69E6-42F3-A668-FEC6B828AD7C
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcertificate
 schema: 2.0.0
 ---
 
 # New-AzureRmApiManagementCertificate
 
 ## SYNOPSIS
-Creates an API Management certificate.
+Creates an API Management certificate to be used during Authentication with Backend.
 
 ## SYNTAX
 
-### Load from file (Default)
+### LoadFromFile (Default)
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxFilePath <String> -PfxPassword <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxBytes <Byte[]> -PfxPassword <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -PfxBytes <Byte[]> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,27 +32,13 @@ The **New-AzureRmApiManagementCertificate** cmdlet creates an Azure API Manageme
 
 ### Example 1: Create and upload a certificate
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
-This command creates an API Management certificate and uploads it.
+This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
 
 ## PARAMETERS
-
-### -Context
-Specifies a **PsApiManagementContext** object.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -CertificateId
 Specifies the ID of the certificate to create.
@@ -71,13 +56,59 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Context
+Specifies a **PsApiManagementContext** object.
+
+```yaml
+Type: PsApiManagementContext
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PfxBytes
+Specifies an array of bytes of the certificate file in .pfx format.
+This parameter is required if you do not specify the *PfxFilePath* parameter.
+
+```yaml
+Type: Byte[]
+Parameter Sets: Raw
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PfxFilePath
 Specifies the path to the certificate file in .pfx format to create and upload.
 This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Load from file
+Parameter Sets: LoadFromFile
 Aliases: 
 
 Required: True
@@ -99,61 +130,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PfxBytes
-Specifies an array of bytes of the certificate file in .pfx format.
-This parameter is required if you do not specify the *PfxFilePath* parameter.
-
-```yaml
-Type: Byte[]
-Parameter Sets: Raw
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

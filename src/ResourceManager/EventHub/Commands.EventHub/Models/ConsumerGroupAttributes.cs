@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
@@ -24,14 +25,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public ConsumerGroupAttributes()
         { }
 
-        public ConsumerGroupAttributes(ConsumerGroupResource consumerGroupResourceResource)
+        public ConsumerGroupAttributes(ConsumerGroup consumerGroupResourceResource)
         {
             if (consumerGroupResourceResource != null)
             {
                 Name = consumerGroupResourceResource.Name;
-                Location = consumerGroupResourceResource.Location;
                 CreatedAt = consumerGroupResourceResource.CreatedAt;
-                EventHubPath = consumerGroupResourceResource.EventHubPath;
                 UpdatedAt = consumerGroupResourceResource.UpdatedAt;
                 UserMetadata = consumerGroupResourceResource.UserMetadata;
             }
@@ -56,11 +55,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// The exact time the message has been updated.
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
-
-        /// <summary>
-        /// The path of the event hub.
-        /// </summary>
-        public string EventHubPath { get; set; }
 
         /// <summary>
         /// The user metadata.

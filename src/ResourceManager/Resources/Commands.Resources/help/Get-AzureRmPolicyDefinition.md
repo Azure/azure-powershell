@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 6396AEC3-DFE6-45DA-BCF4-69C55C5D051B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicydefinition
 schema: 2.0.0
 ---
 
@@ -12,21 +13,23 @@ Gets policy definitions.
 
 ## SYNTAX
 
-### The list all policy definitions parameter set. (Default)
+### GetAllPolicyDefinitions (Default)
 ```
-Get-AzureRmPolicyDefinition [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### The policy definition name parameter set.
-```
-Get-AzureRmPolicyDefinition -Name <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyDefinition [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy definition Id parameter set.
+### GetByPolicyDefintionName
 ```
-Get-AzureRmPolicyDefinition -Id <String> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+Get-AzureRmPolicyDefinition -Name <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### GetByPolicyDefinitionId
+```
+Get-AzureRmPolicyDefinition -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -67,18 +70,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Specifies the fully qualified resource ID for the policy definition that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: GetByPolicyDefinitionId
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -126,7 +144,7 @@ Specifies the name of the policy definition that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: The policy definition name parameter set.
+Parameter Sets: GetByPolicyDefintionName
 Aliases: 
 
 Required: True
@@ -136,18 +154,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the fully qualified resource ID for the policy definition that this cmdlet gets.
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: String
-Parameter Sets: The policy definition Id parameter set.
-Aliases: ResourceId
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,6 +175,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Management.Automation.PSObject
 
 ## NOTES
 

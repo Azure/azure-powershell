@@ -20,6 +20,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -27,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, bool> writeLocks = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, uint> readLocks = new Dictionary<string, uint>(StringComparer.InvariantCultureIgnoreCase);
         private const string FolderKey = "Folder";
 
         public Dictionary<string, string> VirtualStore
@@ -313,6 +316,89 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     sb.Append(chars[i]);
             }
             return sb.ToString().ToLowerInvariant();
-        } 
+        }
+        public Stream OpenForSharedRead(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (writeLocks.ContainsKey(path) && writeLocks[path])
+            {
+                throw new IOException($"File {path} is open for writing");
+            }
+            else if (readLocks.ContainsKey(path))
+            {
+                readLocks[path]++;
+            }
+            else
+            {
+                readLocks[path] = 1;
+            }
+
+            if (!FileExists(path))
+            {
+                VirtualStore[path] = string.Empty;
+            }
+
+            return new LockingMemoryStream(Encoding.Default.GetBytes(virtualStore[path]), false, () => readLocks[path]--);
+        }
+
+        public Stream OpenForExclusiveWrite(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (writeLocks.ContainsKey(path) && writeLocks[path])
+            {
+                throw new IOException($"File {path} is open for writing");
+            }
+            else if (readLocks.ContainsKey(path) && readLocks[path] > 0)
+            {
+                throw new IOException($"File {path} is open for reading");
+            }
+            else
+            {
+                writeLocks[path] = true;
+            }
+
+            if (!FileExists(path))
+            {
+                VirtualStore[path] = string.Empty;
+            }
+            byte[] buffer = new byte[16384];
+            var copyBytes = Encoding.Default.GetBytes(VirtualStore[path]);
+            for (int i = 0; i < copyBytes.Length && i < buffer.Length; ++i) buffer[i] = copyBytes[i];
+            return new LockingMemoryStream(buffer, true,
+                () =>
+                {
+                    writeLocks[path] = false;
+                    virtualStore[path] = Encoding.Default.GetString(buffer);
+                }
+             );
+        }
+
+        private class LockingMemoryStream : MemoryStream
+        {
+            Action _unlock;
+            int _closed = 0;
+            public LockingMemoryStream(byte[] data, bool writable, Action unlockAction) : base(data, writable)
+            {
+                _unlock = unlockAction;
+            }
+
+            public override void Close()
+            {
+                if (Interlocked.Exchange(ref _closed, 1) == 0)
+                {
+                    _unlock();
+                }
+
+                base.Close();
+            }
+        }
     }
 }

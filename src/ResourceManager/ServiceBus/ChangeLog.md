@@ -20,6 +20,50 @@
 -->
 ## Current Release
 
+## Version 0.5.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
+## Version 0.4.7
+
+## Version 0.4.6
+
+## Version 0.4.4
+
+## Version 0.4.3
+* Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed. 
+ - New-AzureRmServiceBusAuthorizationRule
+   - Adds a new AuthorizationRule to the existing ServiceBus NameSpace/Queue/Topic.
+ - Get-AzureRmServiceBusAuthorizationRule
+   - Gets AuthorizationRule / List of AuthorizationRules for the existing ServiceBus NameSpace/Queue/Topic.
+ - Set-AzureRmServiceBusAuthorizationRule
+   - Updates properties of existing AuthorizationRule of Servicebus NameSpace/Queue/Topic.
+ - New-AzureRmServiceBusKey
+   - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.
+ - Get-AzureRmServiceBusKey
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.   
+ - Remove-AzureRmServiceBusNamespaceAuthorizationRule
+   - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.   
+* Added Resource Group property to NamespceAttributes
+
+## Version 0.4.2
+
+## Version 0.4.1
+
+## Version 0.4.0
+
+## Version 0.3.1
+
+## Version 0.3.0
+
+* Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue. 
+  - Properties affected are LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount and MessageCount 
+
+## Version 0.2.0
+
+## Version 0.1.0
+
 ## Version 0.0.3
 
 ## Version 0.0.2

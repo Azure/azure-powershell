@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.TrafficManager.Models;
-using Microsoft.Azure.Commands.TrafficManager.Utilities;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using Hyak.Common;
+    using System.Collections.Generic;
+    using System.Management.Automation;
     using System.Net;
+
+    using Microsoft.Azure.Commands.TrafficManager.Models;
+    using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Rest.Azure;
+
+    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
@@ -34,11 +37,12 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
-        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
+        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
@@ -64,12 +68,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint? Priority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The location of the endpoint.")]
+        [LocationCompleter("Microsoft.Network/trafficmanagerprofiles")]
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
+        [ValidateCount(1, 350)]
+        public List<string> GeoMapping { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -97,7 +106,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.Weight,
                         this.Priority,
                         this.EndpointLocation,
-                        this.MinChildEndpoints);
+                        this.MinChildEndpoints,
+                        this.GeoMapping);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

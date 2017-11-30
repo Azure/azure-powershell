@@ -35,12 +35,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance")]
+            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
         [ValidateSet(
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
         MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
         MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -58,17 +61,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:"+ this.GatewaySku + " requested. No need to resize!");
             }
 
-            if (this.VirtualNetworkGateway.ActiveActive && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
-            {
-                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature is already enabled on gateway.");
-            }
-
             this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
             this.VirtualNetworkGateway.Sku.Tier = this.GatewaySku;
             this.VirtualNetworkGateway.Sku.Name = this.GatewaySku;
 
             // Map to the sdk object
-            var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
+            var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
             virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
             this.VirtualNetworkGatewayClient.CreateOrUpdate(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, virtualnetGatewayModel);

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// <summary>
     /// The class that defines the model of server blob auditing policy
     /// </summary>
-    public class ServerBlobAuditingPolicyModel: BaseBlobAuditingPolicyModel
+    public class ServerBlobAuditingPolicyModel: ServerBlobAuditingSettingsModel
     {
+        /// <summary>
+        /// Gets or sets the audit type
+        /// </summary>
+        public AuditType AuditType { get; set; }
     }
 }

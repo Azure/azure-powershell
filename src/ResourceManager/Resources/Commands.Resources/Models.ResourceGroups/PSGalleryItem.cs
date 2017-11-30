@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Commands.Resources.Models.Gallery;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

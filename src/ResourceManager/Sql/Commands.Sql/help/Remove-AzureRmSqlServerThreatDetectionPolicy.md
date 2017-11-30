@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: DCAB75A1-B4EF-4C41-9D6B-A954B6DB0028
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserverthreatdetectionpolicy
 schema: 2.0.0
 ---
 
@@ -13,9 +14,8 @@ Removes the threat detection policy from a server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerThreatDetectionPolicy [-PassThru] [-ServerName] <String> [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlServerThreatDetectionPolicy [-PassThru] -ServerName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,10 +26,6 @@ To use this cmdlet, specify the ResourceGroupName and ServerName parameters to i
 ## EXAMPLES
 
 ### --------------------------  Example 1: Remove a threat detection policy for a database  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Remove-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
@@ -38,37 +34,13 @@ This command removes the threat detection policy from a server named Server01.
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: ActionPreference
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -117,7 +89,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -171,7 +143,5 @@ This cmdlet returns a ServerThreatDetectionPolicyModel object.
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerThreatDetectionPolicy]()
-
-[Set-AzureRmSqlServerThreatDetectionPolicy]()
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

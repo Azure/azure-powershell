@@ -1,28 +1,32 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothub
 schema: 2.0.0
 ---
 
 # Get-AzureRmIotHub
 
 ## SYNOPSIS
-Gets information about the IotHubs in a subscription. 
+Gets information about the IotHubs in a subscription.
 
 ## SYNTAX
 
 ### ListIotHubsByResourceGroup (Default)
 ```
-Get-AzureRmIotHub [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmIotHub [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetIotHubByName
 ```
-Get-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about the IotHubs in a subscription. You can view all IotHub instances in a subscription, or filter your results by a resource group or a particular IotHub Name.
+Gets information about the IotHubs in a subscription.
+You can view all IotHub instances in a subscription, or filter your results by a resource group or a particular IotHub Name.
 
 ## EXAMPLES
 
@@ -49,8 +53,23 @@ Gets information about the IotHub named "myiothub".
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -65,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Name of the ResourceGroup
 
 ```yaml
 Type: String
@@ -101,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

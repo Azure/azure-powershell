@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -12,15 +13,16 @@ Gets the deployments in a resource group.
 
 ## SYNTAX
 
-### The deployment name parameter set. (Default)
+### GetByResourceGroupDeploymentName (Default)
 ```
 Get-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>]
- [-Pre] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The deployment Id parameter set.
+### GetByResourceGroupDeploymentId
 ```
-Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,40 +69,6 @@ The current cmdlet gets all deployments of all resource groups in the subscripti
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of a resource group.
-The cmdlet gets the deployments for the resource group that this parameter specifies.
-Wildcard characters are not permitted.
-This parameter is required and you can specify only one resource group in each command.
-
-```yaml
-Type: String
-Parameter Sets: The deployment name parameter set.
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the deployment to get.
-Wildcard characters are not permitted.
-
-```yaml
-Type: String
-Parameter Sets: The deployment name parameter set.
-Aliases: DeploymentName
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
@@ -117,18 +85,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the ID of the resource group deployment to get.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment Id parameter set.
+Parameter Sets: GetByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the deployment to get.
+Wildcard characters are not permitted.
+
+```yaml
+Type: String
+Parameter Sets: GetByResourceGroupDeploymentName
+Aliases: DeploymentName
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -144,6 +143,24 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of a resource group.
+The cmdlet gets the deployments for the resource group that this parameter specifies.
+Wildcard characters are not permitted.
+This parameter is required and you can specify only one resource group in each command.
+
+```yaml
+Type: String
+Parameter Sets: GetByResourceGroupDeploymentName
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

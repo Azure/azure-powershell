@@ -20,7 +20,7 @@ function Test-CreateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     try
     {
@@ -39,12 +39,45 @@ function Test-CreateElasticPool
         $poolName = Get-ElasticPoolName
         $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
-        Assert-AreEqual 200 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
-        Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 0 $ep2.DatabaseDtuMin
-        Assert-AreEqual 100 $ep2.DatabaseDtuMax
     }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests creating an elastic pool with zone redundancy parameters
+#>
+function Test-CreateElasticPoolWithZoneRedundancy
+{
+    # Setup 
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+    {
+        # Create a pool with zone redundancy set to true
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -ZoneRedundant
+        Assert-NotNull $ep1
+        Assert-AreEqual Premium $ep1.Edition
+		Assert-NotNull $ep1.ZoneRedundant
+		Assert-AreEqual "true" $ep1.ZoneRedundant
+
+		# Create a pool with no zone redundancy set
+        $poolName = Get-ElasticPoolName
+        $ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+        Assert-NotNull $ep2
+        Assert-AreEqual 125 $ep2.Dtu 
+        Assert-AreEqual Premium $ep2.Edition
+        Assert-NotNull $ep2.ZoneRedundant
+        Assert-AreEqual "false" $ep2.ZoneRedundant
+	}
     finally
     {
         Remove-ResourceGroupForTest $rg
@@ -59,7 +92,7 @@ function Test-UpdateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -100,6 +133,37 @@ function Test-UpdateElasticPool
     }
 }
 
+<# 
+    .SYNOPSIS
+    Tests updating an elastic pool with zone redundancy parameter
+#>
+function Test-UpdateElasticPoolWithZoneRedundancy
+{
+    # Setup
+	$location = "eastus2" 
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    try
+    {
+        # Create a pool with all values
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+        Assert-NotNull $ep1
+
+		# Update a pool with zone redundant set as true
+        $sep1 = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName -ZoneRedundant
+        Assert-NotNull $sep1
+        Assert-NotNull $sep1.ZoneRedundant
+		Assert-AreEqual "true" $sep1.ZoneRedundant
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
 
 <# 
     .SYNOPSIS
@@ -109,7 +173,7 @@ function Test-GetElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -137,7 +201,7 @@ function Test-GetElasticPool
         $gep2 = $ep2 | Get-AzureRmSqlElasticPool
         Assert-NotNull $ep2
         Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
+        Assert-AreEqual 409600 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
         Assert-AreEqual 0 $ep2.DatabaseDtuMin
         Assert-AreEqual 100 $ep2.DatabaseDtuMax
@@ -153,29 +217,44 @@ function Test-GetElasticPool
 
 <# 
     .SYNOPSIS
-    Tests getting an elastic pool metric
+    Tests getting an elastic pool with zone redundancy
 #>
-function Test-GetElasticPoolMetric
+function Test-GetElasticPoolWithZoneRedundancy
 {
-    # This test requires that an elastic pool has been created and has metrics ready
-    # To prevent requiring putting something like a Sleep(10 minutes) in the code
-    # this test requires the server/elastic pool be pre-created with metrics data available.
-    
-    # Setup and retrieve the existing pool
-    $rgName = "test-group"
-    $serverName = "groupserver1"
-    $elasticPoolName = "testpool2"
+    # Setup 
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
-    $ep1 = Get-AzureRmSqlElasticPool  -ServerName $serverName -ResourceGroupName $rgName `
-        -ElasticPoolName $elasticPoolName
-    Assert-NotNull $ep1
-    
-    # Get pool metrics with all values
-    $metrics = $ep1 | Get-AzureRmMetric -TimeGrain "0:5:0" -StartTime "2015-04-22T16:00:00Z" -EndTime "2015-04-22T17:00:00Z"
-    Assert-NotNull $metrics
-    Assert-True { $metrics.Count -gt 0 }
+    try
+    {
+        # Create a pool with zone redundancy set to true
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -ZoneRedundant
+
+		# Get created pool with zone redundancy true
+        $gep1 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName 
+        Assert-NotNull $gep1.ZoneRedundant
+		Assert-AreEqual "true" $gep1.ZoneRedundant
+
+		# Create a pool with no zone redundancy set
+        $poolName = Get-ElasticPoolName
+        $ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+
+		# Get created pool with zone redundancy false
+        $gep2 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep2.ElasticPoolName 
+        Assert-NotNull $gep2.ZoneRedundant
+		Assert-AreEqual "false" $gep2.ZoneRedundant
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
 }
-
 
 <# 
     .SYNOPSIS
@@ -185,7 +264,7 @@ function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "12.0" "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `

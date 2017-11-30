@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System;
+using System.Xml;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
@@ -24,24 +25,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public QueueAttributes()
         { }
 
-        public QueueAttributes(QueueResource quResource)
+        public QueueAttributes(SBQueue quResource)
         {
             if (quResource != null)
             {
-                Name = quResource.Name;
-                Location = quResource.Location;
-                LockDuration = quResource.LockDuration;
+                Name = quResource.Name;               
+                LockDuration = XmlConvert.ToString((TimeSpan)quResource.LockDuration);
                 AccessedAt = quResource.AccessedAt;
-                AutoDeleteOnIdle = quResource.AutoDeleteOnIdle;
-                EntityAvailabilityStatus = quResource.EntityAvailabilityStatus;
+                AutoDeleteOnIdle = XmlConvert.ToString((TimeSpan)quResource.AutoDeleteOnIdle); 
                 CreatedAt = quResource.CreatedAt;
-                DefaultMessageTimeToLive = quResource.DefaultMessageTimeToLive;
-                DuplicateDetectionHistoryTimeWindow = quResource.DuplicateDetectionHistoryTimeWindow;
-                EnableBatchedOperations = quResource.EnableBatchedOperations;
+                DefaultMessageTimeToLive = XmlConvert.ToString((TimeSpan)quResource.DefaultMessageTimeToLive);
+                DuplicateDetectionHistoryTimeWindow = XmlConvert.ToString((TimeSpan)quResource.DuplicateDetectionHistoryTimeWindow);                
                 DeadLetteringOnMessageExpiration = quResource.DeadLetteringOnMessageExpiration;
                 EnableExpress = quResource.EnableExpress;
-                EnablePartitioning = quResource.EnablePartitioning;
-                IsAnonymousAccessible = quResource.IsAnonymousAccessible;
+                EnablePartitioning = quResource.EnablePartitioning;                
                 MaxDeliveryCount = quResource.MaxDeliveryCount;
                 MaxSizeInMegabytes = quResource.MaxSizeInMegabytes;
                 MessageCount = quResource.MessageCount;
@@ -49,8 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 RequiresDuplicateDetection = quResource.RequiresDuplicateDetection;
                 RequiresSession = quResource.RequiresSession;
                 SizeInBytes = quResource.SizeInBytes;
-                Status = quResource.Status;
-                SupportOrdering = quResource.SupportOrdering;
+                Status = quResource.Status;                
                 UpdatedAt = quResource.UpdatedAt;
 
             }
@@ -61,11 +57,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary> 
         public string Name { get; set; }
 
-        /// <summary>
-        /// location of the resource.
-        /// </summary> 
-        public string Location { get; set; }
-
+        
         /// <summary>
         /// the duration of a peek lock; that is, the amount of time that the
         /// message is locked for other receivers. The maximum value for
@@ -84,12 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// deleted. The minimum duration is 5 minutes.
         /// </summary> 
         public string AutoDeleteOnIdle { get; set; }
-
-        /// <summary>
-        /// Entity availability status for the queue. Possible values include:
-        /// 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown'
-        /// </summary> 
-        public EntityAvailabilityStatus? EntityAvailabilityStatus { get; set; }
+        
 
         /// <summary>
         /// the exact time the message was created.
@@ -111,12 +98,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public string DuplicateDetectionHistoryTimeWindow { get; set; }
 
         /// <summary>
-        /// value that indicates whether server-side batched operations are
-        /// enabled..
-        /// </summary> 
-        public bool? EnableBatchedOperations { get; set; }
-
-        /// <summary>
         /// a value that indicates whether this queue has dead letter support
         /// when a message expires.
         /// </summary> 
@@ -133,12 +114,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// value that indicates whether the queue to be partitioned across
         /// multiple message brokers is enabled.
         /// </summary> 
-        public bool? EnablePartitioning { get; set; }
-
-        /// <summary>
-        /// a value that indicates whether the message is anonymous accessible.
-        /// </summary> 
-        public bool? IsAnonymousAccessible { get; set; }
+        public bool? EnablePartitioning { get; set; }        
 
         /// <summary>
         /// the maximum delivery count. A message is automatically
@@ -150,7 +126,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// the maximum size of the queue in megabytes, which is the size of
         /// memory allocated for the queue.
         /// </summary> 
-        public long? MaxSizeInMegabytes { get; set; }
+        public int? MaxSizeInMegabytes { get; set; }
 
         /// <summary>
         /// the number of messages in the queue.
@@ -183,17 +159,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming',
         /// 'Restoring', 'SendDisabled', 'Unknown'
         /// </summary>
-        public EntityStatus? Status { get; set; }
-
-        /// <summary>
-        /// a value that indicates whether the queue supports ordering.
-        /// </summary>
-        public bool? SupportOrdering { get; set; }
+        public EntityStatus? Status { get; set; }        
 
         /// <summary>
         /// the exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
-
+        public DateTime? UpdatedAt { get; set; }        
     }
 }

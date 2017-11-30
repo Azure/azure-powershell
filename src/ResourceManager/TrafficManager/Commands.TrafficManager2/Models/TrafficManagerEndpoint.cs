@@ -16,7 +16,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TrafficManagerEndpoint
     {
@@ -46,32 +49,51 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public uint? MinChildEndpoints { get; set; }
 
+        public List<string> GeoMapping { get; set; }
+
         public Endpoint ToSDKEndpoint()
         {
             return new Endpoint
             {
                 Id = this.Id,
                 Name = this.Name,
-                Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Properties = new EndpointProperties
-                {
-                    Target = this.Target,
-                    EndpointStatus = this.EndpointStatus,
-                    Weight = this.Weight,
-                    Priority = this.Priority,
-                    EndpointLocation = this.Location,
-                    TargetResourceId = this.TargetResourceId,
-                    MinChildEndpoints = this.MinChildEndpoints,
-                }
+                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
+                EndpointLocation = this.Location,
+                EndpointStatus = this.EndpointStatus,
+                GeoMapping = this.GeoMapping,
+                MinChildEndpoints = this.MinChildEndpoints,
+                Priority = this.Priority,
+                Target = this.Target,
+                TargetResourceId = this.TargetResourceId,                   
+                Weight = this.Weight,
             };
         }
 
-        public static string ToSDKEndpointType(string type)
+        public Endpoint ToSDKEndpointForPatch()
+        {
+            return new Endpoint
+            {
+                Id = this.Id,
+                Name = this.Name,
+                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
+            };
+        }
+
+        public static string ToFullEndpointType(string endpointType)
         {
             return
-                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ?
-                string.Format("{0}/{1}", Constants.ProfileType, type) :
-                type;
+                !endpointType.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) 
+                    ? string.Format("{0}/{1}", Constants.ProfileType, endpointType) 
+                    : endpointType;
+        }
+
+        public static string ToShortEndpointType(string endpointType)
+        {
+            string prefix = Constants.ProfileType + "/";
+            return 
+                endpointType.StartsWith(Constants.ProfileType + "/", StringComparison.OrdinalIgnoreCase) ?
+                    endpointType.Substring(startIndex: prefix.Length) :
+                    endpointType;
         }
     }
 }

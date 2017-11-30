@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabase
 schema: 2.0.0
 ---
 
@@ -12,11 +13,19 @@ Sets properties for a database, or moves an existing database into an elastic po
 
 ## SYNTAX
 
+### Update
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <DatabaseEdition>]
- [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-Tags <Hashtable>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
+ [-Tags <Hashtable>] [-ZoneRedundant] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Rename
+```
+Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,16 +45,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : 455330e1-00cd-488b-b5fa-177c226f28b7
 CurrentServiceObjectiveName   : S2
 RequestedServiceObjectiveId   : 455330e1-00cd-488b-b5fa-177c226f28b7
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -61,16 +70,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : d1737d22-a8ea-4de7-9bd0-33395d2a7419
 CurrentServiceObjectiveName   : ElasticPool
 RequestedServiceObjectiveId   : d1737d22-a8ea-4de7-9bd0-33395d2a7419
-RequestedServiceObjectiveName : 
+RequestedServiceObjectiveName :
 ElasticPoolName               : elasticpool01
-EarliestRestoreDate           : 
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -84,7 +93,7 @@ Specifies the name of the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 2
@@ -93,15 +102,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxSizeBytes
-Specifies the new maximum size for the database in bytes.
-You can specify either this parameter or *MaxSizeGB*.
-See the *MaxSizeGB* parameter for acceptable values per edition.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Int64
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -123,24 +130,9 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: DatabaseEdition
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestedServiceObjectiveName
-Specifies the name of the service objective to assign to the database.
-For information about service objectives, see Azure SQL Database Service Tiers and Performance Levelshttps://msdn.microsoft.com/en-us/library/azure/dn741336.aspx (https://msdn.microsoft.com/en-us/library/azure/dn741336.aspx) in the Microsoft Developer Network Library.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -154,8 +146,8 @@ Specifies name of the elastic pool in which to move the database.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -164,13 +156,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new server.
+### -MaxSizeBytes
+Specifies the new maximum size for the database in bytes.
+You can specify either this parameter or *MaxSizeGB*.
+See the *MaxSizeGB* parameter for acceptable values per edition.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
+Type: Int64
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -179,18 +173,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the server that hosts the database.
+### -NewName
+The new name to rename the database to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Rename
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReadScale
+The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
+
+```yaml
+Type: DatabaseReadScale
+Parameter Sets: Update
+Aliases:
+Accepted values: Disabled, Enabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestedServiceObjectiveName
+Specifies the name of the service objective to assign to the database. For information about
+service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://msdn.microsoft.com/en-us/library/azure/dn741336.aspx)
+in the Microsoft Developer Network Library.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,7 +227,7 @@ Specifies the name of resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -209,22 +236,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ServerName
+Specifies the name of the server that hosts the database.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tags
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: Hashtable
+Parameter Sets: Update
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -233,13 +268,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ZoneRedundant
+The zone redundancy to associate with the Azure Sql Database
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Type: SwitchParameter
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -302,6 +337,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
-
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

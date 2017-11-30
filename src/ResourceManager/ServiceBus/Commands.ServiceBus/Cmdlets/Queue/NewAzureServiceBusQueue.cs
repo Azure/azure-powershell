@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
@@ -28,24 +30,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Queue Name.")]
+        [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "EnablePartitioning")]
         [ValidateSet("TRUE", "FALSE",
@@ -67,7 +73,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Default Message TimeTo Live")]
+            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
         [ValidateNotNullOrEmpty]
         public string DefaultMessageTimeToLive { get; set; }
 
@@ -76,14 +82,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             HelpMessage = "Duplicate Detection History Time Window - TimeSpan, that defines the duration of the duplicate detection history. The default value is 10 minutes.")]
         [ValidateNotNullOrEmpty]
         public string DuplicateDetectionHistoryTimeWindow { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -100,14 +98,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? EnableExpress { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsAnonymousAccessible - a value that indicates whether the message is anonymous accessible.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsAnonymousAccessible { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -153,12 +143,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         {
             QueueAttributes queueAttributes = new QueueAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-
-            queueAttributes.Location = getNamespaceLoc.Location;
-
-
-            queueAttributes.Name = QueueName;
+            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+            
+            queueAttributes.Name = Name;
             queueAttributes.EnablePartitioning = EnablePartitioning;
 
             if (LockDuration != null)
@@ -171,20 +158,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
 
             if (DuplicateDetectionHistoryTimeWindow != null)
-                queueAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow;
-
-
-            if (EnableBatchedOperations != null)
-                queueAttributes.EnableBatchedOperations = EnableBatchedOperations;
+                queueAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow;            
 
             if (DeadLetteringOnMessageExpiration != null)
-                queueAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
-
-            if (IsAnonymousAccessible != null)
-                queueAttributes.IsAnonymousAccessible = IsAnonymousAccessible;
+                queueAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;                       
 
             if (MaxSizeInMegabytes != null)
-                queueAttributes.MaxSizeInMegabytes = MaxSizeInMegabytes;
+                queueAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes;
 
             if (MaxDeliveryCount != null)
                 queueAttributes.MaxDeliveryCount = MaxDeliveryCount;
@@ -199,11 +179,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.RequiresSession = RequiresSession;
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;
-            
-            if (ShouldProcess(target: QueueName, action: string.Format("Create New Queue:{0} for Namespace:{1}", QueueName,NamespaceName)))
+                queueAttributes.SizeInBytes = SizeInBytes;          
+
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateQueue(ResourceGroup, NamespaceName, queueAttributes.Name, queueAttributes));
+                WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, Name, queueAttributes));
             }
         }
     }

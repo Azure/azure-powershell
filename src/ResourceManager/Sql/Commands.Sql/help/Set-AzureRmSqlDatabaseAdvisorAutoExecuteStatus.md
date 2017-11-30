@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 50E09DF7-F5B5-4668-9520-73D562E91800
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabaseadvisorautoexecutestatus
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ```
 Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -AdvisorName <String>
  -AutoExecuteStatus <AdvisorAutoExecuteStatus> -ServerName <String> -DatabaseName <String>
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,21 +72,7 @@ The acceptable values for this parameter are:
 Type: AdvisorAutoExecuteStatus
 Parameter Sets: (All)
 Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerName
-Specifies the name of the server for the database.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Accepted values: Enabled, Disabled, Default
 
 Required: True
 Position: Named
@@ -108,6 +96,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the server that contains this database.
 
@@ -118,6 +121,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server for the database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,4 +187,5 @@ This cmdlet returns an **AzureSqlDatabaseAdvisorModel** object.
 
 [Get-AzureRmSqlDatabaseAdvisor](./Get-AzureRmSqlDatabaseAdvisor.md)
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

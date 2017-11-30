@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSchemaValue(SchemaValue value)
+        public PSSchemaValue(SearchSchemaValue value)
         {
             if (value != null)
             {

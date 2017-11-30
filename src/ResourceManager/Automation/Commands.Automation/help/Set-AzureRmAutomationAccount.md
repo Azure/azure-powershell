@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationaccount
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Modifies an Automation account.
 
 ```
 Set-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>]
- [-Tags <IDictionary>] [<CommonParameters>]
+ [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ This command changes the plan to Basic for the Automation account named Automati
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Automation account that this cmdlet modifies.
 
@@ -52,7 +68,7 @@ Parameter Sets: (All)
 Aliases: AutomationAccountName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -60,9 +76,9 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
@@ -87,14 +103,16 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies Automation account tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -115,6 +133,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Automation.Model.AutomationAccount
+
 ## NOTES
 
 ## RELATED LINKS
@@ -124,5 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmAutomationAccount](./New-AzureRmAutomationAccount.md)
 
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
-
-

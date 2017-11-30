@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8F36244D-A4D7-40BB-AC4C-E9AD445549F8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermappserviceplan
 schema: 2.0.0
 ---
 
@@ -15,15 +16,15 @@ Creates an Azure App Service plan in a given Geo location.
 ### S1
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
- [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
- [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
+ [-AppServicePlan] <ServerFarmWithRichSku> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,71 +34,26 @@ The **New-AzureRmAppServicePlan** cmdlet creates an Azure App Service plan in a 
 
 ### Example 1: Create an App Service plan
 ```
-PS C:\>New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -location "West US" -Tier Basic -NumberofWorkers 2 -WorkerSize Small
+PS C:\>New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"
 ```
 
 This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US.
-The command uses a Basic SKU and allocates two small workers.
+The command specifies a Basic Tier and allocates two small workers.
 
 ## PARAMETERS
 
-### -Location
-Location 
+### -AppServicePlan
+App Service Plan Object
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: ServerFarmWithRichSku
+Parameter Sets: S2
 Aliases: 
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tier
-Tier
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: Free
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberofWorkers
-Number Of Workers
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkerSize
-Size of web worker
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: Small
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -131,16 +87,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location 
 
 ```yaml
 Type: String
-Parameter Sets: S1
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,18 +132,80 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppServicePlan
-App Service Plan Object
+### -NumberofWorkers
+Number Of Workers
 
 ```yaml
-Type: ServerFarmWithRichSku
-Parameter Sets: S2
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: 1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PerSiteScaling
+Whether or not to enable Per Site Scaling
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: S1
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tier
+Tier
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Free, Shared, Basic, Standard, Premium, PremiumV2
+
+Required: False
+Position: 3
+Default value: Free
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkerSize
+Size of web worker
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Small, Medium, Large, ExtraLarge
+
+Required: False
+Position: 5
+Default value: Small
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -181,7 +214,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ServerFarmWithRichSku
+Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
 
 ## NOTES
 

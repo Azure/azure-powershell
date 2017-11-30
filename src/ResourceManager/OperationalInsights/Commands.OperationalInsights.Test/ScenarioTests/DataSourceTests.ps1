@@ -97,7 +97,7 @@ function Test-DataSourceCreateFailsWithoutWorkspace
 
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-    Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureActivityLogDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "ResourceNotFound"
+    Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureActivityLogDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "NotFound"
 }
 
 <#
@@ -151,7 +151,7 @@ function Test-ToggleSingletonDataSourceState
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data source
-    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 
     # enable/disable iislog collection
     Enable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace

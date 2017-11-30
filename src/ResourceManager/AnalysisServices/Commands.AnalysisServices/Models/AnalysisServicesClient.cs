@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.AnalysisServices.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Analysis;
 using Microsoft.Azure.Management.Analysis.Models;
@@ -21,8 +22,8 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -32,15 +33,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
 
-        public AnalysisServicesClient(AzureContext context)
+        public AnalysisServicesClient(IAzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateArmClient<AnalysisServicesManagementClient>(
+            _subscriptionId = context.Subscription.GetId();
+            _client = AzureSession.Instance.ClientFactory.CreateArmClient<AnalysisServicesManagementClient>(
                 context, 
                 AzureEnvironment.Endpoint.ResourceManager);
             _currentUser = context.Account.Id;
@@ -59,7 +60,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string skuName = null,
             Hashtable customTags = null,
             string administrators = null,
-            AnalysisServicesServer existingServer = null)
+            AnalysisServicesServer existingServer = null,
+            string backupBlobContainerUri = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -86,10 +88,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
-                    Sku = existingServer.Sku,
+                    Sku = skuName == null ? existingServer.Sku : GetResourceSkuFromName(skuName),
                     Tags = tags,
-                    AsAdministrators = new ServerAdministrators(adminList)
                 };
+
+                if (adminList.Count > 0)
+                {
+                    updateParameters.AsAdministrators = new ServerAdministrators(adminList);
+                }
+
+                if (backupBlobContainerUri != null)
+                {
+                    updateParameters.BackupBlobContainerUri = backupBlobContainerUri;
+                }
 
                 newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
@@ -101,6 +112,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     new AnalysisServicesServer()
                     {
                         AsAdministrators = new ServerAdministrators(adminList),
+                        BackupBlobContainerUri = backupBlobContainerUri,
                         Location = location,
                         Sku = GetResourceSkuFromName(skuName),
                         Tags = tags
@@ -161,7 +173,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
             return serverList;
         }
-        
+
+        public SkuEnumerationForNewResourceResult ListSkusForNew()
+        {
+            return _client.Servers.ListSkusForNew();
+        }
+
+        public SkuEnumerationForExistingResourceResult ListSkusForExisting(string resourceGroupName, string serverName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByServer(serverName);
+            }
+
+            return _client.Servers.ListSkusForExisting(resourceGroupName, serverName);
+        }
+
         private string GetResourceGroupByServer(string serverName)
         {
             try
@@ -183,7 +210,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         private ResourceSku GetResourceSkuFromName(string skuName)
         {
-            return new ResourceSku(skuName, skuName.StartsWith("D") ? SkuTier.Development : SkuTier.Standard);
+            var tier = skuName.StartsWith("D") ? SkuTier.Development
+                : skuName.StartsWith("B") ? SkuTier.Basic
+                : SkuTier.Standard;
+            return new ResourceSku(skuName, tier);
         }
 
         public void SuspendServer(string resourceGroupName, string serverName)

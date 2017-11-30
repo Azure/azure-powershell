@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk72/policysets/onesdk5931/policies/default?$expand=MaxVmsAllowedPerLab&api-version=2016-05-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazcyL3BvbGljeXNldHMvb25lc2RrNTkzMS9wb2xpY2llcy9kZWZhdWx0PyRleHBhbmQ9TWF4Vm1zQWxsb3dlZFBlckxhYiZhcGktdmVyc2lvbj0yMDE2LTA1LTE1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -67,8 +67,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk72/policysets/onesdk5931/policies/default?$expand=MaxVmsAllowedPerLab&api-version=2016-05-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazcyL3BvbGljeXNldHMvb25lc2RrNTkzMS9wb2xpY2llcy9kZWZhdWx0PyRleHBhbmQ9TWF4Vm1zQWxsb3dlZFBlckxhYiZhcGktdmVyc2lvbj0yMDE2LTA1LTE1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -136,8 +136,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2015-05-21-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNS0wNS0yMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/policysets/default/policies/MaxVmsAllowedPerLab?api-version=2016-05-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvcG9saWN5c2V0cy9kZWZhdWx0L3BvbGljaWVzL01heFZtc0FsbG93ZWRQZXJMYWI/YXBpLXZlcnNpb249MjAxNi0wNS0xNQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"factName\": \"LabVmCount\",\r\n    \"threshold\": \"5\",\r\n    \"evaluatorType\": \"MaxValuePolicy\"\r\n  }\r\n}",
       "RequestHeaders": {

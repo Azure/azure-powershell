@@ -16,11 +16,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Gets the integration account by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccount"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccount")]
+    [OutputType(typeof(IntegrationAccount), typeof(IPage<IntegrationAccount>))]
     public class GetAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
 
@@ -28,6 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

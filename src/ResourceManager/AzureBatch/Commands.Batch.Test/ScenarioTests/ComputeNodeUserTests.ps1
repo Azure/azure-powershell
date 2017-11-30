@@ -22,15 +22,16 @@ function Test-ComputeNodeUserEndToEnd
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $userName = "userendtoend"
-    $password = "Password1234!"
+    $password1 = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
 
     # Create a user
-    New-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password -BatchContext $context
+    New-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password1 -BatchContext $context
 
     # Update the user. Since there's no Get user API, this also validates that the create call worked (no 404 error).
     # Basically just validating that we can set the parameters and execute the cmdlet without error. 
     # If a Get user API is added, we can validate that the properties were actually updated.
-    Set-AzureBatchComputeNodeUser $poolId $computeNodeId $userName "Abcdefghijk1234!" -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
+    $password2 = ConvertTo-SecureString "Abcdefghijk1234!" -AsPlainText -Force
+    Set-AzureBatchComputeNodeUser $poolId $computeNodeId $userName $password2 -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
 
     # Delete the user
     Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context

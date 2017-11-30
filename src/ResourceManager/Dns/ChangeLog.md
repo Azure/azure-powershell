@@ -19,6 +19,36 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* Support for CAA record types in Azure DNS
+   - Supports all operations on CAA record type
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
+## Version 3.4.1
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
+
+## Version 3.2.1
+
+## Version 3.2.0
+* Fix bug in the piping scenario for Get-AzureRmDnsZone
+    - More information can be found here: https://github.com/Azure/azure-powershell/issues/4203
+
+## Version 3.1.0
+
+## Version 3.0.1
+
+## Version 3.0.0
+
+## Version 2.8.0
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

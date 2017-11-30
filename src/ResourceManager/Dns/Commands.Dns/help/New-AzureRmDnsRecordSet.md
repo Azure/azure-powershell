@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnsrecordset
 schema: 2.0.0
 ---
 
@@ -16,14 +17,14 @@ Creates a DNS record set.
 ```
 New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
  -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
- [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,6 +206,21 @@ The *Confirm* parameter with a value of $False suppresses the confirmation promp
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DnsRecords
 Specifies the array of DNS records to include in the record set.
 You can use the New-AzureRmDnsRecordConfig cmdlet to create DNS record objects.
@@ -213,7 +229,7 @@ See the examples for more information.
 ```yaml
 Type: DnsRecordBase[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -231,7 +247,7 @@ To control whether this cmdlet prompts you for comfirmation, use the *Confirm* p
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -247,7 +263,7 @@ Metadata is specified using name-value pairs that are represented as hash tables
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -262,7 +278,7 @@ Specifies the name of the **RecordSet** to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -277,7 +293,7 @@ Indicates that this cmdlet overwrites the specified **RecordSet** if it already 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -305,8 +321,8 @@ SOA records are created automatically when the zone is created and cannot be cre
 ```yaml
 Type: RecordType
 Parameter Sets: (All)
-Aliases:
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Aliases: 
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
 Position: Named
@@ -324,7 +340,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -339,7 +355,7 @@ Specifies the Time to Live (TTL) for the DNS RecordSet.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -355,7 +371,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 ```yaml
 Type: DnsZone
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -373,7 +389,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

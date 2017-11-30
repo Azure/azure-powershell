@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 99196F44-F1DB-4219-91C0-3056624ADE5B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoveryreplicationprotecteditem
 schema: 2.0.0
 ---
 
@@ -15,24 +16,25 @@ Gets the properties of Azure Site Recovery Protected Items.
 ### ByObject (Default)
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -Name <String> -ProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithFriendlyName
 ```
 Get-AzureRmSiteRecoveryReplicationProtectedItem -FriendlyName <String>
- -ProtectionContainer <ASRProtectionContainer> [<CommonParameters>]
+ -ProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByProtectableItemObject
 ```
-Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem> [<CommonParameters>]
+Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,30 +44,15 @@ The **Get-AzureRmSiteRecoveryReplicationProtectedItem** cmdlet gets the properti
 
 ## PARAMETERS
 
-### -ProtectionContainer
-Specifies the Azure Site Recovery Protection Container object.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: ASRProtectionContainer
-Parameter Sets: ByObject, ByObjectWithName, ByObjectWithFriendlyName
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the Replication Protected Item that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: ByObjectWithName
-Aliases: 
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,6 +65,21 @@ Specifies the friendly name of the Replication Protected Item that this cmdlet g
 ```yaml
 Type: String
 Parameter Sets: ByObjectWithFriendlyName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the Replication Protected Item that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: ByObjectWithName
 Aliases: 
 
 Required: True
@@ -102,10 +104,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProtectionContainer
+Specifies the Azure Site Recovery Protection Container object.
+
+```yaml
+Type: ASRProtectionContainer
+Parameter Sets: ByObject, ByObjectWithName, ByObjectWithFriendlyName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### ASRProtectableItem
+Parameter 'ProtectableItem' accepts value of type 'ASRProtectableItem' from the pipeline
+
+### ASRProtectionContainer
+Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
 
 ## OUTPUTS
 

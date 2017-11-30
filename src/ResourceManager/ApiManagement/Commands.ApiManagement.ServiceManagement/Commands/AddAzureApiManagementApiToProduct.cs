@@ -12,12 +12,51 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands{    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;    using System;    using System.Management.Automation;    [Cmdlet(VerbsCommon.Add, Constants.ApiManagementApiToProduct)]    [OutputType(typeof(bool))]    public class AddAzureApiManagementApiToProduct : AzureApiManagementCmdletBase    {        [Parameter(            ValueFromPipelineByPropertyName = true,
+namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
+{
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using System;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsCommon.Add, Constants.ApiManagementApiToProduct)]
+    [OutputType(typeof(bool))]
+    public class AddAzureApiManagementApiToProduct : AzureApiManagementCmdletBase
+    {
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]        [ValidateNotNullOrEmpty]        public PsApiManagementContext Context { get; set; }        [Parameter(            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementContext Context { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of existing Product to add API to. This parameter is required.")]        [ValidateNotNullOrEmpty]        public String ProductId { get; set; }        [Parameter(            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Identifier of existing Product to add API to. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String ProductId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of existing APIs to be added to the product. This parameter is required.")]        [ValidateNotNullOrEmpty]        public String ApiId { get; set; }        [Parameter(            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Identifier of existing APIs to be added to the product. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String ApiId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]        public SwitchParameter PassThru { get; set; }        public override void ExecuteApiManagementCmdlet()        {            Client.ApiAddToProduct(Context, ProductId, ApiId);            if (PassThru)            {                WriteObject(true);            }        }    }}
+            HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
+        public SwitchParameter PassThru { get; set; }
+
+        public override void ExecuteApiManagementCmdlet()
+        {
+            Client.ApiAddToProduct(Context, ProductId, ApiId);
+
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
+        }
+    }
+}

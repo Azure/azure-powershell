@@ -12,40 +12,34 @@
 // limitations under the License.		
 // 		
 
- using System.Collections;
- using System.Collections.Generic;
- using System.Management.Automation;
- using AutoMapper;
- using Microsoft.Azure.Commands.Tags.Model;
- using Microsoft.Azure.Management.Network;
- using Microsoft.Azure.Commands.Network.Models;
- using MNM = Microsoft.Azure.Management.Network.Models;
- using System;
- using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
+using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
     public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("Name", "ResourceName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Name of ExpressRoute Circuit")]
         [ValidateNotNullOrEmpty]
         public string ExpressRouteCircuitName { get; set; }
@@ -74,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
             var psARPs = new List<PSExpressRouteCircuitRoutesTableSummary>();
             foreach (var arpTable in arpTables)
             {
-                var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
+                var psARP = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
                 psARPs.Add(psARP);
             }
             WriteObject(psARPs, true);

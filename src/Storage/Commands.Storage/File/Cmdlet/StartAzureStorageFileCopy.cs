@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
@@ -120,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareNameParameterSet)]
-        public override AzureStorageContext Context { get; set; }
+        public override IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ContainerParameterSet)]
@@ -129,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ShareParameterSet)]
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = FileFilePathParameterSet)]
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFilePathParameterSet)]
-        public AzureStorageContext DestContext { get; set; }
+        public IStorageContext DestContext { get; set; }
 
         private IStorageBlobManagement blobChannel = null;
 
@@ -280,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(blob.GenerateCopySourceBlob(), null, null, this.RequestOptions, this.OperationContext, CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
@@ -320,7 +321,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(sourceFile.Uri.ToString(), destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
@@ -333,7 +334,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(this.AbsoluteUri, destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(this.AbsoluteUri, destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(new Uri(this.AbsoluteUri), null, null, this.RequestOptions, this.OperationContext));
 
             this.RunTask(taskGenerator);

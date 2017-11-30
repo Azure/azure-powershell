@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Job list response from the service</returns>
         public List<JobResource> GetJobs(
             string jobId,
-            JobStatus? status,
+            string status,
             string operation,
             DateTime startTime,
             DateTime endTime,
-            BackupManagementType? backupManagementType,
+            string backupManagementType,
             string skipToken = null)
         {
             string resourceName = BmsAdapter.GetResourceName();
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 operation);
 
             Func<RestAzureNS.IPage<JobResource>> listAsync =
-                () => BmsAdapter.Client.Jobs.ListWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupJobs.ListWithHttpMessagesAsync(
                     resourceName,
                     resourceGroupName,
                     queryFilter,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<JobResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.Jobs.ListNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupJobs.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
@@ -136,20 +136,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operation">ID of operation associated with the job</param>
         /// <returns></returns>
         public ODataQuery<JobQueryObject> GetQueryObject(
-            BackupManagementType? backupManagementType,
+            string backupManagementType,
             DateTime startTime,
             DateTime endTime,
             string jobId,
-            JobStatus? status,
+            string status,
             string operation)
         {
             // build query filters object.
             // currently we don't support any provider specific filters.
             // so we are initializing the object directly
 
-            JobOperationType? operationType =
-                string.IsNullOrEmpty(operation) ?
-                    default(JobOperationType?) : operation.ToEnum<JobOperationType>();
 
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new JobQueryObject()
             {
@@ -158,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 EndTime = endTime,
                 JobId = jobId,
                 Status = status,
-                Operation = operationType
+                Operation = operation
             });
 
             ODataQuery<JobQueryObject> queryFilter = new ODataQuery<JobQueryObject>();

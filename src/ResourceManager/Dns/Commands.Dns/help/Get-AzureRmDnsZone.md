@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/get-azurermdnszone
 schema: 2.0.0
 ---
 
@@ -14,12 +15,13 @@ Gets a DNS zone.
 
 ### Default (Default)
 ```
-Get-AzureRmDnsZone [<CommonParameters>]
+Get-AzureRmDnsZone [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroup
 ```
-Get-AzureRmDnsZone [-Name <String>] -ResourceGroupName <String> [<CommonParameters>]
+Get-AzureRmDnsZone [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +55,21 @@ This example gets all of the DNS zones in the current Azure subscription, and th
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the DNS zone to get.
 
@@ -62,7 +79,7 @@ If you also omit the *ResourceGroupName* parameter, this cmdlet gets all DNS zon
 ```yaml
 Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -80,7 +97,7 @@ In this case, this cmdlet gets all DNS zones in the current Azure subscription.
 ```yaml
 Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

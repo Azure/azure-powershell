@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Adds a Key Vault key to a SQL server.
 
 ```
 Add-AzureRmSqlServerKeyVaultKey [-KeyId] <String> [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,6 @@ The server must have 'get, wrapKey, unwrapKey' permissions to the vault.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add Key Vault key  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Add-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
@@ -40,6 +39,21 @@ Thumbprint        : 1122334455667788990011223344556677889900
 CreationDate      : 1/1/2017 12:00:00 AM
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -KeyId
 The Azure Key Vault KeyId.
@@ -117,6 +131,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -129,3 +146,4 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

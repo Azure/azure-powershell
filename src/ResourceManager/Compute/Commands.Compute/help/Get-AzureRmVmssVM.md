@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 63D48BA4-EE80-4740-90B9-0EE05B3F6536
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmssvm
 schema: 2.0.0
 ---
 
@@ -12,16 +12,16 @@ Gets the properties of a VMSS virtual machine.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
 Get-AzureRmVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
 Get-AzureRmVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
- [-InstanceView] [<CommonParameters>]
+ [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get the properties of a VMSS virtual machine
 ```
-PS C:\>Get-AzureRmVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzureRmVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS001 that belongs to the resource group named Group001.
@@ -42,7 +42,7 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 
 ### Example 2: Get the model view properties of a VMSS virtual machine
 ```
-PS C:\>Get-AzureRmVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
+PS C:\> Get-AzureRmVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
@@ -50,7 +50,7 @@ The command gets the instance ID stored in the variable $ID for which to get the
 
 ### Example 3: Get the instance view properties of a VMSS virtual machine
 ```
-PS C:\>Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
+PS C:\> Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
@@ -58,6 +58,21 @@ Since the command specifies the *InstanceView* switch parameter, the cmdlet gets
 The command gets the instance ID stored in the variable $ID for which to get the instance view.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InstanceId
 Specifies the instance ID for which to get the model view.
@@ -68,7 +83,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -79,11 +94,11 @@ Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -98,7 +113,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -113,7 +128,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

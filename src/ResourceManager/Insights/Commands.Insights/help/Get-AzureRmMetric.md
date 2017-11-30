@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermmetric
 schema: 2.0.0
 ---
 
@@ -12,9 +13,17 @@ Gets the metric values of a resource.
 
 ## SYNTAX
 
+### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain] <TimeSpan> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-MetricNames <String[]>] [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetWithFullParameters
+```
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-MetricName] <String[]> [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,43 +161,12 @@ This command gets detailed output for the Requests metric.
 
 ## PARAMETERS
 
-### -ResourceId
-Specifies the resource ID of the metric.
+### -AggregationType
+The aggregation type of the query
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TimeGrain
-Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the start time of the query in local time.
-The default is the current local time minus one hour.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
+Type: AggregationType
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: False
@@ -198,34 +176,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EndTime
-Specifies the end time of the query in local time.
-The default is the current time.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: DateTime
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MetricNames
-Specifies an array of names of metrics.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -245,12 +207,103 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EndTime
+Specifies the end time of the query in local time.
+The default is the current time.
+
+```yaml
+Type: DateTime
+Parameter Sets: GetWithFullParameters
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricName
+Specifies an array of names of metrics.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: MetricNames
+
+Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
+Parameter Sets: GetWithFullParameters
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the resource ID of the metric.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the start time of the query in local time.
+The default is the current local time minus one hour.
+
+```yaml
+Type: DateTime
+Parameter Sets: GetWithFullParameters
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TimeGrain
+Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
+
+```yaml
+Type: TimeSpan
+Parameter Sets: GetWithFullParameters
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]
 
 ## NOTES
 

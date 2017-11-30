@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Model
 {
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlServerRecommendedActionModel from Management.Sql.Models.Recommended Action object
+        /// Construct AzureSqlServerRecommendedActionModel from Management.Sql.LegacySdk.Models.Recommended Action object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="advisorName">Advisor name</param>
         /// <param name="recommendedAction">Recommended Action object</param>
-        public AzureSqlServerRecommendedActionModel(string resourceGroupName, string serverName, string advisorName, Management.Sql.Models.RecommendedAction recommendedAction) 
+        public AzureSqlServerRecommendedActionModel(string resourceGroupName, string serverName, string advisorName, Management.Sql.LegacySdk.Models.RecommendedAction recommendedAction) 
         {
             ResourceGroupName = resourceGroupName;
             ServerName = serverName;

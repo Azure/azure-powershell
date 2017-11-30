@@ -47,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         protected void SetupManagementClients()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var rdfeTestFactory = new RDFETestEnvironmentFactory();
             var managementClient = TestBase.GetServiceClient<ManagementClient>(rdfeTestFactory);
             var computeClient = TestBase.GetServiceClient<ComputeManagementClient>(rdfeTestFactory);

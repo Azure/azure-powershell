@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "Location.")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -82,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
             networkWatcher.Tag = this.Tag;
 
             // Map to the sdk object
-            var networkWatcherModel = Mapper.Map<MNM.NetworkWatcher>(networkWatcher);
+            var networkWatcherModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkWatcher>(networkWatcher);
             MNM.NetworkWatcher networkWatcherPropertiesModel = new MNM.NetworkWatcher();
             networkWatcherPropertiesModel.Location = networkWatcher.Location;
             networkWatcherPropertiesModel.Tags = TagsConversionHelper.CreateTagDictionary(networkWatcher.Tag, validate: true);

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermautoscalesetting
 schema: 2.0.0
 ---
 
@@ -12,25 +13,27 @@ Creates an Autoscale setting.
 
 ## SYNTAX
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+### UpdateAutoscaleSetting
 ```
-Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroup <String> [-DisableSetting]
- [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
- [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [<CommonParameters>]
+Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroupName <String> [-DisableSetting]
+ [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
+ [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+### CreateAutoscaleSetting
 ```
-Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting]
- [-AutoscaleProfiles <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
+Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroupName <String> [-DisableSetting]
+ [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
  -TargetResourceId <String>
- [-Notifications <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [<CommonParameters>]
+ [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmAutoscaleSetting** cmdlet creates an Autoscale setting.
+
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -44,7 +47,7 @@ PS C:\> $Profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCap
 
 PS C:\> $Profile2 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rules $Rule1, $Rule2 -Name "SecondProfileName" -RecurrenceFrequency Minute -ScheduleDays "1", "2", "3" -ScheduleHours 5, 10, 15 -ScheduleMinutes 15, 30, 45 -ScheduleTimeZone GMT
 
-PS C:\> Add-AzureRmAutoscaleSetting -Location "East US" -Name "MySetting" -ResourceGroup "Default-Web-EastUS" -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm" -AutoscaleProfiles $Profile1, $Profile2
+PS C:\> Add-AzureRmAutoscaleSetting -Location "East US" -Name "MySetting" -ResourceGroupName "Default-Web-EastUS" -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm" -AutoscaleProfiles $Profile1, $Profile2
 ```
 
 The first two commands use New-AzureRmAutoscaleRule to create two Autoscale rules, $Rule1 and $Rule2.
@@ -55,34 +58,33 @@ The final command creates an Autoscale setting using the profiles in $Profile1 a
 
 ## PARAMETERS
 
-### -SettingSpec
-Specifies an **AutoscaleSetting** object.
-You can use the Get-AzureRmAutoscaleSetting cmdlet to get an **AutoscaleSetting** object or you can construct one in a Windows PowerShell script.
+### -AutoscaleProfile
+Specifies a list of profiles to add to the Autoscale setting, or $Null to add no profile.
 
 ```yaml
-Type: PSAutoscaleSetting
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
-Aliases: 
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]
+Parameter Sets: (All)
+Aliases: AutoscaleProfiles
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-Specifies the name of the resource group for the resource associated with the Autoscale setting.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,42 +103,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AutoscaleProfiles
-Specifies a list of profiles to add to the Autoscale setting, or $Null to add no profile.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Notifications
-Specifies a list of comma-separated notifications.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Location
 Specifies the location of the Autoscale setting.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -151,8 +123,54 @@ Specifies the name of the Autoscale setting to create.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Notification
+Specifies a list of comma-separated notifications.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]
+Parameter Sets: (All)
+Aliases: Notifications
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group for the resource associated with the Autoscale setting.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SettingSpec
+Specifies an **AutoscaleSetting** object.
+You can use the Get-AzureRmAutoscaleSetting cmdlet to get an **AutoscaleSetting** object or you can construct one in a Windows PowerShell script.
+
+```yaml
+Type: PSAutoscaleSetting
+Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
+Aliases: InputObject
 
 Required: True
 Position: Named
@@ -166,7 +184,7 @@ Specifies the ID of the resource to autoscale.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics
+Parameter Sets: CreateAutoscaleSetting
 Aliases: 
 
 Required: True
@@ -182,6 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse
 
 ## NOTES
 

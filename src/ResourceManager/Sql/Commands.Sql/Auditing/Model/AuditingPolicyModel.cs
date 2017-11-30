@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,11 +44,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the audit type
-        /// </summary>
-        public AuditType AuditType { get; set; }
 
         /// <summary>
         /// Gets or sets the audit state

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,26 +15,26 @@ Removes a credential from a service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithAllParameterSet
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm]
-```
-
-### SPNWithAllParameterSet
-```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
 Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SPNWithAllParameterSet
+```
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +46,6 @@ The credential to be removed is identified by its key ID if an individual creden
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS E:\> Remove-AzureRmADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
@@ -55,8 +54,6 @@ This command removes a credential key from a service principal.
 In this example, the key with Id "9044423a-60a3-45ac-9ab1-09534157ebb" will be removed from the service principal.
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS E:\> Remove-AzureRmADSpCredential -ServicePrincipalName http://test123 -All
 ```
@@ -66,18 +63,48 @@ In this example, all credentials will be removed from the service principal asso
 
 ## PARAMETERS
 
-### -ObjectId
-The object id of the service principal to remove the credentials from.
+### -All
+Switch to remove all the credentials associated with the service principal.
 
 ```yaml
-Type: String
-Parameter Sets: ObjectIdWithKeyIdParameterSet, ObjectIdWithAllParameterSet
+Type: SwitchParameter
+Parameter Sets: ObjectIdWithAllParameterSet, SPNWithAllParameterSet
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Switch to delete credential without a confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,72 +124,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Force
-Switch to delete credential without a confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ObjectId
+The object id of the service principal to remove the credentials from.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: ObjectIdWithKeyIdParameterSet, ObjectIdWithAllParameterSet
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-
+### -ServicePrincipalName
+The name (SPN) of the service principal to remove the credentials from.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String
+Parameter Sets: SPNWithKeyIdParameterSet, SPNWithAllParameterSet
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -181,35 +169,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -All
-Switch to remove all the credentials associated with the service principal.
-
+### -WhatIf
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ObjectIdWithAllParameterSet, SPNWithAllParameterSet
-Aliases: 
+Parameter Sets: (All)
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServicePrincipalName
-The name (SPN) of the service principal to remove the credentials from.
-
-```yaml
-Type: String
-Parameter Sets: SPNWithAllParameterSet, SPNWithKeyIdParameterSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -219,9 +193,9 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
-[Get-AzureRmADSpCredential]()
+[Get-AzureRmADSpCredential](./Get-AzureRmADSpCredential.md)
 
-[New-AzureRmADSpCredential]()
+[New-AzureRmADSpCredential](./New-AzureRmADSpCredential.md)
 
-[Get-AzureRmADServicePrincipal]()
+[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
 

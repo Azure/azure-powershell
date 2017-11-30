@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: E00D42D6-707A-479E-9964-C5B80D3DAA6A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/new-azurermschedulerhttpjob
 schema: 2.0.0
 ---
 
@@ -17,8 +18,7 @@ New-AzureRmSchedulerHttpJob -ResourceGroupName <String> -JobCollectionName <Stri
  -Method <String> -Uri <Uri> [-RequestBody <String>] [-Headers <Hashtable>] [-HttpAuthenticationType <String>]
  [-StartTime <DateTime>] [-Interval <Int32>] [-Frequency <String>] [-EndTime <DateTime>]
  [-ExecutionCount <Int32>] [-JobState <String>] [-ErrorActionType <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,94 +39,91 @@ If you omit a required parameter, the cmdlet prompts you for the value.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the resource group to which the job belongs.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndTime
+Specifies an end time, as a **DateTime** object, for the job.
+To obtain a **DateTime** object, use the Get-Date cmdlet.
+
+```yaml
+Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobCollectionName
-Specifies the name of the job collection to which the job belongs.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Name, ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -JobName
-Specifies a name for the job.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Method
-Specifies the method for the action types for the job.
+### -ErrorActionType
+Specifies an error action setting for the job.
 The acceptable values for this parameter are:
 
-- GET 
-- PUT 
-- POST 
-- DELETE
+- Http 
+- Https 
+- StorageQueue 
+- ServiceBusQueue 
+- ServiceBusTopic
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Https, StorageQueue, ServiceBusQueue, ServiceBusTopic
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExecutionCount
+Specifies how many times the job runs.
+By default, a job recurs indefinitely.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Uri
-Specifies a URI for the job action.
+### -Frequency
+Specifies a maximum frequency for the job.
+The acceptable values for this parameter are:
 
-```yaml
-Type: Uri
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestBody
-Specifies the value of the body for PUT and POST job actions.
+- Minute 
+- Hour 
+- Day 
+- Week 
+- Month
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Minute, Hour, Day, Week, Month
 
 Required: False
 Position: Named
@@ -163,21 +160,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the start time, as a **DateTime** object, for the job.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
+Accepted values: None, ClientCertificate, ActiveDirectoryOAuth, Basic
 
 Required: False
 Position: Named
@@ -201,57 +184,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Frequency
-Specifies a maximum frequency for the job.
-The acceptable values for this parameter are:
+### -JobCollectionName
+Specifies the name of the job collection to which the job belongs.
 
-- Minute 
-- Hour 
-- Day 
-- Week 
-- Month
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Name, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -JobName
+Specifies a name for the job.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndTime
-Specifies an end time, as a **DateTime** object, for the job.
-To obtain a **DateTime** object, use the Get-Date cmdlet.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutionCount
-Specifies how many times the job runs.
-By default, a job recurs indefinitely.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -266,6 +225,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -274,15 +234,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ErrorActionType
-Specifies an error action setting for the job.
+### -Method
+Specifies the method for the action types for the job.
 The acceptable values for this parameter are:
 
-- Http 
-- Https 
-- StorageQueue 
-- ServiceBusQueue 
-- ServiceBusTopic
+- GET 
+- PUT 
+- POST 
+- DELETE
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: GET, PUT, POST, DELETE
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestBody
+Specifies the value of the body for PUT and POST job actions.
 
 ```yaml
 Type: String
@@ -292,26 +267,32 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the resource group to which the job belongs.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -StartTime
+Specifies the start time, as a **DateTime** object, for the job.
 
 ```yaml
-Type: ActionPreference
+Type: DateTime
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -320,17 +301,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Uri
+Specifies a URI for the job action.
 
 ```yaml
-Type: String
+Type: Uri
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -351,27 +347,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition
 
 ## NOTES
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: D3FE0440-C663-4379-8F5F-2E66EF024E5D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebappbackup
 schema: 2.0.0
 ---
 
@@ -14,13 +15,14 @@ schema: 2.0.0
 ### FromResourceName
 ```
 New-AzureRmWebAppBackup [[-BackupName] <String>] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [-StorageAccountUrl] <String> [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
+ [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-New-AzureRmWebAppBackup [[-BackupName] <String>] [-WebApp] <Site> [-StorageAccountUrl] <String>
- [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
+New-AzureRmWebAppBackup [[-BackupName] <String>] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+ [-StorageAccountUrl] <String> [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,18 +54,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -Databases
+Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: String
-Parameter Sets: FromResourceName
+Type: DatabaseBackupSetting[]
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -77,6 +94,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: FromResourceName
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -112,21 +144,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Databases
-Databases of type DatabaseBackupSetting[]
-
-```yaml
-Type: DatabaseBackupSetting[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -WebApp
 WebApp Object
 
@@ -147,7 +164,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup
 
 ## NOTES
 

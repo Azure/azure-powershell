@@ -19,6 +19,35 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 5.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 4.4.1
+
+## Version 4.4.0
+
+## Version 4.3.1
+
+## Version 4.3.0
+
+## Version 4.2.1
+
+## Version 4.2.0
+
+## Version 4.1.0
+
+## Version 4.0.1
+
+## Version 4.0.0
+
+## Version 3.7.0
+
+## Version 3.6.0
+
 ## Version 3.5.0
 
 ## Version 3.4.0

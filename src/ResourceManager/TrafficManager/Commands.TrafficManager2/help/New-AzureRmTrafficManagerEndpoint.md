@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: A7A908A1-7326-4725-A3F9-4D05E40C5F73
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 
@@ -15,7 +16,9 @@ Creates an endpoint in a Traffic Manager profile.
 ```
 New-AzureRmTrafficManagerEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -Type <String> [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
- [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>] [<CommonParameters>]
+ [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
+ [-GeoMapping <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +46,21 @@ The Azure endpoint points to the Azure Web App whose Azure Resource Manager ID i
 The command does not specify the *EndpointLocation* parameter because the Web App resource supplies the location.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EndpointLocation
 Specifies the location of the endpoint to use in the Performance traffic-routing method.
@@ -80,6 +98,20 @@ Aliases:
 Accepted values: Enabled, Disabled
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoMapping
+The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,6 +282,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 
 ## NOTES
 

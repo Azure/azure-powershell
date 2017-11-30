@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Storage.Adapters;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System.Management.Automation;
-
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsData.Backup, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management exists.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The storage connection context.")]
         [ValidateNotNull]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -64,12 +67,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+            var account = StorageContext.GetCloudStorageAccount();
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginBackupApiManagement(
                     ResourceGroupName,
                     Name,
-                    StorageContext.StorageAccount.Credentials.AccountName,
-                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
                     TargetContainerName,
                     TargetBlobName),
                 PassThru.IsPresent

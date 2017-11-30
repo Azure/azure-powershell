@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -22,9 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHdInsightManagementClient
     {
-        public AzureHdInsightManagementClient(AzureContext context)
+        public AzureHdInsightManagementClient(IAzureContext context)
         {
-            HdInsightManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            HdInsightManagementClient = AzureSession.Instance.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -155,6 +156,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 resourceGroupName,
                 clusterName,
                 configurationName).Configuration;
+        }
+
+        public virtual OperationResource EnableOMS(string resourceGroupName, string clusterName, ClusterMonitoringRequest clusterMonitoringParameters)
+        {
+            return HdInsightManagementClient.Clusters.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters);
+        }
+
+        public virtual OperationResource DisableOMS(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.DisableMonitoring(resourceGroupName, clusterName);
+        }
+
+        public virtual ClusterMonitoringResponse GetOMS(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.GetMonitoringStatus(resourceGroupName, clusterName);
         }
     }
 }

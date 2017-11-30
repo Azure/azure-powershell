@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -92,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            AzureSubscription azureSubscription = null;
+            IAzureSubscription azureSubscription = null;
             switch (ParameterSetName)
             {
                 case SelectSubscriptionByNameParameterSet:
@@ -139,14 +140,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 return Account;
             }
 
-            AzureSubscription subscription = ProfileClient.Profile.Subscriptions.Values
+            IAzureSubscription subscription = ProfileClient.Profile.SubscriptionTable.Values
                 .Where(s => !string.IsNullOrWhiteSpace(s.Name))
                 .FirstOrDefault(s => s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase) ||
                                      s.Id.ToString().Equals(SubscriptionId, StringComparison.InvariantCultureIgnoreCase));
 
             if (subscription != null)
             {
-                return subscription.Account;
+                return subscription.GetAccount();
             }
             else
             {

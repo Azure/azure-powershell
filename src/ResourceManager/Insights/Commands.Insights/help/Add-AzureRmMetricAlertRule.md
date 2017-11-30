@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: A90564B5-57D7-48EB-976D-38C03D930289
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermmetricalertrule
 schema: 2.0.0
 ---
 
@@ -15,14 +16,15 @@ Adds or updates a metric-based alert rule.
 ```
 Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
- -Location <String> [-Description <String>] [-DisableRule] -ResourceGroup <String> -Name <String>
- [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
- [<CommonParameters>]
+ -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
+ [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmMetricAlertRule** cmdlet adds or updates a metric-based alert rule.
 The added rule is associated with a resource group and has a name.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -60,115 +62,33 @@ This command creates a metric alert rule for a website.
 
 ## PARAMETERS
 
-### -WindowSize
-Specifies the time window size for the rule to compute its data.
+### -Action
+Specifies a comma-separated list of actions.
 
 ```yaml
-Type: TimeSpan
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Actions
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Operator
-Specifies the relational operator for the condition of the rule.
-The acceptable values for this parameter are:
-
-- GreaterThan
-- GreaterThanOrEqual
--  LessThan
-- LessThanOrEqual
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: ConditionOperator
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Threshold
-Specifies the threshold of the rule.
-
-```yaml
-Type: Double
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TargetResourceId
-Specifies the ID of the resource the rule is monitoring.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MetricName
-Specifies the name of the metric the rule is monitoring.
-Specify this parameter only for metric-based rules.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TimeAggregationOperator
-Specifies the aggregation operator to apply to the time window when the rule is being evaluated.
-
-```yaml
-Type: TimeAggregationOperator
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-Specifies the location where the rule is defined.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -203,8 +123,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-Specifies the name of the resource group for the rule.
+### -Location
+Specifies the location where the rule is defined.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricName
+Specifies the name of the metric the rule is monitoring.
+Specify this parameter only for metric-based rules.
 
 ```yaml
 Type: String
@@ -233,15 +169,98 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Actions
-Specifies a comma-separated list of actions.
+### -Operator
+Specifies the relational operator for the condition of the rule.
+The acceptable values for this parameter are:
+
+- GreaterThan
+- GreaterThanOrEqual
+-  LessThan
+- LessThanOrEqual
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]
+Type: ConditionOperator
+Parameter Sets: (All)
+Aliases: 
+Accepted values: GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group for the rule.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Specifies the ID of the resource the rule is monitoring. NOTE: This property cannot be updated for an existing alert rule.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Threshold
+Specifies the threshold of the rule.
+
+```yaml
+Type: Double
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TimeAggregationOperator
+Specifies the aggregation operator to apply to the time window when the rule is being evaluated.
+
+```yaml
+Type: TimeAggregationOperator
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Average, Minimum, Maximum, Total, Last
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WindowSize
+Specifies the time window size for the rule to compute its data.
+
+```yaml
+Type: TimeSpan
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -255,11 +274,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse
+
 ## NOTES
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
 
 [Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
 

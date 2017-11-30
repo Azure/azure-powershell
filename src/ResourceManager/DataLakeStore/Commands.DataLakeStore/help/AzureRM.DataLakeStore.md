@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
 Download Help Link: None
@@ -19,6 +19,9 @@ Adds content to an item in a Data Lake Store.
 
 ### [Add-AzureRmDataLakeStoreTrustedIdProvider](Add-AzureRmDataLakeStoreTrustedIdProvider.md)
 Adds a trusted identity provider to the specified Data Lake Store account.
+
+### [Enable-AzureRmDataLakeStoreKeyVault](Enable-AzureRmDataLakeStoreKeyVault.md)
+Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
 ### [Export-AzureRmDataLakeStoreItem](Export-AzureRmDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.

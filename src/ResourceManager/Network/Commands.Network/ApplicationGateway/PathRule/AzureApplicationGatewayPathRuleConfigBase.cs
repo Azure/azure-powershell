@@ -56,6 +56,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendHttpSettings BackendHttpSettings { get; set; }
 
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public string RedirectConfigurationId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -69,6 +81,10 @@ namespace Microsoft.Azure.Commands.Network
                 if (BackendHttpSettings != null)
                 {
                     this.BackendHttpSettingsId = this.BackendHttpSettings.Id;
+                }
+                if (RedirectConfiguration != null)
+                {
+                    this.RedirectConfigurationId = this.RedirectConfiguration.Id;
                 }
             }
         }
@@ -90,6 +106,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 pathRule.BackendHttpSettings = new PSResourceId();
                 pathRule.BackendHttpSettings.Id = this.BackendHttpSettingsId;
+            }
+
+            if (!string.IsNullOrEmpty(this.RedirectConfigurationId))
+            {
+                pathRule.RedirectConfiguration = new PSResourceId();
+                pathRule.RedirectConfiguration.Id = this.RedirectConfigurationId;
             }
 
             return pathRule;

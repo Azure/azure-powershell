@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 4C3CF283-DD4F-4D2A-ABEC-84AC7B005D6A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightconfigvalues
 schema: 2.0.0
 ---
 
@@ -12,12 +13,24 @@ Adds a Hadoop configuration value customization and/or a Hive shared library cus
 
 ## SYNTAX
 
+### Spark1
 ```
 Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
- [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
+ [-SparkDefaults <Hashtable>] [-SparkThriftConf <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### Spark2
+```
+Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
+ [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
+ [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
+ [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
+ [-Spark2Defaults <Hashtable>] [-Spark2ThriftConf <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,13 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HiveSite
-Specifies the Hive Site configurations of this HDInsight cluster.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Hashtable
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -115,53 +128,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HiveEnv
-Specifies the Hive Env configurations of this HDInsight cluster.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OozieSite
-Specifies the Oozie Site configurations of this HDInsight cluster.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OozieEnv
-Specifies the Oozie Env configurations of this HDInsight cluster.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebHCat
-Specifies the WebHCat Site configurations of this HDInsight cluster.
+### -HBaseEnv
+Specifies the HBase Env configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
@@ -190,8 +158,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HBaseEnv
-Specifies the HBase Env configurations of this HDInsight cluster.
+### -Hdfs
+Specifies the HDFS configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
@@ -205,8 +173,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Storm
-Specifies the Storm Site configurations of this HDInsight cluster.
+### -HiveEnv
+Specifies the Hive Env configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
@@ -220,8 +188,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Yarn
-Specifies the YARN Site configurations of this HDInsight cluster.
+### -HiveSite
+Specifies the Hive Site configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
@@ -250,6 +218,126 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OozieEnv
+Specifies the Oozie Env configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OozieSite
+Specifies the Oozie Site configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RServer
+Specifies the RServer configurations. Valid only for RServer clusters.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Spark2Defaults
+Specifies the Spark2 Defaults configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Spark2
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Spark2ThriftConf
+Specifies the Spark2 Thrift SparkConf configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Spark2
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkDefaults
+Specifies the Spark Defaults configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Spark1
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkThriftConf
+Specifies the Spark Thrift SparkConf configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Spark1
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Storm
+Specifies the Storm Site configurations of this HDInsight cluster.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tez
 Specifies the Tez Site configurations of this HDInsight cluster.
 
@@ -265,8 +353,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hdfs
-Specifies the HDFS configurations of this HDInsight cluster.
+### -WebHCat
+Specifies the WebHCat Site configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
@@ -280,37 +368,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Yarn
+Specifies the YARN Site configurations of this HDInsight cluster.
 
 ```yaml
-Type: ActionPreference
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -324,7 +388,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### AzureHDInsightConfig
+Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 
 ## NOTES
 

@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSSnapshot : Snapshot
+    public partial class PSSnapshot : Snapshot
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName

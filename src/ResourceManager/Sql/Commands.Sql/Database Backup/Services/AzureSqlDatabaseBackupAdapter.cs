@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,19 +38,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a database backup adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseBackupAdapter(AzureContext context)
+        public AzureSqlDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
             _subscription = context.Subscription;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>List of restore points</returns>
         internal IEnumerable<AzureSqlDatabaseRestorePointModel> ListRestorePoints(string resourceGroup, string serverName, string databaseName)
         {
-            var resp = Communicator.ListRestorePoints(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.ListRestorePoints(resourceGroup, serverName, databaseName);
             return resp.Select((restorePoint) =>
             {
                 return new AzureSqlDatabaseRestorePointModel()
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>List of geo backups</returns>
         internal ICollection<AzureSqlDatabaseGeoBackupModel> ListGeoBackups(string resourceGroup, string serverName)
         {
-            var resp = Communicator.ListGeoBackups(resourceGroup, serverName, Util.GenerateTracingId());
+            var resp = Communicator.ListGeoBackups(resourceGroup, serverName);
             return resp.Select((geoBackup) =>
             {
                 return new AzureSqlDatabaseGeoBackupModel()
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>List of restorable deleted databases</returns>
         internal ICollection<AzureSqlDeletedDatabaseBackupModel> ListDeletedDatabaseBackups(string resourceGroup, string serverName)
         {
-            var resp = Communicator.ListDeletedDatabaseBackups(resourceGroup, serverName, Util.GenerateTracingId());
+            var resp = Communicator.ListDeletedDatabaseBackups(resourceGroup, serverName);
             return resp.Select((deletedDatabaseBackup) =>
             {
                 return new AzureSqlDeletedDatabaseBackupModel()
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>A geo backup</returns>
         internal AzureSqlDatabaseGeoBackupModel GetGeoBackup(string resourceGroup, string serverName, string databaseName)
         {
-            var geoBackup = Communicator.GetGeoBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            var geoBackup = Communicator.GetGeoBackup(resourceGroup, serverName, databaseName);
             return new AzureSqlDatabaseGeoBackupModel()
             {
                 ResourceGroupName = resourceGroup,
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>A restorable deleted database</returns>
         internal AzureSqlDeletedDatabaseBackupModel GetDeletedDatabaseBackup(string resourceGroup, string serverName, string databaseName)
         {
-            var deletedDatabaseBackup = Communicator.GetDeletedDatabaseBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            var deletedDatabaseBackup = Communicator.GetDeletedDatabaseBackup(resourceGroup, serverName, databaseName);
             return new AzureSqlDeletedDatabaseBackupModel()
             {
                 ResourceGroupName = resourceGroup,
@@ -193,8 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             var baVault = Communicator.GetBackupLongTermRetentionVault(
                 resourceGroup,
                 serverName,
-                "RegisteredVault",
-                Util.GenerateTracingId());
+                "RegisteredVault");
             return new AzureSqlServerBackupLongTermRetentionVaultModel()
             {
                 Location = baVault.Location,
@@ -220,8 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 resourceGroup,
                 serverName,
                 databaseName,
-                "Default",
-                Util.GenerateTracingId());
+                "Default");
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
                 Location = baPolicy.Location,
@@ -248,7 +246,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 resourceGroup,
                 serverName,
                 "RegisteredVault",
-                Util.GenerateTracingId(),
                 new BackupLongTermRetentionVaultCreateOrUpdateParameters()
             {
                 Location = model.Location,
@@ -284,7 +281,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 serverName,
                 databaseName,
                 "Default",
-                Util.GenerateTracingId(),
                 new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
                 {
                     Location = model.Location,
@@ -321,8 +317,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 resourceGroup,
                 serverName,
                 databaseName,
-                "Default",
-                Util.GenerateTracingId());
+                "Default");
             return new AzureSqlDatabaseGeoBackupPolicyModel()
             {
                 Location = geoBackupPolicy.Location,
@@ -353,7 +348,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 serverName,
                 databaseName,
                 "Default",
-                Util.GenerateTracingId(),
                 new GeoBackupPolicyCreateOrUpdateParameters()
                 {
                     Location = model.Location,
@@ -400,7 +394,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     CreateMode = model.CreateMode
                 }
             };
-            var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), parameters);
+            var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, parameters);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
         }
 

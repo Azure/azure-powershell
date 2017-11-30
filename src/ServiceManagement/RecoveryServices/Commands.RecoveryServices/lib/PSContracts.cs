@@ -253,6 +253,134 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Error contract returned when some exception occurs in Confirm-AzureVaultUpgradePrerequisites operations.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Name = "Error", Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class VaultUpgradeError
+    {
+        /// <summary>
+        /// Gets or sets error code.
+        /// </summary>
+        [DataMember]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message.
+        /// </summary>
+        [DataMember]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets recommendation action.
+        /// </summary>
+        [DataMember]
+        public string RecommendedAction { get; set; }
+
+        /// <summary>
+        /// Gets or sets error details.
+        /// </summary>
+        [DataMember]
+        public List<VaultUpgradeErrorDetails> Details { get; set; }
+    }
+
+    /// <summary>
+    /// Error details returned when some exception occurs in Confirm-AzureVaultUpgradePrerequisites operations.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Name = "ErrorDetail", Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class VaultUpgradeErrorDetails
+    {
+        /// <summary>
+        /// Gets or sets error category.
+        /// </summary>
+        [DataMember]
+        public string Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets error code.
+        /// </summary>
+        [DataMember]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message.
+        /// </summary>
+        [DataMember]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets error properties.
+        /// </summary>
+        [DataMember]
+        public string Properties { get; set; }
+
+        /// <summary>
+        /// Gets or sets recommendation action.
+        /// </summary>
+        [DataMember]
+        public string RecommendedAction { get; set; }
+
+        /// <summary>
+        /// Gets or sets error type.
+        /// </summary>
+        [DataMember]
+        public string Type { get; set; }
+    }
+
+    /// <summary>
+    /// Error contract returned when some exception occurs in Start-AzureVaultUpgrade operations.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Name = "Error", Namespace = "http://schemas.microsoft.com/wars")]
+    public class StartVaultUpgradeError
+    {
+        /// <summary>
+        /// Gets or sets error code.
+        /// </summary>
+        [DataMember]
+        public string ErrorCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message.
+        /// </summary>
+        [DataMember]
+        public Message Message { get; set; }
+    }
+
+    /// <summary>
+    /// Error message contract for errors during Start-AzureVaultUpgrade Operations.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
+    public class Message
+    {
+        /// <summary>
+        /// Gets or sets the language.
+        /// </summary>
+        [DataMember]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        [DataMember]
+        public string Value { get; set; }
+    }
+
+    /// <summary>
     /// CIK token details.
     /// </summary>
     [SuppressMessage(

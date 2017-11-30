@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class AddAzureRmAutoscaleSettingTests
     {
         private readonly AddAzureRmAutoscaleSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource> response;
@@ -41,14 +44,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            TestExecutionHelpers.SetUpSessionAndProfile();
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmAutoscaleSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = new AzureOperationResponse<AutoscaleSettingResource>()
@@ -66,6 +70,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 });
 
             insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
+
+            // Setup Confirmation
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
         [Fact]
@@ -80,8 +90,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup
             // A NOP
-            cmdlet.SettingSpec = spec;
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.InputObject = spec;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -100,14 +110,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Adding a profile
-            cmdlet.AutoscaleProfiles = autoscaleProfile;
+            cmdlet.AutoscaleProfile = autoscaleProfile;
             cmdlet.ExecuteCmdlet();
 
             // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
-            cmdlet.SettingSpec = null;
+            cmdlet.InputObject = null;
             cmdlet.Name = "SettingName";
             cmdlet.Location = "East US";
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.TargetResourceId = Utilities.ResourceUri;
             cmdlet.ExecuteCmdlet();
 
@@ -122,7 +132,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 Webhooks = null
             };
 
-            cmdlet.Notifications = new List<AutoscaleNotification> { notification };
+            cmdlet.Notification = new List<AutoscaleNotification> { notification };
             cmdlet.ExecuteCmdlet();
         }
 
@@ -168,12 +178,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 profiles = new List<AutoscaleProfile>() { this.CreateAutoscaleProfile() };
             }
 
-            var setting = new AutoscaleSettingResource
+            var setting = new AutoscaleSettingResource(
+                location: location,
+                profiles: profiles,
+                name: name)
             {
-                Location = location,
-                Name = name,
                 Enabled = true,
-                Profiles = profiles,
                 TargetResourceUri = Utilities.ResourceUri,
                 Tags = new Dictionary<string, string>()
             };

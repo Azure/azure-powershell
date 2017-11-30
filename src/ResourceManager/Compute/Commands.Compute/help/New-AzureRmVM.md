@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvm
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Creates a virtual machine.
 ## SYNTAX
 
 ```
-New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine>
- [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
+ [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmV
 
 ### Example 1: Create a virtual machine
 ```
-PS C:\># Variables    
+PS C:\> # Variables    
 ## Global
 $ResourceGroupName = "ResourceGroup11"
 $Location = "WestEurope"
@@ -82,7 +82,7 @@ This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
 ```
-PS C:\>## VM Account
+PS C:\> ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force 
@@ -138,6 +138,21 @@ You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableBginfoExtension
 Indicates that this cmdlet does not install the **BG Info** extension on the virtual machine.
 
@@ -147,7 +162,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -185,7 +200,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -200,7 +215,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -234,9 +249,24 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the zone list of the virtual machine.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -277,7 +307,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

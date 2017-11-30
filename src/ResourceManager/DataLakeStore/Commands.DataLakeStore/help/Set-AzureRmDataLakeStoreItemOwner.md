@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 415C5854-FE03-4D4E-BE84-408EA5F95E34
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemowner
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Modifies the owner of a file or folder in Data Lake Store.
 
 ```
 Set-AzureRmDataLakeStoreItemOwner [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Type] <Owner>
- [-Id] <Guid> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Id] <Guid> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the object ID of the AzureActive Directory user, group, or service principal to use as the owner.
 
@@ -62,7 +78,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates the resulting updated owner should be returned.```yaml
+Indicates the resulting updated owner should be returned.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -97,6 +115,7 @@ The acceptable values for this parameter are: User and Group.
 Type: Owner
 Parameter Sets: (All)
 Aliases: 
+Accepted values: User, Group
 
 Required: True
 Position: 2

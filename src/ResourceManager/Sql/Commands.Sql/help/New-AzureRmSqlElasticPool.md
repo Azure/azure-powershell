@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlelasticpool
 schema: 2.0.0
 ---
 
@@ -14,13 +15,15 @@ Creates an elastic database pool for a SQL Database.
 
 ```
 New-AzureRmSqlElasticPool -ElasticPoolName <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
- [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmSqlElasticPool** cmdlet creates an elastic database pool for an Azure SQL Database.
+
+Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
 
 ## EXAMPLES
 
@@ -42,82 +45,22 @@ StorageMB         : 409600
 Tags              :
 ```
 
-This command creates an elastic pool in the Standard service tier named ElasticPool01.
-The server named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool in.
-The command specifies DTU property values for the pool and the databases in the pool.
+This command creates an elastic pool in the Standard service tier named ElasticPool01. The server
+named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
+in. The command specifies DTU property values for the pool and the databases in the pool.
 
 ## PARAMETERS
 
-### -ElasticPoolName
-Specifies the name of the elastic pool that this cmdlet creates.
+### -DatabaseDtuMax
+Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume.
+The default values for the different editions are as follows:
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+- Basic. 5 DTUs
+- Standard. 100 DTUs
+- Premium. 125 DTUs
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) 
 
-### -Edition
-Specifies the edition of the Azure SQL Database used for the elastic pool.
-The acceptable values for this parameter are:
-
-- Premium 
-- Basic 
-- Standard
-
-For the current preview, the edition must be Standard.
-
-```yaml
-Type: DatabaseEdition
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Dtu
-Specifies the total number of shared DTUs for the elastic pool.
-The default values for the different editions are as follows: 
-
-- Basic.
-100 DTUs 
-- Standard.
-100 DTUs
-- Premium.
-125 DTUs
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageMB
-Specifies the storage limit, in megabytes, for the elastic pool.
-You cannot specify a value for this parameter for the Premium edition.
-
-If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
-We recommend that you do not specify the *StorageMB* parameter.
-
-If you specify *StorageMB*, but do not specify *Dtu*, the cmdlet calculates a value for *Dtu*.
-If you specify values for both, the values must be consistent.
-For more information about the relationship between storage and DTUs, see https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool-reference/https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool-reference/.
 
 ```yaml
 Type: Int32
@@ -135,6 +78,8 @@ Accept wildcard characters: False
 Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
 The default value is zero (0).
 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -147,17 +92,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseDtuMax
-Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume.
-The default values for the different editions are as follows: 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Dtu
+Specifies the total number of shared DTUs for the elastic pool.
+The default values for the different editions are as follows:
 
 - Basic.
-5 DTUs 
+100 DTUs
 - Standard.
 100 DTUs
 - Premium.
 125 DTUs
 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -170,13 +132,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
+### -Edition
+Specifies the edition of the Azure SQL Database used for the elastic pool.
+The acceptable values for this parameter are:
+
+- Premium
+- Basic
+- Standard
+- DataWarehouse
+- Stretch
+- Free
+- PremiumRS
 
 ```yaml
-Type: Hashtable
+Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: Tag
+Aliases: 
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -185,18 +157,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the server that hosts the elastic pool.
+### -ElasticPoolName
+Specifies the name of the elastic pool that this cmdlet creates.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -215,22 +187,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ServerName
+Specifies the name of the server that hosts the elastic pool.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageMB
+Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this
+parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
+
+See [eDTU and storage limits](/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -239,13 +220,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Tags
+Specifies a dictionary of Key-value pairs in the form of a hash table that this cmdlet associates
+with the elastic pool. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: iv
+Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundant
+The zone redundancy to associate with the Azure Sql Elastic Pool
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -308,6 +307,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
-
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

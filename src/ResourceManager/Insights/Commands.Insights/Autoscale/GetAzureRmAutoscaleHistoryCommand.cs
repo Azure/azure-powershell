@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Get the history of events related to an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutoscaleHistory"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureRmAutoscaleHistoryCommand : EventCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutoscaleHistory"), OutputType(typeof(List<PSEventData>))]
+    public class GetAzureRmAutoscaleHistoryCommand : LogsCmdletBase
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 

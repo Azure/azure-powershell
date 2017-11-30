@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StaticAnalysis.Test</RootNamespace>
     <AssemblyName>StaticAnalysis.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <RestorePackages>true</RestorePackages>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>ba98ab34</NuGetPackageImportStamp>

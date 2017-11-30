@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -83,9 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(snapshotName))
             {
                 var result = SnapshotsClient.Get(resourceGroupName, snapshotName);
-                var psObject = new PSSnapshot();
-                Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSSnapshotList>();
-                foreach (var r in result)
-                {
-                    psObject.Add(Mapper.Map<Snapshot, PSSnapshotList>(r));
-                }
-                WriteObject(psObject);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSSnapshotList>();
-                foreach (var r in result)
-                {
-                    psObject.Add(Mapper.Map<Snapshot, PSSnapshotList>(r));
-                }
-                WriteObject(psObject);
+                WriteObject(resultList, true);
             }
         }
 
@@ -146,50 +133,87 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmSnapshot", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmSnapshot : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSSnapshot))]
+    public partial class GetAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "SnapshotGet";
-            base.ProcessRecord();
+            ExecuteClientAction(() =>
+            {
+                string resourceGroupName = this.ResourceGroupName;
+                string snapshotName = this.SnapshotName;
+
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(snapshotName))
+                {
+                    var result = SnapshotsClient.Get(resourceGroupName, snapshotName);
+                    var psObject = new PSSnapshot();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    var result = SnapshotsClient.ListByResourceGroup(resourceGroupName);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = SnapshotsClient.ListByResourceGroupNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSSnapshotList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshotList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+                else
+                {
+                    var result = SnapshotsClient.List();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = SnapshotsClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSSnapshotList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshotList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        public string ResourceGroupName { get; set; }
 
-            var pSnapshotName = new RuntimeDefinedParameter();
-            pSnapshotName.Name = "SnapshotName";
-            pSnapshotName.ParameterType = typeof(string);
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pSnapshotName.Attributes.Add(new AliasAttribute("Name"));
-            pSnapshotName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotName", pSnapshotName);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string SnapshotName { get; set; }
     }
 }

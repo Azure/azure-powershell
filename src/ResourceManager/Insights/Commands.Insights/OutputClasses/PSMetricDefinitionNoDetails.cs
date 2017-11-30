@@ -12,57 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Legacy.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wraps around MetricDefinition to provide summarized data about it
     /// </summary>
-    public class PSMetricDefinitionNoDetails : MetricDefinition
+    public class PSMetricDefinitionNoDetails : PSMetricDefinition
     {
-        /// <summary>
-        /// Gets or sets the Name of the metric
-        /// </summary>
-        public new string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of Dimension objects
-        /// </summary>
-        protected internal new IList<Dimension> Dimensions
-        {
-            get { return base.Dimensions; }
-            set { base.Dimensions = value; }
-        }
-
         /// <summary>
         /// Gets or sets the list of MetricAvailability objects
         /// </summary>
-        protected internal new IList<MetricAvailability> MetricAvailabilities
-        {
-            get { return base.MetricAvailabilities; }
-            set { base.MetricAvailabilities = value; }
-        }
-
+        protected internal new IList<MetricAvailability> MetricAvailabilities { get; private set; }
+ 
         /// <summary>
         /// Initializes an new instance of the PSMetricDefinitionNoDetails class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
         public PSMetricDefinitionNoDetails(MetricDefinition metricDefinition)
+            : base(metricDefinition)
         {
-            // Keep the original value (localized string, Dictionary, List) in the base
-            base.Name = metricDefinition.Name;
-
-            // Because of the above protected internals these two properties won't show in the output, but they will be there for the base class
-            this.Dimensions = metricDefinition.Dimensions;
+            this.Name = new PSLocalizableStringNoDetails(metricDefinition.Name);
             this.MetricAvailabilities = metricDefinition.MetricAvailabilities;
-
-            this.Name = metricDefinition.Name != null ? metricDefinition.Name.Value : null;
-            this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
-            this.Properties = metricDefinition.Properties;
-            this.ResourceId = metricDefinition.ResourceId;
-            this.Unit = metricDefinition.Unit;
         }
     }
 }

@@ -19,6 +19,39 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
+
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+
+* New Monitor settings 'MonitorIntervalInSeconds', 'MonitorTimeoutInSeconds', 'MonitorToleratedNumberOfFailures'
+* New Monitor protocol 'TCP'
+
+## Version 3.0.1
+
+## Version 3.0.0
+
+## Version 2.8.0
+* Support for the Geographic traffic routing method
+    - New value 'Geographic' for the TrafficRoutingMethod parameter of New-AzureRmTrafficManagerProfile
+    - New parameter 'GeoMapping' for the New-AzureRmTrafficManagerEndpoint and Add-AzureRmTrafficManagerEndpointConfig
+    - Fix piping for Get-AzureRmTrafficManagerProfile when it returns a collection of profiles
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

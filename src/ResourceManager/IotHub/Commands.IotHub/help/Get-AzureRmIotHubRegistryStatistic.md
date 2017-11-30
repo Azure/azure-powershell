@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubregistrystatistic
 schema: 2.0.0
 ---
 
@@ -12,11 +13,13 @@ Gets the RegistryStatistics for an IotHub.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the RegistryStatistics for an IotHub. This provides information about the number of total, enabled and disabled devices in an IotHub.
+Gets the RegistryStatistics for an IotHub.
+This provides information about the number of total, enabled and disabled devices in an IotHub.
 
 ## EXAMPLES
 
@@ -29,8 +32,23 @@ Gets the RegistryStatictics for the IotHub named "myiothub"
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of the IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -45,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String

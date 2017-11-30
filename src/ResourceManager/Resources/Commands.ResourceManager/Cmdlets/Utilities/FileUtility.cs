@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
     using System;
     using System.IO;
     using System.Text;
+    using WindowsAzure.Commands.Common;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>

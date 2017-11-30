@@ -23,18 +23,18 @@ function Test-GetAzureRmLogProfile
         # Test
         $actual = Get-AzureRmLogProfile -Name default
 
-        Assert-AreEqual /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default $actual.Id 
-        Assert-AreEqual default        $actual.Name
-        Assert-AreEqual "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777" $actual.StorageAccountId
-        Assert-AreEqual $null          $actual.ServiceBusRuleId
-        Assert-AreEqual 1              $actual.Locations.Count
-        Assert-AreEqual global         $actual.Locations
-        Assert-AreEqual 3              $actual.Categories.Count
-        Assert-AreEqual Delete         $actual.Categories[0]
-        Assert-AreEqual Write          $actual.Categories[1]
-        Assert-AreEqual Action         $actual.Categories[2]
-        Assert-AreEqual $false         $actual.RetentionPolicy.Enabled
-        Assert-AreEqual 0              $actual.RetentionPolicy.Days
+        Assert-AreEqual /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default $actual.Id "Resource Ids not equal"
+        Assert-AreEqual default        $actual.Name "Names not equal"
+        Assert-AreEqual "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777" $actual.StorageAccountId "Storage Account Ids not equal"
+        Assert-Null $actual.ServiceBusRuleId "ServiceBus rule Id not null"
+        Assert-AreEqual 1              $actual.Locations.Count "Count not 1"
+        Assert-AreEqual global         $actual.Locations "Location not global"
+        Assert-AreEqual 3              $actual.Categories.Count "Categories count not 3"
+        Assert-AreEqual Delete         $actual.Categories[0] "Category[0] not Delete"
+        Assert-AreEqual Write          $actual.Categories[1] "Category[1] not Write"
+        Assert-AreEqual Action         $actual.Categories[2] "Category[2] not Action"
+        Assert-False { $actual.RetentionPolicy.Enabled } "RetentionPolicy not false"
+        Assert-AreEqual 0              $actual.RetentionPolicy.Days "Retention Days not 0"
     }
     finally
     {

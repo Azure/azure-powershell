@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
-using ResourceManagement = Microsoft.Azure.Management.Resources.Models;
+using ResourceManagement = Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -25,9 +26,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
 
         }
-        public PSVaultIdentityItem(ResourceManagement.GenericResourceExtended resource)
+        public PSVaultIdentityItem(ResourceManagement.GenericResource resource)
         {
-            PSResourceManagerModels.ResourceIdentifier identifier = new PSResourceManagerModels.ResourceIdentifier(resource.Id);
+            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
             VaultName = identifier.ResourceName;
             ResourceId = resource.Id;
             ResourceGroupName = identifier.ResourceGroupName;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string TagsTable
         {
-            get { return PSResourceManagerModels.ResourcesExtensions.ConstructTagsTable(Tags); }
+            get { return ResourcesExtensions.ConstructTagsTable(Tags); }
         }
 
     }

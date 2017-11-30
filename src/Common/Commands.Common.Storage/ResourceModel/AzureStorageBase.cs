@@ -14,6 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System;
 
@@ -25,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Storage context
         /// </summary>
-        public AzureStorageContext Context { get; set; }
+        public IStorageContext Context { get; set; }
 
         /// <summary>
         /// Azure storage object name

@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using System;
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -119,15 +122,15 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (storagekey == null)
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
 
                 var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
                 if (storageService != null)
                 {
                     var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.Name);
-                    storagekey = storageKeys.Key1;
+                    storagekey = storageKeys.GetKey1();
                 }
             }
 

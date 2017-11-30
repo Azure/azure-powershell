@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Cmdlet to get existing resources from ARM cache.
@@ -43,27 +43,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The list resources parameter set.
         /// </summary>
-        internal const string ListResourcesParameterSet = "Lists the resources based on the specified scope.";
+        internal const string ListResourcesParameterSet = "GetBySpecifiedScope";
 
         /// <summary>
         /// The list tenant resources parameter set.
         /// </summary>
-        internal const string ListTenantResourcesParameterSet = "Lists the resources based on the specified scope at the tenant level.";
+        internal const string ListTenantResourcesParameterSet = "GetBySpecifiedScopeAtTenantLevel";
 
         /// <summary>
         /// The get tenant resource parameter set.
         /// </summary>
-        internal const string MultiSubscriptionListResourcesParameterSet = "Get a resources using a multi-subscription query.";
+        internal const string MultiSubscriptionListResourcesParameterSet = "GetByMultiSubscriptionQuery";
 
         /// <summary>
         /// The list resources by tag object parameter set.
         /// </summary>
-        internal const string ListResourcesByTagObjectParameterSet = "Lists resources by a tag object specified as a hashset.";
+        internal const string ListResourcesByTagObjectParameterSet = "GetByTagObject";
 
         /// <summary>
         /// The list resources by tag name-value parameter set.
         /// </summary>
-        internal const string ListResourcesByTagNameValueParameterSet = "Lists resources by a tag specified as a individual name and value parameters.";
+        internal const string ListResourcesByTagNameValueParameterSet = "GetByTagNameValue";
 
         /// <summary>
         /// Caches the current subscription ids to get all subscription ids in the pipeline.
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (!this.TenantLevel)
             {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.GetId();
             }
 
             PaginatedResponseHelper.ForEach(

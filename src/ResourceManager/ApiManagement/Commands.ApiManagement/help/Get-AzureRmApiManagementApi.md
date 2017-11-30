@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 55D36D75-46AB-4D66-B3EB-A1DC635D0D4A
-online version: 
+Module Name: AzureRM.ApiManagement
+ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementapi
 schema: 2.0.0
 ---
 
@@ -12,28 +13,28 @@ Gets an API.
 
 ## SYNTAX
 
-### All APIs (Default)
+### GetAllApis (Default)
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Find by ID
+### GetByApiId
 ```
 Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find by Name
+### GetByName
 ```
 Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find by product ID
+### GetByProductId
 ```
 Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,7 @@ The **Get-AzureRmApiManagementApi** cmdlet gets one or more Azure API Management
 
 ### Example 1: Get all management APIs
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext
 ```
 
@@ -50,6 +52,7 @@ This command gets all of the APIs for the specified context.
 
 ### Example 2: Get a management API by ID
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId $ApiId
 ```
 
@@ -57,12 +60,28 @@ This command gets the API with the specified ID.
 
 ### Example 3: Get a management API by name
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 ```
 
 This command gets the API with the specified name.
 
 ## PARAMETERS
+
+### -ApiId
+Specifies the ID of the API to get.
+
+```yaml
+Type: String
+Parameter Sets: GetByApiId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Context
 Specifies a **PsApiManagementContext** object.
@@ -79,18 +98,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiId
-Specifies the ID of the API to get.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-```yaml
-Type: String
-Parameter Sets: Find by ID
-Aliases: 
-
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -99,7 +118,7 @@ Specifies the name of the API to get.
 
 ```yaml
 Type: String
-Parameter Sets: Find by Name
+Parameter Sets: GetByName
 Aliases: 
 
 Required: True
@@ -114,52 +133,13 @@ Specifies the ID of the product for which to get the API.
 
 ```yaml
 Type: String
-Parameter Sets: Find by product ID
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -170,7 +150,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
+The details of the Api in a given ApiManagement service
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi>
+The list of Apis in a given ApiManagement service
 
 ## NOTES
 

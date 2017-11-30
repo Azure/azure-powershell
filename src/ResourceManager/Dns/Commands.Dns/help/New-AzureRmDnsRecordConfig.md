@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: AD97BCAF-69BA-4C16-8B57-AB243D796B71
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnsrecordconfig
 schema: 2.0.0
 ---
 
@@ -14,43 +15,52 @@ Creates a new DNS record local object.
 
 ### A
 ```
-New-AzureRmDnsRecordConfig -Ipv4Address <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ipv4Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Aaaa
 ```
-New-AzureRmDnsRecordConfig -Ipv6Address <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ipv6Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Ns
 ```
-New-AzureRmDnsRecordConfig -Nsdname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Nsdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Mx
 ```
-New-AzureRmDnsRecordConfig -Exchange <String> -Preference <UInt16> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Exchange <String> -Preference <UInt16> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Ptr
 ```
-New-AzureRmDnsRecordConfig -Ptrdname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Txt
 ```
-New-AzureRmDnsRecordConfig -Value <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Value <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Srv
 ```
 New-AzureRmDnsRecordConfig -Priority <UInt16> -Target <String> -Port <UInt16> -Weight <UInt16>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CName
 ```
-New-AzureRmDnsRecordConfig -Cname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Caa
+```
+New-AzureRmDnsRecordConfig -CaaFlags <Byte> -CaaTag <String> -CaaValue <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,18 +187,78 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 
 ## PARAMETERS
 
+### -CaaFlags
+The flags for the CAA record to add. Must be a number between 0 and 255.
+
+```yaml
+Type: Byte
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaTag
+The tag field of the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaValue
+The value field for the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Cname
 Specifies the domain name for a canonical name (CNAME) record.
 
 ```yaml
 Type: String
 Parameter Sets: CName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,7 +268,7 @@ Specifies the mail exchange server name for a mail exchange (MX) record.
 ```yaml
 Type: String
 Parameter Sets: Mx
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -213,7 +283,7 @@ Specifies an IPv4 address for an A record.
 ```yaml
 Type: String
 Parameter Sets: A
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -228,7 +298,7 @@ Specifies an IPv6 address for an AAAA record.
 ```yaml
 Type: String
 Parameter Sets: Aaaa
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -243,7 +313,7 @@ Specifies the name server name for a name server (NS) record.
 ```yaml
 Type: String
 Parameter Sets: Ns
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -258,7 +328,7 @@ Specifies the port for a service (SRV) record.
 ```yaml
 Type: UInt16
 Parameter Sets: Srv
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -273,7 +343,7 @@ Specifies the preference for an MX record.
 ```yaml
 Type: UInt16
 Parameter Sets: Mx
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -288,7 +358,7 @@ Specifies the priority for an SRV record.
 ```yaml
 Type: UInt16
 Parameter Sets: Srv
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -303,7 +373,7 @@ Specifies the target domain name of a pointer resource (PTR) record.
 ```yaml
 Type: String
 Parameter Sets: Ptr
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -318,7 +388,7 @@ Specifies the target for an SRV record.
 ```yaml
 Type: String
 Parameter Sets: Srv
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -333,7 +403,7 @@ Specifies the value for a TXT record.
 ```yaml
 Type: String
 Parameter Sets: Txt
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -348,7 +418,7 @@ Specifies the weight for an SRV record.
 ```yaml
 Type: UInt16
 Parameter Sets: Srv
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -365,6 +435,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Dns.DnsRecordBase
 
 ## NOTES
 

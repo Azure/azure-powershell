@@ -30,16 +30,13 @@ function Get-ComputeTestResourceName
         }
     }
     
-    $oldErrorActionPreferenceValue = $ErrorActionPreference;
-    $ErrorActionPreference = "SilentlyContinue";
-    
     try
     {
         $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
     }
     catch
     {
-        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        if ($PSItem.Exception.Message -like '*Unable to find type*')
         {
             $assetName = Get-RandomItemName;
         }
@@ -47,10 +44,6 @@ function Get-ComputeTestResourceName
         {
             throw;
         }
-    }
-    finally
-    {
-        $ErrorActionPreference = $oldErrorActionPreferenceValue;
     }
 
     return $assetName
@@ -63,9 +56,6 @@ Gets test mode - 'Record' or 'Playback'
 #>
 function Get-ComputeTestMode
 {
-    $oldErrorActionPreferenceValue = $ErrorActionPreference;
-    $ErrorActionPreference = "SilentlyContinue";
-    
     try
     {
         $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
@@ -73,7 +63,7 @@ function Get-ComputeTestMode
     }
     catch
     {
-        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        if ($PSItem.Exception.Message -like '*Unable to find type*')
         {
             $testMode = 'Record';
         }
@@ -81,10 +71,6 @@ function Get-ComputeTestMode
         {
             throw;
         }
-    }
-    finally
-    {
-        $ErrorActionPreference = $oldErrorActionPreferenceValue;
     }
 
     return $testMode;
@@ -356,7 +342,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*WindowsServer*' -and -not ($_ -like '*HUB')  };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;

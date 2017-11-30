@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -31,6 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleProfileTests(Xunit.Abstractions.ITestOutputHelper output = null)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             if (output != null)
             {
                 ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
@@ -54,9 +58,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             this.InitializeForFixedDate();
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.ScheduleDays = null;
-            Cmdlet.ScheduleHours = null;
-            Cmdlet.ScheduleMinutes = null;
+            Cmdlet.ScheduleDay = null;
+            Cmdlet.ScheduleHour = null;
+            Cmdlet.ScheduleMinute = null;
             Cmdlet.ScheduleTimeZone = null;
 
             Cmdlet.ExecuteCmdlet();
@@ -88,15 +92,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.DefaultCapacity = "1";
             Cmdlet.MaximumCapacity = "10";
             Cmdlet.MinimumCapacity = "1";
-            Cmdlet.Rules = autoscaleRules;
+            Cmdlet.Rule = autoscaleRules;
         }
 
         public void InitializeForRecurrentSchedule()
         {
             Cmdlet.RecurrenceFrequency = RecurrenceFrequency.Minute;
-            Cmdlet.ScheduleDays = new List<string> { "1", "2", "3" };
-            Cmdlet.ScheduleHours = new List<int?> { 5, 10, 15 };
-            Cmdlet.ScheduleMinutes = new List<int?> { 15, 30, 45 };
+            Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" };
+            Cmdlet.ScheduleHour = new List<int?> { 5, 10, 15 };
+            Cmdlet.ScheduleMinute = new List<int?> { 15, 30, 45 };
             Cmdlet.ScheduleTimeZone = "GMT";
         }
 

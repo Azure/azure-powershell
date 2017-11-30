@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Management.NotificationHubs;
@@ -27,11 +28,11 @@ namespace Microsoft.Azure.Commands.NotificationHubs
 
     public class NotificationHubsManagementClient
     {
-        private readonly AzureContext _context;
+        private readonly IAzureContext _context;
 
         private Management.NotificationHubs.NotificationHubsManagementClient _client;
 
-        public NotificationHubsManagementClient(AzureContext azureContext)
+        public NotificationHubsManagementClient(IAzureContext azureContext)
         {
             if (azureContext == null)
             {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 if (_client == null)
                 {
                     _client =
-                        AzureSession.ClientFactory.CreateArmClient<Management.NotificationHubs.NotificationHubsManagementClient>(
+                        AzureSession.Instance.ClientFactory.CreateArmClient<Management.NotificationHubs.NotificationHubsManagementClient>(
                             _context,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
@@ -230,7 +231,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             var parameter = new NotificationHubCreateOrUpdateParameters()
             {
                 Location = nhAttributes.Location,
-                Tags = new Dictionary<string, string>(nhAttributes.Tags),
                 AdmCredential = nhAttributes.AdmCredential,
                 ApnsCredential = nhAttributes.ApnsCredential,
                 BaiduCredential = nhAttributes.BaiduCredential,
@@ -241,6 +241,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
 
+            if (nhAttributes.Tags != null)
+            {
+                parameter.Tags = new Dictionary<string, string>(nhAttributes.Tags);
+            }
             var response = Client.NotificationHubs.CreateOrUpdate(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
             return new NotificationHubAttributes(response);
         }

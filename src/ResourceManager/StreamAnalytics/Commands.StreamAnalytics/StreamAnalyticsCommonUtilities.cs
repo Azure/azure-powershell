@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections;

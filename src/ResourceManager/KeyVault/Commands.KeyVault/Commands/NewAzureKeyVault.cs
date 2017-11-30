@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of an existing resource group in which to create the key vault.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
@@ -61,6 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.")]
+        [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
@@ -78,6 +81,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
+        public SwitchParameter EnableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -124,7 +132,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         {
                             Keys = DefaultPermissionsToKeys,
                             Secrets = DefaultPermissionsToSecrets,
-                            Certificates = DefaultPermissionsToCertificates
+                            Certificates = DefaultPermissionsToCertificates,
+                            Storage = DefaultPermissionsToStorage
                         }
                     };
                 }
@@ -137,6 +146,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
+                    EnableSoftDelete = EnableSoftDelete.IsPresent,
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),

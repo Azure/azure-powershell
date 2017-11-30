@@ -1,7 +1,9 @@
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Storage;
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group that contains the virtual machine.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -170,6 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
+        [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -301,7 +305,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 if (ArchiveStorageEndpointSuffix == null)
                 {
                     ArchiveStorageEndpointSuffix =
-                        DefaultProfile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 }
 
                 if (!(Regex.Match(Version, VersionRegexExpr).Success))
@@ -398,7 +402,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
             }
 
-            var result = Mapper.Map<PSAzureOperationResponse>(op);
+            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 
@@ -460,7 +464,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        if (!Force && configurationDataBlobReference.Exists())
+                        if (!Force && configurationDataBlobReference.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                         {
                             ThrowTerminatingError(
                                 new ErrorRecord(
@@ -474,7 +478,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationData, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFileAsync(ConfigurationData).ConfigureAwait(false).GetAwaiter().GetResult();
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

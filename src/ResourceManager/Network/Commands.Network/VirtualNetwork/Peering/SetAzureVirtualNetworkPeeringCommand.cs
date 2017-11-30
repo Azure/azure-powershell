@@ -14,7 +14,6 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(this.VirtualNetworkPeering);
+            var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(this.VirtualNetworkPeering);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetworkPeering.ResourceGroupName, this.VirtualNetworkPeering.VirtualNetworkName, this.VirtualNetworkPeering.Name, vnetPeeringModel);

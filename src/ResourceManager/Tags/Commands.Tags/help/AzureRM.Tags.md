@@ -1,10 +1,9 @@
----
+﻿---
 Module Name: AzureRM.Tags
 Module Guid: 59713673-194f-418a-b1f2-ac60db82edf9
 Download Help Link: None
 Help Version: 4.0.0.0
 Locale: en-US
-ms.assetid: 0956A501-0FBD-43C7-9300-07388973FFF4
 ---
 
 # AzureRM.Tags Module

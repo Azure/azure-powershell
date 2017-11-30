@@ -37,7 +37,7 @@ function UpdateServiceChangeLog([string]$PathToChangeLog, [string]$ModuleVersion
     {
         # If we have found the "Current Release" section, update the section title,
         # add the new "Current Release" section, update the buffer, and switch the $found variable
-        if ($content[$idx] -eq "## Current Release")
+        if (($content[$idx] -ne $null) -and ($content[$idx].StartsWith("## Current Release")))
         {
             $content[$idx] = "## Version $ModuleVersion"
             $found = $True
@@ -145,7 +145,9 @@ This function will use the psd1 file to grab the module version.
 #>
 function GetModuleVersion([string]$PathToModule)
 {
-    return (Test-ModuleManifest -Path $PathToModule).Version.ToString()
+    $file = Get-Item $PathToModule
+    Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+    return $ModuleMetadata.ModuleVersion.ToString()
 }
 
 <#
@@ -260,12 +262,14 @@ $PathToChangeLog = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilitie
 $PathToModule = "$PathToRepo\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
 
 $ServiceManagementResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "ServiceManagement"
+Copy-Item -Path $PathToModule -Destination "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\Azure.psd1" -Force
 
 # Update the Storage change log
 $PathToChangeLog = "$PathToRepo\src\Storage\ChangeLog.md"
 $PathToModule = "$PathToRepo\src\Package\Debug\Storage\Azure.Storage\Azure.Storage.psd1"
 
 $StorageResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "Azure.Storage"
+Copy-Item -Path $PathToModule -Destination "$PathToRepo\src\Storage\Azure.Storage.psd1" -Force
 
 $result = @()
 

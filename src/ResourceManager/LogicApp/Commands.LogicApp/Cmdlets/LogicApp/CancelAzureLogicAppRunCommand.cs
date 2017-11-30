@@ -16,12 +16,13 @@
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     /// <summary>
     /// Stop the workflow run
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class CancelAzureLogicAppRunCommand : LogicAppBaseCmdlet
     {
 
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

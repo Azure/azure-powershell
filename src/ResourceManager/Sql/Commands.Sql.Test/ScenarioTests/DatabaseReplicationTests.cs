@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseReplicationTests : SqlTestsBase
     {
-        public DatabaseReplicationTests(ITestOutputHelper output)
+        public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
@@ -32,13 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestCreateDatabaseCopy()
         {
             RunPowerShellTest("Test-CreateDatabaseCopy");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestCreateDatabaseCopyV2()
-        {
-            RunPowerShellTest("Test-CreateDatabaseCopyV2");
         }
 
         [Fact]
@@ -50,23 +42,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestCreateSecondaryDatabaseV2()
-        {
-            RunPowerShellTest("Test-CreateSecondaryDatabaseV2");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
         public void TestGetReplicationLink()
         {
             RunPowerShellTest("Test-GetReplicationLink");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestGetReplicationLinkV2()
-        {
-            RunPowerShellTest("Test-GetReplicationLinkV2");
         }
 
         [Fact]
@@ -74,13 +52,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRemoveSecondaryDatabase()
         {
             RunPowerShellTest("Test-RemoveSecondaryDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRemoveSecondaryDatabaseV2()
-        {
-            RunPowerShellTest("Test-RemoveSecondaryDatabaseV2");
         }
 
         [Fact]

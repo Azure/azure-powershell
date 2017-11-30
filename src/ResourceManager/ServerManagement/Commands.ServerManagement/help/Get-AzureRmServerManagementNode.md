@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 4EE30890-B09B-4811-88AD-4BF4FD47E431
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/get-azurermservermanagementnode
 schema: 2.0.0
 ---
 
@@ -15,13 +16,12 @@ Gets one or more Server Management nodes.
 ### ByNodeName
 ```
 Get-AzureRmServerManagementNode [[-ResourceGroupName] <String>] [[-NodeName] <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByNode
 ```
-Get-AzureRmServerManagementNode [-Node] <Node> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementNode [-Node] <Node> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,67 +36,13 @@ The **Get-AzureRmServerManagementNode** cmdlet gets one or more Azure Server Man
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which the nodes belong to.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByNodeName
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NodeName
-Specifies the name of the node for which this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: ByNodeName
-Aliases: 
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -120,12 +66,47 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -NodeName
+Specifies the name of the node for which this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: ByNodeName
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group in which the nodes belong to.
+
+```yaml
+Type: String
+Parameter Sets: ByNodeName
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Node
+Parameter 'Node' accepts value of type 'Node' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.ServerManagement.Model.Node
 
 ## NOTES
 

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,14 +30,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmDiskUpdateConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(DiskUpdate))]
-    public class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSDiskUpdate))]
+    public partial class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? AccountType { get; set; }
+        [Alias("AccountType")]
+        public StorageAccountTypes? SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -55,31 +57,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public DiskCreateOption? CreateOption { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string StorageAccountId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public ImageDiskReference ImageReference { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string SourceUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -106,56 +83,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            // CreationData
-            Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
-
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
-            if (this.CreateOption.HasValue)
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                vCreationData.CreateOption = this.CreateOption.Value;
-            }
-
-            if (this.StorageAccountId != null)
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                vCreationData.StorageAccountId = this.StorageAccountId;
-            }
-
-            if (this.ImageReference != null)
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                vCreationData.ImageReference = this.ImageReference;
-            }
-
-            if (this.SourceUri != null)
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                vCreationData.SourceUri = this.SourceUri;
-            }
-
-            if (this.SourceResourceId != null)
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                vCreationData.SourceResourceId = this.SourceResourceId;
-            }
+            // Sku
+            Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
 
             if (this.EncryptionSettingsEnabled != null)
             {
@@ -184,15 +116,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
-
-            var vDiskUpdate = new DiskUpdate
+            if (this.SkuName != null)
             {
-                AccountType = this.AccountType,
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
+                }
+                vSku.Name = this.SkuName;
+            }
+
+
+            var vDiskUpdate = new PSDiskUpdate
+            {
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
-                CreationData = vCreationData,
                 EncryptionSettings = vEncryptionSettings,
+                Sku = vSku,
             };
 
             WriteObject(vDiskUpdate);

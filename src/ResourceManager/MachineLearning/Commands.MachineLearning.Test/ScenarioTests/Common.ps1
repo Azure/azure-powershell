@@ -78,31 +78,22 @@ Gets the latest API Version for the resource type
 #>
 function Get-ProviderAPIVersion($providerNamespace, $resourceType)
 { 
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
-        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {		
-        $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-        $resourceType = $provider.ResourceTypes | where {$_.ResourceTypeName -eq $resourceType}
-        return $resourceType.ApiVersions[$resourceType.ApiVersions.Count -1]
-    } else
+    if ($providerNamespace -eq "Microsoft.MachineLearning")
     {
-        if ($providerNamespace -eq "Microsoft.MachineLearning")
+        if ([System.String]::Equals($resourceType, "commitmentPlans", `
+            [System.StringComparison]::OrdinalIgnoreCase))
         {
-            if ([System.String]::Equals($resourceType, "commitmentPlans", `
-                [System.StringComparison]::OrdinalIgnoreCase))
-            {
-                return "2016-05-01-preview"
-            }
-
-            if ([System.String]::Equals($resourceType, "webServices", `
-                [System.StringComparison]::OrdinalIgnoreCase))
-            {
-                return "2016-05-01-preview"
-            }
+            return "2016-05-01-preview"
         }
 
-        return $null
+        if ([System.String]::Equals($resourceType, "webServices", `
+            [System.StringComparison]::OrdinalIgnoreCase))
+        {
+            return "2017-01-01"
+        }
     }
+
+    return $null
 }
 
 <#

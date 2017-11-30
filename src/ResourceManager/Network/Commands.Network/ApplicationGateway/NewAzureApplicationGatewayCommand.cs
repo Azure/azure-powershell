@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/applicationGateways")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
@@ -128,6 +131,12 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of redirect configuration")]
+        public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -234,6 +243,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules;
             }
 
+            if (this.RedirectConfigurations != null)
+            {
+                applicationGateway.RedirectConfigurations = this.RedirectConfigurations;
+            }
+
             if (this.WebApplicationFirewallConfiguration != null)
             {
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
@@ -243,7 +257,7 @@ namespace Microsoft.Azure.Commands.Network
             ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
 
             // Map to the sdk object
-            var appGwModel = Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
+            var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ApplicationGateway call

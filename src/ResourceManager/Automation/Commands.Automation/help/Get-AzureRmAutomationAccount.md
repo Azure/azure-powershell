@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: B32A8423-A7AA-418E-A95D-6C18566741AB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationaccount
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Gets Automation accounts in a resource group.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationAccount [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmAutomationAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByAutomationAccountName
 ```
-Get-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +48,21 @@ This command gets the Automation account named ContosoAutomationAccount in the r
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Automation account that this cmdlet gets.
 
@@ -54,7 +72,7 @@ Parameter Sets: ByAutomationAccountName
 Aliases: AutomationAccountName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -69,7 +87,7 @@ Parameter Sets: ByAll
 Aliases: 
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -81,7 +99,7 @@ Parameter Sets: ByAutomationAccountName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -93,6 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Automation.Model.AutomationAccount
 
 ## NOTES
 

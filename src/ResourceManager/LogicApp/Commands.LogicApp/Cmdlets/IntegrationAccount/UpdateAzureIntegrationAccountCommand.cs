@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Updates the integration account 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccount", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccount", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccount))]
     public class UpdateAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
 
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Logic/integrationAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -74,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 integrationAccount.Sku = new IntegrationAccountSku
                 {
-                    Name = (IntegrationAccountSkuName) Enum.Parse(typeof (IntegrationAccountSkuName), this.Sku),
+                    Name = (IntegrationAccountSkuName) Enum.Parse(typeof(IntegrationAccountSkuName), this.Sku),
 
                 };
             }

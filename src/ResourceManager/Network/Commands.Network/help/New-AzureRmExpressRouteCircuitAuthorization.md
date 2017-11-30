@@ -1,25 +1,24 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: B6E55944-1B78-463F-9FC9-98097FEEC278
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
 # New-AzureRmExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
-
 Creates an ExpressRoute circuit authorization.
 
 ## SYNTAX
 
 ```
-New-AzureRmExpressRouteCircuitAuthorization -Name <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmExpressRouteCircuitAuthorization -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 The **New-AzureRmExpressRouteCircuitAuthorization** cmdlet creates a circuit authorization that can
 be added to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the
 Microsoft cloud by using a connectivity provider instead of the public Internet. The owner of an
@@ -35,8 +34,7 @@ authorization that can be added to a new circuit at the same time the circuit is
 ## EXAMPLES
 
 ### Example 1: Create a new circuit authorization
-
-```powershell
+```
 $Authorization = New-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization"
 ```
 
@@ -50,14 +48,28 @@ For more information, see the documentation for the New-AzureRmExpressRouteCircu
 
 ## PARAMETERS
 
-### -Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
 Specifies a unique name for the new ExpressRoute circuit authorization.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -66,63 +78,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-###
+### None
 This cmdlet does not accept pipelined input.
 
 ## OUTPUTS
 
-### This cmdlet creates instances of the
-**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
+### PSExpressRouteCircuitAuthorization
+This cmdlet creates instances of the **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
 
 ## NOTES
 
@@ -133,5 +100,4 @@ This cmdlet does not accept pipelined input.
 [Get-AzureRmExpressRouteCircuitAuthorization](./Get-AzureRmExpressRouteCircuitAuthorization.md)
 
 [Remove-AzureRmExpressRouteCircuitAuthorization](./Remove-AzureRmExpressRouteCircuitAuthorization.md)
-
 

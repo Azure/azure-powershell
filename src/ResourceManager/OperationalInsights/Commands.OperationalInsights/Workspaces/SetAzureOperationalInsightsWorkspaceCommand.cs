@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using System.Management.Automation;
 
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 1, ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -38,12 +40,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [ValidateSet("free", "standard", "premium", IgnoreCase = true)]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
+        [ValidateNotNullOrEmpty]
+        public int? RetentionInDays { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,7 +65,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Sku = Sku,
-                Tags = Tags
+                Tags = Tags,
+                RetentionInDays = RetentionInDays
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));

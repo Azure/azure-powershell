@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 37E41DA2-B65B-4AA2-B6AB-F93CCA881C72
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/set-azurermhdinsightdefaultstorage
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Sets the default Storage account setting in a cluster configuration object.
 
 ```
 Set-AzureRmHDInsightDefaultStorage [-Config] <AzureHDInsightConfig> [-StorageAccountName] <String>
- [-StorageAccountKey] <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -78,6 +79,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountKey
+Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccountName
 Specifies the name of the default storage account that the HDInsight cluster will use.
 
@@ -93,52 +124,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountKey
-Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
+### -StorageAccountType
+Gets or sets the type of the default storage account. Defaults to AzureStorage
 
 ```yaml
-Type: String
+Type: StorageType
 Parameter Sets: (All)
 Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Accepted values: AzureStorage, AzureDataLakeStore
 
 Required: False
 Position: Named
@@ -152,7 +145,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### AzureHDInsightConfig
+Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 
 ## NOTES
 

@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Direction { get; set; }
         public string LocalIPAddress { get; set; }
         public string LocalPort { get; set; }
-        public uint Protocol { get; set; }
-        public uint RemoteIPAddress { get; set; }
-        public uint RemotePort { get; set; }
+        public int Protocol { get; set; }
+        public int RemoteIPAddress { get; set; }
+        public int RemotePort { get; set; }
         public string TargetNicResourceId { get; set; }
         public string TargetResourceId { get; set; }
     }

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+Module Name: AzureRM.DataFactories
 ms.assetid: 1D07222C-17D1-421C-8C9B-37043CBCF517
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
 schema: 2.0.0
 ---
 
@@ -16,13 +17,14 @@ Sets the status of slices for a dataset in Azure Data Factory.
 ```
 Set-AzureRmDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
  [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [-ResourceGroupName] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
 Set-AzureRmDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
- [-DataFactory] <PSDataFactory> [-DatasetName] <String> [-StartDateTime] <DateTime> [<CommonParameters>]
+ [-DataFactory] <PSDataFactory> [-DatasetName] <String> [-StartDateTime] <DateTime>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +55,7 @@ Parameter Sets: ByFactoryObject
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -69,9 +71,39 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatasetName
+Specifies the name of the dataset for which this cmdlet modifies slices.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,7 +127,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,7 +143,7 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -127,7 +159,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -152,26 +184,12 @@ Skipped processing the data slice.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Failed, InProgress, Ready, Skipped, Waiting
 
 Required: True
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetName
-Specifies the name of the dataset for which this cmdlet modifies slices.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -188,9 +206,10 @@ Sets the status of each slice for the dataset and all the dependent datasets, wh
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Individual, UpstreamInPipeline
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

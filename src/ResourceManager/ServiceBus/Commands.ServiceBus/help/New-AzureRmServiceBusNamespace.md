@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusnamespace
 schema: 2.0.0
 ---
 
@@ -12,8 +13,9 @@ Creates a new Service Bus namespace.
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-NamespaceName] <String>
- [-SkuName <String>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,23 +26,32 @@ The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespac
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
+
+Name               : SB-Example1
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Location           : West US
+Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState  : Succeeded
+CreatedAt          : 1/20/2017 2:07:33 AM
+UpdatedAt          : 1/20/2017 2:07:56 AM
+ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 ```
 
 Creates a new Service Bus namespace within the specified resource group.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -60,13 +71,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
+### -Name
+ServiceBus Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
 Position: 2
@@ -81,7 +92,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -107,7 +118,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtable that represents resource tags.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -118,6 +131,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -159,16 +187,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
-Name               : SB-Example2
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example2
-Location           : West US
-Sku                : Name : Standard , Capacity : 1 , Tier : Standard
-ProvisioningState  : Succeeded
-Status             : Active
-CreatedAt          : 1/20/2017 2:07:33 AM
-UpdatedAt          : 1/20/2017 2:07:56 AM
-ServiceBusEndpoint : https://SB-Example2.servicebus.windows.net:443/
-Enabled            : True
 
 ## NOTES
 

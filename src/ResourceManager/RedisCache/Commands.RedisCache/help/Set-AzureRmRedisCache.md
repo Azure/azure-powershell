@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 6234F211-6ED4-443F-9B83-DEB9AC51B763
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/set-azurermrediscache
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Modifies a Redis Cache.
 ```
 Set-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [-Size <String>] [-Sku <String>]
  [-MaxMemoryPolicy <String>] [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>]
- [-TenantSettings <Hashtable>] [-ShardCount <Int32>] [<CommonParameters>]
+ [-TenantSettings <Hashtable>] [-ShardCount <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,85 +51,27 @@ This command updates the maxmemory-policy for the Redis Cache named MyCache.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Redis Cache to update.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the Redis Cache.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Size
-Specifies the size of the Redis Cache.
-Valid values are: 
-
-- P1
-- P2
-- P3
-- P4
-- C0
-- C1
-- C2
-- C3
-- C4
-- C5
-- C6
-- 250MB
-- 1GB
-- 2.5GB
-- 6GB
-- 13GB
-- 26GB
-- 53GB
-
-The default value is 1GB or C1.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-Specifies the SKU of the Redis Cache to create.
-Valid values are: 
-
-- Basic
-- Standard
-- Premium
-
-The default value is Standard.
+### -EnableNonSslPort
+Indicates whether the non-SSL port is enabled.
+The default value is $False (the non-SSL port is disabled).
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases: 
 
@@ -151,6 +95,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the Redis Cache to update.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -213,16 +172,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableNonSslPort
-Indicates whether the non-SSL port is enabled.
-The default value is $False (the non-SSL port is disabled).
+### -ResourceGroupName
+Specifies the name of the resource group that contains the Redis Cache.
 
 ```yaml
-Type: Boolean
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -236,6 +194,67 @@ Specifies the number of shards to create on a Premium cluster cache.
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Size
+Specifies the size of the Redis Cache.
+Valid values are: 
+
+- P1
+- P2
+- P3
+- P4
+- C0
+- C1
+- C2
+- C3
+- C4
+- C5
+- C6
+- 250MB
+- 1GB
+- 2.5GB
+- 6GB
+- 13GB
+- 26GB
+- 53GB
+
+The default value is 1GB or C1.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+Specifies the SKU of the Redis Cache to create.
+Valid values are: 
+
+- Basic
+- Standard
+- Premium
+
+The default value is Standard.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Basic, Standard, Premium
 
 Required: False
 Position: Named

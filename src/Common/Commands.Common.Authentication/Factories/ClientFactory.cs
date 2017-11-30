@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
@@ -27,6 +28,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
@@ -35,24 +37,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private OrderedDictionary _handlers;
         private ReaderWriterLockSlim _actionsLock;
         private ReaderWriterLockSlim _handlersLock;
+        private ConcurrentDictionary<ProductInfoHeaderValue, string> _userAgents { get; set; }
 
         public ClientFactory()
         {
             _actions = new Dictionary<Type, IClientAction>();
             _actionsLock = new ReaderWriterLockSlim();
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            _userAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
             _handlers = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
         }
 
-        public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (context == null)
             {
@@ -102,7 +105,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(exceptionMessage);
             }
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
             foreach (DelegatingHandler handler in GetCustomHandlers())
             {
@@ -112,12 +115,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
-            TClient client = CreateClient<TClient>(profile.Context, endpoint);
+            TClient client = CreateClient<TClient>(container.DefaultContext, endpoint);
             foreach (IClientAction action in GetActions())
             {
-                action.Apply<TClient>(client, profile, endpoint);
+                action.Apply<TClient>(client, container, endpoint);
             }
 
             return client;
@@ -137,26 +140,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// or
         /// environment
         /// </exception>
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer profile, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            if (!profile.Accounts.ContainsKey(subscription.Account))
+            var account = profile.Accounts.FirstOrDefault((a) => string.Equals(a.Id, (subscription.GetAccount()), StringComparison.OrdinalIgnoreCase));
+
+            if (null == account)
             {
-                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.Account), "accountName");
+                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
             }
 
-            if (!profile.Environments.ContainsKey(subscription.Environment))
+            var environment = profile.Environments.FirstOrDefault((e) => string.Equals(e.Name, subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase));
+
+            if (null == environment)
             {
-                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.Environment));
+                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
             }
 
-            AzureContext context = new AzureContext(subscription,
-                profile.Accounts[subscription.Account],
-                profile.Environments[subscription.Environment]);
+            AzureContext context = new AzureContext(subscription, account, environment);
 
             TClient client = CreateClient<TClient>(context, endpoint);
 
@@ -185,7 +190,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -334,7 +339,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
         }
 
         /// <summary>
@@ -346,7 +351,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AddUserAgent(productName, "");
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public ProductInfoHeaderValue[] UserAgents
+        {
+            get
+            {
+                ProductInfoHeaderValue[] result = null;
+                if (_userAgents != null && _userAgents.Keys != null)
+                {
+                    result = _userAgents.Keys.ToArray();
+                }
+
+                return result;
+            }
+        }
 
         public DelegatingHandler[] GetCustomHandlers()
         {
@@ -375,6 +392,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             finally
             {
                 _handlersLock.ExitReadLock();
+            }
+        }
+
+        public void RemoveUserAgent(string name)
+        {
+            if (_userAgents != null && _userAgents.Keys != null)
+            {
+                var agents = _userAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));
+                foreach (var agent in agents)
+                {
+                    string value;
+                    _userAgents.TryRemove(agent, out value);
+                }
             }
         }
     }

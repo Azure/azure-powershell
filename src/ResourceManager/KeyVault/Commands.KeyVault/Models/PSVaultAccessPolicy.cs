@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSVaultAccessPolicy
     {
-        public PSVaultAccessPolicy(Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates)
+        public PSVaultAccessPolicy( Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates, string[] permissionsToStorage )
         {
             TenantId = tenantId;
             ObjectId = objectId;
@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToSecrets = permissionsToSecrets == null ? new List<string>() : new List<string>(permissionsToSecrets);
             PermissionsToKeys = permissionsToKeys == null ? new List<string>() : new List<string>(permissionsToKeys);
             PermissionsToCertificates = permissionsToCertificates == null ? new List<string>() : new List<string>(permissionsToCertificates);
+            PermissionsToStorage = permissionsToStorage == null ? new List<string>() : new List<string>( permissionsToStorage );
         }
 
         public PSVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToSecrets = s.Permissions.Secrets == null ? new List<string>() : new List<string>(s.Permissions.Secrets);
             PermissionsToKeys = s.Permissions.Keys == null ? new List<string>() : new List<string>(s.Permissions.Keys);
             PermissionsToCertificates = s.Permissions.Certificates == null ? new List<string>() : new List<string>(s.Permissions.Certificates);
+            PermissionsToStorage = s.Permissions.Storage == null ? new List<string>() : new List<string>( s.Permissions.Storage );
         }
 
         public Guid TenantId { get; private set; }
@@ -61,8 +63,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public List<string> PermissionsToSecrets { get; private set; }
 
         public string PermissionsToSecretsStr { get { return string.Join(", ", PermissionsToSecrets); } }
+
         public List<string> PermissionsToCertificates { get; private set; }
 
         public string PermissionsToCertificatesStr { get { return string.Join(", ", PermissionsToCertificates); } }
+
+        public List<string> PermissionsToStorage { get; private set; }
+
+        public string PermissionsToStorageStr { get { return string.Join( ", ", PermissionsToStorage ); } }
     }
 }

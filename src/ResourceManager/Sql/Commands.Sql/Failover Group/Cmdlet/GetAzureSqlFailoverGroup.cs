@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseFailoverGroup")]
     public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the Azure SQL Database Server from which to retrieve the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the FailoverGroup to use.
         /// </summary>

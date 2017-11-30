@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResource")]
+        [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Alias("Name")]
@@ -38,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
@@ -45,6 +48,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -94,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                 nextHop = this.NetworkWatcherClient.GetNextHop(this.ResourceGroupName, this.NetworkWatcherName, parameters);
             }
 
-            PSNextHopResult psNextHop = Mapper.Map<PSNextHopResult>(nextHop);
+            PSNextHopResult psNextHop = NetworkResourceManagerProfile.Mapper.Map<PSNextHopResult>(nextHop);
 
             WriteObject(psNextHop);
         }
