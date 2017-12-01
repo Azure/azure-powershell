@@ -40,10 +40,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIntegrationRuntimeJobsLimit)]
         public int ConcurrentJobsLimit { get; set; }
 
-        [Parameter(
-            Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -64,12 +60,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             };
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.IntegrationRuntimeNodeUpdateMessage,
-                    Name,
-                    IntegrationRuntimeName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.IntegrationRuntimeNodeUpdating,

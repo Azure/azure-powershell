@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         SupportsShouldProcess = true)]
     public class InvokeAzureDataFactoryIntegrationRuntimeUpgradeCommand : IntegrationRuntimeCmdlet
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.HelpDontAskConfirmation)]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -47,11 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             };
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.IntegrationRuntimeUpgrade,
-                    Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.IntegrationRuntimeUpgrading,

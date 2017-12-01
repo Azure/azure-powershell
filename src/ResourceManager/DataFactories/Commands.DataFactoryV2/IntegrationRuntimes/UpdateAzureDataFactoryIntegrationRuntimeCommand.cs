@@ -47,10 +47,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNull]
         public TimeSpan? AutoUpdateDelayOffset { get; set; }
 
-        [Parameter(
-            Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -95,19 +91,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             };
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.IntegrationRuntimeUpdateMessage,
-                    Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.IntegrationRuntimeUpdating,
                     Name,
                     DataFactoryName),
                 Name,
-                updateIntegrationRuntime,
-                () => true);
+                updateIntegrationRuntime);
         }
     }
 }

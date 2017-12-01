@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeNode = "AzureRmDataFactoryV2IntegrationRuntimeNode";
 
-        public const string IntegrationRuntimeNodeIp = "AzureRmDataFactoryV2IntegrationRuntimeNodeIp";
-
         public const string IntegrationRuntimeMetric = "AzureRmDataFactoryV2IntegrationRuntimeMetric";
 
         public const string IntegrationRuntimeKey = "AzureRmDataFactoryV2IntegrationRuntimeKey";
@@ -113,6 +111,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
 
         public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
+
+        public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
 
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
 

@@ -73,7 +73,7 @@
     <Compile Include="IntegrationRuntimes\GetAzureDataFactoryIntegrationRuntimeKeyCommand.cs" />
     <Compile Include="IntegrationRuntimes\GetAzureDataFactoryIntegrationRuntimeCommand.cs" />
     <Compile Include="IntegrationRuntimes\GetAzureDataFactoryIntegrationRuntimeMetricCommand.cs" />
-    <Compile Include="IntegrationRuntimes\GetAzureDataFactoryIntegrationRuntimeNodeIpCommand.cs" />
+    <Compile Include="IntegrationRuntimes\GetAzureDataFactoryIntegrationRuntimeNodeCommand.cs" />
     <Compile Include="IntegrationRuntimes\IntegrationRuntimeBaseCmdlet.cs" />
     <Compile Include="IntegrationRuntimes\IntegrationRuntimeCmdlet.cs" />
     <Compile Include="IntegrationRuntimes\IntegrationRuntimeContextBaseCmdlet.cs" />
@@ -89,6 +89,8 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\PSManagedIntegrationRuntimeNode.cs" />
+    <Compile Include="Models\PSSelfHostedIntegrationRuntimeNode.cs" />
     <Compile Include="Models\TriggerRunFilterOptions.cs" />
     <Compile Include="Models\CreatePSAdfEntityParameters.cs" />
     <Compile Include="LinkedServices\GetAzureDataFactoryLinkedServiceCommand.cs" />

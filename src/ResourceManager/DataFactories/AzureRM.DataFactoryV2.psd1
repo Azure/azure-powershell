@@ -105,7 +105,7 @@ CmdletsToExport =
                'Get-AzureRmDataFactoryV2IntegrationRuntimeMetric',
                'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode',
                'Update-AzureRmDataFactoryV2IntegrationRuntimeNode',
-               'Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp',
+               'Get-AzureRmDataFactoryV2IntegrationRuntimeNode',
                'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade',
                'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential',
                'Update-AzureRmDataFactoryV2IntegrationRuntime',
