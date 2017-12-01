@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Subscription.Models;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Subscription;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.Subscription.Common
             set { _subscriptionDefinitionClient = value; }
         }
 
-        protected void WriteSubscriptionDefinitionObject(Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition subscriptionDefinition)
+        protected void WriteSubscriptionDefinitionObject(Microsoft.Azure.Management.Subscription.Models.SubscriptionDefinition subscriptionDefinition)
         {
             this.WriteObject(new PSSubscriptionDefinition(subscriptionDefinition));
         }
 
-        protected void WriteSubscriptionDefinitionObjects(IEnumerable<Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition> subscriptionDefinitions)
+        protected void WriteSubscriptionDefinitionObjects(IEnumerable<Microsoft.Azure.Management.Subscription.Models.SubscriptionDefinition> subscriptionDefinitions)
         {
             this.WriteObject(subscriptionDefinitions.Select(x => new PSSubscriptionDefinition(x)), enumerateCollection: true);
         }

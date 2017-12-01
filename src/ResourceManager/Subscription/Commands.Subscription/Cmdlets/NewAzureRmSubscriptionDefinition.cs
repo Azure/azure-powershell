@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Subscription.Common;
 using Microsoft.Azure.Commands.Subscription.Models;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Subscription;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription definition"))
             {
-                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionsClient.SubscriptionDefinitions.Create(this.Name, new Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition(
+                this.WriteSubscriptionDefinitionObject(this.SubscriptionDefinitionsClient.SubscriptionDefinitions.Create(this.Name, new Microsoft.Azure.Management.Subscription.Models.SubscriptionDefinition(
                     offerType: this.OfferType,
                     subscriptionDisplayName: this.SubscriptionDisplayName ?? this.Name)));
             }

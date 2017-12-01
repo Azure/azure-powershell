@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using ApiSubscriptionDefinition = Microsoft.Azure.Management.ResourceManager.Models.SubscriptionDefinition;
+using ApiSubscriptionDefinition = Microsoft.Azure.Management.Subscription.Models.SubscriptionDefinition;
 
 namespace Microsoft.Azure.Commands.Subscription.Models
 {
