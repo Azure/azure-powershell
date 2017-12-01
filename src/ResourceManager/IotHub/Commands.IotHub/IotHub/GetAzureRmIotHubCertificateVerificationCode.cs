@@ -14,8 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
-    using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
