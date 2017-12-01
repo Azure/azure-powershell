@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Subscription.Common;
 using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Management.Subscription;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
@@ -30,6 +27,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Offer type of the subscription definition.")]
+        [PSArgumentCompleter("MS-AZR-0017P", "MS-AZR-0148P")]
         public string OfferType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display name of the subscription.")]
