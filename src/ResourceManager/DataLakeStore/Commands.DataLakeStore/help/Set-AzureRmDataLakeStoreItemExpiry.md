@@ -114,7 +114,7 @@ Parameter Sets: Set expiry as relative to creation or now
 Aliases: 
 Accepted values: RelativeToNow, RelativeToCreationDate
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)

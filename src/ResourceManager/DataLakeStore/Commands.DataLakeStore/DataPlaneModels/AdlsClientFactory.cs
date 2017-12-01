@@ -5,6 +5,7 @@ using Microsoft.Azure.DataLake.Store;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
                 }
                 var client=AdlsClient.CreateClient(accntNm,creds);
+                client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
                 ClientFactory.Add(accntNm,client);
                 return client;
             }
