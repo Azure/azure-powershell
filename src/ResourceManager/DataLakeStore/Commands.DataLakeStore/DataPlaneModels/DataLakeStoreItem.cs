@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// Gets the type of the path object. Possible values include: 'FILE',
         /// 'DIRECTORY'
         /// </summary>
-        public DataLakeStoreEnums.FileType Type { get; }
+        public DataLakeStoreEnums.FileType? Type { get; }
 
         /// <summary>Gets flag to indicate if extended acls are enabled</summary>
         public bool? AclBit { get; }
