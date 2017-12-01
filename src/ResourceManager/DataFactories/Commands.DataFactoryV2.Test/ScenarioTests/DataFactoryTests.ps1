@@ -163,7 +163,7 @@ function Test-UpdateDataFactory
     try
     {
 		Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-        $actual = Update-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Force -Tag @{newTag = "NewTagValue"}
+        $actual = Update-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Tag @{newTag = "NewTagValue"}
         $expected = Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName

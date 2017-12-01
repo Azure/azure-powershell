@@ -65,9 +65,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIdentityForFactory)]
         public FactoryIdentity Identity { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -91,19 +88,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Identity = Identity
             };
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.DataFactoryUpdateConfirm,
-                    parameters.DataFactoryName,
-                    parameters.ResourceGroupName),
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.DataFactoryUpdating,
-                    parameters.DataFactoryName,
-                    parameters.ResourceGroupName),
-                Name,
-                () => WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters)));
+            WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
         }
     }
 }
