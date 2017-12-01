@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubCertificate
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Lists all certificates or a particular certificate contained within an Azure IoT Hub. 
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [[-C
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
-{{ Add example description here }}
+List all certificates in MyIotHub
+
+### Example 2
+```
+PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
+```
+
+Show details about MyCertificate
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubCertificateVerificationCode
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Generates a verification code for an Azure IoT Hub certificate. 
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This verification code is used to complete the proof of possession step for a certificate. Use this verification code as the CN of a new certificate signed with the root certificates private key.
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
 ```
 
-{{ Add example description here }}
+Generates a verification code for MyCertificate 
 
 ## PARAMETERS
 

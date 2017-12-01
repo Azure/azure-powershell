@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmIotHubVerifiedCertificate
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Verifies an Azure IoT Hub certificate. 
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Set-AzureRmIotHubVerifiedCertificate [-ResourceGroupName] <String> [-Name] <Stri
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Verifies a certificate by uploading a verification certificate containing the verification code obtained by cmdlet Get-AzureRmIotHubCertificateVerificationCode. This is the last step in the proof of possession process.
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\myverifiedcertificate.cer" -Etag "AAAAAAFPazE="
 ```
 
-{{ Add example description here }}
+Verifies ownership of the MyCertificate private key. 
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmIotHubCertificate
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create/update an Azure IoT Hub certificate.
 
 ## SYNTAX
 
@@ -18,16 +18,24 @@ Add-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-Ce
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Uploads a new certificate or to replace the existing certificate with the same name.
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer"
 ```
 
-{{ Add example description here }}
+Uploads a CA certificate CER file to an IoT hub. 
+
+### Example 2
+```
+PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFPazE="
+```
+
+Updates a CA certificate in an IoT hub by uploading a new CER file. 
 
 ## PARAMETERS
 

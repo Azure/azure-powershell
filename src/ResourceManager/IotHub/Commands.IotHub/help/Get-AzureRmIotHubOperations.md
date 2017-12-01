@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubOperations
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Lists all operations within an Azure IoT Hub.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmIotHubOperations [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Lists all operations within an Azure IoT Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmIotHubOperations
 ```
 
-{{ Add example description here }}
+Lists all operations within an Azure IoT Hub.
 
 ## PARAMETERS
 

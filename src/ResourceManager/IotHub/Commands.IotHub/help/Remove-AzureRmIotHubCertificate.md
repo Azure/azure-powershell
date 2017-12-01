@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmIotHubCertificate
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes an Azure IoT Hub certificate.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Remove-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
 ```
 
-{{ Add example description here }}
+Deletes MyCertificate
 
 ## PARAMETERS
 
