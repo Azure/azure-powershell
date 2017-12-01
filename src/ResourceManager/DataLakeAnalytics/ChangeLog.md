@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
+    - Detailed information about ScriptParameter can be found using Get-Help on Submit-AzureRmDataLakeAnalyticsJob
+* Added an alias to MaxDegreeOfParallelism of New-AzureRmDataLakeAnalyticsAccount: MaxAnalyticsUnits
+* Added an alias to MaxDegreeOfParallelismPerJob of New-AzureRmDataLakeAnalyticsComputePolicy: MaxAnalyticsUnitsPerJob
+* Added an alias to MaxDegreeOfParallelism of Set-AzureRmDataLakeAnalyticsAccount: MaxAnalyticsUnits
+* Added an alias to DegreeOfParallelism of Submit-AzureRmDataLakeAnalyticsJob: AnalyticsUnits
+* Added an alias to MaxDegreeOfParallelismPerJob of Update-AzureRmDataLakeAnalyticsComputePolicy: MaxAnalyticsUnitsPerJob
 
 ## Version 4.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
