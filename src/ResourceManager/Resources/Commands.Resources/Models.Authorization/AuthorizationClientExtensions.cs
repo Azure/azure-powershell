@@ -14,7 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Authorization.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

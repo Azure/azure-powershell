@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-    using Microsoft.Azure.Management.Authorization.Models;
+    using Microsoft.Azure.Management.Authorization.Version2017_10_01.Models;
 
     /// <summary>
     /// Get an existing resource.

@@ -6,7 +6,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace Microsoft.Azure.Management.Authorization.Models
+namespace Microsoft.Azure.Management.Authorization.Version2017_10_01.Models
 {
     using Rest.Azure.OData;
 

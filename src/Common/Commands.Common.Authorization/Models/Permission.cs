@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.Authorization.Models
+namespace Microsoft.Azure.Management.Authorization.Version2017_10_01.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
