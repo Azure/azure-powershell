@@ -29,8 +29,8 @@ Gets keys for a self-hosted integration runtime.
 ### [Get-AzureRmDataFactoryV2IntegrationRuntimeMetric](Get-AzureRmDataFactoryV2IntegrationRuntimeMetric.md)
 Gets metric data for an integration runtime. 
 
-### [Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp](Get-AzureRmDataFactoryV2IntegrationRuntimeNodeIp.md)
-Get IP address of a self-hosted integration runtime node.
+### [Get-AzureRmDataFactoryV2IntegrationRuntimeNode](Get-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
+Gets an integration runtime node infomation.
 
 ### [Get-AzureRmDataFactoryV2LinkedService](Get-AzureRmDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
