@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/new-azurermdatalakeanalyticscomputepolicy
@@ -76,7 +76,7 @@ Either this, MinPriorityPerJob, or both parameters must be specified.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxAnalyticsUnitsPerJob
 
 Required: False
 Position: Named

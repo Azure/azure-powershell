@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/update-azurermdatalakeanalyticscomputepolicy
@@ -75,7 +75,7 @@ The maximum supported degree of parallelism per job for this policy. Either this
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxAnalyticsUnitsPerJob
 
 Required: False
 Position: Named

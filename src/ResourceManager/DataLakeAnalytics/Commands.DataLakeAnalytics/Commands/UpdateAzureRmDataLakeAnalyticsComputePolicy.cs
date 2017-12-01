@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage = "The maximum supported degree of parallelism per job for this policy. Either this, MinPriorityPerJob, or both parameters must be specified.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
+        [Alias("MaxAnalyticsUnitsPerJob")]
         public int? MaxDegreeOfParallelismPerJob { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,

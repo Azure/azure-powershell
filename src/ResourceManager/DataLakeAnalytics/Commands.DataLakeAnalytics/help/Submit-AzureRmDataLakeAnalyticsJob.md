@@ -160,7 +160,7 @@ The degree of parallelism to use for this job. Typically, a higher degree of par
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: AnalyticsUnits
 
 Required: False
 Position: 6
