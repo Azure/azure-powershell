@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location")]
+        [LocationCompleter("Microsoft.Devices/IotHubs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

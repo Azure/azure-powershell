@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Network/applicationSecurityGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
