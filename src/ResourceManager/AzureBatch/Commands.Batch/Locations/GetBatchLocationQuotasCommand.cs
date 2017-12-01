@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The region to get the quotas of the subscription in the Batch Service from.")]
+        [LocationCompleter("Microsoft.Batch/locations/quotas")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The geographic region that the workspace will be created in.")]
+        [LocationCompleter("Microsoft.OperationalInsights/workspaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
