@@ -142,6 +142,10 @@ namespace Microsoft.Azure.Commands.Common
                     property.SetValue(returnValue, property.GetValue(cmdlet));
                 }
             }
+            foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+            {
+                    field.SetValue(returnValue, field.GetValue(cmdlet));
+            }
 
             return returnValue as U;
         }
