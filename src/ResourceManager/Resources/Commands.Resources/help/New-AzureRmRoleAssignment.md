@@ -15,70 +15,70 @@ Assigns the specified RBAC role to the specified principal, at the specified sco
 
 ### EmptyParameterSet (Default)
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
 New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ObjectId <Guid> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Guid> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Guid> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
 ```
 New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> [-CanDelegate]
  -RoleDefinitionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
 ```
 New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate <Boolean>]
+New-AzureRmRoleAssignment -ServicePrincipalName <String> [-Scope <String>] -RoleDefinitionName <String> [-CanDelegate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 
 ### --------------------------  Example 1  --------------------------
 ```
-PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -CanDelegate $true
+PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -CanDelegate
 ```
 
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 The delegation flag while creating a Role assignment.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: EmptyParameterSet,ResourceGroupWithObjectIdParameterSet,ResourceWithObjectIdParameterSet,ScopeWithObjectIdParameterSet,RoleIdWithScopeAndObjectIdParameterSet,ResourceGroupWithSignInNameParameterSet,ResourceGroupWithSignInNameParameterSet,ScopeWithSignInNameParameterSet,ResourceGroupWithSPNParameterSet,ResourceWithSPNParameterSet,ScopeWithSPNParameterSet
 Aliases: 
 

@@ -115,6 +115,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDelegation()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDelegation");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
