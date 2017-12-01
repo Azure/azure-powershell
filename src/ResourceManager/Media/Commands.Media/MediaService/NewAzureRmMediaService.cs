@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             ParameterSetName = StorageAccountsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
+        [LocationCompleter("Microsoft.Media/mediaservices")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
