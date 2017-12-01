@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByFactoryObject(DataFactory);
+            ByFactoryObject();
 
             ActivityRunFilterOptions activityRunFilter = new ActivityRunFilterOptions
             {

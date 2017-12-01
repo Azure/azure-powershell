@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string DataFactoryName { get; set; }
 
-        protected void ByFactoryObject(PSDataFactory dataFactory)
+        protected void ByFactoryObject()
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
             {
-                DataFactoryName = dataFactory.DataFactoryName;
-                ResourceGroupName = dataFactory.ResourceGroupName;
+                DataFactoryName = DataFactory.DataFactoryName;
+                ResourceGroupName = DataFactory.ResourceGroupName;
             }
         }
     }

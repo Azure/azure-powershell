@@ -14,11 +14,9 @@
 
 using System;
 using System.Collections;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
-using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
@@ -49,19 +47,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false,
-            HelpMessage = Constants.HelpTagsForFactory)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = false,
-            HelpMessage = Constants.HelpTagsForFactory)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 1, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpTagsForFactory)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpIdentityForFactory)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpIdentityForFactory)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
             HelpMessage = Constants.HelpIdentityForFactory)]
         public FactoryIdentity Identity { get; set; }
 
@@ -88,7 +78,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Identity = Identity
             };
 
-            WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
+            if (ShouldProcess(Name))
+            {
+                WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
+            }
         }
     }
 }

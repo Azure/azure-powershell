@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public override void ExecuteCmdlet()
         {
             ByResourceId();
-            ByFactoryObject(DataFactory);
+            ByFactoryObject();
 
             AdfEntityFilterOptions filterOptions = new AdfEntityFilterOptions()
             {

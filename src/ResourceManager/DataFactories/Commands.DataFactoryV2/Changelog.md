@@ -19,5 +19,7 @@
 -->
 
 ## Current Release
-* Added 2 new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun
+* Added two new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun
 
+## Version 0.3.0
+* Azure DataFactory PowerShell cmdlets for ADF V2 Private Preview

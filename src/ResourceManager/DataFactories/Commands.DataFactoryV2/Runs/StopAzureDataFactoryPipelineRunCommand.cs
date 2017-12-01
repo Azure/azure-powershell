@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Globalization;
+using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
-using Microsoft.Azure.Commands.DataFactoryV2.Properties;
-using System;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -37,16 +34,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string PipelineRunId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            ByFactoryObject(DataFactory);
+            ByFactoryObject();
             if (ParameterSetName.Equals(ParameterSetNames.ByInputObject, StringComparison.OrdinalIgnoreCase))
             {
                 DataFactoryName = InputObject.DataFactoryName;
@@ -54,20 +48,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PipelineRunId = InputObject.RunId;
             }
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.PipelineRunStopConfirmation,
-                    PipelineRunId,
-                    DataFactoryName),
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.PipelineRunStopping,
-                    PipelineRunId,
-                    DataFactoryName),
-                PipelineRunId,
-                () => DataFactoryClient.StopPipelineRun(ResourceGroupName, DataFactoryName, PipelineRunId));
+            if (ShouldProcess(PipelineRunId))
+            {
+                DataFactoryClient.StopPipelineRun(ResourceGroupName, DataFactoryName, PipelineRunId);
+            }
 
             if (PassThru)
             {
