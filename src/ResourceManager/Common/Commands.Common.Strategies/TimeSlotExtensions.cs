@@ -2,6 +2,6 @@
 {
     class TimeSlotExtensions
     {
-        public TimeSlot
+        // public TimeSlot
     }
 }

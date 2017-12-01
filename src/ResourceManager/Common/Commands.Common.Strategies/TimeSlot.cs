@@ -1,5 +1,12 @@
 ﻿namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// TimeSlot is a node of a singly linked list of TimeSlots.
+    /// The last node of the list is always an empty time slot
+    /// - Duration = 0.
+    /// - Next = null.
+    /// - TaskCount = 0.
+    /// </summary>
     public sealed class TimeSlot
     {
         public int Duration { get; private set; }
@@ -10,9 +17,7 @@
 
         public bool IsLast => Next == null;
 
-        public TimeSlot() : this(0, 0, null)
-        {            
-        }
+        public TimeSlot() : this(0, 0, null) { }
 
         TimeSlot(int duration, int taskCount, TimeSlot next)
         {
@@ -47,5 +52,13 @@
                 return Next.AddTask(duration - Duration);
             }
         }
+
+        public double GetTaskProgress(int duration)
+            => duration <= Duration 
+                ? GetProgress(duration)
+                : GetProgress(Duration) + Next.GetTaskProgress(duration - Duration);
+
+        double GetProgress(double duration)
+            => duration / TaskCount;
     }
 }
