@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return response.RunId;
         }
 
-        public virtual void StopPipelineRun(string resourceGroupName, string dataFactoryName, string pipelineRunId)
+        public void StopPipelineRun(string resourceGroupName, string dataFactoryName, string pipelineRunId)
         {
             this.DataFactoryManagementClient.Factories.CancelPipelineRun(resourceGroupName, dataFactoryName, pipelineRunId);
         }
