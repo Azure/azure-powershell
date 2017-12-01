@@ -201,6 +201,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsNewKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsUpdate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
