@@ -26,7 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SubscriptionDefinitionClient = Microsoft.Azure.Management.ResourceManager.SubscriptionDefinitionsClient;
+using SubscriptionDefinitionClient = Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
