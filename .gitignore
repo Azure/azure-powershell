@@ -218,3 +218,4 @@ groupMapping*.json
 Results
 Package
 .DS_Store
+.idea

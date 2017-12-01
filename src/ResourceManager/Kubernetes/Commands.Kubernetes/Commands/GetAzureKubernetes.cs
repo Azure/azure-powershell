@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public string Name { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name")]
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true,
             ParameterSetName = NameParameterSet,
             ValueFromPipelineByPropertyName = true,
