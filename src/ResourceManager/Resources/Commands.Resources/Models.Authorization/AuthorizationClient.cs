@@ -15,10 +15,9 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization.Version2017_10_01;
+using Microsoft.Azure.Management.Authorization.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,7 +93,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
 
             Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = null;
-
             if (scopeAndBelow)
             {
                 odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
@@ -104,6 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
             }
 
+            // Fix the api spec for roledefinition filter with value scope and below
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
                         scope,
                         odataFilter)
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
                     scope, scopeAndBelow ? new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()) : null)
-                .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
+                .Where(r => r.RoleType == AuthorizationClientExtensions.CustomRole)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
         }
@@ -170,12 +169,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
                 ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
                 : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
-            var createProperties = new RoleAssignmentProperties
+            var createParameters = new RoleAssignmentCreateParameters
             {
                 PrincipalId = principalId.ToString(),
-                RoleDefinitionId = roleDefinitionId
+                RoleDefinitionId = roleDefinitionId,
+                CanDelegate = parameters.CanDelegate
             };
-            var createParameters = new RoleAssignmentCreateParameters(createProperties);
 
             RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Create(
                 parameters.Scope, roleAssignmentId.ToString(), createParameters);
@@ -473,28 +472,24 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSRoleDefinition roleDef = null;
             var parameters = new RoleDefinition()
             {
-                Name = roleDefinitionId.ToString(),
-                Properties = new RoleDefinitionProperties()
-                {
-                    AssignableScopes = roleDefinition.AssignableScopes,
-                    Description = roleDefinition.Description,
-                    Permissions = new List<Permission>()
+                AssignableScopes = roleDefinition.AssignableScopes,
+                Description = roleDefinition.Description,
+                Permissions = new List<Permission>()
+                    {
+                        new Permission()
                         {
-                            new Permission()
-                            {
-                                Actions = roleDefinition.Actions,
-                                NotActions = roleDefinition.NotActions
-                            }
-                        },
-                    RoleName = roleDefinition.Name,
-                    Type = "CustomRole"
-                }
+                            Actions = roleDefinition.Actions,
+                            NotActions = roleDefinition.NotActions
+                        }
+                    },
+                RoleName = roleDefinition.Name,
+                RoleType = "CustomRole"
             };
 
             try
             {
-                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
-                    roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
+                roleDef = AuthorizationClientExtensions.ToPSRoleDefinition(AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
+                    roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters));
             }
             catch (CloudException ce)
             {

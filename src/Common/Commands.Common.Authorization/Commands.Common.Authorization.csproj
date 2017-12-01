@@ -82,7 +82,6 @@
     <Compile Include="IRoleAssignmentsOperations.cs" />
     <Compile Include="IRoleDefinitionsOperations.cs" />
     <Compile Include="Models\ClassicAdministrator.cs" />
-    <Compile Include="Models\ClassicAdministratorProperties.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\ProviderOperation.cs" />
@@ -91,11 +90,8 @@
     <Compile Include="Models\RoleAssignment.cs" />
     <Compile Include="Models\RoleAssignmentCreateParameters.cs" />
     <Compile Include="Models\RoleAssignmentFilter.cs" />
-    <Compile Include="Models\RoleAssignmentProperties.cs" />
-    <Compile Include="Models\RoleAssignmentPropertiesWithScope.cs" />
     <Compile Include="Models\RoleDefinition.cs" />
     <Compile Include="Models\RoleDefinitionFilter.cs" />
-    <Compile Include="Models\RoleDefinitionProperties.cs" />
     <Compile Include="PermissionsOperations.cs" />
     <Compile Include="PermissionsOperationsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

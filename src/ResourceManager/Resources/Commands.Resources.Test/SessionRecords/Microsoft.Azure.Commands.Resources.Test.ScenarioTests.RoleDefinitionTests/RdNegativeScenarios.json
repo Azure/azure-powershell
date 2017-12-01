@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "676b7034-c0b3-4c28-9fd1-fdf7691181b6"
+          "b203dde9-533b-44ff-a19a-b344cf48c68e"
         ],
         "accept-language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -34,7 +34,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6982e9a9-148b-44de-8ab6-8d76f6e5f66f"
+          "979ea64e-4301-4b79-aa1a-de923638a144"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -43,19 +43,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "c88765fb-9b40-43f9-8d47-cc7a3c4643c3"
+          "8d9be02c-b76d-41da-b666-386e0a50508c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182758Z:c88765fb-9b40-43f9-8d47-cc7a3c4643c3"
+          "WESTUS2:20171130T175658Z:8d9be02c-b76d-41da-b666-386e0a50508c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:58 GMT"
+          "Thu, 30 Nov 2017 17:56:57 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -76,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9886fe67-aba0-4fb4-844a-db7d1856867d"
+          "375475fa-99e1-47cb-8dc7-fd83f1523050"
         ],
         "accept-language": [
           "en-US"
@@ -85,7 +85,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -103,7 +103,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21735a10-a435-4bd3-bdd0-584be7059740"
+          "52f7ec3a-8d09-4841-9a56-d6446778ad01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -112,19 +112,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "08e5d9c4-25e5-4632-aa88-56f14f8d50b1"
+          "d0664b77-3b1b-4375-8456-cfaeb550bee8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:08e5d9c4-25e5-4632-aa88-56f14f8d50b1"
+          "WESTUS2:20171130T175658Z:d0664b77-3b1b-4375-8456-cfaeb550bee8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Thu, 30 Nov 2017 17:56:57 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -145,7 +145,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "06f743e2-084d-4cbd-aa6d-ebb7880a8dd3"
+          "638864c1-603e-4408-81f2-72825f470bf3"
         ],
         "accept-language": [
           "en-US"
@@ -154,7 +154,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -172,7 +172,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e954d8c0-70a5-4975-aad3-b890c1d4ddd7"
+          "c6778e8a-9d01-4c93-a1b0-47a90068ebb3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -181,19 +181,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "105df3c1-ce1b-4625-9acf-27dea7ad557d"
+          "8dbeba0f-5a9a-4582-a63b-02660705fa6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:105df3c1-ce1b-4625-9acf-27dea7ad557d"
+          "WESTUS2:20171130T175659Z:8dbeba0f-5a9a-4582-a63b-02660705fa6c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Thu, 30 Nov 2017 17:56:58 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
@@ -214,7 +214,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb9a8bf6-1814-42fa-bc41-40736e8b3de8"
+          "424ebff7-b1f5-4f1f-998a-967fbde6c734"
         ],
         "accept-language": [
           "en-US"
@@ -223,7 +223,7 @@
           "FxVersion/4.7.2556.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -241,7 +241,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "61c7adeb-2212-41d6-9d16-1b1d3b6de7a8"
+          "492f3ae9-3256-4fed-bbee-294b95433baa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -250,19 +250,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "f6c58ded-4470-4f66-9ca9-d48cb5599764"
+          "5fc39f00-9e3c-4710-b1b2-1cc41fec1033"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:f6c58ded-4470-4f66-9ca9-d48cb5599764"
+          "WESTUS2:20171130T175658Z:5fc39f00-9e3c-4710-b1b2-1cc41fec1033"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Thu, 30 Nov 2017 17:56:58 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
