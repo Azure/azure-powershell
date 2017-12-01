@@ -319,6 +319,28 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithAccessToken()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Obtain an access token by using [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.TokenCache.ReadItems() in powershell after logging in.
+            // Ensure you are using the token with Resource: https://management.core.windows.net/
+            string accessTokenEnvironmentVariable = Environment.GetEnvironmentVariable("AZURE_TEST_ACCESS_TOKEN");
+
+            cmdlt.AccessToken = accessTokenEnvironmentVariable;
+            cmdlt.AccountId = "testAccount";
+
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowOnUnknownEnvironment()
         {
@@ -343,6 +365,30 @@ namespace Microsoft.Azure.Commands.Profile.Test
             }
 
             Assert.True(testPassed);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LoginUsingSkipValidation()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            cmdlt.AccessToken = "test";
+            cmdlt.AccessToken = "test@microsoft.com";
+            cmdlt.SkipValidation = true;
+            cmdlt.TenantId = Guid.NewGuid().ToString();
+            cmdlt.Subscription = Guid.NewGuid().ToString();
+            cmdlt.SetBoundParameters(new Dictionary<string, object>() { { "Subscription", cmdlt.Subscription } });
+
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id, cmdlt.Subscription);
+            Assert.Equal(AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id, cmdlt.TenantId);
         }
     }
 }
