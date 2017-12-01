@@ -20,7 +20,7 @@
 ## Current Release
 * Added ability to rename database using Set-AzureRmSqlDatabase
 * Fixed issue https://github.com/Azure/azure-powershell/issues/4974
-	- Removed invalid AUDIT_CHANGED_GROUP value from auditing cmdlets
+	- Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
