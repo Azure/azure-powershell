@@ -167,22 +167,27 @@ namespace Microsoft.Azure.Commands.Profile
 
             AzureAccount azureAccount = new AzureAccount();
 
-            switch(ParameterSetName)
+            if (!string.IsNullOrEmpty(AccessToken))
             {
-                case AccessTokenParameterSet:
-                    azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                    azureAccount.Id = AccountId;
-                    azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
-                    azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
-                    azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
-                    break;
-                case ServicePrincipalCertificateParameterSet:
-                case ServicePrincipalParameterSet:
-                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-                    break;
-                default:
-                    azureAccount.Type = AzureAccount.AccountType.User;
-                    break;
+                azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                azureAccount.Id = AccountId;
+                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
+                azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
+                azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
+            }
+
+            else if (!string.IsNullOrEmpty(CertificateThumbprint))
+            {
+            }
+
+            else if (ServicePrincipal)
+            {
+                azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+            }
+
+            else
+            {
+                azureAccount.Type = AzureAccount.AccountType.User;
             }
 
             SecureString password = null;
