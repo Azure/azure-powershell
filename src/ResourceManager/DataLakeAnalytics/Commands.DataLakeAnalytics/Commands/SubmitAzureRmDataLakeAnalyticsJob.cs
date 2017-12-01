@@ -223,6 +223,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
+        [Alias("AnalyticsUnits")]
         public int DegreeOfParallelism
         {
             get { return _degreeOfParallelism; }

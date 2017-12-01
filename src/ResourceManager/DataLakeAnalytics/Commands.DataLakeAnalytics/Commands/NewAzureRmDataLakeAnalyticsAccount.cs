@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage = "The maximum supported degree of parallelism for this account.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
+        [Alias("MaxAnalyticsUnits")]
         public int? MaxDegreeOfParallelism { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,

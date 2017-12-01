@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0A7CD695-6D14-4BC9-B960-0CAFE502B88B
@@ -86,7 +86,7 @@ The optional maximum supported degree of parallelism for this account. If none i
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxAnalyticsUnits
 
 Required: False
 Position: Named
