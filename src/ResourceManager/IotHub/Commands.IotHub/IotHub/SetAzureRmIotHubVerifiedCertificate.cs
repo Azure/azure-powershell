@@ -15,14 +15,13 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
-    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
-    using System.IO;
-    using System.Globalization;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmIotHubVerifiedCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(PSCertificateDescription))]
