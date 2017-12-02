@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Relay Namespace Location.")]
+        [LocationCompleter("Microsoft.Relay/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

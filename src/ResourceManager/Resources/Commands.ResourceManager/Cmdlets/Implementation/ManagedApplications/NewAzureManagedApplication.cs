@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the location.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The resource location.")]
+        [LocationCompleter("Microsoft.Solutions/applications")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

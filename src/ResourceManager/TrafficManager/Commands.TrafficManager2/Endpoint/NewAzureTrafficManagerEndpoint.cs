@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint? Priority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The location of the endpoint.")]
+        [LocationCompleter("Microsoft.Network/trafficmanagerprofiles")]
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
