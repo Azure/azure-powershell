@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
     {
         private const string DefaultParamSet = "defaultParameterSet";
         private const string SpParamSet = "servicePrincipalParameterSet";
-        private Regex dnsRegex = new Regex("[^A-Za-z0-9-]");
+        private readonly Regex _dnsRegex = new Regex("[^A-Za-z0-9-]");
 
         [Parameter(
             Position = 0,
@@ -358,13 +358,13 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         private string DefaultDnsPrefix()
         {
-            var namePart = string.Join("", dnsRegex.Replace(Name, "").Take(10));
+            var namePart = string.Join("", _dnsRegex.Replace(Name, "").Take(10));
             if (char.IsDigit(namePart[0]))
             {
                 namePart = "a" + string.Join("", namePart.Skip(1));
             }
 
-            var rgPart = dnsRegex.Replace(ResourceGroupName, "");
+            var rgPart = _dnsRegex.Replace(ResourceGroupName, "");
             var subPart = string.Join("", DefaultProfile.DefaultContext.Subscription.Id.Take(6));
             return string.Format("{0}-{1}-{2}", namePart, rgPart, subPart);
         }
