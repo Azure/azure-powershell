@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     WriteDebug(string.Format(Resources.SavingVaultCred, fullFilePath));
 
                     AzureSession.Instance.DataStore.WriteFile(fullFilePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
-                    
+
                     VaultSettingsFilePath output = new VaultSettingsFilePath()
                     {
                         FilePath = fullFilePath,
