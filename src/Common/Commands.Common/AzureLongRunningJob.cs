@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common
         string _status = "Running";
         T _cmdlet;
         ICommandRuntime _runtime;
-        ConcurrentQueue<PSStreamObject> _actions = new ConcurrentQueue<PSStreamObject>();
+        ConcurrentQueue<ShouldMethodStreamItem> _actions = new ConcurrentQueue<ShouldMethodStreamItem>();
         bool _shouldConfirm = false;
         Action<T> _execute;
 
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// A queue of actions that must execute on the cmdlet thread
         /// </summary>
-        protected ConcurrentQueue<PSStreamObject> BlockedActions { get { return _actions; } }
+        internal ConcurrentQueue<ShouldMethodStreamItem> BlockedActions { get { return _actions; } }
 
         /// <summary>
         /// Factory method for creating jobs
@@ -106,6 +107,21 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>A job tracking the background execution of the cmdlet</returns>
         public static AzureLongRunningJob<U> Create<U>(U cmdlet, string command, string name) where U : AzurePSCmdlet
         {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            if (string.IsNullOrWhiteSpace(command))
+            {
+                command = cmdlet.GetType().Name;
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                name = "Azure Long-Running Job";
+            }
+
             var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name);
             return job;
         }
@@ -121,6 +137,26 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>A job tracking the background execution of the cmdlet</returns>
         public static AzureLongRunningJob<U> Create<U>(U cmdlet, string command, string name, Action<U> executor) where U : AzurePSCmdlet
         {
+            if (null == cmdlet)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            if (null == executor)
+            {
+                throw new ArgumentNullException(nameof(executor));
+            }
+
+            if (string.IsNullOrWhiteSpace(command))
+            {
+                command = cmdlet.GetType().Name;
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                name = "Azure Long-Running Job";
+            }
+
             var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name, executor);
             return job;
         }
@@ -133,18 +169,23 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>A deep copy fo the cmdlet</returns>
         public static U CopyCmdlet<U>(U cmdlet) where U : AzurePSCmdlet
         {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
             var returnType = cmdlet.GetType();
             var returnValue = Activator.CreateInstance(cmdlet.GetType());
             foreach (var property in returnType.GetProperties())
             {
                 if (property.CanWrite && property.CanRead)
                 {
-                    property.SetValue(returnValue, property.GetValue(cmdlet));
+                    property.SafeCopyValue(source: cmdlet, target: returnValue);
                 }
             }
             foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
             {
-                    field.SetValue(returnValue, field.GetValue(cmdlet));
+                    field.SafeCopyValue(source: cmdlet, target: returnValue);
             }
 
             return returnValue as U;
@@ -164,7 +205,8 @@ namespace Microsoft.Azure.Commands.Common
             }
             catch (Exception ex)
             {
-                Error.Add(new ErrorRecord(ex, ex.Message, ErrorCategory.InvalidOperation, this));
+                string message = string.Format("The cmdlet failed in background execution.  The returned error was '{0}'.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the '-AsJob' parameter", ex.Message);
+                Error.Add(new ErrorRecord(ex, message, ErrorCategory.InvalidOperation, this));
                 Fail();
             }
         }
@@ -185,10 +227,10 @@ namespace Microsoft.Azure.Commands.Common
         {
             var executor = CopyCmdlet(_cmdlet);
             executor.CommandRuntime = _runtime;
-            PSStreamObject stream;
+            ShouldMethodStreamItem stream;
             while (_actions.TryDequeue(out stream))
             {
-                stream.WriteStreamObject(executor);
+                stream.ExecuteShouldMethod(executor);
             }
         }
 
@@ -266,7 +308,7 @@ namespace Microsoft.Azure.Commands.Common
         public bool ShouldContinue(string query, string caption)
         {
             Exception thrownException;
-            return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption), out thrownException);
         }
 
         /// <summary>
@@ -282,7 +324,7 @@ namespace Microsoft.Azure.Commands.Common
             Exception thrownException;
             bool localYesToAll = yesToAll;
             bool localNoToAll = noToAll;
-            bool result = InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption,
+            bool result = InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption,
                 ref localYesToAll, ref localNoToAll), out thrownException);
             yesToAll = localYesToAll;
             noToAll = localNoToAll;
@@ -296,9 +338,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if ShouldProcess must be called on the cmdlet thread, otherwise false</returns>
         static bool ShouldConfirm(AzurePSCmdlet cmdlet)
         {
-            ConfirmImpact confirmPreference = ConfirmImpact.Medium;
+            ConfirmImpact confirmPreference = ConfirmImpact.High;
             ConfirmImpact cmdletImpact = ConfirmImpact.Medium;
-            var confirmVar = SafeGetVariableValue(cmdlet, "ConfirmPreference", "Medium");
+            var confirmVar = SafeGetVariableValue(cmdlet, "ConfirmPreference", "High");
             if (!string.IsNullOrEmpty(confirmVar))
             {
                 Enum.TryParse(confirmVar, out confirmPreference);
@@ -310,7 +352,7 @@ namespace Microsoft.Azure.Commands.Common
                 cmdletImpact = attribute.ConfirmImpact;
             }
 
-            return cmdletImpact > confirmPreference;
+            return cmdletImpact >= confirmPreference;
         }
 
         static string SafeGetVariableValue(PSCmdlet cmdlet, string name, string defaultValue)
@@ -352,7 +394,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             Exception thrownException;
-            return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target), out thrownException);
         }
 
         /// <summary>
@@ -369,7 +411,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             Exception thrownException;
-            return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target, action), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target, action), out thrownException);
         }
 
         /// <summary>
@@ -387,7 +429,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             Exception thrownException;
-            return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption),
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption),
                 out thrownException);
         }
 
@@ -409,7 +451,7 @@ namespace Microsoft.Azure.Commands.Common
 
             ShouldProcessReason closureShouldProcessReason = ShouldProcessReason.None;
             Exception thrownException;
-            bool result = InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption, out closureShouldProcessReason),
+            bool result = InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption, out closureShouldProcessReason),
                 out thrownException);
             shouldProcessReason = closureShouldProcessReason;
             return result;
@@ -431,7 +473,7 @@ namespace Microsoft.Azure.Commands.Common
         public bool TransactionAvailable()
         {
             Exception thrownException;
-            return InvokeCmdletMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
                 out thrownException);
         }
 
@@ -543,13 +585,13 @@ namespace Microsoft.Azure.Commands.Common
         /// Queue actions that must occur on the cmdlet thread, and block the current thread until they are completed
         /// </summary>
         /// <typeparam name="V">The output type of the called cmdlet action</typeparam>
-        /// <param name="invokeCmdletMethodAndReturnResult">The action to invoke</param>
+        /// <param name="shouldMethod">The action to invoke</param>
         /// <param name="exceptionThrownOnCmdletThread">Any exception that results</param>
         /// <returns>The result of executing the action on the cmdlet thread</returns>
-        private V InvokeCmdletMethodAndWaitForResults<V>(Func<Cmdlet, V> invokeCmdletMethodAndReturnResult, out Exception exceptionThrownOnCmdletThread)
+        private bool InvokeShouldMethodAndWaitForResults(Func<Cmdlet, bool> shouldMethod, out Exception exceptionThrownOnCmdletThread)
         {
 
-            V methodResult = default(V);
+            bool methodResult = false;
             Exception closureSafeExceptionThrownOnCmdletThread = null;
             object resultsLock = new object();
             using (var gotResultEvent = new ManualResetEventSlim(false))
@@ -580,20 +622,15 @@ namespace Microsoft.Azure.Commands.Common
                     if (!gotResultEvent.IsSet)
                     {
                         this.Block();
-                        // addition to results column happens here
-                        CmdletMethodInvoker<V> methodInvoker = new CmdletMethodInvoker<V>
+
+                        ShouldMethodInvoker methodInvoker = new ShouldMethodInvoker
                         {
-                            Action = invokeCmdletMethodAndReturnResult,
+                            ShouldMethod = shouldMethod,
                             Finished = gotResultEvent,
                             SyncObject = resultsLock
                         };
-                        PSStreamObjectType objectType = PSStreamObjectType.ShouldMethod;
-                        if (typeof(V) == typeof(object))
-                        {
-                            objectType = PSStreamObjectType.BlockingError;
-                        }
 
-                        BlockedActions.Enqueue(new PSStreamObject(objectType, methodInvoker));
+                        BlockedActions.Enqueue(new ShouldMethodStreamItem(methodInvoker));
                         gotResultEvent.Wait();
                         this.Start();
 
@@ -601,7 +638,7 @@ namespace Microsoft.Azure.Commands.Common
                         {
                             if (closureSafeExceptionThrownOnCmdletThread == null) // stateChangedEventHandler didn't set the results?  = ok to clobber results?
                             {
-                                closureSafeExceptionThrownOnCmdletThread = methodInvoker.ExceptionThrownOnCmdletThread;
+                                closureSafeExceptionThrownOnCmdletThread = methodInvoker.ThrownException;
                                 methodResult = methodInvoker.MethodResult;
                             }
                         }
@@ -622,7 +659,7 @@ namespace Microsoft.Azure.Commands.Common
 
         public override void StopJob()
         {
-            PSStreamObject stream;
+            ShouldMethodStreamItem stream;
             while (_actions.TryDequeue(out stream));
             this.Cancel();
         }
