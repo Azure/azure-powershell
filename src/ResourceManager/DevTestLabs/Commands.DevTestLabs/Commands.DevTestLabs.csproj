@@ -82,7 +82,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
     <Compile Include="Commands\DtlPolicyCmdletBase.cs" />
     <Compile Include="Commands\Set\SetAzureRmDtlVMsPerUserPolicy.cs" />
