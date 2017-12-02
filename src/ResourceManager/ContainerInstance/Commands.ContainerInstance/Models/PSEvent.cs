@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.ContainerInstance.Models;
 
 namespace Microsoft.Azure.Commands.ContainerInstance.Models
 {
-    public class PSContainerEvent : ContainerEvent
+    public class PSEvent : EventModel
     {
         public override string ToString()
         {
