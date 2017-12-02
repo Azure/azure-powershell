@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
