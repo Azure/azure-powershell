@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of region")]
+        [LocationCompleter("Microsoft.MachineLearning/webServices")]
         [ValidateNotNullOrEmpty]
         public string Region { get; set; }
 
