@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         public PSProfile CdnProfile { get; set; }
         
         [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
+        [LocationCompleter("Microsoft.Cdn/profiles/endpoints")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

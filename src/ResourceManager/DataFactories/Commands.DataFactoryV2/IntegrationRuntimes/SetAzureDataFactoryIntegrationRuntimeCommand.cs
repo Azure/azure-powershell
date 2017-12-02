@@ -20,6 +20,7 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeLocation)]
+        [LocationCompleter("Microsoft.DataFactory/factories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/virtualNetworkGateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -339,11 +340,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientProtocol != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
-                }
-                else
-                {
-                    // set default
-                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = new List<string> { MNM.VpnClientProtocol.SSTP, MNM.VpnClientProtocol.IkeV2 };
                 }
 
                 if (this.VpnClientRootCertificates != null)
