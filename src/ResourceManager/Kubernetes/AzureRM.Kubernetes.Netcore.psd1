@@ -72,7 +72,7 @@ NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Kubernetes.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @('Get-AzureRmKubernetes', 'New-AzureRmKubernetes')
+CmdletsToExport = @('Get-AzureRmKubernetes', 'New-AzureRmKubernetes', 'Remove-AzureRmKubernetes')
 
 # Variables to export from this module
 # VariablesToExport = @()
