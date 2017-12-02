@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,8 +24,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
     [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public class Get : KubeCmdletBase
     {
-        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        protected const string NameParameterSet = "NameParameterSet";
+        private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        private const string NameParameterSet = "NameParameterSet";
 
         /// <summary>
         /// Cluster name
@@ -69,9 +67,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         WriteObject(kubeCluster);
                         break;
                     case ResourceGroupParameterSet:
-                        var kubeClusters = string.IsNullOrEmpty(ResourceGroupName) ?
-                            Client.ManagedClusters.List() :
-                            Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
+                        var kubeClusters = string.IsNullOrEmpty(ResourceGroupName)
+                            ? Client.ManagedClusters.List()
+                            : Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
                         WriteObject(kubeClusters);
                         break;
                     default:
