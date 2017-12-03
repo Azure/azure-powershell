@@ -13,19 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet;
 using Microsoft.WindowsAzure.Storage.Queue;
+using Xunit;
+using Assert = Xunit.Assert;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
 {
-    [TestClass]
     public class NewAzureStorageQueueSasTest : StorageQueueTestBase
     {
         public NewAzureStorageQueueSasTokenCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public NewAzureStorageQueueSasTest()
         {
             command = new NewAzureStorageQueueSasTokenCommand(queueMock)
                 {
@@ -33,34 +33,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetupAccessPolicyPermissionTest()
         {
             SharedAccessQueuePolicy accessPolicy = new SharedAccessQueuePolicy();
             command.SetupAccessPolicyPermission(accessPolicy, "");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.None);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.None);
             accessPolicy.Permissions = SharedAccessQueuePermissions.Read;
             command.SetupAccessPolicyPermission(accessPolicy, "");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Read);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Read);
             command.SetupAccessPolicyPermission(accessPolicy, "a");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Add);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Add);
             command.SetupAccessPolicyPermission(accessPolicy, "aAaaa");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Add);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Add);
             command.SetupAccessPolicyPermission(accessPolicy, "ru");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.Read);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.Read);
             command.SetupAccessPolicyPermission(accessPolicy, "ur");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.Read);
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.Read);
             command.SetupAccessPolicyPermission(accessPolicy, "raUP");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Add
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Add
                 | SharedAccessQueuePermissions.Read | SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.ProcessMessages);
             command.SetupAccessPolicyPermission(accessPolicy, "UPrrrra");
-            Assert.AreEqual(accessPolicy.Permissions, SharedAccessQueuePermissions.Add
+            Assert.Equal(accessPolicy.Permissions, SharedAccessQueuePermissions.Add
                 | SharedAccessQueuePermissions.Read | SharedAccessQueuePermissions.Update | SharedAccessQueuePermissions.ProcessMessages);
             AssertThrows<ArgumentException>(() => command.SetupAccessPolicyPermission(accessPolicy, "rwDl"));
             AssertThrows<ArgumentException>(() => command.SetupAccessPolicyPermission(accessPolicy, "x"));

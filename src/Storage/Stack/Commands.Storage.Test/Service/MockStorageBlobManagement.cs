@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? snapshotTime = null)
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             string containerName = container.Name;
 
@@ -696,11 +696,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         }
 
         public Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             throw new NotImplementedException();
         }
