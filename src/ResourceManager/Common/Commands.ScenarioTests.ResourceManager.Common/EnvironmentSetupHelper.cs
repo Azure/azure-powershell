@@ -571,7 +571,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             foreach (string moduleName in modules)
             {
                 powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
-                Console.WriteLine(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
             }
 
             powershell.AddScript(

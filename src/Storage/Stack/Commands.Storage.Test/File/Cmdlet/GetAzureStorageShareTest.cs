@@ -15,17 +15,18 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class GetAzureStorageShareTest : StorageFileTestBase<GetAzureStorageShare>
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetShareByNameTest()
         {
             this.MockChannel.SetsAvailableShare("share");
@@ -37,7 +38,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.MockCmdRunTime.OutputPipeline.Cast<CloudFileShare>().AssertSingleObject(x => x.Name == "share");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNonExistingShareByNameTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -47,7 +49,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.MockCmdRunTime.ErrorStream.AssertMockupException("ShareNotExist");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetShareByPrefixTest()
         {
             var expectedShares = Enumerable.Range(0, 10).Select(x => string.Format(CultureInfo.InvariantCulture, "share{0}", x)).ToArray();
@@ -60,7 +63,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.MockCmdRunTime.OutputPipeline.AssertShares(expectedShares);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetShareByPrefixTest_NoShareMatchingPrefix()
         {
             this.MockChannel.SetsAvailableShare(Enumerable.Range(0, 5).Select(x => string.Format(CultureInfo.InvariantCulture, "nonshare{0}", x)).ToArray());
@@ -69,7 +73,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 Constants.MatchingPrefixParameterSetName,
                 new KeyValuePair<string, object>("Prefix", "share"));
 
-            Assert.AreEqual(0, this.MockCmdRunTime.OutputPipeline.Count, "Should be no result returned.");
+            Assert.Equal(0, this.MockCmdRunTime.OutputPipeline.Count);
         }
     }
 }

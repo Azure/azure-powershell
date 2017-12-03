@@ -13,18 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for NameUtil
     /// </summary>
-    [TestClass]
     public class NameUtilTest : StorageTestBase
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidContainerNameTest()
         {
             string[] positives = { "$root", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", new String('a', 63) };
@@ -48,7 +49,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidContainerName);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidContainerPrefixTest()
         {
             string[] positives = { "$", "$ro", "$l", "$root", "a", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 63) };
@@ -71,7 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidContainerPrefix);
         }
 
-        [TestMethod]
+                [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidBlobNameTest()
         {
             string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024)};
@@ -85,7 +88,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidBlobName);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidBlobPrefixTest()
         {
             string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024) };
@@ -100,7 +104,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidTableNameTest()
         {
             string[] positives = { "Abc", "abc", "a99", new String('a', 63) };
@@ -120,7 +125,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidTableName);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidMetricsTableTest()
         {
             string[] metricsTables = {"$MetricsTransactionsBlob", "$MetricsTransactionsTable",
@@ -128,7 +134,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(metricsTables, true, NameUtil.IsValidTableName);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidTablePrefixTest()
         {
             string[] positives = {"a", "A", "Ab", "ab", "a99", new String('a', 63) };
@@ -148,7 +155,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidTablePrefix);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidQueueNameTest()
         {
             string[] positives = {"abc", "abc987", "abc2de", "4abc", "abc-def", new String('a', 63) };
@@ -174,7 +182,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidQueueName);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidQueuePrefixTest()
         {
             string[] positives = {"a", "ab", "abc", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 63) };
@@ -196,7 +205,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             NameValidateHelper(negatives, false, NameUtil.IsValidQueuePrefix);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidFileNameTest()
         {
             string[] positives = { "a", "ab", "abc", "Aabc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 63) };
@@ -226,7 +236,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             foreach (string name in names)
             {
                 string message = String.Format("'{0}' {1} should be {2}", name, validator.Method.Name, isValid);
-                Assert.AreEqual(isValid, validator(name), message);
+                Assert.Equal(isValid, validator(name));
             }
         }
     }
