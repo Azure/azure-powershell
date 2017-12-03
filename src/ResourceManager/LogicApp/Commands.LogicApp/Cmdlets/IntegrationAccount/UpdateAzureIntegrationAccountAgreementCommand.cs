@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Globalization;
     using System.Linq;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Updates the integration account agreement.
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
