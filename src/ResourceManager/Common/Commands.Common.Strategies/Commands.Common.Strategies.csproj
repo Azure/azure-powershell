@@ -74,6 +74,7 @@
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />
     <Compile Include="IShouldProcess.cs" />
+    <Compile Include="ProgressMap.cs" />
     <Compile Include="TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="Compute\ComputeStrategy.cs" />

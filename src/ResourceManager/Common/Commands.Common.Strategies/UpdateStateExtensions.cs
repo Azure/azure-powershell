@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 target,
                 shouldProcess,
                 progressReport,
-                config.GetTimeSlonAndDuration(target));
+                config.GetProgressMap(target));
             await context.UpdateStateAsync(config);
             return context.Result;
         }
@@ -53,20 +53,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IProgressReport _ProgressReport;
 
-            readonly Tuple<Dictionary<IResourceConfig, TimeSlot>, int> _TimeSlotAndDuration;
+            readonly ProgressMap _ProgressMap;
 
             public Context(
                 StateOperationContext operationContext,
                 IState target,
                 IShouldProcess shouldProcess,
                 IProgressReport progressReport,
-                Tuple<Dictionary<IResourceConfig, TimeSlot>, int> timeSlotAndDuration)
+                ProgressMap progressMap)
             {
                 _OperationContext = operationContext;
                 _Target = target;
                 _ShouldProcess = shouldProcess;
                 _ProgressReport = progressReport;
-                _TimeSlotAndDuration = timeSlotAndDuration;
+                _ProgressMap = progressMap;
             }
 
             public async Task UpdateStateAsync<TModel>(ResourceConfig<TModel> config)
@@ -92,11 +92,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                                     _OperationContext.Client,
                                     model,
                                     _OperationContext.CancellationToken);
-                                var timeSlot = _TimeSlotAndDuration.Item1.GetOrNull(config);
-                                var time = config.Strategy.CreateTime(model);
-                                var progress =
-                                    timeSlot.GetTaskProgress(time) / _TimeSlotAndDuration.Item2;
-                                _ProgressReport.Done(config, progress);
+                                _ProgressReport.Done(config, _ProgressMap.Get(config));
                                 return result;
                             }
                             else
