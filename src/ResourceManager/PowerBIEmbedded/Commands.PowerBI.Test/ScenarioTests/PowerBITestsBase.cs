@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule, 
                     helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.PowerBI.psd1"), 
+                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"), 
                     "AzureRM.Resources.ps1");
                 try
                 {

@@ -4,60 +4,61 @@ external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Help Version: 0.0.1.0
 Locale: en-US
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
-Module Name: AzureRM.PowerBI
+Module Name: AzureRM.PowerBIEmbedded
 schema: 2.0.0
 ---
 
-# New-AzureRmPowerBIEmbeddedCapacity
+# Update-AzureRmPowerBIEmbeddedCapacity
 
 ## SYNOPSIS
-Creates a new PowerBI Embedded Capacity
+Modifies  an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
 ```
-New-AzureRmPowerBIEmbeddedCapacity 
-	[-ResourceGroupName] <String> 
+Update-AzureRmPowerBIEmbeddedCapacity 
 	[-Name] <String> 
-	[-Location] <String>
- 	[-Sku] <String> 
-	[-Administrator] <String>
-	[[-Tag] <Hashtable>] 
- 	[-WhatIf] 
-	[-Confirm] 
-	[<CommonParameters>]
+	[[-ResourceGroupName] <String>] 
+	[[-Sku] <String>]
+ 	[[-Tag] <Hashtable>] 
+	[[-Administrator] <String>] 
+	[-PassThru] 
+	[-WhatIf]
+ 	[-Confirm] 
+    [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmPowerBIEmbeddedCapacity cmdlet creates a new PowerBI Embedded Capacity
+The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI Embedded Capacity
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity" -Location "West Central US" -Sku "A1" -Administrator admin@microsoft.com
+PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com, testuser2@contoso.com" -PassThru
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
 Name                   : testcapacity
 Location               : West Central US
 State                  : Succeeded
-Administrator          : {admin@microsoft.com}
+Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
-Tag                    : {}
+Tag                    : {[key1, value1], [key2, value2]}
+
 ```
 
-Creates a capacity named testcapacity in the Azure region West Central US and in resource group testRG. The sku level for the capacity will be A1.
+Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -Name
+Name of the PowerBI Embedded Capacity
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -66,30 +67,15 @@ Default value: None
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the PowerBI Embedded Capacity
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByNameAndResourceGroup
 Aliases: 
 
-Required: True
-Position: 1
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Location
-The Azure region where the PowerBI Embedded Capacity is hosted
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
+Required: False
 Default value: None
 Accept wildcard characters: False
 ```
@@ -103,22 +89,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: A1, A2, A3, A4, A5, A6
 
-Required: True
-Position: 3
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Administrator
-A comma separated capacity names to set as administrator on the capacity
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
+Required: False
 Default value: None
 Accept wildcard characters: False
 ```
@@ -133,6 +104,63 @@ Aliases:
 
 Required: False
 Default value: None
+Accept wildcard characters: False
+```
+### -Administrator
+A comma separated capacity names to set as administrator on the capacity
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Default value: None
+Accept wildcard characters: False
+```
+
+### -ResourceId
+PowerBI Embedded Capacity ResourceID.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Input object for Piping
+
+```yaml
+Type: PSPowerBIEmbeddedCapacity
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
