@@ -4,19 +4,19 @@ external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Help Version: 0.0.1.0
 Locale: en-US
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
-Module Name: AzureRM.PowerBI
+Module Name: AzureRM.PowerBIEmbedded
 schema: 2.0.0
 ---
 
-# Resume-AzureRmPowerBIEmbeddedCapacity
+# Remove-AzureRmPowerBIEmbeddedCapacity
 
 ## SYNOPSIS
-Resumes an instance of PowerBI Embedded Capacity
+Deletes an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
 ```
-Resume-AzureRmPowerBIEmbeddedCapacity 
+Remove-AzureRmPowerBIEmbeddedCapacity 
 	[-Name] <String> 
 	[[-ResourceGroupName] <String>] 
 	[-PassThru] 
@@ -26,13 +26,13 @@ Resume-AzureRmPowerBIEmbeddedCapacity
 ```
 
 ## DESCRIPTION
-The Resume-AzureRmPowerBIEmbeddedCapacity cmdlet resumes an instance of PowerBI Embedded Capacity
+The Remove-AzureRmPowerBIEmbeddedCapacity cmdlet deletes an instance of PowerBI Embedded Capacity
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
+PS C:\> Remove-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
@@ -43,28 +43,28 @@ Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
+
 ```
 
-This command will resume a paused capacity named testcapacity in the resourcegroup testRG
+This command will remove the capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
 
-### -Name
-Name of the PowerBI Embedded Capacity
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
 
 ```yaml
 Type: String
 Parameter Sets: ByNameAndResourceGroup
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
 Default value: None
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -Name
+Name of the PowerBI Embedded Capacity
 
 ```yaml
 Type: String
@@ -103,6 +103,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,4 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzureRmPowerBIEmbeddedCapacity](./Get-AzureRmPowerBIEmbeddedCapacity.md)
 
-[Suspend-AzureRmPowerBIEmbeddedCapacity](./Suspend-AzureRmPowerBIEmbeddedCapacity.md)
+[New-AzureRmPowerBIEmbeddedCapacity](./New-AzureRmPowerBIEmbeddedCapacity.md)

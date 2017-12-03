@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.PowerBI.Models;
 using Microsoft.Azure.Commands.PowerBI.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.PowerBI
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             Position = 2, 
             Mandatory = true,
             HelpMessage = "Azure region where the capacity should be created.")]
-        [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.PowerBIDedicated/capacities")]
         public string Location { get; set; }
 
         [Parameter(

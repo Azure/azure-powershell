@@ -4,52 +4,48 @@ external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Help Version: 0.0.1.0
 Locale: en-US
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
-Module Name: AzureRM.PowerBI
+Module Name: AzureRM.PowerBIEmbedded
 schema: 2.0.0
 ---
 
-# Update-AzureRmPowerBIEmbeddedCapacity
+# Resume-AzureRmPowerBIEmbeddedCapacity
 
 ## SYNOPSIS
-Modifies  an instance of PowerBI Embedded Capacity
+Resumes an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
 ```
-Update-AzureRmPowerBIEmbeddedCapacity 
+Resume-AzureRmPowerBIEmbeddedCapacity 
 	[-Name] <String> 
 	[[-ResourceGroupName] <String>] 
-	[[-Sku] <String>]
- 	[[-Tag] <Hashtable>] 
-	[[-Administrator] <String>] 
 	[-PassThru] 
 	[-WhatIf]
  	[-Confirm] 
-    [<CommonParameters>]
+	[<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzureRmPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI Embedded Capacity
+The Resume-AzureRmPowerBIEmbeddedCapacity cmdlet resumes an instance of PowerBI Embedded Capacity
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com, testuser2@contoso.com" -PassThru
+PS C:\> Resume-AzureRmPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG" -PassThru
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
 Name                   : testcapacity
 Location               : West Central US
 State                  : Succeeded
-Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
+Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
-Tag                    : {[key1, value1], [key2, value2]}
-
+Tag                    : {}
 ```
 
-Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
+This command will resume a paused capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
 
@@ -80,47 +76,8 @@ Default value: None
 Accept wildcard characters: False
 ```
 
-### -Sku
-The name of the Sku for the capacity.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: A1, A2, A3, A4, A5, A6
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Tag
-Key-value pairs in the form of a hash table set as tags on the capacity.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-### -Administrator
-A comma separated capacity names to set as administrator on the capacity
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
 ### -ResourceId
-PowerBI Embedded Capacity ResourceID.
+Azure resource ID
 
 ```yaml
 Type: String
@@ -146,21 +103,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -209,4 +151,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzureRmPowerBIEmbeddedCapacity](./Get-AzureRmPowerBIEmbeddedCapacity.md)
 
-[Remove-AzureRmPowerBIEmbeddedCapacity](./Remove-AzureRmPowerBIEmbeddedCapacity.md)
+[Suspend-AzureRmPowerBIEmbeddedCapacity](./Suspend-AzureRmPowerBIEmbeddedCapacity.md)

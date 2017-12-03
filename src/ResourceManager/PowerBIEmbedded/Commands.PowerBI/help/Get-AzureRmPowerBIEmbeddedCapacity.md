@@ -4,7 +4,7 @@ external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Help Version: 0.0.1.0
 Locale: en-US
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
-Module Name: AzureRM.PowerBI
+Module Name: AzureRM.PowerBIEmbedded
 schema: 2.0.0
 ---
 
