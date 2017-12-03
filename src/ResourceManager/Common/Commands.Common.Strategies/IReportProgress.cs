@@ -16,7 +16,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface IProgressReport
     {
-        void Report<TModel>(ResourceConfig<TModel> config, double progress)
-                where TModel : class;
+        void Start<TModel>(ResourceConfig<TModel> config)
+            where TModel : class;
+
+        void Done<TModel>(ResourceConfig<TModel> config, double progress)
+            where TModel : class;
     }
 }

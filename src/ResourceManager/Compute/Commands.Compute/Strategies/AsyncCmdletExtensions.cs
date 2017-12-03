@@ -51,6 +51,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
             public void WriteObject(object value)
                 => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
+
+            public void WriteProgress(ProgressRecord progressRecord)
+                => Scheduler.BeginInvoke(() => _Cmdlet.WriteProgress(progressRecord));
         }
     }
 }

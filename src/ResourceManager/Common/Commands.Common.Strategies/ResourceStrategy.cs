@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class ResourceStrategy<TModel> : IEntityStrategy
+    public sealed class ResourceStrategy<TModel> : IResourceStrategy
     {
         public string Type { get; }
 
@@ -35,13 +35,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Action<TModel, string> SetLocation { get; }
 
+        public Func<TModel, int> CreateTime { get; }
+
         public ResourceStrategy(
             string type,
             Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation)
+            Action<TModel, string> setLocation,
+            Func<TModel, int> createTime)
         {
             Type = type;
             GetId = getId;
@@ -49,6 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CreateOrUpdateAsync = createOrUpdateAsync;
             GetLocation = getLocation;
             SetLocation = setLocation;
+            CreateTime = createTime;
         }
     }
 
@@ -61,7 +65,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation)
+            Action<TModel, string> setLocation,
+            Func<TModel, int> createTime)
             where TClient : ServiceClient<TClient>
         {
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
@@ -71,7 +76,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 getLocation,
-                setLocation);
+                setLocation,
+                createTime);
         }
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
@@ -81,7 +87,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation)
+            Action<TModel, string> setLocation,
+            Func<TModel, int> createTime)
             where TClient : ServiceClient<TClient>
             => Create(
                 type,
@@ -90,6 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 getAsync,
                 createOrUpdateAsync,
                 getLocation,
-                setLocation);
+                setLocation,
+                createTime);
     }
 }

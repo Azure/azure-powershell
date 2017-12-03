@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 (o, p) => o.CreateOrUpdateAsync(
-                    p.ResourceGroupName, p.Name, p.Model, p.CancellationToken));
+                    p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
+                _ => 15);
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
             this ResourceConfig<ResourceGroup> resourceGroup, string name, int[] openPorts)

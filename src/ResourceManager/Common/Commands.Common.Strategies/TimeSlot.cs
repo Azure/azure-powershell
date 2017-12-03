@@ -54,11 +54,11 @@
         }
 
         public double GetTaskProgress(int duration)
-            => duration <= Duration 
-                ? GetProgress(duration)
-                : GetProgress(Duration) + Next.GetTaskProgress(duration - Duration);
+            => duration <= Duration || Next == null 
+                ? GetTimeSlotProgress(duration)
+                : GetTimeSlotProgress(Duration) + Next.GetTaskProgress(duration - Duration);
 
-        double GetProgress(double duration)
+        double GetTimeSlotProgress(double duration)
             => duration / TaskCount;
     }
 }

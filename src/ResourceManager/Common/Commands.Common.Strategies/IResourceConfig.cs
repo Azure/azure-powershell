@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface IResourceConfig : IEntityConfig
     {
+        new IResourceStrategy Strategy { get; }
+
         string ResourceGroupName { get; }
 
         IEnumerable<IEntityConfig> Dependencies { get; }

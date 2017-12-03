@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
+        IResourceStrategy IResourceConfig.Strategy => Strategy;
+
         IResourceConfig IEntityConfig.Resource => this;
 
         public ResourceConfig(
