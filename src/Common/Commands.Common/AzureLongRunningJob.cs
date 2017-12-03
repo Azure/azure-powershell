@@ -200,13 +200,16 @@ namespace Microsoft.Azure.Commands.Common
             try
             {
                 Start();
+                WriteDebug(string.Format("[AzureLongRunningJob]: Starting cmdlet execution, must confirm: {0}", _shouldConfirm));
                 _execute(_cmdlet);
+                WriteDebug("[AzureLongRunningJob]: Completing cmdlet execution successfully");
                 Complete();
             }
             catch (Exception ex)
             {
                 string message = string.Format("The cmdlet failed in background execution.  The returned error was '{0}'.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the '-AsJob' parameter", ex.Message);
                 Error.Add(new ErrorRecord(ex, message, ErrorCategory.InvalidOperation, this));
+                WriteDebug("[AzureLongRunningJob]: Error in cmdlet execution");
                 Fail();
             }
         }
@@ -576,15 +579,14 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        internal bool IsTerminalState(JobState state)
+        internal bool IsFailedOrCancelled(JobState state)
         {
-            return (state == JobState.Completed || state == JobState.Failed || state == JobState.Stopped);
+            return (state == JobState.Failed || state == JobState.Stopped);
         }
 
         /// <summary>
         /// Queue actions that must occur on the cmdlet thread, and block the current thread until they are completed
         /// </summary>
-        /// <typeparam name="V">The output type of the called cmdlet action</typeparam>
         /// <param name="shouldMethod">The action to invoke</param>
         /// <param name="exceptionThrownOnCmdletThread">Any exception that results</param>
         /// <returns>The result of executing the action on the cmdlet thread</returns>
@@ -599,18 +601,22 @@ namespace Microsoft.Azure.Commands.Common
                 EventHandler<JobStateEventArgs> stateChangedEventHandler =
                     delegate (object sender, JobStateEventArgs eventArgs)
                     {
-                        if (IsTerminalState(eventArgs.JobStateInfo.State) || eventArgs.JobStateInfo.State == JobState.Stopping)
+                        WriteDebug(string.Format("[AzureLongRunningJob]: State change from {0} to {1} because {2}", eventArgs?.PreviousJobStateInfo?.State, eventArgs?.JobStateInfo?.State, eventArgs?.PreviousJobStateInfo?.Reason));
+                        if (eventArgs?.JobStateInfo?.State != JobState.Blocked && eventArgs?.PreviousJobStateInfo?.State == JobState.Blocked)
                         {
+                            WriteDebug("[AzureLongRunningJob]: Unblocking job that was previously blocked");
+                            // if receive-job is called, unblock by executing delayed powershell actions
+                            UnblockJob();
+                        }
+
+                        if (IsFailedOrCancelled(eventArgs.JobStateInfo.State) || eventArgs.JobStateInfo.State == JobState.Stopping)
+                        {
+                            WriteDebug("[AzureLongRunningJob]: Unblocking job due to stoppage or failure");
                             lock (resultsLock)
                             {
                                 closureSafeExceptionThrownOnCmdletThread = new OperationCanceledException();
                             }
                             gotResultEvent.Set();
-                        }
-                        else if (eventArgs?.JobStateInfo?.State == JobState.Running && eventArgs?.PreviousJobStateInfo?.State == JobState.Blocked)
-                        {
-                            // if receive-job is called, unblock by executing delayed powershell actions
-                            UnblockJob();
                         }
                     };
                 this.StateChanged += stateChangedEventHandler;
@@ -622,7 +628,7 @@ namespace Microsoft.Azure.Commands.Common
                     if (!gotResultEvent.IsSet)
                     {
                         this.Block();
-
+                        WriteDebug("[AzureLongRunningJob]: Blocking job for ShouldMethod");
                         ShouldMethodInvoker methodInvoker = new ShouldMethodInvoker
                         {
                             ShouldMethod = shouldMethod,
@@ -632,6 +638,7 @@ namespace Microsoft.Azure.Commands.Common
 
                         BlockedActions.Enqueue(new ShouldMethodStreamItem(methodInvoker));
                         gotResultEvent.Wait();
+                        WriteDebug("[AzureLongRunningJob]: ShouldMethod unblocked");
                         this.Start();
 
                         lock (resultsLock)
@@ -646,6 +653,7 @@ namespace Microsoft.Azure.Commands.Common
                 }
                 finally
                 {
+                    WriteDebug(string.Format("[AzureLongRunningJob]: Removing state changed event handler, exception {0}", closureSafeExceptionThrownOnCmdletThread?.Message));
                     this.StateChanged -= stateChangedEventHandler;
                 }
             }
