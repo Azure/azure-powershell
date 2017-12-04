@@ -25,27 +25,27 @@ namespace Microsoft.Azure.Commands.Kubernetes
     {
 
         /// <summary>
-        /// Cluster name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of your managed Kubernetes cluster")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Resource group name
         /// </summary>
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Name of your managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {

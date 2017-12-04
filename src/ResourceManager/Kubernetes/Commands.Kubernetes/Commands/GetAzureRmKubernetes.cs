@@ -32,20 +32,20 @@ namespace Microsoft.Azure.Commands.Kubernetes
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = NameParameterSet,
-            Position = 0,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name")]
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ParameterSetName = NameParameterSet,
             ValueFromPipelineByPropertyName = true,
