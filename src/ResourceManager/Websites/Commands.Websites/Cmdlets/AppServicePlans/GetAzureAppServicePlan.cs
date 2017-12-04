@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 #if NETSTANDARD
 using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         private const string ParameterSet2 = "S2";
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,6 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
 
         [Parameter(ParameterSetName = ParameterSet2, Position = 0, Mandatory = true, HelpMessage = "The location of the app service plan.")]
+        [LocationCompleter("Microsoft.Web/serverfarms")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

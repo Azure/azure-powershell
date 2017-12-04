@@ -7,6 +7,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using System.Management.Automation;
@@ -20,6 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class GetAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

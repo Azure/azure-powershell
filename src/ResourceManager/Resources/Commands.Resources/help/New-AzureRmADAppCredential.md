@@ -15,7 +15,7 @@ Adds a credential to an existing application.
 
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADAppCredential -ObjectId <String> -Password <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzureRmADAppCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzureRmADAppCredential -ApplicationId <String> -CertValue <String> [-StartDa
 
 ### ApplicationIdWithPasswordParameterSet
 ```
-New-AzureRmADAppCredential -ApplicationId <String> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADAppCredential -ApplicationId <String> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +45,8 @@ The application is identified by supplying either the application object id or a
 
 ### --------------------------  Example 1  --------------------------
 ```
-PS E:\> New-AzureRmADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password P@ssw0rd!
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS E:\> New-AzureRmADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password $SecureStringPassword
 ```
 
 A new password credential is added to an existing application.
@@ -156,7 +157,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases: 
 
