@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using System.Management.Automation;
 
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the location of the vault
         /// </summary>
         [Parameter(Mandatory = true)]
+        [LocationCompleter("Microsoft.SiteRecovery/SiteRecoveryVault")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

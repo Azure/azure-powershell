@@ -15,11 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-#if !NETSTANDARD
-using Microsoft.Azure.Management.Resources.Models;
-#else
 using Microsoft.Azure.Management.ResourceManager.Models;
-#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
