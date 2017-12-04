@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -623,4 +623,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure​RM.​Key​Vault](/powershell/module/azurerm.keyvault/)
+[Azureâ€‹RM.â€‹Keyâ€‹Vault](/powershell/module/azurerm.keyvault/)

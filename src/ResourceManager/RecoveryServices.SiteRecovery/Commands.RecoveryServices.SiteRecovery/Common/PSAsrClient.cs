@@ -25,6 +25,7 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
@@ -161,6 +162,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return new JavaScriptSerializer().Serialize(cikTokenDetails);
         }
 
+        /// <summary>
+        ///     Get extendVault Info.
+        /// </summary>
+        /// <param name="vaultResourceGroupName">Vault ResourceGroup Name</param>
+        /// <param name="vaultName">Vault Name</param>
+        /// <returns>VaultExtendedInfo Resource Object</returns>
+        public VaultExtendedInfoResource GetVaultExtendedInfo(String vaultResourceGroupName, String vaultName)
+        {
+            return this.recoveryServicesVaultClient
+                .VaultExtendedInfo
+                .GetWithHttpMessagesAsync(vaultResourceGroupName, vaultName, this.GetRequestHeaders(false))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+        }
+
         public static string GetJobIdFromReponseLocation(
             string responseLocation)
         {
@@ -195,7 +212,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                    "-" +
                                    DateTime.Now.ToUniversalTime()
                                        .ToString("yyyy-MM-dd HH:mm:ssZ") +
-                                   "-P";
+                                   "-Ps";
 
             customHeaders.Add(
                 "x-ms-client-request-id",

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrprotectioncontainermapping
 schema: 2.0.0
 ---
 
@@ -33,20 +33,61 @@ The **New-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet creates 
 
 ### Example 1
 ```
-PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
+PS C:\> New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
+
+Name             : 1f32fee1-05d0-4c11-a997-1618e14b4dab
+ID               : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/1f32fee1-05d0-4c11-a997-1618e14b4dab
+Type             :
+JobType          :
+DisplayName      :
+ClientRequestId  : 2870d5ab-f9be-405e-87d5-5bf20387c623 ActivityId: 24b28fc5-509b-4ad3-92c0-c8bb7ced7fb6
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+TargetObjectId   :
+TargetObjectType :
+TargetObjectName :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+```
+
+Starts the creation of the protection container mapping with the specified parameters, and returns the ASR job used to track the operation.
+
+### Example 2
+```
+PS C:\> New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $Policy1 -PrimaryProtectionContainer $pc
+
+Name             : 1f32fee1-05d0-4c11-a997-1618e14b4dab
+ID               : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/1f32fee1-05d0-4c11-a997-1618e14b4dab
+Type             :
+JobType          :
+DisplayName      :
+ClientRequestId  : 2870d5ab-f9be-405e-87d5-5bf20387c623 ActivityId: 24b28fc5-509b-4ad3-92c0-c8bb7ced7fb6
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+TargetObjectId   :
+TargetObjectType :
+TargetObjectName :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
 ```
 
 Starts the creation of the protection container mapping with the specified parameters, and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: IAzureContextContainer
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: cf
 
 Required: False
 Position: Named
@@ -115,13 +156,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: wi
 
 Required: False
 Position: Named
@@ -130,13 +171,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: wi
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

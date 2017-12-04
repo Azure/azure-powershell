@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 7B18FA1B-F616-4479-B2F0-620FC0E3E962
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactory
 schema: 2.0.0
 ---
 

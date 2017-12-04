@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmsqlserverkeyvaultcredentialconfig
 schema: 2.0.0
 ---
 

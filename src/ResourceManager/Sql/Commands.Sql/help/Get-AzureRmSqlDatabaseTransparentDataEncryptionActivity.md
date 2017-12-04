@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 7506FCEC-F96C-4918-8F20-A4B260F4DE1C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity
 schema: 2.0.0
 ---
 

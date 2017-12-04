@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group that contains the virtual machine.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

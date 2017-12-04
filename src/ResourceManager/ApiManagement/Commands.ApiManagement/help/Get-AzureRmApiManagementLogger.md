@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: A935ABAC-6C60-4AE3-9434-B9BCC1182A34
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementlogger
 schema: 2.0.0
 ---
 

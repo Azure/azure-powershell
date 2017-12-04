@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
 Module Name: AzureRM.Consumption
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionusagedetail
 schema: 2.0.0
 ---
 

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             // Testing with optional parameters
-            cmdlet.MetricNames = new[] { "n1", "n2" };
+            cmdlet.MetricName = new[] { "n1", "n2" };
             const string expected = "name.value eq 'n1' or name.value eq 'n2'";
 
             cmdlet.ExecuteCmdlet();

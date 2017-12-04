@@ -65,7 +65,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The target number of compute nodes to allocate to the pool.
         /// </summary>
-        public int? TargetDedicated { get; set; }
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        /// <summary>
+        /// The target number of low-priority compute nodes to allocate to the pool.
+        /// </summary>
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         /// <summary>
         /// The time interval at which to automatically adjust the pool size according to the AutoScaleFormula.
@@ -116,5 +121,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The network configuration of the pool.
         /// </summary>
         public PSNetworkConfiguration NetworkConfiguration { get; set; }
+
+        /// <summary>
+        /// The user accounts to be created on each node in the pool.
+        /// </summary>
+        public PSUserAccount[] UserAccounts { get; set; }
+
+        /// <summary>
+        /// The list of application licenses the Batch service will make available on each compute node in the pool.
+        /// </summary>
+        public List<string> ApplicationLicenses { get; set; }
     }
 }

@@ -18,12 +18,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmServerManagementNode")]
     public class RemoveServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

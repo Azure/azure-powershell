@@ -5,4 +5,4 @@ Import-Module $PSCommandPath\..\..\..\src\Package\Debug\ResourceManager\AzureRes
 Import-Module $PSCommandPath\TestFx-Tasks.psd1
 $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 Set-Location $defaults 
-Invoke-Pester -EnableExit
+Invoke-Pester

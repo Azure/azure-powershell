@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 33E7607E-C2BC-4F46-9038-91AC92041F00
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/remove-azurermdatalakestoreitemaclentry
 schema: 2.0.0
 ---
 
