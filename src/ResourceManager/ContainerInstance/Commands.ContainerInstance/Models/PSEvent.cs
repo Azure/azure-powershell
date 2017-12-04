@@ -12,29 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.RemoteApp;
-using Microsoft.WindowsAzure.Management.RemoteApp.Models;
-using System.Management.Automation;
+using Microsoft.Azure.Management.ContainerInstance.Models;
 
-namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
+namespace Microsoft.Azure.Commands.ContainerInstance.Models
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppLocation"), OutputType(typeof(Region))]
-    public class GetAzureRemoteAppLocation : RdsCmdlet
+    public class PSEvent : EventModel
     {
-        public override void ExecuteCmdlet()
+        public override string ToString()
         {
-            RegionListResult response = null;
-
-            response = CallClient(() => Client.Collections.RegionList(), Client.Collections);
-
-            if (response != null && response.Regions.Count > 0)
-            {
-                WriteObject(response.Regions, true);
-            }
-            else
-            {
-                WriteVerboseWithTimestamp("No locations found.");
-            }
+            return this.Message.Substring(0, 20) + "...";
         }
     }
 }
