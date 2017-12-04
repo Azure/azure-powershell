@@ -14,9 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 Describe "Test-NewCredentialNewServicePrincipal"{
-	Import-Module $PSScriptRoot\TestFx-Tasks.psd1
-	
-    Context "Creates a correctly formatted ServicePrincipal"{
+	Context "Creates a correctly formatted ServicePrincipal"{
         Mock Get-AzureRmADServicePrincipal { return $null }
         Mock New-AzureRMADServicePrincipal { return @{"ApplicationId" = "1234"; "Id" = "5678"} }
         Mock New-AzureRMRoleAssignment { return $true }
