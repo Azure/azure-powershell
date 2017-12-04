@@ -178,14 +178,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 else
                 {
                     var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction)
-                        .Select(s => s.Id.ToString()).ToArray();
+                        .Select(s => s.Id.ToString()).ToList();
                     account.SetProperty(AzureAccount.Property.Tenants, null);
                     string accountId = null;
 
-                    for (int i = 0; i < tenants.Count(); i++)
+                    foreach (var tenant in tenants)
                     {
-                        var tenant = tenants[i];
-
                         IAzureTenant tempTenant;
                         IAzureSubscription tempSubscription;
 
@@ -225,7 +223,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             // If no subscription found for the given token/tenant 
                             // discard tempTenant value unless current token/tenant is the last one.
-                            if (tempSubscription != null || i == (tenants.Count() - 1))
+                            if (tempSubscription != null || tenant.Equals(tenants[tenants.Count]))
                             {
                                 newTenant = tempTenant;
                                 newSubscription = tempSubscription;
