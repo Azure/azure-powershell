@@ -38,7 +38,7 @@ function Test-AzureRmIotHubLifecycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-	$namespaceName = "IotHubPSEHNamespace1Test"
+	$namespaceName = "IotHubPSEHNamespaceTest"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15
@@ -225,6 +225,43 @@ function Test-AzureRmIotHubLifecycle
 	$iothub.Properties.Routing.FallbackRoute.IsEnabled = 1
 	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
+
+	# Add Certificate
+	$certificatePath = "ScenarioTestFile\PS-Test-Root-CA.cer"
+	$certificateSubject = "CN=PS Test Root Certificate Authority"
+	$certificateThumbprint = "38303FC7371EC78DDE3E18D732C8414EE50969C7"
+	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
+	$certificateName = "TestCertificate"
+	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath
+	Assert-True { $newCertificate.Properties.Subject -eq $certificateSubject }
+	Assert-True { $newCertificate.Properties.Thumbprint -eq $certificateThumbprint }
+	Assert-False { $newCertificate.Properties.IsVerified }
+	Assert-True { $newCertificate.Type -eq $certificateType }
+	Assert-True { $newCertificate.Name -eq $certificateName }
+
+	# List All Certificate
+	$certificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $certificates.Count -gt 0}
+
+	# Get Certificate
+	$certificate = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName
+	Assert-True { $certificate.Properties.Subject -eq $certificateSubject }
+	Assert-True { $certificate.Properties.Thumbprint -eq $certificateThumbprint }
+	Assert-False { $certificate.Properties.IsVerified }
+	Assert-True { $certificate.Type -eq $certificateType }
+	Assert-True { $certificate.Name -eq $certificateName }
+
+	# Get Verification Code
+	$certificateWithNonce = Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificate.Etag
+	Assert-True { $certificateWithNonce.Properties.Subject -eq $certificateSubject }
+	Assert-NotNull { $certificateWithNonce.Properties.VerificationCode }
+
+	# Remove Certificate
+	Remove-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificateWithNonce.Etag
+
+	# List All Certificate
+	$afterRemoveCertificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $afterRemoveCertificates.Count -eq 0}
 
 	# Remove IotHub
 	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
