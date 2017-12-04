@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Delegation flag.")]
+        [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter CanDelegate { get; set; }
 
