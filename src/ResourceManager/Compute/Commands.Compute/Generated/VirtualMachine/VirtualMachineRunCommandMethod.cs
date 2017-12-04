@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Script = new List<string>();
                         PathIntrinsics currentPath = SessionState.Path;
                         var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath));
-                        string fileContent = FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
+                        string fileContent = Commands.Common.Authentication.Abstractions.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
                         parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
                     }
                     if (this.Parameter != null)
