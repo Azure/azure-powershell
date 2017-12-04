@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {

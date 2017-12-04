@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using System;
 using System.Threading.Tasks;
 
@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 createOrUpdateAsync, 
                 model => model.Location, 
                 (model, location) => model.Location = location,
-                createTime);
+                createTime,
+                true);
     }
 }

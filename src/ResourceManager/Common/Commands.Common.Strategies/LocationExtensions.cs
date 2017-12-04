@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return info != null
                 ? new DependencyLocation(
                     config.Strategy.GetLocation(info),
-                    typeof(TModel) != typeof(ResourceGroup))
+                    config.Strategy.CompulsoryLocation)
                 : config
                     .GetResourceDependencies()
                     .Select(state.GetDependencyLocationDispatch)

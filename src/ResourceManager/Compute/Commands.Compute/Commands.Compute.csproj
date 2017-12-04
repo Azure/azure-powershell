@@ -64,14 +64,6 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=15.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.15.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
@@ -292,8 +284,20 @@
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Strategies\AsyncCmdletExtensions.cs" />
     <Compile Include="Strategies\Client.cs" />
+    <Compile Include="Strategies\Compute\ComputeStrategy.cs" />
+    <Compile Include="Strategies\Compute\Image.cs" />
+    <Compile Include="Strategies\Compute\Images.cs" />
+    <Compile Include="Strategies\Compute\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
+    <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
+    <Compile Include="Strategies\Network\NetworkStrategy.cs" />
+    <Compile Include="Strategies\Network\PublicIPAddressStrategy.cs" />
+    <Compile Include="Strategies\Network\SubnetStrategy.cs" />
+    <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ProgressReport.cs" />
+    <Compile Include="Strategies\ResourceManager\ResourceConfigExtensions.cs" />
+    <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
