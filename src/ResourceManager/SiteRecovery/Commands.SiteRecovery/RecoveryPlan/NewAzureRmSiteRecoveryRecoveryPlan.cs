@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "New-AzureRmRecoveryServicesAsrRecoveryPlan cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class NewAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -96,7 +99,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRReplicationProtectedItem [] ReplicationProtectedItem { get; set; }
+        public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }
 
         /// <summary>
         /// Gets or sets RP JSON FilePath.
@@ -196,7 +199,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 CreateRecoveryPlan(recoveryPlan);
             }
-            else if(string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToEnterpriseLegacy, StringComparison.OrdinalIgnoreCase) == 0 ||
+            else if (string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToEnterpriseLegacy, StringComparison.OrdinalIgnoreCase) == 0 ||
                 string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToAzureLegacy, StringComparison.OrdinalIgnoreCase) == 0 ||
                 string.Compare(this.ParameterSetName, ASRParameterSets.HyperVSiteToAzureLegacy, StringComparison.OrdinalIgnoreCase) == 0)
             {
@@ -295,7 +298,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                 ReplicationProtectedItemResponse replicationProtectedItemResponse =
                             RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                            Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers), 
+                            Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
                             rpi.Name);
 
                 string VmId = null;
