@@ -435,18 +435,6 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.Restore(resourceGroupName, name, backupId, request);
         }
 
-        public static RecoverResponse RecoverSiteSlot(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, CsmSiteRecoveryEntity recoveryEntity, string slot)
-        {
-            return webApp.RecoverSlot(resourceGroupName, name, recoveryEntity, slot);
-        }
-
-        public static RecoverResponse RecoverSite(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, CsmSiteRecoveryEntity recoveryEntity)
-        {
-            return webApp.Recover(resourceGroupName, name, recoveryEntity);
-        }
-        
         public static SlotConfigNamesResource GetSlotConfigNames(this IWebAppsOperations webApp,
             string resourceGroupName, string name)
         {
