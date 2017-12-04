@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             RunCmdLet(() =>
             {
                 WriteVerbose("Preparing for deployment of your managed Kubernetes cluster.");
-                if (!string.IsNullOrEmpty(ResourceGroupName))
+                if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
                 {
                     var rg = RmClient.ResourceGroups.Get(ResourceGroupName);
                     Location = rg.Location;
