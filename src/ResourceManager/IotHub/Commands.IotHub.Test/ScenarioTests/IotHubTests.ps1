@@ -229,7 +229,7 @@ function Test-AzureRmIotHubLifecycle
 	# Add Certificate
 	$certificatePath = "ScenarioTestFile\PS-Test-Root-CA.cer"
 	$certificateSubject = "CN=PS Test Root Certificate Authority"
-	$certificateThumbprint = "43039D39B36FDB44D98AFA79B56F70A66CED01C2"
+	$certificateThumbprint = "38303FC7371EC78DDE3E18D732C8414EE50969C7"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
 	$certificateName = "TestCertificate"
 	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath

@@ -151,6 +151,6 @@
     <value>Update IoT Hub </value>
   </data>
   <data name="VerifyIotHubCertificate" xml:space="preserve">
-    <value>Add an Iot Hub Verified Certificate</value>
+    <value>Verify an Iot Hub Certificate</value>
   </data>
 </root>

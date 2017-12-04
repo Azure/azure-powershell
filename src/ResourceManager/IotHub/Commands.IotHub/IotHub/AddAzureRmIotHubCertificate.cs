@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
+    using System.Text;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
@@ -84,20 +85,29 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         break;
                 }
 
-                CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
-                certificateBodyDescription.Certificate = certificate;
-
-                CertificateDescription certificateDescription;
-                if (this.Etag != null)
+                try
                 {
-                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
-                }
-                else
-                {
-                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
-                }
+                    certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
 
-                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                    CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
+                    certificateBodyDescription.Certificate = certificate;
+
+                    CertificateDescription certificateDescription;
+                    if (this.Etag != null)
+                    {
+                        certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
+                    }
+                    else
+                    {
+                        certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
+                    }
+
+                    this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
             }
         }
     }

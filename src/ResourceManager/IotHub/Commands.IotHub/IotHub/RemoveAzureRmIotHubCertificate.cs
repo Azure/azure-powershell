@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Management.IotHub;
 
@@ -55,17 +54,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         {
             if (ShouldProcess(Name, Properties.Resources.RemoveIotHubCertificate))
             {
-                try
-                {
-                    this.IotHubClient.Certificates.Delete(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
-                }
-                catch (Exception e)
-                {
-                    if (!e.Message.Contains("NotFound"))
-                    {
-                        throw e;
-                    }
-                }
+                this.IotHubClient.Certificates.Delete(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
             }
         }
     }
