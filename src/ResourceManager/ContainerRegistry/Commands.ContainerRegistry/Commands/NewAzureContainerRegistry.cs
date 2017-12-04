@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Mandatory = false, HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enable admin user for the container registry.")]
