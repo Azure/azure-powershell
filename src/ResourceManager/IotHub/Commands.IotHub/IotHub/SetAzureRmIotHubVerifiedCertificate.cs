@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
+    using System.Text;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
@@ -85,11 +86,20 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         break;
                 }
 
-                CertificateVerificationDescription certificateVerificationDescription = new CertificateVerificationDescription();
-                certificateVerificationDescription.Certificate = certificate;
+                try
+                {
+                    certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
 
-                CertificateDescription certificateDescription = this.IotHubClient.Certificates.Verify(this.ResourceGroupName, this.Name, this.CertificateName, certificateVerificationDescription, this.Etag);
-                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                    CertificateVerificationDescription certificateVerificationDescription = new CertificateVerificationDescription();
+                    certificateVerificationDescription.Certificate = certificate;
+
+                    CertificateDescription certificateDescription = this.IotHubClient.Certificates.Verify(this.ResourceGroupName, this.Name, this.CertificateName, certificateVerificationDescription, this.Etag);
+                    this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
             }
         }
     }

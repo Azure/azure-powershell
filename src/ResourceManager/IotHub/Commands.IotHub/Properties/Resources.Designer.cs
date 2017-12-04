@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add an Iot Hub Verified Certificate.
+        ///   Looks up a localized string similar to Verify an Iot Hub Certificate.
         /// </summary>
         internal static string VerifyIotHubCertificate {
             get {

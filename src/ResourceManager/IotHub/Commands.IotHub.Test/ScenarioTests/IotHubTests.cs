@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public void TestAzureIotHubLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
-                    () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
-                    null,
-                    null,
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName());
+                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
+                null,
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
     }
 }
