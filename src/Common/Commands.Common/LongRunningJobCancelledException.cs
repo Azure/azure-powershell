@@ -13,36 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
-using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
-    /// Tracks the type of should method being executed
+    /// Exception used to terminate runtime functions when a job is stopping
     /// </summary>
-    internal enum ShouldMethodType
+    [Serializable]
+    public class LongRunningJobCancelledException :InvalidOperationException
     {
-        ShouldProcess= 0,
-        ShouldContinue = 1,
-        HasTransaction = 2
-    }
+        public LongRunningJobCancelledException() : base()
+        {
+        }
 
-    /// <summary>
-    /// Representation of a deferred powershell method execution for SHouldProcess or SHouldContinue which must execute on the cmdlet thread
-    /// </summary>
-    internal class ShouldMethodInvoker
-    {
-        public object SyncObject { get; set; }
+        public LongRunningJobCancelledException(string message) : base(message)
+        {
+        }
 
-        public ManualResetEventSlim Finished { get; set; }
-
-        public Func<Cmdlet, bool> ShouldMethod { get; set; }
-
-        public bool MethodResult { get; set; }
-
-        public Exception ThrownException { get; set; }
-
-        public ShouldMethodType MethodType { get; set; }
+        public LongRunningJobCancelledException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

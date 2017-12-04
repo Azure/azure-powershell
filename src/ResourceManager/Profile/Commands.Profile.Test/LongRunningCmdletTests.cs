@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using Xunit;
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Thread.Sleep(TimeSpan.FromSeconds(1));
                 if (job.StatusMessage == "Blocked")
                 {
-                    job.Start();
+                    job.TryStart();
                 }
             }
 
@@ -103,6 +104,94 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal("Failed", job.StatusMessage);
             Assert.Equal(2, job.Error.Count);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanHandleCmdletStop()
+        {
+            Mock<ICommandRuntime> mockRuntime;
+            var cmdlet = SetupCmdlet(true, true, out mockRuntime);
+            cmdlet.Wait = true;
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
+            job.StopJob();
+            int times = 0;
+            while (times++ < 20 && job.StatusMessage != "Completed" && job.StatusMessage != "Failed" && job.StatusMessage != "Stopped")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+            }
+
+            Assert.Equal("Stopped", job.StatusMessage);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanHandleShouldProcessExceptionForConfirm()
+        {
+            Mock<ICommandRuntime> mockRuntime;
+            var cmdlet = SetupCmdlet(true, false, out mockRuntime);
+            cmdlet.MyInvocation.BoundParameters["Confirm"] = true;
+            mockRuntime.Setup((r) => r.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Throws(new InvalidOperationException("Exception on ShouldProcess"));
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
+            int times = 0;
+            while (times++ < 20 && job.StatusMessage != "Failed")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                if (job.StatusMessage == "Blocked")
+                {
+                    job.TryStart();
+                }
+            }
+
+            Assert.Equal("Failed", job.StatusMessage);
+            Assert.True(job.Error.Count > 0 && job.Error.Any(e => e.Exception != null && e.Exception.GetType() == typeof(InvalidOperationException)  && e.Exception.Message.Contains("Confirm")));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanHandleShouldProcessExceptionForWhatIf()
+        {
+            Mock<ICommandRuntime> mockRuntime;
+            var cmdlet = SetupCmdlet(true, false, out mockRuntime);
+            cmdlet.MyInvocation.BoundParameters["WhatIf"] = true;
+            mockRuntime.Setup((r) => r.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Throws(new InvalidOperationException("Exception on ShouldProcess"));
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
+            int times = 0;
+            while (times++ < 20 && job.StatusMessage != "Failed")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                if (job.StatusMessage == "Blocked")
+                {
+                    job.TryStart();
+                }
+            }
+
+            Assert.Equal("Failed", job.StatusMessage);
+            Assert.True(job.Error.Count > 0 && job.Error.Any(e => e.Exception != null && e.Exception.GetType() == typeof(InvalidOperationException) && e.Exception.Message.Contains("WhatIf")));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanHandleShouldContinueException()
+        {
+            Mock<ICommandRuntime> mockRuntime;
+            var cmdlet = SetupCmdlet(true, true, out mockRuntime);
+            mockRuntime.Setup((r) => r.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Throws(new InvalidOperationException("Exception on ShouldContinue"));
+            var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
+            int times = 0;
+            while (times++ < 20 && job.StatusMessage != "Failed")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                if (job.StatusMessage == "Blocked")
+                {
+                    job.TryStart();
+                }
+            }
+
+            Assert.Equal("Failed", job.StatusMessage);
+            Assert.True(job.Error.Count > 0 && job.Error.Any(e => e.Exception != null && e.Exception.GetType() == typeof(InvalidOperationException) && e.Exception.Message.Contains("Force")));
+        }
+
 
         AzureStreamTestCmdlet SetupCmdlet(bool CallShouldProcess, bool CallShouldContinue, out Mock<ICommandRuntime> mockRuntime)
         {
@@ -147,7 +236,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Assert.Equal("Completed", job.StatusMessage);
             Assert.True(job.HasMoreData);
-            Assert.Collection(job.Debug, t => Assert.Equal(Debug, t.Message));
+            Assert.True(job.Debug.Any(t => t.Message == Debug));
             Assert.Collection(job.Warning, t => Assert.Equal(Warning, t.Message));
             Assert.Collection(job.Verbose, t => Assert.Equal(Verbose, t.Message));
             Assert.Collection(job.Progress, t => Assert.Equal(Progress, t));
@@ -170,6 +259,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             public bool CallShouldProcess { get; set; }
             public bool CallShouldContinue { get; set; }
             public bool Fail { get; set; }
+            public bool Wait { get; set; }
 
             public IList<object> Output { get; set; } = new List<object>();
             protected override string DataCollectionWarning
@@ -206,6 +296,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
                         WriteValues(Output, WriteObject);
                         WriteValues(Error, WriteError);
                     }
+                }
+
+                if (Wait)
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(5));
                 }
 
                 if (Fail)
