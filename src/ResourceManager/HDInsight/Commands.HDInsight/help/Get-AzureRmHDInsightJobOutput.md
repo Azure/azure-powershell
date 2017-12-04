@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 5871C962-27D7-4EC8-927E-D4CAE5F23C58
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightjoboutput
 schema: 2.0.0
 ---
 

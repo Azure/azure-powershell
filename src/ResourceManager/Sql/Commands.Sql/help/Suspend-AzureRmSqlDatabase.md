@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 7302D785-9DD0-4CC0-93C9-9A6EA60591CF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/suspend-azurermsqldatabase
 schema: 2.0.0
 ---
 

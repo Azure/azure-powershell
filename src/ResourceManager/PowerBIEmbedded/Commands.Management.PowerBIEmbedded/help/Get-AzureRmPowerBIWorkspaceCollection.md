@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml
 Module Name: AzureRM.PowerBIEmbedded
 ms.assetid: EEF32F48-00F6-4C57-B4F1-B58B566EAFEF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/get-azurermpowerbiworkspacecollection
 schema: 2.0.0
 ---
 

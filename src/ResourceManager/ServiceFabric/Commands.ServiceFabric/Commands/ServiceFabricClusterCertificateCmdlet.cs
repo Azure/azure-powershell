@@ -36,6 +36,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 

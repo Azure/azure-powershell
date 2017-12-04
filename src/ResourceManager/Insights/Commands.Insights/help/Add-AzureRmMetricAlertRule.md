@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: A90564B5-57D7-48EB-976D-38C03D930289
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermmetricalertrule
 schema: 2.0.0
 ---
 
@@ -16,14 +16,15 @@ Adds or updates a metric-based alert rule.
 ```
 Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
- -Location <String> [-Description <String>] [-DisableRule] -ResourceGroup <String> -Name <String>
- [-Actions <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
+ -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
+ [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.RuleAction]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmMetricAlertRule** cmdlet adds or updates a metric-based alert rule.
 The added rule is associated with a resource group and has a name.
+This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
@@ -61,13 +62,13 @@ This command creates a metric alert rule for a website.
 
 ## PARAMETERS
 
-### -Actions
+### -Action
 Specifies a comma-separated list of actions.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Actions
 
 Required: False
 Position: Named
@@ -190,13 +191,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group for the rule.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -279,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
 
 [Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
 

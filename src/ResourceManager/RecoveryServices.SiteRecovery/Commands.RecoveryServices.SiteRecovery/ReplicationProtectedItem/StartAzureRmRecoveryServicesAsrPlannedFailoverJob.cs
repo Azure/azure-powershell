@@ -223,6 +223,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     input.Properties.ProviderSpecificDetails = failbackInput;
                 }
             }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0 ||
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForPlannedFailover,
+                        this.ReplicationProtectedItem.ReplicationProvider));
+            }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
                 this.fabricName,
@@ -296,6 +312,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             recoveryPlanHyperVReplicaAzureFailbackInput);
                     }
                 }
+                else if (string.Compare(
+                        replicationProvider,
+                        Constants.InMageAzureV2,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0 ||
+                    string.Compare(
+                        replicationProvider,
+                        Constants.InMage,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.UnsupportedReplicationProviderForPlannedFailover,
+                            replicationProvider));
+                }
             }
 
             var recoveryPlanPlannedFailoverInput = new RecoveryPlanPlannedFailoverInput
@@ -318,12 +350,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the PE.
         /// </summary>
-        public string protectionEntityName;
+        private string protectionEntityName;
 
         /// <summary>
         ///     Gets or sets Name of the Protection Container.
         /// </summary>
-        public string protectionContainerName;
+        private string protectionContainerName;
 
         /// <summary>
         ///     Gets or sets Name of the Fabric.

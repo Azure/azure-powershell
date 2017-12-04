@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 3A4F8442-1268-44BC-91ED-47C03CD20C47
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/remove-azurermcdnprofile
 schema: 2.0.0
 ---
 

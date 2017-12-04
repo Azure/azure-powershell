@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: DC870E11-2129-4906-8357-D9BC1CF2E08E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermlocation
 schema: 2.0.0
 ---
 

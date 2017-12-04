@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: EE3D2BA0-32E7-4A37-BCAF-F0E8FAAC43CE
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappsslbinding
 schema: 2.0.0
 ---
 

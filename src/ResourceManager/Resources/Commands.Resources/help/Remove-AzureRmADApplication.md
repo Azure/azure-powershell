@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadapplication
 schema: 2.0.0
 ---
 

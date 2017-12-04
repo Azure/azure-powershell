@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 4F65A8B3-A250-41C1-9AA5-DBEB3193C401
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccountmap
 schema: 2.0.0
 ---
 
