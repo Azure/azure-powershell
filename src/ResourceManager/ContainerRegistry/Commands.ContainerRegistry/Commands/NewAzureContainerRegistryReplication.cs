@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
 using System.Management.Automation;
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = true, HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
         [ValidateNotNullOrEmpty]
         [Alias(ReplicationLocationAlias)]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries/replications")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Container Registry Replication Name. Default to the location name.")]

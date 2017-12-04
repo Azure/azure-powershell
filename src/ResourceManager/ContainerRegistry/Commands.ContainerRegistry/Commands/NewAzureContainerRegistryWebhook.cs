@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = false, HelpMessage = "Webhook Location. Default to the location of the registry.")]
         [ValidateNotNullOrEmpty]
         [Alias(WebhookLocationAlias)]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries/webhooks")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]
