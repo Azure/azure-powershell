@@ -25,8 +25,6 @@ using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using System;

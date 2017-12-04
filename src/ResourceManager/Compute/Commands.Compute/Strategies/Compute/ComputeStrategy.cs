@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 createOrUpdateAsync,
                 config => config.Location,
                 (config, location) => config.Location = location,
-                createTime);
+                createTime,
+                true);
     }
 }

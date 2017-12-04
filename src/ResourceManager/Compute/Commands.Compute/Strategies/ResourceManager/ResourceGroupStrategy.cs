@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
                 (o, p) => o.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
                 model => model.Location,
                 (model, location) => model.Location = location,
-                _ => 3);
+                _ => 3,
+                false);
 
         public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
             => Strategy.CreateConfig(name, name);

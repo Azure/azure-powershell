@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
 {
     static class ResourceConfigExtensions
     {
-        public static ResourceConfig<TModel> CreateConfig<TModel>(
+        public static ResourceConfig<TModel> CreateResourceConfig<TModel>(
             this ResourceStrategy<TModel> strategy,
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,

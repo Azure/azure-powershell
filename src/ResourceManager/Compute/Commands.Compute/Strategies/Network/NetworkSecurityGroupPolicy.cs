@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
             this ResourceConfig<ResourceGroup> resourceGroup, string name, int[] openPorts)
-            => Strategy.CreateConfig(
+            => Strategy.CreateResourceConfig(
                 resourceGroup,
                 name,
                 _ => new NetworkSecurityGroup
