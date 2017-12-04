@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ContainerInstance
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
 schema: 2.0.0
 ---
