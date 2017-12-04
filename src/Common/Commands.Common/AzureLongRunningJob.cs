@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -20,8 +21,6 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
-using System.Management.Automation.Remoting;
-using System.Management.Automation.Remoting.Internal;
 using System.Reflection;
 using System.Threading;
 
@@ -35,6 +34,8 @@ namespace Microsoft.Azure.Commands.Common
         ConcurrentQueue<ShouldMethodStreamItem> _actions = new ConcurrentQueue<ShouldMethodStreamItem>();
         bool _shouldConfirm = false;
         Action<T> _execute;
+        bool _failedOnUnblock = false;
+        object _lockObject = new object();
 
         /// <summary>
         /// Create a job using the given invoked cmdlet, command name, and task name
@@ -68,7 +69,8 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         public override bool HasMoreData
         {
-            get { return Output.Any() || Progress.Any() || Error.Any() || Warning.Any() || Verbose.Any() || Debug.Any(); }
+            get { return Output.Any() || Progress.Any() || Error.Any() 
+                    || Warning.Any() || Verbose.Any() || Debug.Any(); }
         }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace Microsoft.Azure.Commands.Common
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                name = "Azure Long-Running Job";
+                name = Resources.LROJobName;
             }
 
             var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name);
@@ -154,7 +156,7 @@ namespace Microsoft.Azure.Commands.Common
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                name = "Azure Long-Running Job";
+                name = Resources.LROJobName;
             }
 
             var job = new Common.AzureLongRunningJob<U>(cmdlet, command, name, executor);
@@ -174,8 +176,8 @@ namespace Microsoft.Azure.Commands.Common
                 throw new ArgumentNullException(nameof(cmdlet));
             }
 
-            var returnType = cmdlet.GetType();
-            var returnValue = Activator.CreateInstance(cmdlet.GetType());
+            Type returnType = cmdlet.GetType();
+            U returnValue = Activator.CreateInstance(returnType) as U;
             foreach (var property in returnType.GetProperties())
             {
                 if (property.CanWrite && property.CanRead)
@@ -183,9 +185,15 @@ namespace Microsoft.Azure.Commands.Common
                     property.SafeCopyValue(source: cmdlet, target: returnValue);
                 }
             }
+
+            foreach (var parameter in cmdlet.MyInvocation.BoundParameters)
+            {
+                returnValue.MyInvocation.BoundParameters.Add(parameter.Key, parameter.Value);
+            }
+
             foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
             {
-                    field.SafeCopyValue(source: cmdlet, target: returnValue);
+                field.SafeCopyValue(source: cmdlet, target: returnValue);
             }
 
             return returnValue as U;
@@ -197,20 +205,33 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="state">The Job record that will track the progress of this job </param>
         public virtual void RunJob(object state)
         {
-            try
+            if (TryStart())
             {
-                Start();
-                WriteDebug(string.Format("[AzureLongRunningJob]: Starting cmdlet execution, must confirm: {0}", _shouldConfirm));
-                _execute(_cmdlet);
-                WriteDebug("[AzureLongRunningJob]: Completing cmdlet execution successfully");
-                Complete();
-            }
-            catch (Exception ex)
-            {
-                string message = string.Format("The cmdlet failed in background execution.  The returned error was '{0}'.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the '-AsJob' parameter", ex.Message);
-                Error.Add(new ErrorRecord(ex, message, ErrorCategory.InvalidOperation, this));
-                WriteDebug("[AzureLongRunningJob]: Error in cmdlet execution");
-                Fail();
+                try
+                {
+                    WriteDebug(string.Format(Resources.TraceBeginLROJob, _shouldConfirm));
+                    _execute(_cmdlet);
+                    WriteDebug(Resources.TraceEndLROJob);
+                }
+                catch (LongRunningJobCancelledException)
+                {
+                    // swallow exceptions wcaused by job stopping
+                }
+                catch (PSInvalidOperationException) when (IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    // do not attempt to write exceptions when a job is stopped 
+                }
+                catch (Exception ex) when (!IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    string message = string.Format(Resources.LROTaskExceptionMessage, ex.Message);
+                    WriteError(new ErrorRecord(ex, message, ErrorCategory.InvalidOperation, this));
+                    WriteDebug(Resources.TraceLROJobException);
+                    _failedOnUnblock = true;
+                }
+                finally
+                {
+                    Complete();
+                }
             }
         }
 
@@ -231,28 +252,94 @@ namespace Microsoft.Azure.Commands.Common
             var executor = CopyCmdlet(_cmdlet);
             executor.CommandRuntime = _runtime;
             ShouldMethodStreamItem stream;
-            while (_actions.TryDequeue(out stream))
+            while (!IsFailedOrCancelled(JobStateInfo.State) && _actions.TryDequeue(out stream))
             {
-                stream.ExecuteShouldMethod(executor);
+                try
+                {
+                    stream.ExecuteShouldMethod(executor);
+                }
+                catch (InvalidOperationException exception)
+                {
+                    _failedOnUnblock = true;
+                    WriteError(new ErrorRecord(new InvalidOperationException(GetShouldMethodFailureReaon(_cmdlet, stream), exception), "InvalidBackgroundOperation", ErrorCategory.InvalidOperation, this));
+                }
+                finally
+                {
+                    lock (stream.MethodInvoker.SyncObject)
+                    {
+                        stream?.MethodInvoker?.Finished?.Set();
+                    }
+                }
             }
+        }
+
+        internal string GetShouldMethodFailureReaon(T cmdlet, ShouldMethodStreamItem method)
+        {
+            string result = Resources.BaseShouldMethodFailureReason;
+            var boundParameters = cmdlet?.MyInvocation?.BoundParameters;
+            var methodType = method?.MethodInvoker?.MethodType ?? ShouldMethodType.ShouldContinue;
+            switch (methodType)
+            {
+                case ShouldMethodType.ShouldProcess:
+                    if (boundParameters != null && boundParameters.ContainsKey("Confirm") && (bool)boundParameters["Confirm"])
+                    {
+                        result += Resources.ShouldProcessFailConfirm;
+                    }
+                    else if (boundParameters != null && boundParameters.ContainsKey("WhatIf") && (bool)boundParameters["WhatIf"])
+                    {
+                        result += Resources.ShouldProcessFailWhatIf;
+                    }
+                    else
+                    {
+                        result += Resources.ShouldProcessFailImpact;
+                    }
+                    break;
+                case ShouldMethodType.ShouldContinue:
+                    result += Resources.ShouldContinueFail;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
 
         /// <summary>
         /// Mark the task as started
         /// </summary>
-        public void Start()
+        public bool TryStart()
         {
-            _status = "Running";
-            SetJobState(JobState.Running);
+            bool result = false;
+            lock (_lockObject)
+            {
+                if (!IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    _status = "Running";
+                    SetJobState(JobState.Running);
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
         /// Mark the task as blocked
         /// </summary>
-        public void Block()
+        public bool TryBlock()
         {
-            _status = "Blocked";
-            SetJobState(JobState.Blocked);
+            bool result = false;
+            lock (_lockObject)
+            {
+                if (!IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    _status = "Blocked";
+                    SetJobState(JobState.Blocked);
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -260,8 +347,11 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         public void Fail()
         {
-            _status = "Failed";
-            SetJobState(JobState.Failed);
+            lock (_lockObject)
+            {
+                _status = "Failed";
+                SetJobState(JobState.Failed);
+            }
         }
 
         /// <summary>
@@ -269,8 +359,20 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         public void Complete()
         {
-            _status = "Completed";
-            SetJobState(JobState.Completed);
+            lock (_lockObject)
+            {
+                if (_failedOnUnblock)
+                {
+                    _status = "Failed";
+                    SetJobState(JobState.Failed);
+                }
+
+                if (JobStateInfo != null && !IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    _status = "Completed";
+                    SetJobState(JobState.Completed);
+                }
+            }
         }
 
         /// <summary>
@@ -278,8 +380,11 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         public void Cancel()
         {
-            _status = "Stopped";
-            SetJobState(JobState.Stopped);
+            lock (_lockObject)
+            {
+                _status = "Stopped";
+                SetJobState(JobState.Stopped);
+            }
         }
 
         // Members for implementing command runtime for this job
@@ -311,7 +416,8 @@ namespace Microsoft.Azure.Commands.Common
         public bool ShouldContinue(string query, string caption)
         {
             Exception thrownException;
-            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption),
+                ShouldMethodType.ShouldContinue, out thrownException);
         }
 
         /// <summary>
@@ -328,7 +434,7 @@ namespace Microsoft.Azure.Commands.Common
             bool localYesToAll = yesToAll;
             bool localNoToAll = noToAll;
             bool result = InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldContinue(query, caption,
-                ref localYesToAll, ref localNoToAll), out thrownException);
+                ref localYesToAll, ref localNoToAll), ShouldMethodType.ShouldContinue, out thrownException);
             yesToAll = localYesToAll;
             noToAll = localNoToAll;
             return result;
@@ -385,19 +491,36 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
+        /// Throw if the job was terminated by failure or cancellation
+        /// </summary>
+        /// <param name="runtimeAction"></param>
+        protected void ThrowIfJobFailedOrCancelled()
+        {
+            lock (_lockObject)
+            {
+                if (IsFailedOrCancelled(JobStateInfo.State))
+                {
+                    throw new LongRunningJobCancelledException("Azure Long running job is stopping, cnanot perform any action");
+                }
+            }
+        }
+
+        /// <summary>
         /// Confirm an action with the user, as apppropriate
         /// </summary>
         /// <param name="target">The target of the action to confirm</param>
         /// <returns>True if the action is confirmed (by user or automatically), otherwise false</returns>
         public bool ShouldProcess(string target)
         {
+            ThrowIfJobFailedOrCancelled();
             if (CanHandleShouldProcessLocally())
             {
                 return true;
             }
 
             Exception thrownException;
-            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target),
+                ShouldMethodType.ShouldProcess, out thrownException);
         }
 
         /// <summary>
@@ -408,13 +531,15 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string target, string action)
         {
+            ThrowIfJobFailedOrCancelled();
             if (CanHandleShouldProcessLocally())
             {
                 return true;
             }
 
             Exception thrownException;
-            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target, action), out thrownException);
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(target, action),
+                ShouldMethodType.ShouldProcess, out thrownException);
         }
 
         /// <summary>
@@ -426,6 +551,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption)
         {
+            ThrowIfJobFailedOrCancelled();
             if (CanHandleShouldProcessLocally())
             {
                 return true;
@@ -433,7 +559,7 @@ namespace Microsoft.Azure.Commands.Common
 
             Exception thrownException;
             return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption),
-                out thrownException);
+                ShouldMethodType.ShouldProcess, out thrownException);
         }
 
         /// <summary>
@@ -446,6 +572,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if the action is confirmed (automatically, or by user interaction), otherwise false</returns>
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption, out ShouldProcessReason shouldProcessReason)
         {
+            ThrowIfJobFailedOrCancelled();
             if (CanHandleShouldProcessLocally())
             {
                 shouldProcessReason = ShouldProcessReason.None;
@@ -455,7 +582,7 @@ namespace Microsoft.Azure.Commands.Common
             ShouldProcessReason closureShouldProcessReason = ShouldProcessReason.None;
             Exception thrownException;
             bool result = InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.ShouldProcess(verboseDescription, verboseWarning, caption, out closureShouldProcessReason),
-                out thrownException);
+                ShouldMethodType.ShouldProcess, out thrownException);
             shouldProcessReason = closureShouldProcessReason;
             return result;
         }
@@ -466,7 +593,10 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="errorRecord">The error to throw</param>
         public void ThrowTerminatingError(ErrorRecord errorRecord)
         {
-            Error.Add(errorRecord);
+            if (Error.IsOpen)
+            {
+                Error.Add(errorRecord);
+            }
         }
 
         /// <summary>
@@ -475,9 +605,10 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>True if an ambient transaction is available, otherwise false</returns>
         public bool TransactionAvailable()
         {
+            ThrowIfJobFailedOrCancelled();
             Exception thrownException;
             return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
-                out thrownException);
+                ShouldMethodType.HasTransaction, out thrownException);
         }
 
         /// <summary>
@@ -486,7 +617,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="text">The text to write</param>
         public void WriteCommandDetail(string text)
         {
-            Verbose.Add(new VerboseRecord(text));
+            ThrowIfJobFailedOrCancelled();
+            if (Verbose.IsOpen)
+            {
+                Verbose.Add(new VerboseRecord(text));
+            }
         }
 
         /// <summary>
@@ -495,7 +630,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="text">The message to write</param>
         public void WriteDebug(string text)
         {
-            Debug.Add(new DebugRecord(text));
+            ThrowIfJobFailedOrCancelled();
+            if (Debug.IsOpen)
+            {
+                Debug.Add(new DebugRecord(text));
+            }
         }
 
         /// <summary>
@@ -504,7 +643,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="errorRecord">The error to write</param>
         public void WriteError(ErrorRecord errorRecord)
         {
-            Error.Add(errorRecord);
+            ThrowIfJobFailedOrCancelled();
+            if (Error.IsOpen)
+            {
+                Error.Add(errorRecord);
+            }
         }
 
         /// <summary>
@@ -513,7 +656,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="sendToPipeline">The putput object</param>
         public void WriteObject(object sendToPipeline)
         {
-            Output.Add(new PSObject(sendToPipeline));
+            ThrowIfJobFailedOrCancelled();
+            if (Output.IsOpen)
+            {
+                Output.Add(new PSObject(sendToPipeline));
+            }
         }
 
         /// <summary>
@@ -523,6 +670,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="enumerateCollection">If the output object is an enumeration, should each object be written to the pipeline?</param>
         public void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
+            ThrowIfJobFailedOrCancelled();
             IEnumerable enumerable = sendToPipeline as IEnumerable;
             if (enumerateCollection && enumerable != null)
             {
@@ -543,7 +691,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="progressRecord">The progress to write</param>
         public void WriteProgress(ProgressRecord progressRecord)
         {
-            Progress.Add(progressRecord);
+            ThrowIfJobFailedOrCancelled();
+            if (Progress.IsOpen)
+            {
+                Progress.Add(progressRecord);
+            }
         }
 
         /// <summary>
@@ -553,6 +705,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="progressRecord">The progress info to write</param>
         public void WriteProgress(long sourceId, ProgressRecord progressRecord)
         {
+            ThrowIfJobFailedOrCancelled();
             WriteProgress(progressRecord);
         }
 
@@ -562,7 +715,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="text">The verbose message to add</param>
         public void WriteVerbose(string text)
         {
-            Verbose.Add(new VerboseRecord(text));
+            ThrowIfJobFailedOrCancelled();
+            if (Verbose.IsOpen)
+            {
+                Verbose.Add(new VerboseRecord(text));
+            }
         }
 
         /// <summary>
@@ -571,7 +728,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="text">The warning to write</param>
         public void WriteWarning(string text)
         {
-            Warning.Add(new WarningRecord(text));
+            ThrowIfJobFailedOrCancelled();
+            if (Warning.IsOpen)
+            {
+                Warning.Add(new WarningRecord(text));
+            }
         }
 
         /// <summary>
@@ -581,7 +742,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns></returns>
         internal bool IsFailedOrCancelled(JobState state)
         {
-            return (state == JobState.Failed || state == JobState.Stopped);
+            return (state == JobState.Failed || state == JobState.Stopped || state == JobState.Stopping);
         }
 
         /// <summary>
@@ -590,7 +751,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="shouldMethod">The action to invoke</param>
         /// <param name="exceptionThrownOnCmdletThread">Any exception that results</param>
         /// <returns>The result of executing the action on the cmdlet thread</returns>
-        private bool InvokeShouldMethodAndWaitForResults(Func<Cmdlet, bool> shouldMethod, out Exception exceptionThrownOnCmdletThread)
+        private bool InvokeShouldMethodAndWaitForResults(Func<Cmdlet, bool> shouldMethod, ShouldMethodType methodType, out Exception exceptionThrownOnCmdletThread)
         {
 
             bool methodResult = false;
@@ -601,21 +762,23 @@ namespace Microsoft.Azure.Commands.Common
                 EventHandler<JobStateEventArgs> stateChangedEventHandler =
                     delegate (object sender, JobStateEventArgs eventArgs)
                     {
-                        WriteDebug(string.Format("[AzureLongRunningJob]: State change from {0} to {1} because {2}", eventArgs?.PreviousJobStateInfo?.State, eventArgs?.JobStateInfo?.State, eventArgs?.PreviousJobStateInfo?.Reason));
+                        WriteDebug(string.Format(Resources.TraceHandleLROStateChange, eventArgs?.PreviousJobStateInfo?.State,
+                            eventArgs?.JobStateInfo?.State, eventArgs?.PreviousJobStateInfo?.Reason));
                         if (eventArgs?.JobStateInfo?.State != JobState.Blocked && eventArgs?.PreviousJobStateInfo?.State == JobState.Blocked)
                         {
-                            WriteDebug("[AzureLongRunningJob]: Unblocking job that was previously blocked");
+                            WriteDebug(Resources.TraceHandlerUnblockJob);
                             // if receive-job is called, unblock by executing delayed powershell actions
                             UnblockJob();
                         }
 
                         if (IsFailedOrCancelled(eventArgs.JobStateInfo.State) || eventArgs.JobStateInfo.State == JobState.Stopping)
                         {
-                            WriteDebug("[AzureLongRunningJob]: Unblocking job due to stoppage or failure");
+                            WriteDebug(Resources.TraceHandlerUnblockJob);
                             lock (resultsLock)
                             {
                                 closureSafeExceptionThrownOnCmdletThread = new OperationCanceledException();
                             }
+
                             gotResultEvent.Set();
                         }
                     };
@@ -625,22 +788,22 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     stateChangedEventHandler(null, new JobStateEventArgs(this.JobStateInfo));
 
-                    if (!gotResultEvent.IsSet)
+                    if (!gotResultEvent.IsSet && this.TryBlock())
                     {
-                        this.Block();
-                        WriteDebug("[AzureLongRunningJob]: Blocking job for ShouldMethod");
+                        WriteDebug(string.Format(Resources.TraceBlockLROThread, methodType));
                         ShouldMethodInvoker methodInvoker = new ShouldMethodInvoker
                         {
                             ShouldMethod = shouldMethod,
                             Finished = gotResultEvent,
-                            SyncObject = resultsLock
+                            SyncObject = resultsLock,
+                            MethodType = methodType
                         };
 
                         BlockedActions.Enqueue(new ShouldMethodStreamItem(methodInvoker));
-                        gotResultEvent.Wait();
-                        WriteDebug("[AzureLongRunningJob]: ShouldMethod unblocked");
-                        this.Start();
 
+                        gotResultEvent.Wait();
+                        WriteDebug(string.Format(Resources.TraceUnblockLROThread, shouldMethod));
+                        TryStart();
                         lock (resultsLock)
                         {
                             if (closureSafeExceptionThrownOnCmdletThread == null) // stateChangedEventHandler didn't set the results?  = ok to clobber results?
@@ -653,7 +816,8 @@ namespace Microsoft.Azure.Commands.Common
                 }
                 finally
                 {
-                    WriteDebug(string.Format("[AzureLongRunningJob]: Removing state changed event handler, exception {0}", closureSafeExceptionThrownOnCmdletThread?.Message));
+                    WriteDebug(string.Format(Resources.TraceRemoveLROEventHandler,
+                        closureSafeExceptionThrownOnCmdletThread?.Message));
                     this.StateChanged -= stateChangedEventHandler;
                 }
             }
@@ -668,7 +832,7 @@ namespace Microsoft.Azure.Commands.Common
         public override void StopJob()
         {
             ShouldMethodStreamItem stream;
-            while (_actions.TryDequeue(out stream));
+            while (_actions.TryDequeue(out stream)) ;
             this.Cancel();
         }
     }

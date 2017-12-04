@@ -66,10 +66,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                     throw;
                 }
-                finally
-                {
-                    MethodInvoker?.Finished?.Set();
-                }
             }
         }
     }
