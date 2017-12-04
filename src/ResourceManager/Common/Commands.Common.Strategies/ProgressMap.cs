@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             _Duration = duration;
         }
 
+        /// <summary>
+        /// Returns a value [0..1] which is used to increment a progress bar when the resource is 
+        /// created.
+        /// </summary>
+        /// <param name="config">a resource configuration.</param>
+        /// <returns></returns>
         public double Get(IResourceConfig config)
         {
             var x = _Map.GetOrNull(config);
