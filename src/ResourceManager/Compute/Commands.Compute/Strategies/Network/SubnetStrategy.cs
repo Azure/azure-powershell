@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    public static class SubnetPolicy
+    static class SubnetPolicy
     {
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(

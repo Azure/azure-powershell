@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
-    public static class ComputePolicy
+    static class ComputePolicy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string type,

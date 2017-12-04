@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    public static class NetworkInterfaceStrategy
+    static class NetworkInterfaceStrategy
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(

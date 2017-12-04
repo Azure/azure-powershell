@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    public static class NetworkStrategy
+    static class NetworkStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string type,

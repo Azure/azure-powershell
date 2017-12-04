@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
-    public static class Images
+    static class Images
     {
         public static Dictionary<string, Dictionary<string, Image>> Instance { get; } =
             new Dictionary<string, Dictionary<string, Image>>

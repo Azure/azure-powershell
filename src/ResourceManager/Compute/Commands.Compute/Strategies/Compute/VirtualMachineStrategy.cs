@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
-    public static class VirtualMachineStrategy
+    static class VirtualMachineStrategy
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(

@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    public static class NetworkSecurityGroupStrategy
+    static class NetworkSecurityGroupStrategy
     {
         public static ResourceStrategy<NetworkSecurityGroup> Strategy { get; }
             = NetworkStrategy.Create(

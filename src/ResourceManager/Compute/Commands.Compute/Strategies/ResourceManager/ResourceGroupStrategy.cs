@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
 {
-    public static class ResourceGroupStrategy
+    static class ResourceGroupStrategy
     {
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(

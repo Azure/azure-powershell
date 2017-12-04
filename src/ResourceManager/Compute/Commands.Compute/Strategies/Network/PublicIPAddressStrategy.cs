@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    public static class PublicIPAddressStrategy
+    static class PublicIPAddressStrategy
     {
         public static ResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(

@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
-    public sealed class Image
+    sealed class Image
     {
         public string publisher;
 
