@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -127,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public const string SimpleParameterSet = "SimpleParameterSet";
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
             {
@@ -234,6 +235,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 asyncCmdlet.WriteObject(result);
             }
         }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
