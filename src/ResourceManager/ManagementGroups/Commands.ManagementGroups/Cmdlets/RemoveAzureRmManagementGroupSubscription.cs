@@ -10,7 +10,10 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmManagementGroup",
+    /// <summary>
+    /// Remove-AzureRmManagementGroupSubscription Cmdlet
+    /// </summary>
+    [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase

@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
+    /// <summary>
+    /// Remove-AzureRmManagementGroup Cmdlet
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroup",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]

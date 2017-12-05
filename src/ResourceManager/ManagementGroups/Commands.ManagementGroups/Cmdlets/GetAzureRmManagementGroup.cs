@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet(VerbsCommon.Get,"AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
+        /// <summary>
+        /// Get-AzureRmManagementGroup Cmdlet
+        /// </summary>
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false, HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
         public string GroupId { get; set; }
 

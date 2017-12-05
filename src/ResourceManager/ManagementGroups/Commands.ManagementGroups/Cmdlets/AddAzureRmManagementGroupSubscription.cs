@@ -10,6 +10,10 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
+    /// <summary>
+    /// Add-AzureRmManagementGroupSubscription Cmdlet
+    /// </summary>
+    
     [Cmdlet(VerbsCommon.Add, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
