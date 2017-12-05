@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeCredential = "AzureRmDataFactoryV2IntegrationRuntimeCredential";
 
+        public const string IntegrationRuntimeUpgrade = "AzureRmDataFactoryV2IntegrationRuntimeUpgrade";
+
         public const string Dataset = "AzureRmDataFactoryV2Dataset";
 
         public const string Pipeline = "AzureRmDataFactoryV2Pipeline";
@@ -108,6 +110,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
 
+        public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
+
+        public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
+
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
 
         public const string HelpActivityName = "The name of the activity.";
@@ -149,7 +155,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeTypeManaged = "Managed";
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
-        
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
+
         public const string TriggerName = "TriggerName";
     }
 }

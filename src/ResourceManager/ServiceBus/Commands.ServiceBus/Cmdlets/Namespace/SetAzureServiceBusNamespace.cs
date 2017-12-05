@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "ServiceBus Namespace Location.")]
+        [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

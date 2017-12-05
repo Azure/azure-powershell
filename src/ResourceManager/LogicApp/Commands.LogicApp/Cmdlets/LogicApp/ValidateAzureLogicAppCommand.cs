@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The location of the workflow.", ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Logic/workflows")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

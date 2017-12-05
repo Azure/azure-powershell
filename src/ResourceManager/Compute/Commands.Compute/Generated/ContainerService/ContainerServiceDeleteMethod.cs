@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(void))]
     public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
@@ -117,6 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             });
         }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
