@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCache", SupportsShouldProcess = true),
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     public class RemoveAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

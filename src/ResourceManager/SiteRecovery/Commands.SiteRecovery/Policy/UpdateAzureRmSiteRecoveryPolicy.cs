@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Updates Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Update-AzureRmRecoveryServicesAsrPolicy cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class UpdateAzureRmSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Private
@@ -188,7 +191,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.replicationMethod = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicationMethod)) ?
                 ((string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline") :
                 ((string.Compare(replicationProviderSettings.InitialReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline");
-            this.replicationFrequencyInSeconds = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicationFrequencyInSeconds)) ? 
+            this.replicationFrequencyInSeconds = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicationFrequencyInSeconds)) ?
                 PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds) :
                 replicationProviderSettings.ReplicationFrequencyInSeconds;
             this.recoveryPoints = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.RecoveryPoints)) ?
@@ -212,7 +215,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.replicaDeletion = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicaDeletion)) ?
                 this.ReplicaDeletion :
                 replicationProviderSettings.ReplicaDeletionOption;
-                
+
             var updatePolicyProperties = new UpdatePolicyProperties();
 
             if (string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplica2012, StringComparison.OrdinalIgnoreCase) == 0)
@@ -240,7 +243,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     InitialReplicationMethod = this.replicationMethod,
                     OnlineReplicationStartTime = this.replicationStartTime,
                     RecoveryPoints = this.recoveryPoints,
-                    ReplicaDeletion = this.replicaDeletion,                    
+                    ReplicaDeletion = this.replicaDeletion,
                     ReplicationPort = this.replicationPort,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds
                 };
@@ -284,7 +287,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 replicationProviderSettings.RecoveryPoints;
             this.applicationConsistentSnapshotFrequencyInHours = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ApplicationConsistentSnapshotFrequencyInHours)) ?
                 this.ApplicationConsistentSnapshotFrequencyInHours :
-                replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours;           
+                replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours;
             this.replicationStartTime = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicationStartTime)) ?
                 this.replicationStartTime :
                 replicationProviderSettings.OnlineReplicationStartTime;
