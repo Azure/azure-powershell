@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Management.Automation;
+using System.Collections.Concurrent;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
 {
@@ -20,15 +23,44 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
     {
         readonly IAsyncCmdlet _Cmdlet;
 
+        double _Completed = 0;
+
+        ConcurrentDictionary<IResourceConfig, Void> _Set =
+            new ConcurrentDictionary<IResourceConfig, Void>(); 
+
         public ProgressReport(IAsyncCmdlet cmdlet)
         {
             _Cmdlet = cmdlet;
         }
 
-        public void Report<TModel>(ResourceConfig<TModel> config, double progress)
-            where TModel : class
-            => _Cmdlet.WriteVerbose(progress == 0
-                ? "Creating " + config.Name + " " + config.Strategy.Type + "..."
-                : config.Name + " " + config.Strategy.Type + " is created.");
+        public void Done<TModel>(ResourceConfig<TModel> config, double progress) where TModel : class
+        {
+            _Completed += progress;
+            Void _;
+            _Set.TryRemove(config, out _);
+            _Cmdlet.WriteVerbose(config.Name + " " + config.Strategy.Type);
+            Update();
+        }
+
+        public void Update()
+        {
+            var x = string.Join(", ", _Set.Keys.Select(c => c.Name + " " + c.Strategy.Type));
+            var p = (int)(_Completed * 100.0);
+            _Cmdlet.WriteProgress(
+                new ProgressRecord(
+                    0,
+                    "Creating Azure resources, " + p + "%",
+                    x == string.Empty ? " " : x)
+                {
+                    PercentComplete = p
+                });
+        }
+
+        public void Start<TModel>(ResourceConfig<TModel> config) where TModel : class
+        {
+            _Set.TryAdd(config, new Void());
+            _Cmdlet.WriteVerbose("Creating " + config.Name + " " + config.Strategy.Type + "...");
+            Update();
+        }
     }
 }

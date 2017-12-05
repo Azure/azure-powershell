@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,7 +35,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 new StateOperationContext(client, cancellationToken),
                 target,
                 shouldProcess,
-                progressReport);
+                progressReport,
+                config.GetProgressMap(target));
             await context.UpdateStateAsync(config);
             return context.Result;
         }
@@ -50,16 +53,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IProgressReport _ProgressReport;
 
+            readonly ProgressMap _ProgressMap;
+
             public Context(
                 StateOperationContext operationContext,
                 IState target,
                 IShouldProcess shouldProcess,
-                IProgressReport progressReport)
+                IProgressReport progressReport,
+                ProgressMap progressMap)
             {
                 _OperationContext = operationContext;
                 _Target = target;
                 _ShouldProcess = shouldProcess;
                 _ProgressReport = progressReport;
+                _ProgressMap = progressMap;
             }
 
             public async Task UpdateStateAsync<TModel>(ResourceConfig<TModel> config)
@@ -80,12 +87,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                             // call the CreateOrUpdateAsync function for the resource.
                             if (await _ShouldProcess.ShouldCreate(config, model))
                             {
-                                _ProgressReport.Report(config, 0.0);
+                                _ProgressReport.Start(config);
                                 var result = await config.CreateOrUpdateAsync(
                                     _OperationContext.Client,
                                     model,
                                     _OperationContext.CancellationToken);
-                                _ProgressReport.Report(config, 1.0);
+                                _ProgressReport.Done(config, _ProgressMap.Get(config));
                                 return result;
                             }
                             else

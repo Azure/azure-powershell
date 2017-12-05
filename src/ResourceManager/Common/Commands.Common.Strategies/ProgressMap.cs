@@ -12,19 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface IResourceConfig : IEntityConfig
+    public class ProgressMap
     {
-        new IResourceStrategy Strategy { get; }
+        readonly Dictionary<IResourceConfig, Tuple<TimeSlot, int>> _Map 
+            = new Dictionary<IResourceConfig, Tuple<TimeSlot, int>>();
 
-        string ResourceGroupName { get; }
+        readonly int _Duration;
 
-        IEnumerable<IEntityConfig> Dependencies { get; }
+        public ProgressMap(Dictionary<IResourceConfig, Tuple<TimeSlot, int>> map, int duration)
+        {
+            _Map = map;
+            _Duration = duration;
+        }
 
-        TResult Accept<TContext, TResult>(
-            IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
+        /// <summary>
+        /// Returns a value [0..1] which is used to increment a progress bar when the resource is 
+        /// created.
+        /// </summary>
+        /// <param name="config">a resource configuration.</param>
+        /// <returns></returns>
+        public double Get(IResourceConfig config)
+        {
+            var x = _Map.GetOrNull(config);
+            return x.Item1.GetTaskProgress(x.Item2) / _Duration;
+        }
     }
 }

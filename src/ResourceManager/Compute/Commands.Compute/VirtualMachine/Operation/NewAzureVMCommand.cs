@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.Commands.Common.Strategies.Network;
@@ -30,10 +29,8 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Rest;
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -232,7 +229,7 @@ namespace Microsoft.Azure.Commands.Compute
             var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
 
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
+            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
 
             // apply target state
             var newState = await virtualMachine
@@ -244,12 +241,15 @@ namespace Microsoft.Azure.Commands.Compute
                     new ProgressReport(asyncCmdlet));
 
             var result = newState.Get(virtualMachine);
-            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-            psResult.Fqdn = fqdn;
-            asyncCmdlet.WriteVerbose(isWindows
-                ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
-                : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
-            asyncCmdlet.WriteObject(psResult);
+            if (result != null)
+            {
+                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                psResult.Fqdn = fqdn;
+                asyncCmdlet.WriteVerbose(isWindows
+                    ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                    : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+                asyncCmdlet.WriteObject(psResult);
+            }
         }
 
         public void DefaultExecuteCmdlet()

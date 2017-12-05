@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
@@ -23,5 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         Task<bool> ShouldProcessAsync(string target, string action);
 
         void WriteObject(object value);
+
+        void WriteProgress(ProgressRecord progressRecord);
     }
 }

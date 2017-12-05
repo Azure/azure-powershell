@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             string header,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
-            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync)
+            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
+            Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
                 type,
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 getAsync,
                 createOrUpdateAsync,
                 config => config.Location,
-                (config, location) => config.Location = location);
+                (config, location) => config.Location = location,
+                createTime);
     }
 }
