@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9056F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}</ProjectGuid>
+    <ProjectGuid>{9156F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.PowerBI.Test</RootNamespace>

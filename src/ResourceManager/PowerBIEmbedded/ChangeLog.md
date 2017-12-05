@@ -35,3 +35,37 @@
     - Tests the existence of an instance of PowerBI Embedded Capacity
 * New Cmdlet Update-AzureRmPowerBIEmbeddedCapacity
     - Modifies an instance of PowerBI Embedded Capacity
+
+-## Version 4.0.0
+ -* Add support for online help
+ -    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+ -    
+ -## Version 3.4.1
+ -
+ -## Version 3.4.0
+ -
+ -## Version 3.3.1
+ -
+ -## Version 3.3.0
+ -
+ -## Version 3.2.1
+ -
+ -## Version 3.2.0
+ -
+ -## Version 3.1.0
+ -
+ -## Version 3.0.1
+ -
+ -## Version 3.0.0
+ -
+ -## Version 2.8.0
+ -
+ -## Version 2.7.0
+ -
+ -## Version 2.6.0
+ -
+ -## Version 2.5.0
+ -
+ -## Version 2.4.0
+ -
+ -## Version 2.3.0
