@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
+        [LocationCompleter("Microsoft.Insights/activityLogAlerts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

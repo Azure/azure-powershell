@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Position = 2,
             HelpMessage = "EventHub Namespace Location.",
           ParameterSetName = AutoInflateParameterSet)]
+        [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

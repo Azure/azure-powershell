@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = true, 
+            Mandatory = false, 
             ValueFromPipeline = true,
-            HelpMessage = ClusterParameterHelpMessage)]
+            HelpMessage = AgentCountParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public int? AgentCount { get; set; }
 
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = true, 
+            Mandatory = false, 
             ValueFromPipeline = true,
-            HelpMessage = ClusterParameterHelpMessage)]
+            HelpMessage = SslStatusParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public string SslStatus { get; set; }
 
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = true, 
+            Mandatory = false, 
             ValueFromPipeline = true,
-            HelpMessage = ClusterParameterHelpMessage)]
+            HelpMessage = SslCertificateParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public string SslCertificate { get; set; }
 
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = true, 
+            Mandatory = false, 
             ValueFromPipeline = true,
-            HelpMessage = ClusterParameterHelpMessage)]
+            HelpMessage = SslKeyParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public string SslKey { get; set; }
 
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = true, 
+            Mandatory = false, 
             ValueFromPipeline = true,
-            HelpMessage = ClusterParameterHelpMessage)]
+            HelpMessage = SslCNameParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
