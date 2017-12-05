@@ -19,6 +19,10 @@
 -->
 ## Current Release
 * Added ability to rename database using Set-AzureRmSqlDatabase
+* Fixed issue https://github.com/Azure/azure-powershell/issues/5046
+	- AuditAction parameter in auditing cmdlets is no longer being ignored
+* Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
+	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
