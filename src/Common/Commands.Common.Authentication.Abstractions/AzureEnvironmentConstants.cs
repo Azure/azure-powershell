@@ -121,6 +121,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string AzureOperationalInsightsServiceEndpointResourceId = "https://api.loganalytics.io";
 
         /// <summary>
+        /// The endpoint URI for Log Analytics Queries
+        /// </summary>
+        public const string AzureOperationalInsightsServiceEndpoint = "https://api.loganalytics.io/v1";
+
+        /// <summary>
         /// The domain name suffix for Azure DataLake services
         /// </summary>
         public const string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "azuredatalakeanalytics.net";

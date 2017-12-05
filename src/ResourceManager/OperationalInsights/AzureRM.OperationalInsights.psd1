@@ -146,8 +146,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

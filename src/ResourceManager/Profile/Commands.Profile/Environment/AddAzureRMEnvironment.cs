@@ -155,6 +155,10 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The audience for tokens authenticating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpointResourceId { get; set; }
 
+        [Parameter(Position = 22, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
+        public string AzureOperationalInsightsEndpoint { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -298,6 +302,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(BatchEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId,
                                     nameof(AzureOperationalInsightsEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint,
+                                    nameof(AzureOperationalInsightsEndpoint));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

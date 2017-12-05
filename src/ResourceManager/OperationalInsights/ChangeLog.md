@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+* Added support for V2 API querying via Invoke-AzureRmOperationalInsightsQuery. See [https://dev.loganalytics.io/](https://dev.loganalytics.io/) for more info on the new API.
+
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser

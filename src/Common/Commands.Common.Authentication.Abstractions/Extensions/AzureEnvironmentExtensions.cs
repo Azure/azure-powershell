@@ -71,6 +71,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
                     endpoint = new Uri(environment.AzureOperationalInsightsEndpointResourceId);
                     break;
+                case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint:
+                    endpoint = new Uri(environment.AzureOperationalInsightsEndpoint);
+                    break;
                 default:
                     result = false;
                     break;
@@ -152,6 +155,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
                         propertyValue = environment.AzureOperationalInsightsEndpointResourceId;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint:
+                        propertyValue = environment.AzureOperationalInsightsEndpoint;
                         break;
                     default:
                         break;
@@ -267,6 +273,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId:
                         environment.AzureOperationalInsightsEndpointResourceId = propertyValue;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint:
+                        environment.AzureOperationalInsightsEndpoint= propertyValue;
                         break;
                 }
             }
@@ -476,6 +485,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId))
                 {
                     environment.AzureOperationalInsightsEndpointResourceId = other.AzureOperationalInsightsEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint))
+                {
+                    environment.AzureOperationalInsightsEndpoint= other.AzureOperationalInsightsEndpoint;
                 }
 
                 environment.VersionProfiles.Clear();

@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Azure.OperationalInsights;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
@@ -54,7 +55,25 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                 authorizationManagementClient);
         }
 
+        protected void SetupDataClient(RestTestFramework.MockContext context)
+        {
+            var credentials = new ApiKeyClientCredentials("DEMO_KEY");
+            var operationalInsightsDataClient = new OperationalInsightsDataClient(credentials, HttpMockServer.CreateInstance());
+
+            helper.SetupManagementClients(operationalInsightsDataClient);
+        }
+
         protected void RunPowerShellTest(params string[] scripts)
+        {
+            RunPowerShellTest(true, false, scripts);
+        }
+
+        protected void RunDataPowerShellTest(params string[] scripts)
+        {
+            RunPowerShellTest(false, true, scripts);
+        }
+
+        protected void RunPowerShellTest(bool setupManagementClients, bool setupDataClient, params string[] scripts)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -65,11 +84,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2)))
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(TestUtilities.GetCallingClass(3), TestUtilities.GetCurrentMethodName(3)))
             {
-                SetupManagementClients(context);
+                if (setupManagementClients)
+                {
+                    SetupManagementClients(context);
+                    helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                }
+                if (setupDataClient)
+                {
+                    SetupDataClient(context);
+                }
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",

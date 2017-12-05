@@ -5,16 +5,25 @@ using Microsoft.Rest;
 using System;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
     [Cmdlet("Invoke", "AzureRmOperationalInsightsQuery"), OutputType(typeof(PSQueryResponse))]
     public class InvokeOperationalInsightsQuery : ResourceManager.Common.AzureRMCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The workspace ID.")]
+        private const string ParamSetNameByWorkspaceId = "ByWorkspaceId";
+        private const string ParamSetNameByWorkspaceObject = "ByWorkspaceObject";
+
+        [Parameter(Mandatory = true, ParameterSetName = ParamSetNameByWorkspaceId, HelpMessage = "The workspace ID.")]
+        [ValidateNotNullOrEmpty]
         public string WorkspaceId { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ParamSetNameByWorkspaceObject, HelpMessage = "The workspace", ValueFromPipeline = true)]
+        public PSWorkspace Workspace { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The query to execute.")]
+        [ValidateNotNullOrEmpty]
         public string Query { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The timespan to bound the query by.")]
@@ -22,7 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
         [Parameter(Mandatory = false, HelpMessage = "Puts an upper bound on the amount of time the server will spend processing the query. See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts")]
         [ValidateRange(1, int.MaxValue)]
-        public int Wait { get; set; } = int.MinValue;
+        public int? Wait { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "If specified, rendering information for metric queries will be included in the response.")]
         public SwitchParameter IncludeRender { get; set; }
@@ -33,9 +42,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
         [Parameter(Mandatory = false,
             HelpMessage = "When specified, uses the 'DEMO_KEY' API key for authentication. This is only valid when querying against the workspace 'DEMO_WORKSPACE'.")]
         public SwitchParameter UseDemoKey { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "For internal use only.")]
-        public string BaseUri { get; set; } = "";
 
         private OperationalInsightsDataClient _operationalInsightsDataClient;
 
@@ -48,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
                     ServiceClientCredentials clientCredentials = null;
                     if (UseDemoKey.IsPresent)
                     {
-                        if (WorkspaceId != "DEMO_WORKSPACE")
+                        if (ParameterSetName != ParamSetNameByWorkspaceId || WorkspaceId != "DEMO_WORKSPACE")
                         {
                             throw new Exception("DEMO_KEY is only valid when querying DEMO_WORKSPACE");
                         }
@@ -66,14 +72,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
                     this._operationalInsightsDataClient.Preferences.IncludeStatistics = IncludeStatistics.IsPresent;
                     this._operationalInsightsDataClient.NameHeader = "LogAnalyticsPSClient";
 
-                    if (!string.IsNullOrWhiteSpace(BaseUri))
+                    Uri targetUri= null;
+                    DefaultContext.Environment.TryGetEndpointUrl(
+                        AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint, out targetUri);
+                    if (targetUri == null)
                     {
-                        this._operationalInsightsDataClient.BaseUri = new Uri(BaseUri);
+                        throw new Exception("Operational Insights is not supported in this Azure Environment");
+                    }
 
-                        if (BaseUri.Contains("localhost"))
-                        {
-                            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-                        }
+                    this._operationalInsightsDataClient.BaseUri = targetUri;
+
+                    if (targetUri.AbsoluteUri.Contains("localhost"))
+                    {
+                        ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
                     }
                 }
 
@@ -87,11 +98,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
         protected override void ProcessRecord()
         {
-            OperationalInsightsDataClient.WorkspaceId = WorkspaceId;
-
-            if (Wait != int.MinValue)
+            if (ParameterSetName == ParamSetNameByWorkspaceId)
             {
-                OperationalInsightsDataClient.Preferences.Wait = Wait;
+                OperationalInsightsDataClient.WorkspaceId = WorkspaceId;
+            }
+            else if (ParameterSetName == ParamSetNameByWorkspaceObject)
+            {
+                // This seems like a weird mapping, but rest assurured, CustomerId is what we want here
+                OperationalInsightsDataClient.WorkspaceId = Workspace.CustomerId.ToString();
+            }
+
+            if (Wait.HasValue)
+            {
+                OperationalInsightsDataClient.Preferences.Wait = Wait.Value;
             }
 
             WriteObject(PSQueryResponse.Create(OperationalInsightsDataClient.Query(Query, Timespan)));
