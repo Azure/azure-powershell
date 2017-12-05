@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             // If no subscription found for the given token/tenant 
                             // discard tempTenant value unless current token/tenant is the last one.
-                            if (tempSubscription != null || tenant.Equals(tenants[tenants.Count]))
+                            if (tempSubscription != null || tenant.Equals(tenants[tenants.Count - 1]))
                             {
                                 newTenant = tempTenant;
                                 newSubscription = tempSubscription;
