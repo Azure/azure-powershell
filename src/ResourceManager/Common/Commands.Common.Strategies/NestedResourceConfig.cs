@@ -18,6 +18,11 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Nested resource configuration. Fro example, Subnet.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <typeparam name="TParenModel"></typeparam>
     public sealed class NestedResourceConfig<TModel, TParenModel> : IEntityConfig<TModel>
         where TModel : class
         where TParenModel : class
@@ -26,6 +31,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public string Name { get; }
 
+        /// <summary>
+        /// Parent. For example, VirtualNetwork is a parent of Subnet.
+        /// </summary>
         public IEntityConfig<TParenModel> Parent { get; }
 
         public Func<TModel> CreateModel { get; }

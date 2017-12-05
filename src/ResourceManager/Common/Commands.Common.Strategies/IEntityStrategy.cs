@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Base interface for ResourceStrategy and NestedResourceStrategy classes.
+    /// </summary>
     public interface IEntityStrategy
     {
     }

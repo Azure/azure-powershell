@@ -79,10 +79,9 @@
     <Compile Include="NestedResourceConfigExtensions.cs" />
     <Compile Include="ResourceConfigExtensions.cs" />
     <Compile Include="StateExtensions.cs" />
-    <Compile Include="TargetDependencies.cs" />
     <Compile Include="NestedResourceConfig.cs" />
     <Compile Include="NestedResourceStrategy.cs" />
-    <Compile Include="TargetState.cs" />
+    <Compile Include="TargetStateExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceConfig.cs" />
     <Compile Include="ResourceStrategy.cs" />

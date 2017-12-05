@@ -18,6 +18,11 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Resource configuration. It contains information to create a resource,
+    /// including name, resource group name, dependencies, model creation function, etc.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public sealed class ResourceConfig<TModel> : IEntityConfig<TModel>, IResourceConfig
         where TModel : class
     {

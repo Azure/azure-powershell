@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         /// <summary>
-        /// Returns a value [0..1] which is used to increment a progress bar when the resource is 
-        /// created.
+        /// Returns a value of [0..1] range which is used to increment a progress bar when the 
+        /// resource is created.
         /// </summary>
         /// <param name="config">a resource configuration.</param>
         /// <returns></returns>

@@ -16,6 +16,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Base interface for ResourceConfig[].
+    /// </summary>
     public interface IResourceConfig : IEntityConfig
     {
         new IResourceStrategy Strategy { get; }

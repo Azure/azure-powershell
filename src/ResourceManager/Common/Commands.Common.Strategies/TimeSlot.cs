@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     /// <summary>
     /// TimeSlot is a node of a singly linked list of TimeSlots.
-    /// The last node of the list is always an empty time slot
+    /// The last node of the list is always an empty time slot:
     /// - Duration = 0.
     /// - Next = null.
     /// - TaskCount = 0.

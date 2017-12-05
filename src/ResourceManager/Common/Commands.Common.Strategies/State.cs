@@ -17,6 +17,9 @@ using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Azure State. It contains information (models) of Azure resources.
+    /// </summary>
     sealed class State : IState
     {
         readonly ConcurrentDictionary<string, object> _Map
