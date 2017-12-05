@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Commands.Compute
                         call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
                     }
                 }
+                else
+                {
+                    WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
+                }
             });
         }
     }
