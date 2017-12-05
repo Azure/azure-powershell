@@ -353,4 +353,22 @@ Are you sure you want to continue?</value>
   <data name="Encrypting" xml:space="preserve">
     <value>Encrypting the connection string.</value>
   </data>
+  <data name="IntegrationRuntimeNodeUpdateMessage" xml:space="preserve">
+    <value>Are you sure you want to update node '{0}' in integration runtime '{1}'?</value>
+  </data>
+  <data name="IntegrationRuntimeNodeUpdating" xml:space="preserve">
+    <value>Updating integration runtime node {0}.</value>
+  </data>
+  <data name="IntegrationRuntimeUpdateMessage" xml:space="preserve">
+    <value>Are you sure you want to update integration runtime '{0}'?</value>
+  </data>
+  <data name="LongRunningStatusError" xml:space="preserve">
+    <value>An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status</value>
+  </data>
+  <data name="IntegrationRuntimeUpgrade" xml:space="preserve">
+    <value>Are you sure you want to upgrade integration runtime '{0}'.</value>
+  </data>
+  <data name="IntegrationRuntimeUpgrading" xml:space="preserve">
+    <value>Upgrading integration runtime '{0}'.</value>
+  </data>
 </root>

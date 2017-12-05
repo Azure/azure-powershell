@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPlannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Start-AzureRmRecoveryServicesAsrPlannedFailoverJob cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class StartAzureRmSiteRecoveryPlannedFailoverJob : SiteRecoveryCmdletBase
     {
         #region local parameters
@@ -157,7 +160,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.StartPEPlannedFailover();
                     break;
                 case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = 
+                    this.protectionContainerName =
                         Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
                     this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
                     this.StartRPIPlannedFailover();
@@ -224,7 +227,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     if (String.Compare(this.CreateVmIfNotFound, Constants.Yes, StringComparison.OrdinalIgnoreCase) == 0 &&
                         string.Compare(RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.fabricName).Fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) == 0)
                     {
-                        if(this.Server == null || string.Compare(this.Server.FabricType, Constants.HyperVSite) != 0)
+                        if (this.Server == null || string.Compare(this.Server.FabricType, Constants.HyperVSite) != 0)
                         {
                             throw new InvalidOperationException(
                                 Properties.Resources.ImproperServerObjectPassedForHyperVFailback);
@@ -232,7 +235,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         else
                         {
                             failbackInput.ProviderIdForAlternateRecovery = this.Server.ID;
-                        }                             
+                        }
                     }
 
                     input.Properties.ProviderSpecificDetails = failbackInput;
