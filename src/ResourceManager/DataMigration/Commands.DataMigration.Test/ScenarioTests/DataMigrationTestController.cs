@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         public DataMigrationTestController()
         {
             helper = new EnvironmentSetupHelper();
-            DataMigrationTestSettingsHelper.SetDmsEnvironmentVariables();
         }
 
         public void RunPsTest(params string[] scripts)

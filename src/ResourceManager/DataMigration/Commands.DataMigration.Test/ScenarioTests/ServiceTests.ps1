@@ -147,7 +147,7 @@ function Test-ConnectToSourceSqlServer
 		$taskName = Get-TaskName
 		$connectionInfo = New-SourceSqlConnectionInfo
 		$userName = "psadmin"
-		$password = Get-EnvironmentVariable("SQL_PASSWORD")
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
 
 		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceSqlServer -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred
@@ -186,7 +186,7 @@ function Test-ConnectToTargetSqlDb
 		$taskName = Get-TaskName
 		$connectionInfo = New-TargetSqlConnectionInfo
 		$userName = "admin0"
-		$password = Get-EnvironmentVariable("SQLDB_PASSWORD") 
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD") 
 		$cred = Get-Creds $userName $password
 
 		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
@@ -225,7 +225,7 @@ function Test-GetUserTableTask
 		$taskName = Get-TaskName
 		$connectionInfo = New-SourceSqlConnectionInfo
 		$userName = "psadmin"
-		$password = Get-EnvironmentVariable("SQL_PASSWORD")
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
 		$selectedDbs = @("tpcc_528MB")
 
@@ -267,13 +267,13 @@ function Test-MigrateSqlSqlDB
 		#Source Connection Details
 		$sourceConnectionInfo = New-SourceSqlConnectionInfo
 		$sourceUserName = "psadmin"
-		$sourcePassword = Get-EnvironmentVariable("SQL_PASSWORD")
+		$sourcePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$sourceCred = Get-Creds $sourceUserName $sourcePassword
 
 		#Target Connection Details
 		$targetConnectionInfo = New-TargetSqlConnectionInfo
 		$targetUserName = "admin0"
-		$targetPassword = Get-EnvironmentVariable("SQLDB_PASSWORD")
+		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD")
 		$targetCred = Get-Creds $targetUserName $targetPassword
 
 		$tableMap = New-Object 'system.collections.generic.dictionary[string,string]'
