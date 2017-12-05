@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ContainerInstance
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainergroup
 schema: 2.0.0
 ---
@@ -52,6 +52,8 @@ IpAddress                : 13.88.10.240
 Ports                    : {8000}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 The command gets the specified container group.
@@ -98,6 +100,8 @@ IpAddress                : 13.88.10.240
 Ports                    : {8000}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 The command gets the container group with the resource Id.

@@ -16,6 +16,7 @@ using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Batch.Models;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string AccountName { get; set; }
 
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

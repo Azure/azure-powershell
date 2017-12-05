@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

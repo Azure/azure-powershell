@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update to Import-AzureRMAutomationRunbook
+    - Support is now being provided for Python2 runbooks
 
 ## Version 4.0.0
 * Add support for online help
