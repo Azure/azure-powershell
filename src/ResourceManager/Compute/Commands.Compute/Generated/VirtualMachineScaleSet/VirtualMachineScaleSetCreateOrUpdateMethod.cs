@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -29,15 +28,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
-using System.Threading;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
-using Microsoft.Azure.Commands.Compute.Common;
-using System.Net;
-using Microsoft.Azure.Commands.Compute.Strategies;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -126,114 +116,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public const string SimpleParameterSet = "SimpleParameterSet";
-
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
+            ExecuteClientAction(() =>
             {
-                case SimpleParameterSet:
-                    this.StartAndWait(SimpleParameterSetExecuteCmdlet);
-                    break;
-                default:
-                    ExecuteClientAction(() =>
-                    {
-                        if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
-                        {
-                            string resourceGroupName = this.ResourceGroupName;
-                            string vmScaleSetName = this.VMScaleSetName;
-                            VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
-                            ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
-
-                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                            var psObject = new PSVirtualMachineScaleSet();
-                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                            WriteObject(psObject);
-                        }
-                    });
-                    break;
-            }
-        }
-
-        async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
-        {
-            ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
-            VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
-            SubnetName = SubnetName ?? VMScaleSetName;
-            PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            DomainNameLabel = DomainNameLabel ?? (VMScaleSetName + ResourceGroupName).ToLower();
-            SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
-            LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
-
-            // get image
-            var image = Images
-                .Instance
-                .Select(osAndMap =>
-                    new { OsType = osAndMap.Key, Image = osAndMap.Value.GetOrNull(ImageName) })
-                .First(osAndImage => osAndImage.Image != null);
-
-            BackendPorts = BackendPorts
-                ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
-
-            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            
-            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
-                allocationMethod: AllocationMethod);
-            
-            var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                name: LoadBalancerName);
-
-            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                name: VirtualNetworkName, addressPrefix: VnetAddressPrefix);
-
-            var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
-
-            /*
-            var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
-                name: SecurityGroupName,
-                openPorts: OpenPorts);
-
-            var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                Name, subnet, publicIpAddress, networkSecurityGroup);*/
-
-            var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
-                name: VMScaleSetName,
-                adminUsername: Credential.UserName,
-                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image.Image);
-
-            var client = new Client(DefaultProfile.DefaultContext);
-
-            var current = virtualMachineScaleSet
-                .GetStateAsync(client, new CancellationToken())
-                .GetAwaiter()
-                .GetResult();
-
-            if (Location == null)
-            {
-                Location = current.GetLocation(virtualMachineScaleSet);
-                if (Location == null)
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
                 {
-                    Location = "eastus";
+                    string resourceGroupName = this.ResourceGroupName;
+                    string vmScaleSetName = this.VMScaleSetName;
+                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+
+                    var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                    var psObject = new PSVirtualMachineScaleSet();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                    WriteObject(psObject);
                 }
-            }
-
-            var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
-
-            if (ShouldProcess(VMScaleSetName, VerbsCommon.New))
-            {
-                var result = await virtualMachineScaleSet
-                    .UpdateStateAsync(
-                        client,
-                        target,
-                        new CancellationToken(),
-                        new ShouldProcess(asyncCmdlet),
-                        new ProgressReport(asyncCmdlet));
-
-                asyncCmdlet.WriteObject(result);
-            }
+            });
         }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -247,9 +146,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = false)]
         [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
-        [Parameter(
-            ParameterSetName = SimpleParameterSet,
-            Mandatory = false)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -260,9 +156,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = false)]
         [Alias("Name")]
         [AllowNull]
-        [Parameter(
-            ParameterSetName = SimpleParameterSet,
-            Mandatory = true)]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
@@ -273,58 +166,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
-
-        // SimpleParameterSet
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
-        public string ImageName { get; set; } //= "Win2016Datacenter";
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
-        public PSCredential Credential { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int InstanceCount { get; set; } = 2;
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VirtualNetworkName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SubnetName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string PublicIpAddressName { get; set; }
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string DomainNameLabel { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SecurityGroupName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string LoadBalancerName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int[] BackendPorts { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [LocationCompleter]
-        public string Location { get; set; }
-
-        // this corresponds to VmSku in the Azure CLI
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VmSize { get; set; } = "Standard_DS1_v2";
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public UpgradeMode UpgradePolicyMode { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [ValidateSet("Static", "Dynamic")]
-        public string AllocationMethod { get; set; } = "Static";
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VnetAddressPrefix { get; set; } = "192.168.0.0/16";
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
     }
 }
