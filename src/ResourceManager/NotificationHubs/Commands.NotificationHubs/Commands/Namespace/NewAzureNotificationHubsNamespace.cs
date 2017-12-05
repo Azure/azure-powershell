@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Namespace Location.")]
+        [LocationCompleter("Microsoft.NotificationHubs/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

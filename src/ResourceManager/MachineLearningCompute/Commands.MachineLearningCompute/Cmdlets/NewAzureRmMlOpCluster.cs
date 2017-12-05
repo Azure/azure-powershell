@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = CreateFromCmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = LocationParameterHelpMessage)]
+        [LocationCompleter("Microsoft.MachineLearningCompute/operationalizationClusters")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
