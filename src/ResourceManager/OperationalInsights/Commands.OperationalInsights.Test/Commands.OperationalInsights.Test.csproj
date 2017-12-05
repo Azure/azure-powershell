@@ -215,7 +215,55 @@
     <None Include="ScenarioTests\WorkspaceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\**\*">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestCreateAllKindsOfDataSource.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestDataSourceCreateFailsWithoutWorkspace.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestDataSourceCreateUpdateDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestToggleSingletonDataSourceState.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSavedSearchesAndResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSchema.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSearchResultsAndUpdate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchSetAndRemoveSavedSearches.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateFailsNoWs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateUpdateDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\TestWorkspaceActions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\TestWorkspaceCreateUpdateDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\TestWorkspaceEnableDisableListIntelligencePacks.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.QueryTests\TestExceptionWithShortWait.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.QueryTests\TestExceptionWithSyntaxError.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.QueryTests\TestSimpleQuery.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.QueryTests\TestSimpleQueryWithTimespan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

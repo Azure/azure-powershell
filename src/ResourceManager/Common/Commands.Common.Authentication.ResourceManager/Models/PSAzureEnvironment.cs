@@ -229,6 +229,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string AzureOperationalInsightsEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The endpoint to use when communicating with the Azure Log Analytics query service in this environment
+        /// </summary>
+        public string AzureOperationalInsightsEndpoint { get; set; }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -267,7 +272,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && DataLakeEndpointResourceId == other.DataLakeEndpointResourceId
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId
-                       && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId; ;
+                       && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
+                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
             }
 
             return false;
