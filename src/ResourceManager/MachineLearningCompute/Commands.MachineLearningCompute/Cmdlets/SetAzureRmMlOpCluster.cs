@@ -58,6 +58,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = true, 
+            ValueFromPipeline = true,
+            HelpMessage = ClusterParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -69,6 +73,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [ValidateNotNullOrEmpty]
         public int? AgentCount { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = true, 
+            ValueFromPipeline = true,
+            HelpMessage = ClusterParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -80,6 +88,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [ValidateNotNullOrEmpty]
         public string SslStatus { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = true, 
+            ValueFromPipeline = true,
+            HelpMessage = ClusterParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -90,6 +102,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             HelpMessage = SslCertificateParameterHelpMessage)]
         public string SslCertificate { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = true, 
+            ValueFromPipeline = true,
+            HelpMessage = ClusterParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -100,6 +116,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             HelpMessage = SslKeyParameterHelpMessage)]
         public string SslKey { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = true, 
+            ValueFromPipeline = true,
+            HelpMessage = ClusterParameterHelpMessage)]
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -127,61 +147,61 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 
             if (ShouldProcess(Name, @"Updating operationalization cluster..."))
             {
-                // Check if object exists first, since the New cmdlet is used to create
-                var clusterToUpdate = MachineLearningComputeManagementClient.OperationalizationClusters.Get(ResourceGroupName, Name);
+                OperationalizationCluster clusterToUpdate;
 
                 if (string.Equals(this.ParameterSetName, ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
                 {
                     clusterToUpdate = InputObject.ConvertToOperationalizationCluster();
                 }
-                else if (string.Equals(this.ParameterSetName, CmdletParametersParameterSet, StringComparison.OrdinalIgnoreCase) ||
-                         string.Equals(this.ParameterSetName, ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+                else
                 {
-                    switch (clusterToUpdate.ClusterType)
+                    clusterToUpdate = MachineLearningComputeManagementClient.OperationalizationClusters.Get(ResourceGroupName, Name);
+                }
+
+                switch (clusterToUpdate.ClusterType)
+                {
+                    case ClusterType.ACS:
+                        if (AgentCount != null)
+                        {
+                            clusterToUpdate.ContainerService.AgentCount = AgentCount;
+                        }
+                        break;
+                    case ClusterType.Local:
+                        break;
+                    default:
+                        break;
+                }
+
+                if (SslStatus != null || SslCertificate != null || SslKey != null || SslCName != null)
+                {
+                    if (clusterToUpdate.GlobalServiceConfiguration == null)
                     {
-                        case ClusterType.ACS:
-                            if (AgentCount != null)
-                            {
-                                clusterToUpdate.ContainerService.AgentCount = AgentCount;
-                            }
-                            break;
-                        case ClusterType.Local:
-                            break;
-                        default:
-                            break;
+                        clusterToUpdate.GlobalServiceConfiguration = new GlobalServiceConfiguration();
                     }
 
-                    if (SslStatus != null || SslCertificate != null || SslKey != null || SslCName != null)
+                    if (clusterToUpdate.GlobalServiceConfiguration.Ssl == null)
                     {
-                        if (clusterToUpdate.GlobalServiceConfiguration == null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration = new GlobalServiceConfiguration();
-                        }
+                        clusterToUpdate.GlobalServiceConfiguration.Ssl = new SslConfiguration();
+                    }
 
-                        if (clusterToUpdate.GlobalServiceConfiguration.Ssl == null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration.Ssl = new SslConfiguration();
-                        }
+                    if (SslStatus != null)
+                    {
+                        clusterToUpdate.GlobalServiceConfiguration.Ssl.Status = SslStatus;
+                    }
 
-                        if (SslStatus != null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration.Ssl.Status = SslStatus;
-                        }
+                    if (SslCertificate != null)
+                    {
+                        clusterToUpdate.GlobalServiceConfiguration.Ssl.Cert = SslCertificate;
+                    }
 
-                        if (SslCertificate != null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration.Ssl.Cert = SslCertificate;
-                        }
+                    if (SslKey != null)
+                    {
+                        clusterToUpdate.GlobalServiceConfiguration.Ssl.Key = SslKey;
+                    }
 
-                        if (SslKey != null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration.Ssl.Key = SslKey;
-                        }
-
-                        if (SslCName != null)
-                        {
-                            clusterToUpdate.GlobalServiceConfiguration.Ssl.Cname = SslCName;
-                        }
+                    if (SslCName != null)
+                    {
+                        clusterToUpdate.GlobalServiceConfiguration.Ssl.Cname = SslCName;
                     }
                 }
 

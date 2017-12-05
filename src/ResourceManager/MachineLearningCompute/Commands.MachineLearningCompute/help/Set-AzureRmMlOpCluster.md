@@ -60,7 +60,7 @@ The number of agent nodes in the ACS cluster.
 
 ```yaml
 Type: Int32
-Parameter Sets: SetByResourceId, SetByIndividualParameters
+Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
 Aliases: 
 
 Required: False
@@ -150,7 +150,7 @@ The SSL certificate data in PEM format.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceId, SetByIndividualParameters
+Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
 Aliases: 
 
 Required: False
@@ -165,7 +165,7 @@ The CName for the SSL certificate.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceId, SetByIndividualParameters
+Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
 Aliases: 
 
 Required: False
@@ -180,7 +180,7 @@ The SSL key data in PEM format.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceId, SetByIndividualParameters
+Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
 Aliases: 
 
 Required: False
@@ -196,7 +196,7 @@ Possible values are 'Enabled' and 'Disabled'.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceId, SetByIndividualParameters
+Parameter Sets: SetByInputObject, SetByResourceId, SetByIndividualParameters
 Aliases: 
 
 Required: False
