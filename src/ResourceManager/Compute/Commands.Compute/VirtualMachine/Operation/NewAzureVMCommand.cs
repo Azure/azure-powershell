@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
-        public const string StrategyParameterSet = "StrategyParameterSet";
+        public const string SimpleParameterSet = "SimpleParameterSet";
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter()]
         [Parameter(
-            ParameterSetName = StrategyParameterSet,
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            ParameterSetName = StrategyParameterSet,
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
@@ -114,56 +114,65 @@ namespace Microsoft.Azure.Commands.Compute
         public string LicenseType { get; set; }
 
         [Parameter(
-            ParameterSetName = StrategyParameterSet,
+            ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string AddressPrefix { get; set; } = "192.168.0.0/16";
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string SubnetName { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string PublicIpAddressName { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string DomainNameLabel { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateSet("Static", "Dynamic")]
         public string AllocationMethod { get; set; } = "Static";
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string SecurityGroupName { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] OpenPorts { get; set; }
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [PSArgumentCompleter(
+            "CentOS",
+            "CoreOS",
+            "Debian",
+            "openSUSE-Leap",
+            "RHEL",
+            "SLES",
+            "UbuntuLTS",
+            "Win2016Datacenter",
+            "Win2012R2Datacenter",
+            "Win2012Datacenter",
+            "Win2008R2SP1")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
-        [Parameter(ParameterSetName = StrategyParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
             {
-                case StrategyParameterSet:
+                case SimpleParameterSet:
                     this.StartAndWait(StrategyExecuteCmdletAsync);
                     break;
                 default:

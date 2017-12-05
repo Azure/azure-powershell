@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
@@ -38,19 +37,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 name,
                 createModel ?? (_ => new TModel()),
                 dependencies.EmptyIfNull());
-
-        public static ResourceConfig<TModel> CreateConfig<TModel>(
-            this ResourceStrategy<TModel> strategy,
-            ResourceConfig<ResourceGroup> resourceGroup,
-            string name,
-            Func<string, TModel> createModel = null,
-            IEnumerable<IEntityConfig> dependencies = null)
-            where TModel : class, new()
-            => strategy.CreateConfig(
-                resourceGroup.Name,
-                name,
-                createModel,
-                dependencies.EmptyIfNull().Where(d => d != null).Concat(new[] { resourceGroup }));
 
         public static async Task<TModel> GetAsync<TModel>(
             this ResourceConfig<TModel> config,

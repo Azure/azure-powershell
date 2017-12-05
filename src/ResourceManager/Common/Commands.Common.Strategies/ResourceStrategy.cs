@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<TModel, int> CreateTime { get; }
 
+        public bool CompulsoryLocation { get; }
+
         public ResourceStrategy(
             string type,
             Func<string, IEnumerable<string>> getId,
@@ -44,7 +46,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
-            Func<TModel, int> createTime)
+            Func<TModel, int> createTime,
+            bool compulsoryLocation)
         {
             Type = type;
             GetId = getId;
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             GetLocation = getLocation;
             SetLocation = setLocation;
             CreateTime = createTime;
+            CompulsoryLocation = compulsoryLocation;
         }
     }
 
@@ -66,7 +70,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
-            Func<TModel, int> createTime)
+            Func<TModel, int> createTime,
+            bool compulsoryLocation)
             where TClient : ServiceClient<TClient>
         {
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
@@ -77,7 +82,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 getLocation,
                 setLocation,
-                createTime);
+                createTime,
+                compulsoryLocation);
         }
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
@@ -88,7 +94,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
-            Func<TModel, int> createTime)
+            Func<TModel, int> createTime,
+            bool compulsoryLocation)
             where TClient : ServiceClient<TClient>
             => Create(
                 type,
@@ -98,6 +105,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 createOrUpdateAsync,
                 getLocation,
                 setLocation,
-                createTime);
+                createTime,
+                compulsoryLocation);
     }
 }

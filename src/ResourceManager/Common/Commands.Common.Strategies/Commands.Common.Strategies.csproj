@@ -33,18 +33,6 @@
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Compute, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=15.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.15.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
@@ -67,20 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compute\Image.cs" />
-    <Compile Include="Compute\Images.cs" />
-    <Compile Include="Compute\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="IReportProgress.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />
     <Compile Include="IShouldProcess.cs" />
-    <Compile Include="Network\LoadBalancerStrategy.cs" />
     <Compile Include="ProgressMap.cs" />
     <Compile Include="TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
-    <Compile Include="Compute\ComputeStrategy.cs" />
-    <Compile Include="Compute\VirtualMachineStrategy.cs" />
     <Compile Include="SyncTaskScheduler.cs" />
     <Compile Include="TimeSlotExtensions.cs" />
     <Compile Include="UpdateStateExtensions.cs" />
@@ -100,13 +82,6 @@
     <Compile Include="TargetDependencies.cs" />
     <Compile Include="NestedResourceConfig.cs" />
     <Compile Include="NestedResourceStrategy.cs" />
-    <Compile Include="Network\NetworkInterfaceStrategy.cs" />
-    <Compile Include="Network\NetworkSecurityGroupPolicy.cs" />
-    <Compile Include="Network\NetworkStrategy.cs" />
-    <Compile Include="Network\PublicIPAddressStrategy.cs" />
-    <Compile Include="Network\SubnetStrategy.cs" />
-    <Compile Include="Network\VirtualNetworkStrategy.cs" />
-    <Compile Include="ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="TargetState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceConfig.cs" />
