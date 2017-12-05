@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                _ => 120);
+                c => c.OsProfile.WindowsConfiguration != null ? 240 : 120);
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
