@@ -261,8 +261,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminUserName = CatalogAdminCredential.UserName;
-                integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminPassword = 
-                    new SecureString(ConvertToUnsecureString(CatalogAdminCredential.Password));
+                var passWord = ConvertToUnsecureString(CatalogAdminCredential.Password);
+                if (passWord != null && passWord.Length > 128)
+                {
+                    throw new PSArgumentException("The password exceeds maximum length of '128'", "CatalogAdminCredential");
+                }
+                integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminPassword = new SecureString(passWord);
             }
 
             if (!string.IsNullOrWhiteSpace(CatalogPricingTier))

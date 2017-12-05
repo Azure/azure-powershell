@@ -47,6 +47,7 @@ function Test-AzureVMGetItems
 			-Name $vm.Name;
 		Assert-True { $items.Count -eq 1 }
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
+		Assert-NotNull $items[0].LastBackupTime
 
 		# VARIATION-3: Get items for container with ProtectionStatus filter
 		$items = Get-AzureRmRecoveryServicesBackupItem `
