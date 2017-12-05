@@ -44,22 +44,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
         public void Update()
         {
-            var x = string.Join(", ", _Set.Keys.Select(c => c.Name + " " + c.Strategy.Type));
+            var x = string.Join(", ", _Set.Keys.Select(c => "'" + c.Name + "' " + c.Strategy.Type));
             var p = (int)(_Completed * 100.0);
             _Cmdlet.WriteProgress(
                 new ProgressRecord(
                     0,
-                    "Creating Azure resources, " + p + "%",
-                    x == string.Empty ? " " : x)
+                    "Creating Azure resources",
+                    p + "%")
                 {
-                    PercentComplete = p
+                    PercentComplete = p,
+                    CurrentOperation = x == string.Empty ? null : "Creating " + x + "."
                 });
         }
 
         public void Start<TModel>(ResourceConfig<TModel> config) where TModel : class
         {
             _Set.TryAdd(config, new Void());
-            _Cmdlet.WriteVerbose("Creating " + config.Name + " " + config.Strategy.Type + "...");
+            _Cmdlet.WriteVerbose("Creating '" + config.Name + "' " + config.Strategy.Type + "...");
             Update();
         }
     }
