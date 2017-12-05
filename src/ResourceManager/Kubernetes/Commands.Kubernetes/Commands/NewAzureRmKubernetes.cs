@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -31,7 +30,6 @@ using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Kubernetes
