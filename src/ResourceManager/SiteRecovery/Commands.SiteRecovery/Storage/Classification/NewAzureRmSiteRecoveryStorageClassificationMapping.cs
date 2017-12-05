@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "New-AzureRmRecoveryServicesAsrStorageClassificationMapping cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class NewAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
