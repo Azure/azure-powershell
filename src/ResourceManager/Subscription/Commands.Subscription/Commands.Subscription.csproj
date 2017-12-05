@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.Subscription.Preview.psd1">
-      <Link>AzureRM.Subscription.psd1</Link>
+      <Link>AzureRM.Subscription.Preview.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Subscription.Format.ps1xml">
