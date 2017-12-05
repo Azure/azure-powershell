@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             mockRuntime.Setup((r) => r.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Throws(new InvalidOperationException("Exception on ShouldProcess"));
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
             int times = 0;
-            while (times++ < 20 && job.StatusMessage != "Failed")
+            while (times++ < 50 && job.StatusMessage != "Failed")
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
                 if (job.StatusMessage == "Blocked")
