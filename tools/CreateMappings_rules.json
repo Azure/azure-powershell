@@ -97,6 +97,8 @@
 
     { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
 
+    { "regex": "Marketplace", "alias": "Marketplace" }, 
+
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
     { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
 
