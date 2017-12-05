@@ -23,7 +23,7 @@ function Test-RoleDefinitionCreateTests
     $rdName = 'CustomRole Tests Role'
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
     New-AzureRmRoleDefinition -InputFile .\Resources\NewRoleDefinition.json
-
+    
     $rd = Get-AzureRmRoleDefinition -Name $rdName
 	Assert-AreEqual "Test role" $rd.Description 
 	Assert-AreEqual $true $rd.IsCustom
@@ -35,19 +35,19 @@ function Test-RoleDefinitionCreateTests
 	# Basic positive case - read from object
 	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
 	$roleDef.Id = $null
-	$roleDef.Name = "Custom Reader"
+	$roleDef.Name = "New Custom Reader"
 	$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
 	$roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
 	New-AzureRmRoleDefinition -Role $roleDef
-	$addedRoleDef = Get-AzureRmRoleDefinition -Name "Custom Reader"
+	$addedRoleDef = Get-AzureRmRoleDefinition -Name "New Custom Reader"
 
-	Assert-NotNull $addedRoleDef.Actions
-	Assert-AreEqual $roleDef.Description $addedRoleDef.Description
-	Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
-	Assert-AreEqual $true $addedRoleDef.IsCustom
+    Assert-NotNull $addedRoleDef.Actions
+    Assert-AreEqual $roleDef.Description $addedRoleDef.Description
+    Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
+    Assert-AreEqual $true $addedRoleDef.IsCustom
 
     Remove-AzureRmRoleDefinition -Id $addedRoleDef.Id -Force
     Remove-AzureRmRoleDefinition -Id $rd.Id -Force
@@ -59,15 +59,15 @@ Tests verify negative scenarios for RoleDefinitions
 #>
 function Test-RdNegativeScenarios
 {
-	# Setup
+    # Setup
     # Does not throw when getting a non-existing role assignment
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $rdNull = Get-AzureRmRoleDefinition -Name $rdName
     Assert-Null $rdNull
 
     $rdId = '85E460B3-89E9-48BA-9DCD-A8A99D64A674'
-	
-    $badIdException = "The specified role definition with ID '" + $rdId + "' does not exist."
+    
+    $badIdException = "Cannot find role definition with id '" + $rdId + "'."
 
     # Throws on trying to update the a role that does not exist
     Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException
@@ -88,9 +88,10 @@ function Test-RdNegativeScenarios
 
     #TODO add check for valid input file and valid role
 
+    $removeRoleException = "The specified role definition with ID '" + $rdId + "' does not exist."
     # Throws on trying to delete a role that does not exist
     $missingSubscription = "MissingSubscription: The request did not have a provided subscription. All requests must have an associated subscription Id."
-    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Force} $badIdException
+    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Force} $removeRoleException
 }
 
 <#
@@ -126,8 +127,6 @@ Tests verify roledefinition update with interchanged assignablescopes.
 #>
 function Test-RDUpdate
 {
-    # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
@@ -138,9 +137,10 @@ function Test-RDUpdate
     # Update the role definition with action that was created in the step above.
     $scopes = $rd.AssignableScopes | foreach { $_ }
     $rd.AssignableScopes.Clear()
-	for($i = $scopes.Count - 1 ; $i -ge 0; $i--){
-		$rd.AssignableScopes.Add($scopes[$i])
-	}
+    $rd.AssignableScopes.Add('/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureStackSDK')
+    for($i = $scopes.Count - 1 ; $i -ge 0; $i--){
+        $rd.AssignableScopes.Add($scopes[$i])
+    }
     $updatedRd = Set-AzureRmRoleDefinition -Role $rd
     Assert-NotNull $updatedRd
 
@@ -156,8 +156,6 @@ Tests verify roledefinition create with invalid scope.
 function Test-RDCreateFromFile
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Create a role definition with invalid assignable scopes.
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
     $badScopeException = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts."
@@ -173,16 +171,16 @@ function Test-RDRemove
     # Create a role definition at RG Scope.
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("65E1D983-ECF4-42D4-8C08-5B1FD6E86335")
 
-	$subscription = Get-AzureRmSubscription
-	$resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-	
-	$scope = "/subscriptions/" + $subscription[0].SubscriptionId
-	$rgScope = "/subscriptions/" + $subscription[0].SubscriptionId + "/resourceGroups/" + $resourceGroups[0].ResourceGroupName
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    
+    $scope = "/subscriptions/" + $subscription[0].SubscriptionId
+    $rgScope = "/subscriptions/" + $subscription[0].SubscriptionId + "/resourceGroups/" + $resourceGroups[0].ResourceGroupName
 
-	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
-	$roleDef.Id = $null
-	$roleDef.Name = "CustomRole123_65E1D983-ECF4-42D4-8C08-5B1FD6E86335"
-	$roleDef.Description = "Test Remove RD"
+    $roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef.Id = $null
+    $roleDef.Name = "CustomRole123_65E1D983-ECF4-42D4-8C08-5B1FD6E86335"
+    $roleDef.Description = "Test Remove RD"
     $roleDef.AssignableScopes[0] = $rgScope
 
     $Rd = New-AzureRmRoleDefinition -Role $roleDef
@@ -190,16 +188,16 @@ function Test-RDRemove
 
 
     # try to delete the role definition with subscription scope - should fail
-	$badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
+    Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
 
-	# try to delete the role definition without specifying scope (default to subscription scope) - should fail
-	$badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+    # try to delete the role definition without specifying scope (default to subscription scope) - should fail
+    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
+    Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
 
-	# try to delete the role definition with RG scope - should succeed
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $rgScope -Force -PassThru
-	Assert-AreEqual $Rd.Name $deletedRd.Name
+    # try to delete the role definition with RG scope - should succeed
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $rgScope -Force -PassThru
+    Assert-AreEqual $Rd.Name $deletedRd.Name
 }
 
 <#
@@ -209,67 +207,67 @@ Verify positive and negative scenarios for RoleDefinition Get.
 function Test-RDGet
 {
     # Setup
-	$subscription = Get-AzureRmSubscription
+    $subscription = Get-AzureRmSubscription
 
-	$resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
+    $resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
-	
-	$subScope = "/subscriptions/" + $subscription[0].SubscriptionId
-	$rgScope = "/subscriptions/" + $subscription[0].SubscriptionId + "/resourceGroups/" + $resource.ResourceGroupName
-	$resourceScope = $resource.ResourceId
-	
+    
+    $subScope = "/subscriptions/" + $subscription[0].SubscriptionId
+    $rgScope = "/subscriptions/" + $subscription[0].SubscriptionId + "/resourceGroups/" + $resource.ResourceGroupName
+    $resourceScope = $resource.ResourceId
+    
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("99CC0F56-7395-4097-A31E-CC63874AC5EF")
-	$roleDef1 = Get-AzureRmRoleDefinition -Name "Reader"
-	$roleDef1.Id = $null
-	$roleDef1.Name = "CustomRole_99CC0F56-7395-4097-A31E-CC63874AC5EF"
-	$roleDef1.Description = "Test Get RD"
+    $roleDef1 = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef1.Id = $null
+    $roleDef1.Name = "CustomRole_99CC0F56-7395-4097-A31E-CC63874AC5EF"
+    $roleDef1.Description = "Test Get RD"
     $roleDef1.AssignableScopes[0] = $subScope 
 
     $roleDefSubScope = New-AzureRmRoleDefinition -Role $roleDef1
     Assert-NotNull $roleDefSubScope
 
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("E3CC9CD7-9D0A-47EC-8C75-07C544065220")
-	$roleDef1.Id = $null
-	$roleDef1.Name = "CustomRole_E3CC9CD7-9D0A-47EC-8C75-07C544065220"
-	$roleDef1.Description = "Test Get RD"
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("E3CC9CD7-9D0A-47EC-8C75-07C544065220")
+    $roleDef1.Id = $null
+    $roleDef1.Name = "CustomRole_E3CC9CD7-9D0A-47EC-8C75-07C544065220"
+    $roleDef1.Description = "Test Get RD"
     $roleDef1.AssignableScopes[0] = $rgScope
 
     $roleDefRGScope = New-AzureRmRoleDefinition -Role $roleDef1
     Assert-NotNull $roleDefRGScope
-	
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D2E860C-5640-4B7C-BD3C-80940C715033")
-	$roleDef1.Id = $null
-	$roleDef1.Name = "CustomRole_8D2E860C-5640-4B7C-BD3C-80940C715033"
-	$roleDef1.Description = "Test Get RD"
+    
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D2E860C-5640-4B7C-BD3C-80940C715033")
+    $roleDef1.Id = $null
+    $roleDef1.Name = "CustomRole_8D2E860C-5640-4B7C-BD3C-80940C715033"
+    $roleDef1.Description = "Test Get RD"
     $roleDef1.AssignableScopes[0] = $resourceScope
 
     $roleDefResourceScope = New-AzureRmRoleDefinition -Role $roleDef1
     Assert-NotNull $roleDefResourceScope
 
     # try to get the role definition with subscription scope
-	$roles1 = Get-AzureRmRoleDefinition -Scope $subScope	
-	### TODO: Check for only sub scope role being present
+    $roles1 = Get-AzureRmRoleDefinition -Scope $subScope    
+    ### TODO: Check for only sub scope role being present
 
-	# try to get the role definition with subscription scope
-	$roles2 = Get-AzureRmRoleDefinition -Scope $rgScope
-	### TODO: Check for only sub and RG scope role being present
+    # try to get the role definition with subscription scope
+    $roles2 = Get-AzureRmRoleDefinition -Scope $rgScope
+    ### TODO: Check for only sub and RG scope role being present
 
-	# try to get the role definition with subscription scope
-	$roles3 = Get-AzureRmRoleDefinition -Scope $resourceScope
-	### TODO: Check for all sub, RG and resource scope role being present
+    # try to get the role definition with subscription scope
+    $roles3 = Get-AzureRmRoleDefinition -Scope $resourceScope
+    ### TODO: Check for all sub, RG and resource scope role being present
 
 
-	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefSubScope.Id -Scope $subScope -Force -PassThru
-	Assert-AreEqual $roleDefSubScope.Name $deletedRd.Name
+    # delete roles
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefSubScope.Id -Scope $subScope -Force -PassThru
+    Assert-AreEqual $roleDefSubScope.Name $deletedRd.Name
 
-	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefRGScope.Id -Scope $rgScope -Force -PassThru
-	Assert-AreEqual $roleDefRGScope.Name $deletedRd.Name
+    # delete roles
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefRGScope.Id -Scope $rgScope -Force -PassThru
+    Assert-AreEqual $roleDefRGScope.Name $deletedRd.Name
 
-	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Force -PassThru
-	Assert-AreEqual $roleDefResourceScope.Name $deletedRd.Name
+    # delete roles
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Force -PassThru
+    Assert-AreEqual $roleDefResourceScope.Name $deletedRd.Name
 }
 
 <#
@@ -292,7 +290,7 @@ function Test-RdValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
     Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
@@ -314,9 +312,9 @@ function Test-RdValidateInputParameters2 ($cmdName)
     # Setup
     # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one. 
 
-	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
-	$roleDef.Name = "CustomRole_99CC0F56-7395-4097-A31E-CC63874AC5EF"
-	$roleDef.Description = "Test Get RD"
+    $roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef.Name = "CustomRole_99CC0F56-7395-4097-A31E-CC63874AC5EF"
+    $roleDef.Description = "Test Get RD"
 
     # Test
     # Check if Scope is valid.
@@ -331,7 +329,7 @@ function Test-RdValidateInputParameters2 ($cmdName)
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
     $roleDef.AssignableScopes[0] = $scope;
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
     

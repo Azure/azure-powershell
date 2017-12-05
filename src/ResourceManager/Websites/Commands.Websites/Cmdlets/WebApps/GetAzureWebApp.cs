@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public ServerFarmWithRichSku AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet3, Position = 0, Mandatory = true, HelpMessage = "The name of the web app location. Gets all web apps at location")]
+        [LocationCompleter("Microsoft.Web/sites")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
