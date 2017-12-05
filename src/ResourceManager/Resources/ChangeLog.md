@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.1
 * Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
     - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
 * Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
