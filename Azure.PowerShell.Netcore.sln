@@ -52,6 +52,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceManager", "Resource
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Kubernetes.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes\Commands.Kubernetes.Netcore.csproj", "{80657644-11E5-435B-A3DB-DFBB7115089F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Kubernetes.Test.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes.Test.Netcore\Commands.Kubernetes.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -158,6 +160,18 @@ Global
 		{80657644-11E5-435B-A3DB-DFBB7115089F}.Release|x64.Build.0 = Release|x64
 		{80657644-11E5-435B-A3DB-DFBB7115089F}.Release|x86.ActiveCfg = Release|x86
 		{80657644-11E5-435B-A3DB-DFBB7115089F}.Release|x86.Build.0 = Release|x86
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|x64.Build.0 = Release|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +179,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{87246108-B555-4F5F-B916-A9C6FABB1971} = {4B187BE1-F8C4-4658-AD17-98AA087482AA}
 		{624FE5CE-0F46-4A0A-9A1B-54D5724B7F96} = {4B187BE1-F8C4-4658-AD17-98AA087482AA}
+		{E52DCBCD-CCEF-46E1-880B-CAE04A06804A} = {4B187BE1-F8C4-4658-AD17-98AA087482AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A9808F3-5476-4731-BD44-617A8BA3DD65}
