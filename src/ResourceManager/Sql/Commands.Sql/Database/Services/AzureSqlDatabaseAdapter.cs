@@ -338,5 +338,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             return ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, databaseName, operationId);
         }
+
+        public void RenameDatabase(string resourceGroupName, string serverName, string databaseName, string newName)
+        {
+            Communicator.Rename(resourceGroupName, serverName, databaseName, newName);
+        }
     }
 }
