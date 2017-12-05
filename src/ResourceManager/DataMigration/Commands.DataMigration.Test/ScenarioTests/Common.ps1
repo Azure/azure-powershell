@@ -14,12 +14,12 @@
 
 function Create-ResourceGroupForTest
 {
-	$useExistingService = ToBool(Get-EnvironmentVariable("useExistingService"))
-	$location = Get-EnvironmentVariable("Location")
+	$useExistingService = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigBool("useExistingService")
+	$location = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("Location")
 	$rg = $null
 	if($useExistingService)
 	{
-		$rgName = Get-EnvironmentVariable("ResourceGroupName")
+		$rgName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("ResourceGroupName")
 		$rg = Get-AzureRmResourceGroup -Name $rgName -Location $location
 	}else{
 		$rgName = Get-ResourceGroupName
@@ -33,7 +33,7 @@ function Create-ResourceGroupForTest
 
 function Remove-ResourceGroupForTest ($rg)
 {
-	if(ToBool(Get-EnvironmentVariable("cleanup"))){
+	if([Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigBool("cleanup")){
 		Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
 	}
 }
@@ -65,16 +65,16 @@ function Get-DbName
 
 function Create-DataMigrationService($rg)
 {
-	$useExistingService = ToBool(Get-EnvironmentVariable("useExistingService"))
+	$useExistingService = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigBool("useExistingService")
 	$service = $null
 	if($useExistingService){
-		$serviceName = Get-EnvironmentVariable("ServiceName")
+		$serviceName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("ServiceName")
 		$result = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $serviceName
 		Assert-AreEqual 1 $result.Count
 		$service = $result[0]
 	}else{
 		$serviceName = Get-ServiceName
-		$virtualSubNetId = Get-EnvironmentVariable("VIRTUAL_SUBNET_ID")
+		$virtualSubNetId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("VIRTUAL_SUBNET_ID")
 		$sku = "Basic_2vCores"
 		$service = New-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
 	}
@@ -107,7 +107,7 @@ function getDmsAssetName($prefix)
 
 function New-SourceSqlConnectionInfo
 {
-	$dataSource = Get-EnvironmentVariable("SQL_SOURCE_DATASOURCE")
+	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_SOURCE_DATASOURCE")
 	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo
@@ -115,7 +115,7 @@ function New-SourceSqlConnectionInfo
 
 function New-TargetSqlConnectionInfo
 {
-	$dataSource = Get-EnvironmentVariable("SQLDB_TARGET_DATASOURCE")
+	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_TARGET_DATASOURCE")
 	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo
@@ -136,31 +136,6 @@ function New-ProjectDbInfos
 	$dbInfo = New-AzureRmDataMigrationDatabaseInfo -SourceDatabaseName $dbName
 
 	return $dbInfo
-}
-
-function Get-EnvironmentVariable($envVar)
-{
-	$value = [System.Environment]::GetEnvironmentVariable($envVar)
-
-	if ([string]::IsNullOrEmpty($value)){
-		$value = getDmsAssetName $envVar
-	}
-
-	return $value;
-}
-
-function ToBool($value)
-{
-	$result = $false
-	try {
-		$result = [System.Convert]::ToBoolean($value)
-		}
-	catch [FormatException]
-	{
-		$result = $false
-	}
-
-return $result
 }
 
 function SleepTask($value){
