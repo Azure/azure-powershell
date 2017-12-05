@@ -18,9 +18,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -35,19 +33,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
         public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-        
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public StorageManagementClient StorageClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-
-        
-        public string UserDomain { get; private set; }
 
         public static TestController NewInstance 
         { 
@@ -145,34 +137,21 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
             LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
-            SubscriptionClient = GetSubscriptionClient();
             StorageClient = GetStorageManagementClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
-                ResourceManagementClient,
                 LegacyResourceManagementClient,
-                SubscriptionClient,
                 StorageClient,
                 GalleryClient,
                 AuthorizationManagementClient);
         }
         
-        private ResourceManagementClient GetResourceManagementClient()
-        {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
         private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetLegacyResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
