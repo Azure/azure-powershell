@@ -35,6 +35,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Common;
 using System.Net;
+using Microsoft.Azure.Commands.Compute.Strategies;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -130,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             switch (ParameterSetName)
             {
                 case SimpleParameterSet:
-                    SimpleParameterSetExecuteCmdlet();
+                    this.StartAndWait(SimpleParameterSetExecuteCmdlet);
                     break;
                 default:
                     ExecuteClientAction(() =>
@@ -152,13 +154,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        public void SimpleParameterSetExecuteCmdlet()
+        async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
             ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
-            InstanceCount = InstanceCount ?? 2;
-            VmSku = VmSku ?? "Standard_DS2";
-            UpgradePolicyMode = UpgradePolicyMode ?? UpgradeMode.Automatic;
-
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
             PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
@@ -225,16 +223,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (ShouldProcess(VMScaleSetName, VerbsCommon.New))
             {
-                var result = virtualMachineScaleSet
+                var result = await virtualMachineScaleSet
                     .UpdateStateAsync(
                         client,
                         target,
                         new CancellationToken(),
-                        new ShouldProcessType(this),
-                        new ProgressReportType(this))
-                    .GetAwaiter()
-                    .GetResult();
-                WriteObject(result);
+                        new ShouldProcess(asyncCmdlet),
+                        new ProgressReport(asyncCmdlet));
+
+                asyncCmdlet.WriteObject(result);
             }
         }
 
@@ -282,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int? InstanceCount { get; set; }
+        public int InstanceCount { get; set; } = 2;
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
@@ -308,12 +305,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [LocationCompleter]
         public string Location { get; set; }
-        
+
+        // this corresponds to VmSku in the Azure CLI
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VmSku { get; set; }
+        public string VmSize { get; set; } = "Standard_DS1_v2";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public UpgradeMode? UpgradePolicyMode { get; set; }
+        public UpgradeMode UpgradePolicyMode { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateSet("Static", "Dynamic")]
