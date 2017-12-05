@@ -119,7 +119,7 @@
   <ItemGroup>
     <Compile Include="Cmdlets\AddAzureRmManagementGroup.cs" />
     <Compile Include="Cmdlets\AddAzureRmManagementGroupSubscription.cs" />
-    <Compile Include="Cmdlets\DeleteAzureRmManagementGroup.cs" />
+    <Compile Include="Cmdlets\RemoveAzureRmManagementGroup.cs" />
     <Compile Include="Cmdlets\GetAzureRmManagementGroup.cs" />
     <Compile Include="Cmdlets\RemoveAzureRmManagementGroupSubscription.cs" />
     <Compile Include="Cmdlets\UpdateAzureRmManagementGroup.cs" />

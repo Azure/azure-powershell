@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroup",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
-    public class DeleteAzureRmManagementGroup : AzureManagementGroupsCmdletBase
+    public class RemoveAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
