@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, p.CancellationToken),
                 (o, p) => o.CreateOrUpdateAsync(
-                    p.ResourceGroupName, p.Name, p.Model, p.CancellationToken));
+                    p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
+                _ => 180);
 
         public static ResourceConfig<VirtualMachineScaleSet> CreateVirtualMachineScaleSetConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
