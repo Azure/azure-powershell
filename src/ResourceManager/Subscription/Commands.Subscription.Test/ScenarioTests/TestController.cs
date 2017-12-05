@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                   @"AzureRM.Subscription.psd1",
+                   @"AzureRM.Subscription.Preview.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
                 {
