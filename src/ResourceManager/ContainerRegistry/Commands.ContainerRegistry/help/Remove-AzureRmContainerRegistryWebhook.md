@@ -36,7 +36,7 @@ The Remove-AzureRmContainerRegistryWebhook cmdlet removes a container registry w
 ## EXAMPLES
 
 ### Example 1: Remove a container registry webhook.
-```
+```powershell
 PS C:\> Remove-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 ```
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Indicates that this cmdlet returns true if the removal was successful.
 
 ```yaml
 Type: SwitchParameter
