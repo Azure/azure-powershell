@@ -25,6 +25,7 @@
 	- AuditAction parameter in auditing cmdlets is no longer being ignored
 * Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
 	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
+* Changing the wording for confirmation message from Set-AzureRmSqlServerTransparentDataEncryptionProtector
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
