@@ -196,6 +196,7 @@ namespace Microsoft.Azure.Commands.Common
                 field.SafeCopyValue(source: cmdlet, target: returnValue);
             }
 
+            cmdlet.SafeCopyParameterSet(returnValue);
             return returnValue as U;
         }
 
