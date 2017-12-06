@@ -1,0 +1,227 @@
+// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
+using Microsoft.Azure.Commands.Kubernetes.Generated;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.PowerShell.Commands;
+
+namespace Microsoft.Azure.Commands.Kubernetes
+{
+    [Cmdlet("Start", KubeNounStr + "Dashboard")]
+    public class StartDashboard : KubeCmdletBase
+    {
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Name of your managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource group name")]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Do not pop open a browser after establising the kubectl port-forward.")]
+        public SwitchParameter DisableBrowser { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            RunCmdLet(() =>
+            {
+                var cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
+                var tmpFileName = Path.GetTempFileName();
+                var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
+                    .KubeConfig;
+                File.WriteAllText(
+                    tmpFileName,
+                    Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
+
+                var proxyUrl = "http://127.0.0.1:8001";
+
+                WriteVerbose(string.Format("Running: kubectl get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard", tmpFileName));
+                var proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "kubectl",
+                        Arguments = string.Format(
+                            "get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard",
+                            tmpFileName),
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+                proc.Start();
+                var dashPodName = proc.StandardOutput.ReadToEnd();
+                proc.WaitForExit();
+
+                // remove "pods/"
+                dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
+                var job = new KubeTunnelJob(tmpFileName, dashPodName);
+
+                WriteVerbose(string.Format("Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", tmpFileName, dashPodName));
+
+                var exitingJob = JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel");
+                if (exitingJob != null)
+                {
+                    WriteVerbose("Stopping existing Kubectl-Tunnel job.");
+                    exitingJob.StopJob();
+                    JobRepository.Remove(exitingJob);
+                }
+
+                if (!DisableBrowser.IsPresent)
+                {
+                    WriteVerbose("Setting up browser pop.");
+                    job.StartJobCompleted += (sender, evt) =>
+                    {
+                        WriteVerbose(string.Format("Starting browser: {0}", proxyUrl));
+                        Process.Start(proxyUrl);
+                    };
+                }
+                JobRepository.Add(job);
+                job.StartJob();
+            });
+        }
+    }
+
+    public class KubeTunnelJob : Job2
+    {
+        private readonly string _credFilePath;
+        private Process _proxyProcess;
+        private readonly string _dashPod;
+
+        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzureRmKubernetesDashboard",
+            "Kubectl-Tunnel")
+        {
+            _credFilePath = credFilePath;
+            _dashPod = dashPod;
+        }
+
+        public override string StatusMessage { get; }
+        public override bool HasMoreData { get; }
+        public override string Location { get; }
+
+        public override void StopJob()
+        {
+            SetJobState(JobState.Stopping);
+            _proxyProcess.Kill();
+            SetJobState(JobState.Stopped);
+            OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, null));
+        }
+
+        public override void StartJob()
+        {
+            _proxyProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "kubectl",
+                    Arguments = string.Format(
+                        "--kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", _credFilePath,
+                        _dashPod),
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+            _proxyProcess.Start();
+            SetJobState(JobState.Running);
+            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false, null));
+        }
+
+        public override void StartJobAsync()
+        {
+            StartJob();
+        }
+
+        public override void StopJobAsync()
+        {
+            StopJob();
+        }
+
+        public override void SuspendJob()
+        {
+            StopJob();
+        }
+
+        public override void SuspendJobAsync()
+        {
+            StopJob();
+        }
+
+        public override void ResumeJob()
+        {
+            StartJob();
+        }
+
+        public override void ResumeJobAsync()
+        {
+            StartJob();
+        }
+
+        public override void UnblockJob()
+        {
+            // noop
+        }
+
+        public override void UnblockJobAsync()
+        {
+            UnblockJob();
+        }
+
+        public override void StopJob(bool force, string reason)
+        {
+            StopJob();
+        }
+
+        public override void StopJobAsync(bool force, string reason)
+        {
+            StopJob();
+        }
+
+        public override void SuspendJob(bool force, string reason)
+        {
+            StopJob();
+        }
+
+        public override void SuspendJobAsync(bool force, string reason)
+        {
+            StopJob();
+        }
+    }
+}
