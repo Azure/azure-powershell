@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.WebSites
         public static SiteConfigResource UpdateSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
-            SiteConfig siteConfig, 
+            SiteConfigResource siteConfig, 
             string slot)
         {
             return webApp.UpdateConfigurationSlot(resourceGroupName, name, siteConfig, slot);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         public static SiteConfigResource UpdateSiteConfig(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, SiteConfig siteConfig)
+            string resourceGroupName, string name, SiteConfigResource siteConfig)
         {
             return webApp.UpdateConfiguration(resourceGroupName, name, siteConfig);
         }
