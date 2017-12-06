@@ -885,8 +885,14 @@
                         <Component Id="cmpA7B72722B1AC91C0B6B117CEAB00E3C0" Guid="*">
                             <File Id="fil40386C22E607E953293F5632EAC6393E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml" />
                         </Component>
+                        <Component Id="cmp69FA33F12F0B35DB3B782C25EC948902" Guid="*">
+                            <File Id="fil3A84B2C101DAD68143106C32AF62B56B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.PowerBI.dll" />
+                        </Component>
                         <Component Id="cmp20C58BA5A8D7263E84BE2BCB10783E8A" Guid="*">
                             <File Id="fil41DF793D2985B54C201FA26B67E86E70" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.PowerBI.dll-Help.xml" />
+                        </Component>
+                        <Component Id="cmpFDA4C64C20E3EC3E5EE855A75836FD38" Guid="*">
+                            <File Id="filE437A27DA5A39832853F84B5DB4467AF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Management.PowerBIDedicated.dll" />
                         </Component>
                         <Component Id="cmpCE88A6EB381A0717BB0174CE2088DAC0" Guid="*">
                             <File Id="filFF22B8B40E8E77E1A41A01AB2CE44D87" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Management.PowerBIEmbedded.dll" />
@@ -3437,7 +3443,9 @@
             <ComponentRef Id="cmpFDAC8616C4E824FA6880ECA8F8FF5128" />
             <ComponentRef Id="cmp0F1E11B5C6A0C1527BB960FDCC4F4F34" />
             <ComponentRef Id="cmpA7B72722B1AC91C0B6B117CEAB00E3C0" />
+            <ComponentRef Id="cmp69FA33F12F0B35DB3B782C25EC948902" />
             <ComponentRef Id="cmp20C58BA5A8D7263E84BE2BCB10783E8A" />
+            <ComponentRef Id="cmpFDA4C64C20E3EC3E5EE855A75836FD38" />
             <ComponentRef Id="cmpCE88A6EB381A0717BB0174CE2088DAC0" />
             <ComponentRef Id="cmpCDBCF0967EA30044FF3F4478A30C1D5B" />
             <ComponentRef Id="cmpBD60B3ADF7DBF9C322338B5993A2AC75" />
