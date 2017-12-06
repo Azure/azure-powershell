@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
-                "virtual machine",
-                "virtualMachines",
-                client => client.VirtualMachines,
-                (o, p) => o.GetAsync(
+                type: "virtual machine",
+                header: "virtualMachines",
+                getOperations: client => client.VirtualMachines,
+                getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                (o, p) => o.CreateOrUpdateAsync(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                c => c.OsProfile.WindowsConfiguration != null ? 240 : 120);
+                createTime: c => c.OsProfile.WindowsConfiguration != null ? 240 : 120);
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             Image image,
             string size)
             => Strategy.CreateResourceConfig(
-                resourceGroup,
-                name, 
-                subscription => new VirtualMachine
+                resourceGroup: resourceGroup,
+                name: name, 
+                createModel: subscription => new VirtualMachine
                 {
                     OsProfile = new OSProfile
                     {
@@ -80,6 +80,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         }
                     },
                 },
-                new[] { networkInterface });
+                dependencies: new[] { networkInterface });
     }
 }

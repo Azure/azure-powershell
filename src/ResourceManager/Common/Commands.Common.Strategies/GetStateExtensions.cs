@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return context.Result;
         }
 
-        static Task GetStateAsyncDispatch(this StateOperationContext context, IResourceConfig config)
+        static Task GetStateAsyncDispatch(
+            this StateOperationContext context, IResourceConfig config)
             => config.Accept(new GetStateAsyncVisitor(), context);
 
         static async Task GetStateAsync<TModel>(

@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(
-                "public IP address",
-                "publicIPAddresses",
-                client => client.PublicIPAddresses,
-                (o, p) => o.GetAsync(
+                type: "public IP address",
+                header: "publicIPAddresses",
+                getOperations: client => client.PublicIPAddresses,
+                getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                (o, p) => o.CreateOrUpdateAsync(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                _ => 15);
+                createTime: _ => 15);
 
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             string domainNameLabel,
             string allocationMethod)
             => Strategy.CreateResourceConfig(
-                resourceGroup,
-                name,
-                _ => new PublicIPAddress
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: _ => new PublicIPAddress
                 {
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings

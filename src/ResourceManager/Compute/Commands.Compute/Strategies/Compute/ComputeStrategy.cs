@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type,
-                new[] { "Microsoft.Compute", header },
-                getOperations,
-                getAsync,
-                createOrUpdateAsync,
-                config => config.Location,
-                (config, location) => config.Location = location,
-                createTime,
-                true);
+                type: type,
+                headers: new[] { "Microsoft.Compute", header },
+                getOperations: getOperations,
+                getAsync: getAsync,
+                createOrUpdateAsync: createOrUpdateAsync,
+                getLocation: config => config.Location,
+                setLocation: (config, location) => config.Location = location,
+                createTime: createTime,
+                compulsoryLocation: true);
     }
 }

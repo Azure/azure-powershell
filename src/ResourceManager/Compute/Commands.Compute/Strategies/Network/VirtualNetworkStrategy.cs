@@ -23,23 +23,23 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<VirtualNetwork> Strategy { get; }
             = NetworkStrategy.Create(
-                "virtual network",
-                "virtualNetworks",
-                client => client.VirtualNetworks,
-                (o, p) => o.GetAsync(
+                type: "virtual network",
+                header: "virtualNetworks",
+                getOperations: client => client.VirtualNetworks,
+                getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                (o, p) => o.CreateOrUpdateAsync(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                _ => 15);
+                createTime: _ => 15);
 
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             string addressPrefix)
             => Strategy.CreateResourceConfig(
-                resourceGroup,
-                name,
-                _ => new VirtualNetwork
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: _ => new VirtualNetwork
                 {
                     AddressSpace = new AddressSpace
                     {

@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
-                "network interface",
-                "networkInterfaces",
-                client => client.NetworkInterfaces,
-                (o, p) => o.GetAsync(
+                type: "network interface",
+                header: "networkInterfaces",
+                getOperations: client => client.NetworkInterfaces,
+                getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                (o, p) => o.CreateOrUpdateAsync(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                _ => 5);
+                createTime: _ => 5);
 
         public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             ResourceConfig<PublicIPAddress> publicIPAddress,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null)
             => Strategy.CreateResourceConfig(
-                resourceGroup,
-                name,
-                subscription => new NetworkInterface
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: subscription => new NetworkInterface
                 {
                     IpConfigurations = new []
                     {
@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                             Id = networkSecurityGroup.GetId(subscription).IdToString()
                         }
                 },
-                new IEntityConfig[] { subnet, publicIPAddress, networkSecurityGroup });
+                dependencies: new IEntityConfig[] 
+                {
+                    subnet,
+                    publicIPAddress,
+                    networkSecurityGroup
+                });
     }
 }
