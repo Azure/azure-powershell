@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         TResult Visit(ResourceConfig<TModel> config, TContext context);
 
-        TResult Visit<TParentModel>(NestedResourceConfig<TModel, TParentModel> config, TContext context)
+        TResult Visit<TParentModel>(
+            NestedResourceConfig<TModel, TParentModel> config, TContext context)
             where TParentModel : class;
     }
 }

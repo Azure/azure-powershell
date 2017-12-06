@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     /// <summary>
-    /// Base interface for ResourceConfig and NestedResourceConfig.
+    /// Base interface for ResourceConfig[TModel] and NestedResourceConfig[TModel, TParentModel].
     /// </summary>
     public interface IEntityConfig
     {

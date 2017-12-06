@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         readonly Dictionary<IResourceConfig, Tuple<TimeSlot, int>> _Map 
             = new Dictionary<IResourceConfig, Tuple<TimeSlot, int>>();
 
+        /// <summary>
+        /// duration of all tasks (in seconds).
+        /// </summary>
         readonly int _Duration;
 
         public ProgressMap(Dictionary<IResourceConfig, Tuple<TimeSlot, int>> map, int duration)

@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
-                "subnets",
-                (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
-                (vn, name, subnet) =>
+                header: "subnets",
+                get: (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
+                createOrUpdate: (vn, name, subnet) =>
                 {
                     subnet.Name = name;
                     if (vn.Subnets == null)
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
             this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
             => Strategy.CreateConfig(
-                virtualNetwork,
-                name,
-                () => new Subnet { Name = name, AddressPrefix = addressPrefix });
+                parent: virtualNetwork,
+                name: name,
+                createModel: () => new Subnet { Name = name, AddressPrefix = addressPrefix });
     }
 }
