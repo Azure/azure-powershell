@@ -1,0 +1,77 @@
+﻿{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription?api-version=2017-11-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL3N1YnNjcmlwdGlvbkRlZmluaXRpb25zL015UHJvZFN1YnNjcmlwdGlvbj9hcGktdmVyc2lvbj0yMDE3LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8c346b47-e8fa-4b2b-940b-dccca378e876"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription\",\r\n  \"name\": \"MyProdSubscription\",\r\n  \"properties\": {\r\n    \"etag\": \"MfjP0w==\",\r\n    \"subscriptionDisplayName\": \"MyProdSubscription\",\r\n    \"subscriptionId\": \"86869d42-1782-4337-98b0-c905fb937d46\",\r\n    \"offerType\": \"MS-AZR-0017P\"\r\n  },\r\n  \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "332"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "30080cab-b277-45fb-ba65-a19a71866cc9"
+        ],
+        "x-ms-correlation-request-id": [
+          "30080cab-b277-45fb-ba65-a19a71866cc9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171123T073847Z:30080cab-b277-45fb-ba65-a19a71866cc9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 23 Nov 2017 07:38:47 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "430ed244-e513-4b13-b113-e877158ed7f5"
+  }
+}
