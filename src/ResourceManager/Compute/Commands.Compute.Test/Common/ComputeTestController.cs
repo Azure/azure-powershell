@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private Microsoft.Azure.Management.Authorization.AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
