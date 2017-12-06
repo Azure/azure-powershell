@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add IpTags to PublicIpAddress
 
 ## Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
