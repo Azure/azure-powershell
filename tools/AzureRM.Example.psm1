@@ -11,8 +11,11 @@ Set-StrictMode -Version Latest
 
 %IMPORTED-DEPENDENCIES%
 
-Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-    . $_.FullName
+if (Test-Path -Path "$PSScriptRoot\StartupScripts")
+{
+    Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
+        . $_.FullName
+    }
 }
 
 if ($PSVersionTable.PSVersion.Major -ge 5)
