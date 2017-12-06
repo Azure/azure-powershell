@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
@@ -19,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
     public class TimeSlotTest
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddTest()
         {
             var first = new TimeSlot();
