@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Added ability to rename database using Set-AzureRmSqlDatabase
+* Fixed issue https://github.com/Azure/azure-powershell/issues/4974
+	- Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/5046
 	- AuditAction parameter in auditing cmdlets is no longer being ignored
 * Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
