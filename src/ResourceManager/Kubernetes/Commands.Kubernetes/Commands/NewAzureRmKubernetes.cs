@@ -29,7 +29,8 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Kubernetes
@@ -147,19 +148,28 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
+        public SwitchParameter Force { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             RunCmdLet(() =>
             {
+                if (!Force.IsPresent && Exists())
+                {
+                    var message = "Kubernetes managed cluster already exists and cmdlet was not run with -Force.";
+                    throw new CmdletInvocationException(message);
+                }
+
                 WriteVerbose("Preparing for deployment of your managed Kubernetes cluster.");
                 if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
                 {
                     var rg = RmClient.ResourceGroups.Get(ResourceGroupName);
                     Location = rg.Location;
-                    WriteVerbose(string.Format("Using location {0} from the resource group {1}.", Location, ResourceGroupName));
+                    WriteVerbose(string.Format("Using location {0} from the resource group {1}.", Location,
+                        ResourceGroupName));
                 }
 
                 if (string.IsNullOrEmpty(DnsNamePrefix))
@@ -177,10 +187,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     NodeOsDiskSize,
                     DnsNamePrefix);
 
-                var pubKey = new List<ContainerServiceSshPublicKey> {new ContainerServiceSshPublicKey(SshKeyValue)};
+                var pubKey =
+                    new List<ContainerServiceSshPublicKey> {new ContainerServiceSshPublicKey(SshKeyValue)};
 
                 var linuxProfile =
-                    new ContainerServiceLinuxProfile(AdminUserName, new ContainerServiceSshConfiguration(pubKey));
+                    new ContainerServiceLinuxProfile(AdminUserName,
+                        new ContainerServiceSshConfiguration(pubKey));
 
                 var acsServicePrincipal = EnsureServicePrincipal(ClientId, ClientSecret);
 
@@ -221,7 +233,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
                 else
                 {
-                    WriteVerbose(string.Format("Using SSH public key data as command line string."));
+                    WriteVerbose("Using SSH public key data as command line string.");
                     return sshKeyOrFile;
                 }
 
@@ -245,7 +257,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
             var acsServicePrincipal = LoadServicePrincipal();
             if (acsServicePrincipal == null)
             {
-                WriteVerbose(string.Format("No Service Principal found in {0} for this subscription. Creating a new Service Principal.", AcsSpFilePath));
+                WriteVerbose(string.Format(
+                    "No Service Principal found in {0} for this subscription. Creating a new Service Principal.",
+                    AcsSpFilePath));
                 // if nothing to load, make one
                 if (string.IsNullOrEmpty(ClientSecret))
                 {
@@ -255,7 +269,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 var url = string.Format("http://{0}.{1}.{2}.cloudapp.azure.com", salt, DnsNamePrefix, Location);
 
                 BuildServicePrincipal(Name, url, ClientSecret);
-                WriteVerbose(string.Format("Created a new Service Principal and assigned the contributor role for this subcription.", AcsSpFilePath));
+                WriteVerbose(string.Format(
+                    "Created a new Service Principal and assigned the contributor role for this subcription.",
+                    AcsSpFilePath));
             }
             StoreServicePrincipal(acsServicePrincipal);
             return acsServicePrincipal;
@@ -291,6 +307,21 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
 
             AddRoleAssignment("Contributor", app.AppId);
+        }
+
+        private bool Exists()
+        {
+            try
+            {
+                var exists = Client.ManagedClusters.Get(ResourceGroupName, Name) != null;
+                WriteVerbose(string.Format("Cluster exists: {0}", exists));
+                return exists;
+            }
+            catch (CloudException ex)
+            {
+                WriteVerbose("Cluster does not exist.");
+                return false;
+            }
         }
 
         private void AddRoleAssignment(string role, string appId)

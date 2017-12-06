@@ -19,11 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet(VerbsCommon.Remove, KubeNounStr)]
+    [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true)]
     [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public class Remove : KubeCmdletBase
     {
-
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -47,14 +46,19 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Remove cluster even if it is the defualt")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            RunCmdLet(() =>
-            {
-                Client.ManagedClusters.Delete(ResourceGroupName, Name);
-            });
+            ConfirmAction(Force.IsPresent,
+                "Do you want to delete the managed Kubernetes resource '{0}'?",
+                "Remove managed Kubernetes resource '{0}'.",
+                "AzureRmKubernetes",
+                () =>
+                    RunCmdLet(() => { Client.ManagedClusters.Delete(ResourceGroupName, Name); }));
         }
     }
 }
