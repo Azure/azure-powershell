@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <typeparam name="T">The cmdlet type</typeparam>
         /// <param name="source">The cmdlet to copy the parameter set name from</param>
         /// <param name="target">The cmdlet to copy to</param>
-        public static void SafeCopyParameterSet<T>(this T source, T target) where T: AzurePSCmdlet
+        public static void SafeCopyParameterSet<T>(this T source, T target) where T : AzurePSCmdlet
         {
             if (source != null && target != null)
             {
