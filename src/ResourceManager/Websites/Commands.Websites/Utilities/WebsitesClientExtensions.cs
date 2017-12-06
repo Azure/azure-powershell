@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.ListMetricsSlot(resourceGroupName, name, slot, details, filter);
         }
 
-        public static SiteConfig UpdateSiteConfigSlot(this IWebAppsOperations webApp,
+        public static SiteConfigResource UpdateSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
             SiteConfig siteConfig, 
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.UpdateConnectionStringsSlot(resourceGroupName, name, connectionStrings, slot);
         }
 
-        public static SiteConfig UpdateSiteConfig(this IWebAppsOperations webApp,
+        public static SiteConfigResource UpdateSiteConfig(this IWebAppsOperations webApp,
             string resourceGroupName, string name, SiteConfig siteConfig)
         {
             return webApp.UpdateConfiguration(resourceGroupName, name, siteConfig);
@@ -315,13 +315,13 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.UpdateConnectionStrings(resourceGroupName, name, connectionStrings);
         }
 
-        public static SiteConfig GetSiteConfigSlot(this IWebAppsOperations webApp,
+        public static SiteConfigResource GetSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, string slot)
         {
             return webApp.GetConfigurationSlot(resourceGroupName, name, slot);
         }
 
-        public static SiteConfig GetSiteConfig(this IWebAppsOperations webApp,
+        public static SiteConfigResource GetSiteConfig(this IWebAppsOperations webApp,
             string resourceGroupName, string name)
         {
             return webApp.GetConfiguration(resourceGroupName, name);
