@@ -61,7 +61,8 @@ RequiredAssemblies = 'netcoreapp2.0\AutoMapper.dll',
     'netcoreapp2.0\Microsoft.Data.Edm.dll',
     'netcoreapp2.0\Microsoft.Data.OData.dll',
     'netcoreapp2.0\Microsoft.WindowsAzure.Storage.dll',
-    'netcoreapp2.0\System.Spatial.dll'
+    'netcoreapp2.0\System.Spatial.dll', 
+    '.\Microsoft.Azure.Commands.Common.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
