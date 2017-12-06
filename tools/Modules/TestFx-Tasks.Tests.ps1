@@ -19,9 +19,10 @@ Describe "Test-NewCredentialNewServicePrincipal"{
         Mock New-AzureRMADServicePrincipal { return @{"ApplicationId" = "1234"; "Id" = "5678"} }
         Mock New-AzureRMRoleAssignment { return $true }
         Mock Get-AzureRMRoleAssignment { return $true }
-        $context = Get-AzureRmContext
+        $subscriptionId = "1234"
+        $tenantId = "5678"
         $secureSecret = ConvertTo-SecureString -String "testpassword" -AsPlainText -Force
-        New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record" -Force
+        New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $subscriptionId -TenantId $tenantId -RecordMode "Record" -Force
         $filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
         It "writes correct information to file" {
             $filePath | Should Contain "ServicePrincipal":  "1234"
@@ -36,19 +37,8 @@ Describe "Test-NewCredentialNewServicePrincipal"{
         $envHelper.SetEnvironmentVariableFromCredentialFile()
         It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Record"
-            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + 
-                "1234" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $context.Tenant.Id
-        }
-
-        $synch = New-Object System.Threading.SynchronizationContext -ArgumentList @()
-        [System.Threading.SynchronizationContext]::SetSynchronizationContext($synch)
-        $envHelper.SetupAzureEnvironmentFromEnvironmentVariables("AzureResourceManager")
-        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\Common\Commands.Common.Authentication.Abstractions\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll"
-        $assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
-        $defaultContext = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
-        It "correctly sets up TestEnvironment" {
-            $defaultContext.Subscription.Id | Should Match $context.Subscription.Id
-            $defaultContext.Tenant.Id | Should Match $context.Tenant.Id
+            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $subscriptionId + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + 
+                "1234" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $tenantId
         }
     }
 
@@ -68,9 +58,10 @@ Describe "Test-NewCredentialNewServicePrincipal"{
 Describe "Test-NewCredentialExistingServicePrincipal" {
 	Context "Finds and uses a ServicePrincipal"{
         Mock Get-AzureRmADServicePrincipal { return @{"ApplicationId" = "1234"; "Id" = "5678"} }
-        $context = Get-AzureRmContext
+        $subscriptionId = "1234"
+        $tenantId = "5678"
         $secureSecret = ConvertTo-SecureString -String "testpassword" -AsPlainText -Force
-        New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record" -Force
+        New-TestCredential -ServicePrincipalDisplayName "credentialtestserviceprincipal" -ServicePrincipalSecret $secureSecret -SubscriptionId $subscriptionId -TenantId $tenantId -RecordMode "Record" -Force
         $filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
         It "writes correct information to file" {
             $filePath | Should Contain "ServicePrincipal":  "1234"
@@ -85,8 +76,8 @@ Describe "Test-NewCredentialExistingServicePrincipal" {
         $envHelper.SetEnvironmentVariableFromCredentialFile()
         It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Record"
-            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + 
-                "1234" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $context.Tenant.Id
+            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $subscriptionId + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + 
+                "1234" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $tenantId
         }
     }
 
@@ -105,8 +96,9 @@ Describe "Test-NewCredentialExistingServicePrincipal" {
 
 Describe "Test-NewCredentialUserId" {
     Context "Creates correct file" {
-        $context = Get-AzureRmContext
-		New-TestCredential -UserId "testuser" -SubscriptionId $context.Subscription.Id -RecordMode "Playback" -Force
+        $subscriptionId = "1234"
+        $tenantId = "5678"
+		New-TestCredential -UserId "testuser" -SubscriptionId $subscriptionId -RecordMode "Playback" -Force
 		$filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
         It "writes correct information to file" {
             $filePath | Should Contain "UserId":  "testuser"
@@ -121,19 +113,8 @@ Describe "Test-NewCredentialUserId" {
         $envHelper.SetEnvironmentVariableFromCredentialFile()
         It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Playback"
-            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Playback;Environment=Prod;UserId=testuser"
+            $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $subscriptionId + ";HttpRecorderMode=Playback;Environment=Prod;UserId=testuser"
 		}
-		
-		$synch = New-Object System.Threading.SynchronizationContext -ArgumentList @()
-        [System.Threading.SynchronizationContext]::SetSynchronizationContext($synch)
-        $envHelper.SetupAzureEnvironmentFromEnvironmentVariables("AzureResourceManager")
-        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\..\..\src\Common\Commands.Common.Authentication.Abstractions\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll"
-        $assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
-        $defaultContext = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
-        It "correctly sets up TestEnvironment" {
-            $defaultContext.Subscription.Id | Should Match $context.Subscription.Id
-            $defaultContext.Tenant.Id | Should Match $context.Tenant.Id
-        }
 	}
 
 	# Clean-up
@@ -151,14 +132,15 @@ Describe "Test-NewCredentialUserId" {
 
 Describe "Test-SetEnvironmentServicePrincipal" {
 	Context "Connection string is properly set" {
-		$context = Get-AzureRmContext
+		$subscriptionId = "1234"
+        $tenantId = "5678"
 		Mock Get-AzureRmADServicePrincipal { return @{"ApplicationId" = "1234"; "Id" = "5678"} }
 		$NewServicePrincipal = Get-AzureRmADServicePrincipal
-		Set-TestEnvironment -ServicePrincipalId $NewServicePrincipal.ApplicationId -ServicePrincipalSecret "testpassword" -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record"
+		Set-TestEnvironment -ServicePrincipalId $NewServicePrincipal.ApplicationId -ServicePrincipalSecret "testpassword" -SubscriptionId $subscriptionId -TenantId $tenantId -RecordMode "Record"
 		It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Record"
-			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;AADTenant=" +
-				$context.Tenant.Id + ";ServicePrincipal=" + "1234" + ";ServicePrincipalSecret=testpassword"
+			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $subscriptionId + ";HttpRecorderMode=Record;Environment=Prod;AADTenant=" +
+				$tenantId + ";ServicePrincipal=" + "1234" + ";ServicePrincipalSecret=testpassword"
 		}
 	}
 
@@ -169,11 +151,12 @@ Describe "Test-SetEnvironmentServicePrincipal" {
 
 Describe "Test-SetEnvironmentUserId" {
 	Context "Connection string is properly set" {
-		$context = Get-AzureRmContext
-		Set-TestEnvironment -UserId "testuser" -SubscriptionId $context.Subscription.Id -RecordMode "Playback"
+		$subscriptionId = "1234"
+        $tenantId = "5678"
+		Set-TestEnvironment -UserId "testuser" -SubscriptionId $subscriptionId -RecordMode "Playback"
 		It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Playback"
-			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Playback;Environment=Prod;UserId=testuser"
+			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $subscriptionId + ";HttpRecorderMode=Playback;Environment=Prod;UserId=testuser"
 		}
 	}
 
