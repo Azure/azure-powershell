@@ -50,7 +50,7 @@ function Create-ModulePsm1
            elseif ($mod["RequiredVersion"])
            {
                $importedModules += "Import-Module " + $mod["ModuleName"] + " -RequiredVersion " + $mod["RequiredVersion"] + "`r`n"
-           }        
+           }
         }
      }
 
@@ -158,7 +158,7 @@ function Find-DefaultResourceGroupCmdlets
     )
     PROCESS
     {
-        if ($IsRMModule) 
+        if ($IsRMModule)
         {
         $nestedModules = $ModuleMetadata.NestedModules
         $AllCmdlets = @()
@@ -168,9 +168,9 @@ function Find-DefaultResourceGroupCmdlets
             $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
             $AllCmdlets += $dllCmdlets
         }
-        
+
         $FilteredCommands = $AllCmdlets | Where-Object {Test-CmdletRequiredParameter -Cmdlet $_ -Parameter "ResourceGroupName"}
-    
+
         if ($FilteredCommands.Length -eq 0) {
             $contructedCommands = "@()"
         }
@@ -181,7 +181,7 @@ function Find-DefaultResourceGroupCmdlets
             }
             $contructedCommands = $contructedCommands -replace ".$",")"
         }
-    
+
         return $contructedCommands
         }
 
@@ -216,7 +216,7 @@ function Test-CmdletRequiredParameter
                 return $true
             }
         }
-        
+
         return $false
     }
 }
@@ -252,10 +252,10 @@ if ([string]::IsNullOrEmpty($buildConfig))
 if ([string]::IsNullOrEmpty($scope))
 {
     Write-Verbose "Default scope to all"
-    $scope = 'All'  
+    $scope = 'All'
 }
 
-Write-Host "Updating $scope package(and its dependencies)" 
+Write-Host "Updating $scope package(and its dependencies)"
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -289,10 +289,10 @@ if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
 } 
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
+if ($scope -eq 'All') {
     foreach ($module in $resourceManagerModules) {
-        # filter out AzureRM.Profile which always gets published first 
-        # And "Azure.Storage" which is built out as test dependencies  
+        # filter out AzureRM.Profile which always gets published first
+        # And "Azure.Storage" which is built out as test dependencies
         if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
@@ -312,7 +312,7 @@ if ($scope -eq 'All') {
 }
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
-    # Update AzureRM module    
+    # Update AzureRM module
     if ($Profile -eq "Stack")
     {
         $modulePath = "$PSScriptRoot\..\src\StackAdmin\AzureRM"

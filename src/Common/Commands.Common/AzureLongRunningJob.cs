@@ -191,11 +191,13 @@ namespace Microsoft.Azure.Commands.Common
                 returnValue.MyInvocation.BoundParameters.Add(parameter.Key, parameter.Value);
             }
 
-            foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+
+            foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
                 field.SafeCopyValue(source: cmdlet, target: returnValue);
             }
 
+            cmdlet.SafeCopyParameterSet(returnValue);
             return returnValue as U;
         }
 
@@ -829,6 +831,9 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        /// <summary>
+        /// Stop job execution
+        /// </summary>
         public override void StopJob()
         {
             ShouldMethodStreamItem stream;

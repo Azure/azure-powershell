@@ -64,7 +64,8 @@ RequiredAssemblies = '.\AutoMapper.dll',
                      '.\Microsoft.WindowsAzure.Commands.Sync.dll',
                      '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
                      '.\Microsoft.WindowsAzure.Storage.dll',
-                     '.\System.Spatial.dll'
+                     '.\System.Spatial.dll',
+	                 '.\Microsoft.Azure.Commands.Common.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
