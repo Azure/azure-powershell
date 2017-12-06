@@ -76,6 +76,24 @@ function Create-ModulePsm1
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
+
+     Add-PSM1Dependency -Path $manifestPath
+  }
+}
+
+function Add-PSM1Dependency
+{
+  [CmdletBinding()]
+  param(
+  [string] $Path)
+
+  PROCESS 
+  {
+    $file = Get-Item -Path $Path
+    $manifestFile = $file.Name
+    $psm1file = $manifestFile -replace ".psd1", ".psm1"
+    Write-Host "here" + $Path
+    Update-ModuleManifest -Path $Path -RootModule $psm1file
   }
 }
 
