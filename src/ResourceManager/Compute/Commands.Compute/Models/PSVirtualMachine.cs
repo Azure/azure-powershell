@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the virtual machine zones.
         public IList<string> Zones { get; set; }
 
-        public string Fqdn { get; set; }
+        // Gets or sets the FQDN.
+        public string FullyQualifiedDomainName { get; set; }
     }
 }
