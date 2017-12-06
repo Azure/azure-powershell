@@ -45,5 +45,3 @@ $FilteredCommands | ForEach-Object {
 			} 
 		})
 }
-
-Export-ModuleMember -Alias *
