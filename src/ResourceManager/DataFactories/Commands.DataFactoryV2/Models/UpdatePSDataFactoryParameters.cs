@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    public class CreatePSDataFactoryParameters : DataFactoryParametersBase
+    public class UpdatePSDataFactoryParameters : DataFactoryParametersBase
     {
-        public string Location { get; set; }
-
         public Hashtable Tags { get; set; }
     }
 }
