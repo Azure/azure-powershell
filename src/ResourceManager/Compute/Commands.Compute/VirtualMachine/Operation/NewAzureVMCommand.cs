@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute
             if (result != null)
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                psResult.Fqdn = fqdn;
+                psResult.FullyQualifiedDomainName = fqdn;
                 asyncCmdlet.WriteVerbose(isWindows
                     ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
                     : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
