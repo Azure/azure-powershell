@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     newSubscription = new AzureSubscription
                     {
-                        Id = subscriptionId,
+                        Id = subscriptionId
                     };
                 }
 
@@ -140,6 +140,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Name = subscriptionName
                     };
                 }
+
+                newSubscription.SetOrAppendProperty(AzureSubscription.Property.Tenants, tenantId);
+                newSubscription.SetOrAppendProperty(AzureSubscription.Property.Account, account.Id);
 
                 newTenant = new AzureTenant
                 {
