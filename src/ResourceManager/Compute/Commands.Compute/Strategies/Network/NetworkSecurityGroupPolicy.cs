@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static ResourceStrategy<NetworkSecurityGroup> Strategy { get; }
             = NetworkStrategy.Create(
                 type: "network security group",
-                header: "networkSecurityGroups",
+                provider: "networkSecurityGroups",
                 getOperations: client => client.NetworkSecurityGroups,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

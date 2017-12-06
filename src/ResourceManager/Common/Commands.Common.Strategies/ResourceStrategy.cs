@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
             string type,
-            IEnumerable<string> headers,
+            IEnumerable<string> providers,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where TClient : ServiceClient<TClient>
             => Create(
                 type,
-                name => new[] { "providers" }.Concat(headers).Concat(new[] { name }),
+                name => new[] { "providers" }.Concat(providers).Concat(new[] { name }),
                 getOperations,
                 getAsync,
                 createOrUpdateAsync,

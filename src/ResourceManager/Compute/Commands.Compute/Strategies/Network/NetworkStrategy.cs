@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string type,
-            string header,
+            string provider,
             Func<NetworkManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             where TModel : Resource
             => ResourceStrategy.Create(
                 type,
-                new [] { "Microsoft.Network", header },
+                new [] { "Microsoft.Network", provider },
                 getOperations,
                 getAsync,
                 createOrUpdateAsync, 

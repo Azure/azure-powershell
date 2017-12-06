@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             public string Location { get; }
 
+            /// <summary>
+            /// If it's true then all dependant resources should also have this location.
+            /// </summary>
             public bool IsCompulsory { get; }
 
             public DependencyLocation(string location, bool isCompulsory)

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static ResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(
                 type: "public IP address",
-                header: "publicIPAddresses",
+                provider: "publicIPAddresses",
                 getOperations: client => client.PublicIPAddresses,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
