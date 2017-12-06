@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Rest;
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (string.IsNullOrEmpty(subscriptionId) || string.IsNullOrEmpty(tenantId))
                 {
-                    throw new PSInvalidOperationException("Must supply Subscription Id and Tenant Id when using -SkipValidation");
+                    throw new PSInvalidOperationException(Resources.SubscriptionOrTenantMissing);
                 }
 
                 newSubscription = new AzureSubscription
