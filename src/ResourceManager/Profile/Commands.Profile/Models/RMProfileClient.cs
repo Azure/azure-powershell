@@ -120,26 +120,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (skipValidation)
             {
-                if ((string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName)) || string.IsNullOrEmpty(tenantId))
+                if (string.IsNullOrEmpty(subscriptionId) || string.IsNullOrEmpty(tenantId))
                 {
                     throw new PSInvalidOperationException("Must supply Subscription Id/Name and Tenant Id when using -SkipValidation");
                 }
 
-                if (!string.IsNullOrEmpty(subscriptionId))
+                newSubscription = new AzureSubscription
                 {
-                    newSubscription = new AzureSubscription
-                    {
-                        Id = subscriptionId
-                    };
-                }
-
-                else
-                {
-                    newSubscription = new AzureSubscription
-                    {
-                        Name = subscriptionName
-                    };
-                }
+                    Id = subscriptionId
+                };
 
                 newSubscription.SetOrAppendProperty(AzureSubscription.Property.Tenants, tenantId);
                 newSubscription.SetOrAppendProperty(AzureSubscription.Property.Account, account.Id);
