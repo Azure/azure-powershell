@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {

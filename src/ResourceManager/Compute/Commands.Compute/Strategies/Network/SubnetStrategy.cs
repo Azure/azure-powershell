@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_09_01.Models;
 using System.Collections.Generic;
 using System.Linq;
 
