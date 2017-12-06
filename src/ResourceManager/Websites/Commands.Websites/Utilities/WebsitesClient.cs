@@ -641,11 +641,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<DeletedSite> GetDeletedSitesInSubscription()
-        {
-            return WrappedWebsitesClient.DeletedWebApps().List().ToList();
-        }
-
         public Certificate CreateCertificate(string resourceGroupName, string certificateName, Certificate certificate)
         {
             return WrappedWebsitesClient.Certificates()
