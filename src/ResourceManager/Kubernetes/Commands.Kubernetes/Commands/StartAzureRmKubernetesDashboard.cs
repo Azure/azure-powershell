@@ -18,10 +18,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.PowerShell.Commands;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -71,7 +73,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
                 var proxyUrl = "http://127.0.0.1:8001";
 
-                WriteVerbose(string.Format("Running: kubectl get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard", tmpFileName));
+                WriteVerbose(string.Format(
+                    "Running: kubectl get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard",
+                    tmpFileName));
                 var proc = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -93,7 +97,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
                 var job = new KubeTunnelJob(tmpFileName, dashPodName);
 
-                WriteVerbose(string.Format("Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", tmpFileName, dashPodName));
+                WriteVerbose(string.Format(
+                    "Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090",
+                    tmpFileName, dashPodName));
 
                 var exitingJob = JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel");
                 if (exitingJob != null)
@@ -109,19 +115,49 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     job.StartJobCompleted += (sender, evt) =>
                     {
                         WriteVerbose(string.Format("Starting browser: {0}", proxyUrl));
-                        Process.Start(proxyUrl);
+                        PopBrowser(proxyUrl);
                     };
                 }
                 JobRepository.Add(job);
                 job.StartJob();
             });
         }
+
+        private void PopBrowser(string uri)
+        {
+            var browserProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    UseShellExecute = true,
+                    Arguments = uri
+                }
+            };
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                WriteVerbose("Starting on OSX with open");
+                browserProcess.StartInfo.FileName = "open";
+                browserProcess.Start();
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                WriteVerbose("Starting on Unix with xdg-open");
+                browserProcess.StartInfo.FileName = "xdg-open";
+                browserProcess.Start();
+            }
+            else
+            {
+                WriteVerbose("Starting on default");
+                Process.Start(uri);
+            }
+        }
     }
 
     public class KubeTunnelJob : Job2
     {
         private readonly string _credFilePath;
-        private Process _proxyProcess;
+        private int _pid;
         private readonly string _dashPod;
 
         public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzureRmKubernetesDashboard",
@@ -134,18 +170,19 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public override string StatusMessage { get; }
         public override bool HasMoreData { get; }
         public override string Location { get; }
+        public int Pid {get { return _pid; }}
 
         public override void StopJob()
         {
             SetJobState(JobState.Stopping);
-            _proxyProcess.Kill();
+            Process.GetProcessById(_pid)?.Kill();
             SetJobState(JobState.Stopped);
             OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, null));
         }
 
         public override void StartJob()
         {
-            _proxyProcess = new Process
+            var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -159,9 +196,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     CreateNoWindow = true
                 }
             };
-            _proxyProcess.Start();
+            process.Start();
+            Thread.Sleep(1500);
+            _pid = process.Id;
             SetJobState(JobState.Running);
-            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false, null));
+            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false,
+                string.Format("Process started with id: {0}.", _pid)));
         }
 
         public override void StartJobAsync()

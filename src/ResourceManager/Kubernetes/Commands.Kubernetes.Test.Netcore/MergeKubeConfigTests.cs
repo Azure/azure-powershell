@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Kubernetes;
@@ -70,6 +71,21 @@ namespace Commands.Kubernetes.Test.Netcore
         public void MergedKubeConfigOverwriteCurrentContextTest()
         {
             Assert.True(GetScalar(_rootNode, "current-context").Value == "baz");
+        }
+
+        [Fact]
+        public void BrowserPopTest()
+        {
+            var browserProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "open",
+                    Arguments = "http://google.com",
+                    UseShellExecute = false
+                }
+            };
+            browserProcess.Start();
         }
 
         private static IDictionary<string, YamlNode> DictOfNamedItems(YamlNode yaml, string category, string itemName)
