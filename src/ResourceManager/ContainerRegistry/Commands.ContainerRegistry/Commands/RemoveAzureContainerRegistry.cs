@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Alias(ResourceIdAlias)]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
@@ -62,7 +65,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ShouldProcess(Name, "Remove Container Registry"))
             {
                 RegistryClient.DeleteRegistry(ResourceGroupName, Name);
-                WriteObject(true);
+                if(PassThru)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

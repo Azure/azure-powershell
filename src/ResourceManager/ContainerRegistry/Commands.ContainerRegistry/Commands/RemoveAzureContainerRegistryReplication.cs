@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Alias(ResourceIdAlias)]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.Equals(ParameterSetName, ReplicationObjectParameterSet))
@@ -67,7 +70,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ShouldProcess(Name, "Delete the replication from the container registry. This will also delete all the webhooks in this replication."))
             {
                 RegistryClient.DeleteReplication(ResourceGroupName, RegistryName, Name);
-                WriteObject(true);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
