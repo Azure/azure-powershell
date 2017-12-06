@@ -17,7 +17,6 @@ using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
-using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -51,10 +50,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpTagsForFactory)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
-            HelpMessage = Constants.HelpIdentityForFactory)]
-        public FactoryIdentity Identity { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -74,8 +69,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
-                Tags = Tag,
-                Identity = Identity
+                Tags = Tag
             };
 
             if (ShouldProcess(Name))

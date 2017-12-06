@@ -14,19 +14,18 @@ Updates the properties of a data factory.
 ### ByFactoryName (Default)
 ```
 Update-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [[-Tag] <Hashtable>]
- [[-Identity] <FactoryIdentity>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Update-AzureRmDataFactoryV2 [-InputObject] <PSDataFactory> [[-Tag] <Hashtable>] [[-Identity] <FactoryIdentity>]
+Update-AzureRmDataFactoryV2 [-InputObject] <PSDataFactory> [[-Tag] <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzureRmDataFactoryV2 [-ResourceId] <String> [[-Tag] <Hashtable>] [[-Identity] <FactoryIdentity>]
+Update-AzureRmDataFactoryV2 [-ResourceId] <String> [[-Tag] <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,21 +69,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Identity
-The identity for the data factory.
-
-```yaml
-Type: FactoryIdentity
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
