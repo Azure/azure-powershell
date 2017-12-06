@@ -77,14 +77,18 @@ This command submits a Data Lake Analytics job.
 
 ### Example 2: Submit a job with script parameters
 ```
-PS C:\>$parameters = @{}
+PS C:\>$parameters = [ordered]@{}
 $parameters["Department"] = "Sales"
 $parameters["NumRecords"] = 1000
 $parameters["StartDateTime"] = (Get-Date).AddDays(-14)
 Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -ScriptParameter $parameters
 ```
 
-This command submits a Data Lake Analytics job with script parameters.
+This command submits a Data Lake Analytics job with script parameters. Please note that the "[ordered]" cast on $parameters is not necessary.  The benefit, however, is that the parameters will be declared in the order that they were added to the dictionary. The following string would be prepended to the script (the actual Date for @StartDateTime is subject to change):
+
+DECLARE @Department string = "Sales";
+DECLARE @NumRecords int = 1000;
+DECLARE @StartDateTime DateTime = new DateTime(2017, 12, 6, 0, 0, 0, 0);
 
 ## PARAMETERS
 
