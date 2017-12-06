@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (string.IsNullOrEmpty(subscriptionId) || string.IsNullOrEmpty(tenantId))
                 {
-                    throw new PSInvalidOperationException("Must supply Subscription Id/Name and Tenant Id when using -SkipValidation");
+                    throw new PSInvalidOperationException("Must supply Subscription Id and Tenant Id when using -SkipValidation");
                 }
 
                 newSubscription = new AzureSubscription
