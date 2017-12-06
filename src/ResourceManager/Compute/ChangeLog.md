@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Get-AzureRmComputeResourceSku shows zone information.
 * Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
 
 ## Version 4.0.1

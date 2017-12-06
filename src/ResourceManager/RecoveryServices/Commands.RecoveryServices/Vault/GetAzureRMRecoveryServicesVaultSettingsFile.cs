@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                     WriteDebug(string.Format(Resources.SavingVaultCred, fullFilePath));
 
-                    File.WriteAllBytes(fullFilePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
+                    AzureSession.Instance.DataStore.WriteFile(fullFilePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
                     VaultSettingsFilePath output = new VaultSettingsFilePath()
                     {
@@ -306,7 +307,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string filePath = System.IO.Path.Combine(targetLocation, fileName);
             WriteDebug(string.Format(Resources.SavingVaultCred, filePath));
 
-            File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
+            AzureSession.Instance.DataStore.WriteFile(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
             VaultSettingsFilePath output = new VaultSettingsFilePath()
             {

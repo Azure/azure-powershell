@@ -29,6 +29,9 @@ Gets keys for a self-hosted integration runtime.
 ### [Get-AzureRmDataFactoryV2IntegrationRuntimeMetric](Get-AzureRmDataFactoryV2IntegrationRuntimeMetric.md)
 Gets metric data for an integration runtime. 
 
+### [Get-AzureRmDataFactoryV2IntegrationRuntimeNode](Get-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
+Gets an integration runtime node infomation.
+
 ### [Get-AzureRmDataFactoryV2LinkedService](Get-AzureRmDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
 
@@ -43,6 +46,9 @@ Gets information about triggers in a data factory.
 
 ### [Get-AzureRmDataFactoryV2TriggerRun](Get-AzureRmDataFactoryV2TriggerRun.md)
 Returns information about trigger runs.
+
+### [Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade](Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade.md)
+Upgrades self-hosted integration runtime.
 
 ### [Invoke-AzureRmDataFactoryV2Pipeline](Invoke-AzureRmDataFactoryV2Pipeline.md)
   Invokes a pipeline to start a run for it.
@@ -112,4 +118,10 @@ Synchronizes credentials among integration runtime nodes.
 
 ### [Update-AzureRmDataFactoryV2](Update-AzureRmDataFactoryV2.md)
 Updates the properties of a data factory.
+
+### [Update-AzureRmDataFactoryV2IntegrationRuntime](Update-AzureRmDataFactoryV2IntegrationRuntime.md)
+Updates an integration runtime.
+
+### [Update-AzureRmDataFactoryV2IntegrationRuntimeNode](Update-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
+Updates self-hosted integration runtime node.
 
