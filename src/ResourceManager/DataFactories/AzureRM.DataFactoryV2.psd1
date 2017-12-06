@@ -106,7 +106,11 @@ CmdletsToExport =
                'Stop-AzureRmDataFactoryV2IntegrationRuntime',
                'Get-AzureRmDataFactoryV2IntegrationRuntimeMetric',
                'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Update-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Get-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade',
                'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential',
+               'Update-AzureRmDataFactoryV2IntegrationRuntime',
                'Get-AzureRmDataFactoryV2TriggerRun'
 
 # Variables to export from this module
