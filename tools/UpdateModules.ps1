@@ -265,15 +265,17 @@ if ($Profile -eq "Stack")
 }
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-$publishToLocal = test-path $repositoryLocation
+$resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
-if (($scope -eq 'All') -or $publishToLocal ) {
-    # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
+
+# If we publish 'All', publish AzureRM.Profile first, because it is the common dependency.
+if ($scope -eq 'All' ) {
     Write-Host "Updating profile module"
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile" -TemplatePath $templateLocation -IsRMModule $true
     Write-Host "Updated profile module"
 }
 
+# Publish AzureStorage, if needed.
 if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage"
     # Publish AzureStorage module
@@ -281,6 +283,7 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
 } 
 
+# Publish ServiceManagement, if needed.
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
@@ -288,8 +291,8 @@ if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
 } 
 
-$resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
+# Publish all of the modules, if specified.
+if ($scope -eq 'All') {
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
@@ -300,7 +303,10 @@ if ($scope -eq 'All') {
             Write-Host "Updated $module module"
         }
     }
-} elseif ($scope -ne 'AzureRM') {
+}
+
+# Publish a specific module if one of the rollups are not specified.
+if (($scope -ne 'All') -and ($scope -ne 'AzureRM') -and $scope -ne 'AzureRM.Netcore') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Updating $scope module from $modulePath"
@@ -311,6 +317,7 @@ if ($scope -eq 'All') {
     }
 }
 
+# Publish the rollup modules, if specified.
 if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Update AzureRM module    
     if ($Profile -eq "Stack")
@@ -330,4 +337,25 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
         Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
         Write-Host "Updated Azure module"
     }
+}
+
+# Publish the Netcore modules and rollup module, if specified.
+if($scope -eq 'AzureRM.Netcore') {
+    Write-Host "Updating profile module"
+    Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile.Netcore" -TemplatePath $templateLocation -IsRMModule $true
+    Write-Host "Updated profile module"
+
+    foreach ($module in $resourceManagerModules) {
+        if (($module.Name -ne "AzureRM.Profile.Netcore")) {
+            $modulePath = $module.FullName
+            Write-Host "Updating $module module from $modulePath"
+            Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $true
+            Write-Host "Updated $module module"
+        }
+    }
+
+    $modulePath = "$PSScriptRoot\AzureRM.Netcore"
+    Write-Host "Updating AzureRM.Netcore module from $modulePath"
+    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
+    Write-Host "Updated AzureRM.Netcore module"
 }
