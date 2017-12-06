@@ -25,9 +25,9 @@ using YamlDotNet.RepresentationModel;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet("Import", KubeNounStr + "Credential")]
+    [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true)]
     [OutputType(typeof(PSObject), typeof(List<PSObject>))]
-    public class GetCredential : KubeCmdletBase
+    public class ImportCredential : KubeCmdletBase
     {
         /// <summary>
         /// Cluster name
@@ -67,37 +67,47 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 "A kubectl config file to create or update. Use '-' to print YAML to stdout instead.  Default: %Home%/.kube/config.")]
         public string ConfigPath { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Import Kubernetes config even if it is the defualt")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            RunCmdLet(() =>
-            {
-                if (string.IsNullOrEmpty(ConfigPath))
-                {
-                    ConfigPath = Path.Combine(
-                        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                        ".kube",
-                        "config");
-                    WriteVerbose(string.Format("File was not specified. Writing credential to {0}.", ConfigPath));
-                }
+            ConfirmAction(Force.IsPresent,
+                "Do you want to import the Kubernetes config?",
+                "Importing Kubernetes config resource.",
+                "AzureRmKubernetesCredential",
+                () =>
+                    RunCmdLet(() =>
+                    {
+                        if (string.IsNullOrEmpty(ConfigPath))
+                        {
+                            ConfigPath = Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                                ".kube",
+                                "config");
+                            WriteVerbose(
+                                string.Format("File was not specified. Writing credential to {0}.", ConfigPath));
+                        }
 
-                WriteVerbose(Admin
-                    ? "Fetching the clusterAdmin kubectl config"
-                    : "Fetching the default clusterUser kubectl config");
-                var accessProfile = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name,
-                    Admin ? "clusterAdmin" : "clusterUser");
+                        WriteVerbose(Admin
+                            ? "Fetching the clusterAdmin kubectl config"
+                            : "Fetching the default clusterUser kubectl config");
+                        var accessProfile = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name,
+                            Admin ? "clusterAdmin" : "clusterUser");
 
-                var decodedKubeConfig = Encoding.UTF8.GetString(Convert.FromBase64String(accessProfile.KubeConfig));
-                if (ConfigPath == "-")
-                {
-                    WriteObject(decodedKubeConfig);
-                }
-                else
-                {
-                    MergeAndWriteKubeConfig(decodedKubeConfig);
-                }
-            });
+                        var decodedKubeConfig =
+                            Encoding.UTF8.GetString(Convert.FromBase64String(accessProfile.KubeConfig));
+                        if (ConfigPath == "-")
+                        {
+                            WriteObject(decodedKubeConfig);
+                        }
+                        else
+                        {
+                            MergeAndWriteKubeConfig(decodedKubeConfig);
+                        }
+                    }));
         }
 
         public void MergeAndWriteKubeConfig(string config)
@@ -107,7 +117,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
             {
                 Directory.CreateDirectory(dir);
             }
-
             if (!File.Exists(ConfigPath))
             {
                 WriteVerbose(string.Format("No config file located at {0}. Creating Kube config.", ConfigPath));
@@ -124,29 +133,22 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             var originalYaml = new YamlStream();
             originalYaml.Load(new StringReader(original));
-
             var newConfigYaml = new YamlStream();
             newConfigYaml.Load(new StringReader(additions));
-
             var originalMapping = (YamlMappingNode) originalYaml.Documents[0].RootNode;
             var newMapping = (YamlMappingNode) newConfigYaml.Documents[0].RootNode;
-
             var mergedClusters = MergeNamedItems(originalMapping, newMapping, "clusters");
             originalMapping.Children.Remove(new YamlScalarNode("clusters"));
             originalMapping.Children.Add(new YamlScalarNode("clusters"), mergedClusters);
-
             var mergedUsers = MergeNamedItems(originalMapping, newMapping, "users");
             originalMapping.Children.Remove(new YamlScalarNode("users"));
             originalMapping.Children.Add(new YamlScalarNode("users"), mergedUsers);
-
             var mergedContexts = MergeNamedItems(originalMapping, newMapping, "contexts");
             originalMapping.Children.Remove(new YamlScalarNode("contexts"));
             originalMapping.Children.Add(new YamlScalarNode("contexts"), mergedContexts);
-
             originalMapping.Children.Remove(new YamlScalarNode("current-context"));
             originalMapping.Children.Add(new YamlScalarNode("current-context"),
                 newMapping.Children[new YamlScalarNode("current-context")]);
-
             var sb = new StringBuilder();
             var sw = new StringWriter(sb);
             originalYaml.Save(sw, false);
@@ -157,8 +159,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             var origNamedItems = (YamlSequenceNode) original[new YamlScalarNode(key)];
             var newNamedItems = (YamlSequenceNode) addition[new YamlScalarNode(key)];
-
             var namedItems = new Dictionary<string, YamlMappingNode>();
+
             origNamedItems
                 .Children
                 .Cast<YamlMappingNode>()
@@ -167,7 +169,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     var nameNode = (YamlScalarNode) x.Children[new YamlScalarNode("name")];
                     if (!namedItems.ContainsKey(nameNode.Value)) namedItems.Add(nameNode.Value, x);
                 });
-
             newNamedItems
                 .Children
                 .Cast<YamlMappingNode>()
@@ -183,7 +184,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         namedItems[nameNode.Value] = x;
                     }
                 });
-
             return new YamlSequenceNode(namedItems.Values);
         }
     }

@@ -13,9 +13,10 @@ namespace Commands.Kubernetes.Test.Netcore
 
         public MergedKubeConfigTests()
         {
-            var merged = GetCredential.MergeKubeConfig(File.ReadAllText("./Fixtures/config.yaml"), File.ReadAllText("./Fixtures/additional_kube_config.yaml"));
+            var merged = ImportCredential.MergeKubeConfig(File.ReadAllText("./Fixtures/config.yaml"), File.ReadAllText("./Fixtures/additional_kube_config.yaml"));
             _rootNode = RootNodeFromString(merged);
         }
+
         [Fact]
         public void MergedKubeConfigOverwriteClustersTest()
         {
