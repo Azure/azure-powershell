@@ -122,10 +122,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LongRunningJobCancelledException.cs" />
+    <Compile Include="ShouldMethodInvoker.cs" />
+    <Compile Include="AzureLongRunningJob.cs" />
     <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
     <Compile Include="Serialization\LegacyAzureSubscription.cs" />
     <Compile Include="Serialization\ModelConversionExtensions.cs" />
+    <Compile Include="ShouldMethodStreamItem.cs" />
     <Compile Include="Utilities\INetworkHelper.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
