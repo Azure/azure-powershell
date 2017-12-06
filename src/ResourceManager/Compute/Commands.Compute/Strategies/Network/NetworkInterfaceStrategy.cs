@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
                 type: "network interface",
-                header: "networkInterfaces",
+                provider: "networkInterfaces",
                 getOperations: client => client.NetworkInterfaces,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),

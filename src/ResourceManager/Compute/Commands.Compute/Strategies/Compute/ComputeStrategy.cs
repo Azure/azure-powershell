@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string type,
-            string header,
+            string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: type,
-                headers: new[] { "Microsoft.Compute", header },
+                providers: new[] { "Microsoft.Compute", provider },
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
