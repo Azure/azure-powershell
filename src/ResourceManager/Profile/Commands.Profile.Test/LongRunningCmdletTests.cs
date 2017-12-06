@@ -192,6 +192,29 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(job.Error.Count > 0 && job.Error.Any(e => e.Exception != null && e.Exception.GetType() == typeof(InvalidOperationException) && e.Exception.Message.Contains("Force")));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void JobCopiesCmdletParameterSet()
+        {
+            Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();
+            var cmdlet = new AzureParameterSetCmdlet();
+            cmdlet.SetParameterSet("ParameterSetIsSet");
+            cmdlet.CommandRuntime = mock.Object;
+            var job = cmdlet.ExecuteAsJob("Test parameter set job") as AzureLongRunningJob<AzureParameterSetCmdlet>;
+            int times = 0;
+            while (times++ < 20 && job.StatusMessage != "Failed" && job.StatusMessage != "Completed")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                if (job.StatusMessage == "Blocked")
+                {
+                    job.TryStart();
+                }
+            }
+
+            Assert.Equal("Completed", job.StatusMessage);
+            Assert.False(job.Error.Any());
+        }
+
 
         AzureStreamTestCmdlet SetupCmdlet(bool CallShouldProcess, bool CallShouldContinue, out Mock<ICommandRuntime> mockRuntime)
         {
@@ -315,6 +338,38 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 {
                     writer(item);
                 }
+            }
+        }
+
+        public class AzureParameterSetCmdlet: AzurePSCmdlet
+        {
+            protected override string DataCollectionWarning
+            {
+                get
+                {
+                    return "";
+                }
+            }
+
+            protected override IAzureContext DefaultContext
+            {
+                get
+                {
+                    return null;
+                }
+            }
+
+            public override void ExecuteCmdlet()
+            {
+                if (String.IsNullOrEmpty(this.ParameterSetName))
+                {
+                    throw new InvalidOperationException("Parameter set must be set");
+                }
+            }
+
+            protected override void InitializeQosEvent()
+            {
+                
             }
         }
     }
