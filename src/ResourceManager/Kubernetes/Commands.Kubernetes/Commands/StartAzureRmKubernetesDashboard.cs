@@ -23,7 +23,9 @@ using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+#if NETSTANDARD
 using Microsoft.Extensions.DependencyInjection;
+#endif
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -134,23 +136,24 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
             };
 
+#if NETSTANDARD
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 WriteVerbose("Starting on OSX with open");
                 browserProcess.StartInfo.FileName = "open";
                 browserProcess.Start();
+                return;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 WriteVerbose("Starting on Unix with xdg-open");
                 browserProcess.StartInfo.FileName = "xdg-open";
                 browserProcess.Start();
+                return;
             }
-            else
-            {
-                WriteVerbose("Starting on default");
-                Process.Start(uri);
-            }
+#endif
+            WriteVerbose("Starting on default");
+            Process.Start(uri);
         }
     }
 
