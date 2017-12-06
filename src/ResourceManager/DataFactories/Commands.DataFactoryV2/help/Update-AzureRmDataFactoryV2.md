@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-online version: 
+Module Name: AzureRM.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/update-azurermdatafactoryv2
 schema: 2.0.0
 ---
 
