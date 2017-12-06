@@ -5,11 +5,11 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Rest;
 using CloudException = Microsoft.Rest.Azure.CloudException;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {

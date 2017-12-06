@@ -25,13 +25,13 @@ using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Generated.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -319,6 +319,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
             catch (CloudException ex)
             {
+                string unused = ex.ToString();
                 WriteVerbose("Cluster does not exist.");
                 return false;
             }
@@ -327,7 +328,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private void AddRoleAssignment(string role, string appId)
         {
             var success = RetryAction(() =>
-                AuthClient.RoleAssignments.Create(role, appId, new RoleAssignmentProperties(role, appId)));
+                AuthClient.RoleAssignments.Create(role, appId, new RoleAssignmentCreateParameters() {
+                    Properties = new RoleAssignmentProperties(role, appId)
+                }));
 
             if (!success)
             {

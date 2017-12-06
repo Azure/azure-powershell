@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
             RunCmdLet(() =>
             {
-                if (JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel") is KubeTunnelJob exitingJob)
+                var exitingJob = JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel") as KubeTunnelJob;
+                if (exitingJob != null)
                 {
                     WriteVerbose(string.Format("Stopping existing Kubectl-Tunnel job with pid {0}.", exitingJob.Pid));
                     exitingJob.StopJob();
