@@ -28,8 +28,13 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
 
-        public IVirtualMachinesOperations VirtualMachineClient 
-            => ComputeClient.ComputeManagementClient.VirtualMachines;
+        public IVirtualMachinesOperations VirtualMachineClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachines;
+            }
+        }
 
         public static string FormatObject(Object obj)
         {
