@@ -37,7 +37,7 @@ The Remove-AzureRmContainerRegistryReplication cmdlet removes a container regist
 ## EXAMPLES
 
 ### Example 1: Removes a container registry replication.
-```
+```powershell
 PS C:\> Remove-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
 ```
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Indicates that this cmdlet returns true if the removal was successful.
 
 ```yaml
 Type: SwitchParameter
