@@ -142,7 +142,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="..\AzureRM.ManagementGroups.psd1">
       <Link>AzureRM.ManagementGroups.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
