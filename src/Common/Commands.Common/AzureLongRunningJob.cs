@@ -883,6 +883,9 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        /// <summary>
+        /// Stop job execution
+        /// </summary>
         public override void StopJob()
         {
             ShouldMethodStreamItem stream;

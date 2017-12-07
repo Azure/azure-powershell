@@ -14,29 +14,26 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Compute;
-using System;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Rest;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies
 {
-    public class ComputeClient
+    sealed class Client : IClient
     {
-        public IComputeManagementClient ComputeManagementClient { get; private set; }
+        public string SubscriptionId { get; }
 
-        public Action<string> VerboseLogger { get; set; }
+        IAzureContext Context { get; }
 
-        public Action<string> ErrorLogger { get; set; }
-
-        public ComputeClient(IAzureContext context)
-            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
-                context, AzureEnvironment.Endpoint.ResourceManager))
+        public Client(IAzureContext context)
         {
+            Context = context;
+            SubscriptionId = Context.Subscription.Id;
         }
 
-        public ComputeClient(IComputeManagementClient computeManagementClient)
-        {
-            ComputeManagementClient = computeManagementClient;
-        }
+        public T GetClient<T>()
+            where T : ServiceClient<T>
+            => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+                Context, AzureEnvironment.Endpoint.ResourceManager);
     }
 }
