@@ -64,10 +64,10 @@ $archs = @('x86','x64')
 # cleanup first
 if( $force  ) {
     Write-Host -fore yellow "Forcing clean install"
-    cmd.exe /c rmdir /s /q $tmp
+    $shhh = (cmd.exe /c rmdir /s /q $tmp)
 }
 
-mkdir -ea 0 "$tmp"
+$shhh = mkdir -ea 0 "$tmp"
 erase -ea 0 "$tmp/*.wixobj"
 erase -ea 0 "$tmp/*.wxi"
 
@@ -85,7 +85,7 @@ if ( -not (test-path $modulesDir))  {
     save-module azurerm -path $modulesDir -Repository $repository
 
     Write-Host -fore green "Tweaking Modules"
-    cmd /c dir /a/s/b "$modulesDir/psgetmoduleinfo.xml"  |% {
+    cmd /c dir /a/s/b "$modulesDir\psgetmoduleinfo.xml" |% {
         Write-Host -fore Gray " - Patching $_"
         (gc $_ -raw ) -replace ".*<S N=.InstalledLocation.*S>",""  | Set-Content $_
     }
