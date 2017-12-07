@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Test
         private void LoadConfigFile()
         {
             string path = Directory.GetCurrentDirectory();
-            string configFileName = "appsettings.json";
             string fullFilePath = Path.Combine(path, configFileName);
             if (!File.Exists(fullFilePath))
             {
