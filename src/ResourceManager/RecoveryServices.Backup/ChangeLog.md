@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
+* Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
 
 ## Version 4.0.0
 * Added cmdlets to perform instant file recovery.

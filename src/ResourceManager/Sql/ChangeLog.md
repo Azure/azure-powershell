@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ability to rename database using Set-AzureRmSqlDatabase
+* Fixed issue https://github.com/Azure/azure-powershell/issues/4974
+	- Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/5046
+	- AuditAction parameter in auditing cmdlets is no longer being ignored
+* Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
+	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
 
 ## Version 4.0.0
 * Adding support for list and cancel the asynchronous updateslo operation on the database

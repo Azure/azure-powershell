@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed a bug where account operations without a resource group failed to auto-detect the resource group.
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
 
 ## Version 4.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.

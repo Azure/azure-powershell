@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Set-AzureRmRecoveryServicesAsrVaultContext cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class SetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
         #region Parameters

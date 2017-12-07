@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 
         [Parameter(Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -54,6 +56,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = CreateFromCmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = LocationParameterHelpMessage)]
+        [LocationCompleter("Microsoft.MachineLearningCompute/operationalizationClusters")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
