@@ -77,7 +77,9 @@ function Create-ModulePsm1
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
 
-     Add-PSM1Dependency -Path $manifestPath
+     if($scope -ne 'AzureRM.Netcore') {
+        Add-PSM1Dependency -Path $manifestPath
+     }
   }
 }
 
