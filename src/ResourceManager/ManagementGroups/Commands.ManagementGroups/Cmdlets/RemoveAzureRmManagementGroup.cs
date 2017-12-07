@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
-                var response = ManagementGroupsApiClient.ManagementGroups.DeleteWithHttpMessagesAsync(GroupId)
+                ManagementGroupsApiClient.GroupId = GroupId;
+                var response = ManagementGroupsApiClient.ManagementGroups.DeleteWithHttpMessagesAsync()
                         .GetAwaiter().GetResult();
                 WriteObject(JsonConvert.SerializeObject(response.Response.ReasonPhrase));
 

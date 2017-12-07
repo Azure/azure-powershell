@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             try
             {
                 CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
-
-                var response = ManagementGroupsApiClient.ManagementGroups.Create(GroupId, createGroupRequest);
+                ManagementGroupsApiClient.GroupId = GroupId;
+                var response = ManagementGroupsApiClient.ManagementGroups.Create(createGroupRequest);
                 WriteObject(JsonConvert.SerializeObject(response));    
             }
             catch (ErrorResponseException ex)

@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
-                var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.AddWithHttpMessagesAsync(GroupId, SubscriptonId).GetAwaiter().GetResult();
+                ManagementGroupsApiClient.GroupId = GroupId;
+                ManagementGroupsApiClient.SubscriptionId = SubscriptonId.ToString();
+
+                var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.CreateWithHttpMessagesAsync()
+                    .GetAwaiter().GetResult();
                 WriteObject(response.Response.ReasonPhrase);
             }
             catch (ErrorResponseException ex)

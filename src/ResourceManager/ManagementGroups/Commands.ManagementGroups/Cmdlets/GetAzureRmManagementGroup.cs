@@ -40,14 +40,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             {
                 if (!string.IsNullOrEmpty(GroupId))
                 {
-                    var response =
-                        ManagementGroupsApiClient.ManagementGroups.Get(GroupId, Expand.IsPresent?"children":null, Recurse.IsPresent);
+                    ManagementGroupsApiClient.GroupId = GroupId;
+                    var response = ManagementGroupsApiClient.ManagementGroups.Get(Expand.IsPresent?"children":null, Recurse.IsPresent);
                     WriteObject(JsonConvert.SerializeObject(response));
                 }
                 else
                 {
-                    var response =
-                        ManagementGroupsApiClient.ManagementGroups.List();
+                    var response = ManagementGroupsApiClient.ManagementGroups.List();
                     WriteObject(JsonConvert.SerializeObject(response));
                 }
             }
@@ -56,6 +55,5 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                 WriteWarning(ex.Message);
             }
         }
-
     }
 }

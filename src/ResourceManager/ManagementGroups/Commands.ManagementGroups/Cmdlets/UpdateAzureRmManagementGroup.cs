@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
     [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
-    class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
+    public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             try
             {
                 CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
+                ManagementGroupsApiClient.GroupId = GroupId;
 
-                var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupId, createGroupRequest);
+                var response = ManagementGroupsApiClient.ManagementGroups.Update(createGroupRequest);
                 WriteObject(JsonConvert.SerializeObject(response));
 
             }
