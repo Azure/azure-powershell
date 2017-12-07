@@ -70,7 +70,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="help\**\*" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
