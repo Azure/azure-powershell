@@ -311,7 +311,6 @@
 
     <RemoveDir Directories="%(Artifacts.Identity)" ContinueOnError="true" />
 
-    <!-- How did these even get here? -->
     <ItemGroup>
       <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
       <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
