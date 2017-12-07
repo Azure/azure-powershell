@@ -87,27 +87,26 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
 
-            if (this.ShouldProcess(this.Name, $"Set topic {this.Name} in Resource Group {this.ResourceGroupName}"))
+            if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                string resourceGroupName = string.Empty;
-                string topicName = string.Empty;
+                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+            }
+            else if (!string.IsNullOrEmpty(this.Name))
+            {
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.Name;
+            }
+            else if (this.InputObject != null)
+            {
+                resourceGroupName = this.InputObject.ResourceGroupName;
+                topicName = this.InputObject.TopicName;
+            }
 
-                if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
-                }
-                else if (!string.IsNullOrEmpty(this.Name))
-                {
-                    resourceGroupName = this.ResourceGroupName;
-                    topicName = this.Name;
-                }
-                else if (this.InputObject != null)
-                {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
-                }
-
+            if (this.ShouldProcess(topicName, $"Set topic {topicName} in Resource Group {resourceGroupName}"))
+            {
                 Topic existingTopic = this.Client.GetTopic(resourceGroupName, topicName);
                 if (existingTopic == null)
                 {
