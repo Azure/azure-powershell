@@ -136,12 +136,12 @@ function Test-GetTopology
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
 
         #Verification
-        Assert-AreEqual $topology.Resources.Count 9
-        Assert-AreEqual $topology.Resources[2].Name $vm.Name
-        Assert-AreEqual $topology.Resources[2].Id $vm.Id
-        Assert-AreEqual $topology.Resources[2].Associations[0].Name $nic.Name
-        Assert-AreEqual $topology.Resources[2].Associations[0].ResourceId $nic.Id
-        Assert-AreEqual $topology.Resources[2].Associations[0].AssociationType Contains
+        $topologyItem = $topology.Resources | Where-Object { $_.Id -eq $vm.Id}
+
+        Assert-AreEqual $topologyItem.Name $vm.Name
+        Assert-AreEqual $topologyItem.Associations[0].Name $nic.Name
+        Assert-AreEqual $topologyItem.Associations[0].ResourceId $nic.Id
+        Assert-AreEqual $topologyItem.Associations[0].AssociationType Contains
     }
     finally
     {
