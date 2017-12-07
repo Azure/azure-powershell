@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
@@ -14,13 +14,13 @@ Get subscriptions that the current account can access.
 
 ### ListByIdInTenant (Default)
 ```
-Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>]
+Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByNameInTenant
 ```
-Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>]
+Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ Account               : user@example.com
 TenantId              : yyyy-yyyy-yyyy-yyyy
 SubscriptionId        : xxxx-xxxx-xxxx-xxxx
 SubscriptionName      : Contoso Subscription 1
-CurrentStorageAccount : 
+CurrentStorageAccount :
 ```
 
 This command gets the specified subscription, and then sets the current
@@ -97,6 +97,21 @@ context to use it. All subsequent cmdlets in this session use the new
 subscription (Contoso Subscription 1) by default.
 
 ## PARAMETERS
+
+### -AsJob
+Return a Job and run the cmdlet in the background.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, tenant and subscription used for communication with azure
