@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 522F5305-CDF6-41F2-803B-9EEA9E927668
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermcontainerservice
@@ -13,7 +13,7 @@ Creates a container service.
 ## SYNTAX
 
 ```
-New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
+New-AzureRmContainerService [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
  [-ContainerService] <PSContainerService> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,6 +41,21 @@ The final command creates a container service for the container stored in $Conta
 The service is named csResourceGroup17.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ContainerService
 Specifies a container service object that contains the properties for the new service.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmsecret
