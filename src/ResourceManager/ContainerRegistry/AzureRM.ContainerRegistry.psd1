@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -80,7 +80,16 @@ CmdletsToExport = 'New-AzureRmContainerRegistry', 'Get-AzureRmContainerRegistry'
                'Remove-AzureRmContainerRegistry', 
                'Get-AzureRmContainerRegistryCredential', 
                'Update-AzureRmContainerRegistryCredential', 
-               'Test-AzureRmContainerRegistryNameAvailability'
+               'Test-AzureRmContainerRegistryNameAvailability',
+			   'Get-AzureRmContainerRegistryReplication',
+			   'New-AzureRmContainerRegistryReplication',
+			   'Remove-AzureRmContainerRegistryReplication',
+			   'New-AzureRmContainerRegistryWebhook',
+			   'Get-AzureRmContainerRegistryWebhook',
+			   'Update-AzureRmContainerRegistryWebhook',
+			   'Test-AzureRmContainerRegistryWebhook',
+			   'Remove-AzureRmContainerRegistryWebhook',
+			   'Get-AzureRmContainerRegistryWebhookEvent'
 
 # Variables to export from this module
 # VariablesToExport = @()
