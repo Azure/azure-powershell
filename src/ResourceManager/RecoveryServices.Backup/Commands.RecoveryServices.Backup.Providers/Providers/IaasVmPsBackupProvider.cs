@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     var delimIndex = containerUri.IndexOf(';');
                     string containerName = containerUri.Substring(delimIndex + 1);
-                    return containerName.Equals(container.Name);
+                    return containerName.ToLower().Equals(container.Name.ToLower());
                 }).ToList();
             }
 

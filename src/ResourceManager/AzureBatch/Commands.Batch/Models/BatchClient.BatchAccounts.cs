@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         internal string GetGroupForAccountNoThrow(string accountName)
         {
             var response = ResourceManagementClient.Resources.List(new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                r => r.ResourceType == accountName));
+                r => r.ResourceType == accountSearch));
 
             string groupName = null;
 

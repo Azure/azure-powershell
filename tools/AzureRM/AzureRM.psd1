@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -55,19 +55,19 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.5.0'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.0'; }, 
-               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '5.0.0'; }, 
+               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '5.0.1'; }, 
                @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.0'; }, 
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.0'; }, 
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.0'; }, 
-               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.1.0'; }, 
+               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.1.0'; },
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '0.3.0'; }, 
-               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '5.0.0'; }, 
@@ -75,10 +75,10 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.2.0'; }, 
                @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.5.0'; }, 
-               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.16.0'; }, 
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.2.0'; }, 
@@ -88,20 +88,20 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.0'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.1'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '5.0.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.0'; }, 
                @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.5.0'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.0'; }, 
-               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.0'; }, 
-               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.0'; }, 
+               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.1'; }, 
+               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.0'; }, 
@@ -161,121 +161,23 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 2017.11.8 - Version 5.0.0
-* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
-* All cmdlets in AzureRM now support online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-* AnalysisServices
-    * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
-* ApiManagement
-    * Please see the migration guide for breaking changes made to ApiManagement this release
-    * Updated Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
-    * Updated New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
-* ApplicationInsights
-    * Add commands to get/create/remove applicaiton insights resource
-        - Get/New/Remove-AzureRmApplicationInsights
-    * Add commands to get/update pricing/daily cap of applicaiton insights resource        
-        - Get-AzureRmApplicationInsights -IncludeDailyCap
-        - Set-AzureRmApplicationInsightsPricingPlan
-        - Set-AzureRmApplicationInsightsDailyCap
-    * Add commands to get/create/remove/update continuous export of applicaiton insights resource
-    	- Get/New/Remove/Set-AzureRmApplicationInsightsContinuousExport
-    * Add commands to get/create/remove api keys of applicaiton insights resoruce
-    	- Get/New/Remove-AzureRmApplicationInsightsApiKey
-* AzureBatch
-    * Please see the migration guide for breaking changes made to Batch this release
-    * Please see the Batch change log for a full list of changes made this release
-    * Added support for Azure Active Directory based authentication.
-        - To use Azure Active Directory authentication, retrieve a `BatchAccountContext` object using the `Get-AzureRmBatchAccount` cmdlet, and supply this `BatchAccountContext` to the `-BatchContext` parameter of a Batch service cmdlet. Azure Active Directory authentication is mandatory for accounts with `PoolAllocationMode = UserSubscription`.
-        - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.
-* Compute
-    * Azure Disk Encryption Extension Commands
-        - New Parameter for ''Set-AzureRmVmDiskEncryptionExtension'': ''-EncryptFormatAll'' encrypt formats data disks
-        - New Parameters for ''Set-AzureRmVmDiskEncryptionExtension'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
-        - New Parameters for ''Disable-AzureRmVmDiskEncryption'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
-        - New Parameters for ''Get-AzureRmVmDiskEncryptionStatus'': ''-ExtensionPublisherName'' and ''-ExtensionType'' allow switching to other versions of the extension
-* DataLakeAnalytics
-    * Please see the migration guide for breaking changes made to DataLakeAnalytics this release
-    * Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsAccount
-        - List<DataLakeAnalyticsAccount> to List<PSDataLakeAnalyticsAccountBasic>
-    * Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsJob
-        - List<JobInformation> to List<PSJobInformationBasic>
-* DataLakeStore
-    * Please see the migration guide for breaking changes made to DataLakeStore this release
-    * Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
-        - List<PSDataLakeStoreAccount> to List<PSDataLakeStoreAccountBasic>
-* Dns
-    * Support for CAA record types in Azure DNS
-       - Supports all operations on CAA record type
-* EventHub
-    * Please see the migration guide for breaking changes made to EventHub this release
-* Insights
-    * Please see the migration guide for breaking changes made to Insights this release
-* Network
-    * Please see the migration guide for breaking changes made to Network this release
-    * Added cmdlet to list available internet service providers for a specified Azure region
-        - Get-AzureRmNetworkWatcherReachabilityProvidersList
-    * Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
-        - Get-AzureRmNetworkWatcherReachabilityReport
-* Profile
-    - Set-AzureRmDefault
-        - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
-        - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
-        - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
-    - Get-AzureRmDefault
-        - Use this cmdlet to get the current default resource group (and other defaults in the future).
-        - ```Get-AzureRmDefault -ResourceGroup```
-    - Clear-AzureRmDefault
-        - Use this cmdlet to remove the current default resource group
-        - ```Clear-AzureRmDefault -ResourceGroup```
-    - Add-AzureRmEnvironment and Set-AzureRmEnvironment
-        - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
-* RecoveryServices.Backup
-    * Added cmdlets to perform instant file recovery.
-        - Get-AzureRmRecoveryServicesBackupRPMountScript
-        - Disable-AzureRmRecoveryServicesBackupRPMountScript
-    * Updated RecoveryServices.Backup SDK version to the latest
-    * Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
-    * Fixes https://github.com/Azure/azure-powershell/issues/3164
-* RecoveryServices.SiteRecovery
-    * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
-        - New-AzureRmRecoveryServicesAsrPolicy
-        - New-AzureRmRecoveryServicesAsrProtectedItem
-        - Update-AzureRmRecoveryServicesAsrPolicy
-        - Update-AzureRmRecoveryServicesAsrProtectionDirection
-    * Added support to AAD-based vault
-    * Added cmdlets to manage VCenter resources
-        - Get-AzureRmRecoveryServicesAsrVCenter
-        - New-AzureRmRecoveryServicesAsrVCenter
-        - Remove-AzureRmRecoveryServicesAsrVCenter
-        - Update-AzureRmRecoveryServicesAsrVCenter
-    * Added other cmdlets
-        - Get-AzureRmRecoveryServicesAsrAlertSetting
-        - Get-AzureRmRecoveryServicesAsrEvent
-        - New-AzureRmRecoveryServicesAsrProtectableItem
-        - Set-AzureRmRecoveryServicesAsrAlertSetting
-        - Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob
-        - Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
-        - Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob
-        - Update-AzureRmRecoveryServicesAsrMobilityService
-* ServiceBus
-    * Please see the migration guide for changes made to ServiceBus this release.
-* Sql
-    * Adding support for list and cancel the asynchronous updateslo operation on the database
-    	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
-    	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
-    * Adding support for Zone Redundancy for databases and elastic pools
-    	- Adding ZoneRedundant switch parameter to New-AzureRmSqlDatabase, Set-AzureRmSqlDatabase, New-AzureRmSqlElasticPool, Set-AzureRmSqlElasticPool
-    * Adding support for Server DNS Aliases
-    	- Get-AzureRmSqlServerDnsAlias: gets server dns aliases by server and alias name or a list of server dns aliases for an azure Sql Server.
-    	- New-AzureRmSqlServerDnsAlias: creates new server dns alias for a given Azure Sql server
-    	- Set-AzurermSqlServerDnsAlias: allows updating a Azure Sql Server to which server dns alias is pointing
-    	- Remove-AzureRmSqlServerDnsAlias: removes a server dns alias for a Azure Sql Server
-* Azure.Storage
-    * Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
-    * Add File Share Snapshot Support Feature
-        - Add ''SnapshotTime'' parameter to Get-AzureStorageShare
-        - Add ''IncludeAllSnapshot'' parameter to Remove-AzureStorageShare'
+        ReleaseNotes = '## 2017.11.10 - Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing in the following modules:
+    - AzureRM.ApiManagement
+    - AzureRM.Backup
+    - AzureRM.Batch
+    - AzureRM.Compute
+    - AzureRM.DataFactories
+    - AzureRM.HDInsight
+    - AzureRM.KeyVault
+    - AzureRM.RecoveryServices
+    - AzureRM.RecoveryServices.Backup
+    - AzureRM.RecoveryServices.SiteRecovery
+    - AzureRM.RedisCache
+    - AzureRM.SiteRecovery
+    - AzureRM.Sql
+    - AzureRM.Storage
+    - AzureRM.StreamAnalytics'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

@@ -61,7 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
+    <Compile Include="ArgumentCompleters\PSArgumentCompleter.cs" />
+    <Compile Include="ArgumentCompleters\PSCompleterBase.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRmLongRunningCmdlet.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
     <Compile Include="Generated\DeploymentsOperations.cs" />

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
 
 ## Version 4.0.0
 - Set-AzureRmDefault
