@@ -54,14 +54,18 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll', 
-               '.\Microsoft.Azure.Management.KeyVault.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
-               '.\Microsoft.Data.Services.Client.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Sync.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll'
+RequiredAssemblies = '.\AutoMapper.dll',
+                     '.\Microsoft.Azure.Management.Compute.dll',
+                     '.\Microsoft.Azure.Management.KeyVault.dll',
+                     '.\Microsoft.Azure.Management.Storage.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
+                     '.\Microsoft.WindowsAzure.Commands.Sync.dll',
+                     '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
+                     '.\Microsoft.WindowsAzure.Storage.dll',
+                     '.\System.Spatial.dll',
+	                 '.\Microsoft.Azure.Commands.Common.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
