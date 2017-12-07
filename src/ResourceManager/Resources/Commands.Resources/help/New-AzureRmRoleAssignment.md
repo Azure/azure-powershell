@@ -65,20 +65,20 @@ New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinition
 
 ### ResourceGroupWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> [-AllowDelegation]
+New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> [-AllowDelegation]
  -RoleDefinitionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> -ResourceName <String>
+New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
+New-AzureRmRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ To grant access to a specific resource group within a subscription, assign a rol
 The subject of the assignment must be specified.
 To specify a user, use SignInName or Azure AD ObjectId parameters.
 To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
+And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
 
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
 
@@ -144,7 +144,7 @@ Grant access to a group at a nested resource (subnet)
 ### --------------------------  Example 5  --------------------------
 ```
 PS C:\> $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName "testServiceprincipal"
-PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ServicePrincipalName $servicePrincipal.ApplicationId
+PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
 
 ```
 
@@ -314,13 +314,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServicePrincipalName
+### -ApplicationId
 The Application ID of the ServicePrincipal
 
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: SPN
+Aliases: SPN,ServicePrincipalName
 
 Required: True
 Position: Named
