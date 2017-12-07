@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxAnalyticsUnits
-The optional maximum supported analytics units for this account. If none is specified, defaults to 30
+The optional maximum supported analytics units for this account.
 
 ```yaml
 Type: Int32
