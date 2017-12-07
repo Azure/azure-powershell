@@ -16,7 +16,7 @@ Submits a job.
 ### SubmitUSqlJobWithScriptPath
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ### SubmitUSqlJob
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ### SubmitUSqlJobWithScriptPathAndRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ### SubmitUSqlJobWithRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ### SubmitUSqlJobWithScriptPathAndPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -57,7 +57,7 @@ Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script
 ### SubmitUSqlJobWithPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
  [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -70,7 +70,7 @@ The **Submit-AzureRmDataLakeAnalyticsJob** cmdlet submits an Azure Data Lake Ana
 
 ### Example 1: Submit a job
 ```
-PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32
+PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32
 ```
 
 This command submits a Data Lake Analytics job.
@@ -81,7 +81,7 @@ PS C:\>$parameters = [ordered]@{}
 $parameters["Department"] = "Sales"
 $parameters["NumRecords"] = 1000
 $parameters["StartDateTime"] = (Get-Date).AddDays(-14)
-Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32 -ScriptParameter $parameters
+Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32 -ScriptParameter $parameters
 ```
 
 U-SQL script parameters are prepended above the main script contents, e.g.:
@@ -158,13 +158,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DegreeOfParallelism
-The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time.
+### -AnalyticsUnits
+The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: AnalyticsUnits
+Aliases: DegreeOfParallelism
 
 Required: False
 Position: 6

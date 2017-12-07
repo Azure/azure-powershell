@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         internal const string USqlJobWithScriptPathAndPipeline = "SubmitUSqlJobWithScriptPathAndPipeline";
         internal const string USqlJobParameterSetNameAndPipeline = "SubmitUSqlJobWithPipeline";
 
-        private int _degreeOfParallelism = 1;
+        private int _analyticsUnits = 1;
         private int _priority = 1000;
 
         // TODO: Remove this once other job types are enabled
@@ -196,38 +196,38 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+                "The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time."
             )]
-        [Alias("AnalyticsUnits")]
-        public int DegreeOfParallelism
+        [Alias("DegreeOfParallelism")]
+        public int AnalyticsUnits
         {
-            get { return _degreeOfParallelism; }
-            set { _degreeOfParallelism = value; }
+            get { return _analyticsUnits; }
+            set { _analyticsUnits = value; }
         }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 7,
@@ -368,9 +368,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if (DegreeOfParallelism < 1)
+            if (AnalyticsUnits < 1)
             {
-                WriteWarning(Resources.InvalidDegreeOfParallelism);
+                WriteWarning(Resources.InvalidAnalyticsUnits);
             }
 
             // Error handling for not passing or passing both script and script path
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 {
                     Type = jobType,
                     Name = Name,
-                    DegreeOfParallelism = DegreeOfParallelism,
+                    DegreeOfParallelism = AnalyticsUnits,
                     Priority = Priority,
                     Properties = properties,
                 };
