@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter CanDelegate { get; set; }
+        public SwitchParameter AllowDelegation { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString(),
                 },
-                CanDelegate = CanDelegate.IsPresent ? true : false,
+                CanDelegate = AllowDelegation.IsPresent ? true : false,
             };
 
             AuthorizationClient.ValidateScope(parameters.Scope, false);
