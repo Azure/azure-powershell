@@ -141,6 +141,15 @@ PS C:\> New-AzureRMRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b
 
 Grant access to a group at a nested resource (subnet)
 
+### --------------------------  Example 5  --------------------------
+```
+PS C:\> $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName "testServiceprincipal"
+PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ServicePrincipalName $servicePrincipal.ApplicationId
+
+```
+
+Grant reader access to a service principal
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -306,7 +315,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalName
-The ServicePrincipalName of the Azure AD application
+The Application ID of the ServicePrincipal
 
 ```yaml
 Type: String
