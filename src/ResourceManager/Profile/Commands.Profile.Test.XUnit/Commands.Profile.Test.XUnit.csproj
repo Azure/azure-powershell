@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
+    <AssemblyName>Microsoft.Azure.Commands.Profile.Test.XUnit</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Profile.Test</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.3.0" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>True</SignAssembly>
+    <DelaySign>True</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Profile.Test\Commands.Profile.Test.Netcore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Commands.Profile.Test\*.cs" />
+  </ItemGroup>
+</Project>
