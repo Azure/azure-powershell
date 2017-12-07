@@ -31,5 +31,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             RunPowerShellTest("Test-Run");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCancelRunNegativeV2()
+        {
+            RunPowerShellTest("Test-CancelRunNegative");
+        }
     }
 }

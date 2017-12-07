@@ -39,5 +39,5 @@ Removes an Azure Event Grid event subscription.
 Removes an Azure Event Grid Topic.
 
 ### [Set-AzureRmEventGridTopic](Set-AzureRmEventGridTopic.md)
-Set the properties of an Event Grid topic.
+Sets the properties of an Event Grid topic.
 
