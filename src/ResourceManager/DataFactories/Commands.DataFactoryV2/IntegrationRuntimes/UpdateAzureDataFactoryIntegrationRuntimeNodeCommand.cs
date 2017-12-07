@@ -16,6 +16,7 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         Constants.IntegrationRuntimeNode,
         DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
         SupportsShouldProcess = true),
-     OutputType(typeof (SelfHostedIntegrationRuntimeNode))]
+     OutputType(typeof(PSSelfHostedIntegrationRuntimeNode))]
     public class UpdateAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             Action updateIntegrationRuntimeNode = () =>
             {
-                WriteObject(this.DataFactoryClient.UpdateIntegrationRuntimeNodesAsync(
+                var node = this.DataFactoryClient.UpdateIntegrationRuntimeNodesAsync(
                     ResourceGroupName,
                     DataFactoryName,
                     IntegrationRuntimeName,
@@ -56,7 +57,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     new UpdateIntegrationRuntimeNodeRequest()
                     {
                         ConcurrentJobsLimit = ConcurrentJobsLimit
-                    }).ConfigureAwait(true).GetAwaiter().GetResult());
+                    }).ConfigureAwait(false).GetAwaiter().GetResult();
+
+                WriteObject(new PSSelfHostedIntegrationRuntimeNode(
+                    ResourceGroupName,
+                    DataFactoryName,
+                    IntegrationRuntimeName,
+                    Name,
+                    node,
+                    null));
             };
 
             ConfirmAction(
