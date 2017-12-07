@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Commands.DataMigration.Test;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
@@ -46,6 +47,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         public DataMigrationTestController()
         {
             helper = new EnvironmentSetupHelper();
+            DataMigrationAppSettings settings = DataMigrationAppSettings.Instance;
+            if(settings == null)
+            {
+                throw new ArgumentException("DMS Config File Appsettings.json not loaded properly");
+            }
         }
 
         public void RunPsTest(params string[] scripts)
