@@ -18,15 +18,15 @@ Tests retrieval of classic administrators
 #>
 function Test-RaClassicAdmins
 {
-	# Setup
-	$subscription = Get-AzureRmSubscription
+    # Setup
+    $subscription = Get-AzureRmSubscription
 
-	# Test
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
-	
-	# Assert
-	Assert-NotNull $classic
-	Assert-True { $classic.Length -ge 1 }
+    # Test
+    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}   
+    
+    # Assert
+    Assert-NotNull $classic
+    Assert-True { $classic.Length -ge 1 }
 }
 
 <#
@@ -41,11 +41,11 @@ function Test-RaNegativeScenarios
     # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $badObjectResult = "Cannot find principal using the specified options"
-	$assignments = Get-AzureRmRoleAssignment -ObjectId $badOid
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $badOid
     Assert-AreEqual 0 $assignments.Count
 
-	# Bad OID throws if Expand Principal Groups included
-	Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid -ExpandPrincipalGroups } $badObjectResult
+    # Bad OID throws if Expand Principal Groups included
+    Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid -ExpandPrincipalGroups } $badObjectResult
 
     # Bad UPN
     $badUpn = 'nonexistent@provider.com'
@@ -110,9 +110,9 @@ function Test-RaByScope
 
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual	$definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual	$scope $newAssignment.Scope 
-    Assert-AreEqual	$users[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
     
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -142,8 +142,8 @@ function Test-RaByResourceGroup
     
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual	$definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual	$users[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
     
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -177,8 +177,8 @@ function Test-RaByResource
     
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual	$definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual	$groups[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $groups[0].DisplayName $newAssignment.DisplayName
     
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -261,9 +261,9 @@ function Test-RaByServicePrincipal
     
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual	$definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual	$scope $newAssignment.Scope 
-    Assert-AreEqual	$servicePrincipals[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment.DisplayName
     
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -282,7 +282,7 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
     $newAssignment = New-AzureRmRoleAssignment `
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
@@ -293,8 +293,8 @@ function Test-RaByUpn
     
     # Assert
     Assert-NotNull $newAssignment
-    Assert-AreEqual	$definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual	$users[0].DisplayName $newAssignment.DisplayName
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -305,11 +305,11 @@ function Test-RaUserPermissions
     param([string]$rgName, [string]$action) 
     # Test 
     $rg = Get-AzureRmResourceGroup
-	$errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
-	Assert-AreEqual 1 $rg.Count $errorMsg
+    $errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
+    Assert-AreEqual 1 $rg.Count $errorMsg
 
-	# User should not be able to create another RG as he doesnt have access to the subscription.
-	Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        
+    # User should not be able to create another RG as he doesnt have access to the subscription.
+    Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        
 }
 
 <#
@@ -451,7 +451,7 @@ function Test-RaDelegation
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
-                        -CanDelegate
+                        -AllowDelegation
     
     # Assert
     Assert-NotNull $newAssignment
