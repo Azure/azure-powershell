@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
+        [LocationCompleter("Microsoft.Network/expressRouteCircuits")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 

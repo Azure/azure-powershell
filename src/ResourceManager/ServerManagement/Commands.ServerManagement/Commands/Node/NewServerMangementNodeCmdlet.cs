@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 2)]
+        [LocationCompleter("Microsoft.ServerManagement/nodes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

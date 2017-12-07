@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     {
         private static IDictionary<int, IList<String>> _resourceGroupNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
+        public static int _timeout = 3;
 
         protected static IList<String> ResourceGroupNames
         {
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             client.SubscriptionId = context.Subscription.Id;
                             // Retrieve only the first page of ResourceGroups to display to the user
                             var resourceGroups = client.ResourceGroups.ListAsync();
-                            if (resourceGroups.Wait(TimeSpan.FromSeconds(5)))
+                            if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
                                 tempResourceGroupList = CreateResourceGroupList(resourceGroups.Result);
                                 if (resourceGroups.Result != null)
@@ -101,6 +102,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
         public override string[] GetCompleterValues()
         {
+            return GetResourceGroups();
+        }
+
+        public static string[] GetResourceGroups(int timeout)
+        {
+            _timeout = timeout;
             return GetResourceGroups();
         }
 
