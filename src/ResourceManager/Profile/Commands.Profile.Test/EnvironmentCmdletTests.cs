@@ -102,7 +102,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             Mock<EnvironmentHelper> envHelperMock = new Mock<EnvironmentHelper>();
 
+#if NETSTANDARD
+            envHelperMock.Setup(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>())).ReturnsAsync(() => null);
+#else
             envHelperMock.Setup(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>())).ReturnsAsync(null);
+#endif
             envHelperMock.Setup(f => f.RetrieveDomain(It.IsAny<string>())).Returns("domain");
             cmdlet.EnvHelper = envHelperMock.Object;
             cmdlet.SetParameterSet("ARMEndpoint");

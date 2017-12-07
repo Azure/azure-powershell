@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -25,6 +26,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryVault")]
     [OutputType(typeof(List<ASRVault>))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Get-AzureRmRecoveryServicesVault cmdlet from the AzureRm.RecoveryServices module instead.",
+        false)]
     public class GetAzureSiteRecoveryVaults : SiteRecoveryCmdletBase
     {
         #region Parameters

@@ -79,12 +79,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 var nodeName = System.IO.Path.GetFileNameWithoutExtension(Path);
                 var nodeConfigurationName = ConfigurationName + "." + nodeName;
+                NodeConfiguration nodeConfigurationModel = null;
 
-                // if node configuration already exists, ensureuser knows about it.
-                var nodeConfigurationModel = AutomationClient.GetNodeConfiguration(ResourceGroupName,
-                    AutomationAccountName,
-                    nodeConfigurationName,
-                    null);
+                try
+                {
+                    // if node configuration already exists, ensureuser knows about it.
+                    nodeConfigurationModel = AutomationClient.GetNodeConfiguration(ResourceGroupName,
+                        AutomationAccountName,
+                        nodeConfigurationName,
+                        null);
+                }
+                catch (ResourceNotFoundException)
+                {
+                    nodeConfigurationModel = null;
+                }
 
                 if (nodeConfigurationModel != null && !IncrementNodeConfigurationBuild.IsPresent)
                 {

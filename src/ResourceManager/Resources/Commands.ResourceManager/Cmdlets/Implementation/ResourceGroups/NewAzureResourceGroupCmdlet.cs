@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
