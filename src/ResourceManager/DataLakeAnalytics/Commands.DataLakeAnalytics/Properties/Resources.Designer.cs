@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -AnalyticsUnits. Please adjust your scripts to pass in a value greater than zero.
+        /// </summary>
+        internal static string InvalidAnalyticsUnits {
+            get {
+                return ResourceManager.GetString("InvalidAnalyticsUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid catalog path: &apos;{0}&apos;. A catalog path must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
         /// </summary>
         internal static string InvalidCatalogPath {
@@ -192,15 +201,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero.
-        /// </summary>
-        internal static string InvalidDegreeOfParallelism {
-            get {
-                return ResourceManager.GetString("InvalidDegreeOfParallelism", resourceCulture);
             }
         }
         
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -MaxDegreeOfParallelismPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
+        ///   Looks up a localized string similar to -MaxAnalyticsUnitsPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
         /// </summary>
         internal static string MissingComputePolicyField {
             get {
