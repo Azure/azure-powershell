@@ -11,6 +11,8 @@
     Forces a fresh installation of the Azure and AzureRm cmdlets from the gallery
 .PARAMETER noBuildNumber
     Prevent a build number from being tacked on the end of the version number.
+.PARAMETER repository
+    Set the repository to pull packages from.
 #>
 
 param(
@@ -21,7 +23,11 @@ param(
     [Switch]$force,
     
     [Parameter(HelpMessage="Prevent a build number from being tacked on the end of the version number.")]
-    [Switch]$noBuildNumber)
+    [Switch]$noBuildNumber,
+
+    [Parameter(HelpMessage="Set the repository to pull packages from.")]
+    [string]$repository="PSGallery"
+    )
 
 if( (-not (get-command -ea 0 light)) -or (-not (get-command -ea 0 heat)) -or (-not(get-command -ea 0  candle)) ) {
     write-host -fore Red  "This script requires WiX Toolset in the path. [exiting]"
@@ -75,8 +81,8 @@ if ( -not (test-path $modulesDir))  {
     $shh= mkdir -ea 0 $modulesDir 
 
     # First install the modules locally
-    save-module azure -path $modulesDir
-    save-module azurerm -path $modulesDir
+    save-module azure -path $modulesDir -Repository $repository
+    save-module azurerm -path $modulesDir -Repository $repository
 
     Write-Host -fore green "Tweaking Modules"
     cmd /c dir /a/s/b "$modulesDir/psgetmoduleinfo.xml"  |% {
