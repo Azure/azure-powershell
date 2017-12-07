@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryName = "The data factory name.";
 
+        public const string HelpTagsForFactory = "The tags of the data factory.";
+
+        public const string HelpIdentityForFactory = "The identity for the data factory.";
+
         public const string HelpPipelineName = "The pipeline name.";
 
         public const string HelpTriggerName = "The trigger name.";
@@ -115,6 +119,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
 
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
+
+        public const string HelpPipelineRun = "The information about the pipeline run.";
 
         public const string HelpActivityName = "The name of the activity.";
 

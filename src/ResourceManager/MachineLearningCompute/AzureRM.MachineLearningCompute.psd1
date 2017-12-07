@@ -75,7 +75,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmMlOpCluster', 'Get-AzureRmMlOpClusterKey', 
                'Test-AzureRmMlOpClusterSystemServicesUpdateAvailability', 
                'Update-AzureRmMlOpClusterSystemService', 'New-AzureRmMlOpCluster', 
-               'Remove-AzureRmMlOpCluster'
+               'Remove-AzureRmMlOpCluster', 'Set-AzureRmMlOpCluster'
 
 # Variables to export from this module
 # VariablesToExport = @()
