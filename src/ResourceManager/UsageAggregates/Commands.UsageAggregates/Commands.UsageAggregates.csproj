@@ -60,6 +60,9 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
     <None Include="TestTheCmdLet.ps1" />
   </ItemGroup>
   <ItemGroup>
