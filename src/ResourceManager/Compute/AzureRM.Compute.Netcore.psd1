@@ -55,14 +55,14 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll',
+    '.\Microsoft.Azure.Commands.Common.Strategies.dll', 
     '.\Microsoft.Azure.Management.Compute.dll',
     '.\Microsoft.Azure.Management.KeyVault.dll',
     '.\Microsoft.Azure.Management.Storage.dll',
     '.\Microsoft.Data.Edm.dll',
     '.\Microsoft.Data.OData.dll',
     '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\System.Spatial.dll', 
-    '.\Microsoft.Azure.Commands.Common.Strategies.dll'
+    '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -71,15 +71,9 @@ RequiredAssemblies = '.\AutoMapper.dll',
 TypesToProcess = '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-<<<<<<< HEAD
 FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml', 
                '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
                '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
-=======
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Compute.format.ps1xml',
-               'netcoreapp2.0\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
-               'netcoreapp2.0\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
->>>>>>> 14ea68a6aabf54cca01bb44a7e8375c9dfed1464
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Compute.dll')
