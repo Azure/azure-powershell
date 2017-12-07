@@ -293,16 +293,6 @@
 
     <Copy SourceFiles="@(SourceFile->'%(FullPath)')" DestinationFiles="@(SourceFile->'%(DestinationFolder)')" SkipUnchangedFiles="true"/>
 
-    <!-- Copy content of the publish/help folder one folder up. -->
-    <ItemGroup>
-      <HelpContent Include="$(PackageDirectory)\**\publish\help\*.*" />
-      <SourceFile Include="@(HelpContent)">
-        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..\..\help', '%(FileName)%(Extension)'))</DestinationFolder>
-      </SourceFile>
-    </ItemGroup>
-
-    <Copy SourceFiles="@(SourceFile->'%(FullPath)')" DestinationFiles="@(SourceFile->'%(DestinationFolder)')" SkipUnchangedFiles="true"/>
-
     <!-- Delete build artifacts -->
     <ItemGroup>
       <GetAllFiles Include="$(PackageDirectory)\**\publish\*.*" />
