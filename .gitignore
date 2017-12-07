@@ -212,3 +212,6 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+
+*.msi
+*.wixpdb
