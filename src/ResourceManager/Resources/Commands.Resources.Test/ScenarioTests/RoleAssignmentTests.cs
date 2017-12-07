@@ -123,6 +123,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaGetByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaGetByScope");
+        }
+
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         public void RaUserPermissions()
         {
