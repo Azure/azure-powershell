@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Set-AzureRmMlOpCluster
+    - Update a cluster's agent count or SSL configuration
+* Orchestrator properties are optional
+    - The service will create a service principal if not provided, so the orchestrator
+    properties are now optional
 
 ## Version 0.2.0
 * Add support for online help

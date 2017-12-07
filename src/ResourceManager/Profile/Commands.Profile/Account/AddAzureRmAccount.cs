@@ -118,6 +118,10 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string ContextName { get; set; }
 
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
+                    Mandatory = false, HelpMessage = "Skip validation for access token")]
+        public SwitchParameter SkipValidation { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
 
@@ -163,7 +167,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             AzureAccount azureAccount = new AzureAccount();
 
-            switch(ParameterSetName)
+            switch (ParameterSetName)
             {
                 case AccessTokenParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.AccessToken;
@@ -219,6 +223,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionId,
                         subscriptionName,
                         password,
+                        SkipValidation,
                         (s) => WriteWarning(s),
                         name));
                });
