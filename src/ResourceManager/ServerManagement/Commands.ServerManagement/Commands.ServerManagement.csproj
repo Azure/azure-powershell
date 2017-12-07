@@ -86,6 +86,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
