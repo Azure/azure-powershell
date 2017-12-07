@@ -75,6 +75,7 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 
                'Set-AzureRmDataFactoryV2',
+               'Update-AzureRmDataFactoryV2',
                'Get-AzureRmDataFactoryV2', 
                'Remove-AzureRmDataFactoryV2',
                'Set-AzureRmDataFactoryV2LinkedService', 
@@ -94,6 +95,7 @@ CmdletsToExport =
                'Remove-AzureRmDataFactoryV2Pipeline', 
                'Invoke-AzureRmDataFactoryV2Pipeline',
                'Get-AzureRmDataFactoryV2PipelineRun', 
+               'Stop-AzureRmDataFactoryV2PipelineRun', 
                'Get-AzureRmDataFactoryV2ActivityRun',
                'Get-AzureRmDataFactoryV2IntegrationRuntimeKey',
                'Get-AzureRmDataFactoryV2IntegrationRuntime',
@@ -104,14 +106,23 @@ CmdletsToExport =
                'Stop-AzureRmDataFactoryV2IntegrationRuntime',
                'Get-AzureRmDataFactoryV2IntegrationRuntimeMetric',
                'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Update-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Get-AzureRmDataFactoryV2IntegrationRuntimeNode',
+               'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade',
                'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential',
+               'Update-AzureRmDataFactoryV2IntegrationRuntime',
                'Get-AzureRmDataFactoryV2TriggerRun'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 
+				'New-AzureRmDataFactoryV2',
+				'New-AzureRmDataFactoryV2Dataset',
+				'New-AzureRmDataFactoryV2LinkedService',
+				'New-AzureRmDataFactoryV2Pipeline',
+				'New-AzureRmDataFactoryV2Trigger'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

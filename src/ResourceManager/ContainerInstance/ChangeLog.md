@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.0
+* Apply Azure Container Instance SDK 2017-10-01
+    - Support container run-to-completion
+    - Support Azure File volume mount
+    - Support opening multiple ports for public IP
 
 ## Version 0.1.0
 * Add support for online help

@@ -468,6 +468,56 @@ function Test-RaDelegation
 
 <#
 .SYNOPSIS
+Tests verifies get of RoleAssignment by Scope
+#>
+function Test-RaGetByScope
+{
+    # Setup
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 2 -Wait
+    $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[1].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
+    $newAssignment1 = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope1 
+
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    $newAssignment2 = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope2  
+
+    $ras = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid `
+            -RoleDefinitionName $definitionName `
+            -Scope $scope1
+
+    foreach ($assignment in $ras){
+        Assert-NotNull $assignment
+        Assert-NotNull $assignment.Scope
+        Assert-AreNotEqual $assignment.Scope $scope2
+    }
+    # cleanup 
+    DeleteRoleAssignment $newAssignment1
+    DeleteRoleAssignment $newAssignment2
+
+    # Assert
+    Assert-NotNull $newAssignment1
+    Assert-AreEqual $definitionName $newAssignment1.RoleDefinitionName 
+    Assert-AreEqual $scope1 $newAssignment1.Scope 
+    Assert-AreEqual $users[0].DisplayName $newAssignment1.DisplayName
+    
+    VerifyRoleAssignmentDeleted $newAssignment1
+}
+
+<#
+.SYNOPSIS
 Creates role assignment
 #>
 function CreateRoleAssignment
