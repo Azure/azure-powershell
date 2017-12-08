@@ -363,7 +363,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-{{Fill Size Description}}
+The VM size. The default value is `Standard_DS1_v2`.
 
 ```yaml
 Type: String
