@@ -46,15 +46,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         {
             var x = string.Join(", ", _Set.Keys.Select(c => "'" + c.Name + "' " + c.Strategy.Type));
             var p = (int)(_Completed * 100.0);
-            _Cmdlet.WriteProgress(
-                new ProgressRecord(
-                    0,
-                    "Creating Azure resources",
-                    p + "%")
-                {
-                    PercentComplete = p,
-                    CurrentOperation = x == string.Empty ? null : "Creating " + x + "."
-                });
+            if (x != string.Empty)
+            {
+                _Cmdlet.WriteProgress(
+                    new ProgressRecord(
+                        0,
+                        "Creating Azure resources",
+                        p + "%")
+                    {
+                        PercentComplete = p,
+                        CurrentOperation = "Creating " + x + "."
+                    });
+            }
         }
 
         public void Start<TModel>(ResourceConfig<TModel> config) where TModel : class

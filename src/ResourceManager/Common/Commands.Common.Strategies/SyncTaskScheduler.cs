@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,11 +39,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public void BeginInvoke(Action action)
             => _Tasks.Enqueue(new Task(action));
 
-        public void Wait(Task task)
+        public void Wait(Task task, Action progressUpdate)
         {
             while (!task.IsCompleted)
             {
                 HandleActions();
+                progressUpdate();
                 Thread.Yield();
             }
             HandleActions();

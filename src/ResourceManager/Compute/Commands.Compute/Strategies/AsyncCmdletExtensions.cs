@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
@@ -26,10 +27,30 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// </summary>
         /// <param name="cmdlet"></param>
         /// <param name="createAndStartTask"></param>
-        public static void StartAndWait(this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+        public static void StartAndWait(
+            this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
         {
             var asyncCmdlet = new AsyncCmdlet(cmdlet);
-            asyncCmdlet.Scheduler.Wait(createAndStartTask(asyncCmdlet));
+            asyncCmdlet.Scheduler.Wait(
+                createAndStartTask(asyncCmdlet),
+                () =>
+                {
+                    var r = new[] { "|", "/", "-", "\\" };
+                    var x = r[DateTime.Now.Second % 4];
+                    var p = Interlocked.CompareExchange(ref asyncCmdlet._ProgressRecord, null, null);
+                    if (p != null)
+                    {
+                        cmdlet.WriteProgress(
+                            new ProgressRecord(
+                                0,
+                                p.Activity,
+                                p.StatusDescription + ". " + x)
+                            {
+                                CurrentOperation = p.CurrentOperation,
+                                PercentComplete = p.PercentComplete,
+                            });
+                    }
+                });
         }
 
         sealed class AsyncCmdlet : IAsyncCmdlet
@@ -37,6 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
 
             readonly Cmdlet _Cmdlet;
+
+            public ProgressRecord _ProgressRecord;
 
             public AsyncCmdlet(Cmdlet cmdlet)
             {
@@ -53,7 +76,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
 
             public void WriteProgress(ProgressRecord progressRecord)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteProgress(progressRecord));
+                // => Scheduler.BeginInvoke(() => _Cmdlet.WriteProgress(progressRecord));
+                => Interlocked.Exchange(ref _ProgressRecord, progressRecord);
         }
     }
 }
