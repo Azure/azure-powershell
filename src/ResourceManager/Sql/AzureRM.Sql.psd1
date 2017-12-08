@@ -233,7 +233,8 @@ PrivateData = @{
 * Fixed issue https://github.com/Azure/azure-powershell/issues/5046
 	- AuditAction parameter in auditing cmdlets is no longer being ignored
 * Fixed an issue in Auditing cmdlets when ''Secondary'' StorageKeyType is provided
-	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing ''Secondary'' value for StorageKeyType parameter.'
+    - When setting blob auditing, the primary storage account key was used instead of the secondary key when providing ''Secondary'' value for StorageKeyType parameter.
+* Changing the wording for confirmation message from Set-AzureRmSqlServerTransparentDataEncryptionProtector'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

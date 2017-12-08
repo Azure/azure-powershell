@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -135,7 +135,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
+        ReleaseNotes = '* Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
