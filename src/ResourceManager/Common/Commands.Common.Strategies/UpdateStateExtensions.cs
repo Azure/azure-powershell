@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IProgressReport progressReport)
             where TModel : class
         {
+            if (target.Get(config) == null)
+            {
+                return new State();
+            }
             var context = new Context(
                 new StateOperationContext(client, cancellationToken),
                 target,
