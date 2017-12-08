@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
@@ -20,8 +20,8 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -31,7 +31,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-Kind <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ The command sets the Access Tier value to be cool.
 PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
-The command sets the Access Tier value to be cool.
+The command sets the custom domain and tags for a Storage account.
 
 ### Example 5: Enable encryption on Blob Services with Keyvault
 ```
@@ -116,6 +116,13 @@ PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountN
 ```
 
 This first command gets NetworkRuleSet property from a Storage Account, and the second command sets it to another Storage Account 
+
+### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
+```
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Kind StorageV2
+```
+
+The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ## PARAMETERS
 
@@ -307,6 +314,25 @@ Parameter Sets: KeyvaultEncryption
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Specifies StorageV2 for this *Kind* paramter to upgrade Storage or BlobStorage Kind Storage Account to StorageV2 Kind Storage account.
+The acceptable values for this parameter is:
+
+- StorageV2. General Purpose Version 2 (GPv2) storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: StorageV2
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

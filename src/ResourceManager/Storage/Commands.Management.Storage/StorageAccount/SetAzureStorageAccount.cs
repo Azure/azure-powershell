@@ -186,6 +186,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Kind.")]
+        [ValidateSet(AccountKind.StorageV2, IgnoreCase = true)]
+        public string Kind { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -244,6 +250,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (NetworkRuleSet != null)
                     {
                         updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                    }
+
+                    if (Kind != null)
+                    {
+                        updateParameters.Kind = ParseAccountKind(Kind);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
