@@ -26,11 +26,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId VirtualNetwork { get; set; }
 
-        public List<PSSecureGatewayNetworkRuleCollection> NetworkRuleCollections { get; set; }
-
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
 
+        public List<PSSecureGatewayNetworkRuleCollection> NetworkRuleCollections { get; set; }
+        
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented); }
+        }
 
         [JsonIgnore]
         public string VirtualHubText
@@ -45,15 +51,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string NetworkRuleCollectionsText
-        {
-            get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
         public string ApplicationRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string NetworkRuleCollectionsText
+        {
+            get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
         }
     }
 }
