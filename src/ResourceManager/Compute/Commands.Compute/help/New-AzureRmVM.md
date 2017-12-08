@@ -363,7 +363,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine SIze.  The Default Value is: Standard_DS1_v2.
+The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
 
 ```yaml
 Type: String
