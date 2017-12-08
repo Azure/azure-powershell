@@ -42,11 +42,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Test
 
         private void LoadConfigFile()
         {
-            string path = Directory.GetCurrentDirectory();
-            string fullFilePath = Path.Combine(path, configFileName);
+            string fullFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configFileName);
             if (!File.Exists(fullFilePath))
             {
-                // Because of File.Delete doesn't throw any exception in case file not found
+                instance = null;
                 throw new FileNotFoundException("appsettings.json File Not Found");
             }
 
