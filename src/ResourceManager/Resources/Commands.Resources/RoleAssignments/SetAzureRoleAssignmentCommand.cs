@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources
         public string InputFile { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role assignment.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignmentUpdate, HelpMessage = "Role assignment.")]
         public PSRoleAssignment RoleAssignment { get; set; }
 
         public override void ExecuteCmdlet()

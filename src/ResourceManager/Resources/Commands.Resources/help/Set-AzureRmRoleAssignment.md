@@ -2,68 +2,68 @@
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermroleassignment
 schema: 2.0.0
 ---
 
-# Set-AzureRmRoleDefinition
+# Set-AzureRmRoleAssignment
 
 ## SYNOPSIS
-Modifies a custom role in Azure RBAC.
-Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
-First, use the Get-AzureRmRoleDefinition command to retrieve the custom role that you wish to modify.
+Modifies a roleAssignment in Azure RBAC.
+Provide the modified roleAssignment either as a JSON file or as a PSRoleAssignment.
+First, use the Get-AzureRmRoleAssignment command to retrieve the roleAssignment that you wish to modify.
 Then, modify the properties that you wish to change.
-Finally, save the role definition using this command.
+Finally, save the role assignment using this command.
 
 ## SYNTAX
 
 ### InputFileParameterSet
 ```
-Set-AzureRmRoleDefinition -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmRoleAssignment -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### RoleDefinitionParameterSet
+### RoleAssignmentUpdateParameterSet
 ```
-Set-AzureRmRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>]
+Set-AzureRmRoleAssignment -RoleAssignment <PSRoleAssignment> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
-Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
-The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
-NotActions is optional.
+The Set-AzureRmRoleAssignment cmdlet updates an existing roleassignment in Azure Role-Based Access Control.
+Provide the updated role assignment as an input to the command as a JSON file or a PSRoleAssignment object.
+The role assignment for the updated roleassignment MUST contain all required properties of the role assignment even if they are not updated,However currenlty only update to the Allowdelegation field is allowed
 
 Following is a sample updated role definition json for Set-AzureRmRoleDefinition
 
 {
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Name": "Updated Role",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        \[
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \]
-        "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
-    }
+  {
+    "roleDefinitionId": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec92749f/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "principalId": "6f58a770-c06e-4012-b9f9-e5479c03d43f",
+    "principalType": "User",
+    "scope": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec92749f/resourceGroups/abarg17186",
+    "createdOn": "2017-12-08T00:34:50.7186926Z",
+    "updatedOn": "2017-12-08T00:34:50.7186926Z",
+    "createdBy": null,
+    "updatedBy": "f8d526a0-54eb-4941-ae69-ebf4a334d0f0",
+    "AllowDelegation": false
+  },
+  "id": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec92749f/resourceGroups/abarg17186/providers/Microsoft.Authorization/roleAssignments/ea551700-e122-4ea1-909d-49f44db494ec",
+  "type": "Microsoft.Authorization/roleAssignments",
+  "name": "ea551700-e122-4ea1-909d-49f44db494ec"
+}
 
 ## EXAMPLES
 
 ### --------------------------  Update using PSRoleDefinitionObject  --------------------------
 ```
-PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
-          PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
-          PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401", "/subscriptions/a846d197-5eac-45c7-b885-a6227fe6d388")
-
-          PS C:\> New-AzureRmRoleDefinition -Role $roleDef
+PS C:\> $roleAssignment = Get-AzureRmRoleDefinition -ObjectId "6f58a770-c06e-4012-b9f9-e5479c03d43f" -Scope "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec92749f/resourceGroups/abarg17186" -RoledefinitionName "Reader"
+PS C:\> $roleAssignment.AllowDelegation = $true
+PS C:\> Set-AzureRmRoleAssignment -RoleAssignment $roleAssignment
 ```
 
 ### --------------------------  Create using JSON file  --------------------------
 ```
-PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
+PS C:\> Set-AzureRmRoleAssignment -InputFile C:\Temp\roleAssigment.json
 ```
 
 ## PARAMETERS
@@ -84,9 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputFile
-File name containing a single json role definition to be updated.
-Only include the properties that are to be updated in the JSON.
-Id property is Required.
+File name containing a single json role assignment to be updated.
 
 ```yaml
 Type: String
@@ -104,8 +102,8 @@ Accept wildcard characters: False
 Role definition object to be updated
 
 ```yaml
-Type: PSRoleDefinition
-Parameter Sets: RoleDefinitionParameterSet
+Type: PSRoleAssignment
+Parameter Sets: RoleAssignmentUpdateParameterSet
 Aliases: 
 
 Required: True
@@ -120,12 +118,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRoleDefinition
-Parameter 'Role' accepts value of type 'PSRoleDefinition' from the pipeline
+### PSRoleAssignment
+Parameter 'RoleAssignment' accepts value of type 'PSRoleAssignment' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
@@ -134,9 +132,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 [Get-AzureRmProviderOperation](./Get-AzureRmProviderOperation.md)
 
-[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
+[Get-AzureRmRoleDefinition](./Get-AzureRmRoleAssignment.md)
 
-[New-AzureRmRoleDefinition](./New-AzureRmRoleDefinition.md)
+[New-AzureRmRoleDefinition](./New-AzureRmRoleAssignment.md)
 
-[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
+[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleAssignment.md)
 
