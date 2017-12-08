@@ -214,7 +214,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Get-AzureRmComputeResourceSku shows zone information.
-* Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038'
+* Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
+* Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    - Affected cmdlets include: New-, Update-, Set-, Remove-, Start-, Restart-, Stop- cmdlets for Virtual Machines and Virtual Machine Scale Sets
+* Added simplified parameter set to New-AzureRmVM, which creates a Virtual Machine and all required resources using smart defaults'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
