@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             EventGridController.NewInstance.RunPsTest("TopicTests");
         }
 
-        [Fact(Skip = "Recording blocked on the list subscriptions error under investigation by Azure PowerShell team.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsUpdate()
         {
