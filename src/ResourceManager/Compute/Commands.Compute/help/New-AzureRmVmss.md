@@ -25,7 +25,7 @@ New-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String
 New-AzureRmVmss [-AsJob] [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-ImageName <String>]
  -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>] [-SubnetName <String>]
  [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-SecurityGroupName <String>]
- [-LoadBalancerName <String>] [-BackendPorts <Int32[]>] [-Location <String>] [-VmSize <String>]
+ [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
@@ -189,8 +189,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPorts
-{{Fill BackendPorts Description}}
+### -BackendPort
+{{Fill BackendPort Description}}
 
 ```yaml
 Type: Int32[]
