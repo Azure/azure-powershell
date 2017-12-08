@@ -14,18 +14,26 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Alias("Get-AzureRmDmsTask")]
     public class GetDataMigrationTask : DataMigrationCmdlet
     {
-        private const string DefaultParams = ComponentNameParameterSet;
-        private const string ExpandTaskSet = "ExpandTaskSet";
-        private const string ExpandTaskResultTypeSet = "ExpandTaskResultTypeSet";
-        private const string TaskSet = "TaskSet";
-        private const string TaskTypeSet = "TaskTypeSet";
+        private const string DefaultParams = ListByComponent;
+        private const string ListByComponent = "ListByComponent";
+        private const string GetByComponent = "GetByComponent";
+        private const string GetByComponentResultType = "GetByComponentResultType";
+        private const string ListByInputObject = "ListByInputObject";
+        private const string GetByInputObject = "GetByInputObject";
+        private const string GetByInputObjectResultType = "GetByInputObjectResultType";
+        private const string ListByResourceId = "ListByResourceId";
+        private const string GetByResourceId = "GetByResourceId";
+        private const string GetByResourceIdResultType = "GetByResourceIdResultType";
+
 
         [Parameter(
           Position = 0,
           Mandatory = true,
-          ParameterSetName = ComponentObjectParameterSet,
+          ParameterSetName = ListByInputObject,
           ValueFromPipeline = true,
           HelpMessage = "PSProject Object.")]
+        [Parameter(ParameterSetName = GetByInputObject, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByInputObjectResultType, Mandatory = true)]
         [ValidateNotNull]
         [Alias("Project")]
         public PSProject InputObject { get; set; }
@@ -33,77 +41,82 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
+            ParameterSetName = ListByResourceId,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Project Resource Id.")]
         [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = GetByResourceId, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByResourceIdResultType, Mandatory = true)]
         public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = DefaultParams,
+            ParameterSetName = ListByComponent,
             HelpMessage = "The name of the resource group."
                 )]
         [ValidateNotNullOrEmpty]
-        [Parameter(ParameterSetName = TaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskResultTypeSet, Mandatory = true)]
-        [Parameter(ParameterSetName = TaskTypeSet, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponent, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = DefaultParams,
+            ParameterSetName = ListByComponent,
             HelpMessage = "Data Migration Service Name.")]
         [ValidateNotNullOrEmpty]
-        [Parameter(ParameterSetName = TaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskResultTypeSet, Mandatory = true)]
-        [Parameter(ParameterSetName = TaskTypeSet, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponent, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
         public string ServiceName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = DefaultParams,
+            ParameterSetName = ListByComponent,
             HelpMessage = "The name of the project.")]
-        [Parameter(ParameterSetName = TaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskResultTypeSet, Mandatory = true)]
-        [Parameter(ParameterSetName = TaskTypeSet, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponent, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ProjectName { get; set; }
 
         [Parameter(
-            ParameterSetName = TaskSet,
+            ParameterSetName = GetByComponent,
             Mandatory = false,
             HelpMessage = "The name of the task.")]
-        [Parameter(ParameterSetName = ExpandTaskSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ExpandTaskResultTypeSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ComponentObjectParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByInputObject, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByInputObjectResultType, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByResourceId, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByResourceIdResultType, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [Alias("TaskName")]
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandTaskSet,
-            Mandatory = true,
+            ParameterSetName = GetByComponent,
+            Mandatory = false,
             HelpMessage = "Expand output")]
-        [Parameter(ParameterSetName = ExpandTaskResultTypeSet, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByInputObject, Mandatory = false)]
+        [Parameter(ParameterSetName = GetByInputObjectResultType, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByResourceId, Mandatory = false)]
+        [Parameter(ParameterSetName = GetByResourceIdResultType, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Expand { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandTaskResultTypeSet,
+            ParameterSetName = GetByComponentResultType,
             Mandatory = true,
             HelpMessage = "Expand output of given result type.")]
+        [Parameter(ParameterSetName = GetByInputObjectResultType, Mandatory = true)]
+        [Parameter(ParameterSetName = GetByResourceIdResultType, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ResultTypeEnum ResultType { get; set; }
 
         [Parameter(
-            ParameterSetName = TaskTypeSet,
+            ParameterSetName = ListByComponent,
             Mandatory = false,
             HelpMessage = "Filter by TaskType.")]
+        [Parameter(ParameterSetName = ListByInputObject, Mandatory = false)]
+        [Parameter(ParameterSetName = ListByResourceId, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public TaskTypeEnum? TaskType { get; set; }
 
