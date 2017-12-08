@@ -171,6 +171,9 @@ PrivateData = @{
 * Compute
     - Get-AzureRmComputeResourceSku shows zone information.
     - Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
+    - Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+        - Affected cmdlets include: New-, Update-, Set-, Remove-, Start-, Restart-, Stop- cmdlets for Virtual Machines and Virtual Machine Scale Sets
+    - Added simplified parameter set to New-AzureRmVM, which creates a Virtual Machine and all required resources using smart defaults
 * ContainerInstance
     - Apply Azure Container Instance SDK 2017-10-01
         - Support container run-to-completion
@@ -214,6 +217,8 @@ PrivateData = @{
 * Profile
     - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
         - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+    - Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+    - Added -AsJob parameter to Get-AzureRmSubscription cmdlet
 * RecoveryServices.Backup
     - Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
     - Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
