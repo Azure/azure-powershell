@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.1.0
+## Version 4.1.1
 * Update to Import-AzureRMAutomationRunbook
     - Support is now being provided for Python2 runbooks
 

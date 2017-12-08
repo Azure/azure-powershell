@@ -1,4 +1,4 @@
-﻿## 2017.12.8 Version 5.1.0
+﻿## 2017.12.8 Version 5.1.1
 * AnalysisServices
     - Change validate set of location to dynamic lookup so that all clouds are supported.
 * Automation
@@ -18,8 +18,9 @@
         - Support Azure File volume mount
         - Support opening multiple ports for public IP
 * ContainerRegistry
-    - Add support for online help
-        - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    - New cmdlets for geo-replication and webhooks
+        - Get/New/Remove-AzureRmContainerRegistryReplication
+        - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook
 * DataFactories
     - Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).
 * DataFactoryV2

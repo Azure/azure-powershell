@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 0.3.0
+## Version 0.3.1
 * Add Set-AzureRmMlOpCluster
     - Update a cluster's agent count or SSL configuration
 * Orchestrator properties are optional
