@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + ResourceGroupName).ToLower();
+            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
             // get image
