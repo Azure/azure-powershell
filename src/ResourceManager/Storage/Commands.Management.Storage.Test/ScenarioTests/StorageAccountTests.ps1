@@ -520,7 +520,6 @@ function Test-SetAzureRmCurrentStorageAccount
     }
 }
 
-
 <#
 .SYNOPSIS
 Test NetworkRule
@@ -602,6 +601,53 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[0].IPAddressOrRange $ip1;
         Assert-AreEqual $stoacl.IpRules[1].IPAddressOrRange $ip2;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
+
+        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test SetAzureStorageAccount with Kind as StorageV2
+.Description
+AzureAutomationTest
+#>
+function Test-SetAzureStorageAccountStorageV2
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+		$kind = 'Storage'
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+
+        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stotype = 'StandardGRS';
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;        
+      				
+		$kind = 'StorageV2'
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
