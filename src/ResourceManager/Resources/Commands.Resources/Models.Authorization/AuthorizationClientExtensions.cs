@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         SignInName = ((PSADUser)adObject).UserPrincipalName,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        AllowDelegation = delegationFlag
                     });
                 }
                 else if (adObject is PSADGroup)
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        AllowDelegation = delegationFlag
                     });
                 }
                 else if (adObject is PSADServicePrincipal)
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag
+                        AllowDelegation = delegationFlag
                     });
                 }
                 else if (!excludeAssignmentsForDeletedPrincipals)
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
-                        CanDelegate = delegationFlag
+                        AllowDelegation = delegationFlag
                     });
                 }
 

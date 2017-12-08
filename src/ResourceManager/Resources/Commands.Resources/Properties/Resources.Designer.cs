@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Resources.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -274,6 +273,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string InvalidFormatOfResourceId {
             get {
                 return ResourceManager.GetString("InvalidFormatOfResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RoleAssignment display name should not be empty.
+        /// </summary>
+        internal static string InvalidRoleAssignmentName {
+            get {
+                return ResourceManager.GetString("InvalidRoleAssignmentName", resourceCulture);
             }
         }
         

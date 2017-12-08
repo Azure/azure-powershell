@@ -518,6 +518,43 @@ function Test-RaGetByScope
 
 <#
 .SYNOPSIS
+Tests verifies the update of RoleAssignment
+#>
+function Test-RaUpdate
+{
+    # Setup
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -First 1 -Wait
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("ea551700-e122-4ea1-909d-49f44db494ec")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope `
+                        -AllowDelegation
+    
+    $ra = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope `
+
+    Assert-NotNull $ra
+    Assert-AreEqual 1 $ra.Count
+    $ra.AllowDelegation = !$ra.AllowDelegation
+    $updatedRoleAssignment = Set-AzureRmRoleAssignment -RoleAssignment $ra
+
+    Assert-NotNull $updatedRoleAssignment
+    Assert-AreEqual $updatedRoleAssignment.AllowDelegation $ra.AllowDelegation
+
+    DeleteRoleAssignment $updatedRoleAssignment
+}
+
+<#
+.SYNOPSIS
 Creates role assignment
 #>
 function CreateRoleAssignment
