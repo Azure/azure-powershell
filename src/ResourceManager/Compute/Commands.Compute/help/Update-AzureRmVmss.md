@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss
@@ -13,7 +13,7 @@ Updates the state of a VMSS.
 ## SYNTAX
 
 ```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Update-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
  [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
  [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
@@ -42,6 +42,21 @@ PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -Virtua
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AutomaticOSUpgrade
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
@@ -160,6 +175,7 @@ The acceptable values for this parameter are:
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -289,6 +305,7 @@ The acceptable values for this parameter are:
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
@@ -365,6 +382,7 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
 Position: Named
@@ -602,6 +620,7 @@ The acceptable values for this parameter are:
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: Named

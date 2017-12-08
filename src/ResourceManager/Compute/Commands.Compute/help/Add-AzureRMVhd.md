@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: D08DAA8B-B7BF-4167-AB16-F2723985A0B7
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvhd
@@ -14,7 +14,7 @@ Uploads a virtual hard disk from an on-premises virtual machine to a blob in a c
 
 ```
 Add-AzureRmVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite]
+ [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,6 +58,21 @@ PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net
 This command adds a .vhd file to a storage account and specifies the SAS URI.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BaseImageUriToPatch
 Specifies the URI to a base image blob in Azure Blob Storage.
