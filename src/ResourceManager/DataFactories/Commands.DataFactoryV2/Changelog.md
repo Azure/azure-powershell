@@ -20,7 +20,7 @@
 
 ## Current Release
 
-## Version 0.4.0
+## Version 0.4.1
 * Added two new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun
 
 ## Version 0.3.0

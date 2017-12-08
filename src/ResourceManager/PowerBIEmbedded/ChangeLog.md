@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.1.0
+## Version 4.1.1
 * Add support for Power BI Embedded Capacity cmdlets
 * New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity - Gets the details of a PowerBI Embedded Capacity.
 * New Cmdlet New-AzureRmPowerBIEmbeddedCapacity - Creates a new PowerBI Embedded Capacity

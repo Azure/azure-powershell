@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.1.0
+## Version 4.1.1
 * Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
     - Detailed information about ScriptParameter can be found using Get-Help on Submit-AzureRmDataLakeAnalyticsJob
 * For New-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits

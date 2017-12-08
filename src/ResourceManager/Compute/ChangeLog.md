@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.1.0
+## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
 * Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
 * Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
