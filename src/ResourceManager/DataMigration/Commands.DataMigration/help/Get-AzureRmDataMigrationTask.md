@@ -11,45 +11,59 @@ schema: 2.0.0
 Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
 
 ## SYNTAX
-### ComponentNameParameterSet (Default)
-```
-Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-DefaultProfile <IAzureContextContainer>]
-```
 
-### ComponentObjectParameterSet
-```
-Get-AzureRmDataMigrationTask [-InputObject] <PSProject> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>]
-```
-
-### ResourceIdParameterSet
-```
-Get-AzureRmDataMigrationTask [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
-```
-
-### TaskSet
-```
-Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
-```
-
-### ExpandTaskSet
-```
-Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- -Name <String> [-Expand] [-DefaultProfile <IAzureContextContainer>]
-```
-
-### ExpandTaskResultTypeSet
-```
-Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- -Name <String> [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>]
-```
-
-### TaskTypeSet
+### ListByComponent (Default)
 ```
 Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
  [-TaskType <TaskTypeEnum>] [-DefaultProfile <IAzureContextContainer>]
+```
+
+### ListByInputObject
+```
+Get-AzureRmDataMigrationTask [-InputObject] <PSProject> [-TaskType <TaskTypeEnum>]
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByInputObject
+```
+Get-AzureRmDataMigrationTask [-InputObject] <PSProject> -Name <String> [-Expand]
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByInputObjectResultType
+```
+Get-AzureRmDataMigrationTask [-InputObject] <PSProject> -Name <String> [-Expand] -ResultType <ResultTypeEnum>
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### ListByResourceId
+```
+Get-AzureRmDataMigrationTask [-ResourceId] <String> [-TaskType <TaskTypeEnum>]
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByResourceId
+```
+Get-AzureRmDataMigrationTask [-ResourceId] <String> -Name <String> [-Expand]
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByResourceIdResultType
+```
+Get-AzureRmDataMigrationTask [-ResourceId] <String> -Name <String> [-Expand] -ResultType <ResultTypeEnum>
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByComponent
+```
+Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
+ [-Name <String>] [-Expand] [-DefaultProfile <IAzureContextContainer>]
+```
+
+### GetByComponentResultType
+```
+Get-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
+ -Name <String> [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
@@ -59,18 +73,14 @@ The Get-AzureRmDataMigrationTask cmdlet retrieves the properties associated with
 
 ### Example 1
 ```
-PS C:\> Get -AzureRmDataMigrationTask –TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
-
-
+PS C:\> Get -AzureRmDataMigrationTask -TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
 ```
 
 The above example illustrates the use of Get-AzureRmDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service migration task based on task name passed in as input parameter
 
 ### Example 2
 ```
-PS C:\> Get -AzureRmDataMigrationTask –Project $myProject
-
-
+PS C:\> Get -AzureRmDataMigrationTask -Project $myProject
 ```
 
 The above example illustrates the use of Get-AzureRmDataMigrationTask cmdlet to retrieve all of the migration tasks associated with PSProject object passed in as input parameter
@@ -97,12 +107,24 @@ Expand output
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ExpandTaskSet, ExpandTaskResultTypeSet
+Parameter Sets: GetByInputObject, GetByResourceId, GetByComponent
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
 Aliases: 
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,7 +134,19 @@ PSProject Object.
 
 ```yaml
 Type: PSProject
-Parameter Sets: ComponentObjectParameterSet
+Parameter Sets: ListByInputObject
+Aliases: Project
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSProject
+Parameter Sets: GetByInputObject, GetByInputObjectResultType
 Aliases: Project
 
 Required: True
@@ -127,10 +161,10 @@ The name of the task.
 
 ```yaml
 Type: String
-Parameter Sets: ComponentObjectParameterSet, ResourceIdParameterSet, TaskSet
+Parameter Sets: GetByInputObject, GetByInputObjectResultType, GetByResourceId, GetByResourceIdResultType, GetByComponentResultType
 Aliases: TaskName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,10 +173,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ExpandTaskSet, ExpandTaskResultTypeSet
+Parameter Sets: GetByComponent
 Aliases: TaskName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,7 +188,7 @@ The name of the project.
 
 ```yaml
 Type: String
-Parameter Sets: ComponentNameParameterSet, TaskSet, ExpandTaskSet, ExpandTaskResultTypeSet, TaskTypeSet
+Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
 Aliases: 
 
 Required: True
@@ -169,7 +203,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: ComponentNameParameterSet, TaskSet, ExpandTaskSet, ExpandTaskResultTypeSet, TaskTypeSet
+Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
 Aliases: 
 
 Required: True
@@ -184,7 +218,19 @@ Project Resource Id.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ListByResourceId
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: GetByResourceId, GetByResourceIdResultType
 Aliases: 
 
 Required: True
@@ -199,7 +245,7 @@ Expand output of given result type.
 
 ```yaml
 Type: ResultTypeEnum
-Parameter Sets: ExpandTaskResultTypeSet
+Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
 Aliases: 
 Accepted values: MigrationLevelOutput, DatabaseLevelOutput, TableLevelOutput, MigrationValidationOutput, MigrationValidationDatabaseLevelOutput
 
@@ -215,7 +261,7 @@ Data Migration Service Name.
 
 ```yaml
 Type: String
-Parameter Sets: ComponentNameParameterSet, TaskSet, ExpandTaskSet, ExpandTaskResultTypeSet, TaskTypeSet
+Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
 Aliases: 
 
 Required: True
@@ -230,7 +276,7 @@ Filter by TaskType.
 
 ```yaml
 Type: TaskTypeEnum
-Parameter Sets: TaskTypeSet
+Parameter Sets: ListByComponent, ListByInputObject, ListByResourceId
 Aliases: 
 Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql
 
@@ -246,11 +292,9 @@ Accept wildcard characters: False
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProject
 System.String
 
-
 ## OUTPUTS
 
 ### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
 
 ## NOTES
 
