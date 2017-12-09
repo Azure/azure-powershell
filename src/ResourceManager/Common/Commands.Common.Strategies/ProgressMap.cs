@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public class ProgressMap
+    class ProgressMap
     {
         readonly Dictionary<IResourceConfig, Tuple<TimeSlot, int>> _Map 
             = new Dictionary<IResourceConfig, Tuple<TimeSlot, int>>();
@@ -25,24 +25,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <summary>
         /// duration of all tasks (in seconds).
         /// </summary>
-        readonly int _Duration;
+        public int Duration { get; }
 
         public ProgressMap(Dictionary<IResourceConfig, Tuple<TimeSlot, int>> map, int duration)
         {
             _Map = map;
-            _Duration = duration;
+            Duration = duration;
         }
 
-        /// <summary>
-        /// Returns a value of [0..1] range which is used to increment a progress bar when the 
-        /// resource is created.
-        /// </summary>
-        /// <param name="config">a resource configuration.</param>
-        /// <returns></returns>
-        public double Get(IResourceConfig config)
-        {
-            var x = _Map.GetOrNull(config);
-            return x.Item1.GetTaskProgress(x.Item2) / _Duration;
-        }
+        public Tuple<TimeSlot, int> Get(IResourceConfig config)
+            => _Map.GetOrNull(config);
     }
 }
