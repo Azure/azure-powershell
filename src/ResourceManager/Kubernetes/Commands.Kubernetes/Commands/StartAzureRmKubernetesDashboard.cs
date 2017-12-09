@@ -22,9 +22,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
+using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 #if NETSTANDARD
 using Microsoft.Extensions.DependencyInjection;
+
 #endif
 
 namespace Microsoft.Azure.Commands.Kubernetes
@@ -32,13 +35,36 @@ namespace Microsoft.Azure.Commands.Kubernetes
     [Cmdlet("Start", KubeNounStr + "Dashboard")]
     public class StartDashboard : KubeCmdletBase
     {
+
+        private const string IdParameterSet = "IdParameterSet";
+        private const string GroupNameParameterSet = "GroupNameParameterSet";
+        private const string InputObjectParameterSet = "InputObjectParameterSet";
+
+        [Parameter(Mandatory =true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline =true,
+            HelpMessage ="A PSKubernetesCluster object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSKubernetesCluster InputObject { get; set; }
+
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = IdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Id of a managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
         /// <summary>
         /// Cluster name
         /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GroupNameParameterSet,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -49,7 +75,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GroupNameParameterSet,
             HelpMessage = "Resource group name")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -65,7 +91,24 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
             RunCmdLet(() =>
             {
-                var cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
+                switch (ParameterSetName)
+                {
+                    case IdParameterSet:
+                    {
+                        var resource = new ResourceIdentifier(Id);
+                        ResourceGroupName = resource.ResourceGroupName;
+                        Name = resource.ResourceName;
+                        break;
+                    }
+                    case InputObjectParameterSet:
+                    {
+                        var resource = new ResourceIdentifier(InputObject.Id);
+                        ResourceGroupName = resource.ResourceGroupName;
+                        Name = resource.ResourceName;
+                        break;
+                    }
+                }
+
                 var tmpFileName = Path.GetTempFileName();
                 var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
                     .KubeConfig;
@@ -97,7 +140,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
                 // remove "pods/"
                 dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
-                var job = new KubeTunnelJob(tmpFileName, dashPodName);
 
                 WriteVerbose(string.Format(
                     "Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090",
@@ -111,6 +153,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     JobRepository.Remove(exitingJob);
                 }
 
+                var job = new KubeTunnelJob(tmpFileName, dashPodName);
                 if (!DisableBrowser.IsPresent)
                 {
                     WriteVerbose("Setting up browser pop.");
@@ -120,6 +163,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         PopBrowser(proxyUrl);
                     };
                 }
+                else
+                {
+                    WriteObject(string.Format("Dashboard tunnel is running. You can now browse to {0}.", proxyUrl));
+                }
+
                 JobRepository.Add(job);
                 job.StartJob();
             });
@@ -173,7 +221,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public override string StatusMessage { get; }
         public override bool HasMoreData { get; }
         public override string Location { get; }
-        public int Pid {get { return _pid; }}
+
+        public int Pid
+        {
+            get { return _pid; }
+        }
 
         public override void StopJob()
         {

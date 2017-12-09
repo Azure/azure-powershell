@@ -30,15 +30,14 @@
     <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="1.6.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="YamlDotNet" Version="4.2.2" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\ResourceManager\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

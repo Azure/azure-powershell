@@ -14,18 +14,34 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
+using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.Get, KubeNounStr)]
-    [OutputType(typeof(PSObject), typeof(List<PSObject>))]
+    [OutputType(typeof(PSKubernetesCluster), typeof(List<PSKubernetesCluster>))]
     public class Get : KubeCmdletBase
     {
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         private const string NameParameterSet = "NameParameterSet";
+        private const string IdParameterSet = "IdParameterSet";
+
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = IdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Id of a managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Cluster name
@@ -33,7 +49,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(Mandatory = true,
             ParameterSetName = NameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -42,13 +57,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
             Position = 0,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = NameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -64,13 +77,18 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 {
                     case NameParameterSet:
                         var kubeCluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                        WriteObject(kubeCluster);
+                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                        break;
+                    case IdParameterSet:
+                        var resource = new ResourceIdentifier(Id);
+                        var idCluster = Client.ManagedClusters.Get(resource.ResourceGroupName, resource.ResourceName);
+                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(idCluster));
                         break;
                     case ResourceGroupParameterSet:
                         var kubeClusters = string.IsNullOrEmpty(ResourceGroupName)
                             ? Client.ManagedClusters.List()
                             : Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
-                        WriteObject(kubeClusters);
+                        WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>));
                         break;
                     default:
                         throw new ArgumentException("Bad parameterset name. This is a bug and should be reported.");

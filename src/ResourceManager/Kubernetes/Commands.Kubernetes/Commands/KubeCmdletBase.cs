@@ -13,7 +13,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-public abstract class KubeCmdletBase : AzureRMCmdlet
+    public abstract class KubeCmdletBase : AzureRMCmdlet
     {
         private IContainerServiceClient _client;
         private IResourceManagementClient _rmClient;
@@ -24,9 +24,11 @@ public abstract class KubeCmdletBase : AzureRMCmdlet
 
         protected IContainerServiceClient Client => _client ?? (_client = BuildClient<ContainerServiceClient>());
 
-        protected IResourceManagementClient RmClient => _rmClient ?? ( _rmClient = BuildClient<ResourceManagementClient>());
+        protected IResourceManagementClient RmClient =>
+            _rmClient ?? (_rmClient = BuildClient<ResourceManagementClient>());
 
-        protected IAuthorizationManagementClient AuthClient => _authClient ?? ( _authClient = BuildClient<AuthorizationManagementClient>());
+        protected IAuthorizationManagementClient AuthClient =>
+            _authClient ?? (_authClient = BuildClient<AuthorizationManagementClient>());
 
         protected IGraphRbacManagementClient GraphClient =>
             _graphClient ?? (_graphClient = BuildClient<GraphRbacManagementClient>());

@@ -19,7 +19,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
+using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using YamlDotNet.RepresentationModel;
 
@@ -29,13 +31,35 @@ namespace Microsoft.Azure.Commands.Kubernetes
     [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public class ImportCredential : KubeCmdletBase
     {
+        private const string IdParameterSet = "IdParameterSet";
+        private const string GroupNameParameterSet = "GroupNameParameterSet";
+        private const string InputObjectParameterSet = "InputObjectParameterSet";
+
+        [Parameter(Mandatory =true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline =true,
+            HelpMessage ="A PSKubernetesCluster object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSKubernetesCluster InputObject { get; set; }
+
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = IdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Id of a managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
         /// <summary>
         /// Cluster name
         /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GroupNameParameterSet,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -46,7 +70,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GroupNameParameterSet,
             HelpMessage = "Resource group name")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -55,14 +79,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(
             Mandatory = false,
             Position = 2,
-            ValueFromPipeline = true,
             HelpMessage = "Get the 'clusterAdmin' kubectl config instead of the default 'clusterUser'.")]
         public SwitchParameter Admin { get; set; } = false;
 
         [Parameter(
             Mandatory = false,
             Position = 3,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage =
                 "A kubectl config file to create or update. Use '-' to print YAML to stdout instead.  Default: %Home%/.kube/config.")]
         public string ConfigPath { get; set; }
@@ -81,6 +103,24 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 () =>
                     RunCmdLet(() =>
                     {
+                        switch (ParameterSetName)
+                        {
+                            case IdParameterSet:
+                            {
+                                var resource = new ResourceIdentifier(Id);
+                                ResourceGroupName = resource.ResourceGroupName;
+                                Name = resource.ResourceName;
+                                break;
+                            }
+                            case InputObjectParameterSet:
+                            {
+                                var resource = new ResourceIdentifier(InputObject.Id);
+                                ResourceGroupName = resource.ResourceGroupName;
+                                Name = resource.ResourceName;
+                                break;
+                            }
+                        }
+
                         if (string.IsNullOrEmpty(ConfigPath))
                         {
                             ConfigPath = Path.Combine(
