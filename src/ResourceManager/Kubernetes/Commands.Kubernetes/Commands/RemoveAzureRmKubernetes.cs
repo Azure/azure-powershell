@@ -15,7 +15,9 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
+using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -23,28 +25,50 @@ namespace Microsoft.Azure.Commands.Kubernetes
     [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public class Remove : KubeCmdletBase
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource group name")]
-        [ResourceGroupCompleter()]
+        private const string IdParameterSet = "IdParameterSet";
+        private const string GroupNameParameterSet = "GroupNameParameterSet";
+        private const string InputObjectParameterSet = "InputObjectParameterSet";
+
+        [Parameter(Mandatory =true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline =true,
+            HelpMessage ="A PSKubernetesCluster object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public PSKubernetesCluster InputObject { get; set; }
+
+        /// <summary>
+        /// Cluster name
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = IdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Id of a managed Kubernetes cluster")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Cluster name
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            ParameterSetName = GroupNameParameterSet,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = GroupNameParameterSet,
+            HelpMessage = "Resource group name")]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Remove cluster even if it is the defualt")]
         public SwitchParameter Force { get; set; }
@@ -52,6 +76,24 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            switch (ParameterSetName)
+            {
+                case IdParameterSet:
+                {
+                    var resource = new ResourceIdentifier(Id);
+                    ResourceGroupName = resource.ResourceGroupName;
+                    Name = resource.ResourceName;
+                    break;
+                }
+                case InputObjectParameterSet:
+                {
+                    var resource = new ResourceIdentifier(InputObject.Id);
+                    ResourceGroupName = resource.ResourceGroupName;
+                    Name = resource.ResourceName;
+                    break;
+                }
+            }
 
             ConfirmAction(Force.IsPresent,
                 "Do you want to delete the managed Kubernetes resource '{0}'?",
