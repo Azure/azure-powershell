@@ -127,7 +127,7 @@ function Get-DependentModules
     }
     if ($dependencies.Count -ne 0)
     {
-        Write-Warning "$moduleName $moduleVersion is a dependency for $dependencies the module(s) might have an orphaned dependency."
+        Write-Warning "$moduleName $moduleVersion is a dependency for $dependencies the module(s) will have an orphaned dependency."
     }
 }
 
@@ -184,6 +184,5 @@ $ModulesToDelete
 $azureModules = Find-Module Azure* -Repository $repoName
 $ModulesToDelete | ForEach-Object {
     Get-DependentModules -repoName $repoName -moduleName $_.Name -moduleVersion $_.Version -allModules $ModulesToDelete -azureModules $azureModules
-    Write-Warning $_.Name
-    #&$nugetExe delete $_.Name $_.Version -ApiKey $apiKey -Source $repositoryLocation
+    &$nugetExe delete $_.Name $_.Version -ApiKey $apiKey -Source $repositoryLocation
 }
