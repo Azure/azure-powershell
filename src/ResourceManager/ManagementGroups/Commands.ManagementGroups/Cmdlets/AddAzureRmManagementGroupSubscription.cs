@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
@@ -13,7 +8,6 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// <summary>
     /// Add-AzureRmManagementGroupSubscription Cmdlet
     /// </summary>
-    
     [Cmdlet(VerbsCommon.Add, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
@@ -42,7 +36,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             }
             catch (ErrorResponseException ex)
             {
-                WriteWarning(ex.Message);
+                Utility.HandleErrorResponseException(ex);
             }
         }
     }

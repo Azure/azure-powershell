@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
-using Newtonsoft.Json;
+using Microsoft.Azure.Commands.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
     /// <summary>
     /// Add-AzureRmManagementGroup Cmdlet
     /// </summary>
-
     [Cmdlet(VerbsCommon.Add, "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class AddAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
@@ -39,14 +33,12 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                 CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
                 ManagementGroupsApiClient.GroupId = GroupId;
                 var response = ManagementGroupsApiClient.ManagementGroups.Create(createGroupRequest);
-                WriteObject(JsonConvert.SerializeObject(response));    
+                WriteObject(new PSManagementGroup(response));
             }
             catch (ErrorResponseException ex)
             {
-                WriteWarning(ex.Message);
+                Utility.HandleErrorResponseException(ex);
             }
         }
-
-
     }
 }

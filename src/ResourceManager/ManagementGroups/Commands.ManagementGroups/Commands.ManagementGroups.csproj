@@ -125,6 +125,13 @@
     <Compile Include="Cmdlets\UpdateAzureRmManagementGroup.cs" />
     <Compile Include="Common\AzureManagementGroupsCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Utility.cs" />
+    <Compile Include="Models\PSManagementGroup.cs" />
+    <Compile Include="Models\PSManagementGroupChildInfo.cs" />
+    <Compile Include="Models\PSManagementGroupDetails.cs" />
+    <Compile Include="Models\PSManagementGroupInfo.cs" />
+    <Compile Include="Models\PSManagementGroupInfoProperties.cs" />
+    <Compile Include="Models\PSManagementGroupProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +151,9 @@
   <ItemGroup>
     <None Include="..\AzureRM.ManagementGroups.psd1">
       <Link>AzureRM.ManagementGroups.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.Azure.Commands.ManagementGroups.Format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
 using Newtonsoft.Json;
 
@@ -32,12 +25,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                 ManagementGroupsApiClient.GroupId = GroupId;
                 var response = ManagementGroupsApiClient.ManagementGroups.DeleteWithHttpMessagesAsync()
                         .GetAwaiter().GetResult();
+                // TODO (sepancha 12/7/2017) - Revisit what to output
                 WriteObject(JsonConvert.SerializeObject(response.Response.ReasonPhrase));
 
             }
             catch (ErrorResponseException ex)
             {
-                WriteWarning(ex.Message);
+                Utility.HandleErrorResponseException(ex);
             }
         }
     }
