@@ -22,7 +22,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public class Remove : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";

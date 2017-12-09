@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmKubernetes
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+List Kubernetes managed clusters.
 
 ## SYNTAX
 
@@ -30,16 +30,14 @@ Get-AzureRmKubernetes [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+List Kubernetes managed clusters.
 
 ## EXAMPLES
 
-### Example 1
+### List all Kubernetes clusters
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmKubernetes
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -116,14 +114,10 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### System.String
-
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
-System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
+System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster]]
 
 ## NOTES
 

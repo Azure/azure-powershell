@@ -8,26 +8,26 @@ Locale: {{ Update Locale }}
 
 # AzureRM.Kubernetes.Netcore Module
 ## Description
-{{Manually Enter Description Here}}
+Commands to interact with Azure managed Kubernetes clusters.
 
 ## AzureRM.Kubernetes.Netcore Cmdlets
 ### [Get-AzureRmKubernetes](Get-AzureRmKubernetes.md)
-{{Fill in the Synopsis}}
+List Kubernetes managed clusters.
 
 ### [Import-AzureRmKubernetesCredential](Import-AzureRmKubernetesCredential.md)
-{{Fill in the Synopsis}}
+Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ### [New-AzureRmKubernetes](New-AzureRmKubernetes.md)
-{{Fill in the Synopsis}}
+Create a new managed Kubernetes cluster.
 
 ### [Remove-AzureRmKubernetes](Remove-AzureRmKubernetes.md)
-{{Fill in the Synopsis}}
+Delete a managed Kubernetes cluster.
 
 ### [Set-AzureRmKubernetes](Set-AzureRmKubernetes.md)
-{{Fill in the Synopsis}}
+Update or create a managed Kubernetes cluster.
 
 ### [Start-AzureRmKubernetesDashboard](Start-AzureRmKubernetesDashboard.md)
-{{Fill in the Synopsis}}
+Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ### [Stop-AzureRmKubernetesDashboard](Stop-AzureRmKubernetesDashboard.md)
-{{Fill in the Synopsis}}
+Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.

@@ -28,7 +28,7 @@ using YamlDotNet.RepresentationModel;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSObject), typeof(List<PSObject>))]
+    [OutputType(typeof(string))]
     public class ImportCredential : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";

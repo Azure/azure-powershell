@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmKubernetes
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Delete a managed Kubernetes cluster.
 
 ## SYNTAX
 
@@ -31,16 +31,14 @@ Remove-AzureRmKubernetes [-Name] <String> [-ResourceGroupName] <String> [-Force]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Delete a managed Kubernetes cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Delete an existing managed Kubernetes cluster
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmKubernetes -ResourceGroupName group -Name myCluster
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -166,12 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-## OUTPUTS
-
-### System.Management.Automation.PSObject
-System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
 
 ## NOTES
 
