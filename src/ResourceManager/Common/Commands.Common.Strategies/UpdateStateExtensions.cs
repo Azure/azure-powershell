@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,6 +38,49 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 config.GetProgressMap(target));
             await context.UpdateStateAsync(config);
             return context.Result;
+        }
+
+        sealed class TaskProgress : ITaskProgress
+        {
+            public IResourceConfig Config { get; }
+
+            public bool IsDone { get; set; } = false;
+
+            DateTime _StartTime { get; } = DateTime.UtcNow;
+
+            readonly TimeSlot _TimeSlot;
+
+            readonly int _Duration;
+
+            readonly int _TotalDuration;
+
+            public TaskProgress(
+                int totalDuration, IResourceConfig config, Tuple<TimeSlot, int> timeSlotAndDuration)
+            {
+                Config = config;
+                _TotalDuration = totalDuration;
+                _TimeSlot = timeSlotAndDuration.Item1;
+                _Duration = timeSlotAndDuration.Item2;
+            }
+
+            int GetProgressTime()
+            {
+                if (IsDone)
+                {
+                    return _Duration;
+                }
+                else
+                {
+                    var seconds = (int)(DateTime.UtcNow - _StartTime).TotalSeconds;
+                    seconds *= 2;
+                    return seconds <= 0
+                        ? 0
+                        : _Duration * seconds / (_Duration + seconds);
+                }
+            }
+
+            public double GetProgress()
+                => _TimeSlot.GetTaskProgress(GetProgressTime()) / _TotalDuration;
         }
 
         sealed class Context
@@ -78,19 +122,21 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         async () =>
                         {
                             // wait for all dependencies
-                            var tasks = config
+                            var dependencyTasks = config
                                 .GetResourceDependencies()
                                 .Select(UpdateStateAsyncDispatch);
-                            await Task.WhenAll(tasks);
+                            await Task.WhenAll(dependencyTasks);
                             // call the CreateOrUpdateAsync function for the resource.
                             if (await _ShouldProcess.ShouldCreate(config, model))
                             {
-                                _ProgressReport.Start(config);
+                                var taskProgress = new TaskProgress(
+                                    _ProgressMap.Duration, config, _ProgressMap.Get(config));
+                                _ProgressReport.NewTask(taskProgress);
                                 var result = await config.CreateOrUpdateAsync(
                                     _OperationContext.Client,
                                     model,
                                     _OperationContext.CancellationToken);
-                                _ProgressReport.Done(config, _ProgressMap.Get(config));
+                                taskProgress.IsDone = true;
                                 return result;
                             }
                             else

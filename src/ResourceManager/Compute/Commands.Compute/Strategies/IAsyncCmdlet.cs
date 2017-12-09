@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
 {
-    interface IAsyncCmdlet
+    interface IAsyncCmdlet : IProgressReport
     {
         void WriteVerbose(string message);
 
         Task<bool> ShouldProcessAsync(string target, string action);
 
         void WriteObject(object value);
-
-        void WriteProgress(ProgressRecord progressRecord);
     }
 }

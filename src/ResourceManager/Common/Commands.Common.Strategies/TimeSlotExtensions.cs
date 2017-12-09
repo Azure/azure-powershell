@@ -19,7 +19,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public static class TimeSlotExtensions
+    static class TimeSlotExtensions
     {
         public static ProgressMap GetProgressMap<TModel>(
             this ResourceConfig<TModel> config, IState state)
