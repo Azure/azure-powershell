@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
         {
             public const string SubscriptionId = "Subscription Id";
             public const string GroupId = "Group Id";
+            public const string Recurse = "Recurse";
+            public const string ParentId = "Parent Id";
+            public const string GroupName = "Group Name";
+            public const string DisplayName = "Display Name";
+            public const string Expand = "Expand";
         }
     }
 }

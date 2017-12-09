@@ -14,20 +14,18 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     public class RemoveAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
+            HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
-        public string GroupId { get; set; } = null;
+        public string GroupName { get; set; } = null;
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                ManagementGroupsApiClient.GroupId = GroupId;
+                ManagementGroupsApiClient.GroupId = GroupName;
                 var response = ManagementGroupsApiClient.ManagementGroups.DeleteWithHttpMessagesAsync()
                         .GetAwaiter().GetResult();
-                // TODO (sepancha 12/7/2017) - Revisit what to output
                 WriteObject(JsonConvert.SerializeObject(response.Response.ReasonPhrase));
-
             }
             catch (ErrorResponseException ex)
             {

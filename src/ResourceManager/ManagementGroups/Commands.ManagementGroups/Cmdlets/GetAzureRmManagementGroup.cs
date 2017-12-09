@@ -18,24 +18,24 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         /// <summary>
         /// Get-AzureRmManagementGroup Cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false, HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
-        public string GroupId { get; set; }
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
+        public string GroupName { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.GroupId)]
+            HelpMessage = Constants.HelpMessages.Expand)]
         public SwitchParameter Expand;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.GroupId)]
+            HelpMessage = Constants.HelpMessages.Recurse)]
         public SwitchParameter Recurse;
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (!string.IsNullOrEmpty(GroupId))
+                if (!string.IsNullOrEmpty(GroupName))
                 {
-                    ManagementGroupsApiClient.GroupId = GroupId;
+                    ManagementGroupsApiClient.GroupId = GroupName;
                     var response = ManagementGroupsApiClient.ManagementGroups.Get(Expand.IsPresent?"children":null, Recurse.IsPresent);
                     WriteObject(new PSManagementGroup(response));
                 }

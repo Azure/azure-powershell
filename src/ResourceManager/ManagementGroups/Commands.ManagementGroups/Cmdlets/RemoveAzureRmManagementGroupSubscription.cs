@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     public class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
+            HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
-        public string GroupId { get; set; } = null;
+        public string GroupName { get; set; } = null;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.GroupId, Position = 1)]
+            HelpMessage = Constants.HelpMessages.SubscriptionId, Position = 1)]
         [ValidateNotNullOrEmpty]
         public Guid SubscriptonId { get; set; }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
-                ManagementGroupsApiClient.GroupId = GroupId;
+                ManagementGroupsApiClient.GroupId = GroupName;
                 ManagementGroupsApiClient.SubscriptionId = SubscriptonId.ToString();
 
                 var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.DeleteWithHttpMessagesAsync()

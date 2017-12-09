@@ -9,17 +9,17 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupId, Position = 0)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
-        public string GroupId { get; set; }
+        public string GroupName { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.GroupId, Position = 1)]
+            HelpMessage = Constants.HelpMessages.DisplayName, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; } = null;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.GroupId, Position = 2)]
+            HelpMessage = Constants.HelpMessages.ParentId, Position = 2)]
         [ValidateNotNullOrEmpty]
         public string ParentId { get; set; } = null;
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             try
             {
                 CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
-                ManagementGroupsApiClient.GroupId = GroupId;
+                ManagementGroupsApiClient.GroupId = GroupName;
 
                 var response = ManagementGroupsApiClient.ManagementGroups.Update(createGroupRequest);
                 WriteObject(new PSManagementGroup(response));
