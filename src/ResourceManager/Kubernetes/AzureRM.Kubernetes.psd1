@@ -71,8 +71,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Kubernetes.dll')
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
-# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @('Get-AzureRmKubernetes', 'New-AzureRmKubernetes', 'Remove-AzureRmKubernetes', 'Import-AzureRmKubernetesCredential', 'Start-AzureRmKubernetesDashboard', 'Stop-AzureRmKubernetesDashboard')
+CmdletsToExport = @('Get-AzureRmKubernetes', 'New-AzureRmKubernetes', 'Remove-AzureRmKubernetes', 'Import-AzureRmKubernetesCredential', 'Start-AzureRmKubernetesDashboard', 'Stop-AzureRmKubernetesDashboard', 'Set-AzureRmKubernetes')
 
 # Variables to export from this module
 # VariablesToExport = @()
