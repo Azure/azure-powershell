@@ -23,13 +23,16 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public PSManagementGroupChildInfo(ManagementGroupChildInfo childInfo)
         {
-            this.ChildType = childInfo.ChildType;
-            this.ChildId = childInfo.ChildId;
-            this.DisplayName = childInfo.DisplayName;
-            this.TenantId = childInfo.TenantId;
-            if (childInfo.Children != null)
+            if (childInfo != null)
             {
-                this.Children = childInfo.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
+                this.ChildType = childInfo.ChildType;
+                this.ChildId = childInfo.ChildId;
+                this.DisplayName = childInfo.DisplayName;
+                this.TenantId = childInfo.TenantId;
+                if (childInfo.Children != null)
+                {
+                    this.Children = childInfo.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
+                }
             }
         }
     }

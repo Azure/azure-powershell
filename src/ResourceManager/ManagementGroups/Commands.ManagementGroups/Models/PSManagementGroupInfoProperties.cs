@@ -17,8 +17,11 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public PSManagementGroupInfoProperties(ManagementGroupInfoProperties managementGroupProperties)
         {
-            this.TenantId = managementGroupProperties.TenantId;
-            this.DisplayName = managementGroupProperties.DisplayName;
+            if (managementGroupProperties != null)
+            {
+                this.TenantId = managementGroupProperties.TenantId;
+                this.DisplayName = managementGroupProperties.DisplayName;
+            }
         }
     }
 }

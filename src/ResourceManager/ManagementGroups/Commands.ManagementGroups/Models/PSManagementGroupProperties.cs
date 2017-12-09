@@ -22,12 +22,15 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public PSManagementGroupProperties(ManagementGroupProperties managementGroupProperties)
         {
-            this.TenantId = managementGroupProperties.TenantId;
-            this.DisplayName = managementGroupProperties.DisplayName;
-            this.Details = new PSManagementGroupDetails(managementGroupProperties.Details);
-            if (managementGroupProperties.Children != null)
+            if (managementGroupProperties != null)
             {
-                this.Children = managementGroupProperties.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
+                this.TenantId = managementGroupProperties.TenantId;
+                this.DisplayName = managementGroupProperties.DisplayName;
+                this.Details = new PSManagementGroupDetails(managementGroupProperties.Details);
+                if (managementGroupProperties.Children != null)
+                {
+                    this.Children = managementGroupProperties.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
+                }
             }
         }
     }

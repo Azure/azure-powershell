@@ -19,10 +19,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public PSManagementGroupDetails(ManagementGroupDetails details)
         {
-            this.Version = details.Version;
-            this.UpdatedTime = details.UpdatedTime;
-            this.UpdatedBy = details.UpdatedBy;
-            this.Parent = new PSParentGroupInfo(details.Parent);
+            if (details != null)
+            {
+                this.Version = details.Version;
+                this.UpdatedTime = details.UpdatedTime;
+                this.UpdatedBy = details.UpdatedBy;
+                this.Parent = new PSParentGroupInfo(details.Parent);
+            }
         }
 
     }
