@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '4.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -233,7 +233,8 @@ PrivateData = @{
 * Fixed issue https://github.com/Azure/azure-powershell/issues/5046
 	- AuditAction parameter in auditing cmdlets is no longer being ignored
 * Fixed an issue in Auditing cmdlets when ''Secondary'' StorageKeyType is provided
-	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing ''Secondary'' value for StorageKeyType parameter.'
+    - When setting blob auditing, the primary storage account key was used instead of the secondary key when providing ''Secondary'' value for StorageKeyType parameter.
+* Changing the wording for confirmation message from Set-AzureRmSqlServerTransparentDataEncryptionProtector'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
