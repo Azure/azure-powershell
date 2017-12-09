@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmKubernetes
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update or create a managed Kubernetes cluster.
 
 ## SYNTAX
 
@@ -308,7 +308,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
-System.String
 
 ## OUTPUTS
 

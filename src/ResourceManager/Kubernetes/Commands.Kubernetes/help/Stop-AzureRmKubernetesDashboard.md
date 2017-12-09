@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzureRmKubernetesDashboard
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.
 
 ## SYNTAX
 
@@ -17,13 +17,13 @@ Stop-AzureRmKubernetesDashboard [-DefaultProfile <IAzureContextContainer>] [<Com
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Stop-AzureRmKubernetes
 ```
 
 {{ Add example description here }}
@@ -47,14 +47,6 @@ Accept wildcard characters: False
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-### None
-
-## OUTPUTS
-
-### System.Object
 
 ## NOTES
 

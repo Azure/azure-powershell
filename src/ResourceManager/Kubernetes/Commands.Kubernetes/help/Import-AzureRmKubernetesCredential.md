@@ -8,7 +8,7 @@ schema: 2.0.0
 # Import-AzureRmKubernetesCredential
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ## SYNTAX
 
@@ -32,16 +32,14 @@ Import-AzureRmKubernetesCredential [-Name] <String> [-ResourceGroupName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Import and merge Kubectl config
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Import-AzureRmKubernetesCredential -ResourceGroupName group -Name myCluster
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -197,15 +195,10 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### System.String
-System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
-System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.String
+The Kubernetes config file as a string
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzureRmKubernetesDashboard
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ## SYNTAX
 
@@ -31,16 +31,14 @@ Start-AzureRmKubernetesDashboard [-Name] <String> [-ResourceGroupName] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel is setup in a PowerShell job called Kubectl-Tunnel and can be found by running `Get-Job`. The tunnel should be accessable via [http://127.0.0.1:8001](http://127.0.0.1:8001).
 
 ## EXAMPLES
 
-### Example 1
+### Start an SSH tunnel and open a browser to the Kubernetes dashboard
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Start-AzureRmKubernetesDashboard -ResourceGroupName group -Name myCluster
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -135,11 +133,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-## OUTPUTS
-
-### System.Object
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
 
 ## NOTES
 

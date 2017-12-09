@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmKubernetes
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new managed Kubernetes cluster.
 
 ## SYNTAX
 
@@ -29,16 +29,14 @@ New-AzureRmKubernetes [-Force] [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a new managed Kubernetes cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Create a new managed Kubernetes cluster with default params
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmKubernetes -ResourceGroupName group -Name myCluster
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -256,7 +254,6 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-{{Fill Tags Description}}
 
 ```yaml
 Type: Hashtable
@@ -273,17 +270,9 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### System.String
-System.Int32
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Collections.Hashtable
-
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
-System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
 
 ## NOTES
 
