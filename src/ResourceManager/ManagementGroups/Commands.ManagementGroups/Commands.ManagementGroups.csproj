@@ -132,6 +132,7 @@
     <Compile Include="Models\PSManagementGroupInfo.cs" />
     <Compile Include="Models\PSManagementGroupInfoProperties.cs" />
     <Compile Include="Models\PSManagementGroupProperties.cs" />
+    <Compile Include="Models\PSParentGroupInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
