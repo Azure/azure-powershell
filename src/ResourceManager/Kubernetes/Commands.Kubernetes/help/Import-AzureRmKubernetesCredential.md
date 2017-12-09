@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Kubernetes.dll-Help.xml
-Module Name: AzureRM.Kubernetes
+Module Name: AzureRM.Kubernetes.Netcore
 online version:
 schema: 2.0.0
 ---
@@ -12,9 +12,23 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### InputObjectParameterSet
+```
+Import-AzureRmKubernetesCredential -InputObject <PSKubernetesCluster> [-Admin] [[-ConfigPath] <String>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Import-AzureRmKubernetesCredential [-Id] <String> [-Admin] [[-ConfigPath] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GroupNameParameterSet
 ```
 Import-AzureRmKubernetesCredential [-Name] <String> [-ResourceGroupName] <String> [-Admin]
  [[-ConfigPath] <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +56,7 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -59,7 +73,7 @@ Aliases:
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -93,12 +107,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of your managed Kubernetes cluster
-
-```yaml
+### -Id
+Id of a managed Kubernetes cluster```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: IdParameterSet
 Aliases:
 
 Required: True
@@ -108,18 +120,46 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+A PSKubernetesCluster object, normally passed through the pipeline.```yaml
+Type: PSKubernetesCluster
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of your managed Kubernetes cluster
+
+```yaml
+Type: String
+Parameter Sets: GroupNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource group name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupNameParameterSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,17 +194,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 System.Management.Automation.SwitchParameter
 
-
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
 System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
 
 ## NOTES
 

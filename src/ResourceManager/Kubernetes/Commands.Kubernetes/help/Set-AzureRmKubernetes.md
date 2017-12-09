@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmKubernetes
+# Set-AzureRmKubernetes
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -14,15 +14,30 @@ schema: 2.0.0
 
 ### defaultParameterSet (Default)
 ```
-New-AzureRmKubernetes [-Force] [-ResourceGroupName] <String> [-Name] <String> [-Location <String>]
+Set-AzureRmKubernetes [-ResourceGroupName] <String> [-Name] <String> [-Location <String>]
  [-AdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeCount <Int32>]
  [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>] [-Tags <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Set-AzureRmKubernetes -InputObject <PSKubernetesCluster> [-Location <String>] [-AdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Set-AzureRmKubernetes [-Id] <String> [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-SshKeyValue <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### servicePrincipalParameterSet
 ```
-New-AzureRmKubernetes [-Force] [-ResourceGroupName] <String> [-Name] <String> [-ClientId] <String>
+Set-AzureRmKubernetes [-ResourceGroupName] <String> [-Name] <String> [-ClientId] <String>
  [-ClientSecret] <String> [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
  [-SshKeyValue <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -117,18 +132,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Create cluster even if it already exists
+### -Id
+Id of a managed Kubernetes cluster
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: IdParameterSet
 Aliases:
 
-Required: False
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+A PSKubernetesCluster object, normally passed through the pipeline.
+
+```yaml
+Type: PSKubernetesCluster
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -169,7 +199,7 @@ Kubernetes managed cluster Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: defaultParameterSet, servicePrincipalParameterSet
 Aliases:
 
 Required: True
@@ -229,7 +259,7 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: defaultParameterSet, servicePrincipalParameterSet
 Aliases:
 
 Required: True
@@ -258,6 +288,8 @@ Accept wildcard characters: False
 ### -Tags
 {{Fill Tags Description}}
 
+
+
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
@@ -275,15 +307,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Int32
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Collections.Hashtable
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
+System.String
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
-System.Collections.Generic.List`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
 
 ## NOTES
 
