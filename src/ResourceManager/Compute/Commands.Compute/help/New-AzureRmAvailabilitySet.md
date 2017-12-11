@@ -15,7 +15,7 @@ Creates an Azure availability set.
 ```
 New-AzureRmAvailabilitySet [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-PlatformUpdateDomainCount] <Int32>] [[-PlatformFaultDomainCount] <Int32>] [[-Sku] <String>] [-Managed]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ PS C:\> New-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "A
 This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
