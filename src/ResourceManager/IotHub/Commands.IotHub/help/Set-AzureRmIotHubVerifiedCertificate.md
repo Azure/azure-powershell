@@ -25,7 +25,7 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\myverifiedcertificate.cer" -Etag "AAAAAAFPazE="
+PS C:\> Set-AzureRmIotHubVerifiedCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\myverifiedcertificate.cer" -Etag "AAAAAAFPazE="
 ```
 
 Verifies ownership of the MyCertificate private key. 
