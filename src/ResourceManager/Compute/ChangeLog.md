@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
+
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
 * Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
