@@ -754,6 +754,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must supply Subscription Id and Tenant Id when using -SkipValidation.
+        /// </summary>
+        internal static string SubscriptionOrTenantMissing {
+            get {
+                return ResourceManager.GetString("SubscriptionOrTenantMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide a valid tenant or a valid subscription..
         /// </summary>
         internal static string SubscriptionOrTenantRequired {

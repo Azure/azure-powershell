@@ -400,4 +400,7 @@
   <data name="CreateResourceGroupMessage" xml:space="preserve">
     <value>Create new resource group '{0}' and set as default?</value>
   </data>
+  <data name="SubscriptionOrTenantMissing" xml:space="preserve">
+    <value>Must supply Subscription Id and Tenant Id when using -SkipValidation</value>
+  </data>
 </root>
