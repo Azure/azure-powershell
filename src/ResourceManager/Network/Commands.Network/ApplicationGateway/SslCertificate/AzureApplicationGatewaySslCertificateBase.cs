@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
+using System.Security;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -38,18 +38,15 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Certificate password")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("(Get/Set/New)-AzureRmApplicationGatewaySslCertificate: The parameter \"Password\" is being changed from a string to a SecureString in an upcoming breaking change release.")]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         public PSApplicationGatewaySslCertificate NewObject()
         {
             var sslCertificate = new PSApplicationGatewaySslCertificate();
 
             sslCertificate.Name = this.Name;
-            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(CertificateFile));
-#pragma warning disable 0618
+            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
             sslCertificate.Password = this.Password;
-#pragma warning restore 0618
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

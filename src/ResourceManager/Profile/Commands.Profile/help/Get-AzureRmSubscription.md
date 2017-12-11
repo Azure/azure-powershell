@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Get subscriptions that the current account can access.
 
 ### ListByIdInTenant (Default)
 ```
-Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>]
+Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByNameInTenant
 ```
-Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>]
+Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,9 +35,10 @@ access.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : xxxx-xxxx-xxxx-xxxx
-TenantId          : yyyy-yyyy-yyyy-yyyy
+Name     : Contoso Subscription 1
+Id       : xxxx-xxxx-xxxx-xxxx
+TenantId : yyyy-yyyy-yyyy-yyyy
+State    : Enabled
 ```
 
 This command gets all subscriptions in all tenants that are authorized for
@@ -47,13 +48,15 @@ the current account.
 ```
 PS C:\>Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 1
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 
-Subscription Name : Contoso Subscription 2
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 2
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 ```
 
 List all subscriptions in the given tenant that are authorized for the
@@ -63,13 +66,15 @@ current account.
 ```
 PS C:\>Get-AzureRmSubscription
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 1
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 
-Subscription Name : Contoso Subscription 2
-SubscriptionId    : yyyy-yyyy-yyyy-yyyy
-TenantId          : xxxx-xxxx-xxxx-xxxx
+Name     : Contoso Subscription 2
+Id       : yyyy-yyyy-yyyy-yyyy
+TenantId : xxxx-xxxx-xxxx-xxxx
+State    : Enabled
 ```
 
 This command gets all subscriptions in the current tenant that are
@@ -79,9 +84,12 @@ authorized for the current user.
 ```
 PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
 
-Subscription Name : Contoso Subscription 1
-SubscriptionId    : xxxx-xxxx-xxxx-xxxx
-TenantId          : yyyy-yyyy-yyyy-yyyy
+Environment           : AzureCloud
+Account               : user@example.com
+TenantId              : yyyy-yyyy-yyyy-yyyy
+SubscriptionId        : xxxx-xxxx-xxxx-xxxx
+SubscriptionName      : Contoso Subscription 1
+CurrentStorageAccount :
 ```
 
 This command gets the specified subscription, and then sets the current
@@ -89,6 +97,21 @@ context to use it. All subsequent cmdlets in this session use the new
 subscription (Contoso Subscription 1) by default.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, tenant and subscription used for communication with azure

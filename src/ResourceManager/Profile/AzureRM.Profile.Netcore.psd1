@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.6'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -54,13 +54,32 @@ PowerShellVersion = '5.1'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
+    'netcoreapp2.0\Microsoft.Azure.Commands.Common.Authentication.dll', 
+    'netcoreapp2.0\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll',
+    'netcoreapp2.0\Microsoft.Azure.Commands.Common.Authorization.dll',
+    'netcoreapp2.0\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
+    'netcoreapp2.0\Microsoft.Azure.Commands.Common.Network.dll',
+    'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Common.dll',
+    'netcoreapp2.0\Microsoft.WindowsAzure.Commands.Common.dll',
+    'netcoreapp2.0\Microsoft.WindowsAzure.Commands.Common.Storage.dll',
+    'netcoreapp2.0\Hyak.Common.dll',
+    'netcoreapp2.0\Microsoft.ApplicationInsights.dll',
+    'netcoreapp2.0\Microsoft.Azure.Common.dll',
+    'netcoreapp2.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll',
+    'netcoreapp2.0\Microsoft.Rest.ClientRuntime.dll',
+    'netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.dll',
+    'netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll',
+    'netcoreapp2.0\Microsoft.Threading.Tasks.dll',
+    'netcoreapp2.0\Microsoft.Threading.Tasks.Extensions.dll',
+    'netcoreapp2.0\Microsoft.Threading.Tasks.Extensions.Desktop.dll',
+    'netcoreapp2.0\Newtonsoft.Json.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @('.\netcoreapp2.0\AzureRmProfileStartup.ps1')
+ScriptsToProcess = @('netcoreapp2.0\AzureRmProfileStartup.ps1')
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Profile.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Profile.format.ps1xml'
@@ -72,19 +91,24 @@ NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Profile.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmDataCollection', 'Enable-AzureRmDataCollection', 
+CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
+               'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
                'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
                'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
                'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
+               'Select-AzureRmContext', 'Rename-AzureRmContext', 
+               'Remove-AzureRmContext', 'Clear-AzureRmContext', 
+               'Remove-AzureRmAccount', 'Get-AzureRmContextAutosaveSetting', 
                'Set-AzureRmDefault', 'Get-AzureRmDefault', 'Clear-AzureRmDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Add-AzureRmAccount', 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error'
+AliasesToExport = 'Add-AzureRmAccount', 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error',
+'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

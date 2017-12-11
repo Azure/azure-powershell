@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationrunbook
 schema: 2.0.0
 ---
 
@@ -21,11 +21,10 @@ Import-AzureRmAutomationRunbook [-Path] <String> [-Description <String>] [-Name 
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the
-path to a wps_2 script (.ps1 ) file to import for wps_2 and wps_2 Workflow runbooks, or to a
-graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the
-name of the runbook. For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow
-definition that matches the name of the file.
+The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the 
+path to a wps_2 script (.ps1) file to import for wps_2 and wps_2 Workflow runbooks,
+(.graphrunbook) file for graphical runbooks, or (.py) file for python 2 runbooks. 
+For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow definition that matches the name of the file.
 
 ## EXAMPLES
 
@@ -218,6 +217,7 @@ Valid values are:
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
+- Python2
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
@@ -226,7 +226,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python
 
 Required: True
 Position: Named

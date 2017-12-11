@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             this.InitializeForFixedDate();
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.ScheduleDays = null;
-            Cmdlet.ScheduleHours = null;
-            Cmdlet.ScheduleMinutes = null;
+            Cmdlet.ScheduleDay = null;
+            Cmdlet.ScheduleHour = null;
+            Cmdlet.ScheduleMinute = null;
             Cmdlet.ScheduleTimeZone = null;
 
             Cmdlet.ExecuteCmdlet();
@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.DefaultCapacity = "1";
             Cmdlet.MaximumCapacity = "10";
             Cmdlet.MinimumCapacity = "1";
-            Cmdlet.Rules = autoscaleRules;
+            Cmdlet.Rule = autoscaleRules;
         }
 
         public void InitializeForRecurrentSchedule()
         {
             Cmdlet.RecurrenceFrequency = RecurrenceFrequency.Minute;
-            Cmdlet.ScheduleDays = new List<string> { "1", "2", "3" };
-            Cmdlet.ScheduleHours = new List<int?> { 5, 10, 15 };
-            Cmdlet.ScheduleMinutes = new List<int?> { 15, 30, 45 };
+            Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" };
+            Cmdlet.ScheduleHour = new List<int?> { 5, 10, 15 };
+            Cmdlet.ScheduleMinute = new List<int?> { 15, 30, 45 };
             Cmdlet.ScheduleTimeZone = "GMT";
         }
 

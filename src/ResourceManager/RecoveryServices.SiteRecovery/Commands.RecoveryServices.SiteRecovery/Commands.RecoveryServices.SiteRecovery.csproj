@@ -44,7 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.1-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.2-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Security.Cryptography">
@@ -54,6 +54,10 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertSetting\SetAzureRmRecoveryServicesAsrAlertSetting.cs" />
+    <Compile Include="AlertSetting\GetAzureRmRecoveryServicesAsrAlertSetting.cs" />
+    <Compile Include="Common\PSAsrAlertSettingClient.cs" />
+    <Compile Include="Common\PSAsrEventClient.cs" />
     <Compile Include="Common\PSAsrNetworkClient.cs" />
     <Compile Include="Common\PSAsrNetworkMappingClient.cs" />
     <Compile Include="Common\PSAsrClient.cs" />
@@ -69,18 +73,31 @@
     <Compile Include="Common\PSAsrFabricClient.cs" />
     <Compile Include="Common\PSAsrStorageClassificationClient.cs" />
     <Compile Include="Common\AsrCmdletBase.cs" />
+    <Compile Include="Common\PSAsrVCenterClient.cs" />
+    <Compile Include="Event\GetAzureRmRecoveryServicesAsrEvent.cs" />
     <Compile Include="Fabrics\GetAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\NewAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\RemoveAzureRmRecoveryServicesAsrFabric.cs" />
+    <Compile Include="Fabrics\StartAzureRmRecoveryServicesAsrSwitchProcessServerJob.cs" />
     <Compile Include="Job\StopAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\PSAlertSetting.cs" />
     <Compile Include="Models\PSConstants.cs" />
+    <Compile Include="Models\PSEvent.cs" />
+    <Compile Include="Models\PSFabricDetails.cs" />
     <Compile Include="Models\PSNetworkObjects.cs" />
     <Compile Include="Models\PSRecoveryPlanObjects.cs" />
+    <Compile Include="Models\PSvCenter.cs" />
     <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Network\GetAzureRmRecoveryServicesAsrNetwork.cs" />
     <Compile Include="Network\UpdateAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Policy\UpdateAzureRmRecoveryServicesAsrPolicy.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ProtectableItem\GetAzureRmRecoveryServicesAsrProtectableItem.cs" />
+    <Compile Include="ProtectableItem\NewAzureRmRecoveryServicesAsrProtectableItem.cs" />
     <Compile Include="ProtectionContainerMapping\GetAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainerMapping\NewAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainerMapping\RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
@@ -95,8 +112,11 @@
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrApplyRecoveryPoint.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrCommitFailoverJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrPlannedFailoverJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrResynchronizeReplicationJob.cs" />
+    <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrTestFailoverJob.cs" />
     <Compile Include="ReplicationProtectedItem\StartAzureRmRecoveryServicesAsrUnPlannedFailover.cs" />
+    <Compile Include="ReplicationProtectedItem\UpdateAzureRmRecoveryServicesAsrMobilityService.cs" />
     <Compile Include="ReplicationProtectedItem\UpdateAzureRmRecoveryServicesAsrProtectionDirection.cs" />
     <Compile Include="Network\NewAzureRmRecoveryServicesAsrNetworkMapping.cs" />
     <Compile Include="Network\RemoveAzureRmRecoveryServicesAsrNetworkMapping.cs" />
@@ -113,11 +133,6 @@
     <Compile Include="Models\PSObjects.cs" />
     <Compile Include="Models\PSParameterSets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <DependentUpon>Resources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Policy\RemoveAzureRmRecoveryServicesAsrPolicy.cs" />
     <Compile Include="Policy\NewAzureRmRecoveryServicesAsrPolicy.cs" />
     <Compile Include="Policy\GetAzureRmRecoveryServicesAsrPolicy.cs" />
@@ -131,6 +146,10 @@
     <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultSettings.cs" />
     <Compile Include="Vault\GetAzureRmRecoveryServicesAsrVaultSettings.cs" />
     <Compile Include="Vault\ImportAzureRmRecoveryServicesAsrVaultSettingsFile.cs" />
+    <Compile Include="vCenter\GetAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\NewAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\RemoveAzureRmRecoveryServicesAsrvCenter.cs" />
+    <Compile Include="vCenter\UpdateAzureRmRecoveryServicesAsrvCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -146,8 +165,8 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="RecoveryServicesAsrStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

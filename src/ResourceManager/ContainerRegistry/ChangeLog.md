@@ -19,6 +19,15 @@
 -->
 ## Current Release
 
+## Version 1.0.1
+* New cmdlets for geo-replication and webhooks
+    - Get/New/Remove-AzureRmContainerRegistryReplication
+    - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook
+
+## Version 0.3.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.2.7
 
 ## Version 0.2.6

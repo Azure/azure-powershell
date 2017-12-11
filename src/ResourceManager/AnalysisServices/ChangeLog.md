@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.6.1
+* Remove validate set of location into dynamic lookup so that all clouds are supported.
+
+## Version 0.5.0
+* Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.4.7
 
 ## Version 0.4.6

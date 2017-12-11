@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRm.Relay
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
 Download Help Link: None_Azure
@@ -6,68 +6,68 @@ Help Version: 4.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Relay Module
+# AzureRm.Relay Module
 ## Description
 List of the cmdlets for Azure Relay
 
-## AzureRM.Relay Cmdlets
+## AzureRm.Relay Cmdlets
 ### [Get-AzureRmRelayAuthorizationRule](Get-AzureRmRelayAuthorizationRule.md)
-Gets the authorization rule or list of authorization rules in a Relay Enttities.
+Gets the description of a specified authorization rule for a given Relay entities (Namespace/WcfRelay/HybridConnection).
 
 ### [Get-AzureRmRelayHybridConnection](Get-AzureRmRelayHybridConnection.md)
-Gets an existing Relay Hybridconnection or list of Relay Hybridconnection in an existing Relay namespace.
+Gets a description for the specified HybridConnection within the Relay namespace.
 
 ### [Get-AzureRmRelayKey](Get-AzureRmRelayKey.md)
-Gets the primary or secondary key for an authorization rule in an existing Relay.
+Gets the primary and secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
 
 ### [Get-AzureRmRelayNamespace](Get-AzureRmRelayNamespace.md)
-Gets a namespace or list of namespaces in the existing resource group.
+Gets a description for the specified Relay namespace within the resource group.
 
 ### [Get-AzureRmRelayOperation](Get-AzureRmRelayOperation.md)
-Gets the list of operations available under Relay service.
+List supported Relay Operations
 
 ### [Get-AzureRmWcfRelay](Get-AzureRmWcfRelay.md)
-Gets an existing queue or list of WcfRelay in an existing Relay namespace.
+Returns a description for the specified WcfRelay.
 
 ### [New-AzureRmRelayAuthorizationRule](New-AzureRmRelayAuthorizationRule.md)
-Adds a new authorization rule to an existing Relay namespace/WcfRelay/Hybridconnection.
+Creates a new authorization rule for the specified Relay entities (Namespace/WcfRelay/HybridConnection).
 
 ### [New-AzureRmRelayHybridConnection](New-AzureRmRelayHybridConnection.md)
-Adds a new Hybridconnection to an existing Relay namespace.
+Creates a HybridConnection in the specified Relay namespace.
 
 ### [New-AzureRmRelayKey](New-AzureRmRelayKey.md)
-Generates a new primary or secondary key for an authorization rule in an existing Relay entities.
+Regenerates the primary or secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection)
 
 ### [New-AzureRmRelayNamespace](New-AzureRmRelayNamespace.md)
-Adds a new Relay namespace in the existing resource group.
+Creates a new Relay namespace.
 
 ### [New-AzureRmWcfRelay](New-AzureRmWcfRelay.md)
-Adds a new WcfRelay to an existing namespace.
+Creates a WcfRelay in the specified Relay namespace.
 
 ### [Remove-AzureRmRelayAuthorizationRule](Remove-AzureRmRelayAuthorizationRule.md)
-Deletes an existing authorization rule in a Relay Entity.
+Removes the authorization rule of a HybridConnection from the given Relay entities (Namespace/WcfRelay/HybridConnection).
 
 ### [Remove-AzureRmRelayHybridConnection](Remove-AzureRmRelayHybridConnection.md)
-Deletes an existing Hybridconnection in a Relay namespace.
+Removes the HybridConnection from the specified HybridConnection namespace.
 
 ### [Remove-AzureRmRelayNamespace](Remove-AzureRmRelayNamespace.md)
-Deletes an existing Relay namespace.
+Removes the namespace from the specified resource group. 
 
 ### [Remove-AzureRmWcfRelay](Remove-AzureRmWcfRelay.md)
-Deletes an existing WcfRelay in a Relay namespace.
+Removes the WcfRelay from the specified Relay namespace.
 
 ### [Set-AzureRmRelayAuthorizationRule](Set-AzureRmRelayAuthorizationRule.md)
-Updates authorization rule of an existing Relay namespace/WcfRelay/Hybridconnection.
+Updates the specified authorization rule description for the given Relay entities (Namespace/WcfRelay/HybridConnection).
 
 ### [Set-AzureRmRelayHybridConnection](Set-AzureRmRelayHybridConnection.md)
-Updates properties of an existing Hybridconnection in a Relay namespace.
+Updates the description of a HybridConnection in the specified Relay namespace.
 
 ### [Set-AzureRmRelayNamespace](Set-AzureRmRelayNamespace.md)
-Updates properties of an existing Relay namespace.
+Updates the description of an existing Relay namespace.
 
 ### [Set-AzureRmWcfRelay](Set-AzureRmWcfRelay.md)
-Updates properties of an existing WcfRelay in a Relay namespace.
+Updates the description of a WcfRelay in the specified Relay namespace.
 
-### [Test-AzureRmCheckNameAvailability](Test-AzureRmCheckNameAvailability.md)
-Check the availability status of given namespace name.
+### [Test-AzureRmRelayName](Test-AzureRmRelayName.md)
+Checks the Availability of the given NameSpace Name
 

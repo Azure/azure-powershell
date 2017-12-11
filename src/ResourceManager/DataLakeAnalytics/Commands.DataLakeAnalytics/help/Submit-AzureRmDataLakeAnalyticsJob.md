@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0DB9595A-6C8B-4F3F-A707-2DB41D7C7470
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/submit-azurermdatalakeanalyticsjob
 schema: 2.0.0
 ---
 
@@ -16,49 +16,51 @@ Submits a job.
 ### SubmitUSqlJobWithScriptPath
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubmitUSqlJob
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithScriptPathAndRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithRecurrence
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithScriptPathAndPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
- [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubmitUSqlJobWithPipeline
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
- [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
- [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
- [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-AnalyticsUnits] <Int32>]
+ [[-Priority] <Int32>] [-ScriptParameter <IDictionary>] -RecurrenceId <Guid> [-RecurrenceName <String>]
+ -PipelineId <Guid> [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,15 +70,30 @@ The **Submit-AzureRmDataLakeAnalyticsJob** cmdlet submits an Azure Data Lake Ana
 
 ### Example 1: Submit a job
 ```
-PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -DegreeOfParallelism 32
+PS C:\>Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32
 ```
 
 This command submits a Data Lake Analytics job.
 
+### Example 2: Submit a job with script parameters
+```
+PS C:\>$parameters = [ordered]@{}
+$parameters["Department"] = "Sales"
+$parameters["NumRecords"] = 1000
+$parameters["StartDateTime"] = (Get-Date).AddDays(-14)
+Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32 -ScriptParameter $parameters
+```
+
+U-SQL script parameters are prepended above the main script contents, e.g.:
+
+DECLARE @Department string = "Sales";
+DECLARE @NumRecords int = 1000;
+DECLARE @StartDateTime DateTime = new DateTime(2017, 12, 6, 0, 0, 0, 0);
+
 ## PARAMETERS
 
 ### -Account
-Specifies the Data Lake Analytics account name.
+Name of Data Lake Analytics account under which the job will be submitted.
 
 ```yaml
 Type: String
@@ -91,12 +108,12 @@ Accept wildcard characters: False
 ```
 
 ### -CompileMode
-Specifies the compilation mode of the job.
-The acceptable values for this parameter are:
+The type of compilation to be done on this job. 
+Valid values: 
 
-- Semantic
-- Full
-- SingleBox
+- Semantic (Only performs semantic checks and necessary sanity checks)
+- Full (Full compilation)
+- SingleBox (Full compilation performed locally)
 
 ```yaml
 Type: String
@@ -112,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -CompileOnly
-Indicates that this cmdlet compiles the job without running it.
+Indicates that the submission should only build the job and not execute if set to true.
 
 ```yaml
 Type: SwitchParameter
@@ -141,13 +158,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DegreeOfParallelism
-Specifies the Data Lake Analytics Units (DLAU) of the job, which indicates the maximum allowable parallelism of the job.
+### -AnalyticsUnits
+The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: DegreeOfParallelism
 
 Required: False
 Position: 6
@@ -157,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the job name.
+The friendly name of the job to submit.
 
 ```yaml
 Type: String
@@ -217,9 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-Specifies the priority of the job.
-If not specified, the priority is 1000.
-A low number indicates a higher job priority.
+The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority.
 
 ```yaml
 Type: Int32
@@ -279,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -Runtime
-Specifies the runtime version of the job.
+Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used.
 
 ```yaml
 Type: String
@@ -294,7 +309,7 @@ Accept wildcard characters: False
 ```
 
 ### -Script
-Specifies the contents of the script to run.
+Script to execute (written inline).
 
 ```yaml
 Type: String
@@ -308,8 +323,23 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -ScriptParameter
+The script parameters for this job, as a dictionary of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
+
+```yaml
+Type: IDictionary
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ScriptPath
-Specifies the local file path to the script to run.
+Path to the script file to submit.
 
 ```yaml
 Type: String

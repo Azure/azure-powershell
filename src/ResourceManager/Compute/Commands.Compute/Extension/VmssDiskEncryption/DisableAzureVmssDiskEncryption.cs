@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -24,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
-        VerbsLifecycle.Disable  ,
+        VerbsLifecycle.Disable,
         ProfileNouns.AzureVmssDiskEncryption,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -121,6 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             null));
                     }
 
+                    bool extensionFound = false;
                     foreach (var ext in vmss.VirtualMachineProfile.ExtensionProfile.Extensions)
                     {
                         if (ext.Name.Equals(this.ExtensionName))
@@ -135,10 +138,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                 this.ExtensionName,
                                 ext);
                             var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                            extensionFound = true;
                             WriteObject(psResult);
                             break;
                         }
+                    }
 
+                    if (!extensionFound)
+                    {
                         ThrowTerminatingError(new ErrorRecord(
                             new ArgumentException(string.Format("Extension, {0},  is not installed in the VM Scale Set.", this.ExtensionName)),
                             "InvalidArgument",

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 8B10E476-F283-4BDC-BFAD-A33F8EC38341
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/set-azurermdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Modifies a Data Lake Analytics account.
 
 ```
 Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
- [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
+ [-MaxAnalyticsUnits <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
  [-FirewallState <FirewallState>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -81,13 +81,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxDegreeOfParallelism
-The optional maximum supported degree of parallelism to update the account with.
+### -MaxAnalyticsUnits
+The optional maximum supported analytics units to update the account with.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxDegreeOfParallelism
 
 Required: False
 Position: Named

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: E460D108-2BF9-4F57-AF3D-13868DC73EA0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermroleassignment
 schema: 2.0.0
 ---
 
@@ -15,70 +15,70 @@ Assigns the specified RBAC role to the specified principal, at the specified sco
 
 ### EmptyParameterSet (Default)
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
 New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String>
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> [-Scope <String>] -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -ObjectId <Guid> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Guid>
+New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Guid> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
 ```
 New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String>
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String>
+New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> [-AllowDelegation]
  -RoleDefinitionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ServicePrincipalName <String> [-Scope <String>] -RoleDefinitionName <String>
+New-AzureRmRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ To grant access to a specific resource group within a subscription, assign a rol
 The subject of the assignment must be specified.
 To specify a user, use SignInName or Azure AD ObjectId parameters.
 To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
+And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
 
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
 
@@ -109,10 +109,10 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 
 ### --------------------------  Example 1  --------------------------
 ```
-PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader
+PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -AllowDelegation
 ```
 
-Grant Reader role access to a user at a resource group scope
+Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
 ### --------------------------  Example 2  --------------------------
 ```
@@ -140,6 +140,15 @@ PS C:\> New-AzureRMRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b
 ```
 
 Grant access to a group at a nested resource (subnet)
+
+### --------------------------  Example 5  --------------------------
+```
+PS C:\> $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName "testServiceprincipal"
+PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
+
+```
+
+Grant reader access to a service principal
 
 ## PARAMETERS
 
@@ -305,13 +314,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServicePrincipalName
-The ServicePrincipalName of the Azure AD application
+### -ApplicationId
+The Application ID of the ServicePrincipal
 
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: SPN
+Aliases: SPN,ServicePrincipalName
 
 Required: True
 Position: Named
@@ -335,6 +344,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AllowDelegation
+The delegation flag while creating a Role assignment.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EmptyParameterSet,ResourceGroupWithObjectIdParameterSet,ResourceWithObjectIdParameterSet,ScopeWithObjectIdParameterSet,RoleIdWithScopeAndObjectIdParameterSet,ResourceGroupWithSignInNameParameterSet,ResourceGroupWithSignInNameParameterSet,ScopeWithSignInNameParameterSet,ResourceGroupWithSPNParameterSet,ResourceWithSPNParameterSet,ScopeWithSPNParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -354,4 +377,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [Remove-AzureRmRoleAssignment](./Remove-AzureRmRoleAssignment.md)
 
 [Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
-

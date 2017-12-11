@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusqueue
 schema: 2.0.0
 ---
 
@@ -12,13 +13,13 @@ Creates a Service Bus queue in the specified Service Bus namespace.
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [-QueueName] <String>
- -EnablePartitioning <Boolean> [-LockDuration <String>] [-AutoDeleteOnIdle <String>]
+New-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-EnablePartitioning <Boolean>] [-LockDuration <String>] [-AutoDeleteOnIdle <String>]
  [-DefaultMessageTimeToLive <String>] [-DuplicateDetectionHistoryTimeWindow <String>]
- [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableExpress <Boolean>]
- [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabytes <Int64>]
- [-MessageCount <Int64>] [-RequiresDuplicateDetection <Boolean>] [-RequiresSession <Boolean>]
- [-SizeInBytes <Int64>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableExpress <Boolean>] [-MaxDeliveryCount <Int32>]
+ [-MaxSizeInMegabytes <Int64>] [-MessageCount <Int64>] [-RequiresDuplicateDetection <Boolean>]
+ [-RequiresSession <Boolean>] [-SizeInBytes <Int64>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +82,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DuplicateDetectionHistoryTimeWindow
 Specifies the duplicate detection history time window, a [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) valuethat defines the duration of the duplicate detection history. The default value is 10 minutes.
 
@@ -121,7 +137,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: TRUE, FALSE
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -188,31 +204,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
+### -Name
+Queue Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The Service Bus queue name.
+### -Namespace
+Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -250,13 +266,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
+### -ResourceGroupName
+The name of the resource group
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 5.0.3
+* Add deprecation warnings for all cmdlets in this module in preparation for the next breaking change release.
+    - Please see the upcoming breaking changes guide for more information on how to migrate your cmdlets from AzureRM.
+
+## Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 5.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 4.4.1
 
 ## Version 4.4.0
