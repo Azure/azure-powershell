@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public void BeginInvoke(Action action)
             => _Tasks.Enqueue(new Task(action));
 
+        /// <summary>
+        /// Wait for the given task to complete.
+        /// </summary>
+        /// <param name="task">running task</param>
+        /// <param name="progressUpdate">an action to update/show task progress.</param>
         public void Wait(Task task, Action progressUpdate)
         {
             while (!task.IsCompleted)

@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         /// <summary>
-        /// TimeSlon and a duration of a task related to the given config.
+        /// Returns TimeSlon and a duration of a task related to the given config.
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">a resource config</param>
         /// <returns></returns>
         public Tuple<TimeSlot, int> Get(IResourceConfig config)
             => _Map.GetOrNull(config);
