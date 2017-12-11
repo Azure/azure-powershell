@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
 
+        private const string Clusters = "clusters";
+        private const string Users = "users";
+
         [Parameter(Mandatory =true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline =true,
@@ -184,9 +187,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
             newConfigYaml.Load(new StringReader(additions));
             var originalMapping = (YamlMappingNode) originalYaml.Documents[0].RootNode;
             var newMapping = (YamlMappingNode) newConfigYaml.Documents[0].RootNode;
-            var mergedClusters = MergeNamedItems(originalMapping, newMapping, "clusters");
-            originalMapping.Children.Remove(new YamlScalarNode("clusters"));
-            originalMapping.Children.Add(new YamlScalarNode("clusters"), mergedClusters);
+            var mergedClusters = MergeNamedItems(originalMapping, newMapping, Clusters);
+            originalMapping.Children.Remove(new YamlScalarNode(Clusters));
+            originalMapping.Children.Add(new YamlScalarNode(Clusters), mergedClusters);
             var mergedUsers = MergeNamedItems(originalMapping, newMapping, "users");
             originalMapping.Children.Remove(new YamlScalarNode("users"));
             originalMapping.Children.Add(new YamlScalarNode("users"), mergedUsers);

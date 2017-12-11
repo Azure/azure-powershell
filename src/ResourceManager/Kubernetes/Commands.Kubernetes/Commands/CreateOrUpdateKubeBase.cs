@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -200,8 +201,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 ".ssh",
                 "id_rsa.pub");
 
+            const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
             if (!File.Exists(path))
-                throw new ArgumentException(string.Format("Could not find SSH public key in {0}", path));
+                throw new ArgumentException(string.Format("Could not find SSH public key in {0}. See {1} for help generating a key pair.", path, helpLink));
 
             WriteVerbose(string.Format("Fetching SSH public key from file {0}", path));
             return File.ReadAllText(path);
@@ -234,7 +236,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             return acsServicePrincipal;
         }
 
-        protected void BuildServicePrincipal(string name, string url, string clientSecret)
+        private void BuildServicePrincipal(string name, string url, string clientSecret)
         {
             var pwCreds = new PasswordCredential(
                 value: clientSecret,

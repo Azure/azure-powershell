@@ -73,21 +73,6 @@ namespace Commands.Kubernetes.Test.Netcore
             Assert.True(GetScalar(_rootNode, "current-context").Value == "baz");
         }
 
-        [Fact]
-        public void BrowserPopTest()
-        {
-            var browserProcess = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "open",
-                    Arguments = "http://google.com",
-                    UseShellExecute = false
-                }
-            };
-            browserProcess.Start();
-        }
-
         private static IDictionary<string, YamlNode> DictOfNamedItems(YamlNode yaml, string category, string itemName)
         {
             return ((YamlSequenceNode)yaml[new YamlScalarNode(category)])
