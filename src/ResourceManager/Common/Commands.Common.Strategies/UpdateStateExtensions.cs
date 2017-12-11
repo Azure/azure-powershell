@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             /// <summary>
             /// A start time of the task.
             /// </summary>
-            DateTime _StartTime { get; } = DateTime.UtcNow;
+            readonly DateTime _StartTime = DateTime.UtcNow;
 
             /// <summary>
             /// Progress time slot.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         sealed class UpdateStateAsyncVisitor : IResourceConfigVisitor<Context, Task>
         {
-            public Task Visit<TModel>(ResourceConfig<TModel> config, Context context) 
+            public Task Visit<TModel>(ResourceConfig<TModel> config, Context context)
                 where TModel : class
                 => context.UpdateStateAsync(config);
         }
