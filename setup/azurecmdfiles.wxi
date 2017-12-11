@@ -1187,6 +1187,23 @@
                             <File Id="filB73F5ED8179D616137D39B3CD8961B58" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Azure.Management.Relay.dll" />
                         </Component>
                     </Directory>
+                    <Directory Id="dirB083EC6D83AC4367D33EB257B3A8A832" Name="AzureRM.Reservations">
+                        <Component Id="cmp325C5D7E7BFCC111B2335A376E2779D4" Guid="*">
+                            <File Id="filB827DC440AC145244BDA78F4A4494806" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Reservations\AzureRM.Reservations.psd1" />
+                        </Component>
+                        <Component Id="cmpD57BA51EBACD7EA7C4CCB584D227077A" Guid="*">
+                            <File Id="filB28A54014A9277B47377BA89580685BE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Reservations\AzureRM.Reservations.psm1" />
+                        </Component>
+                        <Component Id="cmp6DF24F4A515BA29743DBC75F1085247F" Guid="*">
+                            <File Id="filE1E5B68E35D0B658BCB8A5473C6113C1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Reservations\Microsoft.Azure.Commands.Reservations.dll" />
+                        </Component>
+                        <Component Id="cmp12D613E47A5C3F6A9FC1D1755563A38B" Guid="*">
+                            <File Id="filEF613C086E8C46888B119F7DB456AEC2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Reservations\Microsoft.Azure.Commands.Reservations.dll-Help.xml" />
+                        </Component>
+                        <Component Id="cmp2BF9194ED6E6DCFD7C6CB50346039D80" Guid="*">
+                            <File Id="filE6A2C1B054ED9FED58AF9D9DA18D5E32" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Reservations\Microsoft.Azure.Commands.Reservations.Format.ps1xml" />
+                        </Component>
+                    </Directory>
                     <Directory Id="dir5A96CDDC32336B058D325B4B67756080" Name="AzureRM.Resources">
                         <Component Id="cmp4DDC11D6580AB2CC03CADEDD62194BDA" Guid="*">
                             <File Id="fil18CFCEC425A013C7495F980DCB8E0C9F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1" />
@@ -3468,6 +3485,11 @@
             <ComponentRef Id="cmp0B1DAE7F253E744037B651E0433683D2" />
             <ComponentRef Id="cmpFFBB02236C61457EE8C736240AF8CC47" />
             <ComponentRef Id="cmpFF97CB337911CDA95213B09CB6142CF4" />
+            <ComponentRef Id="cmp325C5D7E7BFCC111B2335A376E2779D4" />
+            <ComponentRef Id="cmpD57BA51EBACD7EA7C4CCB584D227077A" />
+            <ComponentRef Id="cmp6DF24F4A515BA29743DBC75F1085247F" />
+            <ComponentRef Id="cmp12D613E47A5C3F6A9FC1D1755563A38B" />
+            <ComponentRef Id="cmp2BF9194ED6E6DCFD7C6CB50346039D80" />
             <ComponentRef Id="cmp4DDC11D6580AB2CC03CADEDD62194BDA" />
             <ComponentRef Id="cmpBCC7216D701A02748FD196474BCFFE21" />
             <ComponentRef Id="cmp0C4C37E15F9F4671DEFA34F55D2FC9A8" />
