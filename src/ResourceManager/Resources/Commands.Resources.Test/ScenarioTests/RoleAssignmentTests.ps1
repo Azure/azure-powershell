@@ -255,10 +255,19 @@ function Test-RaByServicePrincipal
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
                         
-    
     # cleanup 
     DeleteRoleAssignment $newAssignment
     
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ApplicationId $servicePrincipals[0].ServicePrincipalNames[0] `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope 
+                        
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+
     # Assert
     Assert-NotNull $newAssignment
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 

@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.0.2
+## Version 4.0.3
 * Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
 * Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
 

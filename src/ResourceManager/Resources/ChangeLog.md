@@ -21,7 +21,7 @@
 * Add support to update the delegation flag of a RoleAssignment using Set-AzureRmRoleAssignment
     - Users can now update certain Roleassignment properties like AllowDelegation
 
-## Version 5.0.1
+## Version 5.1.1
 * Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
     - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
 * Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
@@ -31,6 +31,8 @@
 * Allow users to create RoleAssignment using delegation flag
     - Users can now use New-AzureRMRoleAssignment with an option of adding the delegation flag
 * Fix RoleAssignment get to respect the scope parameter
+* Add an alias for ServicePrincipalName in the New-AzureRmRoleAssignment Commandlet
+    - Users can now use the ApplicationId instead of the ServicePrincipalName when using the New-AzureRmRoleAssignment commandlet
 
 ## Version 5.0.0
 * Add support for online help
