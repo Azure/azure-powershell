@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.EventHub
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
 Download Help Link: None_Azure
@@ -12,55 +12,56 @@ This topic displays help for the Azure Event Hub PowerShell resource manager cmd
 
 ## AzureRM.EventHub Cmdlets
 ### [Get-AzureRmEventHub](Get-AzureRmEventHub.md)
-Gets the details of a single Event Hub, or gets a list of Event Hub.
+Gets the details of a single Event Hub, or gets a list of Event Hubs.
 
 ### [Get-AzureRmEventHubAuthorizationRule](Get-AzureRmEventHubAuthorizationRule.md)
-Gets the details of an authorization rule, or gets a list of authorization rules of Namespace/Event Hub.
+Gets the details of an authorization rule, or gets a list of authorization rules.
 
 ### [Get-AzureRmEventHubConsumerGroup](Get-AzureRmEventHubConsumerGroup.md)
-Gets the details of a specified Event Hub consumer group, or gets a list of consumer groups in an Event Hub.
+Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
 
 ### [Get-AzureRmEventHubKey](Get-AzureRmEventHubKey.md)
-Gets the primary key details of the specified Namesapce/Event Hub authorization rule.
+Gets the primary key details of the specified Event Hubs authorization rule.
 
 ### [Get-AzureRmEventHubNamespace](Get-AzureRmEventHubNamespace.md)
-Gets the details of an Event Hub namespace, or gets a list of all Event Hub namespaces in the current Azure subscription.
+Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
 
 ### [New-AzureRmEventHub](New-AzureRmEventHub.md)
 Creates a new Event Hub.
 
 ### [New-AzureRmEventHubAuthorizationRule](New-AzureRmEventHubAuthorizationRule.md)
-Creates a new Namespace/Event Hub authorization rule.
+Creates a new Event Hubs authorization rule for namespace or eventhub.
 
 ### [New-AzureRmEventHubConsumerGroup](New-AzureRmEventHubConsumerGroup.md)
 Creates a new consumer group for the specified Event Hub.
 
 ### [New-AzureRmEventHubKey](New-AzureRmEventHubKey.md)
-Creates a new primary or secondary key for the specified Namesapce/Event Hub authorization rule.
+Creates a new primary or secondary key for the specified Event Hubs authorization rule.
 
 ### [New-AzureRmEventHubNamespace](New-AzureRmEventHubNamespace.md)
-Creates an Event Hub namespace.
+Creates an Event Hubs namespace.
 
 ### [Remove-AzureRmEventHub](Remove-AzureRmEventHub.md)
 Removes the specified Event Hub.
 
 ### [Remove-AzureRmEventHubAuthorizationRule](Remove-AzureRmEventHubAuthorizationRule.md)
-Removes the specified Namespace/Event Hub authorization rule.
+Removes the specified Event Hub authorization rule.
 
 ### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
-Removes the specified Event Hub consumer group.
+Deletes the specified Event Hubs consumer group.
 
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
-Removes the specified Event Hub namespace.
+Removes the specified Event Hubs namespace.
 
 ### [Set-AzureRmEventHub](Set-AzureRmEventHub.md)
 Updates the specified Event Hub.
 
 ### [Set-AzureRmEventHubAuthorizationRule](Set-AzureRmEventHubAuthorizationRule.md)
-Updates the specified authorization rule on Namespace/Event Hub.
+Updates the specified authorization rule on an Event Hub.
 
 ### [Set-AzureRmEventHubConsumerGroup](Set-AzureRmEventHubConsumerGroup.md)
-Updates the specified Event Hub consumer group.
+Updates the specified Event Hubs consumer group.
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
-Updates the specified Event Hub namespace.
+Updates the specified Event Hubs namespace.
+

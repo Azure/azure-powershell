@@ -868,6 +868,79 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk8077/providers/Microsoft.Web/sites/onesdk6930/publishxml?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazgwNzcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvb25lc2RrNjkzMC9wdWJsaXNoeG1sP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"format\": \"WebDeploy\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "e353aec7-bb13-4bc8-8465-928483f547cb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"onesdk6930 - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"onesdk6930.scm.azurewebsites.net:443\" msdeploySite=\"onesdk6930\" userName=\"$onesdk6930\" userPWD=\"tYrdZt5XqK5y8imerjX26WZmkRdDftbvThl34vX1JA4HgjjtbXw5YhJxcq3F\" destinationAppUrl=\"http://onesdk6930.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"onesdk6930 - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-cq1-001.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"onesdk6930\\$onesdk6930\" userPWD=\"tYrdZt5XqK5y8imerjX26WZmkRdDftbvThl34vX1JA4HgjjtbXw5YhJxcq3F\" destinationAppUrl=\"http://onesdk6930.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "976"
+        ],
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "d9128a68-dcf4-4319-9564-9e3b509efaed"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9128a68-dcf4-4319-9564-9e3b509efaed"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151026T225346Z:d9128a68-dcf4-4319-9564-9e3b509efaed"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Oct 2015 22:53:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+
+    {
       "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk8077/providers/Microsoft.Web/sites/onesdk6930/newpassword?api-version=2015-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazgwNzcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvb25lc2RrNjkzMC9uZXdwYXNzd29yZD9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
       "RequestMethod": "POST",

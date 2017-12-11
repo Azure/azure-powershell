@@ -18,12 +18,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementSession"), OutputType(typeof(Session))]
     public class GetServerManagementSessionCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.", ParameterSetName = "ByNodeName",
             ValueFromPipelineByPropertyName = true, Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -25,20 +25,4 @@
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
 -->
 
-# Upcoming Breaking Changes   
-
-## Release 5.0.0 - November 2017
-
-The following cmdlets were affected this release:
-
-**Set-AzureRmVMAccessExtension**
-- Parameters "UserName" and "Password" are being replaced in favor of a PSCredential
-
-```powershell
-
-# Old
-# Set-AzureRmVMAccessExtension [other required parameters] -UserName "plain-text string" -Password "plain-text string"
-
-# New
-# Set-AzureRmVMAccessExtension [other required parameters] -Credential $PSCredential
-```
+# Upcoming Breaking Changes

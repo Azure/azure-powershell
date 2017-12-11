@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByRPObject)]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Update-AzureRmRecoveryServicesAsrRecoveryPlan cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class UpdateAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters

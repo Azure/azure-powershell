@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Add-AzureRmAccount
+    - `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
+    - A recommendation will be made to remove the old Login-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Login is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
+- Remove-AzureRmAccount
+    - `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
+    - A recommendation will be made to remove the old Logout-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Logout is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
+
+## Version 4.0.0
 - Set-AzureRmDefault
     - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
     - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
@@ -30,12 +40,8 @@
     - ```Clear-AzureRmDefault -ResourceGroup```
 - Add-AzureRmEnvironment and Set-AzureRmEnvironment
     - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
-- Add-AzureRmAccount
-    - `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
-    - A recommendation will be made to remove the old Login-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Login is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
-- Remove-AzureRmAccount
-    - `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
-    - A recommendation will be made to remove the old Logout-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Logout is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 3.4.1
 * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter

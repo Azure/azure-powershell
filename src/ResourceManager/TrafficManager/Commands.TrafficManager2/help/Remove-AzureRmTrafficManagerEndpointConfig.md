@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8E12A392-A100-4814-9003-B2999150DCE1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/remove-azurermtrafficmanagerendpointconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Removes an endpoint from a local Traffic Manager profile object.
 
 ```
 Remove-AzureRmTrafficManagerEndpointConfig -EndpointName <String>
- -TrafficManagerProfile <TrafficManagerProfile> [<CommonParameters>]
+ -TrafficManagerProfile <TrafficManagerProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ This command changes only the local object.
 The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EndpointName
 Specifies the name of the Traffic Manager endpoint that this cmdlet removes.

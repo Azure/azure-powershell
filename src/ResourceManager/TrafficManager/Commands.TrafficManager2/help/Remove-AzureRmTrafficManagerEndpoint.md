@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 2129C457-592B-484C-A148-828BFD5895D4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/remove-azurermtrafficmanagerendpoint
 schema: 2.0.0
 ---
 
@@ -15,13 +16,14 @@ Removes an endpoint from Traffic Manager.
 ### Fields
 ```
 Remove-AzureRmTrafficManagerEndpoint -Name <String> -Type <String> -ProfileName <String>
- -ResourceGroupName <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Object
 ```
-Remove-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +46,21 @@ PS C:\>Remove-AzureRmTrafficManagerEndpoint -Name "contoso" -ProfileName "Contos
 This command removes the Azure endpoint named contoso from the profile named ContosoProfile in the resource group named ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -181,7 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### TrafficManagerEndpoint
-
 Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint' from the pipeline
 
 ## OUTPUTS

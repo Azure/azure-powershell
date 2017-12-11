@@ -1,14 +1,14 @@
----
+﻿---
 Module Name: AzureRM.MachineLearningCompute
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid:
+Download Help Link:
+Help Version:
+Locale: en-US
 ---
 
 # AzureRM.MachineLearningCompute Module
 ## Description
-{{Manually Enter Description Here}}
+This topic displays help topics for the Azure Machine Learning Compute Cmdlets.
 
 ## AzureRM.MachineLearningCompute Cmdlets
 ### [Get-AzureRmMlOpCluster](Get-AzureRmMlOpCluster.md)
