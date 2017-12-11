@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support to update the delegation flag of a RoleAssignment using Set-AzureRmRoleAssignment
+    - Users can now update certain Roleassignment properties like AllowDelegation
 
 ## Version 5.1.1
 * Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles

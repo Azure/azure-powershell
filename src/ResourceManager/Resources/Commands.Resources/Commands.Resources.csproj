@@ -131,6 +131,7 @@
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleAssignments\SetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />

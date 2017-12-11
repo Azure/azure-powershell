@@ -376,4 +376,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 [Remove-AzureRmRoleAssignment](./Remove-AzureRmRoleAssignment.md)
 
+[Set-AzureRmRoleAssignment](./Set-AzureRmRoleAssignment.md)
+
 [Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)

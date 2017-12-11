@@ -135,5 +135,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
 
 		public const string RoleAssignment = "RoleAssignmentParameterSet";
-	}
+
+        public const string RoleAssignmentUpdate = "RoleAssignmentUpdateParameterSet";
+
+    }
 }

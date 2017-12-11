@@ -248,6 +248,13 @@ First, use the Get-AzureRmRoleDefinition command to retrieve the custom role tha
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
+### [Set-AzureRmRoleAssignment](Set-AzureRmRoleAssignment.md)
+Modifies a roleAssignment in Azure RBAC.
+Provide the modified roleAssignment either as a JSON file or as a PSRoleAssignment.
+First, use the Get-AzureRmRoleAssignment command to retrieve the roleAssignment that you wish to modify.
+Then, modify the properties that you wish to change.
+Finally, save the role assignment using this command.
+
 ### [Stop-AzureRmResourceGroupDeployment](Stop-AzureRmResourceGroupDeployment.md)
 Cancels a resource group deployment.
 
