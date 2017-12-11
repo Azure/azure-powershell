@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string Name
+        public string Path
         {
             get
             {
-                return this.omObject.Name;
+                return this.omObject.Path;
             }
         }
         

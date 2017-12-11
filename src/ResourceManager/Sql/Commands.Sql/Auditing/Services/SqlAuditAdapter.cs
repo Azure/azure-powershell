@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
             var database = dbCommunicator.Get(resourceGroupName, serverName, databaseName);
             DatabaseEdition edition;
-            Enum.TryParse(database.Properties.Edition, true, out edition);
+            Enum.TryParse(database.Edition, true, out edition);
             if (edition != DatabaseEdition.None && edition != DatabaseEdition.Free)
             {
                 return true;
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
-                properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName);
+                properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType);
                 properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
                 properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(model.StorageAccountName);
             }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         private static IList<string> ExtractAuditActionsAndGroups(BaseBlobAuditingPolicyModel model)
         {
-            var dbPolicyModel = model as DatabaseBlobAuditingPolicyModel;
+            var dbPolicyModel = model as DatabaseBlobAuditingSettingsModel;
             var actionsAndGroups = new List<string>();
             if (dbPolicyModel != null)
             {
@@ -635,9 +635,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Extracts the storage account requested key
         /// </summary>
-        private string ExtractStorageAccountKey(string storageName)
+        private string ExtractStorageAccountKey(string storageName, StorageKeyKind storageKeyKind)
         {
-                return AzureCommunicator.GetStorageKeys(storageName)[StorageKeyKind.Primary];
+                return AzureCommunicator.GetStorageKeys(storageName)[storageKeyKind];
         }
 
         internal void ClearStorageDetailsCache()

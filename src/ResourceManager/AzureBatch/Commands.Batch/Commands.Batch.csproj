@@ -41,16 +41,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Batch, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.5.1.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Batch, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.8.0.0\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.3.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,13 +71,10 @@
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
-    <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
-    <Compile Include="Models.Generated\PSExitCodeRangeMapping.cs" />
-    <Compile Include="Models.Generated\PSExitConditions.cs" />
-    <Compile Include="Models.Generated\PSExitOptions.cs" />
-    <Compile Include="Models.Generated\PSNetworkConfiguration.cs" />
+    <Compile Include="Models\AccountCreateParameters.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
+    <Compile Include="Models\GetTaskCountsOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
@@ -113,45 +109,6 @@
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Jobs\SetBatchJobCommand.cs" />
     <Compile Include="Jobs\StopBatchJobCommand.cs" />
-    <Compile Include="Models.Generated\PSApplicationPackageReference.cs" />
-    <Compile Include="Models.Generated\PSCertificate.cs" />
-    <Compile Include="Models.Generated\PSCloudJobSchedule.cs" />
-    <Compile Include="Models.Generated\PSCloudServiceConfiguration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models.Generated\PSComputeNode.cs" />
-    <Compile Include="Models.Generated\PSComputeNodeError.cs" />
-    <Compile Include="Models.Generated\PSComputeNodeInformation.cs" />
-    <Compile Include="Models.Generated\PSComputeNodeUser.cs" />
-    <Compile Include="Models.Generated\PSDeleteCertificateError.cs" />
-    <Compile Include="Models.Generated\PSImageReference.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models.Generated\PSJobManagerTask.cs" />
-    <Compile Include="Models.Generated\PSJobPreparationAndReleaseTaskExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSJobPreparationTask.cs" />
-    <Compile Include="Models.Generated\PSJobPreparationTaskExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSJobReleaseTask.cs" />
-    <Compile Include="Models.Generated\PSJobReleaseTaskExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSJobScheduleExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSJobScheduleStatistics.cs" />
-    <Compile Include="Models.Generated\PSMultiInstanceSettings.cs" />
-    <Compile Include="Models.Generated\PSNodeAgentSku.cs" />
-    <Compile Include="Models.Generated\PSNodeFile.cs" />
-    <Compile Include="Models.Generated\PSPoolInformation.cs" />
-    <Compile Include="Models.Generated\PSPoolUsageMetrics.cs" />
-    <Compile Include="Models.Generated\PSRemoteLoginSettings.cs" />
-    <Compile Include="Models.Generated\PSSchedule.cs" />
-    <Compile Include="Models.Generated\PSTaskDependencies.cs" />
-    <Compile Include="Models.Generated\PSTaskIdRange.cs" />
-    <Compile Include="Models.Generated\PSTaskSchedulingPolicy.cs" />
-    <Compile Include="Models.Generated\PSSubtaskInformation.cs" />
-    <Compile Include="Models.Generated\PSVirtualMachineConfiguration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models.Generated\PSWindowsConfiguration.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Models\BatchClient.Applications.cs" />
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
@@ -193,42 +150,10 @@
     <Compile Include="Models\NewTaskParameters.cs" />
     <Compile Include="Models\NewComputeNodeUserParameters.cs" />
     <Compile Include="Models\NewJobScheduleParameters.cs" />
-    <Compile Include="Models.Generated\PSAffinityInformation.cs" />
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
-    <Compile Include="Models\PSCloudPool.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
-    <Compile Include="Models.Generated\PSAutoPoolSpecification.cs" />
-    <Compile Include="Models.Generated\PSAutoScaleRun.cs" />
-    <Compile Include="Models.Generated\PSAutoScaleRunError.cs" />
-    <Compile Include="Models.Generated\PSCertificateReference.cs" />
-    <Compile Include="Models.Generated\PSCloudJob.cs" />
-    <Compile Include="Models.Generated\PSCloudPool.cs" />
-    <Compile Include="Models.Generated\PSCloudTask.cs" />
-    <Compile Include="Models.Generated\PSEnvironmentSetting.cs" />
-    <Compile Include="Models.Generated\PSFileProperties.cs" />
-    <Compile Include="Models.Generated\PSJobConstraints.cs" />
-    <Compile Include="Models.Generated\PSJobExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSJobSchedulingError.cs" />
-    <Compile Include="Models.Generated\PSJobSpecification.cs" />
-    <Compile Include="Models.Generated\PSJobStatistics.cs" />
-    <Compile Include="Models.Generated\PSMetadataItem.cs" />
-    <Compile Include="Models.Generated\PSNameValuePair.cs" />
-    <Compile Include="Models.Generated\PSPoolSpecification.cs" />
-    <Compile Include="Models.Generated\PSPoolStatistics.cs" />
-    <Compile Include="Models.Generated\PSRecentJob.cs" />
-    <Compile Include="Models.Generated\PSResizeError.cs" />
-    <Compile Include="Models.Generated\PSResourceFile.cs" />
-    <Compile Include="Models.Generated\PSResourceStatistics.cs" />
-    <Compile Include="Models.Generated\PSStartTask.cs" />
-    <Compile Include="Models.Generated\PSStartTaskInformation.cs" />
-    <Compile Include="Models.Generated\PSTaskConstraints.cs" />
-    <Compile Include="Models.Generated\PSTaskExecutionInformation.cs" />
-    <Compile Include="Models.Generated\PSTaskInformation.cs" />
-    <Compile Include="Models.Generated\PSTaskSchedulingError.cs" />
-    <Compile Include="Models.Generated\PSTaskStatistics.cs" />
-    <Compile Include="Models.Generated\PSUsageStatistics.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
     <Compile Include="Models\RebootComputeNodeParameters.cs" />
@@ -260,6 +185,7 @@
     </Compile>
     <Compile Include="Locations\GetBatchLocationQuotasCommand.cs" />
     <Compile Include="Tasks\GetBatchSubtaskCommand.cs" />
+    <Compile Include="Tasks\GetBatchTaskCountsCommand.cs" />
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
@@ -269,12 +195,14 @@
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
     <Compile Include="NewApplicationPackageException.cs" />
+    <Compile Include="Utils\BatchAadTokenProvider.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeCommand.cs" />
     <Compile Include="JobSchedules\GetBatchJobScheduleCommand.cs" />
     <Compile Include="JobSchedules\NewBatchJobScheduleCommand.cs" />
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommand.cs" />
+    <Compile Include="Models.Generated\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.Batch.psd1">
@@ -289,6 +217,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

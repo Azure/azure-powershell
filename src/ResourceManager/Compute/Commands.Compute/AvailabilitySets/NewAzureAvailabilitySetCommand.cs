@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -77,6 +78,9 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Managed Availability Set")]
         [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
         public SwitchParameter Managed { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

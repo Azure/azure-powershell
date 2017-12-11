@@ -19,6 +19,53 @@
 -->
 ## Current Release
 
+## Version 5.1.1
+* Removed AzureRemoteApp Cmdles. Following is the list of removed Cmdlets
+        - Add-AzureRemoteAppUser
+        - Clear-AzureRemoteAppVmStaleAdObject
+        - Copy-AzureRemoteAppUserDisk
+        - Disconnect-AzureRemoteAppSession
+        - Export-AzureRemoteAppTemplateImage
+        - Export-AzureRemoteAppUserDisk
+        - Get-AzureRemoteAppCollection
+        - Get-AzureRemoteAppCollectionUsageDetails
+        - Get-AzureRemoteAppCollectionUsageSummary
+        - Get-AzureRemoteAppLocation
+        - Get-AzureRemoteAppOperationResult
+        - Get-AzureRemoteAppPlan
+        - Get-AzureRemoteAppProgram
+        - Get-AzureRemoteAppSession
+        - Get-AzureRemoteAppStartMenuProgram
+        - Get-AzureRemoteAppTemplateImage
+        - Get-AzureRemoteAppUser
+        - Get-AzureRemoteAppVM
+        - Get-AzureRemoteAppVmStaleAdObject
+        - Get-AzureRemoteAppVNet
+        - Get-AzureRemoteAppVpnDevice
+        - Get-AzureRemoteAppVpnDeviceConfigScript
+        - Get-AzureRemoteAppWorkspace
+        - Invoke-AzureRemoteAppSessionLogoff
+        - New-AzureRemoteAppCollection
+        - New-AzureRemoteAppTemplateImage
+        - New-AzureRemoteAppVNet
+        - Publish-AzureRemoteAppProgram
+        - Remove-AzureRemoteAppCollection
+        - Remove-AzureRemoteAppTemplateImage
+        - Remove-AzureRemoteAppUser
+        - Remove-AzureRemoteAppUserDisk
+        - Remove-AzureRemoteAppVNet
+        - Rename-AzureRemoteAppTemplateImage
+        - Reset-AzureRemoteAppVpnSharedKey
+        - Restart-AzureRemoteAppVM
+        - Send-AzureRemoteAppSessionMessage
+        - Set-AzureRemoteAppCollection
+        - Set-AzureRemoteAppVNet
+        - Set-AzureRemoteAppWorkspace
+        - Unpublish-AzureRemoteAppProgram
+        - Update-AzureRemoteAppCollection
+
+## Version 5.0.0
+
 ## Version 4.4.1
 
 ## Version 4.4.0

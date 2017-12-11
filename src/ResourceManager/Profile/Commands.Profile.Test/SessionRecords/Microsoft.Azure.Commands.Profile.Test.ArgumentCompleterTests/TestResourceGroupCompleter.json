@@ -1,0 +1,122 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourcegroups?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTJhZDhkODQtMzI4Ny00OTkwLWI4M2QtNWU5ODM4MzJmN2NlL3Jlc291cmNlZ3JvdXBzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6cfb76bc-cc30-4170-b3f9-4599c67d2837"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/maclaytontest\",\r\n      \"name\": \"maclaytontest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/mclaytontest\",\r\n      \"name\": \"mclaytontest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/mclaytotest\",\r\n      \"name\": \"mclaytotest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "545"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "cb1df1cf-b266-43ba-80dd-8590a32b227c"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb1df1cf-b266-43ba-80dd-8590a32b227c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171121T232316Z:cb1df1cf-b266-43ba-80dd-8590a32b227c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Nov 2017 23:23:15 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourcegroups?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTJhZDhkODQtMzI4Ny00OTkwLWI4M2QtNWU5ODM4MzJmN2NlL3Jlc291cmNlZ3JvdXBzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d65bfd4a-e60f-4ffe-abb9-0ad80fff2b3a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/maclaytontest\",\r\n      \"name\": \"maclaytontest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/mclaytontest\",\r\n      \"name\": \"mclaytontest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/92ad8d84-3287-4990-b83d-5e983832f7ce/resourceGroups/mclaytotest\",\r\n      \"name\": \"mclaytotest\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "545"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "01ea672f-b25b-4a71-b884-a8b7948f8de3"
+        ],
+        "x-ms-correlation-request-id": [
+          "01ea672f-b25b-4a71-b884-a8b7948f8de3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171121T232316Z:01ea672f-b25b-4a71-b884-a8b7948f8de3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Nov 2017 23:23:15 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "92ad8d84-3287-4990-b83d-5e983832f7ce"
+  }
+}

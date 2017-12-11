@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.DataFactoryV2
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link:
-Help Version:
+Download Help Link: 
+Help Version: 
 Locale: en-US
 ---
 
@@ -29,6 +29,9 @@ Gets keys for a self-hosted integration runtime.
 ### [Get-AzureRmDataFactoryV2IntegrationRuntimeMetric](Get-AzureRmDataFactoryV2IntegrationRuntimeMetric.md)
 Gets metric data for an integration runtime. 
 
+### [Get-AzureRmDataFactoryV2IntegrationRuntimeNode](Get-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
+Gets an integration runtime node infomation.
+
 ### [Get-AzureRmDataFactoryV2LinkedService](Get-AzureRmDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
 
@@ -43,6 +46,9 @@ Gets information about triggers in a data factory.
 
 ### [Get-AzureRmDataFactoryV2TriggerRun](Get-AzureRmDataFactoryV2TriggerRun.md)
 Returns information about trigger runs.
+
+### [Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade](Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade.md)
+Upgrades self-hosted integration runtime.
 
 ### [Invoke-AzureRmDataFactoryV2Pipeline](Invoke-AzureRmDataFactoryV2Pipeline.md)
   Invokes a pipeline to start a run for it.
@@ -101,9 +107,21 @@ Starts a trigger in a data factory.
 ### [Stop-AzureRmDataFactoryV2IntegrationRuntime](Stop-AzureRmDataFactoryV2IntegrationRuntime.md)
 Stops a managed dedicated integration runtime.
 
+### [Stop-AzureRmDataFactoryV2PipelineRun](Stop-AzureRmDataFactoryV2PipelineRun.md)
+Stops a pieline run in a data factory.
+
 ### [Stop-AzureRmDataFactoryV2Trigger](Stop-AzureRmDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.
 
 ### [Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential](Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.
+
+### [Update-AzureRmDataFactoryV2](Update-AzureRmDataFactoryV2.md)
+Updates the properties of a data factory.
+
+### [Update-AzureRmDataFactoryV2IntegrationRuntime](Update-AzureRmDataFactoryV2IntegrationRuntime.md)
+Updates an integration runtime.
+
+### [Update-AzureRmDataFactoryV2IntegrationRuntimeNode](Update-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
+Updates self-hosted integration runtime node.
 

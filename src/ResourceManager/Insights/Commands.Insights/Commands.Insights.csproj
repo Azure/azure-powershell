@@ -68,7 +68,6 @@
     <Compile Include="ActionGroups\GetAzureRmActionGroupCommand.cs" />
     <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleCommand.cs" />
-    <Compile Include="Alerts\AddAzureRmLogAlertRuleCommand.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleCommand.cs" />
     <Compile Include="Alerts\AlertRuleTypes.cs" />
     <Compile Include="Alerts\GetAzureRmAlertHistoryCommand.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
     <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
     <Compile Include="OutputClasses\CustomPrinter.cs" />
-    <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
     <Compile Include="OutputClasses\PSActivityLogAlertResource.cs" />
     <Compile Include="OutputClasses\PSActionGroupReceiverBase.cs" />
@@ -114,6 +112,7 @@
     <Compile Include="OutputClasses\PSLocalizableStringNoDetails.cs" />
     <Compile Include="OutputClasses\PSLogProfileCollection.cs" />
     <Compile Include="OutputClasses\PSLogSettings.cs" />
+    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
     <Compile Include="OutputClasses\PSMetricAvailability.cs" />
     <Compile Include="OutputClasses\PSMetricSettings.cs" />
     <Compile Include="OutputClasses\PSLogProfile.cs" />
@@ -122,7 +121,6 @@
     <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
-    <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
     <Compile Include="OutputClasses\PSMetricAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
@@ -132,9 +130,6 @@
     <Compile Include="OutputClasses\PSEventDataNoDetails.cs" />
     <Compile Include="OutputClasses\PSEventRuleCondition.cs" />
     <Compile Include="OutputClasses\PSLocationThresholdRuleCondition.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
-    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
     <Compile Include="OutputClasses\PSMetric.cs" />
     <Compile Include="OutputClasses\PSMetricDefinition.cs" />
     <Compile Include="OutputClasses\PSMetricDefinitionNoDetails.cs" />
@@ -145,7 +140,6 @@
     <Compile Include="OutputClasses\PSSmsReceiver.cs" />
     <Compile Include="OutputClasses\PSThresholdRuleCondition.cs" />
     <Compile Include="OutputClasses\PSToStringExtensions.cs" />
-    <Compile Include="OutputClasses\PSUsageMetric.cs" />
     <Compile Include="OutputClasses\PSWebhookReceiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\ResourcesForAlertCmdlets.Designer.cs">
@@ -163,7 +157,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
-    <Compile Include="UsageMetrics\GetAzureRmUsageCommand.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +171,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -12,21 +12,196 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class CmdletExtensions
     {
+        /// <summary>
+        /// Execute this cmdlet in the background and return a job that tracks the results
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="jobName">The name of the job</param>
+        /// <returns>The job tracking cmdlet execution</returns>
+        public static Job ExecuteAsJob<T>(this T cmdlet, string jobName) where T : AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            return ExecuteAsJob(cmdlet, jobName, cmd => cmd.ExecuteCmdlet());
+        }
+
+        /// <summary>
+        /// Execute this cmdlet in the background and return a job that tracks the results
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="jobName">The name of the job</param>
+        /// <param name="executor">The method to execute in the background job</param>
+        /// <returns>The job tracking cmdlet execution</returns>
+        public static Job ExecuteAsJob<T>(this T cmdlet, string jobName, Action<T> executor) where T : AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            if (executor == null)
+            {
+                throw new ArgumentNullException(nameof(executor));
+            }
+
+            var job = AzureLongRunningJob<T>.Create(cmdlet, cmdlet?.MyInvocation?.MyCommand?.Name, jobName, executor);
+            cmdlet.SafeAddToJobRepository(job);
+            ThreadPool.QueueUserWorkItem(job.RunJob, job);
+            return job;
+        }
+
+        /// <summary>
+        /// Determine if AsJob is present
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="cmdlet">The cmdlet</param>
+        /// <returns>True if the cmdlet shoudl run as a Job, otherwise false</returns>
+        public static bool AsJobPresent<T>(this T cmdlet) where T : AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            return (cmdlet.MyInvocation?.BoundParameters != null
+                && cmdlet.MyInvocation.BoundParameters.ContainsKey("AsJob"));
+        }
+
+        /// <summary>
+        /// Execute the given cmdlet synchronously os as a job, based on input parameters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cmdlet"></param>
+        public static void ExecuteSynchronouslyOrAsJob<T>(this T cmdlet) where T: AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            cmdlet.ExecuteSynchronouslyOrAsJob(c => c.ExecuteCmdlet());
+        }
+
+        /// <summary>
+        /// Decide whether to execute this cmdlet as a job or synchronously, based on input parameters
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="executor">The cmdlet method to execute</param>
+        public static void ExecuteSynchronouslyOrAsJob<T>(this T cmdlet, Action<T> executor) where T : AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            if (executor == null)
+            {
+                throw new ArgumentNullException(nameof(executor));
+            }
+
+            if (cmdlet.AsJobPresent())
+            {
+                cmdlet.WriteObject(cmdlet.ExecuteAsJob(cmdlet.ImplementationBackgroundJobDescription, executor));
+            }
+            else
+            {
+                executor(cmdlet);
+            }
+        }
+
+        /// <summary>
+        /// Safely Attempt to copy a property value from source to target
+        /// </summary>
+        /// <typeparam name="T">The type fo the source and target objects</typeparam>
+        /// <param name="property">The property to copy</param>
+        /// <param name="source">The source object to copy from</param>
+        /// <param name="target">The target object to copy to</param>
+        public static void SafeCopyValue<T>(this PropertyInfo property, T source, T target)
+        {
+            if (property == null)
+            {
+                throw new ArgumentNullException(nameof(property));
+            }
+
+            try
+            {
+                property.SetValue(target, property.GetValue(source));
+            }
+            catch
+            {
+                // ignore get and set errors
+            }
+        }
+
+        /// <summary>
+        /// Safely Attempt to copy a field value from source to target
+        /// </summary>
+        /// <typeparam name="T">The type of the source and target objects</typeparam>
+        /// <param name="field">The field to copy</param>
+        /// <param name="source">The source object to copy from</param>
+        /// <param name="target">The target object to copy to</param>
+        public static void SafeCopyValue<T>(this FieldInfo field, T source, T target)
+        {
+            if (field == null)
+            {
+                throw new ArgumentNullException(nameof(field));
+            }
+
+            try
+            {
+                field.SetValue(target, field.GetValue(source));
+            }
+            catch
+            {
+                // ignore get and set errors
+            }
+        }
+
+        /// <summary>
+        /// Safely copy the selected parameter set from one cmdlet to another
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="source">The cmdlet to copy the parameter set name from</param>
+        /// <param name="target">The cmdlet to copy to</param>
+        public static void SafeCopyParameterSet<T>(this T source, T target) where T : AzurePSCmdlet
+        {
+            if (source != null && target != null)
+            {
+                if (!string.IsNullOrWhiteSpace(source.ParameterSetName))
+                {
+                    try
+                    {
+                        target.SetParameterSet(source.ParameterSetName);
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
+
         public static string AsAbsoluteLocation(this string realtivePath)
         {
             return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));
@@ -230,5 +405,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         #endregion
+
+
+        static void SafeAddToJobRepository(this AzurePSCmdlet cmdlet, Job job)
+        {
+            try
+            {
+                cmdlet.JobRepository.Add(job);
+            }
+            catch
+            {
+                // ignore errors in adding the job to the repository
+            }
+        }
+
     }
 }

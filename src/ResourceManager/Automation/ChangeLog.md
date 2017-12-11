@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 4.1.1
+* Update to Import-AzureRMAutomationRunbook
+    - Support is now being provided for Python2 runbooks
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 3.4.1
 
 ## Version 3.4.0

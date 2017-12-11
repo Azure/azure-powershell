@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private static string accountObject = "batchAccounts";
         private static string accountSearch = batchProvider + "/" + accountObject;
 
+        private IAzureContext azureContext;
+
         public BatchClient()
         { }
 
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
             AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+            this.azureContext = context;
         }
 
         private void WriteVerbose(string message)

@@ -589,13 +589,13 @@ function Test-VirtualNetworkGatewayIkeV2
 		$vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get IkeV2 + SSTP virtualnetworkgateway
-		New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol @( "IkeV2", "SSTP" ) -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
+		New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
 		$actual = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
 		Assert-AreEqual 2 @($protocols).Count
-		Assert-AreEqual "IkeV2" $protocols[0]
-		Assert-AreEqual "SSTP" $protocols[1]
+		Assert-AreEqual "SSTP" $protocols[0]
+		Assert-AreEqual "IkeV2" $protocols[1]
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
 
 		# Update gateway to IkeV2 only
