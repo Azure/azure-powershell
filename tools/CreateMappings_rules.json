@@ -113,6 +113,8 @@
     { "regex": "Tags", "alias": "Tags" }, 
     
     { "regex": "Profile", "alias": "Profile" }, 
+    
+    { "regex": "Reservations", "alias": "Reservations" }, 
 
     { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
