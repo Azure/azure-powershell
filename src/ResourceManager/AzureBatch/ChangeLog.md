@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.0.2
+## Version 4.0.3
 * Fixed a bug where account operations without a resource group failed to auto-detect the resource group.
 
 ## Version 4.0.1
