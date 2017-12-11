@@ -143,9 +143,9 @@ namespace StaticAnalysis.DependencyAnalyzer
                         AssemblyName = assembly.Name,
                         AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>()
                         {
-                            new Tuple<string, Version>(assembly.Location, new Version(assembly.AssemblyFileMajorVersion, 
+                            new Tuple<string, Version>(assembly.Location, new Version(assembly.AssemblyFileMajorVersion,
                                 assembly.AssemblyFileMinorVersion)),
-                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion, 
+                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
                                 stored.AssemblyFileMinorVersion))
 
                         },
@@ -195,9 +195,9 @@ namespace StaticAnalysis.DependencyAnalyzer
                         ProblemId = CommonAuthenticationMismatch,
                         AssemblyPathsAndFileVersions = new List<Tuple<string, Version>>()
                         {
-                            new Tuple<string, Version>(record.Location, new Version(record.AssemblyFileMajorVersion, 
+                            new Tuple<string, Version>(record.Location, new Version(record.AssemblyFileMajorVersion,
                                 record.AssemblyFileMinorVersion)),
-                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion, 
+                            new Tuple<string, Version>(stored.Location, new Version(stored.AssemblyFileMajorVersion,
                                 stored.AssemblyFileMinorVersion)),
                         },
                         Description = string.Format("Assembly {0} has multiple versions as specified in 'Target'",
@@ -225,7 +225,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private static bool IsFrameworkAssembly(AssemblyName name)
         {
-            return name.Name.StartsWith("System") || name.Name.Equals("mscorlib") 
+            return name.Name.StartsWith("System") || name.Name.Equals("mscorlib")
                 || FrameworkAssemblies.Contains(name.Name);
         }
 
@@ -252,6 +252,15 @@ namespace StaticAnalysis.DependencyAnalyzer
             // Now check for assembly mismatches
             foreach (var assembly in _assemblies.Values)
             {
+
+                foreach (var reference in assembly.Children)
+                {
+                    CheckAssemblyReference(reference, assembly);
+                }
+            }
+
+            foreach (var assembly in _assemblies.Values)
+            {
                 foreach (var parent in assembly.ReferencingAssembly)
                 {
                     _dependencyMapLogger.LogRecord(
@@ -265,10 +274,6 @@ namespace StaticAnalysis.DependencyAnalyzer
                         });
                 }
 
-                foreach (var reference in assembly.Children)
-                {
-                    CheckAssemblyReference(reference, assembly);
-                }
             }
 
             FindExtraAssemblies();
@@ -284,7 +289,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private void FindExtraAssemblies()
         {
-            if (_assemblies.Values.Any(a => !IsCommandAssembly(a) && (a.ReferencingAssembly == null 
+            if (_assemblies.Values.Any(a => !IsCommandAssembly(a) && (a.ReferencingAssembly == null
                 || a.ReferencingAssembly.Count == 0 || !a.GetAncestors().Any(IsCommandAssembly))))
             {
                 foreach (
@@ -297,7 +302,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                         AssemblyName = assembly.Name,
                         Severity = 2,
                         ProblemId = ExtraAssemblyRecord,
-                        Description = string.Format("Assembly {0} is not referenced from any cmdlets assembly", 
+                        Description = string.Format("Assembly {0} is not referenced from any cmdlets assembly",
                         assembly.Name),
                         Remediation = string.Format("Remove assembly {0} from the project and regenerate the Wix " +
                                                     "file", assembly.Name)
@@ -317,23 +322,23 @@ namespace StaticAnalysis.DependencyAnalyzer
                 }
                 else if (reference.Version.Major == 0 && reference.Version.Minor == 0)
                 {
-                    Logger.WriteWarning("{0}.dll has reference to assembly {1} without any version specification.", 
+                    Logger.WriteWarning("{0}.dll has reference to assembly {1} without any version specification.",
                         parent.Name, reference.Name);
                     _versionConflictLogger.LogRecord(new AssemblyVersionConflict()
-                   {
-                       AssemblyName = reference.Name,
-                       ActualVersion = stored.Version,
-                       ExpectedVersion = reference.Version,
-                       ParentAssembly = parent.Name,
-                       ProblemId = NoAssemblyVersionEvidence,
-                       Severity = 2,
-                       Description = string.Format("Assembly {0} referenced from {1}.dll does not specify any " +
+                    {
+                        AssemblyName = reference.Name,
+                        ActualVersion = stored.Version,
+                        ExpectedVersion = reference.Version,
+                        ParentAssembly = parent.Name,
+                        ProblemId = NoAssemblyVersionEvidence,
+                        Severity = 2,
+                        Description = string.Format("Assembly {0} referenced from {1}.dll does not specify any " +
                                                    "assembly version evidence.  The assembly will use version " +
                                                    "{2} from disk.", reference.Name, parent.Name, stored.Version),
-                       Remediation = string.Format("Update the reference to assembly {0} from {1} so that " +
-                                                   "assembly version evidence is supplied", reference.Name, 
+                        Remediation = string.Format("Update the reference to assembly {0} from {1} so that " +
+                                                   "assembly version evidence is supplied", reference.Name,
                                                    parent.Name)
-                   });
+                    });
                 }
                 else
                 {
@@ -347,9 +352,9 @@ namespace StaticAnalysis.DependencyAnalyzer
                         ProblemId = ReferenceDoesNotMatchAssemblyVersion,
                         Severity = 1,
                         Description = string.Format("Assembly {0} version {1} referenced from {2}.dll does " +
-                                                    "not match assembly version on disk: {3}", 
+                                                    "not match assembly version on disk: {3}",
                                                     reference.Name, reference.Version, parent.Name, stored.Version),
-                        Remediation = string.Format("Update any references to version {0} of assembly {1}", 
+                        Remediation = string.Format("Update any references to version {0} of assembly {1}",
                         minVersion, reference.Name)
                     });
                 }
@@ -363,13 +368,13 @@ namespace StaticAnalysis.DependencyAnalyzer
                     ReferencingAssembly = parent.Name,
                     Severity = 0,
                     ProblemId = MissingAssemblyRecord,
-                    Description = string.Format("Missing assembly {0} referenced from {1}", reference.Name, 
+                    Description = string.Format("Missing assembly {0} referenced from {1}", reference.Name,
                     parent.Name),
                     Remediation = "Ensure that the assembly is included in the Wix file or directory"
                 });
             }
         }
-        
+
         /// <summary>
         /// These methods will be added in a new work item that has enhancements for Static Analysis tool
         /// </summary>

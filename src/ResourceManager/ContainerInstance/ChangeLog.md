@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 0.2.0
+## Version 0.2.1
 * Apply Azure Container Instance SDK 2017-10-01
     - Support container run-to-completion
     - Support Azure File volume mount

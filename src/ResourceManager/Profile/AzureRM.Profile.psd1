@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '4.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -112,8 +112,8 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosa
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error', 
-               'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
+AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Save-AzureRmProfile', 'Resolve-Error', 
+               'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount', 'Select-AzureRmProfile'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -143,7 +143,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
-    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping'
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+- Added -AsJob parameter to Get-AzureRmSubscription cmdlet'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

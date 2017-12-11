@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 5.0.2
+## Version 5.0.3
 * Add deprecation warnings for all cmdlets in this module in preparation for the next breaking change release.
     - Please see the upcoming breaking changes guide for more information on how to migrate your cmdlets from AzureRM.
 
