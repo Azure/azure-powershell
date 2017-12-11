@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             public void WriteObject(object value)
                 => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
 
-            public void NewTask(ITaskProgress taskProgress)
+            public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
         }
     }
