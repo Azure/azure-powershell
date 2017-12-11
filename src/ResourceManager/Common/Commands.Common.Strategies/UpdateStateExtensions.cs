@@ -21,6 +21,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class UpdateStateExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="config">A resource config.</param>
+        /// <param name="client">Management client.</param>
+        /// <param name="target">An Azure target state.</param>
+        /// <param name="cancellationToken">A task cancellation token.</param>
+        /// <param name="shouldProcess">A should process interface.</param>
+        /// <param name="reportTaskProgress">A callback to report task progress.</param>
+        /// <returns></returns>
         public static async Task<IState> UpdateStateAsync<TModel>(
             this ResourceConfig<TModel> config,
             IClient client,
@@ -42,18 +53,40 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         sealed class TaskProgress : ITaskProgress
         {
+            /// <summary>
+            /// A task resource config.
+            /// </summary>
             public IResourceConfig Config { get; }
 
             public bool IsDone { get; set; } = false;
 
+            /// <summary>
+            /// A start time of the task.
+            /// </summary>
             DateTime _StartTime { get; } = DateTime.UtcNow;
 
+            /// <summary>
+            /// Progress time slot.
+            /// </summary>
             readonly TimeSlot _TimeSlot;
 
+            /// <summary>
+            /// Task duration, in seconds.
+            /// </summary>
             readonly int _Duration;
 
+            /// <summary>
+            /// A duration of all tasks, in seconds.
+            /// </summary>
             readonly int _TotalDuration;
 
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="totalDuration">A duration of all tasks, in seconds.</param>
+            /// <param name="config">A resource config.</param>
+            /// <param name="timeSlotAndDuration">A time slot and duration (in seconds) of the task.
+            /// </param>
             public TaskProgress(
                 int totalDuration, IResourceConfig config, Tuple<TimeSlot, int> timeSlotAndDuration)
             {
@@ -63,6 +96,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 _Duration = timeSlotAndDuration.Item2;
             }
 
+            /// <summary>
+            /// Get task progress time.
+            /// </summary>
+            /// <returns></returns>
             int GetProgressTime()
             {
                 if (IsDone)
@@ -79,6 +116,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 }
             }
 
+            /// <summary>
+            /// An absolute progress contributed by this task [0..1].
+            /// </summary>
+            /// <returns></returns>
             public double GetProgress()
                 => _TimeSlot.GetTaskProgress(GetProgressTime()) / _TotalDuration;
         }
@@ -93,10 +134,21 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IShouldProcess _ShouldProcess;
 
+            /// <summary>
+            /// A callback to report a progress.
+            /// </summary>
             readonly Action<ITaskProgress> _ReportTaskProgress;
 
             readonly ProgressMap _ProgressMap;
 
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="operationContext">a state operation context.</param>
+            /// <param name="target">An Azure target state.</param>
+            /// <param name="shouldProcess">A 'should process' interface</param>
+            /// <param name="reportTaskProgress">A callback to report progress.</param>
+            /// <param name="progressMap">Task progress information.</param>
             public Context(
                 StateOperationContext operationContext,
                 IState target,
