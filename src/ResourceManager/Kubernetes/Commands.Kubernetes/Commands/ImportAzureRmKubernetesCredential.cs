@@ -92,6 +92,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(Mandatory = false, HelpMessage = "Import Kubernetes config even if it is the defualt")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -146,6 +149,10 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         else
                         {
                             MergeAndWriteKubeConfig(decodedKubeConfig);
+                            if (PassThru)
+                            {
+                                WriteObject(true);
+                            }
                         }
                     }));
         }

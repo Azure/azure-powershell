@@ -85,6 +85,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
             HelpMessage = "Do not pop open a browser after establising the kubectl port-forward.")]
         public SwitchParameter DisableBrowser { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -154,7 +157,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
 
                 var job = new KubeTunnelJob(tmpFileName, dashPodName);
-                if (!DisableBrowser.IsPresent)
+                if (!DisableBrowser)
                 {
                     WriteVerbose("Setting up browser pop.");
                     job.StartJobCompleted += (sender, evt) =>
@@ -162,6 +165,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         WriteVerbose(string.Format("Starting browser: {0}", proxyUrl));
                         PopBrowser(proxyUrl);
                     };
+
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
                 else
                 {
