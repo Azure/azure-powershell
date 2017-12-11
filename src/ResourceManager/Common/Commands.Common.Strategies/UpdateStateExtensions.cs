@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IState target,
             CancellationToken cancellationToken,
             IShouldProcess shouldProcess,
-            IProgressReport progressReport)
+            Action<ITaskProgress> reportTaskProgress)
             where TModel : class
         {
             var context = new Context(
                 new StateOperationContext(client, cancellationToken),
                 target,
                 shouldProcess,
-                progressReport,
+                reportTaskProgress,
                 config.GetProgressMap(target));
             await context.UpdateStateAsync(config);
             return context.Result;
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             readonly IShouldProcess _ShouldProcess;
 
-            readonly IProgressReport _ProgressReport;
+            readonly Action<ITaskProgress> _ReportTaskProgress;
 
             readonly ProgressMap _ProgressMap;
 
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 StateOperationContext operationContext,
                 IState target,
                 IShouldProcess shouldProcess,
-                IProgressReport progressReport,
+                Action<ITaskProgress> reportTaskProgress,
                 ProgressMap progressMap)
             {
                 _OperationContext = operationContext;
                 _Target = target;
                 _ShouldProcess = shouldProcess;
-                _ProgressReport = progressReport;
+                _ReportTaskProgress = reportTaskProgress;
                 _ProgressMap = progressMap;
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                             {
                                 var taskProgress = new TaskProgress(
                                     _ProgressMap.Duration, config, _ProgressMap.Get(config));
-                                _ProgressReport.NewTask(taskProgress);
+                                _ReportTaskProgress(taskProgress);
                                 var result = await config.CreateOrUpdateAsync(
                                     _OperationContext.Client,
                                     model,

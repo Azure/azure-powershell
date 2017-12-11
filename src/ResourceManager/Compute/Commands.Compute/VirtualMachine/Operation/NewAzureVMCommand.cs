@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute
                     target,
                     new CancellationToken(),
                     new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet);
+                    asyncCmdlet.ReportTaskProgress);
 
             var result = newState.Get(virtualMachine);
             if (result != null)
