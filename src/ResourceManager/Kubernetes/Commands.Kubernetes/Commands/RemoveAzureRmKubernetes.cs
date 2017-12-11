@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(Mandatory = false, HelpMessage = "Remove cluster even if it is the defualt")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -99,7 +102,14 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 "Remove managed Kubernetes resource '{0}'.",
                 "AzureRmKubernetes",
                 () =>
-                    RunCmdLet(() => { Client.ManagedClusters.Delete(ResourceGroupName, Name); }));
+                    RunCmdLet(() =>
+                    {
+                        Client.ManagedClusters.Delete(ResourceGroupName, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    }));
         }
     }
 }

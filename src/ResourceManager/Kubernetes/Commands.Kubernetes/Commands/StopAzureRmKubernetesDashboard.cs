@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
     [Cmdlet("Stop", KubeNounStr + "Dashboard")]
     public class StopDashboard : KubeCmdletBase
     {
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -36,6 +39,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 else
                 {
                     WriteVerbose("Did not find job.");
+                }
+
+                if (PassThru)
+                {
+                    WriteObject(true);
                 }
             });
         }
