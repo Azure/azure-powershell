@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.1
 * Removed AzureRemoteApp Cmdles. Following is the list of removed Cmdlets
         - Add-AzureRemoteAppUser
         - Clear-AzureRemoteAppVmStaleAdObject
