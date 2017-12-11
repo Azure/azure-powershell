@@ -21,21 +21,21 @@ using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Resources.Models.Gallery;
-#if !NETSTANDARD
-using Microsoft.Azure.Management.Resources.Models;
-#else
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Commands.Resources.Models;
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Resources.Models.Gallery;
 #endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
+#if !NETSTANDARD
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
         {
             PSGalleryItem psGalleryItem = new PSGalleryItem();
@@ -46,8 +46,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return psGalleryItem;
         }
+#endif
 
-        public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
+        public static PSResource ToPSResource(this GenericResource resource, ResourcesClient client, bool minimal)
         {
             ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
             return new PSResource
@@ -57,8 +58,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ResourceType = identifier.ResourceType,
                 ResourceGroupName = identifier.ResourceGroupName,
                 ParentResource = identifier.ParentResource,
-                Properties = JsonUtilities.DeserializeJson(resource.Properties),
-                PropertiesText = resource.Properties,
+                Properties = JsonUtilities.DeserializeJson(resource.Properties?.ToString()),
+                PropertiesText = resource.Properties?.ToString(),
                 Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
                 Permissions = minimal ? null : client.GetResourcePermissions(identifier),
                 ResourceId = identifier.ToString()

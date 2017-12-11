@@ -14,10 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected string ConnectionQualifiers { get; set; }
         protected string DefaultEndpointsProtocol { get; set; }
 
-        public virtual AzureStorageContext StorageContext { get; set; }
+        public virtual IStorageContext StorageContext { get; set; }
         public virtual string StorageAccountName { get; set; }
         public virtual string StorageAccountKey { get; set; }
         public virtual string StorageAccountEndpoint { get; set; }

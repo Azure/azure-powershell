@@ -52,12 +52,12 @@ function Get-BatchAccountProviderLocation($index)
     {
         $namespace = "Microsoft.Batch"
         $type = "batchAccounts"
-        $r = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+        $r = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
         $location = $r.Locations
   
-        if ($location -eq $null) 
+        if ($location -eq $null)
         {  
-            return "westus"  
+            return "westus"
         } 
         else 
         {  
@@ -67,7 +67,7 @@ function Get-BatchAccountProviderLocation($index)
             }
             else
             {
-                return $location[$index]  
+                return $location[$index]
             }
         }  
     }

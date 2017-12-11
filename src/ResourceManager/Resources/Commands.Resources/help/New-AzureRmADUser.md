@@ -14,7 +14,7 @@ Creates a new active directory user.
 ## SYNTAX
 
 ```
-New-AzureRmADUser -DisplayName <String> -UserPrincipalName <String> -Password <String> [-ImmutableId <String>]
+New-AzureRmADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString> [-ImmutableId <String>]
  [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -102,7 +102,7 @@ It must meet the tenant's password complexity requirements.
 It is recommended to set a strong password.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 
