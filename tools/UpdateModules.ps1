@@ -94,7 +94,6 @@ function Add-PSM1Dependency
     $file = Get-Item -Path $Path
     $manifestFile = $file.Name
     $psm1file = $manifestFile -replace ".psd1", ".psm1"
-    Write-Host "here" + $Path
     Update-ModuleManifest -Path $Path -RootModule $psm1file
   }
 }
