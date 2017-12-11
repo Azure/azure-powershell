@@ -17,6 +17,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// The map keeps information about relation between a task progress and a progress of all tasks.
+    /// </summary>
     class ProgressMap
     {
         readonly Dictionary<IResourceConfig, Tuple<TimeSlot, int>> _Map 
@@ -27,12 +30,22 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// </summary>
         public int Duration { get; }
 
+        /// <summary>
+        /// Constructs ProgressMap
+        /// </summary>
+        /// <param name="map">a map between a resource config and a time slot and task duration.</param>
+        /// <param name="duration">a duration of all tasks</param>
         public ProgressMap(Dictionary<IResourceConfig, Tuple<TimeSlot, int>> map, int duration)
         {
             _Map = map;
             Duration = duration;
         }
 
+        /// <summary>
+        /// TimeSlon and a duration of a task related to the given config.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public Tuple<TimeSlot, int> Get(IResourceConfig config)
             => _Map.GetOrNull(config);
     }
