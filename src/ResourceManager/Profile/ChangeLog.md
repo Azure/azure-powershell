@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.1
+- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+- Added -AsJob parameter to Get-AzureRmSubscription cmdlet
 
 ## Version 4.0.0
 - Set-AzureRmDefault

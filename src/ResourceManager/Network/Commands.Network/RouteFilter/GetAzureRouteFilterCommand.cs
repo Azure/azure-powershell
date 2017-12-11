@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
     using Microsoft.Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteFilter"), OutputType(typeof(PSRouteFilter))]
     public class GetAzureRouteFilterCommand: RouteFilterBaseCmdlet
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.",
            ParameterSetName = "Expand")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

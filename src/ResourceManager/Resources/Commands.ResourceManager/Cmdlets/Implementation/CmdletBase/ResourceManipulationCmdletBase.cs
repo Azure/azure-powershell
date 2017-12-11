@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using System;
     using System.Management.Automation;
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

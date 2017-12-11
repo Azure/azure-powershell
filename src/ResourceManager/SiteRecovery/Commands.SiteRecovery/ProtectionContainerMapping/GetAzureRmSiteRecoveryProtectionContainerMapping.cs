@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(IEnumerable<ASRProtectionContainerMapping>))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Get-AzureRmRecoveryServicesAsrProtectionContainerMapping cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class GetAzureRmSiteRecoveryProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
