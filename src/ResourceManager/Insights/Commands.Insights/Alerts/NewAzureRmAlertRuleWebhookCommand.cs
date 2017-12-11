@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Create an AlertRuleWebhook action
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleWebhook"), OutputType(typeof(RuleWebhookAction))]
-    public class NewAzureRmAlertRuleWebhookCommand : AzureRMCmdlet
+    public class NewAzureRmAlertRuleWebhookCommand : MonitorCmdletBase
     {
         /// <summary>
         /// Gets or sets the ServiceUri of the action
@@ -37,18 +36,29 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the properties dictionary of the action
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The properties of the action in @{Property1 = 'Value1'; ...} format")]
-        public Hashtable Properties { get; set; }
+        [Alias("Properties")]
+        public Hashtable Property { get; set; }
+
+        /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// </summary>
+        protected override void ProcessRecordInternal()
+        { }
 
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            this.WriteIdentifiedWarning(
+                cmdletName: "New-AzureRmAlertRuleWebhook",
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
-            var dictionary = this.Properties == null
+            var dictionary = this.Property == null
                 ? new Dictionary<string, string>()
-                : this.Properties.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Properties[key]);
+                : this.Property.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Property[key]);
 
             var action = new RuleWebhookAction
             {

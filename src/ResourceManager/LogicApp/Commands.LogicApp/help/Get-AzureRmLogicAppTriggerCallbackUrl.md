@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: F523CFA0-427B-41AF-9C2D-EB54EC96C04B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapptriggercallbackurl
 schema: 2.0.0
 ---
 

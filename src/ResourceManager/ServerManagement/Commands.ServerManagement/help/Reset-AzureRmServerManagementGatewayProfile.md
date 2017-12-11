@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 22B63259-799B-4F25-A06B-7A818D295870
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/reset-azurermservermanagementgatewayprofile
 schema: 2.0.0
 ---
 
@@ -15,12 +16,13 @@ Resets the profile of a Server Management gateway.
 ### ByName
 ```
 Reset-AzureRmServerManagementGatewayProfile [-ResourceGroupName] <String> [-GatewayName] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Reset-AzureRmServerManagementGatewayProfile [-Gateway] <Gateway> [<CommonParameters>]
+Reset-AzureRmServerManagementGatewayProfile [-Gateway] <Gateway> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +38,21 @@ You will need to use the Save-AzureRmServerManagementGatewayProfile cmdlet to do
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Gateway
 Specifies the gateway for which the cmdlet resets the profile for.
@@ -90,7 +107,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Gateway
-
 Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
 
 ## OUTPUTS

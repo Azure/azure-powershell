@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 54585346-04E2-4FB4-B5FD-833A85C46ACB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/start-azurestorageblobcopy
 schema: 2.0.0
 ---
 
@@ -525,10 +525,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### CloudBlob
 
 Parameter 'CloudBlob' accepts value of type 'CloudBlob' from the pipeline
-
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ### IStorageContext
 

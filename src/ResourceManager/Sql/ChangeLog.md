@@ -18,14 +18,33 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ability to rename database using Set-AzureRmSqlDatabase
+* Fixed issue https://github.com/Azure/azure-powershell/issues/4974
+	- Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/5046
+	- AuditAction parameter in auditing cmdlets is no longer being ignored
+* Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
+	- When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
 * Adding support for list and cancel the asynchronous updateslo operation on the database
 	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
 	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
+* Adding support for Zone Redundancy for databases and elastic pools
+	- Adding ZoneRedundant switch parameter to New-AzureRmSqlDatabase
+	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlDatabase
+	- Adding ZoneRedundant switch parameter to New-AzureRmSqlElasticPool
+	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlElasticPool
 * Adding support for Server DNS Aliases
 	- Adding Get-AzureRmSqlServerDnsAlias cmdlet which gets server dns aliases by server and alias name or a list of server dns aliases for an azure Sql Server.
 	- Adding New-AzureRmSqlServerDnsAlias cmdlet which creates new server dns alias for a given Azure Sql server
 	- Adding Set-AzurermSqlServerDnsAlias cmlet which allows updating a Azure Sql Server to which server dns alias is pointing
 	- Adding Remove-AzureRmSqlServerDnsAlias cmdlet which removes a server dns alias for a Azure Sql Server
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 3.4.1
 

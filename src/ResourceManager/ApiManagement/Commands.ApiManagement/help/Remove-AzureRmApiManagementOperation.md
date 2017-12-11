@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 ms.assetid: A4A8D996-72A2-4154-98DA-5F84CAA010B9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementoperation
 schema: 2.0.0
 ---
 

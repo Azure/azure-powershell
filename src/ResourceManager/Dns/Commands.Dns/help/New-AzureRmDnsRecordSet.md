@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnsrecordset
 schema: 2.0.0
 ---
 
@@ -322,7 +322,7 @@ SOA records are created automatically when the zone is created and cannot be cre
 Type: RecordType
 Parameter Sets: (All)
 Aliases: 
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
 Position: Named

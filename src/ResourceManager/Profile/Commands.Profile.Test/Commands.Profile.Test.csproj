@@ -187,6 +187,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentCompleterTests.cs" />
     <Compile Include="AutosaveTests.cs" />
     <Compile Include="AzureRmProfileTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
     <Compile Include="LocationCompleterUnitTests.cs" />
+    <Compile Include="LongRunningCmdletTests.cs" />
     <Compile Include="MockDataStore.cs" />
     <Compile Include="MockServiceClient.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
@@ -227,9 +229,18 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ArgumentCompleterTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestLocationCompleter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestResourceGroupCompleter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\DefaultResourceGroup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

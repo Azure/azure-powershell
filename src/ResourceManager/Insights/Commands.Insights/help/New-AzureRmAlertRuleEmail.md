@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertruleemail
 schema: 2.0.0
 ---
 
@@ -14,8 +14,7 @@ Creates an email action for an alert rule.
 ## SYNTAX
 
 ```
-New-AzureRmAlertRuleEmail [[-CustomEmails] <String[]>] [-SendToServiceOwners]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmAlertRuleEmail [[-CustomEmail] <String[]>] [-SendToServiceOwner] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,13 +45,13 @@ This command creates an alert rule email action for the specified address and fo
 
 ## PARAMETERS
 
-### -CustomEmails
+### -CustomEmail
 Specifies a list of comma-separated e-mail addresses.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: CustomEmails
 
 Required: False
 Position: 0
@@ -76,13 +75,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SendToServiceOwners
+### -SendToServiceOwner
 Indicates that this operation sends an e-mail to the service owners when the rule fires.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: SendToServiceOwners
 
 Required: False
 Position: Named

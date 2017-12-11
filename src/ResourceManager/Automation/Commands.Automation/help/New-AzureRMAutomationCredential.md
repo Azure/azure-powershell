@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 739EB137-E4A8-4E85-96BD-4CF26D2C5763
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationcredential
 schema: 2.0.0
 ---
 

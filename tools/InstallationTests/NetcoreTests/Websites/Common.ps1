@@ -12,13 +12,18 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Get-RandomLetters
+{
+	return -join ((97..122) | Get-Random -Count 5 | % {[char]$_})
+}
+
 <#
 .SYNOPSIS
 Gets a website name for testing.
 #>
 function Get-WebsiteName
 {
-    return "someuniqueWebsite"
+    return "someuniqueWebsite$(Get-RandomLetters)"
 }
 
 <#
@@ -45,7 +50,7 @@ Gets a resource group name for testing.
 #>
 function Get-ResourceGroupName
 {
-    return "someuniqueRG"
+    return "rg$(Get-RandomLetters)"
 }
 
 <#

@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Apply Azure Container Instance SDK 2017-10-01
+    - Support container run-to-completion
+    - Support Azure File volume mount
+    - Support opening multiple ports for public IP
 
+## Version 0.1.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.0.2
 
 ## Version 0.0.1

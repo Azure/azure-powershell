@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlservervirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -16,7 +16,6 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 Set-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> -VirtualNetworkSubnetId <String>
  [-IgnoreMissingVnetServiceEndpoint] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-
 ```
 
 ## DESCRIPTION

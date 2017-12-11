@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 555D58AB-1361-4BB1-ACD0-905C3C6F4F7E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlelasticpool
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Modifies properties of an elastic database pool in Azure SQL Database.
 
 ```
 Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
- [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>]
+ [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -250,6 +250,21 @@ form of a hash table. For example:
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundant
+The zone redundancy to associate with the Azure Sql Elastic Pool
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

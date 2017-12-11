@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -81,6 +82,9 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

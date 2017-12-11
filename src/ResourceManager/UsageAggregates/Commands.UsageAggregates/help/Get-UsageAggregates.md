@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.UsageAggregates.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates/get-usageaggregates
 schema: 2.0.0
 ---
 
@@ -15,7 +16,7 @@ Gets the reported Azure subscription usage details.
 ```
 Get-UsageAggregates -ReportedStartTime <DateTime> -ReportedEndTime <DateTime>
  [-AggregationGranularity <AggregationGranularity>] [-ShowDetails <Boolean>] [-ContinuationToken <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +73,21 @@ We recommend that you follow the next link in the response to page though the da
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

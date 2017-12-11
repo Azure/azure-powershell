@@ -122,18 +122,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiskDataStore.cs" />
-    <Compile Include="DataCollectionController.cs" />
+    <Compile Include="LongRunningJobCancelledException.cs" />
+    <Compile Include="ShouldMethodInvoker.cs" />
+    <Compile Include="AzureLongRunningJob.cs" />
     <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
     <Compile Include="Serialization\LegacyAzureSubscription.cs" />
     <Compile Include="Serialization\ModelConversionExtensions.cs" />
-    <Compile Include="Utilities\FileUtilities.cs" />
+    <Compile Include="ShouldMethodStreamItem.cs" />
     <Compile Include="Utilities\INetworkHelper.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
-    <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="Extensions\ConcurrentQueueExtensions.cs" />
     <Compile Include="Constants.cs" />

@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ New-AzureRmADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureCont
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureCont
 
 ### DisplayNameWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,7 +94,8 @@ DemoApp                        ServicePrincipal               f95b6f5c-fc98-4af0
 
 ### --------------------------  Example 2  --------------------------
 ```
-New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp
+$SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp -Password $SecureStringPassword
 ```
 
 Creates a new service principal.
@@ -205,7 +206,7 @@ Accept wildcard characters: False
 The password to be associated with the service principal.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, DisplayNameWithPasswordPlainParameterSet
 Aliases: 
 

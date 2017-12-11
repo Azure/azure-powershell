@@ -24,6 +24,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -71,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/virtualNetworkGateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -337,11 +340,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientProtocol != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
-                }
-                else
-                {
-                    // set default
-                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = new List<string> { MNM.VpnClientProtocol.SSTP, MNM.VpnClientProtocol.IkeV2 };
                 }
 
                 if (this.VpnClientRootCertificates != null)
