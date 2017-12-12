@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.MachineLearningCompute;
 using Microsoft.Rest.Azure;
@@ -21,7 +22,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-
     [Cmdlet(VerbsData.Update, CmdletSuffix + "SystemService", SupportsShouldProcess = true)]
     [OutputType(typeof(PSUpdateSystemServicesResponse))]
     public class UpdateAzureRmMlOpClusterSystemService : MachineLearningComputeCmdletBase
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

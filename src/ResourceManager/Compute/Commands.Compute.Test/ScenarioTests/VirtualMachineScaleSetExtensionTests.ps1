@@ -177,6 +177,29 @@ function Test-DisableVirtualMachineScaleSetDiskEncryption
 
 <#
 .SYNOPSIS
+Test Virtual Machine Scale Set Disk Encryption Extension
+#>
+function Test-DisableVirtualMachineScaleSetDiskEncryption2
+{
+    try
+    {
+        # Common
+        $loc = 'westcentralus';
+        $rgname = "hyleevmssdetest2"
+        $vmssName = 'vmss' + $rgname;
+
+        $result = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
+        $result_string = $result | Out-String;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get Virtual Machine Scale Set Disk Encryption Status for VMSS without encryption
 #>
 function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
