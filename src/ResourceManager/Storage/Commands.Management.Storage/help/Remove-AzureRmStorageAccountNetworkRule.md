@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmStorageAccountNetworkRule
 
 ## SYNOPSIS
-Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
+Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <S
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
+The **Remove-AzureRmStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
 ## EXAMPLES
 
@@ -75,7 +75,7 @@ This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

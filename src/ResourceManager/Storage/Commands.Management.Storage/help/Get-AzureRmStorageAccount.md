@@ -30,7 +30,7 @@ The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all
 
 ## EXAMPLES
 
-### Example 1: Get a specified storage account
+### Example 1: Get a specified Storage account
 ```
 PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
 ```
@@ -54,7 +54,7 @@ This command gets all of the Storage accounts in the subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

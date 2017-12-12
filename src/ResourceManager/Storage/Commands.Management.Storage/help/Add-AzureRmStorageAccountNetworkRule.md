@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmStorageAccountNetworkRule
 
 ## SYNOPSIS
- Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage Account
+ Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Add-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <Stri
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmStorageAccountNetworkRule** cmdlet adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage Account
+The **Add-AzureRmStorageAccountNetworkRule** cmdlet adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
 ## EXAMPLES
 
@@ -77,7 +77,7 @@ This command add several IpRule with IpRule objects, input with JSON.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
