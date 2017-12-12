@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

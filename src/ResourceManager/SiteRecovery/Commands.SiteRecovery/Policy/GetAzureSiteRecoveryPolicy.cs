@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Retrieves Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Get-AzureRmRecoveryServicesAsrPolicy cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     [OutputType(typeof(IEnumerable<ASRPolicy>))]
     public class GetAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [Cmdlet("Add", "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
-    public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
+    public class AddAzureASAccountCommand : AzurePSCmdlet
     {
         private const string UserParameterSet = "UserParameterSetName";
         private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
@@ -187,23 +187,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password);
 
                 WriteObject(asAzureProfile);
-            }
-        }
-
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AnalysisServicesDataplaneStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
             }
         }
     }

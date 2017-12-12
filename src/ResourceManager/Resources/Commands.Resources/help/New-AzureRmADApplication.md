@@ -23,7 +23,7 @@ New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-Home
 ### ApplicationWithPasswordPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <String> [-StartDate <DateTime>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,8 +62,9 @@ Creates a new azure active directory application without any credentials.
 
 ### --------------------------  Create new AAD application with password.  --------------------------
 ```
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
-//NewApplication" -Password "password"
+//NewApplication" -Password $SecureStringPassword
 ```
 
 Creates a new azure active directory application and associates password credentials with it.
@@ -197,7 +198,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet
 Aliases: 
 

@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSsoToken"), OutputType(typeof(string))]
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management exists.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -497,27 +497,14 @@ Test Virtual Machine Size and Usage
 #>
 function Test-VirtualMachineList
 {
-    # Setup
-    $passed = $false;
+    $s1 = Get-AzureRmVM;
+    $s2 = Get-AzureRmVM;
 
-    try
+    if ($s2 -ne $null)
     {
-        $s1 = Get-AzureRmVM;
-        $s2 = Get-AzureRmVM;
-
-        if ($s2 -ne $null)
-        {
-            Assert-NotNull $s2[0].Id;
-        }
-
-        Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "http://www.test.com/test"; } "Unable to deserialize the response"
-
-        $passed = $true;
+        Assert-NotNull $s2[0].Id;
     }
-    finally
-    {
-        Assert-True { $passed };
-    }
+    Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "https://www.test.com/test"; } "Unable to deserialize the response"
 }
 
 <#
@@ -1450,7 +1437,7 @@ function Test-VirtualMachineDataDiskNegative
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
         # Negative Tests on A0 Size + 2 Data Disks
-        Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The maximum number of data disks allowed to be attached to a VM is 1.";
+        Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The maximum number of data disks allowed to be attached to a VM of this size is 1.";
     }
     finally
     {
@@ -1952,7 +1939,7 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku');
 
-    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression');
+    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Version', 'FilterExpression', 'Skus', 'Offer', 'PublisherName');
 
     Assert-OutputContains " Get-AzureRmVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
@@ -1980,17 +1967,18 @@ function get_all_vm_locations
         $namespace = "Microsoft.Compute"
         $type = "virtualMachines"
         $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
-  
+
         if ($location -eq $null)
         {
-            return @("West US", "East US")
-        } else
+            return @("East US")
+        }
+        else
         {
             return $location.Locations
         }
     }
 
-    return @("West US", "East US")
+    return @("East US")
 }
 
 <#
