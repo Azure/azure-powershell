@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithAccessToken()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LoginUsingSkipValidation()
         {
-            var cmdlt = new AddAzureRMAccountCommand();
+            var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
