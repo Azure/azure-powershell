@@ -14,34 +14,33 @@ Update the properties of an Event Grid event subscription.
 
 ### ResourceGroupNameParameterSet (Default)
 ```
-Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-Endpoint] <String>]
- [[-ResourceGroupName] <String>] [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
- [[-SubjectEndsWith] <String>] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-ResourceGroupName] <String>]
+ [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 Update-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String>
- [[-Endpoint] <String>] [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
- [[-SubjectEndsWith] <String>] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### EventSubscriptionInputObjectSet
 ```
-Update-AzureRmEventGridSubscription [-InputObject] <PSEventSubscription> [[-Endpoint] <String>]
- [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
- [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+Update-AzureRmEventGridSubscription [-InputObject] <PSEventSubscription> [-EndpointType <String>]
+ [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-IncludedEventType <String[]>]
+ [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomTopicEventSubscriptionParameterSet
 ```
-Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-Endpoint] <String>]
- [-ResourceGroupName] <String> [-TopicName] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
- [[-SubjectEndsWith] <String>] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
+ [-TopicName] <String> [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>]
+ [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,25 +100,13 @@ This can be a webhook URL or the Azure resource ID of an EventHub.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -129,27 +116,14 @@ This can be webhook or eventhub
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 Accepted values: webhook, eventhub
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-Accepted values: webhook, eventhub
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,25 +147,13 @@ Filter that specifies a list of event types to include.If not specified, all eve
 
 ```yaml
 Type: String[]
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String[]
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -215,25 +177,13 @@ Labels for the event subscription
 
 ```yaml
 Type: String[]
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String[]
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -246,7 +196,7 @@ Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -258,7 +208,7 @@ Parameter Sets: CustomTopicEventSubscriptionParameterSet
 Aliases: ResourceGroup
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -285,25 +235,13 @@ If not specified, events with all subject prefixes will be included.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -313,25 +251,13 @@ If not specified, events with all subject suffixes will be included.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -344,7 +270,7 @@ Parameter Sets: CustomTopicEventSubscriptionParameterSet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -381,17 +307,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
 System.String[]
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-
 
 ## NOTES
 
