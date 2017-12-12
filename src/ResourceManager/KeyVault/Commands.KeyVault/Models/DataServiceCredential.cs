@@ -78,10 +78,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (context.Account == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.ArmAccountNotFound);
 
-            if (context.Account.Type != AzureAccount.AccountType.User &&
-                context.Account.Type != AzureAccount.AccountType.ServicePrincipal)
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
-
             if (context.Subscription != null && context.Account != null)
                 tenantId = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
                        .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
