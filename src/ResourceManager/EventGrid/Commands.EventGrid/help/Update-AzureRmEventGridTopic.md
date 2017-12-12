@@ -8,30 +8,30 @@ schema: 2.0.0
 # Update-AzureRmEventGridTopic
 
 ## SYNOPSIS
-Update the properties of an Event Grid topic.
+Updates the properties of an Event Grid topic.
 
 ## SYNTAX
 
 ### TopicNameParameterSet (Default)
 ```
-Update-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Update-AzureRmEventGridTopic [-ResourceId] <String> [-Tag] <Hashtable>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmEventGridTopic [-ResourceId] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-Update-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag] <Hashtable>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmEventGridTopic [-InputObject] <PSTopic> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the properties of an Event Grid topic. This can be used to update the tags of an Event Grid topic.
+Updates the properties of an Event Grid topic. This can be used to update the tags of an Event Grid topic.
 
 ## EXAMPLES
 
@@ -124,25 +124,13 @@ Hashtable which represents resource Tags.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Hashtable
-Parameter Sets: TopicInputObjectParameterSet
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,17 +165,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 System.Collections.Hashtable
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-
 
 ## NOTES
 

@@ -65,27 +65,24 @@ namespace Microsoft.Azure.Commands.EventGrid
         public PSTopic InputObject { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            Position = 2,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(
-            Mandatory = true,
-            Position = 1,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
-            Mandatory = true,
-            Position = 1,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = TopicInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            Dictionary<string, string> newTagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             string resourceGroupName = string.Empty;
             string topicName = string.Empty;
+
+            var newTagDictionary = (this.Tag != null)
+                ? TagsConversionHelper.CreateTagDictionary(this.Tag, true)
+                : new Dictionary<string, string>();
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
