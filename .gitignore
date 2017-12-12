@@ -20,7 +20,9 @@ app.config
 # User-specific files
 *.suo
 *.user
+*.userprefs
 *.sln.docstates
+.vscode
 
 # Build results
 [Dd]ebug/
@@ -210,3 +212,4 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+.vscode/
