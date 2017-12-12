@@ -130,8 +130,8 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WebsitesStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

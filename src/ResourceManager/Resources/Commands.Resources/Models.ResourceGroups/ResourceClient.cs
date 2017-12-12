@@ -19,17 +19,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using RMProviderOperationsMetadata = Microsoft.Azure.Management.Resources.Models.ProviderOperationsMetadata;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -54,7 +54,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
+#if !NETSTANDARD
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
+#endif
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -68,8 +70,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="context">Profile containing resources to manipulate</param>
         public ResourcesClient(IAzureContext context)
             : this(
-                AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+#if !NETSTANDARD
                 new GalleryTemplatesClient(context),
+#endif
                 AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
@@ -83,10 +87,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
+#if !NETSTANDARD
             GalleryTemplatesClient galleryTemplatesClient,
+#endif
             IAuthorizationManagementClient authorizationManagementClient)
         {
+#if !NETSTANDARD
             GalleryTemplatesClient = galleryTemplatesClient;
+#endif
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -218,7 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static string ParseErrorMessage(string statusMessage)
         {
-            CloudError error = CloudException.ParseXmlOrJsonError(statusMessage);
+            Hyak.Common.CloudError error = Hyak.Common.CloudException.ParseXmlOrJsonError(statusMessage);
             if (error.Message == null)
             {
                 return error.OriginalMessage;
@@ -322,16 +330,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        public RMProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
-        {
-            ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
-            return result.Provider;
-        }
+        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace) =>
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
 
-        public IList<RMProviderOperationsMetadata> ListProviderOperationsMetadata()
-        {
-            ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
-            return result.Providers;
-        }
+        public IPage<ProviderOperationsMetadata> ListProviderOperationsMetadata() =>
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.List("2015-07-01");
     }
 }

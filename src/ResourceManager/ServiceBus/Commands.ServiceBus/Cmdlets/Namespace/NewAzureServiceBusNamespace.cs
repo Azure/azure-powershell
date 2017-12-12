@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "ServiceBus Namespace Location.")]
+        [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

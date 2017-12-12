@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 017EF522-ABC5-40EE-B8DC-369D097F49D0
