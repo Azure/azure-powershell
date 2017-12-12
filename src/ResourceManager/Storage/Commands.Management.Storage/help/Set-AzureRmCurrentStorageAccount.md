@@ -27,7 +27,7 @@ Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IA
 
 ## DESCRIPTION
 The **Set-AzureRmCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
-The current storage account is used as the default when you access Storage without specifying a Storage account name.
+The current Storage account is used as the default when you access Storage without specifying a Storage account name.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The current storage account is used as the default when you access Storage witho
 PS C:\>Set-AzureRmCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
 ```
 
-This command sets the default storage account for the specified subscription.
+This command sets the default Storage account for the specified subscription.
 
 ## PARAMETERS
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
