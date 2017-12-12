@@ -188,9 +188,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Account Kind.")]
-        [ValidateSet(AccountKind.StorageV2, IgnoreCase = true)]
-        public string Kind { get; set; }
+            HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
+        public SwitchParameter UpgradeToStorageV2 { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -252,9 +251,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
                     }
 
-                    if (Kind != null)
+                    if (UpgradeToStorageV2.IsPresent)
                     {
-                        updateParameters.Kind = ParseAccountKind(Kind);
+                        updateParameters.Kind = Kind.StorageV2;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

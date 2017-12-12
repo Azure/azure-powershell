@@ -642,7 +642,7 @@ function Test-SetAzureStorageAccountStorageV2
         Assert-AreEqual $sto.Kind $kind;        
       				
 		$kind = 'StorageV2'
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Kind $kind;
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -UpgradeToStorageV2;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
