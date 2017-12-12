@@ -129,12 +129,21 @@ function Test-NewAzureStorageAccount
     {
         # Test
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $stotype = 'Standard_ZRS';
+		$kind = 'StorageV2'
 
+        $loc = Get-ProviderLocation ResourceManagement;
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        
+		$sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+		$stotype = 'StandardZRS';
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
