@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '4.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -143,7 +143,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
-    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping'
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+- Added -AsJob parameter to Get-AzureRmSubscription cmdlet'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
