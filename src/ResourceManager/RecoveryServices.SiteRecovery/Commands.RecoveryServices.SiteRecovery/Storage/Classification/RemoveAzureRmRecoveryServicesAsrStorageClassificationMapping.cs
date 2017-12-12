@@ -33,8 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Remove-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping :
-        SiteRecoveryCmdletBase,
-        IModuleAssemblyInitializer
+        SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets primary storage classification.
@@ -46,34 +45,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         [Alias("StorageClassificationMapping")]
         public ASRStorageClassificationMapping InputObject { get; set; }
-
-        /// <summary>
-        ///     Add Site Recovery aliases
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                AzureSessionInitializer.InitializeAzureSession();
-                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
-
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(
-                    RunspaceMode.CurrentRunspace);
-                invoker.AddScript(
-                    File.ReadAllText(
-                        FileUtilities.GetContentFilePath(
-                            Path.GetDirectoryName(
-                                Assembly.GetExecutingAssembly()
-                                    .Location),
-                            "RecoveryServicesAsrStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This may throw exception for tests, ignore.
-            }
-        }
 
         /// <summary>
         ///     ProcessRecord of the command.
