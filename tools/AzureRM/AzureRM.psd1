@@ -71,7 +71,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.0.0';
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '5.0.0'; }, 
-			   @{ModuleName = 'AzureRM.DataMigration'; RequiredVersion = '0.1.0'; },
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.2.0'; }, 
