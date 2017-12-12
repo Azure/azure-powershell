@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.SubscriptionId, Position = 1)]
         [ValidateNotNullOrEmpty]
-        public Guid SubscriptonId { get; set; }
+        public Guid SubscriptionId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 ManagementGroupsApiClient.GroupId = GroupName;
-                ManagementGroupsApiClient.SubscriptionId = SubscriptonId.ToString();
+                ManagementGroupsApiClient.SubscriptionId = SubscriptionId.ToString();
 
                 var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.CreateWithHttpMessagesAsync()
                     .GetAwaiter().GetResult();

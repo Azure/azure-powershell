@@ -13,7 +13,7 @@ Removes a Subscription from a Management Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptonId] <Guid>
+Remove-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid>
  [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,7 +24,7 @@ The **Remove-AzureRMManagementGroupSubscription** cmdlet removes a Subscription 
 
 ### Example 1 - Remove Subscription from Management Group
 ```
-PS C:\> Remove-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptonId 2120692d-35c3-44c8-81f5-631fa7351726
+PS C:\> Remove-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 OK
 ```
 
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptonId
+### -SubscriptionId
 The SubscriptionId to remove from the Management Group.
 
 ```yaml

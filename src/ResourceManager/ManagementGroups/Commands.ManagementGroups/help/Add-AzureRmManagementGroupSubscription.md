@@ -13,7 +13,7 @@ Adds a Subscription to a Management Group.
 ## SYNTAX
 
 ```
-Add-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptonId] <Guid>
+Add-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid>
  [-DefaultProfile <IAzureContextContainer>]
 ```
 
@@ -24,7 +24,7 @@ The **Add-AzureRMManagementGroupSubscription** cmdlet adds a Subscription to a M
 
 ### Example 1 - Add Subscription to Management Group
 ```
-PS C:\> Add-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptonId 2120692d-35c3-44c8-81f5-631fa7351726
+PS C:\> Add-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 OK
 ```
 
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptonId
+### -SubscriptionId
 The SubscriptionId to add to the Management Group.
 
 ```yaml
