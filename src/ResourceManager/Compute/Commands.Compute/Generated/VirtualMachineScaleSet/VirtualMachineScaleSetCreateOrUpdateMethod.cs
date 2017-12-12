@@ -197,10 +197,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 publicIPAddress: publicIpAddress,
                 subnet: subnet);
 
+            var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
+                name: FrontendPoolName,
+                zones: Zone,
+                publicIPAddress: publicIpAddress,
+                subnet: subnet);
+
+            var backendAddressPool = loadBalancer.CreateBackendAddressPool(
+                name: BackendPoolName);
+
             var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
                 name: VMScaleSetName,
                 subnet: subnet,
-                loadBalancer: loadBalancer,
+                frontendIpConfigurations: new[] { frontendIpConfiguration },
+                backendAdressPool: backendAddressPool,
                 isWindows: isWindows,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,

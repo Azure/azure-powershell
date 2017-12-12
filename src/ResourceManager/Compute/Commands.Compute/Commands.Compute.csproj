@@ -278,6 +278,8 @@
     <Compile Include="Strategies\Compute\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="Strategies\Compute\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
+    <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
     <Compile Include="Strategies\Network\LoadBalancerStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />

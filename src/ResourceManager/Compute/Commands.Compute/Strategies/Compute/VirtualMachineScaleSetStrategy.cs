@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            ResourceConfig<LoadBalancer> loadBalancer,
+            IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
+            NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
             bool isWindows,
             string adminUsername,
             string adminPassword,
@@ -54,9 +55,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 {
                     var vmss = new VirtualMachineScaleSet()
                     {
-                        Zones = loadBalancer
-                            .CreateModel(subscriptionId)
-                            .FrontendIPConfigurations
+                        Zones = frontendIpConfigurations
+                            ?.Select(f => f.CreateModel(subscriptionId))
                             ?.Where(z => z?.Zones != null)
                             .SelectMany(z => z.Zones)
                             .Where(z => z != null)
@@ -106,8 +106,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>(
                             new[] {
                                 new Microsoft.Azure.Management.Compute.Models.SubResource(
-                                    id: loadBalancer.GetId(subscriptionId).Concat(new [] { "backendAddressPools", name})
-                                    .IdToString())
+                                    id: backendAdressPool.GetId(subscriptionId).IdToString())
                             }),
                         Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
                     };
@@ -130,6 +129,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 
                     return vmss;
                 },
-                dependencies: new IEntityConfig[] { subnet, loadBalancer });
+                dependencies: new IEntityConfig[] { subnet, backendAdressPool }
+                                                  .Concat(frontendIpConfigurations));
     }
 }
