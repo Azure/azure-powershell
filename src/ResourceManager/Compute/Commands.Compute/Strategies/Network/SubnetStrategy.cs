@@ -18,11 +18,11 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
-    static class SubnetPolicy
+    static class SubnetStrategy
     {
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
-                header: "subnets",
+                provider: "subnets",
                 get: (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
                 createOrUpdate: (vn, name, subnet) =>
                 {
@@ -49,6 +49,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             => Strategy.CreateConfig(
                 parent: virtualNetwork,
                 name: name,
-                createModel: () => new Subnet { Name = name, AddressPrefix = addressPrefix });
+                createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
     }
 }

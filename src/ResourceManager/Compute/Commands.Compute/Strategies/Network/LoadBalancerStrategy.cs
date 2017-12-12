@@ -61,23 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     name: name,
                     createModel: subscriptionId =>
                     {
-                        var frontEndConfig = CreateFrontendIpConfig(
-                            froontendPoolName,
-                            subscriptionId,
-                            subnet.GetId(subscriptionId).IdToString(),
-                            publicIPAddress.GetId(subscriptionId).IdToString(),
-                            privateIpAddress: null,
-                            zones: zones);
-
-                        var backendConfig = CreateBackendAddressPoolConfig(backendPoolName, subscriptionId);
-
                         var lb = new LoadBalancer();
-
-                        lb.FrontendIPConfigurations = new List<FrontendIPConfiguration>();
-                        lb.FrontendIPConfigurations.Add(frontEndConfig);
-
-                        lb.BackendAddressPools = new List<BackendAddressPool>();
-                        lb.BackendAddressPools.Add(backendConfig);
 
                         NormalizeChildResourcesId(lb, subscriptionId, resourceGroup.Name);
 
@@ -85,63 +69,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     },
                     dependencies: new IEntityConfig[] { subnet, publicIPAddress });
 
-        private static BackendAddressPool CreateBackendAddressPoolConfig(
-            string backendPoolName,
-            string subscriptionId)
-        {
-            var backendAddressPool = new BackendAddressPool();
-            backendAddressPool.Name = backendPoolName;
-
-            backendAddressPool.Id =
-                GetResourceNotSetId(
-                    subscriptionId,
-                    LoadBalancerBackendAddressPoolName,
-                    backendAddressPool.Name);
-
-            return backendAddressPool;
-        }
-
-        private static FrontendIPConfiguration CreateFrontendIpConfig(
-            string froontendPoolName,
-            string subscriptionId,
-            string subnetId,
-            string publicIpAddressId,
-            string privateIpAddress,
-            IList<string> zones)
-        {
-            var frontendIpConfig = new FrontendIPConfiguration();
-            frontendIpConfig.Name = froontendPoolName;
-            frontendIpConfig.Zones = zones;
-
-            if (!string.IsNullOrEmpty(subnetId))
-            {
-                frontendIpConfig.Subnet = new Subnet(subnetId);
-
-                if (!string.IsNullOrEmpty(privateIpAddress))
-                {
-                    frontendIpConfig.PrivateIPAddress = privateIpAddress;
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Static;
-                }
-                else
-                {
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Dynamic;
-                }
-            }
-            else if (!string.IsNullOrEmpty(publicIpAddressId))
-            {
-                frontendIpConfig.PublicIPAddress = new PublicIPAddress(publicIpAddressId);
-            }
-
-            frontendIpConfig.Id =
-                GetResourceNotSetId(
-                    subscriptionId,
-                    LoadBalancerFrontendIpConfigName,
-                    frontendIpConfig.Name);
-
-            return frontendIpConfig;
-        }
-
-        private static void NormalizeChildResourcesId(LoadBalancer loadBalancer, string subscriptionId, string resourceGroupName)
+        internal static void NormalizeChildResourcesId(LoadBalancer loadBalancer, string subscriptionId, string resourceGroupName)
         {
             // Normalize LoadBalancingRules
             if (loadBalancer.LoadBalancingRules != null)
@@ -243,7 +171,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             }
         }
 
-        private static string GetResourceId(
+        internal static string GetResourceId(
                     string subscriptionId,
                     string resourceGroupName,
                     string loadBalancerName,
@@ -259,7 +187,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 resourceName);
         }
 
-        private static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
+        internal static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
         {
             return string.Format(
                 LoadBalancerChildResourceId,
@@ -270,7 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 resourceName);
         }
 
-        private static string NormalizeLoadBalancerChildResourceIds(string id, string resourceGroupName, string loadBalancerName)
+        internal static string NormalizeLoadBalancerChildResourceIds(string id, string resourceGroupName, string loadBalancerName)
         {
             id = NormalizeId(id, "resourceGroups", resourceGroupName);
             id = NormalizeId(id, "loadBalancers", loadBalancerName);
@@ -278,7 +206,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             return id;
         }
 
-        private static string NormalizeId(string id, string resourceName, string resourceValue)
+        internal static string NormalizeId(string id, string resourceName, string resourceValue)
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
