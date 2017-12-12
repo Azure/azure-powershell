@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount
 schema: 2.0.0
@@ -20,8 +20,8 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -31,7 +31,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-Kind <String>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ This first command gets NetworkRuleSet property from a Storage Account, and the 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
 ```
-PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Kind StorageV2
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -UpgradeToStorageV2
 ```
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
@@ -133,9 +133,8 @@ The acceptable values for this parameter are: Hot and Cool.
 If you change the access tier, it may result in additional charges. For more information, see
 [Azure Blob Storage: Hot and cool storage tiers](http://go.microsoft.com/fwlink/?LinkId=786482).
 
-If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount
-cmdlet, you must specify a value for the *AccessTier* parameter. If you specify a value of Storage
-for this *Kind* parameter, do not specify the *AccessTier* parameter.
+If the Storage account has Kind as StorageV2 or BlobStorage, you can specify the *AccessTier* parameter. 
+If the Storage account has Kind as Storage, do not specify the *AccessTier* parameter.
 
 ```yaml
 Type: String
@@ -320,25 +319,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-Specifies StorageV2 for this *Kind* paramter to upgrade Storage or BlobStorage Kind Storage Account to StorageV2 Kind Storage account.
-The acceptable values for this parameter is:
-
-- StorageV2. General Purpose Version 2 (GPv2) storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StorageV2
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the Storage account to Modify.
 
@@ -439,6 +419,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UpgradeToStorageV2
+Upgrade Storage account Kind from  Storage or BlobStorage to StorageV2.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
