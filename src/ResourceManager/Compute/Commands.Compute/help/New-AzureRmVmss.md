@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 1A2C843C-6962-4B0E-ACBF-A5EFF609A5BE
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmss
 schema: 2.0.0
@@ -12,10 +13,23 @@ Creates a VMSS.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
 New-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### SimpleParameterSet
+```
+New-AzureRmVmss [-AsJob] [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-ImageName <String>]
+ -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>] [-SubnetName <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-SecurityGroupName <String>]
+ [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
+ [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
+ [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +158,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllocationMethod
+{{Fill AllocationMethod Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+Accepted values: Static, Dynamic
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendPoolName
+{{Fill BackendPoolName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendPort
+{{Fill BackendPort Description}}
+
+```yaml
+Type: Int32[]
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Credential
+{{Fill Credential Description}}
+
+```yaml
+Type: PSCredential
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -159,12 +234,117 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainNameLabel
+{{Fill DomainNameLabel Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendPoolName
+{{Fill FrontendPoolName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageName
+{{Fill ImageName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceCount
+{{Fill InstanceCount Description}}
+
+```yaml
+Type: Int32
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerName
+{{Fill LoadBalancerName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+{{Fill Location Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressName
+{{Fill PublicIpAddressName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
@@ -174,12 +354,85 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityGroupName
+{{Fill SecurityGroupName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetAddressPrefix
+{{Fill SubnetAddressPrefix Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetName
+{{Fill SubnetName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyMode
+{{Fill UpgradePolicyMode Description}}
+
+```yaml
+Type: UpgradeMode
+Parameter Sets: SimpleParameterSet
+Aliases: 
+Accepted values: Automatic, Manual, Rolling
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineScaleSet
 Specifies the **VirtualMachineScaleSet** object that contains the properties of the VMSS that this cmdlet creates.
 
 ```yaml
 Type: PSVirtualMachineScaleSet
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
@@ -189,16 +442,86 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -VirtualNetworkName
+{{Fill VirtualNetworkName Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VMScaleSetName
 Specifies the name of the VMSS that this cmdlet creates.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
 Aliases: Name
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: Name
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VmSize
+{{Fill VmSize Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetAddressPrefix
+{{Fill VnetAddressPrefix Description}}
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting the IP allocated for the resource needs to come from.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SimpleParameterSet
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
