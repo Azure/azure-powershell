@@ -18,7 +18,7 @@ Gets container registry name
 #>
 function Get-RandomRegistryName
 {
-    return getAssetName
+    return 'reg' + (getAssetName)
 }
 
 <#
@@ -27,7 +27,25 @@ Gets resource group name
 #>
 function Get-RandomResourceGroupName
 {
-    return getAssetName
+    return 'rg' + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Gets webhook name
+#>
+function Get-RandomReplicationName
+{
+	return 'rep' + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Gets webhook name
+#>
+function Get-RandomWebhookName
+{
+	return 'wh' + (getAssetName)
 }
 
 <#
@@ -57,4 +75,32 @@ function Get-ProviderLocation($provider)
 	}
 
 	return "West US"
+}
+
+function Assert-Error
+{
+	param([ScriptBlock] $script, [string] $message)
+
+	$originalErrorCount = $error.Count
+	$originalErrorActionPreference = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
+	try
+	{
+		&$script
+	}
+	finally
+	{
+		$ErrorActionPreference = $originalErrorActionPreference
+	}
+
+	$result = $Error[0] -like "*$($message)*"
+
+	If(!$result)
+	{
+		 Write-Output "expected error $($message), actual error $($Error[0])"
+	}
+
+	Assert-True {$result}
+
+	$Error.Clear()
 }
