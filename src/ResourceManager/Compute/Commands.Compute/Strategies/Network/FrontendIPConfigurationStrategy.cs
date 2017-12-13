@@ -27,28 +27,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static NestedResourceStrategy<FrontendIPConfiguration, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<FrontendIPConfiguration, LoadBalancer>(
-        provider: "frontendIPConfigurations",
-        get: (lb, name) => lb.FrontendIPConfigurations?.FirstOrDefault(s => s?.Name == name),
-        createOrUpdate: (lb, name, frontendIpConfiguration) =>
-        {
-            frontendIpConfiguration.Name = name;
-            if (lb.FrontendIPConfigurations == null)
-            {
-                lb.FrontendIPConfigurations = new List<FrontendIPConfiguration> { frontendIpConfiguration };
-                return;
-            }
-            var f = lb
-                .FrontendIPConfigurations
-                .Select((fn, i) => new { fn, i })
-                .FirstOrDefault(p => p.fn.Name == name);
-
-            if (f != null)
-            {
-                lb.FrontendIPConfigurations[f.i] = frontendIpConfiguration;
-                return;
-            }
-            lb.FrontendIPConfigurations.Add(frontendIpConfiguration);
-        });
+                provider: "frontendIPConfigurations",
+                getList: parentModel => parentModel.FrontendIPConfigurations,
+                setList: (parentModel, list) => parentModel.FrontendIPConfigurations = list,
+                getName: model => model.Name,
+                setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
             this ResourceConfig<LoadBalancer> loadBalancer, 
