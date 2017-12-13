@@ -17,11 +17,11 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateSet("ModuleList", "AzureRMAndDependencies", "AzureAndDependencies", "NetCoreModules", "AzureStackAndDependencies")]
     [string] $scope,
-    [Parameter(Mandatory = $true)]
-    [ValidateSet("TestGallery", "PSGallery")]
-    [string] $repoName,
     [Parameter(Mandatory = $false)]
     [string[]] $listOfModules,
+    [Parameter(Mandatory = $false)]
+    [ValidateSet("TestGallery", "PSGallery")]
+    [string] $repoName,
     [Parameter(Mandatory = $false)]
     [string] $nugetExe,
     [Parameter(Mandatory = $false)]
@@ -160,6 +160,12 @@ if ([string]::IsNullOrEmpty($nugetExe))
 {
     Write-Verbose "Use default nuget path"
     $nugetExe =  "$PSScriptRoot\nuget.exe"
+}
+
+if ([string]::IsNullOrEmpty($repoName))
+{
+    Write-Verbose "Deleting from PSGallery"
+    $repoName = "PSGallery"
 }
 
 if (($scope -eq "ModuleList") -and ($listOfModules -eq $null))
