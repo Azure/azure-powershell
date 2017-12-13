@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM
 ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
@@ -41,9 +41,9 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 This command creates a Blob Storage account that uses the hot access type.
 The account has enabled Storage Service encryption on Blob Service.
 
-### Example 3: Create a Storage Account that Enables Storage Service Encryption on Blob and File Services, and Generate and Assign an Identity for Azure KeyVault.
+### Example 3: Create a Storage Account with Kind StorageV2 that enables Storage Service Encryption on Blob and File Services, and generate and assign an Identity for Azure KeyVault.
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File" -AssignIdentity
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2 -EnableEncryptionService "Blob,File" -AssignIdentity
 ```
 
 This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage
@@ -176,7 +176,7 @@ The default value is Storage.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Storage, BlobStorage
+Accepted values: Storage, StorageV2, BlobStorage
 
 Required: False
 Position: Named

@@ -188,6 +188,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
+        public SwitchParameter UpgradeToStorageV2 { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -246,6 +251,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (NetworkRuleSet != null)
                     {
                         updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                    }
+
+                    if (UpgradeToStorageV2.IsPresent)
+                    {
+                        updateParameters.Kind = Kind.StorageV2;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

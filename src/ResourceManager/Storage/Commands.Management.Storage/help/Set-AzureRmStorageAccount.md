@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount
 schema: 2.0.0
@@ -20,8 +20,8 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -31,7 +31,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [-EnableEncryptionService <EncryptionSupportServiceEnum>]
  [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ The command sets the Access Tier value to be cool.
 PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
-The command sets the Access Tier value to be cool.
+The command sets the custom domain and tags for a Storage account.
 
 ### Example 5: Enable encryption on Blob Services with Keyvault
 ```
@@ -117,6 +117,13 @@ PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountN
 
 This first command gets NetworkRuleSet property from a Storage Account, and the second command sets it to another Storage Account 
 
+### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
+```
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -UpgradeToStorageV2
+```
+
+The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -126,9 +133,8 @@ The acceptable values for this parameter are: Hot and Cool.
 If you change the access tier, it may result in additional charges. For more information, see
 [Azure Blob Storage: Hot and cool storage tiers](http://go.microsoft.com/fwlink/?LinkId=786482).
 
-If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount
-cmdlet, you must specify a value for the *AccessTier* parameter. If you specify a value of Storage
-for this *Kind* parameter, do not specify the *AccessTier* parameter.
+If the Storage account has Kind as StorageV2 or BlobStorage, you can specify the *AccessTier* parameter. 
+If the Storage account has Kind as Storage, do not specify the *AccessTier* parameter.
 
 ```yaml
 Type: String
@@ -413,6 +419,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UpgradeToStorageV2
+Upgrade Storage account Kind from  Storage or BlobStorage to StorageV2.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
