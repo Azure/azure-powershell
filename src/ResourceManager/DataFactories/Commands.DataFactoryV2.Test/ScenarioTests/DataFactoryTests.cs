@@ -65,5 +65,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-GetFactoryByNameParameterSet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateDataFactoryV2()
+        {
+            RunPowerShellTest("Test-UpdateDataFactory");
+        }
     }
 }

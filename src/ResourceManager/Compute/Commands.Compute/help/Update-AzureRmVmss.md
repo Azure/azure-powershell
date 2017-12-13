@@ -13,7 +13,7 @@ Updates the state of a VMSS.
 ## SYNTAX
 
 ```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Update-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
  [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
  [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
@@ -42,6 +42,21 @@ PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -Virtua
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AutomaticOSUpgrade
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
@@ -160,6 +175,7 @@ The acceptable values for this parameter are:
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -289,6 +305,7 @@ The acceptable values for this parameter are:
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
@@ -353,6 +370,7 @@ Accept wildcard characters: False
 Specifies the caching mode of the operating system disk. 
 The acceptable values for this parameter are:
 
+- None
 - ReadOnly
 - ReadWrite
 
@@ -365,6 +383,7 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
 Position: Named
@@ -597,11 +616,13 @@ The acceptable values for this parameter are:
 
 - Automatic
 - Manual
+- Rolling
 
 ```yaml
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: Named
