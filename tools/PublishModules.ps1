@@ -110,25 +110,6 @@ function Get-TargetModules
     }
 }
 
-function Add-PSM1Dependency
-{
-  [CmdletBinding()]
-  param(
-  [string] $Path)
-
-  PROCESS 
-  {
-    $file = Get-Item -Path $Path
-    $manifestFile = $file.Name
-    $psm1file = $manifestFile -replace ".psd1", ".psm1"
-    if($isNetCore -eq "false") {
-      Update-ModuleManifest -Path $Path -RootModule $psm1file
-    }
-  }
-
-}
-
-
 function Remove-ModuleDependencies
 {
   [CmdletBinding()]
@@ -216,7 +197,6 @@ function Change-RMModule
           Write-Output "Expanding $zipPath"
           Expand-Archive $zipPath -DestinationPath $dirPath
           Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Add-PSM1Dependency -Path $unzippedManifest
           Write-Output "Removing module manifest dependencies for $unzippedManifest"
           Remove-ModuleDependencies -Path $unzippedManifest
           Remove-Item -Path $zipPath -Force
