@@ -12,7 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# Run script in an elevated session after uninstalling Azure Powershell
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateSet("ModuleList", "AzureRMAndDependencies", "AzureAndDependencies", "NetCoreModules", "AzureStackAndDependencies")]
