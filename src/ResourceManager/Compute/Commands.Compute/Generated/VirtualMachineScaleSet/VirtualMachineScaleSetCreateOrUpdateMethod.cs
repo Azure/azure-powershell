@@ -221,10 +221,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var client = new Client(DefaultProfile.DefaultContext);
 
-            var current = virtualMachineScaleSet
-                .GetStateAsync(client, new CancellationToken())
-                .GetAwaiter()
-                .GetResult();
+            // get current Azure state
+            var current = await virtualMachineScaleSet.GetStateAsync(client, new CancellationToken());
 
             if (Location == null)
             {
