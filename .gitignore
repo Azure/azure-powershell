@@ -212,3 +212,4 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+.vscode/
