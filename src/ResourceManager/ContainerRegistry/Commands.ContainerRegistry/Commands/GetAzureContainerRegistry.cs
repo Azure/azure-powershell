@@ -14,65 +14,86 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun), OutputType(typeof(PSContainerRegistry))]
+    [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun, DefaultParameterSetName = ListRegistriesParameterSet)]
+    [OutputType(typeof(PSContainerRegistry), typeof(IList<PSContainerRegistry>))]
     public class GetAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = false,
-            ParameterSetName = ResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = RegistryNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListRegistriesParameterSet, HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = RegistryNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Show more details about the container registry.")]
+        public SwitchParameter IncludeDetail { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]
+        [ValidateNotNullOrEmpty]
+        [Alias(ResourceIdAlias)]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            if (string.Equals(ParameterSetName, ListRegistriesParameterSet))
             {
-                var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
-                WriteObject(new PSContainerRegistry(registry));
+                ListRegistry();
             }
             else
             {
-                List<PSContainerRegistry> list = new List<PSContainerRegistry>();
-
-                var registries = RegistryClient.ListRegistries(ResourceGroupName);
-                foreach (Registry registry in registries)
+                if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
                 {
-                    list.Add(new PSContainerRegistry(registry));
-                }
-
-                while (!string.IsNullOrEmpty(registries.NextPageLink))
-                {
-                    registries = RegistryClient.ListRegistriesUsingNextLink(ResourceGroupName, registries.NextPageLink);
-                    foreach (Registry registry in registries)
+                    string resourceGroup, registryName, childResourceName;
+                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
                     {
-                        list.Add(new PSContainerRegistry(registry));
+                        WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
+                        return;
                     }
-                }
 
-                WriteObject(list, true);
+                    ResourceGroupName = resourceGroup;
+                    Name = registryName;
+                }
+                ShowRegistry();
+            }
+        }
+
+        private void ShowRegistry()
+        {
+            var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
+            var psRegistry = new PSContainerRegistry(registry);
+
+            if (IncludeDetail)
+            {
+                SetRegistryDetials(psRegistry);
+            }
+            WriteObject(psRegistry);
+        }
+
+        private void ListRegistry()
+        {
+            var psRegistries = RegistryClient.ListAllRegistries(ResourceGroupName);
+
+            if (IncludeDetail)
+            {
+                foreach(var psr in psRegistries)
+                {
+                    SetRegistryDetials(psr);
+                }
+            }
+            WriteObject(psRegistries, true);
+        }
+
+        private void SetRegistryDetials(PSContainerRegistry registry)
+        {
+            if(!string.IsNullOrEmpty(registry.ResourceGroupName) && !string.IsNullOrEmpty(registry.Name))
+            {
+                registry.Usages = RegistryClient.ListRegistryUsage(registry.ResourceGroupName, registry.Name)?.Value;
             }
         }
     }
