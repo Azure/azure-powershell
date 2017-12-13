@@ -21,6 +21,7 @@
 * Upgrade SRP SDK to 7.1.0
 * Add StorageV2 account kind to resource mode storage account cmdlets
     - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 	
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
