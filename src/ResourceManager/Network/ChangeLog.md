@@ -16,7 +16,7 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+
 ## Current Release
 * Fix overwrite message 'Are you sure you want to overwriteresource'
 * Added cmdlet to create a new connection monitor
@@ -36,6 +36,9 @@
 * Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
 * Added EnableHttp2 flag to Application Gateway
     - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add IpTags to PublicIpAddress
+    - Updated New-AzureRmPublicIpAddress: Added IpTags
+    - New-AzureRmPublicIpTag to add Iptag
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
