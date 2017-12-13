@@ -185,6 +185,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
+            var networkManagementClientInternal = this.GetNetworkManagementClientInternal(context);
+            var resourceManagementClientInternal = this.GetResourceManagementClientInternal(context);
             // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
@@ -195,7 +197,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient);
+                AuthorizationManagementClient,
+                networkManagementClientInternal,
+                resourceManagementClientInternal);
             // GraphClient);
         }
 
@@ -237,6 +241,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClientInternal(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
         private SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
@@ -264,6 +275,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return testViaCsm
                 ? context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
