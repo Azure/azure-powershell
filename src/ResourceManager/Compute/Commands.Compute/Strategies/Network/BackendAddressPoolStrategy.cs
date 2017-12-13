@@ -27,28 +27,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static NestedResourceStrategy<BackendAddressPool, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<BackendAddressPool, LoadBalancer>(
-        provider: "backendAddressPools",
-        get: (lb, name) => lb.BackendAddressPools?.FirstOrDefault(s => s?.Name == name),
-        createOrUpdate: (lb, name, backendConfigurationPool) =>
-        {
-            backendConfigurationPool.Name = name;
-            if (lb.BackendAddressPools == null)
-            {
-                lb.BackendAddressPools = new List<BackendAddressPool> { backendConfigurationPool };
-                return;
-            }
-            var b = lb
-                .BackendAddressPools
-                .Select((bn, i) => new { bn, i })
-                .FirstOrDefault(p => p.bn.Name == name);
-
-            if (b != null)
-            {
-                lb.BackendAddressPools[b.i] = backendConfigurationPool;
-                return;
-            }
-            lb.BackendAddressPools.Add(backendConfigurationPool);
-        });
+                provider: "backendAddressPools",
+                getList: parentModel => parentModel.BackendAddressPools,
+                setList: (parentModel, list) => parentModel.BackendAddressPools = list,
+                getName: model => model.Name,
+                setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<BackendAddressPool, LoadBalancer> CreateBackendAddressPool(
             this ResourceConfig<LoadBalancer> loadBalancer,
@@ -56,7 +39,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 => Strategy.CreateConfig(
                     parent: loadBalancer,
                     name: name,
-                    createModel: subscriptionId => CreateBackendAddressPoolConfig(backendPoolName:name , subscriptionId: subscriptionId));
+                    createModel: subscriptionId => CreateBackendAddressPoolConfig(
+                        backendPoolName: name , subscriptionId: subscriptionId));
 
         internal static BackendAddressPool CreateBackendAddressPoolConfig(
             string backendPoolName,

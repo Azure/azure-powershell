@@ -23,26 +23,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
                 provider: "subnets",
-                get: (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
-                createOrUpdate: (vn, name, subnet) =>
-                {
-                    subnet.Name = name;
-                    if (vn.Subnets == null)
-                    {
-                        vn.Subnets = new List<Subnet> { subnet };
-                        return;
-                    }
-                    var s = vn
-                        .Subnets
-                        .Select((sn, i) => new { sn, i })
-                        .FirstOrDefault(p => p.sn.Name == name);
-                    if (s != null)
-                    {
-                        vn.Subnets[s.i] = subnet;
-                        return;
-                    }
-                    vn.Subnets.Add(subnet);
-                });
+                getList: parentModel => parentModel.Subnets,
+                setList: (parentModel, list) => parentModel.Subnets = list,
+                getName: model => model.Name,
+                setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
             this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
