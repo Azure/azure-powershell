@@ -41,13 +41,6 @@ $cmdlets | ForEach-Object {
     } else {
         $results[$cmdlet] = $matchedRule.Alias;
     }
-
-    # Progress stuff.
-    if($k % 100 -eq 0) {
-        $percent = [math]::Floor($k / $cmdlets.Count * 100);
-        Write-Progress -Activity "Processing cmdlets..." -Status "$($percent)%" -PercentComplete $percent;
-    }
-    $k++;
 };
 
 # Write to files.
