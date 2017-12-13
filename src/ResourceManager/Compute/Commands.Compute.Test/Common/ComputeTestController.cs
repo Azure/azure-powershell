@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
+        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
+
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
+
         public string UserDomain { get; private set; }
 
         public static ComputeTestController NewInstance
@@ -185,8 +189,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            var networkManagementClientInternal = this.GetNetworkManagementClientInternal(context);
-            var resourceManagementClientInternal = this.GetResourceManagementClientInternal(context);
+            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
+            InternalResourceManagementClient = this.GetResourceManagementClientInternal(context);
             // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
@@ -198,8 +202,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 NetworkManagementClient,
                 ComputeManagementClient,
                 AuthorizationManagementClient,
-                networkManagementClientInternal,
-                resourceManagementClientInternal);
+                InternalNetworkManagementClient,
+                InternalResourceManagementClient);
             // GraphClient);
         }
 
