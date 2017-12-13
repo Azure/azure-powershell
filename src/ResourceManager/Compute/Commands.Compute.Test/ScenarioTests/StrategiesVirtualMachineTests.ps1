@@ -23,8 +23,8 @@ function Test-SimpleNewVm
 
     try
     {
-		$username = "domain01\admin01"
-		$password = "Qwe123Asd456Zxc890!" | ConvertTo-SecureString
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         # Common
