@@ -366,6 +366,7 @@
     <None Include="ScenarioTests\StrategiesVirtualMachineTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVm.json" />
     <None Include="Templates\azuredeploy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
