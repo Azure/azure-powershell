@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The action group &apos;AUDIT_CHANGE_GROUP&apos; is not supported. It will be removed in a future release..
+        /// </summary>
+        internal static string auditChangeGroupDeprecationMessage {
+            get {
+                return ResourceManager.GetString("auditChangeGroupDeprecationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
@@ -745,7 +754,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning: Cutting off access to the key &apos;{0}&apos; may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
         /// </summary>
         internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
             get {
