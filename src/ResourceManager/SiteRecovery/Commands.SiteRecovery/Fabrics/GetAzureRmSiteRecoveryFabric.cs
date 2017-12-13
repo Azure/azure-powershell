@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(List<ASRFabric>))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Get-AzureRmRecoveryServicesAsrFabric cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class GetAzureRmSiteRecoveryFabric : SiteRecoveryCmdletBase
     {
         #region Parameters
