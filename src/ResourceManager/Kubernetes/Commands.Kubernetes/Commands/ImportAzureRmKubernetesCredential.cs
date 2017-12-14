@@ -27,7 +27,7 @@ using YamlDotNet.RepresentationModel;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true)]
+    [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(string))]
     public class ImportCredential : KubeCmdletBase
     {
@@ -81,13 +81,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         [Parameter(
             Mandatory = false,
-            Position = 2,
             HelpMessage = "Get the 'clusterAdmin' kubectl config instead of the default 'clusterUser'.")]
         public SwitchParameter Admin { get; set; } = false;
 
         [Parameter(
             Mandatory = false,
-            Position = 3,
             HelpMessage =
                 "A kubectl config file to create or update. Use '-' to print YAML to stdout instead.  Default: %Home%/.kube/config.")]
         public string ConfigPath { get; set; }
@@ -102,31 +100,31 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             base.ExecuteCmdlet();
 
+            switch (ParameterSetName)
+            {
+                case IdParameterSet:
+                {
+                    var resource = new ResourceIdentifier(Id);
+                    ResourceGroupName = resource.ResourceGroupName;
+                    Name = resource.ResourceName;
+                    break;
+                }
+                case InputObjectParameterSet:
+                {
+                    var resource = new ResourceIdentifier(InputObject.Id);
+                    ResourceGroupName = resource.ResourceGroupName;
+                    Name = resource.ResourceName;
+                    break;
+                }
+            }
+
             ConfirmAction(Force.IsPresent,
                 "Do you want to import the Kubernetes config?",
                 "Importing Kubernetes config resource.",
-                "AzureRmKubernetesCredential",
+                string.Format("AzureRmKubernetesCredential {0} in {1}", Name, ResourceGroupName),
                 () =>
                     RunCmdLet(() =>
                     {
-                        switch (ParameterSetName)
-                        {
-                            case IdParameterSet:
-                            {
-                                var resource = new ResourceIdentifier(Id);
-                                ResourceGroupName = resource.ResourceGroupName;
-                                Name = resource.ResourceName;
-                                break;
-                            }
-                            case InputObjectParameterSet:
-                            {
-                                var resource = new ResourceIdentifier(InputObject.Id);
-                                ResourceGroupName = resource.ResourceGroupName;
-                                Name = resource.ResourceName;
-                                break;
-                            }
-                        }
-
                         if (string.IsNullOrEmpty(ConfigPath))
                         {
                             ConfigPath = Path.Combine(
@@ -187,18 +185,27 @@ namespace Microsoft.Azure.Commands.Kubernetes
             newConfigYaml.Load(new StringReader(additions));
             var originalMapping = (YamlMappingNode) originalYaml.Documents[0].RootNode;
             var newMapping = (YamlMappingNode) newConfigYaml.Documents[0].RootNode;
+
+            // clusters
             var mergedClusters = MergeNamedItems(originalMapping, newMapping, Clusters);
             originalMapping.Children.Remove(new YamlScalarNode(Clusters));
             originalMapping.Children.Add(new YamlScalarNode(Clusters), mergedClusters);
-            var mergedUsers = MergeNamedItems(originalMapping, newMapping, "users");
-            originalMapping.Children.Remove(new YamlScalarNode("users"));
-            originalMapping.Children.Add(new YamlScalarNode("users"), mergedUsers);
+
+            // users
+            var mergedUsers = MergeNamedItems(originalMapping, newMapping, Users);
+            originalMapping.Children.Remove(new YamlScalarNode(Users));
+            originalMapping.Children.Add(new YamlScalarNode(Users), mergedUsers);
+
+            // contexts
             var mergedContexts = MergeNamedItems(originalMapping, newMapping, "contexts");
             originalMapping.Children.Remove(new YamlScalarNode("contexts"));
             originalMapping.Children.Add(new YamlScalarNode("contexts"), mergedContexts);
+
+            // override the current context
             originalMapping.Children.Remove(new YamlScalarNode("current-context"));
             originalMapping.Children.Add(new YamlScalarNode("current-context"),
                 newMapping.Children[new YamlScalarNode("current-context")]);
+
             var sb = new StringBuilder();
             var sw = new StringWriter(sb);
             originalYaml.Save(sw, false);

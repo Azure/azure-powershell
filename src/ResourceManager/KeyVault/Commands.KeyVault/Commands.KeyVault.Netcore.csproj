@@ -3,8 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.KeyVault</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -28,7 +27,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.3.0-preview" />
