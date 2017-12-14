@@ -9,7 +9,7 @@ schema: 2.0.0
 # Stop-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Cancels the asynchronous updateslo operation on the database.
+Cancels the asynchronous updates operation on the database.
 
 ## SYNTAX
 
