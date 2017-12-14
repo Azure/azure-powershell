@@ -41,15 +41,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 DataFactoryName = parentResource[parentResource.Length - 1];
             }
         }
-
-        protected void ByFactoryObject()
-        {
-            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
-            {
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
-            }
-
-        }
     }
 }

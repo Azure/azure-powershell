@@ -13,14 +13,14 @@ Updates a snapshot.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String>
+Update-AzureRmSnapshot [-AsJob] [-ResourceGroupName] <String> [-SnapshotName] <String>
  [-SnapshotUpdate] <PSSnapshotUpdate> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <PSSnapshot>
+Update-AzureRmSnapshot [-AsJob] [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <PSSnapshot>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,6 +62,21 @@ PS C:\> Update-AzureRmSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotNam
 These commands also update an existing snapshot with name 'Snapshot01' in resource group 'ResourceGroup01' to 10 GB disk size.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
