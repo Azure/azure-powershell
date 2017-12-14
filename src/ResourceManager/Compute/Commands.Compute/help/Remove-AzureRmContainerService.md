@@ -13,7 +13,7 @@ Removes a container service.
 ## SYNTAX
 
 ```
-Remove-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzureRmContainerService [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,6 +30,21 @@ PS C:\> Remove-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Nam
 This command removes the container service named CSResourceGroup17.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

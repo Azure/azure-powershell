@@ -60,5 +60,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public bool IncludeClassicAdministrators { get; set; }
 
         public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
+
+        public bool CanDelegate { get; set; }
     }
 }
