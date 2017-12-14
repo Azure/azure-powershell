@@ -60,7 +60,6 @@
     <Compile Include="Topic\NewAzureEventGridTopicKey.cs" />
     <Compile Include="Topic\RemoveAzureEventGridTopic.cs" />
     <Compile Include="Topic\SetAzureEventGridTopic.cs" />
-    <Compile Include="Topic\UpdateAzureEventGridTopic.cs" />
     <Compile Include="Utilities\EventGridClient.cs" />
     <Compile Include="Utilities\EventGridConstants.cs" />
     <Compile Include="Utilities\EventGridUtils.cs" />

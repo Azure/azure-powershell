@@ -100,63 +100,6 @@ function TopicTests {
 
 <#
 .SYNOPSIS
-Tests the EventGrid Topic PATCH / update operation.
-#>
-function TopicUpdateTests {
-    # Setup
-    $location = Get-LocationForEventGrid
-    $topicName = Get-TopicName
-    $resourceGroupName = Get-ResourceGroupName
-    $subscriptionId = Get-SubscriptionId
-
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
-
-    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
-    Write-Debug "Topic: $topicName"
-    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
-    Assert-True {$result.ProvisioningState -eq "Succeeded"}
-
-    Write-Debug "Calling Update-AzureRmEventGridTopic on the created topic $topicName"
-	$tags1 = @{test1 = "testval1"; test2 = "testval2" };
-    $updatedTopic = Update-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag $tags1
-    Assert-True {$updatedTopic.Count -eq 1}
-    Assert-True {$updatedTopic.TopicName -eq $topicName} "Topic updated earlier is not found."
-    $returned_tags1 = $updatedTopic.Tags;
-    Assert-AreEqual 2 $returned_tags1.Count;
-    Assert-AreEqual $tags1["test1"] $returned_tags1["test1"];
-    Assert-AreEqual $tags1["test2"] $returned_tags1["test2"];
-
-    Write-Debug "Calling Update-AzureRmEventGridTopic on the created topic $topicName"
-	$tags2 = @{test1 = "testval2"; test2 = "testval2" };
-    $updatedTopic2 = Update-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag $tags2
-    Assert-True {$updatedTopic2.Count -eq 1}
-    Assert-True {$updatedTopic2.TopicName -eq $topicName} "Topic updated earlier is not found."
-    $returned_tags2 = $updatedTopic2.Tags;
-    Assert-AreEqual 2 $returned_tags2.Count;
-    Assert-AreEqual $tags2["test1"] $returned_tags2["test1"];
-    Assert-AreEqual $tags2["test2"] $returned_tags2["test2"];
-
-    Write-Debug "Calling Update-AzureRmEventGridTopic on the created topic $topicName"
-	$tags3 = @{test1 = "testval3"; test2 = "testval3" };
-    $updatedTopic3 = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Update-AzureRmEventGridTopic -Tag $tags3
-    Assert-True {$updatedTopic3.Count -eq 1}
-    Assert-True {$updatedTopic3.TopicName -eq $topicName} "Topic updated earlier is not found."
-    $returned_tags3 = $updatedTopic3.Tags;
-    Assert-AreEqual 2 $returned_tags3.Count;
-    Assert-AreEqual $tags3["test1"] $returned_tags3["test1"];
-    Assert-AreEqual $tags3["test2"] $returned_tags3["test2"];
-
-	Write-Debug " Deleting topic: $topicName"
-    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
-
-    Write-Debug " Deleting resourcegroup $resourceGroupName"
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-}
-
-<#
-.SYNOPSIS
 Tests EventGrid Topic Set operations.
 #>
 function TopicSetTests {
