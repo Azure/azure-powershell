@@ -99,6 +99,8 @@
 
     { "regex": "Marketplace", "alias": "Marketplace" }, 
 
+    { "regex": "SubscriptionDefinition", "alias": "Subscription" }, 
+
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
     { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
 
