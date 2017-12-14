@@ -37,13 +37,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EventGrid_TopicsUpdate()
-        {
-            EventGridController.NewInstance.RunPsTest("TopicUpdateTests");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsSet()
         {
             EventGridController.NewInstance.RunPsTest("TopicSetTests");

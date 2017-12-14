@@ -43,6 +43,3 @@ Removes an Azure Event Grid Topic.
 
 ### [Set-AzureRmEventGridTopic](Set-AzureRmEventGridTopic.md)
 Sets the properties of an Event Grid topic.
-
-### [Update-AzureRmEventGridTopic](Update-AzureRmEventGridTopic.md)
-Updates the properties of an Event Grid topic.
