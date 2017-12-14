@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
-using Microsoft.Azure.Commands.Kubernetes.Generated.Models;
 using Microsoft.Azure.Commands.Kubernetes.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet)]
+    [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class New : CreateOrUpdateKubeBase
     {
@@ -32,20 +29,36 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            RunCmdLet(() =>
-            {
-                if (!Force.IsPresent && Exists())
-                {
-                    var message = "Kubernetes managed cluster already exists and cmdlet was not run with -Force.";
-                    throw new CmdletInvocationException(message);
-                }
 
+            Action action = () =>
+            {
                 WriteVerbose("Preparing for deployment of your managed Kubernetes cluster.");
                 var managedCluster = BuildNewCluster();
                 var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                 var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
                 WriteObject(psObj);
-            });
+            };
+
+            var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
+
+            if (Exists())
+            {
+                WriteVerbose("Cluster already exists, confirm action.");
+                ConfirmAction(
+                    Force,
+                    "Do you want to create a new managed Kubernetes cluster?",
+                    "Creating a managed Kubernetes cluster.",
+                    msg,
+                    action);
+            }
+            else
+            {
+                WriteVerbose("Cluster is new.");
+                if (ShouldProcess(msg, "Creating a managed Kubernetes cluster."))
+                {
+                    RunCmdLet(action);
+                }
+            }
         }
     }
 }

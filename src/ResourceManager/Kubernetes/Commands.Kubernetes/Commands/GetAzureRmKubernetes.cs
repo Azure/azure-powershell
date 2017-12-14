@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet(VerbsCommon.Get, KubeNounStr)]
+    [Cmdlet(VerbsCommon.Get, KubeNounStr, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSKubernetesCluster), typeof(List<PSKubernetesCluster>))]
     public class Get : KubeCmdletBase
     {

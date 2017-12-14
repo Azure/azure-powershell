@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     public class Remove : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";
@@ -69,9 +69,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Remove cluster even if it is the defualt")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -97,19 +94,19 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
             }
 
-            ConfirmAction(Force.IsPresent,
-                "Do you want to delete the managed Kubernetes resource '{0}'?",
-                "Remove managed Kubernetes resource '{0}'.",
-                "AzureRmKubernetes",
-                () =>
-                    RunCmdLet(() =>
+            var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
+
+            if (ShouldProcess(msg, "Delete the Kubernetes cluster."))
+            {
+                RunCmdLet(() =>
+                {
+                    Client.ManagedClusters.Delete(ResourceGroupName, Name);
+                    if (PassThru)
                     {
-                        Client.ManagedClusters.Delete(ResourceGroupName, Name);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }));
+                        WriteObject(true);
+                    }
+                });
+            }
         }
     }
 }

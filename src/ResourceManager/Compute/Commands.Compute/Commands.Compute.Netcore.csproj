@@ -3,8 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.Compute</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Compute</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -27,7 +26,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <ItemGroup >
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.5.0-preview" />
