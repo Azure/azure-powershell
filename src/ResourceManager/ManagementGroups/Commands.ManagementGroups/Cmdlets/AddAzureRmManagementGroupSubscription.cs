@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet(VerbsCommon.Add, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
-    public class AddAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
+    public class AddAzureRmManagementGroupSubscription : AzureManagementGroupAutoRegisterCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
