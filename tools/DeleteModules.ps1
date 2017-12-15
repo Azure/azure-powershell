@@ -12,11 +12,16 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#Requires -Modules AzureRM.KeyVault
+[CmdletBinding(
+    DefaultParameterSetName='Scope', 
+    SupportsShouldProcess=$true
+)]
 param(
-    [Parameter(Mandatory = $true, Position = 0)]
-    [ValidateSet("ModuleList", "AzureRMAndDependencies", "AzureAndDependencies", "NetCoreModules", "AzureStackAndDependencies")]
+    [Parameter(ParameterSetName='Scope', Mandatory = $true, Position = 0)]
+    [ValidateSet("AzureRMAndDependencies", "AzureAndDependencies", "NetCoreModules", "AzureStackAndDependencies")]
     [string] $scope,
-    [Parameter(Mandatory = $false)]
+    [Parameter(ParameterSetName='ModuleList', Mandatory = $false)]
     [string[]] $listOfModules,
     [Parameter(Mandatory = $false)]
     [ValidateSet("TestGallery", "PSGallery")]
@@ -36,7 +41,7 @@ function Get-TargetModules
       [string[]]$moduleList
     )
 
-    if ($scope -eq "ModuleList") 
+    if ($listOfModules.Count -ge 1) 
     {
         $targets = @()
         $moduleList | ForEach-Object {
@@ -61,15 +66,14 @@ function Get-TargetModules
         }
 
         $azureRmAllVersions = Find-Module -Name $query -Repository PSGallery -AllVersions
-        $azureRmCurrent = $azureRmAllVersions[0]
-        $azureRmPrevious = $azureRmAllVersions[1]
-        $currentDependencies = Find-Module -Name $query -Repository $repoName -RequiredVersion $azureRmCurrent.Version -IncludeDependencies
-        $previousDependencies = Find-Module -Name $query -Repository $repoName -RequiredVersion $azureRmPrevious.Version -IncludeDependencies
+        $targets += $azureRmAllVersions[0]
+        $currentDependencies = $azureRmAllVersions[0].Dependencies
+        $previousDependencies = $azureRmAllVersions[1].Dependencies
         $currentDependencies | ForEach-Object {
             $CDModule = $_
             $versionChanged = $true
             $previousDependencies | ForEach-Object {
-                if (($_.Name -eq $CDModule.Name) -and ($_.Version -eq $CDModule.Version))
+                if (($_.Name -eq $CDModule.Name) -and (($_.RequiredVersion -eq $CDModule.RequiredVersion) -and ($_.MinimumVersion -eq $CDModule.MinimumVersion)))
                 {
                     $versionChanged = $false
                 }
@@ -157,21 +161,15 @@ function Get-ApiKey
 
 if ([string]::IsNullOrEmpty($nugetExe))
 {
-    Write-Verbose "Use default nuget path"
     $nugetExe =  "$PSScriptRoot\nuget.exe"
 }
+Write-Host "Using the following NuGet path: $nugetExe"
 
 if ([string]::IsNullOrEmpty($repoName))
 {
-    Write-Verbose "Deleting from PSGallery"
     $repoName = "PSGallery"
 }
-
-if (($scope -eq "ModuleList") -and ($listOfModules -eq $null))
-{
-    Write-Error "Must supply -ListOfModule when using ModuleList scope"
-    return
-}
+Write-Host "Deleting modules from the following repository: $repoName"
 
 $repositoryLocation = "https://dtlgalleryint.cloudapp.net/api/v2/package/"
 if ($repoName -eq "PSGallery")
@@ -185,9 +183,26 @@ if ([string]::IsNullOrEmpty($apiKey))
 }
 
 $ModulesToDelete = Get-TargetModules -scope $scope -moduleList $listOfModules
-$ModulesToDelete
+$ModulesToDeleteName = $ModulesToDelete | ForEach-Object {$_.Name}
+$ModulesToDeleteName
 $azureModules = Find-Module Azure* -Repository $repoName
-$ModulesToDelete | ForEach-Object {
-    Get-DependentModules -repoName $repoName -moduleName $_.Name -moduleVersion $_.Version -allModules $ModulesToDelete -azureModules $azureModules
-    &$nugetExe delete $_.Name $_.Version -ApiKey $apiKey -Source $repositoryLocation
+if ($PSCmdlet.ShouldProcess("Module(s) being deleted: $ModulesToDeleteName"))
+{
+    $ModulesToDelete | ForEach-Object {
+        if (![string]::IsNullOrEmpty($_.Version))
+        {
+            Get-DependentModules -repoName $repoName -moduleName $_.Name -moduleVersion $_.Version -allModules $ModulesToDelete -azureModules $azureModules
+            &$nugetExe delete $_.Name $_.Version -ApiKey $apiKey -Source $repositoryLocation
+        }
+        elseif (![string]::IsNullOrEmpty($_.RequiredVersion))
+        {
+            Get-DependentModules -repoName $repoName -moduleName $_.Name -moduleVersion $_.RequiredVersion -allModules $ModulesToDelete -azureModules $azureModules
+            &$nugetExe delete $_.Name $_.RequiredVersion -ApiKey $apiKey -Source $repositoryLocation
+        }
+        elseif (![string]::IsNullOrEmpty($_.MinimumVersion))
+        {
+            Get-DependentModules -repoName $repoName -moduleName $_.Name -moduleVersion $_.MinimumVersion -allModules $ModulesToDelete -azureModules $azureModules
+            &$nugetExe delete $_.Name $_.MinimumVersion -ApiKey $apiKey -Source $repositoryLocation
+        }
+    }
 }
