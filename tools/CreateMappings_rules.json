@@ -99,7 +99,7 @@
 
     { "regex": "Marketplace", "alias": "Marketplace" }, 
 
-    { "regex": "SubscriptionDefinition", "alias": "Subscription" }, 
+    { "regex": "DataMigration", "alias": "Data Migration" }, 
 
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
     { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
@@ -119,6 +119,8 @@
     { "regex": "Profile", "alias": "Profile" }, 
     
     { "regex": "Reservations", "alias": "Reservations" }, 
+
+    { "regex": "Subscription", "alias": "Subscription" }, 
 
     { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
