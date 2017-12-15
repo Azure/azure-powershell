@@ -88,7 +88,8 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     New-AzureRmResourceGroup -Name $rgname1 -Location $location
     New-AzureRmResourceGroup -Name $rgname2 -Location $location
 
-    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
+    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force -AsJob
+	Get-Job | Wait-Job
 
     # Assert
     Get-AzureRmResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
@@ -249,7 +250,9 @@ function Test-RemoveDeployment
     {
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "East US"
-        $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
+        New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
+		Get-Job | Wait-Job
+		$deployment = Get-Job | Receive-Job
         Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
