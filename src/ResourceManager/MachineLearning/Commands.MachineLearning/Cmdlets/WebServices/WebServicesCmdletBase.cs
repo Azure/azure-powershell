@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 if (this.webServicesClient == null)
                 {
                     this.webServicesClient = new WebServicesClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    {};
                 }
+
+                this.webServicesClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.webServicesClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.webServicesClient.WarningLogger = WriteWarningWithTimestamp;
                 return this.webServicesClient;
             }
             set { this.webServicesClient = value; }

@@ -86,12 +86,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (cognitiveServicesClientWrapper == null)
                 {
                     cognitiveServicesClientWrapper = new CognitiveServicesManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    {};
                 }
 
+                this.cognitiveServicesClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.cognitiveServicesClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return cognitiveServicesClientWrapper.CognitiveServicesManagementClient;
             }
 

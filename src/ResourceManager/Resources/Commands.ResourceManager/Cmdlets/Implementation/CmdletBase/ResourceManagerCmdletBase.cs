@@ -294,12 +294,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 if (this.resourceManagerSdkClient == null)
                 {
                     this.resourceManagerSdkClient = new ResourceManagerSdkClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    {};
                 }
+
+                this.resourceManagerSdkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.resourceManagerSdkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.resourceManagerSdkClient.WarningLogger = WriteWarningWithTimestamp;
+
                 return this.resourceManagerSdkClient;
             }
 

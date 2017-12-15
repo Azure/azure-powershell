@@ -36,10 +36,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             get
             {
                 this._integartionAccountClient = new IntegrationAccountClient(DefaultProfile.DefaultContext)
-                {
-                    VerboseLogger = WriteVerboseWithTimestamp,
-                    ErrorLogger = WriteErrorWithTimestamp                    
-                };                
+                {};
+
+                this._integartionAccountClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._integartionAccountClient.ErrorLogger = WriteErrorWithTimestamp;
+                                
                 return _integartionAccountClient;
             }
 

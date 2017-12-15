@@ -58,12 +58,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (storageClientWrapper == null)
                 {
                     storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    {};
                 }
 
+                this.storageClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.storageClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return storageClientWrapper.StorageManagementClient;
             }
 

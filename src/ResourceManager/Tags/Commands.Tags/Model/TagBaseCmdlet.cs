@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Tags.Model
                         ErrorLogger = WriteErrorWithTimestamp
                     };
                 }
+
+                this.tagsClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.tagsClient.ErrorLogger = WriteErrorWithTimestamp;
                 return tagsClient;
             }
 

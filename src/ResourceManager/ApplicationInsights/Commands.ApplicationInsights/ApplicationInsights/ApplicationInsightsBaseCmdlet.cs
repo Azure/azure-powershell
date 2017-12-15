@@ -100,12 +100,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 if (appInsightsManagementClientWrapper == null)
                 {
                     appInsightsManagementClientWrapper = new ApplicationInsightsManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    {};
                 }
 
+                this.appInsightsManagementClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.appInsightsManagementClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return appInsightsManagementClientWrapper.appInsightsManagementClient;
             }
 
