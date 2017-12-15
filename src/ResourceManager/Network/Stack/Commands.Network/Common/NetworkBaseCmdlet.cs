@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.Network
                 if (_networkClient == null)
                 {
                     _networkClient = new NetworkClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    {};
                 }
+
+                this._networkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._networkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._networkClient.WarningLogger = WriteWarningWithTimestamp;
                 return _networkClient;
             }
 
