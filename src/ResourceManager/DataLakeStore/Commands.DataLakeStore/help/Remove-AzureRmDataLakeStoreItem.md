@@ -48,8 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Clean
-Indicates that this operation removes all of the contents of the target folder and retains the folder.
-Use this parameter with the *Recurse* parameter.
+Indicates the user wants to remove all of the contents of the folder, but not the folder itself
 
 ```yaml
 Type: SwitchParameter
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer

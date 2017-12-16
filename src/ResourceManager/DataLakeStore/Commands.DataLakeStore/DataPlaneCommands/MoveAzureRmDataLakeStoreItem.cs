@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Rest.Azure;
+using System.Management.Automation;
+using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), 
-        OutputType(typeof(string))]
-    [Alias("Join-AdlStoreItem")]
-    public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Alias("Move-AdlStoreItem")]
+    public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -31,16 +30,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Alias("Path")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            HelpMessage = "The path(s) in the specified Data Lake account that should be concatenated into one file. " +
-                          "In the format '/folder/file.txt', " +
-                          "where the first '/' after the DNS indicates the root of the file system.")]
+            HelpMessage =
+                "The path in the specified Data Lake account where the file or folder should be moved from. " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
-        public DataLakeStorePathInstance[] Paths { get; set; }
+        public DataLakeStorePathInstance Path { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "The path in the specified Data Lake account where the concatenation should target. " +
+            HelpMessage = "The path in the specified Data Lake account where the file or folder should be moved to. " +
                           "In the format '/folder/file.txt', " +
                           "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNullOrEmpty]
@@ -52,18 +51,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            FileType fileType;
-            if (ShouldProcess(Destination.TransformedPath, "Join"))
+            if (ShouldProcess(Destination.TransformedPath, VerbsCommon.Move))
             {
-                if (Force.IsPresent && (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                        out fileType) && fileType == FileType.FILE))
-                    // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
+                DirectoryEntryType fileType;
+                if (Force.IsPresent && DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
+                        out fileType))
                 {
-                    DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
+                    DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
                 }
 
-                DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.TransformedPath, Account,
-                    Paths.Select(path => path.TransformedPath).ToArray());
+                if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account,
+                        Destination.TransformedPath))
+                {
+                    throw new CloudException(
+                        string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
+                }
 
                 WriteObject(Destination.OriginalPath);
             }

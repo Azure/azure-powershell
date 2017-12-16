@@ -28,17 +28,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     /// </summary>
     public abstract class DataLakeStoreFileSystemCmdletBase : AzureRMCmdlet
     {
-        private DataLakeStoreFileSystemClient dataLakeFileSystemClient;
+        private DataLakeStoreFileSystemClient _dataLakeFileSystemClient;
 
         public DataLakeStoreFileSystemClient DataLakeStoreFileSystemClient
         {
-            get
-            {
-                return dataLakeFileSystemClient ??
-                       (dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.DefaultContext));
-            }
+            get {
+            return _dataLakeFileSystemClient ??
+                   (_dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.DefaultContext));
+        }
 
-            set { dataLakeFileSystemClient = value; }
+
+            set { _dataLakeFileSystemClient = value; }
         }
 
         /// <summary>
@@ -100,9 +100,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 case FileSystemCmdletProviderEncoding.Default:
                     return Encoding.UTF8.GetBytes(content);
                 case FileSystemCmdletProviderEncoding.Oem:
-                    {
-                        var oemCP = NativeMethods.GetOEMCP();
-                        return Encoding.GetEncoding((int)oemCP).GetBytes(content);
+                    { 
+                        return Encoding.GetEncoding((int)NativeMethods.GetOEMCP()).GetBytes(content);
                     }
                 default:
                     // Default to unicode encoding
