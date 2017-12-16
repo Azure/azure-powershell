@@ -188,23 +188,45 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + ResourceGroupName).ToLower();
+            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            // get image
-            var image = Images
-                .Instance
-                .SelectMany(osAndMap => osAndMap
-                    .Value
-                    .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                    .Select(nameAndImage => new
-                    {
-                        OsType = osAndMap.Key,
-                        Image = nameAndImage.Value
-                    }))
-                .FirstOrDefault();
-
-            var isWindows = image.OsType == "Windows";
+            bool isWindows;
+            Commands.Common.Strategies.Compute.Image image;
+            if (ImageName.Contains(':'))
+            {
+                var imageArray = ImageName.Split(':');
+                if (imageArray.Length != 4)
+                {
+                    throw new Exception("Invalid ImageName");
+                }
+                image = new Commands.Common.Strategies.Compute.Image
+                {
+                    publisher = imageArray[0],
+                    offer = imageArray[1],
+                    sku = imageArray[2],
+                    version = imageArray[3],
+                };
+                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
+            }
+            else
+            {
+                // get image
+                var osTypeAndImage = Images
+                    .Instance
+                    .SelectMany(osAndMap => osAndMap
+                        .Value
+                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
+                        .Select(nameAndImage => new
+                        {
+                            OsType = osAndMap.Key,
+                            Image = nameAndImage.Value
+                        }))
+                    .FirstOrDefault();
+                image = osTypeAndImage.Image;
+                isWindows = osTypeAndImage.OsType == "Windows";
+            }
+            
             OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
@@ -226,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute
                 isWindows: isWindows,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image.Image,
+                image: image,
                 size: Size);
 
             var client = new Client(DefaultProfile.DefaultContext);
@@ -258,6 +280,10 @@ namespace Microsoft.Azure.Commands.Compute
                     new ProgressReport(asyncCmdlet));
 
             var result = newState.Get(virtualMachine);
+            if (result == null)
+            {
+                result = current.Get(virtualMachine);
+            }
             if (result != null)
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
