@@ -15,12 +15,15 @@
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.DataLake.Store.Acl;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
-        DefaultParameterSetName = BaseParameterSetName),
+         DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
@@ -67,30 +70,31 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false,
             HelpMessage =
                 "The identity of the user or group to remove. Optional. If none is passed this will attempt to remove an unamed ACE, which is necessary for both mask and other ACEs"
-            )]
+        )]
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4, 
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4,
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed. Only named default entries can be removed this way.")]
         public SwitchParameter Default { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Indicates a boolean response should be returned indicating the result of the delete operation."
-            )]
+        )]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
-                 ? DataLakeStoreItemAce.GetAclSpec(Acl, false)
-                 : string.Format("{0}:{1}", AceType, Id.ToString()).ToLowerInvariant();
+                ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
+                : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, AclAction.None) };// Action doesnt have any affect here so just hardcoded some constant
 
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,
-                () => {
+                () =>
+                {
                     DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
                     if (PassThru)
                     {

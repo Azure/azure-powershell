@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Subscriptions;
@@ -32,6 +31,8 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
@@ -49,8 +50,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public DataLakeStoreAccountManagementClient DataLakeStoreAccountManagementClient { get; private set; }
-
-        public DataLakeStoreFileSystemManagementClient DataLakeStoreFileSystemManagementClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -148,18 +147,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
-            DataLakeStoreFileSystemManagementClient = GetDataLakeStoreFileSystemManagementClient(context);
+            SetDataLakeStoreFileSystemManagementClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             NewResourceManagementClient = GetNewResourceManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 NewResourceManagementClient,
                 SubscriptionClient,
-                DataLakeStoreFileSystemManagementClient,
                 DataLakeStoreAccountManagementClient,
                 AuthorizationManagementClient,
                 GalleryClient
-                );
+            );
         }
 
 
@@ -190,13 +188,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private DataLakeStoreFileSystemManagementClient GetDataLakeStoreFileSystemManagementClient(MockContext context)
+        private void SetDataLakeStoreFileSystemManagementClient()
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeStoreFileSystemManagementClient>(currentEnvironment, true);
-            toReturn.AdlsFileSystemDnsSuffix =
-                currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", "");
-            return toReturn;
+            AdlsClientFactory.IsTest = true;
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
+            {
+                AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
+            }
         }
 
         private GalleryClient GetGalleryClient()
