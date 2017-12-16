@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IReportProgress.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />
     <Compile Include="IShouldProcess.cs" />
+    <Compile Include="ITaskProgress.cs" />
     <Compile Include="ProgressMap.cs" />
     <Compile Include="TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
