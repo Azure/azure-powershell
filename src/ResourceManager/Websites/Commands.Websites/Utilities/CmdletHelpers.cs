@@ -28,6 +28,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "NumberOfWorkers"
             };
 
+        public static HashSet<string> SiteParameters = new HashSet<string>
+            {
+                "HttpsOnly",
+                "AssignIdentity"
+            };
+
         private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)/(?<slotName>[^\)]+)$");
 
         private static readonly Regex WebAppResourceIdRegex =
@@ -284,8 +290,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             string webAppNameTemp, slotNameTemp;
             if (TryParseAppAndSlotNames(
-                webapp.Name, 
-                out webAppNameTemp, 
+                webapp.Name,
+                out webAppNameTemp,
                 out slotNameTemp))
             {
                 webAppName = webAppNameTemp;
