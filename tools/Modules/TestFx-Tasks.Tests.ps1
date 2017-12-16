@@ -13,7 +13,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-Import-Module ./TestFx-Tasks
+Import-Module $PSScriptRoot/TestFx-Tasks
 Describe "Test-NewCredentialNewServicePrincipal"{
 	Context "Creates a correctly formatted ServicePrincipal"{
         Login-AzureRmAccount -AccessToken "12345678" -SkipValidation -AccountId "testaccount" -TenantId "8bc48661-1801-4b7a-8ca1-6a3cadfb4870" -Subscription "8bc48661-1801-4b7a-8ca1-6a3cadfb4870" -GraphAccessToken "12345678"
