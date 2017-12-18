@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     ///     Restores an Azure Web App snapshot
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmWebAppSnapshot")]
+    [Cmdlet(VerbsData.Restore, "AzureRmWebAppSnapshot", SupportsShouldProcess = true)]
     public class RestoreAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The timestamp of the snapshot.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string SnapshotTime;
+        public DateTime SnapshotTime;
 
         [Parameter(Mandatory = false, HelpMessage = "Recover the web app's configuration in addition to files.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter RecoverConfiguration { get; set; }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             SnapshotRecoveryRequest recoveryReq = new SnapshotRecoveryRequest()
             {
                 Overwrite = true,
-                SnapshotTime = this.SnapshotTime,
+                SnapshotTime = this.SnapshotTime.ToString("o"),
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
                 RecoveryTarget = target
