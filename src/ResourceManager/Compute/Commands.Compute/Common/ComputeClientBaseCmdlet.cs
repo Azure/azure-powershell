@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (computeClient == null)
                 {
-                    computeClient = new ComputeClient(DefaultProfile.DefaultContext)
-                    {};
+                    computeClient = new ComputeClient(DefaultProfile.DefaultContext);
                 }
 
                 this.computeClient.VerboseLogger = WriteVerboseWithTimestamp;

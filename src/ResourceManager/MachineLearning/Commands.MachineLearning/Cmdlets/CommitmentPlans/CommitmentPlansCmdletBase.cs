@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (this.commitmentPlansClient == null)
                 {
-                    this.commitmentPlansClient = new CommitmentPlansClient(DefaultProfile.DefaultContext)
-                    {};
+                    this.commitmentPlansClient = new CommitmentPlansClient(DefaultProfile.DefaultContext);
                 }
 
                 this.commitmentPlansClient.VerboseLogger = WriteVerboseWithTimestamp;

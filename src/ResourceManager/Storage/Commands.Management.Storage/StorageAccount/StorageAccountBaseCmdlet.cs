@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (storageClientWrapper == null)
                 {
-                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {};
+                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext);
                 }
 
                 this.storageClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;

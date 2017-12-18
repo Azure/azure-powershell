@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new ResourceClient(DefaultProfile.DefaultContext)
-                    {};
+                    _resourcesClient = new ResourceClient(DefaultProfile.DefaultContext);
                 }
 
                 this._resourcesClient.VerboseLogger = WriteVerboseWithTimestamp;
