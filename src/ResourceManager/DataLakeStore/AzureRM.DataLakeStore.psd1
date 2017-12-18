@@ -152,41 +152,12 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-		* Moved from AutoRest sdk to our version of Dataplane sdk for Azure data lake.
-		* Refactored following cmdlets to use the new version of SDK:
-			* Add-AzureRmDataLakeStoreItemContent
-			* Export-AzureRmDataLakeStoreItem
-			* Get-AzureRmDataLakeStoreChildItem
-			* Get-AzureRmDataLakeStoreItem
-			* Get-AzureRmDataLakeStoreItemAclEntry
-			* Get-AzureRmDataLakeStoreItemContent
-			* Get-AzureRmDataLakeStoreItemOwner
-			* Get-AzureRmDataLakeStoreItemPermission
-			* Import-AzureRmDataLakeStoreItem
-			* Join-AzureRmDataLakeStoreItem
-			* Move-AzureRmDataLakeStoreItem
-			* New-AzureRmDataLakeStoreItem
-			* Remove-AzureRmDataLakeStoreItem
-			* Remove-AzureRmDataLakeStoreItemAcl
-			* Remove-AzureRmDataLakeStoreItemAclEntry
-			* Set-AzureRmDataLakeStoreItemAcl
-			* Set-AzureRmDataLakeStoreItemAclEntry
-			* Set-AzureRmDataLakeStoreItemExpiry
-			* Set-AzureRmDataLakeStoreItemOwner
-			* Set-AzureRmDataLakeStoreItemPermission
-			* Test-AzureRmDataLakeStoreItem
-		* Refactored following models to use models from new SDK:
-			* DataLakeStoreEnums
-			* DataLakeStoreFileSystemClient
-			* DataLakeStoreItem
-			* DataLakeStoreItemAce
-			* DataLakeStorePathInstance
-		* Moved the commands and models related to the dataplane into separate folders
-		* Export-AzureRmDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
-		* Import-AzureRMDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+		* Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+		* Import-AzureRMDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
 		* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
-		* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set for setting relative expiration time
-		* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.'
+		* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+		* Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
+		'
 		
 		# Prerelease string of this module
 		Prerelease = 'preview'
