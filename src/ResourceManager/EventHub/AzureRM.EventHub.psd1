@@ -72,6 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.EventHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
+
 CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace', 
                'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace', 
                'New-AzureRmEventHubAuthorizationRule', 
@@ -83,8 +84,11 @@ CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace'
                'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup', 
                'Get-AzureRmEventHubConsumerGroup', 
                'Set-AzureRmEventHubConsumerGroup', 
-               'Remove-AzureRmEventHubConsumerGroup'
-
+               'Remove-AzureRmEventHubConsumerGroup',
+			   'New-AzureRmEventHubDRConfiguration','Get-AzureRmEventHubDRConfiguration','Remove-AzureRmEventHubDRConfiguration',
+			   'Set-AzureRmEventHubDRConfigurationBreakPairing','Set-AzureRmEventHubDRConfigurationFailOver',
+			   'Test-AzureRmEventHubName'
+			   
 # Variables to export from this module
 # VariablesToExport = @()
 

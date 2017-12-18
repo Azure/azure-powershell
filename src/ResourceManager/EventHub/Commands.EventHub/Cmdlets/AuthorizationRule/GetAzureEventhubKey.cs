@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
             HelpMessage = "Namespace Name.")]
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AliasAuthoRuleParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -49,6 +50,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2, ParameterSetName = AliasAuthoRuleParameterSet,
+            HelpMessage = "Alias Name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
+        public string AliasName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -74,7 +83,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 ListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
                 WriteObject(keys,true);
             }
-            
+
+            // Get Alias List Keys for the spe
+            if (ParameterSetName == AliasAuthoRuleParameterSet)
+            {
+                ListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
+                WriteObject(keys, true);
+            }
+
         }
     }
 }

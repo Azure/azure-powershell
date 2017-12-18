@@ -104,7 +104,40 @@ namespace Microsoft.Azure.Commands.EventHub {
                 return ResourceManager.GetString("CreateNamespaceAuthorizationrule", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}.
+        /// </summary>
+        internal static string DRBreakPairing
+        {
+            get
+            {
+                return ResourceManager.GetString("DRBreakPairing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}.
+        /// </summary>
+        internal static string DRFailOver
+        {
+            get
+            {
+                return ResourceManager.GetString("DRFailOver", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Alias: {0} of NnameSpace{1}.
+        /// </summary>
+        internal static string DRRemoveAlias
+        {
+            get
+            {
+                return ResourceManager.GetString("DRRemoveAlias", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist.
         /// </summary>

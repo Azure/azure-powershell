@@ -42,7 +42,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
@@ -54,10 +68,16 @@
     <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AzureEventHubsCmdletBase.cs" />
+    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\GetAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\SetAzureEventHubConsumerGroups.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationFailOver.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationBreakPairing.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureEventHubDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureEventHubDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureEventHubDRConfiguration.cs" />
     <Compile Include="Cmdlets\EventHub\GetAzureEventHubs.cs" />
     <Compile Include="Cmdlets\EventHub\NewAzureEventHub.cs" />
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />
@@ -69,15 +89,20 @@
     <Compile Include="Models\AuthorizationRuleAttributes.cs" />
     <Compile Include="Models\AuthorizationRuleKeysAttributes.cs" />
     <Compile Include="Models\CaptureDescriptionAttributes.cs" />
+    <Compile Include="Models\CheckNameAvailabilityResultAttributes.cs" />
     <Compile Include="Models\ConsumerGroupAttributes.cs" />
     <Compile Include="Models\DestinationAttributes.cs" />
     <Compile Include="Models\EnumEncodingCaptureDescription.cs" />
+    <Compile Include="Models\EventHubDRConfigurationAttributes.cs" />
     <Compile Include="Models\EventHubsAttributes.cs" />
     <Compile Include="Models\NamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceState.cs" />
     <Compile Include="Models\ListKeysAttributes.cs" />
+    <Compile Include="Models\OperationAttributes.cs" />
+    <Compile Include="Models\OperationDisplayAttributes.cs" />
     <Compile Include="Models\RegenerateKeysAttributes.cs" />
     <Compile Include="Models\SharedAccessAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\UnavailableReasonAttributes.cs" />
     <Compile Include="Resources.Designer.cs" />
     <Compile Include="Utilities\EventHubsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,16 +111,12 @@
     <None Include="..\AzureRM.EventHub.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="help\Test-AzureRmEventHubName.md" />
     <None Include="Microsoft.Azure.Commands.EventHub.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx" />

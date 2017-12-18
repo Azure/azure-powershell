@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Eventhub
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
-            
+
             if (tags != null)
             {
                 parameter.Tags = new Dictionary<string, string>(tags);
@@ -184,10 +185,10 @@ namespace Microsoft.Azure.Commands.Eventhub
         public ListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
         {
             AccessKeys regenerateKeyslistKeys;
-            if(regenerateKeys == "PrimaryKey")
+            if (regenerateKeys == "PrimaryKey")
                 regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));                       
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
             return new ListKeysAttributes(regenerateKeyslistKeys);
         }
@@ -208,7 +209,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public EventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName,  string eventHubName, EventHubAttributes parameter)
+        public EventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubAttributes parameter)
         {
             var Parameter1 = new Management.EventHub.Models.Eventhub();
 
@@ -257,14 +258,14 @@ namespace Microsoft.Azure.Commands.Eventhub
             var resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
             return resourceList;
         }
-        
+                
         public SharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
             {
                 Rights = parameters.Rights.ToList()
-            };         
-            
+            };
+
             var response = Client.EventHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameter1);
             return new SharedAccessAuthorizationRuleAttributes(response);
         }
@@ -287,7 +288,7 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         public ListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName, string regenerateKeys)
-        {           
+        {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
                 regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
@@ -300,8 +301,72 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion
 
+        #region DRConfiguration
+        public EventHubDRConfigurationAttributes GetEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public IEnumerable<EventHubDRConfigurationAttributes> ListAllEventHubDRConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new EventHubDRConfigurationAttributes(resource));
+            return resourceList;
+        }
+
+        public EventHubDRConfigurationAttributes CreateEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias, EventHubDRConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.EventHub.Models.ArmDisasterRecovery();
+
+            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
+                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
+
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public bool DeleteEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
+            return true;
+        }
+
+        public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
+        }
+
+        public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
+        }
+
+        public ListKeysAttributes GetAliasListKeys(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var listKeys = Client.DisasterRecoveryConfigs.ListKeys(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new ListKeysAttributes(listKeys);
+        }
+
+        public SharedAccessAuthorizationRuleAttributes GetAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var response = Client.DisasterRecoveryConfigs.GetAuthorizationRule(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new SharedAccessAuthorizationRuleAttributes(response);
+        }
+
+        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.ListAuthorizationRules(resourceGroupName, namespaceName, aliasName);
+            var resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            return resourceList;
+        }
+
+
+        #endregion
+
         #region ConsumerGroup
-        public ConsumerGroupAttributes CreateOrUpdateConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName,  ConsumerGroupAttributes parameter)
+        public ConsumerGroupAttributes CreateOrUpdateConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, ConsumerGroupAttributes parameter)
         {
             var Parameter1 = new ConsumerGroup()
             {
@@ -334,10 +399,32 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 string test = ex.Message;
             }
-            
+
         }
 
 
         #endregion ConsumerGroup
+
+        #region Operations
+        public IEnumerable<OperationAttributes> GetOperations()
+        {
+            var response = Client.Operations.List();
+            var resourceList = response.Select(resource => new OperationAttributes(resource));
+            return resourceList;
+        }
+
+        public CheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
+        {
+            var response = Client.Namespaces.CheckNameAvailability(new CheckNameAvailabilityParameter(namespaceName));
+            return new CheckNameAvailabilityResultAttributes(response);
+        }
+
+        public CheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, new CheckNameAvailabilityParameter(aliasName));
+            return new CheckNameAvailabilityResultAttributes(response);
+        }
+
+        #endregion
     }
 }

@@ -203,7 +203,11 @@ function NamespaceTests
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $secondResourceGroup"
 	New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force 
-     
+
+	# Check DR Configuration Name Availability
+
+	$chackNameResult = Test-AzureRmEventHubName -NamespaceName $namespaceName 
+	Assert-True { $chackNameResult.NameAvailable}
      
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 

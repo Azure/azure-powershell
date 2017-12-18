@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
             HelpMessage = "Namespace Name.")]
         [Parameter(Mandatory = true, Position = 1,ValueFromPipelineByPropertyName = true, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AliasAuthoRuleParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -52,6 +53,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Eventhub { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2, ParameterSetName = AliasAuthoRuleParameterSet,
+            HelpMessage = "Alias Name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
+        public string AliasName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -78,22 +87,36 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     WriteObject(authRuleList, true);
                 }
 
-
-            // Get WcfRelay authorizationRule
+            // Get Eventhub authorizationRule
             if (ParameterSetName == EventhubAuthoRuleParameterSet)
                 if (!string.IsNullOrEmpty(Name))
                 {
-                    // Get a WcfRelay AuthorizationRule
+                    // Get a Eventhub AuthorizationRule
                     SharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
-                    // Get all WcfRelay AuthorizationRules
+                    // Get all Eventhub AuthorizationRules
                     IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub);
                     WriteObject(authRuleList, true);
                 }
-            
+
+            // Get Alias authorizationRule
+            if (ParameterSetName == AliasAuthoRuleParameterSet)
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a Alias AuthorizationRule
+                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                    WriteObject(authRule);
+                }
+                else
+                {
+                    // Get all Alias AuthorizationRules
+                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                    WriteObject(authRuleList, true);
+                }
+
         }
     }
 }
