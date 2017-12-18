@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
         private static string[] _resourceTypes;
+        private static int _timeout = 3;
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
         {
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 instance.ClientFactory.GetCustomHandlers());
                             client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
-                            if (allProviders.Wait(TimeSpan.FromSeconds(3)))
+                            if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
                                 if (allProviders.Result != null)
                                 {
@@ -114,6 +115,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
             return FindLocations(_resourceTypes);
         }
 
+        public static string[] FindLocations(string[] resourceTypes, int timeout)
+        {
+            _timeout = timeout;
+            return FindLocations(resourceTypes);
+        }
+
         public static string[] FindLocations(string[] resourceTypes)
         {
             return FindLocations(resourceTypes, ResourceTypeLocationDictionary);
@@ -166,7 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 #endif
             for (int i = 0; i < distinctLocations.Length; i++)
             {
-                distinctLocations[i] = String.Format("\"{0}\"", distinctLocations[i]);
+                distinctLocations[i] = String.Format("\'{0}\'", distinctLocations[i]);
             }
             return distinctLocations;
         }

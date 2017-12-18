@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.1
 * Remove validate set of location into dynamic lookup so that all clouds are supported.
 * Add gateway associate in new and set operation, and add gateway dissocaite operation.
 * Fix sync-azureASinstance throws exception when using service principal.

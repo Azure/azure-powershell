@@ -363,6 +363,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execution failed because a background thread could not prompt the user..
+        /// </summary>
+        public static string BaseShouldMethodFailureReason {
+            get {
+                return ResourceManager.GetString("BaseShouldMethodFailureReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base Uri was empty..
         /// </summary>
         public static string BaseUriEmpty {
@@ -1714,6 +1723,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string LookingForServiceMessage {
             get {
                 return ResourceManager.GetString("LookingForServiceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Long-Running Job.
+        /// </summary>
+        public static string LROJobName {
+            get {
+                return ResourceManager.GetString("LROJobName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The cmdlet failed in background execution.  The returned error was &apos;{0}&apos;.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the &apos;-AsJob&apos; parameter..
+        /// </summary>
+        public static string LROTaskExceptionMessage {
+            get {
+                return ResourceManager.GetString("LROTaskExceptionMessage", resourceCulture);
             }
         }
         
@@ -3701,11 +3728,47 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and include the &apos;Force&apos; parameter, if available, to avoid unnecessary prompts..
+        /// </summary>
+        public static string ShouldContinueFail {
+            get {
+                return ResourceManager.GetString("ShouldContinueFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and omit the &apos;Confirm&apos; parameter when using the &apos;AsJob&apos; parameter..
+        /// </summary>
+        public static string ShouldProcessFailConfirm {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please increase the user $ConfirmPreference setting, or include turn off confirmation using &apos;-Confirm:$false&apos; when using the &apos;AsJob&apos; parameter and execute the cmdet again..
+        /// </summary>
+        public static string ShouldProcessFailImpact {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailImpact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and omit the &apos;WhatIf&apos; parameter when using the &apos;AsJob&apos; parameter..
+        /// </summary>
+        public static string ShouldProcessFailWhatIf {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailWhatIf", resourceCulture);
             }
         }
         
@@ -3985,6 +4048,87 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string SwitchAzureModeDeprecated {
             get {
                 return ResourceManager.GetString("SwitchAzureModeDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Starting cmdlet execution, setting for cmdlet confirmation required: &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceBeginLROJob {
+            get {
+                return ResourceManager.GetString("TraceBeginLROJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Blocking job for ShouldMethod &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceBlockLROThread {
+            get {
+                return ResourceManager.GetString("TraceBlockLROThread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Completing cmdlet execution in RunJob.
+        /// </summary>
+        public static string TraceEndLROJob {
+            get {
+                return ResourceManager.GetString("TraceEndLROJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: State change from &apos;{0}&apos; to &apos;{1}&apos; because &apos;{2}&apos;.
+        /// </summary>
+        public static string TraceHandleLROStateChange {
+            get {
+                return ResourceManager.GetString("TraceHandleLROStateChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Unblocking job due to stoppage or failure.
+        /// </summary>
+        public static string TraceHandlerCancelJob {
+            get {
+                return ResourceManager.GetString("TraceHandlerCancelJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Unblocking job that was previously blocked..
+        /// </summary>
+        public static string TraceHandlerUnblockJob {
+            get {
+                return ResourceManager.GetString("TraceHandlerUnblockJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Error in cmdlet execution.
+        /// </summary>
+        public static string TraceLROJobException {
+            get {
+                return ResourceManager.GetString("TraceLROJobException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Removing state changed event handler, exception &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceRemoveLROEventHandler {
+            get {
+                return ResourceManager.GetString("TraceRemoveLROEventHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: ShouldMethod &apos;{0}&apos; unblocked..
+        /// </summary>
+        public static string TraceUnblockLROThread {
+            get {
+                return ResourceManager.GetString("TraceUnblockLROThread", resourceCulture);
             }
         }
         

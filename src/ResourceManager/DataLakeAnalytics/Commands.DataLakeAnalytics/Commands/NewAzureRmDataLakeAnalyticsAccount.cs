@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the account should be created.")]
+        [LocationCompleter("Microsoft.DataLakeAnalytics/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -53,10 +54,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "The maximum supported degree of parallelism for this account.")]
+            HelpMessage = "The maximum supported analytics units for this account.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
-        public int? MaxDegreeOfParallelism { get; set; }
+        [Alias("MaxDegreeOfParallelism")]
+        public int? MaxAnalyticsUnits { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The maximum supported jobs running under the account at the same time.")]
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         Location,
                         defaultStorage,
                         customTags: Tags,
-                        maxDegreeOfParallelism: MaxDegreeOfParallelism,
+                        maxAnalyticsUnits: MaxAnalyticsUnits,
                         maxJobCount: MaxJobCount,
                         queryStoreRetention: QueryStoreRetention,
                         tier: Tier)));
