@@ -23,7 +23,7 @@ function Test-LocationCompleter
 	$resourceTypes = @("Microsoft.Batch/operations")
 	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, 60)
 	$expectedResourceType = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch" | Where-Object {$_.ResourceTypes.ResourceTypeName -eq "operations"}
-	$expectedLocations = $expectedResourceType.Locations | ForEach-Object {"`"" + $_ + "`""}
+	$expectedLocations = $expectedResourceType.Locations | ForEach-Object {"`'" + $_ + "`'"}
 	Assert-AreEqualArray $locations $expectedLocations
 }
 

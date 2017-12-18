@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll',
@@ -80,7 +80,16 @@ CmdletsToExport = 'New-AzureRmContainerRegistry', 'Get-AzureRmContainerRegistry'
                'Remove-AzureRmContainerRegistry', 
                'Get-AzureRmContainerRegistryCredential', 
                'Update-AzureRmContainerRegistryCredential', 
-               'Test-AzureRmContainerRegistryNameAvailability'
+               'Test-AzureRmContainerRegistryNameAvailability',
+			   'Get-AzureRmContainerRegistryReplication',
+			   'New-AzureRmContainerRegistryReplication',
+			   'Remove-AzureRmContainerRegistryReplication',
+			   'New-AzureRmContainerRegistryWebhook',
+			   'Get-AzureRmContainerRegistryWebhook',
+			   'Update-AzureRmContainerRegistryWebhook',
+			   'Test-AzureRmContainerRegistryWebhook',
+			   'Remove-AzureRmContainerRegistryWebhook',
+			   'Get-AzureRmContainerRegistryWebhookEvent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -115,8 +124,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* New cmdlets for geo-replication and webhooks
+    - Get/New/Remove-AzureRmContainerRegistryReplication
+    - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
