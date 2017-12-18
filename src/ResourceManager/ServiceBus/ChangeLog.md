@@ -19,12 +19,18 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.5.0
-* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-
+* Added below new commandlets for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+		
 ## Version 0.4.7
 
 ## Version 0.4.6

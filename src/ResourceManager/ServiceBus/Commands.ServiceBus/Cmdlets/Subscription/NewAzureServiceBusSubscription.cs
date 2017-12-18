@@ -106,6 +106,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public bool? RequiresSession { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Queue/Topic name to forward the messages")]
+        [ValidateNotNullOrEmpty]
+
+        public string ForwardTo { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Queue/Topic name to forward the Dead Letter message")]
+        [ValidateNotNullOrEmpty]
+        public string ForwardDeadLetteredMessagesTo { get; set; }
+
         public override void ExecuteCmdlet()
         {
             
@@ -138,7 +151,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
             if (RequiresSession != null)
                 subAttributes.RequiresSession = RequiresSession;
-            
+
+            if (ForwardTo != null)
+                subAttributes.ForwardTo = ForwardTo;
+
+            if (ForwardDeadLetteredMessagesTo != null)
+                subAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo;
+
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {
                 WriteObject(Client.CreateUpdateSubscription(ResourceGroupName, Namespace, Topic, Name, subAttributes));

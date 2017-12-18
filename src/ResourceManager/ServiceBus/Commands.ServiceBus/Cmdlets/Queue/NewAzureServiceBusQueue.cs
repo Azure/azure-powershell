@@ -139,6 +139,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public long? SizeInBytes { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Queue/Topic name to forward the messages")]
+        [ValidateNotNullOrEmpty]
+        
+        public string ForwardTo { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Queue/Topic name to forward the Dead Letter message")]
+        [ValidateNotNullOrEmpty]
+        public string ForwardDeadLetteredMessagesTo { get; set; }
+
         public override void ExecuteCmdlet()
         {
             QueueAttributes queueAttributes = new QueueAttributes();

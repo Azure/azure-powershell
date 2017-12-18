@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Commands;
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -26,7 +27,7 @@ using System.Xml.Linq;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.Servicebus
+namespace Microsoft.Azure.Commands.ServiceBus
 {
     public class ServiceBusClient
     {
@@ -489,9 +490,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #endregion Subscription
-
-
-
+        
         #region Rules
 
         public RulesAttributes CreateUpdateRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, RulesAttributes ruleAttributes)
@@ -541,6 +540,71 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         #endregion Rules
 
+        #region DRConfiguration
+        public ServiceBusDRConfigurationAttributes GetServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
+            return new ServiceBusDRConfigurationAttributes(response);
+        }
+
+        public IEnumerable<ServiceBusDRConfigurationAttributes> ListAllServiceBusDRConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new ServiceBusDRConfigurationAttributes(resource));
+            return resourceList;
+        }
+
+        public ServiceBusDRConfigurationAttributes CreateServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias, ServiceBusDRConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.ServiceBus.Models.ArmDisasterRecovery();
+
+            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
+                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
+            return new ServiceBusDRConfigurationAttributes(response);
+        }
+
+        public bool DeleteServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            return true;
+        }
+
+        public void SetServiceBusDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
+        }
+
+        public void SetServiceBusDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
+        }
+
+        public ListKeysAttributes GetAliasListKeys(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var listKeys = Client.DisasterRecoveryConfigs.ListKeys(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new ListKeysAttributes(listKeys);
+        }
+
+        public SharedAccessAuthorizationRuleAttributes GetAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var response = Client.DisasterRecoveryConfigs.GetAuthorizationRule(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new SharedAccessAuthorizationRuleAttributes(response);
+        }
+
+        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.ListAuthorizationRules(resourceGroupName, namespaceName, aliasName);
+            var resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            return resourceList;
+        }
+
+
+        #endregion
+
         public static string GenerateRandomKey()
         {
             byte[] key256 = new byte[32];
@@ -564,6 +628,12 @@ namespace Microsoft.Azure.Commands.Servicebus
         public CheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
         {
             var response = Client.Namespaces.CheckNameAvailabilityMethod(new CheckNameAvailability(namespaceName));
+            return new CheckNameAvailabilityResultAttributes(response);
+        }
+
+        public CheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailabilityMethod(resourceGroup, namespaceName, new CheckNameAvailability(aliasName));
             return new CheckNameAvailabilityResultAttributes(response);
         }
 
