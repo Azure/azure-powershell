@@ -57,10 +57,17 @@ function ServiceBusTests
     $resourceGroupName = Get-ResourceGroupName
 	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 
      
+	# Check Namespace Name Availability
+
+	$checkNameResult = Test-AzureRmServiceBusName -NamespaceName $namespaceName 
+	Assert-True { $checkNameResult.NameAvailable}
+
+
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" 
     
+
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}

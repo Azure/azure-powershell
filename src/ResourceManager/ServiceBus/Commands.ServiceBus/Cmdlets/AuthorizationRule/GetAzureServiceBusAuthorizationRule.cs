@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             HelpMessage = "Namespace Name.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = QueueAuthoRuleParameterSet)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = AliasAuthoRuleParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -61,6 +62,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Topic { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2, ParameterSetName = AliasAuthoRuleParameterSet,
+            HelpMessage = " DR Configuration Name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
+        public string AliasName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -118,7 +127,22 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                     IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic);
                     WriteObject(authRuleList, true);
                 }
-            
+
+            // Get Alias authorizationRule
+            if (ParameterSetName == AliasAuthoRuleParameterSet)
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a Topic AuthorizationRule
+                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                    WriteObject(authRule);
+                }
+                else
+                {
+                    // Get all Topic AuthorizationRules
+                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                    WriteObject(authRuleList, true);
+                }
+
         }
     }
 }

@@ -141,6 +141,15 @@
   <data name="CreateTopicAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for Topic: {1}</value>
   </data>
+  <data name="DRBreakPairing" xml:space="preserve">
+    <value>Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}</value>
+  </data>
+  <data name="DRFailOver" xml:space="preserve">
+    <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
+  </data>
+  <data name="DRRemoveAlias" xml:space="preserve">
+    <value>Deleting Alias: {0} of NnameSpace{1}</value>
+  </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
   </data>

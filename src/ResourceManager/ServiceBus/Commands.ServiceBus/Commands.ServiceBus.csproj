@@ -42,7 +42,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.3\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -58,6 +70,11 @@
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureServiceBusAuthorizationRule.cs" />
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
     <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureServiceBusDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureServiceBusDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureServiceBusDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusDRConfigurationBreakPairing.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusDRConfigurationFailOver.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespace.cs" />
@@ -94,6 +111,7 @@
     <Compile Include="Models\RegenerateKeysAttributes.cs" />
     <Compile Include="Models\ResourceAttributes.cs" />
     <Compile Include="Models\RulesAttributes.cs" />
+    <Compile Include="Models\ServiceBusDRConfigurationAttributes.cs" />
     <Compile Include="Models\SharedAccessAuthorizationRuleAttributes.cs" />
     <Compile Include="Models\SQLFilterAttributes.cs" />
     <Compile Include="Models\SubscriptionAttributes.cs" />
@@ -115,9 +133,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>

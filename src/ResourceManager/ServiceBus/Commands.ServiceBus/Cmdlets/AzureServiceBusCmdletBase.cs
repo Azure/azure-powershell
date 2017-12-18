@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public const string RegenerateKeysSetName = "RegenerateKeysSet";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.Servicebus.ServiceBusClient  _client;
+        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string QueueAuthoRuleParameterSet = "QueueAuthorizationRuleSet";
         protected const string TopicAuthoRuleParameterSet = "TopicAuthorizationRuleSet";
         protected const string SubscriptionAuthoRuleParameterSet = "SubscriptionAuthorizationRuleSet";
+        protected const string AliasAuthoRuleParameterSet = "AliasAuthoRuleSet";
+        protected const string AliasCheckNameAvailabilityParameterSet = "AliasCheckNameAvailabilitySet";
+        protected const string NamespaceCheckNameAvailabilityParameterSet = "NamespaceCheckNameAvailabilitySet";
 
         //Parameter sets for InputObjects
         protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicInputObjectParameterSet = "TopicInputObjectSet";
         protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+        protected const string AliasInputObjectParameterSet = "AliasInputObjectSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -81,6 +85,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+        protected const string AliasPropertiesParameterSet = "AliasPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -94,11 +99,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
-
+        protected const string AliasAliasName = "Alias";
+        protected const string AliasAliasObj = "AliasObj";
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
         protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
+
+        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusDRConfiguration";
+        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusDRConfigurationFailOver";
+        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusDRConfigurationBreakPairing";
 
         protected struct SKU
         {
@@ -157,13 +167,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public Microsoft.Azure.Commands.Servicebus.ServiceBusClient Client
+        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
         {
             get
             {
                 if (_client == null)
                 {
-                    _client = new Microsoft.Azure.Commands.Servicebus.ServiceBusClient(DefaultContext);
+                    _client = new Microsoft.Azure.Commands.ServiceBus.ServiceBusClient(DefaultContext);
                 }
                 return _client;
             }

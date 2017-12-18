@@ -20,6 +20,9 @@ Gets the primary and secondary connection strings for the given Namespace or Que
 ### [Get-AzureRmServiceBusNamespace](Get-AzureRmServiceBusNamespace.md)
 Gets a description for the specified Service Bus namespace within the resource group.
 
+### [Get-AzureRmServiceBusDRConfigurations](Get-AzureRmServiceBusDRConfigurations.md)
+Gets a description Alias(Disaster Recovery configuration) for primary or secondary namespace
+
 ### [Get-AzureRmServiceBusOperation](Get-AzureRmServiceBusOperation.md)
 List supported ServiceBus Operations
 
@@ -44,6 +47,9 @@ Regenerates the primary or secondary connection strings for the Service Bus name
 ### [New-AzureRmServiceBusNamespace](New-AzureRmServiceBusNamespace.md)
 Creates a new Service Bus namespace.
 
+### [New-New-AzureRmServiceBusDRConfigurations](New-New-AzureRmServiceBusDRConfigurations.md)
+Creates an new Alias(Disaster Recovery configuration)
+
 ### [New-AzureRmServiceBusQueue](New-AzureRmServiceBusQueue.md)
 Creates a Service Bus queue in the specified Service Bus namespace.
 
@@ -62,6 +68,9 @@ Removes the authorization rule of a Service Bus namespace or queue or topic from
 ### [Remove-AzureRmServiceBusNamespace](Remove-AzureRmServiceBusNamespace.md)
 Removes the namespace from the specified resource group. 
 
+### [Remove-Remove-AzureRmServiceBusDRConfigurations](Remove-Remove-AzureRmServiceBusDRConfigurations.md)
+Removes an Alias(Disaster Recovery configuration)
+
 ### [Remove-AzureRmServiceBusQueue](Remove-AzureRmServiceBusQueue.md)
 Removes the queue from the specified Service Bus namespace.
 
@@ -79,6 +88,12 @@ Updates the specified authorization rule description for the given Service Bus n
 
 ### [Set-AzureRmServiceBusNamespace](Set-AzureRmServiceBusNamespace.md)
 Updates the description of an existing Service Bus namespace.
+
+### [Set-Set-AzureRmServiceBusDRConfigurationsBreakPairing](Set-Set-AzureRmServiceBusDRConfigurationsBreakPairing.md)
+Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+
+### [Set-Set-AzureRmServiceBusDRConfigurationsFailOver](Set-Set-AzureRmServiceBusDRConfigurationsFailOver.md)
+Envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmServiceBusQueue](Set-AzureRmServiceBusQueue.md)
 Updates the description of a Service Bus queue in the specified Service Bus namespace.

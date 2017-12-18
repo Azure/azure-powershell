@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
@@ -26,18 +27,45 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     [Cmdlet("Test", "AzureRmServiceBusName"), OutputType(typeof(List<CheckNameAvailabilityResultAttributes>))]
     public class TestAzureServiceBusCheckNameAvailability : AzureServiceBusCmdletBase
     {
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0, ParameterSetName = AliasCheckNameAvailabilityParameterSet,
+            HelpMessage = "Resource Group Name.")]
+        [Alias("ResourceGroup")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]        
+        public string ResourceGroupName { get; set; }
+
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Relay Namespace Name.")]
+            ValueFromPipelineByPropertyName = true, ParameterSetName = NamespaceCheckNameAvailabilityParameterSet,
+            Position = 1,
+            HelpMessage = "Servicebus Namespace Name.")]
+        [Alias(AliasNamespaceName)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AliasCheckNameAvailabilityParameterSet)]
         public string Namespace { get; set; }
 
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           Position = 2, ParameterSetName = AliasCheckNameAvailabilityParameterSet,
+           HelpMessage = "DR Configuration Name - Alias Name")]
+        [Alias(AliasAliasName)]
+        public string AliasName { get; set; }
+
         public override void ExecuteCmdlet()
-        {   
-            //Check the Relay namespaces name is availability
-            CheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
-            WriteObject(checkNameAvailabilityResult, true);
+        {
+            if (ParameterSetName == NamespaceCheckNameAvailabilityParameterSet)
+            {//Check the ServiceBus namespaces name is availability
+                CheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
+                WriteObject(checkNameAvailabilityResult, true);
+            }
+
+            if (ParameterSetName == AliasCheckNameAvailabilityParameterSet)
+            {//Check the ServiceBus namespaces name is availability
+                CheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
+                WriteObject(checkNameAvailabilityResult, true);
+            }
 
         }
     }

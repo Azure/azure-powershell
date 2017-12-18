@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 SizeInBytes = quResource.SizeInBytes;
                 Status = quResource.Status;                
                 UpdatedAt = quResource.UpdatedAt;
+                ForwardTo = quResource.ForwardTo;
+                ForwardDeadLetteredMessagesTo = quResource.ForwardDeadLetteredMessagesTo;
 
             }
         }
@@ -164,6 +166,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// the exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }        
+        public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or sets queue/Topic name to forward the messages
+        /// </summary>
+        public string ForwardTo { get; set; }
+
+        /// <summary>
+        /// Gets or sets queue/Topic name to forward the Dead Letter message
+        /// </summary>
+        public string ForwardDeadLetteredMessagesTo { get; set; }
+
+
     }
 }
