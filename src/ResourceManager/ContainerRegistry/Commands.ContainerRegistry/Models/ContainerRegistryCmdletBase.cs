@@ -90,8 +90,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 if (_RegistryClient == null)
                 {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
-                    {};
+                    _RegistryClient = new ContainerRegistryClient(DefaultContext);
                 }
 
                 this._RegistryClient.VerboseLogger = WriteVerboseWithTimestamp;
