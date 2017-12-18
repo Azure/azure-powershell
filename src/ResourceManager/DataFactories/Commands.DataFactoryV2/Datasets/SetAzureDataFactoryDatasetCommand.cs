@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Set, Constants.Dataset, DefaultParameterSetName = ParameterSetNames.ByFactoryName,
         SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
+    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
     public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

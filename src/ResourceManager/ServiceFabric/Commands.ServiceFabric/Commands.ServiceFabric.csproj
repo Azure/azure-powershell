@@ -79,6 +79,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
     <Compile Include="Commands\AddAzureRmServiceFabricApplicationCertificate.cs" />
     <Compile Include="Commands\AddAzureRmServiceFabricNode.cs" />
     <Compile Include="Commands\AddAzureRmServiceFabricClientCertificate.cs" />
