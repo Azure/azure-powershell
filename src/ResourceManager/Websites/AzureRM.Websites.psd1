@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -93,8 +93,7 @@ CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan',
                'New-AzureRmWebAppBackup', 'Remove-AzureRmWebApp', 
                'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup', 
                'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp', 
-               'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp',
-               'Get-AzureRmWebAppSnapshot', 'Restore-AzureRmWebAppSnapshot'
+               'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -134,6 +133,8 @@ PrivateData = @{
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
+
+        Prerelease = '-preview'
 
     } # End of PSData hashtable
     

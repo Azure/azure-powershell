@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
         }
 
-        [Fact]
+        [Fact(Skip = "Get snapshot command not yet supported")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSnapshots()
         {
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSnapshots");
         }
 
-        [Fact]
+        [Fact(Skip = "Restore snapshot command not yet supported")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreWebAppSnapshot()
         {
