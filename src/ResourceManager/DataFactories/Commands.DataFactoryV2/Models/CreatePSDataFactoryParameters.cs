@@ -18,10 +18,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     public class CreatePSDataFactoryParameters : DataFactoryParametersBase
     {
-        public string LoggingStorageAccountName { get; set; }
-
-        public string LoggingStorageAccountKey { get; set; }
-
         public string Location { get; set; }
 
         public Hashtable Tags { get; set; }

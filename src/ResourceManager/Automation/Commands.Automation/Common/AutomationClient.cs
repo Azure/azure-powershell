@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -489,6 +489,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     StringComparison.OrdinalIgnoreCase) &&
                 0 !=
                 string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph,
+                    StringComparison.OrdinalIgnoreCase) &&
+                0 !=
+                string.Compare(fileExtension, Constants.SupportedFileExtensions.Python,
                     StringComparison.OrdinalIgnoreCase))
             {
                 throw new ResourceCommonException(typeof(Runbook),
