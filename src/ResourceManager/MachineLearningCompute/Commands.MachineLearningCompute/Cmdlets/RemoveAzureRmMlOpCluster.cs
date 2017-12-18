@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, CmdletSuffix, SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(void))]
     public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
@@ -58,26 +58,47 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             HelpMessage = ResourceIdParameterHelpMessage)]
         public string ResourceId { get; set; }
 
+        [Parameter(ParameterSetName = ObjectParameterSet,
+            Mandatory = false, 
+            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            Mandatory = false, 
+            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
+        [Parameter(ParameterSetName = CmdletParametersParameterSet,
+            Mandatory = false, 
+            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
+        public SwitchParameter IncludeAllResources { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.Name, @"Deleting operationalization cluster..."))
+            if (string.Equals(this.ParameterSetName, ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (string.Equals(this.ParameterSetName, ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    var resourceInfo = new ResourceIdentifier(InputObject.Id);
-                    ResourceGroupName = resourceInfo.ResourceGroupName;
-                    Name = resourceInfo.ResourceName;
-                }
-                else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    var resourceInfo = new ResourceIdentifier(ResourceId);
-                    ResourceGroupName = resourceInfo.ResourceGroupName;
-                    Name = resourceInfo.ResourceName;
-                }
+                var resourceInfo = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
+            }
+            else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
+            }
 
+            var shouldProcessMessage = @"Deleting operationalization cluster";
+
+            if (IncludeAllResources.IsPresent)
+            {
+                var clusterToDelete = MachineLearningComputeManagementClient.OperationalizationClusters.Get(ResourceGroupName, Name);
+                var managedByResourceGroup = new ResourceIdentifier(clusterToDelete.ContainerRegistry.ResourceId).ResourceGroupName;
+
+                shouldProcessMessage += $" and supporting resource group {managedByResourceGroup}";
+            }
+
+            if (ShouldProcess(this.Name, shouldProcessMessage))
+            {
                 try
                 {
-                    MachineLearningComputeManagementClient.OperationalizationClusters.Delete(ResourceGroupName, Name);
+                    MachineLearningComputeManagementClient.OperationalizationClusters.Delete(ResourceGroupName, Name, IncludeAllResources.IsPresent);
                 }
                 catch (CloudException e)
                 {
