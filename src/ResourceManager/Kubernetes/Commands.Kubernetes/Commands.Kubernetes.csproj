@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Constants.cs" />
+    <Compile Include="Commands\CreateOrUpdateKubeBase.cs" />
     <Compile Include="Commands\GetAzureRmKubernetes.cs" />
     <Compile Include="Commands\ImportAzureRmKubernetesCredential.cs" />
     <Compile Include="Commands\KubeCmdletBase.cs" />
@@ -88,11 +89,26 @@
     <Compile Include="Generated\Models\OSType.cs" />
     <Compile Include="Generated\Models\Page.cs" />
     <Compile Include="Generated\Models\Resource.cs" />
+    <Compile Include="Models\AcsServicePrincipal.cs" />
+    <Compile Include="Models\Mapper.cs" />
+    <Compile Include="Models\PSContainerServiceAgentPoolProfile.cs" />
+    <Compile Include="Models\PSContainerServiceLinuxProfile.cs" />
+    <Compile Include="Models\PSContainerServiceServicePrincipalProfile.cs" />
+    <Compile Include="Models\PSContainerServiceSshConfiguration.cs" />
+    <Compile Include="Models\PSContainerServiceSshPublicKey.cs" />
+    <Compile Include="Models\PSKeyVaultSecretRef.cs" />
+    <Compile Include="Models\PSKubernetesCluster.cs" />
+    <Compile Include="Models\PSResource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Management.Automation_PowerShell_3.0.6.3.9600.17400\lib\net40\System.Management.Automation.dll</HintPath>
       <Private>True</Private>
