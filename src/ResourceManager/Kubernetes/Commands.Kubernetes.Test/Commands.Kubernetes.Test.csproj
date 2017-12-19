@@ -125,7 +125,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Fixtures\additional_kube_config.yaml" />
     <None Include="Fixtures\config.yaml" />
     <None Include="MSSharedLibKey.snk" />
