@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
                     {
-                        ComputerNamePrefix = name.Substring(0, 9),
+                        ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
                         WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
                         LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
