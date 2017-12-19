@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
 
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
