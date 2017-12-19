@@ -167,15 +167,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
             // get image
-            var image = Images
-                .Instance
-                .Select(osAndMap =>
-                    new { OsType = osAndMap.Key, Image = osAndMap.Value.GetOrNull(ImageName) })
-                .First(osAndImage => osAndImage.Image != null);
+            bool isWindows;
+            Commands.Common.Strategies.Compute.Image image;
+            if (ImageName.Contains(':'))
+            {
+                var imageArray = ImageName.Split(':');
+                if (imageArray.Length != 4)
+                {
+                    throw new Exception("Invalid ImageName");
+                }
+                image = new Commands.Common.Strategies.Compute.Image
+                {
+                    publisher = imageArray[0],
+                    offer = imageArray[1],
+                    sku = imageArray[2],
+                    version = imageArray[3],
+                };
+                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
+            }
+            else
+            {
+                // get image
+                var osTypeAndImage = Images
+                    .Instance
+                    .SelectMany(osAndMap => osAndMap
+                        .Value
+                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
+                        .Select(nameAndImage => new
+                        {
+                            OsType = osAndMap.Key,
+                            Image = nameAndImage.Value
+                        }))
+                    .FirstOrDefault();
+                image = osTypeAndImage.Image;
+                isWindows = osTypeAndImage.OsType == "Windows";
+            }
 
-            var isWindows = image.OsType == "Windows";
-            BackendPort = BackendPort
-                ?? (image.OsType == "Windows" ? new[] { 3389, 5985 } : new[] { 22 });
+            BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
             
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
@@ -214,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 isWindows: isWindows,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image.Image,
+                image: image,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
                 upgradeMode: (MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode") == true ) ? UpgradePolicyMode : (UpgradeMode?) null);
