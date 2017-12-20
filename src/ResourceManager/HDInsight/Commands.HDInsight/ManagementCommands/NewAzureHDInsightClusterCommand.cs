@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             HelpMessage = "Gets or sets the datacenter location for the cluster.")]
+        [LocationCompleter("Microsoft.HDInsight/clusters")]
         public string Location
         {
             get { return parameters.Location; }

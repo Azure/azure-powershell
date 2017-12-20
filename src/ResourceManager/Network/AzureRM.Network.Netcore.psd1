@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = '.\AzureRM.Network.Netcore.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,20 +54,20 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'netcoreapp2.0\AutoMapper.dll',
-    'netcoreapp2.0\Microsoft.Azure.Management.Network.dll'
+RequiredAssemblies = '.\AutoMapper.dll',
+    '.\Microsoft.Azure.Management.Network.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @('netcoreapp2.0\AzureRmNetworkStartup.ps1')
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Network.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Network.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Network.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Network.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

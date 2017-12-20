@@ -28,13 +28,12 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new ResourceClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    _resourcesClient = new ResourceClient(DefaultProfile.DefaultContext);
                 }
+
+                this._resourcesClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._resourcesClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._resourcesClient.WarningLogger = WriteWarningWithTimestamp;
                 return _resourcesClient;
             }
             set { _resourcesClient = value; }
