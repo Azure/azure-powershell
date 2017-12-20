@@ -42,7 +42,9 @@ function Test-ExpressRouteRouteFilters
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location
 
       # Create the route filter
-      $filter = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Force
+      $job = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Force -AsJob
+	  $job | Wait-Job
+	  $filter = $job | Receive-Job
 
       #verification
       Assert-AreEqual $rgName $filter.ResourceGroupName
@@ -53,7 +55,9 @@ function Test-ExpressRouteRouteFilters
 	  $rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force
 	  $filter = Get-AzureRmRouteFilter -Name filter -ResourceGroupName filter
 	  $filter.Rules.Add($rule)
-	  $filter = Set-AzureRmRouteFilter -RouteFilter $filter -Force
+	  $job = Set-AzureRmRouteFilter -RouteFilter $filter -Force -AsJob
+	  $job | Wait-Job
+	  $filter = $job | Receive-Job
 
 	  #verification
       Assert-AreEqual $rgName $filter.ResourceGroupName
@@ -70,6 +74,11 @@ function Test-ExpressRouteRouteFilters
       Assert-AreEqual $filterName $filter.Name
       Assert-NotNull $filter.Location
       Assert-AreEqual 0 @($filter.Rules).Count
+
+	  Remove-AzureRmRouteFilter -ResourceGroupName $rgname -Name $filterName -Force -AsJob
+
+	  $filter = Get-AzureRmRouteFilter -ResourceGroupName $rgname
+	  Assert-Null $filter
 
     }
     finally
