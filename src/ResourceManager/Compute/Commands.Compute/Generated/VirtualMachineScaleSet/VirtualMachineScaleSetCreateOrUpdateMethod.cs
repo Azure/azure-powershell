@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int[] BackendPort { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [LocationCompleter("Microsoft.Compute/virtualMachines")]
+        [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
 
         // this corresponds to VmSku in the Azure CLI
