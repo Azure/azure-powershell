@@ -19,9 +19,9 @@ using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Analysis.Models;
 
-namespace Microsoft.Azure.Commands.AnalysisServices.Commands
+namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAnalysisServicesServerGateway"),
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAnalysisServicesServerGateway", SupportsShouldProcess = true),
        OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Remove-AzureAsGateway")]
     public class RemoveAzureRmAnalysisServicesServerGateway : AnalysisServicesCmdletBase
