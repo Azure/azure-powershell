@@ -62,9 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     createModel: subscriptionId =>
                     {
                         var lb = new LoadBalancer();
-
                         NormalizeChildResourcesId(lb, subscriptionId, resourceGroup.Name);
-
                         return lb;
                     },
                     dependencies: new IEntityConfig[] { subnet, publicIPAddress });
@@ -202,7 +200,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         {
             id = NormalizeId(id, "resourceGroups", resourceGroupName);
             id = NormalizeId(id, "loadBalancers", loadBalancerName);
-
             return id;
         }
 
@@ -214,7 +211,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
-
             return id.Replace(orignalString, string.Format("/{0}/", resourceValue));
         }
     }
