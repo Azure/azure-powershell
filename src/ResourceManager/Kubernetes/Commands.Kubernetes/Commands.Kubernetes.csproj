@@ -69,6 +69,7 @@
     <Compile Include="Commands\KubeCmdletBase.cs" />
     <Compile Include="Commands\NewAzureRmKubernetes.cs" />
     <Compile Include="Commands\RemoveAzureRmKubernetes.cs" />
+    <Compile Include="Commands\SetAzureRmKubernetes.cs" />
     <Compile Include="Commands\StartAzureRmKubernetesDashboard.cs" />
     <Compile Include="Commands\StopAzureRmKubernetesDashboard.cs" />
     <Compile Include="Generated\ContainerServiceClient.cs" />

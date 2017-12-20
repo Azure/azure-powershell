@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet("Start", KubeNounStr + "Dashboard")]
     [OutputType(typeof(KubeTunnelJob))]
-    public class StartDashboard : KubeCmdletBase
+    public class StartAzureRmKubernetesDashboard : KubeCmdletBase
     {
 
         private const string IdParameterSet = "IdParameterSet";

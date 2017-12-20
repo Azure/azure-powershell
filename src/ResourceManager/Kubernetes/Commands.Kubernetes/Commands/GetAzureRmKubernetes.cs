@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.Get, KubeNounStr, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSKubernetesCluster), typeof(List<PSKubernetesCluster>))]
-    public class Get : KubeCmdletBase
+    public class GetAzureRmKubernetes : KubeCmdletBase
     {
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         private const string NameParameterSet = "NameParameterSet";

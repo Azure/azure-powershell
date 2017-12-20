@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.Remove, KubeNounStr, SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
-    public class Remove : KubeCmdletBase
+    public class RemoveAzureRmKubernetes : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";

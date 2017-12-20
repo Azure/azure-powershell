@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
-    public class New : CreateOrUpdateKubeBase
+    public class NewAzureRmKubernetes : CreateOrUpdateKubeBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
         public SwitchParameter Force { get; set; }
