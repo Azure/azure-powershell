@@ -1,9 +1,9 @@
 ---
-Module Name: AzureRM.Kubernetes.Netcore
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Name: AzureRM.Kubernetes
+Module Guid: a97e0c3e-e389-46a6-b73d-2b9bd6909bdb
+Download Help Link: https://docs.microsoft.com/en-us/powershell/
+Help Version: 4.0.0.0
+Locale: en-US
 ---
 
 # AzureRM.Kubernetes.Netcore Module
