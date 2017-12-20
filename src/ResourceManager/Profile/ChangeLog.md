@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 ## Version 4.1.1
 - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/

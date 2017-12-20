@@ -32,13 +32,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (this.commitmentPlansClient == null)
                 {
-                    this.commitmentPlansClient = new CommitmentPlansClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    this.commitmentPlansClient = new CommitmentPlansClient(DefaultProfile.DefaultContext);
                 }
+
+                this.commitmentPlansClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.commitmentPlansClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.commitmentPlansClient.WarningLogger = WriteWarningWithTimestamp;
                 return this.commitmentPlansClient;
             }
             set { this.commitmentPlansClient = value; }
