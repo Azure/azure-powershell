@@ -135,6 +135,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Kubernetes.Models.PSKubernetesCluster
 
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Kubernetes.KubeTunnelJob
+
 ## NOTES
 
 ## RELATED LINKS
