@@ -109,6 +109,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(
             Mandatory = false,
             HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]
+        [Alias("SshKeyPath")]
         public string SshKeyValue { get; set; }
 
         [Parameter(Mandatory = false)]
