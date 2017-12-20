@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// Gets the name of the certificate.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string CertificateName { get; private set; }
 
         /// <summary>
         /// Gets the entity tag.

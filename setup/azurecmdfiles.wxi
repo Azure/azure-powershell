@@ -674,6 +674,9 @@
                         <Component Id="cmpC21AB0561E010A8A8BC1B56AF2401277" Guid="*">
                             <File Id="fil792BC186CD5628088468A8E68FE2C496" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\AzureRM.IotHub.psm1" />
                         </Component>
+                        <Component Id="cmpE1C574CDFE311D0EDD373114D7B2AF5D" Guid="*">
+                            <File Id="fil7C20FAFA57DD94F447858D1A4FA401B8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\debug.txt" />
+                        </Component>
                         <Component Id="cmpE29D513714759F365A7C0A2A7F2B5DC6" Guid="*">
                             <File Id="fil1DC7AA19B6A146E17F6C7BF32B2DC1DC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.IotHub\Microsoft.Azure.Commands.IotHub.dll" />
                         </Component>
@@ -3450,6 +3453,7 @@
             <ComponentRef Id="cmp14BC637DD002112A9E697E975FB04D0D" />
             <ComponentRef Id="cmp15C1FCDD65CEFB52792FB6ED02513E11" />
             <ComponentRef Id="cmpC21AB0561E010A8A8BC1B56AF2401277" />
+            <ComponentRef Id="cmpE1C574CDFE311D0EDD373114D7B2AF5D" />
             <ComponentRef Id="cmpE29D513714759F365A7C0A2A7F2B5DC6" />
             <ComponentRef Id="cmpC67F14F377421F1BCD74EC5A579D43CB" />
             <ComponentRef Id="cmpF5573D31421ADB24A2D619C190A97C1F" />

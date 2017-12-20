@@ -13,7 +13,7 @@ Lists all operations within an Azure IoT Hub.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubOperations [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmIotHubOperations [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,15 +45,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSOperation, Microsoft.Azure.Commands.IotHub, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]
-
 
 ## NOTES
 
