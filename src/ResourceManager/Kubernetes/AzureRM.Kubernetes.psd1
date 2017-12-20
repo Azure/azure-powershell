@@ -71,6 +71,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Kubernetes.dll')
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
+# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @('Get-AzureRmKubernetes', 'New-AzureRmKubernetes', 'Remove-AzureRmKubernetes', 'Import-AzureRmKubernetesCredential', 'Start-AzureRmKubernetesDashboard', 'Stop-AzureRmKubernetesDashboard', 'Set-AzureRmKubernetes')
 
 # Variables to export from this module
@@ -94,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','AKS', 'Kubernetes'
+        Tags = 'Azure','ResourceManager','ARM','AKS', 'Kubernetes', 'Container', 'Orchestrator', 'Containers'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

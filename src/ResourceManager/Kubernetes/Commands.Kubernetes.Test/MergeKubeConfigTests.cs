@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Kubernetes;
 using Xunit;
 using YamlDotNet.RepresentationModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Commands.Kubernetes.Test
 {
@@ -18,6 +19,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigOverwriteClustersTest()
         {
             var clustersByName = DictOfNamedItems(_rootNode, "clusters", "cluster");
@@ -26,6 +28,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigOverwriteUsersTest()
         {
             var usersByName = DictOfNamedItems(_rootNode, "users", "user");
@@ -34,6 +37,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigOverwriteContextTest()
         {
             var contextByName = DictOfNamedItems(_rootNode, "contexts", "context");
@@ -42,6 +46,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigAdditiveClustersTest()
         {
             var clustersByName = DictOfNamedItems(_rootNode, "clusters", "cluster");
@@ -50,6 +55,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigAdditiveUsersTest()
         {
             var usersByName = DictOfNamedItems(_rootNode, "users", "user");
@@ -58,6 +64,7 @@ namespace Commands.Kubernetes.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigAdditiveContextTest()
         {
             var contextByName = DictOfNamedItems(_rootNode, "contexts", "context");
@@ -67,6 +74,7 @@ namespace Commands.Kubernetes.Test
 
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MergedKubeConfigOverwriteCurrentContextTest()
         {
             Assert.True(GetScalar(_rootNode, "current-context").Value == "baz");

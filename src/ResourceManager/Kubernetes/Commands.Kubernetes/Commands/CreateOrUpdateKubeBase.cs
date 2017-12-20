@@ -39,7 +39,6 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet)]
-    [OutputType(typeof(PSObject), typeof(List<PSObject>))]
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";
@@ -79,16 +78,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
             Position = 2,
             Mandatory = true,
             ParameterSetName = SpParamSet,
-            HelpMessage =
-                "The client ID of the AAD application / service principal used for cluster authentication to Azure APIs.")]
-        public string ClientId { get; set; }
-
-        [Parameter(
-            Position = 3,
-            Mandatory = true,
-            ParameterSetName = SpParamSet,
-            HelpMessage = "The secret associated with the AAD application / service principal.")]
-        public string ClientSecret { get; set; }
+            HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+        public PSCredential ClientIdAndSecret { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Azure location for the cluster. Defaults to the location of the resource group.")]
@@ -155,7 +146,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 new ContainerServiceLinuxProfile(AdminUserName,
                     new ContainerServiceSshConfiguration(pubKey));
 
-            var acsServicePrincipal = EnsureServicePrincipal(ClientId, ClientSecret);
+            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
 
             var spProfile = new ContainerServiceServicePrincipalProfile(
                 acsServicePrincipal.SpId,
@@ -219,15 +210,16 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 WriteVerbose(string.Format(
                     "No Service Principal found in {0} for this subscription. Creating a new Service Principal.",
                     AcsSpFilePath));
+
                 // if nothing to load, make one
-                if (string.IsNullOrEmpty(ClientSecret))
+                if (clientSecret == null)
                 {
-                    ClientSecret = RandomUtfString(16);
+                    clientSecret = RandomUtfString(16);
                 }
                 var salt = RandomUtfString(3);
                 var url = string.Format("http://{0}.{1}.{2}.cloudapp.azure.com", salt, DnsNamePrefix, Location);
 
-                BuildServicePrincipal(Name, url, ClientSecret);
+                acsServicePrincipal = BuildServicePrincipal(Name, url, clientSecret);
                 WriteVerbose(string.Format(
                     "Created a new Service Principal and assigned the contributor role for this subcription.",
                     AcsSpFilePath));
@@ -236,7 +228,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             return acsServicePrincipal;
         }
 
-        private void BuildServicePrincipal(string name, string url, string clientSecret)
+        private AcsServicePrincipal BuildServicePrincipal(string name, string url, string clientSecret)
         {
             var pwCreds = new PasswordCredential(
                 value: clientSecret,
@@ -246,16 +238,16 @@ namespace Microsoft.Azure.Commands.Kubernetes
             var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
                 false,
                 name,
-                new List<string> {url},
+                new List<string> { url },
                 url,
-                passwordCredentials: new List<PasswordCredential> {pwCreds}));
+                passwordCredentials: new List<PasswordCredential> { pwCreds }));
 
             var success = RetryAction(() =>
             {
                 var sp = new ServicePrincipalCreateParameters(
                     app.AppId,
                     true,
-                    passwordCredentials: new List<PasswordCredential> {pwCreds});
+                    passwordCredentials: new List<PasswordCredential> { pwCreds });
                 GraphClient.ServicePrincipals.Create(sp);
             });
 
@@ -266,6 +258,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
 
             AddRoleAssignment("Contributor", app.AppId);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret };
         }
 
         protected bool Exists()
@@ -321,7 +314,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         protected AcsServicePrincipal LoadServicePrincipal()
         {
             var config = LoadServicePrincipals();
-            return config?[DefaultProfile.DefaultContext.Subscription.Id];
+            return config?[DefaultContext.Subscription.Id];
         }
 
         protected Dictionary<string, AcsServicePrincipal> LoadServicePrincipals()
@@ -335,7 +328,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         protected void StoreServicePrincipal(AcsServicePrincipal acsServicePrincipal)
         {
             var config = LoadServicePrincipals() ?? new Dictionary<string, AcsServicePrincipal>();
-            config[DefaultProfile.DefaultContext.Subscription.Id] = acsServicePrincipal;
+            config[DefaultContext.Subscription.Id] = acsServicePrincipal;
             File.WriteAllText(AcsSpFilePath, JsonConvert.SerializeObject(config));
         }
 
@@ -356,7 +349,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
 
             var rgPart = _dnsRegex.Replace(ResourceGroupName, "");
-            var subPart = string.Join("", DefaultProfile.DefaultContext.Subscription.Id.Take(6));
+            var subPart = string.Join("", DefaultContext.Subscription.Id.Take(6));
             return string.Format("{0}-{1}-{2}", namePart, rgPart, subPart);
         }
     }

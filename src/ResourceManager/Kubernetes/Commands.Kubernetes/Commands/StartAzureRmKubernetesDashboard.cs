@@ -33,6 +33,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet("Start", KubeNounStr + "Dashboard")]
+    [OutputType(typeof(KubeTunnelJob))]
     public class StartDashboard : KubeCmdletBase
     {
 
@@ -165,19 +166,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         WriteVerbose(string.Format("Starting browser: {0}", proxyUrl));
                         PopBrowser(proxyUrl);
                     };
-
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                }
-                else
-                {
-                    WriteObject(string.Format("Dashboard tunnel is running. You can now browse to {0}.", proxyUrl));
                 }
 
                 JobRepository.Add(job);
                 job.StartJob();
+                WriteObject(job);
             });
         }
 
