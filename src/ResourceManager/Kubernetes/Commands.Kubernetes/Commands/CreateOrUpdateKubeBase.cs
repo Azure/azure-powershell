@@ -176,6 +176,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             // SSH key was specified as either a file or as key data
             if (!string.IsNullOrEmpty(SshKeyValue))
+            {
                 if (File.Exists(sshKeyOrFile))
                 {
                     WriteVerbose(string.Format("Fetching SSH public key from file {0}", sshKeyOrFile));
@@ -186,6 +187,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     WriteVerbose("Using SSH public key data as command line string.");
                     return sshKeyOrFile;
                 }
+            }
 
             // SSH key value was not specified, so look in the home directory for the default pub key
             var path = Path.Combine(
