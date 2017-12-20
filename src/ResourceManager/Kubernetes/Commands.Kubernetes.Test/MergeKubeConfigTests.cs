@@ -14,7 +14,7 @@ namespace Commands.Kubernetes.Test
 
         public MergedKubeConfigTests()
         {
-            var merged = ImportCredential.MergeKubeConfig(File.ReadAllText("./Fixtures/config.yaml"), File.ReadAllText("./Fixtures/additional_kube_config.yaml"));
+            var merged = ImportAzureRmKubernetesCredential.MergeKubeConfig(File.ReadAllText("./Fixtures/config.yaml"), File.ReadAllText("./Fixtures/additional_kube_config.yaml"));
             _rootNode = RootNodeFromString(merged);
         }
 

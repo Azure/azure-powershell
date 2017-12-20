@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(string))]
-    public class ImportCredential : KubeCmdletBase
+    public class ImportAzureRmKubernetesCredential : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";

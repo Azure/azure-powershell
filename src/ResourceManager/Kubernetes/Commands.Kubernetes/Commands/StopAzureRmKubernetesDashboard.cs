@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet("Stop", KubeNounStr + "Dashboard")]
-    public class StopDashboard : KubeCmdletBase
+    public class StopAzureRmKubernetesDashboard : KubeCmdletBase
     {
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

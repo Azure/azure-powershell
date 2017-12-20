@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 {
     [Cmdlet(VerbsCommon.Set, KubeNounStr, DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
-    public class Set : CreateOrUpdateKubeBase
+    public class SetAzureRmKubernetes : CreateOrUpdateKubeBase
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         if (ParameterSetName == SpParamSet)
                         {
                             WriteVerbose("Updating service principal");
-                            var acsServicePrincipal = EnsureServicePrincipal(ClientId, ClientSecret);
+                            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
 
                             var spProfile = new ContainerServiceServicePrincipalProfile(
                                 acsServicePrincipal.SpId,
