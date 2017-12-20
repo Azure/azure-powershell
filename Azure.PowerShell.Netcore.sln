@@ -53,7 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceManager", "Resource
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes\Commands.Kubernetes.Netcore.csproj", "{80657644-11E5-435B-A3DB-DFBB7115089F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Test.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes.Test.Netcore\Commands.Kubernetes.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Test.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes.Test\Commands.Kubernetes.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore", "src\ResourceManager\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj", "{77492655-0086-49E8-B941-7C3E9D5448E9}"
 EndProject

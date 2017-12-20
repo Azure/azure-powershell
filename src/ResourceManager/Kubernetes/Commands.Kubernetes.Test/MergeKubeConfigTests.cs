@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Kubernetes;
 using Xunit;
 using YamlDotNet.RepresentationModel;
 
-namespace Commands.Kubernetes.Test.Netcore
+namespace Commands.Kubernetes.Test
 {
     public class MergedKubeConfigTests
     {
