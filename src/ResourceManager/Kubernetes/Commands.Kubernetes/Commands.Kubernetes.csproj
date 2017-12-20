@@ -46,6 +46,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="help\AzureRM.Kubernetes.md" />
+    <None Include="help\Get-AzureRmKubernetes.md" />
+    <None Include="help\Import-AzureRmKubernetesCredential.md" />
+    <None Include="help\New-AzureRmKubernetes.md" />
+    <None Include="help\Remove-AzureRmKubernetes.md" />
+    <None Include="help\Set-AzureRmKubernetes.md" />
+    <None Include="help\Start-AzureRmKubernetesDashboard.md" />
+    <None Include="help\Stop-AzureRmKubernetesDashboard.md" />
     <None Include="Microsoft.Azure.Commands.Kubernetes.Format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

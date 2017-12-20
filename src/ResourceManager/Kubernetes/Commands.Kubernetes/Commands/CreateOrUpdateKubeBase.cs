@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
 
         [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
-        [ValidateSet("1.7.7", "1.8.1")]
+        [PSArgumentCompleter("1.7.7", "1.8.1")]
         public string KubernetesVersion { get; set; } = "1.8.1";
 
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
