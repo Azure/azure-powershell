@@ -237,7 +237,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $newCertificate.Properties.Thumbprint -eq $certificateThumbprint }
 	Assert-False { $newCertificate.Properties.IsVerified }
 	Assert-True { $newCertificate.Type -eq $certificateType }
-	Assert-True { $newCertificate.Name -eq $certificateName }
+	Assert-True { $newCertificate.CertificateName -eq $certificateName }
 
 	# List All Certificate
 	$certificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
@@ -249,7 +249,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $certificate.Properties.Thumbprint -eq $certificateThumbprint }
 	Assert-False { $certificate.Properties.IsVerified }
 	Assert-True { $certificate.Type -eq $certificateType }
-	Assert-True { $certificate.Name -eq $certificateName }
+	Assert-True { $certificate.CertificateName -eq $certificateName }
 
 	# Get Verification Code
 	$certificateWithNonce = Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificate.Etag

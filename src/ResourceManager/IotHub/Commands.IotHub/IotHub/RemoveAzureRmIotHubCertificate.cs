@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 2,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 3,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Etag of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string Etag { get; set; }

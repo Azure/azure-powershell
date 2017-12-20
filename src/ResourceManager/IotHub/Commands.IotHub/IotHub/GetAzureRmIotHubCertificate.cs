@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 2,
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
