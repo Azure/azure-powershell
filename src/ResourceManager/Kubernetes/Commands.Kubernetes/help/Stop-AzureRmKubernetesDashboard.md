@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Kubernetes.dll-Help.xml
-Module Name: AzureRM.Kubernetes.Netcore
-online version:
+Module Name: AzureRM.Kubernetes
+online version: https://docs.microsoft.com/en-us/powershell/
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.
 
 ### Example 1
 ```
-PS C:\> Stop-AzureRmKubernetes
+PS C:\> Stop-AzureRmKubernetesDashboard
 ```
 
-{{ Add example description here }}
+Stops the existing SSH tunnel setup by executing Start-AzureRmKubernetesDashboard.
 
 ## PARAMETERS
 

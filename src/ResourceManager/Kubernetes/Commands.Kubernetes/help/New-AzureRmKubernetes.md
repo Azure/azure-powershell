@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Kubernetes.dll-Help.xml
-Module Name: AzureRM.Kubernetes.Netcore
-online version:
+Module Name: AzureRM.Kubernetes
+online version: https://docs.microsoft.com/en-us/powershell/
 schema: 2.0.0
 ---
 
