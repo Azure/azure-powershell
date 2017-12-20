@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public int NodeCount { get; set; } = 3;
 
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
-        public int? NodeOsDiskSize { get; set; }
+        public int NodeOsDiskSize { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine.")]
         public string NodeVmSize { get; set; } = "Standard_D2_v2";
