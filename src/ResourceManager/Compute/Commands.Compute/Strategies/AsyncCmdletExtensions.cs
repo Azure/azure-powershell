@@ -14,7 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
@@ -26,10 +28,43 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// </summary>
         /// <param name="cmdlet"></param>
         /// <param name="createAndStartTask"></param>
-        public static void StartAndWait(this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+        public static void StartAndWait(
+            this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
         {
             var asyncCmdlet = new AsyncCmdlet(cmdlet);
-            asyncCmdlet.Scheduler.Wait(createAndStartTask(asyncCmdlet));
+            asyncCmdlet.Scheduler.Wait(
+                createAndStartTask(asyncCmdlet),
+                () =>
+                {
+                    if (asyncCmdlet.TaskProgressList.Count > 0)
+                    {
+                        var progress = 0.0;
+                        var activeTasks = new List<string>();
+                        foreach (var taskProgress in asyncCmdlet.TaskProgressList)
+                        {
+                            if (!taskProgress.IsDone)
+                            {
+                                var config = taskProgress.Config;
+                                activeTasks.Add(config.Name + " " + config.Strategy.Type);
+                            }
+                            progress += taskProgress.GetProgress();
+                        }
+                        var percent = (int)(progress * 100.0);
+                        var r = new[] { "|", "/", "-", "\\" };
+                        var x = r[DateTime.Now.Second % 4];
+                        cmdlet.WriteProgress(
+                            new ProgressRecord(
+                                0,
+                                "Creating Azure resources",
+                                percent + "% " + x)
+                            {
+                                CurrentOperation = activeTasks.Count > 0 
+                                    ? "Creating " + string.Join(", ", activeTasks) + "."
+                                    : null,
+                                PercentComplete = percent,
+                            });
+                    }
+                });
         }
 
         sealed class AsyncCmdlet : IAsyncCmdlet
@@ -37,6 +72,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
 
             readonly Cmdlet _Cmdlet;
+
+            public List<ITaskProgress> TaskProgressList { get; } 
+                = new List<ITaskProgress>();
 
             public AsyncCmdlet(Cmdlet cmdlet)
             {
@@ -52,8 +90,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             public void WriteObject(object value)
                 => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
 
-            public void WriteProgress(ProgressRecord progressRecord)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteProgress(progressRecord));
+            public void ReportTaskProgress(ITaskProgress taskProgress)
+                => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
         }
     }
 }

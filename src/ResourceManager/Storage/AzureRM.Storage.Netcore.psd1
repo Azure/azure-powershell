@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = '.\AzureRM.Storage.Netcore.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,11 +54,11 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.Management.Storage.dll',
-    'netcoreapp2.0\Microsoft.Data.Edm.dll',
-    'netcoreapp2.0\Microsoft.Data.OData.dll',
-    'netcoreapp2.0\Microsoft.WindowsAzure.Storage.dll',
-    'netcoreapp2.0\System.Spatial.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
+    '.\Microsoft.Data.Edm.dll',
+    '.\Microsoft.Data.OData.dll',
+    '.\Microsoft.WindowsAzure.Storage.dll', 
+    '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -67,10 +67,10 @@ RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.Management.Storage.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Management.Storage.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
