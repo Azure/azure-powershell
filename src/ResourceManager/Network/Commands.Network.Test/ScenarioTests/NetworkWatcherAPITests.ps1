@@ -407,14 +407,14 @@ function Test-PacketCapture
         Assert-AreEqual $pcList.Count 2
 
         #Stop packet capture
-        $job = Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
+        $job = Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
 		$job | Wait-Job
 
         #Get packet capture
         $pc1 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
 
         #Remove packet capture
-        $job = Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
+        $job = Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
 		$job | Wait-Job
 
         #List packet captures
