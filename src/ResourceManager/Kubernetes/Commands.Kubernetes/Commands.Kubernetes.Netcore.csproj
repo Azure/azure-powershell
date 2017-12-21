@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Kubernetes</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Kubernetes</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
