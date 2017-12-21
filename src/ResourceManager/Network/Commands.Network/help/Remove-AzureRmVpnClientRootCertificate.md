@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 5D857FF6-A27D-4031-948D-8A69D24B4AD4
@@ -15,7 +15,7 @@ Removes an existing VPN client root certificate.
 
 ```
 Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -PublicCertData <String>
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -PublicCertData <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -46,6 +46,21 @@ This extracted text is stored in a variable named $CertificateText.
 The third command uses the information stored in the $CertificateText variable along with the **Remove-AzureRmVpnClientRootCertificate** cmdlet to remove the certificate from the gateway.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

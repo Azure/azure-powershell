@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermroutefilterruleconfig
@@ -25,17 +25,6 @@ The Add-AzureRmRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure
 
 ### --------------------------  Example 1: Add a route filter rule to a route filter  --------------------------
 @{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
-
-
 
 
 ```
