@@ -164,3 +164,58 @@ function Test-AzureServiceDiagnosticsExtensionWrongServiceName
         Cleanup-CloudService $svcName
     }
 }
+
+<#
+.SYNOPSIS
+Test Set command can accept storage context as storage configuration.
+#>
+function Test-AzureServiceDiagnosticsExtensionStorageContext
+{
+    Set-StrictMode -Version latest; $ErrorActionPreference = 'Stop'
+
+    # Setup
+    $location = Get-DefaultLocation
+    $svcName = Get-CloudServiceName
+    $storageName = getAssetName
+    $svcName = "onesdk5266"
+    $storageName = "onesdk383"
+
+    try
+    {
+        # Initialize
+        New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+        Set-CurrentStorageAccountName $storageName
+        $storageContext = (Get-AzureStorageAccount -StorageAccountName $storageName).Context
+
+        $testMode = Get-ComputeTestMode;
+        if ($testMode.ToLower() -ne 'playback')
+        {
+            $cscpkg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg";
+        }
+        else
+        {
+            $cscpkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
+        }
+        $cscfg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg"
+        New-AzureService -ServiceName $svcName -Location $location
+        New-AzureDeployment -ServiceName $svcName -Slot Production -Package $cscpkg -Configuration $cscfg
+
+        $extension = Get-AzureServiceDiagnosticsExtension -ServiceName $svcName
+        Assert-Null $extension "The default deployment shouldn't have diagnostics extension enabled"
+
+        $configFilePath = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml"
+        Set-AzureServiceDiagnosticsExtension -ServiceName $svcName -StorageContext $storageContext -DiagnosticsConfigurationPath $configFilePath
+        $extension = Get-AzureServiceDiagnosticsExtension -ServiceName $svcName
+        Assert-NotNull $extension "Diagnostics extension should be enabled"
+
+        Remove-AzureServiceDiagnosticsExtension -ServiceName $svcName
+        $extension = Get-AzureServiceDiagnosticsExtension -ServiceName $svcName
+        Assert-Null $extension "The diagnostics extension should have been removed"
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+        Cleanup-CloudService $svcName
+    }
+}
