@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public IState Current { get; }
 
-            public string SubscriptionId { get; }
+            public string Subscription { get; }
 
             public string Location { get; }
 
             public Context(IState current, string subscriptionId, string location)
             {
                 Current = current;
-                SubscriptionId = subscriptionId;
+                Subscription = subscriptionId;
                 Location = location;
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         {
                             AddIfRequired(dependency);
                         }
-                        var model = config.CreateModel(SubscriptionId);
+                        var model = config.CreateModel(Subscription);
                         config.Strategy.SetLocation(model, Location);
                         return model;
                     });
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 var model = config.Strategy.Get(parentModel, config.Name);
                 if (model == null)
                 {
-                    model = config.CreateModel(SubscriptionId);
+                    model = config.CreateModel(Subscription);
                     config.Strategy.CreateOrUpdate(parentModel, config.Name, model);
                 }
                 return model;
