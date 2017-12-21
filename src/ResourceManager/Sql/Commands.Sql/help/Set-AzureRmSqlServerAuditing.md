@@ -47,7 +47,13 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "Resource
 ## PARAMETERS
 
 ### -AuditActionGroup
-The set of the audit action groups
+The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
+
+"BATCHCOMPLETEDGROUP",
+"SUCCESSFULDATABASEAUTHENTICATIONGROUP",
+"FAILEDDATABASEAUTHENTICATIONGROUP"
+
+This above combination is also the set that is configured by default.
 
 ```yaml
 Type: AuditActionGroups[]
@@ -63,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -108,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs
+The number of retention days for the audit logs.
 
 ```yaml
 Type: UInt32
@@ -138,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of the auditing policy
+The state of the policy.
 
 ```yaml
 Type: String
@@ -154,7 +160,10 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account
+The name of the storage account. Wildcard characters are not permitted.
+This parameter is not required.
+If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
+If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.
 
 ```yaml
 Type: String
@@ -169,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageKeyType
-The type of the storage key
+Specifies which of the storage access keys to use.
 
 ```yaml
 Type: String
