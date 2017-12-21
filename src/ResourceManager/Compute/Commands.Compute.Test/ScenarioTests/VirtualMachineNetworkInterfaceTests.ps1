@@ -585,9 +585,7 @@ function Test-EffectiveRoutesAndNsg
 		Assert-NotNull $effectiveRoute[0].Source
 
         # Get Effective NSG by name
-        $job = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name -AsJob
-		$job | Wait-Job
-		$effectiveNsgs = $job | Receive-Job   
+        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name 
     }
     finally
     {
