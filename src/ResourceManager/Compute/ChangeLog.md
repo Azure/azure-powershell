@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+* Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
 
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
