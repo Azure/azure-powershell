@@ -99,13 +99,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             {
                 if (appInsightsManagementClientWrapper == null)
                 {
-                    appInsightsManagementClientWrapper = new ApplicationInsightsManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    appInsightsManagementClientWrapper = new ApplicationInsightsManagementClientWrapper(DefaultProfile.DefaultContext);
                 }
 
+                this.appInsightsManagementClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.appInsightsManagementClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return appInsightsManagementClientWrapper.appInsightsManagementClient;
             }
 

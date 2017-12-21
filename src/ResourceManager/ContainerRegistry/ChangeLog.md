@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 1.0.1
+* New cmdlets for geo-replication and webhooks
+    - Get/New/Remove-AzureRmContainerRegistryReplication
+    - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook
 
 ## Version 0.3.0
 * Add support for online help
