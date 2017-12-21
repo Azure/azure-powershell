@@ -3,7 +3,7 @@
   <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Common.Network</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Network</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
