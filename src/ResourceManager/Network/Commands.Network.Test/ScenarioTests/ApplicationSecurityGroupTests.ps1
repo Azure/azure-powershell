@@ -47,9 +47,7 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-NotNull $asgGet.Etag
 
         # Remove the application security group
-        $job = Remove-AzureRmApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force -AsJob
-		$job | Wait-Job
-		$asgDelete = $job | Receive-Job
+        $asgDelete = Remove-AzureRmApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
         Assert-AreEqual $true $asgDelete
     }
     finally
