@@ -44,16 +44,16 @@ Set-AzureRmKubernetes [-ResourceGroupName] <String> [-Name] <String> [-ClientId]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Update or create a managed Kubernetes cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmKubernetes -ResourceGroupName group -Name myCluster | Set-AzureRmKubernetes -NodeCount 5
 ```
 
-{{ Add example description here }}
+Set the number of nodes in the Kubernetes cluster to 5.
 
 ## PARAMETERS
 
@@ -72,31 +72,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientId
+### -ClientIdAndSecret
 The client ID of the AAD application / service principal used for cluster authentication to Azure APIs.
 
 ```yaml
-Type: String
+Type: PSCredential
 Parameter Sets: servicePrincipalParameterSet
 Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientSecret
-The secret associated with the AAD application / service principal.
-
-```yaml
-Type: String
-Parameter Sets: servicePrincipalParameterSet
-Aliases:
-
-Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
