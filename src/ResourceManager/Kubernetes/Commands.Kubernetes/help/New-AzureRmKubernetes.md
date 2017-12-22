@@ -55,31 +55,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientId
-The client ID of the AAD application / service principal used for cluster authentication to Azure APIs.
+### -ClientIdAndSecret
+The client ID and Secret of the AAD application / service principal used for cluster authentication to Azure APIs.
 
 ```yaml
-Type: String
+Type: PSCredential
 Parameter Sets: servicePrincipalParameterSet
 Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientSecret
-The secret associated with the AAD application / service principal.
-
-```yaml
-Type: String
-Parameter Sets: servicePrincipalParameterSet
-Aliases:
-
-Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
