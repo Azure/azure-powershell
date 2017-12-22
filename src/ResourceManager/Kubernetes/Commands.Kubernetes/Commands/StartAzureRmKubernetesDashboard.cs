@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 #if NETSTANDARD
 using Microsoft.Extensions.DependencyInjection;
 
@@ -41,10 +42,10 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
 
-        [Parameter(Mandatory =true,
+        [Parameter(Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline =true,
-            HelpMessage ="A PSKubernetesCluster object, normally passed through the pipeline.")]
+            ValueFromPipeline = true,
+            HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
 
@@ -93,25 +94,28 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             base.ExecuteCmdlet();
 
-            RunCmdLet(() =>
+            switch (ParameterSetName)
             {
-                switch (ParameterSetName)
-                {
-                    case IdParameterSet:
+                case IdParameterSet:
                     {
                         var resource = new ResourceIdentifier(Id);
                         ResourceGroupName = resource.ResourceGroupName;
                         Name = resource.ResourceName;
                         break;
                     }
-                    case InputObjectParameterSet:
+                case InputObjectParameterSet:
                     {
                         var resource = new ResourceIdentifier(InputObject.Id);
                         ResourceGroupName = resource.ResourceGroupName;
                         Name = resource.ResourceName;
                         break;
                     }
-                }
+            }
+
+            RunCmdLet(() =>
+            {
+                if (!GeneralUtilities.Probe("kubectl"))
+                    throw new CmdletInvocationException("kubectl is required to be installed and on your path to execute this command. Kubectl is available here: https://kubernetes.io/docs/tasks/tools/install-kubectl/.");
 
                 var tmpFileName = Path.GetTempFileName();
                 var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
@@ -211,6 +215,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private readonly string _credFilePath;
         private int _pid;
         private readonly string _dashPod;
+        private string _statusMsg = "Initializing";
 
         public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzureRmKubernetesDashboard",
             "Kubectl-Tunnel")
@@ -219,7 +224,13 @@ namespace Microsoft.Azure.Commands.Kubernetes
             _dashPod = dashPod;
         }
 
-        public override string StatusMessage { get; }
+        public override string StatusMessage
+        {
+            get
+            {
+                return _statusMsg;
+            }
+        }
         public override bool HasMoreData { get; }
         public override string Location { get; }
 
@@ -230,22 +241,26 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         public override void StopJob()
         {
+            _statusMsg = string.Format("Stopping process with id {0}", _pid);
             SetJobState(JobState.Stopping);
             Process.GetProcessById(_pid)?.Kill();
             SetJobState(JobState.Stopped);
-            OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, null));
+            _statusMsg = string.Format("Stopped process with id {0}", _pid);
+            OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, _statusMsg));
         }
 
         public override void StartJob()
         {
+            var kubectlCmd = string.Format(
+                        "--kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", _credFilePath,
+                        _dashPod);
+            _statusMsg = string.Format("Starting: `kubectl {0}`", kubectlCmd);
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "kubectl",
-                    Arguments = string.Format(
-                        "--kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", _credFilePath,
-                        _dashPod),
+                    Arguments = kubectlCmd,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -256,6 +271,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             Thread.Sleep(1500);
             _pid = process.Id;
             SetJobState(JobState.Running);
+            _statusMsg = string.Format("Started: `kubectl {0}`", kubectlCmd);
             OnStartJobCompleted(new AsyncCompletedEventArgs(null, false,
                 string.Format("Process started with id: {0}.", _pid)));
         }
