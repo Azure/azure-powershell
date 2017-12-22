@@ -137,5 +137,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("Name")]
         [AllowNull]
         public string SnapshotName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }
