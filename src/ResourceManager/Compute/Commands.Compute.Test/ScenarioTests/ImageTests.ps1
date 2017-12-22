@@ -103,7 +103,9 @@ function Test-Image
         $imageConfig = Remove-AzureRmImageDataDisk -Image $imageConfig -Lun 3;
         Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
-        $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+        $job = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname -AsJob
+		$job | Wait-Job
+		$createdImage = $job | Receive-Job
 
         # Verify Image properties
         Assert-NotNull $createdImage.Id;

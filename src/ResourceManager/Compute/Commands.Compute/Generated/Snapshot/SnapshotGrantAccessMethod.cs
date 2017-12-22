@@ -185,5 +185,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public int DurationInSecond { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

@@ -56,7 +56,8 @@ function Test-Disk
         Assert-AreEqual "1" $diskconfig.Zones
         $diskconfig.Zones = $null
 
-        New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $job = New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig -AsJob
+		$job | Wait-Job
 
         # Get disk test
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
@@ -73,10 +74,12 @@ function Test-Disk
 
         # Config update test
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob
+		$job | Wait-Job
 
         # Remove test
-        Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force;
+        $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob
+		$job | Wait-Job
     }
     finally
     {
