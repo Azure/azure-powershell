@@ -23,84 +23,47 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <summary>
     /// 'Set-AzureRmRelayAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class SetAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = AuthoRuleInputObjectParameterSet,
-            HelpMessage = "Relay AuthorizationRule Object.")]
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Relay AuthorizationRule Object.")]
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "Relay AuthorizationRule Object.")]
+        [Parameter(Mandatory = true, ParameterSetName = AuthoRuleInputObjectParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "Relay AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipeline = true, HelpMessage = "Relay AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipeline = true, HelpMessage = "Relay AuthorizationRule Object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
-        public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
+        public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 4,
-            ParameterSetName = AuthoRulePropertiesParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(Mandatory = false,
-            Position = 4,
-            ParameterSetName = NamespaceAuthoRuleParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(Mandatory = false,
-            Position = 4,
-            ParameterSetName = EventhubAuthoRuleParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = true, ParameterSetName = AuthoRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Listen", "Send", "Manage",
-            IgnoreCase = true)]
+        [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+            PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
 
             if (InputObject != null)
             {

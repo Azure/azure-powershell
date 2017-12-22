@@ -15,23 +15,32 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using System.Runtime;
-    using System.Runtime.Serialization;
 
-    /// <summary>
-    /// Defines values for EncodingCaptureDescription.
-    /// </summary>
-    public enum EnumEncodingCaptureDescription
+    public class PSRegenerateKeysAttributes
     {
-        [EnumMember(Value = "Avro")]
-        Avro,
-        [EnumMember(Value = "AvroDeflate")]
-        AvroDeflate
+        public PSRegenerateKeysAttributes(RegenerateAccessKeyParameters RegenerateKeysResource)
+        {
+            if (RegenerateKeysResource != null)
+            {
+                if (RegenerateKeysResource.Key.ToString() == "PrimaryKey")
+                    Policykey = "PrimaryKey";
+                if (RegenerateKeysResource.Key.ToString() == "SecondaryKey")
+                    Policykey = "SecondaryKey";
+            };
+        }
+
+        public PSRegenerateKeysAttributes(string strKeyType)
+        {
+            Policykey = strKeyType;
+        }
+
+        /// <summary>
+        /// PrimaryConnectionString of the created Namespace AuthorizationRule.
+        /// </summary>
+        public string Policykey { get; set; }
     }
 }

@@ -16,36 +16,28 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
     /// 'Get-AzureEventHubDRConfiguration' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb), OutputType(typeof(List<EventHubDRConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb), OutputType(typeof(List<PSEventHubDRConfigurationAttributes>))]
     public class GetEventHubDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "DR Configuration Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -53,13 +45,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a DRConfiguration
-                EventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                 WriteObject(drConfiguration);
             }
             else
             {
                 // Get all DRConfigurations
-                IEnumerable<EventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
+                IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
                 WriteObject(drConfigurationList.ToList(), true);
             }
         }

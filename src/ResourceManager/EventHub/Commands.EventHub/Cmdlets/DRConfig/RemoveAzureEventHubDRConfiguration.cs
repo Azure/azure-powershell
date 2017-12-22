@@ -14,6 +14,8 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
@@ -22,65 +24,68 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     [Cmdlet(VerbsCommon.Remove, EventHubDRConfigurationVerb, SupportsShouldProcess = true, DefaultParameterSetName = AliasPropertiesParameterSet), OutputType(typeof(bool))]
     public class RemoveEventHubDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = AliasPropertiesParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasInputObjectParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = AliasInputObjectParameterSet, HelpMessage = "Namespace Name")]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AliasPropertiesParameterSet,
-            Position = 2,
-            HelpMessage = "Alias (GeoDR)")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR)")]
+        [Parameter(Mandatory = false, ParameterSetName = AliasInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Alias (GeoDr)")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
-        [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = AliasInputObjectParameterSet, HelpMessage = "Alias (GeoDr)")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = AliasInputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Alias Configuration object.")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasInputObjectParameterSet, ValueFromPipelineByPropertyName = true, Position = 3,HelpMessage = "Alias Configuration object")]        
+        [Parameter(Mandatory = false, ParameterSetName = AliasPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Alias Configuration object")]
         [Alias(AliasAliasObj)]
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = false,
-            ParameterSetName = AliasPropertiesParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Alias Configuration object.")]
-        public EventHubDRConfigurationAttributes InputObject { get; set; }
+        public PSEventHubDRConfigurationAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {            
             if (ParameterSetName == AliasInputObjectParameterSet)
-            {
-                // delete an Alias 
-                if (ShouldProcess(target: InputObject.Name, action: string.Format(Resources.DRRemoveAlias, InputObject.Name, Namespace)))
+            {                
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DRRemoveAlias, InputObject.Name, Namespace),
+                string.Format(Resources.DRRemoveAlias, InputObject.Name, Namespace),
+                InputObject.Name,
+                () =>
                 {
-                    WriteObject(Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, InputObject.Name));
-                }
+                    Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, InputObject.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
             }
 
             if (ParameterSetName == AliasPropertiesParameterSet)
             {
-                // delete an Alias 
-                if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, Name, Namespace)))
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DRRemoveAlias, Name, Namespace),
+                string.Format(Resources.DRRemoveAlias, Name, Namespace),
+                Name,
+                () =>
                 {
-                    WriteObject(Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name));
-                }
+                    Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
             }
         }

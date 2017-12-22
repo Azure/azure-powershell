@@ -19,12 +19,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public class DestinationAttributes
+    public class PSDestinationAttributes
     {
-        public DestinationAttributes()
+        public PSDestinationAttributes()
         { }
 
-        public DestinationAttributes(Microsoft.Azure.Management.EventHub.Models.Destination destinationResource)
+        public PSDestinationAttributes(Microsoft.Azure.Management.EventHub.Models.Destination destinationResource)
         {
             if (destinationResource != null)
             {

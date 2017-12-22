@@ -13,58 +13,44 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
-using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
     /// 'New-AzureRmEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(EventHubDRConfigurationAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "DR Configuration Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-            Position = 3,
-           HelpMessage = "DR Configuration PartnerNamespace")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "DR Configuration PartnerNamespace")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasPartnerNamespace)]
         public string PartnerNamespace { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-            Position = 4,
-           HelpMessage = "AlternateName ")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "AlternateName required when DR configuration name is same as Primary Namespace ")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string AlternateName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            EventHubDRConfigurationAttributes drConfiguration = new EventHubDRConfigurationAttributes() { PartnerNamespace = PartnerNamespace };
+            PSEventHubDRConfigurationAttributes drConfiguration = new PSEventHubDRConfigurationAttributes() { PartnerNamespace = this.PartnerNamespace };
 
             if (!string.IsNullOrEmpty(AlternateName))
                 drConfiguration.AlternateName = AlternateName;

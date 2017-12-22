@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// <summary>
     /// Represents the properties of a Namespace of type EventHub
     /// </summary>
-    public class NamespaceAttributes
+    public class PSNamespaceAttributes
     {
-        public NamespaceAttributes(EHNamespace evResource)
+        public PSNamespaceAttributes(EHNamespace evResource)
         {
             if (evResource != null)
             {

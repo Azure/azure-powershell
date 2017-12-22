@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public enum NamespaceState
+    public enum PSNamespaceState
     {
         Unknown = 0,
         Active = 5,

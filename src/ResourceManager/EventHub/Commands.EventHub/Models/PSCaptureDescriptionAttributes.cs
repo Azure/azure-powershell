@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// <summary>
     /// Properties to configure capture description for eventhub
     /// </summary>
-    public class CaptureDescriptionAttributes
+    public class PSCaptureDescriptionAttributes
     {
 
-        public CaptureDescriptionAttributes()
+        public PSCaptureDescriptionAttributes()
         {
-            Destination = new DestinationAttributes();
+            Destination = new PSDestinationAttributes();
         }
 
         /// <summary>
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// value should be between 10485760 to 524288000 bytes</param>
         /// <param name="destination">Properties of Destination where capture
         /// will be stored. (Storage Account, Blob Names)</param>
-        public CaptureDescriptionAttributes(Microsoft.Azure.Management.EventHub.Models.CaptureDescription captureDescResource)
+        public PSCaptureDescriptionAttributes(Microsoft.Azure.Management.EventHub.Models.CaptureDescription captureDescResource)
         {
             Enabled = captureDescResource.Enabled;
-            Encoding = (EnumEncodingCaptureDescription)captureDescResource.Encoding;
+            Encoding = (PSEnumEncodingCaptureDescription)captureDescResource.Encoding;
             IntervalInSeconds = captureDescResource.IntervalInSeconds;
             SizeLimitInBytes = captureDescResource.SizeLimitInBytes;
             if (captureDescResource.Destination != null)
-                Destination = new DestinationAttributes(captureDescResource.Destination);
+                Destination = new PSDestinationAttributes(captureDescResource.Destination);
             else
                 Destination = null;
         }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// of capture description. Possible values include: 'Avro',
         /// 'AvroDeflate'
         /// </summary>
-        public EnumEncodingCaptureDescription? Encoding { get; set; }
+        public PSEnumEncodingCaptureDescription? Encoding { get; set; }
 
         /// <summary>
         /// Gets or sets the time window allows you to set the frequency with
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Gets or sets properties of Destination where capture will be
         /// stored. (Storage Account, Blob Names)
         /// </summary>
-        public DestinationAttributes Destination { get; set; }
+        public PSDestinationAttributes Destination { get; set; }
         
     }
 }

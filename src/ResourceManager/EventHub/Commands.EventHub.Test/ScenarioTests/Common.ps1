@@ -23,50 +23,50 @@ function Get-ResourceGroupName
 }
 
 
-<#
-.SYNOPSIS
-Gets the location for the Website. Default to West US if none found.
-#>
-function Get-Location
-{
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.Web"
-		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+#<#
+#.SYNOPSIS
+#Gets the location for the Website. Default to West US if none found.
+##>
+#function Get-Location
+#{
+#	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+#	{
+#		$namespace = "Microsoft.Web"
+#		$type = "sites"
+#		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
-		if ($location -eq $null) 
-		{  
-			return "West US"  
-		} else 
-		{  
-			return $location.Locations[0]  
-		}
-	}
+#		if ($location -eq $null) 
+#		{  
+#			return "West US"  
+#		} else 
+#		{  
+#			return $location.Locations[0]  
+#		}
+#	}
 
-	return "West US"
-}
+#	return "West US"
+#}
 
-<#
-.SYNOPSIS
-Gets the location for the Website. Default to West US if none found.
-#>
-function Get-SecondaryLocation
-{
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.Web"
-		$type = "sites"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+#<#
+#.SYNOPSIS
+#Gets the location for the Website. Default to West US if none found.
+##>
+#function Get-SecondaryLocation
+#{
+#	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+#	{
+#		$namespace = "Microsoft.Web"
+#		$type = "sites"
+#		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
-		if ($location -eq $null) 
-		{  
-			return "East US"  
-		} else 
-		{  
-			return $location.Locations[1]  
-		}
-	}
+#		if ($location -eq $null) 
+#		{  
+#			return "East US"  
+#		} else 
+#		{  
+#			return $location.Locations[1]  
+#		}
+#	}
 
-	return "East US"
-}
+#	return "East US"
+#}

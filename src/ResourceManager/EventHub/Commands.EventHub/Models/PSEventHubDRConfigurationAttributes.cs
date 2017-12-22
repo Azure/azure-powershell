@@ -19,12 +19,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public class EventHubDRConfigurationAttributes
+    public class PSEventHubDRConfigurationAttributes
     {
-        public EventHubDRConfigurationAttributes()
+        public PSEventHubDRConfigurationAttributes()
         { }
 
-        public EventHubDRConfigurationAttributes(ArmDisasterRecovery drResource)
+        public PSEventHubDRConfigurationAttributes(ArmDisasterRecovery drResource)
         {
             if (drResource != null)
             {
