@@ -63,7 +63,6 @@
     <Compile Include="IotHub\GetAzureRmIotHubConnectionString.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubJob.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubKey.cs" />
-    <Compile Include="IotHub\GetAzureRmIotHubOperations.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubQuotaMetric.cs" />
     <Compile Include="IotHub\GetAzureRmIotHub.cs" />
     <Compile Include="IotHub\GetAzureRmIotHubRegistryStatistic.cs" />
@@ -106,8 +105,6 @@
     <Compile Include="Models\PSIotHubSkuTier.cs" />
     <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
-    <Compile Include="Models\PSOperation.cs" />
-    <Compile Include="Models\PSOperationDisplay.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
     <Compile Include="Models\PSFallbackRouteProperties.cs" />
     <Compile Include="Models\PSRoutingServiceBusQueueEndpointProperties.cs" />
@@ -139,7 +136,6 @@
     <None Include="help\Get-AzureRmIotHubEventHubConsumerGroup.md" />
     <None Include="help\Get-AzureRmIotHubJob.md" />
     <None Include="help\Get-AzureRmIotHubKey.md" />
-    <None Include="help\Get-AzureRmIotHubOperations.md" />
     <None Include="help\Get-AzureRmIotHubQuotaMetric.md" />
     <None Include="help\Get-AzureRmIotHubRegistryStatistic.md" />
     <None Include="help\Get-AzureRmIotHubValidSku.md" />
