@@ -195,11 +195,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             };
         }
 
-        public static IEnumerable<PSOperation> ToPSOperations(IEnumerable<Operation> operations)
-        {
-            return ConvertObject<IEnumerable<Operation>, IEnumerable<PSOperation>>(operations.ToList());
-        }
-
         public static PSCertificateDescription ToPSCertificateDescription(CertificateDescription certificateDescription)
         {
             return ConvertObject<CertificateDescription, PSCertificateDescription>(certificateDescription);
@@ -214,7 +209,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             }
 
             return new Models.PSCertificateListDescription() { Value = psCertificateDescription };
-
         }
 
         public static PSCertificateWithNonceDescription ToPSCertificateWithNonceDescription(CertificateWithNonceDescription certificateWithNonceDescription)

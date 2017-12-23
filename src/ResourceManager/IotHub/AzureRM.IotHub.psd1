@@ -82,7 +82,7 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
                'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
                'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
 			   'Add-AzureRmIotHubCertificate', 'Get-AzureRmIotHubCertificate',
-			   'Get-AzureRmIotHubCertificateVerificationCode', 'Get-AzureRmIotHubOperations',
+			   'Get-AzureRmIotHubCertificateVerificationCode',
 			   'Set-AzureRmIotHubVerifiedCertificate', 'Remove-AzureRmIotHubCertificate'
 
 # Variables to export from this module
