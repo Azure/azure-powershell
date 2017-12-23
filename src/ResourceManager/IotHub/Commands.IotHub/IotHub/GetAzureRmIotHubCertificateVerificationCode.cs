@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public override void ExecuteCmdlet()
         {
             CertificateWithNonceDescription certificateWithNonceDescription = this.IotHubClient.Certificates.GenerateVerificationCode(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
-            this.WriteObject(IotHubUtils.ToPSCertificateWithNonceDescription(certificateWithNonceDescription), true);
+            this.WriteObject(IotHubUtils.ToPSCertificateWithNonceDescription(certificateWithNonceDescription));
         }
     }
 }

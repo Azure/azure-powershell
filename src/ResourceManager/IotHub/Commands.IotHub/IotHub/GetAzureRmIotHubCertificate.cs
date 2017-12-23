@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             if (CertificateName != null)
             {
                 CertificateDescription certificateDescription = this.IotHubClient.Certificates.Get(this.ResourceGroupName, this.Name, this.CertificateName);
-                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), false);
+                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription));
             }
             else
             {
                 CertificateListDescription certificateDescriptions = this.IotHubClient.Certificates.ListByIotHub(this.ResourceGroupName, this.Name);
-                this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescriptions.Value), true);
+                this.WriteObject(IotHubUtils.ToPSCertificateListDescription(certificateDescriptions).Value, true);
             }
         }
     }

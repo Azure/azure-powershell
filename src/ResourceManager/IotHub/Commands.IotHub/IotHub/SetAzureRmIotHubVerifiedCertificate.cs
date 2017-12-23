@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     certificateVerificationDescription.Certificate = certificate;
 
                     CertificateDescription certificateDescription = this.IotHubClient.Certificates.Verify(this.ResourceGroupName, this.Name, this.CertificateName, certificateVerificationDescription, this.Etag);
-                    this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription), true);
+                    this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription));
                 }
                 catch(Exception e)
                 {
