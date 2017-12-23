@@ -14,11 +14,39 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System;
+    using System.Text.RegularExpressions;
     using Newtonsoft.Json;
 
     public class PSCertificateWithNonceDescription
     {
+        /// <summary>
+        /// Gets the property of ResourceGroupName
+        /// </summary>
+        public string ResourceGroupName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Id)) return null;
+                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+                Match m = r.Match(Id);
+                return m.Success ? m.Groups["rgname"].Value : null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the property of Iot Hub Name
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Id)) return null;
+                Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>\S+)/certificates/(.*?)", RegexOptions.IgnoreCase);
+                Match m = r.Match(Id);
+                return m.Success ? m.Groups["iothubname"].Value : null;
+            }
+        }
+
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]

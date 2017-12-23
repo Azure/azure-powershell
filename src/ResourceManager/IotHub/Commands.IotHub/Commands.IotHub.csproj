@@ -152,6 +152,10 @@
     <None Include="help\Remove-AzureRmIotHubKey.md" />
     <None Include="help\Set-AzureRmIotHub.md" />
     <None Include="help\Set-AzureRmIotHubVerifiedCertificate.md" />
+    <Content Include="Microsoft.Azure.Commands.IotHub.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

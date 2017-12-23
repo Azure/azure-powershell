@@ -205,9 +205,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<CertificateDescription, PSCertificateDescription>(certificateDescription);
         }
 
-        public static IList<PSCertificateDescription> ToPSCertificateDescription(IList<CertificateDescription> certificateDescriptions)
+        public static PSCertificateListDescription ToPSCertificateListDescription(CertificateListDescription certificateListDescription)
         {
-            return ConvertObject<IList<CertificateDescription>, IList<PSCertificateDescription>>(certificateDescriptions);
+            var psCertificateDescription = new List<PSCertificateDescription>();
+            foreach (CertificateDescription certificateDescription in certificateListDescription.Value)
+            {
+                psCertificateDescription.Add(ToPSCertificateDescription(certificateDescription));
+            }
+
+            return new Models.PSCertificateListDescription() { Value = psCertificateDescription };
+
         }
 
         public static PSCertificateWithNonceDescription ToPSCertificateWithNonceDescription(CertificateWithNonceDescription certificateWithNonceDescription)
