@@ -11,6 +11,27 @@ Locale: en-US
 This topic displays help topics for the Azure Power BI Embedded Cmdlets.
 
 ## AzureRM.PowerBIEmbedded Cmdlets
+### [Get-AzureRmPowerBIEmbeddedCapacity](Get-AzureRmPowerBIEmbeddedCapacity.md)
+Gets the details of a PowerBI Embedded Capacity.
+
+### [New-AzureRmPowerBIEmbeddedCapacity](New-AzureRmPowerBIEmbeddedCapacity.md)
+Creates a new PowerBI Embedded Capacity.
+
+### [Remove-AzureRmPowerBIEmbeddedCapacity](Remove-AzureRmPowerBIEmbeddedCapacity.md)
+Deletes an instance of PowerBI Embedded Capacity.
+
+### [Resume-AzureRmPowerBIEmbeddedCapacity](Resume-AzureRmPowerBIEmbeddedCapacity.md)
+Resumes an instance of PowerBI Embedded Capacity.
+
+### [Suspend-AzureRmPowerBIEmbeddedCapacity](Suspend-AzureRmPowerBIEmbeddedCapacity.md)
+Suspends an instance of PowerBI Embedded Capacity.
+
+### [Test-AzureRmPowerBIEmbeddedCapacity](Test-AzureRmPowerBIEmbeddedCapacity.md)
+Tests the existence of an instance of PowerBI Embedded Capacity.
+
+### [Update-AzureRmPowerBIEmbeddedCapacity](Update-AzureRmPowerBIEmbeddedCapacity.md)
+Modifies an instance of PowerBI Embedded Capacity.
+
 ### [Get-AzureRmPowerBIWorkspace](Get-AzureRmPowerBIWorkspace.md)
 Gets the workspaces in a Power BI workspace collection.
 
