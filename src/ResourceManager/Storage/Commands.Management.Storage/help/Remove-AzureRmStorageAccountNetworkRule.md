@@ -75,7 +75,7 @@ This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer

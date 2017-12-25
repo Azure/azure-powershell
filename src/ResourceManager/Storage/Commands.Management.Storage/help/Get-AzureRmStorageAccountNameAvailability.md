@@ -33,7 +33,7 @@ This command checks the availability of the name ContosoStorage03.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer

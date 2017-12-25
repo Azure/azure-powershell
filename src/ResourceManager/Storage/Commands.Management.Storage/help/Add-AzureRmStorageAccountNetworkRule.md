@@ -77,7 +77,7 @@ This command add several IpRule with IpRule objects, input with JSON.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
