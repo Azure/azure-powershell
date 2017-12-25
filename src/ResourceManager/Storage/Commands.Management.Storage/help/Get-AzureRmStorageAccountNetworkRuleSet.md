@@ -32,7 +32,7 @@ This command gets NetworkRule property of a specified Storage account
 ## PARAMETERS
 
 ### -DefaultProfile
-Storage account
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
