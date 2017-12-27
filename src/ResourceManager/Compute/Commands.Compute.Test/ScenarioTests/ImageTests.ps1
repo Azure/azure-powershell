@@ -121,7 +121,8 @@ function Test-Image
         $images = Get-AzureRmImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
 
-        Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
+        $job = Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
+		$job | Wait-Job
         $images = Get-AzureRmImage -ResourceGroupName $rgname;
         Assert-AreEqual 0 $images.Count;
 
