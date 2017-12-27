@@ -437,8 +437,7 @@ function Test-NetworkInterfaceSet
         $nic.IpConfigurations[0].PublicIpAddress = $publicip2
 
         $job | Set-AzureRmNetworkInterface -AsJob
-		$job | Wait-Job
-		$nic = $job | Receive-Job
+	$job | Wait-Job
 
         $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
