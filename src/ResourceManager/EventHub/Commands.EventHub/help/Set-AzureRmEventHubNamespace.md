@@ -246,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
 
 ## NOTES
 

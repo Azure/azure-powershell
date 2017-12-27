@@ -84,10 +84,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+Authorization Rule Object of type PSSharedAccessAuthorizationRuleAttributes
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: PSSharedAccessAuthorizationRuleAttributes
 Parameter Sets: NamespaceAuthorizationRuleSet, EventhubAuthorizationRuleSet
 Aliases: AuthRuleObj
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: PSSharedAccessAuthorizationRuleAttributes
 Parameter Sets: AuthoRuleInputObjectSet
 Aliases: AuthRuleObj
 
@@ -237,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

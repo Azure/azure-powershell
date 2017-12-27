@@ -225,7 +225,7 @@ System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, 
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
 
 ## NOTES
 

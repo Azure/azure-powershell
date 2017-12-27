@@ -151,7 +151,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.EventHubDRConfigurationAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes
 
 
 ## NOTES

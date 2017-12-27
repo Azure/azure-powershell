@@ -105,7 +105,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.EventHubDRConfigurationAttributes, Microsoft.Azure.Commands.EventHub, Version=0.4.6.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.Commands.EventHub, Version=0.4.6.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES

@@ -160,7 +160,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes
 
 
 ## NOTES

@@ -116,7 +116,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config" >
+		<SubType>Designer</SubType>
+	</None>
+	<None Include="StartupScripts\*.ps1"/>	
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx" />
