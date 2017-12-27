@@ -207,8 +207,8 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
       $publicip.DnsSettings.DomainNameLabel = $newDomainNameLabel
 
       # Set publicIpAddress
-      $publicip | Set-AzureRmPublicIpAddress -AsJob
-	  $job | Wait-Job
+      $job | Set-AzureRmPublicIpAddress -AsJob
+      $job | Wait-Job
 
       $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $newDomainNameLabel $publicip.DnsSettings.DomainNameLabel
