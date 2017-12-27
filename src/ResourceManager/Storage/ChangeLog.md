@@ -22,7 +22,8 @@
 * Add StorageV2 account kind to resource mode storage account cmdlets
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-	
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
 
