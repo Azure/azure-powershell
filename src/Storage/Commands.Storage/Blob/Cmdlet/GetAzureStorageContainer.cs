@@ -233,11 +233,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             catch (StorageException e)
             {
-                if (!e.IsNotFoundException())
+                if (!e.IsNotFoundException() && !e.IsFordiddenException())
                 {
                     throw;
                 }
-                //404 Not found means we don't have permission to query the Permission of the specified container.
+                //404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
             }
             WriteCloudContainerObject(taskId, localChannel, container, permissions, continuationToken);
         }
