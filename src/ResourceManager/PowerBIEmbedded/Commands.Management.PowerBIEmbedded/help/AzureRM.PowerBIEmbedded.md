@@ -10,7 +10,7 @@ Locale: en-US
 ## Description
 This topic displays help topics for the Azure Power BI Embedded Cmdlets.
 
-## AzureRM.PowerBIEmbedded Cmdlets
+## PowerBI Embedded Capacity Cmdlets
 ### [Get-AzureRmPowerBIEmbeddedCapacity](Get-AzureRmPowerBIEmbeddedCapacity.md)
 Gets the details of a PowerBI Embedded Capacity.
 
@@ -35,6 +35,8 @@ Modifies an instance of PowerBI Embedded Capacity.
 ### [Get-AzureRmPowerBIWorkspace](Get-AzureRmPowerBIWorkspace.md)
 Gets the workspaces in a Power BI workspace collection.
 
+
+## PowerBI Workspace Collection Cmdlets
 ### [Get-AzureRmPowerBIWorkspaceCollection](Get-AzureRmPowerBIWorkspaceCollection.md)
 Gets Power BI workspace collections.
 
