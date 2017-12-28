@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
 * Added below new commandlets for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
 		- New-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
