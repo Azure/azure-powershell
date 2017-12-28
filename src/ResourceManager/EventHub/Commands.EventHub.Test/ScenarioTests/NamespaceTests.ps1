@@ -14,53 +14,16 @@
 
 <#
 .SYNOPSIS
-Get ResourceGroup name
-#>
-function Get-ResourceGroupName
-{
-  return "RGName-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get EventHub name
-#>
-function Get-EventHubName
-{
-    return "EventHub-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Namespace name
-#>
-function Get-NamespaceName
-{
-    return "Eventhub-Namespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-    return "Eventhub-Namespace-AuthorizationRule" + (getAssetName)
-	
-}
-
-
-<#
-.SYNOPSIS
 Tests EventHub Namespace AuthorizationRules Create List Remove operations.
 #>
+
 function NamespaceAuthTests
 {
     # Setup    
     $location = Get-Location
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName
-	$authRuleName = Get-AuthorizationRuleName
+	$resourceGroupName = getAssetName "RGName"
+	$namespaceName = getAssetName "Eventhub-Namespace-"
+	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule" 
     
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -183,17 +146,18 @@ function NamespaceAuthTests
 
 <#
 .SYNOPSIS
-Tests New parameter for EventHub Namespace Create List Remove operations.
+Tests New Parameter for EventHub Namespace Create List Remove operations.
 #>
+
 function NamespaceTests
 {
     # Setup    
     $location = Get-Location
-	$namespaceName = Get-NamespaceName
-	$namespaceName2 = Get-NamespaceName
-    $resourceGroupName = Get-ResourceGroupName
-	$secondResourceGroup = Get-ResourceGroupName
- 
+	$namespaceName = getAssetName "Eventhub-Namespace1-"
+	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
+    $resourceGroupName = getAssetName "RGName1-"
+	$secondResourceGroup = getAssetName "RGName2-"
+
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
 	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 

@@ -14,54 +14,16 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-	return "RGName-" + (getAssetName)	 
-}
-
-<#
-.SYNOPSIS
-Get valid EventHub name
-#>
-function Get-EventHubName
-{
-	return "EventHub-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid Namespace name
-#>
-function Get-NamespaceName
-{
-	return "Eventhub-Namespace-" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-	return "Eventhub-Namespace-AuthorizationRule" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
-Tests New parameter names EventHubs Create List Remove operations.
+Tests New Parameter names EventHubs Create List Remove operations.
 #>
 
 function EventHubsTests
 {
 	# Setup    
 	$location = Get-Location
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName
-	$eventHubName = Get-EventHubName
+	$resourceGroupName = getAssetName "RSG"
+	$namespaceName = getAssetName "Eventhub-Namespace-"
+	$eventHubName = getAssetName "EventHub-"
 
 	# Create Resource Group
 	Write-Debug "Create resource group"    
@@ -147,10 +109,10 @@ function EventHubsAuthTests
 {
 	# Setup    
 	$location =  Get-Location
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName    
-	$eventHubName = Get-EventHubName	
-	$authRuleName = Get-AuthorizationRuleName
+	$resourceGroupName = getAssetName "RSG"
+	$namespaceName = getAssetName "Eventhub-Namespace-"
+	$eventHubName = getAssetName "EventHub-"
+	$authRuleName = getAssetName "Eventhub-Namespace-AuthorizationRule"
 
 	# Create ResourceGroup
 	Write-Debug " Create resource group"    

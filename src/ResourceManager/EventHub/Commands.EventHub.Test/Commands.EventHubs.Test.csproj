@@ -163,9 +163,6 @@
     <None Include="Resources\NewEventHub.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\ConsumerGroupsTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

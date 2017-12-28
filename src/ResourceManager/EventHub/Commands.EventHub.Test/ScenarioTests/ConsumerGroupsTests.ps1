@@ -14,53 +14,18 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-    return "RGName-" + (getAssetName)		
-}
-
-<#
-.SYNOPSIS
-Get valid EventHub name
-#>
-function Get-EventHubName
-{
-    return "EventHub-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get ConsumerGroup name
-#>
-function Get-ConsumerGroupName
-{
-    return "ConsumerGroup-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid Namespace name
-#>
-function Get-NamespaceName
-{
-    return "Namespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
 Tests New Parameter for ConsumerGroup Create List Remove operations.
 #>
+
 function ConsumerGroupsTests
 { # Setup
 
 
     $location = Get-Location
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName
-	$eventHubName = Get-EventHubName
-	$consumerGroupName = Get-ConsumerGroupName
+	$resourceGroupName = getAssetName "RSG"
+	$namespaceName = getAssetName "Namespace-"
+	$eventHubName = getAssetName "EventHub-"
+	$consumerGroupName = getAssetName "ConsumerGroup-"
     
     Write-Debug "  Create resource group"
     Write-Debug " Resource Group Name : $resourceGroupName"

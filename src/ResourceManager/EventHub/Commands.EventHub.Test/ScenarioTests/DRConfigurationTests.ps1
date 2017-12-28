@@ -31,6 +31,24 @@ function WaitforStatetoBeSucceded
 	return $createdDRConfig
 }
 
+<#
+.SYNOPSIS
+Check the Provisioning state of the namespace and wait till it get succeded 
+#>
+function WaitforStatetoBeSucceded_namespace
+{
+	param([string]$resourceGroupName,[string]$namespaceName)
+	
+	$Getnamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+
+	while($Getnamespace.ProvisioningState -ne "Succeeded")
+	{
+		Wait-Seconds 10
+		$Getnamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+	}
+
+}
+
 
 <#
 .SYNOPSIS
@@ -40,9 +58,9 @@ Tests EventHubs DRConfiguration Create List Remove operations.
 function DRConfigurationTests
 {
 	# Setup    
-	$location_south = "South Central US" # Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
-	$location_north = "North Central US" # Get-Location "Microsoft.ServiceBus" "namespaces"
-	$resourceGroupName = Get-ResourceGroupName
+	$location_south = "South Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
+	$location_north = "North Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
+	$resourceGroupName = getAssetName
 	$namespaceName1 = getAssetName "Eventhub-Namespace-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace-"
 	$drConfigName = getAssetName "DRConfig-"
@@ -165,10 +183,16 @@ function DRConfigurationTests
 	# Remove the Alias created
 	Remove-AzureRmEventHubDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName -Force
 
-	 Write-Debug " Delete namespaces"
+	# Wait till the Namespace Provisioning  state changes to succeeded
+	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1
+
+	Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName1
 
-	 Write-Debug " Delete namespaces"
+	# Wait till the Namespace Provisioning  state changes to succeeded
+	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
+
+	Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName2
 
 	Write-Debug " Delete resourcegroup"
