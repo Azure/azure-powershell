@@ -20,6 +20,7 @@
 ## Current Release
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Update the Auditing commands parameters description
 
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
