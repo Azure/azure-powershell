@@ -47,11 +47,11 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "Resource
 ## PARAMETERS
 
 ### -AuditActionGroup
-The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
-
-"BATCHCOMPLETEDGROUP",
-"SUCCESSFULDATABASEAUTHENTICATIONGROUP",
-"FAILEDDATABASEAUTHENTICATIONGROUP"
+The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
+  
+"BATCH_COMPLETED_GROUP",  
+"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
+"FAILED_DATABASE_AUTHENTICATION_GROUP"  
 
 This above combination is also the set that is configured by default.
 
@@ -160,9 +160,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account. Wildcard characters are not permitted.
-This parameter is not required.
-If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
+The name of the storage account. Wildcard characters are not permitted.  
+This parameter is not required.  
+If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.  
 If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.
 
 ```yaml
