@@ -125,7 +125,8 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $snapshotconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+        $job = New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob
+		$job | Wait-Job
 
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
@@ -141,10 +142,12 @@ function Test-Snapshot
 
         # Config update test
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig;
+        $job = Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob
+		$job | Wait-Job
 
         # Remove test
-        Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force;
+        $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob
+		$job | Wait-Job
     }
     finally
     {
