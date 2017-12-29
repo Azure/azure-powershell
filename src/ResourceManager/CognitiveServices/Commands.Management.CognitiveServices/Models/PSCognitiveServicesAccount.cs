@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public string Etag { get; private set; }
 
-        public ProvisioningState? ProvisioningState { get; private set; }
+        public string ProvisioningState { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 

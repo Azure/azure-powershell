@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListKeys(
+                var cognitiveServicesKeys = this.CognitiveServicesClient.Accounts.ListKeys(
                      this.ResourceGroupName,
                      this.Name);
 
