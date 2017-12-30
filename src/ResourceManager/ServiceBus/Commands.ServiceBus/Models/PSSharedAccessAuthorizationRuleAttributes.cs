@@ -20,16 +20,16 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class AuthorizationRuleAttributes
+    public class PSSharedAccessAuthorizationRuleAttributes
     {
         public const string DefaultClaimType = "SharedAccessKey";
         public const string DefaultClaimValue = "None";
         internal const string DefaultNamespaceAuthorizationRule = "RootManageSharedAccessKey";
 
-        public AuthorizationRuleAttributes()
+        public PSSharedAccessAuthorizationRuleAttributes()
         { }
 
-        public AuthorizationRuleAttributes(SBAuthorizationRule authRuleResource)
+        public PSSharedAccessAuthorizationRuleAttributes(SBAuthorizationRule authRuleResource)
         {
             if (authRuleResource != null)
             {

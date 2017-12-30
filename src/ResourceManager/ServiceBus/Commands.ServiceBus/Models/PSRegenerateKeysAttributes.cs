@@ -20,9 +20,9 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class RegenerateKeysAttributes
+    public class PSRegenerateKeysAttributes
     {
-        public RegenerateKeysAttributes(RegenerateAccessKeyParameters RegenerateKeysResource)
+        public PSRegenerateKeysAttributes(RegenerateAccessKeyParameters RegenerateKeysResource)
         {
             if (RegenerateKeysResource != null)
             {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             };
         }
 
-        public RegenerateKeysAttributes(string strKeyType)
+        public PSRegenerateKeysAttributes(string strKeyType)
         {
             Policykey = strKeyType;
         }

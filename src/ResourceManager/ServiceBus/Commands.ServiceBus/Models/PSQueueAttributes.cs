@@ -20,12 +20,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class QueueAttributes
+    public class PSQueueAttributes
     {
-        public QueueAttributes()
+        public PSQueueAttributes()
         { }
 
-        public QueueAttributes(SBQueue quResource)
+        public PSQueueAttributes(SBQueue quResource)
         {
             if (quResource != null)
             {

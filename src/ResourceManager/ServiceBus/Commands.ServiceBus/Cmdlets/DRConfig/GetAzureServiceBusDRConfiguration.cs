@@ -23,29 +23,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Get-AzureServicebusDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb), OutputType(typeof(List<ServiceBusDRConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb), OutputType(typeof(List<PSServiceBusDRConfigurationAttributes>))]
     public class GetServiceBusDRConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "DR Configuration Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAliasName)]
         public string Name { get; set; }
@@ -55,13 +46,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a DRConfiguration
-                ServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
+                PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
                 WriteObject(drConfiguration);
             }
             else
             {
                 // Get all DRConfigurations
-                IEnumerable<ServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
+                IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
                 WriteObject(drConfigurationList.ToList(), true);
             }
         }

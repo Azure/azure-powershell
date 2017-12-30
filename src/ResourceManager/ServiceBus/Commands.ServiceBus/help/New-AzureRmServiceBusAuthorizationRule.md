@@ -208,7 +208,7 @@ System.String[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

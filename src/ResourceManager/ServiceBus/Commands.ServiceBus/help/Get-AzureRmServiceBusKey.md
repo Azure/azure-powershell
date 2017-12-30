@@ -157,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.ListKeysAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes
 
 ## NOTES
 

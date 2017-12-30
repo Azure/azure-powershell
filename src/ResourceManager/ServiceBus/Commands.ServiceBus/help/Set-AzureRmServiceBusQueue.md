@@ -35,6 +35,27 @@ PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -Nam
 
 Updates the specified queue with a new description in the specified namespace. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **SupportOrdering** to **true**.
 
+Name                                : SB-Queue_exampl1
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 2:51:34 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+UpdatedAt                           : 1/20/2017 6:16:18 PM
+
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -56,7 +77,7 @@ Accept wildcard characters: False
 ServiceBus definition.
 
 ```yaml
-Type: QueueAttributes
+Type: PSQueueAttributes
 Parameter Sets: (All)
 Aliases: QueueObj
 
@@ -158,30 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
  System.String
 
 ### -QueueObj
- Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+ Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-Name                                : SB-Queue_exampl1
-LockDuration                        : 
-AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:34 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
-EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-RequiresDuplicateDetection          : False
-RequiresSession                     : False
-SizeInBytes                         : 
-Status                              : Active
-UpdatedAt                           : 1/20/2017 6:16:18 PM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## NOTES
 

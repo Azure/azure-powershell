@@ -21,50 +21,35 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'New-AzureRmServicebusDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(ServiceBusDRConfigurationAttributes))]
+    [Cmdlet(VerbsCommon.New, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
     public class NewAzureRmEventHubDRConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "DR Configuration Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAliasName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-            Position = 3,
-           HelpMessage = "DR Configuration PartnerNamespace")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "DR Configuration PartnerNamespace")]
         [ValidateNotNullOrEmpty]
         public string PartnerNamespace { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-            Position = 4,
-           HelpMessage = "AlternateName ")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "AlternateName")]
         [ValidateNotNullOrEmpty]
         public string AlternateName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ServiceBusDRConfigurationAttributes drConfiguration = new ServiceBusDRConfigurationAttributes() { PartnerNamespace = PartnerNamespace };
+            PSServiceBusDRConfigurationAttributes drConfiguration = new PSServiceBusDRConfigurationAttributes() { PartnerNamespace = PartnerNamespace };
 
             if (!string.IsNullOrEmpty(AlternateName))
                 drConfiguration.AlternateName = AlternateName;

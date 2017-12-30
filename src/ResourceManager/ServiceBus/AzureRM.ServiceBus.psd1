@@ -93,7 +93,7 @@ CmdletsToExport = 'New-AzureRmServiceBusNamespace', 'Get-AzureRmServiceBusNamesp
                'Set-AzureRmServiceBusRule', 'Remove-AzureRmServiceBusRule',
 			   'New-AzureRmServiceBusDRConfiguration','Get-AzureRmServiceBusDRConfiguration',
 			   'Remove-AzureRmServiceBusDRConfiguration', 
-			   'Set-AzureRmServiceBusDRConfigurationBreakPairing','Set-AzureRmServiceBusDRConfigurationFailOver', 'Test-AzureRmServiceBusName'
+			   'Set-AzureRmServiceBusDRConfigurationBreakPairing', 'Set-AzureRmServiceBusDRConfigurationFailOver', 'Test-AzureRmServiceBusName'
 
 # Variables to export from this module
 # VariablesToExport = @()

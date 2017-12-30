@@ -151,7 +151,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.ServiceBusDRConfigurationAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 
 ## NOTES

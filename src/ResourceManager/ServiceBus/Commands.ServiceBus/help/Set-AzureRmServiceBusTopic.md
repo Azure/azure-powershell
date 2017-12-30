@@ -31,8 +31,29 @@ PS C:\> $topicObj.EnableExpress = $True
 
 PS C:\> Set-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -TopicObj $topicObj
 ```
-
 Updates the specified topic with a new description in the specified namespace. This example updates the **EnableExpress** property to **true**. 
+
+Name                                : SB-Topic_exampl1
+Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-
+                                      Topic_exampl1
+Type                                : Microsoft.ServiceBus/Topic
+AccessedAt                          : 1/20/2017 3:18:54 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 3:16:41 AM
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+EnableExpress                       : True
+EnablePartitioning                  : True
+MaxSizeInMegabytes                  : 16384
+RequiresDuplicateDetection          : False
+SizeInBytes                         : 0
+Status                              : Active
+SubscriptionCount                   : 1
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 7:12:16 PM
+
 
 ## PARAMETERS
 
@@ -55,7 +76,7 @@ Accept wildcard characters: False
 ServiceBus Topic definition.
 
 ```yaml
-Type: TopicAttributes
+Type: PSTopicAttributes
 Parameter Sets: (All)
 Aliases: TopicObj
 
@@ -157,31 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
  System.String
 
 ### -TopicObj
- Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
+ Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-
-                                      Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
-CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
-EnableExpress                       : True
-EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
-RequiresDuplicateDetection          : False
-SizeInBytes                         : 0
-Status                              : Active
-SubscriptionCount                   : 1
-SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 7:12:16 PM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 
 ## NOTES
 

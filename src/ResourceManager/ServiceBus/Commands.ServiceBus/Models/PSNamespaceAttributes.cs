@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
     /// <summary>
     /// Represents the properties of a Namespace of type ServiceBus
     /// </summary>
-    public class NamespaceAttributes 
+    public class PSNamespaceAttributes 
     {
-        public NamespaceAttributes()
+        public PSNamespaceAttributes()
         { }
 
-        public NamespaceAttributes(SBNamespace evResource)
+        public PSNamespaceAttributes(SBNamespace evResource)
         {
             if (evResource != null)
             {

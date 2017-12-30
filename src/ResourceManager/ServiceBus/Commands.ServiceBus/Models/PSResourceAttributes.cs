@@ -18,9 +18,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public class ResourceAttributes
+    public class PSResourceAttributes
     {
-        public ResourceAttributes(Resource resource)
+        public PSResourceAttributes(Resource resource)
         {
             if (resource != null)
             {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             }
         }
 
-        public ResourceAttributes() { }
+        public PSResourceAttributes() { }
 
 
         /// <summary>

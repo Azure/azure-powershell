@@ -19,14 +19,14 @@ using System;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class NamespaceLongRunningOperation
+    public class PSNamespaceLongRunningOperation
     {
         public const string DeleteOperation = "Remove-AzureRmServiceBusNamespace";
 
 
-        internal static NamespaceLongRunningOperation CreateLongRunningOperation(
+        internal static PSNamespaceLongRunningOperation CreateLongRunningOperation(
             string operationName,
-            NamespaceLongRunningOperation longRunningResponse)
+            PSNamespaceLongRunningOperation longRunningResponse)
         {
             if (string.IsNullOrWhiteSpace(operationName))
             {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 throw new ArgumentNullException("longRunningResponse");
             }
 
-            var result = new NamespaceLongRunningOperation
+            var result = new PSNamespaceLongRunningOperation
             {
                 OperationName = operationName,
                 OperationLink = longRunningResponse.OperationLink,
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         public string OperationLink { get; private set; }
 
-        public NamespaceAttributes NamespaceAttributes { get; private set; }
+        public PSNamespaceAttributes NamespaceAttributes { get; private set; }
 
         public string Error { get; private set; }
     }
