@@ -18,12 +18,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
     /// <summary>
     /// Description of a Check Name availability request properties.
     /// </summary>
-    public partial class CheckNameAvailabilityAttributes
+    public partial class PSCheckNameAvailabilityAttributes
     {
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailability class.
         /// </summary>
-        public CheckNameAvailabilityAttributes() { }
+        public PSCheckNameAvailabilityAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailability class.
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// and The namespace name can contain only letters, numbers, and
         /// hyphens. The namespace must start with a letter, and it must end
         /// with a letter or number.</param>
-        public CheckNameAvailabilityAttributes(string name)
+        public PSCheckNameAvailabilityAttributes(string name)
         {
             Name = name;
         }

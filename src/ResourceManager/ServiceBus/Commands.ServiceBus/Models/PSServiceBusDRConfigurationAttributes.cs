@@ -19,12 +19,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class ServiceBusDRConfigurationAttributes
+    public class PSServiceBusDRConfigurationAttributes
     {
-        public ServiceBusDRConfigurationAttributes()
+        public PSServiceBusDRConfigurationAttributes()
         { }
 
-        public ServiceBusDRConfigurationAttributes(ArmDisasterRecovery drResource)
+        public PSServiceBusDRConfigurationAttributes(ArmDisasterRecovery drResource)
         {
             if (drResource != null)
             {

@@ -24,16 +24,27 @@ The **Test-AzureRmServiceBusName** Cmdlet Check Availability of the NameSpace Na
 ```
 PS C:\> Test-AzureRmServiceBusName -Namespace TestingtheAvailability
 ```
+NameAvailable Reason Message
+------------- ------ -------
+         True   None
+
 
 ### Example 2
 ```
 PS C:\> Test-AzureRmServiceBusName -Namespace Testi
 ```
+NameAvailable      Reason Message
+-------------      ------ -------
+        False InvalidName The specified service namespace is invalid.
+
 
 ### Example 3
 ```
 PS C:\> Test-AzureRmServiceBusName -Namespace Test123
 ```
+NameAvailable    Reason Message
+-------------    ------ -------
+        False NameInUse The specified service namespace is not available.
 
 Returns the status on availability of the namespace name
 
@@ -63,22 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### [Microsoft.Azure.Commands.ServiceBus.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]
+### [Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]
 
-### Example 1
-NameAvailable Reason Message
-------------- ------ -------
-         True   None
-
-### Example 2
-NameAvailable      Reason Message
--------------      ------ -------
-        False InvalidName The specified service namespace is invalid.
-
-### Example 3
-NameAvailable    Reason Message
--------------    ------ -------
-        False NameInUse The specified service namespace is not available.
 
 ## NOTES
 

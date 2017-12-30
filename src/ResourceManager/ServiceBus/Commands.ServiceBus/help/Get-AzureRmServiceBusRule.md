@@ -130,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.RulesAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
 
 ## NOTES
 

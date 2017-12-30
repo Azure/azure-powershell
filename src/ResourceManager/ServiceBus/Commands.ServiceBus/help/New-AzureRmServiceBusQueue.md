@@ -34,6 +34,26 @@ PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -Nam
 
 Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
+Name                                : SB-Queue_exampl1
+LockDuration                        : 
+AccessedAt                          : 
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 2:51:36 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : 
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+UpdatedAt                           : 1/20/2017 2:51:37 AM
+
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
@@ -346,26 +366,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-Name                                : SB-Queue_exampl1
-LockDuration                        : 
-AccessedAt                          : 
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:36 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
-EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : 
-RequiresDuplicateDetection          : False
-RequiresSession                     : False
-SizeInBytes                         : 
-Status                              : Active
-UpdatedAt                           : 1/20/2017 2:51:37 AM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## NOTES
 

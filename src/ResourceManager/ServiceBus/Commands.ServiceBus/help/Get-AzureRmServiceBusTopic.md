@@ -26,8 +26,29 @@ The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the sp
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
-
 Returns the description of the specified topic for the given Service Bus namespace.
+
+Name                                : SB-Topic_exampl1
+Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
+                                      B-Topic_exampl1
+Type                                : Microsoft.ServiceBus/Topic
+AccessedAt                          : 1/20/2017 3:18:54 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 3:16:41 AM
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxSizeInMegabytes                  : 16384
+RequiresDuplicateDetection          : False
+SizeInBytes                         : 0
+Status                              : Active
+SubscriptionCount                   : 1
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 3:16:43 AM
+
 
 ## PARAMETERS
 
@@ -109,27 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.TopicAttributes
-Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
-                                      B-Topic_exampl1
-Type                                : Microsoft.ServiceBus/Topic
-AccessedAt                          : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 3:16:41 AM
-CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
-EnableExpress                       : False
-EnablePartitioning                  : True
-MaxSizeInMegabytes                  : 16384
-RequiresDuplicateDetection          : False
-SizeInBytes                         : 0
-Status                              : Active
-SubscriptionCount                   : 1
-SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 3:16:43 AM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 
 ## NOTES
 

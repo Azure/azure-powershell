@@ -32,8 +32,22 @@ PS C:\> $subscriptionObj.MaxDeliveryCount = 9
 
 PS C:\> Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
-
 Updates the description for the specified subscription to the given topic. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **MaxDeliveryCount** to 9.
+
+Name                                      : SB-TopicSubscription-Example1
+AccessedAt                                : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+CountDetails                              : 
+CreatedAt                                 : 1/20/2017 9:59:15 PM
+DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+DeadLetteringOnMessageExpiration          : True
+EnableBatchedOperations                   : True
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 9
+MessageCount                              : 0
+RequiresSession                           : False
+Status                                    : Active
+UpdatedAt                                 : 1/20/2017 9:59:15 PM
 
 ## PARAMETERS
 
@@ -56,7 +70,7 @@ Accept wildcard characters: False
 ServiceBus Subscription definition.
 
 ```yaml
-Type: SubscriptionAttributes
+Type: PSSubscriptionAttributes
 Parameter Sets: (All)
 Aliases: SubscriptionObj
 
@@ -158,25 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
  System.String
 
 ### -SubscriptionObj
- Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+ Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-Name                                      : SB-TopicSubscription-Example1
-AccessedAt                                : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
-CountDetails                              : 
-CreatedAt                                 : 1/20/2017 9:59:15 PM
-DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnMessageExpiration          : True
-EnableBatchedOperations                   : True
-LockDuration                              : 00:01:00
-MaxDeliveryCount                          : 9
-MessageCount                              : 0
-RequiresSession                           : False
-Status                                    : Active
-UpdatedAt                                 : 1/20/2017 9:59:15 PM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
 ## NOTES
 

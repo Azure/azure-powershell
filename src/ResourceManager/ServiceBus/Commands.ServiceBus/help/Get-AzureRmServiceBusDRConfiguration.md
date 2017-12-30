@@ -105,7 +105,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.ServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.4.6.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.4.6.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES

@@ -20,12 +20,12 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class TopicAttributes 
+    public class PSTopicAttributes 
     {
-        public TopicAttributes()
+        public PSTopicAttributes()
         { }
 
-        public TopicAttributes(SBTopic topicResource)
+        public PSTopicAttributes(SBTopic topicResource)
         {
             if (topicResource != null)
             {

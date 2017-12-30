@@ -19,12 +19,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public class CorrelationFilterAttributes
+    public class PSCorrelationFilterAttributes
     {
         /// <summary>
         /// Initializes a new instance of the CorrelationFilter class.
         /// </summary>
-        public CorrelationFilterAttributes()
+        public PSCorrelationFilterAttributes()
         {
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <param name="contentType">Content type of the message.</param>
         /// <param name="requiresPreprocessing">Value that indicates whether
         /// the rule action requires preprocessing.</param>
-        public CorrelationFilterAttributes(Management.ServiceBus.Models.CorrelationFilter correlationFilter)
+        public PSCorrelationFilterAttributes(Management.ServiceBus.Models.CorrelationFilter correlationFilter)
         {
             if(correlationFilter != null)
                 { 

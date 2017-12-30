@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<NamespaceLongRunningOperation> func)
+        protected void ExecuteLongRunningCmdletWrap(Func<PSNamespaceLongRunningOperation> func)
         {
             try
             {
@@ -206,12 +206,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
         }
 
-        protected void WriteProgress(NamespaceLongRunningOperation operation)
+        protected void WriteProgress(PSNamespaceLongRunningOperation operation)
         {
             WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
         }
 
-        protected NamespaceLongRunningOperation WaitForOperationToComplete(NamespaceLongRunningOperation longRunningOperation)
+        protected PSNamespaceLongRunningOperation WaitForOperationToComplete(PSNamespaceLongRunningOperation longRunningOperation)
         {
             WriteProgress(longRunningOperation);
 

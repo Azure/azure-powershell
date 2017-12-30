@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ServiceBus AuthorizationRule Object.
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: PSSharedAccessAuthorizationRuleAttributes
 Parameter Sets: NamespaceAuthorizationRuleSet, QueueAuthorizationRuleSet, TopicAuthorizationRuleSet
 Aliases: AuthRuleObj
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: PSSharedAccessAuthorizationRuleAttributes
 Parameter Sets: AuthoRuleInputObjectSet
 Aliases: AuthRuleObj
 
@@ -270,12 +270,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
 System.String[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
 
 ## NOTES
 

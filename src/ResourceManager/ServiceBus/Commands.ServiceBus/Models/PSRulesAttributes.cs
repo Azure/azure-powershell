@@ -21,20 +21,20 @@ using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public class RulesAttributes
+    public class PSRulesAttributes
     {
         /// <summary>
         /// Initializes a new instance of the Rule class.
         /// </summary>
-        public RulesAttributes()
+        public PSRulesAttributes()
         {
             Name = string.Empty;
             Id = string.Empty;
             Type = string.Empty;
-            Action = new ActionAttributes();
+            Action = new PSActionAttributes();
             FilterType = Management.ServiceBus.Models.FilterType.SqlFilter;
-            SqlFilter = new SQLFilterAttributes();
-            CorrelationFilter = new CorrelationFilterAttributes();
+            SqlFilter = new PSSQLFilterAttributes();
+            CorrelationFilter = new PSCorrelationFilterAttributes();
         }
 
         /// <summary>
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <param name="sqlFilter">Properties of sqlFilter</param>
         /// <param name="correlationFilter">Properties of
         /// correlationFilter</param>
-        public RulesAttributes(Rule rule)
+        public PSRulesAttributes(Rule rule)
         {
             Name = rule.Name;
             Id = rule.Id;
             Type = rule.Type;
-            Action = new ServiceBus.Models.ActionAttributes(rule.Action);
+            Action = new ServiceBus.Models.PSActionAttributes(rule.Action);
             FilterType = rule.FilterType;
-            SqlFilter = new SQLFilterAttributes(rule.SqlFilter);
-            CorrelationFilter = new CorrelationFilterAttributes(rule.CorrelationFilter);
+            SqlFilter = new PSSQLFilterAttributes(rule.SqlFilter);
+            CorrelationFilter = new PSCorrelationFilterAttributes(rule.CorrelationFilter);
         }
 
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// the transformation of a message that have been matched by a filter
         /// expression.
         /// </summary>
-        public ActionAttributes Action { get; set; }
+        public PSActionAttributes Action { get; set; }
 
         /// <summary>
         /// Gets or sets filter type that is evaluated against a
@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Gets or sets properties of sqlFilter
         /// </summary>
-        public SQLFilterAttributes SqlFilter { get; set; }
+        public PSSQLFilterAttributes SqlFilter { get; set; }
 
         /// <summary>
         /// Gets or sets properties of correlationFilter
         /// </summary>
-        public CorrelationFilterAttributes CorrelationFilter { get; set; }
+        public PSCorrelationFilterAttributes CorrelationFilter { get; set; }
 
     }
 }

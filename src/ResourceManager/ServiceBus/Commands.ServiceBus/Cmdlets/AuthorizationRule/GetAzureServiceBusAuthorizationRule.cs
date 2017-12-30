@@ -25,56 +25,38 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(List<PSSharedAccessAuthorizationRuleAttributes>))]
     public class GetAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]        
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = TopicAuthoRuleParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = AliasAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = QueueAuthoRuleParameterSet,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasQueueName)]
         public string Queue { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = TopicAuthoRuleParameterSet,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = AliasAuthoRuleParameterSet,
-            HelpMessage = " DR Configuration Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = " DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAliasName)]
         public string AliasName { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
@@ -87,13 +69,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Namespace AuthorizationRule
-                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all Namespace AuthorizationRules
-                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
+                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
                     WriteObject(authRuleList, true);
                 }
 
@@ -103,13 +85,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                     if (!string.IsNullOrEmpty(Name))
                     {
                     // Get a Queue AuthorizationRule
-                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
+                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
                     // Get all Queue AuthorizationRules
-                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue);
+                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue);
                         WriteObject(authRuleList, true);
                     }
 
@@ -118,13 +100,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Topic AuthorizationRule
-                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name);
+                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all Topic AuthorizationRules
-                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic);
+                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic);
                     WriteObject(authRuleList, true);
                 }
 
@@ -133,13 +115,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Topic AuthorizationRule
-                    SharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                    PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all Topic AuthorizationRules
-                    IEnumerable<SharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                    IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
                     WriteObject(authRuleList, true);
                 }
 

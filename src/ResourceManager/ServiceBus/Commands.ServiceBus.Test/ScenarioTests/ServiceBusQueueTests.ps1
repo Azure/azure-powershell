@@ -14,84 +14,33 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-    return "RGName-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Queue name
-#>
-function Get-QueueName
-{
-    return "SBQueue-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get  Namespace name
-#>
-function Get-NamespaceName
-{
-    return "SBNamespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-    return "SBQueue-AuthorizationRule" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
 Tests Queue Namespace Create List Remove operations.
 #>
 function ServiceBusQueueTests
 {
     # Setup    
     $location = Get-Location
- 
-    Write-Debug "Create resource group"
-    $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
-    Write-Debug "ResourceGroup name : $resourceGroupName" 
-
-    $namespaceName = Get-NamespaceName
+    $resourceGroupName = getAssetName "RGName-"
+	$namespaceName = getAssetName "Namespace-"
+	$nameQueue = getAssetName "Queue-"
     
-    Write-Debug " Create new Queue namespace"
-    Write-Debug "NamespaceName : $namespaceName" 
+	Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    
+    Write-Debug " Create new Queue Namespace: $namespaceName"
     $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
     
-
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+	    
+    Assert-AreEqual $createdNamespace.Name $namespaceName "Created Namespace not found"
 
-    $found = 0
-    
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-           Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
-           # Assert-AreEqual $resourceGroupName.ToLower() $createdNamespace.ResourceGroupName.ToLower()
-           # Assert-AreEqual "Messaging" $createdNamespace.NamespaceType           
-        }
-
-    #Assert-True {$found -eq 0} "Namespace created earlier is not found."
-
-	Write-Debug "Create Queue"
-	$nameQueue = Get-QueueName
+	Write-Debug "Create Queue"	
 	$result = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue
-	Assert-True {$result.Name -eq $nameQueue} "In CreateQueue response Name not found"
+	Assert-AreEqual $result.Name $nameQueue "In CreateQueue response Name not found"
 
 	$resultGetQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
-	Assert-True {$resultGetQueue.Name -eq $result.Name} "In GetQueue response, QueueName not found"
+	Assert-AreEqual $resultGetQueue.Name $result.Name "In GetQueue response, QueueName not found"
 	
 	$resultGetQueue.EnableExpress = $True
 	$resultGetQueue.DeadLetteringOnMessageExpiration = $True
@@ -99,7 +48,7 @@ function ServiceBusQueueTests
 	$resultGetQueue.MaxSizeInMegabytes = 1024
 
 	$resltSetQueue = Set-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetQueue.Name -InputObject $resultGetQueue
-	Assert-True {$resltSetQueue.Name -eq $resultGetQueue.Name} "In GetQueue response, QueueName not found"
+	Assert-AreEqual $resltSetQueue.Name $resultGetQueue.Name "In GetQueue response, QueueName not found"
 
 	# Get all Queues
 	$ResulListQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName
@@ -116,6 +65,7 @@ function ServiceBusQueueTests
 	{
 		$delete1 = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListQueue[$i].Name		
 	}
+
     Write-Debug " Delete namespaces"
     Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
@@ -131,11 +81,11 @@ Tests ServiceBus Queue AuthorizationRules Create List Remove operations.
 function ServiceBusQueueAuthTests
 {
     # Setup    
-    $location =  Get-Location
-	$resourceGroupName = Get-ResourceGroupName
-	$namespaceName = Get-NamespaceName    
-	$queueName = Get-QueueName	
-    $authRuleName = Get-AuthorizationRuleName
+    $location = Get-Location
+    $resourceGroupName = getAssetName "RGName-"
+	$namespaceName = getAssetName "Namespace-"
+	$queueName = getAssetName "Queue-"
+    $authRuleName = getAssetName "authorule-"
 
 	# Create ResourceGroup
     Write-Debug " Create resource group"    
@@ -145,45 +95,32 @@ function ServiceBusQueueAuthTests
     # Create Queue Namespace 
     Write-Debug " Create new ServiceBus namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
-    
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName   
     
 	# Assert
-	Assert-True {$result.ProvisioningState -eq "Succeeded"}
+	Assert-AreEqual $result.ProvisioningState "Succeeded"
 
 	# Get Created NameSpace
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
 	# Assert
-	Assert-True {$createdNamespace.Count -eq 1}
-    $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            #Assert-AreEqual "Messaging" $createdNamespace[$i].NamespaceType
-            break
-        }
-    }
-
-	# Assert
-   # Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    Assert-AreEqual $createdNamespace.Name $namespaceName "Created Namespace not found"
 
 	# Create New Queue
     Write-Debug " Create new Queue "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
     $result_Queue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueName -EnablePartitioning $TRUE
+
+	Assert-AreEqual $result_Queue.Name $queueName "Created Queue not found"
+
 	
     Write-Debug "Get the created Queue"
-    $createdQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result_Queue.Name
+    $getQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result_Queue.Name
 
 	# Assert
-    Assert-True {$createdQueue.Count -eq 1}
+    Assert-AreEqual $getQueue.Name $queueName "Get-Queue, created queue not found"
 
 	# Create Queue Authorization Rule
     Write-Debug "Create a Queue Authorization Rule"
@@ -210,28 +147,18 @@ function ServiceBusQueueAuthTests
     Write-Debug "Get All Queue AuthorizationRule"
     $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName
 	# Assert
-    $found = 0
-    for ($i = 0; $i -lt $result.Count; $i++)
-    {
-        if ($result[$i].Name -eq $authRuleName)
-        {
-            $found = 1
-            Assert-AreEqual 2 $result[$i].Rights.Count
-            Assert-True { $result[$i].Rights -Contains "Listen" }
-            Assert-True { $result[$i].Rights -Contains "Send" }         
-            break
-        }
-    }
-    Assert-True {$found -eq 1} "Queue AuthorizationRule created earlier is not found."
-
+	Assert-AreEqual $result.Name $authRuleName
+    Assert-AreEqual 2 $result.Rights.Count
+    Assert-True { $result.Rights -Contains "Listen" }
+    Assert-True { $result.Rights -Contains "Send" }
+    
 	# Update the Queue Authorization Rule
     Write-Debug "Update Queue AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
     $updatedAuthRule = Set-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleName -InputObject $createdAuthRule
     
-
 	# Assert
-    Assert-AreEqual $authRuleName $updatedAuthRule.Name
+    Assert-AreEqual $authRuleName $updatedAuthRule.Name "Queue AuthorizationRule created earlier is not found."
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }

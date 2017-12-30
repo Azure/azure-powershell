@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public enum NamespaceState
+    public enum PSNamespaceState
     {
         Unknown = 0,
         Active = 5,

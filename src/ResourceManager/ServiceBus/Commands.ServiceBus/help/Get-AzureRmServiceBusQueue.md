@@ -16,6 +16,28 @@ Returns a description for the specified Service Bus queue.
 Get-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 2:51:35 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+UpdatedAt                           : 1/20/2017 2:51:37 AM
+Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
+                                      B-Queue_example1
+Name                                : SB-Queue_example1
+Type                                : Microsoft.ServiceBus/Queues
 
 ## DESCRIPTION
 The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified Service Bus queue.
@@ -109,29 +131,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-LockDuration                        : 
-AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:35 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
-EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-RequiresDuplicateDetection          : False
-RequiresSession                     : False
-SizeInBytes                         : 
-Status                              : Active
-UpdatedAt                           : 1/20/2017 2:51:37 AM
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
-                                      B-Queue_example1
-Name                                : SB-Queue_example1
-Type                                : Microsoft.ServiceBus/Queues
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## NOTES
 

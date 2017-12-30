@@ -20,12 +20,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class SubscriptionAttributes
+    public class PSSubscriptionAttributes
     {
-        public SubscriptionAttributes()
+        public PSSubscriptionAttributes()
         { }
 
-        public SubscriptionAttributes(SBSubscription subscriptionResource)
+        public PSSubscriptionAttributes(SBSubscription subscriptionResource)
         {
             if (subscriptionResource != null)
             {                
