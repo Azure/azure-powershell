@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
                     this.Name);
-                StorageNetworkAcls storageACL = storageAccount.NetworkAcls;
+                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new StorageNetworkAcls();
+                    storageACL = new NetworkRuleSet();
                 }
 
                 PSNetworkRuleSet psNetworkRule = PSNetworkRuleSet.ParsePSNetworkRule(storageACL);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 
                 StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
+                updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
 
                 var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                     this.ResourceGroupName,
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls));
+                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet));
             }
         }
     }
