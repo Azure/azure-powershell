@@ -26,13 +26,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (networkClient == null)
                 {
-                    networkClient = new NetworkClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    networkClient = new NetworkClient(DefaultProfile.DefaultContext);
                 }
+
+                this.networkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.networkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.networkClient.WarningLogger = WriteWarningWithTimestamp;
                 return networkClient;
             }
 
