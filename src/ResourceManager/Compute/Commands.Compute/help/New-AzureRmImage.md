@@ -47,7 +47,9 @@ The final command creates an image named 'ImageName01' in resource group 'Resour
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
