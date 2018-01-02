@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss
 schema: 2.0.0
@@ -13,7 +14,7 @@ Updates the state of a VMSS.
 ## SYNTAX
 
 ```
-Update-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
  [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
  [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
@@ -25,7 +26,7 @@ Update-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <Str
  [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>] [-LicenseType <String>]
  [-IdentityType <ResourceIdentityType>] [-SkuName <String>] [-PlanPromotionCode <String>]
  [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
- [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>]
+ [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -175,7 +176,6 @@ The acceptable values for this parameter are:
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
-Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -305,7 +305,6 @@ The acceptable values for this parameter are:
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
@@ -383,7 +382,6 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
-Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
 Position: Named
@@ -622,7 +620,6 @@ The acceptable values for this parameter are:
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: Named
