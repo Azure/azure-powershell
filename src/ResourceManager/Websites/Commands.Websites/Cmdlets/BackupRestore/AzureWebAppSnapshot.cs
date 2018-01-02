@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         /// <summary>
         /// The time that the snapshot was taken
         /// </summary>
-        public string SnapshotTime { get; set; }
+        public DateTime SnapshotTime { get; set; }
     }
 }
