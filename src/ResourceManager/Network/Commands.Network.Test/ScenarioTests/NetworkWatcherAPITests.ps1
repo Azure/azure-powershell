@@ -389,8 +389,10 @@ function Test-PacketCapture
         Start-Sleep -s 2
 
         #Get packet capture
-        $pc1 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
-        $pc2 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
+        $job = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
+        $job | Wait-Job
+		$pc1 = $job | Receive-Job
+		$pc2 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
         $pcList = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw
 
         #Verification
