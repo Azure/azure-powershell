@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {            
-            if (ParameterSetName == AliasInputObjectParameterSet)
+            if (ParameterSetName.Equals(AliasInputObjectParameterSet))
             {                
                 ConfirmAction(
                 Force.IsPresent,
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                 });
             }
 
-            if (ParameterSetName == AliasPropertiesParameterSet)
+            if (ParameterSetName.Equals(AliasPropertiesParameterSet))
             {
                 ConfirmAction(
                 Force.IsPresent,

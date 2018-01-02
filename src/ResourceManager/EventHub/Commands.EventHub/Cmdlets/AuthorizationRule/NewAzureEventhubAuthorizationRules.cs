@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             }
 
             //Create a new Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateNamespaceAuthorizationrule, Name, Namespace)))
                 {
                     WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
                 }
 
             // Create a new EventHub authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateEventHubAuthorizationrule, Name, EventHub)))
                 {
                     WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));

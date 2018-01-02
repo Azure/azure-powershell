@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             }
 
             // update Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
                 {
                     WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
 
             // Update WcfRelay authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateEventHubAuthorizationrule, Name, EventHub)))
                 {
                     WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));

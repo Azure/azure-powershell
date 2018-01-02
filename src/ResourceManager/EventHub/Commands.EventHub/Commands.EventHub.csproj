@@ -46,18 +46,6 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +56,7 @@
     <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AzureEventHubsCmdletBase.cs" />
-    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
+    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureEventhubCheckNameAvailability.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\GetAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
@@ -116,10 +104,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" >
-		<SubType>Designer</SubType>
-	</None>
-	<None Include="StartupScripts\*.ps1"/>	
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx" />

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             var regenKey = new RegenerateAccessKeyParameters { Key = RegenerateKey };
 
             // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             }
 
             // Generate new WcfRelay List Keys for the specified AuthorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
                 {

@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public override void ExecuteCmdlet()
         {
             //Get Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Namespace AuthorizationRule
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 }
 
             // Get Eventhub authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Eventhub AuthorizationRule
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 }
 
             // Get Alias authorizationRule
-            if (ParameterSetName == AliasAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Alias AuthorizationRule

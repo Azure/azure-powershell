@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [Alias(AliasPartnerNamespace)]
         public string PartnerNamespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "AlternateName required when DR configuration name is same as Primary Namespace ")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "AlternateName required when DR configuration name is same as Primary Namespace")]
         [ValidateNotNullOrEmpty]
         public string AlternateName { get; set; }
 

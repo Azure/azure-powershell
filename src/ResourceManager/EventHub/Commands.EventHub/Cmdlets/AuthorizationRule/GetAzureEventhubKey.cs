@@ -65,21 +65,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         {
 
             // Get a Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
                 WriteObject(keys,true);
             }
 
             // Get a WcfRelay List Keys for the specified AuthorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)              
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
                 WriteObject(keys,true);
             }
 
             // Get Alias List Keys for the spe
-            if (ParameterSetName == AliasAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
                 WriteObject(keys, true);

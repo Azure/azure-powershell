@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public override void ExecuteCmdlet()
         {
             // Delete Namespace authorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 });
 
             // Delete Eventhub authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingEventHubAuthorizationRule, Namespace, EventHub, Name),

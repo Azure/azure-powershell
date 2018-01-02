@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
-    /// 'Test-AzureRmCheckNameAvailability' Cmdlet Check Availability of the NameSpace Name
+    /// 'Test-AzureRmEventHubName' Cmdlet Check Availability of the NameSpace Name and DRConfig name
     /// </summary>
     [Cmdlet("Test", "AzureRmEventHubName", DefaultParameterSetName = NamespaceCheckNameAvailabilityParameterSet), OutputType(typeof(List<PSCheckNameAvailabilityResultAttributes>))]
     public class TestAzureEventhubCheckNameAvailability : AzureEventHubsCmdletBase
@@ -40,17 +40,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias Name")]
         [Alias(AliasAliasName)]
+        [ValidateNotNullOrEmpty]
         public string AliasName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == NamespaceCheckNameAvailabilityParameterSet)
+            if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
             {
                 PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
                 WriteObject(checkNameAvailabilityResult, true);
             }
 
-            if (ParameterSetName == AliasCheckNameAvailabilityParameterSet)
+            if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
             {
                 PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
                 WriteObject(checkNameAvailabilityResult, true);
