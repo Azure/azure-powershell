@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
                 var clusterToDelete = MachineLearningComputeManagementClient.OperationalizationClusters.Get(ResourceGroupName, Name);
                 var managedByResourceGroup = new ResourceIdentifier(clusterToDelete.ContainerRegistry.ResourceId).ResourceGroupName;
 
-                shouldProcessMessage += $" and supporting resource group {managedByResourceGroup}";
+                shouldProcessMessage += $" and supporting resource group {managedByResourceGroup}. All resources in resource group {managedByResourceGroup} will be deleted.";
             }
 
             if (ShouldProcess(this.Name, shouldProcessMessage))
