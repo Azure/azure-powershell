@@ -109,8 +109,6 @@ function Test-VirtualMachineSetRunCommand
         
         $job = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob
 		$job | Wait-Job
-		$result = $job | Receive-Job
-        $result_output = $result | Out-String;
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;

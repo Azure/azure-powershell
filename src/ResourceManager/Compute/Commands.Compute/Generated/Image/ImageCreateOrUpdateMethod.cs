@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {

@@ -266,7 +266,9 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         {
             for ($j = 0; $j -lt 2; $j++)
             {
-                $st = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j
+                $job = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j -AsJob
+				$job | Wait-Job
+				$st = $job | Receive-Job
             }
         }
 
