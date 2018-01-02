@@ -2987,7 +2987,8 @@ function Test-VirtualMachineManagedDiskConversion
         Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
 
         # Convert VM to managed disks
-        ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname
+        $job = ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname -AsJob
+		$job | Wait-Job
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
