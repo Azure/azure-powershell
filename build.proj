@@ -531,6 +531,9 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
+    <!-- Run Pester tests -->
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1&quot;"
+          ContinueOnError="ErrorAndContinue"/>
     <CallTarget Targets="InvokeXUnit"/>
   </Target>
 
