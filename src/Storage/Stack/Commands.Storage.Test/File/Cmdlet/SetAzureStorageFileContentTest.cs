@@ -41,15 +41,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             }
         }
 
-        //[TestCleanup]
-        //public void UploadCleanup()
-        //{
-        //    if (System.IO.File.Exists(this.sourceFilePath))
-        //    {
-        //        System.IO.File.Delete(this.sourceFilePath);
-        //    }
-        //}
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingShareNameAndPathTest()
