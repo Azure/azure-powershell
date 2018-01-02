@@ -125,7 +125,9 @@ function Test-VirtualNetworkGatewayCRUD
       Assert-AreEqual $list[0].Location $actual.Location
       
       # Reset/Reboot virtualNetworkGateway primary
-      $actual = Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected
+      $job = Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -AsJob
+	  $job | Wait-Job
+	  $actual = $job | Receive-Job
       $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
 

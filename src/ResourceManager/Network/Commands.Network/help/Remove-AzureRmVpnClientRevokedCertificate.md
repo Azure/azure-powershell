@@ -15,7 +15,7 @@ Removes a VPN client-revocation certificate.
 
 ```
 Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String> [-AsJob]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,21 +35,6 @@ This command removes a client-revocation certificate from a virtual network gate
 In order to remove a client-revocation certificate, you must specify both the certificate name and the certificate thumbprint.
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
