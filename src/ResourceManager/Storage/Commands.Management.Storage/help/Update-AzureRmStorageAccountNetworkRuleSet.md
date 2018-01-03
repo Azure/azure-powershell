@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset
 schema: 2.0.0
 ---
@@ -59,7 +59,7 @@ The allowed value are none or any combination of:
 ```yaml
 Type: PSNetWorkRuleBypassEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Logging, Metrics, AzureServices
 
 Required: False
@@ -78,7 +78,7 @@ The allowed Options:
 ```yaml
 Type: PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Deny, Allow
 
 Required: False
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -109,7 +109,7 @@ The Array of IpRule objects to update to the NetworkRule Property of a Storage a
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +139,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -154,7 +154,7 @@ The Array of VirtualNetworkRule objects to update to the NetworkRule Property of
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -210,4 +210,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 ## NOTES
 
 ## RELATED LINKS
-

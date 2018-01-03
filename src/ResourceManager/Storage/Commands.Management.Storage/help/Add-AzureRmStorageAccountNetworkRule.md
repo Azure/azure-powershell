@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/add-azurermstorageaccountnetworkrule
 schema: 2.0.0
 ---
@@ -77,7 +77,7 @@ This command add several IpRule with IpRule objects, input with JSON.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -97,7 +97,7 @@ The Array of IpAddressOrRange, add IpRules with the input IpAddressOrRange and d
 ```yaml
 Type: String[]
 Parameter Sets: IpRuleString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -112,7 +112,7 @@ The Array of IpRule objects to add to the NetworkRule Property.
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: IpRuleObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +142,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -172,7 +172,7 @@ The Array of VirtualNetworkRule objects to add to the NetworkRule Property.
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: NetworkRuleObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -229,4 +229,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
 ## NOTES
 
 ## RELATED LINKS
-
