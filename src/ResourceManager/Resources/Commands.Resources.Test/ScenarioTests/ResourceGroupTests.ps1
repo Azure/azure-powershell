@@ -253,10 +253,7 @@ function Test-RemoveDeployment
         $job = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
 		Wait-Job $job
 		$deployment = Receive-Job $job
-		$job = Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -AsJob
-		$job | Wait-Job
-		$delete = $job | Receive-Job
-        Assert-True { $delete }
+		Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {
