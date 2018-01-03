@@ -33,7 +33,9 @@ Disables disk encryption on the VM scale set named VMSS001 that belongs to the r
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

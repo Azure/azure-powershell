@@ -33,7 +33,9 @@ The **Set-AzureRmVmssVM** cmdlet modifies the state of a Virtual Machine Scale S
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
