@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public override void ExecuteCmdlet()
         {
             // Delete Namespace authorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 });
 
             // Delete Queue authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingQueueAuthorizationRule, Namespace, Queue, Name),
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 });
 
             // Delete Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingTopicAuthorizationRule, Namespace, Topic, Name),

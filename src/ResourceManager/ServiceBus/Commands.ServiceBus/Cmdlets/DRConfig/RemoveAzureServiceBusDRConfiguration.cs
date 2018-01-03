@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName == AliasInputObjectParameterSet)
+            if(ParameterSetName.Equals(AliasInputObjectParameterSet))
             {
                 // delete an Alias 
                 if (ShouldProcess(target: InputObject.Name, action: string.Format(Resources.DRRemoveAlias, InputObject.Name, Namespace)))
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                 }
             }
 
-            if (ParameterSetName == AliasPropertiesParameterSet)
+            if (ParameterSetName.Equals(AliasPropertiesParameterSet))
             {
                 // delete an Alias 
                 if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, Name, Namespace)))
