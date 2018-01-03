@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             // update Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
                 {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
 
             // Update Topic authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
                 {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             // Update Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
                 {

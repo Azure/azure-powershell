@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public override void ExecuteCmdlet()
         {            
             // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             // Generate new Queue List Keys for the specified AuthorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyQueue, Name, Queue)))
                 {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             // Generate new Topic List Keys for the specified AuthorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyTopic, Name, Topic)))
                 {

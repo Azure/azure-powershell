@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         {
 
             //Get Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Namespace AuthorizationRule
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
 
             // Get Queue authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
                     if (!string.IsNullOrEmpty(Name))
                     {
                     // Get a Queue AuthorizationRule
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                     }
 
             // Get Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Topic AuthorizationRule
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 }
 
             // Get Alias authorizationRule
-            if (ParameterSetName == AliasAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Topic AuthorizationRule

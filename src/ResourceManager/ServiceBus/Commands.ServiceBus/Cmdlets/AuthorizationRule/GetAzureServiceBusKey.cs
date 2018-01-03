@@ -56,21 +56,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         {
 
             // Get a Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
                 WriteObject(keys,true);
             }
 
             // Get a Queue List Keys for the specified AuthorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)              
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetQueueKey(ResourceGroupName, Namespace, Queue, Name);
                 WriteObject(keys,true);
             }
 
             // Get a Topic List Keys for the specified AuthorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)                
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
             {
                 PSListKeysAttributes keys = Client.GetQueueKey(ResourceGroupName, Namespace, Topic, Name);
                 WriteObject(keys,true);
