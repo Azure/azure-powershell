@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset
 schema: 2.0.0
 ---
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkRule property of a Storage Account
+Update the NetworkRule property of a Storage account
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Update-AzureRmStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmStorageAccountNetworkRuleSet** cmdlet updates the NetworkRule property of a Storage Account
+The **Update-AzureRmStorageAccountNetworkRuleSet** cmdlet updates the NetworkRule property of a Storage account
 
 ## EXAMPLES
 
@@ -40,17 +40,17 @@ PS C:\> Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourc
 
 This command update Bypass property of NetworkRule (other properties won't change).
 
-### Example 3: Clean up rules of NetworkRule of a Storage Account
+### Example 3: Clean up rules of NetworkRule of a Storage account
 ```
 PS C:\> Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IpRule @() -VirtualNetworkRule @()
 ```
 
-This command clean up rules of NetworkRule of a Storage Account (other properties not change).
+This command clean up rules of NetworkRule of a Storage account (other properties not change).
 
 ## PARAMETERS
 
 ### -Bypass
-The Bypass value to update to the NetworkRule property of a Storage Account.
+The Bypass value to update to the NetworkRule property of a Storage account.
 The allowed value are none or any combination of:
 • Logging
 • Metrics
@@ -59,7 +59,7 @@ The allowed value are none or any combination of:
 ```yaml
 Type: PSNetWorkRuleBypassEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Logging, Metrics, AzureServices
 
 Required: False
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultAction
-The DefaultAction value to update to the NetworkRule property of a Storage Account.
+The DefaultAction value to update to the NetworkRule property of a Storage account.
 The allowed Options:
 • Allow
 • Deny
@@ -78,7 +78,7 @@ The allowed Options:
 ```yaml
 Type: PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Deny, Allow
 
 Required: False
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -104,12 +104,12 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to update to the NetworkRule Property of a Storage Account.
+The Array of IpRule objects to update to the NetworkRule Property of a Storage account.
 
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +139,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -149,12 +149,12 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to update to the NetworkRule Property of a Storage Account.
+The Array of VirtualNetworkRule objects to update to the NetworkRule Property of a Storage account.
 
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -210,4 +210,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 ## NOTES
 
 ## RELATED LINKS
-
