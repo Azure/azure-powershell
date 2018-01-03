@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermcurrentstorageaccount
 schema: 2.0.0
@@ -47,7 +47,7 @@ To obtain a storage context object, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: UsingStorageContext
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -92,7 +92,7 @@ Specifies the resource group that contains the Storage account to modify.
 ```yaml
 Type: String
 Parameter Sets: UsingResourceGroupAndNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

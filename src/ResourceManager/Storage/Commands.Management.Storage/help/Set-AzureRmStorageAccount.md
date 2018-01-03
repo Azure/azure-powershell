@@ -139,7 +139,7 @@ If the Storage account has Kind as Storage, do not specify the *AccessTier* para
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Hot, Cool
 
 Required: False
@@ -155,7 +155,7 @@ Generate and assign a new Storage account Identity for this Storage account for 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,7 +170,7 @@ Specifies the name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -201,7 +201,7 @@ Azure Blob storage and Azure Files are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Blob, File
 
 Required: False
@@ -218,7 +218,7 @@ Azure Blob storage and Azure Files are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Blob, File
 
 Required: False
@@ -234,7 +234,7 @@ Indicates whether or not the Storage account only enables HTTPS traffic.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -249,7 +249,7 @@ Forces the change to be written to the Storage account.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -264,7 +264,7 @@ If using -KeyvaultEncryption to enable encryption with Key Vault, specify the Ke
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -280,7 +280,7 @@ If KeyName, KeyVersion, and KeyVaultUri are all set, KeySource will be set to Mi
 ```yaml
 Type: SwitchParameter
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -295,7 +295,7 @@ When using Key Vault Encryption by specifying the -KeyvaultEncryption parameter,
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -310,7 +310,7 @@ When using Key Vault Encryption by specifying the -KeyvaultEncryption parameter,
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -335,12 +335,12 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkRuleSet
-NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as services allowed to bypass the rules and how to handle requests that don’t match any of the defined rules.
+NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as services allowed to bypass the rules and how to handle requests that don't match any of the defined rules.
 
 ```yaml
 Type: PSNetworkRuleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -355,7 +355,7 @@ Specifies the name of the resource group in which to modify the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -396,7 +396,7 @@ Indicates whether or not to set the Storage account encryption to use Microsoft-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: StorageEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -428,7 +428,7 @@ Upgrade Storage account Kind from  Storage or BlobStorage to StorageV2.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -443,7 +443,7 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
