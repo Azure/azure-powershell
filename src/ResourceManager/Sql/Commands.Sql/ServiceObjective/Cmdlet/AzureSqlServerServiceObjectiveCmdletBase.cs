@@ -34,21 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        /// <remarks>
-        /// This parameter is not needed or used. It will be removed in a future release.
-        /// </remarks>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "SQL Database name.",
-            DontShow = true)]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
+        
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
