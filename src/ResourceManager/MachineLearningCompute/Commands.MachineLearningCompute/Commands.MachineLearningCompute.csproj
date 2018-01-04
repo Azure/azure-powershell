@@ -64,7 +64,7 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <Reference Include="Microsoft.Azure.Management.MachineLearningCompute, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.MachineLearningCompute, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.3.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
