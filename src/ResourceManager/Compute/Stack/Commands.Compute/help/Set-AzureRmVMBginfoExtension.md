@@ -23,9 +23,15 @@ The **Set-AzureRmVMBGInfoExtension** cmdlet adds the BGInfo extension to a virtu
 
 ## EXAMPLES
 
-### Example 1: Add the BGInfo extension for a virtual machine
+### Example 1: Add the BGInfo extension to a virtual machine
 ```
-PS C:\> Set-AzureVMBGInfoExtension -ResrouceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
+PS C:\> Set-AzureRmVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM"
+```
+This command adds the BGInfo extension to a virtual machine named ContosoVM in the resource group ContosoRG.
+
+### Example 2: Add a specific version of BGInfo extension to a virtual machine
+```
+PS C:\> Set-AzureRmVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
 ```
 
 This command adds the BGInfo extension to virtual machine named ContosoVM.
