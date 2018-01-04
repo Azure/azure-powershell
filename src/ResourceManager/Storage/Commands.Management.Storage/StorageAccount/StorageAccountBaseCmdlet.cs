@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected struct AccountKind
         {
             internal const string Storage = "Storage";
+            internal const string StorageV2 = "StorageV2";
             internal const string BlobStorage = "BlobStorage";
         }
         protected struct AccountAccessTier
@@ -80,13 +81,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (storageClientWrapper == null)
                 {
-                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext);
                 }
 
+                this.storageClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.storageClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return storageClientWrapper.StorageManagementClient;
             }
 
