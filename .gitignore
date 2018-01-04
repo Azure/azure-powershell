@@ -215,3 +215,5 @@ groupMapping*.json
 
 *.msi
 *.wixpdb
+
+.vscode/
