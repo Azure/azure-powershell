@@ -34,8 +34,11 @@ function Test-UpdateTransparentDataEncryption
 	try
 	{
 		# Alter all properties
-		$tde1 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-State Enabled 
+		$job = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-State Enabled -AsJob
+		$job | Wait-Job
+		$tde1 = $job.Output
+
 		Assert-AreEqual $tde1.State Enabled
 	}
 	finally
