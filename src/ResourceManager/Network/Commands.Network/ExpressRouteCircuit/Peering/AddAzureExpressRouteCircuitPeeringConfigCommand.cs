@@ -58,8 +58,6 @@ namespace Microsoft.Azure.Commands.Network
 
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;
-            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
@@ -69,13 +67,17 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
-            this.ConstructMicrosoftConfig(peering);
-
-            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            if (this.PeerAddressType == IPv6)
             {
-                peering.RouteFilter = new PSRouteFilter();
-                peering.RouteFilter.Id = this.RouteFilterId;
+                this.SetIpv6PeeringParameters(peering);
             }
+            else
+            {
+                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                this.SetIpv4PeeringParameters(peering);
+            }
+
+            this.ConstructMicrosoftConfig(peering);
 
             this.ExpressRouteCircuit.Peerings.Add(peering);
 
