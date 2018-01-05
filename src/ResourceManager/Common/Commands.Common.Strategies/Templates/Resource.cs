@@ -16,18 +16,39 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
+    /// <summary>
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-resources
+    /// </summary>
     public class Resource
     {
+        /// <summary>
+        /// API version for creating the resource
+        /// </summary>
         public string apiVersion { get; set; }
 
+        /// <summary>
+        /// Resource type. For example 'Microsot.Storage/storageAccounts'
+        /// </summary>
         public string type { get; set; }
 
+        /// <summary>
+        /// Name of resource.
+        /// </summary>
         public string name { get; set; }
 
+        /// <summary>
+        /// Resource location.
+        /// </summary>
         public string location { get; set; }
 
+        /// <summary>
+        /// Resource properties.
+        /// </summary>
         public Dictionary<string, object> properties { get; set; }
 
+        /// <summary>
+        /// A list of resource which has to be created first.
+        /// </summary>
         public string[] dependsOn { get; set; }
     }
 }

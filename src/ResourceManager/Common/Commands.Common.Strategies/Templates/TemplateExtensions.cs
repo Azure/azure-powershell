@@ -22,15 +22,23 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     public static class TemplateExtensions
     {
+        /// <summary>
+        /// Create a template from the given resource dependency DAG.
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="config">Resource configuration.</param>
+        /// <param name="client">Generic REST API client.</param>
+        /// <param name="target">Target models.</param>
+        /// <param name="subscriptionId">subscription id</param>
+        /// <returns></returns>
         public static Template CreateTemplate<TModel>(
             this ResourceConfig<TModel> config,
             IClient client,
             IState target,
-            string subscriptionId,
-            string location)
+            string subscriptionId)
             where TModel : class
         {
-            var context = new Context(client, target, subscriptionId, location);
+            var context = new Context(client, target, subscriptionId);
             context.CreateResource(config);
             return new Template
             {
@@ -47,23 +55,21 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 
             public string SubscriptionId { get; }
 
-            public string Location { get; }
-
             public ConcurrentDictionary<string, Resource> Map { get; } 
                 = new ConcurrentDictionary<string, Resource>();
 
-            public Context(IClient client, IState target, string subscriptionId, string location)
+            public Context(IClient client, IState target, string subscriptionId)
             {
                 Client = client;
                 Target = target;
                 SubscriptionId = subscriptionId;
-                Location = location;
             }
 
             public void CreateResource<TModel>(ResourceConfig<TModel> config)
                 where TModel : class
             {
                 var type = config.Strategy.GetResourceType();
+                // ignore a resource group
                 if (type != null)
                 {
                     Map.GetOrAdd(
@@ -75,14 +81,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                             {
                                 d.Accept(new CreateResourceVisitor(), this);
                             }
-                            var model = UnflatObject(Target.Get(config));
+                            var model = Target.Get(config);
+                            var jsonModel = UnflatObject(model);
                             return new Resource
                             {
                                 name = config.Name,
                                 type = type,
                                 apiVersion = config.Strategy.GetApiVersion(Client),
-                                location = Location,
-                                properties = model.GetOrNull(Properties) as Dictionary<string, object>,
+                                location = config.Strategy.GetLocation(model),
+                                properties = jsonModel.GetOrNull(Properties) as Dictionary<string, object>,
                                 dependsOn = dependencies
                                     .Where(d => d.Strategy.GetResourceType() != null)
                                     .Select(d => d.GetId(SubscriptionId).IdToString())
