@@ -15,19 +15,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class GetAzureStorageFileTest : StorageFileTestBase<GetAzureStorageFile>
     {
         private const string ShareName = "share";
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromRootTest_ShareNameParameterSet()
         {
             var share = this.MockChannel.GetShareReference(ShareName);
@@ -41,7 +42,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 listItems);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromRootTest_ShareParameterSet()
         {
             var share = this.MockChannel.GetShareReference(ShareName);
@@ -55,7 +57,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 listItems);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromSubDirectoryTest_UsingDirectoryObject()
         {
             var share = this.MockChannel.GetShareReference(ShareName);
@@ -71,7 +74,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 dir);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromSubDirectoryTest_UsingShareObjectWithPath()
         {
             var share = this.MockChannel.GetShareReference(ShareName);
@@ -89,7 +93,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.MockCmdRunTime.OutputPipeline.AssertListFileItems(fileList);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromSubDirectoryTest_UsingShareNameWithPath()
         {
             var share = this.MockChannel.GetShareReference(ShareName);
@@ -106,7 +111,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.MockCmdRunTime.OutputPipeline.AssertListFileItems(fileList);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetFileFromSubDirectoryTest_GetFromNonExistingDirectory()
         {
             this.CmdletInstance.RunCmdlet(
