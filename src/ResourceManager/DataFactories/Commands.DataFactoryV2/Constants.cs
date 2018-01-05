@@ -108,6 +108,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
 
+        public const string HelpIntegrationRuntimeLicenseType = "The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.";
+
         public const string HelpIntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
@@ -167,5 +169,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
         public const string TriggerName = "TriggerName";
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
     }
 }
