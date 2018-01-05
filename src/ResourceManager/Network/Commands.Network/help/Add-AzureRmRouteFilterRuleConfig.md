@@ -24,20 +24,6 @@ The Add-AzureRmRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add a route filter rule to a route filter  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 PS C:\>$RouteFilter = Get-AzureRmRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
 					  PS C:\> Add-AzureRmRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
