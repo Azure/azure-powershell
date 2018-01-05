@@ -19,23 +19,40 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificateVerificationCode")]
     [OutputType(typeof(PSCertificateWithNonceDescription))]
     [Alias("Get-AzureRmIotHubCVC")]
     public class GetAzureRmIotHubCertificateVerificationCode : IotHubBaseCmdlet
     {
+        private const string ResourceIdParameterSet = "ResourceIdSet";
+        private const string ResourceParameterSet = "ResourceSet";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Id")]
+        [Alias("Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
@@ -59,6 +76,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
+                this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
+            }
+
             CertificateWithNonceDescription certificateWithNonceDescription = this.IotHubClient.Certificates.GenerateVerificationCode(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
             this.WriteObject(IotHubUtils.ToPSCertificateWithNonceDescription(certificateWithNonceDescription));
         }

@@ -12,9 +12,17 @@ Create/update an Azure IoT Hub certificate.
 
 ## SYNTAX
 
+### ResourceSet
 ```
 Add-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
- [-Path] <String> [[-Etag] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Path] <String> [[-Etag] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Add-AzureRmIotHubCertificate -ResourceId <String> [-CertificateName] <String> [-Path] <String>
+ [[-Etag] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,6 +35,16 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 ### Example 1
 ```
 PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer"
+
+ResourceGroupName	: myresourcegroup
+Name				: myiothub
+CertificateName		: mycertificate
+Subject				: CN=mycertificate
+Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
+Status				: Unverified
+Expiry				: 1/01/2027 16:01
+Created				: 1/01/2017 16:01
+Etag				: AAAAAAFpGcA=
 ```
 
 Uploads a CA certificate CER file to an IoT hub. 
@@ -34,11 +52,34 @@ Uploads a CA certificate CER file to an IoT hub.
 ### Example 2
 ```
 PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFPazE="
+
+ResourceGroupName	: myresourcegroup
+Name				: myiothub
+CertificateName		: mycertificate
+Subject				: CN=mycertificate
+Thumbprint			: 38303FC7371EC13DDE3E18D712C8414EE50969C7
+Status				: Unverified
+Expiry				: 1/01/2027 16:01
+Created				: 1/01/2017 16:01
+Etag				: AAAAAAFpObE=
 ```
 
 Updates a CA certificate in an IoT hub by uploading a new CER file. 
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CertificateName
 Name of the Certificate
@@ -90,7 +131,7 @@ Name of the Iot Hub
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
@@ -120,11 +161,24 @@ Name of the Resource Group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases: Id
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

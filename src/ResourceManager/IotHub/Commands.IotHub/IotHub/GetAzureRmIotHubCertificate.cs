@@ -20,29 +20,45 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificate")]
-    [OutputType(typeof(PSCertificateDescription), typeof(IList<PSCertificateDescription>))]
+    [OutputType(typeof(PSCertificateDescription), typeof(List<PSCertificate>))]
     public class GetAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
+        private const string ResourceIdParameterSet = "ResourceIdSet";
+        private const string ResourceParameterSet = "ResourceSet";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Id")]
+        [Alias("Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
@@ -51,7 +67,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            if (CertificateName != null)
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
+                this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
+            }
+
+            if (!string.IsNullOrEmpty(CertificateName))
             {
                 CertificateDescription certificateDescription = this.IotHubClient.Certificates.Get(this.ResourceGroupName, this.Name, this.CertificateName);
                 this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription));
@@ -59,7 +81,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             else
             {
                 CertificateListDescription certificateDescriptions = this.IotHubClient.Certificates.ListByIotHub(this.ResourceGroupName, this.Name);
-                this.WriteObject(IotHubUtils.ToPSCertificateListDescription(certificateDescriptions).Value, true);
+                this.WriteObject(IotHubUtils.ToPSCertificates(certificateDescriptions), true);
             }
         }
     }

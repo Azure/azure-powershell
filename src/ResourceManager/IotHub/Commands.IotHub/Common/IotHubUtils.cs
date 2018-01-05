@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Microsoft.Rest.Azure;
+    using Newtonsoft.Json;
 
     public static class IotHubUtils
     {
@@ -200,20 +200,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<CertificateDescription, PSCertificateDescription>(certificateDescription);
         }
 
-        public static PSCertificateListDescription ToPSCertificateListDescription(CertificateListDescription certificateListDescription)
+        public static IEnumerable<PSCertificate> ToPSCertificates(CertificateListDescription certificateListDescription)
         {
-            var psCertificateDescription = new List<PSCertificateDescription>();
-            foreach (CertificateDescription certificateDescription in certificateListDescription.Value)
-            {
-                psCertificateDescription.Add(ToPSCertificateDescription(certificateDescription));
-            }
-
-            return new Models.PSCertificateListDescription() { Value = psCertificateDescription };
+            return ConvertObject<IEnumerable<CertificateDescription>, IEnumerable<PSCertificate>>(certificateListDescription.Value);
         }
 
         public static PSCertificateWithNonceDescription ToPSCertificateWithNonceDescription(CertificateWithNonceDescription certificateWithNonceDescription)
         {
             return ConvertObject<CertificateWithNonceDescription, PSCertificateWithNonceDescription>(certificateWithNonceDescription);
+        }
+
+        public static string GetResourceGroupName(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        public static string GetIotHubName(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>\S+)/certificates/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["iothubname"].Value : null;
         }
     }
 }

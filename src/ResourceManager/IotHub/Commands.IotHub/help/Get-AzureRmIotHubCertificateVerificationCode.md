@@ -12,9 +12,16 @@ Generates a verification code for an Azure IoT Hub certificate.
 
 ## SYNTAX
 
+### ResourceSet
 ```
 Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Name] <String>
  [-CertificateName] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Get-AzureRmIotHubCertificateVerificationCode -ResourceId <String> [-CertificateName] <String> [-Etag] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +33,17 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 ### Example 1
 ```
 PS C:\> Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
+
+ResourceGroupName	: myresourcegroup
+Name				: myiothub
+CertificateName		: mycertificate
+Subject				: CN=mycertificate
+Thumbprint			: 38303FC7371EC13DDE3E18D712C8414EE50969C7
+VerificationCode	: 47292AB6260DB02CCD2D07C601B7303DD49858B6
+Status				: Unverified
+Expiry				: 1/01/2027 16:01
+Created				: 1/01/2017 16:01
+Etag				: AAAAAAFpObE=
 ```
 
 Generates a verification code for MyCertificate 
@@ -82,7 +100,7 @@ Name of the Iot Hub
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
@@ -97,11 +115,24 @@ Name of the Resource Group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases: Id
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

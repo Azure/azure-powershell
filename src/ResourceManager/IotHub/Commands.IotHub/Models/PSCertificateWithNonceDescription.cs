@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Text.RegularExpressions;
+    using Common;
     using Newtonsoft.Json;
 
     public class PSCertificateWithNonceDescription
@@ -26,10 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         {
             get
             {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["rgname"].Value : null;
+                return IotHubUtils.GetResourceGroupName(Id);
             }
         }
 
@@ -40,10 +37,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         {
             get
             {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>\S+)/certificates/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["iothubname"].Value : null;
+                return IotHubUtils.GetIotHubName(Id);
             }
         }
 

@@ -3,10 +3,10 @@
   <ViewDefinitions>
     <View>
       <Name>
-        Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificate
       </Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -17,21 +17,10 @@
           <TableColumnHeader>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Subject</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Thumbprint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Status</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Expiry</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Created</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -48,27 +37,63 @@
                 <PropertyName>CertificateName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Properties.Subject</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Properties.Thumbprint</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
                 <ScriptBlock>if($_.Properties.IsVerified) { "Verified" } else { "Unverified" }</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.Expiry.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
               </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Properties.Created.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CertificateName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subject</Label>
+                <ScriptBlock>$_.Properties.Subject</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Thumbprint</Label>
+                <ScriptBlock>$_.Properties.Thumbprint</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <ScriptBlock>if($_.Properties.IsVerified) { "Verified" } else { "Unverified" }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Expiry</Label>
+                <ScriptBlock>$_.Properties.Expiry.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Created</Label>
+                <ScriptBlock>$_.Properties.Created.ToLocalTime().toString("M/dd/yyyy HH:MM")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
     <View>
       <Name>

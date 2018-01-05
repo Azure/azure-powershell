@@ -226,6 +226,25 @@ function Test-AzureRmIotHubLifecycle
 	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
 
+	# Remove IotHub
+	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+}
+
+function Test-AzureRmIotHubCertificateLifecycle
+{
+	Param($Location, $IotHubName, $ResourceGroupName, $Sku)
+
+	# Create or Update Resource Group
+	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+
+	# Create Iot Hub
+	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
+
+	# Get Iot Hub
+	$iotHub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+
+	Assert-True { $iotHub.Name -eq $IotHubName }
+
 	# Add Certificate
 	$certificatePath = "ScenarioTestFile\PS-Test-Root-CA.cer"
 	$certificateSubject = "CN=PS Test Root Certificate Authority"
