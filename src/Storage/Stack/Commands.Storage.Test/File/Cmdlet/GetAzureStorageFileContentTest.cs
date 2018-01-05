@@ -32,15 +32,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             }
         }
 
-        //[TestCleanup]
-        //public void DownloadCleanup()
-        //{
-        //    if (System.IO.File.Exists(this.destinationFilePath))
-        //    {
-        //        System.IO.File.Delete(this.destinationFilePath);
-        //    }
-        //}
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingShareNameAndPathToLocalFileTest()
