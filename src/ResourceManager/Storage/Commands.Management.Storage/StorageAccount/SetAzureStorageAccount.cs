@@ -193,6 +193,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
         public SwitchParameter UpgradeToStorageV2 { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
