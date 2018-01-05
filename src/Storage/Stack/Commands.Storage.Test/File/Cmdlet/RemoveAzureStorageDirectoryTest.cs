@@ -15,17 +15,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class RemoveAzureStorageDirectoryTest : StorageFileTestBase<RemoveAzureStorageDirectory>
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDirectoryUsingShareNameAndPathTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -39,7 +40,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Share.Name == "share" && x.Name == "directory");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDirectoryUsingShareObjectAndPathTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -53,7 +55,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Share.Name == "share" && x.Name == "directory");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDirectoryUsingDirectoryObjectAndPathTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -67,7 +70,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Share.Name == "share" && x.Name == "directory");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDirectoryUsingDirectoryObjectOnlyTest()
         {
             this.CmdletInstance.RunCmdlet(
