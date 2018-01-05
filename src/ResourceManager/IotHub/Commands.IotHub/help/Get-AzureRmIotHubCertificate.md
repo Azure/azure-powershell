@@ -12,8 +12,15 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ## SYNTAX
 
+### ResourceSet
 ```
 Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [[-CertificateName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Get-AzureRmIotHubCertificate -ResourceId <String> [[-CertificateName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,6 +32,11 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 ### Example 1
 ```
 PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
+
+ResourceGroupName	Name		CertificateName Status     Expiry
+-----------------	----        ---------------	------     ------
+myresourcegroup		myiothub3	mycert1         Unverified 12/04/2027 13:12
+myresourcegroup     myiothub	mycert2         Unverified 12/04/2027 13:12
 ```
 
 List all certificates in MyIotHub
@@ -32,6 +44,16 @@ List all certificates in MyIotHub
 ### Example 2
 ```
 PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
+
+ResourceGroupName	: myresourcegroup
+Name				: myiothub
+CertificateName		: mycertificate
+Subject				: CN=mycertificate
+Thumbprint			: 38303FC7371EC13DDE3E18D712C8414EE50969C7
+Status				: Unverified
+Expiry				: 1/01/2027 16:01
+Created				: 1/01/2017 16:01
+Etag				: AAAAAAFpObE=
 ```
 
 Show details about MyCertificate
@@ -73,7 +95,7 @@ Name of the Iot Hub
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
@@ -88,11 +110,24 @@ Name of the Resource Group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases: Id
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

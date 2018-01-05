@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     using Common;
     using Newtonsoft.Json;
 
-    public class PSCertificateDescription
+    public class PSCertificate
     {
         /// <summary>
         /// Gets the property of ResourceGroupName
@@ -71,4 +71,3 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public string Type { get; private set; }
     }
 }
-
