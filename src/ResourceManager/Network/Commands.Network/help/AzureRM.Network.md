@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Network
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
@@ -239,12 +239,6 @@ Lists network usages for a subscription
 ### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
 Gets the properties of a Network Watcher
 
-### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
-Lists all available internet service providers for a specified Azure region
-
-### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
-Gets the relative latency score for internet service providers from a specified location to Azure regions
-
 ### [Get-AzureRmNetworkWatcherFlowLogStatus](Get-AzureRmNetworkWatcherFlowLogStatus.md)
 Gets the status of flow logging on a resource.
 
@@ -253,6 +247,12 @@ Gets the next hop from a VM.
 
 ### [Get-AzureRmNetworkWatcherPacketCapture](Get-AzureRmNetworkWatcherPacketCapture.md)
 Gets information and properties and status of a packet capture resource.
+
+### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
+Lists all available internet service providers for a specified Azure region.
+
+### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
+Gets the relative latency score for internet service providers from a specified location to Azure regions.
 
 ### [Get-AzureRmNetworkWatcherSecurityGroupView](Get-AzureRmNetworkWatcherSecurityGroupView.md)
 View the configured and effective network security group rules applied on a VM.
