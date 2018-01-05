@@ -12,17 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    /// <summary>
-    /// Base interface for ResourceStrategy[].
-    /// </summary>
-    public interface IResourceStrategy : IEntityStrategy
+    public class Resource
     {
-        string Type { get; }
+        public string apiVersion { get; set; }
 
-        string Namespace { get; }
+        public string type { get; set; }
 
-        string Provider { get; }
+        public string name { get; set; }
+
+        public string location { get; set; }
+
+        public Dictionary<string, object> properties { get; set; }
+
+        public string[] dependsOn { get; set; }
     }
 }

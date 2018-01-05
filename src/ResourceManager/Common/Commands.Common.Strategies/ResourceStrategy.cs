@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public string Type { get; }
 
+        public string Namespace { get; }
+
+        public string Provider { get; }
+
+        public Func<IClient, string> GetApiVersion { get; }
+
         public Func<string, IEnumerable<string>> GetId { get; }
 
         public Func<IClient, GetAsyncParams, Task<TModel>> GetAsync { get; }
@@ -41,6 +47,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public ResourceStrategy(
             string type,
+            string namespace_,
+            string provider,
+            Func<IClient, string> getApiVersion,
             Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -50,6 +59,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             bool compulsoryLocation)
         {
             Type = type;
+            Namespace = namespace_;
+            Provider = provider;
+            GetApiVersion = getApiVersion;
             GetId = getId;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
@@ -64,6 +76,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
             string type,
+            string namespace_,
+            string provider,
+            Func<TClient, string> getApiVersion,
             Func<string, IEnumerable<string>> getId,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
@@ -77,6 +92,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
             return new ResourceStrategy<TModel>(
                 type,
+                namespace_,
+                provider,
+                client => getApiVersion(client.GetClient<TClient>()),
                 getId,
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
@@ -88,7 +106,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
             string type,
-            IEnumerable<string> providers,
+            string namespace_,
+            string provider,
+            Func<TClient, string> getApiVersion,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -98,8 +118,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             bool compulsoryLocation)
             where TClient : ServiceClient<TClient>
             => Create(
-                type,
-                name => new[] { "providers" }.Concat(providers).Concat(new[] { name }),
+                type,                
+                namespace_,
+                provider,
+                getApiVersion,
+                name => new[] { "providers", namespace_, provider, name }.Where(v => v != null),
                 getOperations,
                 getAsync,
                 createOrUpdateAsync,
@@ -107,5 +130,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 setLocation,
                 createTime,
                 compulsoryLocation);
+
+        public static string GetResourceType(this IResourceStrategy strategy)
+            => strategy.Namespace == null ? null : strategy.Namespace + "/" + strategy.Provider;
     }
 }

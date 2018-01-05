@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+using Newtonsoft.Json;
+
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Base interface for ResourceStrategy[].
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
     /// </summary>
-    public interface IResourceStrategy : IEntityStrategy
+    public class Template
     {
-        string Type { get; }
+        [JsonProperty("$schema")]
+        public string Schema { get; set; }
+            = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
 
-        string Namespace { get; }
+        public string contentVersion { get; set; }
 
-        string Provider { get; }
+        public Resource[] resources { get; set; }
     }
 }

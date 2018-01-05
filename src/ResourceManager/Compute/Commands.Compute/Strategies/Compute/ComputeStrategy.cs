@@ -31,7 +31,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: type,
-                providers: new[] { "Microsoft.Compute", provider },
+                namespace_: "Microsoft.Compute",
+                provider: provider,
+                getApiVersion: _ => "2017-12-01",
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
