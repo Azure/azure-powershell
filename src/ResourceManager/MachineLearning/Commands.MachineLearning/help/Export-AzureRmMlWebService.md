@@ -31,19 +31,11 @@ You can return the string immediately or save it to a file.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Export as string  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Export-AzureRmMlWebService -WebService $svc -ToJsonString
 ```
 
 ### --------------------------  Example 2: Export to file  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
