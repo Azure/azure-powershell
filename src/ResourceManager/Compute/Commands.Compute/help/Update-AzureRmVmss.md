@@ -176,6 +176,7 @@ The acceptable values for this parameter are:
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -305,6 +306,7 @@ The acceptable values for this parameter are:
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
@@ -382,6 +384,7 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
 Position: Named
@@ -620,6 +623,7 @@ The acceptable values for this parameter are:
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: Named
