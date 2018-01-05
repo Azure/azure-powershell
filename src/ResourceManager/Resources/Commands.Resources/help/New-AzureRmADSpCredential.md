@@ -69,14 +69,6 @@ A new key credential is added to an existing service principal.
 In this example, the supplied base64 encoded public X509 certificate ("myapp.cer") is added to the service principal using its SPN.
 
 ### --------------------------  Example 3  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
 ```
 PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue
 ```
