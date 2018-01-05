@@ -58,14 +58,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             HelpMessage = ResourceIdParameterHelpMessage)]
         public string ResourceId { get; set; }
 
-        [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = false, 
-            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = false, 
-            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
-        [Parameter(ParameterSetName = CmdletParametersParameterSet,
-            Mandatory = false, 
+        [Parameter(Mandatory = false,
             HelpMessage = IncludeAllResourcesParameterHelpMessage)]
         public SwitchParameter IncludeAllResources { get; set; }
 
