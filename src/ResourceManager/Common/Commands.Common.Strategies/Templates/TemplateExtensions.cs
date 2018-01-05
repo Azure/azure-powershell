@@ -108,7 +108,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
             {
                 return value;
             }
-            if (value is IEnumerable array)
+            var array = value as IEnumerable;
+            if (array != null)
             {
                 var result = new List<object>();
                 foreach (var x in array)
