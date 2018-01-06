@@ -117,7 +117,7 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,15 +145,15 @@ Accept wildcard characters: False
 Specifies a debug log level.
 The acceptable values for this parameter are:
 
-- RequestContent 
-- ResponseContent 
-- All 
+- RequestContent
+- ResponseContent
+- All
 - None
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +168,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,13 +180,17 @@ Accept wildcard characters: False
 ### -Mode
 Specifies the deployment mode. The acceptable values for this parameter are:
 
-- Complete 
+- Complete
 - Incremental
+
+In complete mode, Resource Manager deletes resources that exist in the resource group but are not
+specified in the template. In incremental mode, Resource Manager leaves unchanged resources that
+exist in the resource group but are not specified in the template.
 
 ```yaml
 Type: DeploymentMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,7 +220,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -231,7 +235,7 @@ Specifies the name of the resource group to deploy.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -247,7 +251,7 @@ This can be a custom template or a gallery template that is saved as a JSON file
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -266,7 +270,7 @@ To use the dynamic parameters, type a minus sign (-) to indicate a parameter nam
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -284,7 +288,7 @@ Template parameters are dynamically added to the command when you specify a temp
 ```yaml
 Type: Hashtable
 Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -299,7 +303,7 @@ Specifies the URI of a template parameters file.
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -315,7 +319,7 @@ This file can be a custom template or a gallery template that is saved as a JSON
 ```yaml
 Type: String
 Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
