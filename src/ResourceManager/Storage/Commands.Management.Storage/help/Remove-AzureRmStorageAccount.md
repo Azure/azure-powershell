@@ -14,7 +14,7 @@ Removes a Storage account from Azure.
 ## SYNTAX
 
 ```
-Remove-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +31,21 @@ PS C:\>Remove-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MySt
 This command removes the specified Storage account.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -51,7 +66,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -81,7 +96,7 @@ Specifies the name of the resource group that contains the Storage account to re
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

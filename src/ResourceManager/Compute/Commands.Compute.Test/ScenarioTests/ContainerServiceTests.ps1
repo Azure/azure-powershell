@@ -57,10 +57,12 @@ function Test-ContainerService
             "oe6IQTw7zJF7xuBIzTYwjOCM197GKW7xc4GU4JZIN+faZ7njl/fxfUNdlqvgZUUn" +
             "kfdrzU3PZPl0w9NuncgEje/PZ+YtZvIsnH7MLSPeIGNQwW6V2kc8";
 
-        $container = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
+        $job = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
             -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
         | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName -Count 1 `
-        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -AsJob
+		$job | Wait-Job
+		$container = $job | Receive-Job
 
         $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
         $output = $cs | Out-String;
@@ -70,7 +72,9 @@ function Test-ContainerService
         $output = $cslist | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
 
-        $st = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force;
+        $job = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force -AsJob
+		$job | Wait-Job
+		$st = $job | Receive-Job
     }
     finally
     {
@@ -142,7 +146,7 @@ function Test-ContainerServiceUpdate
             -VmSize $vmSize `
             -DnsPrefix $agentPoolDnsPrefixName `
             -Count 2 `
-        | Update-AzureRmContainerService;
+        | Update-AzureRmContainerService
 
         $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
     }

@@ -37,7 +37,8 @@ function Test-StorageAccount
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -EnableEncryptionService $encryptionServiceBF;
+        $job = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -EnableEncryptionService $encryptionServiceBF -AsJob
+		$job | Wait-Job
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
         $stotype = 'StandardGRS';
@@ -565,7 +566,8 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[1].IPAddressOrRange $ip4;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 
-		Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPAddressOrRange "$ip3"
+		$job = Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPAddressOrRange "$ip3" -AsJob
+		$job | Wait-Job
         $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual $stoacl.Bypass 6;
         Assert-AreEqual $stoacl.DefaultAction Allow;
@@ -573,14 +575,16 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[0].IPAddressOrRange $ip4;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 		
-		Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -DefaultAction Deny -Bypass None
+		$job = Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -IpRule @() -DefaultAction Deny -Bypass None -AsJob
+		$job | Wait-Job
         $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual $stoacl.Bypass 0;
         Assert-AreEqual $stoacl.DefaultAction Deny;
         Assert-AreEqual $stoacl.IpRules $null
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 		
-		$stoacliprule | Add-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname
+		$job = $stoacliprule | Add-AzureRmStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -AsJob
+		$job | Wait-Job
         $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual $stoacl.Bypass 0;
         Assert-AreEqual $stoacl.DefaultAction Deny;
@@ -589,10 +593,11 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[1].IPAddressOrRange $ip4;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 		
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname  -NetworkRuleSet (@{bypass="AzureServices";
+        $job = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -AsJob -NetworkRuleSet (@{bypass="AzureServices";
 			ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
 			defaultAction="Allow"}) 
+		$job | Wait-Job
 
 		$stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
         Assert-AreEqual $stoacl.Bypass 4;
@@ -602,7 +607,8 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[1].IPAddressOrRange $ip2;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 
-        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        $job = Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname -AsJob
+		$job | Wait-Job
     }
     finally
     {

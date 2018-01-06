@@ -25,14 +25,6 @@ The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service run
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add a version for Spark to the cluster configuration object.  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
 ```
 PS C:\> # Primary storage account info
         $storageAccountResourceGroupName = "Group"
