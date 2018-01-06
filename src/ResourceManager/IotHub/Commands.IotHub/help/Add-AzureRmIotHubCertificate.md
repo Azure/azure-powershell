@@ -15,15 +15,14 @@ Create/update an Azure IoT Hub certificate.
 ### ResourceSet
 ```
 Add-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
- [-Path] <String> [[-Etag] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Path] <String> [[-Etag] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Add-AzureRmIotHubCertificate -ResourceId <String> [-CertificateName] <String> [-Path] <String>
- [[-Etag] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-Etag] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,19 +66,6 @@ Etag				: AAAAAAFpObE=
 Updates a CA certificate in an IoT hub by uploading a new CER file. 
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CertificateName
 Name of the Certificate
@@ -172,10 +158,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id```yaml
+Resource Id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: Id
+Aliases: 
 
 Required: True
 Position: Named

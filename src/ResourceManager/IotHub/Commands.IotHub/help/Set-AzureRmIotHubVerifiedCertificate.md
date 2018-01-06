@@ -15,14 +15,14 @@ Verifies an Azure IoT Hub certificate.
 ### ResourceSet
 ```
 Set-AzureRmIotHubVerifiedCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
- [-Path] <String> [-Etag] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Path] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Set-AzureRmIotHubVerifiedCertificate -ResourceId <String> [-CertificateName] <String> [-Path] <String>
- [-Etag] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,19 +49,6 @@ Etag				: AAAAAAFpObE=
 Verifies ownership of the MyCertificate private key. 
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CertificateName
 Name of the Certificate
@@ -154,10 +141,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id```yaml
+Resource Id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: Id
+Aliases: 
 
 Required: True
 Position: Named
