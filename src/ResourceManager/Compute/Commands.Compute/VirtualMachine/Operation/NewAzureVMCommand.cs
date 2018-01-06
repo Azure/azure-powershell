@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
+using Microsoft.Azure.Commands.Common.Strategies.Templates;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Strategies;
@@ -27,8 +28,10 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
         DefaultParameterSetName = "DefaultParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine), typeof(string))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -169,6 +172,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter AsArmTemplate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -229,6 +235,13 @@ namespace Microsoft.Azure.Commands.Compute
             
             OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
+            var password = new NetworkCredential(string.Empty, Credential.Password).Password;
+
+            if (AsArmTemplate)
+            {
+                password = "[parameters('password')]";                
+            }
+
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                 name: VirtualNetworkName, addressPrefix: AddressPrefix);
@@ -247,7 +260,7 @@ namespace Microsoft.Azure.Commands.Compute
                 networkInterface: networkInterface,
                 isWindows: isWindows,
                 adminUsername: Credential.UserName,
-                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                adminPassword: password,
                 image: image,
                 size: Size);
 
@@ -268,30 +281,44 @@ namespace Microsoft.Azure.Commands.Compute
             var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
 
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
+            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
 
-            // apply target state
-            var newState = await virtualMachine
-                .UpdateStateAsync(
-                    client,
-                    target,
-                    new CancellationToken(),
-                    new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
-
-            var result = newState.Get(virtualMachine);
-            if (result == null)
+            // template
+            if (AsArmTemplate)
             {
-                result = current.Get(virtualMachine);
+                var template = virtualMachine.CreateTemplate(client, target, client.SubscriptionId);
+                template.parameters = new Dictionary<string, Parameter>()
+                {
+                    { "password", new Parameter { type = "secureString" } }
+                };
+                var result = JsonConvert.SerializeObject(template);
+                asyncCmdlet.WriteObject(result);
             }
-            if (result != null)
+            else
             {
-                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(isWindows
-                    ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
-                    : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
-                asyncCmdlet.WriteObject(psResult);
+                // apply target state
+                var newState = await virtualMachine
+                    .UpdateStateAsync(
+                        client,
+                        target,
+                        new CancellationToken(),
+                        new ShouldProcess(asyncCmdlet),
+                        asyncCmdlet.ReportTaskProgress);
+
+                var result = newState.Get(virtualMachine);
+                if (result == null)
+                {
+                    result = current.Get(virtualMachine);
+                }
+                if (result != null)
+                {
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                    psResult.FullyQualifiedDomainName = fqdn;
+                    asyncCmdlet.WriteVerbose(isWindows
+                        ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                        : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+                    asyncCmdlet.WriteObject(psResult);
+                }
             }
         }
 
