@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Id")]
-        [Alias("Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -62,16 +61,29 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Name of the Certificate")]
+        [Parameter(
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceParameterSet,
             HelpMessage = "Name of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
         [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "base-64 representation of X509 certificate .cer file or .pem file path.")]
+        [Parameter(
             Position = 3,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             HelpMessage = "base-64 representation of X509 certificate .cer file or .pem file path.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -82,9 +94,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             HelpMessage = "Etag of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string Etag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

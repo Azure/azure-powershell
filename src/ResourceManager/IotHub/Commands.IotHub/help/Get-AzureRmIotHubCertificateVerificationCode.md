@@ -126,10 +126,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id```yaml
+Resource Id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: Id
+Aliases: 
 
 Required: True
 Position: Named
