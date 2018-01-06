@@ -24,10 +24,6 @@ Updates an existing commitment plan resource. Note that most properties of the c
 ## EXAMPLES
 
 ### --------------------------  Example 1: Update a commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Update-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Tags @{'MyTagKey'='MyTagValue'}
 ```
