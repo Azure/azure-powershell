@@ -12,31 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Azure Resource Management Template
-    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
+    /// Azure template parameter.
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-parameters
     /// </summary>
-    public class Template
+    public class Parameter
     {
-        [JsonProperty("$schema")]
-        public string Schema { get; set; }
-            = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
-
-        /// <summary>
-        /// Template version.
-        /// </summary>
-        public string contentVersion { get; set; }
-
-        public Dictionary<string, Parameter> parameters { get; set; }
-
-        /// <summary>
-        /// Resources that are deployed.
-        /// </summary>
-        public Resource[] resources { get; set; }
+        public string type { get; set; }
     }
 }
