@@ -61,6 +61,7 @@
     <Compile Include="IShouldProcess.cs" />
     <Compile Include="ITaskProgress.cs" />
     <Compile Include="ProgressMap.cs" />
+    <Compile Include="Templates\Parameter.cs" />
     <Compile Include="Templates\Resource.cs" />
     <Compile Include="Templates\Template.cs" />
     <Compile Include="Templates\TemplateExtensions.cs" />
