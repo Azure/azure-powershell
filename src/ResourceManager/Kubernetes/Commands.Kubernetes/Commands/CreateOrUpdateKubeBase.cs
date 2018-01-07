@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         protected ManagedCluster BuildNewCluster()
         {
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 new ContainerServiceLinuxProfile(AdminUserName,
                     new ContainerServiceSshConfiguration(pubKey));
 
-            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
+            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret?.UserName, ClientIdAndSecret?.Password?.ToString());
 
             var spProfile = new ContainerServiceServicePrincipalProfile(
                 acsServicePrincipal.SpId,
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             var managedCluster = new ManagedCluster(
                 Location,
                 name: Name,
-                tags: TagsConversionHelper.CreateTagDictionary(Tags, true),
+                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
                 dnsPrefix: DnsNamePrefix,
                 kubernetesVersion: KubernetesVersion,
                 agentPoolProfiles: new List<ContainerServiceAgentPoolProfile> {defaultAgentPoolProfile},
@@ -219,17 +219,17 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 // if nothing to load, make one
                 if (clientSecret == null)
                 {
-                    clientSecret = RandomUtfString(16);
+                    clientSecret = RandomBase64String(16);
                 }
-                var salt = RandomUtfString(3);
+                var salt = RandomBase64String(3);
                 var url = string.Format("http://{0}.{1}.{2}.cloudapp.azure.com", salt, DnsNamePrefix, Location);
 
                 acsServicePrincipal = BuildServicePrincipal(Name, url, clientSecret);
                 WriteVerbose(string.Format(
                     "Created a new Service Principal and assigned the contributor role for this subcription.",
                     AcsSpFilePath));
+                StoreServicePrincipal(acsServicePrincipal);
             }
-            StoreServicePrincipal(acsServicePrincipal);
             return acsServicePrincipal;
         }
 
@@ -247,14 +247,15 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 url,
                 passwordCredentials: new List<PasswordCredential> { pwCreds }));
 
+            ServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var sp = new ServicePrincipalCreateParameters(
-                    app.AppId,
-                    true,
-                    passwordCredentials: new List<PasswordCredential> { pwCreds });
-                GraphClient.ServicePrincipals.Create(sp);
-            });
+                var spCreateParams = new ServicePrincipalCreateParameters(
+                                app.AppId,
+                                true,
+                                passwordCredentials: new List<PasswordCredential> { pwCreds });
+                sp = GraphClient.ServicePrincipals.Create(spCreateParams);
+            }, "Service Principal Create");
 
             if (!success)
             {
@@ -262,7 +263,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     "Could not create a service principal with the right permissions. Are you an Owner on this project?");
             }
 
-            AddRoleAssignment("Contributor", app.AppId);
+            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret };
         }
 
@@ -281,13 +282,15 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
         }
 
-        protected void AddRoleAssignment(string role, string appId)
+        protected void AddSubscriptionRoleAssignment(string role, string appId)
         {
+            var scope = string.Format("/subscriptions/{0}", DefaultContext.Subscription.Id);
+            var roleId = GetRoleId(role, scope);
             var success = RetryAction(() =>
-                AuthClient.RoleAssignments.Create(role, appId, new RoleAssignmentCreateParameters()
+                AuthClient.RoleAssignments.Create(scope, appId, new RoleAssignmentCreateParameters()
                 {
-                    Properties = new RoleAssignmentProperties(role, appId)
-                }));
+                    Properties = new RoleAssignmentProperties(roleId, appId)
+                }), "Add Role Assignment");
 
             if (!success)
             {
@@ -296,7 +299,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
         }
 
-        protected static bool RetryAction(Action action)
+        protected string GetRoleId(string roleName, string scope)
+        {
+            return AuthClient.RoleDefinitions.List(scope, $"roleName eq '{roleName}'").First().Id;
+        }
+
+        protected bool RetryAction(Action action, string actionName = null)
         {
             var success = false;
             foreach (var i in Enumerable.Range(1, 10))
@@ -307,8 +315,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     success = true;
                     break;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    WriteVerbose(string.Format("Retry {0} for {1} after error: {2}", i, actionName ?? "action", ex.Message));
                     // AAD might puke here, so we catch it and try again until success
                     Thread.Sleep(1000 * i);
                 }
@@ -334,15 +343,16 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             var config = LoadServicePrincipals() ?? new Dictionary<string, AcsServicePrincipal>();
             config[DefaultContext.Subscription.Id] = acsServicePrincipal;
+            Directory.CreateDirectory(Path.GetDirectoryName(AcsSpFilePath));
             File.WriteAllText(AcsSpFilePath, JsonConvert.SerializeObject(config));
         }
 
-        protected static string RandomUtfString(int size)
+        protected static string RandomBase64String(int size)
         {
             var rnd = new Random();
             var secretBytes = new byte[size];
             rnd.NextBytes(secretBytes);
-            return Encoding.UTF8.GetString(secretBytes);
+            return Convert.ToBase64String(secretBytes);
         }
 
         protected string DefaultDnsPrefix()

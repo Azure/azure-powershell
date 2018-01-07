@@ -243,7 +243,14 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             _statusMsg = string.Format("Stopping process with id {0}", _pid);
             SetJobState(JobState.Stopping);
-            Process.GetProcessById(_pid)?.Kill();
+            try
+            {
+                Process.GetProcessById(_pid)?.Kill();
+            }
+            catch (Exception)
+            {
+                _statusMsg = "pid doesn't exit or job is already dead";
+            }
             SetJobState(JobState.Stopped);
             _statusMsg = string.Format("Stopped process with id {0}", _pid);
             OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, _statusMsg));

@@ -19,7 +19,7 @@ namespace Commands.Kubernetes.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureKubernetes()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureKubernetes");
+            TestController.NewInstance.RunPowerShellTest("Test-AzureRmKubernetes");
         }
     }
 }
