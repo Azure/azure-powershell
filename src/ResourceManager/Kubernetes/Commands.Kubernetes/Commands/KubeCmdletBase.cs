@@ -31,7 +31,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
             _authClient ?? (_authClient = BuildClient<AuthorizationManagementClient>());
 
         protected IGraphRbacManagementClient GraphClient =>
-            _graphClient ?? (_graphClient = BuildClient<GraphRbacManagementClient>());
+            _graphClient ?? (_graphClient = BuildClient<GraphRbacManagementClient>(endpoint: AzureEnvironment.Endpoint.Graph, postBuild: instance =>
+            {
+                instance.TenantID = DefaultContext.Tenant.Id;
+                return instance;
+            }));
 
         /// <summary>
         /// Run Cmdlet with Error Handling (report error correctly)
@@ -49,10 +53,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
         }
 
-        private T BuildClient<T>() where T : ServiceClient<T>
+        private T BuildClient<T>(string endpoint = null, Func<T, T> postBuild = null) where T : ServiceClient<T>
         {
-            return AzureSession.Instance.ClientFactory.CreateArmClient<T>(
-                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            var instance = AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+                DefaultProfile.DefaultContext, endpoint ?? AzureEnvironment.Endpoint.ResourceManager);
+            return postBuild == null ? instance : postBuild(instance);
         }
 
         private string AzConfigDir => Path.Combine(

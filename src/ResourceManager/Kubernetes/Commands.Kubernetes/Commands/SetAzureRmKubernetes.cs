@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Commands.Kubernetes
                             cluster.KubernetesVersion = KubernetesVersion;
                         }
 
-                        if (MyInvocation.BoundParameters.ContainsKey("Tags"))
+                        if (MyInvocation.BoundParameters.ContainsKey("Tag"))
                         {
                             WriteVerbose("Updating tags");
-                            cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tags, true);
+                            cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
                         }
 
                         WriteVerbose("Updating your managed Kubernetes cluster.");

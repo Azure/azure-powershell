@@ -16,9 +16,9 @@
 .SYNOPSIS
 Gets container registry name
 #>
-function Get-RandomRegistryName
+function Get-RandomClusterName
 {
-    return 'reg' + (getAssetName)
+    return 'kube' + (getAssetName)
 }
 
 <#

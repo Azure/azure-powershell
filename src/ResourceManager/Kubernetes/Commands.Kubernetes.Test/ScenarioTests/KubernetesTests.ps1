@@ -6,14 +6,16 @@ function Test-AzureRmKubernetes
 {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
-    $registryName = Get-RandomRegistryName
+    $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     try
     {
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		$cluster = New-AzureRmKubernetes -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+		$cluster | Set-AzureRmKubernetes -NodeCount 2
+		$cluster | Import-AzureRmKubernetesCredential
     }
     finally
     {
