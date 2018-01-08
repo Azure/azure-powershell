@@ -584,14 +584,14 @@ function Test-DataLakeAnalyticsJob
 		# Without this, the test will pass non-deterministically
 		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(300000)
 
-		# submit a job
+		# Submit a job
 		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest02")
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 
 		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
-		# "cancel" the fake job right away
+		# "Cancel" the fake job right away
 		Stop-AdlJob -AccountName $accountName -JobId $jobInfo.JobId -Force
 		$cancelledJob = Get-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 
@@ -607,10 +607,46 @@ function Test-DataLakeAnalyticsJob
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after ten miuntes ago"
 		
-		# we add ten minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
+		# We add ten minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
 		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(10))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
+
+		# Submit a job with script parameters
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest04")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
+
+		# Define script parameters
+		$parameters = [ordered]@{}
+		$parameters["byte_type"] = [byte]0
+		$parameters["sbyte_type"] = [sbyte]1
+		$parameters["int_type"] = [int32]2
+		$parameters["uint_type"] = [uint32]3
+		$parameters["long_type"] = [int64]4
+		$parameters["ulong_type"] = [uint64]5
+		$parameters["float_type"] = [float]6
+		$parameters["double_type"] = [double]7
+		$parameters["decimal_type"] = [decimal]8
+		$parameters["short_type"] = [int16]9
+		$parameters["ushort_type"] = [uint16]10
+		$parameters["char_type"] = [char]"a"
+		$parameters["string_type"] = "test"
+		$parameters["datetime_type"] = [DateTime](Get-Date -Date "2018-01-01 00:00:00")
+		$parameters["bool_type"] = $true
+		$parameters["guid_type"] = [guid]"8dbdd1e8-0675-4cf2-a7f7-5e376fa43c6d"
+		$parameters["bytearray_type"] = [byte[]]@(0, 1, 2)
+
+		# Define the expected script
+		$expectedScript = "DECLARE @byte_type byte = 0;`nDECLARE @sbyte_type sbyte = 1;`nDECLARE @int_type int = 2;`nDECLARE @uint_type uint = 3;`nDECLARE @long_type long = 4;`nDECLARE @ulong_type ulong = 5;`nDECLARE @float_type float = 6;`nDECLARE @double_type double = 7;`nDECLARE @decimal_type decimal = 8;`nDECLARE @short_type short = 9;`nDECLARE @ushort_type ushort = 10;`nDECLARE @char_type char = 'a';`nDECLARE @string_type string = `"test`";`nDECLARE @datetime_type DateTime = new DateTime(2018, 1, 1, 0, 0, 0, 0);`nDECLARE @bool_type bool = true;`nDECLARE @guid_type Guid = new Guid(`"8dbdd1e8-0675-4cf2-a7f7-5e376fa43c6d`");`nDECLARE @bytearray_type byte[] = new byte[] {`n  0,`n  1,`n  2,`n};`nDROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
+
+		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;" -ScriptParameter $parameters
+		Assert-NotNull {$jobInfo}
+
+		# Wait for the job to finish and then confirm the script
+		$jobInfo = Wait-AdlJob -Account $accountName -JobId $jobInfo.JobId
+		Assert-NotNull {$jobInfo}
+		Assert-AreEqual "Succeeded" $jobInfo.Result
+		Assert-AreEqual $expectedScript $jobInfo.Properties.Script
 
 		# Delete the DataLakeAnalytics account
 		Assert-True {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."

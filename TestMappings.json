@@ -44,6 +44,9 @@
   "src/ResourceManager/DataLakeStore/": [
     ".\\src\\ResourceManager\\DataLakeStore\\Commands.DataLakeStore.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLake.Test.dll"
   ],
+  "src/ResourceManager/DataMigration/": [
+    ".\\src\\ResourceManager\\DataMigration\\Commands.DataMigration.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataMigration.Test.dll"
+  ],
   "src/ResourceManager/DevTestLabs/": [],
   "src/ResourceManager/Dns/": [
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
@@ -100,6 +103,9 @@
   ],
   "src/ResourceManager/Resources/": [
     ".\\src\\ResourceManager\\Resources\\Commands.Resources.Test\\bin\\Debug\\Microsoft.Azure.Commands.Resources.Test.dll"
+  ],
+  "src/ResourceManager/Reservations/": [
+    ".\\src\\ResourceManager\\Reservations\\Commands.Reservations.Test\\bin\\Debug\\Microsoft.Azure.Commands.Reservations.Test.dll"
   ],
   "src/ResourceManager/Scheduler/": [
     ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"

@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = true)]		
          public string PeeringType { get; set; }		
  		
-         [Parameter(		
-             Mandatory = true,		
-             HelpMessage = "The DevicePath, can be either Primary or Secondary")]		
-         [ValidateNotNullOrEmpty]
-         public DevicePathEnum DevicePath { get; set; }		
- 		
-         public override void Execute()		
+         [Parameter(
+             Mandatory = true,
+             HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+        [ValidateNotNullOrEmpty]
+        public DevicePathEnum DevicePath { get; set; }
+
+        public override void Execute()		
          {
              base.Execute();
              var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable

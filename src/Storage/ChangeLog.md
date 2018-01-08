@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.0.1
+## Version 4.0.2
 * Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
 
 ## Version 4.0.0
