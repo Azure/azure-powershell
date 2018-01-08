@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
 
-        [Parameter(Mandatory =true,
+        [Parameter(Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline =true,
-            HelpMessage ="A PSKubernetesCluster object, normally passed through the pipeline.")]
+            ValueFromPipeline = true,
+            HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
 
@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Remove managed Kubernetes cluster without prompt")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -82,34 +85,38 @@ namespace Microsoft.Azure.Commands.Kubernetes
             switch (ParameterSetName)
             {
                 case IdParameterSet:
-                {
-                    var resource = new ResourceIdentifier(Id);
-                    ResourceGroupName = resource.ResourceGroupName;
-                    Name = resource.ResourceName;
-                    break;
-                }
+                    {
+                        var resource = new ResourceIdentifier(Id);
+                        ResourceGroupName = resource.ResourceGroupName;
+                        Name = resource.ResourceName;
+                        break;
+                    }
                 case InputObjectParameterSet:
-                {
-                    var resource = new ResourceIdentifier(InputObject.Id);
-                    ResourceGroupName = resource.ResourceGroupName;
-                    Name = resource.ResourceName;
-                    break;
-                }
+                    {
+                        var resource = new ResourceIdentifier(InputObject.Id);
+                        ResourceGroupName = resource.ResourceGroupName;
+                        Name = resource.ResourceName;
+                        break;
+                    }
             }
 
             var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
 
-            if (ShouldProcess(msg, "Delete the Kubernetes cluster."))
-            {
-                RunCmdLet(() =>
+            ConfirmAction(Force.IsPresent,
+                "Do you want to delete the managed Kubernetes cluster?",
+                "Removing the managed Kubernetes cluster.",
+                string.Format("AzureRmKubernetes {0} in {1}", Name, ResourceGroupName),
+                () =>
                 {
-                    Client.ManagedClusters.Delete(ResourceGroupName, Name);
-                    if (PassThru)
+                    RunCmdLet(() =>
                     {
-                        WriteObject(true);
-                    }
+                        Client.ManagedClusters.Delete(ResourceGroupName, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
                 });
-            }
         }
     }
 }

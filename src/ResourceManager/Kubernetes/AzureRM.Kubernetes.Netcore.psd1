@@ -54,7 +54,9 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @()
+RequiredAssemblies = '.\YamlDotNet.dll',
+'.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
+'.\AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
@@ -95,7 +97,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','AKS', 'Kubernetes', 'Container', 'Orchestrator', 'Containers'
+        Tags = 'Azure','ResourceManager','ARM','AKS', 'Kubernetes', 'Container', 'Orchestrator', 'Containers', 'Docker'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

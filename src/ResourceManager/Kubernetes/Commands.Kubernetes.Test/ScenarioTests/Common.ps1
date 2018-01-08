@@ -30,6 +30,11 @@ function Get-RandomResourceGroupName
     return 'rg' + (getAssetName)
 }
 
+function isLive
+{
+	return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
+}
+
 <#
 .SYNOPSIS
 Gets the default location for a provider

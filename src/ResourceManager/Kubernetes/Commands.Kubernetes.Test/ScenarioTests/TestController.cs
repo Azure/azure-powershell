@@ -6,9 +6,9 @@ using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
+using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Commands.Kubernetes.Test.ScenarioTests
 {
@@ -45,6 +45,14 @@ namespace Commands.Kubernetes.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
+
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("Microsoft.Features", null);
+                d.Add("Microsoft.Authorization", null);
+                var providersToIgnore = new Dictionary<string, string>();
+                providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10");
+                HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
+
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     helper.RMProfileModule,
