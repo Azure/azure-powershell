@@ -89,10 +89,21 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                                 type = type,
                                 apiVersion = config.Strategy.GetApiVersion(Client),
                                 location = config.Strategy.GetLocation(model),
-                                properties = jsonModel.GetOrNull(Properties) as Dictionary<string, object>,
+                                properties = jsonModel.GetOrNull(Properties) 
+                                    as Dictionary<string, object>,
                                 dependsOn = dependencies
                                     .Where(d => d.Strategy.GetResourceType() != null)
                                     .Select(d => d.GetId(SubscriptionId).IdToString())
+                                    /*
+                                    .Select(d => 
+                                        "[reference('" + 
+                                        d.Strategy.Namespace + 
+                                        "/" + 
+                                        d.Strategy.Provider + 
+                                        "/" + 
+                                        d.Name +
+                                        "')]")
+                                        */
                                     .ToArray()
                             };
                         });
@@ -114,6 +125,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
             if (type.IsPrimitive || type == typeof(string))
             {
                 return value;
+            }
+            var dictionary = value as IDictionary;
+            if (dictionary != null)
+            {
+                var result = new Dictionary<string, object>();
+                foreach (DictionaryEntry p in dictionary)
+                {
+                    result[p.Key.ToString()] = Unflat(p.Value);
+                }
+                return result;
             }
             var array = value as IEnumerable;
             if (array != null)

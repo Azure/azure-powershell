@@ -26,9 +26,12 @@ using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -235,12 +238,9 @@ namespace Microsoft.Azure.Commands.Compute
             
             OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
-            var password = new NetworkCredential(string.Empty, Credential.Password).Password;
+            var passwordValue = new NetworkCredential(string.Empty, Credential.Password).Password;
 
-            if (AsArmTemplate)
-            {
-                password = "[parameters('password')]";                
-            }
+            var password = AsArmTemplate ? "[parameters('password')]" : passwordValue;
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -293,6 +293,34 @@ namespace Microsoft.Azure.Commands.Compute
                 };
                 var result = JsonConvert.SerializeObject(template);
                 asyncCmdlet.WriteObject(result);
+
+                // apply target state
+                var newState = await resourceGroup
+                    .UpdateStateAsync(
+                        client,
+                        target,
+                        new CancellationToken(),
+                        new ShouldProcess(asyncCmdlet),
+                        asyncCmdlet.ReportTaskProgress);
+
+                var rmClient = client.GetClient<ResourceManagementClient>();
+                var deployment = new Deployment
+                {
+                    Properties = new DeploymentProperties
+                    {
+                        Template = template,
+                        Parameters = new Dictionary<string, DeploymentParameter>
+                        {
+                            { "password", new DeploymentParameter { value = passwordValue } }
+                        }
+                    }
+                };
+                var validation = await rmClient.Deployments.ValidateAsync(
+                    resourceGroup.Name, Name, deployment);
+                var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
+                    resourceGroup.Name, Name, deployment);
+
+                asyncCmdlet.WriteObject(tResult);
             }
             else
             {
