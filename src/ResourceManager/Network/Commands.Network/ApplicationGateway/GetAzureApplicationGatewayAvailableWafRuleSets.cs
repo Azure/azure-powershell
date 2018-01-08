@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAvailableWafRuleSets"), 
         OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
     [Alias("List-AzureRmApplicationGatewayAvailableWafRuleSets")]
-    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet, IModuleAssemblyInitializer
+    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -36,26 +36,6 @@ namespace Microsoft.Azure.Commands.Network
             var availableWafRuleSets = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
             var psAvailableWafRuleSets = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
             WriteObject(psAvailableWafRuleSets);
-        }
-
-        /// <summary>
-        /// Setup necessary functionality when module gets imported.
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmNetworkStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
-            }
         }
     }
 }

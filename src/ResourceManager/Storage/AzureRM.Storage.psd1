@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; }, 
                @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -122,7 +122,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
+        ReleaseNotes = '* Upgrade SRP SDK to 7.1.0
+* Add StorageV2 account kind to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

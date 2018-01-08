@@ -164,11 +164,11 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <Content Include="OperationalInsightsStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
