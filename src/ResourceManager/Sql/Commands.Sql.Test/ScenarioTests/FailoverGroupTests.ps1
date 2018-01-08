@@ -368,7 +368,7 @@ function Test-SwitchFailoverGroup()
 		Param($fg)
 
 		$foGroup = Get-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName 
-		$job = $foGroup | Switch-AzureRmSqlDatabaseFailoverGroup
+		$job = $foGroup | Switch-AzureRmSqlDatabaseFailoverGroup -AsJob
 		$job | Wait-Job
 
 		$newSecondaryFg = $fg | Get-AzureRmSqlDatabaseFailoverGroup

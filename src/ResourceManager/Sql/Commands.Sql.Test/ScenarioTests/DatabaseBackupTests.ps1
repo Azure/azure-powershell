@@ -66,7 +66,7 @@ function Test-RestoreGeoBackup
 
 	$geobackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName 
 	$job = $geobackup | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -AsJob
-	$job | WaitJob
+	$job | Wait-Job
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -141,7 +141,7 @@ function Test-RestoreLongTermRetentionBackup
 	$restoredDbName = "powershell_db_restored_ltr"
 	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
 
-    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName`
+    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName `
 		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 

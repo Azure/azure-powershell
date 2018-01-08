@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -34,7 +35,21 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
-        
+
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        /// <remarks>
+        /// This parameter is not needed or used. It will be removed in a future release.
+        /// </remarks>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "SQL Database name.",
+            DontShow = true)]
+        [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is not needed or used. It will be removed in a future release.")]
+        public string DatabaseName { get; set; }
+
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
