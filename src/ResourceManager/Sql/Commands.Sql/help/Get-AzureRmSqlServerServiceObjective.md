@@ -15,8 +15,8 @@ Gets service objectives for an Azure SQL Database server.
 
 ```
 Get-AzureRmSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ServerName] <String>
- [[-DatabaseName] <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,21 +49,6 @@ This command gets the service objectives for the server named Server01 and the d
 
 ## PARAMETERS
 
-### -DatabaseName
-Specifies the name of an Azure SQL Database.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -86,7 +71,7 @@ This cmdlet gets service objectives for a SQL Database server assigned to this r
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -101,7 +86,7 @@ Specifies the name of a SQL Database SQL Database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -117,7 +102,7 @@ The acceptable values for this parameter are: Basic, S0, S1, S2, P1, P2, and P3.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
