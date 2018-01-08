@@ -1,4 +1,4 @@
-﻿# Strategies
+# Strategies
 
 ## Wish List
 
@@ -24,10 +24,11 @@
 1. Resource operations classes should implement an `IResourceOperations<TModel>` interface, for example
    ```cs
    interface IResourceOperations<TModel>
+       where TModel : IResourceModel
    {
          Task<TModel> BeginCreateOrUpdate(
             string name, string resourceGroupName, TModel model);
    }
    ```
-1. 'secureString' should be Swagger type/format.
-1. Another type for Swagger 'id[ResourceType]'.
+1. `secureString` should be Swagger type/format.
+1. Another type for Swagger `id[ResourceType]`.
