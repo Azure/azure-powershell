@@ -24,6 +24,7 @@
 1. Resource operations classes should implement an `IResourceOperations<TModel>` interface, for example
    ```cs
    interface IResourceOperations<TModel>
+       where TModel : IResourceModel
    {
          Task<TModel> BeginCreateOrUpdate(
             string name, string resourceGroupName, TModel model);
