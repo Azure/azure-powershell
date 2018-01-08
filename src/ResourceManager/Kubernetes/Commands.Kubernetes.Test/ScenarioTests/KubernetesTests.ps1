@@ -13,9 +13,16 @@ function Test-AzureRmKubernetes
     {
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$cluster = New-AzureRmKubernetes -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+		if (isLive) {
+			$cred = $(createTestCredential "Unicorns" "Puppies")
+			New-AzureRmKubernetes -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ClientIdAndSecret $cred
+		} else {
+			New-AzureRmKubernetes -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+		}
+		$cluster = Get-AzureRmKubernetes -ResourceGroupName $resourceGroupName -Name $kubeClusterName
 		$cluster | Set-AzureRmKubernetes -NodeCount 2
-		$cluster | Import-AzureRmKubernetesCredential
+		$cluster | Import-AzureRmKubernetesCredential -Force
+		$cluster | Remove-AzureRmKubernetes -Force
     }
     finally
     {
