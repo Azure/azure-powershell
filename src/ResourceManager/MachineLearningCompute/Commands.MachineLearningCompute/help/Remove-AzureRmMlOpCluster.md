@@ -62,7 +62,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeAllParameters
+### -IncludeAllResources
 Removes all resources that were created with the cluster.
 
 ```yaml
