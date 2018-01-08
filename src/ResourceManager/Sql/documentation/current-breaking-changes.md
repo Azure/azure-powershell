@@ -42,6 +42,9 @@
 
 The following cmdlets were affected this release:
 
+**Get-AzureRmSqlServiceObjective**
+- Database name parameter was removed. It was not needed or used.
+
 **New-AzureRmSqlDatabaseFailoverGroup**
 - Tag parameter was removed
 - 'GracePeriodWithDataLossHour' parameter was renamed to 'GracePeriodWithDataLossHours'
