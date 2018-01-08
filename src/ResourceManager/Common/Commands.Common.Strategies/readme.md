@@ -1,4 +1,4 @@
-﻿# Strategies
+# Strategies
 
 ## Wish List
 
@@ -29,5 +29,5 @@
             string name, string resourceGroupName, TModel model);
    }
    ```
-1. 'secureString' should be Swagger type/format.
-1. Another type for Swagger 'id[ResourceType]'.
+1. `secureString` should be Swagger type/format.
+1. Another type for Swagger `id[ResourceType]`.
