@@ -25,7 +25,9 @@ function Test-AddServerKeyVaultKey
 	{
 		$job = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
 		$job | Wait-Job
-		$keyResult =  = $job
+		$keyResult = $job.Output
+
+		# $keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
 
 		Assert-AreEqual $params.keyId $keyResult.Uri 
 		Assert-AreEqual $params.serverKeyName $keyResult.ServerKeyName 

@@ -61,11 +61,9 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$job = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-SqlAdministratorPassword $secureString -AsJob
-		$job | Wait-Job
-		$server1 = $job.Output
-
+		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-SqlAdministratorPassword $secureString
+		
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
