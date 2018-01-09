@@ -61,7 +61,7 @@ Specifies the status link that is returned from the New-AzureRmSqlDatabaseExport
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

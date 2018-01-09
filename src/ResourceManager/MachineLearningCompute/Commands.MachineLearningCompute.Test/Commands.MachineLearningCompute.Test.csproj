@@ -60,7 +60,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.MachineLearningCompute, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.1.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.3.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
@@ -171,6 +171,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestNewGetRemove.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestRemoveIncludeAllResources.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestSet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\TestUpdateSystemServices.json">

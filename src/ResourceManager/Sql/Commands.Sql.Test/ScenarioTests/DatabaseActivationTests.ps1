@@ -43,7 +43,10 @@ function Test-DatabasePauseResume
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
 		# Resume the database. Make sure the database specs remain the same and its Status is Online.
-		$dwdb3 = Resume-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$job = Resume-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -AsJob
+		$job | Wait-Job
+		$dwdb3 = $job.Output
+
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb3.Edition DataWarehouse
@@ -81,7 +84,10 @@ function Test-DatabasePauseResumePiped
 
 
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.
-		$dwdb2 = $dwdb | Suspend-AzureRmSqlDatabase
+		$job = $dwdb | Suspend-AzureRmSqlDatabase -AsJob
+		$job | Wait-Job
+		$dwdb2 = $job.Output
+
 		Assert-AreEqual $dwdb2.DatabaseName $databaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add IncludeAllResources parameter to Remove-AzureRmMlOpCluster cmdlet
+    - Using this switch parameter will remove all resources that were created with the cluster originally
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 0.3.1
+* Add Set-AzureRmMlOpCluster
+    - Update a cluster's agent count or SSL configuration
+* Orchestrator properties are optional
+    - The service will create a service principal if not provided, so the orchestrator
+    properties are now optional
 
 ## Version 0.2.0
 * Add support for online help
