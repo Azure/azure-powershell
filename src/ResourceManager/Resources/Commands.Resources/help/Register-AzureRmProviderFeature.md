@@ -51,7 +51,7 @@ Specifies the name of the feature that this cmdlet registers.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -66,7 +66,7 @@ Specifies a namespace for which this cmdlet registers a provider feature.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

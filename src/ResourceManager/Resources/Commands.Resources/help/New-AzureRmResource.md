@@ -75,7 +75,7 @@ Specifies the version of the resource provider API to use. If you do not specify
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,7 +90,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,7 +122,7 @@ server name`/`database name
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,7 +140,7 @@ For instance, if the extension resource is a database, specify the following typ
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,7 +170,7 @@ Indicates that the object that the *Properties* parameter specifies is the full 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Specifies the resource kind for the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,7 +205,7 @@ type, use the Get-AzureLocation cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -221,7 +221,7 @@ in addition to any other filters.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -251,7 +251,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -282,7 +282,7 @@ Specifies the name of the resource group where this cmdlet creates the resource.
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -334,7 +334,7 @@ For instance, for a database, the resource type is as follows:
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -381,7 +381,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

@@ -82,7 +82,7 @@ Following is a sample json role definition that can be provided as input
 
 ## EXAMPLES
 
-### --------------------------  Create using PSRoleDefinitionObject  --------------------------
+### Create using PSRoleDefinitionObject
 ```
 PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Id = $null
@@ -106,7 +106,7 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> New-AzureRmRoleDefinition -Role $role
 ```
 
-### --------------------------  Create using JSON file  --------------------------
+### Create using JSON file
 ```
 PS C:\> New-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
@@ -134,7 +134,7 @@ File name containing a single json role definition.
 ```yaml
 Type: String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -149,7 +149,7 @@ Role definition object.
 ```yaml
 Type: PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

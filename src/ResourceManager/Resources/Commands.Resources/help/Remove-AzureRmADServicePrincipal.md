@@ -23,7 +23,7 @@ Deletes the azure active directory service principal.
 
 ## EXAMPLES
 
-### --------------------------  Delete AAD service principal.  --------------------------
+### Delete AAD service principal.
 ```
 PS C:\> Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45
 ```
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +83,7 @@ If specified, returns the deleted service principal.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

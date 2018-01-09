@@ -23,7 +23,7 @@ Deletes the azure active directory application.
 
 ## EXAMPLES
 
-### --------------------------  Delete AAD application.  --------------------------
+### Delete AAD application.
 ```
 PS C:\> Remove-AzureRmADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 -Force
 ```
@@ -53,7 +53,7 @@ Switch to delete an application without a confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,7 +68,7 @@ The object id of the application to delete.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
