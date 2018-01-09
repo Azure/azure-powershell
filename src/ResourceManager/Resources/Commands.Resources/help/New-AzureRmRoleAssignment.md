@@ -107,14 +107,14 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -AllowDelegation
 ```
 
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS C:\> Get-AzureRMADGroup -SearchString "Christine Koch Team"
 
@@ -127,21 +127,21 @@ PS C:\> New-AzureRmRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 
 Grant access to a security group
 
-### --------------------------  Example 3  --------------------------
+### Example 3
 ```
 PS C:\> New-AzureRmRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Grant access to a user at a resource (website)
 
-### --------------------------  Example 4  --------------------------
+### Example 4
 ```
 PS C:\> New-AzureRMRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
 ```
 
 Grant access to a group at a nested resource (subnet)
 
-### --------------------------  Example 5  --------------------------
+### Example 5
 ```
 PS C:\> $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName "testServiceprincipal"
 PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
@@ -157,7 +157,7 @@ The delegation flag while creating a Role assignment.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -218,7 +218,7 @@ Should only be  used in conjunction with ResourceGroupName, ResourceType and Res
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -235,7 +235,7 @@ When used in conjunction with ResourceName, ResourceType and (optionally)ParentR
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -253,7 +253,7 @@ Should only be used in conjunction with ResourceGroupName, ResourceType and (opt
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -271,7 +271,7 @@ Should only be used in conjunction with ResourceGroupName, ResourceName and (opt
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -286,7 +286,7 @@ Id of the RBAC role that needs to be assigned to the principal.
 ```yaml
 Type: Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -302,7 +302,7 @@ Reader, Contributor, Virtual Network Administrator, etc.
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -322,7 +322,7 @@ If specified, it should start with "/subscriptions/{id}".
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -334,7 +334,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

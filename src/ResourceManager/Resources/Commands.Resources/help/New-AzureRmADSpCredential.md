@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
@@ -43,7 +43,7 @@ The service principal is identified by supplying either the object id or service
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
@@ -52,7 +52,7 @@ PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
 A new password credential is added to an existing service principal.
 In this example, the supplied password value is added to the service principal using the objectId.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
 
@@ -68,8 +68,7 @@ PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertVa
 A new key credential is added to an existing service principal.
 In this example, the supplied base64 encoded public X509 certificate ("myapp.cer") is added to the service principal using its SPN.
 
-### --------------------------  Example 3  --------------------------
-
+### Example 3
 
 ```
 PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue
@@ -84,7 +83,7 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: SpObjectIdWithCertValueParameterSet, SPNWithCertValueParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -116,7 +115,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,7 +145,7 @@ The password to be associated with the application.
 ```yaml
 Type: SecureString
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -178,7 +177,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
