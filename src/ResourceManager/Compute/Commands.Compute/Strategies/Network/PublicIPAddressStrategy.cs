@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "public IP address",
                 provider: "publicIPAddresses",
                 getOperations: client => client.PublicIPAddresses,
                 getAsync: (o, p) => o.GetAsync(

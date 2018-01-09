@@ -68,9 +68,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
             public void CreateResource<TModel>(ResourceConfig<TModel> config)
                 where TModel : class
             {
-                var type = config.Strategy.GetResourceType();
                 // ignore a resource group
-                if (type != null)
+                if (config.ResourceGroup != null)
                 {
                     Map.GetOrAdd(
                         config.DefaultIdStr(),
@@ -86,24 +85,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                             return new Resource
                             {
                                 name = config.Name,
-                                type = type,
+                                type = config.Strategy.GetResourceType(),
                                 apiVersion = config.Strategy.GetApiVersion(Client),
                                 location = config.Strategy.GetLocation(model),
                                 properties = jsonModel.GetOrNull(Properties) 
                                     as Dictionary<string, object>,
                                 dependsOn = dependencies
-                                    .Where(d => d.Strategy.GetResourceType() != null)
-                                    .Select(d => d.GetId(SubscriptionId).IdToString())
-                                    /*
-                                    .Select(d => 
-                                        "[reference('" + 
-                                        d.Strategy.Namespace + 
-                                        "/" + 
-                                        d.Strategy.Provider + 
-                                        "/" + 
-                                        d.Name +
-                                        "')]")
-                                        */
+                                    .Where(d => d.ResourceGroup != null)
+                                    .Select(d => d.GetIdStr())
                                     .ToArray()
                             };
                         });

@@ -21,20 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// </summary>
     public interface IResourceStrategy : IEntityStrategy
     {
-        /// <summary>
-        /// A friendly resource type name, for example 'Virtual Network'.
-        /// </summary>
-        string Type { get; }
-
-        /// <summary>
-        /// A resource type namespace, for example 'Microsoft.Network'.
-        /// </summary>
-        string Namespace { get; }
-
-        /// <summary>
-        /// A resource type provider, for example 'virtualNetworks'.
-        /// </summary>
-        string Provider { get; }
+        ResourceType Type { get; }
 
         /// <summary>
         /// Returns an API version.

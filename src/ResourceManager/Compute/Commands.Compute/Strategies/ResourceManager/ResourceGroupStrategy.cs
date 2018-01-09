@@ -21,9 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
     {
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(
-                type: "resource group",
-                namespace_: null,
-                provider: null,
+                type: new ResourceType(null, "resourceGroups"),
                 getApiVersion: (ResourceManagementClient client) => client.ApiVersion,
                 getOperations: client => client.ResourceGroups,
                 getAsync: (o, p) => o.GetAsync(p.Name, p.CancellationToken),
@@ -35,6 +33,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
                 compulsoryLocation: false);
 
         public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
-            => Strategy.CreateConfig(name, name);
+            => Strategy.CreateConfig(null, name);
     }
 }

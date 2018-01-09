@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                             if (!taskProgress.IsDone)
                             {
                                 var config = taskProgress.Config;
-                                activeTasks.Add(config.Name + " " + config.Strategy.Type);
+                                activeTasks.Add(config.GetFullName());
                             }
                             progress += taskProgress.GetProgress();
                         }

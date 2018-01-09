@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     static class ComputePolicy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
-            string type,
             string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -30,9 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type: type,
-                namespace_: "Microsoft.Compute",
-                provider: provider,
+                type: new ResourceType("Microsoft.Compute", provider),
                 getApiVersion: _ => "2017-12-01",
                 getOperations: getOperations,
                 getAsync: getAsync,

@@ -30,6 +30,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
             where TModel : class
             => _Cmdlet.ShouldProcessAsync(
-                config.Name, VerbsCommon.New + " " + config.Strategy.Type);
+                config.GetFullName(), VerbsCommon.New);
     }
 }

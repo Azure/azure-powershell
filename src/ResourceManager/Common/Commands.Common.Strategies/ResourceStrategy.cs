@@ -14,23 +14,15 @@
 
 using Microsoft.Rest;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public sealed class ResourceStrategy<TModel> : IResourceStrategy
     {
-        public string Type { get; }
-
-        public string Namespace { get; }
-
-        public string Provider { get; }
+        public ResourceType Type { get; }
 
         public Func<IClient, string> GetApiVersion { get; }
-
-        public Func<string, IEnumerable<string>> GetId { get; }
 
         public Func<IClient, GetAsyncParams, Task<TModel>> GetAsync { get; }
 
@@ -46,11 +38,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public bool CompulsoryLocation { get; }
 
         public ResourceStrategy(
-            string type,
-            string namespace_,
-            string provider,
+            ResourceType type,
             Func<IClient, string> getApiVersion,
-            Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
@@ -59,10 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             bool compulsoryLocation)
         {
             Type = type;
-            Namespace = namespace_;
-            Provider = provider;
             GetApiVersion = getApiVersion;
-            GetId = getId;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
             GetLocation = getLocation;
@@ -75,11 +61,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class ResourceStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
-            string type,
-            string namespace_,
-            string provider,
+            ResourceType type,
             Func<TClient, string> getApiVersion,
-            Func<string, IEnumerable<string>> getId,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -92,10 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
             return new ResourceStrategy<TModel>(
                 type,
-                namespace_,
-                provider,
                 client => getApiVersion(client.GetClient<TClient>()),
-                getId,
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 getLocation,
@@ -104,34 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 compulsoryLocation);
         }
 
-        public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
-            string type,
-            string namespace_,
-            string provider,
-            Func<TClient, string> getApiVersion,
-            Func<TClient, TOperation> getOperations,
-            Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
-            Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation)
-            where TClient : ServiceClient<TClient>
-            => Create(
-                type,                
-                namespace_,
-                provider,
-                getApiVersion,
-                name => new[] { "providers", namespace_, provider, name }.Where(v => v != null),
-                getOperations,
-                getAsync,
-                createOrUpdateAsync,
-                getLocation,
-                setLocation,
-                createTime,
-                compulsoryLocation);
-
         public static string GetResourceType(this IResourceStrategy strategy)
-            => strategy.Namespace == null ? null : strategy.Namespace + "/" + strategy.Provider;
+            => strategy.Type == null ? null : strategy.Type.Namespace + "/" + strategy.Type.Provider;
     }
 }

@@ -280,12 +280,12 @@ namespace Microsoft.Azure.Commands.Compute
 
             var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
 
-            // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
-
             // template
             if (AsArmTemplate)
             {
+                // create target state
+                var target = virtualMachine.GetTargetState(current, null, Location);
+
                 var template = virtualMachine.CreateTemplate(client, target, client.SubscriptionId);
                 template.parameters = new Dictionary<string, Parameter>()
                 {
@@ -315,15 +315,22 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
                 };
+
+                /*
                 var validation = await rmClient.Deployments.ValidateAsync(
                     resourceGroup.Name, Name, deployment);
                 var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
                     resourceGroup.Name, Name, deployment);
 
                 asyncCmdlet.WriteObject(tResult);
+                */
             }
             else
             {
+                // create target state
+                var target = virtualMachine.GetTargetState(
+                    current, client.SubscriptionId, Location);
+
                 // apply target state
                 var newState = await virtualMachine
                     .UpdateStateAsync(

@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public IResourceConfig Resource => Parent.Resource;
 
+        public IResourceConfig ResourceGroup => Parent.ResourceGroup;
+
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
         public NestedResourceConfig(
@@ -54,8 +56,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             CreateModel = createModel;
         }
 
-        public IEnumerable<string> GetId(string subscription)
-            => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
+        public IEnumerable<string> GetIdFromResourceGroup()
+            => Parent.GetIdFromResourceGroup().Concat(Strategy.GetId(Name));
 
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)

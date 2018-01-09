@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine",
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachines,
                 getAsync: (o, p) => o.GetAsync(
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         {
                             new NetworkInterfaceReference
                             {
-                                Id = networkInterface.GetId(subscription).IdToString()
+                                Id = networkInterface.GetIdStr(subscription)
                             }
                         }
                     },

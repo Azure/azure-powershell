@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "network interface",
                 provider: "networkInterfaces",
                 getOperations: client => client.NetworkInterfaces,
                 getAsync: (o, p) => o.GetAsync(
@@ -48,10 +47,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = new Subnet { Id = subnet.GetId(subscription).IdToString() },
+                            Subnet = new Subnet { Id = subnet.GetIdStr(subscription) },
                             PublicIPAddress = new PublicIPAddress
                             {
-                                Id = publicIPAddress.GetId(subscription).IdToString()
+                                Id = publicIPAddress.GetIdStr(subscription)
                             }
                         }
                     },
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         ? null 
                         : new NetworkSecurityGroup
                         {
-                            Id = networkSecurityGroup.GetId(subscription).IdToString()
+                            Id = networkSecurityGroup.GetIdStr(subscription)
                         }
                 },
                 dependencies: new IEntityConfig[] 

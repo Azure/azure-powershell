@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     static class NetworkStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
-            string type,
             string provider,
             Func<NetworkManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -30,9 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type: type,
-                namespace_: "Microsoft.Network",
-                provider: provider,
+                type: new ResourceType("Microsoft.Network", provider),
                 getApiVersion: _ => "2017-10-01",
                 getOperations: getOperations,
                 getAsync: getAsync,

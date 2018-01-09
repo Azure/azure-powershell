@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static ResourceConfig<TModel> CreateConfig<TModel>(
             this ResourceStrategy<TModel> strategy,
-            string resourceGroupName,
+            IResourceConfig resourceGroup,
             string name,
             Func<string, TModel> createModel = null,
             IEnumerable<IEntityConfig> dependencies = null)
             where TModel : class, new()
             => new ResourceConfig<TModel>(
                 strategy,
-                resourceGroupName,
+                resourceGroup,
                 name,
                 createModel ?? (_ => new TModel()),
                 dependencies.EmptyIfNull());
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             {
                 return await config.Strategy.GetAsync(
                     client,
-                    new GetAsyncParams(config.ResourceGroupName, config.Name, cancellationToken));
+                    new GetAsyncParams(config.GetResourceGroupName(), config.Name, cancellationToken));
             }
             catch (CloudException e)
                 when (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => config.Strategy.CreateOrUpdateAsync(
                 client,
                 CreateOrUpdateAsyncParams.Create(
-                    config.ResourceGroupName,
+                    config.GetResourceGroupName(),
                     config.Name,
                     model,
                     cancellationToken));
@@ -74,5 +74,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static IEnumerable<IResourceConfig> GetResourceDependencies(
             this IResourceConfig config)
             => config.Dependencies.Select(d => d.Resource);
+
+        public static string GetFullName(this IResourceConfig config)
+            => config.Strategy.Type.Provider + "/" + config.Name;
     }
 }

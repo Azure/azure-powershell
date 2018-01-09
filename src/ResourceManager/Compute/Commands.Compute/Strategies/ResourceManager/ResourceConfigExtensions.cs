@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
             IEnumerable<IEntityConfig> dependencies = null)
             where TModel : class, new()
             => strategy.CreateConfig(
-                resourceGroup.Name,
+                resourceGroup,
                 name,
                 createModel,
-                dependencies.EmptyIfNull().Where(d => d != null).Concat(new[] { resourceGroup }));
+                dependencies.EmptyIfNull().Concat(new[] { resourceGroup }).Where(d => d != null));
     }
 }

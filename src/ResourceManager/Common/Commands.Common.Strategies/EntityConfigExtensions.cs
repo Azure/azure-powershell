@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -22,6 +23,28 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => "/" + string.Join("/", id);
 
         public static string DefaultIdStr(this IEntityConfig config)
-            => config.GetId(string.Empty).IdToString();
+            => config.GetIdStr(string.Empty);
+
+        public static string GetResourceGroupName(this IEntityConfig config)
+            => config.ResourceGroup?.Name ?? config.Name;
+
+        public static IEnumerable<string> GetIdFromSubscription(this IEntityConfig config)
+        {
+            var resourceGroupId = new[] { "resourceGroups", config.GetResourceGroupName() };
+            return config.ResourceGroup == null
+                ? resourceGroupId
+                : resourceGroupId.Concat(config.GetProvidersId());
+        }
+
+        public static string GetIdStr(this IEntityConfig config, string subscription =null)
+            => subscription == null
+                ? "[concat(resourceGroup().id, '" + config.GetProvidersId().IdToString() + "')]"
+                : new [] { "subscriptions", subscription }
+                    .Concat(config.GetIdFromSubscription())
+                    .IdToString();
+
+        static IEnumerable<string> GetProvidersId(this IEntityConfig config)
+            => new[] { "providers" }.Concat(config.GetIdFromResourceGroup());
+
     }
 }

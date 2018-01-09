@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
     {
         public static ResourceStrategy<VirtualNetwork> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "virtual network",
                 provider: "virtualNetworks",
                 getOperations: client => client.VirtualNetworks,
                 getAsync: (o, p) => o.GetAsync(

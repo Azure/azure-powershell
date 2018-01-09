@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public ResourceStrategy<TModel> Strategy { get; }
 
-        public string ResourceGroupName { get; }
+        public IResourceConfig ResourceGroup { get; }
 
         public string Name { get; }
 
@@ -44,27 +44,22 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public ResourceConfig(
             ResourceStrategy<TModel> strategy,
-            string resourceGroupName,
+            IResourceConfig resourceGroup,
             string name,
             Func<string, TModel> createModel,
             IEnumerable<IEntityConfig> dependencies)
         {
             Strategy = strategy;
-            ResourceGroupName = resourceGroupName;
+            ResourceGroup = resourceGroup;
             Name = name;
             CreateModel = createModel;
             Dependencies = dependencies;
         }
 
-        public IEnumerable<string> GetId(string subscription)
-            => new[]
-                {
-                    "subscriptions",
-                    subscription,
-                    "resourceGroups",
-                    ResourceGroupName
-                }
-                .Concat(Strategy.GetId(Name));
+        public IEnumerable<string> GetIdFromResourceGroup()
+            => ResourceGroup == null 
+                ? Enumerable.Empty<string>()
+                : new[] { Strategy.Type.Namespace, Strategy.Type.Provider, Name };
 
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
