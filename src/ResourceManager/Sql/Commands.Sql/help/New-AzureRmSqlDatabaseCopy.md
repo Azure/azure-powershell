@@ -39,7 +39,8 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

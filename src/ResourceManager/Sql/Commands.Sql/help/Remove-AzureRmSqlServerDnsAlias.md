@@ -45,7 +45,8 @@ Removes Azure SQL Server DNS Alias with the name aliasName from the server with 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

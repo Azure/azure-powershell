@@ -35,7 +35,8 @@ This command is updating alias which was previously pointing to oldServer to poi
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

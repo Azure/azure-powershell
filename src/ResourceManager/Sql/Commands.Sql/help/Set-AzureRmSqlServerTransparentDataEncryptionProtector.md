@@ -49,7 +49,8 @@ ContosoResourceGroup ContosoServer AzureKeyVault contoso_contosokey_012345678901
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
