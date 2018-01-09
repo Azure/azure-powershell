@@ -54,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitAuthorizationCRUD");
         }
 
-        [Fact(Skip = "Temporary disabled: no feature on subscription to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteBgpServiceCommunitiesGet()
         {
