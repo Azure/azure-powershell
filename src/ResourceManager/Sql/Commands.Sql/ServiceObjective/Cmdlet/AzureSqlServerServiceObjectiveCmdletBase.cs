@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             HelpMessage = "SQL Database name.",
             DontShow = true)]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is not needed or used. It will be removed in a future release.")]
+        [Obsolete("This parameter is not needed or used. It will be removed in the next breaking change release.")]
         public string DatabaseName { get; set; }
 
         /// <summary>

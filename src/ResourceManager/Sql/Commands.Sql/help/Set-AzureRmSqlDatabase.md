@@ -88,7 +88,8 @@ This command adds a database named Database01 to the elastic pool named ElasticP
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

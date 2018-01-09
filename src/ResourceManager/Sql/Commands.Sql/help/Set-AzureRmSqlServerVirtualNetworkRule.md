@@ -36,7 +36,8 @@ Modifies an existing virtual network rule with the new virtual network subnet id
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

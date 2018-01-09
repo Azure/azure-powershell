@@ -81,7 +81,8 @@ This command creates a database named Database01 in the elastic pool named Elast
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
