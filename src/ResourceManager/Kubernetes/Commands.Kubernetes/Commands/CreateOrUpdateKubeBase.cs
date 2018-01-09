@@ -37,7 +37,6 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
-    [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet)]
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";
