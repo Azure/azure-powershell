@@ -52,7 +52,7 @@ Whether outages on the secondary server should trigger automatic failover of the
 ```yaml
 Type: AllowReadOnlyFailoverToPrimary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -83,7 +83,7 @@ The name of the Azure SQL Database Failover Group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -98,7 +98,7 @@ The failover policy of the Azure SQL Database Failover Group.
 ```yaml
 Type: FailoverPolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Automatic, Manual
 
 Required: False
@@ -114,7 +114,7 @@ Interval before automatic failover is initiated if an outage occurs on the prima
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -144,7 +144,7 @@ The name of the primary Azure SQL Database Server of the Failover Group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
