@@ -295,6 +295,7 @@ namespace Microsoft.Azure.Commands.Compute
                 asyncCmdlet.WriteObject(result);
 
                 // apply target state
+                /*
                 var newState = await resourceGroup
                     .UpdateStateAsync(
                         client,
@@ -316,7 +317,6 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 };
 
-                /*
                 var validation = await rmClient.Deployments.ValidateAsync(
                     resourceGroup.Name, Name, deployment);
                 var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
