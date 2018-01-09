@@ -65,7 +65,7 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.MachineLearningCompute, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.1.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearningCompute.0.3.0\lib\net452\Microsoft.Azure.Management.MachineLearningCompute.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Cmdlets\GetAzureRmMlOpClusterKey.cs" />
     <Compile Include="Cmdlets\GetAzureRmMlOpCluster.cs" />
+    <Compile Include="Cmdlets\SetAzureRmMlOpCluster.cs" />
     <Compile Include="Cmdlets\TestAzureRmMlOpClusterSystemServicesUpdateAvailability.cs" />
     <Compile Include="Cmdlets\MachineLearningComputeCmdletBase.cs" />
     <Compile Include="Cmdlets\NewAzureRmMlOpCluster.cs" />
@@ -95,8 +96,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>
