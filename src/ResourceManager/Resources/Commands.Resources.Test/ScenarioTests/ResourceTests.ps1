@@ -239,8 +239,7 @@ function Test-MoveAResource
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 	New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation
 	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
-	$job = Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force -AsJob
-	$job | Wait-Job
+	Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
 
 	$movedResource = Get-AzureRmResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
 
