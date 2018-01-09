@@ -40,6 +40,8 @@
 
 ## Current Breaking Changes
 
+The following cmdlets were affected this release:
+
 **New-AzureRmSqlDatabaseFailoverGroup**
 - Tag parameter was removed
 - 'GracePeriodWithDataLossHour' parameter was renamed to 'GracePeriodWithDataLossHours'
