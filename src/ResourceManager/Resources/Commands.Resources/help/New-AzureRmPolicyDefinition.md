@@ -187,21 +187,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Policy
 Specifies a policy rule for the policy definition.
 You can specify the path of a .json file or a string that contains the policy in JSON format.
