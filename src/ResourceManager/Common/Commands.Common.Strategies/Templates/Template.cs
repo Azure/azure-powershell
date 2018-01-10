@@ -38,5 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
         /// Resources that are deployed.
         /// </summary>
         public Resource[] resources { get; set; }
+
+        public Dictionary<string, Output> outputs { get; set; }
     }
 }

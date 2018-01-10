@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 
             public string SubscriptionId { get; }
 
-            public ConcurrentDictionary<string, Resource> Map { get; } 
+            public ConcurrentDictionary<string, Resource> Map { get; }
                 = new ConcurrentDictionary<string, Resource>();
 
             public Context(IClient client, IState target, string subscriptionId)
@@ -81,14 +83,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                                 d.Accept(new CreateResourceVisitor(), this);
                             }
                             var model = Target.Get(config);
-                            var jsonModel = UnflatObject(model);
+                            var jsonModel = ObjectToWire(model);
                             return new Resource
                             {
                                 name = config.Name,
                                 type = config.Strategy.GetResourceType(),
                                 apiVersion = config.Strategy.GetApiVersion(Client),
                                 location = config.Strategy.GetLocation(model),
-                                properties = jsonModel.GetOrNull(Properties) 
+                                properties = jsonModel.GetOrNull(Properties)
                                     as Dictionary<string, object>,
                                 dependsOn = dependencies
                                     .Where(d => d.ResourceGroup != null)
@@ -104,7 +106,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 
         const string PropertiesDot = Properties + ".";
 
-        static object Unflat(object value)
+        sealed class CreateResourceVisitor : IResourceConfigVisitor<Context, Void>
+        {
+            public Void Visit<TModel>(ResourceConfig<TModel> config, Context context)
+                where TModel : class
+            {
+                context.CreateResource(config);
+                return new Void();
+            }
+        }
+
+        static object ToWire(object value)
         {
             if (value == null)
             {
@@ -121,7 +133,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                 var result = new Dictionary<string, object>();
                 foreach (DictionaryEntry p in dictionary)
                 {
-                    result[p.Key.ToString()] = Unflat(p.Value);
+                    result[p.Key.ToString()] = ToWire(p.Value);
                 }
                 return result;
             }
@@ -131,20 +143,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                 var result = new List<object>();
                 foreach (var x in array)
                 {
-                    result.Add(Unflat(x));
+                    result.Add(ToWire(x));
                 }
                 return result;
             }
-            return UnflatObject(value);
+            return ObjectToWire(value);
         }
 
-        static Dictionary<string, object> UnflatObject(object value)
+        static Dictionary<string, object> ObjectToWire(object value)
         {
             var result = new Dictionary<string, object>();
             var properties = new Dictionary<string, object>();
             foreach (var p in value.GetType().GetProperties())
             {
-                var pValue = Unflat(p.GetValue(value));
+                var pValue = ToWire(p.GetValue(value));
                 if (pValue != null)
                 {
                     var a = p
@@ -176,14 +188,111 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
             return result;
         }
 
-        sealed class CreateResourceVisitor : IResourceConfigVisitor<Context, Void>
+        static object FromWire(Type type, JToken value)
         {
-            public Void Visit<TModel>(ResourceConfig<TModel> config, Context context)
-                where TModel : class
+            if (value == null)
             {
-                context.CreateResource(config);
-                return new Void();
+                return null;
             }
+            if (type.IsEnum)
+            {   
+                return Enum.Parse(type, value.Value<string>().Replace("_", string.Empty));
+            }
+            if (type.IsGenericType)
+            {
+                var genericType = type.GetGenericTypeDefinition();
+                var genericArgument = type.GetGenericArguments()[0];
+                if (genericType == typeof(Nullable<>))
+                {
+                    var x = FromWire(genericArgument, value);
+                    return Activator.CreateInstance(type, x);
+                }
+                if (genericType == typeof(IList<>))
+                {
+                    var listType = typeof(List<>).MakeGenericType(genericArgument);
+                    var result = Activator.CreateInstance(listType) as IList;
+                    var array = value as JArray;
+                    foreach (var item in array)
+                    {
+                        result.Add(FromWire(genericArgument, item));
+                    }
+                    return result;
+                }
+            }
+            if (type == typeof(string))
+            {
+                return value.Value<string>();
+            }
+            if (type.IsPrimitive)
+            {
+                object vv = null;
+                switch (value.Type)
+                {
+                    case JTokenType.Boolean:
+                        vv = value.Value<bool>();
+                        break;
+                    case JTokenType.Float:
+                        vv = value.Value<double>();
+                        break;
+                    default:
+                        vv = value.Value<string>();
+                        break;
+                }
+                if (vv == null)
+                {
+                    return null;
+                }
+                return vv.GetType() == type ? vv : Convert.ChangeType(vv, type);
+            }
+            return FromWireObject(type, value as JObject);
         }
+
+        public static object FromWireObject(Type type, JObject wire)
+        {
+            if (wire == null)
+            {
+                return null;
+            }
+            var result = Activator.CreateInstance(type);
+            var properties = wire[Properties] as JObject;
+            foreach (var p in type.GetProperties())
+            {
+                var a = p
+                    .GetCustomAttributes(typeof(JsonPropertyAttribute), true)
+                    .OfType<JsonPropertyAttribute>()
+                    .FirstOrDefault();
+                JToken jResult = null;
+                if (a != null)
+                {
+                    var aName = a.PropertyName;
+                    if (aName.StartsWith(PropertiesDot))
+                    {
+                        var ppName = aName.Substring(PropertiesDot.Length);
+                        if (properties != null)
+                        {
+                            jResult = properties[ppName];
+                        }
+                    }
+                    else
+                    {
+                        jResult = wire[aName];
+                    }
+                }
+                else
+                {
+                    jResult = wire[p.Name];
+                }
+                var pResult = FromWire(p.PropertyType, jResult);
+                if (pResult != null)
+                {
+                    p.SetValue(result, pResult);
+                }
+            }
+            return result;
+        }
+
+        public static T FromWireObject<T>(this JObject wire)
+            where T : class, new()
+            => FromWireObject(typeof(T), wire) as T;
     }
 }

@@ -287,15 +287,30 @@ namespace Microsoft.Azure.Commands.Compute
                 var target = virtualMachine.GetTargetState(current, null, Location);
 
                 var template = virtualMachine.CreateTemplate(client, target, client.SubscriptionId);
-                template.parameters = new Dictionary<string, Parameter>()
+                template.parameters = new Dictionary<string, Parameter>
                 {
                     { "password", new Parameter { type = "secureString" } }
                 };
-                var result = JsonConvert.SerializeObject(template);
-                asyncCmdlet.WriteObject(result);
+                template.outputs = new Dictionary<string, Output>
+                {
+                    {
+                        "virtualMachine",
+                        new Output
+                        {
+                            type = "object",
+                            value = 
+                                "[reference('" + 
+                                virtualMachine.GetIdFromResourceGroup().IdToString() + 
+                                "', '" + 
+                                virtualMachine.Strategy.GetApiVersion(client) +
+                                "')]"
+                        }
+                    }
+                };
+                var templateResult = JsonConvert.SerializeObject(template);
+                asyncCmdlet.WriteObject(templateResult);
 
                 // apply target state
-                /*
                 var newState = await resourceGroup
                     .UpdateStateAsync(
                         client,
@@ -322,8 +337,18 @@ namespace Microsoft.Azure.Commands.Compute
                 var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
                     resourceGroup.Name, Name, deployment);
 
-                asyncCmdlet.WriteObject(tResult);
-                */
+                var output = 
+                    ((tResult.Properties.Outputs as JObject)["virtualMachine"] as JObject)["value"] as JObject;
+
+                var jResult = new JObject { { "properties", output } };
+
+                var result = jResult.FromWireObject<VirtualMachine>();
+
+                if (result != null)
+                {
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                    asyncCmdlet.WriteObject(psResult);
+                }
             }
             else
             {

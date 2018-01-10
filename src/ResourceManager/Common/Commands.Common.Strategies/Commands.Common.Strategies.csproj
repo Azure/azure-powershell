@@ -63,6 +63,7 @@
     <Compile Include="ProgressMap.cs" />
     <Compile Include="ResourceType.cs" />
     <Compile Include="Templates\DeploymentParameter.cs" />
+    <Compile Include="Templates\Output.cs" />
     <Compile Include="Templates\Parameter.cs" />
     <Compile Include="Templates\Resource.cs" />
     <Compile Include="Templates\Template.cs" />
