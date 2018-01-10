@@ -107,9 +107,12 @@
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
     <Compile Include="Strategies\AppServicePolicy.cs" />
+    <Compile Include="Strategies\ICmdletAdapter.cs" />
+    <Compile Include="Strategies\PSCmdletAdapter.cs" />
     <Compile Include="Strategies\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ServerFarmStrategy.cs" />
     <Compile Include="Strategies\SiteStrategy.cs" />
+    <Compile Include="Strategies\WebClient.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\SwapWithPreviewAction.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />

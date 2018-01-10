@@ -26,6 +26,11 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Strategies.Resources;
+using Microsoft.Azure.Commands.Common.Strategies.WebApps;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.WebApps.Strategies;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -51,7 +56,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.", ParameterSetName = CopyWebAppParameterSet)]
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The Location of the web app eg: West US.", ParameterSetName = SimpleParameterSet)]
-        [LocationCompleter("Microsoft.Web/sites")]
+        [LocationCompleter("Microsoft.Web/sites", "Microsoft.Web/serverFarms")]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -125,7 +130,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void ValidateWebAppName(string name)
         {
-            
+
         }
 
         public void CreateWithClonedWebApp()
@@ -176,7 +181,29 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public void CreateWithSimpleParameters()
         {
-            
+            string trafficManagerProfielId = IsResource(TrafficManagerProfile) ? TrafficManagerProfile : null;
+            string trafficManagerProfileName = IsResource(TrafficManagerProfile) ? null : TrafficManagerProfile;
+            ResourceGroupName = ResourceGroupName ?? Name;
+            AppServicePlan = AppServicePlan ?? Name;
+
+            var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
+            var farmStrategy = ServerFarmStreategy.CreateServerFarmConfig(rgStrategy, AppServicePlan);
+            var siteStrategy = SiteStrategy.CreateSiteConfig(rgStrategy, farmStrategy, Name);
+            var client = new WebClient(DefaultContext);
+
+            var current = siteStrategy.GetStateAsync(client, default(CancellationToken)).ConfigureAwait(false).GetAwaiter().GetResult();
+            if (!MyInvocation.BoundParameters.ContainsKey(nameof(Location)))
+            {
+                Location = current.GetLocation(siteStrategy) ?? "East US";
+            }
+
+            var target = siteStrategy.GetTargetState(current, DefaultContext.Subscription.Id, Location);
+            var endState = siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), null, ReportProgress);
+        }
+
+        void ReportProgress (ITaskProgress progress)
+        {
+            WriteProgress(new ProgressRecord(0, "CreateWebApp", progress.Config.Name));
         }
 
         private bool IsResource(string name)
