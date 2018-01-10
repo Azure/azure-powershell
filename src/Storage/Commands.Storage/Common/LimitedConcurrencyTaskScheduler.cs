@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Run a task
         /// </summary>
         /// <param name="taskGenerator">Task generator</param>
-        public void RunTask(Func<long, Task> taskGenerator)
+        public void RunTask(Func<long, Task> taskGenerator, bool runSynchronously = false)
         {
             if (cancellationToken.IsCancellationRequested)
             {
@@ -199,7 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             Interlocked.Increment(ref totalTaskCount);
             taskCounter.AddCount();
 
-            if (Interlocked.Read(ref activeTaskCount) < maxConcurrency)
+            if (Interlocked.Read(ref activeTaskCount) < maxConcurrency || runSynchronously)
             {
                 Task task = taskGenerator(taskId);
                 RunConcurrentTask(taskId, task);

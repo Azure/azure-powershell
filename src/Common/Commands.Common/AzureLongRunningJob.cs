@@ -243,13 +243,22 @@ namespace Microsoft.Azure.Commands.Common
                 returnValue.MyInvocation.BoundParameters.Add(parameter.Key, parameter.Value);
             }
 
-            foreach (var field in returnType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
-            {
-                field.SafeCopyValue(source: cmdlet, target: returnValue);
-            }
-
+            CopyCmdletFields(returnType, cmdlet, returnValue);
             cmdlet.SafeCopyParameterSet(returnValue);
             return returnValue as U;
+        }
+
+        static void CopyCmdletFields<U>(Type targetType, U sourceCmdlet, U targetCmdlet) where U : AzurePSCmdlet
+        {
+            foreach (var field in targetType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+            {
+                field.SafeCopyValue(source: sourceCmdlet, target: targetCmdlet);
+            }
+
+            if (targetType.BaseType != null && targetType.BaseType != typeof(AzurePSCmdlet))
+            {
+                CopyCmdletFields(targetType.BaseType, sourceCmdlet, targetCmdlet);
+            }
         }
 
         /// <summary>
