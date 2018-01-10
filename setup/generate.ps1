@@ -17,7 +17,7 @@
 
 param(
     [Parameter(HelpMessage="The version number for the generated MSI.")]
-    [string]$version = "6.0.0",
+    [string]$version,
 
     [Parameter(HelpMessage="Forces a fresh installation of the Azure and AzureRm cmdlets from the gallery")]
     [Switch]$force,
@@ -116,7 +116,7 @@ if( $LASTEXITCODE) {
 $archs |% {
     $arch = $_
     Write-Host -fore green "Compiling Wix Script for $arch"  
-    $out = candle -arch $arch -ext WixUIExtension "-dversion=$version" -sw1118 -nologo "-I$tmp" "-dtmp=$tmp" "-dmodulesDir=$modulesDir" "-dproductName=$productName" .\azurecmd.wxs -out "$tmp\$outputName-$version-$arch.wixobj"
+    $out = candle -arch $arch -ext WixUIExtension "-dversion=$version" -sw1118 -nologo "-I$tmp" "-dtmp=$tmp" "-dmodulesDir=$modulesDir" "-dproductName=$productName" $PSScriptRoot\azurecmd.wxs -out "$tmp\$outputName-$version-$arch.wixobj"
     if( $LASTEXITCODE) {
         write-host -fore red "Failed to compile WiX Script for $arch"
         write-host -fore red $out        
