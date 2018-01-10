@@ -12,33 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Base interface for ResourceStrategy[].
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-resources
     /// </summary>
-    public interface IResourceStrategy : IEntityStrategy
+    public class Resource
     {
         /// <summary>
-        /// A friendly resource type name, for example 'Virtual Network'.
+        /// API version for creating the resource
         /// </summary>
-        string Type { get; }
+        public string apiVersion { get; set; }
 
         /// <summary>
-        /// A resource type namespace, for example 'Microsoft.Network'.
+        /// Resource type. For example 'Microsot.Storage/storageAccounts'
         /// </summary>
-        string Namespace { get; }
+        public string type { get; set; }
 
         /// <summary>
-        /// A resource type provider, for example 'virtualNetworks'.
+        /// Name of resource.
         /// </summary>
-        string Provider { get; }
+        public string name { get; set; }
 
         /// <summary>
-        /// Returns an API version.
+        /// Resource location.
         /// </summary>
-        Func<IClient, string> GetApiVersion { get; }
+        public string location { get; set; }
+
+        /// <summary>
+        /// Resource properties.
+        /// </summary>
+        public Dictionary<string, object> properties { get; set; }
+
+        /// <summary>
+        /// A list of resource which has to be created first.
+        /// </summary>
+        public string[] dependsOn { get; set; }
     }
 }

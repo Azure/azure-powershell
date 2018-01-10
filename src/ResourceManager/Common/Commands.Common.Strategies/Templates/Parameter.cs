@@ -12,33 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Base interface for ResourceStrategy[].
+    /// Azure template parameter.
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-parameters
     /// </summary>
-    public interface IResourceStrategy : IEntityStrategy
+    public class Parameter
     {
-        /// <summary>
-        /// A friendly resource type name, for example 'Virtual Network'.
-        /// </summary>
-        string Type { get; }
-
-        /// <summary>
-        /// A resource type namespace, for example 'Microsoft.Network'.
-        /// </summary>
-        string Namespace { get; }
-
-        /// <summary>
-        /// A resource type provider, for example 'virtualNetworks'.
-        /// </summary>
-        string Provider { get; }
-
-        /// <summary>
-        /// Returns an API version.
-        /// </summary>
-        Func<IClient, string> GetApiVersion { get; }
+        public string type { get; set; }
     }
 }

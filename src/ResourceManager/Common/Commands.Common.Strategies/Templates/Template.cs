@@ -12,33 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Base interface for ResourceStrategy[].
+    /// Azure Resource Management Template
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
     /// </summary>
-    public interface IResourceStrategy : IEntityStrategy
+    public class Template
     {
-        /// <summary>
-        /// A friendly resource type name, for example 'Virtual Network'.
-        /// </summary>
-        string Type { get; }
+        [JsonProperty("$schema")]
+        public string Schema { get; set; }
+            = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
 
         /// <summary>
-        /// A resource type namespace, for example 'Microsoft.Network'.
+        /// Template version.
         /// </summary>
-        string Namespace { get; }
+        public string contentVersion { get; set; }
+
+        public Dictionary<string, Parameter> parameters { get; set; }
 
         /// <summary>
-        /// A resource type provider, for example 'virtualNetworks'.
+        /// Resources that are deployed.
         /// </summary>
-        string Provider { get; }
-
-        /// <summary>
-        /// Returns an API version.
-        /// </summary>
-        Func<IClient, string> GetApiVersion { get; }
+        public Resource[] resources { get; set; }
     }
 }

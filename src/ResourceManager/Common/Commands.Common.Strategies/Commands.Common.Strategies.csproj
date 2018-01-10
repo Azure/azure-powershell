@@ -61,6 +61,10 @@
     <Compile Include="IShouldProcess.cs" />
     <Compile Include="ITaskProgress.cs" />
     <Compile Include="ProgressMap.cs" />
+    <Compile Include="Templates\Parameter.cs" />
+    <Compile Include="Templates\Resource.cs" />
+    <Compile Include="Templates\Template.cs" />
+    <Compile Include="Templates\TemplateExtensions.cs" />
     <Compile Include="TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="SyncTaskScheduler.cs" />
@@ -92,7 +96,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="readme.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
