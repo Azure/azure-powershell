@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvm
 schema: 2.0.0
@@ -126,7 +127,6 @@ The IP allocation method for the public IP which will be created for the VM.
 Type: String
 Parameter Sets: SimpleParameterSet
 Aliases: 
-Accepted values: Static, Dynamic
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ Parameter Sets: DefaultParameterSet
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

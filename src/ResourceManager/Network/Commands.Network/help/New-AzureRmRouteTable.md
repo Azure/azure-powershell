@@ -15,9 +15,11 @@ Creates a route table.
 
 ```
 New-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
+
  [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>]
- [-DisableBgpRoutePropagation <Boolean>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-DisableBgpRoutePropagation <Boolean>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+
 ```
 
 ## DESCRIPTION
@@ -60,6 +62,21 @@ the new table. The command specifies the resource group to which the table belon
 for the table.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
