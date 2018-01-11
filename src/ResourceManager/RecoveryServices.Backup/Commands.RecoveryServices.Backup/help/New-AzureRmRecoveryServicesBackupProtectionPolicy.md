@@ -36,7 +36,7 @@ Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdle
 ### Example 1: Create a Backup protection policy
 ```
 PS C:\> $SchPol = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunTimes.RemoveAll()
+PS C:\> $SchPol.ScheduleRunTimes.Clear()
 PS C:\> $Dt = Get-Date
 PS C:\> $SchPol.ScheduleRunTimes.Add($Dt.ToUniversalTime())
 PS C:\> $RetPol = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 

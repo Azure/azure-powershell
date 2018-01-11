@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermdisk
 schema: 2.0.0
 ---
@@ -12,7 +13,7 @@ Removes a disk.
 ## SYNTAX
 
 ```
-Remove-AzureRmDisk [-AsJob] [-ResourceGroupName] <String> [-DiskName] <String> [-Force]
+Remove-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
