@@ -124,7 +124,7 @@ function get_created_storage_account_name
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - Start";
 
     $stoname = $rgname + 'sto';
-    $stotype = 'Standard_GRS';
+    $stotype = 'Standard_LRS';
 
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
 
@@ -245,7 +245,7 @@ function setup_image_and_disks
     $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - Start";
 
     $osDiskName = 'osDisk';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
     $osDiskCaching = 'ReadWrite';
 
     $vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
