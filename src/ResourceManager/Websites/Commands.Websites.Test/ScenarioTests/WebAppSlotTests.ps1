@@ -399,9 +399,7 @@ function Test-CreateNewWebAppSlot
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$job =  New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job 
+		$actual =  New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName
 		
 		# Assert
 		Assert-AreEqual $appname $actual.Name
@@ -415,7 +413,10 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName
+		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AsJob
+		$job | Wait-Job
+		$slot1 = $job | Receive-Job
+
 		$appWithSlotName = "$appname/$slotname"
 
 		# Assert
