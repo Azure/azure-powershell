@@ -16,9 +16,11 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -47,8 +50,20 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address location.")]
+        [LocationCompleter("Microsoft.Network/publicIPAddresses")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.PublicIPAddressSkuName.Basic,
+            MNM.PublicIPAddressSkuName.Standard,
+            IgnoreCase = true)]
+        public string Sku { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -92,6 +107,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
+            ValueFromPipelineByPropertyName = true)]
+            public List<string> Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -100,6 +121,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
@@ -126,6 +150,13 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
+            publicIp.Zones = this.Zone;
+
+            if (!string.IsNullOrEmpty(this.Sku))
+            {
+                publicIp.Sku = new PSPublicIpAddressSku();
+                publicIp.Sku.Name = this.Sku;
+            }
 
             if (this.IdleTimeoutInMinutes > 0)
             {
@@ -139,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
-            var publicIpModel = Mapper.Map<MNM.PublicIPAddress>(publicIp);
+            var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
 
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 

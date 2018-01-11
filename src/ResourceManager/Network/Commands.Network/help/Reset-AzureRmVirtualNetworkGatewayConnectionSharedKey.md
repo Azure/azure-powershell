@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: AB370DAD-CED9-479D-BE08-B32EFF924A37
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/reset-azurermvirtualnetworkgatewayconnectionsharedkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ schema: 2.0.0
 
 ```
 Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String>
- -KeyLength <UInt32> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyLength <UInt32> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +28,21 @@ Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGr
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 ```yaml

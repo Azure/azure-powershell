@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version: 
+Module Name: AzureRM.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Lists network usages for a subscription
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkUsage -Location <String> [<CommonParameters>]
+Get-AzureRmNetworkUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +73,21 @@ Limit        : 10
 Gets resources usage data in westcentralus region
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The location where resource usage is queried.

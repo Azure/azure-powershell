@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
+            loadBalancingRule.DisableOutboundSNAT = this.DisableOutboundSNAT.IsPresent;
 
             if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
             {

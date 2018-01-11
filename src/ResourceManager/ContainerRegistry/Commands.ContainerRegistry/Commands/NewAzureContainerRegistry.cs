@@ -19,63 +19,45 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using DeploymentState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.New, ContainerRegistryNoun, SupportsShouldProcess = true),
-        OutputType(typeof(PSContainerRegistry))]
+    [Cmdlet(VerbsCommon.New, ContainerRegistryNoun, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSContainerRegistry))]
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Container Registry SKU. " + AllowedSkuNames)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "Container Registry SKU.")]
         [Alias(ContainerRegistrySkuAlias, RegistrySkuAlias)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(SkuTier.Basic, IgnoreCase = false)]
+        [ValidateSet(SkuTier.Classic, SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
+        [Parameter(Mandatory = false, HelpMessage = "Container Registry Location. Default to the location of the resource group.")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.ContainerRegistry/registries")]
         public string Location { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Enable admin user for the container registry.")]
+        [Parameter(Mandatory = false, HelpMessage = "Enable admin user for the container registry.")]
         [ValidateNotNull]
         [Alias(EnableAdminAlias)]
         public SwitchParameter EnableAdminUser { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Container Registry Tags.")]
+        [Parameter(Mandatory = false, HelpMessage = "Container Registry Tags.")]
         [ValidateNotNull]
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of an existing storage account.")]
+        [Parameter(Mandatory = false, HelpMessage = "The name of an existing storage account. This only applies to Classic sku.")]
+        [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         public override void ExecuteCmdlet()
@@ -96,13 +78,35 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     Location = ResourceManagerClient.GetResourceGroupLocation(ResourceGroupName);
                 }
 
-                DeploymentExtended result = ResourceManagerClient.CreateRegistry(
-                    ResourceGroupName, Name, Location, Sku, EnableAdminUser, StorageAccountName, tags);
-
-                if (result.Properties.ProvisioningState == DeploymentState.Succeeded.ToString())
+                if(string.Equals(Sku, SkuName.Classic) && StorageAccountName == null)
                 {
-                    var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
-                    WriteObject(new PSContainerRegistry(registry));
+                    DeploymentExtended result = ResourceManagerClient.CreateClassicRegistry(
+                        ResourceGroupName, Name, Location, EnableAdminUser, tags);
+
+                    if (result.Properties.ProvisioningState == DeploymentState.Succeeded.ToString())
+                    {
+                        var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
+                        WriteObject(new PSContainerRegistry(registry));
+                    }
+                }
+                else
+                {
+                    var registry = new Registry 
+                    { 
+                        Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku), 
+                        AdminUserEnabled = EnableAdminUser,
+                        Tags = tags,
+                        Location = Location
+                    };
+                    
+                    if (StorageAccountName != null)
+                    {
+                        var storageAccountId = ResourceManagerClient.GetStorageAccountId(StorageAccountName);
+                        registry.StorageAccount = new StorageAccountProperties(storageAccountId);
+                    }
+
+                    var createdRegistry = RegistryClient.CreateRegistry(ResourceGroupName, Name, registry);
+                    WriteObject(new PSContainerRegistry(createdRegistry));
                 }
             }
         }

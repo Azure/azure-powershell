@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: DEBD58A3-AFAF-485C-8708-53228625138F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Removes a rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancerRuleConfig [-Name <String>] -LoadBalancer <PSLoadBalancer> [<CommonParameters>]
+Remove-AzureRmLoadBalancerRuleConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ The first command gets the load balancer named MyLoadBalancer, and then stores i
 The second command removes the rule configuration named MyLBruleName from the load balancer in $loadbalancer.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -LoadBalancer
 Specifies the **LoadBalancer** object that contains the rule configuration that this cmdlet removes.
@@ -69,7 +86,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSLoadBalancer
-
 Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
 
 ## OUTPUTS

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
@@ -30,37 +31,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary> 
         /// The Id parameter set. 
         /// </summary> 
-        internal const string LockIdParameterSet = "A lock, by Id.";
+        internal const string LockIdParameterSet = "ByLockId";
 
         /// <summary>
         /// The resource group level resource lock.
         /// </summary>
-        internal const string ScopeLevelLock = "A lock at the specified scope.";
+        internal const string ScopeLevelLock = "BySpecifiedScope";
 
         /// <summary>
         /// The resource group level resource lock.
         /// </summary>
-        internal const string ResourceGroupResourceLevelLock = "A lock at the resource group resource scope.";
+        internal const string ResourceGroupResourceLevelLock = "ByResourceGroupLevel";
 
         /// <summary>
         /// The subscription level resource lock.
         /// </summary>
-        internal const string SubscriptionResourceLevelLock = "A lock at the subscription resource scope.";
+        internal const string SubscriptionResourceLevelLock = "BySubscriptionLevel";
 
         /// <summary>
         /// The tenant level resource lock patameter set.
         /// </summary>
-        internal const string TenantResourceLevelLock = "A lock at the tenant resource scope.";
+        internal const string TenantResourceLevelLock = "ByTenantLevel";
 
         /// <summary>
         /// The resource group lock parametere set.
         /// </summary>
-        internal const string ResourceGroupLevelLock = "A lock at the resource group scope.";
+        internal const string ResourceGroupLevelLock = "ByResourceGroup";
 
         /// <summary>
         /// The subscription lock parameter set.
         /// </summary>
-        internal const string SubscriptionLevelLock = "A lock at the subscription scope.";
+        internal const string SubscriptionLevelLock = "BySubscription";
 
         /// <summary>
         /// Gets or sets the scope.
@@ -92,6 +93,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

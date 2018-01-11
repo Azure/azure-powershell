@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -12,11 +13,31 @@ Adds a network security rule configuration to a network security group.
 
 ## SYNTAX
 
+### SetByResource (Default)
 ```
 Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>] [-SourcePortRange <String>] [-DestinationPortRange <String>]
- [-SourceAddressPrefix <String>] [-DestinationAddressPrefix <String>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [<CommonParameters>]
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-Access <String>] [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+ [-Description <String>] [-Protocol <String>]
+ [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
+ [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
+ [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
+ [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +54,21 @@ Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Ac
     Set-AzureRmNetworkSecurityGroup
 ```
 
-The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command dds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
+The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command adds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
+
+### 1: Adding a new security rule with application security groups
+```
+$srcAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
+$destAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
+
+Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 |
+Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
+    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup
+    $srcAsg -SourcePortRange * -DestinationApplicationSecurityGroup $destAsg -DestinationPortRange 3389 |
+Set-AzureRmNetworkSecurityGroup
+```
+
+First, we create two new application security groups. Then, we retrieve an Azure network security group named "nsg1" from resource group "rg1". and add a network security rule named "rdp-rule" to it. The rule allows traffic from all the IP configurations in the application security group "srcAsg" to all the IP configurations in "destAsg" on port 3389. After adding the rule, we persist the modified Azure network security group.
 
 ## PARAMETERS
 
@@ -46,6 +81,21 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Allow, Deny
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,8 +130,38 @@ The acceptable values for this parameter are:
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroup
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationApplicationSecurityGroupId
+The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -100,7 +180,7 @@ The acceptable values for this parameter are:
 - A wildcard character (*) to match any port
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -210,8 +290,38 @@ The acceptable values for this parameter are:
 You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroup
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceApplicationSecurityGroupId
+The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -226,7 +336,7 @@ Specifies a source port or range.
 This value is expressed as an integer, as a range between 0 and 65535, or as a wildcard character (*) to match any source port.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -243,7 +353,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSNetworkSecurityGroup
-
 Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
 
 ## OUTPUTS

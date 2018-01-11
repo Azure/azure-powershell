@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     foreach (var t in c)
                     {
-                        s.Add(Mapper.Map<T>(t));
+                        s.Add(ComputeAutoMapperProfile.Mapper.Map<T>(t));
                     }
                 }
             });
@@ -47,14 +47,34 @@ namespace Microsoft.Azure.Commands.Compute
 
     public class ComputeAutoMapperProfile : AutoMapper.Profile
     {
+        private static IMapper _mapper = null;
+
+        private static readonly object _lock = new object();
+
+        public static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        Initialize();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
+
         public override string ProfileName
         {
             get { return "ComputeAutoMapperProfile"; }
         }
 
-        public static void Initialize()
+        private static void Initialize()
         {
-            Mapper.Initialize(cfg => {
+            var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile<ComputeAutoMapperProfile>();
 
                 // => PSComputeLongrunningOperation
@@ -160,7 +180,8 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
                     .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
                     .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
-                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile))
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachine>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
@@ -175,7 +196,8 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineListStatus>()
                     .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
                     .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
-                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+                    .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile))
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachineListStatus>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
@@ -207,10 +229,18 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<AzureOperationResponse<IPage<FROM.Usage>>, TO.PSUsage>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
-                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
+                // PSVirtualMachine <=> PSVirtualMachineList
+                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>()
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>()
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+
+                // PSVmssDiskEncryptionStatusContext <=> PSVmssDiskEncryptionStatusContextList
+                cfg.CreateMap<TO.PSVmssDiskEncryptionStatusContext, TO.PSVmssDiskEncryptionStatusContextList>();
+                cfg.CreateMap<TO.PSVmssVMDiskEncryptionStatusContext, TO.PSVmssVMDiskEncryptionStatusContextList>();
             });
 
+            _mapper = config.CreateMapper();
         }
     }
 }

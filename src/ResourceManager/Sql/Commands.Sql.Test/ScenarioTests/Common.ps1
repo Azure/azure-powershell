@@ -339,11 +339,48 @@ function Get-FailoverGroupName
 
 <#
 .SYNOPSIS
+Gets valid virtual network rule name
+#>
+function Get-VirtualNetworkRuleName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid server dns alias name
+#>
+function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-SqlTestMode {
+    try {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $testMode = 'Record';
+        } else {
+            throw;
+        }
+    }
+
+    return $testMode
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ((Get-SqlTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]
 		if($provider.Contains("/"))
@@ -354,7 +391,8 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null)
 			{
 				return "East US"
-			} else
+			} 
+            else
 			{
 				return $location.Locations[0]
 			}
@@ -386,18 +424,6 @@ function Create-ResourceGroupForTest ($location = "westcentralus")
 function Remove-ResourceGroupForTest ($rg)
 {
 	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
-}
-
-<#
-	.SYNOPSIS
-	Gets the server credential
-#>
-function Create-ServerForTest ($resourceGroup, $location = "westcentralus")
-{
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	return $credentials
 }
 
 <#

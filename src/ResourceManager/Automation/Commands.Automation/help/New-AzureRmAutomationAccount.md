@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationaccount
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Creates an Automation account.
 
 ```
 New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Plan <String>] [-Tags <IDictionary>] [<CommonParameters>]
+ [-Plan <String>] [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ This command creates a new automation account named ContosoAutomationAccount in 
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location in which this cmdlet creates the Automation account.
 To obtain valid locations, use the Get-AzureRMLocation cmdlet.
@@ -42,7 +58,7 @@ To obtain valid locations, use the Get-AzureRMLocation cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -76,7 +92,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Free, Basic
 
 Required: False
@@ -92,7 +108,7 @@ Specifies the name of a resource group to which this cmdlet adds an Automation a
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

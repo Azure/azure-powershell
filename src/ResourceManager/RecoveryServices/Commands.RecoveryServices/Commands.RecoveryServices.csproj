@@ -55,6 +55,7 @@
     <Compile Include="Models\PSObjects.cs" />
     <Compile Include="Models\PSParameterSets.cs" />
     <Compile Include="Models\RSBackupVaultAADCreds.cs" />
+    <Compile Include="Models\RSVaultAsrCreds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
@@ -84,12 +85,12 @@
       <Link>AzureRM.RecoveryServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="AzureRmRecoveryServicesStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

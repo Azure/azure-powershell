@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 6FBFAEFF-786D-440A-94B2-8C27BE033A0A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Adds a back-end address pool to an application gateway.
 ```
 Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-BackendIPAddresses <System.Collections.Generic.List`1[System.String]>]
- [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +91,21 @@ Specifies a list of back-end IP addresses which this cmdlet adds as a back-end s
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

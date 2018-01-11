@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 78F356F6-A621-4C27-B9CC-D103E74B3A33
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermloadbalancer
 schema: 2.0.0
 ---
 
@@ -14,13 +15,14 @@ Gets a load balancer.
 
 ### NoExpand
 ```
-Get-AzureRmLoadBalancer [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzureRmLoadBalancer [-Name <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +39,21 @@ This command gets the load balancer named MyLoadBalancer.
 A load balancer must exist before you can run this cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpandResource
 ```yaml

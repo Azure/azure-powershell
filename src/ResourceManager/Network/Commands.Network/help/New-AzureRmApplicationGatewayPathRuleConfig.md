@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: A1F949A9-7AEF-41C1-B757-114421B79493
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig
 schema: 2.0.0
 ---
 
@@ -16,7 +17,8 @@ Creates an application gateway path rule.
 ```
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]> [-BackendAddressPoolId <String>]
- [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>] [<CommonParameters>]
+ [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +27,8 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
- [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>] [<CommonParameters>]
+ [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +44,7 @@ Path map configuration settings are used in application gateway load balancing.
 PS C:\>$Gateway = Get-AzureRmApplicationGateway -Name "ContosoApplicationGateway"
 PS C:\> $AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"
 PS C:\> $HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
-PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Paths "/"-BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
+PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Name "base" -Paths "/base" -BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
 PS C:\> Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gateway -Name "ContosoUrlPathMap" -PathRules $PathRuleConfig -DefaultBackendAddressPool $AddressPool -DefaultBackendHttpSettings $HttpSettings
 ```
 
@@ -147,6 +150,21 @@ If you use this parameter you cannot use the *DefaultBackendHttpSettings* parame
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

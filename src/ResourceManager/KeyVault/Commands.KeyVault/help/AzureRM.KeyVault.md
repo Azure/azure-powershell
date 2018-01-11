@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.KeyVault
 Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
 Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
@@ -21,7 +21,7 @@ Adds a contact for certificate notifications.
 Creates a key in a key vault or imports a key into a key vault.
 
 ### [Add-AzureKeyVaultManagedStorageAccount](Add-AzureKeyVaultManagedStorageAccount.md)
-Adds an existing storage account to a key vault for automatic management of its storage account keys.
+Adds an existing Azure Storage Account to the specified key vault for its keys to be managed by the Key Vault service.
 
 ### [Backup-AzureKeyVaultKey](Backup-AzureKeyVaultKey.md)
 Backs up a key in a key vault.
@@ -123,7 +123,7 @@ Creates or updates the policy for a certificate in a key vault.
 Updates the attributes of a key in a key vault.
 
 ### [Set-AzureKeyVaultManagedStorageSasDefinition](Set-AzureKeyVaultManagedStorageSasDefinition.md)
-Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account. 
+Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
 
 ### [Set-AzureKeyVaultSecret](Set-AzureKeyVaultSecret.md)
 Creates or updates a secret in a key vault.
@@ -136,6 +136,9 @@ Grants or modifies existing permissions for a user, application, or security gro
 
 ### [Stop-AzureKeyVaultCertificateOperation](Stop-AzureKeyVaultCertificateOperation.md)
 Cancels a certificate operation in key vault.
+
+### [Undo-AzureKeyVaultCertificateRemoval](Undo-AzureKeyVaultCertificateRemoval.md)
+Recovers a deleted certificate in a key vault into an active state.
 
 ### [Undo-AzureKeyVaultKeyRemoval](Undo-AzureKeyVaultKeyRemoval.md)
 Recovers a deleted key in a key vault into an active state.
@@ -150,4 +153,5 @@ Recovers a deleted key vault into an active state.
 Update editable attributes of a Key Vault managed Azure Storage Account.
 
 ### [Update-AzureKeyVaultManagedStorageAccountKey](Update-AzureKeyVaultManagedStorageAccountKey.md)
-Regenerates the storage account key associated with a storage account managed by Key Vault.
+Regenerates the specified key of Key Vault managed Azure Storage Account.
+

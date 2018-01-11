@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -15,26 +16,28 @@ Imports a certificate to a key vault.
 ### ImportCertificateFromFile (Default)
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String> [-Tag <Hashtable>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromFile
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromString
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
- -CertificateCollection <X509Certificate2Collection> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -CertificateCollection <X509Certificate2Collection> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +93,7 @@ Specifies the certificate collection to add to a key vault.
 ```yaml
 Type: X509Certificate2Collection
 Parameter Sets: ImportWithPrivateKeyFromCollection
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -105,7 +108,7 @@ Specifies a certificate string.
 ```yaml
 Type: String
 Parameter Sets: ImportWithPrivateKeyFromString
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -114,13 +117,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -135,7 +138,7 @@ Specifies the path of the certificate file that this cmdlet imports.
 ```yaml
 Type: String
 Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromFile
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -166,7 +169,7 @@ Specifies the password for a certificate file.
 ```yaml
 Type: SecureString
 Parameter Sets: ImportWithPrivateKeyFromFile, ImportWithPrivateKeyFromString
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -183,7 +186,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -199,12 +202,27 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

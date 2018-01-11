@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 5D4F13F9-57E7-446B-AA28-8C44B149E1CB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Gets the details of an import or export of an Azure SQL Database.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseImportExportStatus [-OperationStatusLink] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzureRmSqlDatabaseImportExportStatus [-OperationStatusLink] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,13 +40,28 @@ This command gets the status of an import or export request for a database at th
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OperationStatusLink
 Specifies the status link that is returned from the New-AzureRmSqlDatabaseExport or New-AzureRmSqlDatabaseImport cmdlets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

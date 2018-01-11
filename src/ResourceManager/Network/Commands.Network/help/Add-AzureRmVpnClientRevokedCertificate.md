@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 90FB7B88-844E-4783-A10F-04D7BA47C030
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Adds a VPN client-revocation certificate.
 
 ```
 Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String> [<CommonParameters>]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +35,21 @@ This command adds a new client-revocation certificate to the virtual network gat
 In order to add the certificate, you must specify both the certificate name and the certificate thumbprint.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.

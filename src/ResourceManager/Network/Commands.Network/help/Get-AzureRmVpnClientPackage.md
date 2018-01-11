@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 2B4A3E2A-1868-492F-9F77-932319D2CE6D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientpackage
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets information about a VPN client package.
 
 ```
 Get-AzureRmVpnClientPackage -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- -ProcessorArchitecture <String> [<CommonParameters>]
+ -ProcessorArchitecture <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,21 @@ This command gets information about the AMD64 VPN client packages stored on the 
 To get information about the x86 client packages, set the value of the *ProcessorArchitecture* parameter to x86.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProcessorArchitecture
 Specifies the type of CPU architecture that the client package is designed for.
@@ -90,11 +106,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### String
-
 Parameter 'ResourceGroupName' accepts value of type 'String' from the pipeline
 
 ### String
-
 Parameter 'VirtualNetworkGatewayName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

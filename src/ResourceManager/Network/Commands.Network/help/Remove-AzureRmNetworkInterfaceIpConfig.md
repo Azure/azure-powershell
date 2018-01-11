@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 015C7DB7-2B08-4033-9B6E-1738D4DDACDA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Removes a network interface IP configuration from a network interface.
 
 ```
 Remove-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ The first command gets a network interface called mynic and stores it in the var
     removes the IP configuration called IPConfig-1 associated with this network interface.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the network interface IP configuration to remove.
@@ -71,7 +87,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSNetworkInterface
-
 Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
 
 ## OUTPUTS

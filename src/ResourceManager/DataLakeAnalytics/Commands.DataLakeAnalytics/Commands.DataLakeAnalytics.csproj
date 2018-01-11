@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.0.0\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.1.2-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -76,14 +76,13 @@
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\DataLakeAnalyticsFirewallRule.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAccountBasic.cs" />
+    <Compile Include="Models\PSJobInformationBasic.cs" />
     <Compile Include="Models\PSJobRecurrenceInformation.cs" />
     <Compile Include="Models\PSJobPipelineInformation.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Models\PSDataLakeStoreAccountInfo.cs" />
     <Compile Include="Models\PSStorageAccountInfo.cs" />
-    <Compile Include="Models\PSStorageAccountInfoProperties.cs" />
-    <Compile Include="Models\PSDataLakeStoreAccountInfoProperties.cs" />
-    <Compile Include="Models\PSDataLakeAnalyticsAccountProperties.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\ObsoleteUSqlCredential.cs" />
     <Compile Include="Models\AdlDataSource.cs" />
@@ -111,8 +110,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

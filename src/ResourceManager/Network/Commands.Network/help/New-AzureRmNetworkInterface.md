@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: B2F2082F-4BAA-4FBE-8846-2D436A433570
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkinterface
 schema: 2.0.0
 ---
 
@@ -17,8 +18,8 @@ Creates a network interface.
 New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
@@ -27,8 +28,8 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
  -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
  [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -38,10 +39,10 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
  [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-PrivateIpAddress <String>] [-IpConfigurationName <String>]
- [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-PrivateIpAddress <String>]
+ [-IpConfigurationName <String>] [-DnsServer <System.Collections.Generic.List`1[System.String]>]
+ [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -51,10 +52,11 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
  [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
+ [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>]
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +97,7 @@ Specifies an **ApplicationGatewayBackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -110,12 +112,72 @@ Specifies the ID of a **ApplicationGatewayBackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroup
+Specifies a collection of application security group references to which the network interface IP configuration should belong to.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroupId
+Specifies a collection of application security group references to which the network interface IP configuration should belong to.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,7 +187,7 @@ Specifies the DNS server for the network interface.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -140,7 +202,7 @@ Enables accelerated networking.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -156,7 +218,7 @@ IP forwarding allows a virtual machine to receive traffic addressed to other des
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -171,7 +233,7 @@ Forces the creation of the network interface even if a network interface with th
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -186,7 +248,7 @@ Specifies the internal DNS name label for the new network interface.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -201,7 +263,7 @@ Specifies the IP configuration that this cmdlet uses for the network interface.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]
 Parameter Sets: SetByIpConfigurationResource, SetByIpConfigurationResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -216,7 +278,7 @@ Specifies the name of an IP configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId, SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -231,7 +293,7 @@ Specifies a **BackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -246,7 +308,7 @@ Specifies the ID of a **BackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -261,7 +323,7 @@ Specifies an inbound NAT rule configuration for a load balancer.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -276,7 +338,7 @@ Specifies the ID of an inbound NAT rule configuration for a load balancer.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -291,7 +353,7 @@ Specifies the region for a network interface.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -321,7 +383,7 @@ Specifies a **NetworkSecurityGroup** object.
 ```yaml
 Type: PSNetworkSecurityGroup
 Parameter Sets: SetByIpConfigurationResourceId, SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -336,7 +398,7 @@ Specifies the ID of a network security group.
 ```yaml
 Type: String
 Parameter Sets: SetByIpConfigurationResourceId, SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -351,7 +413,7 @@ Specifies a static IPv4 IP address to assign to this network interface.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId, SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -366,7 +428,7 @@ Specifies a **PublicIPAddress** object to assign to a network interface.
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -381,7 +443,7 @@ Specifies the ID of a **PublicIPAddress** object to assign to a network interfac
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -396,7 +458,7 @@ Specifies the name of a resource group that the network interface belongs to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -412,7 +474,7 @@ This cmdlet creates a network interface for the subnet that this parameter speci
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -427,7 +489,7 @@ Specifies the ID of the subnet for which to create a network interface.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -444,7 +506,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

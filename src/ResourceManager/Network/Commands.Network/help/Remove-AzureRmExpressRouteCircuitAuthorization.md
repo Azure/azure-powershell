@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 38D57CE4-6994-4BDA-A50E-28680EF4E568
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Removes an existing ExpressRoute configuration authorization.
 
 ```
 Remove-AzureRmExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +48,21 @@ The third command uses the Set-AzureRmExpressRouteCircuit cmdlet to confirm the 
 ExpressRoute circuit stored in the $Circuit variable.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpressRouteCircuit
 Specifies the ExpressRouteCircuit object that this cmdlet removes.

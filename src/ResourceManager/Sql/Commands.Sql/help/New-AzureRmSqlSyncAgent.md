@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlsyncagent
 schema: 2.0.0
 ---
 
@@ -14,14 +15,15 @@ Creates an Azure SQL Sync Agent.
 ### SyncDatabaseComponent (Default)
 ```
 New-AzureRmSqlSyncAgent [-Name] <String> -SyncDatabaseName <String> [-SyncDatabaseServerName <String>]
- [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf]
- [-Confirm]
+ [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SyncDatabaseResourceID
 ```
 New-AzureRmSqlSyncAgent [-Name] <String> -SyncDatabaseResourceID <String> [-ServerName] <String>
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,13 +52,13 @@ This command creates a sync agent for an Azure SQL server.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -86,7 +88,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -101,7 +103,7 @@ The name of the Azure SQL Server the sync agent is in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -116,7 +118,7 @@ The database used to store sync related metadata.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,7 +133,7 @@ The resource group the sync metadata database belongs to.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,7 +148,7 @@ The resource ID of  the sync metadata database.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -161,7 +163,22 @@ The server on which the sync metadata database is hosted.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -185,6 +202,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

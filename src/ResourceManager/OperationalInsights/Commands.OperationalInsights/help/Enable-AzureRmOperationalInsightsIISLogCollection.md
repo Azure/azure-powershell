@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+Module Name: AzureRM.OperationalInsights
 ms.assetid: 26B1921E-6052-471B-B5B6-F2853536A425
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/enable-azurermoperationalinsightsiislogcollection
 schema: 2.0.0
 ---
 
@@ -15,13 +16,13 @@ Starts collection of IIS logs from computers in a workspace.
 ### ByWorkspaceName (Default)
 ```
 Enable-AzureRmOperationalInsightsIISLogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Enable-AzureRmOperationalInsightsIISLogCollection [-Workspace] <PSWorkspace> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzureRmOperationalInsightsIISLogCollection [-Workspace] <PSWorkspace>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ The **Enable-AzureRmOperationalInsightsIISLogCollection** cmdlet starts collecti
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of a resource group that contains computers.
@@ -118,7 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSWorkspace
-
 Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
 ## OUTPUTS

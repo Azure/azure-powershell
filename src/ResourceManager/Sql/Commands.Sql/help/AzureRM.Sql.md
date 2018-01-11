@@ -24,10 +24,13 @@ Gets SQL Database capabilities for the current subscription.
 Gets one or more databases.
 
 ### [Get-AzureRmSqlDatabaseActivity](Get-AzureRmSqlDatabaseActivity.md)
-Gets the status of moving elastic databases.
+Gets the status of database operations.
 
 ### [Get-AzureRmSqlDatabaseAdvisor](Get-AzureRmSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
+
+### [Get-AzureRmSqlDatabaseAuditing](Get-AzureRmSqlDatabaseAuditing.md)
+Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzureRmSqlDatabaseAuditingPolicy](Get-AzureRmSqlDatabaseAuditingPolicy.md)
 Gets the auditing policy of a database.
@@ -113,6 +116,9 @@ Gets information about an Azure AD administrator for SQL Server.
 ### [Get-AzureRmSqlServerAdvisor](Get-AzureRmSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
 
+### [Get-AzureRmSqlServerAuditing](Get-AzureRmSqlServerAuditing.md)
+Gets the auditing settings of an Azure SQL server.
+
 ### [Get-AzureRmSqlServerAuditingPolicy](Get-AzureRmSqlServerAuditingPolicy.md)
 Gets the auditing policy of a SQL server.
 
@@ -127,6 +133,9 @@ Gets a database server system recovery configuration.
 
 ### [Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity](Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity.md)
 Gets activity for a database server system recovery configuration.
+
+### [Get-AzureRmSqlServerDnsAlias](Get-AzureRmSqlServerDnsAlias.md)
+Gets or lists Azure SQL Server DNS Alias.
 
 ### [Get-AzureRmSqlServerFirewallRule](Get-AzureRmSqlServerFirewallRule.md)
 Gets firewall rules for a SQL Database server.
@@ -151,6 +160,27 @@ Gets the status of an Azure SQL Database server upgrade.
 
 ### [Get-AzureRmSqlServerUpgradeHint](Get-AzureRmSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
+
+### [Get-AzureRmSqlServerVirtualNetworkRule](Get-AzureRmSqlServerVirtualNetworkRule.md)
+Gets or lists Azure SQL Server Virtual Network Rule.
+
+### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
+Returns information about Azure SQL Sync Agents.
+
+### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
+Returns information about SQL Server databases linked by a sync agent.
+
+### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+Returns information about Azure SQL Database Sync Groups.
+
+### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+Returns the logs of an Azure SQL Database Sync Group.
+
+### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
+Returns information about Azure SQL Database Sync Members.
+
+### [Get-AzureRmSqlSyncSchema](Get-AzureRmSqlSyncSchema.md)
+Returns information about the sync schema of a member database or a hub database.
 
 ### [New-AzureRmSqlDatabase](New-AzureRmSqlDatabase.md)
 Creates a database or an elastic database.
@@ -185,8 +215,26 @@ Creates a communication link for elastic database transactions between two SQL D
 ### [New-AzureRmSqlServerDisasterRecoveryConfiguration](New-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Creates a database server system recovery configuration.
 
+### [New-AzureRmSqlServerDnsAlias](New-AzureRmSqlServerDnsAlias.md)
+This command creates a new Azure SQL Server DNS Alias.
+
 ### [New-AzureRmSqlServerFirewallRule](New-AzureRmSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
+
+### [New-AzureRmSqlServerVirtualNetworkRule](New-AzureRmSqlServerVirtualNetworkRule.md)
+Creates an Azure SQL Server Virtual Network Rule. 
+
+### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
+Creates an Azure SQL Sync Agent.
+
+### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
+Creates an Azure SQL Sync Agent Key.
+
+### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+Creates an Azure SQL Database Sync Group.
+
+### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+Creates an Azure SQL Database Sync Member.
 
 ### [Remove-AzureRmSqlDatabase](Remove-AzureRmSqlDatabase.md)
 Removes an Azure SQL database.
@@ -227,6 +275,9 @@ Deletes a communication link for elastic database transactions between two serve
 ### [Remove-AzureRmSqlServerDisasterRecoveryConfiguration](Remove-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Removes a SQL database server system recovery configuration.
 
+### [Remove-AzureRmSqlServerDnsAlias](Remove-AzureRmSqlServerDnsAlias.md)
+Removes Azure SQL Server DNS Alias.
+
 ### [Remove-AzureRmSqlServerFirewallRule](Remove-AzureRmSqlServerFirewallRule.md)
 Deletes a firewall rule from a SQL Database server.
 
@@ -235,6 +286,18 @@ Removes a Key Vault key from a SQL server.
 
 ### [Remove-AzureRmSqlServerThreatDetectionPolicy](Remove-AzureRmSqlServerThreatDetectionPolicy.md)
 Removes the threat detection policy from a server.
+
+### [Remove-AzureRmSqlServerVirtualNetworkRule](Remove-AzureRmSqlServerVirtualNetworkRule.md)
+Deletes an Azure SQL Server Virtual Network Rule.
+
+### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
+Removes an Azure SQL Sync Agent.
+
+### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+Removes an Azure SQL Database Sync Group.
+
+### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
+Removes an Azure SQL Database Sync Member.
 
 ### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
 Restores a SQL database.
@@ -247,6 +310,9 @@ Sets properties for a database, or moves an existing database into an elastic po
 
 ### [Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus](Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus.md)
 Modifies auto execute status of an Azure SQL Database Advisor.
+
+### [Set-AzureRmSqlDatabaseAuditing](Set-AzureRmSqlDatabaseAuditing.md)
+Changes the auditing settings for an Azure SQL database.
 
 ### [Set-AzureRmSqlDatabaseAuditingPolicy](Set-AzureRmSqlDatabaseAuditingPolicy.md)
 Sets the auditing policy for a database.
@@ -279,7 +345,7 @@ Sets a threat detection policy on a database.
 Modifies TDE property for a database.
 
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
-Modifies properties of an elastic database pool in a SQL Database.
+Modifies properties of an elastic database pool in Azure SQL Database.
 
 ### [Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus](Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus.md)
 Updates auto execute status of an Azure SQL Elastic Pool Advisor.
@@ -296,6 +362,9 @@ Provisions an Azure AD administrator for SQL Server.
 ### [Set-AzureRmSqlServerAdvisorAutoExecuteStatus](Set-AzureRmSqlServerAdvisorAutoExecuteStatus.md)
 Updates the auto execute status of an Azure SQL Server Advisor.
 
+### [Set-AzureRmSqlServerAuditing](Set-AzureRmSqlServerAuditing.md)
+Changes the auditing settings of an Azure SQL server.
+
 ### [Set-AzureRmSqlServerAuditingPolicy](Set-AzureRmSqlServerAuditingPolicy.md)
 Changes the auditing policy of a SQL Database server.
 
@@ -304,6 +373,9 @@ Sets a server long term retention vault.
 
 ### [Set-AzureRmSqlServerDisasterRecoveryConfiguration](Set-AzureRmSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
+
+### [Set-AzureRmSqlServerDnsAlias](Set-AzureRmSqlServerDnsAlias.md)
+Modifies the server to which Azure SQL Server DNS Alias is pointing
 
 ### [Set-AzureRmSqlServerFirewallRule](Set-AzureRmSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
@@ -317,11 +389,20 @@ Sets a threat detection policy on a server.
 ### [Set-AzureRmSqlServerTransparentDataEncryptionProtector](Set-AzureRmSqlServerTransparentDataEncryptionProtector.md)
 Sets the Transparent Data Encryption (TDE) protector for a SQL server.
 
+### [Set-AzureRmSqlServerVirtualNetworkRule](Set-AzureRmSqlServerVirtualNetworkRule.md)
+Modifies the configuration of an Azure SQL Server Virtual Network Rule.
+
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
+
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+Starts a sync group synchronization.
+
+### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
@@ -329,59 +410,26 @@ Stops the workflow that runs a recommended index operation.
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
 
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+Stops a sync group synchronization.
+
 ### [Suspend-AzureRmSqlDatabase](Suspend-AzureRmSqlDatabase.md)
 Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
-### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
-Specifies that a database uses the auditing policy of its host server.
-
-### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
-Creates an Azure SQL Database Sync Group.
-
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.
-
-### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
-Returns information about Azure SQL Database Sync Groups.
-
-### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
-Removes an Azure SQL Database Sync Group.
-
-### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
-Starts a sync group synchronization.
-
-### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
-Stops a sync group synchronization.
-
-### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
-Returns the logs of an Azure SQL Database Sync Group.
-
-### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
-Creates an Azure SQL Database Sync Member.
 
 ### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
 Updates an Azure SQL Database Sync Member.
 
-### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
-Returns information about Azure SQL Database Sync Members.
+### [Update-AzureRmSqlSyncSchema](Update-AzureRmSqlSyncSchema.md)
+Update the sync schema for a sync member database or a sync hub database.
+It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 
-### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
-Removes an Azure SQL Database Sync Member.
+### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
+Specifies that a database uses the auditing policy of its host server.
 
-### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
-Creates an Azure SQL Sync Agent.
-
-### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
-Creates an Azure SQL Sync Agent Key.
-
-### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
-Returns information about Azure SQL Sync Agents.
-
-### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
-Removes an Azure SQL Sync Agent.
-
-### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
-Returns information about SQL Server databases linked by a sync agent.

@@ -1,31 +1,29 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 555D58AB-1361-4BB1-ACD0-905C3C6F4F7E
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlelasticpool
 schema: 2.0.0
 ---
 
 # Set-AzureRmSqlElasticPool
 
 ## SYNOPSIS
-Modifies properties of an elastic database pool in a SQL Database.
+Modifies properties of an elastic database pool in Azure SQL Database.
 
 ## SYNTAX
 
 ```
 Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
- [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
+ [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlElasticPool** cmdlet modifies properties for an elastic database pool in an
-Azure SQL Database. This cmdlet can modify the minimum Database Throughput Units (DTUs) per
-database in addition to the maximum DTUs per database, the number of DTUs for the pool, and the
-storage limit for the pool.
+The **Set-AzureRmSqlElasticPool** cmdlet modifies properties for an elastic database pool in an Azure SQL Database. This cmdlet can modify the minimum Database Throughput Units (DTUs) per database in addition to the maximum DTUs per database, the number of DTUs for the pool, and the storage limit for the pool.
 
 Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
-
 
 ## EXAMPLES
 
@@ -73,6 +71,20 @@ storage for an elastic pool to 2 TB.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseDtuMax
 Specifies the maximum number of DTUs that any single database in the pool can consume. 
 
@@ -117,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Dtu
 Specifies the total number of shared DTUs for the elastic pool. 
 
@@ -146,9 +173,10 @@ Specifies the edition of the Azure SQL Database for the elastic pool. You cannot
 edition. The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
+- PremiumRS
 - DataWarehouse
 - Free
 
@@ -230,12 +258,27 @@ Accept wildcard characters: False
 Specifies a dictionary of Key-value pairs that this cmdlet associates with the elastic pool in the
 form of a hash table. For example:
 
-@{key0="value0";key1=$null;key2="value2"}
+`@{key0="value0";"key 1"=$null;key2="value2"}`
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundant
+The zone redundancy to associate with the Azure Sql Elastic Pool
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

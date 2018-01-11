@@ -142,18 +142,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         }
 
         /// <summary>
-        /// 
+        /// Copy the properties from the given subscription
         /// </summary>
         /// <param name="subscription"></param>
         /// <param name="other"></param>
         public static void CopyFrom(this IAzureSubscription subscription, IAzureSubscription other)
         {
-            if (other != null)
+            if (subscription != null && other != null)
             {
                 subscription.Id = other.Id;
                 subscription.Name = other.Name;
                 subscription.State = other.State;
                 subscription.CopyPropertiesFrom(other);
+            }
+        }
+
+        /// <summary>
+        /// Update the non-identity properties from the given subscription
+        /// </summary>
+        /// <param name="subscription"></param>
+        /// <param name="other"></param>
+        public static void Update(this IAzureSubscription subscription, IAzureSubscription other)
+        {
+            if (subscription != null && other != null)
+            {
+                subscription.Name = other.Name?? subscription.Name;
+                subscription.State = other.State?? subscription.State;
+                subscription.UpdateProperties(other);
             }
         }
     }

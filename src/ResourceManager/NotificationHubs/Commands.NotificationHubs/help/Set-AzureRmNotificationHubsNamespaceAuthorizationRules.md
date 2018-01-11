@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: F0981A7A-1B17-4141-A267-927E5B78BE5F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/set-azurermnotificationhubsnamespaceauthorizationrules
 schema: 2.0.0
 ---
 
@@ -15,13 +16,15 @@ Sets authorization rules for a notification hub namespace.
 ### InputFileParameterSet
 ```
 Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-InputFile] <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InputFile] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SASRuleParameterSet
 ```
 Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
- [-SASRule] <SharedAccessAuthorizationRuleAttributes> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SASRule] <SharedAccessAuthorizationRuleAttributes> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +63,21 @@ Information about the authorization rule is not included in the command itself.
 Instead, that information is obtained from the input file C:\Configuration\AuthorizationRules.json.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.

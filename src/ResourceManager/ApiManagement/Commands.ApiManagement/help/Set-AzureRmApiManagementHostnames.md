@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: F9CE8705-F7B1-45AB-98BC-FC6DC023D38D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementhostnames
 schema: 2.0.0
 ---
 
@@ -12,16 +13,18 @@ Sets a custom hostname configuration for an API Management service proxy or port
 
 ## SYNTAX
 
-### Specific API Management service (Default)
+### SetSpecificService (Default)
 ```
 Set-AzureRmApiManagementHostnames -ResourceGroupName <String> -Name <String>
  [-PortalHostnameConfiguration <PsApiManagementHostnameConfiguration>]
- [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru] [<CommonParameters>]
+ [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Set from provided PsApiManagement instance
+### SetFromPsApiManagementInstance
 ```
-Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru] [<CommonParameters>]
+Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +58,7 @@ Specifies the **PsApiManagement** instance that this cmdlet gets the *PortalHost
 
 ```yaml
 Type: PsApiManagement
-Parameter Sets: Set from provided PsApiManagement instance
+Parameter Sets: SetFromPsApiManagementInstance
 Aliases: 
 
 Required: True
@@ -65,12 +68,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the API Management instance.
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management service
+Parameter Sets: SetSpecificService
 Aliases: 
 
 Required: True
@@ -102,7 +120,7 @@ Passing $null to the cmdlet sets the default hostname.
 
 ```yaml
 Type: PsApiManagementHostnameConfiguration
-Parameter Sets: Specific API Management service
+Parameter Sets: SetSpecificService
 Aliases: 
 
 Required: False
@@ -118,7 +136,7 @@ Passing $null sets the default hostname.
 
 ```yaml
 Type: PsApiManagementHostnameConfiguration
-Parameter Sets: Specific API Management service
+Parameter Sets: SetSpecificService
 Aliases: 
 
 Required: False
@@ -133,7 +151,7 @@ Specifies the name of the resource group under which the API Management instance
 
 ```yaml
 Type: String
-Parameter Sets: Specific API Management service
+Parameter Sets: SetSpecificService
 Aliases: 
 
 Required: True
@@ -149,7 +167,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PsApiManagement
-
 Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
 
 ## OUTPUTS

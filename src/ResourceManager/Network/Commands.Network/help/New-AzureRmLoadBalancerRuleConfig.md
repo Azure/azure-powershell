@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -17,7 +18,7 @@ Creates a rule configuration for a load balancer.
 New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfigurationId <String>]
  [-BackendAddressPoolId <String>] [-ProbeId <String>] [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [<CommonParameters>]
+ [-DisableOutboundSNAT] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +26,7 @@ New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfigurationId <St
 New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
  [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [<CommonParameters>]
+ [-DisableOutboundSNAT] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +87,36 @@ Specifies the backend port for traffic that is matched by this load balancer rul
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableOutboundSNAT
+Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -245,7 +276,7 @@ The acceptable values for this parameter are: Tcp or Udp.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Tcp, Udp
+Accepted values: Tcp, Udp, All
 
 Required: False
 Position: Named

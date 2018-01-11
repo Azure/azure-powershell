@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermtenant
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Gets tenants that are authorized for the current user.
 ## SYNTAX
 
 ```
-Get-AzureRmTenant [[-TenantId] <String>] [<CommonParameters>]
+Get-AzureRmTenant [[-TenantId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ Domain   : microsoft.com
 This example shows how to get a specific authorized tenant of an Azure account.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, tenant and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -TenantId
 Specifies the ID of the tenant that this cmdlet gets.

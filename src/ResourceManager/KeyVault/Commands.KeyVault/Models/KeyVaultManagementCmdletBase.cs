@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -67,9 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (_activeDirectoryClient == null)
                 {
                     _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-                    _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
-                        () => Task.FromResult(_dataServiceCredential.GetToken()));
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
                 }
                 return this._activeDirectoryClient;
             }
@@ -206,9 +204,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objectId = null;
             if (DefaultContext.Account.Type == AzureAccount.AccountType.User)
             {
-                var userFetcher = ActiveDirectoryClient.Me.ToUser();
-                var user = userFetcher.ExecuteAsync().Result;
-                objectId = user.ObjectId;
+                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions()).ToString();
             }
 
             return objectId;
@@ -229,10 +225,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objId = null;
             if (!string.IsNullOrWhiteSpace(upn))
             {
-                var user = ActiveDirectoryClient.Users.Where(u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase))
-                    .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
+                var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { SPN = upn }).SingleOrDefault();
                 if (user != null)
-                    objId = user.ObjectId;
+                    objId = user.Id.ToString();
             }
             return objId;
         }
@@ -242,11 +237,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objId = null;
             if (!string.IsNullOrWhiteSpace(spn))
             {
-                var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
-                    s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
-                    .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
+                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { SPN = spn }).SingleOrDefault();
                 if (servicePrincipal != null)
-                    objId = servicePrincipal.ObjectId;
+                    objId = servicePrincipal.Id.ToString();
             }
             return objId;
         }
@@ -257,12 +250,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             // In ADFS, Graph cannot handle this particular combination of filters.
             if (!DefaultProfile.DefaultContext.Environment.OnPremise && !string.IsNullOrWhiteSpace(email))
             {
-                var users = ActiveDirectoryClient.Users.Where(FilterByEmail(email)).ExecuteAsync().GetAwaiter().GetResult().CurrentPage;
+                var users = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { Mail = email });
                 if (users != null)
                 {
                     ThrowIfMultipleObjectIds(users, email);
                     var user = users.FirstOrDefault();
-                    objId = user?.ObjectId;
+                    objId = user?.Id.ToString();
                 }
             }
             return objId;
@@ -273,7 +266,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             bool isValid = false;
             if (!string.IsNullOrWhiteSpace(objId))
             {
-                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
                 if (objectCollection.Any())
                 {
                     isValid = true;
@@ -340,12 +333,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             return IsValidGUid(objectId);
         }
 
-        private Expression<Func<IUser, bool>> FilterByEmail(string email)
-        {
-            return u => u.Mail.Equals(email, StringComparison.OrdinalIgnoreCase) ||
-                u.OtherMails.Any(m => m.Equals(email, StringComparison.OrdinalIgnoreCase));
-        }
-
         protected readonly string[] DefaultPermissionsToKeys =
         {
             KeyPerms.Get,
@@ -383,7 +370,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Listissuers,
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
-            CertPerms.Setissuers
+            CertPerms.Setissuers,
+            CertPerms.Recover
         };
 
         protected readonly string[] DefaultPermissionsToStorage = 

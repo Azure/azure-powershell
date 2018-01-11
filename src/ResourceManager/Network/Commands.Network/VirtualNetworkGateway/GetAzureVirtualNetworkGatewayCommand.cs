@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
                 var vnetGatewayPage = this.VirtualNetworkGatewayClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var vnetGatewayList = ListNextLink<VirtualNetworkGateway>.GetAllResourcesByPollingNextLink(vnetGatewayPage, this.VirtualNetworkGatewayClient.ListNext);
+                var vnetGatewayList = ListNextLink<Management.Network.Models.VirtualNetworkGateway>.GetAllResourcesByPollingNextLink(vnetGatewayPage, this.VirtualNetworkGatewayClient.ListNext);
 
                 var psVnetGateways = new List<PSVirtualNetworkGateway>();
                 foreach (var virtualNetworkGateway in vnetGatewayList)

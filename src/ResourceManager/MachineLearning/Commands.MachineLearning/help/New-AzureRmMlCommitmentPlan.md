@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/new-azurermmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Creates a new commitment plan.
 
 ```
 New-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Location <String> -Name <String> -SkuName <String>
- -SkuTier <String> [-SkuCapacity <Int32>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SkuTier <String> [-SkuCapacity <Int32>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +25,6 @@ If a commitment plan with the same name exists in the resource group, the call a
 ## EXAMPLES
 
 ### --------------------------  Example 1: Create a new commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 New-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Location "South Central US" -SkuName DevTest -SkuTier Standard -SkuCapacity 1
 ```
@@ -34,6 +32,21 @@ New-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommit
 Creates a new Azure Machine Learning commitment plan named "MyCommitmentPlanName" in the "MyResourceGroup" group and South Central US region. In this example, the SKU DevTest/Standard is used, meaning the resources provided by the commitment plan will be definied by the limits of DevTest/Standard. The SkuCapacity in this example is 1, meaning the cost of the plan will be 1x the cost of DevTest, and the resources the plan contains will be 1x what DevTest provides.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.

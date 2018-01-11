@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -116,6 +118,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -131,11 +136,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
                     this.Name);
-                StorageNetworkAcls storageACL = storageAccount.NetworkAcls;
+                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new StorageNetworkAcls();
+                    storageACL = new NetworkRuleSet();
                 }
 
                 PSNetworkRuleSet psNetworkRule = PSNetworkRuleSet.ParsePSNetworkRule(storageACL);
@@ -161,7 +166,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 
                 StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
+                updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(psNetworkRule);
 
                 var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                     this.ResourceGroupName,
@@ -170,7 +175,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls));
+                WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet));
             }
         }
     }

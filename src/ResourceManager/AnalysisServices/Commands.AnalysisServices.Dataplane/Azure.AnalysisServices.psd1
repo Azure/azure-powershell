@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.4.4'
+ModuleVersion = '0.5.0'
   
 # ID used to uniquely identify this module  
 GUID = 'c717b5a4-1f1b-4a2f-8aa1-bfd09934626e'  
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
 Description = 'Microsoft Azure PowerShell - Analysis Services server management'
@@ -44,8 +44,11 @@ CLRVersion='4.0'
 # Processor architecture (None, X86, Amd64, IA64) required by this module  
 ProcessorArchitecture = 'None'  
 
+# Modules that must be imported into the global environment prior to importing this module
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; })
+
 # Assemblies that must be loaded prior to importing this module  
-RequiredAssemblies = @()  
+RequiredAssemblies = @()
   
 # Script files (.ps1) that are run in the caller's environment prior to importing this module  
 ScriptsToProcess = @()  
@@ -57,9 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
-NestedModules = @(  
-    '.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll'
-)
+NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
   
 # Functions to export from this module  
 FunctionsToExport = '*'  
@@ -67,7 +68,8 @@ FunctionsToExport = '*'
 # Cmdlets to export from this module  
 CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
                 'Restart-AzureAnalysisServicesInstance',
-                'Export-AzureAnalysisServicesInstanceLog'
+                'Export-AzureAnalysisServicesInstanceLog',
+                'Sync-AzureAnalysisServicesInstance'
   
 # Variables to export from this module  
 VariablesToExport = '*'  
@@ -90,7 +92,7 @@ PrivateData = @{
         Tags = @("Azure", "AzureAS", "AS")
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

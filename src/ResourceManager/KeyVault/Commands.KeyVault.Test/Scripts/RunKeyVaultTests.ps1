@@ -29,6 +29,10 @@ If true, then tests that require a premium vault are skipped (optional).
 The object ID of the user (optional). If no object ID is provided, then
 the object ID is extracted from whomever is currently logged in.
 
+.PARAMETER SoftDeleteEnabled
+If true, turns on 'soft-delete' mode for tests: vault is created as soft-delete-enabled (if not exists), soft-delete 
+tests are executed, delete + purge sequence is used for clean-up. 
+
 .PARAMETER NoADCmdLetMode
 If true, then active directory related tests are skipped.
 
@@ -249,16 +253,24 @@ function Run-AllDataPlaneTests
         Run-TestProtected { Run-KeyTest {Test_GetDeletedKeys} "Test_GetDeletedKeys" } "Test_GetDeletedKeys"
         Run-TestProtected { Run-KeyTest {Test_UndoRemoveKey} "Test_UndoRemoveKey" } "Test_UndoRemoveKey"
         Run-TestProtected { Run-KeyTest {Test_RemoveDeletedKey} "Test_RemoveDeletedKey" } "Test_RemoveDeletedKey"
-        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistKey} "Test_RemoveNonExistDeletedKey" } "Test_RemoveNonExistDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistDeletedKey} "Test_RemoveNonExistDeletedKey" } "Test_RemoveNonExistDeletedKey"
         Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedKeys} "Test_PipelineRemoveDeletedKeys" } "Test_PipelineRemoveDeletedKeys"
 
         # Secret soft delete tests
-        Run-TestProtected { Run-KeyTest {Test_GetDeletedKey} "Test_GetDeletedSecret" } "Test_GetDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedKey} "Test_GetDeletedSecret" } "Test_GetDeletedSecret"
         Run-TestProtected { Run-KeyTest {Test_GetDeletedKeys} "Test_GetDeletedSecrets" } "Test_GetDeletedSecrets"
-        Run-TestProtected { Run-KeyTest {Test_UndoRemoveKey} "Test_UndoRemoveSecret" } "Test_UndoRemoveSecret"
-        Run-TestProtected { Run-KeyTest {Test_RemoveDeletedKey} "Test_RemoveDeletedSecret" } "Test_RemoveDeletedSecret"
-        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistKey} "Test_RemoveNonExistDeletedSecret" } "Test_RemoveNonExistDeletedSecret"
-        Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedKeys} "Test_PipelineRemoveDeletedSecrets" } "Test_PipelineRemoveDeletedSecrets"
+        Run-TestProtected { Run-KeyTest {Test_UndoRemoveSecret} "Test_UndoRemoveSecret" } "Test_UndoRemoveSecret"
+        Run-TestProtected { Run-KeyTest {Test_RemoveDeletedSecret} "Test_RemoveDeletedSecret" } "Test_RemoveDeletedSecret"
+        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistDeletedSecret} "Test_RemoveNonExistDeletedSecret" } "Test_RemoveNonExistDeletedSecret"
+        Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedSecrets} "Test_PipelineRemoveDeletedSecrets" } "Test_PipelineRemoveDeletedSecrets"
+
+        # certificate soft delete tests
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedCertificate} "Test_GetDeletedCertificate" } "Test_GetDeletedCertificate"
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedCertificates} "Test_GetDeletedCertificates" } "Test_GetDeletedCertificates"
+        Run-TestProtected { Run-KeyTest {Test_UndoRemoveCertificate} "Test_UndoRemoveCertificate" } "Test_UndoRemoveCertificate"
+        Run-TestProtected { Run-KeyTest {Test_RemoveDeletedCertificate} "Test_RemoveDeletedCertificate" } "Test_RemoveDeletedCertificate"
+        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistDeletedCertificate} "Test_RemoveNonExistDeletedCertificate" } "Test_RemoveNonExistDeletedCertificate"
+        Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedCertificates} "Test_PipelineRemoveDeletedCertificate" } "Test_PipelineRemoveDeletedCertificates"
     }
 
     # Add-AzureKeyVaultKey tests.

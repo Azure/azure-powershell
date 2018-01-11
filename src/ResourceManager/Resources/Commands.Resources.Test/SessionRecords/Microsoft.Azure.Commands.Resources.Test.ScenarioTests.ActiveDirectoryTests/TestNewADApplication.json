@@ -4,31 +4,31 @@
       "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6",
       "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk188\",\r\n  \"homepage\": \"http://onesdk188.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk188\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"ps54\",\r\n  \"homepage\": \"http://ps54.com\",\r\n  \"identifierUris\": [\r\n    \"http://ps54\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "163"
+          "148"
         ],
         "x-ms-client-request-id": [
-          "6cd80da6-2fdb-4093-86e0-0574e3eaff35"
+          "1b558ca5-c43f-4534-9daf-3079411b3b37"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n  \"deletionTimestamp\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk188\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://onesdk188.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk188\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access onesdk188\",\r\n      \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access onesdk188\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n  \"deletionTimestamp\": null,\r\n  \"acceptMappedClaims\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"ps54\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://ps54.com\",\r\n  \"identifierUris\": [\r\n    \"http://ps54\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access ps54\",\r\n      \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access ps54\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null,\r\n  \"tokenEncryptionKeyId\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1300"
+          "1319"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -40,19 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "zOAKdOtejKyet7xG+/leMZcLGyJjHmu5TLkCJ+nsRzQ="
+          "OzArKxpPSemSWWoFLWW7BNCbp+jQjreuu63QDSj69JM="
         ],
         "request-id": [
-          "c3243bca-3914-4af0-9f26-c1a8cb0a7cfb"
+          "d8f4c0aa-1cd9-46c6-a51f-25e21935fa5d"
         ],
         "client-request-id": [
-          "23350162-8e71-4b7d-9456-5fa4b722c431"
+          "df45ccbb-84da-45d0-92c0-ef18d2f24012"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "J3HOLdq1TBXPHlsZW6mqFpeWs8yZTNMHDcHt83W_cHC82F7kPEgWQIMMWEAE9KOuIdn-KgRBgST5kJXJzsFFq-o093qmOEW_eeJNMITt8SJiEhpOfkybZ_kK6ASU7SVuZ-hY9ZTIeSe9zV-T54qDEg.onniS_LvJ7GjpTAMVnS3LywgkIB-XdMu6SezXYqJHmM"
+          "baVm-up499hGxutfVe2WeR3mgeIJgySQt2eSGj7PkMtpjnLCafOKn15yfmQ89qEQnHRVN16KGWcTe14CJFe9eKZD_52fBiI8eUsP-vGMY-QLkZtELf7D0WLWxCY4131uJ0iJuMfn7ghjpLCS9AH5p_Y9AW_4bBbx--a4cVn5_DctMydLupls5iiP2rajuk50torGWMkPoXXYq8HODy60hQ.k1mA9jayDFd816inOlhHG9DBvKRJBZREfDl53isUF-g"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -67,13 +67,13 @@
           "*"
         ],
         "Duration": [
-          "5712965"
+          "4496836"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/02c1bd45-6360-4649-a5e2-f3c5057e1755/Microsoft.DirectoryServices.Application"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f/Microsoft.DirectoryServices.Application"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -86,34 +86,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:35 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/02c1bd45-6360-4649-a5e2-f3c5057e1755?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMDJjMWJkNDUtNjM2MC00NjQ5LWE1ZTItZjNjNTA1N2UxNzU1P2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c5769fe1-abc9-41e2-b628-ece90a7dc481"
+          "11599eca-4df6-4723-b560-6d7c5aee341c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n  \"deletionTimestamp\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk188\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://onesdk188.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk188\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access onesdk188\",\r\n      \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access onesdk188\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"00ed1232-ee2e-40e8-beec-276f1c4f12e6\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"7700af81-d6e8-40d8-a8a4-d988d1579c19\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"AuthZScenarioTestAdminApp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://localhost:44300/\",\r\n      \"identifierUris\": [\r\n        \"https://localhost:44300/\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access AuthZScenarioTestAdminApp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access AuthZScenarioTestAdminApp\",\r\n          \"id\": \"555c745a-9e38-4870-b8b0-81a9298558a8\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access AuthZScenarioTestAdminApp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access AuthZScenarioTestAdminApp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:34:26.8247391Z\",\r\n          \"keyId\": \"745ea7cc-b235-41ce-90d8-98c7112fea05\",\r\n          \"startDate\": \"2017-09-12T00:34:26.8247391Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-03-21T19:11:56.8484757Z\",\r\n          \"keyId\": \"43976be9-4fe4-403e-98ed-a06738337401\",\r\n          \"startDate\": \"2016-03-21T19:11:56.8484757Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://localhost:44300/\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"5778995a-e1bf-45b8-affa-663a9f3f4d04\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"03a221f0-12b6-4a37-98ca-05bcfa192e82\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"b04ec2be-ec6e-4267-bec6-744712f5c1fb\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk2574\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://onesdk2574\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk2574 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk2574\",\r\n          \"id\": \"82454d7b-b736-4e9f-a0b8-ca8db15387f9\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk2574 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk2574\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:29:52.2016212Z\",\r\n          \"keyId\": \"8f391063-4777-42cd-bf43-dc9cedec7b09\",\r\n          \"startDate\": \"2017-09-12T00:29:52.2016212Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:29:51.2437854Z\",\r\n          \"keyId\": \"be5af39e-0af4-472a-a47d-7084ff7f5bd2\",\r\n          \"startDate\": \"2017-09-12T00:29:51.2437854Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"06484f7d-0db5-4c72-bfd6-ed7f74e1b6c4\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"6e4439e7-70a3-4559-978c-8d2b5d1caf85\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"adApplication2855\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://adApplication2855/home\",\r\n      \"identifierUris\": [\r\n        \"http://adApplication2855/home\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication2855 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication2855\",\r\n          \"id\": \"f043c8a1-4651-4ded-8a93-06c05a621a71\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication2855 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication2855\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://adApplication2855/home\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"0d1a2139-379e-4893-a93b-58e991582acb\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"62204fe8-2d5d-4217-acd7-e9e1f1adaded\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"adApplication5023\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://adApplication5023/home\",\r\n      \"identifierUris\": [\r\n        \"http://adApplication5023/home\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication5023 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication5023\",\r\n          \"id\": \"c768b32c-1b62-4664-b075-3525b00f4e0a\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication5023 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication5023\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://adApplication5023/home\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"0ea204ba-a5e5-4efa-bc46-e483dd036c64\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"24cf8445-3687-4784-affc-ddf64a7ddef3\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk363\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://onesdk363\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk363 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk363\",\r\n          \"id\": \"d9435ce2-5acd-4fc4-81ab-7e459fa32673\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk363 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk363\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:32:05.3481418Z\",\r\n          \"keyId\": \"ac5e7b76-a5be-4dc0-953b-b0bbe63de830\",\r\n          \"startDate\": \"2017-09-12T00:32:05.3481418Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"0fda6e50-ba62-4a6a-9587-14803c3d9d3e\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"91e567dc-6a3b-44cd-9492-37569265e58c\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"MS Graph Test - Native\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": true,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://localhost/msgraphtest\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"11f92e1a-8243-49a8-b88e-84e29e75d91f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"6f5d1588-e8c9-414c-a535-54f7d53f4553\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk375\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk375.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk375\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk375 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk375\",\r\n          \"id\": \"11e3ce5f-866b-4060-8c55-baa7541e33b9\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk375 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk375\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"15478247-1268-476b-a9fc-4d2bfe15e448\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"f81276d6-ae63-4f48-85c3-f2a42825bc94\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"tesapp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aeefe\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access tesapp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access tesapp\",\r\n          \"id\": \"dc4ecddd-c701-4296-960c-a6c80f101131\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access tesapp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access tesapp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:59:34.0970602Z\",\r\n          \"keyId\": \"fcd76217-97e5-4271-9bc6-733b4bee41c6\",\r\n          \"startDate\": \"2017-09-12T00:59:34.0970602Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"1927204b-35cb-4f65-8097-0e6a0b66d691\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"ac17ac1c-3ad7-4cc7-b620-109ee782737c\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"adApplication6702\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://adApplication6702/home\",\r\n      \"identifierUris\": [\r\n        \"http://adApplication6702/home\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication6702 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication6702\",\r\n          \"id\": \"5cbb849a-fbe3-4bac-b7a2-80c89e8db84c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication6702 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication6702\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://adApplication6702/home\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"1b33ab19-7040-4634-ae0d-a3dba7af9357\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"cf7f550c-2a0f-4055-a77e-57c77f19b850\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"OneboxTestApplication\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://OneboxTestApplication\",\r\n      \"identifierUris\": [\r\n        \"http://OneboxTestApplication\"\r\n      ],\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-03-17T00:39:01.5806565Z\",\r\n          \"keyId\": \"9563a465-3d09-4ed2-999a-368c2c46e82d\",\r\n          \"startDate\": \"2017-03-17T00:39:01.5806565Z\",\r\n          \"type\": \"AsymmetricX509Cert\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access OneboxTestApplication on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access OneboxTestApplication\",\r\n          \"id\": \"f38f320b-9185-4c0b-8f55-f303eddd7d1c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access OneboxTestApplication on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access OneboxTestApplication\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://OneboxTestApplication\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps54\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps54.com\",\r\n      \"identifierUris\": [\r\n        \"http://ps54\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps54\",\r\n          \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps54\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"3efe93e8-4f96-41bf-90ea-3bcc1edfbc0d\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"a2abb7fb-a006-481f-b30c-6d9c5d34b9bd\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ProductionBApplication\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ProductionBApplication\",\r\n      \"identifierUris\": [\r\n        \"http://ProductionBApplication\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ProductionBApplication on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ProductionBApplication\",\r\n          \"id\": \"6515dcf4-f173-4f19-ae68-4aa772948ad1\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ProductionBApplication on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ProductionBApplication\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://ProductionBApplication\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"4b0caec8-caed-4d97-87f3-400f68374ebc\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"a21fe3d0-c7b7-49a4-932c-d2e4fbfd59b3\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk1983\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk1983.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk1983\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk1983 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk1983\",\r\n          \"id\": \"f152a58f-b1b6-4840-8e36-b10288ed6270\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk1983 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk1983\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"53e928f6-6f40-4eb6-bb2d-95fdba9d423a\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"26ed8f36-f4bc-4ce5-9929-68a13a1d7600\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"TestSliceApplication\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://TestSliceApplication\",\r\n      \"identifierUris\": [\r\n        \"http://TestSliceApplication\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access TestSliceApplication on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access TestSliceApplication\",\r\n          \"id\": \"1ec67c3f-f424-4d46-9000-f2fd6baba08e\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access TestSliceApplication on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access TestSliceApplication\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://TestSliceApplication\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"553637c6-8015-4e30-a309-161b28e266d9\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"5e01d278-35e9-4aa9-bfd3-215b64e0ab44\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"hariTestApp1\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://hariTestApp1\",\r\n      \"identifierUris\": [\r\n        \"http://hariTestApp1\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access hariTestApp1 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access hariTestApp1\",\r\n          \"id\": \"ca7be117-4ad0-4d09-810a-0721386f6fa4\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access hariTestApp1 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access hariTestApp1\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": \"ZQB3AHIAZgB3AHIA\",\r\n          \"endDate\": \"2018-04-27T21:37:19.133Z\",\r\n          \"keyId\": \"3e0654d3-85f3-4ae5-a6bc-9911aa49befb\",\r\n          \"startDate\": \"2017-04-27T21:37:31.1796571Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://hariTestApp1\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"78c8a3c8-a07e-4b9e-af1b-b5ccab50a175\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"1cda74f2-2616-4834-b122-5cb1b07f8a59\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"824c81eb-e3f8-4ee6-8f6d-de7f50d565b7\",\r\n              \"type\": \"Role\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"64a52ec0-9845-479d-9ec4-e1cd25577d31\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"c46fc111-c44e-4bd3-a912-25bf6bbe4518\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ShubhamTestAppStorageAccount\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ShubhamTestAppStorageAccount\",\r\n      \"identifierUris\": [\r\n        \"http://ShubhamTestAppStorageAccount\"\r\n      ],\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2017-05-09T17:46:03Z\",\r\n          \"keyId\": \"eb81d40b-56cb-41b5-be88-4535e5efaa52\",\r\n          \"startDate\": \"2017-03-12T22:23:20.0347432Z\",\r\n          \"type\": \"AsymmetricX509Cert\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ShubhamTestAppStorageAccount on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ShubhamTestAppStorageAccount\",\r\n          \"id\": \"fc1794a1-41a5-4f3a-832d-851249884451\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ShubhamTestAppStorageAccount on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ShubhamTestAppStorageAccount\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://ShubhamTestAppStorageAccount\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"64b87635-d09d-4d1b-bb51-2277e3343bd0\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"40d3aa93-6c0e-4fd8-9e00-258751fd7c65\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": true,\r\n      \"displayName\": \"tstapp3123\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aesdf\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access tstapp3123 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access tstapp3123\",\r\n          \"id\": \"46b8102b-a31e-4fb2-88b1-d22b65a513b6\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access tstapp3123 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access tstapp3123\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T01:02:42.7640324Z\",\r\n          \"keyId\": \"b7a29763-961f-40f8-ad39-7b29392de289\",\r\n          \"startDate\": \"2017-09-12T01:02:42.7640324Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"657a5ab9-c9e2-4a92-81bb-1c93c414bcb7\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"788d4be7-27d6-4770-b332-0223f08c4df3\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"paggarwatest1\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://paggarwatest1\",\r\n      \"identifierUris\": [\r\n        \"https://paggarwatest1\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access paggarwatest1 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access paggarwatest1\",\r\n          \"id\": \"59374fd4-7f0d-41bc-abad-0b0f013a7a57\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access paggarwatest1 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access paggarwatest1\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://paggarwatest1\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"66ee2db4-2d60-4468-9bda-d3e37bb63875\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"50e897ac-9bc5-4169-92b1-93cf6e3e96d1\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"nativeapptest\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": \"awBlAHkAMQA=\",\r\n          \"endDate\": \"2018-06-14T00:48:32.353Z\",\r\n          \"keyId\": \"46a52b93-0cb6-4fdf-9e82-ad0b9feae48a\",\r\n          \"startDate\": \"2017-06-14T00:48:39.4900617Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": true,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://nativeapp\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"67e71fa1-4209-462a-ae99-13f6c90fbc2a\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"3116f20e-c390-4f95-9b4f-7fab7e2b4cb1\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"testapp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://testapp\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access testapp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access testapp\",\r\n          \"id\": \"6798652b-a8de-422f-888c-a0d155855ffd\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access testapp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access testapp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"6b579965-7a93-40f4-a3a2-f3157fe11fdf\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"39bb875c-7686-4e70-bf15-d7f99dbb6d5c\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk7697\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://onesdk7697\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk7697 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk7697\",\r\n          \"id\": \"693a62af-e5f1-4b2a-83ef-90322e466421\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk7697 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk7697\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:28:50.2362005Z\",\r\n          \"keyId\": \"7511f0f8-ef39-48fe-956d-1bb82b27bc35\",\r\n          \"startDate\": \"2017-09-12T00:28:50.2362005Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:28:48.816953Z\",\r\n          \"keyId\": \"a2a82eb4-023e-4153-8f0c-2fa3b517fd37\",\r\n          \"startDate\": \"2017-09-12T00:28:48.816953Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"7b3a57f5-f429-4973-9af8-f19991314afa\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"e1f8abf2-f24c-4b2a-9bb8-c2af2bf83c14\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ProductionAApplication\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ProductionAApplication\",\r\n      \"identifierUris\": [\r\n        \"http://ProductionAApplication\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ProductionAApplication on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ProductionAApplication\",\r\n          \"id\": \"698032b9-fe5a-4ec4-ba7a-9e4677a62026\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ProductionAApplication on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ProductionAApplication\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://ProductionAApplication\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"8d4d4cc0-c325-44af-a0ef-02f22715d7ef\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"015149a8-bc45-413e-a817-197eaff88de8\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"testapp12\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"https://testingapp.com\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access testapp12 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access testapp12\",\r\n          \"id\": \"3fc909d2-cc16-4128-8f01-2fd526390631\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access testapp12 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access testapp12\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:58:17.0378257Z\",\r\n          \"keyId\": \"2c6dd5ab-cf06-445a-ad50-281c915fd8ec\",\r\n          \"startDate\": \"2017-09-12T00:58:17.0378257Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"92e4c7f1-bedb-4ad2-830f-de7d1d43cd91\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"ff51d2b5-010a-42b6-b7d3-6fab48713fac\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"NewTestApp1\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://testnewapp.com\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/c5afa45b-9ce0-4e33-bc4e-7f551df3abbd\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access NewTestApp1 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access NewTestApp1\",\r\n          \"id\": \"1e59ecb9-1814-4d75-8541-71262b45d92e\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access NewTestApp1 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access NewTestApp1\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://testnewapp.com\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"98c342ca-b20f-46fd-bf3f-0653046fb593\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"e00b6f45-351f-4e99-97f5-c8958cef787e\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"adApplication1599\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://adApplication1599/home\",\r\n      \"identifierUris\": [\r\n        \"http://adApplication1599/home\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication1599 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication1599\",\r\n          \"id\": \"6c24f9f0-5f9d-4492-ac79-dbe081698777\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication1599 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication1599\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://adApplication1599/home\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"9bf4e493-4501-432b-90b7-da4547cf7786\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"3abaeff8-f39b-4c58-82ac-f26fbcfa94f4\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk422\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://onesdk422\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk422 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk422\",\r\n          \"id\": \"5ea11a9e-6353-412a-9c6d-5a15821a93e9\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk422 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk422\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:27:44.9200267Z\",\r\n          \"keyId\": \"a02ec029-2f0c-49fb-b805-4731ae33eaba\",\r\n          \"startDate\": \"2017-09-12T00:27:44.9200267Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:27:44.3077608Z\",\r\n          \"keyId\": \"992dd086-7414-4ab9-a462-cdce36b65b8e\",\r\n          \"startDate\": \"2017-09-12T00:27:44.3077608Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"ac780c42-3e8e-4f66-9401-326061c9df6b\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"493733e7-e373-4836-97b1-c6241cf7c3f3\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk9638\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://onesdk9638\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk9638 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk9638\",\r\n          \"id\": \"5d8931bf-b1f1-4f4f-96a2-0def65204d9e\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk9638 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk9638\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"af986fd1-1a87-442e-a777-d67c108155b2\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"63dce715-c261-45f8-a2f1-c9d3d1bc02af\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"example-app\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://example-app\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/ff5d16d1-82b3-4366-99bb-0e1fc8dec1ab\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access example-app on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access example-app\",\r\n          \"id\": \"05976865-e96f-4c4e-8f38-d20ca8ab0737\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access example-app on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access example-app\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": \"cwBlAGMAbwBuAGQAIABrAGUAeQA=\",\r\n          \"endDate\": \"2018-04-14T04:41:30.532Z\",\r\n          \"keyId\": \"23ab4c42-5627-4b09-84df-6d7e49129ba5\",\r\n          \"startDate\": \"2017-04-14T04:41:46.9384835Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": \"ZgBpAHIAcwB0ACAAawBlAHkA\",\r\n          \"endDate\": \"2018-03-30T00:16:18.624Z\",\r\n          \"keyId\": \"888fdacd-fa61-483d-8ba7-f09c4d4ca885\",\r\n          \"startDate\": \"2017-03-30T00:16:39.5417172Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://example-app\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"b2059a59-2807-4613-84b3-1e6a559746dc\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"b3fe5343-c856-4800-bb30-c6293b69eacd\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"testapp123\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": null,\r\n      \"identifierUris\": [\r\n        \"http://testapp123\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access testapp123 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access testapp123\",\r\n          \"id\": \"0306258a-2d87-4a92-bac3-01871c439da3\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access testapp123 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access testapp123\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-09-12T00:51:02.2506634Z\",\r\n          \"keyId\": \"a686ba0c-541e-420e-bcde-8650b9dc5f35\",\r\n          \"startDate\": \"2017-09-12T00:51:02.2506634Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"b983ec90-5405-48bb-9f71-9405fe28c4cb\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"cb44d3e0-95f1-4157-ac49-f639ac31044a\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"AuthZScenarioTestAdminApp-DevRunner\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://AuthZScenarioTestAdminApp-DevRunner\",\r\n      \"identifierUris\": [\r\n        \"https://AuthZScenarioTestAdminApp-DevRunner\"\r\n      ],\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-04-20T18:53:13Z\",\r\n          \"keyId\": \"fb7e3e5c-3772-4d69-8020-ed197b1213e5\",\r\n          \"startDate\": \"2016-07-20T18:53:13Z\",\r\n          \"type\": \"AsymmetricX509Cert\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access AuthZScenarioTestAdminApp-DevRunner on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access AuthZScenarioTestAdminApp-DevRunner\",\r\n          \"id\": \"96eccf5b-5467-4c10-9aec-c0ef4a5a0477\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access AuthZScenarioTestAdminApp-DevRunner on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access AuthZScenarioTestAdminApp-DevRunner\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://AuthZScenarioTestAdminApp-DevRunner\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"baadbccc-9fa1-4894-ae48-5dcd3d9e0b7f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"dd476cdb-e559-4748-a568-c65efda75f9f\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"posh app\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://poshapp\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/52887a14-99b8-4b2a-b90b-38c12762ddd1\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access posh app on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access posh app\",\r\n          \"id\": \"f62ada9f-d8bf-4597-a081-cc3a9bb7b280\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access posh app on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access posh app\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": \"cABvAHMAaABrAGUAeQA=\",\r\n          \"endDate\": \"2018-04-27T20:00:31.563Z\",\r\n          \"keyId\": \"ca1db040-53bc-4a9f-ad06-5ef0e6437a90\",\r\n          \"startDate\": \"2017-04-27T20:00:39.8145912Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://poshapp\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            },\r\n            {\r\n              \"id\": \"78c8a3c8-a07e-4b9e-af1b-b5ccab50a175\",\r\n              \"type\": \"Role\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"c5b0c8dc-d30c-41ed-aecc-4d97ae8c5989\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"306d85f9-f885-4bdf-a20e-36d6ee8eddad\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"PowershellTestingApp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://localhost:3000\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/722c28d1-3e5c-472a-ab3e-0ff6827aeedc\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access PowershellTestingApp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access PowershellTestingApp\",\r\n          \"id\": \"41f1ef57-a8c2-4609-8af6-4f59889d27d4\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access PowershellTestingApp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access PowershellTestingApp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": \"VABlAHMAdAA=\",\r\n          \"endDate\": \"2018-05-23T09:02:40.118Z\",\r\n          \"keyId\": \"55eaa471-4a0a-47fc-a881-2d102667373e\",\r\n          \"startDate\": \"2017-05-23T09:04:03.1960525Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": \"bgBlAHcAawBlAHkA\",\r\n          \"endDate\": \"2299-12-31T08:00:00Z\",\r\n          \"keyId\": \"8e53bb22-b8a7-45b3-929d-9e138bf4bd3d\",\r\n          \"startDate\": \"2017-04-26T01:44:49.1685061Z\",\r\n          \"value\": null\r\n        },\r\n        {\r\n          \"customKeyIdentifier\": \"cwBhAG0AcABsAGUAawBlAHkA\",\r\n          \"endDate\": \"2018-03-30T18:31:00.483Z\",\r\n          \"keyId\": \"f16cbb69-e1a2-4aed-8de2-ac2fd74dae5a\",\r\n          \"startDate\": \"2017-03-30T18:34:40.1483459Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://PowershellTestingApp\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"78c8a3c8-a07e-4b9e-af1b-b5ccab50a175\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"970d6fa6-214a-4a9b-8513-08fad511e2fd\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"62a82d76-70ea-41e2-9197-370581804d09\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"19dbc75e-c2e2-444c-a770-ec69d8559fc7\",\r\n              \"type\": \"Role\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceAppId\": \"2d4d3d8e-2be3-4bef-9f87-7875a61c29de\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"10af711e-5051-4838-8ae7-9767c43d8a9c\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"27e50e9e-ca8b-4cc6-8dd0-4ba2d49d8228\",\r\n              \"type\": \"Role\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"c7907c2f-5615-4d49-be47-4edc9ac6a950\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"14c107aa-3c28-4f64-816c-4f3fefc6a3a2\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"paggarwatest\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://paggarwatest\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/90abdad6-287d-4918-ba7b-9a144a329077\"\r\n      ],\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-03-25T16:21:05Z\",\r\n          \"keyId\": \"9b836bf2-4be7-4e1e-afca-ab0c6cf3b3d2\",\r\n          \"startDate\": \"2016-03-25T16:21:05Z\",\r\n          \"type\": \"AsymmetricX509Cert\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access paggarwatest on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access paggarwatest\",\r\n          \"id\": \"b88729a0-bc8b-4334-a346-3364677b1904\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access paggarwatest on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access paggarwatest\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"e6dad67d-289a-4a08-b676-575133fa5bf5\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"e47dc60c-48bf-4fb8-826f-4bcbcfad720f\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"AuthZScenarioTestNonAdminApp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://localhost:443/\",\r\n      \"identifierUris\": [\r\n        \"https://localhost:443/\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access AuthZScenarioTestNonAdminApp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access AuthZScenarioTestNonAdminApp\",\r\n          \"id\": \"85cbc63a-1e14-4a0e-9f9e-ec7c55cd97f6\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access AuthZScenarioTestNonAdminApp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access AuthZScenarioTestNonAdminApp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-03-21T19:15:52.2753799Z\",\r\n          \"keyId\": \"514547dd-d2eb-457c-a892-ba7503ebaa04\",\r\n          \"startDate\": \"2016-03-21T19:15:52.2753799Z\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://localhost:443/\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"5778995a-e1bf-45b8-affa-663a9f3f4d04\",\r\n              \"type\": \"Role\"\r\n            },\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"ed120192-871e-41f4-b96e-e337b3485d2e\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"b9e815a2-80b4-4002-bddd-28a06fd10ec4\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"testerapp\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://testerapp\",\r\n      \"identifierUris\": [\r\n        \"https://rbacCliTest.onmicrosoft.com/ad4b8865-d518-4c9d-a6e0-12e8747a420c\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access testerapp on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access testerapp\",\r\n          \"id\": \"986f5787-d813-4c2b-96fb-eac3a90bccae\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access testerapp on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access testerapp\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"http://testerapp\"\r\n      ],\r\n      \"requiredResourceAccess\": [\r\n        {\r\n          \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\r\n          \"resourceAccess\": [\r\n            {\r\n              \"id\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n              \"type\": \"Scope\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"ed4aa9c5-79ca-4bc1-92b7-37069a450c90\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"bbd67a5d-6077-4a7f-ae54-f4a4b837939e\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"AuthZScenarioTestNonAdminApp-DevRunner\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"https://AuthZScenarioTestNonAdminApp-DevRunner\",\r\n      \"identifierUris\": [\r\n        \"https://AuthZScenarioTestNonAdminApp-DevRunner\"\r\n      ],\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2018-04-20T18:53:13Z\",\r\n          \"keyId\": \"504adbaf-f40d-46ba-89d7-32dce43c6566\",\r\n          \"startDate\": \"2016-07-20T18:53:13Z\",\r\n          \"type\": \"AsymmetricX509Cert\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access AuthZScenarioTestNonAdminApp-DevRunner on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access AuthZScenarioTestNonAdminApp-DevRunner\",\r\n          \"id\": \"e314fe4c-1bb3-4275-bbf0-eceb40607331\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access AuthZScenarioTestNonAdminApp-DevRunner on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access AuthZScenarioTestNonAdminApp-DevRunner\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": false,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [\r\n        \"https://AuthZScenarioTestNonAdminApp-DevRunner\"\r\n      ],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"f17efc33-ac41-4f6f-bbc9-e09e37e44b96\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"ed573c0a-31f2-49fc-9ba1-6414d0e89f6d\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk8397\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk8397.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk8397\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk8397 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk8397\",\r\n          \"id\": \"47349cc2-2a05-4862-a4f3-39b9846d9f70\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk8397 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk8397\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"f8ae9349-e2b7-40cd-b3b3-7b42f0e9553d\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"83cddfb0-bbd7-4e37-b17b-c3e17fd56b56\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps5413\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps5413\",\r\n      \"identifierUris\": [\r\n        \"http://ps5413\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps5413 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps5413\",\r\n          \"id\": \"5ccb30ff-fa2f-4bf5-93d5-b502a9e40082\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps5413 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps5413\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"fdb5df17-c9b8-461b-8b35-a87b0c45d3f6\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"a4befa4c-971d-4156-9127-b4c8409171b3\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk505\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk505\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk505\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk505 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk505\",\r\n          \"id\": \"c53b8de9-941f-4bb2-94f9-be1e331206ad\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk505 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk505\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1300"
+          "55856"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -125,19 +125,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GjCMXKa3HsHeM5vaznJZEr4rL5Uy2lVax5jMDQ/7r4c="
+          "Wvx7TZ/eEDk0k41ajYvQwgwehU+KM5tQhOMjjNrsD6E="
         ],
         "request-id": [
-          "7ccf5a63-3980-4eb2-a4ed-f727e2b538b8"
+          "b99edc7e-5f2e-4feb-8903-d9f76404188b"
         ],
         "client-request-id": [
-          "6d5c470f-9611-4a27-a5a6-f19c442c6990"
+          "a83db6d1-ec04-4a3c-acc5-7b45f4bbcdf6"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "A755OpdSgCYt-tBfDF2wPmxLFWlP18r8DBVJw-QGRXW6K9TbmLhJR6-5Z7oHLwnxPIHUacTMXhOz2I-AI5W700T1ZdTpvUXA0B2vqgodKCoclV5wahU2uH-XTP8OQHJ21lWXbT5aeAx-1XE2Bg_21Q.F6BzWhyp9lLg-kA1rftLe7Kd76g4qWzgTzjQbIHMcMc"
+          "iB9ZvRKRDqqpKsPw7LUMtNTdpgGW8lr6SciaAiEoPwQ6zPmU4QUxhYcRH9iVfUgwYiEmucJN2be5tuNadA8qyB0qQBrk92O40n2fMe5h8EFKlDH3S6Hnp4GZbqocYsYGOocO8l7lG3c8dDqdwhy-j6Ex2JN5goUL7zEmygPsETC2Gsw-Or_vYnPWzTnsp8b9TdNFIxekS5oHKqmn-tfjmw.JZ--nTM57x-lUMxU3YU7tSD9dWrzM5sf8INbsZM4wC4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -152,7 +152,7 @@
           "*"
         ],
         "Duration": [
-          "538601"
+          "2483896"
         ],
         "Cache-Control": [
           "no-cache"
@@ -168,34 +168,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/02c1bd45-6360-4649-a5e2-f3c5057e1755?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMDJjMWJkNDUtNjM2MC00NjQ5LWE1ZTItZjNjNTA1N2UxNzU1P2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMmI4ZTk3ZDMtZjY3ZC00ZWExLWI3OGUtM2JhMjI4ODEwYjRmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "034b52d1-8974-4b0a-9643-511422a6e8c8"
+          "c8f368b5-0f42-44ad-a9e6-f2726a587f92"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n  \"deletionTimestamp\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk1896\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://onesdk1896.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk1896\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access onesdk188\",\r\n      \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access onesdk188\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n  \"deletionTimestamp\": null,\r\n  \"acceptMappedClaims\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"ps54\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://ps54.com\",\r\n  \"identifierUris\": [\r\n    \"http://ps54\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access ps54\",\r\n      \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access ps54\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null,\r\n  \"tokenEncryptionKeyId\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1303"
+          "1319"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -207,19 +207,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "/sncvk7MJAABO+g77ReR469Vp/MkOQVPEMLgd6hbVlQ="
+          "UnB1dyVfhwVY3Vs+F9n0MgBThZibCNHiF4I7uellQRo="
         ],
         "request-id": [
-          "94878420-7684-42da-9976-882a883992f5"
+          "400b47d7-8ed1-4b7b-bcbb-290699c30516"
         ],
         "client-request-id": [
-          "8341b8aa-af86-4c93-be39-7cfd30cc9d3c"
+          "a0634b60-e5a9-4d0a-99f9-56a4b47e14be"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "PC_SB6nc_7f5qUYEDc8PP4OSR5lAsEaNLln9zYQzXEJ3LRRdN9zf7b_oyIkkgUvu2vUL9ynh-iEyT445riYCP818F3pLZNhtEf-Vncx3cWCrIBjHCEXMVAc41JpckTq_7ZFqHnLfVDX7h6mKGFMLYg.jSGoLNt0-Z4nCQ2Qebf2ICZxCOsbJG2rSSqFo41r808"
+          "e-K5pIq-Hji__asbR9GDutOFIuOjx4DcWQqDB-8nGb4LayfpWPVay-r2jv3uokMvLZnZLoGpEXWv_Rktk6vLS3ur43WpMdlFJrHwUM1q8nYaaLLo6YY9m7lAXJTb9ptfPb2sqe_XkiuanGM9jYlHxr5y-txDn1YXEU6XOryratvoQJ_Vu1_mG6TcofypdU5-UOWCILcd6nBx0CODOXRR7Q.UmRzrpBiuuLoGncpU5_aGcfDQrAlYda7-nMqXPohmYM"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -234,7 +234,7 @@
           "*"
         ],
         "Duration": [
-          "1371129"
+          "632055"
         ],
         "Cache-Control": [
           "no-cache"
@@ -250,34 +250,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:48 GMT"
+          "Tue, 31 Oct 2017 19:32:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=appId%20eq%20'8643aad2-bee9-45ec-abc9-a2005b2dcb83'&api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1hcHBJZCUyMGVxJTIwJzg2NDNhYWQyLWJlZTktNDVlYy1hYmM5LWEyMDA1YjJkY2I4MycmYXBpLXZlcnNpb249MS42",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMmI4ZTk3ZDMtZjY3ZC00ZWExLWI3OGUtM2JhMjI4ODEwYjRmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a94a4ae0-1ec6-4b92-8d0d-806dbf758d52"
+          "b9d76eaf-bbd9-448e-a5a3-a143936a4cbe"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n      \"deletionTimestamp\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk188\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk188.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk188\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk188\",\r\n          \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk188\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n  \"deletionTimestamp\": null,\r\n  \"acceptMappedClaims\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"ps2302\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://ps2302.com\",\r\n  \"identifierUris\": [\r\n    \"http://ps2302\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access ps54\",\r\n      \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access ps54\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null,\r\n  \"tokenEncryptionKeyId\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1303"
+          "1325"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -289,19 +289,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "/sncvk7MJAABO+g77ReR469Vp/MkOQVPEMLgd6hbVlQ="
+          "UnB1dyVfhwVY3Vs+F9n0MgBThZibCNHiF4I7uellQRo="
         ],
         "request-id": [
-          "7049dbc5-5981-4c20-a3ac-fe1a84b6de3c"
+          "a5af0078-652f-4723-acf8-a21dd01f1df5"
         ],
         "client-request-id": [
-          "400761df-96f6-49bb-9af8-cb3128cb5469"
+          "6bddc0ae-ae9d-4420-9553-37fbf8d23fcb"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "LnuCcbcwDI0WVj7apMrYSh4nwfHjSxMWXcwDvxKoeqdI6aO8JjWETmO_HNHVB2Ca9Va3-gqqTdq3q5TzwaYgwzDlF1UHbdmVakucQ7peOkIDjeGERcuzJKqybk7zP3HPt1aTjBFL6ffMdD0RwRFLlw.vUBlCn5i-HNzRwHBh6hAj9WUodtMOsB25p41aAtGGBA"
+          "N6PrlnoPXYj-rVe4syPcvUSHI5AQpGxESFSFF8y-1yG836Y1fLMtCkt6jOC2n9GJKWtdLp5IBb3iwh0mZkbT2PlVfM6QyH0sYRHNxYHjP2dQzArkHLHFcpLA-Ng5AgRNbL-tjkx6LMaKvb5jbpePohiJivS4THxEDlRuTG3Bzpw8XcsvdvHh_Lj7LGTj7ezQ8jODDZIZc5YZbYxyjruVtw.ztseG3vCqv5TaEmm96VwKhxJhJO3DSKQl5NwtEqFW64"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -316,7 +316,7 @@
           "*"
         ],
         "Duration": [
-          "490590"
+          "909060"
         ],
         "Cache-Control": [
           "no-cache"
@@ -332,34 +332,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:36 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=appId%20eq%20'8643aad2-bee9-45ec-abc9-a2005b2dcb83'&api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1hcHBJZCUyMGVxJTIwJzg2NDNhYWQyLWJlZTktNDVlYy1hYmM5LWEyMDA1YjJkY2I4MycmYXBpLXZlcnNpb249MS42",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=appId%20eq%20'4a7fea2b-1a49-436a-95d5-fd1c542e8016'&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1hcHBJZCUyMGVxJTIwJzRhN2ZlYTJiLTFhNDktNDM2YS05NWQ1LWZkMWM1NDJlODAxNicmYXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0b2b98f2-5d50-4d1d-b596-0b8e975467b2"
+          "6c749c97-2cc3-414f-81b0-12216d70a2ce"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n      \"deletionTimestamp\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk1896\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk1896.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk188\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk188\",\r\n          \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk188\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps54\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps54.com\",\r\n      \"identifierUris\": [\r\n        \"http://ps54\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps54\",\r\n          \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps54\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1305"
+          "1322"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -371,19 +371,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GjCMXKa3HsHeM5vaznJZEr4rL5Uy2lVax5jMDQ/7r4c="
+          "DpRYB6D5SlNUKN7Y94FfEBl5r/DsKbRuMnXpLar5o6M="
         ],
         "request-id": [
-          "621adb13-fd5b-4f33-950b-7fb3ad23bf5a"
+          "e7c5881c-70c6-414b-9d46-ee6f268c6cf2"
         ],
         "client-request-id": [
-          "2e570a5e-8ab3-4bc7-a822-3bfe1982ed4b"
+          "1b5cf4e6-1390-4021-84a0-f9166ec6c491"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "d5mhsq3UZBcFknvbG-uricm2cQ-XBO8AupEX7exm0vScBgzI23xUy_qO9Gu9LLT_O4ZNrxZhUalIHlUxF5eFFdppLg3iUU_1oe2Aj_Je_-nVYLBYaYu9NVFdlEAbVPU68wxEYs3X9VvGLs_LfZNm0A.mH5IA7EVlNgf97mZ_s3JKKDq6By4-TQqUf1Zkl7wxXY"
+          "6OIs36jdY5n8rmJunaGxm7ErSUYzn0-qW9tQv6nAxNbPJPf2B_vW4OUKNpj5jOYeTe69B11l3_c6wwZQqrpmmNSXiAv2qGdssGjGerIs-MoVAotg2LZulo2ql1QA33V6L5s69HMMP_k5emGcTnW-XgS57_M5wxv9V_69i1G173J0qvZw-br8O9XqSKNBcAwCzIvZmOG259DB8nUp03AFHg.73TTpT7J4dwq4EMSA-E9Fa8hr9bAwZbQiUYc3l_Kv3w"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -398,7 +398,7 @@
           "*"
         ],
         "Duration": [
-          "554244"
+          "1549803"
         ],
         "Cache-Control": [
           "no-cache"
@@ -414,34 +414,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=identifierUris/any(c:%20c%20eq%20'http:%2F%2Fonesdk188')&api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1pZGVudGlmaWVyVXJpcy9hbnkoYzolMjBjJTIwZXElMjAnaHR0cCUzQSUyRiUyRm9uZXNkazE4OCcpJmFwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=appId%20eq%20'4a7fea2b-1a49-436a-95d5-fd1c542e8016'&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1hcHBJZCUyMGVxJTIwJzRhN2ZlYTJiLTFhNDktNDM2YS05NWQ1LWZkMWM1NDJlODAxNicmYXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4bd3739e-25ce-453e-84ec-d60d53a212b9"
+          "2a3d201d-c23f-4073-9110-99736b4767a4"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n      \"deletionTimestamp\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk188\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk188.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk188\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk188\",\r\n          \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk188\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps2302\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps2302.com\",\r\n      \"identifierUris\": [\r\n        \"http://ps54\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps54\",\r\n          \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps54\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1303"
+          "1326"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -453,19 +453,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "3pJU4pUHx83REcctAY3kYguA5yDdYXT8cdVJxeGfH/8="
+          "G57Yk3WNLvoHnAQZbO/VLb7EEltFzonymMi2WhJ99Kk="
         ],
         "request-id": [
-          "3048b3eb-6adb-4b9c-a5bf-dd52fe5467af"
+          "eb5fad74-2f2f-4d32-832a-ef34b5ee5edc"
         ],
         "client-request-id": [
-          "92df60fd-fb5c-4419-b339-c72a8bf68557"
+          "4b06dba4-2709-4e34-afa7-ebacdb9df7e2"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "xFZXQkL5mGOk5oB191WndY4cBo3jJgZkbGoe-I6rEnRxHNYTGVFGUNjpIIgYae67N9tg0QHcTCJ50eqhe9CljWAMQhcTn4q2J6bFPDbrKDkTsS-s6e9s6wEiSsf9LwbnfU3tEmVnO2_EgisguTLQxg.46dMG__9H3im8D9wAEqgOB2YVDJbHU3RON3umHz_XqI"
+          "6Pdh1d-jitO54DXGE5KrFK7odcuGFbzwqjy2jg3RKKwQaWVtfN6kH1RnkogBvPKINhcnThCU0Lrq2ZKplrZ2sl2qu741g0Sy1O-poUqVjQi3ZtBHfYOuHKvb6x-yBWCDlTxhaBj9EbxdBAUPx7nOh_1OZK9OcePbXAsrocDtPTV5-YwH0CcqwtrT8owOw6tbcN6vHTmIDbXdr-SrDbp6Gg.5AbWc3akI7Gk_FcuPuWDywJmYKkCCGjjFUIFPiBwFbo"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -480,7 +480,7 @@
           "*"
         ],
         "Duration": [
-          "628239"
+          "855480"
         ],
         "Cache-Control": [
           "no-cache"
@@ -496,34 +496,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:36 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=startswith(displayName,'onesdk188')&api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1zdGFydHN3aXRoKGRpc3BsYXlOYW1lLCdvbmVzZGsxODgnKSZhcGktdmVyc2lvbj0xLjY=",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=identifierUris/any(c:%20c%20eq%20'http:%2F%2Fps54')&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1pZGVudGlmaWVyVXJpcy9hbnkoYzolMjBjJTIwZXElMjAnaHR0cCUzQSUyRiUyRnBzNTQnKSZhcGktdmVyc2lvbj0xLjY=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ba6adc0a-d987-48e5-ab2f-9d87e94438af"
+          "77417715-35ab-419b-aa99-d27dc067c68a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"02c1bd45-6360-4649-a5e2-f3c5057e1755\",\r\n      \"deletionTimestamp\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"8643aad2-bee9-45ec-abc9-a2005b2dcb83\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"onesdk188\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://onesdk188.com\",\r\n      \"identifierUris\": [\r\n        \"http://onesdk188\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access onesdk188 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access onesdk188\",\r\n          \"id\": \"1e239f4f-5c32-45dd-ae66-90a45c1d165d\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access onesdk188 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access onesdk188\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps54\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps54.com\",\r\n      \"identifierUris\": [\r\n        \"http://ps54\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps54\",\r\n          \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps54\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1303"
+          "1322"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -535,19 +535,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GjCMXKa3HsHeM5vaznJZEr4rL5Uy2lVax5jMDQ/7r4c="
+          "DpRYB6D5SlNUKN7Y94FfEBl5r/DsKbRuMnXpLar5o6M="
         ],
         "request-id": [
-          "3a4b5c36-fc7b-4689-8e77-2115ea82bd5e"
+          "1a9eee0a-9b04-441f-9156-eb30979405e7"
         ],
         "client-request-id": [
-          "99378c37-4a01-4278-aa8d-9eb74bc84d0b"
+          "5211e1ee-a424-4bb4-9d37-097bf1459c7b"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "6sq5E8wDOwYKGhsYinTOOPKo9skzwwD-ty2BpgGa9QpUTe-ZhbfPLQcupnm1QIFX0pIE8L6T_5KMM8yUEpZCBIyJR0LYs17BWOQNGcT4iD7VvZKQgZK7EFiWIJWdHH3OMUcREctH8TleZU7EqB7RUw.oI8-7MtPa9sZOP7FUr1j1clLxxDTO_jcaqd46eOjh0o"
+          "E7xu6uNlSIlmxM2HrEvfL-kR9D7rhs3ABINxuc3MZ_pft4n5HPBFRizV2WRSTzkDKQtm7cfa0LFqc1V3I0ZK9y9fRBven7ZvjxfzrNtOAYNApZHdzOPJtzwOzVOW8Aq-QTkEh6-YyeVu_AJwh60-zRO4Axcn1oUYEO9GeVLjG08Fr6DUF_1YErhS1PuXbnmFSojY5XlMktfPCLtb6zDc7w.CWWV3Ha_EjPBcRXHVchWZG-XxNPYxxs-pWvm73zxftw"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -562,7 +562,7 @@
           "*"
         ],
         "Duration": [
-          "960790"
+          "1003323"
         ],
         "Cache-Control": [
           "no-cache"
@@ -578,34 +578,116 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/02c1bd45-6360-4649-a5e2-f3c5057e1755?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMDJjMWJkNDUtNjM2MC00NjQ5LWE1ZTItZjNjNTA1N2UxNzU1P2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?$filter=startswith(displayName,'ps54')&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/JGZpbHRlcj1zdGFydHN3aXRoKGRpc3BsYXlOYW1lLCdwczU0JykmYXBpLXZlcnNpb249MS42",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0a10a6bf-9915-4075-afe7-b8fa7ba57464"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"2b8e97d3-f67d-4ea1-b78e-3ba228810b4f\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"4a7fea2b-1a49-436a-95d5-fd1c542e8016\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps54\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps54.com\",\r\n      \"identifierUris\": [\r\n        \"http://ps54\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps54 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps54\",\r\n          \"id\": \"1753d99f-09fc-45d1-8b06-60ab4385521c\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps54 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps54\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n      \"objectType\": \"Application\",\r\n      \"objectId\": \"f8ae9349-e2b7-40cd-b3b3-7b42f0e9553d\",\r\n      \"deletionTimestamp\": null,\r\n      \"acceptMappedClaims\": null,\r\n      \"addIns\": [],\r\n      \"appId\": \"83cddfb0-bbd7-4e37-b17b-c3e17fd56b56\",\r\n      \"appRoles\": [],\r\n      \"availableToOtherTenants\": false,\r\n      \"displayName\": \"ps5413\",\r\n      \"errorUrl\": null,\r\n      \"groupMembershipClaims\": null,\r\n      \"homepage\": \"http://ps5413\",\r\n      \"identifierUris\": [\r\n        \"http://ps5413\"\r\n      ],\r\n      \"keyCredentials\": [],\r\n      \"knownClientApplications\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2AllowImplicitFlow\": false,\r\n      \"oauth2AllowUrlPathMatching\": false,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access ps5413 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access ps5413\",\r\n          \"id\": \"5ccb30ff-fa2f-4bf5-93d5-b502a9e40082\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access ps5413 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access ps5413\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"oauth2RequirePostResponse\": false,\r\n      \"optionalClaims\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publicClient\": null,\r\n      \"recordConsentConditions\": null,\r\n      \"replyUrls\": [],\r\n      \"requiredResourceAccess\": [],\r\n      \"samlMetadataUrl\": null,\r\n      \"tokenEncryptionKeyId\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2494"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "DpRYB6D5SlNUKN7Y94FfEBl5r/DsKbRuMnXpLar5o6M="
+        ],
+        "request-id": [
+          "4321ece6-4136-4254-9c0b-57260dc546fc"
+        ],
+        "client-request-id": [
+          "3e00e085-5eb2-4b19-98a6-b00e8fcea691"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "QgPEYpBMbz2Z8ud-75Jg8C98TzQFnC6LxBdAVM4LBP0xSEQPSS3i6lk139fvYsSGKMndxsIdmePlzwUZaSs5VW_VkkT_8KXQQ15DB3PUgWtzFhELd5bimqpAOv34O3p9PBvUeFBCsXLc3wXYyOlGhZRzPBwGtu34dZu_F3KLbeVdL6UFVfqbfNtJ3RMQ4TYzsb3Wg03KJRq9aN64JbDxKw.-8E7nPYox5ZlN9UzP2LCMZjTztDoT8kNJfG0bjWhnCM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "1289935"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 31 Oct 2017 19:32:36 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMmI4ZTk3ZDMtZjY3ZC00ZWExLWI3OGUtM2JhMjI4ODEwYjRmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk1896\",\r\n  \"homepage\": \"http://onesdk1896.com\"\r\n}",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"ps2302\",\r\n  \"homepage\": \"http://ps2302.com\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "112"
+          "104"
         ],
         "x-ms-client-request-id": [
-          "f9364fd7-6bae-4074-a144-cb90a3f77535"
+          "84193f82-58de-479f-9dda-b5f11934ae70"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -617,19 +699,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "/sncvk7MJAABO+g77ReR469Vp/MkOQVPEMLgd6hbVlQ="
+          "fZDW4qmLV9JXj3cogZcj4KUdsgN2NyKPG/qO9606ABg="
         ],
         "request-id": [
-          "b93f4ce1-fb41-4293-94a1-5897e1b2d543"
+          "138cf563-6306-427d-80f2-5160e0718339"
         ],
         "client-request-id": [
-          "a6e46bd8-ccb3-44f5-99bf-e7a50c6e7017"
+          "ec55646b-bd1d-4cea-a1ab-840cdc979171"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "4khKYNzvvGIWfTEnJ1cfX56_E-qJWp7mllo2EIYaId1bdiHrgyPcFr6pCsIIgfP_PtdqVQkxy8MvEI2WSVSGEWfTdn9WiXA3dmjlVlDafniIFZhF76qN2DKffrux2KqH_TwvU1toD5Lc7pmebF78Zg.FErwjG21lr4p6K8yK1afZrr6IeKFD60q2X985nWGSUc"
+          "-hIsrj5Je5Jy9wdTIRooFkU5cbGGndq-VteXLo-PN_926ov7nM7yLCrQ0sjMGmtL39DUJfxyE54I8oPgJrZj_-u4T-qdrSdpailkpSLrmypPw55rzcvAljZQ2B0IlbAk3kyrs9RbThEw2nY8XTPYG3OytSZe407H3oteH0VAzp_w890skcEae7uqjGaTMKvqiXX15QN8Lq75TzhRhRpyrQ.P-4wHEdL_Wjb9kz10jXcfcxqdeLVouBjUZeVPT5ZOuY"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -644,7 +726,7 @@
           "*"
         ],
         "Duration": [
-          "2303123"
+          "1453322"
         ],
         "Cache-Control": [
           "no-cache"
@@ -660,34 +742,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:47 GMT"
+          "Tue, 31 Oct 2017 19:32:36 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/02c1bd45-6360-4649-a5e2-f3c5057e1755?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMDJjMWJkNDUtNjM2MC00NjQ5LWE1ZTItZjNjNTA1N2UxNzU1P2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMmI4ZTk3ZDMtZjY3ZC00ZWExLWI3OGUtM2JhMjI4ODEwYjRmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"identifierUris\": [\r\n    \"http://onesdk1896\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"identifierUris\": [\r\n    \"http://ps2302\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "94"
+          "90"
         ],
         "x-ms-client-request-id": [
-          "a4925c4e-fcd1-44a2-81e3-4caf64e4b594"
+          "0725cd43-0f31-4006-953d-75396b6842fa"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -699,19 +781,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "3pJU4pUHx83REcctAY3kYguA5yDdYXT8cdVJxeGfH/8="
+          "DpRYB6D5SlNUKN7Y94FfEBl5r/DsKbRuMnXpLar5o6M="
         ],
         "request-id": [
-          "7cb120bd-529b-4c39-ad5b-9a6c206b5e94"
+          "735bb723-b150-43fe-afcf-784c1d3b1cb9"
         ],
         "client-request-id": [
-          "359b6aa6-324e-4b36-86b0-be7ec152f058"
+          "6a6474f0-46a5-48fa-b15f-f5d31b522ed9"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "kEcI0XoCb4zf7P9ks3RSM5oajxNhUbWZ51glqeCkua8rBKYao2xeVjbg2_dcOyzVRHuo7yutTKGlur-UjwHB4Hp2Ba82lIaFpX2DjRSX-M1zHDIauZwL04z_iZuQ4amKkL0r8Tcm4ob53DT4Ox_LmA.WxARA0jXqScZAf7B7uBOLXtqnwVBbFdZ7qjM2el-YKs"
+          "HNufGX7GRhwT4lf_YK6sAu3vW3FDPDCgAqCHfn2o3ROt_FsBa7eEYdj6Cd98HB_mxHxSB8RI1ft-Vw6Hua4eL-ZVoA4KBOsJFCeemAWhHbfEoZ473m1j9Xi4YJvyFMuM9JVC4UCX69e711se2X1nzsUtNFB-9wiLW0WSyhgkaeHUY7M_IFAyKhSr5aPoC8nSdRYg6tAz8sC4nlMwy9vO_w.bbOIwuXCrWZeT1ywHNVPADfrUQuuE7VYpbkvPhzgohc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -726,7 +808,7 @@
           "*"
         ],
         "Duration": [
-          "2704158"
+          "2387952"
         ],
         "Cache-Control": [
           "no-cache"
@@ -742,28 +824,28 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:48 GMT"
+          "Tue, 31 Oct 2017 19:32:36 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/02c1bd45-6360-4649-a5e2-f3c5057e1755?api-version=1.6",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMDJjMWJkNDUtNjM2MC00NjQ5LWE1ZTItZjNjNTA1N2UxNzU1P2FwaS12ZXJzaW9uPTEuNg==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/2b8e97d3-f67d-4ea1-b78e-3ba228810b4f?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvMmI4ZTk3ZDMtZjY3ZC00ZWExLWI3OGUtM2JhMjI4ODEwYjRmP2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3f059589-2797-420e-acb9-0fadee85b932"
+          "d71a830a-624b-4100-a16b-4b73a6ebb156"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
+          "FxVersion/4.7.2115.0",
+          "OSName/Windows10Enterprise",
           "OSVersion/6.3.15063",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
+          "Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -775,19 +857,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "3pJU4pUHx83REcctAY3kYguA5yDdYXT8cdVJxeGfH/8="
+          "2/OO1DBlsN9Tt3bUcO4UhTMA41ZH6bC9vTECDGTrVeQ="
         ],
         "request-id": [
-          "2686fbc2-4cf7-48a8-ba2a-ccef12954c6e"
+          "0ebba52e-ce2c-41da-8b3a-e04656b94624"
         ],
         "client-request-id": [
-          "bf42fea4-6c7c-4422-9167-c49eb4e63611"
+          "a07d2fc5-3cf9-4e88-be14-f7183d9a95d4"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "B-QJdE4TpI07nbPpRzamao4B7UiWog8yNz_m0Jd8P49Fz7VDsfQktjMtatogJtkBEA96a8ZSC3mjgEtNPp4jFNDAlxysSYTAQgPEloN5YGMR8qWHcO9NegGaXJ5vj92NEEmvx0l4KbQDFbY5tmYzHA.GzmCVvGQRbEu8kR7j5V5gijG_1Et93a9XRY2jnPFprk"
+          "UAvW3jBM0ZUhMMp-TWDxTVFHkzZEkZEDl1Kg4bWnY4wCG06yREyYRTK6wV7AnQc3kWOOuqdFluJuf4y6YyvFcUmEjyz9CNIAtwbqy1uU7u4gGLyhmpe-eKUv4GbYL4-BXRDENflz1lwLJW4Ex5Xylgt93LkAC4mxzj3AVynkwPHGvC39RnB2e8jUA5iTwt4zI9z6fP5NaRmcGwOwyrf-6g.LCLufQ5aL62P7exEFcfYMs3HxRYKwYJHfMJSdvwA16A"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -802,7 +884,7 @@
           "*"
         ],
         "Duration": [
-          "3633950"
+          "1224104"
         ],
         "Cache-Control": [
           "no-cache"
@@ -818,7 +900,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:08:48 GMT"
+          "Tue, 31 Oct 2017 19:32:37 GMT"
         ]
       },
       "StatusCode": 204
@@ -826,8 +908,8 @@
   ],
   "Names": {
     "Test-NewADApplication": [
-      "onesdk188",
-      "onesdk1896"
+      "ps54",
+      "ps2302"
     ]
   },
   "Variables": {

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: EC8C915A-A0BC-41DE-9DBF-3617536E3D1A
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermcontainerserviceconfig
 schema: 2.0.0
 ---
 
@@ -19,7 +20,8 @@ New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
  [[-WindowsProfileAdminUsername] <String>] [[-WindowsProfileAdminPassword] <String>]
  [[-AdminUsername] <String>] [[-SshPublicKey] <String[]>] [[-VmDiagnosticsEnabled] <Boolean>]
  [-CustomProfileOrchestrator <String>] [-ServicePrincipalProfileClientId <String>]
- [-ServicePrincipalProfileSecret <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServicePrincipalProfileSecret <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +52,7 @@ Specifies the administrator account name to use for a Linux-based container serv
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
@@ -66,7 +68,7 @@ Add a profile by using the Add-AzureRmContainerServiceAgentPoolProfile cmdlet.
 ```yaml
 Type: ContainerServiceAgentPoolProfile[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -81,12 +83,27 @@ Specifies the custom profile orchestrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,7 +113,7 @@ Specifies the location in which to create the container service.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -111,7 +128,7 @@ Specifies the number of master virtual machines to create.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -126,7 +143,7 @@ Specifies the DNS prefix for the master virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -142,7 +159,7 @@ The acceptable values for this parameter are: DCOS and Swarm.
 ```yaml
 Type: ContainerServiceOrchestratorTypes
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Swarm, DCOS, Custom, Kubernetes
 
 Required: False
@@ -158,7 +175,7 @@ Specifies the principal profile client ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -173,7 +190,7 @@ Specifies the principal profile secret.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -188,7 +205,7 @@ Specifies the SSH public key for a Linux-based container service.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 9
@@ -205,7 +222,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -220,7 +237,7 @@ Indicates whether this configuration enables diagnostics for the container servi
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 10
@@ -235,7 +252,7 @@ Specifies the administrator password for a container service that uses the Windo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -250,7 +267,7 @@ Specifies the administrator username for a container service that uses the Windo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6

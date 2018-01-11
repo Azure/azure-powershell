@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 7B3259CD-079D-4E07-8608-F818522EE7CF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/start-azurermvm
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Starts an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Start-AzureRmVM [-Name] <String> [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzureRmVM [-Name] <String> [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +38,36 @@ PS C:\> Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachi
 This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Id
 The resource group name.

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 973E1E53-983F-45A7-A7CF-18A8D96EC4E6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Creates a new VPN client-revocation certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRevokedCertificate -Name <String> -Thumbprint <String> [<CommonParameters>]
+New-AzureRmVpnClientRevokedCertificate -Name <String> -Thumbprint <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +43,21 @@ This command creates a new client-revoked certificate and stores the certificate
 This variable can then be used by the **New-AzureRmVirtualNetworkGateway** cmdlet to add the certificate to a new virtual network gateway.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies a unique name for the new client-revocation certificate.

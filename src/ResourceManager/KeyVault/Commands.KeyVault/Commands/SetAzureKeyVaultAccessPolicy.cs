@@ -21,6 +21,7 @@ using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
+            CertPerms.Recover,
         };
 
         private readonly string[] StorageAllExpansion = {
@@ -115,6 +117,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose access policy is being modified.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
@@ -232,7 +235,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByEmailAddress,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
-        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "all")]
+        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "all")]
         public string[] PermissionsToCertificates { get; set; }
 
         /// <summary>

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F01CB88A-49E7-41D8-B4E7-F1A4DCDC6B84
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaysku
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the SKU of an application gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> [<CommonParameters>]
+Get-AzureRmApplicationGatewaySku -ApplicationGateway <PSApplicationGateway>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +46,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

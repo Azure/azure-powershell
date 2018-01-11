@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 38207027-FD76-45EE-8817-88599735C0B0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragefile
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ You can use the **IsDirectory** property to distinguish between folders and file
 
 ### Example 1: List directories in a share
 ```
-PS C:\>Get-AzureStorageFile -ShareName "share1" | where {$_.GetType().Name -eq "CloudFileDirectory"}
+PS C:\>Get-AzureStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "CloudFileDirectory"}
 ```
 
 This command lists only the directories in the share ContosoShare06.

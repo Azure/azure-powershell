@@ -130,6 +130,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </value>
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of disks for worker node role for the cluster.
+        /// </summary>
+        public int DisksPerWorkerNode { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;

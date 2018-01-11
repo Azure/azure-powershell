@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 
@@ -16,7 +17,8 @@ Creates an HTTP listener for an application gateway.
 ```
 New-AzureRmApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-HostName <String>]
- [-RequireServerNameIndication <String>] -Protocol <String> [<CommonParameters>]
+ [-RequireServerNameIndication <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -24,7 +26,8 @@ New-AzureRmApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurati
 New-AzureRmApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
- [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String> [<CommonParameters>]
+ [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +51,21 @@ This command creates an HTTP listener that uses SSL offload and provides the SSL
 The command stores the result in the variable named $Listener.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FrontendIPConfiguration
 Specifies front-end IP configuration object for the HTTP listener.

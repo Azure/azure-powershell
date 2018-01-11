@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version: 
+Module Name: AzureRM.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayredirectconfiguration
 schema: 2.0.0
 ---
 
@@ -14,20 +15,22 @@ Creates a redirect configuration for an application gateway.
 ### SetByResourceId
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String>
- [-TargetListenerID <String>] [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>] [<CommonParameters>]
+ [-TargetListenerID <String>] [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String>
  [-TargetListener <PSApplicationGatewayHttpListener>] [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByURL
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String> [-TargetUrl <String>]
- [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>] [<CommonParameters>]
+ [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +46,21 @@ PS C:\>$RedirectConfig = New-AzureRmApplicationGatewayRedirectConfiguration -Nam
 This command creates a redirect configuration named Redirect01 and stores the result in the variable named $RedirectConfig.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IncludePath
 Include path in the redirected url.

@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
@@ -483,19 +485,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private VirtualMachineScaleSetStorageProfile GetStorageProfile(VirtualMachineScaleSetStorageProfile existingProfile)
         {
-            var vhds = CreateStorageAccount().Select(a => string.Concat(a.PrimaryEndpoints.Blob, "vhd")).ToList();
+            var osDisk = new VirtualMachineScaleSetOSDisk()
+            {
+                Caching = existingProfile.OsDisk.Caching,
+                OsType = existingProfile.OsDisk.OsType,
+                CreateOption = existingProfile.OsDisk.CreateOption
+            };
+
+            if(existingProfile.OsDisk.ManagedDisk != null)
+            {
+                osDisk.ManagedDisk = existingProfile.OsDisk.ManagedDisk;
+            }
+            else
+            {
+                osDisk.Image = existingProfile.OsDisk.Image;
+                osDisk.Name = existingProfile.OsDisk.Name;
+                osDisk.VhdContainers = CreateStorageAccount().Select(a => string.Concat(a.PrimaryEndpoints.Blob, "vhd")).ToList();
+            }
+
             return new VirtualMachineScaleSetStorageProfile()
             {
                 ImageReference = existingProfile.ImageReference,
-                OsDisk = new VirtualMachineScaleSetOSDisk()
-                {
-                    Caching = existingProfile.OsDisk.Caching,
-                    OsType = existingProfile.OsDisk.OsType,
-                    Image = existingProfile.OsDisk.Image,
-                    Name = existingProfile.OsDisk.Name,
-                    CreateOption = existingProfile.OsDisk.CreateOption,
-                    VhdContainers = vhds
-                }
+                OsDisk = osDisk
             };
         }
 

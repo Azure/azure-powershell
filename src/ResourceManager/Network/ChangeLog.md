@@ -18,7 +18,75 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
+## Version 5.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Added cmdlet to list available internet service providers for a specified Azure region
+    - Get-AzureRmNetworkWatcherReachabilityProvidersList
+* Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
+    - Get-AzureRmNetworkWatcherReachabilityReport
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 4.4.1
+
+## Version 4.4.0
+* Added support for endpoint services to Virtual Network Subnets
+    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+* Added cmdlet to list endpoint services available in the location
+    - Get-AzureRmVirtualNetworkAvailableEndpointService
+* Added the ability to configure external radius based P2S authentication to the following commandlets
+    - New-AzureVirtualNetworkGateway
+    - Set-AzureVirtualNetworkGateway
+    - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+* Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+    - New-AzureRmVpnClientConfiguration
+	  - Get-AzureRmVpnClientConfiguration
+* Added support for SKU parameter to Public IP Addresses and Load Balancers
+    - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+    - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+* Added support for DisableOutboundSNAT to Load Balancer Rules
+    - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+* Added support for IkeV2 P2S
+    - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
+    - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+* Added new commands for VpnDeviceConfiguration Scripts
+    - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices
+    - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript
+* Added support for MultiValued rules in Network Security Rules and Effective Network Security Rules
+    - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters to accept a list of strings
+    - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
+    - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+    - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+    - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+    - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
+    - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
+* Added support for DDoS protection for virtual networks
+    - Updated New-AzureRmVirtualNetwork: Added switch parameters EnableDDoSProtection and EnableVmProtection
+    - Added properties EnableDDoSProtection and EnableVmProtection in PSVirtualNetwork object
+* Added support for Highly Available Internal Load Balancer
+    - Updated Add-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+    - Updated New-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+    - Updated Set-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+* Added support for Application Security Groups
+    - Added New-AzureRmApplicationSecurityGroup
+    - Added Get-AzureRmApplicationSecurityGroup
+    - Added Remove-AzureRmApplicationSecurityGroup
+    - Updated New-AzureRmNetworkInterface: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated New-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated Add-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated Set-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+    - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+	
 ## Version 4.3.1
 
 ## Version 4.3.0

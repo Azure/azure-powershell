@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version:
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermdiskconfig
 schema: 2.0.0
 ---
 
@@ -13,11 +14,11 @@ Creates a configurable disk object.
 
 ```
 New-AzureRmDiskConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <DiskCreateOption>]
- [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
- [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
- [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>]
+ [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>]
+ [-SourceUri <String>] [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
+ [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +52,7 @@ creates an empty disk, or attaches an existing disk.
 ```yaml
 Type: DiskCreateOption
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Empty, Attach, FromImage, Import, Copy
 
 Required: False
@@ -61,13 +62,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskEncryptionKey
 Specifies the disk encryption key object on a disk.
 
 ```yaml
 Type: KeyVaultAndSecretReference
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,7 +98,7 @@ Specifies the size of the disk in GB.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -97,7 +113,7 @@ Enable encryption settings.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,7 +128,7 @@ Specifies the image reference on a disk.
 ```yaml
 Type: ImageDiskReference
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -127,7 +143,7 @@ Specifies the Key encryption key on a disk.
 ```yaml
 Type: KeyVaultAndKeyReference
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -142,7 +158,7 @@ Specifies a location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -157,7 +173,7 @@ Specifies the OS type.
 ```yaml
 Type: OperatingSystemTypes
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Windows, Linux
 
 Required: False
@@ -189,7 +205,7 @@ Specifies the  source resource ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -204,7 +220,7 @@ Specifies the source Uri.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -219,7 +235,7 @@ Specifies the storage account ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -236,7 +252,22 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the logical zone list for Disk.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -287,3 +318,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

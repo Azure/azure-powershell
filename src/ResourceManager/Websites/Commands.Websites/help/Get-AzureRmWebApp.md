@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: A87ED954-9C09-4329-A005-ABFF36C45E6E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebapp
 schema: 2.0.0
 ---
 
@@ -14,17 +15,19 @@ Gets Azure Web Apps in the specified resource group.
 
 ### S1
 ```
-Get-AzureRmWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebApp [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
+Get-AzureRmWebApp [-AppServicePlan] <ServerFarmWithRichSku> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### S3
 ```
-Get-AzureRmWebApp [-Location] <String> [<CommonParameters>]
+Get-AzureRmWebApp [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +37,7 @@ The **Get-AzureRmWebApp** cmdlet gets information about an Azure Web App.
 
 ### Example 1: Get a Web App from a resource group
 ```
-PS C:\>Get-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -SlotName "Slot001"
+PS C:\>Get-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets the Web App named ContosoSite that belongs to the resource group Default-Web-WestUS.
@@ -51,6 +54,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,7 +124,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

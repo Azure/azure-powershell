@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -116,21 +115,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSContainerService))]
     public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
                     ContainerService parameters = new ContainerService();
-                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();
-                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -143,6 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -162,6 +161,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSContainerService ContainerService { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -170,19 +172,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.Name, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
                     ContainerService parameters = new ContainerService();
-                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();
-                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -195,6 +196,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

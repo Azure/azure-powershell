@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlsyncschema
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Returns information about the sync schema of a member database or a hub database
 
 ```
 Get-AzureRmSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +32,6 @@ Tables                     LastUpdateTime
 ```
 
 This command gets the sync schema for the hub database in the sync group syncGroup01.
-
 
 ### Example 1.2: Get the sync schema for a hub database, and expand Tables
 ```
@@ -50,14 +51,13 @@ QuotedName : [dbo].[Table_2]
 
 This command gets the sync schema for the hub database in the sync group syncGroup01 and expand Tables property.
 
-
 ### Example 2: Get the sync schema for a member database
 ```
 PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
 The schema payload is the same as Example 1.
 ```
-This command gets the sync schema for the member database in the sync member syncMember01.
 
+This command gets the sync schema for the member database in the sync member syncMember01.
 
 ## PARAMETERS
 
@@ -67,12 +67,27 @@ The name of the Azure SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -82,7 +97,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,7 +112,7 @@ The name of the Azure SQL Server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -112,7 +127,7 @@ The sync group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -127,7 +142,7 @@ The sync member name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,6 +150,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -149,4 +167,3 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-

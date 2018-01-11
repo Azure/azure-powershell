@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 16754F70-9619-4F68-86E9-5C8B27812707
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientrootcertificate
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Gets information about VPN root certificates.
 
 ```
 Get-AzureRmVpnClientRootCertificate [-VpnClientRootCertificateName <String>]
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [<CommonParameters>]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +44,21 @@ This command is a variation of the command shown in Example 1.
 In this case, however, the *VpnClientRootCertificateName* parameter is included in order to limit the returned data to a specific root certificate: ContosoRootClientCertificate.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
