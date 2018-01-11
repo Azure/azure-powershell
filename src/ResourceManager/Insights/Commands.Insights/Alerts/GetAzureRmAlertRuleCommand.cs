@@ -19,18 +19,19 @@ using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
     /// <summary>
     /// Get an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(List<PSManagementItemDescriptor>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(List<PSAlertRule>))]
     public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
     {
-        internal const string GetAzureRmAlertRuleParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet";
-        internal const string GetAzureRmAlertRuleWithNameParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet using name";
-        internal const string GetAzureRmAlertRuleWithUriParamGroup = "Parameters for Get-AzureRmAlertRule cmdlet using target resource uri";
+        internal const string GetAzureRmAlertRuleParamGroup = "GetByResourceGroup";
+        internal const string GetAzureRmAlertRuleWithNameParamGroup = "GetByName";
+        internal const string GetAzureRmAlertRuleWithUriParamGroup = "GetByResourceUri";
 
         #region Cmdlet parameters
 
@@ -40,8 +41,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(ParameterSetName = GetAzureRmAlertRuleParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithNameParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the rule name parameter of the cmdlet
@@ -106,11 +109,14 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will be flattened, i.e. elimination of the properties field, in a future release to improve the user experience.");
+            this.WriteIdentifiedWarning(
+                cmdletName: "Get-AzureRmAlertRule",
+                topic: "Parameter deprecation", 
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the AlertRules for a ResourceGroup
-                IEnumerable<AlertRuleResource> result = this.MonitorManagementClient.AlertRules.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroup).Result;
+                IEnumerable<AlertRuleResource> result = this.MonitorManagementClient.AlertRules.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroupName).Result;
 
                 // The filter on targetResourceId is not supported by the servers, not specified in in Swagger, nor supported by the SDK.
                 // This is added to maintain support in PowerShell
@@ -119,15 +125,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     result = result.Where(a => string.Equals(this.TargetResourceId, ExtractTargetResourceId(a), StringComparison.OrdinalIgnoreCase));
                 }
 
-                var records = result.Select(e => this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
+                var records = result.Select(e => this.DetailedOutput.IsPresent ? new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
                 WriteObject(sendToPipeline: records.ToList(), enumerateCollection: true);
             }
             else
             {
                 // Retrieve a single AlertRule determined by the ResourceGroup and the rule name
-                AlertRuleResource result = this.MonitorManagementClient.AlertRules.GetAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
+                AlertRuleResource result = this.MonitorManagementClient.AlertRules.GetAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name).Result;
 
-                var finalResult = new List<PSManagementItemDescriptor> { this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(result) : new PSAlertRuleNoDetails(result) };
+                var finalResult = new List<PSAlertRule> { this.DetailedOutput.IsPresent ? new PSAlertRule(result) : new PSAlertRuleNoDetails(result) };
                 WriteObject(sendToPipeline: finalResult, enumerateCollection: true);
             }
         }

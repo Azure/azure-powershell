@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 6FFE1B64-C80B-423D-A043-55C90A224752
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Creates an SSL certificate for an Azure application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <String>
- [<CommonParameters>]
+New-AzureRmApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <SecureString>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,8 @@ The **New-AzureRmApplicationGatewaySslCertificate** cmdlet creates an SSL certif
 
 ### Example 1: Create an SSL certificate for an Azure application gateway.
 ```
-PS C:\>$Cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"
+PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+PS C:\> $cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
@@ -40,6 +42,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -65,7 +82,7 @@ Accept wildcard characters: False
 Specifies the password of the SSL that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 

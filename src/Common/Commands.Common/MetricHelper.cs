@@ -15,6 +15,7 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -22,6 +23,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Management.Automation.Host;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -31,6 +33,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         protected INetworkHelper _networkHelper;
         private const int FlushTimeoutInMilli = 5000;
+        private const string DefaultPSVersion = "3.0.0.0";
+        private const string EventName = "cmdletInvocation";
 
         /// <summary>
         /// The collection of telemetry clients.
@@ -52,9 +56,31 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <summary>
         /// Lock used to synchronize mutation of the tracing interceptors.
         /// </summary>
-        private static readonly object _lock = new object();
+        private readonly object _lock = new object();
 
-        private static string _hashMacAddress = string.Empty;
+        private string _hashMacAddress = string.Empty;
+
+        private AzurePSDataCollectionProfile _profile;
+
+        private static PSHost _host;
+
+        private static string _psVersion;
+
+        protected string PSVersion
+        {
+            get
+            {
+                if (_host != null)
+                {
+                    _psVersion = _host.Version.ToString();
+                }
+                else
+                {
+                    _psVersion = DefaultPSVersion;
+                }
+                return _psVersion;
+            }
+        }
 
         public string HashMacAddress
         {
@@ -86,8 +112,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             set { lock(_lock) { _hashMacAddress = value; } }
         }
 
-        public MetricHelper() : this(new NetworkHelper())
+        public MetricHelper(AzurePSDataCollectionProfile profile) : this(new NetworkHelper())
         {
+            _profile = profile;
         }
 
         public MetricHelper(INetworkHelper network)
@@ -168,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 {
                     var pageViewTelemetry = new PageViewTelemetry
                     {
-                        Name = qos.CommandName ?? "empty",
+                        Name = EventName,
                         Duration = qos.Duration,
                         Timestamp = qos.StartTime
                     };
@@ -214,6 +241,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
+        public void SetPSHost(PSHost host)
+        {
+            _host = host;
+        }
+
         private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
         {
             if (qos == null)
@@ -221,6 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return;
             }
 
+            eventProperties.Add("Command", qos.CommandName);
             eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
@@ -231,6 +264,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
             eventProperties.Add("UserAgent", AzurePowerShell.UserAgentValue.ToString());
             eventProperties.Add("HashMacAddress", HashMacAddress);
+            eventProperties.Add("PowerShellVersion", PSVersion);
+            eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
             if (qos.InputFromPipeline != null)
             {
                 eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
@@ -247,7 +282,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public bool IsMetricTermAccepted()
         {
-            return AzurePSCmdlet.IsDataCollectionAllowed();
+            return _profile != null 
+                && _profile.EnableAzureDataCollection.HasValue 
+                && _profile.EnableAzureDataCollection.Value;
         }
 
         public void FlushMetric()

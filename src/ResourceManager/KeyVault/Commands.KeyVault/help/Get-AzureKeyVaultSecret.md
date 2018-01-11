@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
-online version: http://go.microsoft.com/fwlink/?LinkId=690298
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -14,22 +15,25 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretVersions
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedSecrets
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [<CommonParameters>]
+Get-AzureKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +78,7 @@ PS C:\> Write-Host "Secret Value is: " $secret.SecretValueText
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 
-### Example 6: Get all the keys that have been deleted but not purged for this key vault.
+### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```
 PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
 ```
@@ -91,15 +95,15 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedSecrets
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,6 +120,21 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: BySecretVersions
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedSecrets
 Aliases: 
 
 Required: True

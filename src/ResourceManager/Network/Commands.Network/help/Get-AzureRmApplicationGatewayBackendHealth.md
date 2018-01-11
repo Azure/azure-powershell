@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: D5E928C3-26B6-4B7C-8A9C-F1F602BABF75
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaybackendhealth
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets application gateway backend health.
 
 ```
 Get-AzureRmApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String>
- [-ExpandResource <String>] [<CommonParameters>]
+ [-ExpandResource <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,22 +24,6 @@ The Get-AzureRmApplicationGatewayBackendHealth cmdlet gets application gateway b
 ## EXAMPLES
 
 ### --------------------------  Example 1: Gets backend health without expanded resources.  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01
 ```
@@ -46,22 +31,6 @@ PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name Applica
 This command gets the backend health of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 
 ### --------------------------  Example 1: Gets backend health with expanded resources.  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"
 ```
@@ -69,6 +38,36 @@ PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name Applica
 This command gets the backend health (with expanded resources) of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpandResource
 ```yaml

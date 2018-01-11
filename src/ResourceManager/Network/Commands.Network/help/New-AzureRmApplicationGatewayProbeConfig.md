@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version: https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#
+Module Name: AzureRM.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates a health probe.
 ```
 New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
  -Interval <Int32> -Timeout <Int32> -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings]
- [-MinServers <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [<CommonParameters>]
+ [-MinServers <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +32,21 @@ PS C:\>New-AzureRmApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -
 This command creates a health probe named Probe03, with HTTP protocol, a 30 second interval, timeout of 120 seconds, and an unhealthy threshold of 8 retries.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -HostName
 Specifies the host name that this cmdlet sends the probe.

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 4E5C059B-36F3-41C8-9FDB-69F5318CF39B
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresourcegroup
 schema: 2.0.0
 ---
 
@@ -12,14 +13,16 @@ Modifies a resource group.
 
 ## SYNTAX
 
-### Lists the resource group based in the name. (Default)
+### SetByResourceGroupName (Default)
 ```
-Set-AzureRmResourceGroup [-Name] <String> [-Tag] <Hashtable> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Set-AzureRmResourceGroup [-Name] <String> [-Tag] <Hashtable> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Lists the resource group based in the Id.
+### SetByResourceGroupId
 ```
-Set-AzureRmResourceGroup [-Tag] <Hashtable> [-Id] <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Set-AzureRmResourceGroup [-Tag] <Hashtable> [-Id] <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +85,22 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -96,7 +114,7 @@ Specifies the ID of the resource group to modify.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the Id.
+Parameter Sets: SetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: True
@@ -111,7 +129,7 @@ Specifies the name of the resource group to modify.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based in the name.
+Parameter Sets: SetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: True
@@ -127,7 +145,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

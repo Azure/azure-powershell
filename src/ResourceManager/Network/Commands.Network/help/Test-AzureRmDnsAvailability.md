@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/test-azurermdnsavailability
 schema: 2.0.0
 ---
 
@@ -12,7 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String> [<CommonParameters>]
+Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,6 +27,21 @@ Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String> [<Commo
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DomainNameLabel
 ```yaml

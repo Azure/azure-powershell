@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: http://go.microsoft.com/fwlink/?LinkId=690297
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultkey
 schema: 2.0.0
 ---
 
@@ -14,22 +15,25 @@ Gets Key Vault keys.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyName
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyVersions
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedKey
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,15 +88,15 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
-### -InRemovedState
-Specifies whether to show the previously deleted keys in the output.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedKey
-Aliases: 
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,6 +113,21 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByKeyVersions
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted keys in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedKey
 Aliases: 
 
 Required: True

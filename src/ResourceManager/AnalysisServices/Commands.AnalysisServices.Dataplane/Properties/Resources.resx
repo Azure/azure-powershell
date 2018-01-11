@@ -124,7 +124,7 @@
     <value>Login to {0}</value>
   </data>
   <data name="NotLoggedInMessage" xml:space="preserve">
-    <value>Run Login-AzureAsAccount to login to Analysis Services server</value>
+    <value>Run Login-AzureAsAccount to login to Analysis Services server {0}</value>
   </data>
   <data name="RestartingAnalysisServicesServer" xml:space="preserve">
     <value>Restart Analysis Services Server</value>
@@ -140,5 +140,28 @@
   </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unknown Analysis Services environment name specified.</value>
+  </data>
+  <data name="ARMDataCollectionMessage" xml:space="preserve">
+    <value>Azure PowerShell collects usage data in order to improve your experience.
+The data is anonymous and does not include commandline argument values.
+The data is collected by Microsoft.
+
+Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &gt; Enable-AzureRmDataCollection.</value>
+  </data>
+  <data name="SynchronizingAnalysisServicesServer" xml:space="preserve">
+    <value>Replicate databases from the processing server to the query scale-out servers</value>
+  </data>
+  <data name="SynchronizationFailedException" xml:space="preserve">
+    <value>Synchronization failed with an exception.</value>
+  </data>
+  <data name="SyncASPollStatusFailureMessage" xml:space="preserve">
+    <value>Failed to get the status of the sync operation. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}. Details: {3}</value>
+  </data>
+  <data name="PostSyncRequestFailureMessage" xml:space="preserve">
+    <value>Failed to send sync request to specified server. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}.</value>
+  </data>
+  <data name="SyncASPollStatusUnknownMessage" xml:space="preserve">
+    <value>Failed to get the status of the synchronization request for the specified database. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}.</value>
   </data>
 </root>

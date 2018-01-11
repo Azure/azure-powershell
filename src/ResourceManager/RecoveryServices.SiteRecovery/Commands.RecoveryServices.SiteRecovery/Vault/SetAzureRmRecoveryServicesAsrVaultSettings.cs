@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -75,25 +76,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 using (var powerShell = System.Management.Automation.PowerShell.Create())
                 {
-                    var result = powerShell
-                        .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                        .AddParameter(
-                            "Vault",
-                            arsVault)
-                        .Invoke();
+                    var vaultExtendedInfo = this.RecoveryServicesClient
+                        .GetVaultExtendedInfo(this.Vault.ResourceGroupName,this.Vault.Name);
 
-                    var vaultSettingspath = (string)result[0]
-                        .Members["FilePath"]
-                        .Value;
-                    powerShell.Commands.Clear();
 
-                    result = powerShell
-                        .AddCommand("Import-AzureRmRecoveryServicesAsrVaultSettingsFile")
-                        .AddParameter(
-                            "Path",
-                            vaultSettingspath)
-                        .Invoke();
-                    this.WriteObject(result);
+                    ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
+                    
+                    asrVaultCreds.ResourceName = this.Vault.Name;
+                    asrVaultCreds.ResourceGroupName = this.Vault.ResourceGroupName;
+                    asrVaultCreds.ChannelIntegrityKey = vaultExtendedInfo.IntegrityKey;
+                    
+                    asrVaultCreds.ResourceNamespace = ARMResourceTypeConstants
+                        .RecoveryServicesResourceProviderNameSpace;
+
+                    asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
+
+                    Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
+                    this.RecoveryServicesClient.ValidateVaultSettings(
+                    asrVaultCreds.ResourceName,
+                    asrVaultCreds.ResourceGroupName);
+
+                    this.WriteObject(new ASRVaultSettings(asrVaultCreds));
                     powerShell.Commands.Clear();
                 }
             }

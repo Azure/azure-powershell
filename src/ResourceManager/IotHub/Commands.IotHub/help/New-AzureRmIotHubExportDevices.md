@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-online version: 
+Module Name: AzureRM.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/new-azurermiothubexportdevices
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Creates a new export devices job.
 
 ```
 New-AzureRmIotHubExportDevices [-ResourceGroupName] <String> [-Name] <String>
- [-ExportBlobContainerUri] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExportBlobContainerUri] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Nam
 Creates a new export device request for the IotHub "myiothub" excluding the keys.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExportBlobContainerUri
 The Uri to export the blob to. 

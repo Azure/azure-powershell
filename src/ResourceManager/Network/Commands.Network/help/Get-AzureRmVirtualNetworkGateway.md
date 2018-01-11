@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 9CBF592E-734B-4A0C-A45D-358C226D08C7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets a Virtual Network Gateway
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String> [<CommonParameters>]
+Get-AzureRmVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +33,21 @@ Get-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 Returns the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 ```yaml

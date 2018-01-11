@@ -56,7 +56,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/disks")]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -206,6 +212,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDisk = new PSDisk
             {
+                Zones = this.Zone,
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
                 Location = this.Location,

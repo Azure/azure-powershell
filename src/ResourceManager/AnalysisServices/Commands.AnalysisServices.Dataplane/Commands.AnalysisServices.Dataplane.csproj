@@ -50,11 +50,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.8\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Commands\AddAzureASAccount.cs" />
     <Compile Include="Commands\Export-AzureAsInstanceLog.cs" />
+    <Compile Include="Commands\Synchronize-AzureASInstance.cs" />
     <Compile Include="Models\AsAzureAccount.cs" />
     <Compile Include="Models\AsAzureClientSession.cs" />
     <Compile Include="Models\ASAzureContext.cs" />
@@ -97,6 +98,11 @@
     <Compile Include="Models\AsAzureProfile.cs" />
     <Compile Include="Commands\Restart-AzureAsInstance.cs" />
     <Compile Include="Models\AsAzureAuthenticationProvider.cs" />
+    <Compile Include="Models\DatabaseSyncState.cs" />
+    <Compile Include="Models\ScaleOutServerDatabaseSyncDetail.cs" />
+    <Compile Include="Models\ClusterResolutionResult.cs" />
+    <Compile Include="Models\ScaleOutServerDatabaseSyncResult.cs" />
+    <Compile Include="Models\SynchronizationFailedException.cs" />
     <Compile Include="Models\TokenCacheItemProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -106,15 +112,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AnalysisServicesDataplaneStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Azure.AnalysisServices.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

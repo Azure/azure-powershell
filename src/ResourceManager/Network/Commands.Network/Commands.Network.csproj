@@ -49,22 +49,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=12.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.12.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=15.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.15.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="AutoMapper">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
@@ -176,11 +173,15 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="EndpointService\GetAzureRMAvailableEndpointServiceCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationBase.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationCommand.cs" />
@@ -213,6 +214,10 @@
     <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
     <Compile Include="Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
     <Compile Include="Models\PSApplicationGatewayAvailableSslOptions.cs" />
+    <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSServiceEndpoint.cs" />
+    <Compile Include="Models\PSLoadBalancerSku.cs" />
+    <Compile Include="Models\PSPublicIpAddressSku.cs" />
     <Compile Include="Models\PSVirtualNetworkUsage.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
@@ -323,6 +328,17 @@
     <Compile Include="Models\PSVirtualNetworkPeering.cs" />
     <Compile Include="Models\PSTunnelConnectionHealth.cs" />
     <Compile Include="Models\PSVirtualNetworkUsageCustom.cs" />
+    <Compile Include="Models\PSVpnProfile.cs" />
+    <Compile Include="Models\PSAvailableProvidersList.cs" />
+    <Compile Include="Models\PSAvailableProvidersListCity.cs" />
+    <Compile Include="Models\PSAvailableProvidersListCountry.cs" />
+    <Compile Include="Models\PSAvailableProvidersListParameters.cs" />
+    <Compile Include="Models\PSAvailableProvidersListState.cs" />
+    <Compile Include="Models\PSAzureReachabilityReport.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportItem.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportLatencyInfo.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportLocation.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveRouteTableCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />
@@ -351,8 +367,22 @@
     <Compile Include="NetworkWatcher\PacketCapture\RemoveAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherReachabilityProvidersListCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureRMNetworkWatcherReachabilityReportCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="Models\PSApplicationSecurityGroup.cs" />
+    <Compile Include="RouteTable\GetAzureRMRouteTableCommand.cs" />
+    <Compile Include="RouteTable\NewAzureRMRouteTableCommand.cs" />
+    <Compile Include="RouteTable\RemoveAzureRMRouteTableCommand.cs" />
+    <Compile Include="RouteTable\Route\AddAzureRmRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\GetAzureRmRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\NewAzureRmRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\RemoveAzureRmRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\SetAzureRMRouteTableCommand.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevice.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
     <Compile Include="RouteFilter\NewAzureRouteFilterCommand.cs" />
@@ -368,23 +398,15 @@
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayAdvertisedRouteCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayBgpPeerStatus.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayLearnedRouteCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientConfigurationCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientConfigurationCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayParameterSets.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\PublicIpAddressBaseCmdlet.cs" />
     <Compile Include="PublicIpAddress\RemoveAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\SetAzurePublicIpAddressCommand.cs" />
-    <Compile Include="RouteTable\GetAzureRouteTableCommand.cs" />
-    <Compile Include="RouteTable\RouteTableBaseCmdlet.cs" />
-    <Compile Include="RouteTable\NewAzureRouteTableCommand.cs" />
-    <Compile Include="RouteTable\RemoveAzureRouteTableCommand.cs" />
-    <Compile Include="RouteTable\Route\AddAzureRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\AzureRouteConfigBase.cs" />
-    <Compile Include="RouteTable\Route\GetAzureRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\NewAzureRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\RemoveAzureRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\SetAzureRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\SetAzureRouteTableCommand.cs" />
     <Compile Include="VirtualNetworkGateway\AzureVirtualNetworkGatewayIpConfigBase.cs" />
     <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
     <Compile Include="VirtualNetworkGateway\UpdateAzureVirtualNetworkGatewayCommand.cs" />
@@ -545,9 +567,6 @@
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="AzureRmNetworkStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -558,6 +577,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

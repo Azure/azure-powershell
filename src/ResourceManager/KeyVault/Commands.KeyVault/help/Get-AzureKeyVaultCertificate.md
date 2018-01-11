@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -14,17 +15,26 @@ Gets a certificate from a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultCertificate [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByCertificateName
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateVersions
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByDeletedCertificates
+```
+Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +73,37 @@ Updated     : 2/8/2016 11:21:45 PM
 
 This command gets the certificate named TestCert01 from the key vault named ContosoKV01.
 
+### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -InRemovedState
+```
+
+This command gets all the certificates that have been previously deleted, but not purged, in the key vault named Contoso.
+
+### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+```
+
+This command gets the certificate named 'MyCert' that has been previously deleted, but not purged, in the key vault named Contoso.
+This command will return metadata such as the deletion date, and the scheduled purging date of this deleted certificate.
+
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IncludeVersions
 Indicates that this operation gets all versions of the certificate.
@@ -71,6 +111,21 @@ Indicates that this operation gets all versions of the certificate.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByCertificateVersions
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to include previously deleted certificates in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedCertificates
 Aliases: 
 
 Required: True
@@ -89,6 +144,18 @@ Parameter Sets: ByCertificateName, ByCertificateVersions
 Aliases: CertificateName
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedCertificates
+Aliases: CertificateName
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -144,3 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 
+[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
+
+[Undo-AzureKeyVaultSecretCertificate](./Undo-AzureKeyVaultSecretCertificate.md)

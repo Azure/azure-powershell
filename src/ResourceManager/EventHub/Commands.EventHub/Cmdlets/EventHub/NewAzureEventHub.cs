@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
@@ -38,16 +40,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
-        public string Namespace { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Namespace Location.")]
-        [ValidateNotNullOrEmpty]
-        [ObsoleteAttribute("'Location' property is mark as obsolete and will be depricated in upcoming breaking changes build.", false)]
-        public string Location { get; set; }
+        public string Namespace { get; set; }        
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

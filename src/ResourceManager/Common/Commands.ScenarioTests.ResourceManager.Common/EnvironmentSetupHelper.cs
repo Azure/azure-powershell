@@ -32,6 +32,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading;
+using System.Text;
 
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
@@ -53,6 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
 
         protected List<string> modules;
 
@@ -87,6 +89,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
+
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json")))
+            {
+                SetEnvironmentVariableFromCredentialFile();
+            }
         }
 
         public string RMProfileModule
@@ -135,11 +142,63 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        public string RMNetworkModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+            }
+        }
+
         public string GetRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.PackageDirectory,
                                  @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+        }
+
+        public string GetStackRMModulePath(string psd1FileName)
+        {
+            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
+            return Path.Combine(this.StackDirectory,
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+        }
+
+        public string StackRMProfileModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+            }
+        }
+
+        public string StackRMResourceModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+            }
+        }
+
+        public string StackRMStorageModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+            }
+        }
+
+        public string StackRMStorageDataPlaneModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
+            }
         }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
@@ -167,7 +226,102 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         }
 
-        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
+        public void SetEnvironmentVariableFromCredentialFile()
+        {
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json");
+            Dictionary<string, object> credentials;
+            using (StreamReader r = new StreamReader(filePath))
+            {
+                string json = r.ReadToEnd();
+                credentials = JsonUtilities.DeserializeJson(json);
+            }
+
+            if (Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION") == null)
+            {
+                StringBuilder formattedConnectionString = new StringBuilder();
+                formattedConnectionString.AppendFormat("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]);
+
+                if (credentials.ContainsKey("UserId"))
+                {
+                    formattedConnectionString.AppendFormat(";UserId={0}", credentials["UserId"]);
+                }
+
+                if (credentials.ContainsKey("ServicePrincipal"))
+                {
+                    formattedConnectionString.AppendFormat(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
+                    formattedConnectionString.AppendFormat(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                }
+
+                if (credentials.ContainsKey("TenantId"))
+                {
+                    formattedConnectionString.AppendFormat(";AADTenant={0}", credentials["TenantId"]);
+                }
+
+                if (credentials.ContainsKey("ResourceManagementUri"))
+                {
+                    formattedConnectionString.AppendFormat(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GraphUri={0}", credentials["GraphUri"]);
+                }
+
+                if (credentials.ContainsKey("AADAuthUri"))
+                {
+                    formattedConnectionString.AppendFormat(";AADAuthUri={0}", credentials["AADAuthUri"]);
+                }
+
+                if (credentials.ContainsKey("AADTokenAudienceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphTokenAudienceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("IbizaPortalUri"))
+                {
+                    formattedConnectionString.AppendFormat(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]);
+                }
+
+                if (credentials.ContainsKey("ServiceManagementUri"))
+                {
+                    formattedConnectionString.AppendFormat(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("RdfePortalUri"))
+                {
+                    formattedConnectionString.AppendFormat(";RdfePortalUri={0}", credentials["RdfePortalUri"]);
+                }
+
+                if (credentials.ContainsKey("GalleryUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GalleryUri={0}", credentials["GalleryUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeStoreServiceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]);
+                }
+
+                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString.ToString());
+            }
+
+            if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == null)
+            {
+                Environment.SetEnvironmentVariable("AZURE_TEST_MODE", credentials["HttpRecorderMode"].ToString());
+            }
+        }
+
+        public void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment currentEnvironment = null;
             if (mode == AzureModule.AzureResourceManager)
@@ -256,12 +410,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
 #if !NETSTANDARD
-            if(environment.AuthorizationContext.Certificate != null)
+            if (environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
-            else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
+            else if (environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
             {
                 var httpMessage = new HttpRequestMessage();
                 environment.AuthorizationContext.TokenCredentials[TokenAudience.Management]

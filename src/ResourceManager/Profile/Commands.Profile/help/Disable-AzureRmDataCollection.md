@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/disable-azurermdatacollection
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Data is not collected unless you explicitly opt in.
 ## SYNTAX
 
 ```
-Disable-AzureRmDataCollection [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzureRmDataCollection [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +39,21 @@ PS C:\> Disable-AzureRmDataCollection
 This example shows how to disable data collection for the current user. 
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

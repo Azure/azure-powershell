@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
-  <?define productName="Microsoft Azure PowerShell - August 2017" ?>
+  <?define productName="Microsoft Azure PowerShell - December 2017" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="4.3.1" ?>
+  <?define version="5.1.1" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -24,6 +24,7 @@
     <Icon Id="icon.ico" SourceFile="media\WAIcon.ico"/>
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
+    <Property Id="ISVSINSTALL" Secure="yes"/>
     <!-- per machine install-->
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
@@ -51,7 +52,7 @@
     <Condition Message="This setup requires the .NET Framework 4.5.2 or higher to be installed.">
       <!-- NETFRAMEWORK45 contains a DWORD with installed version key to versions is here: -->
       <!-- https://msdn.microsoft.com/en-us/library/ee942965(v=vs.110).aspx#detect_net -->
-      <![CDATA[Installed or (NETFRAMEWORK45 >= "#379893")]]>
+      <![CDATA[Installed or (NETFRAMEWORK45 >= "#379893") or ISVSINSTALL]]>
     </Condition>
 
     <Directory Id="TARGETDIR" Name="SourceDir">

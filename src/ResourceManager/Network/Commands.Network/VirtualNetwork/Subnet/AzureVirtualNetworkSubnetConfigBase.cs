@@ -59,5 +59,11 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Service Endpoint Value")]
+        public List<string> ServiceEndpoint { get; set; }
     }
 }

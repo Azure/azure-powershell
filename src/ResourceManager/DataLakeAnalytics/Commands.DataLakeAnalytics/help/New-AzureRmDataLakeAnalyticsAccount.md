@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0A7CD695-6D14-4BC9-B960-0CAFE502B88B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/new-azurermdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -14,8 +15,9 @@ Creates a Data Lake Analytics account.
 
 ```
 New-AzureRmDataLakeAnalyticsAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-DefaultDataLakeStore] <String> [[-Tags] <Hashtable>] [-MaxDegreeOfParallelism <Int32>]
- [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>] [<CommonParameters>]
+ [-DefaultDataLakeStore] <String> [[-Tags] <Hashtable>] [-MaxAnalyticsUnits <Int32>]
+ [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +49,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location at which to create the Data Lake Analytics account.
 Only East US 2 is supported at this time.
@@ -63,13 +80,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxDegreeOfParallelism
-The optional maximum supported degree of parallelism for this account. If none is specified, defaults to 30
+### -MaxAnalyticsUnits
+The optional maximum supported analytics units for this account.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxDegreeOfParallelism
 
 Required: False
 Position: Named

@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version: 
+Module Name: AzureRM.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkwatcher
 schema: 2.0.0
 ---
 
@@ -13,12 +14,14 @@ Gets the properties of a Network Watcher
 
 ### Get
 ```
-Get-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> [<CommonParameters>]
+Get-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzureRmNetworkWatcher [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzureRmNetworkWatcher [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +44,21 @@ ProvisioningState : Succeeded
 Gets the Network Watcher named NetworkWatcher_westcentralus in the resource group NetworkWatcherRG.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 The network watcher name.

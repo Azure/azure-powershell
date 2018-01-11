@@ -1,0 +1,11 @@
+{
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": {
+                "value": "myfakeconnectionstring",
+                "type": "SecureString"
+            }
+        }
+    }
+}

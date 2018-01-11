@@ -23,6 +23,7 @@ function Assert-SecretAttributes($secretAttr, $secenable, $secexp, $secnbf, $sec
     Assert-True { Equal-DateTime  $secnbf $secretAttr.NotBefore} "Expect $secnbf. Get $secretAttr.NotBefore"
     Assert-True { Equal-String  $seccontenttype $secretAttr.ContentType} "Expect $seccontenttype. Get $secretAttr.ContentType" 
     Assert-True { Equal-Hashtable $sectags $secretAttr.Tags} "Expected $sectags. Get $secretAttr.Tags"
+	Assert-NotNull $secretAttr.RecoveryLevel, "Deletion recovery level is null."
 }
 
 function BulkCreateSecrets ($vault, $prefix, $total)
@@ -849,7 +850,6 @@ function Test_GetDeletedSecret
 	Assert-NotNull $deletedSecret
 	Assert-NotNull $deletedSecret.DeletedDate
 	Assert-NotNull $deletedSecret.ScheduledPurgeDate
-
 }
 
 <#

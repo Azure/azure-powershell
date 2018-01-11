@@ -117,7 +117,7 @@ For Storage, this change log is located at `src\Storage\ChangeLog.md`.
 
 #### Breaking Changes
 
-Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-changes-definition.md).
+Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](documentation/breaking-changes/breaking-changes-definition.md).
 
 Whenever a service team announces a breaking change, they must add it to the `upcoming-breaking-changes.md` file in their respective service folder. When the service team is ready to release the module with the breaking change, they must move the corresponding information from `upcoming-breaking-changes.md` into the `current-breaking-changes.md` file located in their service folder.
 
@@ -148,7 +148,9 @@ The following guidelines must be followed in **EVERY** pull request that is open
 
 The following guidelines must be followed in pull requests that add, edit, or remove a cmdlet.
 
-- Cmdlet name uses an approved PowerShell verb - use enums for `VerbsCommon`, `VerbsCommunication`, `VerbLifecycle`, `VerbsOther` whenever possible
+- Cmdlet name uses an approved PowerShell verb - use enums for `VerbsCommon`, `VerbsCommunication`, `VerbsData`, `VerbsDiagnostic`, `VerbsLifecycle`, `VerbsOther`, and `VerbsSecurity` whenever possible
+    - Note that you can see a list of all approved PowerShell verbs by running `Get-Verb` in PowerShell
+    - When a verb you would like to use is not in the list of approved verbs, or to get ideas on how to use verbs, consult the [Approved Verbs for Windows PowerShell Commands](https://msdn.microsoft.com/en-us/library/ms714428\(v=vs.85\).aspx) documentation where you will find descriptions of approved verbs as well as related verbs in the comments so that you can find one appropriate for your command
 - Cmdlet noun name uses the AzureRm prefix for management cmdlets, and the Azure prefix for data plane cmdlets
 - Cmdlet specifies the `OutputType` attribute if any output is produced; if the cmdlet produces no output, it should implement a `PassThrough` parameter
 - If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportsShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](https://gist.github.com/markcowl/338e16fe5c8bbf195aff9f8af0db585d#what-is-the-change).

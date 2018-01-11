@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -28,15 +29,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The deployment Id parameter set.
         /// </summary>
-        internal const string DeploymentIdParameterSet = "The deployment Id parameter set.";
+        internal const string DeploymentIdParameterSet = "GetByResourceGroupDeploymentId";
 
         /// <summary>
         /// The deployment name parameter set.
         /// </summary>
-        internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
+        internal const string DeploymentNameParameterSet = "GetByResourceGroupDeploymentName";
 
         [Parameter(Position = 0, ParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
             ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

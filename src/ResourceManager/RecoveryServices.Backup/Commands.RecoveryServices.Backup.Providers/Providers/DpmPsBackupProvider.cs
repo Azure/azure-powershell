@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -94,6 +95,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
+
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevokeItemLevelRecoveryAccess()
+
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Lists backup management servers registered with the recovery services vault
         /// </summary>
@@ -102,8 +115,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)ProviderData[ContainerParams.Name];
 
-            ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject> queryParams =
-                new ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject>();
+            ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject> queryParams =
+                new ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject>();
 
             var listResponse = ServiceClientAdapter.ListBackupEngines(queryParams);
 

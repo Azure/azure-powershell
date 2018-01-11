@@ -63,7 +63,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     null,
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineDisks.UpdateDisk(this.DiskName, parameters),
-                    (s, response) => this.ContextFactory<VirtualMachineDiskUpdateResponse, DiskContext>(response, s));
+                    (s, response) => this.ContextFactory(response, s,
+                                            ServiceManagementProfile.Mapper.Map<VirtualMachineDiskUpdateResponse, DiskContext>,
+                                            ServiceManagementProfile.Mapper.Map));
             }
             else
             {

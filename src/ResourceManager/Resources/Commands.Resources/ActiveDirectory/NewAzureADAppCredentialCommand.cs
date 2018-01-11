@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
@@ -71,16 +73,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
-
-                if (!string.IsNullOrEmpty(Password))
+                if (Password != null && Password.Length > 0)
                 {
+                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                     // Create object for password credential
                     var passwordCredential = new PasswordCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
                         KeyId = Guid.NewGuid().ToString(),
-                        Value = Password
+                        Value = decodedPassword
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {

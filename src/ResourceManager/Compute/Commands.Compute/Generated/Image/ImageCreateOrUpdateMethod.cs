@@ -19,10 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -116,21 +116,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.ImageName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
                     Image parameters = new Image();
-                    Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
-                    Mapper.Map<Image, PSImage>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -143,6 +142,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -163,27 +163,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSImage Image { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.ImageName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
                     Image parameters = new Image();
-                    Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
-                    Mapper.Map<Image, PSImage>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -196,6 +198,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -216,5 +219,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSImage Image { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

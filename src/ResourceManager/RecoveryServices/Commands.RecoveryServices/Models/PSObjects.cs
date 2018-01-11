@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// extended information version.
         /// </summary>
         public const string VaultExtendedInfoContractVersion = "V2014_09";
+
+        /// <summary>
+        /// RecoveryServicesProviderAuthType string coming from service.
+        /// </summary>
+        public const string RecoveryServicesProviderAuthType = "RecoveryServicesProviderAuthType";
     }
 
     /// <summary>

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: CFE184E2-6DEF-4E92-A9C3-E82F29BB4FB8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuitstats
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets usage statistics of an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] [<CommonParameters>]
+ [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitN
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpressRouteCircuitName
 The name of the ExpressRoute circuit being examined.

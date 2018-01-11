@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermpublicipaddress
 schema: 2.0.0
 ---
 
@@ -14,27 +15,28 @@ Gets a public IP address.
 
 ### NoExpandStandAloneIp (Default)
 ```
-Get-AzureRmPublicIpAddress [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzureRmPublicIpAddress [-Name <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandStandAloneIp
 ```
 Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NoExpandScaleSetIp
 ```
 Get-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
  [-VirtualMachineIndex <String>] [-NetworkInterfaceName <String>] [-IpConfigurationName <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetIp
 ```
 Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
  -VirtualMachineIndex <String> -NetworkInterfaceName <String> -IpConfigurationName <String>
- -ExpandResource <String> [<CommonParameters>]
+ -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +52,21 @@ $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $r
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpandResource
 ```yaml

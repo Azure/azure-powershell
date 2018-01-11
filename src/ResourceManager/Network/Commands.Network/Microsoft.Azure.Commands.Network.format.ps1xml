@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <ViewDefinitions>
     <View>
@@ -117,6 +117,14 @@
               <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem> 
+              <ListItem>
+                <Label>EnableDDoSProtection</Label>
+                <PropertyName>EnableDDoSProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableVmProtection</Label>
+                <PropertyName>EnableVmProtectionText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -351,6 +359,50 @@
               <ListItem>
                 <Label>Results</Label>
                 <PropertyName>ResultsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>AggregationLevel</Label>
+                <PropertyName>AggregationLevel</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProviderLocation</Label>
+                <PropertyName>ProviderLocationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReachabilityReport</Label>
+                <PropertyName>ReachabilityReportText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Countries</Label>
+                <PropertyName>CountriesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -652,6 +704,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -791,6 +847,14 @@
               <ListItem>
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -936,6 +1000,10 @@
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1007,6 +1075,10 @@
               <ListItem>
                 <Label>EffectiveSecurityRules</Label>
                 <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TagMap</Label>
+                <PropertyName>TagMapText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1123,6 +1195,14 @@
               <ListItem>
                 <Label>DestinationAddressPrefix</Label>
                 <PropertyName>DestinationAddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceApplicationSecurityGroups</Label>
+                <PropertyName>SourceApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationApplicationSecurityGroups</Label>
+                <PropertyName>DestinationApplicationSecurityGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Access</Label>
@@ -1372,6 +1452,10 @@
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1477,6 +1561,10 @@
               <ListItem>
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>ZonesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

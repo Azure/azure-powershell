@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: F0370845-13D9-4FB5-B30E-826A22EBC5E0
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuitarptable
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Gets the ARP table from an ExpressRoute circuit.
 
 ```
 Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] -DevicePath <DevicePathEnum> [<CommonParameters>]
+ [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +32,21 @@ Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircu
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DevicePath
 The acceptable values for this parameter are: `Primary` or `Secondary`

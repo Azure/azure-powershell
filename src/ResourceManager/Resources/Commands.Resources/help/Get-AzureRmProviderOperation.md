@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermprovideroperation
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the operations for an Azure resource provider that are securable using Azur
 ## SYNTAX
 
 ```
-Get-AzureRmProviderOperation [-OperationSearchString] <String> [<CommonParameters>]
+Get-AzureRmProviderOperation [-OperationSearchString] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +46,21 @@ PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OperationSearchString
 The operation search string (with possible wildcard (*) characters)
 
@@ -65,7 +82,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### String
-
 Parameter 'OperationSearchString' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

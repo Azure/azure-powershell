@@ -153,13 +153,16 @@ Gets an SSL certificate for an application gateway.
 Gets the SSL policy of an application gateway.
 
 ### [Get-AzureRmApplicationGatewaySslPredefinedPolicy](Get-AzureRmApplicationGatewaySslPredefinedPolicy.md)
-Gets Predefined SSl Policies provided by Application Gateway.
+Gets Predefined SSL Policies provided by Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
 
 ### [Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Gets the WAF configuration of an application gateway.
+
+### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
+Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 {{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
@@ -245,6 +248,12 @@ Gets the next hop from a VM.
 ### [Get-AzureRmNetworkWatcherPacketCapture](Get-AzureRmNetworkWatcherPacketCapture.md)
 Gets information and properties and status of a packet capture resource.
 
+### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
+Lists all available internet service providers for a specified Azure region.
+
+### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
+Gets the relative latency score for internet service providers from a specified location to Azure regions.
+
 ### [Get-AzureRmNetworkWatcherSecurityGroupView](Get-AzureRmNetworkWatcherSecurityGroupView.md)
 View the configured and effective network security group rules applied on a VM.
 
@@ -272,6 +281,9 @@ Gets route tables.
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
 
+### [Get-AzureRmVirtualNetworkAvailableEndpointService](Get-AzureRmVirtualNetworkAvailableEndpointService.md)
+Lists available endpoint services for location.
+
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 Gets a Virtual Network Gateway
 
@@ -287,8 +299,14 @@ Gets a Virtual Network Gateway Connection
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
 
+### [Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
+This commandlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
+
 ### [Get-AzureRmVirtualNetworkGatewayLearnedRoute](Get-AzureRmVirtualNetworkGatewayLearnedRoute.md)
 Lists routes learned by an Azure virtual network gateway
+
+### [Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice](Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice.md)
+This commandlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.
@@ -298,6 +316,9 @@ Gets a subnet in a virtual network.
 
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
+
+### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
+Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
 
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
@@ -370,6 +391,9 @@ Creates an array of URL path mappings to a backend server pool.
 
 ### [New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration](New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration.md)
 Creates a WAF configuration for an application gateway.
+
+### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
+Creates an application security group.
 
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
@@ -458,6 +482,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
 
+### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
+This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
+
 ### [New-AzureRmVpnClientRevokedCertificate](New-AzureRmVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
 
@@ -508,6 +535,9 @@ Removes an SSL policy from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
+
+### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
+Removes an application security group.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
