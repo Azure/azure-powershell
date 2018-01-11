@@ -245,15 +245,17 @@ function Test-AzureRmIotHubCertificateLifecycle
 
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
-	# Add Certificate
-	$certificatePath = "ScenarioTestFile\PS-Test-Root-CA.cer"
-	$certificateSubject = "CN=PS Test Root Certificate Authority"
-	$certificateThumbprint = "38303FC7371EC78DDE3E18D732C8414EE50969C7"
+	# Constant variable
+	$certificatePath = ".\rootCertificate.cer"
+	$verifyCertificatePath = ".\verifiyCertificate.cer"
+	$certificateSubject = "CN=TestCertificate"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
 	$certificateName = "TestCertificate"
+
+	# Add Certificate
+	New-CARootCert $certificateSubject $certificatePath
 	$newCertificate = Add-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $certificatePath
 	Assert-True { $newCertificate.Properties.Subject -eq $certificateSubject }
-	Assert-True { $newCertificate.Properties.Thumbprint -eq $certificateThumbprint }
 	Assert-False { $newCertificate.Properties.IsVerified }
 	Assert-True { $newCertificate.Type -eq $certificateType }
 	Assert-True { $newCertificate.CertificateName -eq $certificateName }
@@ -265,7 +267,6 @@ function Test-AzureRmIotHubCertificateLifecycle
 	# Get Certificate
 	$certificate = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName
 	Assert-True { $certificate.Properties.Subject -eq $certificateSubject }
-	Assert-True { $certificate.Properties.Thumbprint -eq $certificateThumbprint }
 	Assert-False { $certificate.Properties.IsVerified }
 	Assert-True { $certificate.Type -eq $certificateType }
 	Assert-True { $certificate.CertificateName -eq $certificateName }
@@ -275,8 +276,16 @@ function Test-AzureRmIotHubCertificateLifecycle
 	Assert-True { $certificateWithNonce.Properties.Subject -eq $certificateSubject }
 	Assert-NotNull { $certificateWithNonce.Properties.VerificationCode }
 
+	# Proof-of-Possession
+	New-CAVerificationCert $certificateWithNonce.Properties.VerificationCode $certificateWithNonce.Properties.Subject $verifyCertificatePath 
+	$verifiedCertificate = Set-AzureRmIotHubVerifiedCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Path $verifyCertificatePath  -Etag $certificateWithNonce.Etag
+	Assert-True { $verifiedCertificate.Properties.Subject -eq $certificateSubject }
+	Assert-True { $verifiedCertificate.Properties.IsVerified }
+	Assert-True { $verifiedCertificate.Type -eq $certificateType }
+	Assert-True { $verifiedCertificate.CertificateName -eq $certificateName }
+
 	# Remove Certificate
-	Remove-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $certificateWithNonce.Etag
+	Remove-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $verifiedCertificate.Etag
 
 	# List All Certificate
 	$afterRemoveCertificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
@@ -284,4 +293,90 @@ function Test-AzureRmIotHubCertificateLifecycle
 
 	# Remove IotHub
 	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+}
+
+<#
+.SYNOPSIS
+Get a certificate from the cert store
+#>
+function Get-CACertBySubjectName([string]$subjectName)
+{
+    $certificates = gci -Recurse Cert:\LocalMachine\ |? { $_.gettype().name -eq "X509Certificate2" }
+    $cert = $certificates |? { $_.subject -eq $subjectName -and $_.PSParentPath -eq "Microsoft.PowerShell.Security\Certificate::LocalMachine\My" }
+    if ($NULL -eq $cert)
+    {
+        throw ("Unable to find certificate with subjectName {0}" -f $subjectName)
+    }
+
+    write $cert
+}
+
+<#
+.SYNOPSIS
+Creates a self signed certificate and stores it in a local computer
+#>
+function New-CASelfsignedCertificate([string]$subjectName, [object]$signingCert, [bool]$isASigner=$true)
+{
+	# Build up argument list
+	$selfSignedArgs = @{"-DnsName"=$subjectName; 
+		                "-CertStoreLocation"="cert:\LocalMachine\My";
+	                    "-NotAfter"=(get-date).AddDays(30); 
+						}
+
+	if ($isASigner -eq $true)
+	{
+		$selfSignedArgs += @{"-KeyUsage"="CertSign"; }
+		$selfSignedArgs += @{"-TextExtension"= @(("2.5.29.19={text}ca=TRUE&pathlength=12")); }
+	}
+	else
+	{
+		$selfSignedArgs += @{"-TextExtension"= @("2.5.29.37={text}1.3.6.1.5.5.7.3.2,1.3.6.1.5.5.7.3.1", "2.5.29.19={text}ca=FALSE&pathlength=0")  }
+	}
+
+	if ($signingCert -ne $null)
+	{
+		$selfSignedArgs += @{"-Signer"=$signingCert }
+	}
+
+	if ($useEcc -eq $true)
+	{
+		$selfSignedArgs += @{"-KeyAlgorithm"="ECDSA_nistP256";
+                      "-CurveExport"="CurveName" }
+	}
+
+	write (New-SelfSignedCertificate @selfSignedArgs)
+}
+
+<#
+.SYNOPSIS
+Creates a base certificate
+#>
+function New-CARootCert([string]$subjectName, [string]$requestedFileName)
+{
+	$certificate = New-CASelfsignedCertificate $subjectName 
+	Export-Certificate -cert $certificate -filePath $requestedFileName -Type Cert
+	if (-not (Test-Path $requestedFileName))
+    {
+        throw ("Error: CERT file {0} doesn't exist" -f $requestedFileName)
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a child certificate signed by a root certificate
+#>
+function New-CAVerificationCert([string]$requestedSubjectName, [string]$_rootCertSubject, [string]$verifyRequestedFileName)
+{
+    $cnRequestedSubjectName = ("CN={0}" -f $requestedSubjectName)
+    $rootCACert = Get-CACertBySubjectName $_rootCertSubject
+	$verifyCert = New-CASelfsignedCertificate $cnRequestedSubjectName $rootCACert $false
+	Export-Certificate -cert $verifyCert -filePath $verifyRequestedFileName -Type Cert
+    if (-not (Test-Path $verifyRequestedFileName))
+    {
+        throw ("Error: CERT file {0} doesn't exist" -f $verifyRequestedFileName)
+    }
+
+	# Cleaning Cert Store
+	Get-ChildItem ("Cert:\LocalMachine\My\{0}" -f $rootCACert.Thumbprint) | Remove-Item
+	Get-ChildItem ("Cert:\LocalMachine\My\{0}" -f $verifyCert.Thumbprint) | Remove-Item
 }
