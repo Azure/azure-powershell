@@ -568,12 +568,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal void RunTask(Func<long, Task> taskGenerator, bool runSynchronously = false)
         {
             UpdateTaskWriters();
-            taskScheduler.RunTask(taskGenerator, runSynchronously);
+            taskScheduler.RunTask(taskGenerator);
             if (enableMultiThread && runSynchronously)
             {
                 MultiThreadEndProcessing();
             }
-
         }
 
         /// <summary>
