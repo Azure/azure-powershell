@@ -667,16 +667,14 @@ function Test-RemoveWebApp
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName  -AsJob
-		$job | Wait-Job
-		$webapp = $job | Receive-Job
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName
 		
 		# Assert
 		Assert-AreEqual $appName $webapp.Name
 		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
 
 		# Remove web app via pipeline obj
-		$webapp | Remove-AzureRmWebApp -Force
+		$webapp | Remove-AzureRmWebApp -Force -AsJob | Wait-Job
 
 		# Retrieve web app by name
 		$webappNames = Get-AzureRmWebApp -ResourceGroupName $rgname | Select -expand Name
