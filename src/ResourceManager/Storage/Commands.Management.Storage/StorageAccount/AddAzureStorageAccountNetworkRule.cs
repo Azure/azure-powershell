@@ -92,6 +92,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias("SubnetId", "VirtualNetworkId")]
         public string[] VirtualNetworkResourceId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -102,11 +105,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                 this.ResourceGroupName,
                 this.Name);
-                StorageNetworkAcls storageACL = storageAccount.NetworkAcls;
+                NetworkRuleSet storageACL = storageAccount.NetworkRuleSet;
 
                 if (storageACL == null)
                 {
-                    storageACL = new StorageNetworkAcls();
+                    storageACL = new NetworkRuleSet();
                 }
 
                 switch (ParameterSetName)
@@ -148,7 +151,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-                updateParameters.NetworkAcls = storageACL;
+                updateParameters.NetworkRuleSet = storageACL;
 
                 var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                     this.ResourceGroupName,
@@ -161,11 +164,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls).VirtualNetworkRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls).IpRules);
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
                         break;
                 }
             }

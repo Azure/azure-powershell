@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageusage
 schema: 2.0.0
@@ -32,7 +32,7 @@ This command gets the Storage resources usage of the current subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmsecret
 schema: 2.0.0
