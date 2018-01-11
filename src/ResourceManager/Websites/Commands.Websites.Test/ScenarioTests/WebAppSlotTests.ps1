@@ -625,7 +625,7 @@ function Test-RemoveWebAppSlot
 		Assert-AreEqual $serverFarm.Id $slot.ServerFarmId
 
 		# Remove web app via pipeline obj
-		$slot | Remove-AzureRmWebAppSlot -Force -AsJob
+		$slot | Remove-AzureRmWebAppSlot -Force -AsJob | Wait-Job
 
 		# Retrieve web app by name
 		$slotNames = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname | Select -expand Name
