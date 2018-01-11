@@ -10,7 +10,7 @@ using Microsoft.Azure.Management.Reservations;
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet(VerbsData.Update, "AzureRmReservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
-    public class PatchReservation : AzureReservationsCmdletBase
+    public class PatchReservation : AzureReservationsAutoRegisterCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             ValueFromPipeline = true)]
         [ValidateNotNull]
         public PSReservation Reservation { get; set; }
+
+        protected override bool ShouldRegister => AppliedScope != null;
 
         public override void ExecuteCmdlet()
         {
