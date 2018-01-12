@@ -64,12 +64,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags to be associated with Property. This parameter is optional.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public string[] Tags { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
             string propertyId = PropertyId ?? Guid.NewGuid().ToString("N");
 
+#pragma warning disable CS0618
             var logger = Client.PropertyCreate(
                 Context,
                 propertyId,
@@ -77,6 +80,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Value,
                 Secret,
                 Tags);
+#pragma warning restore CS0618
 
             WriteObject(logger);
         }

@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags associated with a property. This parameter is optional.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public string[] Tags { get; set; }
 
         [Parameter(
@@ -74,6 +76,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+#pragma warning disable CS0618
             Client.PropertySet(
                 Context,
                 PropertyId,
@@ -81,6 +84,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Value,
                 Secret,
                 Tags);
+#pragma warning restore CS0618
 
             if (PassThru)
             {
