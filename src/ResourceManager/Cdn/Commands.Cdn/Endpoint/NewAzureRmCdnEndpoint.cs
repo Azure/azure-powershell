@@ -95,6 +95,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
@@ -123,6 +125,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         private void NewEndpoint()
         {
+#pragma warning disable CS0618
             var endpoint = CdnManagementClient.Endpoints.Create(
                 ResourceGroupName,
                 ProfileName,
@@ -143,6 +146,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
                 Tags = Tags.ToDictionaryTags()
             });
+#pragma warning restore CS0618
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());
