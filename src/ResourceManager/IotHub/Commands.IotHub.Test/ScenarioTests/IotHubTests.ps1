@@ -246,8 +246,8 @@ function Test-AzureRmIotHubCertificateLifecycle
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
 	# Constant variable
-	$certificatePath = "ScenarioTestFile\rootCertificate.cer"
-	$verifyCertificatePath = "ScenarioTestFile\verifyCertificate.cer"
+	$certificatePath = "ScenarioTestFiles\rootCertificate.cer"
+	$verifyCertificatePath = "ScenarioTestFiles\verifyCertificate.cer"
 	$certificateSubject = "CN=TestCertificate"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
 	$certificateName = "TestCertificate"
