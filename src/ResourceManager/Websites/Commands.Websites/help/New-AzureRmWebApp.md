@@ -18,7 +18,7 @@ Creates an Azure Web App.
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileId] <String>]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-DefaultProfile <IAzureContextContainer>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <St
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileName] <String>]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-DefaultProfile <IAzureContextContainer>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -251,6 +251,21 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
