@@ -248,7 +248,9 @@ function Test-AzureRmIotHubCertificateLifecycle
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
 	# Constant variable
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Generating certificate for testing purpose")]#>
 	$certificatePath = "$TestOutputRoot\rootCertificate.cer"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Generating verified certificate for testing purpose")]#>
 	$verifyCertificatePath = "$TestOutputRoot\verifyCertificate.cer"
 	$certificateSubject = "CN=TestCertificate"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
