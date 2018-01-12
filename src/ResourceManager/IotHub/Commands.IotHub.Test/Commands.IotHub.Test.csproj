@@ -122,17 +122,17 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="ScenarioTestFile\verifyCertificate.cer">
+    <None Include="ScenarioTestFiles\verifyCertificate.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="ScenarioTests\Assert.ps1" />
     <None Include="ScenarioTests\Common.ps1" />
     <None Include="ScenarioTests\IotHubTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="ScenarioTestFile\rootCertificate.cer">
+    <None Include="ScenarioTestFiles\rootCertificate.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\TestAzureIotHubCertificateLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
