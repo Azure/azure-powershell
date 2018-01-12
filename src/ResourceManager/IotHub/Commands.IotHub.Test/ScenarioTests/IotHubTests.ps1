@@ -246,8 +246,8 @@ function Test-AzureRmIotHubCertificateLifecycle
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
 	# Constant variable
-	$certificatePath = "ScenarioTests\rootCertificate.cer"
-	$verifyCertificatePath = "ScenarioTests\verifyCertificate.cer"
+	$certificatePath = "ScenarioTestFile\rootCertificate.cer"
+	$verifyCertificatePath = "ScenarioTestFile\verifyCertificate.cer"
 	$certificateSubject = "CN=TestCertificate"
 	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
 	$certificateName = "TestCertificate"
@@ -286,10 +286,6 @@ function Test-AzureRmIotHubCertificateLifecycle
 
 	# Remove Certificate
 	Remove-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName -CertificateName $certificateName -Etag $verifiedCertificate.Etag
-
-	# Deleting created .cer files
-	Remove-Item $certificatePath -Recurse
-	Remove-Item $verifyCertificatePath -Recurse
 
 	# List All Certificate
 	$afterRemoveCertificates = Get-AzureRmIotHubCertificate -ResourceGroupName $ResourceGroupName -Name $IotHubName
