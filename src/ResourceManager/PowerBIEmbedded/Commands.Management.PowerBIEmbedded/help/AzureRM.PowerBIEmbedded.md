@@ -31,24 +31,3 @@ Tests the existence of an instance of PowerBI Embedded Capacity.
 
 ### [Update-AzureRmPowerBIEmbeddedCapacity](Update-AzureRmPowerBIEmbeddedCapacity.md)
 Modifies an instance of PowerBI Embedded Capacity.
-
-
-## PowerBI Workspace Collection Cmdlets
-### [Get-AzureRmPowerBIWorkspace](Get-AzureRmPowerBIWorkspace.md)
-Gets the workspaces in a Power BI workspace collection.
-
-### [Get-AzureRmPowerBIWorkspaceCollection](Get-AzureRmPowerBIWorkspaceCollection.md)
-Gets Power BI workspace collections.
-
-### [Get-AzureRmPowerBIWorkspaceCollectionAccessKeys](Get-AzureRmPowerBIWorkspaceCollectionAccessKeys.md)
-Gets the current access keys associated with a Power BI workspace collection.
-
-### [New-AzureRmPowerBIWorkspaceCollection](New-AzureRmPowerBIWorkspaceCollection.md)
-Creates a Power BI workspace collection.
-
-### [Remove-AzureRmPowerBIWorkspaceCollection](Remove-AzureRmPowerBIWorkspaceCollection.md)
-Removes a Power BI workspace collection.
-
-### [Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys](Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys.md)
-Resets the specified access key.
-
