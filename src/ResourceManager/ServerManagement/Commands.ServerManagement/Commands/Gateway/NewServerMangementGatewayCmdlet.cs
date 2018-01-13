@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
         [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the gateway.",
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
             // create the gateway object
             WriteVerbose(string.Format("Creating gateway for {0}/{1}/{2}", ResourceGroupName, GatewayName, Location));
+#pragma warning disable CS0618
             var gateway = Gateway.Create(Client.Gateway.Create(ResourceGroupName,
                 GatewayName,
                 Location,
@@ -62,6 +65,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
                 AutoUpgrade.IsPresent
                     ? Management.ServerManagement.Models.AutoUpgrade.On
                     : Management.ServerManagement.Models.AutoUpgrade.Off));
+#pragma warning restore CS0618
 
             // create the gawe
             WriteObject(gateway);

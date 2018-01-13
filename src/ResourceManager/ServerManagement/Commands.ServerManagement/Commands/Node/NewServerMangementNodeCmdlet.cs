@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
         [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the object.",
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
@@ -89,6 +91,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
                 Location,
                 GatewayName));
 
+#pragma warning disable CS0618
             var node = Node.Create(Client.Node.Create(ResourceGroupName,
                 NodeName,
                 Location,
@@ -97,6 +100,8 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
                 ComputerName ?? NodeName,
                 Credential.UserName,
                 ToPlainText(Credential.Password)));
+#pragma warning restore CS0618
+
             if (node != null)
             {
                 node.Credential = Credential;
