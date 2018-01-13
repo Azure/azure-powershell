@@ -215,7 +215,7 @@ Specifies a dictionary of tags.
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named
