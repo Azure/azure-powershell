@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
 {
     using Common.Authentication.Abstractions;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -51,6 +52,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
         public int SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags for the commitment plan resource.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tags { get; set; }
 
@@ -75,8 +78,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
             int skuCapacity = this.SkuCapacity == 0 ? 1 : this.SkuCapacity;
             var sku = new ResourceSku(skuCapacity, this.SkuName, this.SkuTier);
 
+#pragma warning disable CS0618
             var tags = this.Tags.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string) kvp.Key, kvp => (string) kvp.Value);
+#pragma warning restore CS0618
 
             CommitmentPlanPatchPayload patchPayload = new CommitmentPlanPatchPayload
             {
