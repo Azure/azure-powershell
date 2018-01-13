@@ -143,7 +143,7 @@ To add a tag, use hash table syntax similar to this, which creates the tag Calen
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: 3

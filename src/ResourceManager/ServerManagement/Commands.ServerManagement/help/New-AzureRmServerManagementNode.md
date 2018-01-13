@@ -168,7 +168,7 @@ Specifies tags as key-value pairs.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named

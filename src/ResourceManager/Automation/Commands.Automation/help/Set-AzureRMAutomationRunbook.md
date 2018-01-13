@@ -144,7 +144,7 @@ Specifies a dictionary of tags to replace the current tags of the modified runbo
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named

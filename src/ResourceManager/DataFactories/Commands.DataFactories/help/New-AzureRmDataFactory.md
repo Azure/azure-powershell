@@ -128,7 +128,7 @@ Specifies tags for the data factory.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: 3

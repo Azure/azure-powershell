@@ -112,7 +112,7 @@ You can use tags to identify a Gateway from other Azure resources.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named

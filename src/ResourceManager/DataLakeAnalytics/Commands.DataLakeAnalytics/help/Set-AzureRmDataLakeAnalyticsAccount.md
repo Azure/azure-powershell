@@ -162,7 +162,7 @@ Specifies key-value pairs that can be used to identify the Data Lake Analytics a
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: 1
