@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -45,6 +46,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -60,6 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Name = Workspace.Name;
             }
 
+#pragma warning disable CS0618
             UpdatePSWorkspaceParameters parameters = new UpdatePSWorkspaceParameters
             {
                 ResourceGroupName = ResourceGroupName,
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Tags = Tags,
                 RetentionInDays = RetentionInDays
             };
+#pragma warning restore CS0618
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));
         }
