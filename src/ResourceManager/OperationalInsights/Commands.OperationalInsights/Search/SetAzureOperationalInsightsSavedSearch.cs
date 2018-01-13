@@ -16,6 +16,7 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -56,6 +57,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search tags.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tags { get; set; }
 
@@ -79,7 +82,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Version = this.Version
             };
 
+#pragma warning disable CS0618
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tags, properties.Query);
+#pragma warning restore CS0618
 
             WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, true, ConfirmAction, ETag), true);
         }
