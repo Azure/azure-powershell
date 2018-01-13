@@ -16,6 +16,7 @@ using System.Collections;
 using System.Management.Automation;
 using System.Globalization;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
@@ -62,6 +63,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 5,
             HelpMessage = "Hashtables which represents resource Tags.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false,
@@ -87,7 +90,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 () =>
                 {
                     // Update a namespace 
+#pragma warning disable CS0618
                     var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags), SkuTier);
+#pragma warning restore CS0618
                     WriteObject(nsAttribute);
                 });
         }
