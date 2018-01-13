@@ -20,32 +20,34 @@ PS C:\> Get-Command *VMSS* | ft Name,Version,ModuleName
 
 Name                                            Version ModuleName
 ----                                            ------- ----------
-Add-AzureRmVmssAdditionalUnattendContent           1.2.4      AzureRM.Compute
-Add-AzureRmVmssExtension                           1.2.4      AzureRM.Compute
-Add-AzureRmVMSshPublicKey                          1.2.4      AzureRM.Compute
-Add-AzureRmVmssNetworkInterfaceConfiguration       1.2.4      AzureRM.Compute
-Add-AzureRmVmssSecret                              1.2.4      AzureRM.Compute
-Add-AzureRmVmssSshPublicKey                        1.2.4      AzureRM.Compute
-Add-AzureRmVmssWinRMListener                       1.2.4      AzureRM.Compute
-Get-AzureRmVmss                                    1.2.4      AzureRM.Compute
-Get-AzureRmVmssSku                                 1.2.4      AzureRM.Compute
-Get-AzureRmVmssVM                                  1.2.4      AzureRM.Compute
-New-AzureRmVmss                                    1.2.4      AzureRM.Compute
-New-AzureRmVmssConfig                              1.2.4      AzureRM.Compute
-New-AzureRmVmssIpConfig                            1.2.4      AzureRM.Compute
-New-AzureRmVmssVaultCertificateConfig              1.2.4      AzureRM.Compute
-Remove-AzureRmVmss                                 1.2.4      AzureRM.Compute
-Remove-AzureRmVmssExtension                        1.2.4      AzureRM.Compute
-Remove-AzureRmVmssNetworkInterfaceConfiguration    1.2.4      AzureRM.Compute
-Restart-AzureRmVmss                                1.2.4      AzureRM.Compute
-Set-AzureRmVmss                                    1.2.4      AzureRM.Compute
-Set-AzureRmVmssOsProfile                           1.2.4      AzureRM.Compute
-Set-AzureRmVmssStorageProfile                      1.2.4      AzureRM.Compute
-Set-AzureRmVmssVM                                  1.2.4      AzureRM.Compute
-Start-AzureRmVmss                                  1.2.4      AzureRM.Compute
-Stop-AzureRmVmss                                   1.2.4      AzureRM.Compute
-Update-AzureRmVmss                                 1.2.4      AzureRM.Compute
-Update-AzureRmVmssInstance                         1.2.4      AzureRM.Compute
+Add-AzureRmVmssAdditionalUnattendContent        2.2.0   AzureRM.Compute
+Add-AzureRmVmssDiagnosticsExtension             2.2.0   AzureRM.Compute
+Add-AzureRmVmssExtension                        2.2.0   AzureRM.Compute
+Add-AzureRmVMSshPublicKey                       2.2.0   AzureRM.Compute
+Add-AzureRmVmssNetworkInterfaceConfiguration    2.2.0   AzureRM.Compute
+Add-AzureRmVmssSecret                           2.2.0   AzureRM.Compute
+Add-AzureRmVmssSshPublicKey                     2.2.0   AzureRM.Compute
+Add-AzureRmVmssWinRMListener                    2.2.0   AzureRM.Compute
+Get-AzureRmVmss                                 2.2.0   AzureRM.Compute
+Get-AzureRmVmssSku                              2.2.0   AzureRM.Compute
+Get-AzureRmVmssVM                               2.2.0   AzureRM.Compute
+New-AzureRmVmss                                 2.2.0   AzureRM.Compute
+New-AzureRmVmssConfig                           2.2.0   AzureRM.Compute
+New-AzureRmVmssIpConfig                         2.2.0   AzureRM.Compute
+New-AzureRmVmssVaultCertificateConfig           2.2.0   AzureRM.Compute
+Remove-AzureRmVmss                              2.2.0   AzureRM.Compute
+Remove-AzureRmVmssDiagnosticsExtension          2.2.0   AzureRM.Compute
+Remove-AzureRmVmssExtension                     2.2.0   AzureRM.Compute
+Remove-AzureRmVmssNetworkInterfaceConfiguration 2.2.0   AzureRM.Compute
+Restart-AzureRmVmss                             2.2.0   AzureRM.Compute
+Set-AzureRmVmss                                 2.2.0   AzureRM.Compute
+Set-AzureRmVmssOsProfile                        2.2.0   AzureRM.Compute
+Set-AzureRmVmssStorageProfile                   2.2.0   AzureRM.Compute
+Set-AzureRmVmssVM                               2.2.0   AzureRM.Compute
+Start-AzureRmVmss                               2.2.0   AzureRM.Compute
+Stop-AzureRmVmss                                2.2.0   AzureRM.Compute
+Update-AzureRmVmss                              2.2.0   AzureRM.Compute
+Update-AzureRmVmssInstance                      2.2.0   AzureRM.Compute
 #>
 
 <#
@@ -54,30 +56,19 @@ Test Virtual Machine Scale Set
 #>
 function Test-VirtualMachineScaleSet
 {
-    Test-VirtualMachineScaleSet-Common $false
-}
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set with Managed disks
-#>
-function Test-VirtualMachineScaleSet-ManagedDisks
-{
-    Test-VirtualMachineScaleSet-Common $true
-}
-function Test-VirtualMachineScaleSet-Common($IsManaged)
-{
     # Setup
     $rgname = Get-ComputeTestResourceName
 
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
+
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
+        $stotype = 'Standard_LRS';
         New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
@@ -86,50 +77,79 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 
+        # Create LoadBalancer
+        $frontendName = Get-ResourceName
+        $backendAddressPoolName = Get-ResourceName
+        $probeName = Get-ResourceName
+        $inboundNatPoolName = Get-ResourceName
+        $lbruleName = Get-ResourceName
+        $lbName = Get-ResourceName
+
+        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
+        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370;
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName `
+            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
+            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
+        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
+            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
+        $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-NotNull $expectedLb.ResourceGuid
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $pubip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
+        Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
+        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
+        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatPools[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
+        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
+        
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
+        $adminPassword = "BaR@123" + $rgname;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+        $vhdContainer = "https://" + $stoname + ".blob.$env:STORAGEENDPOINTSUFFIX/" + $vmssName;
 
         $extname = 'csetest';
         $publisher = 'Microsoft.Compute';
         $exttype = 'BGInfo';
         $extver = '2.1';
 
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' `
+            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
+            -SubnetId $subnetId;
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
+            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -VirtualMachineScaleSetExtensionType $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
-            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2'
-        if ($IsManaged -eq $true)
-        {
-            $vmss = $vmss | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-                    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-                    -ImageReferencePublisher $imgRef.PublisherName
-        }
-        else
-        {
-            $vmss = $vmss| Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-                    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-                    -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-        }
-
-        # Validate Remove Network profile
-        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $true $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
-        Assert-AreEqual $subnetId `
-            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
-
-        $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
+            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
@@ -148,14 +168,10 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         Assert-Null $vmss.VirtualMachineProfile.OsProfile.AdminPassword;
 
         # Validate Storage Profile
-
+        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.Name;
         Assert-AreEqual 'FromImage' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
         Assert-AreEqual 'None' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
-        if($IsManaged -eq $false)
-        {
-            Assert-AreEqual 'test' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.Name;
-            Assert-AreEqual $vhdContainer $vmss.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
-        }
+        Assert-AreEqual $vhdContainer $vmss.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
         Assert-AreEqual $imgRef.Offer $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
         Assert-AreEqual $imgRef.Skus $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
         Assert-AreEqual $imgRef.Version $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Version;
@@ -221,36 +237,25 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
             Assert-True { $output.Contains("PlatformUpdateDomain") };
         }
 
-        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -Force;
-        $st = $vmssResult | Stop-AzureRmVmss -Force;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision;
+        $st = $vmssResult | Stop-AzureRmVmss;
         $st = $vmssResult | Start-AzureRmVmss;
         $st = $vmssResult | Restart-AzureRmVmss;
 
-        if ($IsManaged -eq $true)
-        {
-            $st = $vmssResult | Set-AzureRmVmss -ReimageAll;
-        }
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
         {
             $instanceListParam += $i.ToString();
         }
 
-        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam -Force;
-        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam -Force;
+        $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam;
+        $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam;
         $st = $vmssResult | Start-AzureRmVmss -InstanceId $instanceListParam;
         $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
-        if ($IsManaged -eq $true)
-        {
-            for ($j = 0; $j -lt 2; $j++)
-            {
-                $st = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j
-            }
-        }
 
         # Remove
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        $st = $vmssResult | Remove-AzureRmVmss -Force;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
+        $st = $vmssResult | Remove-AzureRmVmss;
     }
     finally
     {
@@ -271,12 +276,13 @@ function Test-VirtualMachineScaleSetReimageUpdate
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
+
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
+        $stotype = 'Standard_LRS';
         New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
@@ -291,10 +297,10 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
+        $adminPassword = "BaR@123" + $rgname;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+        $vhdContainer = "https://" + $stoname + ".blob.$env:STORAGEENDPOINTSUFFIX/" + $vmssName;
 
         $aucComponentName="Microsoft-Windows-Shell-Setup";
         $aucComponentName="MicrosoftWindowsShellSetup";
@@ -317,7 +323,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
             | Add-AzureRmVmssAdditionalUnattendContent -ComponentName  $aucComponentName -Content  $aucContent -PassName  $aucPassName -SettingName  $aucSetting `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
+            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -VirtualMachineScaleSetExtensionType $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
 
         $vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent = $null;
         $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
@@ -351,7 +357,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
         # Validate Extension Profile
         Assert-AreEqual $extname $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
         Assert-AreEqual $publisher $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;
-        Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
+        Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].VirtualMachineScaleSetExtensionType;
         Assert-AreEqual $extver $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
         Assert-AreEqual $true $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
 
@@ -369,486 +375,11 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
-        # Reimage operation
-        Assert-ThrowsContains {
-            Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName; } `
-            "Conflict";
+        Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
         # Remove
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set
-#>
-function Test-VirtualMachineScaleSetLB
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        # Common
-        $loc = 'westus';
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
-        # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-
-        # Create LoadBalancer
-        $frontendName = Get-ResourceName
-        $backendAddressPoolName = Get-ResourceName
-        $probeName = Get-ResourceName
-        $inboundNatPoolName = Get-ResourceName
-        $lbruleName = Get-ResourceName
-        $lbName = Get-ResourceName
-
-        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
-        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
-            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370;
-        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName `
-            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
-            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
-        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
-            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
-        $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
-
-        # Verification
-        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName;
-        Assert-AreEqual $expectedLb.Name $actualLb.Name;
-        Assert-AreEqual $expectedLb.Location $actualLb.Location;
-        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState;
-        Assert-NotNull $expectedLb.ResourceGuid;
-        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count;
-        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name;
-        Assert-AreEqual $pubip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id;
-        Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress;
-        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name;
-        Assert-AreEqual $probeName $expectedLb.Probes[0].Name;
-        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath;
-        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatPools[0].FrontendIPConfiguration.Id;
-        Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name;
-        Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id;
-        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-        $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-        $extname = 'csetest';
-        $publisher = 'Microsoft.Compute';
-        $exttype = 'BGInfo';
-        $extver = '2.1';
-
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' `
-            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
-            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
-            -SubnetId $subnetId;
-        Assert-AreEqual $expectedLb.InboundNatPools[0].Id $ipCfg.LoadBalancerInboundNatPools[0].Id;
-        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $ipCfg.LoadBalancerBackendAddressPools[0].Id;
-        Assert-AreEqual $subnetId $ipCfg.Subnet.Id;
-
-        $settingString = ‘{ “AntimalwareEnabled”: true}’;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true -Setting $settingString `
-            | Remove-AzureRmVmssExtension -Name $extname `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
-            | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' `
-            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
-
-        Assert-AreEqual $loc $vmss.Location;
-        Assert-AreEqual 2 $vmss.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $vmss.Sku.Name;
-        Assert-AreEqual 'automatic' $vmss.UpgradePolicy.Mode;
-
-        # Validate Network Profile
-        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $true $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
-        Assert-AreEqual $expectedLb.InboundNatPools[0].Id  `
-            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerInboundNatPools[0].Id;
-        Assert-AreEqual $expectedLb.BackendAddressPools[0].Id  `
-            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools[0].Id;
-        Assert-AreEqual $subnetId `
-            $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
-
-        # Validate OS Profile
-        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.OsProfile.ComputerNamePrefix;
-        Assert-AreEqual $adminUsername $vmss.VirtualMachineProfile.OsProfile.AdminUsername;
-        Assert-Null $vmss.VirtualMachineProfile.OsProfile.AdminPassword;
-
-        # Validate Storage Profile
-        Assert-AreEqual 'test' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.Name;
-        Assert-AreEqual 'FromImage' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
-        Assert-AreEqual 'None' $vmss.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
-        Assert-AreEqual $vhdContainer $vmss.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
-        Assert-AreEqual $imgRef.Offer $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
-        Assert-AreEqual $imgRef.Skus $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
-        Assert-AreEqual $imgRef.Version $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Version;
-        Assert-AreEqual $imgRef.PublisherName $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
-
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss');
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-True { $vmssName -eq $vmssResult.Name };
-        $output = $vmssResult | Out-String;
-        Write-Verbose ($output);
-        Write-Output $output;
-        Assert-True { $output.Contains("VirtualMachineProfile") };
-
-        # List All
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss ListAll');
-        $vmssList = Get-AzureRmVmss | ? Name -like 'vmsscrptestps*';
-        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
-        $output = $vmssList | Out-String;
-        Assert-AreEqual 1 $vmssList.Count
-        Write-Verbose ($output);
-        Assert-False { $output.Contains("VirtualMachineProfile") };
-
-        # List from RG
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
-        $vmssList = Get-AzureRmVmss -ResourceGroupName $rgname;
-        Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
-        $output = $vmssList | Out-String;
-        Write-Verbose ($output);
-        Assert-False { $output.Contains("VirtualMachineProfile") };
-
-        # List Skus
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku');
-        $skuList = Get-AzureRmVmssSku -ResourceGroupName $rgname  -VMScaleSetName $vmssName;
-        $output = $skuList | Out-String;
-        Write-Verbose ($output);
-
-        # List All VMs
-        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM List');
-        $vmListResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName; # -Select $null;
-        $output = $vmListResult | Out-String;
-        Write-Verbose ($output);
-        Assert-False { $output.Contains("StorageProfile") };
-
-        # List each VM
-        for ($i = 0; $i -lt 2; $i++)
-        {
-            Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM');
-            $vm = Get-AzureRmVmssVM -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $i;
-            Assert-NotNull $vm;
-            $output = $vm | Out-String;
-            Write-Verbose ($output);
-            Assert-True { $output.Contains("StorageProfile") };
-
-            Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM -InstanceView');
-            $vmInstance = Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $i;
-            Assert-NotNull $vmInstance;
-            $output = $vmInstance | Out-String;
-            Write-Verbose($output);
-            Assert-True { $output.Contains("PlatformUpdateDomain") };
-        }
-
-        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set Reimage and Upgrade
-#>
-function Test-VirtualMachineScaleSetNextLink
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        # Common
-        $loc = 'southeastasia';
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
-        # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vmss_number = 180;
-
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $vmss_number -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false -SinglePlacementGroup $false `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version -ImageReferencePublisher $imgRef.PublisherName;
-
-        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-
-        $vmssVmResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName | ? Name -like 'vmsscrptestps*';
-        Assert-AreEqual $vmss_number $vmssVmResult.Count
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set Boot Diagnostics
-#>
-function Test-VirtualMachineScaleSetBootDiagnostics
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        # Common
-        $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
-        # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-
-        $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
-
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-
-        $extname = 'csetest';
-        $publisher = 'Microsoft.Compute';
-        $exttype = 'BGInfo';
-        $extver = '2.1';
-
-        $extname2 = 'csetest2';
-
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
-            | Set-AzureRmVmssBootDiagnostic -Enabled $true -StorageUri $storageUri;
-
-        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-
-        Assert-AreEqual $loc.Replace(" ", "") $result.Location;
-        Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
-        Assert-AreEqual 'manual' $result.upgradepolicy.mode;
-
-        # Boot Diagnostics Profile
-        Assert-True {$result.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled};
-        Assert-AreEqual $storageUri $result.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri;
-
-        # Validate Network Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $true $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
-        Assert-AreEqual $subnetId `
-           $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
-
-        # Validate OS Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.OsProfile.ComputerNamePrefix;
-        Assert-AreEqual $adminUsername $result.VirtualMachineProfile.OsProfile.AdminUsername;
-        Assert-Null $result.VirtualMachineProfile.OsProfile.AdminPassword;
-
-        # Validate Storage Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.StorageProfile.OsDisk.Name;
-        Assert-AreEqual 'FromImage' $result.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
-        Assert-AreEqual 'None' $result.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
-        Assert-AreEqual $vhdContainer $result.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
-        Assert-AreEqual $imgRef.Offer $result.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
-        Assert-AreEqual $imgRef.Skus $result.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
-        Assert-AreEqual $imgRef.Version $result.VirtualMachineProfile.StorageProfile.ImageReference.Version;
-        Assert-AreEqual $imgRef.PublisherName $result.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
-
-        # Validate Extension Profile
-        Assert-AreEqual $extname $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
-        Assert-AreEqual $publisher $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;
-        Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
-        Assert-AreEqual $extver $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
-        Assert-AreEqual $true $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
-
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-
-        # Boot Diagnostics Profile
-        Assert-True {$vmssResult.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled};
-        Assert-AreEqual $storageUri $vmssResult.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri;
-
-        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
-        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machine Scale Set Identity
-#>
-function Test-VirtualMachineScaleSetIdentity
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        # Common
-        $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
-        # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-
-        $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
-
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-
-        $extname = 'csetest';
-        $publisher = 'Microsoft.Compute';
-        $exttype = 'BGInfo';
-        $extver = '2.1';
-
-        $extname2 = 'csetest2';
-
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -IdentityType "SystemAssigned"`
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
-
-        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-
-        Assert-AreEqual $loc.Replace(" ", "") $result.Location;
-        Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
-        Assert-AreEqual 'manual' $result.upgradepolicy.mode;
-
-        # Validate VMSS Identity
-        Assert-AreEqual "SystemAssigned" $result.Identity.Type;
-        Assert-NotNull $result.Identity.PrincipalId;
-        Assert-NotNull $result.Identity.TenantId;
-
-        # Validate Network Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $true $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Primary;
-        Assert-AreEqual $subnetId `
-           $result.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id;
-
-        # Validate OS Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.OsProfile.ComputerNamePrefix;
-        Assert-AreEqual $adminUsername $result.VirtualMachineProfile.OsProfile.AdminUsername;
-        Assert-Null $result.VirtualMachineProfile.OsProfile.AdminPassword;
-
-        # Validate Storage Profile
-        Assert-AreEqual 'test' $result.VirtualMachineProfile.StorageProfile.OsDisk.Name;
-        Assert-AreEqual 'FromImage' $result.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
-        Assert-AreEqual 'None' $result.VirtualMachineProfile.StorageProfile.OsDisk.Caching;
-        Assert-AreEqual $vhdContainer $result.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
-        Assert-AreEqual $imgRef.Offer $result.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
-        Assert-AreEqual $imgRef.Skus $result.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
-        Assert-AreEqual $imgRef.Version $result.VirtualMachineProfile.StorageProfile.ImageReference.Version;
-        Assert-AreEqual $imgRef.PublisherName $result.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
-
-        # Validate Extension Profile
-        Assert-AreEqual $extname $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
-        Assert-AreEqual $publisher $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;
-        Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
-        Assert-AreEqual $extver $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
-        Assert-AreEqual $true $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
-
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-
-        # Validate VMSS Identity
-        Assert-AreEqual "SystemAssigned" $vmssResult.Identity.Type;
-        Assert-NotNull $vmssResult.Identity.PrincipalId;
-        Assert-NotNull $vmssResult.Identity.TenantId;
-
-        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
-        Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
-        $output = $vmssInstanceViewResult | Out-String
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
+        $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     }
     finally
     {

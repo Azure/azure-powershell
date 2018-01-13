@@ -26,10 +26,7 @@
         <CrashDumpConfiguration processName="w3wp.exe" />
       </CrashDumps>
       <Logs scheduledTransferPeriod="PT3M" />
-      <Metrics resourceId="dummy">
-        <MetricAggregation scheduledTransferPeriod="PT1M"/>
-      </Metrics>
     </DiagnosticMonitorConfiguration>
   </WadCfg>
-  <StorageAccount>[StorageAccountName]</StorageAccount>
+  <StorageAccount>definedinconfigstorage</StorageAccount>
 </PublicConfig>

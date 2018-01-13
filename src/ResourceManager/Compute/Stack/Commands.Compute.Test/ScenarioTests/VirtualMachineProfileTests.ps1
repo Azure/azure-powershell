@@ -50,14 +50,14 @@ function Test-VirtualMachineProfile
 
     # Storage
     $stoname = 'hpfteststo' + ((Get-Random) % 10000);
-    $stotype = 'Standard_GRS';
+    $stotype = 'Standard_LRS';
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
 
     $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
 
@@ -66,7 +66,7 @@ function Test-VirtualMachineProfile
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-
+        
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -99,11 +99,11 @@ function Test-VirtualMachineProfile
 
     # Windows OS
     $user = "Foo12";
-    $password = $PLACEHOLDER;
+    $password = 'BaR@000' + ((Get-Random) % 10000);
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+    $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
 
     $winRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";
     $timeZone = "Pacific Standard Time";
@@ -128,30 +128,6 @@ function Test-VirtualMachineProfile
 
     $certStore2 = "My2";
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
-    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
-
-    Assert-AreEqual 2 $p.OSProfile.Secrets.Count;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateStore $certStore2;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateUrl $certUrl2;
-    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.Id $referenceUri2;
-    Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateStore $certStore;
-    Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateUrl $certUrl;
-
-    $p = Remove-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri;
-    Assert-AreEqual 1 $p.OSProfile.Secrets.Count;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri2;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
-    Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
-
-    $p = Remove-AzureRmVMSecret -VM $p;
-    Assert-AreEqual 0 $p.OSProfile.Secrets.Count;
-
-    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
-    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
     $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
     $aucSetting = "AutoLogon";
@@ -189,11 +165,11 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $timeZone $p.OSProfile.WindowsConfiguration.TimeZone;
 
     # Verify Additional Unattend Content
-    #Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].ComponentName;
+    Assert-AreEqual "MicrosoftWindowsShellSetup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].ComponentName;
     Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].Content;
     Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].PassName;
     Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].SettingName;
-    #Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].ComponentName;
+    Assert-AreEqual "MicrosoftWindowsShellSetup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].ComponentName;
     Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].Content;
     Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].PassName;
     Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].SettingName;
@@ -259,14 +235,14 @@ function Test-VirtualMachineProfileWithoutAUC
 
     # Storage
     $stoname = 'hpfteststo' + ((Get-Random) % 10000);
-    $stotype = 'Standard_GRS';
+    $stotype = 'Standard_LRS';
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
 
     $dekUri = "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
     $dekId =  "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
@@ -299,11 +275,11 @@ function Test-VirtualMachineProfileWithoutAUC
 
     # Windows OS
     $user = "Foo12";
-    $password = $PLACEHOLDER;
+    $password = 'BaR@000' + ((Get-Random) % 10000);
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+    $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
     $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
     $winRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";

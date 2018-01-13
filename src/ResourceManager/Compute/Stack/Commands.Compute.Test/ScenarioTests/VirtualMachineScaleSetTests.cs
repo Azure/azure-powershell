@@ -19,11 +19,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineScaleSetTests
     {
-        public VirtualMachineScaleSetTests(Xunit.Abstractions.ITestOutputHelper output)
-        {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSet()
@@ -33,43 +28,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSet_ManagedDisks()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSet-ManagedDisks");
-        }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetReimageUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetReimageUpdate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetLB()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetLB");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetNextLink()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNextLink");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetBootDiagnostics()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetBootDiagnostics");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetIdentity()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetIdentity");
         }
     }
 }

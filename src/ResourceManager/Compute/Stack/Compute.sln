@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\..\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.Abstractions", "..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.ResourceManager", "..\..\Common\Commands.Common.Authentication.ResourceManager\Commands.Common.Authentication.ResourceManager.csproj", "{69C2EB6B-CD63-480A-89A0-C489706E9299}"
@@ -32,7 +30,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync", "Sync\Sync.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{69D94019-A972-41B9-AE93-D42BFC737E5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.Test", "Commands.Compute.Test\Commands.Compute.Test.csproj", "{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +58,6 @@ Global
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,12 +98,20 @@ Global
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8} = {69D94019-A972-41B9-AE93-D42BFC737E5E}
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {69D94019-A972-41B9-AE93-D42BFC737E5E}
 	EndGlobalSection
 EndGlobal
