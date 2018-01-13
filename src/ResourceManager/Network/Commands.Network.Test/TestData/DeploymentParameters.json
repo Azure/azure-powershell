@@ -1,12 +1,12 @@
 {
 			"rgName": {
-			"value": "onesdk7388"
+			"value": "ps1686"
 			},
 			"location": {
-			"value": "westcentralus"
+			"value": "centraluseuap"
 			},
 			"virtualMachineName": {
-			"value": "onesdk4256"
+			"value": "ps4127"
 			},
 			"virtualMachineSize": {
 			"value": "Standard_DS1_v2"
@@ -15,31 +15,31 @@
 			"value": "netanaytics12"
 			},
 			"storageAccountName": {
-			"value": "onesdk2419"
+			"value": "ps7622"
 			},
 			"routeTableName": {
-			"value": "onesdk6238"
+			"value": "ps4225"
 			},
 			"virtualNetworkName": {
-			"value": "onesdk8538"
+			"value": "ps3506"
 			},
 			"networkInterfaceName": {
-			"value": "onesdk6587"
+			"value": "ps540"
 			},
 			"networkSecurityGroupName": {
-			"value": "onesdk5126"
+			"value": "ps5356"
 			},
 			"adminPassword": {
-			"value": "netanalytics-32onesdk7388"
+			"value": "netanalytics-32ps1686"
 			},
 			"storageAccountType": {
 			"value": "Premium_LRS"
 			},
 			"diagnosticsStorageAccountName": {
-			"value": "onesdk4793"
+			"value": "ps4181"
 			},
 			"diagnosticsStorageAccountId": {
-			"value": "Microsoft.Storage/storageAccounts/onesdk4793"
+			"value": "Microsoft.Storage/storageAccounts/ps4181"
 			},
 			"diagnosticsStorageAccountType": {
 			"value": "Standard_LRS"
@@ -54,7 +54,7 @@
 			"value": "10.17.3.0/24"
 			},
 			"publicIpAddressName": {
-			"value": "onesdk4256-ip"
+			"value": "ps4127-ip"
 			},
 			"publicIpAddressType": {
 			"value": "Dynamic"
