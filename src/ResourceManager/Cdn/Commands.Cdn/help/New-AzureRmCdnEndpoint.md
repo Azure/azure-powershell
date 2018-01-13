@@ -337,7 +337,7 @@ Specifies a hash table of the tags that associated with this resource.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named

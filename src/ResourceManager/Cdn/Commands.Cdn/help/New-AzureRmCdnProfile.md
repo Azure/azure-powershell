@@ -112,7 +112,7 @@ Sepcifies a hash table of tags that are associated with this profile.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named
