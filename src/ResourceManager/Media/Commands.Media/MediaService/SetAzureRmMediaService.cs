@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags associated with the media account.")]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
@@ -74,10 +76,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             {
                 var mediaServiceParams = new RestMediaService();
 
+#pragma warning disable CS0618
                 if (Tags != null)
                 {
                     mediaServiceParams.Tags = Tags.ToDictionaryTags();
                 }
+#pragma warning restore CS0618
 
                 if (StorageAccounts != null)
                 {
