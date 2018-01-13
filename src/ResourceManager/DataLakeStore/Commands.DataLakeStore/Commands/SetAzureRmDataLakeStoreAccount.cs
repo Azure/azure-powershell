@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
