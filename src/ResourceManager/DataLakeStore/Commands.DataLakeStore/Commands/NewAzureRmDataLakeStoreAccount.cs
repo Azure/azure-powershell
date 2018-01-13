@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -75,6 +76,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account",
             ParameterSetName = EncryptionDisabledParameterSetName)]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
