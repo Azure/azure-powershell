@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -33,6 +34,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
+        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tag")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
