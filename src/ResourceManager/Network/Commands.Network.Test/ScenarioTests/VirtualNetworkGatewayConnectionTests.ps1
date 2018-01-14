@@ -174,8 +174,10 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 10000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
-      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy
-      $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      $job = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy -AsJob
+      $job | Wait-Job
+	  $actual = $job | Receive-Job
+	  $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
 	  # Verify IpsecPolicies and policy-based TS
 	  Assert-AreEqual $connection.UsePolicyBasedTrafficSelectors $actual.UsePolicyBasedTrafficSelectors
@@ -190,7 +192,9 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
     
 	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
-      $actual = Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -Force
+      $job = Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -Force -AsJob
+	  $job | Wait-Job
+	  $actual = $job | Receive-Job
 	  $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
 
 	  # Verify cleared policies
@@ -199,7 +203,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
-      Assert-AreEqual true $delete
+	  Assert-AreEqual true $delete
      }
      finally
      {
@@ -454,7 +458,7 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       #Assert-AreEqual "TestSharedKeyValue" $expected
 
       # Reset VirtualNetworkGatewayConnectionSharedKey
-      #$actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force   
+      #$actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
 	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey after Reset-VirtualNetworkGatewayConnectionSharedKey

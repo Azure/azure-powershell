@@ -100,7 +100,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.1.1';
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.3'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.1.1'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '4.0.1'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '4.1.0'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.0.0'; }, 
