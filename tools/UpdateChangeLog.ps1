@@ -145,7 +145,9 @@ This function will use the psd1 file to grab the module version.
 #>
 function GetModuleVersion([string]$PathToModule)
 {
-    return (Test-ModuleManifest -Path $PathToModule).Version.ToString()
+    $file = Get-Item $PathToModule
+    Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+    return $ModuleMetadata.ModuleVersion.ToString()
 }
 
 <#

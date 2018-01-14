@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Gets a SQL server's Key Vault keys.
 
 ```
 Get-AzureRmSqlServerKeyVaultKey [[-KeyId] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +23,7 @@ You can view all keys on a server or view a specific key by providing the KeyId.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get all Key Vault keys  --------------------------
+### Example 1: Get all Key Vault keys
 ```
 PS C:\> Get-AzureRmSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
@@ -45,7 +46,7 @@ Uri               : https://contoso.vault.azure.net/keys/contosokey2/09876543210
 Thumbprint        : 0099887766554433221100998877665544332211
 CreationDate      : 1/1/2017 12:00:00 AM
 
-### --------------------------  Example 2: Get a specific Key Vault key  --------------------------
+### Example 2: Get a specific Key Vault key
 ```
 PS C:\> $MyServerKeyVaultKey = Get-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
@@ -55,13 +56,28 @@ You can inspect the properties of $MyServerKeyVaultKey to get details about the 
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyId
 The Azure Key Vault KeyId.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -76,7 +92,7 @@ The name of the resource group
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -91,7 +107,7 @@ The Azure Sql Server name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

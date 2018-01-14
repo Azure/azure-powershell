@@ -21,9 +21,13 @@ function Get-AzureRmStorageAccount
         $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
     }
     $sa = $getTask.Result
-	$id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
-    $account = Get-StorageAccount $ResourceGroupName $Name $id
-    Write-Output $account
+
+    if($sa -ne $null)
+    {
+        $id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
+        $account = Get-StorageAccount $ResourceGroupName $Name $id
+        Write-Output $account
+    }
   }
   END {}
 

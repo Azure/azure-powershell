@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementgroup
 schema: 2.0.0
 ---
 
@@ -12,27 +13,28 @@ Gets all or specific API management groups.
 
 ## SYNTAX
 
-### Get all groups (Default)
+### GetAllGroups (Default)
 ```
-Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [<CommonParameters>]
+Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get by group ID
+### GetByGroupId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-GroupId <String>] [-Name <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find groups by user
+### GetByUserId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-UserId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Find groups by product
+### GetByProductId
 ```
 Get-AzureRmApiManagementGroup -Context <PsApiManagementContext> [-Name <String>] [-ProductId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,28 +44,32 @@ The **Get-AzureRmApiManagementGroup** cmdlet gets all or specific API management
 
 ### Example 1: Get all groups
 ```
-PS C:\>Get-AzureRmApiManagementGroup -Context $APImContext
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext
 ```
 
 This command gets all groups.
 
 ### Example 2: Get a group by ID
 ```
-PS C:\>Get-AzureRmApiManagementGroup -Context $APImContext -GroupId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext -GroupId "0123456789"
 ```
 
 This command gets  the group ID named 0123456789.
 
 ### Example 3: Get a group by name
 ```
-PS C:\>Get-AzureRmApiManagementGroup -Context $APImContext -Name "Group0002"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext -Name "Group0002"
 ```
 
 This command gets the group named Group0002.
 
 ### Example 4: Get all user groups
 ```
-PS C:\>Get-AzureRmApiManagementGroup -Context $APImContext -UserId "0123456789"
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzureRmApiManagementGroup -Context $apimContext -UserId "0123456789"
 ```
 
 This command gets all user groups with the user ID named 0123456789.
@@ -85,13 +91,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupId
 Specifies the group ID.
 If specified, the cmdlet attempts to find the group by the identifier.
 
 ```yaml
 Type: String
-Parameter Sets: Get by group ID
+Parameter Sets: GetByGroupId
 Aliases: 
 
 Required: False
@@ -123,7 +144,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Find groups by product
+Parameter Sets: GetByProductId
 Aliases: 
 
 Required: False
@@ -139,7 +160,7 @@ If specified the cmdlet will return all groups the product assigned to.
 
 ```yaml
 Type: String
-Parameter Sets: Find groups by user
+Parameter Sets: GetByUserId
 Aliases: 
 
 Required: False
@@ -156,7 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup
+The details of the Group configured in API Management service.
+
 ### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup>
+The list of Groups configured in API Management service.
 
 ## NOTES
 

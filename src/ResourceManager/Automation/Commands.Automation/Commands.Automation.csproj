@@ -52,9 +52,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Automation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Automation">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.2.0.4\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -124,6 +123,10 @@
     <Compile Include="Cmdlet\NewAzureAutomationKey.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\StopAzureAutomationJob.cs" />
+    <Compile Include="Cmdlet\StartAzureAutomationDscNodeConfigurationDeployment.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfigurationDeployment.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfigurationDeploymentSchedule.cs" />
+    <Compile Include="Cmdlet\StopAzureAutomationDscNodeConfigurationDeployment.cs" />
     <Compile Include="Cmdlet\SuspendAzureAutomationJob.cs" />
     <Compile Include="Cmdlet\UnregisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationAccount.cs" />
@@ -174,6 +177,8 @@
     <Compile Include="Model\MonthlyScheduleOptions.cs" />
     <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Model\BaseProperties.cs" />
+    <Compile Include="Model\NodeConfigurationDeploymentSchedule.cs" />
+    <Compile Include="Model\NodeConfigurationDeployment.cs" />
     <Compile Include="Model\Runbook.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\ScheduleFrequency.cs" />
@@ -196,6 +201,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

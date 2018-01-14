@@ -452,4 +452,19 @@
   <data name="HybridRunbookWorkerGroupNotFound" xml:space="preserve">
     <value>Hybrid Runbook Worker Group Not Found</value>
   </data>
+  <data name="StopAzureAutomationNodeConfigurationWarning" xml:space="preserve">
+    <value>Stopping node configuration deployment does not stop already assigned node configurations to nodes.</value>
+  </data>
+  <data name="StopAzureAutomationNodeConfigurationDescription" xml:space="preserve">
+    <value>Stop DSC node configuration deployment,</value>
+  </data>
+  <data name="StartAzureAutomationNodeConfigurationDescription" xml:space="preserve">
+    <value>Starting a node configuration deployment.</value>
+  </data>
+  <data name="StartAzureAutomationNodeConfigurationWarning" xml:space="preserve">
+    <value>Starting a node configuration deployment. It will override any existing node configurations assigned to the node.</value>
+  </data>
+  <data name="NoJobIdPassedToGetJobInformationCall" xml:space="preserve">
+    <value>No JobId passed. Please pass a valid JobId.</value>
+  </data>
 </root>

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse<MCM.OperationStatusResponse>>>> call = f =>
                     {
                         var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
-                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                         WriteObject(result);
                     };
 
@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
                     }
+                }
+                else
+                {
+                    WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
                 }
             });
         }

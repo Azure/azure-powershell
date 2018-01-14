@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
+Module Name: AzureRM.DevTestLabs
 ms.assetid: 52DD0511-915F-4144-B47F-E4B7AF403AA5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devtestlabs/get-azurermdtlautoshutdownpolicy
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the auto shutdown policy of a lab in DevTest Labs.
 ## SYNTAX
 
 ```
-Get-AzureRmDtlAutoShutdownPolicy [-LabName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmDtlAutoShutdownPolicy [-LabName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +30,21 @@ The cmdlet returns whether the status of the policy is enabled, and the time of 
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -LabName
 Specifies the name of the lab for which this cmdlet gets the auto shutdown policy.

@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -101,12 +100,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(void))]
     public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
+                if (ShouldProcess(this.Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
                                             "Remove-AzureRmContainerService operation")))
@@ -127,6 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -143,5 +142,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermroutefilterruleconfig
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Adds a route filter rule to a route filter.
 
 ```
 Add-AzureRmRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String> -Access <String>
- -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,18 +24,6 @@ The Add-AzureRmRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add a route filter rule to a route filter  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
-
-
 ```
 PS C:\>$RouteFilter = Get-AzureRmRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
 					  PS C:\> Add-AzureRmRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
@@ -71,6 +59,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

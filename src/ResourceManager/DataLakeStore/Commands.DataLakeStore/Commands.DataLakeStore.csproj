@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.2.2.0\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.2.3.0-preview\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -86,7 +86,7 @@
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreTracingInterceptor.cs" />
     <Compile Include="Models\DataLakeStoreTraceLogger.cs" />
-    <Compile Include="Models\PSDataLakeStoreAccountProperties.cs" />
+    <Compile Include="Models\PSDataLakeStoreAccountBasic.cs" />
     <Compile Include="Models\PSDataLakeStoreAccount.cs" />
     <Compile Include="Models\DataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Models\DataLakeStoreFirewallRule.cs" />
@@ -116,8 +116,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

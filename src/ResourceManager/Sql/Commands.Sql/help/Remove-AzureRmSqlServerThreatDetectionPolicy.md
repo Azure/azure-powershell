@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: DCAB75A1-B4EF-4C41-9D6B-A954B6DB0028
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserverthreatdetectionpolicy
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Removes the threat detection policy from a server.
 
 ```
 Remove-AzureRmSqlServerThreatDetectionPolicy [-PassThru] -ServerName <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ To use this cmdlet, specify the ResourceGroupName and ServerName parameters to i
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Remove a threat detection policy for a database  --------------------------
+### Example 1: Remove a threat detection policy for a database
 ```
 PS C:\> Remove-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
@@ -33,6 +34,21 @@ This command removes the threat detection policy from a server named Server01.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
@@ -40,7 +56,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -55,7 +71,7 @@ Specifies the name of the resource group the server is assigned to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -70,7 +86,7 @@ Specifies the name of a server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

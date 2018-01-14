@@ -63,15 +63,9 @@
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />
     <Compile Include="Cmdlets\EventHub\SetAzureEventHub.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespaceAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespaceKeys.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureEventHubNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\NewAzureEventHubNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureEventHubNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\RemoveAzureEventHubNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespaceAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Namespace\NewAzureEventHubNameSpaceKey.cs" />
     <Compile Include="Models\AuthorizationRuleAttributes.cs" />
     <Compile Include="Models\AuthorizationRuleKeysAttributes.cs" />
     <Compile Include="Models\CaptureDescriptionAttributes.cs" />
@@ -98,6 +92,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

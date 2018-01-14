@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             HelpMessage = "Gets or sets the datacenter location for the cluster.")]
+        [LocationCompleter("Microsoft.HDInsight/clusters")]
         public string Location
         {
             get { return parameters.Location; }
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -136,7 +139,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
                     CertificatePassword = CertificatePassword,
-                    SecurityProfile = SecurityProfile
+                    SecurityProfile = SecurityProfile,
+                    DisksPerWorkerNode = DisksPerWorkerNode
                 };
                 foreach (
                     var storageAccount in
@@ -157,6 +161,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.ComponentVersion.Add(component.Key, component.Value);
                 }
+                
                 return result;
             }
             set
@@ -187,6 +192,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ObjectId = value.ObjectId;
                 CertificatePassword = value.CertificatePassword;
                 SecurityProfile = value.SecurityProfile;
+                DisksPerWorkerNode = value.DisksPerWorkerNode;
 
                 foreach (
                     var storageAccount in
@@ -348,6 +354,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the number of disks for worker node role in the cluster.")]
+        public int DisksPerWorkerNode { get; set; }
+
         #endregion
 
 
@@ -456,7 +465,18 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ClusterUsersGroupDNs = SecurityProfile.ClusterUsersGroupDNs
                 };
             }
-            
+
+            if (DisksPerWorkerNode > 0)
+            {
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                {
+                    new DataDisksGroupProperties()
+                    {
+                        DisksPerNode = DisksPerWorkerNode
+                    }
+                };
+            }
+
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
             if (cluster != null)

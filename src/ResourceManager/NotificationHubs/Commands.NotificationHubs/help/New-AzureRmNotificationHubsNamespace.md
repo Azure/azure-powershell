@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: 3BA94976-DE88-4F07-9C06-41FEEDE1B829
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/new-azurermnotificationhubsnamespace
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates a notification hub namespace.
 
 ```
 New-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
- [[-Tags] <Hashtable>] [[-SkuTier] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Tags] <Hashtable>] [[-SkuTier] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +52,21 @@ In addition, this command creates a tag with the name Audience and the value Par
 This ensures that the namespace will be displayed any time you filter for items where the Audience tag is set to PartnerOrganizations.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the display name of the datacenter that will host the Namespace.

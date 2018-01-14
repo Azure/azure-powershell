@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 522F5305-CDF6-41F2-803B-9EEA9E927668
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermcontainerservice
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates a container service.
 
 ```
 New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <PSContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContainerService] <PSContainerService> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +43,21 @@ The service is named csResourceGroup17.
 
 ## PARAMETERS
 
+### -AsJob
+RRun cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContainerService
 Specifies a container service object that contains the properties for the new service.
 To obtain a **ContainerService** object, use the New-AzureRmContainerServiceConfig cmdlet.
@@ -54,6 +71,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,7 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ContainerService
-
 Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
 
 ## OUTPUTS

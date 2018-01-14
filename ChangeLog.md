@@ -1,4 +1,489 @@
-﻿## 2017.08.10 - Version 4.3.1
+﻿## 2017.12.8 Version 5.1.1
+* AnalysisServices
+    - Change validate set of location to dynamic lookup so that all clouds are supported.
+* Automation
+    - Update to Import-AzureRMAutomationRunbook
+        - Support is now being provided for Python2 runbooks
+* Batch
+    - Fixed a bug where account operations without a resource group failed to auto-detect the resource group
+* Compute
+    - Get-AzureRmComputeResourceSku shows zone information.
+    - Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
+    - Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+        - Affected cmdlets include: New-, Update-, Set-, Remove-, Start-, Restart-, Stop- cmdlets for Virtual Machines and Virtual Machine Scale Sets
+    - Added simplified parameter set to New-AzureRmVM, which creates a Virtual Machine and all required resources using smart defaults
+* ContainerInstance
+    - Apply Azure Container Instance SDK 2017-10-01
+        - Support container run-to-completion
+        - Support Azure File volume mount
+        - Support opening multiple ports for public IP
+* ContainerRegistry
+    - New cmdlets for geo-replication and webhooks
+        - Get/New/Remove-AzureRmContainerRegistryReplication
+        - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook
+* DataFactories
+    - Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).
+* DataFactoryV2
+    - Added two new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun
+* DataLakeAnalytics
+    - Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
+        - Detailed information about ScriptParameter can be found using Get-Help on Submit-AzureRmDataLakeAnalyticsJob
+    - For New-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+        - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+    - For New-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+        - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
+    - For Set-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+        - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+    - For Submit-AzureRmDataLakeAnalyticsJob, changed the parameter DegreeOfParallelism to AnalyticsUnits
+        - Added an alias for the parameter AnalyticsUnits: DegreeOfParallelism
+    - For Update-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+        - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
+* MachineLearningCompute
+    - Add Set-AzureRmMlOpCluster
+        - Update a cluster's agent count or SSL configuration
+    - Orchestrator properties are optional
+        - The service will create a service principal if not provided, so the orchestrator
+        properties are now optional
+* PowerBIEmbedded
+    - Add support for Power BI Embedded Capacity cmdlets
+    - New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity - Gets the details of a PowerBI Embedded Capacity.
+    - New Cmdlet New-AzureRmPowerBIEmbeddedCapacity - Creates a new PowerBI Embedded Capacity
+    - New Cmdlet Remove-AzureRmPowerBIEmbeddedCapacity - Deletes an instance of PowerBI Embedded Capacity
+    - New Cmdlet Resume-AzureRmPowerBIEmbeddedCapacity - Resumes an instance of PowerBI Embedded Capacity
+    - New Cmdlet Suspend-AzureRmPowerBIEmbeddedCapacity - Suspends an instance of PowerBI Embedded Capacity
+    - New Cmdlet Test-AzureRmPowerBIEmbeddedCapacity - Tests the existence of an instance of PowerBI Embedded Capacity
+    - New Cmdlet Update-AzureRmPowerBIEmbeddedCapacity - Modifies an instance of PowerBI Embedded Capacity
+* Profile
+    - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+        - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+    - Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+    - Added -AsJob parameter to Get-AzureRmSubscription cmdlet
+* RecoveryServices.Backup
+    - Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
+    - Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
+* Resources
+    - Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
+        - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
+    - Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
+        - Users can now use Set-AzureRMRoleRoleDefinition with assignable scopes including new scopes irrespective of the position of the scope
+    - Allow scopes to end with "/"
+        - Users can now use RoleDefinition and RoleAssignment commandlets with scopes ending with "/" ,consistent with API and CLI
+    - Allow users to create RoleAssignment using delegation flag
+        - Users can now use New-AzureRMRoleAssignment with an option of adding the delegation flag
+    - Fix RoleAssignment get to respect the scope parameter
+    - Add an alias for ServicePrincipalName in the New-AzureRmRoleAssignment Commandlet
+        - Users can now use the ApplicationId instead of the ServicePrincipalName when using the New-AzureRmRoleAssignment commandlet
+* SiteRecovery
+    - Add deprecation warnings for all cmdlets in this module in preparation for the next breaking change release.
+        - Please see the upcoming breaking changes guide for more information on how to migrate your cmdlets from AzureRM.
+* Sql
+    - Added ability to rename database using Set-AzureRmSqlDatabase
+    - Fixed issue https://github.com/Azure/azure-powershell/issues/4974
+        - Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
+    - Fixed issue https://github.com/Azure/azure-powershell/issues/5046
+        - AuditAction parameter in auditing cmdlets is no longer being ignored
+    - Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
+        - When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
+    - Changing the wording for confirmation message from Set-AzureRmSqlServerTransparentDataEncryptionProtector
+* Azure (RDFE)
+    - Removed all RemoteApp Cmdles
+* Azure.Storage
+    - Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
+
+## 2017.11.10 Version 5.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing in the following modules:
+    - AzureRM.ApiManagement
+    - AzureRM.Backup
+    - AzureRM.Batch
+    - AzureRM.Compute
+    - AzureRM.DataFactories
+    - AzureRM.HDInsight
+    - AzureRM.KeyVault
+    - AzureRM.RecoveryServices
+    - AzureRM.RecoveryServices.Backup
+    - AzureRM.RecoveryServices.SiteRecovery
+    - AzureRM.RedisCache
+    - AzureRM.SiteRecovery
+    - AzureRM.Sql
+    - AzureRM.Storage
+    - AzureRM.StreamAnalytics
+
+## 2017.11.8 - Version 5.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of introduced breaking changes.
+* All cmdlets in AzureRM now support online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+* AnalysisServices
+    * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
+* ApiManagement
+    * Please see the migration guide for breaking changes made to ApiManagement this release
+    * Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
+    * Updated Cmdlet New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
+* ApplicationInsights
+    * Add commands to get/create/remove applicaiton insights resource
+        - Get-AzureRmApplicationInsights 
+        - New-AzureRmApplicationInsights
+        - Remove-AzureRmApplicationInsights
+    * Add commands to get/update pricing/daily cap of applicaiton insights resource        
+        - Get-AzureRmApplicationInsights -IncludeDailyCap
+        - Set-AzureRmApplicationInsightsPricingPlan
+        - Set-AzureRmApplicationInsightsDailyCap
+    * Add commands to get/create/update/remove continuous export of applicaiton insights resource
+    	- Get-AzureRmApplicationInsightsContinuousExport
+    	- Set-AzureRmApplicationInsightsContinuousExport
+    	- New-AzureRmApplicationInsightsContinuousExport
+    	- Remove-AzureRmApplicationInsightsContinuousExport
+    * Add commands to get/create/remove api keys of applicaiton insights resoruce
+    	- Get-AzureRmApplicationInsightsApiKey
+    	- New-AzureRmApplicationInsightsApiKey
+    	- Remove-AzureRmApplicationInsightsApiKey
+* AzureBatch
+    * Added new parameters to `New-AzureRmBatchAccount`.
+        - `PoolAllocationMode`: The allocation mode to use for creating pools in the Batch account. To create a Batch account which allocates pool nodes in the user's subscription, set this to `UserSubscription`.
+        - `KeyVaultId`: The resource ID of the Azure key vault associated with the Batch account.
+        - `KeyVaultUrl`: The URL of the Azure key vault associated with the Batch account.
+    * Updated parameters to `New-AzureBatchTask`.
+        - Removed the `RunElevated` switch. The `UserIdentity` parameter has been added to replace `RunElevated`, and the equivalent behavior can be achieved by constructing a `PSUserIdentity` as shown below:
+            - $autoUser = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoUserSpecification -ArgumentList @("Task", "Admin")
+            - $userIdentity = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserIdentity $autoUser
+        - Added the `AuthenticationTokenSettings` parameter. This parameter allows you to request the Batch service provide an authentication token to the task when it runs, avoiding the need to pass Batch account keys to the task in order to issue requests to the Batch service.
+        - Added the `ContainerSettings` parameter.
+            - This parameter allows you to request the Batch service run the task inside a container.
+        - Added the `OutputFiles` parameter.
+            - This parameter allows you to configure the task to upload files to Azure Storage after it has finished.
+    * Updated parameters to `New-AzureBatchPool`.
+        - Added the `UserAccounts` parameter.
+            - This parameter defines user accounts created on each node in the pool.
+        - Added `TargetLowPriorityComputeNodes` and renamed `TargetDedicated` to `TargetDedicatedComputeNodes`.
+            - A `TargetDedicated` alias was created for the `TargetDedicatedComputeNodes` parameter.
+        - Added the `NetworkConfiguration` parameter.
+            - This parameter allows you to configure the pools network settings.
+    * Updated parameters to `New-AzureBatchCertificate`.
+        - The `Password` parameter is now a `SecureString`.
+    * Updated parameters to `New-AzureBatchComputeNodeUser`.
+        - The `Password` parameter is now a `SecureString`.
+    * Updated parameters to `Set-AzureBatchComputeNodeUser`.
+        - The `Password` parameter is now a `SecureString`.
+    * Renamed the `Name` parameter to `Path` on `Get-AzureBatchNodeFile`, `Get-AzureBatchNodeFileContent`, and `Remove-AzureBatchNodeFile`.
+        - A `Name` alias was created for the `Path` parameter.
+    * Changes to objects
+        - Please see the Batch change log for the full list
+    * Added support for Azure Active Directory based authentication.
+        - To use Azure Active Directory authentication, retrieve a `BatchAccountContext` object using the `Get-AzureRmBatchAccount` cmdlet, and supply this `BatchAccountContext` to the `-BatchContext` parameter of a Batch service cmdlet. Azure Active Directory authentication is mandatory for accounts with `PoolAllocationMode = UserSubscription`.
+        - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.
+* Compute
+    * Azure Disk Encryption Extension Commands
+        - New Parameter for 'Set-AzureRmVmDiskEncryptionExtension': '-EncryptFormatAll' encrypt formats data disks
+        - New Parameters for 'Set-AzureRmVmDiskEncryptionExtension': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+        - New Parameters for 'Disable-AzureRmVmDiskEncryption': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+        - New Parameters for 'Get-AzureRmVmDiskEncryptionStatus': '-ExtensionPublisherName' and '-ExtensionType' allow switching to other versions of the extension
+* DataLakeAnalytics
+    * Please see the migration guide for breaking changes made to DataLakeAnalytics this release
+    * Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsAccount
+        - List\<DataLakeAnalyticsAccount> to List\<PSDataLakeAnalyticsAccountBasic>
+        - The properties of PSDataLakeAnalyticsAccountBasic is a strict subset of the properties of DataLakeAnalyticsAccount
+        - The additional properties that are in DataLakeAnalyticsAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeAnalyticsAccountBasic, but they are tagged as Obsolete.
+    * Changed one of the two OutputTypes of Get-AzureRmDataLakeAnalyticsJob
+        - List\<JobInformation> to List\<PSJobInformationBasic>
+        - The properties of PSJobInformationBasic is a strict subset of the properties of JobInformation
+        - The additional properties that are in JobInformation are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSJobInformationBasic, but they are tagged as Obsolete.
+* DataLakeStore
+    * Please see the migration guide for breaking changes made to DataLakeStore this release
+    * Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
+        - List\<PSDataLakeStoreAccount> to List\<PSDataLakeStoreAccountBasic>
+        - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
+        - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeStoreAccountBasic, but they are tagged as Obsolete.
+* Dns
+    * Support for CAA record types in Azure DNS
+       - Supports all operations on CAA record type
+* EventHub
+    * Please see the migration guide for breaking changes made to EventHub this release
+* Insights
+    * Please see the migration guide for breaking changes made to Insights this release
+* Network
+    * Please see the migration guide for breaking changes made to Network this release
+    * Added cmdlet to list available internet service providers for a specified Azure region
+        - Get-AzureRmNetworkWatcherReachabilityProvidersList
+    * Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
+        - Get-AzureRmNetworkWatcherReachabilityReport
+* Profile
+    - Set-AzureRmDefault
+        - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
+        - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
+        - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
+    - Get-AzureRmDefault
+        - Use this cmdlet to get the current default resource group (and other defaults in the future).
+        - ```Get-AzureRmDefault -ResourceGroup```
+    - Clear-AzureRmDefault
+        - Use this cmdlet to remove the current default resource group
+        - ```Clear-AzureRmDefault -ResourceGroup```
+    - Add-AzureRmEnvironment and Set-AzureRmEnvironment
+        - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* RecoveryServices.Backup
+    * Added cmdlets to perform instant file recovery.
+        - Get-AzureRmRecoveryServicesBackupRPMountScript
+        - Disable-AzureRmRecoveryServicesBackupRPMountScript
+    * Updated RecoveryServices.Backup SDK version to the latest
+    * Updated tests for the Azure VM workload so that, all setups needed for test runs are done by the tests themselves.
+    * Fixes https://github.com/Azure/azure-powershell/issues/3164
+* RecoveryServices.SiteRecovery
+    * Changes for ASR VMware to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure)
+        - New-AzureRmRecoveryServicesAsrPolicy
+        - New-AzureRmRecoveryServicesAsrProtectedItem
+        - Update-AzureRmRecoveryServicesAsrPolicy
+        - Update-AzureRmRecoveryServicesAsrProtectionDirection
+    * Added support to AAD-based vault
+    * Added cmdlets to manage VCenter resources
+        - Get-AzureRmRecoveryServicesAsrVCenter
+        - New-AzureRmRecoveryServicesAsrVCenter
+        - Remove-AzureRmRecoveryServicesAsrVCenter
+        - Update-AzureRmRecoveryServicesAsrVCenter
+    * Added other cmdlets
+        - Get-AzureRmRecoveryServicesAsrAlertSetting
+        - Get-AzureRmRecoveryServicesAsrEvent
+        - New-AzureRmRecoveryServicesAsrProtectableItem
+        - Set-AzureRmRecoveryServicesAsrAlertSetting
+        - Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob
+        - Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
+        - Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob
+        - Update-AzureRmRecoveryServicesAsrMobilityService
+* ServiceBus
+    - Please see the migration guide for breaking changes made to ServiceBus this release
+* Sql
+    * Adding support for list and cancel the asynchronous updateslo operation on the database
+    	- update existing cmdlet Get-AzureRmSqlDatabaseActivity to return DB updateslo operation status.
+    	- add new cmdlet Stop-AzureRmSqlDatabaseActivity for cancel the asynchronous updateslo operation on the database.
+    * Adding support for Zone Redundancy for databases and elastic pools
+    	- Adding ZoneRedundant switch parameter to New-AzureRmSqlDatabase
+    	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlDatabase
+    	- Adding ZoneRedundant switch parameter to New-AzureRmSqlElasticPool
+    	- Adding ZoneRedundant switch parameter to Set-AzureRmSqlElasticPool
+    * Adding support for Server DNS Aliases
+    	- Adding Get-AzureRmSqlServerDnsAlias cmdlet which gets server dns aliases by server and alias name or a list of server dns aliases for an azure Sql Server.
+    	- Adding New-AzureRmSqlServerDnsAlias cmdlet which creates new server dns alias for a given Azure Sql server
+    	- Adding Set-AzurermSqlServerDnsAlias cmlet which allows updating a Azure Sql Server to which server dns alias is pointing
+    	- Adding Remove-AzureRmSqlServerDnsAlias cmdlet which removes a server dns alias for a Azure Sql Server
+* Azure.Storage
+    * Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
+    * Add File Share Snapshot Support Feature
+        - Add 'SnapshotTime' parameter to Get-AzureStorageShare
+        - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
+
+## 2017.10.12 - Version 4.4.1
+* AzureBatch
+     - Marked cmdlet parameters and type properties obsolete in 
+       preparation for upcoming breaking change release (Version 4.0.0)
+* HDInsight
+    * Added support for Data Disks property in cluster creation
+        - Added parameter 'WorkerNodeDataDisksGroups' to the New-AzureHDInsightCluster cmdlet
+* Insights
+        * Add-AzureRmLogAlertRule
+            - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
+            - Help file modified to include the deprecation warning and the details.
+        * Disable-AzureRmActivityLogAlert, Disable-AzureRmActivityLogAlert, Remove-AzureRmActivityLogAlert, Set-AzureRmActivityLogAlert
+            - Help file modified: removed text stating that the Force arguments was accepted since that argument is not accepted.
+* KeyVault
+    * Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
+      * The flag is being superseded by the RecoveryLevel attribute.
+* MachineLearningCompute
+    * Added initial set of cmdlets for MachineLearningCompute
+        - Get-AzureRmMlOpCluster
+        - Get-AzureRmMlOpClusterKey
+        - New-AzureRmMlOpCluster
+        - Remove-AzureRmMlOpCluster
+        - Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+        - Update-AzureRmMlOpClusterSystemService
+* MarketplaceOrdering
+    * New Cmdlet Get-AzureRmMarketplaceTerms
+        - Get the agreement terms of a given publisher id, offer id and plan id.
+    * New Cmdlet Set-AzureRmMarketplaceTerms
+    	- Accept or reject agreement terms of a give publisher id, offer id and plan id. Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
+* Profile
+    * LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+        - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+
+## 2017.09.25 - Version 4.4.0
+* AnalysisServices
+    * Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+        - Included help file for the commandlet
+        - Added in-memory tests and a scenario test (only live)
+    * Fixed bugs in Add-AzureAsAccount commandlet 
+* Automation
+    * Fixed help documents for cmdlets fixed in the earlier release.
+    * Added 4 new cmdlets to support staged rollout of DSC node configurations.
+        - Start-AzureRmAutomationDscNodeConfigurationDeployment
+        - Stop-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeployment
+        - Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
+* CognitiveServices
+    * Integrate with Cognitive Services Management SDK version 2.0.0.
+    * Get-AzureRmCognitiveServicesAccount now can correctly support paging.
+* Compute
+    * Run Command feature:
+        - New cmdlet: 'Invoke-AzureRmVMRunCommand' invokes a run command on a VM
+        - New cmdlet: 'Get-AzureRmVMRunCommandDocument' shows available run command documents
+    * Add 'StorageAccountType' parameter to Set-AzureRmDataDisk
+    * Availability Zone support for virtual machine, VM scale set, and disk
+        - New paramter: 'Zone' is added to New-AzureRmVM, New-AzureRmVMConfig, New-AzureRmVmssConfig, New-AzureRmDiskConfig
+    * VM scale set rolling upgrade feature:
+        - New cmdlet: 'Start-AzureRmVmssRollingOSUpgrade' invokes OS rolling upgrade of VM scale set
+        - New cmdlet: 'Set-AzureRmVmssRollingUpgradePolicy' sets upgrade policy for VM scale set rolling upgrade.
+        - New cmdlet: 'Stop-AzureRmVmssRollingUpgrade' cancels rolling upgrade of VM scale set
+        - New cmdlet: 'Get-AzureRmVmssRollingUpgrade' shows the status of VM scale set rolling upgrade.
+    * AssignIdentity switch parameter is introduced for system assigned identity.
+        - New parameter: 'AssignIdentity' is added to New-AzureRmVMConfig, New-AzureRmVmssConfig and Update-AzureRmVM
+    * Vmss disk encryption feature:
+        - New cmdlet: 'Set-AzureRmVmssDiskEncryptionExtension' enables disk encryption on VM scale set
+        - New cmdlet: 'Disable-AzureRmVmssDiskEncryption' disables disk encryption on VM scale set
+        - New cmdlet: 'Get-AzureRmVmssDiskEncryptionStatus' shows the disk encryption status of a VM scale set
+        - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
+* ContainerInstance
+    * Add PowerShell cmdlets for Azure Container Instance
+        - New-AzureRmContainerGroup
+        - Get-AzureRmContainerGroup
+        - Remove-AzureRmContainerGroup
+        - Get-AzureRmContainerInstanceLog
+* Insights
+        * New cmdlet Disable-AzureRmActivityLogAlert
+            - A new cmdlet to disable an existing activity log alert.
+            - Optionally the Tags are settable with this cmdlet too.
+        * New cmdlet Enable-AzureRmActivityLogAlert
+            - A new cmdlet to enable an existing activity log alert.
+            - Optionally the Tags are settable with this cmdlet too.
+        * New cmdlet Get-AzureRmActivityLogAlert
+            - A new cmdlet to retrieve one or more activity log alerts.
+            - The alerts can be retrieved by name, resource group, or subscription.
+        * New cmdlet New-AzureRmActionGroup
+            - A new cmdlet to create an ActionGroup object in memory (no request involved.)
+        * New cmdlet New-AzureRmActivityLogAlertCondition
+            - A new cmdlet to create an activity log alert leaf condition object in memory (no request involved.)
+        * New cmdlet Set-AzureRmActivityLogAlert
+            - A new cmdlet to create or update an activity log alert.
+        * New cmdlet Remove-AzureRmActivityLogAlert
+            - A new cmdlet to remove one activity log alert.
+        * New cmdlet Set-AzureRmActionGroup
+            - A new cmdlet to create a new or update an existing action group.
+        * New cmdlet Get-AzureRmActionGroup
+            - A new cmdlet to retrieve one or more action groups.
+            - The action groups can be retrieved by name, resource group, or subscription.
+        * New cmdlet Remove-AzureRmActionGroup
+            - A new cmdlet to remove one action group.
+        * New cmdlet New-AzureRmActionGroupReceiver
+            - A new cmdlet to create an new action group receiver in memory.
+* KeyVault
+    * New/updated Cmdlets to support soft-delete for KeyVault certificates
+      * Get-AzureKeyVaultCertificate
+      * Remove-AzureKeyVaultCertificate
+      * Undo-AzureKeyVaultCertificateRemoval
+* Network
+    * Added support for endpoint services to Virtual Network Subnets
+        - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+        - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+        - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    * Added cmdlet to list endpoint services available in the location
+        - Get-AzureRmVirtualNetworkAvailableEndpointService
+    * Added the ability to configure external radius based P2S authentication to the following commandlets
+        - New-AzureVirtualNetworkGateway
+        - Set-AzureVirtualNetworkGateway
+        - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+    * Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+        - New-AzureRmVpnClientConfiguration
+    	  - Get-AzureRmVpnClientConfiguration
+    * Added support for SKU parameter to Public IP Addresses and Load Balancers
+        - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+        - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+    * Added support for DisableOutboundSNAT to Load Balancer Rules
+        - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+        - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+        - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    * Added support for IkeV2 P2S
+        - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol, defaults to [ "SSTP", "IkeV2" ]
+        - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientProtocol
+    * Added support for MultiValued rules in Network Security Rules and Effective Network Security Rules
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters to accept a list of strings
+        - Updated New-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix  parameter to accept a list of strings
+        - Updated Set-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Updated SourcePortRange, DestinationPortRange, SourceAddressPrefix parameter to accept a list of strings
+        - Updated New-AzureRmNetworkSecurityGroup : Updated SecurityRules parameter to accept SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings in PSSecurityRule object
+        - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Added parameter TagMap
+        - Updated Get-AzureRmEffectiveNetworkSecurityGroup: Updated returned PSEffectiveSecurityRule object with SourcePortRange, DestinationPortRange, SourceAddressPrefix parameters which are list of strings.
+    * Added support for DDoS protection for virtual networks
+        - Updated New-AzureRmVirtualNetwork: Added switch parameters EnableDDoSProtection and EnableVmProtection
+        - Added properties EnableDDoSProtection and EnableVmProtection in PSVirtualNetwork object
+    * Added support for Highly Available Internal Load Balancer
+        - Updated Add-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+        - Updated New-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+        - Updated Set-AzureRmLoadBalancerRuleConfig: Added All as an acceptable value for Protocol parameter
+    * Added support for Application Security Groups
+        - Added New-AzureRmApplicationSecurityGroup
+        - Added Get-AzureRmApplicationSecurityGroup
+        - Added Remove-AzureRmApplicationSecurityGroup
+        - Updated New-AzureRmNetworkInterface: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated New-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated Add-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated Set-AzureRmNetworkInterfaceIpConfig: Added optional parameters ApplicationSecurityGroup and ApplicationSecurityGroupId
+        - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+        - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+        - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
+    * Added new commands for VpnDeviceConfiguration Scripts 
+        - Get-AzureRmVirtualNetworkGatewaySupportedVpnDevices 
+        - Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript 
+* Profile
+  * Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+  * Persist login information across sessions, new cmdlets: 
+    - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+    - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+  * Manage context information, new cmdets 
+    - Select-AzureRmContext - Select the active named context. 
+    - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+    - Remove-AzureRmContext - Remove an existing context. 
+    - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+  * Manage context information, cmdlet changes: 
+    - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+    - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
+* Resources
+    * Add PolicySetDefinition cmdlets
+        - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+        - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+        - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+        - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+    * Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+    * Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+    * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+    * Add Support for removal of roleassignment using PSRoleAssignment object
+        - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    * Add ManagedApplication cmdlets
+        - New-AzureRmManagedApplication cmdlet to create a managed application
+        - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+        - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+        - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+    * Add ManagedApplicationDefinition cmdlets
+        - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+        - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+        - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+        - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
+* Sql
+    * Adding support for Virtual Network Rules
+    	- Adding Get-AzureRmSqlServerVirtualNetworkRule cmdlet which gets the virtual network rules by a specific rule name or a list of virtual network rules in an Azure Sql server.
+    	- Adding Set-AzureRmSqlServerVirtualNetworkRule cmdlet which changes the virtual network that the rule points to.
+    	- Adding Remove-AzureRmSqlServerVirtualNetworkRule cmdlet which removes a virtual network rule for an Azure Sql server.
+    	- Adding New-AzureRmSqlServerVirtualNetworkRule cmdlet which creates a new virtual network rule for an Azure Sql server.
+* Websites
+    * Add PremiumV2 Tier for App Service Plans
+* Azure.Storage
+    * Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+    * Add PremiumPageBlobTier Support in Upload and Copy Blob API
+        - Set-AzureStorageBlobContent
+    	- Start-AzureStorageBlobCopy
+    * Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+        - Get-AzureStorageContainer
+        - Get-AzureStorageBlob
+        - Get-AzureStorageQueue
+        - Get-AzureStorageTable
+
+## 2017.08.10 - Version 4.3.1
   * Update to fix assembly signing issue
         
 ## 2017.08.07 - Version 4.3.0

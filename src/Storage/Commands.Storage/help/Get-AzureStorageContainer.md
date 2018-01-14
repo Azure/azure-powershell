@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 90C3DF13-0010-49B6-A8CD-C6AC34BC3EFA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragecontainer
 schema: 2.0.0
 ---
 
@@ -86,6 +86,7 @@ Accept wildcard characters: False
 ### -Context
 Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
+The cmdlet will fail when you use a storage context created from SAS Token because the cmdlet will query for container permissions which require Storage account key permission.
 
 ```yaml
 Type: IStorageContext

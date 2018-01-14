@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 7F7D1F05-617C-4EC5-8FF5-D816E9148841
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/start-azurermvmss
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Starts the VMSS or a set of virtual machines within the VMSS.
 ## SYNTAX
 
 ```
-Start-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Start-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,36 @@ PS C:\> Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "Contos
 This command starts all virtual machines that belong to the VMSS named ContosoVMSS.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InstanceId
 Specifies, as a string array, the ID or IDs of the instances that cmdlet starts.

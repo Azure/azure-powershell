@@ -32,8 +32,10 @@ function Test-PublicIpAddressCRUD
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
+      $job = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -AsJob
+      $job | Wait-Job
+	  $actual = $job | Receive-Job
+	  $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
@@ -53,7 +55,9 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $job = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
@@ -203,7 +207,8 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
       $publicip.DnsSettings.DomainNameLabel = $newDomainNameLabel
 
       # Set publicIpAddress
-      $publicip | Set-AzureRmPublicIpAddress
+      $job = $publicip | Set-AzureRmPublicIpAddress -AsJob
+      $job | Wait-Job
 
       $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $newDomainNameLabel $publicip.DnsSettings.DomainNameLabel
@@ -519,6 +524,44 @@ function Test-PublicIpAddressCRUD-StandardSku
       
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating new simple publicIpAddress.
+#>
+function Test-PublicIpAddressZones
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $zones = "1";
+    $rglocation = Get-ProviderLocation ResourceManagement
+    # TODO: replace hardcoded location
+    # $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = "eastus2"; # = Get-ProviderLocation $resourceTypeParent
+
+    try
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+      # Create publicIpAddres
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -Zone $zones;
+      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.ResourceGuid
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+      Assert-AreEqual $zones $expected.Zones[0]
     }
     finally
     {

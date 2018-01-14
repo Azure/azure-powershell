@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/add-azurermmlwebserviceregionalproperty
 schema: 2.0.0
 ---
 
@@ -12,7 +13,8 @@ Creates regional web service properties.
 ## SYNTAX
 
 ```
-Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName <String> -Name <String> -Region <String> [-Force] [-WhatIf] [-Confirm]
+Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName <String> -Name <String> -Region <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,8 +24,6 @@ Creates Azure Machine Learning regional properties for an existing web service.
 
 ### --------------------------  Example 1: Add new regional properties for West Central US  --------------------------
 
-@{paragraph=PS C:\\\>}
-
 ```
 Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Region westcentralus
 ```
@@ -31,6 +31,21 @@ Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName "myresourcegroup" -Na
 This example command creates regional property for a  web service in the "West Central US" region.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.
@@ -58,7 +73,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -88,7 +103,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -122,6 +137,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

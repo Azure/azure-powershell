@@ -19,10 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -116,21 +116,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                if (ShouldProcess(this.DiskName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     Disk disk = new Disk();
-                    Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
                     var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
                     var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -143,6 +142,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -163,5 +163,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSDisk Disk { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

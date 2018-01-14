@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 462F3EF7-4C15-41F8-853D-CDCC8E67673D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutecircuitpeeringconfig
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Removes an ExpressRoute circuit peering configuration.
 
 ```
 Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [-PeerAddressType <String>] [<CommonParameters>]
+ [-PeerAddressType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExpressRouteCircuit
 The ExpressRoute circuit containing the peering configuration to be removed.

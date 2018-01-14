@@ -1,24 +1,26 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: B5C909D7-6087-463A-83BF-99DD196B9862
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity
 schema: 2.0.0
 ---
 
 # Get-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Gets the status of moving elastic databases.
+Gets the status of database operations.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseActivity [-ServerName] <String> -ElasticPoolName <String> -DatabaseName <String>
- [-OperationId <Guid>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String>] -DatabaseName <String>
+ [-OperationId <Guid>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseActivity** cmdlet gets the status of elastic databases moving into or out of an elastic database pool in Azure SQL Database.
+The **Get-AzureRmSqlDatabaseActivity** cmdlet gets the status of database operations in Azure SQL Database.
 
 ## EXAMPLES
 
@@ -29,6 +31,13 @@ PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -Serv
 
 This command returns the operation status of all SQL Database instances in an elastic pool named ElasticPool01.
 
+### Example 2: Get status for all SQL Database operations
+```
+PS C:\>Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```
+
+This command returns the status of all SQL Database operations in a database.
+
 ## PARAMETERS
 
 ### -DatabaseName
@@ -37,12 +46,27 @@ Specifies the name of the database for which this cmdlet gets status.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -52,9 +76,9 @@ Specifies the name of the elastic database pool for which this cmdlet gets statu
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -67,7 +91,7 @@ Specifies the ID of the operation that this cmdlet gets.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +106,7 @@ Specifies the name of the resource group to which the database is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,12 +116,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Specifies the name of the Microsoft SQL Server that hosts the elastic database pool.
+Specifies the name of the Microsoft SQL Server that hosts the database.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -149,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

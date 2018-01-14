@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
+        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
+
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
+
         public string UserDomain { get; private set; }
 
         public static ComputeTestController NewInstance
@@ -185,6 +189,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
+            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
+            InternalResourceManagementClient = this.GetResourceManagementClientInternal(context);
             // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
@@ -195,7 +201,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient);
+                AuthorizationManagementClient,
+                InternalNetworkManagementClient,
+                InternalResourceManagementClient);
             // GraphClient);
         }
 
@@ -227,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private Microsoft.Azure.Management.Authorization.AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
@@ -235,6 +243,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClientInternal(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private SubscriptionClient GetSubscriptionClient()
@@ -264,6 +279,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return testViaCsm
                 ? context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)

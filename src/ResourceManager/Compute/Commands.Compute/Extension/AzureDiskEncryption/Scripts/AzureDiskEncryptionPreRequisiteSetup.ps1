@@ -38,7 +38,7 @@ Param(
 )
 
 $VerbosePreference = "Continue"
-$ErrorActionPreference = “Stop”
+$ErrorActionPreference = "Stop"
 
 ########################################################################################################################
 # Section1:  Log-in to Azure and select appropriate subscription. 
@@ -62,10 +62,11 @@ $ErrorActionPreference = “Stop”
         $defaultHomePage = 'http://contoso.com';
         $now = [System.DateTime]::Now;
         $oneYearFromNow = $now.AddYears(1);
-        $aadClientSecret = [Guid]::NewGuid();
+        $aadClientSecret = [Guid]::NewGuid().ToString();
+        $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
 
         Write-Host "Creating new AAD application ($aadAppName)";
-        $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+        $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
         $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 3B15C734-DF57-433A-8854-ACE2B35FF6CB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmaemextension
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Enables support for monitoring for SAP systems.
 
 ```
 Set-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-DisableWAD] [-EnableWAD]
- [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [<CommonParameters>]
+ [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ This command configures the virtual machine named contoso-server to use the AEM 
 The command specifies the storage account named stdstorage.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisableWAD
 Indicates that this cmdlet does not enable Azure Diagnostics for the virtual machine.

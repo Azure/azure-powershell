@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version:
+Module Name: AzureRM.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/new-azurermcontainerregistry
 schema: 2.0.0
 ---
 
@@ -13,77 +14,56 @@ Creates a container registry.
 
 ```
 New-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String>
- [-Location <String>] [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Location <String>] [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmContainerRegistry** cmdlet creates a container registry.
+The New-AzureRmContainerRegistry cmdlet creates a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Create a container registry with a new storage account.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic"
 
-Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
-ResourceGroupName  : MyResourceGroup
-Name               : MyRegistry
-Type               : Microsoft.ContainerRegistry/registries
-Location           : westus
-Tags               : {}
-SkuName            : Basic
-SkuTier            : Basic
-LoginServer        : myregistry.azurecr.io
-CreationDate       : 4/13/2017 3:48:57 PM
-ProvisioningState  : Succeeded
-AdminUserEnabled   : False
-StorageAccountName : myregistry154817
+   Container registry location: eastus
+
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
-This command creates a container registry with a new storage account in the resource group `MyResourceGroup`.
+This command creates a container registry with a new storage account in the resource group \`MyResourceGroup\`.
 
 ### Example 2: Create a container registry with admin user enabled.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -EnableAdminUser
 
-Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
-ResourceGroupName  : MyResourceGroup
-Name               : MyRegistry
-Type               : Microsoft.ContainerRegistry/registries
-Location           : westus
-Tags               : {}
-SkuName            : Basic
-SkuTier            : Basic
-LoginServer        : myregistry.azurecr.io
-CreationDate       : 4/13/2017 3:48:57 PM
-ProvisioningState  : Succeeded
-AdminUserEnabled   : True
-StorageAccountName : myregistry154817
+  Container registry location: eastus
+
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
 This command creates a container registry with admin user enabled.
 
 ### Example 3: Create a container registry with an existing storage account.
-```
+```powershell
 PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
 
-Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
-ResourceGroupName  : MyResourceGroup
-Name               : MyRegistry
-Type               : Microsoft.ContainerRegistry/registries
-Location           : westus
-Tags               : {}
-SkuName            : Basic
-SkuTier            : Basic
-LoginServer        : myregistry.azurecr.io
-CreationDate       : 4/13/2017 3:48:57 PM
-ProvisioningState  : Succeeded
-AdminUserEnabled   : False
-StorageAccountName : mystorageaccount
+  Container registry location: eastus
+
+Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
+                                                                                  ngState    nabled     ame
+-------------     ---        -----------               ------------               ---------- ---------- ---------------
+myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
 ```
 
-This command creates a container registry with an existing storage account `mystorageaccount` in the same subscription.
+This command creates a container registry with an existing storage account \`mystorageaccount\` in the same subscription.
 
 ## PARAMETERS
 
@@ -97,7 +77,7 @@ Aliases: EnableAdmin
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -109,7 +89,7 @@ Default to the location of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -139,7 +119,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -161,7 +141,7 @@ Accepted values: Basic
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,7 +151,7 @@ The name of an existing storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Container Registry Tags.Key-value pairs in the form of a hash table. For example:
+Container Registry Tags.Key-value pairs in the form of a hash table.
+For example:
 
 @{key0="value0";key1=$null;key2="value2"}
 
@@ -207,7 +188,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -220,6 +201,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -241,8 +237,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmContainerRegistry](./Get-AzureRmContainerRegistry.md)
+[Get-AzureRmContainerRegistry](Get-AzureRmContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry](./Update-AzureRmContainerRegistry.md)
+[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
 
-[Remove-AzureRmContainerRegistry](./Remove-AzureRmContainerRegistry.md)
+[Remove-AzureRmContainerRegistry](Remove-AzureRmContainerRegistry.md)
+

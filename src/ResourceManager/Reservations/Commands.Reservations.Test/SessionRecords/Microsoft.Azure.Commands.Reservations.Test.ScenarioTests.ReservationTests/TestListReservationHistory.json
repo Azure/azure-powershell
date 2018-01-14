@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/55ef9160-825e-4ca3-969e-c919de3c57ec/revisions?api-version=2017-11-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FwYWNpdHkvcmVzZXJ2YXRpb25PcmRlcnMvNTU3OTNiYzItZTVjMi00YTk4LTlkNWMtMGEwYmNlNmNmOTk4L3Jlc2VydmF0aW9ucy81NWVmOTE2MC04MjVlLTRjYTMtOTY5ZS1jOTE5ZGUzYzU3ZWMvcmV2aXNpb25zP2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec65e457-e155-4ea3-8365-600bd56b56a7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Reservations.AzureReservationAPIClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1_v2\"\r\n      },\r\n      \"id\": \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/55ef9160-825e-4ca3-969e-c919de3c57ec/revisions/4\",\r\n      \"type\": \"Microsoft.Capacity/reservationOrders/reservations/revisions\",\r\n      \"name\": \"55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/55ef9160-825e-4ca3-969e-c919de3c57ec/4\",\r\n      \"etag\": 4,\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"appliedScopeType\": \"Shared\",\r\n        \"quantity\": 5,\r\n        \"meters\": [\r\n          \"c90f4d88-01c1-48e9-ba9d-cb9c6ccaedd3\"\r\n        ],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"expiryDate\": \"2018-09-26\",\r\n        \"provisioningSubState\": \"Active\",\r\n        \"displayName\": \"cabri_test\",\r\n        \"region\": \"eastus\",\r\n        \"effectiveDateTime\": \"2017-10-04T22:16:57.6038027Z\",\r\n        \"lastUpdatedDateTime\": \"2017-10-04T22:17:04.634299Z\",\r\n        \"mergeProperties\": {\r\n          \"mergeSources\": [\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/4964fc57-4ed9-40d6-8cff-841b8be5a35f\",\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/2df4bed8-28b5-464b-a280-cf171b970c1b\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1_v2\"\r\n      },\r\n      \"id\": \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/55ef9160-825e-4ca3-969e-c919de3c57ec/revisions/3\",\r\n      \"type\": \"Microsoft.Capacity/reservationOrders/reservations/revisions\",\r\n      \"name\": \"55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/55ef9160-825e-4ca3-969e-c919de3c57ec/3\",\r\n      \"etag\": 3,\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"appliedScopes\": [\r\n          \"/subscriptions/98df3792-7962-4f18-8be2-d5576f122de3\"\r\n        ],\r\n        \"appliedScopeType\": \"Single\",\r\n        \"quantity\": 5,\r\n        \"meters\": [\r\n          \"c90f4d88-01c1-48e9-ba9d-cb9c6ccaedd3\"\r\n        ],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"expiryDate\": \"2018-09-26\",\r\n        \"provisioningSubState\": \"Pending\",\r\n        \"displayName\": \"cabri_test\",\r\n        \"region\": \"eastus\",\r\n        \"effectiveDateTime\": \"2017-10-02T01:32:45.1233995Z\",\r\n        \"extendedStatusInfo\": {\r\n          \"statusCode\": \"Pending\",\r\n          \"message\": \"An operation is in progress on your reservation. Please wait for operation to complete before taking further action\"\r\n        },\r\n        \"lastUpdatedDateTime\": \"2017-10-04T22:16:56.963259Z\",\r\n        \"mergeProperties\": {\r\n          \"mergeSources\": [\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/4964fc57-4ed9-40d6-8cff-841b8be5a35f\",\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/2df4bed8-28b5-464b-a280-cf171b970c1b\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1_v2\"\r\n      },\r\n      \"id\": \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/55ef9160-825e-4ca3-969e-c919de3c57ec/revisions/2\",\r\n      \"type\": \"Microsoft.Capacity/reservationOrders/reservations/revisions\",\r\n      \"name\": \"55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/55ef9160-825e-4ca3-969e-c919de3c57ec/2\",\r\n      \"etag\": 2,\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"appliedScopes\": [\r\n          \"/subscriptions/98df3792-7962-4f18-8be2-d5576f122de3\"\r\n        ],\r\n        \"appliedScopeType\": \"Single\",\r\n        \"quantity\": 5,\r\n        \"meters\": [\r\n          \"c90f4d88-01c1-48e9-ba9d-cb9c6ccaedd3\"\r\n        ],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"expiryDate\": \"2018-09-26\",\r\n        \"provisioningSubState\": \"Active\",\r\n        \"displayName\": \"cabri_test\",\r\n        \"region\": \"eastus\",\r\n        \"effectiveDateTime\": \"2017-10-02T01:32:45.1233995Z\",\r\n        \"lastUpdatedDateTime\": \"2017-10-02T01:32:45.1233995Z\",\r\n        \"mergeProperties\": {\r\n          \"mergeSources\": [\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/4964fc57-4ed9-40d6-8cff-841b8be5a35f\",\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/2df4bed8-28b5-464b-a280-cf171b970c1b\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_DS1_v2\"\r\n      },\r\n      \"id\": \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/55ef9160-825e-4ca3-969e-c919de3c57ec/revisions/1\",\r\n      \"type\": \"Microsoft.Capacity/reservationOrders/reservations/revisions\",\r\n      \"name\": \"55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/55ef9160-825e-4ca3-969e-c919de3c57ec/1\",\r\n      \"etag\": 1,\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"appliedScopes\": [\r\n          \"/subscriptions/98df3792-7962-4f18-8be2-d5576f122de3\"\r\n        ],\r\n        \"appliedScopeType\": \"Single\",\r\n        \"quantity\": 5,\r\n        \"meters\": [\r\n          \"c90f4d88-01c1-48e9-ba9d-cb9c6ccaedd3\"\r\n        ],\r\n        \"provisioningState\": \"Creating\",\r\n        \"expiryDate\": \"2018-09-26\",\r\n        \"provisioningSubState\": \"Pending\",\r\n        \"displayName\": \"cabri_test\",\r\n        \"region\": \"eastus\",\r\n        \"effectiveDateTime\": \"2017-10-02T01:32:39.7765669Z\",\r\n        \"lastUpdatedDateTime\": \"2017-10-02T01:32:39.7765669Z\",\r\n        \"mergeProperties\": {\r\n          \"mergeSources\": [\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/4964fc57-4ed9-40d6-8cff-841b8be5a35f\",\r\n            \"/providers/microsoft.capacity/reservationOrders/55793bc2-e5c2-4a98-9d5c-0a0bce6cf998/reservations/2df4bed8-28b5-464b-a280-cf171b970c1b\"\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4512"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "westus:aeee4111-9ce0-41fc-a6e4-b2efd689c35f"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b9ee8e6-62d9-4223-aecb-04376b576b62"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20171004T231946Z:1b9ee8e6-62d9-4223-aecb-04376b576b62"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Oct 2017 23:19:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "98df3792-7962-4f18-8be2-d5576f122de3"
+  }
+}

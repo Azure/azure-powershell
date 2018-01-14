@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleWebhookTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleWebhookCommand()
             {
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ServiceUri = "http://hook.com/webhook";
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.Properties = new Hashtable();
+            Cmdlet.Property = new Hashtable();
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.Properties.Add("prop1", "value1");
+            Cmdlet.Property.Add("prop1", "value1");
             Cmdlet.ExecuteCmdlet();
         }
     }

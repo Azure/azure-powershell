@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -117,6 +119,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public List<PSPacketCaptureFilter> Filter { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -180,7 +185,7 @@ namespace Microsoft.Azure.Commands.Network
                 packetCaptureProperties.Filters = new List<MNM.PacketCaptureFilter>();
                 foreach (PSPacketCaptureFilter filter in this.Filter)
                 {
-                    MNM.PacketCaptureFilter filterMNM = Mapper.Map<MNM.PacketCaptureFilter>(filter);
+                    MNM.PacketCaptureFilter filterMNM = NetworkResourceManagerProfile.Mapper.Map<MNM.PacketCaptureFilter>(filter);
                     packetCaptureProperties.Filters.Add(filterMNM);
                 }
             }

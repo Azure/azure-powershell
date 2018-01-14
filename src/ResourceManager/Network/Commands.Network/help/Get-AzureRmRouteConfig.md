@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: DBD40431-DD7A-42CB-83AA-568B1065A468
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermrouteconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets routes from a route table.
 ## SYNTAX
 
 ```
-Get-AzureRmRouteConfig [-Name <String>] -RouteTable <PSRouteTable> [<CommonParameters>]
+Get-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ The command passes that table to the current cmdlet by using the pipeline operat
 The current cmdlet gets the route named Route07 in the route table named RouteTable01.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the route that this cmdlet gets.
@@ -67,7 +83,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

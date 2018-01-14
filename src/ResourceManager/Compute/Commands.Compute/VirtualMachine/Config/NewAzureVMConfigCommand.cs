@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -61,7 +62,18 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 4,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public string [] Zone { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -84,10 +96,15 @@ namespace Microsoft.Azure.Commands.Compute
                     Id = this.AvailabilitySetId
                 },
                 LicenseType = this.LicenseType,
-                Identity = this.IdentityType != null ? new VirtualMachineIdentity(null, null, this.IdentityType) : null,
+                Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
+                Zones = this.Zone,
             };
 
+            if (this.IdentityType != null)
+            {
+                vm.Identity = new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned);
+            }
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();

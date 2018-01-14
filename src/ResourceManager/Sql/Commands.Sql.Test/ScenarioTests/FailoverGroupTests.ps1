@@ -367,7 +367,10 @@ function Test-SwitchFailoverGroup()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		Get-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName | Switch-AzureRmSqlDatabaseFailoverGroup
+		$foGroup = Get-AzureRmSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName 
+		$job = $foGroup | Switch-AzureRmSqlDatabaseFailoverGroup -AsJob
+		$job | Wait-Job
+
 		$newSecondaryFg = $fg | Get-AzureRmSqlDatabaseFailoverGroup
 		Assert-FailoverGroupsEqual $fg $newSecondaryFg -role "Secondary"
 		Validate-FailoverGroupWithGet $newSecondaryFg

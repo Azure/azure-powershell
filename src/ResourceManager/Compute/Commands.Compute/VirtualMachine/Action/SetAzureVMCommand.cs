@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -33,13 +34,14 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ParameterSetName = GeneralizeResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+         HelpMessage = "The resource group name.")]
         [Parameter(
            Mandatory = true,
            Position = 0,
-           ValueFromPipelineByPropertyName = true,
            ParameterSetName = RedeployResourceGroupNameParameterSet,
-           HelpMessage = "The resource group name.")]
+           ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -54,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ParameterSetName = RedeployIdParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+          HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -68,14 +70,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = GeneralizeResourceGroupNameParameterSet,
             HelpMessage = "To generalize virtual machine.")]
         [Parameter(
             Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = GeneralizeIdParameterSet,
             HelpMessage = "To generalize virtual machine.")]
         [ValidateNotNullOrEmpty]
@@ -83,18 +81,17 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = RedeployResourceGroupNameParameterSet,
             HelpMessage = "To redeploy virtual machine.")]
         [Parameter(
             Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = RedeployIdParameterSet,
             HelpMessage = "To redeploy virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Redeploy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -107,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }
@@ -118,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }

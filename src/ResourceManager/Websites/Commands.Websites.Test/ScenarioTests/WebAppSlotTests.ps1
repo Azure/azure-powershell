@@ -43,7 +43,7 @@ function Test-GetWebAppSlot
 		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
 		
 		# Create new deployment slot
-		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname1 -AppServicePlan $planName 
+		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname1 -AppServicePlan $planName
 		$appWithSlotName1 = "$appname/$slotname1"
 
 		# Assert
@@ -399,7 +399,7 @@ function Test-CreateNewWebAppSlot
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName 
+		$actual =  New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName
 		
 		# Assert
 		Assert-AreEqual $appname $actual.Name
@@ -413,7 +413,10 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName
+		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AsJob
+		$job | Wait-Job
+		$slot1 = $job | Receive-Job
+
 		$appWithSlotName = "$appname/$slotname"
 
 		# Assert
@@ -531,7 +534,9 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm1.Id $slot.ServerFarmId
 		
 		# Change service plan
-		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2
+		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -AsJob
+		$job | Wait-Job
+		$slot = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
@@ -621,7 +626,7 @@ function Test-RemoveWebAppSlot
 		Assert-AreEqual $serverFarm.Id $slot.ServerFarmId
 
 		# Remove web app via pipeline obj
-		$slot | Remove-AzureRmWebAppSlot -Force
+		$slot | Remove-AzureRmWebAppSlot -Force -AsJob | Wait-Job
 
 		# Retrieve web app by name
 		$slotNames = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname | Select -expand Name
@@ -697,6 +702,13 @@ function Test-WebAppSlotPublishingProfile
 
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appWithSlotName3 }
+
+		# Get web app publishing profile without OutputFile
+		[xml]$profile = Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName $rgname -Name $appname -Slot $slotname
+
+		# Assert
+		Assert-NotNull $profile
+
 	}
 	finally
 	{

@@ -30,13 +30,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (_networkClient == null)
                 {
-                    _networkClient = new NetworkClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    _networkClient = new NetworkClient(DefaultProfile.DefaultContext);
                 }
+
+                this._networkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._networkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._networkClient.WarningLogger = WriteWarningWithTimestamp;
                 return _networkClient;
             }
 
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            NetworkResourceManagerProfile.Initialize();
             try
             {
                 Execute();

@@ -19,10 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -119,26 +119,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSDisk))]
     public partial class UpdateAzureRmDisk : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                if (ShouldProcess(this.DiskName, VerbsData.Update))
                 {
 
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     DiskUpdate diskupdate = new DiskUpdate();
-                    Mapper.Map<PSDiskUpdate, DiskUpdate>(this.DiskUpdate, diskupdate);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDiskUpdate, DiskUpdate>(this.DiskUpdate, diskupdate);
                     Disk disk = new Disk();
-                    Mapper.Map<PSDisk, Disk>(this.Disk, disk);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
                     var result = (this.DiskUpdate == null)
                                  ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk)
                                  : DisksClient.Update(resourceGroupName, diskName, diskupdate);
                     var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -157,6 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -192,5 +192,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSDisk Disk { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

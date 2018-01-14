@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+Module Name: AzureRM.NotificationHubs
 ms.assetid: 9805B3F1-C6BB-4A0F-A7C3-1DD1ACB75CDA
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/get-azurermnotificationhubsnamespace
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets information about a notification hub namespace.
 ## SYNTAX
 
 ```
-Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] <String>] [[-Namespace] <String>] [<CommonParameters>]
+Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] <String>] [[-Namespace] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +54,21 @@ PS C:\>Get-AzureRmNotificationHubsNamespace -ResourceGroup "ContosoNotifications
 This command gets information for all notification hub namespaces assigned to the resource group ContosoNotificationsGroup.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Namespace
 Specifies a unique name for the namespace.
