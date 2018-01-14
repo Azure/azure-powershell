@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccount
 schema: 2.0.0
@@ -30,7 +30,7 @@ The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all
 
 ## EXAMPLES
 
-### Example 1: Get a specified storage account
+### Example 1: Get a specified Storage account
 ```
 PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
 ```
@@ -54,7 +54,7 @@ This command gets all of the Storage accounts in the subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 13901193-8C68-4969-ADCD-2E82EA714354
@@ -16,7 +16,7 @@ Creates a peering between two virtual networks.
 ```
 Add-AzureRmVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork>
  -RemoteVirtualNetworkId <String> [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit]
- [-UseRemoteGateways] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-UseRemoteGateways] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +95,21 @@ Flag to allow gatewayLinks be used in remote virtual network's link to this virt
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: AlloowGatewayTransit
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

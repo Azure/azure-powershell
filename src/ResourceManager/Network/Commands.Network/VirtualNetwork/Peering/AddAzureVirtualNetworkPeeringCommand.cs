@@ -63,6 +63,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow remote gateways be used on this virtual network")]
         public SwitchParameter UseRemoteGateways { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
