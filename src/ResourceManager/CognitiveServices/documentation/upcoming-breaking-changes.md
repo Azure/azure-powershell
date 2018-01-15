@@ -26,3 +26,5 @@
 -->
 
 # Upcoming Breaking Changes
+
+## Release 1.0.x - May 2018
