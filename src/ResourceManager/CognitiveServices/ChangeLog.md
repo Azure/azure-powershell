@@ -19,7 +19,6 @@
 -->
 ## Current Release
 * Integrate with Cognitive Services Management SDK version 3.0.0.
-* Define ProvisioningState as an enum in PS module and mark it as obsolete. The property will become a string in next breaking change version.
 
 ## Version 0.9.0
 * Add support for online help
