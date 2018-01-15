@@ -28,3 +28,5 @@
 # Upcoming Breaking Changes
 
 ## Release 1.0.x - May 2018
+
+* ProvisioningState property will be changed to a string in an upcoming release.
