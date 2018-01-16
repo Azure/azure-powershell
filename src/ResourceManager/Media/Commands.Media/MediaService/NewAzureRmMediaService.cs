@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [Parameter(
             Mandatory = false, 
             HelpMessage = "The tags associated with the media service account.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
+        [Obsolete("New-AzureRmMediaService: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 #pragma warning disable CS0618
                         var restMediaService = new RestMediaService(
                             Location,
-                            Tags.ToDictionaryTags(),
+                            Tag.ToDictionaryTags(),
                             null,
                             null,
                             MediaServiceType);

@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
+        [Obsolete("Set-AzureRmDataLakeAnalyticsAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         null,
                         null,
                         null,
-                        Tags,
+                        Tag,
                         MaxAnalyticsUnits,
                         MaxJobCount,
                         QueryStoreRetention,

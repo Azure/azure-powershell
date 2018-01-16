@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
-        public IDictionary Tags { get; set; }
+        [Obsolete("Set-AzureRmAutomationRunbook: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public IDictionary Tag { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether progress logging should be turned on or off.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                   this.AutomationAccountName,
                   this.Name,
                   this.Description,
-                  this.Tags,
+                  this.Tag,
                   this.LogProgress,
                   this.LogVerbose);
 #pragma warning restore CS0618

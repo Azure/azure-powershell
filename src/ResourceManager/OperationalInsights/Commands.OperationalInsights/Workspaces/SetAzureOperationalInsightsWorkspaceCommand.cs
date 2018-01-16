@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("Set-AzureRmOperationalInsightsWorkspace: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Sku = Sku,
-                Tags = Tags,
+                Tags = Tag,
                 RetentionInDays = RetentionInDays
             };
 #pragma warning restore CS0618

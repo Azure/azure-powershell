@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
 
         [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the gateway.",
             ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmServerManagementGateway: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
             var gateway = Gateway.Create(Client.Gateway.Create(ResourceGroupName,
                 GatewayName,
                 Location,
-                Tags,
+                Tag,
                 AutoUpgrade.IsPresent
                     ? Management.ServerManagement.Models.AutoUpgrade.On
                     : Management.ServerManagement.Models.AutoUpgrade.Off));

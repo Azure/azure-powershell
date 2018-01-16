@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: azurerm.ApiManagement
+Module Name: AzureRM.ApiManagement
 ms.assetid: 164C5205-01BA-47BB-B780-D0B9AE614A4B
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagement
 schema: 2.0.0
@@ -17,7 +17,7 @@ Creates an API Management deployment.
 New-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -Location <String> -Organization <String>
  -AdminEmail <String> [-Sku <PsApiManagementSku>] [-Capacity <Int32>] [-VpnType <PsApiManagementVpnType>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>]
- [-Tags <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-AdditionalRegions <PsApiManagementRegion[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -209,13 +209,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags.
+### -Tag
+Tags dictionary.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
-Aliases: Tag
+Aliases: Tags
 
 Required: False
 Position: Named
