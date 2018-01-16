@@ -200,7 +200,7 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $getgw.Probes[1]
 		Assert-NotNull $getgw.Probes[1].Match
 		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
-		Assert-AreEqual 0 $getgw.Probes[1].Match.StatusCodes.Count
+		Assert-AreEqual 1 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
 		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
