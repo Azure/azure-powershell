@@ -12,15 +12,21 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ## SYNTAX
 
+### InputObjectSet (Default)
+```
+Get-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceSet
 ```
-Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [[-CertificateName] <String>]
+Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificate -ResourceId <String> [[-CertificateName] <String>]
+Get-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -69,9 +75,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Certificate Object
+
+```yaml
+Type: PSCertificateDescription
+Parameter Sets: InputObjectSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Iot Hub
 
@@ -101,7 +122,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,7 +137,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -129,9 +150,9 @@ Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

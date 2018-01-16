@@ -12,6 +12,12 @@ Generates a verification code for an Azure IoT Hub certificate.
 
 ## SYNTAX
 
+### InputObjectSet (Default)
+```
+Get-AzureRmIotHubCertificateVerificationCode [-InputObject] <PSCertificateDescription>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceSet
 ```
 Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Name] <String>
@@ -20,8 +26,8 @@ Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Nam
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificateVerificationCode -ResourceId <String> [-CertificateName] <String> [-Etag] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIotHubCertificateVerificationCode [-ResourceId] <String> [-CertificateName] <String>
+ [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,13 +61,13 @@ Name of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet, ResourceIdSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,13 +91,28 @@ Etag of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet, ResourceIdSet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Certificate Object
+
+```yaml
+Type: PSCertificateDescription
+Parameter Sets: InputObjectSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -106,7 +127,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -121,7 +142,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,9 +155,9 @@ Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

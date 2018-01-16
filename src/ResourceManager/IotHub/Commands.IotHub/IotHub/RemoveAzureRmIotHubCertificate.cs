@@ -18,18 +18,28 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Management.IotHub;
     using ResourceManager.Common.ArgumentCompleters;
+    using Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubCertificate", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubCertificate", DefaultParameterSetName = InputObjectParameterSet, SupportsShouldProcess = true)]
     public class RemoveAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
+        private const string InputObjectParameterSet = "InputObjectSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Certificate Object")]
+        [ValidateNotNullOrEmpty]
+        public PSCertificateDescription InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -39,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -48,7 +58,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -57,13 +66,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
@@ -72,28 +79,51 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Etag of the Certificate")]
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Etag of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string Etag { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.RemoveIotHubCertificate))
             {
+                if (ParameterSetName.Equals(InputObjectParameterSet))
+                {
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                    this.Name = this.InputObject.Name;
+                    this.CertificateName = this.InputObject.CertificateName;
+                    this.Etag = this.InputObject.Etag;
+                }
+
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
                     this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
                     this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
                 }
+                try
+                {
+                    this.IotHubClient.Certificates.Delete(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
 
-                this.IotHubClient.Certificates.Delete(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag);
+                    if (PassThru.IsPresent)
+                    {
+                        this.WriteObject(true);
+                    }
+                }
+                catch
+                {
+                    if (PassThru.IsPresent)
+                    {
+                        this.WriteObject(false);
+                    }
+                }
             }
         }
     }

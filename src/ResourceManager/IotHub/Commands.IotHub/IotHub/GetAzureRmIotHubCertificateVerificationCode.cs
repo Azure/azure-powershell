@@ -21,19 +21,28 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificateVerificationCode")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificateVerificationCode", DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSCertificateWithNonceDescription))]
     [Alias("Get-AzureRmIotHubCVC")]
     public class GetAzureRmIotHubCertificateVerificationCode : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
+        private const string InputObjectParameterSet = "InputObjectSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Certificate Object")]
+        [ValidateNotNullOrEmpty]
+        public PSCertificateDescription InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -43,7 +52,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -52,7 +61,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -61,12 +69,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Certificate")]
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceParameterSet,
             HelpMessage = "Name of the Certificate")]
         [ValidateNotNullOrEmpty]
@@ -76,19 +82,25 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Etag of the Certificate")]
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Etag of the Certificate")]
         [ValidateNotNullOrEmpty]
         public string Etag { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(InputObjectParameterSet))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+                this.CertificateName = this.InputObject.CertificateName;
+                this.Etag = this.InputObject.Etag;
+            }
+
             if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
                 this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
