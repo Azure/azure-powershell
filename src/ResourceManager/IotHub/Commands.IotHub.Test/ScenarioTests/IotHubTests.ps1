@@ -232,7 +232,11 @@ function Test-AzureRmIotHubLifecycle
 
 function Test-AzureRmIotHubCertificateLifecycle
 {
-	Param($Location, $IotHubName, $ResourceGroupName, $Sku)
+	#Param($Location, $IotHubName, $ResourceGroupName, $Sku)
+	$Location = "northeurope"
+	$IotHubName = "pstestiothub"
+	$ResourceGroupName = "pstestrg"
+	$Sku = "S1"
 
 	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
 
@@ -295,6 +299,9 @@ function Test-AzureRmIotHubCertificateLifecycle
 
 	# Remove IotHub
 	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+
+	# Remove Resource Group
+	Remove-AzureRmResourceGroup -Name $ResourceGroupName -force
 }
 
 <#

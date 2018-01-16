@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public void TestAzureIotHubCertificateLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubCertificateLifecycle", "northeurope", "pstestiothub", "pstestrg", "S1") }; },
+                () => { return new[] { "Test-AzureRmIotHubCertificateLifecycle" }; },
                 null,
                 null,
                 TestUtilities.GetCallingClass(),
