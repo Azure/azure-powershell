@@ -28,28 +28,28 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailableSslOptions()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableSslOptions"));
         }
 
-        [Fact]
+        [Fact(Skip = "rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailableWafRuleSets()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableWafRuleSets"));
         }
 
-        [Fact]
+        [Fact(Skip = "rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApplicationGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact]
+        [Fact(Skip = "rerecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApplicationGatewayCRUD2()
         {
