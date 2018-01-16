@@ -26,8 +26,11 @@ function Test-CreateElasticPool
     {
         # Create a pool with all values
         $poolName = Get-ElasticPoolName
-        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800
+        $job = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800 -AsJob
+		$job | Wait-Job
+		$ep1 = $job.Output
+
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
         Assert-AreEqual 204800 $ep1.StorageMB
@@ -108,8 +111,11 @@ function Test-UpdateElasticPool
     try
     {
         # Create a pool with all values
-        $sep1 = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600
+        $job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
+		$job | Wait-Job
+		$sep1 = $job.Output
+
         Assert-NotNull $sep1
         Assert-AreEqual 400 $sep1.Dtu 
         Assert-AreEqual 409600 $sep1.StorageMB

@@ -1,4 +1,96 @@
-﻿## 2017.11.10 Version 5.0.1
+﻿## 2017.12.8 Version 5.1.1
+* AnalysisServices
+    - Change validate set of location to dynamic lookup so that all clouds are supported.
+* Automation
+    - Update to Import-AzureRMAutomationRunbook
+        - Support is now being provided for Python2 runbooks
+* Batch
+    - Fixed a bug where account operations without a resource group failed to auto-detect the resource group
+* Compute
+    - Get-AzureRmComputeResourceSku shows zone information.
+    - Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
+    - Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+        - Affected cmdlets include: New-, Update-, Set-, Remove-, Start-, Restart-, Stop- cmdlets for Virtual Machines and Virtual Machine Scale Sets
+    - Added simplified parameter set to New-AzureRmVM, which creates a Virtual Machine and all required resources using smart defaults
+* ContainerInstance
+    - Apply Azure Container Instance SDK 2017-10-01
+        - Support container run-to-completion
+        - Support Azure File volume mount
+        - Support opening multiple ports for public IP
+* ContainerRegistry
+    - New cmdlets for geo-replication and webhooks
+        - Get/New/Remove-AzureRmContainerRegistryReplication
+        - Get/New/Remove/Test/Update-AzureRmContainerRegistryWebhook
+* DataFactories
+    - Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).
+* DataFactoryV2
+    - Added two new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun
+* DataLakeAnalytics
+    - Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
+        - Detailed information about ScriptParameter can be found using Get-Help on Submit-AzureRmDataLakeAnalyticsJob
+    - For New-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+        - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+    - For New-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+        - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
+    - For Set-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+        - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+    - For Submit-AzureRmDataLakeAnalyticsJob, changed the parameter DegreeOfParallelism to AnalyticsUnits
+        - Added an alias for the parameter AnalyticsUnits: DegreeOfParallelism
+    - For Update-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+        - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
+* MachineLearningCompute
+    - Add Set-AzureRmMlOpCluster
+        - Update a cluster's agent count or SSL configuration
+    - Orchestrator properties are optional
+        - The service will create a service principal if not provided, so the orchestrator
+        properties are now optional
+* PowerBIEmbedded
+    - Add support for Power BI Embedded Capacity cmdlets
+    - New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity - Gets the details of a PowerBI Embedded Capacity.
+    - New Cmdlet New-AzureRmPowerBIEmbeddedCapacity - Creates a new PowerBI Embedded Capacity
+    - New Cmdlet Remove-AzureRmPowerBIEmbeddedCapacity - Deletes an instance of PowerBI Embedded Capacity
+    - New Cmdlet Resume-AzureRmPowerBIEmbeddedCapacity - Resumes an instance of PowerBI Embedded Capacity
+    - New Cmdlet Suspend-AzureRmPowerBIEmbeddedCapacity - Suspends an instance of PowerBI Embedded Capacity
+    - New Cmdlet Test-AzureRmPowerBIEmbeddedCapacity - Tests the existence of an instance of PowerBI Embedded Capacity
+    - New Cmdlet Update-AzureRmPowerBIEmbeddedCapacity - Modifies an instance of PowerBI Embedded Capacity
+* Profile
+    - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+        - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+    - Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+    - Added -AsJob parameter to Get-AzureRmSubscription cmdlet
+* RecoveryServices.Backup
+    - Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
+    - Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
+* Resources
+    - Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
+        - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
+    - Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
+        - Users can now use Set-AzureRMRoleRoleDefinition with assignable scopes including new scopes irrespective of the position of the scope
+    - Allow scopes to end with "/"
+        - Users can now use RoleDefinition and RoleAssignment commandlets with scopes ending with "/" ,consistent with API and CLI
+    - Allow users to create RoleAssignment using delegation flag
+        - Users can now use New-AzureRMRoleAssignment with an option of adding the delegation flag
+    - Fix RoleAssignment get to respect the scope parameter
+    - Add an alias for ServicePrincipalName in the New-AzureRmRoleAssignment Commandlet
+        - Users can now use the ApplicationId instead of the ServicePrincipalName when using the New-AzureRmRoleAssignment commandlet
+* SiteRecovery
+    - Add deprecation warnings for all cmdlets in this module in preparation for the next breaking change release.
+        - Please see the upcoming breaking changes guide for more information on how to migrate your cmdlets from AzureRM.
+* Sql
+    - Added ability to rename database using Set-AzureRmSqlDatabase
+    - Fixed issue https://github.com/Azure/azure-powershell/issues/4974
+        - Providing invalid AUDIT_CHANGED_GROUP value for auditing cmdlets no longer throws an error and will be removed in an upcoming release.
+    - Fixed issue https://github.com/Azure/azure-powershell/issues/5046
+        - AuditAction parameter in auditing cmdlets is no longer being ignored
+    - Fixed an issue in Auditing cmdlets when 'Secondary' StorageKeyType is provided
+        - When setting blob auditing, the primary storage account key was used instead of the secondary key when providing 'Secondary' value for StorageKeyType parameter.
+    - Changing the wording for confirmation message from Set-AzureRmSqlServerTransparentDataEncryptionProtector
+* Azure (RDFE)
+    - Removed all RemoteApp Cmdles
+* Azure.Storage
+    - Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
+
+## 2017.11.10 Version 5.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing in the following modules:
     - AzureRM.ApiManagement
     - AzureRM.Backup
