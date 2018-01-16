@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
         public int SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags for the commitment plan resource.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
+        [Obsolete("Update-AzureRmMlCommitmentPlan: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
             /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             var sku = new ResourceSku(skuCapacity, this.SkuName, this.SkuTier);
 
 #pragma warning disable CS0618
-            var tags = this.Tags.Cast<DictionaryEntry>()
+            var tags = this.Tag.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string) kvp.Key, kvp => (string) kvp.Value);
 #pragma warning restore CS0618
 

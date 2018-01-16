@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags to be associated with Property. This parameter is optional.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
-        public string[] Tags { get; set; }
+        [Obsolete("New-AzureRmApiManagementProperty: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public string[] Tag { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Name,
                 Value,
                 Secret,
-                Tags);
+                Tag);
 #pragma warning restore CS0618
 
             WriteObject(logger);

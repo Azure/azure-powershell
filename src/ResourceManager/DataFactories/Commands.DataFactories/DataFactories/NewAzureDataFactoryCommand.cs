@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
-        [Obsolete("This property will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmDataFactory: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
-                Tags = Tags,
+                Tags = Tag,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };

@@ -16,7 +16,7 @@ Creates a virtual machine.
 ### DefaultParameterSet (Default)
 ```
 New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -111,7 +111,7 @@ The address prefix for the virtual network which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +126,8 @@ The IP allocation method for the public IP which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
+Accepted values: Static, Dynamic
 
 Required: False
 Position: Named
@@ -141,7 +142,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +157,7 @@ The administrator credentials for the VM.
 ```yaml
 Type: PSCredential
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -186,10 +187,10 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -201,7 +202,7 @@ The subdomain label for the fully-qualified domain name (FQDN) of the VM.  This 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,7 +217,7 @@ The friendly image name upon which the VM will be built.  These include: Win2016
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -239,7 +240,7 @@ If you specify this parameter for an update, the value must match the initial va
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -254,7 +255,7 @@ Specifies a location for the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -266,7 +267,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -281,7 +282,7 @@ The name of the VM resource.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -296,7 +297,7 @@ A list of ports to open on the network security group (NSG) for the created VM. 
 ```yaml
 Type: Int32[]
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -311,7 +312,7 @@ The name of a new (or existing) public IP address for the created VM to use.  If
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -326,7 +327,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -338,7 +339,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -353,7 +354,7 @@ The name of a new (or existing) network security group (NSG) for the created VM 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -368,7 +369,7 @@ The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -383,7 +384,7 @@ The address prefix for the subnet which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -398,7 +399,7 @@ The name of a new (or existing) subnet for the created VM to use.  If not specif
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -407,7 +408,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies that resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
 Each resource or resource group can have a maximum of 15 tags.
@@ -415,7 +416,7 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: DefaultParameterSet
-Aliases: Tag
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -430,7 +431,7 @@ The name of a new (or existing) virtual network for the created VM to use.  If n
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -462,7 +463,7 @@ Specifies the zone list of the virtual machine.
 ```yaml
 Type: String[]
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
