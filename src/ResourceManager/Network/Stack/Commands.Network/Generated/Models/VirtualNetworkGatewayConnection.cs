@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualNetworkGatewayConnection
         /// class.
         /// </summary>
-        public VirtualNetworkGatewayConnection(string etag = default(string), string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway1 = default(VirtualNetworkGateway), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), string connectionType = default(string), int? routingWeight = default(int?), string sharedKey = default(string), string connectionStatus = default(string), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), string resourceGuid = default(string), string provisioningState = default(string))
+        public VirtualNetworkGatewayConnection(string etag = default(string), string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway1 = default(VirtualNetworkGateway), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), string connectionType = default(string), int routingWeight = default(int), string sharedKey = default(string), string connectionStatus = default(string), ulong egressBytesTransferred = default(ulong), ulong ingressBytesTransferred = default(ulong), SubResource peer = default(SubResource), bool enableBgp = default(bool), string resourceGuid = default(string), string provisioningState = default(string))
         {
             Etag = etag;
             AuthorizationKey = authorizationKey;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// The Routing weight.
         /// </summary>
         [JsonProperty(PropertyName = "properties.routingWeight")]
-        public int? RoutingWeight { get; set; }
+        public int RoutingWeight { get; set; }
 
         /// <summary>
         /// The Ipsec share key.
@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// The Egress Bytes Transferred in this connection
         /// </summary>
         [JsonProperty(PropertyName = "properties.egressBytesTransferred")]
-        public long? EgressBytesTransferred { get; set; }
+        public ulong EgressBytesTransferred { get; set; }
 
         /// <summary>
         /// The Ingress Bytes Transferred in this connection
         /// </summary>
         [JsonProperty(PropertyName = "properties.ingressBytesTransferred")]
-        public long? IngressBytesTransferred { get; set; }
+        public ulong IngressBytesTransferred { get; set; }
 
         /// <summary>
         /// The reference to peerings resource.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// EnableBgp Flag
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableBgp")]
-        public bool? EnableBgp { get; set; }
+        public bool EnableBgp { get; set; }
 
         /// <summary>
         /// Gets or sets resource guid property of the
