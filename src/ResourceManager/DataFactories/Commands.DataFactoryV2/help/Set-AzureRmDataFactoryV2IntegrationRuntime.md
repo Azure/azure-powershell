@@ -182,7 +182,9 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.```yaml
+The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
