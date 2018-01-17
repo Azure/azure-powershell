@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
