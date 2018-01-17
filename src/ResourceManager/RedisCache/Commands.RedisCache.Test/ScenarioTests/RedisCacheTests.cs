@@ -82,5 +82,26 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-DiagnosticOperations");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGeoReplication()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-GeoReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFirewallRule()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-FirewallRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZones()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-Zones");
+        }
     }
 }
