@@ -13,16 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Common Storage Library")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Microsoft Azure Powershell")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
+namespace Microsoft.Azure.Commands.Common.Authentication
+{
+    public class RawAccessToken : IAccessToken
+    {
+        public string AccessToken
+        {
+            get; set;
+        }
 
-[assembly: ComVisible(false)]
-[assembly: CLSCompliant(false)]
-[assembly: Guid("c565107e-98a9-4703-85cd-a7efc3d8da7b")]
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+        public string LoginType
+        {
+            get; set;
+        }
+
+        public string TenantId
+        {
+            get; set;
+        }
+
+        public string UserId
+        {
+            get; set;
+        }
+
+        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        {
+            authTokenSetter("Bearer", AccessToken);
+        }
+    }
+}
