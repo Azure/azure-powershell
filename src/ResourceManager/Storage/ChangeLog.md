@@ -24,6 +24,8 @@
     - Set-AzureRmStorageAccount
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Fix a null reference issue of run cmdlet New-AzureRMStorageAccount with parameter -EnableEncryptionService None
+
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing
 
