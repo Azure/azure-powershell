@@ -158,8 +158,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false)]
-        public SwitchParameter AssignIdentity { get; set; }
+            ValueFromPipelineByPropertyName = true)]
+        public string Priority { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IdentityId { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -359,6 +369,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.LicenseType = this.LicenseType;
             }
 
+            if (this.Priority != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.Priority = this.Priority;
+            }
+
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -368,6 +387,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vIdentity.Type = ResourceIdentityType.SystemAssigned;
             }
 
+            if (this.IdentityType != null)
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                vIdentity.Type = this.IdentityType;
+            }
+
+            if (this.IdentityId != null)
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                vIdentity.IdentityIds = this.IdentityId;
+            }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {

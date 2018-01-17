@@ -40,13 +40,18 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = false)]
-        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public SwitchParameter AssignIdentity { get; set; }
 
         public override void ExecuteCmdlet()
@@ -76,6 +81,14 @@ namespace Microsoft.Azure.Commands.Compute
                     if (this.IdentityType != null)
                     {
                         parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                    }
+
+                    if (this.IdentityId != null)
+                    {
+                        if (parameters.Identity != null)
+                        {
+                            parameters.Identity.IdentityIds = this.IdentityId;
+                        }
                     }
 
                     var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(

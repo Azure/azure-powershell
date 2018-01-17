@@ -22,7 +22,6 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -191,6 +190,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? EnableAutomaticUpdate { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string[] IdentityId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
@@ -429,6 +434,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.IdentityId != null)
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Identity == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSetUpdate.Identity.IdentityIds = this.IdentityId;
             }
 
             if (this.ManagedDiskStorageAccountType != null)
@@ -1011,6 +1029,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.IdentityId != null)
+            {
+                if (this.VirtualMachineScaleSet.Identity == null)
+                {
+                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSet.Identity.IdentityIds = this.IdentityId;
             }
 
             if (this.ManagedDiskStorageAccountType != null)

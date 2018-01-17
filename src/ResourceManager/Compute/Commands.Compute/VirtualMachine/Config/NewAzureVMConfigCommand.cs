@@ -62,13 +62,18 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 4,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete.  Use IdentityType parameter instead.", false)]
         public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IdentityId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -103,7 +108,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IdentityType != null)
             {
-                vm.Identity = new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned);
+                vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                if (this.IdentityId != null)
+                {
+                    vm.Identity.IdentityIds = this.IdentityId;
+                }
             }
             if (!string.IsNullOrEmpty(this.VMSize))
             {
