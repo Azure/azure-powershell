@@ -17,13 +17,13 @@ Sets properties for a database, or moves an existing database into an elastic po
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <DatabaseEdition>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
 ```
-Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-ServerName] <String>
+Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -86,6 +86,20 @@ Tags                          :
 This command adds a database named Database01 to the elastic pool named ElasticPool01 hosted on the server named Server01.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 Specifies the name of the database.

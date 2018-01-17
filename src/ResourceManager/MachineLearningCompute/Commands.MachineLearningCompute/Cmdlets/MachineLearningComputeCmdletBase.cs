@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public const string SslCertificateParameterHelpMessage = "The SSL certificate data in PEM format.";
         public const string SslKeyParameterHelpMessage = "The SSL key data in PEM format.";
         public const string SslCNameParameterHelpMessage = "The CName for the SSL certificate.";
-
+        public const string IncludeAllResourcesParameterHelpMessage = "Remove all resources associated with the cluster.";
         public const string ClusterInputObjectAlias = "Cluster";
 
         private IMachineLearningComputeManagementClient machineLearningComputeManagementClient;
