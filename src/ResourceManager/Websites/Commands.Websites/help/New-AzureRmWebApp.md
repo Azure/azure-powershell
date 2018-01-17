@@ -281,6 +281,8 @@ Parameter 'SourceWebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.WebSites.Models.Site
+
 ## NOTES
 
 ## RELATED LINKS
