@@ -20,13 +20,13 @@ Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-Ce
 
 ### InputObjectSet
 ```
-Get-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName <String>]
+Get-AzureRmIotHubCertificate [-InputObject] <PSIotHub> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
+Get-AzureRmIotHubCertificate -Id <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,6 +51,7 @@ List all certificates in MyIotHub
 ```
 PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
 
+Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiothub
 CertificateName		: mycertificate
@@ -96,11 +97,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+IotHub Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Certificate Object
 
 ```yaml
-Type: PSCertificateDescription
+Type: PSIotHub
 Parameter Sets: InputObjectSet
 Aliases: 
 
@@ -132,21 +148,6 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Certificate or IotHub Resource Id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True
