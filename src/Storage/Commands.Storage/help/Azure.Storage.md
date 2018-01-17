@@ -176,9 +176,6 @@ Modifies logging for Azure Storage services.
 ### [Set-AzureStorageServiceMetricsProperty](Set-AzureStorageServiceMetricsProperty.md)
 Modifies metrics properties for the Azure Storage service.
 
-### [Set-AzureStorageServiceProperty](Set-AzureStorageServiceProperty.md)
-Modifies the properties for the Azure Storage service.
-
 ### [Set-AzureStorageShareQuota](Set-AzureStorageShareQuota.md)
 Sets the storage capacity for a share.
 
@@ -202,4 +199,7 @@ Stops a copy operation.
 
 ### [Stop-AzureStorageFileCopy](Stop-AzureStorageFileCopy.md)
 Stops a copy operation to the specified destination file.
+
+### [Update-AzureStorageServiceProperty](Update-AzureStorageServiceProperty.md)
+Modifies the properties for the Azure Storage service.
 
