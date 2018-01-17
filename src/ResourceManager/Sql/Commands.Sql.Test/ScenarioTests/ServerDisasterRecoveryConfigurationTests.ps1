@@ -40,28 +40,36 @@ function Test-ServerDisasterRecoveryConfigurationInternal ($location1 = "North E
 
         # Create and validate
         #
-        $sdrc = New-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -PartnerResourceGroupName $rg2.ResourceGroupName -PartnerServerName $server2.ServerName  
+        $job = New-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName `
+			-ServerName $server1.ServerName -VirtualEndpointName $sdrcName -PartnerResourceGroupName $rg2.ResourceGroupName `
+			-PartnerServerName $server2.ServerName -AsJob
+		$job | Wait-Job
+		$sdrc = $job.Output
 
         GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
         GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
 
         # Failover and check
         #
-        Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg2.ResourceGroupName -ServerName $server2.ServerName -VirtualEndpointName $sdrcName -Failover
+        Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg2.ResourceGroupName `
+			-ServerName $server2.ServerName -VirtualEndpointName $sdrcName -Failover
 
         GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Primary"
         GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Secondary"
 
         # Fail back and check
         #
-        Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Failover
+        $job = Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName `
+			-ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Failover -AsJob
+		$job | Wait-Job
 
         GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
         GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
 
         # Delete
         #
-        Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Force
+        Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName `
+			-ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Force
     }
     finally
     {

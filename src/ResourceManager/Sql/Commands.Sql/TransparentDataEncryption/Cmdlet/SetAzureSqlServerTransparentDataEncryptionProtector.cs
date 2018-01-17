@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Get the Transparent Data Encryption to update
         /// </summary>
         /// <returns>The Transparent Data Encryption being updated</returns>

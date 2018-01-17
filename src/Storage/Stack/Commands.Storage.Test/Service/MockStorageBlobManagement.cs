@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? snapshotTime = null)
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             string containerName = container.Name;
 
