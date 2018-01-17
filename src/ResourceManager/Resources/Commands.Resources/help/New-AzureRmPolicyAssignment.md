@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -88,7 +88,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ The description for policy assignment
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,7 +133,7 @@ Specifies a display name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,7 +187,7 @@ Specifies a name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -202,7 +202,7 @@ The not scopes for policy assignment.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,7 +217,7 @@ Specifies a policy, as a **PSObject** object that contains the policy rule.
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithoutParameters, CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicyParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -244,7 +244,7 @@ The policy parameter file path or policy parameter string.
 ```yaml
 Type: String
 Parameter Sets: CreateWithPolicyParameterString, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -259,7 +259,7 @@ The policy parameter object.
 ```yaml
 Type: Hashtable
 Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicySetParameterObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,7 +274,7 @@ The policy set definition object.
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithoutParameters, CreateWithPolicyParameterObject, CreateWithPolicyParameterString
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -301,7 +301,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -319,7 +319,7 @@ For instance, to assign a policy to a resource group, specify the following:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
