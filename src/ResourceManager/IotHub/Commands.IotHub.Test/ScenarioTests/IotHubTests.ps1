@@ -317,7 +317,7 @@ function Get-CACertBySubjectName([string]$subjectName)
         throw ("Unable to find certificate with subjectName {0}" -f $subjectName)
     }
 
-    write $cert
+    write $cert[0]
 }
 
 <#
