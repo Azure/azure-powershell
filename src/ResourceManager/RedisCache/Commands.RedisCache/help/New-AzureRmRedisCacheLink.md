@@ -1,34 +1,36 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
 Module Name: AzureRM.RedisCache
-ms.assetid: 2EA765B8-D82B-4789-8F10-88F79BDF44D0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCachePatchSchedule
+# New-AzureRmRedisCacheLink
 
 ## SYNOPSIS
-Removes the patch schedule.
+Create a geo replication link between two Redis Caches.
 
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> [-PassThru]
+New-AzureRmRedisCacheLink -PrimaryServerName <String> -SecondaryServerName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRedisCachePatchSchedule** cmdlet removes the patch schedule from a cache in Azure Redis Cache.
+Create a geo replication link between two Redis Caches.
 
 ## EXAMPLES
 
-### Example 1: Remove the patch schedule
+### Example 1: Create a link between two caches
 ```
-PS C:\>Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
-```
+PS C:\>New-AzureRmRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 
-This command removes the patch schedule from the cache named RedisCache06.
+        PrimaryServerName   : mycache1
+        SecondaryServerName : mycache2
+        ProvisioningState   : Creating
+```
+This command creates geo-replication link between Redis Cache mycache1 and mycache2.
 
 ## PARAMETERS
 
@@ -47,8 +49,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of a cache.
+### -PrimaryServerName
+Name of primary redis cache in link.
 
 ```yaml
 Type: String
@@ -62,30 +64,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-{{Fill PassThru Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group which contains the cache.
+### -SecondaryServerName
+Name of secondary redis cache in link.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,7 +89,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,7 +105,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -128,22 +115,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer
 
 ## NOTES
-* Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCachePatchSchedule](./Get-AzureRmRedisCachePatchSchedule.md)
+[Get-AzureRmRedisCacheLink](./Get-AzureRmRedisCacheLink.md)
 
-[New-AzureRmRedisCachePatchSchedule](./New-AzureRmRedisCachePatchSchedule.md)
+[Remove-AzureRmRedisCacheLink](./Remove-AzureRmRedisCacheLink.md)
 
-[New-AzureRmRedisCacheScheduleEntry](./New-AzureRmRedisCacheScheduleEntry.md)
+[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
 
+[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
 
+[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+
+[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)

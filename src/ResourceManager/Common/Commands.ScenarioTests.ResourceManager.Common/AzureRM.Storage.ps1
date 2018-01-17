@@ -136,7 +136,7 @@ function Get-AzureRmStorageAccountKey
     {
         $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
         $result = $getTask.GetAwaiter().GetResult()
-        Write-Output $result.Body
+        Write-Output $result.Body.Keys
     }
     else
     {
