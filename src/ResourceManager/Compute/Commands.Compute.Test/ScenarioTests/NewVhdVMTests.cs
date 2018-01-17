@@ -12,48 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ApplicationGatewayTests : RMTestBase
+    public class NewVhdVMTests
     {
-        public ApplicationGatewayTests(ITestOutputHelper output)
+        public NewVhdVMTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAvailableSslOptions()
+        public void TestWithValidVhdDiskFile()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableSslOptions"));
+            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithValidDiskFile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAvailableWafRuleSets()
+        public void TestWithInvalidVhdDiskFile()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableWafRuleSets"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApplicationGatewayCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApplicationGatewayCRUD2()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithInvalidDiskFile");
         }
     }
 }

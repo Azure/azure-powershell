@@ -20,6 +20,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
@@ -121,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object",
             ParameterSetName = NameSasPolicyParmeterSet)]
-        public override AzureStorageContext Context { get; set; }
+        public override IStorageContext Context { get; set; }
 
         /// <summary>
         /// Execute command

@@ -38,8 +38,11 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
-		$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100
+		$job = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100 -AsJob
+		$job | Wait-Job
+		$strechdb = $job.Output
+
 		Assert-AreEqual $databaseName $strechdb.DatabaseName 
 		Assert-AreEqual $maxSizeBytes $strechdb.MaxSizeBytes 
 		Assert-AreEqual Stretch $strechdb.Edition 
@@ -80,8 +83,11 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus
 		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100
 
 		# Alter stretch database properties
-		$strechdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName `
-		-MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS200
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName `
+		-MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS200 -AsJob
+		$job | Wait-Job
+		$strechdb2 = $job.Output
+
 		Assert-AreEqual $strechdb.DatabaseName $strechdb2.DatabaseName
 		Assert-AreEqual $maxSizeBytes $strechdb2.MaxSizeBytes
 		Assert-AreEqual Stretch $strechdb2.Edition

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
@@ -29,17 +29,17 @@ Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Mi
 
 ## EXAMPLES
 
-### --------------------------  Get all actions for all providers  --------------------------
+### Get all actions for all providers
 ```
 PS C:\> Get-AzureRmProviderOperation *
 ```
 
-### --------------------------  Get actions for a particular resource provider  --------------------------
+### Get actions for a particular resource provider
 ```
 PS C:\> Get-AzureRmProviderOperation Microsoft.Insights/*
 ```
 
-### --------------------------  Get all actions that can be performed on virtual machines  --------------------------
+### Get all actions that can be performed on virtual machines
 ```
 PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
 ```
@@ -67,7 +67,7 @@ The operation search string (with possible wildcard (*) characters)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,4 +92,3 @@ Parameter 'OperationSearchString' accepts value of type 'String' from the pipeli
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
-

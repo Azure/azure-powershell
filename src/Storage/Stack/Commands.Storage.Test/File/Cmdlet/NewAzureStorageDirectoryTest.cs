@@ -15,26 +15,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.File;
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class NewAzureStorageDirectoryTest : StorageFileTestBase<NewAzureStorageDirectory>
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryUsingShareNameAndPathTest()
         {
             NewDirectoryAndAssert("newDirectory");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryUsingShareObjectAndPathTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -47,7 +49,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Name == "newDirectory" && x.Share.Name == "share");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryUsingDirectoryObjectAndPathTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -60,19 +63,22 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Name == "newDirectory" && x.Share.Name == "share");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryWithTooLongNameTest()
         {
             NewDirectoryAndAssert(FileNamingGenerator.GenerateValidASCIIName(256), "ArgumentException");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryWithLongNameTest()
         {
             NewDirectoryAndAssert(FileNamingGenerator.GenerateValidASCIIName(255));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewDirectoryWithInvalidCharacterTest()
         {
             NewDirectoryAndAssert("?*?\"\\*p:?\\/D?*?<:Z>:/l*<??\\:\\c\"(/:|**<<<|r:/**<:\\y", "ArgumentException");
