@@ -59,6 +59,9 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
@@ -106,6 +109,9 @@
         <ListEntries>
           <ListEntry>
             <ListItems>
+              <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
               <ListItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>

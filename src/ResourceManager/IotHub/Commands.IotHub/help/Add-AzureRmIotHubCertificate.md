@@ -12,23 +12,24 @@ Create/update an Azure IoT Hub certificate.
 
 ## SYNTAX
 
-### InputObjectSet (Default)
-```
-Add-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-Etag <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceSet
+### ResourceSet (Default)
 ```
 Add-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
  [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### InputObjectSet
+```
+Add-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName] <String>
+ [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### ResourceIdSet
 ```
-Add-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName] <String> [-Path] <String>
- [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubCertificate [-ResourceId] <String> [-Path] <String> [-Etag <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +79,7 @@ Name of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: ResourceSet, InputObjectSet
 Aliases: 
 
 Required: True
@@ -153,7 +154,7 @@ base-64 representation of X509 certificate .cer file or .pem file path.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -189,7 +190,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

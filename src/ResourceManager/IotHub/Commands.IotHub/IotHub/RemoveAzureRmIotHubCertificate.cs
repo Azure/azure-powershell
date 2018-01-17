@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
     using Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubCertificate", DefaultParameterSetName = InputObjectParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     public class RemoveAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -63,11 +63,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "Name of the Certificate")]
-        [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
@@ -76,7 +71,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string CertificateName { get; set; }
 
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "Etag of the Certificate")]
@@ -107,6 +102,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 {
                     this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
                     this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
+                    this.CertificateName = IotHubUtils.GetIotHubCertificateName(this.ResourceId);
                 }
                 try
                 {

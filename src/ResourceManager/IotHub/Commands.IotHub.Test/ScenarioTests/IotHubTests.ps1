@@ -233,9 +233,9 @@ function Test-AzureRmIotHubLifecycle
 function Test-AzureRmIotHubCertificateLifecycle
 {
 	#Param($Location, $IotHubName, $ResourceGroupName, $Sku)
-	$Location = "northeurope"
-	$IotHubName = "pstestiothub"
-	$ResourceGroupName = "pstestrg"
+	$Location = Get-Location "Microsoft.Devices" "IotHub" 
+	$IotHubName = getAssetName 
+	$ResourceGroupName = getAssetName 
 	$Sku = "S1"
 
 	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
