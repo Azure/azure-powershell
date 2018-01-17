@@ -20,6 +20,8 @@
 ## Current Release
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob support for long-running Websites cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+     - Affected cmdlets are New-, Remove-, Add-, and Set- for WebApps, AppServicePlan and Slots
 
 ## Version 4.0.0
 * Add support for online help
