@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id
+Certificate or IotHub Resource Id
 
 ```yaml
 Type: String
