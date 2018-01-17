@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Id")]
+            HelpMessage = "Certificate or IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

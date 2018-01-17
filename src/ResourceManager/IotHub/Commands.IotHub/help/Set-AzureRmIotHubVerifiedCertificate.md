@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id
+Certificate Resource Id
 
 ```yaml
 Type: String
