@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
                 RunCmdLet(() =>
                 {
-                    var keys = this.CognitiveServicesClient.CognitiveServicesAccounts.RegenerateKey(
+                    var keys = this.CognitiveServicesClient.Accounts.RegenerateKey(
                         this.ResourceGroupName,
                         this.Name,
                         this.KeyName);
