@@ -31,7 +31,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.5.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="16.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="17.3.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="10.1.0-preview" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
