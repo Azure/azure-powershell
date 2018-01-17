@@ -14,15 +14,23 @@ Restores an Azure Web App snapshot.
 
 ### FromResourceName
 ```
-Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-TargetApp <Site>] [-Force]
+Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-TargetApp <Site>] [-Force] [-AsJob]
  [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
- [-SnapshotTime] <String>
+ [-SnapshotTime] <DateTime> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-TargetApp <Site>] [-Force] [-WebApp] <Site>
- [-DefaultProfile <IAzureContextContainer>] [-SnapshotTime] <String>
+Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-TargetApp <Site>] [-Force] [-AsJob] [-WebApp] <Site>
+ [-DefaultProfile <IAzureContextContainer>] [-SnapshotTime] <DateTime> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### FromWebAppSnapshot
+```
+Restore-AzureRmWebAppSnapshot [-RecoverConfiguration] [-TargetApp <Site>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] -WebAppSnapshot <AzureWebAppSnapshot> [-SnapshotTime] <DateTime>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +46,19 @@ PS C:\> Restore-AzureRmWebAppSnapshot -ResourceGroupName Default-Web-WestUS -Nam
 Reverts the contents of MyWebApp to the snapshot taken at 09/27/2017 00:05:04.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -133,7 +154,7 @@ Accept wildcard characters: False
 The timestamp of the snapshot.
 
 ```yaml
-Type: String
+Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 
@@ -176,12 +197,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -WebAppSnapshot
+The Azure Web App snapshot.```yaml
+Type: AzureWebAppSnapshot
+Parameter Sets: FromWebAppSnapshot
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
 Microsoft.Azure.Management.WebSites.Models.Site
 System.String
-
 
 ## OUTPUTS
 

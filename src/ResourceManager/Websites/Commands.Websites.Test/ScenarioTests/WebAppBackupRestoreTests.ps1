@@ -360,10 +360,14 @@ function Test-RestoreWebAppSnapshot
 
 	# Test restore to target slot
 	$target = Get-AzureRmWebAppSlot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
-	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -Force -RecoverConfiguration -TargetApp $target
+	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -RecoverConfiguration -TargetApp $target
 
 	# Test piping
 	$snapshot | Restore-AzureRmWebAppSnapshot -Force
+
+	# Test background job
+	$snapshot | Restore-AzureRmWebAppSnapshot -Force -AsJob
+	$job | Wait-Job
 }
 
 # Utility functions
