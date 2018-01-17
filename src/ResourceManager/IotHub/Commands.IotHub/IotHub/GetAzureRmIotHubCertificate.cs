@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "Certificate Object")]
+            HelpMessage = "IotHub Object")]
         [ValidateNotNullOrEmpty]
-        public PSCertificateDescription InputObject { get; set; }
+        public PSIotHub InputObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Certificate or IotHub Resource Id")]
+            HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string Id { get; set; }
 
         [Parameter(
             Position = 1,
@@ -77,16 +77,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         {
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.ResourceGroupName = this.InputObject.Resourcegroup;
                 this.Name = this.InputObject.Name;
-                this.CertificateName = this.InputObject.CertificateName;
             }
 
             if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
-                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
-                this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
-                this.CertificateName = IotHubUtils.GetIotHubCertificateName(this.ResourceId);
+                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.Id);
+                this.Name = IotHubUtils.GetIotHubName(this.Id);
             }
 
             if (!string.IsNullOrEmpty(CertificateName))

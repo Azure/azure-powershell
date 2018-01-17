@@ -42,6 +42,7 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 ```
 PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer"
 
+Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiothub
 CertificateName		: mycertificate
@@ -59,6 +60,7 @@ Uploads a CA certificate CER file to an IoT hub.
 ```
 PS C:\> Add-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFPazE="
 
+Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiothub
 CertificateName		: mycertificate
