@@ -1,19 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Byb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d63fe44b-fd2c-4d44-bd57-f220a76e3a36"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute\",\r\n  \"namespace\": \"Microsoft.Compute\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"60e6cd67-9c8c-4951-9b3c-23c25a2169af\",\r\n    \"roleDefinitionId\": \"e4770acb-272e-4dc8-87f3-12f44a612224\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"availabilitySets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/extensions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/extensions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-06-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines/networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-06-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/vmSizes\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/runCommands\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/publishers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2017-03-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"disks\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2017-03-30\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"snapshots\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2017-03-30\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/diskoperations\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2017-03-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"images\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2017-03-30\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"restorePointCollections\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"restorePointCollections/restorePoints\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/diagnosticSettings\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/metricDefinitions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Storage\",\r\n      \"namespace\": \"Microsoft.Storage\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"checkNameAvailability\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/quotas\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageaccounts\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"usages\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-01-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-01-01\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Network\",\r\n      \"namespace\": \"Microsoft.Network\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"connections\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"loadBalancers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"localNetworkGateways\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-04-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-04-preview\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/operationResults\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-04-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-04-preview\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-04-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-04-preview\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/usages\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-04-01\",\r\n            \"2015-06-15\",\r\n            \"2015-05-04-preview\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"networkInterfaces\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"networkSecurityGroups\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"publicIpAddresses\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"routeTables\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualNetworkGateways\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualNetworks\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-15\",\r\n            \"2015-05-01-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2015-06-15\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"dnsZones\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-04-01\",\r\n            \"2015-05-04-preview\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-04-01\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.KeyVault\",\r\n      \"namespace\": \"Microsoft.KeyVault\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-10-01\",\r\n            \"2015-06-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"vaults\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-10-01\",\r\n            \"2015-06-01\"\r\n          ],\r\n          \"apiProfiles\": [],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"vaults/accessPolicies\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-10-01\",\r\n            \"2015-06-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"vaults/secrets\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-10-01\",\r\n            \"2015-06-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Compute\",\r\n      \"namespace\": \"Microsoft.Compute\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"availabilitySets\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/publishers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/usages\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/vmSizes\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines/extensions\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets/extensions\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets/networkInterfaces\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets/virtualMachines\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets/virtualMachines/networkInterfaces\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-30\",\r\n            \"2015-06-15\"\r\n          ],\r\n          \"apiProfiles\": [\r\n            {\r\n              \"profileVersion\": \"2017-03-09-profile\",\r\n              \"apiVersion\": \"2016-03-30\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Subscriptions\",\r\n      \"namespace\": \"Microsoft.Subscriptions\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"configurations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"delegatedOffers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"offers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": [],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"offers/offerDelegations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-11-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Authorization\",\r\n      \"namespace\": \"Microsoft.Authorization\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"locks\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-07-01\",\r\n            \"2015-01-01\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-06-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"permissions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-07-01\",\r\n            \"2015-06-01\",\r\n            \"2015-05-01-preview\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"policyAssignments\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2016-12-01\",\r\n            \"2015-10-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"policyDefinitions\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-12-01\",\r\n            \"2015-10-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"providerOperations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-07-01-preview\",\r\n            \"2015-07-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"roleAssignments\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-07-01\",\r\n            \"2015-06-01\",\r\n            \"2015-05-01-preview\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"roleDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-07-01\",\r\n            \"2015-06-01\",\r\n            \"2015-05-01-preview\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Commerce\",\r\n      \"namespace\": \"Microsoft.Commerce\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"estimateResourceSpend\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-06-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriberUsageAggregates\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"usageAggregates\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-06-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Gallery\",\r\n      \"namespace\": \"Microsoft.Gallery\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"curation\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"curationcontent\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"curationextract\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"galleryItems\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"portal\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"search\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"suggest\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Insights\",\r\n      \"namespace\": \"Microsoft.Insights\",\r\n      \"authorization\": {\r\n        \"applicationId\": \"cc806076-7e7b-4837-b359-781edde073cb\",\r\n        \"roleDefinitionId\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n      },\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"alertrules\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-03-01\",\r\n            \"2015-07-01\"\r\n          ],\r\n          \"apiProfiles\": [],\r\n          \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n        },\r\n        {\r\n          \"resourceType\": \"eventCategories\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2017-03-01-preview\",\r\n            \"2015-04-01\",\r\n            \"2014-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"eventtypes\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2017-03-01-preview\",\r\n            \"2015-04-01\",\r\n            \"2014-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2016-03-01\",\r\n            \"2015-07-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Resources\",\r\n      \"namespace\": \"Microsoft.Resources\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"applicationRegistrations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"checkresourcename\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"delegatedProviders\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"delegatedProviders/offers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"delegatedProviders/offers/estimatePrice\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"deployments\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-02-01\",\r\n            \"2015-11-01\",\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"deployments/operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-02-01\",\r\n            \"2015-11-01\",\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"extensionsMetadata\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"links\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"offers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"providers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"resourceGroups\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"resources\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/locations\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/operationresults\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/providers\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/resourceGroups\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/resourceGroups/resources\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/resources\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/tagNames\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-06-01\",\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2016-06-01\",\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"tenants\",\r\n          \"locations\": [\r\n            \"local\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-04-01-preview\"\r\n          ],\r\n          \"apiProfiles\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12064"
+          "17476"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,49 +34,241 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14830"
         ],
         "x-ms-request-id": [
-          "c1363381-6447-4f7a-a187-d4014502bec0"
+          "8a7fe0f7-2f59-495a-a708-cca9e1b57b7e"
         ],
         "x-ms-correlation-request-id": [
-          "c1363381-6447-4f7a-a187-d4014502bec0"
+          "8a7fe0f7-2f59-495a-a708-cca9e1b57b7e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021431Z:c1363381-6447-4f7a-a187-d4014502bec0"
+          "LOCAL:20171212T231213Z:8a7fe0f7-2f59-495a-a708-cca9e1b57b7e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:30 GMT"
+          "Tue, 12 Dec 2017 23:12:13 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/crptestps3644?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczM2NDQ/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Compute?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZT9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "490952e4-3830-45ff-b192-57dd5a066857"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/providers/Microsoft.Compute\",\r\n  \"namespace\": \"Microsoft.Compute\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"availabilitySets\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/publishers\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/vmSizes\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/extensions\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/extensions\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/networkInterfaces\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines/networkInterfaces\",\r\n      \"locations\": [\r\n        \"local\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-30\",\r\n        \"2015-06-15\"\r\n      ],\r\n      \"apiProfiles\": [\r\n        {\r\n          \"profileVersion\": \"2017-03-09-profile\",\r\n          \"apiVersion\": \"2016-03-30\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3154"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14829"
+        ],
+        "x-ms-request-id": [
+          "e58e61c8-094d-40a6-8304-34f933f4223c"
+        ],
+        "x-ms-correlation-request-id": [
+          "e58e61c8-094d-40a6-8304-34f933f4223c"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231213Z:e58e61c8-094d-40a6-8304-34f933f4223c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:13 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourcegroups/crptestps737?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczczNz9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3fd1a974-7898-4dba-8397-0cc1d0ffccac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14828"
+        ],
+        "x-ms-request-id": [
+          "ca48abd9-f4ef-4871-8507-c2647f02ba91"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca48abd9-f4ef-4871-8507-c2647f02ba91"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231213Z:ca48abd9-f4ef-4871-8507-c2647f02ba91"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:13 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourcegroups/crptestps737?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczczNz9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ceea00a6-81f5-4fa7-92a8-37e1981fd190"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14824"
+        ],
+        "x-ms-request-id": [
+          "e73bc958-b3a0-4af6-9178-170ed3801403"
+        ],
+        "x-ms-correlation-request-id": [
+          "e73bc958-b3a0-4af6-9178-170ed3801403"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231215Z:e73bc958-b3a0-4af6-9178-170ed3801403"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:14 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourcegroups/crptestps737?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczczNz9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"local\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "29"
+          "27"
+        ],
+        "x-ms-client-request-id": [
+          "59da9e8e-f65e-4fe5-a498-25300cf9ba9b"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644\",\r\n  \"name\": \"crptestps3644\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737\",\r\n  \"name\": \"crptestps737\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "179"
+          "176"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -79,58 +280,61 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1181"
         ],
         "x-ms-request-id": [
-          "b0918fae-bc81-46df-9762-abe706e3e69f"
+          "cdcabaeb-87b6-438a-a015-5cfd43467ae2"
         ],
         "x-ms-correlation-request-id": [
-          "b0918fae-bc81-46df-9762-abe706e3e69f"
+          "cdcabaeb-87b6-438a-a015-5cfd43467ae2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021432Z:b0918fae-bc81-46df-9762-abe706e3e69f"
+          "LOCAL:20171212T231214Z:cdcabaeb-87b6-438a-a015-5cfd43467ae2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:32 GMT"
+          "Tue, 12 Dec 2017 23:12:13 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNjcnB0ZXN0cHM3Mzc/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "167"
+          "124"
         ],
         "x-ms-client-request-id": [
-          "38e4d4d1-7198-4009-9331-5c60800e349f"
+          "ddf56ad5-752b-42dc-be63-409089333b10"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"local\",\r\n  \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737\",\r\n  \"name\": \"avscrptestps737\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "401"
+          "356"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -145,196 +349,61 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "13627e0c-4e04-44e9-9c79-3653cbeeb3e5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1180"
         ],
         "x-ms-request-id": [
-          "ab20fcf5-e67b-48e2-8932-1467ac01e563"
+          "13627e0c-4e04-44e9-9c79-3653cbeeb3e5"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231214Z:13627e0c-4e04-44e9-9c79-3653cbeeb3e5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:13 GMT"
+        ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "d0f3d7d6-a9ad-4e25-a8c1-929c83e1c8a3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021434Z:d0f3d7d6-a9ad-4e25-a8c1-929c83e1c8a3"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:34 GMT"
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvcf3ymHNTN+OZjE+CxzkWpmCwvGZtCsrpzjcF0uXJKRybGVKFoLOzbiFqH88Vs1PHJ0BUxrrZW/Z3JO+xsNgYDPtOx1yhOz6T+N4XoXJGt608atZRlBi1rEIa4u2ozzrL8shFSRL1+4CmqyI1E6E2"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"managed\": true\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "x-ms-client-request-id": [
-          "117e24ba-b869-4603-939d-fcc03e60ecd6"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "401"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
-        ],
-        "x-ms-request-id": [
-          "c2d89b1a-b974-4954-aad6-1d46c315f865"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
-        ],
-        "x-ms-correlation-request-id": [
-          "023117b3-d736-4317-9eca-029ad3c5c677"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021436Z:023117b3-d736-4317-9eca-029ad3c5c677"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:35 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "166"
-        ],
-        "x-ms-client-request-id": [
-          "0a5466cb-cf58-4254-9b23-2b3c9a9311dd"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "401"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
-        ],
-        "x-ms-request-id": [
-          "37a86225-bf11-4b8a-9935-ab6a826b8236"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
-        ],
-        "x-ms-correlation-request-id": [
-          "cff5a7eb-2252-42ff-96d4-2b22cc478232"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021436Z:cff5a7eb-2252-42ff-96d4-2b22cc478232"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:35 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHM/YXBpLXZlcnNpb249MjAxNy0wMy0zMA==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cz9hcGktdmVyc2lvbj0yMDE1LTA2LTE1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c99aace9-ba07-401b-90d2-72c2b0c5cd0e"
+          "0303557e-9e6c-4463-a096-c87f6d724d6f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"platformUpdateDomainCount\": 2,\r\n        \"platformFaultDomainCount\": 3,\r\n        \"virtualMachines\": []\r\n      },\r\n      \"type\": \"Microsoft.Compute/availabilitySets\",\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n      \"name\": \"avscrptestps3644\",\r\n      \"sku\": {\r\n        \"name\": \"Classic\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"platformUpdateDomainCount\": 2,\r\n        \"platformFaultDomainCount\": 3,\r\n        \"virtualMachines\": []\r\n      },\r\n      \"type\": \"Microsoft.Compute/availabilitySets\",\r\n      \"location\": \"local\",\r\n      \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737\",\r\n      \"name\": \"avscrptestps737\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "510"
+          "453"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -349,113 +418,61 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+          "00000000-0000-0000-0000-000000000000_0"
         ],
-        "x-ms-request-id": [
-          "05d82f16-5c1b-4223-ab47-f861a1485dac"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
+        "x-ms-correlation-request-id": [
+          "76145d38-5078-4869-b274-2cd982d25345"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14827"
         ],
-        "x-ms-correlation-request-id": [
-          "af32fd8b-8eec-4486-a5d0-b00a503705a2"
+        "x-ms-request-id": [
+          "76145d38-5078-4869-b274-2cd982d25345"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021435Z:af32fd8b-8eec-4486-a5d0-b00a503705a2"
+          "LOCAL:20171212T231214Z:76145d38-5078-4869-b274-2cd982d25345"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:34 GMT"
+          "Tue, 12 Dec 2017 23:12:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRve++izT6A9YDyeLozSzWl5TTCteurwwIZMBCqeND+lSwukBE5W/QZGWqlc6b77SOZKeD7q/9iq0IfeaM4f8x/EeC527oAxV5+2CjLkWLzsYNt9g0iFeWaDzv2bEBkhMaXVLu8i5i2Gjlc/baNWsyP"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHM/YXBpLXZlcnNpb249MjAxNy0wMy0zMA==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cz9hcGktdmVyc2lvbj0yMDE1LTA2LTE1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "02a03f85-3986-4f96-8cfa-d09b0bd60f85"
+          "2f28370f-23a6-406b-afa3-920212c3be5f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14971"
-        ],
-        "x-ms-request-id": [
-          "aee3868f-5306-4d4f-ad14-4267befce5ba"
-        ],
-        "x-ms-correlation-request-id": [
-          "aee3868f-5306-4d4f-ad14-4267befce5ba"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021437Z:aee3868f-5306-4d4f-ad14-4267befce5ba"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:37 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d0f69479-2bfd-4202-8bd2-2491f1a55315"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "429"
+          "19"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -470,56 +487,61 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "4b021fc2-c9cb-402a-b7fc-997676316ca8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14825"
         ],
         "x-ms-request-id": [
-          "b685f66e-5912-468c-b2c1-ce5e8c9cec1c"
+          "4b021fc2-c9cb-402a-b7fc-997676316ca8"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231215Z:4b021fc2-c9cb-402a-b7fc-997676316ca8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:14 GMT"
+        ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
-        ],
-        "x-ms-correlation-request-id": [
-          "c64e43cd-98b5-41c2-9707-bef6c21cc5e1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021435Z:c64e43cd-98b5-41c2-9707-bef6c21cc5e1"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:34 GMT"
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvl414kmF36gzf58X1z8/CbWCh/Y90ECBsCIyvzWWtlx8MzCQIYZj4EcpjdXeilWOD3Alhkg3ZhTFvdRVgWRVQk5gCEJf0DDHsJ06RLlpvIHmuCHIfp2mvFVNoTVxd7pSJo0HDlwqT/qmBhu7+/ypS"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNjcnB0ZXN0cHM3Mzc/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e91a8d14-d644-483d-9c0e-61610c2af57a"
+          "9d9044d5-b51b-4f12-a6a1-49dc7fa92af9"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"local\",\r\n  \"id\": \"/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737\",\r\n  \"name\": \"avscrptestps737\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "429"
+          "384"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -534,114 +556,55 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf977908-328c-4e84-b760-928e8d4f9dd2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14826"
         ],
         "x-ms-request-id": [
-          "b7c3a92c-96ee-4e4d-b45c-5b3b949aaf4d"
+          "bf977908-328c-4e84-b760-928e8d4f9dd2"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231214Z:bf977908-328c-4e84-b760-928e8d4f9dd2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:14 GMT"
+        ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
-        ],
-        "x-ms-correlation-request-id": [
-          "603fad98-2f0e-4511-bfd0-ccbad39a41b3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021436Z:603fad98-2f0e-4511-bfd0-ccbad39a41b3"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:35 GMT"
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvlLD7xo4+ZIt46HTPiRkK3UG7NF/xZRj8pCuGubCLODuGj4f/wScnGPJE+qqWjElTMUexY5k3OIGnfeKU1/crPT4rnjvNOxqgPIPExuDiY2aSkg2ewRDrslzndaVh2eyot4HdU7eir1L9vfvcl+uh"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "819740e9-b232-4bba-82d0-875ebef39f4e"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "429"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
-        ],
-        "x-ms-request-id": [
-          "3dd709fb-e8ac-41f7-9abc-c790687de66e"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
-        ],
-        "x-ms-correlation-request-id": [
-          "c00bddbc-62d5-49dc-85e7-1c15adef842a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021436Z:c00bddbc-62d5-49dc-85e7-1c15adef842a"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:35 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2017-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE3LTAzLTMw",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourceGroups/crptestps737/providers/Microsoft.Compute/availabilitySets/avscrptestps737?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczczNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNjcnB0ZXN0cHM3Mzc/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "55aaa906-bee4-491d-a452-8ff202b740ce"
+          "af3e06bd-07ef-4a7d-b9f9-d3f5bc4b71b9"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
       "ResponseBody": "",
@@ -659,41 +622,55 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-served-by": [
-          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "b179592a-c0a8-4f02-ab25-86b592c20621"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1179"
         ],
         "x-ms-request-id": [
-          "38287c40-f83e-45d6-bffe-9f3c38f347dd"
+          "b179592a-c0a8-4f02-ab25-86b592c20621"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171212T231215Z:b179592a-c0a8-4f02-ab25-86b592c20621"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Tue, 12 Dec 2017 23:12:14 GMT"
+        ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
-        ],
-        "x-ms-correlation-request-id": [
-          "aa0b8a0a-63dc-447e-8c1b-af8838065e86"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021437Z:aa0b8a0a-63dc-447e-8c1b-af8838065e86"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:14:37 GMT"
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvx1NQ+tu2qbrtjpSPUMDFlhVtZbdYQBaCeOxdL15ZpUvuX+8szDy9OJEUWHbdmIvAO4a2XfcfToxlqUNjgJavbmwEEO+S3YO6faylxYermRLMhaZYjj7VYanhjhxzH7514Y8YW0tMmOJmupHpNUk9"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/crptestps3644?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczM2NDQ/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/resourcegroups/crptestps737?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczczNz9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "98d722e1-d272-4952-9bb7-f57f284c95fc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -711,43 +688,46 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1178"
         ],
         "x-ms-request-id": [
-          "9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
+          "f45dce3c-51b5-48e9-bfe1-77fc8cf81d38"
         ],
         "x-ms-correlation-request-id": [
-          "9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
+          "f45dce3c-51b5-48e9-bfe1-77fc8cf81d38"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021438Z:9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
+          "LOCAL:20171212T231215Z:f45dce3c-51b5-48e9-bfe1-77fc8cf81d38"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:38 GMT"
+          "Tue, 12 Dec 2017 23:12:14 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
+          "https://management.local.azurestack.external/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTXpjdFRFOURRVXdpTENKcWIySk1iMk5oZEdsdmJpSTZJbXh2WTJGc0luMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2016-02-01"
-        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -765,43 +745,46 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14822"
         ],
         "x-ms-request-id": [
-          "271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
+          "2722f1d6-b020-44e6-92b5-6dbad406d186"
         ],
         "x-ms-correlation-request-id": [
-          "271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
+          "2722f1d6-b020-44e6-92b5-6dbad406d186"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021439Z:271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
+          "LOCAL:20171212T231230Z:2722f1d6-b020-44e6-92b5-6dbad406d186"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:38 GMT"
+          "Tue, 12 Dec 2017 23:12:30 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
+          "https://management.local.azurestack.external/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTXpjdFRFOURRVXdpTENKcWIySk1iMk5oZEdsdmJpSTZJbXh2WTJGc0luMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2016-02-01"
-        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -819,97 +802,46 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14821"
         ],
         "x-ms-request-id": [
-          "37d934c3-fb69-49fc-aef3-0dd04314e6fd"
+          "50113851-126e-4db1-8c78-8765b273db41"
         ],
         "x-ms-correlation-request-id": [
-          "37d934c3-fb69-49fc-aef3-0dd04314e6fd"
+          "50113851-126e-4db1-8c78-8765b273db41"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021454Z:37d934c3-fb69-49fc-aef3-0dd04314e6fd"
+          "LOCAL:20171212T231245Z:50113851-126e-4db1-8c78-8765b273db41"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:14:53 GMT"
+          "Tue, 12 Dec 2017 23:12:45 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
+          "https://management.local.azurestack.external/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/53511722-a782-464a-a471-fafda48b9e9a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM3MzctTE9DQUwiLCJqb2JMb2NhdGlvbiI6ImxvY2FsIn0?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM1MTE3MjItYTc4Mi00NjRhLWE0NzEtZmFmZGE0OGI5ZTlhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk0zTXpjdFRFOURRVXdpTENKcWIySk1iMk5oZEdsdmJpSTZJbXh2WTJGc0luMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2016-02-01"
-        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
-        ],
-        "x-ms-request-id": [
-          "9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
-        ],
-        "x-ms-correlation-request-id": [
-          "9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021509Z:9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 07 Feb 2017 02:15:08 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-02-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -924,25 +856,28 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14820"
         ],
         "x-ms-request-id": [
-          "c296a639-912d-4bd4-952a-2637caab22e3"
+          "1455d9cd-c144-44b9-87f5-35ba77c87eb8"
         ],
         "x-ms-correlation-request-id": [
-          "c296a639-912d-4bd4-952a-2637caab22e3"
+          "1455d9cd-c144-44b9-87f5-35ba77c87eb8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170207T021524Z:c296a639-912d-4bd4-952a-2637caab22e3"
+          "LOCAL:20171212T231300Z:1455d9cd-c144-44b9-87f5-35ba77c87eb8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 07 Feb 2017 02:15:24 GMT"
+          "Tue, 12 Dec 2017 23:13:00 GMT"
         ]
       },
       "StatusCode": 200
@@ -950,10 +885,12 @@
   ],
   "Names": {
     "Test-AvailabilitySet": [
-      "crptestps3644"
+      "crptestps737"
     ]
   },
   "Variables": {
-    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
+    "SubscriptionId": "53511722-a782-464a-a471-fafda48b9e9a",
+    "TenantId": "0a9c9a9e-2774-489f-8560-bae5824f8b46",
+    "Domain": "msazurestack.onmicrosoft.com"
   }
 }

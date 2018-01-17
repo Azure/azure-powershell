@@ -24,8 +24,7 @@ function get_all_vm_locations
         {
             $st = Write-Verbose 'Getting all Azure location - End';
             return @("West US", "East US")
-        }
-        else
+        } else
         {
             $st = Write-Verbose 'Getting all Azure location - End';
             return $location.Locations
@@ -124,7 +123,7 @@ function get_created_storage_account_name
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - Start";
 
     $stoname = $rgname + 'sto';
-    $stotype = 'Standard_GRS';
+    $stotype = 'Standard_LRS';
 
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
 
@@ -220,7 +219,7 @@ function create_and_setup_vm_config_object
     $vmconfig = get_vm_config_object $rgname $vmsize
 
     $user = "Foo12";
-    $password = $PLACEHOLDER;
+    $password = $rgname + "BaR#123";
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = $rgname + "cn";
@@ -245,7 +244,7 @@ function setup_image_and_disks
     $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - Start";
 
     $osDiskName = 'osDisk';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
     $osDiskCaching = 'ReadWrite';
 
     $vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
@@ -337,14 +336,7 @@ function Run-VMDynamicTests
             $st = (func_create_and_setup_nic_ids $random_seed) | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
             $st = $func_create_and_setup_vm_config_object | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
-            if ($locations.Count -eq 1)
-            {
-                $loc_name_str = $locations
-            }
-            else
-            {
-                $loc_name_str = $locations[$i % $locations.Count];
-            }
+            $loc_name_str = $locations[$i % $locations.Count];
 
             if ($target_location -ne $null -and $target_location -ne '')
             {

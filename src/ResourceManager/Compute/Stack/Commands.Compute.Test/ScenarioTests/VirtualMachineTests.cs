@@ -19,11 +19,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        public VirtualMachineTests(Xunit.Abstractions.ITestOutputHelper output)
-        {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
@@ -33,23 +28,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachine_Managed()
-        {
-            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null $true");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineUpdateWithoutNic()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineUpdateWithoutNic");
         }
 
         [Fact]
@@ -73,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Only works in live mode")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineList()
         {
@@ -92,13 +73,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCaptureNegative()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCaptureNegative");
         }
 
         [Fact]
@@ -122,14 +96,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
         }
 
-        [Fact]
+        [Fact(Skip = "Not suported in Azure stack")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan");
         }
 
-        [Fact]
+        [Fact(Skip = "Not suported in Azure stack")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan2()
         {
@@ -157,13 +131,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: OOM issue when writing the result")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
@@ -173,19 +147,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineWithPremiumStorageAccount()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithPremiumStorageAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithEmptyAuc()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
-        [Fact]
+        [Fact(Skip = "It expects an image in the storage account mybyolosimage")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithBYOL()
         {
@@ -197,41 +164,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineRedeploy()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineRedeploy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineGetStatus()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetStatus");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineManagedDiskConversion()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineManagedDiskConversion");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePerformanceMaintenance()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePerformanceMaintenance");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineIdentity()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineIdentity");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineIdentityUpdate()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineIdentityUpdate");
         }
     }
 }
