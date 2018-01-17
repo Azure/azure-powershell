@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvm
 schema: 2.0.0
@@ -90,7 +91,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParamet
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -137,7 +138,7 @@ Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSe
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

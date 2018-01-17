@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: E6F2EE87-97C4-416A-9AE1-9FBD72062F0F
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmss
 schema: 2.0.0
@@ -13,8 +14,8 @@ Removes the VMSS or a virtual machine that is within the VMSS.
 ## SYNTAX
 
 ```
-Remove-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

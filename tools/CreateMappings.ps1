@@ -41,13 +41,6 @@ $cmdlets | ForEach-Object {
     } else {
         $results[$cmdlet] = $matchedRule.Alias;
     }
-
-    # Progress stuff.
-    if($k % 100 -eq 0) {
-        $percent = [math]::Floor($k / $cmdlets.Count * 100);
-        Write-Progress -Activity "Processing cmdlets..." -Status "$($percent)%" -PercentComplete $percent;
-    }
-    $k++;
 };
 
 # Write to files.
@@ -57,5 +50,9 @@ $results | ConvertTo-Json | Out-File $OutputFile;
 # Print conclusion.
 Write-Host ""
 Write-Host "$($results.Count) cmdlets successfully mapped: $($OutputFile)." -ForegroundColor Green;
-Write-Host "$($warnings.Count) cmdlets could not be mapped and were placed in 'Other': $($WarningFile)." -ForegroundColor Yellow;
 Write-Host ""
+
+if($warnings.Count -gt 0) {
+    Write-Host "$($warnings.Count) cmdlets could not be mapped and were placed in 'Other': $($WarningFile)." -ForegroundColor Yellow;
+    throw "Some cmdlets could not be properly mapped to a documentation grouping: $($warnings -join ", ").  Please add a mapping rule to $(Resolve-Path -Path $RulesFile).";
+}
