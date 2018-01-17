@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string OperationSearchString { get; set; }
 
@@ -46,6 +47,11 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (OperationSearchString == null)
+            {
+                OperationSearchString = "*";
+            }
+
             // remove leading and trailing whitespaces
             this.OperationSearchString = this.OperationSearchString.Trim();
 
