@@ -12,22 +12,22 @@ Deletes an Azure IoT Hub certificate.
 
 ## SYNTAX
 
-### InputObjectSet (Default)
-```
-Remove-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceSet
+### ResourceSet (Default)
 ```
 Remove-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
  [-Etag] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### InputObjectSet
+```
+Remove-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ResourceIdSet
 ```
-Remove-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName] <String> [-Etag] <String> [-PassThru]
+Remove-AzureRmIotHubCertificate [-ResourceId] <String> [-Etag] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Name of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
@@ -161,7 +161,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

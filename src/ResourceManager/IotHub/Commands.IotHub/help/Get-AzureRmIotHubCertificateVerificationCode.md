@@ -12,22 +12,22 @@ Generates a verification code for an Azure IoT Hub certificate.
 
 ## SYNTAX
 
-### InputObjectSet (Default)
-```
-Get-AzureRmIotHubCertificateVerificationCode [-InputObject] <PSCertificateDescription>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceSet
+### ResourceSet (Default)
 ```
 Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Name] <String>
  [-CertificateName] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### InputObjectSet
+```
+Get-AzureRmIotHubCertificateVerificationCode [-InputObject] <PSCertificateDescription>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificateVerificationCode [-ResourceId] <String> [-CertificateName] <String>
- [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIotHubCertificateVerificationCode [-ResourceId] <String> [-Etag] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ Name of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True
@@ -157,7 +157,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

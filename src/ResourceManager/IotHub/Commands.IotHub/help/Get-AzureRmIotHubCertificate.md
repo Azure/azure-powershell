@@ -12,15 +12,15 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ## SYNTAX
 
-### InputObjectSet (Default)
+### ResourceSet (Default)
 ```
-Get-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName <String>]
+Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceSet
+### InputObjectSet
 ```
-Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName <String>]
+Get-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -152,7 +152,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
