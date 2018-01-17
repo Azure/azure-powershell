@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     AppServicePlan = WebsitesClient.GetAppServicePlan(ResourceGroupName, Name);
                     AppServicePlan.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? AppServicePlan.Sku.Tier : Tier;
                     AppServicePlan.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : AppServicePlan.Sku.Capacity;
-                    var workerSizeAsNumber = int.Parse(AppServicePlan.Sku.Name.Substring(1, AppServicePlan.Sku.Name.Length - 1));
+                    var workerSizeAsNumber = int.Parse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
                     break;
