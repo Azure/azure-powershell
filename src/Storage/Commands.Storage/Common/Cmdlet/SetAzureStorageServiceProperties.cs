@@ -23,8 +23,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.StorageServiceProperty, SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
-    public class SetAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
+    [Cmdlet(VerbsData.Update, StorageNouns.StorageServiceProperty, SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
+    public class UpdateAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
 
-        public SetAzureStorageServicePropertyCommand()
+        public UpdateAzureStorageServicePropertyCommand()
         {
             EnableMultiThread = false;
         }       

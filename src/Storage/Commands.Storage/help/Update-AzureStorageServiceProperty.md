@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureStorageServiceProperty
+# Update-AzureStorageServiceProperty
 
 ## SYNOPSIS
 Modifies the properties for the Azure Storage service.
@@ -13,18 +13,18 @@ Modifies the properties for the Azure Storage service.
 ## SYNTAX
 
 ```
-Set-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
+Update-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
  [-PassThru] [-Context <IStorageContext>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
+The **Update-AzureStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
 
 ## EXAMPLES
 
 ### Example 1: Set Blob Service DefaultServiceVersion to 2017-04-17
 ```
-C:\PS>Set-AzureStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
+C:\PS>Update-AzureStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
 ```
 
 This command Set the DefaultServiceVersion of Blob Service to 2017-04-17

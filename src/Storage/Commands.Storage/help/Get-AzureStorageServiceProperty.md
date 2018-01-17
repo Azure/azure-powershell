@@ -25,6 +25,19 @@ The **Get-AzureStorageServiceProperty** cmdlet gets the properties for Azure Sto
 ### Example 1: Get  Azure Storage services property of the Blob service
 ```
 C:\PS>Get-AzureStorageServiceProperty -ServiceType Blob
+
+Logging.Version             : 1.0
+Logging.LoggingOperations   : Read, Write
+Logging.RetentionDays       : 
+HourMetrics.Version         : 1.0
+HourMetrics.MetricsLevel    : ServiceAndApi
+HourMetrics.RetentionDays   : 7
+MinuteMetrics.Version       : 1.0
+MinuteMetrics.MetricsLevel  : None
+MinuteMetrics.RetentionDays : 
+Cors                        : 
+DefaultServiceVersion       : 2017-04-17
+
 ```
 
 This command gets DefaultServiceVersion property of the Blob service.
