@@ -81,8 +81,6 @@
 			DiagnosticMessages="false"
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
-		
-		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
@@ -101,8 +99,6 @@
 			DiagnosticMessages="false"
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
-	
-		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="TimeoutErrorHandler">
