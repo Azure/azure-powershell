@@ -21,9 +21,8 @@ Add-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-Ce
 
 ### InputObjectSet
 ```
-Add-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-CertificateName] <String>
- [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-Path] <String> [-Etag <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
@@ -81,7 +80,7 @@ Name of the Certificate
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet, InputObjectSet
+Parameter Sets: ResourceSet
 Aliases: 
 
 Required: True

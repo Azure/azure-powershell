@@ -56,13 +56,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -83,8 +82,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
             if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
-                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.Id);
-                this.Name = IotHubUtils.GetIotHubName(this.Id);
+                this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
+                this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
             }
 
             if (!string.IsNullOrEmpty(CertificateName))

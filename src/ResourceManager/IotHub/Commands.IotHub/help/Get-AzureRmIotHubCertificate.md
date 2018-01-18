@@ -26,7 +26,7 @@ Get-AzureRmIotHubCertificate [-InputObject] <PSIotHub> [-CertificateName <String
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificate -Id <String> [-CertificateName <String>]
+Get-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -97,23 +97,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-IotHub Resource Id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
-Certificate Object
+IotHub Object
 
 ```yaml
 Type: PSIotHub
@@ -138,7 +123,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,6 +133,21 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+IotHub Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True
