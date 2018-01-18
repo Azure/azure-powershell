@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.0.1\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -277,13 +277,13 @@
     <Compile Include="Strategies\Compute\Images.cs" />
     <Compile Include="Strategies\Compute\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\Compute\ManagedDiskStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
     <Compile Include="Strategies\Network\NetworkStrategy.cs" />
     <Compile Include="Strategies\Network\PublicIPAddressStrategy.cs" />
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
-    <Compile Include="Strategies\ProgressReport.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceConfigExtensions.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 8C1D738C-825D-4718-AD2A-9CFEAA7DBD3B
@@ -110,14 +110,14 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS C:\> Remove-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName john.doe@contoso.com -RoleDefinitionName Reader
 ```
 
 Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the rg1 resourcegroup scope.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS C:\> Remove-AzureRmRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff39f -RoleDefinitionName Reader
 ```
@@ -125,7 +125,7 @@ PS C:\> Remove-AzureRmRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff
 Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role.
 Defaults to using the current subscription as the scope to find the assignment to be deleted.
 
-### --------------------------  Example 3  --------------------------
+### Example 3
 ```
 PS C:\> $roleassignment = Get-AzureRmRoleAssignment |Select-Object -First 1 -Wait
 PS C:\> Remove-AzureRmRoleAssignment -InputObject $roleassignment
@@ -156,7 +156,7 @@ Role Assignment object.
 ```yaml
 Type: PSRoleAssignment
 Parameter Sets: RoleAssignmentParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -187,7 +187,7 @@ Must be used in conjunction with ResourceGroupName, ResourceType and ResourceNam
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +202,7 @@ If specified, displays the deleted role assignment
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -219,7 +219,7 @@ When used in conjunction with ResourceName, ResourceType and (optionally)ParentR
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceGroupWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -237,7 +237,7 @@ Must be used in conjunction with ResourceGroupName, ResourceType and (optionally
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -255,7 +255,7 @@ Must be used in conjunction with ResourceGroupName, ResourceName and (optionally
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -270,7 +270,7 @@ Id of the RBAC role for which the assignment needs to be deleted.
 ```yaml
 Type: Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -286,7 +286,7 @@ Reader, Contributor, Virtual Network Administrator, etc.
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceGroupWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -306,7 +306,7 @@ If specified, it should start with "/subscriptions/{id}".
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

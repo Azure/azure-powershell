@@ -15,20 +15,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
 using Microsoft.WindowsAzure.Storage.Table;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    [TestClass]
     public class GetAzureStorageTableTest : StorageTableStorageTestBase
     {
         public GetAzureStorageTableCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public GetAzureStorageTableTest()
         {
             command = new GetAzureStorageTableCommand(tableMock)
                 {
@@ -36,40 +35,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByNameWithEmptyNameTest()
         {
             List<CloudTable> tableList = command.ListTablesByName("").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            Assert.Equal(0, tableList.Count);
 
             AddTestTables();
             tableList = command.ListTablesByName("").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            Assert.Equal(2, tableList.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByNameWithWildCardTest()
         {
             AddTestTables();
 
             List<CloudTable> tableList = command.ListTablesByName("te*t").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            Assert.Equal(2, tableList.Count);
 
             tableList = command.ListTablesByName("tx*t").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            Assert.Equal(0, tableList.Count);
 
             tableList = command.ListTablesByName("t?st").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("test", tableList[0].Name);
+            Assert.Equal(1, tableList.Count);
+            Assert.Equal("test", tableList[0].Name);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByNameWithInvalidNameTest()
         {
             string invalidName = "a";
@@ -81,7 +78,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.InvalidTableName, invalidName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByNameWithNoExistsTableTest()
         {
             string notExistingName = "abcdefg";
@@ -89,16 +87,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.TableNotFound, notExistingName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByNameSuccessfullyTest()
         {
             AddTestTables();
             List<CloudTable> tableList = command.ListTablesByName("text").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("text", tableList[0].Name);
+            Assert.Equal(1, tableList.Count);
+            Assert.Equal("text", tableList[0].Name);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByPrefixWithInvalidPrefixTest()
         {
             AssertThrows<ArgumentException>(() => command.ListTablesByPrefix(String.Empty),
@@ -109,45 +109,48 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.InvalidTableName, prefix));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTablesByPrefixSuccessfullyTest()
         {
             AddTestTables();
             MockCmdRunTime.ResetPipelines();
             List<CloudTable> tableList = command.ListTablesByPrefix("te").ToList();
-            Assert.AreEqual(2, tableList.Count);
+            Assert.Equal(2, tableList.Count);
 
             tableList = command.ListTablesByPrefix("tes").ToList();
-            Assert.AreEqual(1, tableList.Count);
-            Assert.AreEqual("test", tableList[0].Name);
+            Assert.Equal(1, tableList.Count);
+            Assert.Equal("test", tableList[0].Name);
 
             tableList = command.ListTablesByPrefix("testx").ToList();
-            Assert.AreEqual(0, tableList.Count);
+            Assert.Equal(0, tableList.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteTablesWithStorageContextTest()
         {
             command.WriteTablesWithStorageContext(null);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
 
             MockCmdRunTime.ResetPipelines();
             command.WriteTablesWithStorageContext(tableMock.tableList);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
 
             AddTestTables();
             MockCmdRunTime.ResetPipelines();
             command.WriteTablesWithStorageContext(tableMock.tableList);
-            Assert.AreEqual(2, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(2, MockCmdRunTime.OutputPipeline.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandGetTableTest()
         {
             AddTestTables();
             command.Name = "test";
             command.ExecuteCmdlet();
-            Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(1, MockCmdRunTime.OutputPipeline.Count);
         }
     }
 }

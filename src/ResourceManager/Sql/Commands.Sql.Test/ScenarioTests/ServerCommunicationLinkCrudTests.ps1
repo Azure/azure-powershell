@@ -55,8 +55,11 @@ function Test-GetServerCommunicationLink
 	$server2 = Create-ServerForTest $rg $locationOverride
 
 	$linkName = Get-ElasticPoolName
-	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
-		-LinkName $linkName -PartnerServer $server2.ServerName
+	$job = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-LinkName $linkName -PartnerServer $server2.ServerName -AsJob
+	$job | Wait-Job
+	$ep1 = $job.Output
+
 	Assert-NotNull $ep1
 	Assert-AreEqual $linkName $ep1.Name
 	Assert-AreEqual $server2.ServerName $ep1.PartnerServer
