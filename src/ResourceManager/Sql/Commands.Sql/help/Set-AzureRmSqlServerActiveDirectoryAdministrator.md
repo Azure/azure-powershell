@@ -94,7 +94,7 @@ Specifies the display name of the Azure AD administrator that this cmdlet provis
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -110,7 +110,7 @@ If the display name is not unique, you must specify a value for this parameter.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -125,7 +125,7 @@ Specifies the name of the resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,7 +140,7 @@ Specifies the name of the SQL Server for which this cmdlet provisions an adminis
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

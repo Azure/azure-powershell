@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6847ECFD-2E3D-46F6-ABE9-9D8E08C7858F
@@ -90,7 +90,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +120,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -235,7 +235,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -250,7 +250,7 @@ Specifies the name of a resource group for which the lock applies or that contai
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroup, ByResourceGroupLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -268,7 +268,7 @@ For instance, to specify a database, use the following format:
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -283,7 +283,7 @@ Specifies the resource type of the resource for which the lock applies.
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -305,7 +305,7 @@ To specify a resource group, use the following format:
 ```yaml
 Type: String
 Parameter Sets: BySpecifiedScope
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -320,7 +320,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
