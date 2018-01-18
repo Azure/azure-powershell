@@ -12,15 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Templates
-{
-    /// <summary>
-    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-outputs
-    /// </summary>
-    public class Output
-    {
-        public string type { get; set; }
+using System;
+using System.Linq;
 
-        public object value { get; set; }
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
+{
+    static class Extensions
+    {
+        public static bool IsGenericType(this Type t, Type genericType)
+            => t.IsGenericType && t.GetGenericTypeDefinition() == genericType;
+
+        public static Type[] GetGenericArguments(this Type t, Type genericType, Func<Type, Type[]> p)
+            => new[] { t }
+                .Concat(t.GetInterfaces())
+                .Where(i => i.IsGenericType(genericType))
+                .Select(p)
+                .FirstOrDefault();
     }
 }

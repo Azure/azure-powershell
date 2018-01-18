@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Templates
-{
-    /// <summary>
-    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-outputs
-    /// </summary>
-    public class Output
-    {
-        public string type { get; set; }
+using Newtonsoft.Json.Linq;
+using System;
 
-        public object value { get; set; }
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
+{
+    interface IConverter
+    {
+        bool Match(Type type);
+        JToken Serialize(Converters converters, Type type, object value);
+        object Deserialize(Converters converters, Type type, JToken token);
     }
 }

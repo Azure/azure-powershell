@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
         /// <summary>
         /// Resource properties.
         /// </summary>
-        public Dictionary<string, object> properties { get; set; }
+        public JObject properties { get; set; }
 
         /// <summary>
         /// A list of resource which has to be created first.

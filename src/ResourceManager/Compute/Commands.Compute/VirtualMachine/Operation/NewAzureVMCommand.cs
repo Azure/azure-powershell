@@ -337,12 +337,10 @@ namespace Microsoft.Azure.Commands.Compute
                 var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
                     resourceGroup.Name, Name, deployment);
 
-                var output = 
-                    ((tResult.Properties.Outputs as JObject)["virtualMachine"] as JObject)["value"] as JObject;
+                var output = ((tResult.Properties.Outputs as JObject)["virtualMachine"] as JObject)
+                    .ToObject<Output>();
 
-                var jResult = new JObject { { "properties", output } };
-
-                var result = jResult.FromWireObject<VirtualMachine>();
+                var result = output.GetModel<VirtualMachine>();
 
                 if (result != null)
                 {
@@ -355,7 +353,7 @@ namespace Microsoft.Azure.Commands.Compute
                 // create target state
                 var target = virtualMachine.GetTargetState(
                     current, client.SubscriptionId, Location);
-
+                
                 // apply target state
                 var newState = await virtualMachine
                     .UpdateStateAsync(

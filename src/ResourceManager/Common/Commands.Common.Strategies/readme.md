@@ -1,6 +1,12 @@
-# Strategies
+﻿# Strategies
 
 ## Wish List
+
+### CmdLets
+
+1. `-AsAtmTemplate` should work even if the user is not log in.
+
+### AutRest
 
 1. An SDK serializer
    1. should be generic and belong to a runtime library
