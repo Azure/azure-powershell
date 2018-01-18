@@ -164,7 +164,7 @@ List all role assignments in the subscription
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com -ExpandPrincipalGroups
+PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 ```
 
 Gets all role assignments made to user john.doe@contoso.com, and the groups of which he is member, at the testRG scope or above.
