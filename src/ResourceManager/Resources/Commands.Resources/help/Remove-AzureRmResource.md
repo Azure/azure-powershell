@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
@@ -15,13 +15,13 @@ Removes a resource.
 
 ### ByResourceId (Default)
 ```
-Remove-AzureRmResource -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmResource [-AsJob] -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySubscriptionLevel
 ```
-Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
+Remove-AzureRmResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-Extension
 
 ### ByTenantLevel
 ```
-Remove-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
+Remove-AzureRmResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -58,7 +58,22 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -91,7 +106,7 @@ server name`/`database name
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +125,7 @@ For instance:
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +140,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +156,7 @@ This cmdlet appends this value to the request in addition to any other filters.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +171,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,7 +186,7 @@ Specifies the name of the resource group from which this cmdlet removes a resour
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,7 +240,7 @@ For instance, for a database, the resource type is as follows:
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -240,7 +255,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

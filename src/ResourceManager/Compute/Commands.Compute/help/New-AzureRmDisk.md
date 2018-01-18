@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermdisk
 schema: 2.0.0
 ---
@@ -12,7 +13,7 @@ Creates a managed disk.
 ## SYNTAX
 
 ```
-New-AzureRmDisk [-AsJob] [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk>
+New-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

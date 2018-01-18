@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A03670F6-F8D1-4890-9939-21B546927238}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.DataMigration</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.DataMigration</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile /> 
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.DataMigration\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.DataMigration\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <ErrorReport>prompt</ErrorReport>
+    <DelaySign>true</DelaySign>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToSourceSqlServerTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\GetUserTableSqlCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToTargetSqlDbTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\DynamicCmdlet.cs" />
+    <Compile Include="Cmdlets\GetAzureDataMigrationService.cs" />
+    <Compile Include="Cmdlets\GetDataMigrationTask.cs" />
+    <Compile Include="Cmdlets\GetProjectCmdlet.cs" />
+    <Compile Include="Cmdlets\MigrateSqlServerSqlDbTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\NewAzureRmDataMigrationService.cs" />
+    <Compile Include="Cmdlets\NewConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\NewDatabaseInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\NewDataMigrationSqlServerSqlDbSelectedDB.cs" />
+    <Compile Include="Cmdlets\NewDataMigrationTask.cs" />
+    <Compile Include="Cmdlets\NewProjectCmdlet.cs" />
+    <Compile Include="Cmdlets\RemoveDataMigrationProject.cs" />
+    <Compile Include="Cmdlets\RemoveDataMigrationService.cs" />
+    <Compile Include="Cmdlets\RemoveDataMigrationTask.cs" />
+    <Compile Include="Cmdlets\SqlConnectionInfoCmdlet.cs" />
+    <Compile Include="Cmdlets\StartDataMigrationService.cs" />
+    <Compile Include="Cmdlets\StopDataMigrationTask.cs" />
+    <Compile Include="Cmdlets\StopDataMingrationService.cs" />
+    <Compile Include="Cmdlets\TaskCmdlet.cs" />
+    <Compile Include="Common\DmsClient.cs" />
+    <Compile Include="Common\DmsResourceIdentifier.cs" />
+    <Compile Include="Common\PagingExtensions.cs" />
+    <Compile Include="Models\DatabaseInfo\PSSqlServerSqlDbSelectedDatabase.cs" />
+    <Compile Include="Models\Exceptions\BadRequestException.cs" />
+    <Compile Include="Models\Exceptions\InvalidConnectionTypeException.cs" />
+    <Compile Include="Models\Exceptions\PreConditionFailedException.cs" />
+    <Compile Include="Models\DatabaseInfo\PSDatabaseInfo.cs" />
+    <Compile Include="Models\PSProject.cs" />
+    <Compile Include="Models\PSDataMigrationService.cs" />
+    <Compile Include="Models\PSProjectTask.cs" />
+    <Compile Include="Models\ResultTypeEnum.cs" />
+    <Compile Include="Models\ServerTypeEnum.cs" />
+    <Compile Include="Models\TaskTypeEnum.cs" />
+    <Compile Include="Models\Exceptions\DataMigrationServiceExceptionBase.cs" />
+    <Compile Include="Models\Exceptions\InvalidCommandOperationException.cs" />
+    <Compile Include="Models\Exceptions\InvalidConfigurationSettingsException.cs" />
+    <Compile Include="Models\Exceptions\InvalidMigrationTaskNameException.cs" />
+    <Compile Include="Models\Exceptions\LoadProjectFileFailedException.cs" />
+    <Compile Include="Models\Exceptions\NotFoundException.cs" />
+    <Compile Include="Models\Exceptions\AlreadyExistsException.cs" />
+    <Compile Include="Models\Exceptions\ScenarioFailedException.cs" />
+    <Compile Include="Models\Exceptions\ServerConnectionFailedException.cs" />
+    <Compile Include="Models\Exceptions\SetProjectArtifactsFailedException.cs" />
+    <Compile Include="Cmdlets\DataMigrationCmdlet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="..\AzureRM.DataMigration.psd1">
+      <Link>AzureRM.DataMigration.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.1.2-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
+	  <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
+</Project>
