@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Models
             this.AccountName = locationBasedServicesAccount.Name;
             this.Id = locationBasedServicesAccount.Id;
             this.Location = locationBasedServicesAccount.Location;
-            this.Sku = locationBasedServicesAccount.Sku;
+            this.Sku = new PSLocationBasedServicesAccountSku(locationBasedServicesAccount.Sku);
             this.ResourceType = locationBasedServicesAccount.Type;
             this.Tags = locationBasedServicesAccount.Tags;
         }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Models
 
         public string Location { get; private set; }
 
-        public Sku Sku { get; private set; }
+        public PSLocationBasedServicesAccountSku Sku { get; private set; }
 
         public string ResourceType { get; private set; }
 

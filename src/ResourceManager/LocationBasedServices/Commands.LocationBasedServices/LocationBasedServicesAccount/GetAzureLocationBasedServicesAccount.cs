@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.LocationBasedServices.Models;
 using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
