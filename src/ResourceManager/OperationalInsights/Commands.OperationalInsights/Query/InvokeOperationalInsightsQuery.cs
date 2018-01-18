@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
                     }
                     else
                     {
-                        clientCredentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, "AzureOperationalInsightsEndpointResourceId");
+                        clientCredentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint);
                     }
 
                     this._operationalInsightsDataClient =
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
                     Uri targetUri= null;
                     DefaultContext.Environment.TryGetEndpointUrl(
-                        AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint, out targetUri);
+                        AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, out targetUri);
                     if (targetUri == null)
                     {
                         throw new Exception("Operational Insights is not supported in this Azure Environment");
