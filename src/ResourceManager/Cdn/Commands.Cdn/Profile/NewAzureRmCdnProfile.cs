@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN profile.")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmCdnProfile: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
 
         public override void ExecuteCmdlet()
@@ -91,6 +93,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 
         private void NewProfile()
         {
+#pragma warning disable CS0618
             var cdnProfile = CdnManagementClient.Profiles.Create(
                 ResourceGroupName,
                 ProfileName,
@@ -100,8 +103,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                     id: null,
                     name: null,
                     type: null,
-                    tags: Tags.ToDictionaryTags())
+                    tags: Tag.ToDictionaryTags())
                 );
+#pragma warning restore CS0618
 
             WriteObject(cdnProfile.ToPsProfile());
         }
