@@ -16,17 +16,19 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmServicebusDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+    /// 'Set-AzureRmServicebusGeoDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class SetAzureServiceBusDRConfigurationFailOver : AzureServiceBusCmdletBase
+    public class SetAzureServiceBusGeoDRConfigurationFailOver : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
@@ -39,13 +41,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [Alias(AliasAliasName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            //Set FailOver
-            if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, Name, Namespace)))
-            {
-                Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
-            }
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DRFailOver, Name, Namespace),
+                string.Format(Resources.DRFailOver, Name, Namespace),
+                Name,
+                () =>
+                {
+                    Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

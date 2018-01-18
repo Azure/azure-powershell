@@ -16,17 +16,19 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmServicebusDRConfigurationBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
+    /// 'Set-AzureRmServicebusGeoDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationBreakPairingVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class SetAzureServiceBusDRConfigurationBreakPairing : AzureServiceBusCmdletBase
+    public class SetAzureServiceBusGeoDRConfigurationBreakPair : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
@@ -40,14 +42,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [Alias(AliasAliasName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            //Set Break Pairing
-            if (ShouldProcess(target: Name, action: string.Format(Resources.DRBreakPairing, Name, Namespace)))
-            {
-                Client.SetServiceBusDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
-            }
-
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DRFailOver, Name, Namespace),
+                string.Format(Resources.DRFailOver, Name, Namespace),
+                Name,
+                () =>
+                {
+                    Client.SetServiceBusDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

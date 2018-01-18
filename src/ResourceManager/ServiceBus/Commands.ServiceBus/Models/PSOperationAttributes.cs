@@ -43,7 +43,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         {
             Name = operation.Name;
             if (operation.Display != null)
+            {
                 Display = new PSOperationDisplayAttributes(operation.Display.Operation);
+            }
         }
 
 
