@@ -89,7 +89,7 @@ Specifies the name of the resource group that contains the Storage account to ge
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: AccountNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

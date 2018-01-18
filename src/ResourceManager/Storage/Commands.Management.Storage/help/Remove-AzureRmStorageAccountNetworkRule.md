@@ -15,27 +15,27 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ### NetWorkRuleString (Default)
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -VirtualNetworkResourceId <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -VirtualNetworkResourceId <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### IpRuleObject
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NetworkRuleObject
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -VirtualNetworkRule <PSVirtualNetworkRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -VirtualNetworkRule <PSVirtualNetworkRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleString
 ```
 Remove-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -IPAddressOrRange <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -IPAddressOrRange <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -74,6 +74,21 @@ This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -95,7 +110,7 @@ The Array of IpAddressOrRange, will remove IpRule with same IpAddressOrRange fro
 ```yaml
 Type: String[]
 Parameter Sets: IpRuleString
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -110,7 +125,7 @@ The Array of IpRule objects to remove from the NetWorkRule Property.
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: IpRuleObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -140,7 +155,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -170,7 +185,7 @@ The Array of VirtualNetworkRule objects to remove from the NetWorkRule Property.
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: NetworkRuleObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -227,3 +242,4 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
 ## NOTES
 
 ## RELATED LINKS
+

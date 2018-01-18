@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
     using Microsoft.WindowsAzure.Storage.Table;
@@ -22,13 +24,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
     using System.Collections.Generic;
     using System.Globalization;
 
-    [TestClass]
     public class NewAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
     {
         public NewAzureStorageTableStoredAccessPolicyCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public NewAzureStorageTableStoredAccessPolicyTest()
         {
             command = new NewAzureStorageTableStoredAccessPolicyCommand(tableMock)
             {
@@ -36,13 +36,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureTableStoredAccessPolicyWithInvalidNameTest()
         {
             clearTest();
@@ -55,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         }
 
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureTableStoredAccessPolicySuccessTest()
         {
             clearTest();
@@ -71,15 +68,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             expectedPermissions |= SharedAccessTablePermissions.Query;
             expectedPermissions |= SharedAccessTablePermissions.Delete;
             SharedAccessTablePolicy resultPolicy = tableMock.tablePermissions.SharedAccessPolicies[policyName];
-            Assert.IsNotNull(resultPolicy);
-            Assert.AreEqual<SharedAccessTablePermissions>(expectedPermissions, resultPolicy.Permissions);
-            Assert.AreEqual<DateTimeOffset?>(startTime.ToUniversalTime(), resultPolicy.SharedAccessStartTime);
-            Assert.AreEqual<DateTimeOffset?>(expiryTime.ToUniversalTime(), resultPolicy.SharedAccessExpiryTime);
+            Assert.NotNull(resultPolicy);
+            Assert.Equal<SharedAccessTablePermissions>(expectedPermissions, resultPolicy.Permissions);
+            Assert.Equal<DateTimeOffset?>(startTime.ToUniversalTime(), resultPolicy.SharedAccessStartTime);
+            Assert.Equal<DateTimeOffset?>(expiryTime.ToUniversalTime(), resultPolicy.SharedAccessExpiryTime);
             clearTest();
         }
 
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateStoredAccessPolicyAlreadyExistsTest()
         {
             clearTest();
@@ -94,7 +92,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             clearTest();
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateStoredAccessPolicyInvalidExpirtTime()
         {
             clearTest();
