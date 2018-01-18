@@ -414,8 +414,10 @@ function Test-DeleteVaultByName
 function Test-DeleteUnknownVaultFails
 {
     $vaultName = Get-VaultName
+	$job = Remove-AzureRmKeyVault -VaultName $vaultName -AsJob
+	$job | Wait-Job
 
-    Assert-Throws { Remove-AzureRmKeyVault -VaultName $vaultName }
+    Assert-Throws { $job | Receive-Job }
 }
 
 #-------------------------------------------------------------------------------------
