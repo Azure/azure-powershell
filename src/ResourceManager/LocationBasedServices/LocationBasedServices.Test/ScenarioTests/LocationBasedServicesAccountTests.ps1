@@ -24,9 +24,9 @@ function Test-NewAzureRmLocationBasedServicesAccount
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -39,6 +39,7 @@ function Test-NewAzureRmLocationBasedServicesAccount
         Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
         Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
         Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
+        Assert-AreEqual $createdAccount.Sku.Name $createdAccountAgain.Sku.Name;
         
         Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
@@ -61,9 +62,9 @@ function Test-RemoveAzureRmLocationBasedServicesAccount
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -93,9 +94,9 @@ function Test-GetAzureLocationBasedServicesAccount
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -147,9 +148,9 @@ function Test-GetAzureRmLocationBasedServicesAccountKey
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
@@ -179,9 +180,9 @@ function Test-NewAzureRmLocationBasedServicesAccountKey
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
@@ -222,9 +223,9 @@ function Test-PipingGetAccountToGetKey
     try
     {
         # Test
-        $accountname = 'csa' + $rgname;
+        $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = 'West US';
+        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
