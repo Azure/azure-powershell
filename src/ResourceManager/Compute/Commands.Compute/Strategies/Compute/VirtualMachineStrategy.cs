@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         {
                             new NetworkInterfaceReference
                             {
-                                Id = networkInterface.GetId(subscription).IdToString()
+                                Id = networkInterface.GetIdStr(subscription)
                             }
                         }
                     },
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,
-                                Id = disk.GetId(subscription).IdToString()
+                                Id = disk.GetIdStr(subscription)
                             }
                         }
                     },

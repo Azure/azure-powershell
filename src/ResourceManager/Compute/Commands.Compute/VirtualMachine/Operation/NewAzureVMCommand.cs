@@ -418,6 +418,7 @@ namespace Microsoft.Azure.Commands.Compute
                 asyncCmdlet.WriteObject(templateResult);
 
                 // apply target state
+                /*
                 var newState = await resourceGroup
                     .UpdateStateAsync(
                         client,
@@ -454,6 +455,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                     asyncCmdlet.WriteObject(psResult);
                 }
+                */
             }
             else
             {
