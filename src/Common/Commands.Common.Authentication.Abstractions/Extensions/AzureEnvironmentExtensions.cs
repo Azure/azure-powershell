@@ -283,20 +283,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The correct token audience for tokens bound for the given endpoint.</returns>
         public static string GetTokenAudience(this IAzureEnvironment environment, string targetEndpoint)
         {
-            string resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
-            if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
+            string resource;
+            switch (targetEndpoint)
             {
-                resource = AzureEnvironment.Endpoint.GraphEndpointResourceId;
-            }
-            else if (targetEndpoint == AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ||
-                targetEndpoint == AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix ||
-                targetEndpoint == AzureEnvironment.Endpoint.DataLakeEndpointResourceId)
-            {
-                resource = AzureEnvironment.Endpoint.DataLakeEndpointResourceId;
-            }
-            else if (targetEndpoint == AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId)
-            {
-                resource = AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId;
+                case AzureEnvironment.Endpoint.Graph:
+                    resource = AzureEnvironment.Endpoint.GraphEndpointResourceId;
+                    break;
+                case AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix:
+                case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
+                case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                    resource = AzureEnvironment.Endpoint.DataLakeEndpointResourceId;
+                    break;
+                case AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix:
+                case AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId:
+                    resource = AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId;
+                    break;
+                case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint:
+                case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId;
+                    break;
+                default:
+                    resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
+                    break;
             }
 
             return resource;
