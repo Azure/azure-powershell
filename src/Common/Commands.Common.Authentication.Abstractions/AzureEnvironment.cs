@@ -74,8 +74,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
-                AzureOperationalInsightsEndpointResourceId = null,
-                AzureOperationalInsightsEndpoint = null,
                 AdTenant = "Common"
             };
             var azureUSGovernment = new AzureEnvironment
@@ -99,8 +97,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
-                AzureOperationalInsightsEndpointResourceId = null,
-                AzureOperationalInsightsEndpoint = null,
                 AdTenant = "Common"
             };
             var azureGermany = new AzureEnvironment
@@ -124,8 +120,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
-                AzureOperationalInsightsEndpointResourceId = null,
-                AzureOperationalInsightsEndpoint = null,
                 AdTenant = "Common"
             };
             return new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
@@ -147,7 +141,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         {
             get
             {
-                if (Interlocked.Exchange(ref _initialized, 1) == 1)
+                if (Interlocked.Exchange(ref _initialized, 1) == 0)
                 {
                     _builtInEnvironments = InitializeBuiltInEnvironments();
                 }
@@ -269,16 +263,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The domain name suffix for Azure DataLake file systems created in this environment
         /// </summary>
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
-
-        /// <summary>
-        /// The token audience required for communicating with the Azure Log Analytics query service in this environment
-        /// </summary>
-        public string AzureOperationalInsightsEndpointResourceId { get; set; }
-
-        /// <summary>
-        /// The endpoint to use when communicating with the Azure Log Analytics query service in this environment
-        /// </summary>
-        public string AzureOperationalInsightsEndpoint { get; set; }
 
         /// <summary>
         /// The name of the default AdTenant in this environment
