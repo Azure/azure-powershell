@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0EB5C25C-D0A1-4444-AEA2-C963D5069CFC
@@ -14,7 +14,7 @@ Modifies a Data Lake Store account.
 ## SYNTAX
 
 ```
-Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
+Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tag] <Hashtable>]
  [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
  [[-ResourceGroupName] <String>] [-Tier <TierType>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
  [-KeyVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -40,7 +40,7 @@ Optionally allow/block Azure originating IPs through the firewall.
 ```yaml
 Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -57,7 +57,7 @@ This group is the default group for files and folders that you create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -87,7 +87,7 @@ Optionally enable or disable existing firewall rules.
 ```yaml
 Type: FirewallState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -103,7 +103,7 @@ If the encryption type is User assigned, the user can rotate their key version w
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ Specifies the name of a Data Lake Store account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -133,7 +133,7 @@ Specifies the name of the resource group that contains the Data Lake Store accou
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -142,14 +142,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies tags as key-value pairs.
 You can use tags to identify a Data Lake Store account from other Azure resources.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 2
@@ -164,7 +164,7 @@ The desired commitment tier for this account to use.
 ```yaml
 Type: TierType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Consumption, Commitment1TB, Commitment10TB, Commitment100TB, Commitment500TB, Commitment1PB, Commitment5PB
 
 Required: False
@@ -180,7 +180,7 @@ Optionally enable or disable the existing trusted ID providers.
 ```yaml
 Type: TrustedIdProviderState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
