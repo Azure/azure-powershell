@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
 
-        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusDRConfiguration";
-        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusDRConfigurationFailOver";
-        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusDRConfigurationBreakPairing";
+        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusGeoDRConfiguration";
+        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusGeoDRConfigurationFailOver";
+        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusGeoDRConfigurationBreakPair";
 
         protected struct SKU
         {

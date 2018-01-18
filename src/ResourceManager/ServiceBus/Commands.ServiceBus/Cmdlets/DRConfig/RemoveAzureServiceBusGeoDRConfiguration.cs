@@ -12,49 +12,53 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ServiceBus;
-using Microsoft.Azure.Commands.ServiceBus.Models;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Get-AzureServicebusDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
+    /// 'Remove-AzureRmServicebusGeoDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb), OutputType(typeof(List<PSServiceBusDRConfigurationAttributes>))]
-    public class GetServiceBusDRConfiguration : AzureServiceBusCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveServicBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
-        [ValidateNotNullOrEmpty]
-        [Alias(AliasNamespaceName)]
+        [ValidateNotNullOrEmpty]   
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR) Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            ConfirmAction(
+            Force.IsPresent,
+            string.Format(Resources.DRRemoveAlias, Name, Namespace),
+            string.Format(Resources.DRRemoveAlias, Name, Namespace),
+            Name,
+            () =>
             {
-                // Get a DRConfiguration
-                PSServiceBusDRConfigurationAttributes drConfiguration = Client.GetServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
-                WriteObject(drConfiguration);
-            }
-            else
-            {
-                // Get all DRConfigurations
-                IEnumerable<PSServiceBusDRConfigurationAttributes> drConfigurationList = Client.ListAllServiceBusDRConfiguration(ResourceGroupName, Namespace);
-                WriteObject(drConfigurationList.ToList(), true);
-            }
+                Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
+            });
         }
     }
 }

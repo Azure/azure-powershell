@@ -20,12 +20,12 @@ function WaitforStatetoBeSucceded
 {
 	param([string]$resourceGroupName,[string]$namespaceName,[string]$drConfigName)
 	
-	$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Name $drConfigName
+	$createdDRConfig = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $drConfigName
 
 	while($createdDRConfig.ProvisioningState -ne "Succeeded")
 	{
-		Start-Sleep -s 10
-		$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Name $drConfigName
+		Wait-Seconds 10
+		$createdDRConfig = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $drConfigName
 	}
 
 	return $createdDRConfig
@@ -49,51 +49,43 @@ function WaitforStatetoBeSucceded_namespace
 
 }
 
+
 <#
 .SYNOPSIS
-Tests ServiceBus DRConfiguration Create List Remove operations.
+Tests Service Bus GeoDRConfiguration Create List Remove operations.
 #>
 
 function ServiceBusDRConfigurationTests
 {
 	# Setup    
-	$location_south = "South Central US"
-	$location_north = "North Central US"
-	$resourceGroupName = getAssetName "RGName-"
-	$namespaceName1 = getAssetName "Namespace1-"
-	$namespaceName2 = getAssetName "Namespace2-"
-	$drConfigName = getAssetName "drConfig1-"
-    $authRuleName = getAssetName "authorule1-"
-
-	
-	# Check NameSpace Name Availability
-	$checkNamespaceNameResult = Test-AzureRmServiceBusName -Namespace $namespaceName1 
-	Assert-True { $checkNamespaceNameResult.NameAvailable}
+	$location_south = "South Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
+	$location_north = "North Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
+	$resourceGroupName = getAssetName
+	$namespaceName1 = getAssetName "ServiceBus-Namespace-"
+	$namespaceName2 = getAssetName "ServiceBus-Namespace-"
+	$drConfigName = getAssetName "DRConfig-"
+	$authRuleName = getAssetName "ServiceBus-Namespace-AuthorizationRule"
 
 	# Create Resource Group
-	Write-Debug "Create resource group"    
+	Write-Debug "Create resource group"
 	Write-Debug " Resource Group Name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location_south -Force
-			
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location_south -Force	
+		
 	# Create ServiceBus Namespace - 1
-	Write-Debug "Create new ServiceBus namespace 1"
+	Write-Debug "  Create new ServiceBus namespace 1"
 	Write-Debug " Namespace 1 name : $namespaceName1"
 	$result1 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location_south -SkuName Premium
 
 	# Assert
-	Assert-AreEqual $result1.ProvisioningState "Succeeded"
-
-	$result1 = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location_south -SkuName Premium -SkuCapacity 1
+	Assert-AreEqual $result1.Name $namespaceName1
 
 	# Create ServiceBus Namespace - 2
-	Write-Debug "  Create new ServiceBus namespace 2"
+	Write-Debug "  Create new servicebus namespace 2"
 	Write-Debug " Namespace 2 name : $namespaceName2"
 	$result2 = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location_north -SkuName Premium
 
 	# Assert
-	Assert-AreEqual $result2.ProvisioningState "Succeeded"
-
-	 $result2 = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location_north -SkuName Premium -SkuCapacity 1
+	Assert-AreEqual $result2.Name $namespaceName2
 
 	# get the created ServiceBus Namespace  1
 	Write-Debug " Get the created namespace within the resource group"
@@ -101,84 +93,115 @@ function ServiceBusDRConfigurationTests
 	
 	Assert-AreEqual $createdNamespace1.Name $namespaceName1 "Namespace created earlier is not found."
 
-	# Check DR Configuration Name Availability
-
-	$chackNameResult = Test-AzureRmServiceBusName -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName 
-	Assert-True { $chackNameResult.NameAvailable}
-
 	# get the created ServiceBus Namespace  2
 	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2	
-	Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found"	
+	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+	
+	Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found."
 
-
+	# Create AuthorizationRule
 	Write-Debug "Create a Namespace Authorization Rule"
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")																																	  
-
+    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
+																																	  
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-	
 
-	# Create a DRConfiguration
-	Write-Debug " Create new DRConfiguration"
-	$result = New-AzureRmServiceBusDRConfiguration -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
-	Assert-AreEqual $result.Role "Primary"
-		
-	Write-Debug " Get the created DRConfiguration"
-	$createdDRConfig = Get-AzureRmServiceBusDRConfiguration -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
+	# Check DR Configuration Name Availability
 
-	# Assert
-	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id
+	$checkNameResult = Test-AzureRmServiceBusName -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName
+	Assert-True { $checkNameResult.NameAvailable}
 
-	# Get the Created DRConfiguration
-	Write-Debug " Get all the created DRConfiguration"
-	$createdServiceBusDRConfigList = Get-AzureRmServiceBusDRConfiguration -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName1
-
-	# Assert
-	Assert-AreEqual $createdServiceBusDRConfigList.Count 1 "ServiceBus DRConfig created earlier is not found in list"
+	# Create a GeoDRConfiguration
+	Write-Debug " Create new GeoDRConfiguration"
+	$result = New-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
 
 	# Wait till the Alias Provisioning  state changes to succeeded
-	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	$newDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $newDRConfig.Role "Primary"
+
+	# Get AuthorizationRule through GeoDRConfiguration
+	Write-Debug "Get Namespace Authorization Rule details"
+	Write-Debug "Auth Rule name : $authRuleName"
+    $resultAuthRuleDR = Get-AzureRmServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName -Name $authRuleName
+
+    Assert-AreEqual $authRuleName $resultAuthRuleDR.Name
+    Assert-AreEqual 2 $resultAuthRuleDR.Rights.Count
+    Assert-True { $resultAuthRuleDR.Rights -Contains "Listen" }
+    Assert-True { $resultAuthRuleDR.Rights -Contains "Send" }
+	
+	# Get the connectionStrings for GeoDRConfiguration
+
+	Write-Debug "Get namespace authorizationRules connectionStrings using GeoDRConfiguration"
+    $DRnamespaceListKeys = Get-AzureRmServiceBusKey -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName -Name $authRuleName
+
+	Write-Debug " Get the created GeoDRConfiguration"
+	$createdDRConfig = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
+	# Assert
+	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id "DRConfig created earlier is not found."
+	
+	Write-Debug " Get the created GeoDRConfiguration for Secondary Namespace"
+	$createdDRConfigSecondary = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
+	Assert-AreEqual $createdDRConfigSecondary.Role "Secondary"
+	
+	# Get the Created GeoDRConfiguration
+	Write-Debug " Get all the created GeoDRConfiguration"
+	$createdServicebusDRConfigList = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1
+
+	# Assert
+	Assert-AreEqual $createdServicebusDRConfigList.Count 1 "ServiceBus DRConfig created earlier is not found in list"
 
 	# BreakPairing on Primary Namespace
 	Write-Debug "BreakPairing on Primary Namespace"
-	Set-AzureRmServiceBusDRConfigurationBreakPairing -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName
-	
+	Set-AzureRmServiceBusGeoDRConfigurationBreakPair -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -Force
+
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$breakPairingDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
 	Assert-AreEqual $breakPairingDRConfig.Role "PrimaryNotReplicating"
-
-	# Create a DRConfiguration
-	Write-Debug " Create new DRConfiguration"
-	$DRresult = New-AzureRmServiceBusDRConfiguration -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
+	
+	# Create a GeoDRConfiguration
+	Write-Debug " Create new GeoDRConfiguration"
+	$DRresult = New-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
 	
 	# Wait till the Alias Provisioning  state changes to succeeded
-	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName	
+	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
 	Assert-AreEqual $UpdateDRConfig.Role "Primary"
-
+	
 	# FailOver on Secondary Namespace
 	Write-Debug "FailOver on Secondary Namespace"
-	Set-AzureRmServiceBusDRConfigurationFailOver -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
+	Set-AzureRmServiceBusGeoDRConfigurationFailOver -ResourceGroup $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -Force
 
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$failoverDrConfiguration = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
 	Assert-AreEqual $failoverDrConfiguration.Role "PrimaryNotReplicating"
+	Assert-AreEqual $failoverDrConfiguration.PartnerNamespace "" "FaileOver: PartnerNamespace exists"
 	
-	# Remove created alias
-	Remove-AzureRmServiceBusDRConfiguration -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName2 -Name $drConfigName
+	# Remove the Alias created
+	Remove-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -Force
 
-	Write-Debug " Delete namespaces"
+	Wait-Seconds 30
+
+	# Get the Created GeoDRConfiguration
+	Write-Debug " Get all the created GeoDRConfiguration"
+	$createdServiceBusDRConfigList_delete = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1
+
+	# Assert
+	Assert-AreEqual $createdServiceBusDRConfigList_delete.Count 0 "DR Config List: after delete the DRCoinfig was listed"
+
 	# Wait till the Namespace Provisioning  state changes to succeeded
 	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1
 
-    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
+	Write-Debug " Delete namespaces"
+    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -Name $namespaceName1
 
 	# Wait till the Namespace Provisioning  state changes to succeeded
 	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
 
-    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
-		
+	Write-Debug " Delete namespaces"
+    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -Name $namespaceName2
+
+	Write-Debug " Delete resourcegroup"
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }

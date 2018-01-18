@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
-            {//Check the ServiceBus namespaces name is availability
+            {
                 PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
                 WriteObject(checkNameAvailabilityResult, true);
             }
 
             if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
-            {//Check the ServiceBus namespaces name is availability
+            {
                 PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
                 WriteObject(checkNameAvailabilityResult, true);
             }

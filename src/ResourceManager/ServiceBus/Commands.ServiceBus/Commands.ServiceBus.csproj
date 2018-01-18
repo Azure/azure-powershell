@@ -45,7 +45,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.3\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
-	<Reference Include="System.Management.Automation" />
+    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusAuthorizationRule.cs" />
@@ -56,11 +56,11 @@
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureServiceBusAuthorizationRule.cs" />
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
     <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
-    <Compile Include="Cmdlets\DRConfig\GetAzureServiceBusDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\NewAzureServiceBusDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\RemoveAzureServiceBusDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusDRConfigurationBreakPairing.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusDRConfigurationFailOver.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationBreakPair.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationFailOver.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespace.cs" />

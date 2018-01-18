@@ -15,28 +15,28 @@
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmServicebusDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
+    /// 'New-AzureRmServicebusGeoDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet(VerbsCommon.New, ServicebusDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
-    public class NewAzureRmEventHubDRConfiguration : AzureServiceBusCmdletBase
+    public class NewAzureRmEventHubGeoDRConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "DR Configuration PartnerNamespace")]
