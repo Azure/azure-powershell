@@ -35,7 +35,10 @@ function Test-NewAzureRmLocationBasedServicesAccount
         # Call create again, expect to get the same account
         $createdAccountAgain = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccountAgain
+        Assert-AreEqual $createdAccount.Id $createdAccountAgain.Id;
+        Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
         Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
+        Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
         
         Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }

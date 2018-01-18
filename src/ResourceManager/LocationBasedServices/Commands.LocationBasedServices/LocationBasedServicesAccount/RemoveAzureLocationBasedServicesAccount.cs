@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
 
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
+            HelpMessage = "Location Based Services Account piped from Get-AzureRmLocationBasedServicesAccount.",
             ValueFromPipeline = true)]
         public PSLocationBasedServicesAccount InputObject { get; set; }
 
