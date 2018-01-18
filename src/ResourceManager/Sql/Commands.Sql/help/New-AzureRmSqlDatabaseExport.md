@@ -56,7 +56,7 @@ Specifies the name of the SQL administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Specifies the password of the SQL administrator.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ This parameter is only available on SQL Database V12 servers.
 ```yaml
 Type: AuthenticationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Sql, AdPassword
 
 Required: False
@@ -114,7 +114,7 @@ Specifies the name of the SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -144,7 +144,7 @@ Specifies the name of the resource group for the SQL Database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -159,7 +159,7 @@ Specifies the name of the SQL Database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -174,7 +174,7 @@ Specifies the access key for the storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -196,7 +196,7 @@ This value uses a Shared Access Signature (SAS) key.
 ```yaml
 Type: StorageKeyType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: StorageAccessKey, SharedAccessKey
 
 Required: True
@@ -212,7 +212,7 @@ Specifies the blob link, as a URL, to the .bacpac file.
 ```yaml
 Type: Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
