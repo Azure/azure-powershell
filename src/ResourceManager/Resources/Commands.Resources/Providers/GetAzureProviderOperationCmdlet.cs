@@ -40,18 +40,13 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string OperationSearchString { get; set; }
+        public string OperationSearchString { get; set; } = "*";
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (OperationSearchString == null)
-            {
-                OperationSearchString = "*";
-            }
-
             // remove leading and trailing whitespaces
             this.OperationSearchString = this.OperationSearchString.Trim();
 
