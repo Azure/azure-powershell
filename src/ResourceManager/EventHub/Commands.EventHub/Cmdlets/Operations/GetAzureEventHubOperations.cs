@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// 'Get-AzureRmEventHubOperation' Cmdlet retrive the Operations List
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubOperationsVerb), OutputType(typeof(List<PSOperationAttributes>))]
-    public class GetAzureServiceBusOperations : AzureEventHubsCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmEventHubOperation"), OutputType(typeof(List<PSOperationAttributes>))]
+    public class GetAzureEventHubOperations : AzureEventHubsCmdletBase
     {
         public override void ExecuteCmdlet()
         {   

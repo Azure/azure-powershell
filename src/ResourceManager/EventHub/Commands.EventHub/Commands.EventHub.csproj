@@ -74,6 +74,7 @@
     <Compile Include="Cmdlets\Namespace\NewAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespace.cs" />
+    <Compile Include="Cmdlets\Operations\GetAzureEventHubOperations.cs" />
     <Compile Include="Models\PSAuthorizationRuleAttributes.cs" />
     <Compile Include="Models\PSAuthorizationRuleKeysAttributes.cs" />
     <Compile Include="Models\PSCaptureDescriptionAttributes.cs" />
@@ -99,7 +100,6 @@
     <None Include="..\AzureRM.EventHub.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="help\Test-AzureRmEventHubName.md" />
     <None Include="Microsoft.Azure.Commands.EventHub.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

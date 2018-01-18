@@ -20,7 +20,7 @@ Gets the details of an authorization rule, or gets a list of authorization rules
 ### [Get-AzureRmEventHubConsumerGroup](Get-AzureRmEventHubConsumerGroup.md)
 Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
 
-### [Get-AzureRmEventHubDRConfiguration](Get-AzureRmEventHubDRConfiguration.md)
+### [Get-AzureRmEventHubGeoDRConfiguration](Get-AzureRmEventHubGeoDRConfiguration.md)
 Gets a description Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzureRmEventHubKey](Get-AzureRmEventHubKey.md)
@@ -38,7 +38,7 @@ Creates a new Event Hubs authorization rule for namespace or eventhub.
 ### [New-AzureRmEventHubConsumerGroup](New-AzureRmEventHubConsumerGroup.md)
 Creates a new consumer group for the specified Event Hub.
 
-### [New-AzureRmEventHubDRConfiguration](New-AzureRmEventHubDRConfiguration.md)
+### [New-AzureRmEventHubGeoDRConfiguration](New-AzureRmEventHubGeoDRConfiguration.md)
 Creates an new Alias(Disaster Recovery configuration)
 
 ### [New-AzureRmEventHubKey](New-AzureRmEventHubKey.md)
@@ -56,7 +56,7 @@ Removes the specified Event Hub or Namespace authorization rule.
 ### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
 Deletes the specified Event Hubs consumer group.
 
-### [Remove-AzureRmEventHubDRConfiguration](Remove-AzureRmEventHubDRConfiguration.md)
+### [Remove-AzureRmEventHubGeoDRConfiguration](Remove-AzureRmEventHubGeoDRConfiguration.md)
 Removes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
@@ -71,10 +71,10 @@ Updates the specified authorization rule on an Event Hub or Namespace.
 ### [Set-AzureRmEventHubConsumerGroup](Set-AzureRmEventHubConsumerGroup.md)
 Updates the specified Event Hubs consumer group.
 
-### [Set-AzureRmEventHubDRConfigurationBreakPairing](Set-AzureRmEventHubDRConfigurationBreakPairing.md)
+### [Set-AzureRmEventHubGeoDRConfigurationBreakPair](Set-AzureRmEventHubGeoDRConfigurationBreakPair.md)
 Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
-### [Set-AzureRmEventHubDRConfigurationFailOver](Set-AzureRmEventHubDRConfigurationFailOver.md)
+### [Set-AzureRmEventHubGeoDRConfigurationFailOver](Set-AzureRmEventHubGeoDRConfigurationFailOver.md)
 Envokes Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
