@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Certificate support for IoTHub cmdlets
 
 ## Version 3.0.0
 * Add support for online help

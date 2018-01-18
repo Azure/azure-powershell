@@ -71,11 +71,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Name of the Certificate")]
-        [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
@@ -84,7 +79,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string CertificateName { get; set; }
 
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             HelpMessage = "base-64 representation of X509 certificate .cer file or .pem file path.")]
