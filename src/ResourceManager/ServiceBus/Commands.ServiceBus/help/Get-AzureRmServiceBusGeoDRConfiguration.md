@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version: 
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmServiceBusDRConfiguration
+# Get-AzureRmServiceBusGeoDRConfiguration
 
 ## SYNOPSIS
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
@@ -13,18 +13,18 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmServiceBusDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+The **Get-AzureRmServiceBusGeoDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzureRmServiceBusDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+```powershell
+PS C:\> Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
 
 Name              : SampleDRCongifName
 Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
@@ -39,7 +39,7 @@ Retrieves alias "SampleDRCongifName" configuration for primary namespace "Sample
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -54,12 +54,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-DR Configuration Name.
+DR Configuration Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Alias
+Aliases:
 
 Required: False
 Position: 2
@@ -69,12 +69,12 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: NamespaceName
+Aliases:
 
 Required: True
 Position: 1
@@ -84,12 +84,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource Group Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -98,6 +98,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -105,10 +109,9 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.4.6.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES
 
 ## RELATED LINKS
-
