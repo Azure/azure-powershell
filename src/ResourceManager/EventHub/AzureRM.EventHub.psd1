@@ -84,7 +84,7 @@ CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace'
                'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup',
                'Get-AzureRmEventHubConsumerGroup',
                'Set-AzureRmEventHubConsumerGroup',
-               'Remove-AzureRmEventHubGeoConsumerGroup', 'New-AzureRmEventHubGeoDRConfiguration', 'Get-AzureRmEventHubGeoDRConfiguration', 'Remove-AzureRmEventHubGeoDRConfiguration',
+               'Remove-AzureRmEventHubConsumerGroup', 'New-AzureRmEventHubGeoDRConfiguration', 'Get-AzureRmEventHubGeoDRConfiguration', 'Remove-AzureRmEventHubGeoDRConfiguration',
 	       'Set-AzureRmEventHubGeoDRConfigurationBreakPair', 'Set-AzureRmEventHubGeoDRConfigurationFailOver',
 	       'Test-AzureRmEventHubName', 'Get-AzureRmEventHubOperation'
 			   
