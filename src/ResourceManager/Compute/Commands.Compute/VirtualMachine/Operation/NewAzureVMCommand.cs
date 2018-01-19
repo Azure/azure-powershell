@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies.Compute;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -201,6 +202,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string AvailabilitySetName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -285,8 +290,12 @@ namespace Microsoft.Azure.Commands.Compute
                 openPorts: OpenPorts);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
-            ResourceConfig<VirtualMachine> virtualMachine = null;
 
+            var availabilitySet = AvailabilitySetName == null 
+                ? null
+                : resourceGroup.CreateAvailabilitySetConfig(name: Name);
+
+            ResourceConfig<VirtualMachine> virtualMachine = null;
             if (image != null)
             {
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
@@ -296,7 +305,8 @@ namespace Microsoft.Azure.Commands.Compute
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                     image: image,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
             else
             {
@@ -355,7 +365,8 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface: networkInterface,
                     isWindows: isWindows,
                     disk: disk,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
 
             var client = new Client(DefaultProfile.DefaultContext);
