@@ -115,12 +115,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                     }
 
-                    var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
+                    var createAccountResponse = this.CognitiveServicesClient.Accounts.Create(
                                     this.ResourceGroupName,
                                     this.Name,
                                     createParameters);
 
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
                     this.WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }

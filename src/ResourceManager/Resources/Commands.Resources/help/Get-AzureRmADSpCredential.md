@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
@@ -30,7 +30,7 @@ This command will retrieve all of the credential properties (but not the credent
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 ```
@@ -60,7 +60,7 @@ The object id of the service principal to retrieve credentials from.
 ```yaml
 Type: String
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,7 +75,7 @@ The name (SPN) of the service principal to retrieve credentials from.
 ```yaml
 Type: String
 Parameter Sets: SPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

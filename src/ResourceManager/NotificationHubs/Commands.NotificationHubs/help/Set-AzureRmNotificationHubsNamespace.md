@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 1B2AA717-ECD6-4CC0-AB6D-A199AF21A4A5
@@ -15,7 +15,7 @@ Sets property values for a notification hub namespace.
 
 ```
 Set-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
- [[-State] <NamespaceState>] [[-Critical] <Boolean>] [[-Tags] <Hashtable>] [[-SkuTier] <String>] [-Force]
+ [[-State] <NamespaceState>] [[-Critical] <Boolean>] [[-Tag] <Hashtable>] [[-SkuTier] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ To delete a critical namespace, you must set the value of this property to False
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -90,7 +90,7 @@ Do not ask for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ To get an up-to-date list of Azure locations run the following command:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -127,7 +127,7 @@ Namespaces provide a way to group and categorize notification hubs.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -144,7 +144,7 @@ Resource groups organize items such as namespaces, notification hubs, and author
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -159,7 +159,7 @@ Sku tier of the namespace
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -175,7 +175,7 @@ The acceptable values for this parameter are: Active and Disabled.
 ```yaml
 Type: NamespaceState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Unknown, Active, Disabled
 
 Required: False
@@ -185,7 +185,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies name-value pairs that can be used to categorize and organize Azure items.
 Tags function similar to keywords, and operate across a deployment.
 For example, if you search for all items with the tag Department:IT the search will return all the Azure items that have that tag, regardless of such things as item type, location, or resource group.
@@ -203,7 +203,7 @@ To add multiple tags in the same command, separate the individual tags by using 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 5

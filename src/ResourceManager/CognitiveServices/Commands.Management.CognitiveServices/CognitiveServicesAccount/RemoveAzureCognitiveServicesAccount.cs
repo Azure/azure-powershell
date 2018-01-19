@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 RunCmdLet(() =>
                 {
-                    this.CognitiveServicesClient.CognitiveServicesAccounts.Delete(
+                    this.CognitiveServicesClient.Accounts.Delete(
                         this.ResourceGroupName,
                         this.Name);
                 });

@@ -118,6 +118,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
