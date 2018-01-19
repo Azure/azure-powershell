@@ -372,7 +372,7 @@ function getAssetName {
     param([string] $prefix)
 
     if ($prefix -eq $null -or $prefix -eq '') {
-        $prefix = "ps";
+        $prefix = "ps$(([guid]::NewGuid().ToString() -replace '-','')[0..9] -join '')";
     }
 
     $testName = getTestName

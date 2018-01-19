@@ -51,6 +51,8 @@ Update-AzureRmVmssInstance                         1.2.4      AzureRM.Compute
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set
+.DESCRIPTION
+Smoke[Ignore]Test
 #>
 function Test-VirtualMachineScaleSet
 {
