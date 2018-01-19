@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
+    <Compile Include="ScenarioTests\StrategiesVmssTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineRunCommandTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineScaleSetExtensionTests.cs" />
@@ -318,6 +319,9 @@
     <None Include="ScenarioTests\SqlIaaSExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\StrategiesVmssTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\test.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -371,6 +375,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVirtualMachineTests\TestSimpleNewVm.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StrategiesVmssTests\TestSimpleNewVmss.json" />
     <None Include="Templates\azuredeploy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
