@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Get the Virtual Network Rule to update
         /// </summary>
         /// <returns>The Virtual Network Rule being updated</returns>
