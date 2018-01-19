@@ -116,6 +116,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string promptBehavior =
                 (password == null &&
                  account.Type != AzureAccount.AccountType.AccessToken &&
+                 account.Type != AzureAccount.AccountType.ManagedService &&
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 

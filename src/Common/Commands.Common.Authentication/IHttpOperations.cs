@@ -11,19 +11,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    /// <summary>
-    /// Custom settings used to dehydrate / rehydrate a class
-    /// </summary>
-    public interface IExtensibleSettings
+    public interface IHttpOperations<T>
     {
-        /// <summary>
-        /// The custom settings
-        /// </summary>
-        IDictionary<string, string> Settings { get; }
+        Task<bool> HeadAsync(string requestUri, CancellationToken token);
+        Task<IEnumerable<T>> ListAsync(string requestUri, CancellationToken token);
+        Task<T> GetAsync(string requestUri, CancellationToken token);
+        Task<T> PutAsync(string requestUri, T payload, CancellationToken token);
+        Task DeleteAsync(string requestUri, CancellationToken token);
+        IHttpOperations<T> WithHeader(string name, IEnumerable<string> value);
     }
 }

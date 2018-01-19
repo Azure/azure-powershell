@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// Custom settings used to dehydrate / rehydrate a class
+    /// Abstract interface for acquiring Http Operations
     /// </summary>
-    public interface IExtensibleSettings
+    public interface IHttpOperationsFactory
     {
-        /// <summary>
-        /// The custom settings
-        /// </summary>
-        IDictionary<string, string> Settings { get; }
+        IHttpOperations<T> GetHttpOperations<T>();
     }
 }
