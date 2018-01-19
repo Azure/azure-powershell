@@ -1243,11 +1243,15 @@ function Test-VirtualMachineScaleSetRollingUpgrade
 
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-        Assert-ThrowsContains { Start-AzureRmVmssRollingOSUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName } `
-            "unless the VM Scale Set has some instances which have imageReference.version set to latest";
-
-        Assert-ThrowsContains { Stop-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force } `
-            "There is no ongoing Rolling Upgrade to cancel.";
+        $job = Start-AzureRmVmssRollingOSUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Failed" $result.State;
+        Assert-True { $result.Error[0].ToString().Contains("unless the VM Scale Set has some instances which have imageReference.version set to latest")};
+     
+        $job = Stop-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Failed" $result.State;
+        Assert-True { $result.Error[0].ToString().Contains("There is no ongoing Rolling Upgrade to cancel.")};
 
         Assert-ThrowsContains { Get-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName } `
             "The entity was not found";
