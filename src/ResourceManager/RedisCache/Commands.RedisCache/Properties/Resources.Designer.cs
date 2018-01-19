@@ -196,15 +196,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;Name&apos; is not compatible with parameters &apos;PrimaryServerName&apos; and/or &apos;SecondaryServerName&apos;..
-        /// </summary>
-        internal static string LinkServerIncompatibleParameterException {
-            get {
-                return ResourceManager.GetString("LinkServerIncompatibleParameterException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The &apos;MaxMemoryPolicy&apos; setting has been deprecated. Please use &apos;RedisConfiguration&apos; setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{&quot;maxmemory-policy&quot; = &quot;allkeys-lru&quot;}.
         /// </summary>
         internal static string MaxMemoryPolicyException {

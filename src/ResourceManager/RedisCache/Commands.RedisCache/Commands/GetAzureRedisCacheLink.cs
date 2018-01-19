@@ -59,43 +59,37 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (!string.IsNullOrWhiteSpace(Name))
             {
                 // All links for cache
-                if (!string.IsNullOrWhiteSpace(PrimaryServerName) || !string.IsNullOrWhiteSpace(SecondaryServerName))
-                {
-                    throw new ArgumentException(Resources.LinkServerIncompatibleParameterException);
-                }
                 List<PSRedisLinkedServer> list = GetAllLinks(Name);
+                WriteObject(list, true);
+            }
+            else if (!string.IsNullOrWhiteSpace(PrimaryServerName) && !string.IsNullOrWhiteSpace(SecondaryServerName))
+            {
+                // specific link only
+                string resourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(null, PrimaryServerName);
+                RedisLinkedServerWithProperties redisLinkedServer = CacheClient.GetLinkedServer(
+                    resourceGroupName: resourceGroupName,
+                    cacheName: PrimaryServerName,
+                    linkedCacheName: SecondaryServerName);
+
+                if (redisLinkedServer == null || redisLinkedServer.ServerRole != ReplicationRole.Secondary)
+                {
+                    throw new CloudException(string.Format(Resources.LinkedServerNotFound, PrimaryServerName, SecondaryServerName));
+                }
+                WriteObject(new PSRedisLinkedServer(redisLinkedServer));
+            }
+            else if (!string.IsNullOrWhiteSpace(PrimaryServerName))
+            {
+                // all primary links only
+                List<PSRedisLinkedServer> list = GetAllLinksByRoleType(PrimaryServerName, ReplicationRole.Primary);
                 WriteObject(list, true);
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(PrimaryServerName) && !string.IsNullOrWhiteSpace(SecondaryServerName))
-                {
-                    // specific link only
-                    string resourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(null, PrimaryServerName);
-                    RedisLinkedServerWithProperties redisLinkedServer = CacheClient.GetLinkedServer(
-                        resourceGroupName: resourceGroupName,
-                        cacheName: PrimaryServerName,
-                        linkedCacheName: SecondaryServerName);
-
-                    if (redisLinkedServer == null || redisLinkedServer.ServerRole != ReplicationRole.Secondary)
-                    {
-                        throw new CloudException(string.Format(Resources.LinkedServerNotFound, PrimaryServerName, SecondaryServerName));
-                    }
-                    WriteObject(new PSRedisLinkedServer(redisLinkedServer));
-                }
-                else if (!string.IsNullOrWhiteSpace(PrimaryServerName))
-                {
-                    // all primary links only
-                    List<PSRedisLinkedServer> list = GetAllLinksByRoleType(PrimaryServerName, ReplicationRole.Primary);
-                    WriteObject(list, true);
-                }
-                else
-                {
-                    // all secondary links only
-                    List<PSRedisLinkedServer> list = GetAllLinksByRoleType(SecondaryServerName, ReplicationRole.Secondary);
-                    WriteObject(list, true);
-                }
+                // all secondary links only
+                List<PSRedisLinkedServer> list = GetAllLinksByRoleType(SecondaryServerName, ReplicationRole.Secondary);
+                WriteObject(list, true);
             }
+
         }
 
         private List<PSRedisLinkedServer> GetAllLinks(string cacheName)
