@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 #if NETSTANDARD
 using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
@@ -46,6 +47,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -55,7 +59,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     AppServicePlan = WebsitesClient.GetAppServicePlan(ResourceGroupName, Name);
                     AppServicePlan.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? AppServicePlan.Sku.Tier : Tier;
                     AppServicePlan.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : AppServicePlan.Sku.Capacity;
-                    var workerSizeAsNumber = int.Parse(AppServicePlan.Sku.Name.Substring(1, AppServicePlan.Sku.Name.Length - 1));
+                    int workerSizeAsNumber = 0;
+                    int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
                     break;

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Network
                       Mandatory = true,
                       HelpMessage = "The DevicePath, can be either Primary or Secondary")]
          [ValidateNotNullOrEmpty]
-         public DevicePathEnum DevicePath { get; set; }			
- 		
-         public override void Execute()		
+         public DevicePathEnum DevicePath { get; set; }
+
+        public override void Execute()		
          {
              base.Execute();
              var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable

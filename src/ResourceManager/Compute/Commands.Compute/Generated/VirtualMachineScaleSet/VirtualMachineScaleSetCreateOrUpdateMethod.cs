@@ -285,9 +285,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
@@ -324,7 +321,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         // SimpleParameterSet
-
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
             "CentOS",
@@ -400,5 +396,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
         public List<string> Zone { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

@@ -51,7 +51,7 @@ Specifies the name of the advisor for which this cmdlet modifies the status.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: AdvisorAutoExecuteStatus
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled, Default
 
 Required: True
@@ -87,7 +87,7 @@ Specifies the name of the database for which this cmdlet modifies status.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ Specifies the name of the resource group of the server that contains this databa
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,7 +132,7 @@ Specifies the name of the server for the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

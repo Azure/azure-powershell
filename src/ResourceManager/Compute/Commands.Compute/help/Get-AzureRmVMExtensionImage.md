@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: F46041A3-355F-4449-B582-4D2F7314CA05
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmextensionimage
 schema: 2.0.0
