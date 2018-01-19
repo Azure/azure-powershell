@@ -102,7 +102,7 @@ namespace StaticAnalysis.Test
         {
             return new SharedAssemblyConflict
             {
-                
+
                 AssemblyName = assembly!= null && vary ? GetClone(assembly).ToLowerInvariant() : GetClone(assembly),
                 AssemblyVersion = Version.Parse(version),
                 ProblemId = problemId,
@@ -236,7 +236,7 @@ namespace StaticAnalysis.Test
         [InlineData("dir1/dir2/file/", "MyAssembly", "1.9.9", "MyRefAssembly", int.MaxValue)]
         [InlineData("\\dir1\\dir2\\dir3\\", "My.Longer.Assembly", "9.9.999.9999", "My.Longer.Ref.Assembly", 100)]
         [InlineData("\\dir1\\dir2\\啊齄丂狛狜隣郎隣兀﨩", "㙉㙊䵯䵰䶴䶵", "1.2.3.4","ᠠᡷᢀᡨᡩᡪᡫ", 0)]
-        public void CanMatchMissingAssembly(string directory, string assembly, string version, string refAssembly, 
+        public void CanMatchMissingAssembly(string directory, string assembly, string version, string refAssembly,
             int problemId)
         {
             var conflict1 = CreateMissingAssembly(directory, assembly, version, refAssembly, problemId);
@@ -249,7 +249,7 @@ namespace StaticAnalysis.Test
         [InlineData("dir1/dir2/file/", "MyAssembly", "1.9.9", "MyRefAssembly", int.MaxValue)]
         [InlineData("\\dir1\\dir2\\dir3\\", "My.Longer.Assembly", "9.9.999.9999", "My.Longer.Ref.Assembly", 100)]
         [InlineData("\\dir1\\dir2\\啊齄丂狛狜隣郎隣兀﨩", "㙉㙊䵯䵰䶴䶵", "1.2.3.4","ᠠᡷᢀᡨᡩᡪᡫ", 0)]
-        public void CanRoundTripMissingAssembly(string directory, string assembly, string version, string refAssembly, 
+        public void CanRoundTripMissingAssembly(string directory, string assembly, string version, string refAssembly,
             int problemId)
         {
             var conflict1 = CreateMissingAssembly(directory, assembly, version, refAssembly, problemId);
@@ -264,7 +264,7 @@ namespace StaticAnalysis.Test
         [InlineData("dir1/dir2/file/", "MyAssembly", "1.9.9", "MyRefAssembly", int.MaxValue)]
         [InlineData("\\dir1\\dir2\\dir3\\", "My.Longer.Assembly", "9.9.999.9999", "My.Longer.Ref.Assembly", 100)]
         [InlineData("\\dir1\\dir2\\啊齄丂狛狜隣郎隣兀﨩", "㙉㙊䵯䵰䶴䶵", "1.2.3.4","ᠠᡷᢀᡨᡩᡪᡫ", 0)]
-        public void CanContrastMissingAssembly(string directory, string assembly, string version, string refAssembly, 
+        public void CanContrastMissingAssembly(string directory, string assembly, string version, string refAssembly,
            int problemId)
         {
             var conflict1 = CreateMissingAssembly(directory, assembly, version, refAssembly, problemId);

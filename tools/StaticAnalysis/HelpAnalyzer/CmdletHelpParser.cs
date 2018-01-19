@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using Tools.Common.Loggers;
 
 namespace StaticAnalysis.HelpAnalyzer
 {

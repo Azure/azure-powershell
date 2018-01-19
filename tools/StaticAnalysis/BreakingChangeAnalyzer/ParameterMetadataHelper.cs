@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -40,7 +39,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         /// <summary>
         /// Compares the metadata of parameters with the same name (or alias) for any breaking changes.
-        /// 
+        ///
         /// Breaking changes for parameters include
         ///   - Removing a parameter
         ///   - Removing an alias to a parameter
@@ -53,7 +52,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameters">The list of parameters from the new cmdlet metadata.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
         public void CompareParameterMetadata(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             List<ParameterMetadata> oldParameters,
             List<ParameterMetadata> newParameters,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -93,11 +92,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameter,
-                        description: string.Format(Properties.Resources.RemovedParameterDescription,
-                            cmdlet.Name, oldParameter.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterRemediation,
-                            oldParameter.Name, cmdlet.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
                 }
             }
         }
@@ -111,7 +108,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForChangedParameterType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -129,7 +126,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedParameterAlias(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -153,11 +150,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
-                        description: string.Format(Properties.Resources.RemovedParameterAliasDescription,
-                            cmdlet.Name, oldAlias, oldParameter.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation,
-                            oldAlias, oldParameter.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
                 }
             }
         }
@@ -170,7 +165,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckParameterValidationSets(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -191,11 +186,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
-                    problemId: ProblemIds.BreakingChangeProblemId.AddedValidateSet,
-                    description: string.Format(Properties.Resources.AddedValidateSetDescription,
-                        oldParameter.Name, cmdlet.Name),
-                    remediation: string.Format(Properties.Resources.AddedValidateSetRemediation,
-                        oldParameter.Name));
+                    problemId: 0,
+                    description: string.Empty,
+                    remediation: string.Empty);
 
                 return;
             }
@@ -219,13 +212,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
-                        description: string.Format(Properties.Resources.RemovedValidateSetValueDescription,
-                            oldParameter.Name, cmdlet.Name, oldValue),
-                        remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
-                            oldValue, oldParameter.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
                 }
-            }            
+            }
         }
 
         /// <summary>
@@ -237,7 +228,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
         private void CheckParameterValidateRange(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -250,11 +241,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
-                        description: string.Format(Properties.Resources.AddedValidateRangeDescription,
-                            oldParameter.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.AddedValidateRangeRemediation,
-                            oldParameter.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
                 }
                 else
                 {
@@ -264,11 +253,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
-                            description: string.Format(Properties.Resources.ChangedValidateRangeMinimumDescription,
-                                oldParameter.Name, oldParameter.ValidateRangeMin, newParameter.ValidateRangeMin),
-                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMinimumRemediation,
-                                oldParameter.Name, oldParameter.ValidateRangeMin));
+                            problemId: 0,
+                            description: string.Empty,
+                            remediation: string.Empty);
                     }
 
                     // If the maximum value of the range has decreased, log an issue
@@ -277,11 +264,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
-                            description: string.Format(Properties.Resources.ChangedValidateRangeMaximumDescription,
-                                oldParameter.Name, oldParameter.ValidateRangeMax, newParameter.ValidateRangeMax),
-                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMaximumRemediation,
-                                oldParameter.Name, oldParameter.ValidateRangeMax));
+                            problemId: 0,
+                            description: string.Empty,
+                            remediation: string.Empty);
                     }
                 }
             }
@@ -295,7 +280,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForValidateNotNullOrEmpty(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -307,11 +292,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateNotNullOrEmpty,
-                        description: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyDescription,
-                            oldParameter.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyRemediation,
-                            oldParameter.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
             }
         }
 

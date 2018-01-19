@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using StaticAnalysis.BreakingChangeAnalyzer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -55,7 +56,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newType">The type metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         public void CompareTypeMetadata(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldType,
             TypeMetadata newType,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -73,12 +74,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var newTypeMetadata = _newTypeDictionary[newPropertyType];
 
                     // Define variables for logging
-                    int problemId = ProblemIds.BreakingChangeProblemId.ChangedElementType;
-                    string description = string.Format(Properties.Resources.ChangedElementTypeDescription,
-                                            oldProperty, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
-                    string remediation = string.Format(Properties.Resources.ChangedElementTypeRemediation,
-                                            oldProperty, oldTypeMetadata.ElementType);
-                    
+                    int problemId = 0;
+                    string description = string.Empty;
+                    string remediation = string.Empty;
+
                     // If the type is an array, check for any breaking changes
                     if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
                     {
@@ -111,11 +110,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedPropertyType,
-                            description: string.Format(Properties.Resources.ChangedPropertyTypeDescription,
-                                oldProperty, oldType.Name, oldPropertyType, newPropertyType),
-                            remediation: string.Format(Properties.Resources.ChangedPropertyTypeRemediation,
-                                oldProperty, oldPropertyType));
+                            problemId: 0,
+                            description: string.Empty,
+                            remediation: string.Empty);
                     }
                 }
                 else
@@ -124,11 +121,114 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.RemovedProperty,
-                        description: string.Format(Properties.Resources.RemovedPropertyDescription,
-                            oldProperty, oldType.Name),
-                        remediation: string.Format(Properties.Resources.RemovedPropertyRemediation,
-                            oldProperty, oldType.Name));
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
+                }
+            }
+        }
+
+        public void CompareMethodMetadata(
+            CmdletMetadata cmdlet,
+            TypeMetadata oldType,
+            TypeMetadata newType,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            var oldMethods = oldType.Methods;
+            var newMethods = newType.Methods;
+
+            foreach (var oldMethod in oldMethods)
+            {
+                bool found = false;
+                var candidateMethods = newMethods.Where(m => string.Equals(m.Name, oldMethod.Name)).ToList();
+                foreach (var newMethod in candidateMethods)
+                {
+                    var oldParameters = oldMethod.Parameters;
+                    var newParameters = newMethod.Parameters;
+                    if (oldParameters.Count != newParameters.Count)
+                    {
+                        continue;
+                    }
+
+                    bool match = true;
+                    for (int idx = 0; idx < oldParameters.Count; idx++)
+                    {
+                        var oldParameter = oldParameters[idx];
+                        var newParameter = newParameters[idx];
+                        if (oldParameter.Name != newParameter.Name || oldParameter.Type != newParameter.Type)
+                        {
+                            match = false;
+                            break;
+                        }
+                    }
+
+                    if (match)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
+                }
+            }
+        }
+
+        public void CompareConstructorMetadata(
+            CmdletMetadata cmdlet,
+            TypeMetadata oldType,
+            TypeMetadata newType,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            var oldConstructors = oldType.Constructors;
+            var newConstructors = newType.Constructors;
+
+            foreach (var oldConstructor in oldConstructors)
+            {
+                bool found = false;
+                foreach (var newConstructor in oldConstructors)
+                {
+                    var oldParameters = oldConstructor.Parameters;
+                    var newParameters = newConstructor.Parameters;
+                    if (oldParameters.Count != newParameters.Count)
+                    {
+                        continue;
+                    }
+
+                    bool match = true;
+                    for (int idx = 0; idx < oldParameters.Count; idx++)
+                    {
+                        var oldParameter = oldParameters[idx];
+                        var newParameter = newParameters[idx];
+                        if (oldParameter.Name != newParameter.Name || oldParameter.Type != newParameter.Type)
+                        {
+                            match = false;
+                            break;
+                        }
+                    }
+
+                    if (match)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    issueLogger.LogBreakingChangeIssue(
+                        cmdlet: cmdlet,
+                        severity: 0,
+                        problemId: 0,
+                        description: string.Empty,
+                        remediation: string.Empty);
                 }
             }
         }
@@ -143,17 +243,15 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         public void CheckParameterType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata parameter,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            int problemId = ProblemIds.BreakingChangeProblemId.ChangedParameterElementType;
-            string description = string.Format(Properties.Resources.ChangedParameterElementTypeDescription,
-                                    parameter.Name, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
-            string remediation = string.Format(Properties.Resources.ChangedParameterElementTypeRemediation,
-                                    parameter.Name, oldTypeMetadata.ElementType);
+            int problemId = 0;
+            string description = string.Empty;
+            string remediation = string.Empty;
 
             // If the type is an array, check for any breaking changes
             if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
@@ -162,12 +260,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             string target = string.Format("parameter {0}", parameter.Name);
-            
+
             // If the type is a generic, check for any breaking changes
             if (IsGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
             {
                 return;
-            }            
+            }
 
             // If the types are different, log an issue
             if (!oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
@@ -175,16 +273,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
-                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
-                    description: string.Format(Properties.Resources.ChangedParameterTypeDescription,
-                        cmdlet.Name, oldTypeMetadata.Name, parameter.Name),
-                    remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation,
-                        parameter.Name, oldTypeMetadata.Name));
+                    problemId: 0,
+                    description: string.Empty,
+                    remediation: string.Empty);
             }
             else
             {
                 CompareTypeMetadata(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
-            }            
+            }
         }
 
         /// <summary>
@@ -196,18 +292,16 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         public void CheckOutputType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            int problemId = ProblemIds.BreakingChangeProblemId.ChangedOutputElementType;
-            string description = string.Format(Properties.Resources.ChangedOutputElementTypeDescription,
-                                    oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
-            string remediation = string.Format(Properties.Resources.ChangedOutputElementTypeRemediation,
-                                    oldTypeMetadata.ElementType);
+            int problemId = 0;
+            string description = string.Empty;
+            string remediation = string.Empty;
 
-            // If the type is an array, check for any breaking changes 
+            // If the type is an array, check for any breaking changes
             if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
             {
                 return;
@@ -218,7 +312,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             if (IsGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
             {
                 return;
-            }            
+            }
 
             CompareTypeMetadata(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
         }
@@ -235,7 +329,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="remediation">The remediation used for logging if there is an issue.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private bool IsElementType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             int problemId,
@@ -288,7 +382,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         /// <returns></returns>
         private bool IsGenericType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             string target,
@@ -343,7 +437,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="target">Target of the generic type breaking change..</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private bool HasSameGenericType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             string target,
@@ -354,16 +448,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 return true;
             }
-            
+
             // Otherwise, log an issue and return false
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericType,
-                description: string.Format(Properties.Resources.ChangedGenericTypeDescription, 
-                    target, oldTypeMetadata.Name, newTypeMetadata.Name),
-                remediation: string.Format(Properties.Resources.ChangedGenericTypeRemediation, 
-                    target, oldTypeMetadata.Name));
+                problemId: 0,
+                description: string.Empty,
+                remediation: string.Empty);
 
             return false;
         }
@@ -378,7 +470,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         /// <returns></returns>
         private bool HasSameGenericArgumentSize(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             TypeMetadata oldTypeMetadata,
             TypeMetadata newTypeMetadata,
             string target,
@@ -389,17 +481,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 return true;
             }
-            
+
             // Otherwise, log an issue and return false
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: ProblemIds.BreakingChangeProblemId.DifferentGenericTypeArgumentSize,
-                description: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeDescription,
-                    oldTypeMetadata.Name, target, oldTypeMetadata.GenericTypeArguments.Count,
-                    newTypeMetadata.GenericTypeArguments.Count),
-                remediation: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeRemediation,
-                    oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
+                problemId: 0,
+                description: string.Empty,
+                remediation: string.Empty);
 
             return false;
         }
@@ -413,7 +502,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="target">Target of the generic type breaking change.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private bool CheckGenericTypeArguments(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             string oldArgument,
             string newArgument,
             string target,
@@ -423,16 +512,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 return true;
             }
-            
+
             // If the generic type arguments aren't the same, log an issue
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericTypeArgument,
-                description: string.Format(Properties.Resources.ChangedGenericTypeArgumentDescription,
-                    target, oldArgument, newArgument),
-                remediation: string.Format(Properties.Resources.ChangedGenericTypeArgumentRemediation,
-                    target, oldArgument));
+                problemId: 0,
+                description: string.Empty,
+                remediation: string.Empty);
 
             return false;
         }

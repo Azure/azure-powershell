@@ -13,12 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
+using Tools.Common.Loaders;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {

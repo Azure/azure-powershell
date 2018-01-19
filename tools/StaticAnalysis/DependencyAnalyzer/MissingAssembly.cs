@@ -14,6 +14,8 @@
 
 using System;
 using System.Text.RegularExpressions;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
@@ -50,14 +52,14 @@ namespace StaticAnalysis.DependencyAnalyzer
             var record = other as MissingAssembly;
             if (record != null)
             {
-                result = string.Equals(EnvironmentHelpers.GetDirectoryName(record.Directory), 
+                result = string.Equals(EnvironmentHelpers.GetDirectoryName(record.Directory),
                          EnvironmentHelpers.GetDirectoryName(Directory), StringComparison.OrdinalIgnoreCase)
-                         && string.Equals(record.AssemblyName, AssemblyName, StringComparison.OrdinalIgnoreCase) 
-                         && string.Equals(record.AssemblyVersion, AssemblyVersion, StringComparison.OrdinalIgnoreCase) 
-                         && string.Equals(record.ReferencingAssembly, ReferencingAssembly, StringComparison.OrdinalIgnoreCase) 
+                         && string.Equals(record.AssemblyName, AssemblyName, StringComparison.OrdinalIgnoreCase)
+                         && string.Equals(record.AssemblyVersion, AssemblyVersion, StringComparison.OrdinalIgnoreCase)
+                         && string.Equals(record.ReferencingAssembly, ReferencingAssembly, StringComparison.OrdinalIgnoreCase)
                          && record.ProblemId == ProblemId;
             }
-            
+
             return result;
         }
 

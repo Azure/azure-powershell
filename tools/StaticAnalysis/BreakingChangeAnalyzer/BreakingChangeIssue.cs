@@ -14,6 +14,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
