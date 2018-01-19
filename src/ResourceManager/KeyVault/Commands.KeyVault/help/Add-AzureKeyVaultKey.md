@@ -291,8 +291,6 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 - Unwrap
 - Sign
 - Verify
-- Backup
-- Restore
 
 ```yaml
 Type: String[]

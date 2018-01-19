@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
