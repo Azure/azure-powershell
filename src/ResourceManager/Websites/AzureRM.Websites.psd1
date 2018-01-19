@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '5.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -135,7 +135,7 @@ PrivateData = @{
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 
-        Prerelease = '-preview'
+        Prerelease = 'preview'
 
     } # End of PSData hashtable
     
