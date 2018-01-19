@@ -12,27 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Security.Permissions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+
     /// <summary>
-    /// Show azure storage CORS rule properties
+    /// Show Azure Storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageCORSRule),
-        OutputType(typeof(PSCorsRule))]
-    public class GetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
+    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageServiceProperty),
+        OutputType(typeof(PSSeriviceProperties))]
+    public class GetAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
 
-        public GetAzureStorageCORSRuleCommand()
+        // Overwrite the useless parameter
+        public override int? ServerTimeoutPerRequest { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ConcurrentTaskCount { get; set; }
+
+        public GetAzureStorageServicePropertyCommand()
         {
             EnableMultiThread = false;
         }
@@ -43,9 +45,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-            
-            WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+            ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+            WriteObject(new PSSeriviceProperties(serviceProperties));
         }
     }
 }
