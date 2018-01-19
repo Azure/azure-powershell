@@ -397,7 +397,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hash table which represents tags.```yaml
+A hash table which represents tags.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases:
@@ -440,7 +442,9 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of zones.```yaml
+List of zones.
+
+```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases:

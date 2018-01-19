@@ -20,7 +20,7 @@ Remove-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String
 
 ### PSRedisFirewallRuleObject
 ```
-Remove-AzureRmRedisCacheFirewallRule [-PassThru] -InputObject <PSRedisFirewallRule>
+Remove-AzureRmRedisCacheFirewallRule -InputObject <PSRedisFirewallRule> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-object of type PSRedisFirewallRule```yaml
+object of type PSRedisFirewallRule
+
+```yaml
 Type: PSRedisFirewallRule
 Parameter Sets: PSRedisFirewallRuleObject
 Aliases:

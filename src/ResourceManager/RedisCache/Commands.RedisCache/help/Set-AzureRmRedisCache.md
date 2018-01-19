@@ -266,7 +266,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hash table which represents tags.```yaml
+A hash table which represents tags.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases:
