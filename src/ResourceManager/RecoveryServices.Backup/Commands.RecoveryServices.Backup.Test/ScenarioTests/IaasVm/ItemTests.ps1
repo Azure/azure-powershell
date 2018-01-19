@@ -217,7 +217,7 @@ function Test-AzureVMFullRestore
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName `
-			-UseOriginalStorageAccountForDiskRestore } `
+			-UseOriginalStorageAccount } `
 			"This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.";
 
 		$restoreJob = Restore-AzureRmRecoveryServicesBackupItem `
