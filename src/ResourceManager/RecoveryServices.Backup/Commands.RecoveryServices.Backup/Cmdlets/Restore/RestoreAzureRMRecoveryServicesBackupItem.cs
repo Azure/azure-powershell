@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 3,
             HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
-        public SwitchParameter UseOriginalStorageAccountForDiskRestore { get; set; }
+        public SwitchParameter UseOriginalStorageAccount { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id},
                     {RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location},
                     {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type},
-                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccountForDiskRestore.IsPresent}
+                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent}
                 }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
