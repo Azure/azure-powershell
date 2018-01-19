@@ -22,13 +22,13 @@ New-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 
 ### SimpleParameterSet
 ```
-New-AzureRmVmss [-AsJob] [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-ImageName <String>]
+New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-ImageName <String>]
  -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>] [-SubnetName <String>]
  [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-SecurityGroupName <String>]
  [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-Zone <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -143,6 +143,22 @@ The nineteenth command uses the **New-AzureRmVmss** cmdlet to create the VMSS.
 
 ## PARAMETERS
 
+### -AllocationMethod
+Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).  If no value is supplied, allocation will be static.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
+Accepted values: Static, Dynamic
+
+Required: False
+Position: Named
+Default value: Static
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background and return a Job to track progress.
 
@@ -158,24 +174,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllocationMethod
-Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).
-
-```yaml
-Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-Accepted values: Static, Dynamic
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackendPoolName
-The name of the backend address pool to use in the load balancer for this Scale Set.
+The name of the backend address pool to use in the load balancer for this Scale Set.  If no value is provided, a new backend pool will be created, with the same name as the Scale Set.
 
 ```yaml
 Type: String
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPort
-Backend port numer used by the Scale Set load balancer to communicate with VMs in the Scale Set.
+Backend port numbers used by the Scale Set load balancer to communicate with VMs in the Scale Set.  If no values are specified, ports 3389 and 5985 will be used for Windows VMS, and port 22 will be used for Linux VMs.
 
 ```yaml
 Type: Int32[]
@@ -235,9 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set.
-This is the first component of the domain name that is automatically assiged to the Scale Set.
-Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com).
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assiged to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
 
 ```yaml
 Type: String
@@ -252,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendPoolName
-The name of the frontend address pool to usein the Scale Set locad balancer.
+The name of the frontend address pool to usein the Scale Set locad balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
 ```yaml
 Type: String
@@ -267,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-The name of the image for VMs in this Scale Set.
+The name of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used.
 
 ```yaml
 Type: String
@@ -282,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceCount
-The number of VM images in the Scale Set.
+The number of VM images in the Scale Set.  If no value is provided, 2 instances will be created.
 
 ```yaml
 Type: Int32
@@ -291,14 +289,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LoadBalancerName
-The name of the load balancer to use with this Scale Set.  A new load balancer 
-will be created if no value is specified.
+The name of the load balancer to use with this Scale Set.  A new load balancer using the same name as the Scale Set will be created if no value is specified.
 
 ```yaml
 Type: String
@@ -313,8 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The Azure location where this Scale Set will be created.  A default location will be 
-used if no value is specified.
+The Azure location where this Scale Set will be created.  If no value is specified, the location will be inferredf from the location of other resources referenced in the parameters.
 
 ```yaml
 Type: String
@@ -329,8 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressName
-The name of the public IP Address to use with this scale set.  A new Public IPAddress will be 
-created if no value is provided.
+The name of the public IP Address to use with this scale set.  A new Public IPAddress with the same name as the Scale Set will be created if no value is provided.
 
 ```yaml
 Type: String
@@ -345,7 +340,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group of the VMSS.
+Specifies the name of the resource group of the VMSS.  If no value is specified, a new ResourceGroup will be created using the same name as the Scale Set.
 
 ```yaml
 Type: String
@@ -372,8 +367,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityGroupName
-The name of the network security group to apply to this Scale Set.  If no value is provided, 
-a default network security group will be created and applied to the Scale Set.
+The name of the network security group to apply to this Scale Set.  If no value is provided, a default network security group with the same name as the Scale Set will be created and applied to the Scale Set.
 
 ```yaml
 Type: String
@@ -388,7 +382,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetAddressPrefix
-The address prefix of the Subnet this ScaleSet will use. Default Subnet settings will be applied if no value is provided.
+The address prefix of the Subnet this ScaleSet will use. Default Subnet settings (192.168.1.0/24) will be applied if no value is provided.
 
 ```yaml
 Type: String
@@ -397,13 +391,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 192.168.1.0/24
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubnetName
-The name of the subnet to use with this Scale Set.  A new Subnet will be created if no bvalue is provided.
+The name of the subnet to use with this Scale Set.  A new Subnet will be created with the same name as the Scale Set if no value is provided.
 
 ```yaml
 Type: String
@@ -449,7 +443,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The name fo the Virtual Network to use with this scale set.  If no value is supplied, a new virtual network will be created.
+The name fo the Virtual Network to use with this scale set.  If no value is supplied, a new virtual network with the same name as the Scale Set will be created.
 
 ```yaml
 Type: String
@@ -491,7 +485,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the VM instances in this scale set.  A default size will be used if no Size is specified.
+The size of the VM instances in this scale set.  A default size (Standard_DS1_v2) will be used if no Size is specified.
 
 ```yaml
 Type: String
@@ -500,13 +494,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Standard_DS1_v2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VnetAddressPrefix
-The address prefix for the virtual network used with this Scale Set.  Default virtual network address prefix settings will be used if no value is supplied.
+The address prefix for the virtual network used with this Scale Set.  Default virtual network address prefix settings (192.168.0.0/16) will be used if no value is supplied.
 
 ```yaml
 Type: String
@@ -515,13 +509,15 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 192.168.0.0/16
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Zone
-A list of availability zones denoting the IP allocated for the resource needs to come from.```yaml
+A list of availability zones denoting the IP allocated for the resource needs to come from.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SimpleParameterSet
 Aliases: 
