@@ -30,37 +30,32 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of firewall rule.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of firewall rule.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of firewall rule.")]
-        [ValidateNotNullOrEmpty]
-        public string RuleName { get; set; }
-
-        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Starting IP address.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Starting IP address.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Starting IP address.")]
-        [ValidateNotNullOrEmpty]
-        public string StartIP { get; set; }
-
-        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Ending IP address.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Ending IP address.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Ending IP address.")]
-        [ValidateNotNullOrEmpty]
-        public string EndIP { get; set; }
-
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "object of type RedisCacheAttributes")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAttributes")]
         [ValidateNotNull]
         public RedisCacheAttributes InputObject { get; set; }
 
         [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "ARM Id of Redis Cache.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of firewall rule.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Starting IP address.")]
+        [ValidateNotNullOrEmpty]
+        public string StartIP { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Ending IP address.")]
+        [ValidateNotNullOrEmpty]
+        public string EndIP { get; set; }
 
         public override void ExecuteCmdlet()
         {

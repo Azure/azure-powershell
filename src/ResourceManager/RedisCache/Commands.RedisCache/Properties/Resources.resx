@@ -195,9 +195,6 @@
   <data name="CacheNotFound" xml:space="preserve">
     <value>Redis Cache with name '{0}' does not exists.</value>
   </data>
-  <data name="LinkServerIncompatibleParameterException" xml:space="preserve">
-    <value>Parameter 'Name' is not compatible with parameters 'PrimaryServerName' and/or 'SecondaryServerName'.</value>
-  </data>
   <data name="CreatePatchSchedule" xml:space="preserve">
     <value>Creating patching schedule on redis cache '{0}'...</value>
   </data>
