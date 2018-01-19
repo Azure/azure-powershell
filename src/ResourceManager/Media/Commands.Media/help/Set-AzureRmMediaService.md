@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
 Module Name: AzureRM.Media
 ms.assetid: 0FA49058-F3A7-4ED9-93F2-0C84BC130FB7
@@ -14,7 +14,7 @@ Modifies specified properties of an existing media service.
 ## SYNTAX
 
 ```
-Set-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Tags <Hashtable>]
+Set-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Tag <Hashtable>]
  [-StorageAccounts <PSStorageAccount[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -73,7 +73,7 @@ Specifies the name of the resource group that contains the media service.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -88,7 +88,7 @@ Specifies an array of storage accounts that this cmdlet associates with the medi
 ```yaml
 Type: PSStorageAccount[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,13 +97,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies tags for the media service.
+### -Tag
+The tags associated with the media account.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named

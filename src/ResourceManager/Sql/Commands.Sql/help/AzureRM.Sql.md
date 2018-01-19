@@ -402,7 +402,7 @@ Starts the upgrade of a SQL Database server.
 Starts a sync group synchronization.
 
 ### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
-Cancels the asynchronous updateslo operation on the database.
+Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.

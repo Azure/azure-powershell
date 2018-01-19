@@ -83,6 +83,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
         public SwitchParameter IsFullObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>

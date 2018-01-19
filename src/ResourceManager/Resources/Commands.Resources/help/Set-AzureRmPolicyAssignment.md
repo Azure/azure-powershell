@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
@@ -58,7 +58,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,7 +88,7 @@ The description for policy assignment
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +103,7 @@ Specifies a new display name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,7 +172,7 @@ Specifies the name of the policy assignment that this cmdlet modifies.
 ```yaml
 Type: String
 Parameter Sets: SetByPolicyAssignmentName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -187,7 +187,7 @@ The policy assignment not scopes.
 ```yaml
 Type: String[]
 Parameter Sets: SetByPolicyAssignmentName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +202,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,7 +217,7 @@ Specifies the scope at which the policy is applied.
 ```yaml
 Type: String
 Parameter Sets: SetByPolicyAssignmentName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

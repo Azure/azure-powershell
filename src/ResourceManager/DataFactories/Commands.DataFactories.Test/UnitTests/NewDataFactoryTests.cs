@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 .Verifiable();
 
             // Action
-            cmdlet.Tags = tags.ToHashtable();
+            cmdlet.Tag = tags.ToHashtable();
             cmdlet.Force = true;
             cmdlet.ExecuteCmdlet();
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 .Verifiable();
 
             // Action
-            cmdlet.Tags = tags.ToHashtable();
+            cmdlet.Tag = tags.ToHashtable();
             cmdlet.Force = true;
 
             // Assert
