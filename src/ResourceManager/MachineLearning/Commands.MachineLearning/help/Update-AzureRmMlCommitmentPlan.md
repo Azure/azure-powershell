@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/update-azurermmlcommitmentplan
@@ -14,7 +14,7 @@ Updates properties of an existing commitment plan resource.
 
 ```
 Update-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Name <String> -SkuName <String> -SkuTier <String>
- [-SkuCapacity <Int32>] [-Tags <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Updates an existing commitment plan resource. Note that most properties of the c
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Update a commitment plan  --------------------------
+### Example 1: Update a commitment plan
 ```
 Update-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Tags @{'MyTagKey'='MyTagValue'}
 ```
@@ -51,7 +51,7 @@ Do not ask for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -66,7 +66,7 @@ The name of the Azure ML commitment plan.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,7 +81,7 @@ The name of the resource group for the Azure ML commitment plan.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -96,7 +96,7 @@ The capacity of the SKU to use when updating the Azure ML commitment plan.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ The name of the SKU to use when updating the Azure ML commitment plan.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -126,7 +126,7 @@ The tier of the SKU to use when updating the Azure ML commitment plan.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,13 +135,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Tags for the commitment plan resource.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -193,4 +193,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

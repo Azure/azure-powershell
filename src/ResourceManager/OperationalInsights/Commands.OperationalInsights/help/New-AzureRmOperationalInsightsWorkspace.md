@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 4682807D-34E8-4057-8894-36820447067B
@@ -15,7 +15,7 @@ Creates a workspace.
 
 ```
 New-AzureRmOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Sku] <String>] [[-CustomerId] <Guid>] [[-Tags] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
+ [[-Sku] <String>] [[-CustomerId] <Guid>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ The Get-AzureRmOperationalInsightsLinkTargets cmdlet can also be used to list th
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -82,7 +82,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Specifies the location in which to create the workspace, for example, East US or
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -112,7 +112,7 @@ Specifies the name of the workspace.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -128,7 +128,7 @@ The workspace is created in this resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,7 +143,7 @@ The workspace data retention in days. 730 days is the maximum allowed for all ot
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -163,7 +163,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: free, standard, premium, pernode, standalone
 
 Required: False
@@ -173,13 +173,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies the resource tags for the workspace.
+### -Tag
+The resource tags for the workspace.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 5
