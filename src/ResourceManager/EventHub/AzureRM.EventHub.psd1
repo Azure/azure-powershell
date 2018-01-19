@@ -84,9 +84,9 @@ CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace'
                'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup',
                'Get-AzureRmEventHubConsumerGroup',
                'Set-AzureRmEventHubConsumerGroup',
-               'Remove-AzureRmEventHubConsumerGroup','New-AzureRmEventHubDRConfiguration','Get-AzureRmEventHubDRConfiguration','Remove-AzureRmEventHubDRConfiguration',
-	       'Set-AzureRmEventHubDRConfigurationBreakPairing','Set-AzureRmEventHubDRConfigurationFailOver',
-	       'Test-AzureRmEventHubName','Get-AzureRmEventHubOperation'
+               'Remove-AzureRmEventHubGeoConsumerGroup', 'New-AzureRmEventHubGeoDRConfiguration', 'Get-AzureRmEventHubGeoDRConfiguration', 'Remove-AzureRmEventHubGeoDRConfiguration',
+	       'Set-AzureRmEventHubGeoDRConfigurationBreakPair', 'Set-AzureRmEventHubGeoDRConfigurationFailOver',
+	       'Test-AzureRmEventHubName', 'Get-AzureRmEventHubOperation'
 			   
 # Variables to export from this module
 # VariablesToExport = @()

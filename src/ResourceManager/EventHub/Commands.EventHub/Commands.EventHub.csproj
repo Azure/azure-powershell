@@ -61,11 +61,11 @@
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\SetAzureEventHubConsumerGroups.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationFailOver.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationBreakPairing.cs" />
-    <Compile Include="Cmdlets\DRConfig\GetAzureEventHubDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\NewAzureEventHubDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\RemoveAzureEventHubDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubGeoDRConfigurationBreakPair.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubGeoDRConfigurationFailOver.cs" />
     <Compile Include="Cmdlets\EventHub\GetAzureEventHubs.cs" />
     <Compile Include="Cmdlets\EventHub\NewAzureEventHub.cs" />
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />

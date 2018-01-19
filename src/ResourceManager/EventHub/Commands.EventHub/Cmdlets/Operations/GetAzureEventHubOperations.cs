@@ -32,4 +32,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             WriteObject(GetOperationsResult, true);
         }
     }
-}
+}   

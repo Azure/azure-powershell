@@ -53,14 +53,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
-        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubDRConfiguration";
-        protected const string EventhubDRConfigurationFailoverVerb = "AzureRmEventHubDRConfigurationFailOver";
-        protected const string EventhubDRConfigurationBreakPairingVerb = "AzureRmEventHubDRConfigurationBreakPairing";
-
-        //AuthorizationRules
-        //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
-        //protected const string EventHubKeyVerb = "AzureRmEventHubKey";
-
+        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubGeoDRConfiguration";
+        protected const string EventhubDRConfigurationFailoverVerb = "AzureRmEventHubGeoDRConfigurationFailOver";
+        protected const string EventhubDRConfigurationBreakPairingVerb = "AzureRmEventHubGeoDRConfigurationBreakPair";
+        
         //Parametersets for Authorizationrules
         protected const string NamespaceAuthoRuleParameterSet = "NamespaceAuthorizationRuleSet";
         protected const string EventhubAuthoRuleParameterSet = "EventhubAuthorizationRuleSet";
