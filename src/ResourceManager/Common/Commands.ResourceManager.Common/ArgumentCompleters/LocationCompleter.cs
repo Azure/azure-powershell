@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 {
                                     output = CreateLocationDictionary(new List<Provider>());
 #if DEBUG
-                                    throw new Exception("Result from client.Providers is null");
+                                    throw new InvalidOperationException("Result from client.Providers is null");
 #endif
                                 }
                             }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             {
                                 output = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 #if DEBUG
-                                throw new Exception(Resources.TimeOutForProviderList);
+                                throw new InvalidOperationException(Resources.TimeOutForProviderList);
 #endif
                             }
                         }
