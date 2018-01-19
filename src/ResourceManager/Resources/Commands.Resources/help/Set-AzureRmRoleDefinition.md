@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
@@ -51,7 +51,7 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
 
 ## EXAMPLES
 
-### --------------------------  Update using PSRoleDefinitionObject  --------------------------
+### Update using PSRoleDefinitionObject
 ```
 PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
           PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
@@ -61,7 +61,7 @@ PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
           PS C:\> Set-AzureRmRoleDefinition -Role $roleDef
 ```
 
-### --------------------------  Create using JSON file  --------------------------
+### Create using JSON file
 ```
 PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
@@ -91,7 +91,7 @@ Id property is Required.
 ```yaml
 Type: String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ Role definition object to be updated
 ```yaml
 Type: PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
