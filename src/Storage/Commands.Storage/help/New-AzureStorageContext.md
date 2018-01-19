@@ -132,7 +132,7 @@ The command creates the context for the account named ContosoGeneral that uses t
 
 ### Example 9: Create a context by using an SAS token
 ```
-C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "raud"
+C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "rad"
 PS C:\> $Context = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -SasToken $SasToken
 PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
 ```

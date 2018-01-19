@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkwatcherreachabilityproviderslist
@@ -16,21 +16,21 @@ Lists all available internet service providers for a specified Azure region.
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName <String> -ResourceGroupName <String>
  [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWatcher>
  [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -ResourceId <String>
  [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,21 @@ PS C:\> Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -
 Lists all available providers in Seattle, WA for Azure Data Center in West US.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -City
 The name of the city.
@@ -126,7 +141,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -201,9 +216,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -211,14 +229,11 @@ Accept wildcard characters: False
 System.String
 System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList
 
-
 ## NOTES
-
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, next, hop 
 
 ## RELATED LINKS

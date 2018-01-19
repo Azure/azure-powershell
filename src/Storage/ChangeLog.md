@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add cmdlets to get and set Storage service properties
+	- Get-AzureStorageServiceProperty
+	- Update-AzureStorageServiceProperty
 
 ## Version 4.0.2
 * Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
