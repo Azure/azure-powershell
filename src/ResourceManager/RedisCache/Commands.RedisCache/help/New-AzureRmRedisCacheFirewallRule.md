@@ -21,14 +21,13 @@ New-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -
 
 ### RedisCacheAttributesObject
 ```
-New-AzureRmRedisCacheFirewallRule -RuleName <String> -StartIP <String> -EndIP <String>
- -InputObject <RedisCacheAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmRedisCacheFirewallRule -InputObject <RedisCacheAttributes> -RuleName <String> -StartIP <String>
+ -EndIP <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmRedisCacheFirewallRule -RuleName <String> -StartIP <String> -EndIP <String> -ResourceId <String>
+New-AzureRmRedisCacheFirewallRule -ResourceId <String> -RuleName <String> -StartIP <String> -EndIP <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,7 +84,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-object of type RedisCacheAttributes```yaml
+object of type RedisCacheAttributes
+
+```yaml
 Type: RedisCacheAttributes
 Parameter Sets: RedisCacheAttributesObject
 Aliases:
@@ -128,7 +129,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ARM Id of Redis Cache.```yaml
+ARM Id of Redis Cache.
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:

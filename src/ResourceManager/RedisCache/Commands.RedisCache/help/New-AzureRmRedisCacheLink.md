@@ -30,6 +30,7 @@ PS C:\>New-AzureRmRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerN
         SecondaryServerName : mycache2
         ProvisioningState   : Creating
 ```
+
 This command creates geo-replication link between Redis Cache mycache1 and mycache2.
 
 ## PARAMETERS
