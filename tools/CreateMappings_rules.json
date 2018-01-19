@@ -83,8 +83,8 @@
 
     { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
 
-    { "regex": "PowerBIEmbedded", "group": "Power BI", "alias": "Embedded Capacity" }, 
-    { "regex": "PowerBIWorkspace", "group": "Power BI", "alias": "Workspace Collections" }, 
+    { "regex": "PowerBIEmbedded", "group": "Power BI", "alias": "Power BI Embedded Capacity" }, 
+    { "regex": "PowerBIWorkspace", "group": "Power BI", "alias": "Power BI Workspace Collections" }, 
 
     { "regex": "RedisCache", "alias": "Redis Cache" }, 
 
