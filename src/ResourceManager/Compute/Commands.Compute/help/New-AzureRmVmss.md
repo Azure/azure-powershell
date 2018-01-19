@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllocationMethod
-{{Fill AllocationMethod Description}}
+Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).
 
 ```yaml
 Type: String
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPoolName
-{{Fill BackendPoolName Description}}
+The name of the backend address pool to use in the load balancer for this Scale Set.
 
 ```yaml
 Type: String
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPort
-{{Fill BackendPort Description}}
+Backend port numer used by the Scale Set load balancer to communicate with VMs in the Scale Set.
 
 ```yaml
 Type: Int32[]
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-{{Fill Credential Description}}
+The administrator credentials (username and password) for VMs in this Scale Set.
 
 ```yaml
 Type: PSCredential
@@ -235,7 +235,9 @@ Accept wildcard characters: False
 ```
 
 ### -DomainNameLabel
-{{Fill DomainNameLabel Description}}
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set.
+This is the first component of the domain name that is automatically assiged to the Scale Set.
+Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com).
 
 ```yaml
 Type: String
@@ -250,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendPoolName
-{{Fill FrontendPoolName Description}}
+The name of the frontend address pool to usein the Scale Set locad balancer.
 
 ```yaml
 Type: String
@@ -265,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-{{Fill ImageName Description}}
+The name of the image for VMs in this Scale Set.
 
 ```yaml
 Type: String
@@ -280,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceCount
-{{Fill InstanceCount Description}}
+The number of VM images in the Scale Set.
 
 ```yaml
 Type: Int32
@@ -295,7 +297,8 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancerName
-{{Fill LoadBalancerName Description}}
+The name of the load balancer to use with this Scale Set.  A new load balancer 
+will be created if no value is specified.
 
 ```yaml
 Type: String
@@ -310,7 +313,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{Fill Location Description}}
+The Azure location where this Scale Set will be created.  A default location will be 
+used if no value is specified.
 
 ```yaml
 Type: String
@@ -325,7 +329,8 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressName
-{{Fill PublicIpAddressName Description}}
+The name of the public IP Address to use with this scale set.  A new Public IPAddress will be 
+created if no value is provided.
 
 ```yaml
 Type: String
@@ -367,7 +372,8 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityGroupName
-{{Fill SecurityGroupName Description}}
+The name of the network security group to apply to this Scale Set.  If no value is provided, 
+a default network security group will be created and applied to the Scale Set.
 
 ```yaml
 Type: String
@@ -382,7 +388,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetAddressPrefix
-{{Fill SubnetAddressPrefix Description}}
+The address prefix of the Subnet this ScaleSet will use. Default Subnet settings will be applied if no value is provided.
 
 ```yaml
 Type: String
@@ -397,7 +403,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetName
-{{Fill SubnetName Description}}
+The name of the subnet to use with this Scale Set.  A new Subnet will be created if no bvalue is provided.
 
 ```yaml
 Type: String
@@ -412,7 +418,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradePolicyMode
-{{Fill UpgradePolicyMode Description}}
+The upgrade policy mode for VM instances in this Scale Set.  Upgrade policy could specify Automatic, Manual, or Rolling upgrades.
 
 ```yaml
 Type: UpgradeMode
@@ -443,7 +449,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-{{Fill VirtualNetworkName Description}}
+The name fo the Virtual Network to use with this scale set.  If no value is supplied, a new virtual network will be created.
 
 ```yaml
 Type: String
@@ -485,7 +491,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-{{Fill VmSize Description}}
+The size of the VM instances in this scale set.  A default size will be used if no Size is specified.
 
 ```yaml
 Type: String
@@ -500,7 +506,7 @@ Accept wildcard characters: False
 ```
 
 ### -VnetAddressPrefix
-{{Fill VnetAddressPrefix Description}}
+The address prefix for the virtual network used with this Scale Set.  Default virtual network address prefix settings will be used if no value is supplied.
 
 ```yaml
 Type: String
