@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             _cmdlet = CopyCmdlet(cmdlet);
             _shouldConfirm = ShouldConfirm(cmdlet);
-            _cmdlet.CommandRuntime = this.GetJobRuntime();
+            _cmdlet.CommandRuntime = this;
             _runtime = cmdlet.CommandRuntime;
             _execute = executeCmdlet;
             this.PSJobTypeName = this.GetType().Name;
