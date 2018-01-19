@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Tests each of the major parts of retrieving subscriptions in ARM mode
+.DESCRIPTION
+SmokeTest
 #>
 function Test-GetSubscriptionsEndToEnd
 {
@@ -44,6 +46,12 @@ function Test-GetSubscriptionsEndToEnd
 	Assert-True {$tenantSubscriptions.Count -gt 0}
 }
 
+<#
+.SYNOPSIS
+Tests each of the major parts of retrieving subscriptions in ARM mode
+.DESCRIPTION
+SmokeTest
+#>
 function Test-PipingWithContext
 {
     $allSubscriptions = Get-AzureRmSubscription
@@ -70,6 +78,10 @@ function Test-PipingWithContext
 	Assert-AreEqual $contextByName.Subscription.Name  $nameContext.Subscription.Name
 }
 
+<#
+.SYNOPSIS
+Tests each of the major parts of retrieving subscriptions in ARM mode
+#>
 function Test-SetAzureRmContextEndToEnd
 {
     # This test requires that the tenant contains atleast two subscriptions
@@ -84,6 +96,12 @@ function Test-SetAzureRmContextEndToEnd
     Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId $junkSubscriptionId} "provide a valid"
 }
 
+<#
+.SYNOPSIS
+Tests each of the major parts of retrieving subscriptions in ARM mode
+.DESCRIPTION
+SmokeTest
+#>
 function Test-SetAzureRmContextWithoutSubscription
 {
     $allSubscriptions = Get-AzureRmSubscription

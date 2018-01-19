@@ -51,6 +51,8 @@ function BulkCreateSecretVersions ($vault, $name, $total)
 <#
 .SYNOPSIS
 Create a secret with default attributes
+.DESCRIPTION
+SmokeTest
 #>
 
 function Test_CreateSecret
@@ -67,6 +69,8 @@ function Test_CreateSecret
 <#
 .SYNOPSIS
 Create a secret with custom attributes
+.DESCRIPTION
+SmokeTest
 #>
 
 function Test_CreateSecretWithCustomAttributes
@@ -84,6 +88,8 @@ function Test_CreateSecretWithCustomAttributes
 <#
 .SYNOPSIS
 Update a secret
+.DESCRIPTION
+SmokeTest
 #>
 
 function Test_UpdateSecret
@@ -157,6 +163,8 @@ function Test_SetSecretInNoPermissionVault
 <#
 .SYNOPSIS
 Tests update individual secret attributes
+.DESCRIPTION
+SmokeTest
 #>
 function Test_UpdateIndividualSecretAttributes
 {
@@ -392,8 +400,9 @@ function Test_SetSecretAttrInNoPermissionVault
 <#
 .SYNOPSIS
 Tests get one secret from key vault
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_GetOneSecret
 {
     $keyVault = Get-KeyVault
@@ -413,8 +422,9 @@ function Test_GetOneSecret
 <#
 .SYNOPSIS
 Tests get all secrets from key vault
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_GetAllSecrets
 {
     $keyVault = Get-KeyVault
@@ -551,6 +561,8 @@ function Test_GetSecretInNoPermissionVault
 <#
 .SYNOPSIS
 Tests remove a secret
+.DESCRIPTION
+SmokeTest
 #>
 function Test_RemoveSecretWithoutPrompt
 {
@@ -660,6 +672,8 @@ function Test_RemoveSecretInNoPermissionVault
 <#
 .SYNOPSIS
 Tests backup and restoring of a secret by name
+.DESCRIPTION
+SmokeTest
 #>
 function Test_BackupRestoreSecretByName
 {
@@ -831,8 +845,9 @@ function Test_PipelineRemoveSecrets
 <#
 .SYNOPSIS
 Tests getting a previously deleted secret
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_GetDeletedSecret
 {
 	# Create a software secret for deleting
@@ -855,8 +870,9 @@ function Test_GetDeletedSecret
 <#
 .SYNOPSIS
 Tests listing all previously deleted secrets
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_GetDeletedSecrets
 {
 	$keyVault = Get-KeyVault
@@ -877,8 +893,9 @@ function Test_GetDeletedSecrets
 <#
 .SYNOPSIS
 Tests recovering a previously deleted secret.
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_UndoRemoveSecret
 {
 	# Create a software secret for updating
@@ -902,8 +919,9 @@ function Test_UndoRemoveSecret
 <#
 .SYNOPSIS
 Tests purging a deleted secret for good.
+.DESCRIPTION
+SmokeTest
 #>
-
 function Test_RemoveDeletedSecret
 {
 	# Create a software key for updating

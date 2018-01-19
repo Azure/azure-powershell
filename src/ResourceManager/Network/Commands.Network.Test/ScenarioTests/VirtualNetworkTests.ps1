@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Tests creating new simple virtualNetwork.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-VirtualNetworkCRUD
 {
@@ -100,6 +102,8 @@ function Test-VirtualNetworkCRUD
 <#
 .SYNOPSIS
 Tests creating new simple virtualNetwork and subnets.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-subnetCRUD
 {
@@ -425,6 +429,8 @@ function Test-ResourceNavigationLinksCRUD
 <#
 .SYNOPSIS
 Tests checking Virtual Network Usage feature.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-VirtualNetworkUsage
 {

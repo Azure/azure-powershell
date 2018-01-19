@@ -27,7 +27,7 @@ function Test-ValidateDeployment
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-	$list = Test-AzureResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
+	$list = Test-AzureResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\Build2014_Website_App.json" -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
 
 	# Assert
 	Assert-AreEqual 0 @($list).Count
@@ -36,6 +36,8 @@ function Test-ValidateDeployment
 <#
 .SYNOPSIS
 Tests deployment via template file and parameter object.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-NewDeploymentFromTemplateFile
 {
@@ -49,7 +51,7 @@ function Test-NewDeploymentFromTemplateFile
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleDeploymentTemplate.json" -TemplateParameterFile "$PSScriptRoot\sampleDeploymentTemplateParams.json"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -70,6 +72,8 @@ function Test-NewDeploymentFromTemplateFile
 <#
 .SYNOPSIS
 Tests cross resource group deployment via template file.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-CrossResourceGroupDeploymentFromTemplateFile
 {
@@ -86,7 +90,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 		New-AzureRmResourceGroup -Name $rgname2 -Location $rglocation
 		
 		$parameters = @{ "NestedDeploymentResourceGroup" = $rgname2 }
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleTemplateWithCrossResourceGroupDeployment.json" -TemplateParameterObject $parameters
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -125,7 +129,7 @@ function Test-NestedErrorsDisplayed
 		$ErrorActionPreference = "SilentlyContinue"
 		$Error.Clear()
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-		New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateThrowsNestedErrors.json
+		New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleTemplateThrowsNestedErrors.json"
 	}
 	catch
 	{
@@ -141,6 +145,8 @@ function Test-NestedErrorsDisplayed
 <#
 .SYNOPSIS
 Tests nested deployment.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-NestedDeploymentFromTemplateFile
 {
@@ -154,7 +160,7 @@ function Test-NestedDeploymentFromTemplateFile
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleNestedTemplate.json" -TemplateParameterFile "$PSScriptRoot\sampleNestedTemplateParams.json"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -175,6 +181,8 @@ function Test-NestedDeploymentFromTemplateFile
 <#
 .SYNOPSIS
 Tests save deployment template file.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-SaveDeploymentTemplateFile
 {
@@ -188,7 +196,7 @@ function Test-SaveDeploymentTemplateFile
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleDeploymentTemplate.json" -TemplateParameterFile "$PSScriptRoot\sampleDeploymentTemplateParams.json"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -233,17 +241,17 @@ function Test-NewDeploymentWithKeyVaultReference
 		$KeyVaultResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $rgname + "/providers/Microsoft.KeyVault/vaults/" + $keyVaultname
 		
 		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName; "tenantId" = $tenantId; "objectId" = $objectId }
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\keyVaultSetupTemplate.json" -TemplateParameterObject $parameters
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
 
-		$content = (Get-Content keyVaultTemplateParams.json) -join '' | ConvertFrom-Json
+		$content = (Get-Content "$PSScriptRoot\keyVaultTemplateParams.json") -join '' | ConvertFrom-Json
 		$content.hostingPlanName.reference.KeyVault.id = $KeyVaultResourceId
 		$content.hostingPlanName.reference.SecretName = $secretName
-		$content | ConvertTo-Json -depth 999 | Out-File keyVaultTemplateParams.json
+		$content | ConvertTo-Json -depth 999 | Out-File "$PSScriptRoot\keyVaultTemplateParams.json"
 
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile keyVaultTemplateParams.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\sampleTemplate.json" -TemplateParameterFile "$PSScriptRoot\keyVaultTemplateParams.json"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -277,7 +285,7 @@ function Test-NewDeploymentWithComplexPramaters
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterFile complexParameters.json
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\complexParametersTemplate.json" -TemplateParameterFile "$PSScriptRoot\complexParameters.json"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -311,7 +319,7 @@ function Test-NewDeploymentWithParameterObject
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -TemplateParameterObject @{appSku=@{code="f1"; name="Free"}; servicePlan="plan1"; ranks=@("c", "d")}
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\complexParametersTemplate.json" -TemplateParameterObject @{appSku=@{code="f1"; name="Free"}; servicePlan="plan1"; ranks=@("c", "d")}
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -345,7 +353,7 @@ function Test-NewDeploymentWithDynamicParameters
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -appSku @{code="f3"; name=@{major="Official"; minor="1.0"}} -servicePlan "plan1" -ranks @("c", "d")
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\complexParametersTemplate.json" -appSku @{code="f3"; name=@{major="Official"; minor="1.0"}} -servicePlan "plan1" -ranks @("c", "d")
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -380,7 +388,7 @@ function Test-NewDeploymentWithInvalidParameters
 		$ErrorActionPreference = "SilentlyContinue"
 		$Error.Clear()
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile complexParametersTemplate.json -appSku @{code="f4"; name="Free"} -servicePlan "plan1"
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile "$PSScriptRoot\complexParametersTemplate.json" -appSku @{code="f4"; name="Free"} -servicePlan "plan1"
 	}
 	catch
 	{
