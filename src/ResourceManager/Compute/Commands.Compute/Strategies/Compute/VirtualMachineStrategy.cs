@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: c => c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null ? 240 : 120);
+                createTime: c =>
+                    c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
+                        ? 240
+                        : 120);
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -41,7 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             string adminUsername,
             string adminPassword,
             Image image,
-            string size)
+            string size,
+            ResourceConfig<AvailabilitySet> availabilitySet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name, 
@@ -78,9 +82,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             Sku = image.sku,
                             Version = image.version
                         }
-                    }
+                    },
+                    AvailabilitySet = availabilitySet == null 
+                        ? null 
+                        : new Azure.Management.Compute.Models.SubResource
+                            {
+                                Id = availabilitySet.GetId(subscription).IdToString()
+                            }
                 },
-                dependencies: new[] { networkInterface });
+                dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -88,7 +98,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             ResourceConfig<NetworkInterface> networkInterface,
             bool isWindows,
             ResourceConfig<Disk> disk,
-            string size)
+            string size,
+            ResourceConfig<AvailabilitySet> availabilitySet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -123,7 +134,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             }
                         }
                     },
+                    AvailabilitySet = availabilitySet == null
+                        ? null
+                        : new Azure.Management.Compute.Models.SubResource
+                        {
+                            Id = availabilitySet.GetId(subscription).IdToString()
+                        }
                 },
-                dependencies: new IEntityConfig[] { networkInterface, disk });
+                dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
     }
 }
