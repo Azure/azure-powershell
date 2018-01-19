@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 36399302-3EA5-45A3-A042-536CC7EC2E6D
@@ -67,7 +67,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ Specifies the name of the policy assignment that this cmdlet removes.
 ```yaml
 Type: String
 Parameter Sets: RemoveByPolicyAssignmentName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -166,7 +166,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -181,7 +181,7 @@ Specifies the scope at which the policy is applied.
 ```yaml
 Type: String
 Parameter Sets: RemoveByPolicyAssignmentName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
