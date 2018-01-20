@@ -40,6 +40,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         public string KeyId { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Check to see if the Server Key Vault Key already exists on the server.
         /// </summary>
         /// <returns>Null if the Server Key Vault Key doesn't exist.</returns>

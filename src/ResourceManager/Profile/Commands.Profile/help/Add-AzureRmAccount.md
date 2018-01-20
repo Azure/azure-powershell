@@ -38,6 +38,14 @@ Add-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -Appl
 ```
 Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
  [-GraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>]
+ [-ContextName <String>] [-SkipValidation] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ManagedServiceLogin
+```
+Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-ManagedService]
+ [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-Subscription <String>]
  [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -108,6 +116,18 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 
 This command adds an Azure Resource Manager account to run cmdlets for the specified tenant and subscription by default.
 
+### Example 5: Add an Account Using Managed Service Identity Login
+```
+PS C:\>Add-AzureRmAccount -MSI
+Account: MSI@50342
+Environment: AzureCloud
+Subscription: yyyy-yyyy-yyyy-yyyy
+Tenant: xxxx-xxxx-xxxx-xxxx
+```
+
+This command logs in using the managed service identity of the host environment (for example, if executed on a 
+VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
+
 ## PARAMETERS
 
 ### -AccessToken
@@ -134,6 +154,18 @@ Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ManagedServiceLogin
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,6 +322,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedService
+Login using managed service identity in the current environment
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ManagedServiceLogin
+Aliases: MSI
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceHostName
+Host name for managed service login
+
+```yaml
+Type: String
+Parameter Sets: ManagedServiceLogin
+Aliases: 
+
+Required: False
+Position: Named
+Default value: localhost
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServicePort
+Port number for managed service login
+
+```yaml
+Type: Int32
+Parameter Sets: ManagedServiceLogin
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 50342
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
 
@@ -321,6 +398,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipValidation
+Skip validation for access token
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AccessTokenWithSubscriptionId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Subscription
 Subscription Name or ID
 
@@ -341,7 +433,7 @@ Optional tenant name or ID
 
 ```yaml
 Type: String
-Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId
+Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
 Aliases: Domain
 
 Required: False

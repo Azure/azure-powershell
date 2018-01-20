@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 427F7300-0FEB-4F28-9C1D-27592AEBF6A0
@@ -75,7 +75,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,7 +108,7 @@ server name`/`database name
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ For instance:
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +141,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,7 +196,7 @@ This cmdlet appends this value to the request in addition to any other filters.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -226,7 +226,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -241,7 +241,7 @@ Specifies the name of a resource group in which this cmdlet invokes an action.
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -295,7 +295,7 @@ For instance, for a database, the resource type is as follows:
 ```yaml
 Type: String
 Parameter Sets: BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -310,7 +310,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -362,4 +362,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

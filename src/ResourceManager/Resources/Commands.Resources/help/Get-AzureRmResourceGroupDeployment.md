@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
@@ -76,7 +76,7 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +137,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ This parameter is required and you can specify only one resource group in each c
 ```yaml
 Type: String
 Parameter Sets: GetByResourceGroupDeploymentName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

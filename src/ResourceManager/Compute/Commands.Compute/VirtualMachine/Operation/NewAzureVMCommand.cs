@@ -21,14 +21,19 @@ using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -36,6 +41,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using SM = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -43,12 +49,13 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = "DefaultParameterSet")]
+        DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
         public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string DiskFileParameterSet = "DiskFileParameterSet";
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -58,6 +65,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceGroupCompleter()]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -69,6 +79,9 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false)]
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
@@ -102,7 +115,9 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmVm: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -114,6 +129,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -121,31 +139,40 @@ namespace Microsoft.Azure.Commands.Compute
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AddressPrefix { get; set; } = "192.168.0.0/16";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SubnetName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string PublicIpAddressName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string DomainNameLabel { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         [ValidateSet("Static", "Dynamic")]
         public string AllocationMethod { get; set; } = "Static";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SecurityGroupName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] OpenPorts { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
@@ -162,8 +189,16 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2012Datacenter",
             "Win2008R2SP1")]
         public string ImageName { get; set; } = "Win2016Datacenter";
+        
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string DiskFile { get; set; }
+
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter Linux { get; set; } = false;
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -174,6 +209,9 @@ namespace Microsoft.Azure.Commands.Compute
             switch (ParameterSetName)
             {
                 case SimpleParameterSet:
+                    this.StartAndWait(StrategyExecuteCmdletAsync);
+                    break;
+                case DiskFileParameterSet:
                     this.StartAndWait(StrategyExecuteCmdletAsync);
                     break;
                 default:
@@ -192,7 +230,7 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             bool isWindows;
-            Commands.Common.Strategies.Compute.Image image;
+            Commands.Common.Strategies.Compute.Image image = null;
             if (ImageName.Contains(':'))
             {
                 var imageArray = ImageName.Split(':');
@@ -208,6 +246,11 @@ namespace Microsoft.Azure.Commands.Compute
                     version = imageArray[3],
                 };
                 isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
+            }
+            else if (!string.IsNullOrEmpty(DiskFile))
+            {
+                // disk file parameter set requires the OS type input
+                isWindows = !Linux;
             }
             else
             {
@@ -242,14 +285,78 @@ namespace Microsoft.Azure.Commands.Compute
                 openPorts: OpenPorts);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
-            var virtualMachine = resourceGroup.CreateVirtualMachineConfig(
-                name: Name,
-                networkInterface: networkInterface,
-                isWindows: isWindows,
-                adminUsername: Credential.UserName,
-                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image,
-                size: Size);
+            ResourceConfig<VirtualMachine> virtualMachine = null;
+
+            if (image != null)
+            {
+                virtualMachine = resourceGroup.CreateVirtualMachineConfig(
+                    name: Name,
+                    networkInterface: networkInterface,
+                    isWindows: isWindows,
+                    adminUsername: Credential.UserName,
+                    adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                    image: image,
+                    size: Size);
+            }
+            else
+            {
+                var storageClient =
+                        AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+                var st1 = storageClient.StorageAccounts.Create(ResourceGroupName, Name, new StorageAccountCreateParameters
+                {
+#if !NETSTANDARD
+                    AccountType = AccountType.PremiumLRS,
+#else
+                    Sku = new SM.Sku
+                    {
+                        Name = SkuName.PremiumLRS
+                    },
+#endif
+                    Location = Location
+                });
+                var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
+                using (var vds = new VirtualDiskStream(filePath.FullName))
+                {
+                    if (vds.DiskType == DiskType.Fixed)
+                    {
+                        long divisor = Convert.ToInt64(Math.Pow(2, 9));
+                        long rem = 0;
+                        Math.DivRem(filePath.Length, divisor, out rem);
+                        if (rem != 0)
+                        {
+                            throw new ArgumentOutOfRangeException("filePath", string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
+                        }
+                    }
+                }
+                var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
+                BlobUri destinationUri = null;
+                BlobUri.TryParseUri(new Uri(string.Format("{0}{1}/{2}{3}", storageAccount.PrimaryEndpoints.Blob, Name.ToLower(), Name.ToLower(), ".vhd")), out destinationUri);
+                if (destinationUri == null || destinationUri.Uri == null)
+                {
+                    throw new ArgumentNullException("destinationUri");
+                }
+                var storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
+                var parameters = new UploadParameters(destinationUri, null, filePath, true, 2)
+                {
+                    Cmdlet = this,
+                    BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
+                };
+                if (!string.Equals(Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
+                {
+                    var st2 = VhdUploaderModel.Upload(parameters);
+                }
+                var disk = resourceGroup.CreateManagedDiskConfig(
+                    name: Name,
+                    sourceUri: destinationUri.Uri.ToString()
+                );
+                virtualMachine = resourceGroup.CreateVirtualMachineConfig(
+                    name: Name,
+                    networkInterface: networkInterface,
+                    isWindows: isWindows,
+                    disk: disk,
+                    size: Size);
+            }
 
             var client = new Client(DefaultProfile.DefaultContext);
 
@@ -332,7 +439,7 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.VM.Identity,
                         Zones = this.Zone ?? this.VM.Zones,
                     };
