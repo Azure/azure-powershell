@@ -14,44 +14,55 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Commands.RedisCache.Properties;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
-    using Management.Redis.Models;
-    using System;
+    using Properties;
+    using Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCache", SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class RemoveAzureRedisCache : RedisCacheCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheFirewallRule", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureRedisCacheFirewallRule : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
+        private const string NormalParameterSet = "NormalParameterSet";
+        private const string InputObjectParameterSet = "PSRedisFirewallRuleObject";
+
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache to be removed.")]
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of firewall rule.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleName { get; set; }
+
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type PSRedisFirewallRule")]
+        [ValidateNotNull]
+        public PSRedisFirewallRule InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(InputObjectParameterSet))
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                Name = InputObject.Name;
+                RuleName = InputObject.RuleName;
+            }
+
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingRedisCache, Name),
-                string.Format(Resources.RemoveRedisCache, Name),
+                string.Format(Resources.RemoveFirewallRule, RuleName, Name),
                 Name,
                 () =>
                 {
-                    CacheClient.DeleteCache(ResourceGroupName, Name);
+                    CacheClient.RemoveFirewallRule(ResourceGroupName, Name, RuleName);
                     if (PassThru)
                     {
                         WriteObject(true);

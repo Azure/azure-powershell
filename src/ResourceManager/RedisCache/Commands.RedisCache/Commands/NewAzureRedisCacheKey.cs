@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         OutputType(typeof(RedisAccessKeys))]
     public class NewAzureRedisCacheKey : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
+            ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
+
             RedisKeyType keyTypeToRegenerated = RedisKeyType.Primary;
             if (KeyType.Equals("Secondary"))
             {
