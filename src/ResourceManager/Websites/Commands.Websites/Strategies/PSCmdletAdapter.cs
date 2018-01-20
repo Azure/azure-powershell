@@ -48,15 +48,21 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         class PSCmdletActivity : IActivity
         {
+            static int ActivityId = 0;
             PSCmdletAdapter _adapter;
             IActivity _parent;
 
-            public PSCmdletActivity(int id, string description, string initialStatus, PSCmdletAdapter adapter)
+            public PSCmdletActivity(string description, string initialStatus, PSCmdletAdapter adapter)
             {
                 _adapter = adapter;
                 Description = description;
-                Id = id;
+                Id =GetNextActivityId();
                 StatusDescription = initialStatus;
+            }
+
+            public static int GetNextActivityId()
+            {
+                return Interlocked.Increment(ref ActivityId);
             }
 
             public string Description
@@ -122,7 +128,9 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
             public IActivity StartChildActivity()
             {
-                throw new NotImplementedException();
+                var child = new PSCmdletActivity(this.Description, this.StatusDescription, _adapter);
+                child._parent = this;
+                return child;
             }
 
         }
@@ -194,7 +202,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         public IActivity StartActivity(string description, string initialStatus, int seconds)
         {
-            var activity = new PSCmdletActivity(id: Interlocked.Increment(ref activityId), description: description, initialStatus: initialStatus, adapter: this);
+            var activity = new PSCmdletActivity(description: description, initialStatus: initialStatus, adapter: this);
             activity.ReportProgress(initialStatus, seconds, 0);
             _hasMessages = 1;
             return activity;
