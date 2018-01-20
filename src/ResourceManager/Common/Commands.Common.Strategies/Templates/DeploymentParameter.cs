@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
+    /// <summary>
+    /// Deployment parameters (JSON object).
+    /// </summary>
     public class DeploymentParameter
     {
         public object value { get; set; }

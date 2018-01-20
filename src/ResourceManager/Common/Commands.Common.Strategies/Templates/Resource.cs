@@ -18,6 +18,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
+    /// Template resource (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-resources
     /// </summary>
     public class Resource

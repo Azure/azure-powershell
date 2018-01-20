@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface: networkInterface,
                     isWindows: isWindows,
                     adminUsername: Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                    adminPassword: password,
                     image: image,
                     size: Size);
             }

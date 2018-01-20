@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Azure Resource Management Template
+    /// Azure Resource Management Template (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
     /// </summary>
     public class Template

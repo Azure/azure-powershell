@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
     /// <summary>
-    /// Azure template parameter.
+    /// Azure template parameter (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-parameters
     /// </summary>
     public class Parameter
