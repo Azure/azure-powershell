@@ -405,14 +405,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion ConsumerGroup
 
-        #region Operations
-        public IEnumerable<PSOperationAttributes> GetOperations()
-        {
-            var response = Client.Operations.List();
-            var resourceList = response.Select(resource => new PSOperationAttributes(resource));
-            return resourceList;
-        }
-
+        #region CheckNameAvailability
         public PSCheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
         {
             var response = Client.Namespaces.CheckNameAvailability(new CheckNameAvailabilityParameter(namespaceName));

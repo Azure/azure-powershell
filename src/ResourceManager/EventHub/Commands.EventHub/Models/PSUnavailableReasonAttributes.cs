@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// <summary>
     /// Defines values for UnavailableReason.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum PSUnavailableReasonAttributes
     {
         [EnumMember(Value = "None")]

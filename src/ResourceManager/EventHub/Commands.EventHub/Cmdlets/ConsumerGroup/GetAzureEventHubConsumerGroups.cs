@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// <remarks>Paramaeter value is not required to see the List</remarks>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ConsumerGroup Name")]
         [Alias(AliasConsumerGroupName)]
-
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()

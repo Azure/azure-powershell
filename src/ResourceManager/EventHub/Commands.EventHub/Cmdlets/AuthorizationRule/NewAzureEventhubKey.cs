@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
-        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage ="Namespace Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -47,12 +46,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 4,
-            HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'")]
-        [ValidateSet(RegeneKeys.PrimaryKey,
-            RegeneKeys.SecondaryKey,
-            IgnoreCase = true)]
+        [Parameter(Mandatory = true, Position = 4, HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'")]
+        [ValidateSet(RegeneKeys.PrimaryKey, RegeneKeys.SecondaryKey, IgnoreCase = true)]
         public string RegenerateKey { get; set; }
 
         public override void ExecuteCmdlet()

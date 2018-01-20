@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EventHub Name")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 

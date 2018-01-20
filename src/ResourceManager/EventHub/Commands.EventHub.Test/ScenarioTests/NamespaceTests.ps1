@@ -42,8 +42,7 @@ function NamespaceAuthTests
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
-																																	  
+    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")																																	  
 
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
@@ -75,20 +74,17 @@ function NamespaceAuthTests
 
 	Assert-True {$count -ge 1 } "List AuthorizationRule: Namespace AuthorizationRules created earlier is not found."
 
-    $found = 0
     for ($i = 0; $i -lt $getallAuthrule.Count; $i++)
     {
         if ($getallAuthrule[$i].Name -eq $authRuleName)
         {
-            $found = $found + 1
             Assert-AreEqual 2 $getallAuthrule[$i].Rights.Count
             Assert-True { $getallAuthrule[$i].Rights -Contains "Listen" }
             Assert-True { $getallAuthrule[$i].Rights -Contains "Send" }                      
         }
 
         if ($getallAuthrule[$i].Name -eq $defaultNamespaceAuthRule)
-        {
-            $found = $found + 1
+        {            
             Assert-AreEqual 3 $getallAuthrule[$i].Rights.Count
             Assert-True { $getallAuthrule[$i].Rights -Contains "Listen" }
             Assert-True { $getallAuthrule[$i].Rights -Contains "Send" }
@@ -110,7 +106,7 @@ function NamespaceAuthTests
     $updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
-    Assert-AreEqual 3 $updatedAuthRule.Rights.Count "Rights Count Dosent match"
+    Assert-AreEqual 3 $updatedAuthRule.Rights.Count "Rights Count does not match"
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }

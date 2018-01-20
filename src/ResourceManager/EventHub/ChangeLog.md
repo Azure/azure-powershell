@@ -19,18 +19,22 @@
 -->
 ## Current Release
 
-* Added below new commandlets for Geo Disaster Recovery operations. 
+* Added below new commands for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
-		- New-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+		- New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
 	-Retrieve Alias(Disaster Recovery configuration) : 
-		- Get-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+		- Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
 	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
-		- Set-AzureRmEventHubDRConfigurationBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+		- Set-AzureRmEventHubGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
 	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
-		- Set-AzureRmEventHubDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+		- Set-AzureRmEventHubGeoDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
 	-Deleting an Alias(Disaster Recovery configuration)
-		- Remove-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+		- Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
 
+* Added below new commands for checking the Namespace Name and GeoDr Configuration Name - Alias availability. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name: 
+		- Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+		
 ## Version 0.5.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Add support for online help

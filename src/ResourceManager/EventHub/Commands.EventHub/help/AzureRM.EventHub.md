@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.EventHub
-Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91 5728d353-7ad5-42d8-b00a-46aaecf07b91
-Download Help Link: Download Help Link: None_Azure
+Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
+Download Help Link: None_Azure
 Help Version: 4.0.0.0
 Locale: en-US
 ---

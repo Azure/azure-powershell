@@ -63,6 +63,10 @@ function ConsumerGroupsTests
 	# Cleanup
 	Write-Debug " Delete created ConsumerGroup "
 	Remove-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $result.Name -Name $GetConsumerGroup.Name
+
+	Write-Debug " check the if consumergroup is deleted"
+	$ListConsumerGroups_afterdelete = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $result.Name
+	Assert-True { $ListConsumerGroups.Count -eq 0 } "List ConsumerGroup: ConsumerGroup deleted earlier is found."	
 	
     Write-Debug " Delete the EventHub"
     $delete1 = Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name  

@@ -179,9 +179,18 @@ function DRConfigurationTests
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$failoverDrConfiguration = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
 	Assert-AreEqual $failoverDrConfiguration.Role "PrimaryNotReplicating"
+	Assert-AreEqual $failoverDrConfiguration.PartnerNamespace "" "FaileOver: PartnerNamespace exists"
 	
 	# Remove the Alias created
 	Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -Force
+	Wait-Seconds 30
+
+	# Get the Created GeoDRConfiguration
+	Write-Debug " Get all the created GeoDRConfiguration"
+	$createdServiceBusDRConfigList_delete = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1
+
+	# Assert
+	Assert-AreEqual $createdServiceBusDRConfigList_delete.Count 0 "DR Config List: after delete the DRCoinfig was listed"
 
 	# Wait till the Namespace Provisioning  state changes to succeeded
 	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1

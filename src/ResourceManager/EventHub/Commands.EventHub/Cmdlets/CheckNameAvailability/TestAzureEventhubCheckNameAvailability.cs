@@ -35,11 +35,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = true, ParameterSetName = NamespaceCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Eventhub Namespace Name")]
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Eventhub Namespace Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias Name")]
-        [Alias(AliasAliasName)]
         [ValidateNotNullOrEmpty]
         public string AliasName { get; set; }
 
