@@ -17,15 +17,13 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
-    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using DayOfWeekEnum = System.DayOfWeek;
     using Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCachePatchSchedule"), OutputType(typeof(List<PSScheduleEntry>))]
-    public class GetAzureRedisCachePatchSchedule : RedisCacheCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCacheFirewallRule"), OutputType(typeof(List<PSRedisFirewallRule>))]
+    public class GetAzureRedisCacheFirewallRule : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
@@ -36,28 +34,47 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of firewall rule.")]
+        public string RuleName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
 
-            IList<ScheduleEntry> response = CacheClient.GetPatchSchedules(ResourceGroupName, Name);
-            if (response == null)
+            if (!string.IsNullOrEmpty(RuleName))
             {
-                throw new CloudException(string.Format(Resources.PatchScheduleNotFound, Name));
-            }
+                RedisFirewallRule redisFirewallRule = CacheClient.GetFirewallRule(
+                    resourceGroupName: ResourceGroupName,
+                    cacheName: Name,
+                    ruleName: RuleName);
 
-            List<PSScheduleEntry> returnValue = new List<PSScheduleEntry>();
-            foreach (var schedule in response)
-            {
-                returnValue.Add(new PSScheduleEntry
+                if (redisFirewallRule == null)
                 {
-                    DayOfWeek = schedule.DayOfWeek.ToString(),
-                    StartHourUtc = schedule.StartHourUtc,
-                    MaintenanceWindow = schedule.MaintenanceWindow
-                });
+                    throw new CloudException(string.Format(Resources.FirewallRuleNotFound, Name, RuleName));
+                }
+                WriteObject(new PSRedisFirewallRule(ResourceGroupName, Name, redisFirewallRule));
             }
-            WriteObject(returnValue);
+            else
+            {
+                IPage<RedisFirewallRule> response = CacheClient.ListFirewallRules(ResourceGroupName, Name);
+                List<PSRedisFirewallRule> list = new List<PSRedisFirewallRule>();
+                foreach (RedisFirewallRule redisFirewallRule in response)
+                {
+                    list.Add(new PSRedisFirewallRule(ResourceGroupName, Name, redisFirewallRule));
+                }
+                
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = CacheClient.ListFirewallRules(response.NextPageLink);
+                    foreach (RedisFirewallRule redisFirewallRule in response)
+                    {
+                        list.Add(new PSRedisFirewallRule(ResourceGroupName, Name, redisFirewallRule));
+                    }
+                }
+
+                WriteObject(list, true);
+            }
         }
     }
 }

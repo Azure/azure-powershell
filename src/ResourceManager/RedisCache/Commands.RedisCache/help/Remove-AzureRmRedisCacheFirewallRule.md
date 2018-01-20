@@ -1,34 +1,41 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
 Module Name: AzureRM.RedisCache
-ms.assetid: 2EA765B8-D82B-4789-8F10-88F79BDF44D0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCachePatchSchedule
+# Remove-AzureRmRedisCacheFirewallRule
 
 ## SYNOPSIS
-Removes the patch schedule.
+Remove a firewall rule from a Redis Cache.
 
 ## SYNTAX
 
+### NormalParameterSet (Default)
 ```
-Remove-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> [-PassThru]
+Remove-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -RuleName <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PSRedisFirewallRuleObject
+```
+Remove-AzureRmRedisCacheFirewallRule -InputObject <PSRedisFirewallRule> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRedisCachePatchSchedule** cmdlet removes the patch schedule from a cache in Azure Redis Cache.
+Remove a firewall rule from a Redis Cache.
 
 ## EXAMPLES
 
-### Example 1: Remove the patch schedule
+### Example 1: Remove a single firewall rule
 ```
-PS C:\>Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+PS C:\>Remove-AzureRmRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -PassThru
+True
 ```
 
-This command removes the patch schedule from the cache named RedisCache06.
+This command removes a firewall rule named ruleone from Redis Cache named mycache. 
 
 ## PARAMETERS
 
@@ -47,12 +54,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+object of type PSRedisFirewallRule
+
+```yaml
+Type: PSRedisFirewallRule
+Parameter Sets: PSRedisFirewallRuleObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specifies the name of a cache.
+Name of redis cache.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: True
@@ -78,14 +100,29 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group which contains the cache.
+Name of resource group in which cache exists.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleName
+Name of firewall rule.
+
+```yaml
+Type: String
+Parameter Sets: NormalParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,7 +139,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,7 +155,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -128,22 +165,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
 
 ## OUTPUTS
 
-### None
+### System.Boolean
 
 ## NOTES
-* Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCachePatchSchedule](./Get-AzureRmRedisCachePatchSchedule.md)
+[New-AzureRmRedisCacheFirewallRule](./New-AzureRmRedisCacheFirewallRule.md)
 
-[New-AzureRmRedisCachePatchSchedule](./New-AzureRmRedisCachePatchSchedule.md)
+[Get-AzureRmRedisCacheFirewallRule](./Get-AzureRmRedisCacheFirewallRule.md)
 
-[New-AzureRmRedisCacheScheduleEntry](./New-AzureRmRedisCacheScheduleEntry.md)
+[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
 
+[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
 
+[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+
+[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
