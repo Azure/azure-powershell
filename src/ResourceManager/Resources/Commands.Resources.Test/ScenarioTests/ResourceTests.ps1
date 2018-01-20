@@ -311,10 +311,10 @@ function Test-SetAResource
 		Assert-AreEqual $oldSkuNameProperty.Name "name" 
 		Assert-AreEqual $resource.SKu.Name "A0" 
 	
-	# Set resource
-	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-	$job = Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
-	$job | Wait-Job
+		# Set resource
+		Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+		$job = Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
+		$job | Wait-Job
 
 		$modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 

@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
-                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;
