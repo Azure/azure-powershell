@@ -82,7 +82,7 @@ function Test-AzureProvider-WithZoneMappings
 function Test-AzureProviderOperation
 {
     # Get all operations by all providers
-    $allActions = Get-AzureRmProviderOperation *
+    $allActions = Get-AzureRmProviderOperation
 	Assert-True { $allActions.Length -gt 0 }
 
 	# Get all operations of microsoft.insights provider
