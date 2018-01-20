@@ -310,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The Azure location where this Scale Set will be created.  If no value is specified, the location will be inferredf from the location of other resources referenced in the parameters.
+The Azure location where this Scale Set will be created.  If no value is specified, the location will be inferred from the location of other resources referenced in the parameters.
 
 ```yaml
 Type: String
