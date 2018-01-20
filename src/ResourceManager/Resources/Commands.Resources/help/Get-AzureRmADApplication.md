@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 66AC5120-80B1-46F2-AA51-132BF361602E
@@ -47,14 +47,14 @@ If no parameter is provided, it fetches all applications under the tenant.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Get-AzureRmADApplication
 ```
 
 Lists all the applications under a tenant.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS E:\> Get-AzureRmADApplication -IdentifierUri http://mySecretApp1
 ```
@@ -69,7 +69,7 @@ The application id of the application to fetch.
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Fetch all applications starting with the display name.
 ```yaml
 Type: String
 Parameter Sets: ApplicationDisplayNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,7 +114,7 @@ Unique identifier Uri of the application to fetch.
 ```yaml
 Type: String
 Parameter Sets: ApplicationIdentifierUriParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,7 +129,7 @@ The object id of the application to fetch.
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

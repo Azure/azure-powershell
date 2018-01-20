@@ -179,7 +179,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
-                createParameters.Encryption.KeySource = "Microsoft.Storage";
+                if (createParameters.Encryption != null)
+                {
+                    createParameters.Encryption.KeySource = "Microsoft.Storage";
+                }
             }
 
             if (this.AccessTier != null)

@@ -105,6 +105,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string StorageServiceLogging = "AzureStorageServiceLoggingProperty";
 
         /// <summary>
+        /// Azure storage service Property
+        /// </summary>
+        public const string StorageServiceProperty = "AzureStorageServiceProperty";
+
+        /// <summary>
         /// Azure storage CORS rule
         /// </summary>
         public const string StorageCORSRule = "AzureStorageCORSRule";

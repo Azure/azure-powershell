@@ -50,7 +50,7 @@ Specifies the name of the advisor for which this cmdlet updates the auto execute
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: AdvisorAutoExecuteStatus
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled, Default
 
 Required: True
@@ -102,7 +102,7 @@ Specifies the name of the elastic pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ Specifies the name of the resource group of the server that contains this elasti
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,7 +132,7 @@ Specifies the name of the server the elastic pool is in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

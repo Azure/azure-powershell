@@ -22,11 +22,20 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Test;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Xunit.Abstractions;
 
 namespace Common.Authentication.Test
 {
     public class AuthenticationFactoryTests
     {
+        ITestOutputHelper _output;
+        public AuthenticationFactoryTests(ITestOutputHelper output)
+        {
+            _output = output;
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifySubscriptionTokenCacheRemove()
@@ -133,6 +142,59 @@ namespace Common.Authentication.Test
             VerifyToken(checkKVToken, kvToken, userId, tenant);
             checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             VerifyToken(checkKVToken, kvToken, userId, tenant);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAuthenticateUsingMSIDefault()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string expectedAccessToken = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for default URI: {0}", expectedAccessToken);
+            string expectedToken2 = Guid.NewGuid().ToString();
+            string tenant = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for custom URI: {0}", expectedToken2);
+            string userId = "user1@contoso.org";
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
+            var builder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            builder.Query = string.Format("resource={0}", Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId));
+            var defaultUri = builder.Uri.ToString();
+
+            var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
+                {"http://myfunkyurl:10432/oauth2/token?resource=foo", new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource="foo"} }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var authFactory = new AuthenticationFactory();
+            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
+            Assert.Equal(expectedAccessToken, token.AccessToken);
+            var account2 = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            account2.SetProperty(AzureAccount.Property.MSILoginUri, "http://myfunkyurl:10432/oauth2/token");
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, "foo");
+            _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
+            Assert.Equal(expectedToken2, token2.AccessToken);
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        void ResponseRedactionWorks()
+        {
+            Assert.Equal("   \"access_token\": \"<redacted>\"", GeneralUtilities.TransformBody("   \"access_token\": \"eyJo1234567\""));
+            Assert.Equal("   \"foo\": \"bar\"", GeneralUtilities.TransformBody("   \"foo\": \"bar\""));
         }
 
         void VerifyToken(IAccessToken checkToken, string expectedAccessToken, string expectedUserId, string expectedTenant)
