@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// </summary>
         public IEntityConfig<TParenModel> Parent { get; }
 
-        public Func<TModel> CreateModel { get; }
+        public Func<string, TModel> CreateModel { get; }
 
         public IResourceConfig Resource => Parent.Resource;
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             NestedResourceStrategy<TModel, TParenModel> strategy,            
             IEntityConfig<TParenModel> parent,
             string name,
-            Func<TModel> createModel)
+            Func<string, TModel> createModel)
         {
             Strategy = strategy;
             Name = name;
