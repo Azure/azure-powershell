@@ -255,7 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 }
             }
 
-            if (TestMockSupport.RunningMocked)
+            if (TestMockSupport.RunningMocked && HttpMockServer.GetCurrentMode() != HttpRecorderMode.Record)
             {
                 IAzureClient azureClient = client as IAzureClient;
                 if (azureClient != null)
