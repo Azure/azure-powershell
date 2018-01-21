@@ -12,7 +12,7 @@ Deletes a Location Based Services account.
 
 ## SYNTAX
 
-### NameParameterSet
+### NameParameterSet (Default)
 ```
 Remove-AzureRmLocationBasedServicesAccount [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,6 +22,12 @@ Remove-AzureRmLocationBasedServicesAccount [-ResourceGroupName] <String> [-Name]
 ```
 Remove-AzureRmLocationBasedServicesAccount [-InputObject <PSLocationBasedServicesAccount>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmLocationBasedServicesAccount [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +46,18 @@ Performing the operation "Deleting account MyAccount." on target "MyAccount".
 ```
 
 Deletes the account MyAccount from the resource group MyResourceGroup.
+
+### Example 2
+```
+PS C:\> Remove-AzureRmLocationBasedServicesAccount -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount
+
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Deleting account MyAccount." on target "MyAccount".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+```
+
+Deletes the specified Location Based Services Account.
 
 ## PARAMETERS
 
@@ -94,6 +112,20 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Location Based Services Account ResourceId.
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.LocationBasedServices.Models;
 using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.LocationBasedServices
@@ -22,10 +21,12 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
     /// <summary>
     /// Get Account Keys for Location Based Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountKeyNounStr), OutputType(typeof(PSLocationBasedServicesAccountKeys))]
+    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountKeyNounStr, DefaultParameterSetName = NameParameterSet), 
+     OutputType(typeof(PSLocationBasedServicesAccountKeys))]
     public class GetAzureLocationBasedServicesAccountKeyCommand : LocationBasedServicesAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         [Parameter(
@@ -53,31 +54,50 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             ValueFromPipeline = true)]
         public PSLocationBasedServicesAccount InputObject { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "Location Based Services Account ResourceId.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             RunCmdLet(() =>
             {
-                string rgName;
-                string name;
+                string rgName = null;
+                string name = null;
 
-                if (ParameterSetName == InputObjectParameterSet)
+                switch (ParameterSetName)
                 {
-                    rgName = InputObject.ResourceGroupName;
-                    name = InputObject.AccountName;
+                    case InputObjectParameterSet:
+                    {
+                        rgName = InputObject.ResourceGroupName;
+                        name = InputObject.AccountName;
+                        break;
+                    }
+                    case NameParameterSet:
+                    {
+                        rgName = this.ResourceGroupName;
+                        name = this.Name;
+                        break;
+                    }
+                    case ResourceIdParameterSet:
+                    {
+                        ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                        break;
+                    }
                 }
-                else
+
+                if (!string.IsNullOrEmpty(rgName) && !string.IsNullOrEmpty(name))
                 {
-                    rgName = this.ResourceGroupName;
-                    name = this.Name;
+                    var locationBasedServicesKeys = this.LocationBasedServicesClient.Accounts.ListKeys(rgName, name);
+                    WriteObject(new PSLocationBasedServicesAccountKeys(locationBasedServicesKeys));
                 }
-
-                var locationBasedServicesKeys = this.LocationBasedServicesClient.Accounts.ListKeys(
-                     rgName,
-                     name);
-
-                WriteObject(new PSLocationBasedServicesAccountKeys(locationBasedServicesKeys));
             });
         }
     }

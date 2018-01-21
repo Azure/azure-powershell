@@ -26,4 +26,3 @@ Regenerates an account key.
 ### [Remove-AzureRmLocationBasedServicesAccount](Remove-AzureRmLocationBasedServicesAccount.md)
 Deletes a Location Based Services account.
 
-

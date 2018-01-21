@@ -12,7 +12,7 @@ Gets the API keys for an account. These keys are the authentication mechanism us
 
 ## SYNTAX
 
-### NameParameterSet
+### NameParameterSet (Default)
 ```
 Get-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -22,6 +22,12 @@ Get-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name]
 ```
 Get-AzureRmLocationBasedServicesAccountKey [-InputObject <PSLocationBasedServicesAccount>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmLocationBasedServicesAccountKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,10 +46,21 @@ PS C:\> Get-AzureRmLocationBasedServicesAccountKey -ResourceGroupName MyResource
 
 PrimaryKey                                  SecondaryKey
 ----------                                  ------------
-yKp9encJJQyJMlxgj0gc4n5Iz9DheQyxt020Rwnd3a8 AeE4SoxPk6BrYZgRlqA8uuchLXzkTEHTpm3_iMaml2g
+******************************************* *******************************************
 ```
 
 Returns the keys for the account named MyAccount in the resource group MyResourceGroup.
+
+### Example 2
+```
+PS C:\> Get-AzureRmLocationBasedServicesAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount
+
+PrimaryKey                                  SecondaryKey
+----------                                  ------------
+******************************************* *******************************************
+```
+
+Returns the keys for the specified Location Based Services Account.
 
 ## PARAMETERS
 
@@ -98,6 +115,20 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Location Based Services Account ResourceId.
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True

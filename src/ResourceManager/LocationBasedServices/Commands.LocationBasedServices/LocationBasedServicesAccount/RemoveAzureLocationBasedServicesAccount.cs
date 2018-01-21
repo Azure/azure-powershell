@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
     /// <summary>
     /// Delete a Location Based Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, LocationBasedServicesAccountNounStr, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, LocationBasedServicesAccountNounStr, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true)]
     public class RemoveAzureLocationBasedServicesAccountCommand : LocationBasedServicesAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         [Parameter(
@@ -54,33 +55,54 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             ValueFromPipeline = true)]
         public PSLocationBasedServicesAccount InputObject { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "Location Based Services Account ResourceId.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            string rgName;
-            string name;
+            RunCmdLet(() =>
+            {
+                string rgName = null;
+                string name = null;
 
-            if (ParameterSetName == InputObjectParameterSet)
-            {
-                rgName = InputObject.ResourceGroupName;
-                name = InputObject.AccountName;
-            }
-            else
-            {
-                rgName = this.ResourceGroupName;
-                name = this.Name;
-            }
+                switch (ParameterSetName)
+                {
+                    case InputObjectParameterSet:
+                    {
+                        rgName = InputObject.ResourceGroupName;
+                        name = InputObject.AccountName;
+                        break;
+                    }
+                    case NameParameterSet:
+                    {
+                        rgName = this.ResourceGroupName;
+                        name = this.Name;
+                        break;
+                    }
+                    case ResourceIdParameterSet:
+                    {
+                        ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                        break;
+                    }
+                }
 
-            if (ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, name)))
-            {
-                RunCmdLet(() =>
+                if (!string.IsNullOrEmpty(rgName)
+                    && !string.IsNullOrEmpty(name)
+                    && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, name)))
                 {
                     this.LocationBasedServicesClient.Accounts.Delete(
                         rgName,
                         name);
-                });
-            }
+                }
+            });
         }
     }
 }

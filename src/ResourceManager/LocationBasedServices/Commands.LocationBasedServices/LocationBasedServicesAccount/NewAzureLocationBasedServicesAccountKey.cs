@@ -25,11 +25,12 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
     /// <summary>
     /// Regnerate Location Based Services Account Key (Primary or Secondary)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, LocationBasedServicesAccountKeyNounStr, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), 
+    [Cmdlet(VerbsCommon.New, LocationBasedServicesAccountKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), 
      OutputType(typeof(LocationBasedServicesModels.LocationBasedServicesAccountKeys))]
     public class NewAzureLocationBasedServicesAccountKeyCommand : LocationBasedServicesAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         [Parameter(
@@ -65,27 +66,48 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             ValueFromPipeline = true)]
         public PSLocationBasedServicesAccount InputObject { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "Location Based Services Account ResourceId.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            string rgName;
-            string name;
+            RunCmdLet(() =>
+            {
+                string rgName = null;
+                string name = null;
 
-            if (ParameterSetName == InputObjectParameterSet)
-            {
-                rgName = InputObject.ResourceGroupName;
-                name = InputObject.AccountName;
-            }
-            else
-            {
-                rgName = this.ResourceGroupName;
-                name = this.Name;
-            }
+                switch (ParameterSetName)
+                {
+                    case InputObjectParameterSet:
+                    {
+                        rgName = InputObject.ResourceGroupName;
+                        name = InputObject.AccountName;
+                        break;
+                    }
+                    case NameParameterSet:
+                    {
+                        rgName = this.ResourceGroupName;
+                        name = this.Name;
+                        break;
+                    }
+                    case ResourceIdParameterSet:
+                    {
+                        ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                        break;
+                    }
+                }
 
-            if (ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, name)))
-            {
-                RunCmdLet(() =>
+                if (!string.IsNullOrEmpty(rgName)
+                    && !string.IsNullOrEmpty(name)
+                    && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, name)))
                 {
                     var keys = this.LocationBasedServicesClient.Accounts.RegenerateKeys(
                         rgName,
@@ -95,8 +117,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                     );
 
                     WriteObject(keys);
-                });
-            }
+                }
+            });
         }
     }
 }

@@ -12,7 +12,7 @@ Gets the account.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet
+### ResourceGroupParameterSet (Default)
 ```
 Get-AzureRmLocationBasedServicesAccount [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
