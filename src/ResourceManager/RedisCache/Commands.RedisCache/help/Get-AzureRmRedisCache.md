@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
 Module Name: AzureRM.RedisCache
 ms.assetid: 8EF45FCE-5475-4A18-BFB0-C016E239612E
@@ -13,20 +13,8 @@ Gets a Redis Cache.
 
 ## SYNTAX
 
-### GetAllInSubscription (Default)
 ```
-Get-AzureRmRedisCache [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByResourceGroup
-```
-Get-AzureRmRedisCache -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByRedisCache
-```
-Get-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmRedisCache [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -38,28 +26,24 @@ If you specify no parameters, this operation gets every Redis Cache for the curr
 
 ### Example 1: Get a Redis Cache by name
 ```
-PS C:\>Get-AzureRmRedisCache -ResourceGroupName "myGroup" -Name "myexists"
+PS C:\>Get-AzureRmRedisCache -Name "myexists"
 
-          ResourceGroupName  : myGroup
-
-
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location           : North Central US
-          Name               : myexists
-          Type               : Microsoft.Cache/Redis
-          HostName           : myexists.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-
-          EnableNonSslPort   : False
-
-          RedisVersion       : 2.8
-
-          Size               : 1GB
-
-          Sku                : Basic
+        ResourceGroupName  : myGroup
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+        Location           : North Central US
+        Name               : myexists
+        Type               : Microsoft.Cache/Redis
+        HostName           : myexists.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : False
+        RedisVersion       : 2.8
+        Size               : 1GB
+        Sku                : Basic
+        Tag                : {}
+        Zone               : []
 ```
 
 This command gets the Redis Cache named myexists.
@@ -68,36 +52,39 @@ This command gets the Redis Cache named myexists.
 ```
 PS C:\>Get-AzureRmRedisCache -ResourceGroupName "myGroup"
 
+        ResourceGroupName  : myGroup
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+        Location           : North Central US
+        Name               : myexists
+        Type               : Microsoft.Cache/Redis
+        HostName           : myexists.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : False
+        RedisVersion       : 2.8
+        Size               : 1GB
+        Sku                : Basic
+        Tag                : {}
+        Zone               : []
 
-          ResourceGroupName  : myGroup
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location           : North Central US
-          Name               : myexists
-          Type               : Microsoft.Cache/Redis
-          HostName           : myexists.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-          EnableNonSslPort   : False
-          RedisVersion       : 2.8
-          Size               : 1GB
-          Sku                : Basic
-
-          ResourceGroupName  : myGroup
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location           : North Central US
-          Name               : myearlier
-          Type               : Microsoft.Cache/Redis
-          HostName           : myearlier.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-          EnableNonSslPort   : True
-          RedisVersion       : 2.8
-          Size               : 250MB
-          Sku                : Standard
+        ResourceGroupName  : myGroup
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
+        Location           : North Central US
+        Name               : myearlier
+        Type               : Microsoft.Cache/Redis
+        HostName           : myearlier.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : True
+        RedisVersion       : 2.8
+        Size               : 250MB
+        Sku                : Standard
+        Tag                : {}
+        Zone               : []
 ```
 
 This command gets every Redis Cache in the specified resource group.
@@ -106,52 +93,56 @@ This command gets every Redis Cache in the specified resource group.
 ```
 PS C:\>Get-AzureRmRedisCache
 
+        ResourceGroupName  : myGroup
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+        Location           : North Central US
+        Name               : myexists
+        Type               : Microsoft.Cache/Redis
+        HostName           : myexists.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : False
+        RedisVersion       : 2.8
+        Size               : 1GB
+        Sku                : Basic
+        Tag                : {}
+        Zone               : []
 
-          ResourceGroupName  : myGroup
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location           : North Central US
-          Name               : myexists
-          Type               : Microsoft.Cache/Redis
-          HostName           : myexists.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-          EnableNonSslPort   : False
-          RedisVersion       : 2.8
-          Size               : 1GB
-          Sku                : Basic
+        ResourceGroupName  : myGroup
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
+        Location           : North Central US
+        Name               : myearlier
+        Type               : Microsoft.Cache/Redis
+        HostName           : myearlier.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : True
+        RedisVersion       : 2.8
+        Size               : 250MB
+        Sku                : Standard
+        Tag                : {}
+        Zone               : []
 
-          ResourceGroupName  : myGroup
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location           : North Central US
-          Name               : myearlier
-          Type               : Microsoft.Cache/Redis
-          HostName           : myearlier.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-          EnableNonSslPort   : True
-          RedisVersion       : 2.8
-          Size               : 250MB
-          Sku                : Standard
-
-
-          ResourceGroupName  : myGroup2
-          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup2/providers/Microsoft.Cache/Redis/myearlier2
-          Location           : North Central US
-          Name               : myearlier2
-          Type               : Microsoft.Cache/Redis
-          HostName           : myearlier2.redis.cache.windows.net
-          Port               : 6379
-          ProvisioningState  : succeeded
-          SslPort            : 6380
-          RedisConfiguration : {}
-          EnableNonSslPort   : False
-          RedisVersion       : 2.8
-          Size               : 250MB
-          Sku                : Basic
+        ResourceGroupName  : myGroup2
+        Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup2/providers/Microsoft.Cache/Redis/myearlier2
+        Location           : North Central US
+        Name               : myearlier2
+        Type               : Microsoft.Cache/Redis
+        HostName           : myearlier2.redis.cache.windows.net
+        Port               : 6379
+        ProvisioningState  : succeeded
+        SslPort            : 6380
+        RedisConfiguration : {}
+        EnableNonSslPort   : False
+        RedisVersion       : 2.8
+        Size               : 250MB
+        Sku                : Basic
+        Tag                : {}
+        Zone               : []
 ```
 
 This command gets every Redis Cache in the current subscription.
@@ -179,10 +170,10 @@ Use with the *ResourceGroupName* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: GetByRedisCache
-Aliases: 
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -196,10 +187,10 @@ If you specify only the *ResourceGroupName* parameter, this operation gets every
 
 ```yaml
 Type: String
-Parameter Sets: GetByResourceGroup, GetByRedisCache
-Aliases: 
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

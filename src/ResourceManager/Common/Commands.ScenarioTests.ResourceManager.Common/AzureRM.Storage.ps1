@@ -132,7 +132,13 @@ function Get-AzureRmStorageAccountKey
     $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    if ($version.Major -gt 3)
+    if ($version.Major -gt 5)
+    {
+        $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
+        $result = $getTask.GetAwaiter().GetResult()
+        Write-Output $result.Body.Keys
+    }
+    elseif ($version.Major -gt 3)
     {
         $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
         $result = $getTask.GetAwaiter().GetResult()

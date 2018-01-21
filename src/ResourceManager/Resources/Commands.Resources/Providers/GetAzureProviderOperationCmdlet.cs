@@ -37,9 +37,10 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string OperationSearchString { get; set; }
+        public string OperationSearchString { get; set; } = "*";
 
         /// <summary>
         /// Executes the cmdlet
