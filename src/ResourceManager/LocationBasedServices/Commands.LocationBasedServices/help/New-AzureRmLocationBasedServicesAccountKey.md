@@ -12,7 +12,7 @@ Regenerates an account key.
 
 ## SYNTAX
 
-### NameParameterSet
+### NameParameterSet (Default)
 ```
 New-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -21,6 +21,12 @@ New-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name]
 ### InputObjectParameterSet
 ```
 New-AzureRmLocationBasedServicesAccountKey [-KeyName] <String> [-InputObject <PSLocationBasedServicesAccount>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+New-AzureRmLocationBasedServicesAccountKey [-KeyName] <String> [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,10 +46,26 @@ Performing the operation "Regenerating Key Primary for account MyAccount." on ta
 
 Id                                                                                                                                              PrimaryKey                                  SecondaryKey
 --                                                                                                                                              ----------                                  ------------
-/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount 3ZvOl87BUD8ATvdAEQDIzLkV2AAVoRUgaI8xSW2AFxY AeE4SoxPk6BrYZgRlqA8uuchLXzkTEHTpm3_iMaml2g
+/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount ******************************************* *******************************************
 ```
 
 Regenerates the Primary API Key for the account MyAccount in the resource group MyResourceGroup.
+
+### Example 2
+```
+PS C:\> New-AzureRmLocationBasedServicesAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount -KeyName Secondary
+
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Regenerating Key Secondary for account MyAccount." on target "MyAccount".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+
+Id                                                                                                                                              PrimaryKey                                  SecondaryKey
+--                                                                                                                                              ----------                                  ------------
+/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount ******************************************* *******************************************
+```
+
+Regenerates the Secondary API Key for the specified Location Based Services Account.
 
 ## PARAMETERS
 
@@ -114,6 +136,20 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Location Based Services Account ResourceId.
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True

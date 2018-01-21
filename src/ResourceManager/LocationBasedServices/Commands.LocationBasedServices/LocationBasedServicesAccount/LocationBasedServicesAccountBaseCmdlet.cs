@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.LocationBasedServices;
 using Microsoft.Azure.Management.LocationBasedServices.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,7 +37,10 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
         protected const string AccountNameAlias = "AccountName";
 
         protected const string TagsAlias = "Tags";
-        
+
+        protected const string ResourceProviderName = "Microsoft.LocationBasedServices";
+        protected const string ResourceTypeName = "accounts";
+
         protected struct AccountSkuString 
         {
             internal const string S0 = "S0";
@@ -48,12 +52,11 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             {
                 if (locationBasedServicesClientWrapper == null)
                 {
-                    locationBasedServicesClientWrapper = new ClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    locationBasedServicesClientWrapper = new ClientWrapper(DefaultProfile.DefaultContext);
                 }
+
+                locationBasedServicesClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                locationBasedServicesClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
 
                 return locationBasedServicesClientWrapper.LocationBasedServicesManagementClient;
             }
@@ -105,6 +108,27 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             }
 
             WriteObject(output, true);
+        }
+
+        protected bool ValidateAndExtractName(string resourceId, out string resourceGroupName, out string resourceName)
+        {
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(resourceId);
+
+            // validate the resource provider type
+            if (string.Equals(ResourceProviderName,
+                              ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                              System.StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals(ResourceTypeName,
+                                 ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
+                                 System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                resourceGroupName = resourceIdentifier.ResourceGroupName;
+                resourceName = resourceIdentifier.ResourceName;
+                return true;
+            }
+            resourceGroupName = null;
+            resourceName = null;
+            return false;
         }
 
         protected static class TagsConversionHelper

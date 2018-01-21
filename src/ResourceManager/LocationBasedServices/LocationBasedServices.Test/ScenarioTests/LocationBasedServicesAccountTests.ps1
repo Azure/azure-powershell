@@ -71,8 +71,18 @@ function Test-RemoveAzureRmLocationBasedServicesAccount
         $createdAccount = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false;
         $accountGotten = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname;
-
         Assert-Null $accountGotten
+
+        # create it again and test removal by id
+        $createdAccount2 = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+
+        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resourceid = $resource.ResourceId;
+
+        Remove-AzureRmLocationBasedServicesAccount -ResourceId $resourceid -Confirm:$false;
+        $accountGotten2 = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        Assert-Null $accountGotten2
+
         Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
@@ -111,7 +121,7 @@ function Test-GetAzureLocationBasedServicesAccount
         $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $account2 = Get-AzureRmLocationBasedServicesAccount -ResourceId $resourceId;
+        $account2 = Get-AzureRmLocationBasedServicesAccount -ResourceId $resourceid;
         Assert-AreEqual $accountname $account2.AccountName;
         Assert-AreEqual $skuname $account2.Sku.Name;
 
@@ -157,7 +167,17 @@ function Test-GetAzureRmLocationBasedServicesAccountKey
         
         $keys = Get-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname;
         
+        Assert-NotNull $keys.PrimaryKey;
+        Assert-NotNull $keys.SecondaryKey;
         Assert-AreNotEqual $keys.PrimaryKey $keys.SecondaryKey;
+
+        # get account by resourceid
+        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resourceid = $resource.ResourceId;
+
+        $keys2 = Get-AzureRmLocationBasedServicesAccountKey -ResourceId $resourceid;
+        Assert-AreEqual $keys.PrimaryKey $keys2.PrimaryKey;
+        Assert-AreEqual $keys.SecondaryKey $keys2.SecondaryKey;
 
         Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
@@ -196,10 +216,20 @@ function Test-NewAzureRmLocationBasedServicesAccountKey
         Assert-AreEqual $originalKeys.SecondaryKey $updatedKeys.SecondaryKey;
 
         # Update secondary
-        $reupdatedKeys = New-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
+        $updatedKeys2 = New-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
 
-        Assert-AreEqual $updatedKeys.PrimaryKey $reupdatedKeys.PrimaryKey;
-        Assert-AreNotEqual $originalKeys.SecondaryKey $reupdatedKeys.SecondaryKey;
+        Assert-AreEqual $updatedKeys.PrimaryKey $updatedKeys2.PrimaryKey;
+        Assert-AreNotEqual $updatedKeys.SecondaryKey $updatedKeys2.SecondaryKey;
+
+        # get account by resourceid
+        $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
+        $resourceid = $resource.ResourceId;
+
+        $updatedKeys3 = New-AzureRmLocationBasedServicesAccountKey -ResourceId $resourceid -KeyName Primary -Confirm:$false;
+            
+        Assert-AreNotEqual $updatedKeys2.PrimaryKey $updatedKeys3.PrimaryKey;
+        Assert-AreEqual $updatedKeys2.SecondaryKey $updatedKeys3.SecondaryKey;
+
 
         Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }

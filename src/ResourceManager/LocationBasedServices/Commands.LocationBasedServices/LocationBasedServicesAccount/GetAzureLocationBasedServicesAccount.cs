@@ -14,9 +14,6 @@
 
 using Microsoft.Azure.Commands.LocationBasedServices.Models;
 using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.LocationBasedServices
@@ -24,12 +21,10 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
     /// <summary>
     /// Get Location Based Services Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountNounStr), OutputType(typeof(PSLocationBasedServicesAccount))]
+    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountNounStr, DefaultParameterSetName = ResourceGroupParameterSet), 
+     OutputType(typeof(PSLocationBasedServicesAccount))]
     public class GetAzureLocationBasedServiceAccountCommand : LocationBasedServicesAccountBaseCmdlet
     {
-        private const string ResourceProviderName = "Microsoft.LocationBasedServices";
-        private const string ResourceTypeName = "accounts";
-
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -98,18 +93,12 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                     }
                     case ResourceIdParameterSet:
                     {
-                        ResourceIdentifier resourceId = new ResourceIdentifier(this.ResourceId);
+                        string resourceGroupName;
+                        string resourceName;
 
-                        // validate the resource provider type
-                        if (string.Equals(ResourceProviderName,
-                                          ResourceIdentifier.GetProviderFromResourceType(resourceId.ResourceType),
-                                          System.StringComparison.InvariantCultureIgnoreCase)
-                         && string.Equals(ResourceTypeName,
-                                          ResourceIdentifier.GetTypeFromResourceType(resourceId.ResourceType),
-                                          System.StringComparison.InvariantCultureIgnoreCase))
+                        if (ValidateAndExtractName(this.ResourceId, out resourceGroupName, out resourceName))
                         {
-
-                            var locationBasedServicesAccount = this.LocationBasedServicesClient.Accounts.Get(resourceId.ResourceGroupName, resourceId.ResourceName);
+                            var locationBasedServicesAccount = this.LocationBasedServicesClient.Accounts.Get(resourceGroupName, resourceName);
                             WriteLocationBasedServicesAccount(locationBasedServicesAccount);
                         }
                         break;
