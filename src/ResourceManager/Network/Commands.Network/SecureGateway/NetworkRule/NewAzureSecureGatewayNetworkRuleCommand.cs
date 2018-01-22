@@ -12,16 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
-
-    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayNetworkRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayNetworkRule))]
-    public class NewAzureSecureGatewayNetworkRuleConfigCommand : AzureSecureGatewayNetworkRuleConfigBase
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayNetworkRule))]
+    public class NewAzureSecureGatewayNetworkRuleCommand : NetworkBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Network Rule")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The priority of the rule")]
+        [ValidateNotNullOrEmpty]
+        public uint Priority { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The description of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The protocols of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> Protocols { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The source IPs of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> SourceIps { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The destination IPs of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> DestinationIps { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The source ports of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> SourcePorts { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The destination ports of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> DestinationPorts { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The actions of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<PSSecureGatewayNetworkRuleAction> Actions { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -56,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Priority = this.Priority,
                 Description = this.Description,
-                Direction = this.Direction,
+                Direction = MNM.SecureGatewayRuleDirection.Outbound,
                 Protocols = this.Protocols,
                 SourceIps = this.SourceIps,
                 DestinationIps = this.DestinationIps,

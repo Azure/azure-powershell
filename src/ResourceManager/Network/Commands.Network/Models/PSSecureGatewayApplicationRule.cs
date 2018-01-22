@@ -13,8 +13,8 @@
 // limitations under the License.
 //
 
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {

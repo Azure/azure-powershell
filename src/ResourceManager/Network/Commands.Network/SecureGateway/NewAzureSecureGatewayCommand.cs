@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSecureGateway", SupportsShouldProcess = true),
-        OutputType(typeof(PSSecureGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGateway", SupportsShouldProcess = true), OutputType(typeof(PSSecureGateway))]
     public class NewAzureSecureGatewayCommand : SecureGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -50,53 +48,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The sku name of the secure gateway")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.SecureGatewaySkuName.StandardLarge,
-            MNM.SecureGatewaySkuName.StandardMedium,
-            MNM.SecureGatewaySkuName.StandardSmall,
-            IgnoreCase = true)]
-        public string SkuName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The SKU tier of the secure gateway")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.SecureGatewayTier.Standard,
-            MNM.SecureGatewayTier.Premium,
-            IgnoreCase = true)]
-        public string SkuTier { get; set; }
-
-        [Parameter(
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "VirtualHubId")]
-        [ValidateNotNullOrEmpty]
-        public string VirtualHubId { get; set; }
-
-        [Parameter(
             ParameterSetName = "SetByResource",
-            HelpMessage = "VirtualHub")]
-        public PSSubnet VirtualHub { get; set; } //todo: needs to be virtual hub
-
-        [Parameter(
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "VirtualNetworkId")]
+            HelpMessage = "IpConfigurations")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkId { get; set; }
-
-        [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "VirtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of SecureGatewayNetworkRuleCollections")]
-        public List<PSSecureGatewayNetworkRuleCollection> NetworkRuleCollections { get; set; }
+        public List<PSSecureGatewayIpConfiguration> IpConfigurations { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -135,37 +90,19 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSSecureGateway CreateSecureGateway()
         {
-            var secureGw = new PSSecureGateway();
-            secureGw.Name = this.Name;
-            secureGw.ResourceGroupName = this.ResourceGroupName;
-            secureGw.Location = this.Location;
-            secureGw.Sku = new PSSecureGatewaySku()
+            var secureGw = new PSSecureGateway()
             {
-                Name = this.SkuName,
-                Tier = this.SkuTier
+                Name = this.Name,
+                ResourceGroupName = this.ResourceGroupName,
+                Location = this.Location,
+                Sku = new PSSecureGatewaySku()
+                {
+                    Name = MNM.SecureGatewaySkuName.StandardLarge,
+                    Tier = MNM.SecureGatewayTier.Premium
+                },
+                IpConfigurations = this.IpConfigurations,
+                ApplicationRuleCollections = this.ApplicationRuleCollections
             };
-
-            if (this.VirtualHub != null)
-            {
-                secureGw.VirtualHub = new PSResourceId();
-                secureGw.VirtualHub.Id = this.VirtualHub.Id;
-            }
-
-            if (this.VirtualNetwork != null)
-            {
-                secureGw.VirtualNetwork = new PSResourceId();
-                secureGw.VirtualNetwork.Id = this.VirtualNetwork.Id;
-            }
-
-            if (this.ApplicationRuleCollections != null)
-            {
-                secureGw.ApplicationRuleCollections = this.ApplicationRuleCollections;
-            }
-
-            if (this.NetworkRuleCollections != null)
-            {
-                secureGw.NetworkRuleCollections = this.NetworkRuleCollections;
-            }
 
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecureGateway>(secureGw);

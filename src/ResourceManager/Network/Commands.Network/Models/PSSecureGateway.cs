@@ -13,8 +13,9 @@
 // limitations under the License.
 //
 
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -22,13 +23,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSSecureGatewaySku Sku { get; set; }
 
-        public PSResourceId VirtualHub { get; set; }
-
-        public PSResourceId VirtualNetwork { get; set; }
+        public List<PSSecureGatewayIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
-
-        public List<PSSecureGatewayNetworkRuleCollection> NetworkRuleCollections { get; set; }
         
         public string ProvisioningState { get; set; }
 
@@ -39,15 +36,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string VirtualHubText
+        public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string VirtualNetworkText
-        {
-            get { return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -56,10 +47,19 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
         }
 
-        [JsonIgnore]
-        public string NetworkRuleCollectionsText
+        public PSSecureGatewayApplicationRuleCollection GetApplicationRuleCollectionByName(string ruleCollectionName)
         {
-            get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
+            if (null == ruleCollectionName)
+            {
+                return null;
+            }
+
+            return this.ApplicationRuleCollections?.FirstOrDefault(rc => ruleCollectionName.Equals(rc.Name));
+        }
+
+        public PSSecureGatewayApplicationRuleCollection GetApplicationRuleCollectionByPriority(uint priority)
+        {
+            return this.ApplicationRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
         }
     }
 }

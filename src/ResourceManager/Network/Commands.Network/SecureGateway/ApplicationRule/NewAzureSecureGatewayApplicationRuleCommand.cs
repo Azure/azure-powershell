@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
-
-    public class AzureSecureGatewayApplicationRuleConfigBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayApplicationRule", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayApplicationRule))]
+    public class NewAzureSecureGatewayApplicationRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -35,20 +36,10 @@ namespace Microsoft.Azure.Commands.Network
         public uint Priority { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The description of the rule")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The direction of the rule")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet( 
-            MNM.SecureGatewayRuleDirection.Inbound,
-            MNM.SecureGatewayRuleDirection.Outbound,
-            IgnoreCase = true)]
-        public string Direction { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -67,5 +58,37 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The actions of the rule")]
         [ValidateNotNullOrEmpty]
         public List<PSSecureGatewayApplicationRuleAction> Actions { get; set; }
+
+        public override void Execute()
+        {
+            base.Execute();
+
+            if (this.Protocols == null || this.Protocols.Count == 0)
+            {
+                throw new ArgumentException("At least one application rule protocol should be specified!");
+            }
+
+            if (this.TargetUrls == null || this.TargetUrls.Count == 0)
+            {
+                throw new ArgumentException("At least one application rule target URL should be specified!");
+            }
+
+            if (this.Actions == null || this.Actions.Count == 0)
+            {
+                throw new ArgumentException("At least one application rule action should be specified!");
+            }
+
+            var applicationRule = new PSSecureGatewayApplicationRule
+            {
+                Name = this.Name,
+                Priority = this.Priority,
+                Description = this.Description,
+                Direction = MNM.SecureGatewayRuleDirection.Outbound,
+                Protocols = this.Protocols,
+                TargetUrls = this.TargetUrls,
+                Actions = this.Actions
+            };
+            WriteObject(applicationRule);
+        }
     }
 }

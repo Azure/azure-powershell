@@ -643,6 +643,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSSecureGateway, MNM.SecureGateway>();
                 cfg.CreateMap<CNM.PSSecureGatewaySku, MNM.SecureGatewaySku>();
+                cfg.CreateMap<CNM.PSSecureGatewayIpConfiguration, MNM.SecureGatewayIPConfiguration>();
                 cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleCollection, MNM.SecureGatewayApplicationRuleCollection>();
                 cfg.CreateMap<CNM.PSSecureGatewayNetworkRuleCollection, MNM.SecureGatewayNetworkRuleCollection>();
                 cfg.CreateMap<CNM.PSSecureGatewayApplicationRule, MNM.SecureGatewayApplicationRule>();
@@ -654,6 +655,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SecureGateway, CNM.PSSecureGateway>();
                 cfg.CreateMap<MNM.SecureGatewaySku, CNM.PSSecureGatewaySku>();
+                cfg.CreateMap<MNM.SecureGatewayIPConfiguration, CNM.PSSecureGatewayIpConfiguration>();
                 cfg.CreateMap<MNM.SecureGatewayApplicationRuleCollection, CNM.PSSecureGatewayApplicationRuleCollection>();
                 cfg.CreateMap<MNM.SecureGatewayNetworkRuleCollection, CNM.PSSecureGatewayNetworkRuleCollection>();
                 cfg.CreateMap<MNM.SecureGatewayApplicationRule, CNM.PSSecureGatewayApplicationRule>();

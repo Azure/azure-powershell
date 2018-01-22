@@ -12,16 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
 
     [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayNetworkRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayNetworkRuleCollection))]
-    public class NewAzureSecureGatewayNetworkRuleCollectionCommand : AzureSecureGatewayNetworkRuleCollectionBase
+    public class NewAzureSecureGatewayNetworkRuleCollectionCommand : NetworkBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Network Rule Collection")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The priority of the rule collection")]
+        [ValidateNotNullOrEmpty]
+        public uint Priority { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The list of network rules")]
+        [ValidateNotNullOrEmpty]
+        public List<PSSecureGatewayNetworkRule> Rules { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -34,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkRuleCollection = new PSSecureGatewayNetworkRuleCollection
             {
                 Name = this.Name,
+                Priority = this.Priority,
                 Rules = this.Rules
             };
             WriteObject(networkRuleCollection);
