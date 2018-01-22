@@ -137,6 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheFile = autoSave.CacheFile;
             session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
             InitializeDataCollection(session);
+            session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             return session;
         }
 
