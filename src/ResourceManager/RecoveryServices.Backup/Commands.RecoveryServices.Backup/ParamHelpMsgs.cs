@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+            public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
         }
     }
 }
