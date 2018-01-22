@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.RedisCache
 ms.assetid: DA180A4A-88B6-4359-94E0-CF72F66D1FE4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule
 schema: 2.0.0
@@ -14,7 +14,7 @@ Gets a patch schedule.
 ## SYNTAX
 
 ```
-Get-AzureRmRedisCachePatchSchedule -ResourceGroupName <String> -Name <String>
+Get-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Specifies the name of a cache.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,9 +68,9 @@ Specifies the name of the resource group which contains the cache.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

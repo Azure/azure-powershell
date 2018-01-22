@@ -663,3 +663,59 @@ function Test-SetAzureStorageAccountStorageV2
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test NewSetAzureStorageAccount with EncryptionService None
+.Description
+AzureAutomationTest
+#>
+function Test-NewAzureStorageAccountEncryptionServiceNone
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+		$kind = 'StorageV2'
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableEncryptionService None;
+
+        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stotype = 'StandardGRS';
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;   
+      
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableHttpsTrafficOnly $true -EnableEncryptionService None;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $true;    
+      
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableHttpsTrafficOnly $false -DisableEncryptionService None;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+        Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $false;
+
+        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

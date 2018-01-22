@@ -20,6 +20,7 @@
 ## Current Release
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeAnalyticsAccount and Set-AzureRmDataLakeAnalyticsAccount
 
 ## Version 4.1.1
 * Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
