@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.VMOSDiskName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string SourceImageUri { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
@@ -199,24 +199,48 @@ namespace Microsoft.Azure.Commands.Compute
                         string.Empty, ErrorCategory.InvalidArgument, null));
             }
 
-            this.VM.StorageProfile.OsDisk = new OSDisk
+            if (this.VM.StorageProfile.OsDisk == null)
             {
-                Caching = this.Caching,
-                Name = this.Name,
-                OsType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : (OperatingSystemTypes?)null,
-                Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                this.VM.StorageProfile.OsDisk = new OSDisk();
+            }
+
+            this.VM.StorageProfile.OsDisk.Name = this.Name ?? this.VM.StorageProfile.OsDisk.Name;
+            this.VM.StorageProfile.OsDisk.Caching = this.Caching ?? this.VM.StorageProfile.OsDisk.Caching;
+            this.VM.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeInGB ?? this.VM.StorageProfile.OsDisk.DiskSizeGB;
+
+            if (this.Windows.IsPresent)
+            {
+                this.VM.StorageProfile.OsDisk.OsType = OperatingSystemTypes.Windows;
+            }
+            else if (this.Linux.IsPresent)
+            {
+                this.VM.StorageProfile.OsDisk.OsType = OperatingSystemTypes.Linux;
+            }
+
+            if (!string.IsNullOrEmpty(this.VhdUri))
+            {
+                this.VM.StorageProfile.OsDisk.Vhd = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
-                },
-                DiskSizeGB = this.DiskSizeInGB,
-                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                };
+            }
+
+            if (!string.IsNullOrEmpty(this.SourceImageUri))
+            {
+                this.VM.StorageProfile.OsDisk.Image = new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
-                },
-                CreateOption = this.CreateOption,
-                EncryptionSettings =
-                (this.ParameterSetName.Equals(WindowsAndDiskEncryptionParameterSet) || this.ParameterSetName.Equals(LinuxAndDiskEncryptionParameterSet))
-                ? new DiskEncryptionSettings
+                };
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
+            {
+                this.VM.StorageProfile.OsDisk.CreateOption = this.CreateOption;
+            }
+
+            if (this.ParameterSetName.Equals(WindowsAndDiskEncryptionParameterSet) || this.ParameterSetName.Equals(LinuxAndDiskEncryptionParameterSet))
+            {
+                this.VM.StorageProfile.OsDisk.EncryptionSettings = new DiskEncryptionSettings
                 {
                     DiskEncryptionKey = new KeyVaultSecretReference
                     {
@@ -236,16 +260,19 @@ namespace Microsoft.Azure.Commands.Compute
                             Id = this.KeyEncryptionKeyVaultId
                         },
                     }
+                };
+            }
+
+            if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)
+            {
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
                 }
-                : null,
-                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                              ? null
-                              : new ManagedDiskParameters
-                              {
-                                  Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType
-                              }
-            };
+
+                this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
+                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+            }
 
             WriteObject(this.VM);
         }
