@@ -9,7 +9,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
-    [Cmdlet("Invoke", "AzureRmOperationalInsightsQuery"), OutputType(typeof(PSQueryResponse))]
+    [Cmdlet("Invoke", "AzureRmOperationalInsightsQuery", DefaultParameterSetName = ParamSetNameByWorkspaceId),
+        OutputType(typeof(PSQueryResponse))]
     public class InvokeOperationalInsightsQuery : ResourceManager.Common.AzureRMCmdlet
     {
         private const string ParamSetNameByWorkspaceId = "ByWorkspaceId";
@@ -39,10 +40,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
         [Parameter(Mandatory = false, HelpMessage = "If specified, query statistics will be included in the response.")]
         public SwitchParameter IncludeStatistics { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "When specified, uses the 'DEMO_KEY' API key for authentication. This is only valid when querying against the workspace 'DEMO_WORKSPACE'.")]
-        public SwitchParameter UseDemoKey { get; set; }
-
         private OperationalInsightsDataClient _operationalInsightsDataClient;
 
         internal OperationalInsightsDataClient OperationalInsightsDataClient
@@ -52,13 +49,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
                 if (this._operationalInsightsDataClient == null)
                 {
                     ServiceClientCredentials clientCredentials = null;
-                    if (UseDemoKey.IsPresent)
+                    if (ParameterSetName == ParamSetNameByWorkspaceId && WorkspaceId == "DEMO_WORKSPACE")
                     {
-                        if (ParameterSetName != ParamSetNameByWorkspaceId || WorkspaceId != "DEMO_WORKSPACE")
-                        {
-                            throw new Exception("DEMO_KEY is only valid when querying DEMO_WORKSPACE");
-                        }
-
                         clientCredentials = new ApiKeyClientCredentials("DEMO_KEY");
                     }
                     else

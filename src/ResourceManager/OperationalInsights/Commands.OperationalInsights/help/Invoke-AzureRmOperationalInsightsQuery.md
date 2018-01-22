@@ -12,16 +12,18 @@ Returns search results based on the specified parameters.
 
 ## SYNTAX
 
-### ByWorkspaceId
+### ByWorkspaceId (Default)
 ```
 Invoke-AzureRmOperationalInsightsQuery -WorkspaceId <String> -Query <String> [-Timespan <TimeSpan>]
- [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-UseDemoKey] [-DefaultProfile <IAzureContextContainer>]
+ [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
 Invoke-AzureRmOperationalInsightsQuery -Workspace <PSWorkspace> -Query <String> [-Timespan <TimeSpan>]
- [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-UseDemoKey] [-DefaultProfile <IAzureContextContainer>]
+ [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,22 +153,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseDemoKey
-When specified, uses the 'DEMO_KEY' API key for authentication.
-This is only valid when querying against the workspace 'DEMO_WORKSPACE'.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Wait
 Puts an upper bound on the amount of time the server will spend processing the query.
 See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
@@ -213,6 +199,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
@@ -222,7 +211,6 @@ If piped in, the workspace ID will be extracted from the PSWorkspace. Otherwise 
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse
 The ***PSQueryResponse*** contains the Results, Render & Statistics of the query.
-
 
 ## NOTES
 
