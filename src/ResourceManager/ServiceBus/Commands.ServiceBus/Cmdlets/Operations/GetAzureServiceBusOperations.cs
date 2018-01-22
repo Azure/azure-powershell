@@ -27,10 +27,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     public class GetAzureServiceBusOperations : AzureServiceBusCmdletBase
     {
         public override void ExecuteCmdlet()
-        {       //Get Relay Operations List
+        {
             IEnumerable<PSOperationAttributes> GetOperationsResult = Client.GetOperations();
             WriteObject(GetOperationsResult, true);
-
         }
     }
 }
