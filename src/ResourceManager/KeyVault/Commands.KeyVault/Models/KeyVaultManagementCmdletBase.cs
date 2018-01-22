@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
 #if NETSTANDARD
                 var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { SPN = spn }).SingleOrDefault();
-                bjId = servicePrincipal?.Id?.ToString();
+                objId = servicePrincipal?.Id?.ToString();
 #else
                 var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
                     s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
