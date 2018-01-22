@@ -13,8 +13,9 @@
 // limitations under the License.
 //
 
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -28,6 +29,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RulesText
         {
             get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
+        }
+
+        public PSSecureGatewayApplicationRule GetRuleByName(string ruleName)
+        {
+            if (null == ruleName)
+            {
+                return null;
+            }
+
+            return this.Rules?.FirstOrDefault(rule => ruleName.Equals(rule.Name));
+        }
+
+        public PSSecureGatewayApplicationRule GetRuleByPriority(uint priority)
+        {
+            return this.Rules?.FirstOrDefault(rule => rule.Priority == priority);
         }
     }
 }

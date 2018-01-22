@@ -12,30 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
+    using System;
 
-    public class AzureSecureGatewayApplicationRuleProtocolConfigBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayApplicationRuleAction", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayApplicationRuleAction))]
+    public class NewAzureSecureGatewayApplicationRuleActionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The port of the protocol")]
-        [ValidateNotNullOrEmpty]
-        public uint Port { get; set; }
-        
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The type of the protocol")]
+            HelpMessage = "The type of the rule action")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.SecureGatewayApplicationRuleProtocolType.Http,
-            MNM.SecureGatewayApplicationRuleProtocolType.Https,
+            MNM.SecureGatewayApplicationRuleActionType.Allow,
+            MNM.SecureGatewayApplicationRuleActionType.Deny,
             IgnoreCase = true)]
-        public string ProtocolType { get; set; }
+        public string ActionType { get; set; }
+
+        public override void Execute()
+        {
+            base.Execute();
+            
+            var ruleProtocol = new PSSecureGatewayApplicationRuleAction
+            {
+                Type = this.ActionType
+            };
+            WriteObject(ruleProtocol);
+        }
     }
 }

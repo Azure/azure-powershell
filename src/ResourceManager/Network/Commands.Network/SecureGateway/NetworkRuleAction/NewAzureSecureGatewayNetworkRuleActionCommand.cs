@@ -12,31 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
+    using System;
 
-    public class AzureSecureGatewayNetworkRuleCollectionBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayNetworkRuleAction", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayNetworkRuleAction))]
+    public class NewAzureSecureGatewayNetworkRuleActionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Network Rule Collection")]
+            HelpMessage = "The type of the rule action")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        [ValidateSet(
+            MNM.SecureGatewayNetworkRuleActionType.Allow,
+            MNM.SecureGatewayNetworkRuleActionType.Deny,
+            IgnoreCase = true)]
+        public string ActionType { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The priority of the rule collection")]
-        [ValidateNotNullOrEmpty]
-        public uint Priority { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The list of network rules")]
-        [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayNetworkRule> Rules { get; set; }
+        public override void Execute()
+        {
+            base.Execute();
+            
+            var ruleProtocol = new PSSecureGatewayNetworkRuleAction
+            {
+                Type = this.ActionType
+            };
+            WriteObject(ruleProtocol);
+        }
     }
 }

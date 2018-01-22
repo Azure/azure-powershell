@@ -12,26 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
-
-    [Cmdlet(VerbsCommon.Get, "AzureRmSecureGatewayApplicationRuleProtocolConfig"), OutputType(typeof(List<PSSecureGatewayApplicationRuleProtocol>))]
-    public class GetAzureSecureGatewayApplicationRuleProtocolConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayIpConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayIpConfiguration))]
+    public class NewAzureSecureGatewayIpConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The SecureGatewayApplicationRule")]
-        public PSSecureGatewayApplicationRule SecureGatewayApplicationRule { get; set; }
+            HelpMessage = "The name of the IP Configuration")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The Secure Gateway Subnet")]
+        public PSSubnet Subnet { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            WriteObject(this.SecureGatewayApplicationRule.Protocols, true);
+
+            var ipConfig = new PSSecureGatewayIpConfiguration
+            {
+                Name = this.Name,
+                Subnet = new PSResourceId()
+            };
+            ipConfig.Subnet.Id = this.Subnet.Id;
+
+            WriteObject(ipConfig);
         }
     }
 }

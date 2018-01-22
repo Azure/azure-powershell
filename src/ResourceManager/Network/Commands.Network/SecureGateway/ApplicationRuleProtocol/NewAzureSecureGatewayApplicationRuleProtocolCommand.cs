@@ -12,32 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
-using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmSecureGatewayApplicationRuleActionConfig", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayApplicationRule))]
-    public class AddAzureSecureGatewayApplicationApplicationRuleActionConfigCommand : AzureSecureGatewayApplicationRuleActionConfigBase
+    [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayApplicationRuleProtocol", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayApplicationRuleProtocol))]
+    public class NewAzureSecureGatewayApplicationRuleProtocolCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The SecureGatewayApplicationRule")]
-        public PSSecureGatewayApplicationRule SecureGatewayApplicationRule { get; set; }
+            HelpMessage = "The type of the protocol")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.SecureGatewayApplicationRuleProtocolType.Http,
+            MNM.SecureGatewayApplicationRuleProtocolType.Https,
+            IgnoreCase = true)]
+        public string ProtocolType { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-
-            var action = new PSSecureGatewayApplicationRuleAction
+            
+            var ruleProtocol = new PSSecureGatewayApplicationRuleProtocol
             {
-                Type = this.ActionType
+                ProtocolType = this.ProtocolType,
+                Port = this.ProtocolType == MNM.SecureGatewayApplicationRuleProtocolType.Http ? 80U : 443U
             };
-
-            this.SecureGatewayApplicationRule.Actions.Add(action);
-            WriteObject(this.SecureGatewayApplicationRule);
+            WriteObject(ruleProtocol);
         }
     }
 }

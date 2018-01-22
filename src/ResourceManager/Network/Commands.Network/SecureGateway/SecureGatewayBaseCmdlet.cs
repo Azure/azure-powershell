@@ -13,12 +13,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
+using System.Net;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -58,8 +57,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var psSecureGateway = NetworkResourceManagerProfile.Mapper.Map<PSSecureGateway>(secureGateway);
             psSecureGateway.ResourceGroupName = resourceGroupName;
-            psSecureGateway.Tag =
-                TagsConversionHelper.CreateTagHashtable(secureGateway.Tags);
+            psSecureGateway.Tag = TagsConversionHelper.CreateTagHashtable(secureGateway.Tags);
 
             return psSecureGateway;
         }
