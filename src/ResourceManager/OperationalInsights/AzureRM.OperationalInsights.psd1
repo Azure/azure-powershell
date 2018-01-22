@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,8 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.OperationalInsights.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.OperationalInsights.dll',
+               '.\Microsoft.Azure.OperationalInsights.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -146,7 +147,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+        ReleaseNotes = '* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

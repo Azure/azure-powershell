@@ -3,7 +3,7 @@
     $wsId = "DEMO_WORKSPACE"
     $query = "union * | take 10"
 
-    $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -UseDemoKey
+    $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query
 
     AssertQueryResults $results 10
 }
@@ -14,7 +14,7 @@ function Test-SimpleQueryWithTimespan
     $query = "union * | take 10"
     $timespan = (New-Timespan -Hours 1)
 
-    $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan -UseDemoKey
+    $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan
 
     AssertQueryResults $results 10
 }
@@ -24,7 +24,7 @@ function Test-ExceptionWithSyntaxError
     $wsId = "DEMO_WORKSPACE"
     $query = "union * | foobar"
 
-    Assert-ThrowsContains { Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -UseDemoKey } "BadRequest"
+    Assert-ThrowsContains { Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query } "BadRequest"
 }
 
 function Test-ExceptionWithShortWait
@@ -34,7 +34,7 @@ function Test-ExceptionWithShortWait
     $timespan = (New-Timespan -Hours 24)
     $wait = 1;
 
-    Assert-ThrowsContains { $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan -Wait $wait -UseDemoKey } "GatewayTimeout"
+    Assert-ThrowsContains { $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan -Wait $wait } "GatewayTimeout"
 }
 
 function AssertQueryResults($results, $takeCount)
