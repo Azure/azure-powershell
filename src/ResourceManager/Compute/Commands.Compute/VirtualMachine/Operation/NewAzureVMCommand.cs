@@ -115,7 +115,9 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmVm: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -437,7 +439,7 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.VM.Identity,
                         Zones = this.Zone ?? this.VM.Zones,
                     };
