@@ -671,6 +671,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Name = "testCloud",
                 ActiveDirectoryAuthority = "http://contoso.com"
             };
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "http://contoso.io");
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "http://insights.contoso.io/");
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
@@ -713,6 +715,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var jCurrentProfile = currentProfile.ToString();
             var jDeserializedProfile = deserializedProfile.ToString();
             Assert.Equal(jCurrentProfile, jDeserializedProfile);
+            Assert.True(deserializedProfile.DefaultContext.Environment.IsPropertySet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.True(deserializedProfile.DefaultContext.Environment.IsPropertySet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
+            Assert.Equal("http://contoso.io", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.Equal("http://insights.contoso.io/", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
         }
 
         [Fact]
@@ -743,11 +749,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       ""BatchEndpointResourceId"": null,
       ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
       ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
-      ""AzureOperationalInsightsEndpointResourceId"": null,
-      ""AzureOperationalInsightsEndpoint"": null,
       ""AdTenant"": null,
       ""VersionProfiles"": [],
-      ""ExtendedProperties"": {}
+      ""ExtendedProperties"": {
+        ""OperationalInsightsEndpoint"": ""http://contoso.io"",
+        ""OperationalInsightsEndpointResourceId"": ""http://insights.contoso.io/""
+      }
     }
   },
   ""Contexts"": {
@@ -797,11 +804,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""BatchEndpointResourceId"": null,
         ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
         ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
-        ""AzureOperationalInsightsEndpointResourceId"": null,
-        ""AzureOperationalInsightsEndpoint"": null,
         ""AdTenant"": null,
         ""VersionProfiles"": [],
-        ""ExtendedProperties"": {}
+        ""ExtendedProperties"": {
+          ""OperationalInsightsEndpoint"": ""http://contoso.io"",
+          ""OperationalInsightsEndpointResourceId"": ""http://insights.contoso.io/""
+        }
       },
       ""VersionProfile"": null,
       ""TokenCache"": {
@@ -822,6 +830,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Name = "testCloud",
                 ActiveDirectoryAuthority = "http://contoso.com"
             };
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "http://contoso.io");
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "http://insights.contoso.io/");
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
