@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 #if DEBUG
                             else
                             {
-                                throw new Exception("client.ResourceGroups call timed out");
+                                throw new InvalidOperationException("client.ResourceGroups call timed out");
                             }
 #endif
                         }
