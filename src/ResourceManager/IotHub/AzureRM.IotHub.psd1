@@ -63,7 +63,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.IotHub.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = '.\Microsoft.Azure.Commands.IotHub.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.IotHub.dll')
@@ -80,14 +80,17 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
                'Add-AzureRmIotHubEventHubConsumerGroup', 'New-AzureRmIotHub', 
                'New-AzureRmIotHubExportDevices', 'New-AzureRmIotHubImportDevices', 
                'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
-               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub'
+               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
+			   'Add-AzureRmIotHubCertificate', 'Get-AzureRmIotHubCertificate',
+			   'Get-AzureRmIotHubCertificateVerificationCode',
+			   'Set-AzureRmIotHubVerifiedCertificate', 'Remove-AzureRmIotHubCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureRmIotHubEHCG', 'Add-AzureRmIotHubEHCG', 
-               'Remove-AzureRmIotHubEHCG'
+               'Remove-AzureRmIotHubEHCG', 'Set-AzureRmIotHubVC', 'Get-AzureRmIotHubCVC'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
