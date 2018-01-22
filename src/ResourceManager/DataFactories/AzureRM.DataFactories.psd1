@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.3'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -135,7 +135,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).'
+        ReleaseNotes = '* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataFactory'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
