@@ -15,7 +15,7 @@ Restores the data and configuration for a Backup item to a recovery point.
 
 ```
 Restore-AzureRmRecoveryServicesBackupItem [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String>
- [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccountForDiskRestore]
+ [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -122,7 +122,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseOriginalStorageAccountForDiskRestore
+### -UseOriginalStorageAccount
 Use this switch if the disks from the recovery point are to be restored to their original storage accounts.
 
 ```yaml
