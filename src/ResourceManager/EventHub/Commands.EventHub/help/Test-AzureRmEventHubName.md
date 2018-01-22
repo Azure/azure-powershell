@@ -20,7 +20,7 @@ Test-AzureRmEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextCo
 ### AliasCheckNameAvailabilitySet
 ```
 Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +30,21 @@ The **Test-AzureRmEventhubName** Cmdlet Check Availability of the NameSpace Name
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzureRmEventhubName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as True
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzureRmEventhubName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as False with Reason
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmServiceBusName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
+PS C:\> Test-AzureRmEventhubName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
 ```
 
 Returns the status on availability of the alias name 'myAliasName' under namespace 'MyNameSapceName' as True
@@ -122,6 +122,10 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
