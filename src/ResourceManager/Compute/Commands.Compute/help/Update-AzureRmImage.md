@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermimage
 schema: 2.0.0
 ---
@@ -12,7 +13,7 @@ Updates an image.
 ## SYNTAX
 
 ```
-Update-AzureRmImage [-AsJob] [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage>
+Update-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +32,7 @@ This command removes the data disk of logical unit number 1 from the existing im
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background and return a Job to track progress.
+Run cmdlet in the background
 
 ```yaml
 Type: SwitchParameter

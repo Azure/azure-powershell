@@ -18,11 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
-    - `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
-    - A recommendation will be made to remove the old Login-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Login is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
-- Remove-AzureRmAccount
-    - `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
-    - A recommendation will be made to remove the old Logout-* aliases in a future release in favor of following best practices (using approved verbs in all cmdlets). Logout is not an approved verb and its use should be discouraged. Under no circumstances should unapproved verbs be used in documentation or presentations that include the AzureRM PowerShell cmdlets.
+* `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
+* `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add-AzureRmAccount
+  * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
+  * Fixed KeyVault Authentication when logging in with user-provided access tokens
+
 
 ## Version 4.1.1
 - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/

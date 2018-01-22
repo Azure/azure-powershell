@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
@@ -33,21 +33,21 @@ Filters active directory groups.
 
 ## EXAMPLES
 
-### --------------------------  Filters groups using object id  --------------------------
+### Filters groups using object id
 ```
 PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Gets group with 85F89C90-780E-4AA6-9F4F-6F268D322EEE id
 
-### --------------------------  Filters groups using Search String  --------------------------
+### Filters groups using Search String
 ```
 PS C:\> Get-AzureRmADGroup -SearchString Joe
 ```
 
 Filters all ad groups that has Joe in the display name.
 
-### --------------------------  List AD groups  --------------------------
+### List AD groups
 ```
 PS C:\> Get-AzureRmADGroup
 ```
@@ -77,7 +77,7 @@ Object id of the group.
 ```yaml
 Type: Guid
 Parameter Sets: EmptyParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,7 +104,7 @@ The group display name
 ```yaml
 Type: String
 Parameter Sets: SearchStringParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

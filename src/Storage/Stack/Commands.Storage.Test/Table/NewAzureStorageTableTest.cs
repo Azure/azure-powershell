@@ -14,20 +14,19 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    [TestClass]
     public class NewAzureStorageTableTest : StorageTableStorageTestBase
     {
         public NewAzureStorageTableCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public NewAzureStorageTableTest()
         {
             command = new NewAzureStorageTableCommand(tableMock)
                 {
@@ -35,13 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureTableWithInvalidNameTest()
         {
             string name = String.Empty;
@@ -57,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.InvalidTableName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureTableWithExistTableTest()
         {
             AddTestTables();
@@ -66,25 +61,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.TableAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureTableSuccessfullyTest()
         {
             string name = "test";
             AzureStorageTable table = command.CreateAzureTable(name);
-            Assert.AreEqual("test", table.Name);
+            Assert.Equal("test", table.Name);
 
             AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureTable(name),
                 String.Format(Resources.TableAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExcuteCommandNewTableTest()
         {
             string name = "tablename";
             command.Name = name;
             command.ExecuteCmdlet();
             AzureStorageTable table = (AzureStorageTable)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.AreEqual(name, table.Name);
+            Assert.Equal(name, table.Name);
         }
     }
 }

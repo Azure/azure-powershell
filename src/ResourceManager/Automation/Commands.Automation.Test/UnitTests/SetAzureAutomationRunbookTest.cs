@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = runbookName;
-            this.cmdlet.Tags = tags;
+            this.cmdlet.Tag = tags;
             this.cmdlet.LogProgress = logProgress;
             this.cmdlet.ExecuteCmdlet();
 

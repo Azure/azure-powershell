@@ -112,7 +112,7 @@ Specifies the name of the resource group to which servers are assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0

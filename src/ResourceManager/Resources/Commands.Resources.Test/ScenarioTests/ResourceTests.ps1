@@ -291,7 +291,8 @@ function Test-SetAResource
 	
 	# Set resource
 	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force 
+	$job = Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force -AsJob
+	$job | Wait-Job
 
 	$modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 
@@ -500,12 +501,15 @@ function Test-RemoveAResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-	$actual = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$job = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force -AsJob
+	$job | Wait-Job
+	$actual = $job | Receive-Job
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-NotNull $expected
 	Assert-AreEqual $actual.ResourceId $expected[0].ResourceId
 
-	Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force
+	$job = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname | Remove-AzureRmResource -Force -AsJob
+	$job | Wait-Job
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-Null $expected
 }

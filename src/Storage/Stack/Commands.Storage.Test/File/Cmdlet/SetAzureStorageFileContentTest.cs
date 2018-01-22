@@ -17,24 +17,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.DataMovement;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class SetAzureStorageFileContentTest : StorageFileTestBase<SetAzureStorageFileContent>
     {
         private string sourceFilePath = Path.GetTempFileName();
 
-        [TestInitialize]
-        public void UploadInitialize()
+        public SetAzureStorageFileContentTest()
         {
             using (var writer = System.IO.File.CreateText(this.sourceFilePath))
             {
@@ -42,16 +41,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             }
         }
 
-        [TestCleanup]
-        public void UploadCleanup()
-        {
-            if (System.IO.File.Exists(this.sourceFilePath))
-            {
-                System.IO.File.Delete(this.sourceFilePath);
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingShareNameAndPathTest()
         {
             UploadFileInternal(
@@ -65,7 +56,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Path", "remoteFile")));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingShareObjectAndPathTest()
         {
             UploadFileInternal(
@@ -79,7 +71,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Path", "remoteFile")));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingDirectoryAndPathTest()
         {
             UploadFileInternal(
@@ -93,7 +86,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Path", "remoteFile")));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingDirectoryObjectOnlyTest()
         {
             this.MockChannel.SetsAvailableDirectories("dir");
@@ -108,7 +102,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Source", this.sourceFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingShareObjectOnlyTest()
         {
             this.MockChannel.SetsAvailableDirectories("");
@@ -123,7 +118,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Source", this.sourceFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UploadFileUsingShareNameOnlyTest()
         {
             this.MockChannel.SetsAvailableDirectories("");
@@ -143,9 +139,9 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             var mockupTransferManager = new UploadTransferManager(
                 (sourcePath, destFile) =>
                 {
-                    Assert.AreEqual(destinationFileName, destFile.Name, "Destination file name validation failed.");
-                    Assert.AreEqual(shareName, destFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(sourceFilePath, sourcePath, "Source file validation failed.");
+                    Assert.Equal(destinationFileName, destFile.Name);
+                    Assert.Equal(shareName, destFile.Share.Name);
+                    Assert.Equal(sourceFilePath, sourcePath);
                 });
 
             TransferManagerFactory.SetCachedTransferManager(mockupTransferManager);
@@ -165,7 +161,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 validateAction = validate;
             }
 
-            public override Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
+            public override Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
             {
                 validateAction(sourcePath, destFile);
                 return TaskEx.FromResult(true);

@@ -87,11 +87,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		[Parameter(HelpMessage = "Skip confirmation message for performing the action")]
 		public SwitchParameter Force { get; set; }
 
-		/// <summary>
-		/// Gets the entity to delete
-		/// </summary>
-		/// <returns>The entity going to be deleted</returns>
-		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets the entity to delete
+        /// </summary>
+        /// <returns>The entity going to be deleted</returns>
+        protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
 		{
 			return new List<Model.AzureSqlServerDnsAliasModel>()
 			{

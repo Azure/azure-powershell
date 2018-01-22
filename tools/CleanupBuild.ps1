@@ -21,8 +21,8 @@ Get-ChildItem -Include $include -Exclude $exclude -Recurse -Path $output | Remov
 Get-ChildItem -Recurse -Path $output -Include *.dll-Help.psd1 | Remove-Item -Force
 
 Write-Verbose "Removing markdown help files and folders"
-Get-ChildItem -Recurse -Path $output -Include *.md | Remove-Item -Force
-Get-ChildItem -Directory -Include help -Recurse -Path $output | Remove-Item -Force
+Get-ChildItem -Recurse -Path $output -Include *.md | Remove-Item -Force -Confirm:$false
+Get-ChildItem -Directory -Include help -Recurse -Path $output | Remove-Item -Force -Confirm:$false
 
 Write-Verbose "Removing unneeded web deployment dependencies"
 $webdependencies = @("Microsoft.Web.Hosting.dll", "Microsoft.Web.Delegation.dll", "Microsoft.Web.Administration.dll", "Microsoft.Web.Deployment.Tracing.dll")

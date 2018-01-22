@@ -531,6 +531,7 @@ function Test-DataLakeAnalyticsJob
 		# Wait for the job to finish and then confirm the script
 		$jobInfo = Wait-AdlJob -Account $accountName -JobId $jobInfo.JobId
 		Assert-NotNull {$jobInfo}
+		Assert-AreEqual "Succeeded" $jobInfo.Result
 		Assert-AreEqual $expectedScript $jobInfo.Properties.Script
 
 		# Delete the DataLakeAnalytics account

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtual network peering")]
         public PSVirtualNetworkPeering VirtualNetworkPeering { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
