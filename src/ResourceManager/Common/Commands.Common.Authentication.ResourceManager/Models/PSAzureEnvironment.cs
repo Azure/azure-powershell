@@ -230,12 +230,32 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment
         /// </summary>
-        public string AzureOperationalInsightsEndpointResourceId { get; set; }
+        public string AzureOperationalInsightsEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, value);
+            }
+        }
 
         /// <summary>
         /// The endpoint to use when communicating with the Azure Log Analytics query service in this environment
         /// </summary>
-        public string AzureOperationalInsightsEndpoint { get; set; }
+        public string AzureOperationalInsightsEndpoint
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, value);
+            }
+        }
 
         public IList<string> VersionProfiles { get; } = new List<string>();
 

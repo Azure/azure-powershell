@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.TrafficManagerDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, azEnvironment,
                 environment.BatchEndpointResourceId);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId, azEnvironment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, azEnvironment,
                 environment.AzureOperationalInsightsEndpointResourceId);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint, azEnvironment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
@@ -161,8 +161,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId));
-            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId));
-            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
         }
         [Theory]
         [InlineData("TestAll", true, "https://login.microsoftonline.com", "https://management.core.windows.net/",
@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.TrafficManagerDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, azEnvironment,
                 environment.BatchEndpointResourceId);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId, azEnvironment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, azEnvironment,
                 environment.AzureOperationalInsightsEndpointResourceId);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint, azEnvironment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
@@ -302,9 +302,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 trafficManagerSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.BatchEndpointResourceId, environment,
                 batchResource);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId, environment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, environment,
                 azureOperationalInsightsEndpointResourceId);
-            CheckEndpoint(AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint, environment,
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, environment,
                 azureOperationalInsightsEndpoint);
             return environment;
 

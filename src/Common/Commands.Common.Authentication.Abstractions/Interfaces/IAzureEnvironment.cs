@@ -123,16 +123,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
         /// <summary>
-        /// The token audience required for communicating with the Azure Log Analytics query service in this environment
-        /// </summary>
-        string AzureOperationalInsightsEndpointResourceId { get; set; }
-
-        /// <summary>
-        /// The endpoint to use when communicating with the Azure Log Analytics query service in this environment
-        /// </summary>
-        string AzureOperationalInsightsEndpoint { get; set; }
-
-        /// <summary>
         /// The default Active Directory Tenant
         /// </summary>
         string AdTenant { get; set; }

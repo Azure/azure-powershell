@@ -301,9 +301,9 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(DataLakeAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
                                     nameof(BatchEndpointResourceId));
-                                SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureOperationalInsightsEndpointResourceId,
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId,
                                     nameof(AzureOperationalInsightsEndpointResourceId));
-                                SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureOperationalInsightsEndpoint,
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint,
                                     nameof(AzureOperationalInsightsEndpoint));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
