@@ -164,7 +164,7 @@ function NamespaceTests
 
 	# Check Namespace Name Availability
 
-	$checkNameResult = Test-AzureRmEventHubName -NamespaceName $namespaceName 
+	$checkNameResult = Test-AzureRmEventHubName -Namespace $namespaceName 
 	Assert-True {$checkNameResult.NameAvailable}
      
     Write-Debug " Create new eventHub namespace"
