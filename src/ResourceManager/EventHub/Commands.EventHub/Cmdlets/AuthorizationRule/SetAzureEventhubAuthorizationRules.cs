@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'Set-AzureRmRelayAuthorizationRule' Cmdlet updates the specified AuthorizationRule
+    /// 'Set-AzureRmEventHubAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
     [Cmdlet(VerbsCommon.Set, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class SetAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 }
 
 
-            // Update WcfRelay authorizationRule
+            // Update EventHub authorizationRule
             if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateEventHubAuthorizationrule, Name, EventHub)))
                 {

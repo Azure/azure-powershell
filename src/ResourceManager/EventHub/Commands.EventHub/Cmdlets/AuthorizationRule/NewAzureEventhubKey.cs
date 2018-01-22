@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given WcfRelay Authorization Rule
+    /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given EventHub Authorization Rule
     /// </summary>
     [Cmdlet(VerbsCommon.New, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
     public class NewAzureEventhubKey : AzureEventHubsCmdletBase
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 }
             }
 
-            // Generate new WcfRelay List Keys for the specified AuthorizationRule
+            // Generate new EventHub List Keys for the specified AuthorizationRule
             if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
