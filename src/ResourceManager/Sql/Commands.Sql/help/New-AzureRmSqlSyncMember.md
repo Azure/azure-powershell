@@ -98,7 +98,7 @@ The name of the Azure SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -128,7 +128,7 @@ The credential (username and password) of the Azure SQL Database.
 ```yaml
 Type: PSCredential
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -143,7 +143,7 @@ The Azure SQL Database name of the member database.
 ```yaml
 Type: String
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,7 +158,7 @@ The database type of the member database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: SqlServerDatabase, AzureSqlDatabase
 
 Required: True
@@ -174,7 +174,7 @@ The Azure SQL Server Name of the member database.
 ```yaml
 Type: String
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -204,7 +204,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -219,7 +219,7 @@ The name of the Azure SQL Server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -234,7 +234,7 @@ The id of the SQL server database which is connected by the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent, OnPremisesDatabaseSyncAgentResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -249,7 +249,7 @@ The name of the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -264,7 +264,7 @@ The name of the resource group where the sync agent is under.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -279,7 +279,7 @@ The resource ID of the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -294,7 +294,7 @@ The name of the Azure SQL Server where the sync agent is under.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -309,7 +309,7 @@ The sync direction of this sync member.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Bidirectional, OneWayMemberToHub, OneWayHubToMember
 
 Required: False
@@ -325,7 +325,7 @@ The sync group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3

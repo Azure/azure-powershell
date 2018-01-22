@@ -142,7 +142,9 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         Assert-AreEqual "1" $vmss.Zones
         $vmss.Zones = $null
 
-        $vmss = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $job = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -AsJob
+		$job | Wait-Job
+		$vmss = $job | Receive-Job
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
@@ -235,13 +237,20 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         }
 
         $st = $vmssResult | Stop-AzureRmVmss -StayProvision -Force;
-        $st = $vmssResult | Stop-AzureRmVmss -Force;
-        $st = $vmssResult | Start-AzureRmVmss;
-        $st = $vmssResult | Restart-AzureRmVmss;
+        $job = $vmssResult | Stop-AzureRmVmss -Force -AsJob
+		$job | Wait-Job
+		$st = $job | Receive-Job
+        $job = $vmssResult | Start-AzureRmVmss -AsJob
+		$job | Wait-Job
+		$st = $job | Receive-Job
+        $job = $vmssResult | Restart-AzureRmVmss -AsJob
+		$job | Wait-Job
+		$st = $job | Receive-Job
 
         if ($IsManaged -eq $true)
         {
-            $st = $vmssResult | Set-AzureRmVmss -ReimageAll;
+            $job = $vmssResult | Set-AzureRmVmss -ReimageAll -AsJob
+			$job | Wait-Job
         }
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
@@ -257,13 +266,16 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         {
             for ($j = 0; $j -lt 2; $j++)
             {
-                $st = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j
+                $job = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j -AsJob
+				$job | Wait-Job
+				$st = $job | Receive-Job
             }
         }
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        $st = $vmssResult | Remove-AzureRmVmss -Force;
+        $job = $vmssResult | Remove-AzureRmVmss -Force -AsJob
+		$job | Wait-Job
     }
     finally
     {
@@ -368,7 +380,8 @@ function Test-VirtualMachineScaleSetUpdate
             "Cannot specify both Windows and Linux configurations.";
 
         $tags = @{test1 = "testval1"; test2 = "testval2" };
-        Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -Tag $tags -SkuCapacity 3;
+        $job = Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -Tag $tags -SkuCapacity 3 -AsJob
+		$job | Wait-Job
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $returned_tags = $vmss.Tags;
@@ -502,7 +515,8 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $vmssVMs = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
         $id = $vmssVMs[0].InstanceId
 
-        Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id;
+        $job = Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id -AsJob
+		$job | Wait-Job
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;

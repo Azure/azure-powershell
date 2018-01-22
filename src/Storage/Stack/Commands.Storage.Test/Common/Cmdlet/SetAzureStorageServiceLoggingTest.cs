@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
 {
-    [TestClass]
     public class SetAzureStorageServiceLoggingTest : StorageTestBase
     {
         /// <summary>
@@ -28,8 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
         /// </summary>
         public SetAzureStorageServiceLoggingCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public SetAzureStorageServiceLoggingTest()
         {
             command = new SetAzureStorageServiceLoggingCommand
             {
@@ -37,21 +36,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetLoggingOperationsTest()
         { 
-            Assert.AreEqual(LoggingOperations.None, command.GetLoggingOperations("none"));
-            Assert.AreEqual(LoggingOperations.All, command.GetLoggingOperations("all"));
-            Assert.AreEqual(LoggingOperations.Read, command.GetLoggingOperations("Read"));
-            Assert.AreEqual(LoggingOperations.Write, command.GetLoggingOperations("WrIte"));
-            Assert.AreEqual(LoggingOperations.Delete, command.GetLoggingOperations("DELETE"));
-            Assert.AreEqual(LoggingOperations.Read | LoggingOperations.Delete,
+            Assert.Equal(LoggingOperations.None, command.GetLoggingOperations("none"));
+            Assert.Equal(LoggingOperations.All, command.GetLoggingOperations("all"));
+            Assert.Equal(LoggingOperations.Read, command.GetLoggingOperations("Read"));
+            Assert.Equal(LoggingOperations.Write, command.GetLoggingOperations("WrIte"));
+            Assert.Equal(LoggingOperations.Delete, command.GetLoggingOperations("DELETE"));
+            Assert.Equal(LoggingOperations.Read | LoggingOperations.Delete,
                 command.GetLoggingOperations("Read, DELETE"));
             AssertThrows<ArgumentException>(() => command.GetLoggingOperations("DELETE,xxx"));
             AssertThrows<ArgumentException>(() => command.GetLoggingOperations("DELETE,all"));

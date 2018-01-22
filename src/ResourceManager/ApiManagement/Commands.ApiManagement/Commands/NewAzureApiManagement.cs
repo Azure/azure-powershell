@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
@@ -92,7 +93,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Obsolete("New-AzureRmApiManagement: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Dictionary<string, string> Tag { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -102,6 +105,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+#pragma warning disable CS0618
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginCreateApiManagementService(
                     ResourceGroupName,
@@ -112,10 +116,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     VpnType,
-                    Tags,
+                    Tag,
                     VirtualNetwork,
                     AdditionalRegions),
                 passThru: true);
+#pragma warning restore CS0618
         }
     }
 }

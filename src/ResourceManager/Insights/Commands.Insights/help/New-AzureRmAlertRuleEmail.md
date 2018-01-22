@@ -31,14 +31,14 @@ This command creates an alert rule email action to send for its service owners w
 
 ### Example 2: Create an alert rule email action for non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails "pattif@contoso.com, davidchew@contoso.net"
+PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.com,davidchew@contoso.net
 ```
 
 This command creates an alert rule email action for the specified email addresses, but not for the service owners.
 
 ### Example 3: Create an alert rule email action for service owners and non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails "pattif@contoso.net" -SendToServiceOwners
+PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.net -SendToServiceOwners
 ```
 
 This command creates an alert rule email action for the specified address and for its service owners.
