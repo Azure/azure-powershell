@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             this.CommandRuntime = cmdlet.CommandRuntime;
         }
+
         struct ShouldProcessPrompt
         {
             public string Target { get; set; }
@@ -46,95 +47,14 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             public TaskCompletionSource<bool> Completer { get; set; }
         }
 
-        class PSCmdletActivity : IActivity
+        struct CmdletOutput
         {
-            static int ActivityId = 0;
-            PSCmdletAdapter _adapter;
-            IActivity _parent;
-
-            public PSCmdletActivity(string description, string initialStatus, PSCmdletAdapter adapter)
-            {
-                _adapter = adapter;
-                Description = description;
-                Id =GetNextActivityId();
-                StatusDescription = initialStatus;
-            }
-
-            public static int GetNextActivityId()
-            {
-                return Interlocked.Increment(ref ActivityId);
-            }
-
-            public string Description
-            {
-                get; private set;
-            }
-
-            public int Id
-            {
-                get; private set;
-            }
-
-            public string StatusDescription
-            {
-                get; private set;
-            }
-
-            ProgressRecord Progress
-            {
-                get
-                {
-                    var progress = new ProgressRecord(Id, Description, StatusDescription);
-                    if (_parent != null)
-                    {
-                        progress.ParentActivityId = _parent.Id;
-                        progress.PercentComplete = 0;
-                        progress.SecondsRemaining = 0;
-                        progress.RecordType = ProgressRecordType.Processing;
-                    }
-
-                    return progress;
-                }
-            }
-
-            public void CompleteAsync()
-            {
-                var progress = Progress;
-                progress.PercentComplete = 100;
-                progress.RecordType = ProgressRecordType.Completed;
-                _adapter.WriteProgressAsync(progress);
-            }
-
-            public void ReportProgress(ITaskProgress progress)
-            {
-                if (progress.IsDone)
-                {
-                    CompleteAsync();
-                }
-                else
-                {
-                    ReportProgress(Progress.StatusDescription, Progress.SecondsRemaining, (int)(progress.GetProgress() * 100));
-                }
-            }
-
-            public void ReportProgress(string statusDesscription, int secondsRemaining, int percentComplete)
-            {
-                var progress = Progress;
-                progress.StatusDescription = statusDesscription;
-                progress.SecondsRemaining = secondsRemaining;
-                progress.PercentComplete = percentComplete;
-                _adapter.WriteProgressAsync(progress);
-            }
-
-            public IActivity StartChildActivity()
-            {
-                var child = new PSCmdletActivity(this.Description, this.StatusDescription, _adapter);
-                child._parent = this;
-                return child;
-            }
-
+            public object Output { get; set; }
+            public bool Enumerate { get; set; }
         }
 
+
+        ConcurrentQueue<CmdletOutput> _output = new ConcurrentQueue<CmdletOutput>();
 
         ConcurrentQueue<string> _debug = new ConcurrentQueue<string>();
 
@@ -152,7 +72,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         object _lock = new object();
 
-        int _complete = 0, _hasMessages = 0, iterations = 0, activityId = 0;
+        int _complete = 0, _hasMessages = 0;
 
         protected int Retries { get; set; }
 
@@ -164,7 +84,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             return process.Completer.Task;
         }
 
-        public Task<bool> SHouldContinueChangeAsync(string query, string caption)
+        public Task<bool> ShouldContinueChangeAsync(string query, string caption)
         {
             var process = new ShouldContinuePrompt { Query = query, Caption = caption, Completer = new TaskCompletionSource<bool>() };
             return process.Completer.Task;
@@ -200,12 +120,27 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             _hasMessages = 1;
         }
 
-        public IActivity StartActivity(string description, string initialStatus, int seconds)
+        public void ReportTaskProgress(ITaskProgress taskProgress)
         {
-            var activity = new PSCmdletActivity(description: description, initialStatus: initialStatus, adapter: this);
-            activity.ReportProgress(initialStatus, seconds, 0);
-            _hasMessages = 1;
-            return activity;
+            var progress = 0.0;
+            if (!taskProgress.IsDone)
+            {
+            }
+            progress += taskProgress.GetProgress();
+            var percent = (int)(progress * 100.0);
+            var r = new[] { "|", "/", "-", "\\" };
+            var x = r[DateTime.Now.Second % 4];
+            WriteProgressAsync(
+                new ProgressRecord(
+                    0,
+                    "Creating Azure resources",
+                    percent + "% " + x)
+                {
+                    CurrentOperation = !taskProgress.IsDone
+                        ? $"Creating {taskProgress.Config.Name} '{taskProgress.Config.Strategy.Type}'"
+                        : null,
+                    PercentComplete = percent,
+                });
         }
 
         public void Complete()
@@ -213,9 +148,15 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             _complete = 1;
         }
 
-        public void WaitForCompletion()
+        public void WaitForCompletion(Func<ICmdletAdapter, Task> taskFactory)
         {
-            while (Interlocked.Exchange(ref _complete, 0) != 1 && Interlocked.Increment(ref iterations) <= Retries)
+            var task  = taskFactory(this);
+            if (task.Status == TaskStatus.Created)
+            {
+                task.Start();
+            }
+
+            while (Interlocked.Exchange(ref _complete, 0) != 1 && !task.IsCompleted)
             {
                 if (Interlocked.Exchange(ref _hasMessages, 0) == 1)
                 {
@@ -235,6 +176,12 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                     while (_error.TryDequeue(out exception))
                     {
                         CommandRuntime.WriteError(exception);
+                    }
+
+                    CmdletOutput output;
+                    while (_output.TryDequeue(out output))
+                    {
+                        CommandRuntime.WriteObject(output.Output, output.Enumerate);
                     }
 
                     string logMessage;
@@ -261,8 +208,28 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
                 }
 
-                Thread.Sleep(RetryInterval);
+                Thread.Yield();
             }
+
+            if (task.IsFaulted)
+            {
+                throw task.Exception.GetBaseException();
+            }
+        }
+
+        public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model) where TModel : class
+        {
+            return ShouldChangeAsync(config.Name, $"Create {config.Strategy.Type}");
+        }
+
+        public void WriteObjectAsync(object output)
+        {
+            WriteObjectAsync(false);
+        }
+
+        public void WriteObjectAsync(object output, bool enumerateCollection)
+        {
+            _output.Enqueue(new CmdletOutput { Output = output, Enumerate = enumerateCollection });
         }
 
         protected ICommandRuntime CommandRuntime { get; set; }

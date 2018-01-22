@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.WebSites;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
+using System.Xml.Linq;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -31,6 +32,9 @@ using Microsoft.Azure.Commands.Common.Strategies.WebApps;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.WebApps.Strategies;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -115,7 +119,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 if (ShouldProcess(string.Format("WebApp '{0}'", Name), "Create"))
                 {
-                    CreateWithSimpleParameters();
+                    var adapter = new PSCmdletAdapter(this);
+                    adapter.WaitForCompletion(CreateWithSimpleParameters);
                 }
             }
             else
@@ -179,7 +184,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
         }
 
-        public void CreateWithSimpleParameters()
+        public async Task CreateWithSimpleParameters(ICmdletAdapter adapter)
         {
             string trafficManagerProfielId = IsResource(TrafficManagerProfile) ? TrafficManagerProfile : null;
             string trafficManagerProfileName = IsResource(TrafficManagerProfile) ? null : TrafficManagerProfile;
@@ -191,20 +196,37 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             var siteStrategy = SiteStrategy.CreateSiteConfig(rgStrategy, farmStrategy, Name);
             var client = new WebClient(DefaultContext);
 
-            var current = siteStrategy.GetStateAsync(client, default(CancellationToken)).ConfigureAwait(false).GetAwaiter().GetResult();
+            var current = await siteStrategy.GetStateAsync(client, default(CancellationToken));
             if (!MyInvocation.BoundParameters.ContainsKey(nameof(Location)))
             {
                 Location = current.GetLocation(siteStrategy) ?? "East US";
             }
 
             var target = siteStrategy.GetTargetState(current, DefaultContext.Subscription.Id, Location);
-            var endState = siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), null, ReportProgress);
+            var endState = await siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), adapter, adapter.ReportTaskProgress);
+            var output = endState.Get(siteStrategy) ?? current.Get(siteStrategy);
+            var git = new GitCommand();
+            var repository = await git.VerifyGitRepository(GitRepositoryPath);
+            if (repository != null)
+            {
+                if (!await git.CheckExistence())
+                {
+                    adapter.WriteWarningAsync(git.InstallationInstructions);
+                }
+                else
+                {
+                    var profile = await WebsitesClient.WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlAsync(output.ResourceGroup, output.SiteName, new CsmPublishingProfileOptions { Format = "WebDeploy" });
+                    var doc = new XmlDocument();
+                    doc.Load(profile);
+                    var userName = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userName").Value;
+                    var password = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userPWD").Value;
+                    await git.AddRemoteRepository("azure", $"http://{userName}:{password}@{output.EnabledHostNames.First()}");
+                }
+            }
+
+            adapter.WriteObjectAsync(output);
         }
 
-        void ReportProgress (ITaskProgress progress)
-        {
-            WriteProgress(new ProgressRecord(0, "CreateWebApp", progress.Config.Name));
-        }
 
         private bool IsResource(string name)
         {
