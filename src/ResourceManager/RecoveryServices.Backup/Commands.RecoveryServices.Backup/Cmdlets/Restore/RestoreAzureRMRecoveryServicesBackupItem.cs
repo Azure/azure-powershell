@@ -58,8 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
-        [Parameter(Mandatory = false, Position = 3,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
         public SwitchParameter UseOriginalStorageAccount { get; set; }
 
         public override void ExecuteCmdlet()
