@@ -77,7 +77,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.2.0';
                @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.5.1'; }, 
                @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.0.2'; }, 
                @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '4.0.1'; }, 
-               @{ModuleName = 'AzureRM.IoTHub'; RequiredVersion = '3.0.0'; }, 
+               @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.0'; }, 
                @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.1.0'; }, 
                @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.0.1'; }, 
                @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.17.0'; }, 
@@ -186,6 +186,7 @@ General
     - AzureRM.EventHub
     - AzureRM.HDInsight
     - AzureRM.Insights
+    - AzureRM.IotHub
     - AzureRM.KeyVault
     - AzureRM.LogicApp
     - AzureRM.MachineLearning
@@ -230,6 +231,7 @@ General
     - AzureRM.EventHub
     - AzureRM.HDInsight
     - AzureRM.Insights
+    - AzureRM.IotHub
     - AzureRM.KeyVault
     - AzureRM.LogicApp
     - AzureRM.MachineLearning
@@ -302,6 +304,9 @@ AzureRM.EventGrid
 * Added the following new cmdlet:
     - Update-AzureRmEventGridSubscription
         - Update the properties of an Event Grid event subscription.
+
+AzureRM.IotHub
+* Add Certificate support for IoTHub cmdlets
 
 AzureRM.KeyVault
 * Added -AsJob support for long-running KeyVault cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
