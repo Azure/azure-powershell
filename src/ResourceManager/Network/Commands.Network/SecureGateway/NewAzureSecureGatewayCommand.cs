@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                 Sku = new PSSecureGatewaySku()
                 {
                     Name = MNM.SecureGatewaySkuName.StandardLarge,
-                    Tier = MNM.SecureGatewayTier.Premium
+                    Tier = MNM.SecureGatewayTier.Standard
                 },
                 IpConfigurations = this.IpConfigurations,
                 ApplicationRuleCollections = this.ApplicationRuleCollections

@@ -18,8 +18,6 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
-
     [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayApplicationRuleAction", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayApplicationRuleAction))]
     public class NewAzureSecureGatewayApplicationRuleActionCommand : NetworkBaseCmdlet
     {

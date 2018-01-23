@@ -42,37 +42,9 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSecureGatewayNetworkRuleCollectionCRUD()
+        public void TestSecureGatewayApplicationRuleCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-NetworkRuleCollectionCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSecureGatewayApplicationRuleActionCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-ApplicationRuleActionCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSecureGatewayNetworkRuleActionCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-NetworkRuleActionCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSecureGatewayApplicationRuleProtocolCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-ApplicationRuleProtocolCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSecureGatewayMultiValuedRules()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-MultiValuedRules");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-SecureGateway-ApplicationRuleCRUD");
         }
     }
 }
