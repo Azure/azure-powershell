@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objId = null;
             if (!string.IsNullOrWhiteSpace(upn))
             {
-                var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { SPN = upn }).SingleOrDefault();
+                var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { UPN = upn }).SingleOrDefault();
                 if (user != null)
                     objId = user.Id.ToString();
             }
