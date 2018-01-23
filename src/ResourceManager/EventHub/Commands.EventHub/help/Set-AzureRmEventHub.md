@@ -38,7 +38,7 @@ To update Eventhub with Capture description properties, please follow the below 
 
 ```
 PS C:\> $CreatedEventHub = Get-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
-PS C:\> $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.CaptureDescriptionAttributes
+PS C:\> $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
 PS C:\> $createdEventHub.CaptureDescription.Enabled = $true
 PS C:\> $createdEventHub.CaptureDescription.IntervalInSeconds  = 120
 PS C:\> $createdEventHub.CaptureDescription.Encoding  = "Avro"
@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
 
 ## NOTES
 
