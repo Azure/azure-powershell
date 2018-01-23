@@ -143,6 +143,11 @@ function DRConfigurationTests
 	$createdDRConfig = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
 	# Assert
 	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id "DRConfig created earlier is not found."
+
+	Write-Debug "Get the created DRConfiguration using Namespace object"
+	$createdDRConfig = Get-AzureRmEventHubGeoDRConfiguration -InputObject $createdNamespace1 -Name $drConfigName
+	# Assert
+	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id "DRConfig created earlier is not found."
 	
 	Write-Debug " Get the created DRConfiguration for Secondary Namespace"
 	$createdDRConfigSecondary = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
@@ -164,8 +169,8 @@ function DRConfigurationTests
 	Assert-AreEqual $breakPairingDRConfig.Role "PrimaryNotReplicating"
 		
 	# Create a DRConfiguration
-	Write-Debug " Create new DRConfiguration"
-	$DRresult = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
+	Write-Debug " Create new DRConfiguration using Namespace object"
+	$DRresult = New-AzureRmEventHubGeoDRConfiguration -InputObject $createdNamespace1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
 	
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName

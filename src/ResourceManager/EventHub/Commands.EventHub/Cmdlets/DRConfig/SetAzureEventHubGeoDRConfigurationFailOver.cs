@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         {
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResorceDetailsFromId(InputObject.Id);
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
                 
                 if(getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     if (PassThru)
                     {
                         WriteObject(true);
+                    }
+                    else
+                    {
+                        WriteObject(false);
                     }
                 }                
             }
@@ -66,6 +70,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                 if (PassThru)
                 {
                     WriteObject(true);
+                }
+                else
+                {
+                    WriteObject(false);
                 }
             }
         }

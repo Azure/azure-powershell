@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
         protected const string GeoDRBreakPairFailOverParameterSet = "GeoDRBreakPairFailOverPropertiesSet";
+        protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             }
         }
 
-        public ResourceIdentifier GetResorceDetailsFromId(string strResourceId)
+        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
         {
             ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
             returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];

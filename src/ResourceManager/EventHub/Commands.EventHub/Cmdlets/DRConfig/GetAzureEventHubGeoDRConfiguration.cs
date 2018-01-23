@@ -17,41 +17,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
     /// 'Get-AzureEventHubDRConfiguration' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb), OutputType(typeof(List<PSEventHubDRConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(List<PSEventHubDRConfigurationAttributes>))]
     public class GetEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
+        [ValidateNotNullOrEmpty]
+        public PSNamespaceAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = false, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                // Get a DRConfiguration
-                PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
-                WriteObject(drConfiguration);
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                {
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                        WriteObject(drConfiguration);
+                    }
+                    else
+                    {
+                        IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                        WriteObject(drConfigurationList.ToList(), true);
+                    }
+                }
             }
             else
             {
-                // Get all DRConfigurations
-                IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
-                WriteObject(drConfigurationList.ToList(), true);
-            }
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    // Get a DRConfiguration
+                    PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                    WriteObject(drConfiguration);
+                }
+                else
+                {
+                    // Get all DRConfigurations
+                    IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
+                    WriteObject(drConfigurationList.ToList(), true);
+                }
+            }            
         }
     }
 }

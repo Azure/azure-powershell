@@ -15,23 +15,28 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
     /// 'New-AzureRmEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
+        [ValidateNotNullOrEmpty]
+        public PSNamespaceAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
@@ -48,14 +53,25 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         public override void ExecuteCmdlet()
         {
             PSEventHubDRConfigurationAttributes drConfiguration = new PSEventHubDRConfigurationAttributes() { PartnerNamespace = this.PartnerNamespace };
-
             if (!string.IsNullOrEmpty(AlternateName))
                 drConfiguration.AlternateName = AlternateName;
-            
-            if (ShouldProcess(target: Name, action:string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
+
+            if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
-            }                        
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                {
+                    WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                }
+            }
+            else
+            {
+                if (ShouldProcess(target: Name, action: string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
+                {
+                    WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
+                }
+            }
         }
     }
 }
