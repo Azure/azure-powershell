@@ -26,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
         OutputType(typeof(PSConnectionMonitorResult))]
     public class NewAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -57,24 +55,21 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
             ParameterSetName = "SetByLocation")]
-        [LocationCompleterAttribute]
+        [LocationCompleter("Microsoft.Network/networkWatchers/connectionMonitors")]
         [ValidateNotNull]
         public string Location { get; set; }
 
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the connection monitor source.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
@@ -113,9 +108,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Auto start.")]
+            HelpMessage = "Configure connection monitor, but do not start it")]
         [ValidateNotNullOrEmpty]
-        public bool? AutoStart { get; set; }
+        public SwitchParameter ConfigureOnly { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -193,9 +188,9 @@ namespace Microsoft.Azure.Commands.Network
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
-            if (this.AutoStart != null)
+            if (this.ConfigureOnly)
             {
-                parameters.AutoStart = this.AutoStart;
+                parameters.AutoStart = false;
             }
 
             if (this.MonitoringIntervalInSeconds != null)

@@ -25,8 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectionMonitorResult))]
-
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
     public class GetAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -56,10 +53,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
             ParameterSetName = "SetByLocation")]
-        [LocationCompleterAttribute]
+        [LocationCompleter("Microsoft.Network/networkWatchers/connectionMonitors")]
         [ValidateNotNull]
         public string Location { get; set; }
 
@@ -74,7 +70,16 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor name.")]
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByLocation")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -25,7 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
         OutputType(typeof(bool))]
     public class RemoveAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -56,10 +54,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
             ParameterSetName = "SetByLocation")]
-        [LocationCompleterAttribute]
+        [LocationCompleter("Microsoft.Network/networkWatchers/connectionMonitors")]
         [ValidateNotNull]
         public string Location { get; set; }
 
@@ -73,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "Connection monitor object.",
             ParameterSetName = "SetByInputObject")]
         [ValidateNotNull]
@@ -81,9 +78,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ConnectionMonitorName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.")]
+            Mandatory = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByLocation")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
