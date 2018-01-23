@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             var applicationRc = new PSSecureGatewayApplicationRuleCollection
             {
                 Name = this.Name,
+                Priority = this.Priority,
                 Rules = this.Rules
             };
             WriteObject(applicationRc);
