@@ -13,6 +13,14 @@ Creates a configurable virtual machine object.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
+```
+New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
+ [[-LicenseType] <String>] [[-IdentityType] <ResourceIdentityType>] [-IdentityId <String[]>] [-Zone <String[]>]
+ [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### AssignIdentityParameterSet
 ```
 New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
  [[-LicenseType] <String>] [[-IdentityType] <ResourceIdentityType>] [-AssignIdentity] [-IdentityId <String[]>]
@@ -44,10 +52,10 @@ Specify the system assigned identity for the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AssignIdentityParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
