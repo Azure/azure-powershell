@@ -15,14 +15,14 @@ Returns search results based on the specified parameters.
 ### ByWorkspaceId (Default)
 ```
 Invoke-AzureRmOperationalInsightsQuery -WorkspaceId <String> -Query <String> [-Timespan <TimeSpan>]
- [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-DefaultProfile <IAzureContextContainer>]
+ [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
 Invoke-AzureRmOperationalInsightsQuery -Workspace <PSWorkspace> -Query <String> [-Timespan <TimeSpan>]
- [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-DefaultProfile <IAzureContextContainer>]
+ [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -77,6 +77,19 @@ PS C:\> $queryResults.Statistics
 See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

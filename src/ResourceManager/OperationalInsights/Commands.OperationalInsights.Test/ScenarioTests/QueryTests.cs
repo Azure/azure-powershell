@@ -27,5 +27,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         {
             RunDataPowerShellTest("Test-ExceptionWithShortWait");
         }
+
+        [Fact]
+        public void TestAsJob()
+        {
+            RunDataPowerShellTest("Test-AsJob");
+        }
     }
 }
