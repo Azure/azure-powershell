@@ -13,51 +13,62 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmEventHubDRConfigurationBreakPairing' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+    /// 'Set-AzureRmEventHubDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationBreakPairingVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationBreakPairingVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationBreakPair : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Primary Namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Primary Namespace")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Eventhub GeoDR Configuration Object")]
+        [ValidateNotNullOrEmpty]
+        public PSEventHubDRConfigurationAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-
+        
         public override void ExecuteCmdlet()
-        {            
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.DRBreakPairing, Namespace, Name),
-                string.Format(Resources.DRBreakPairing, Namespace, Name),
-                Name,
-                () =>
-                {
-                    Client.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+        {
+            if (ParameterSetName == GeoDRInputObjectParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResorceDetailsFromId(InputObject.Id);
+                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                {                    
+                    Client.SetEventHubDRConfigurationBreakPairing(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
                     if (PassThru)
                     {
                         WriteObject(true);
                     }
-                });
-
+                }                    
+            }
+            else
+            {
+                Client.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
+            }
+            
         }
     }
 }

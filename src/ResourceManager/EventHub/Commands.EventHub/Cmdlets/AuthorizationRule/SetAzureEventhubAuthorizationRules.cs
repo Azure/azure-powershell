@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = AuthoRuleInputObjectParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "AuthorizationRule Object")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "AuthorizationRule Object")]
-        [Parameter(Mandatory = false, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "AuthorizationRule Object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
         public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }

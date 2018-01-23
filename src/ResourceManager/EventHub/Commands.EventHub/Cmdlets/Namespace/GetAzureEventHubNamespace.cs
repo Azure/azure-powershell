@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
+
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))

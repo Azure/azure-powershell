@@ -80,11 +80,11 @@
     <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
     <Compile Include="Models\PSConsumerGroupAttributes.cs" />
     <Compile Include="Models\PSDestinationAttributes.cs" />
-    <Compile Include="Models\PSEnumEncodingCaptureDescription.cs" />
+    <Compile Include="Models\EnumEncodingCaptureDescription.cs" />
     <Compile Include="Models\PSEventHubDRConfigurationAttributes.cs" />
     <Compile Include="Models\PSEventHubsAttributes.cs" />
     <Compile Include="Models\PSNamespaceAttributes.cs" />
-    <Compile Include="Models\PSNamespaceState.cs" />
+    <Compile Include="Models\NamespaceState.cs" />
     <Compile Include="Models\PSListKeysAttributes.cs" />
     <Compile Include="Models\PSRegenerateKeysAttributes.cs" />
     <Compile Include="Models\PSSharedAccessAuthorizationRuleAttributes.cs" />

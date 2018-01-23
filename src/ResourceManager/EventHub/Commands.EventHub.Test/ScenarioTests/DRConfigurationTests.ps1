@@ -138,8 +138,7 @@ function DRConfigurationTests
 
 	Write-Debug "Get namespace authorizationRules connectionStrings using DRConfiguration"
     $DRnamespaceListKeys = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName -Name $authRuleName
-
-
+	
 	Write-Debug " Get the created DRConfiguration"
 	$createdDRConfig = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
 	# Assert
@@ -156,34 +155,68 @@ function DRConfigurationTests
 	# Assert
 	Assert-AreEqual $createdEventHubDRConfigList.Count 1 "EventHub DRConfig created earlier is not found in list"
 
-	# BreakPairing on Primary Namespace
+	# BreakPairing on Primary Namespace - Parameters
 	Write-Debug "BreakPairing on Primary Namespace"
-	Set-AzureRmEventHubGeoDRConfigurationBreakPair -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -Force
+	Set-AzureRmEventHubGeoDRConfigurationBreakPair -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
 
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$breakPairingDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
 	Assert-AreEqual $breakPairingDRConfig.Role "PrimaryNotReplicating"
-	
+		
 	# Create a DRConfiguration
 	Write-Debug " Create new DRConfiguration"
 	$DRresult = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
 	
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $UpdateDRConfig.Role "Primary"	
+
+	# BreakPairing on Primary Namespace - InputObject
+	Write-Debug "BreakPairing on Primary Namespace"
+	Set-AzureRmEventHubGeoDRConfigurationBreakPair -InputObject $DRresult
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$breakPairingDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $breakPairingDRConfig.Role "PrimaryNotReplicating"
+
+	# Create a DRConfiguration
+	Write-Debug " Create new DRConfiguration"
+	$DRBreakPair_withInputObject = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id
+	
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
 	Assert-AreEqual $UpdateDRConfig.Role "Primary"
 	
-	# FailOver on Secondary Namespace
+	# FailOver on Secondary Namespace - Parameters
 	Write-Debug "FailOver on Secondary Namespace"
-	Set-AzureRmEventHubGeoDRConfigurationFailOver -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -Force
+	Set-AzureRmEventHubGeoDRConfigurationFailOver -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
 
 	# Wait till the Alias Provisioning  state changes to succeeded
 	$failoverDrConfiguration = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
 	Assert-AreEqual $failoverDrConfiguration.Role "PrimaryNotReplicating"
-	Assert-AreEqual $failoverDrConfiguration.PartnerNamespace "" "FaileOver: PartnerNamespace exists"
+	Assert-AreEqual $failoverDrConfiguration.PartnerNamespace "" "FaileOver: PartnerNamespace exists"	
+
+	# Create a DRConfiguration
+	Write-Debug " Create new DRConfiguration"
+	$DRFailOver_withInputObject = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -PartnerNamespace $createdNamespace1.Id
 	
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
+	Assert-AreEqual $UpdateDRConfig.Role "Primary"
+
+	$DRFailOver_withInputObject = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
+
+	# FailOver on Primary Namespace - InputObject
+	Write-Debug "FailOver on Primary Namespace"
+	Set-AzureRmEventHubGeoDRConfigurationFailOver -InputObject $DRFailOver_withInputObject
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$failoverDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $failoverDRConfig.Role "PrimaryNotReplicating"
+
 	# Remove the Alias created
-	Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName -Force
-	Wait-Seconds 30
+	Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
+	Wait-Seconds 120
 
 	# Get the Created GeoDRConfiguration
 	Write-Debug " Get all the created GeoDRConfiguration"

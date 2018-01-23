@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public PSCaptureDescriptionAttributes(Microsoft.Azure.Management.EventHub.Models.CaptureDescription captureDescResource)
         {
             Enabled = captureDescResource.Enabled;
-            Encoding = (PSEnumEncodingCaptureDescription)captureDescResource.Encoding;
+            Encoding = (EnumEncodingCaptureDescription)captureDescResource.Encoding;
             IntervalInSeconds = captureDescResource.IntervalInSeconds;
             SizeLimitInBytes = captureDescResource.SizeLimitInBytes;
             if (captureDescResource.Destination != null)
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// of capture description. Possible values include: 'Avro',
         /// 'AvroDeflate'
         /// </summary>
-        public PSEnumEncodingCaptureDescription? Encoding { get; set; }
+        public EnumEncodingCaptureDescription? Encoding { get; set; }
 
         /// <summary>
         /// Gets or sets the time window allows you to set the frequency with

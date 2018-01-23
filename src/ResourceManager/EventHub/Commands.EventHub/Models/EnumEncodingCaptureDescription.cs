@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// <summary>
     /// Defines values for EncodingCaptureDescription.
     /// </summary>
-    public enum PSEnumEncodingCaptureDescription
+    public enum EnumEncodingCaptureDescription
     {
         [EnumMember(Value = "Avro")]
         Avro,

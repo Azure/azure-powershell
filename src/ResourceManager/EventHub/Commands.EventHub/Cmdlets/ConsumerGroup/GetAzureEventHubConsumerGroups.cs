@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
         /// </summary>
         /// <remarks>Paramaeter value is not required to see the List</remarks>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ConsumerGroup Name")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position =3, HelpMessage = "ConsumerGroup Name")]
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 

@@ -13,51 +13,62 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
-{
+{    
     /// <summary>
     /// 'Remove-AzureRmEventHubDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, EventHubDRConfigurationVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR)")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR)")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Eventhub GeoDR Configuration Object")]
+        [ValidateNotNullOrEmpty]
+        public PSEventHubDRConfigurationAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-            Force.IsPresent,
-            string.Format(Resources.DRRemoveAlias, Name, Namespace),
-            string.Format(Resources.DRRemoveAlias, Name, Namespace),
-            Name,
-            () =>
+            if (ParameterSetName == GeoDRInputObjectParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResorceDetailsFromId(InputObject.Id);
+
+                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                {
+                    Client.DeleteEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+            }
+            else
             {
                 Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                 if (PassThru)
                 {
                     WriteObject(true);
                 }
-            });
+            }
             
         }
     }

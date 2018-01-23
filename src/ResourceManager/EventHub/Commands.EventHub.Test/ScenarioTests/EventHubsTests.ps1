@@ -190,7 +190,7 @@ function EventHubsAuthTests
 	$updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -InputObj $createdAuthRule
 
 	# Assert
-	Assert-AreEqual $authRuleName $updatedAuthRule.Name "Set Authorization rule: Autho rule name dosent match"
+	Assert-AreEqual $authRuleName $updatedAuthRule.Name "Set Authorizationrule: Authorizationrule name do not match"
 	Assert-AreEqual 3 $updatedAuthRule.Rights.Count
 	Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
 	Assert-True { $updatedAuthRule.Rights -Contains "Send" }

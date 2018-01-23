@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
