@@ -26,12 +26,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-
         [Parameter(
-            Mandatory = false)]
-        [Obsolete("This parameter is obsolete.  Please use IdentityType parameter instead.", false)]
+            Mandatory = true,
+            ParameterSetName = "AssignIdentityParameterSet")]
         public SwitchParameter AssignIdentity { get; set; }
-       
     }
 }
 

@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.New,
-        ProfileNouns.VirtualMachineConfig),
+        ProfileNouns.VirtualMachineConfig,
+        DefaultParameterSetName = "DefaultParameterSet"),
     OutputType(
         typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -65,9 +66,10 @@ namespace Microsoft.Azure.Commands.Compute
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = "AssignIdentityParameterSet",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete.  Use IdentityType parameter instead.", false)]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
