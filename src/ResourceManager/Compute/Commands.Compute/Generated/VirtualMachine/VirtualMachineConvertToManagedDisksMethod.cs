@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -102,19 +101,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class ConvertToAzureRmVMManagedDisk : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsData.ConvertTo))
+                if (ShouldProcess(this.VMName, VerbsData.ConvertTo))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
 
                     var result = VirtualMachinesClient.ConvertToManagedDisks(resourceGroupName, vmName);
                     var psObject = new PSOperationStatusResponse();
-                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -127,6 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -138,5 +137,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("Name")]
         [AllowNull]
         public string VMName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

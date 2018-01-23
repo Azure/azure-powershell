@@ -15,14 +15,15 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
-        internal const string FromPsApiManagementInstanceSetName = "Set from provided PsApiManagement instance";
-        internal const string DefaultParameterSetName = "Specific API Management service";
+        internal const string FromPsApiManagementInstanceSetName = "SetFromPsApiManagementInstance";
+        internal const string DefaultParameterSetName = "SetSpecificService";
 
         [Parameter(
             ParameterSetName = FromPsApiManagementInstanceSetName,
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management exists.")]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Compute/locations/publishers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

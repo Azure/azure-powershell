@@ -17,12 +17,8 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
-    [Obsolete("In a future release this object will have all 'Properties' properties flattened and the 'Properties' property will be removed. Until then, nested properies will be duplicated.")]
     public class PSDataLakeStoreAccount : DataLakeStoreAccount
     {
-        [Obsolete("This property will be removed in a future release")]
-        public PSDataLakeStoreAccountProperties Properties { get; set; }
-
         public PSDataLakeStoreAccount(DataLakeStoreAccount baseAccount) :
             base(
                 baseAccount.Location,
@@ -34,6 +30,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 baseAccount.ProvisioningState,
                 baseAccount.State,
                 baseAccount.CreationTime,
+                baseAccount.LastModifiedTime,
+                baseAccount.Endpoint,
+                baseAccount.AccountId,
                 baseAccount.EncryptionState,
                 baseAccount.EncryptionProvisioningState,
                 baseAccount.EncryptionConfig,
@@ -41,15 +40,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 baseAccount.FirewallRules,
                 baseAccount.TrustedIdProviderState,
                 baseAccount.TrustedIdProviders,
-                baseAccount.LastModifiedTime,
-                baseAccount.Endpoint,
                 baseAccount.DefaultGroup,
                 baseAccount.NewTier,
                 baseAccount.CurrentTier,
                 baseAccount.FirewallAllowAzureIps)
         {
-            Properties = new PSDataLakeStoreAccountProperties(baseAccount);
-
             // TODO: Work around to null out properties that are returned empty.
             // Swagger deserialization will put a default value of an enum in an empty object.
             // Once the server correctly returns nothing (instead of empty objects), this can
@@ -57,7 +52,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             if (EncryptionState == Management.DataLake.Store.Models.EncryptionState.Disabled)
             {
                 this.EncryptionConfig = null;
-                this.Properties.EncryptionConfig = null;
             }
         }
     }

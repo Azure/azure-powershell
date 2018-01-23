@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,26 +15,26 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADSpCredential -ObjectId <String> -Password <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADSpCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
 New-AzureRmADSpCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithCertValueParameterSet
 ```
 New-AzureRmADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalName <String> -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADSpCredential -ServicePrincipalName <String> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,15 +43,16 @@ The service principal is identified by supplying either the object id or service
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
-PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password "P@ssw0rd!"
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
 ```
 
 A new password credential is added to an existing service principal.
 In this example, the supplied password value is added to the service principal using the objectId.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
 
@@ -66,12 +68,7 @@ PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertVa
 A new key credential is added to an existing service principal.
 In this example, the supplied base64 encoded public X509 certificate ("myapp.cer") is added to the service principal using its SPN.
 
-### --------------------------  Example 3  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
+### Example 3
 
 ```
 PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue
@@ -86,12 +83,27 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: SpObjectIdWithCertValueParameterSet, SPNWithCertValueParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,7 +115,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,9 +143,9 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,7 +177,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

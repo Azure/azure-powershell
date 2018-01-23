@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,54 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add-AzureRmAccount
+  * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
+  * Fixed KeyVault Authentication when logging in with user-provided access tokens
 
+## Version 4.1.1
+- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+- Added -AsJob parameter to Get-AzureRmSubscription cmdlet
+
+## Version 4.0.0
+- Set-AzureRmDefault
+    - Use this cmdlet to set a default resource group.  This will make the -ResourceGroup parameter optional for some cmdlets, and will use the default when a resource group is not specified
+    - ```Set-AzureRmDefault -ResourceGroupName "ExampleResourceGroup"```
+    - If resource group specified exists in the subscription, this resource group will be set to default.  Otherwise, the resource group will be created and then set to default.
+- Get-AzureRmDefault
+    - Use this cmdlet to get the current default resource group (and other defaults in the future).
+    - ```Get-AzureRmDefault -ResourceGroup```
+- Clear-AzureRmDefault
+    - Use this cmdlet to remove the current default resource group
+    - ```Clear-AzureRmDefault -ResourceGroup```
+- Add-AzureRmEnvironment and Set-AzureRmEnvironment
+    - Add the BatchAudience parameter, which allows you to specify the Azure Batch Active Directory audience to use when acquiring authentication tokens for the Batch service.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+
+## Version 3.4.1
+* LocationCompleterAttribute added and available for cmdlets which use the -Location parameter
+    - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
+
+## Version 3.4.0
+* Start-Job Support for AzureRm cmdlets. 
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+      - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
+      - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
+    * Persist login information across sessions, new cmdlets: 
+      - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
+      - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
+    * Manage context information, new cmdets 
+      - Select-AzureRmContext - Select the active named context. 
+      - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
+      - Remove-AzureRmContext - Remove an existing context. 
+      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
+    * Manage context information, cmdlet changes: 
+      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+      - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
+      
 ## Version 3.3.1
 
 ## Version 3.3.0

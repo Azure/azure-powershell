@@ -23,17 +23,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", SupportsShouldProcess = true,
         DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), 
         OutputType(typeof(bool))]
-    public class RemoveAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
+    public class RemoveAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// The policy Id parameter set.
         /// </summary>
-        internal const string PolicyDefinitionIdParameterSet = "The policy definition Id parameter set.";
+        internal const string PolicyDefinitionIdParameterSet = "RemoveByPolicyDefinitionId";
 
         /// <summary>
         /// The policy name parameter set.
         /// </summary>
-        internal const string PolicyDefinitionNameParameterSet = "The policy definition name parameter set.";
+        internal const string PolicyDefinitionNameParameterSet = "RemoveByPolicyDefinitionName";
 
         /// <summary>
         /// Gets or sets the policy definition name parameter.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyDefinitionApiVersion : this.ApiVersion;
 
             this.ConfirmAction(
                 this.Force,

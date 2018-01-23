@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Removes Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
+    [System.Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Remove-AzureRmRecoveryServicesAsrPolicy cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters

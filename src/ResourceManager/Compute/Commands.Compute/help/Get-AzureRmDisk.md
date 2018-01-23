@@ -1,22 +1,24 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermdisk
 schema: 2.0.0
 ---
 
 # Get-AzureRmDisk
 
 ## SYNOPSIS
-Gets the properties of a disk.
+Gets the properties of a Managed disk.
 
 ## SYNTAX
 
 ```
-Get-AzureRmDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>] [<CommonParameters>]
+Get-AzureRmDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDisk** cmdlet gets the properties of a disk.
+The **Get-AzureRmDisk** cmdlet gets the properties of a Managed disk.
 
 ## EXAMPLES
 
@@ -42,6 +44,21 @@ PS C:\> Get-AzureRmDisk
 This command gets the properties of all disks under the subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DiskName
 Specifies the name of a disk.

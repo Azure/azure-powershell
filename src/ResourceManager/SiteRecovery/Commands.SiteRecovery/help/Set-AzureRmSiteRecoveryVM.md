@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 483D4C1A-D34E-40ED-B92B-82187FF321F7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/set-azurermsiterecoveryvm
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Sets the recovery-side options for a Site Recovery protection entity.
 ```
 Set-AzureRmSiteRecoveryVM -VirtualMachine <ASRVirtualMachine> [-Name <String>] [-Size <String>]
  [-PrimaryNic <String>] [-RecoveryNetworkId <String>] [-RecoveryNicSubnetName <String>]
- [-RecoveryNicStaticIPAddress <String>] [-NicSelectionType <String>] [<CommonParameters>]
+ [-RecoveryNicStaticIPAddress <String>] [-NicSelectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +26,21 @@ The **Set-AzureRmSiteRecoveryVM** cmdlet sets the recovery-side protection optio
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the target virtual machine.
@@ -156,7 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRVirtualMachine
-
 Parameter 'VirtualMachine' accepts value of type 'ASRVirtualMachine' from the pipeline
 
 ## OUTPUTS

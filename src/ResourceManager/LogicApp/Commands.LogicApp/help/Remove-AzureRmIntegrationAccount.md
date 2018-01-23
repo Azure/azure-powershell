@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+Module Name: AzureRM.LogicApp
 ms.assetid: 607FBE75-727D-4388-9504-94AD31BCDBBF
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermintegrationaccount
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Removes an integration account.
 ## SYNTAX
 
 ```
-Remove-AzureRmIntegrationAccount -ResourceGroupName <String> -Name <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmIntegrationAccount -ResourceGroupName <String> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ PS C:\>Remove-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11" -Na
 This command removes an integration account named IntegrationAccount31.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+Module Name: AzureRM.LogicApp
 ms.assetid: 9B3B6AD4-C37C-4877-9864-9FB2E3B0BDAB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccountpartner
 schema: 2.0.0
 ---
 
@@ -14,8 +15,8 @@ Modifies an integration account partner.
 
 ```
 Set-AzureRmIntegrationAccountPartner -ResourceGroupName <String> -Name <String> -PartnerName <String>
- [-PartnerType <String>] [-BusinessIdentities <Object>] [-Metadata <Object>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PartnerType <String>] [-BusinessIdentities <Object>] [-Metadata <Object>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +56,21 @@ Specify a hash table.
 Type: Object
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

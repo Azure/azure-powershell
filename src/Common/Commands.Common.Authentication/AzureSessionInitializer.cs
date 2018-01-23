@@ -14,14 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -54,33 +52,92 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureSession.Initialize(() => CreateInstance(dataStore), true);
         }
 
+        static IAzureTokenCache InitializeTokenCache(IDataStore store, string cacheDirectory, string cacheFile, string autoSaveMode)
+        {
+            IAzureTokenCache result = new AuthenticationStoreTokenCache(new AzureTokenCache());
+            if (autoSaveMode == ContextSaveMode.CurrentUser)
+            {
+                try
+                {
+                    FileUtilities.DataStore = store;
+                    FileUtilities.EnsureDirectoryExists(cacheDirectory);
+                    var cachePath = Path.Combine(cacheDirectory, cacheFile);
+                    result = new ProtectedFileTokenCache(cachePath, store);
+                }
+                catch
+                {
+                }
+            }
+
+            return result;
+        }
+
+        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile)
+        {
+            var result = new ContextAutosaveSettings
+            {
+                CacheDirectory = profileDirectory,
+                ContextDirectory = profileDirectory,
+                Mode = ContextSaveMode.Process,
+                CacheFile = "TokenCache.dat",
+                ContextFile = "AzureRmContext.json"
+            };
+
+            var settingsPath = Path.Combine(profileDirectory, settingsFile);
+
+            try
+            {
+                if (store.FileExists(settingsPath))
+                {
+                    var settingsText = store.ReadFileAsText(settingsPath);
+                    ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);
+                    result.CacheDirectory = settings.CacheDirectory ?? result.CacheDirectory;
+                    result.CacheFile = settings.CacheFile ?? result.CacheFile;
+                    result.ContextDirectory = settings.ContextDirectory ?? result.ContextDirectory;
+                    result.Mode = settings.Mode;
+                    result.ContextFile = settings.ContextFile ?? result.ContextFile;
+                }
+            }
+            catch
+            {
+                // ignore exceptions in reading settings from disk
+            }
+
+            return result;
+        }
+
+        static void InitializeDataCollection(IAzureSession session)
+        {
+            session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
+        }
+
         static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
+            string profilePath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    Resources.AzureDirectoryName);
+            dataStore = dataStore ?? new DiskDataStore();
+
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
-                DataStore = dataStore?? new DiskDataStore(),
+                DataStore = dataStore,
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
-                ProfileDirectory = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    Resources.AzureDirectoryName),
+                ProfileDirectory = profilePath,
                 ProfileFile = "AzureProfile.json",
-                TokenCacheFile = "TokenCache.dat"
             };
-            try
-            {
-                FileUtilities.DataStore = session.DataStore;
-                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                var cacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
-                session.TokenCache = new ProtectedFileTokenCache(cacheFile, session.DataStore);
-            }
-            catch
-            {
-                session.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-            }
 
+            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile);
+            session.ARMContextSaveMode = autoSave.Mode;
+            session.ARMProfileDirectory = autoSave.ContextDirectory;
+            session.ARMProfileFile = autoSave.ContextFile;
+            session.TokenCacheDirectory = autoSave.CacheDirectory;
+            session.TokenCacheFile = autoSave.CacheFile;
+            session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
+            InitializeDataCollection(session);
+            session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             return session;
         }
 
@@ -126,15 +183,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
             }
 
-            public override TraceLevel AuthenticationLegacyTraceLevel
+            public override System.Diagnostics.TraceLevel AuthenticationLegacyTraceLevel
             {
                 get
                 {
-                    return TraceLevel.Off;
+                    return System.Diagnostics.TraceLevel.Off;
                 }
                 set
                 {
-
+                    
                 }
             }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
-    OutputType(typeof(JobBase), typeof(IList<JobBase>))]
+        OutputType(typeof(JobBase), typeof(IList<JobBase>))]
     public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -149,13 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 int resultCount = 0;
 
-                ServiceClientModel.JobStatus? jobStatus = null;
-                jobStatus = Status.HasValue ? (Status.ToEnum<ServiceClientModel.JobStatus>())
-                            : default(ServiceClientModel.JobStatus?);
-
                 var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
-                    Status.HasValue ? Status.ToEnum<ServiceClientModel.JobStatus>() :
-                                      default(ServiceClientModel.JobStatus?),
+                    ServiceClientHelpers.GetServiceClientJobStatus(Status),
                     Operation.ToString(),
                     rangeStart,
                     rangeEnd,

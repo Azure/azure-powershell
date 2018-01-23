@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = '.\AzureRM.Resources.Netcore.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.9.3'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,66 +51,78 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.9.3'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
+                '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
+                '.\Microsoft.Extensions.Caching.Abstractions.dll', 
+                '.\Microsoft.Extensions.Caching.Memory.dll', 
+                '.\Microsoft.Extensions.Options.dll', 
+                '.\Microsoft.Extensions.Primitives.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @('netcoreapp2.0\ResourceManagerStartup.ps1') 
+ScriptsToProcess = @() 
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
+TypesToProcess = '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Resources.format.ps1xml', 
-               'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
+               '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Resources.dll', 
-               'netcoreapp2.0\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll', '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment', 
-               'Get-AzureRmRoleAssignment', 'New-AzureRmRoleAssignment', 
-               'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
-               'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
-               'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-               'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
-               'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
-               'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
-               'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
-               'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
-               'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
-               'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-               'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
-               'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
-               'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
-               'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
-               'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
-               'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
-               'Unregister-AzureRmResourceProvider', 
-               'Get-AzureRmResourceGroupDeployment', 
-               'New-AzureRmResourceGroupDeployment', 
-               'Remove-AzureRmResourceGroupDeployment', 
-               'Stop-AzureRmResourceGroupDeployment', 
-               'Test-AzureRmResourceGroupDeployment', 'Set-AzureRmResourceGroup', 
-               'New-AzureRmResourceGroup', 'Get-AzureRmResourceGroup', 
-               'Save-AzureRmResourceGroupDeploymentTemplate', 
-               'Get-AzureRmResourceGroupDeploymentOperation', 
-               'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
-               'Find-AzureRmResource', 'Move-AzureRmResource', 
-               'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-               'Get-AzureRmPolicyDefinition', 'New-AzureRmPolicyAssignment', 
-               'New-AzureRmPolicyDefinition', 'Remove-AzureRmPolicyAssignment', 
-               'Remove-AzureRmPolicyDefinition', 'Set-AzureRmPolicyAssignment', 
-               'Set-AzureRmPolicyDefinition', 'Remove-AzureRmResource', 
-               'Remove-AzureRmResourceLock', 'Set-AzureRmResource', 
-               'New-AzureRmResource', 'Set-AzureRmResourceLock', 
-               'Get-AzureRmResource'
+    'Get-AzureRmRoleAssignment', 'New-AzureRmRoleAssignment', 
+    'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
+    'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
+    'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
+    'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+    'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
+    'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
+    'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
+    'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
+    'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
+    'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
+    'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
+    'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
+    'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
+    'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
+    'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
+    'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
+    'Unregister-AzureRmResourceProvider', 
+    'Get-AzureRmResourceGroupDeployment', 
+    'New-AzureRmResourceGroupDeployment', 
+    'Remove-AzureRmResourceGroupDeployment', 
+    'Stop-AzureRmResourceGroupDeployment', 
+    'Test-AzureRmResourceGroupDeployment', 'Set-AzureRmResourceGroup', 
+    'New-AzureRmResourceGroup', 'Get-AzureRmResourceGroup', 
+    'Save-AzureRmResourceGroupDeploymentTemplate', 
+    'Get-AzureRmResourceGroupDeploymentOperation', 
+    'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
+    'Find-AzureRmResource', 'Move-AzureRmResource', 
+    'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
+    'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 
+    'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition', 
+    'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment', 
+    'Remove-AzureRmPolicyDefinition', 
+    'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment', 
+    'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 
+    'Remove-AzureRmResource', 'Remove-AzureRmResourceLock', 
+    'Set-AzureRmResource', 'New-AzureRmResource', 
+    'Set-AzureRmResourceLock', 'Get-AzureRmResource', 
+    'Get-AzureRmManagedApplicationDefinition', 
+    'New-AzureRmManagedApplicationDefinition', 
+    'Set-AzureRmManagedApplicationDefinition', 
+    'Remove-AzureRmManagedApplicationDefinition', 
+    'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
+    'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -136,7 +148,7 @@ PrivateData = @{
         Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt'
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'

@@ -32,11 +32,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model
         public RouteTableWithRoutes(RouteTable routeTableFromGetResponse)
             : base(routeTableFromGetResponse)
         {
-            Mapper.CreateMap<WindowsAzure.Management.Network.Models.Route, Route>();
-            Mapper.CreateMap<WindowsAzure.Management.Network.Models.NextHop, NextHop>();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<WindowsAzure.Management.Network.Models.Route, Route>();
+                cfg.CreateMap<WindowsAzure.Management.Network.Models.NextHop, NextHop>();
+            });
+
+            IMapper mapper = config.CreateMapper();
             if (routeTableFromGetResponse.RouteList != null)
             {
-                routes.AddRange(routeTableFromGetResponse.RouteList.Select(Mapper.Map<Route>));
+                routes.AddRange(routeTableFromGetResponse.RouteList.Select(mapper.Map<Route>));
             }
         }
     }

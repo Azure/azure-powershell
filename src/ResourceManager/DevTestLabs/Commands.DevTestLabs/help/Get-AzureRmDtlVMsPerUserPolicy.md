@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
+Module Name: AzureRM.DevTestLabs
 ms.assetid: 5029179A-99A5-4350-A8E5-D15ABA59CC93
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devtestlabs/get-azurermdtlvmsperuserpolicy
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the virtual machines per user policy of a lab in DevTest Labs.
 ## SYNTAX
 
 ```
-Get-AzureRmDtlVMsPerUserPolicy [-LabName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmDtlVMsPerUserPolicy [-LabName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +30,21 @@ The cmdlet returns the enabled or disabled status of the policy and the maximum 
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -LabName
 Specifies the name of the lab for which this cmdlet gets the virtual machine per user policy.

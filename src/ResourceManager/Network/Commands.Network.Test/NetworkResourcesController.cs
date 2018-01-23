@@ -73,6 +73,7 @@ namespace Commands.Network.Test
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Compute", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             d.Add("Microsoft.Storage", null);

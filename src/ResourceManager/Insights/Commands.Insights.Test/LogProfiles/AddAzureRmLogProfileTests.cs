@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
 
         public AddAzureRmLogProfileTests(ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            // XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -63,6 +63,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
                 });
 
             insightsManagementClientMock.SetupGet(f => f.LogProfiles).Returns(this.insightsLogProfileOperationsMock.Object);
+
+            // Setup Confirmation
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
         [Fact]
@@ -71,18 +77,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             // With mandatory arguments only
             cmdlet.Name = Utilities.Name;
-            cmdlet.Locations = new List<string>() { "East US" };
+            cmdlet.Location = new List<string>() { "East US" };
             cmdlet.ExecuteCmdlet();
             
             Assert.Equal(Utilities.Name, this.logProfileName);
             
             // With all arguments
             cmdlet.Name = Utilities.Name;
-            cmdlet.Locations = new List<string>() {"East US"};
+            cmdlet.Location = new List<string>() {"East US"};
             cmdlet.RetentionInDays = 10;
             cmdlet.ServiceBusRuleId = "miBusId";
             cmdlet.StorageAccountId = "miCuentaId";
-            cmdlet.Categories = new List<string>() {"cat1"};
+            cmdlet.Category = new List<string>() {"cat1"};
 
             cmdlet.ExecuteCmdlet();
 

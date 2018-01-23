@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
 
@@ -151,7 +152,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.Name == ClusterName &&
                     clusterout.OperatingSystemType == OSType.Linux)),
                 Times.Once);
-
         }
 
         [Fact]
@@ -205,8 +205,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 Times.Once);
         }
 
-        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false, bool setEdgeNodeVmSize = false)
+        private void CreateNewHDInsightCluster(
+            bool addSecurityProfileInresponse = false, 
+            bool setEdgeNodeVmSize = false,
+            int workerNodeDataDisks = 0)
         {
+            // Assign cmdlet parameters
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
             cmdlet.ClusterSizeInNodes = ClusterSize;
@@ -217,9 +221,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
             cmdlet.OSType = OSType.Linux;
+            cmdlet.DisksPerWorkerNode = workerNodeDataDisks;
             if (setEdgeNodeVmSize)
+            {
                 cmdlet.EdgeNodeSize = "edgeNodeVmSizeSetTest";
+            }
 
+            // Construct cluster Object
             var cluster = new Cluster
             {
                 Id = "id",
@@ -237,9 +245,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux
+                    OperatingSystemType = OSType.Linux,
+                    ComputeProfile = new ComputeProfile()
+                    {
+                        Roles = new List<Role>()
+                    }
                 }
             };
+
+            if (workerNodeDataDisks > 0)
+            {
+                cluster.Properties.ComputeProfile.Roles.Add(new Role()
+                {
+                    Name = "workernode",
+                    DataDisksGroups = new List<DataDisksGroupProperties>()
+                    {
+                        new DataDisksGroupProperties()
+                        {
+                            DisksPerNode = workerNodeDataDisks
+                        }
+                    }
+                });
+            }
 
             if (addSecurityProfileInresponse)
             {
@@ -285,6 +312,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             var getresponse = new ClusterGetResponse {Cluster = cluster};
 
+            // Setup Mocks and verify successfull GET response
             hdinsightManagementMock.Setup(
                 c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                     parameters =>
@@ -299,10 +327,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.OSType == OSType.Linux &&
                         parameters.SshUserName == _sshCred.UserName &&
                         parameters.SshPassword == _sshCred.Password.ConvertToString() &&
-                        ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")))))
+                        ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&
+                        (workerNodeDataDisks == 0) || (workerNodeDataDisks > 0 && parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))))
                 .Returns(getresponse)
                 .Verifiable();
 
+            // Execute Cmdlet and verify output
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
@@ -314,7 +344,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
+                    clusterout.OperatingSystemType == OSType.Linux &&
+                    (workerNodeDataDisks == 0) || (clusterout.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))),
                     Times.Once);
         }
 
@@ -436,6 +467,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.OperatingSystemType == OSType.Linux &&
                     clusterout.ComponentVersion[0] == componentVersionResponse)),
                     Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateNewHDInsightCluster_Kafka_DataDisks_Linux()
+        {
+            ClusterType = "Kafka";
+            HdiVersion = "3.6";
+
+            CreateNewHDInsightCluster(workerNodeDataDisks: 8);
         }
 
         [Fact]

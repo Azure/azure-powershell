@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: DE31891A-0EF7-44D7-B955-A3279D27CC21
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile
 schema: 2.0.0
 ---
 
@@ -17,7 +18,7 @@ New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Pr
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
  -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
  [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-Tag <Hashtable>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +42,21 @@ This command creates an Azure Traffic Manager profile named ContosoProfile in re
 The DNS FQDN is contosoapp.trafficmanager.net.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -MonitorIntervalInSeconds
 The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.
@@ -146,7 +162,7 @@ Specifies a name for the Traffic Manager profile that this cmdlet creates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -162,7 +178,7 @@ Valid values are: Enabled and Disabled.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -179,7 +195,7 @@ Traffic Manager combines this value and the DNS domain name that Azure Traffic M
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -195,7 +211,7 @@ This cmdlet creates a Traffic Manager profile in the group that this parameter s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -229,11 +245,12 @@ Valid values are:
 - Performance
 - Weighted
 - Priority
+- Geographic
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Performance, Weighted, Priority, Geographic
 
 Required: True
@@ -249,7 +266,7 @@ Specifies the DNS Time to Live (TTL) value.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The action group &apos;AUDIT_CHANGE_GROUP&apos; is not supported. It will be removed in a future release..
+        /// </summary>
+        internal static string auditChangeGroupDeprecationMessage {
+            get {
+                return ResourceManager.GetString("auditChangeGroupDeprecationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
@@ -147,6 +156,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string DeprecatedCmdletUsageWarning {
             get {
                 return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
+        /// </summary>
+        internal static string ElasticPoolDatabaseActivityCancelNotSupported {
+            get {
+                return ResourceManager.GetString("ElasticPoolDatabaseActivityCancelNotSupported", resourceCulture);
             }
         }
         
@@ -340,6 +358,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OperationId is required for this operation.
+        /// </summary>
+        internal static string OperationIdRequired {
+            get {
+                return ResourceManager.GetString("OperationIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
         internal static string PdoTitle {
@@ -493,6 +520,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Server Dns Alias &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Dns Alias &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerFirewallRuleDescription {
@@ -507,6 +552,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlServerFirewallRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerVirtualNetworkRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleWarning", resourceCulture);
             }
         }
         
@@ -610,6 +673,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server Dns Alias with name: &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ServerDnsAliasNameExists {
+            get {
+                return ResourceManager.GetString("ServerDnsAliasNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
         /// </summary>
         internal static string ServerFirewallRuleNameExists {
@@ -655,6 +727,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual Network Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;.
+        /// </summary>
+        internal static string ServerVirtualNetworkRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerVirtualNetworkRuleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
         internal static string SetAdvisorAutoExecuteStatusDescription {
@@ -673,7 +754,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning: Cutting off access to the key &apos;{0}&apos; may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
         /// </summary>
         internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
             get {
@@ -768,6 +849,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StopAzureSqlServerUpgradeWarning {
             get {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelling updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopDatabaseActivityDescription {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopDatabaseActivityWarning {
+            get {
+                return ResourceManager.GetString("StopDatabaseActivityWarning", resourceCulture);
             }
         }
         

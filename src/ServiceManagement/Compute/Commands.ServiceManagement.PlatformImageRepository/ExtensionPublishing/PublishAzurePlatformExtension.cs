@@ -230,12 +230,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
 
                     if (found && (this.Force.IsPresent || this.ShouldContinue(upgradeCnfm, upgradeCptn)))
                     {
-                        var parameters = Mapper.Map<ExtensionImageUpdateParameters>(this);
+                        var parameters = ServiceManagementPlatformImageRepositoryProfile.Mapper.Map<ExtensionImageUpdateParameters>(this);
                         op = this.ComputeClient.ExtensionImages.Update(parameters);
                     }
                     else if (!found && (this.Force.IsPresent || this.ShouldContinue(publishCnfm, publishCptn)))
                     {
-                        var parameters = Mapper.Map<ExtensionImageRegisterParameters>(this);
+                        var parameters = ServiceManagementPlatformImageRepositoryProfile.Mapper.Map<ExtensionImageRegisterParameters>(this);
                         op = this.ComputeClient.ExtensionImages.Register(parameters);
                     }
 

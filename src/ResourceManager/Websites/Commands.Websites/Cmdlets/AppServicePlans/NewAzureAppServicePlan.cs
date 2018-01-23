@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
@@ -29,11 +30,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
+        [LocationCompleter("Microsoft.Web/serverfarms")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", IgnoreCase = true)]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
@@ -55,6 +57,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

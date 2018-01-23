@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadapplication
 schema: 2.0.0
 ---
 
@@ -15,35 +16,36 @@ Creates a new azure active directory application.
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -PasswordCredentials <PSADPasswordCredential[]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
 New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
- [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,17 +53,18 @@ Creates a new azure active directory application.
 
 ## EXAMPLES
 
-### --------------------------  Create new AAD application.  --------------------------
+### Create new AAD application.
 ```
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
 ```
 
 Creates a new azure active directory application without any credentials.
 
-### --------------------------  Create new AAD application with password.  --------------------------
+### Create new AAD application with password.
 ```
+PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
-//NewApplication" -Password "password"
+//NewApplication" -Password $SecureStringPassword
 ```
 
 Creates a new azure active directory application and associates password credentials with it.
@@ -74,7 +77,7 @@ The value specifying whether the application is a single tenant or a multi-tenan
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,12 +93,27 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,7 +123,7 @@ Display name of the new application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -122,7 +140,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +155,7 @@ The URL to the application homepage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +170,7 @@ The URIs that identify the application.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -167,7 +185,7 @@ The list of certificate credentials associated with the application.
 ```yaml
 Type: PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -180,9 +198,9 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,7 +215,7 @@ The list of password credentials associated with the application.
 ```yaml
 Type: PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -212,7 +230,7 @@ The application reply urls.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -229,7 +247,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: A837077C-0A79-431C-93D2-799B2134EE69
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermalertrule
 schema: 2.0.0
 ---
 
@@ -12,19 +13,19 @@ Gets alert rules.
 
 ## SYNTAX
 
-### Parameters for Get-AzureRmAlertRule cmdlet
+### GetByResourceGroup
 ```
-Get-AzureRmAlertRule -ResourceGroup <String> [-DetailedOutput] [<CommonParameters>]
-```
-
-### Parameters for Get-AzureRmAlertRule cmdlet using name
-```
-Get-AzureRmAlertRule -ResourceGroup <String> -Name <String> [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameters for Get-AzureRmAlertRule cmdlet using target resource uri
+### GetByName
 ```
-Get-AzureRmAlertRule -ResourceGroup <String> -TargetResourceId <String> [-DetailedOutput] [<CommonParameters>]
+Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByResourceUri
+```
+Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +59,21 @@ The *DetailedOutput* parameter is specified, so the output is detailed.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DetailedOutput
 Displays full details in the output.
 
@@ -78,7 +94,7 @@ Specifies the name of the alert rule to get.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Get-AzureRmAlertRule cmdlet using name
+Parameter Sets: GetByName
 Aliases: 
 
 Required: True
@@ -88,13 +104,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -108,7 +124,7 @@ Specifies the ID of the target resource.
 
 ```yaml
 Type: String
-Parameter Sets: Parameters for Get-AzureRmAlertRule cmdlet using target resource uri
+Parameter Sets: GetByResourceUri
 Aliases: 
 
 Required: True
@@ -125,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor]
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule>
 
 ## NOTES
 

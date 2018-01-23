@@ -18,9 +18,9 @@ using System.Collections.Generic;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -30,35 +30,24 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
         }
 
-        public DeploymentExtended CreateRegistry(
+        public DeploymentExtended CreateClassicRegistry(
             string resourceGroupName,
             string registryName,
             string location,
-            string registrySku,
             bool? adminUserEnabled,
-            string storageAccountName = null,
             IDictionary<string, string> tags = null)
         {
             string template = null;
-            if (storageAccountName == null)
+            var storageAccountName = registryName.ToLowerInvariant();
+            if (storageAccountName.Length > 18)
             {
-                storageAccountName = registryName.ToLowerInvariant();
-                if (storageAccountName.Length > 18)
-                {
-                    storageAccountName = storageAccountName.Substring(0, 18);
-                }
-                storageAccountName += DateTime.UtcNow.ToString("hhmmss");
-
-                template = DeploymentTemplateHelper.DeploymentTemplateNewStorage(
-                    registryName, location, registrySku, storageAccountName, adminUserEnabled);
+                storageAccountName = storageAccountName.Substring(0, 18);
             }
-            else
-            {
-                var storageAccountResourceGroup = GetStorageAccountResourceGroup(storageAccountName);
+            storageAccountName += DateTime.UtcNow.ToString("hhmmss");
 
-                template = DeploymentTemplateHelper.DeploymentTemplateExistingStorage(
-                    registryName, location, registrySku, storageAccountName, storageAccountResourceGroup, adminUserEnabled);
-            }
+            template = DeploymentTemplateHelper.DeploymentTemplateNewStorage(
+                registryName, location, SkuName.Classic, storageAccountName, adminUserEnabled);
+
 
             var deploymentName = $"ContainerRegistry_{registryName}";
             Deployment deployment = new Deployment()
@@ -74,7 +63,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return ProvisionDeploymentStatus(resourceGroupName, deploymentName, deployment);
         }
 
-        public string GetStorageAccountResourceGroup(string storageAccountName)
+        public string GetStorageAccountId(string storageAccountName)
         {
             var filterExpression = $"ResourceType eq 'Microsoft.Storage/storageAccounts' AND name eq '{storageAccountName}'";
             var odataQuery = new ODataQuery<GenericResourceFilter>() { Filter = filterExpression };
@@ -92,7 +81,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 throw new InvalidOperationException($"Storage account {storageAccountName} doesn't exist.");
             }
 
-            return PSContainerRegistry.ParseResourceGroupFromId(resource.Id);
+            return resource.Id;
         }
 
         public string GetResourceGroupLocation(string resourceGroupName)

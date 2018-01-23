@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkPeering ToPsVirtualNetworkPeering(VirtualNetworkPeering vnetPeering)
         {
-            var psVnetpeering = Mapper.Map<PSVirtualNetworkPeering>(vnetPeering);
+            var psVnetpeering = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetworkPeering>(vnetPeering);
 
             return psVnetpeering;
         }

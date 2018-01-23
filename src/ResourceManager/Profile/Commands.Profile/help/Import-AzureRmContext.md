@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/import-azurermcontext
 schema: 2.0.0
 ---
 
@@ -11,14 +12,16 @@ Loads Azure authentication information from a file.
 
 ## SYNTAX
 
-### InMemoryProfile
+### ProfileFromDisk (Default)
 ```
-Import-AzureRmContext [-AzureContext] <AzureRMProfile> [-WhatIf] [-Confirm]
+Import-AzureRmContext [-Path] <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ProfileFromDisk
+### InMemoryProfile
 ```
-Import-AzureRmContext [-Path] <String> [-WhatIf] [-Confirm]
+Import-AzureRmContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,11 +61,10 @@ This example selects a context from a JSON file that is passed through to the cm
 ## PARAMETERS
 
 ### -AzureContext
-Specifies the Azure context from which this cmdlet reads.
-If you do not specify a context, this cmdlet reads from the local default context.
+Specifies the Azure context from which this cmdlet reads. If you do not specify a context, this cmdlet reads from the local default context.
 
 ```yaml
-Type: AzureRMProfile
+Type: AzureRmProfile
 Parameter Sets: InMemoryProfile
 Aliases: Profile
 
@@ -70,6 +72,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -88,6 +105,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Scope
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
+
+```yaml
+Type: ContextModificationScope
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Process, CurrentUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -98,14 +131,13 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -114,21 +146,23 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
-System.String
-
+Contains the set of credentials, accounts, and subscriptions that are used to communicate with Azure.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
-
+Contains the set of credentials, accounts, and subscriptions that can be used to communicate with Azure.
 
 ## NOTES
 

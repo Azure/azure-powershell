@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -14,60 +15,62 @@ Creates a new azure active directory service principal.
 
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -PasswordCredentials <PSADPasswordCredential[]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -PasswordCredentials <PSADPasswordCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
 New-AzureRmADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -KeyCredentials <PSADKeyCredential[]> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -KeyCredentials <PSADKeyCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithoutCredentialParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -Password <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -PasswordCredentials <PSADPasswordCredential[]> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmADServicePrincipal -DisplayName <String> -PasswordCredentials <PSADPasswordCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyPlainParameterSet
 ```
 New-AzureRmADServicePrincipal -DisplayName <String> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyCredentialParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -KeyCredentials <PSADKeyCredential[]> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmADServicePrincipal -DisplayName <String> -KeyCredentials <PSADKeyCredential[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +81,7 @@ In order to update the application specific parameters please use Set-AzureRmADA
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 New-AzureRmADServicePrincipal -ApplicationId 34a28ad2-dec4-4a41-bc3b-d22ddf90000e
 ```
@@ -89,9 +92,10 @@ DisplayName                    Type                           ObjectId
 -----------                    ----                           --------
 DemoApp                        ServicePrincipal               f95b6f5c-fc98-4af0-bb8a-34a14ca1dca1
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
-New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp
+$SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp -Password $SecureStringPassword
 ```
 
 Creates a new service principal.
@@ -111,7 +115,7 @@ If an application id is not specified, one will be generated.
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationWithoutCredentialParameterSet, ApplicationWithPasswordPlainParameterSet, ApplicationWithPasswordCredentialParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,12 +131,27 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -142,7 +161,7 @@ The friendly name of the service principal.
 ```yaml
 Type: String
 Parameter Sets: DisplayNameWithoutCredentialParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyPlainParameterSet, DisplayNameWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -159,7 +178,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +193,7 @@ The list of certificate credentials associated with the service principal.
 ```yaml
 Type: PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -187,9 +206,9 @@ Accept wildcard characters: False
 The password to be associated with the service principal.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, DisplayNameWithPasswordPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -204,7 +223,7 @@ The list of password credentials associated with the service principal.
 ```yaml
 Type: PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -221,7 +240,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

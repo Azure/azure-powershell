@@ -21,6 +21,7 @@ using System.Globalization;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -124,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                         this.ResourceGroupName,
                         this.VMName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 });
         }

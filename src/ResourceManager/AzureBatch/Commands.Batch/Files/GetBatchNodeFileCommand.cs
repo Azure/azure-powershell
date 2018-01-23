@@ -70,8 +70,9 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 2, ParameterSetName = ComputeNodeAndIdParameterSet)]
         [Parameter(ParameterSetName = TaskAndIdParameterSet)]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Path { get; set; }
 
         [Parameter(ParameterSetName = TaskAndODataParameterSet)]
         [Parameter(ParameterSetName = ParentTaskObjectParameterSet)]
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Batch
             ListNodeFileOptions options = new ListNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.Task, this.PoolId,
                 this.ComputeNodeId, this.ComputeNode, this.AdditionalBehaviors)
             {
-                NodeFileName = this.Name,
+                Path = this.Path,
                 Filter = this.Filter,
                 MaxCount = this.MaxCount,
                 Recursive = this.Recursive.IsPresent

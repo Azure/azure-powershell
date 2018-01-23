@@ -160,15 +160,20 @@ function Test-VirtualMachine
         Assert-AreEqual "BGInfo" $vm1.Extensions[0].VirtualMachineExtensionType
         Assert-AreEqual "Microsoft.Compute" $vm1.Extensions[0].Publisher
 
-        Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
-        Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
-        Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned;
+        $job = Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob
+		$job | Wait-Job
+        $job = Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob
+		$job | Wait-Job
+        $job = Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned -AsJob
+		$job | Wait-Job
 
         # Update
         $p.Location = $vm1.Location;
         Update-AzureRmVM -ResourceGroupName $rgname -VM $p;
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-AreEqual $null $vm2.Zones;
+
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
@@ -202,8 +207,9 @@ function Test-VirtualMachine
         Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
-        Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
-        $vms = Get-AzureRmVM -ResourceGroupName $rgname;
+        $job = Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force -AsJob
+        $job | Wait-Job
+		$vms = Get-AzureRmVM -ResourceGroupName $rgname;
         Assert-AreEqual $vms $null;
 
         # Availability Set
@@ -378,7 +384,8 @@ function Test-VirtualMachinePiping
 
         $dest = Get-ComputeTestResourceName;
         $templatePath = "$TestOutputRoot\template.txt";
-        Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
+        $job = Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath -AsJob
+		$job | Wait-Job
 
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
@@ -454,7 +461,8 @@ function Test-VirtualMachineUpdateWithoutNic
              | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc;
+        $job = $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc -AsJob
+		$job | Wait-Job
 
         # Get VM
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
@@ -495,27 +503,14 @@ Test Virtual Machine Size and Usage
 #>
 function Test-VirtualMachineList
 {
-    # Setup
-    $passed = $false;
+    $s1 = Get-AzureRmVM;
+    $s2 = Get-AzureRmVM;
 
-    try
+    if ($s2 -ne $null)
     {
-        $s1 = Get-AzureRmVM;
-        $s2 = Get-AzureRmVM;
-
-        if ($s2 -ne $null)
-        {
-            Assert-NotNull $s2[0].Id;
-        }
-
-        Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "http://www.test.com/test"; } "Unable to deserialize the response"
-
-        $passed = $true;
+        Assert-NotNull $s2[0].Id;
     }
-    finally
-    {
-        Assert-True { $passed };
-    }
+    Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "https://www.test.com/test"; } "Unable to deserialize the response"
 }
 
 <#
@@ -1325,7 +1320,8 @@ function Test-VirtualMachineDataDisk
         $vm1 = Add-AzureRmVMDataDisk -VM $vm1 -Name $dataDiskName3 -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
 
         # Update
-        Update-AzureRmVM -ResourceGroupName $rgname -VM $vm1;
+        $job = Update-AzureRmVM -ResourceGroupName $rgname -VM $vm1 -AsJob
+		$job | Wait-Job
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
@@ -1448,7 +1444,7 @@ function Test-VirtualMachineDataDiskNegative
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
         # Negative Tests on A0 Size + 2 Data Disks
-        Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The maximum number of data disks allowed to be attached to a VM is 1.";
+        Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The maximum number of data disks allowed to be attached to a VM of this size is 1.";
     }
     finally
     {
@@ -1539,6 +1535,8 @@ function Test-VirtualMachinePlan
 <#
 .SYNOPSIS
 Test Virtual Machines Plan 2
+.Description
+AzureAutomationTest
 #>
 function Test-VirtualMachinePlan2
 {
@@ -1718,6 +1716,8 @@ function Test-VirtualMachineTags
 <#
 .SYNOPSIS
 Test Virtual Machines with VMAgent and AutoUpdate
+.Description
+AzureAutomationTest
 #>
 function Test-VirtualMachineWithVMAgentAutoUpdate
 {
@@ -1822,6 +1822,8 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
 <#
 .SYNOPSIS
 Test Virtual Machines with VMAgent and AutoUpdate
+.Description
+AzureAutomationTest
 #>
 function Test-LinuxVirtualMachine
 {
@@ -1923,6 +1925,10 @@ function Test-LinuxVirtualMachine
 }
 
 # Test Image Cmdlet Output Format
+<#
+.Description
+AzureAutomationTest
+#>
 function Test-VMImageCmdletOutputFormat
 {
     $locStr = Get-ComputeVMLocation;
@@ -1940,7 +1946,7 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku');
 
-    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression');
+    Assert-OutputContains " Get-AzureRmVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage " @('Version', 'FilterExpression', 'Skus', 'Offer', 'PublisherName');
 
     Assert-OutputContains " Get-AzureRmVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
@@ -1963,22 +1969,23 @@ function Test-GetVMSizeFromAllLocations
 
 function get_all_vm_locations
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ((Get-ComputeTestMode) -ne 'Playback')
     {
         $namespace = "Microsoft.Compute"
         $type = "virtualMachines"
         $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
-  
+
         if ($location -eq $null)
         {
-            return @("West US", "East US")
-        } else
+            return @("East US")
+        }
+        else
         {
             return $location.Locations
         }
     }
 
-    return @("West US", "East US")
+    return @("East US")
 }
 
 <#
@@ -2693,7 +2700,8 @@ function Test-VirtualMachineRedeploy
         Assert-NotNull $vm2.Location;
 
         # Redeploy the VM
-        Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Redeploy;
+        $job = Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Redeploy -AsJob
+		$job | Wait-Job
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
@@ -2830,7 +2838,6 @@ function Test-VirtualMachineGetStatus
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("PowerState");}
-        Assert-True {$a.Contains("Maintenance");}
 
         $vms = Get-AzureRmVM -Status;
         $a = $vms | Out-String;
@@ -2980,7 +2987,8 @@ function Test-VirtualMachineManagedDiskConversion
         Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
 
         # Convert VM to managed disks
-        ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname
+        $job = ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname -AsJob
+		$job | Wait-Job
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
@@ -3121,7 +3129,7 @@ function Test-VirtualMachineIdentity
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -IdentityType "SystemAssigned" `
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -AssignIdentity `
              | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
              | Set-AzureRmVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
              | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
@@ -3218,7 +3226,7 @@ function Test-VirtualMachineIdentityUpdate
         $vms_output = $vms | Out-String;
         Write-Verbose($vms_output);
 
-        $st = $vm1 | Update-AzureRmVM -IdentityType "SystemAssigned"
+        $st = $vm1 | Update-AzureRmVM -AssignIdentity;
 
         # Get VM
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname -DisplayHint "Expand";

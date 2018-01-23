@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return toReturn;
         }
 
-        public List<DataLakeStoreAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
+        public List<DataLakeStoreAccountBasic> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
             var parameters = new ODataQuery<DataLakeStoreAccount>
             {
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Skip = skip
             };
 
-            var accountList = new List<DataLakeStoreAccount>();
+            var accountList = new List<DataLakeStoreAccountBasic>();
             var response = string.IsNullOrEmpty(resourceGroupName) ?
                 _client.Account.List(parameters) :
                 _client.Account.ListByResourceGroup(resourceGroupName, parameters);
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return accountList;
         }
 
-        private IPage<DataLakeStoreAccount> ListAccountsWithNextLink(string nextLink)
+        private IPage<DataLakeStoreAccountBasic> ListAccountsWithNextLink(string nextLink)
         {
             return _client.Account.ListNext(nextLink);
         }

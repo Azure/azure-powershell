@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Set-AzureRmMediaService and New-AzureRmMediaService
+
+## Version 0.8.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 0.7.7
+
+## Version 0.7.6
 
 ## Version 0.7.4
 

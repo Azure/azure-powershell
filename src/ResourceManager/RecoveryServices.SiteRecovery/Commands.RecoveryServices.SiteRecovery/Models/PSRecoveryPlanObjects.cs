@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             RecoveryPlan recoveryPlan,
             IList<ReplicationProtectedItem> replicationProtectedItems)
         {
+            this.Id = recoveryPlan.Id;
             this.Name = recoveryPlan.Name;
             this.FriendlyName = recoveryPlan.Properties.FriendlyName;
             this.ServerId = recoveryPlan.Properties.PrimaryFabricId;
@@ -213,6 +214,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Replication provider.
         /// </summary>
         public IList<string> ReplicationProvider { get; set; }
+
+        /// <summary>
+        ///     Gets or sets ID.
+        /// </summary>
+        public string Id { get; set; }
 
         #endregion
     }

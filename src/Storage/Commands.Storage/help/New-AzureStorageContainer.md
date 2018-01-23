@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer
 schema: 2.0.0
 ---
 

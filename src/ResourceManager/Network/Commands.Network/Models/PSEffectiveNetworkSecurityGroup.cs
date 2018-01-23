@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSEffectiveSecurityRule> EffectiveSecurityRules { get; set; }
 
+        public Dictionary<string, List<string>> TagMap { get; set; }
+
         [JsonIgnore]
         public string NetworkSecurityGroupText
         {
@@ -42,6 +44,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string EffectiveSecurityRulesText
         {
             get { return JsonConvert.SerializeObject(EffectiveSecurityRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TagMapText
+        {
+            get { return JsonConvert.SerializeObject(TagMap, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

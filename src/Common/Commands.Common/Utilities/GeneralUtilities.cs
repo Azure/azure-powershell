@@ -28,6 +28,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -254,17 +255,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body)
         {
             StringBuilder httpResponseLog = new StringBuilder();
-            httpResponseLog.AppendLine(string.Format("============================ HTTP RESPONSE ============================{0}", Environment.NewLine));
-            httpResponseLog.AppendLine(string.Format("Status Code:{0}{1}{0}", Environment.NewLine, statusCode));
-            httpResponseLog.AppendLine(string.Format("Headers:{0}{1}", Environment.NewLine, MessageHeadersToString(headers)));
-            httpResponseLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, body));
-
+            httpResponseLog.AppendLine($"============================ HTTP RESPONSE ============================{Environment.NewLine}");
+            httpResponseLog.AppendLine($"Status Code:{Environment.NewLine}{statusCode}{Environment.NewLine}");
+            httpResponseLog.AppendLine($"Headers:{ Environment.NewLine}{ MessageHeadersToString(headers)}");
+            httpResponseLog.AppendLine($"Body:{Environment.NewLine}{TransformBody(body)}{Environment.NewLine}");
             return httpResponseLog.ToString();
         }
 
         public static string GetHttpResponseLog(string statusCode, HttpHeaders headers, string body)
         {
             return GetHttpResponseLog(statusCode, ConvertHttpHeadersToWebHeaderCollection(headers), body);
+        }
+
+        public static string TransformBody(string inBody)
+        {
+            Regex matcher = new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\"");
+            return matcher.Replace(inBody, "$1\"<redacted>\"");
         }
 
         public static string GetHttpRequestLog(
@@ -278,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             httpRequestLog.AppendLine(string.Format("HTTP Method:{0}{1}{0}", Environment.NewLine, method));
             httpRequestLog.AppendLine(string.Format("Absolute Uri:{0}{1}{0}", Environment.NewLine, requestUri));
             httpRequestLog.AppendLine(string.Format("Headers:{0}{1}", Environment.NewLine, MessageHeadersToString(headers)));
-            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, body));
+            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, TransformBody(body)));
 
             return httpRequestLog.ToString();
         }
@@ -428,6 +434,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
+        }
+
+        /// <summary>
+        /// Checks if collection has more than one element
+        /// </summary>
+        /// <typeparam name="T">Type of the collection.</typeparam>
+        /// <param name="collection">Collection.</param>
+        /// <returns></returns>
+        public static bool HasMoreThanOneElement<T>(ICollection<T> collection)
+        {
+            return collection != null && collection.Count > 1;
+        }
+
+        /// <summary>
+        /// Checks if collection has only one element
+        /// </summary>
+        /// <typeparam name="T">Type of the collection.</typeparam>
+        /// <param name="collection">Collection.</param>
+        /// <returns></returns>
+        public static bool HasSingleElement<T>(ICollection<T> collection)
+        {
+            return collection != null && collection.Count == 1;
         }
 
         /// <summary>

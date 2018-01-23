@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// </summary>
         public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
-            return GetCurrentSqlClient().Servers.GetServiceObjective(resourceGroupName, serverName, serviceObjectiveName);
+            return GetCurrentSqlClient().ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// </summary>
         public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().Servers.ListServiceObjectives(resourceGroupName, serverName).ToList();
+            return GetCurrentSqlClient().ServiceObjectives.ListByServer(resourceGroupName, serverName).ToList();
         }
 
         /// <summary>

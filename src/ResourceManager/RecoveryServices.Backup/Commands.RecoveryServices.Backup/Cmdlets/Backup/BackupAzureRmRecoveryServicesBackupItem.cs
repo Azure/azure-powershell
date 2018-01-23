@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Enables backup of an item protected by the recovery services vault.
     /// Returns the corresponding job created in the service to track this backup operation.
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem"), OutputType(typeof(JobBase))]
+    [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
+        OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -46,20 +47,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager =
-                new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(new Dictionary<Enum, object>()
+                    {
                     {ItemParams.Item, Item},
                     {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
-                }, ServiceClientAdapter);
+                    }, ServiceClientAdapter);
 
-            IPsBackupProvider psBackupProvider =
-                providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
-            var jobResponse = psBackupProvider.TriggerBackup();
+                IPsBackupProvider psBackupProvider =
+                    providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
+                var jobResponse = psBackupProvider.TriggerBackup();
 
-            HandleCreatedJob(jobResponse, Resources.TriggerBackupOperation);
+                HandleCreatedJob(jobResponse, Resources.TriggerBackupOperation);
+            }, ShouldProcess(Item.Name, VerbsData.Backup));
         }
     }
 }

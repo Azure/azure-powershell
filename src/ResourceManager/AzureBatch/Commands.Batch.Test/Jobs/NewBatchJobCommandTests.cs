@@ -160,5 +160,63 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchJobPoolUserAccountsGetPassedToRequest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testJob";
+
+            PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);
+            PSUserAccount nonAdminUser = new PSUserAccount("user2", "password2", Azure.Batch.Common.ElevationLevel.NonAdmin);
+            PSUserAccount sshUser = new PSUserAccount("user3", "password3", Azure.Batch.Common.ElevationLevel.Admin, new PSLinuxUserConfiguration(uid: 1, gid:2, sshPrivateKey: "my ssh key"));
+            cmdlet.PoolInformation = new PSPoolInformation
+            {
+                AutoPoolSpecification = new PSAutoPoolSpecification
+                {
+                    AutoPoolIdPrefix = "prefix",
+                    PoolLifetimeOption = Azure.Batch.Common.PoolLifetimeOption.Job,
+                    PoolSpecification = new PSPoolSpecification
+                    {
+                        CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*"),
+                        UserAccounts = new List<PSUserAccount>() { adminUser, nonAdminUser, sshUser }
+                    }
+                }
+            };
+
+            JobAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobAddParameter,
+                JobAddOptions,
+                AzureOperationHeaderResponse<JobAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(3, cmdlet.PoolInformation.AutoPoolSpecification.PoolSpecification.UserAccounts.Count);
+            Assert.Equal(adminUser.Name, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[0].Name);
+            Assert.Equal(adminUser.Password, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[0].Password);
+            Assert.Equal(adminUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[0].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(nonAdminUser.Name, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[1].Name);
+            Assert.Equal(nonAdminUser.Password, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[1].Password);
+            Assert.Equal(nonAdminUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[1].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(sshUser.Name, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].Name);
+            Assert.Equal(sshUser.Password, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].Password);
+            Assert.Equal(sshUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(sshUser.LinuxUserConfiguration.Uid, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.Uid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Gid, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.Gid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.SshPrivateKey, requestParameters.PoolInfo.AutoPoolSpecification.Pool.UserAccounts[2].LinuxUserConfiguration.SshPrivateKey);
+        }
     }
 }

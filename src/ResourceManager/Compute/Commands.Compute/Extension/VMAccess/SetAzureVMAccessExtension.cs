@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections;
 using System.Management.Automation;
 
@@ -34,14 +34,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "New or Existing User Name")]
-        public string UserName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "New or Existing User Password")]
-        public string Password { get; set; }
+           HelpMessage = "Credential")]
+        [ValidateNotNullOrEmpty]
+        public PSCredential Credential { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,10 +47,13 @@ namespace Microsoft.Azure.Commands.Compute
                 ExecuteClientAction(() =>
                 {
                     Hashtable publicSettings = new Hashtable();
-                    publicSettings.Add(userNameKey, UserName ?? "");
-
                     Hashtable privateSettings = new Hashtable();
-                    privateSettings.Add(passwordKey, Password ?? "");
+
+                    if (Credential != null)
+                    {
+                        publicSettings.Add(userNameKey, Credential.UserName ?? "");
+                        privateSettings.Add(passwordKey, ConversionUtilities.SecureStringToString(Credential.Password));
+                    }
 
                     if (string.IsNullOrEmpty(this.Location))
                     {
@@ -79,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.VMName,
                         this.Name,
                         parameters).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 });
             }

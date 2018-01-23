@@ -21,19 +21,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     ///    A wrapper for all ADLA supported data sources.
     ///    This object is returned from a GET
     /// </summary>
-    [Obsolete("In a future release this object will have all 'Properties' properties flattened and the 'Properties' property will be removed. Until then, nested properies will be duplicated.")]
     public class PSDataLakeStoreAccountInfo : DataLakeStoreAccountInfo
     {
-        [Obsolete("This property will be removed in a future release.")]
-        public PSDataLakeStoreAccountInfoProperties Properties { get; set; }
         public PSDataLakeStoreAccountInfo(DataLakeStoreAccountInfo baseAccount):
             base(
                 baseAccount.Name,
                 baseAccount.Id,
                 baseAccount.Type,
                 baseAccount.Suffix)
-        {
-            Properties = new PSDataLakeStoreAccountInfoProperties(baseAccount.Suffix);
-        }
+        { }
     }
 }

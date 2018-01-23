@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade SRP SDK to 7.1.0
+* Add StorageV2 account kind to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Fix a null reference issue of run cmdlet New-AzureRMStorageAccount with parameter -EnableEncryptionService None
+* Added -AsJob support for long-running Storage cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    - Affected cmdlets are New-, Remove-, Add-, and Update- for Storage Account and Storage Account Network Rule.
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+
+## Version 3.4.0
 
 ## Version 3.3.1
 

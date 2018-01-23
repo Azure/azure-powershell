@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
 
         private Action<ErrorRecord> throwTerminatingErrorAction;
 
+        private Action<ErrorRecord> writeErrorAction;
+
         public static Logger Instance { get; set; }
 
         /// <summary>
@@ -39,15 +41,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
         /// <param name="writeWarning">Delegate to write warnings</param>
         /// <param name="writeDebug">Delegate to write debug messages</param>
         /// <param name="writeVerbose">Delegate to write verbose messages</param>
+        /// <param name="writeError">Delegate to write error messages</param>
         /// <param name="throwTerminatingError">Delegate to throw terminating errors</param>
         public Logger(Action<string> writeWarning,
                       Action<string> writeDebug,
                       Action<string> writeVerbose,
+                      Action<ErrorRecord> writeError,
                       Action<ErrorRecord> throwTerminatingError)
         {
             writeWarningAction = writeWarning;
             writeDebugAction = writeDebug;
             writeVerboseAction = writeVerbose;
+            writeErrorAction = writeError;
             throwTerminatingErrorAction = throwTerminatingError;
         }
 
@@ -76,6 +81,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup
         public void WriteWarning(string text)
         {
             writeWarningAction(text);
+        }
+
+        /// <summary>
+        /// Throws a terminating error.
+        /// </summary>
+        /// <param name="errorRecord"></param>
+        public void WriteError(ErrorRecord errorRecord)
+        {
+            writeErrorAction(errorRecord);
         }
 
         /// <summary>

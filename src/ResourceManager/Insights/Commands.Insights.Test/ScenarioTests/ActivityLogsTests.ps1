@@ -16,107 +16,42 @@
 .SYNOPSIS
 Tests getting the logs associated to a correlation Id.
 #>
-function Test-GetAzureCorrelationIdLog
+function Test-GetAzureLogAllParameters
 {
     # Setup
     $correlation = '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NjA5MjE5ODU0NzQ1NDI0'
+	$rgname = 'Default-Web-EastUS'
+    $rname = '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d'
+	$rpname = 'microsoft.insights'
 
     try 
     {
-        # Test
+		Write-Verbose " ****** Get ActivityLog records by corrrelationId "
         $actual = Get-AzureRmLog -CorrelationId $correlation -starttime 2015-03-02T18:00:00Z -endtime 2015-03-02T20:00:00Z -detailedOutput
 
         # Assert TODO add more asserts
 		Assert-AreEqual 2 $actual.Count
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
 
-<#
-.SYNOPSIS
-Tests getting the logs associated to a resource group.
-#>
-function Test-GetAzureResourceGroupLog
-{
-    # Setup
-    $rgname = 'Default-Web-EastUS'
-
-    try 
-    {
-	    $actual = Get-AzureRmLog -ResourceGroup $rgname -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z
+		Write-Verbose " ****** Get ActivityLog records by resource group "
+		$actual = Get-AzureRmLog -ResourceGroup $rgname -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z
 
         # Assert TODO add more asserts
 		Assert-AreEqual 2 $actual.Count
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
 
-<#
-.SYNOPSIS
-Tests getting the logs associated to a resource Id.
-#>
-function Test-GetAzureResourceLog
-{
-    # Setup
-    $rname = '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d'
-
-    try 
-    {
+		Write-Verbose " ****** Get ActivityLog records by resource Id"
 		$actual = Get-AzureRmLog -ResourceId $rname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
 
         # Assert TODO add more asserts
 		# Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
 		Assert-AreEqual 2 $actual.Count
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
 
-<#
-.SYNOPSIS
-Tests getting the logs associated to a resource provider.
-#>
-function Test-GetAzureResourceProviderLog
-{
-    # Setup
-    $rpname = 'microsoft.insights'
-
-    try 
-    {
+		Write-Verbose " ****** Get ActivityLog records by resource provider"
 		$actual = Get-AzureRmLog -ResourceProvider $rpname -startTime 2015-03-03T15:42:50Z -endTime 2015-03-03T16:42:50Z
 
         # Assert
 		Assert-AreEqual 2 $actual.Count
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
 
-<#
-.SYNOPSIS
-Tests getting the logs for a subscription Id.
-#>
-function Test-GetAzureSubscriptionIdLog
-{
-    # No Setup needed
-
-    try 
-    {
-        # Test
+		Write-Verbose " ****** Get ActivityLog records by subscription Id"
         $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
 
         # Assert

@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 
             // Verify that when the raw data is specified with a password, the request body matches expectations
             cmdlet.RawData = cert.RawData;
-            cmdlet.Password = BatchTestHelpers.TestCertificatePassword;
+            cmdlet.Password = BatchTestHelpers.TestCertificatePassword.ConvertToSecureString();
             cmdlet.ExecuteCmdlet();
             Assert.Equal(CertificateFormat.Pfx, requestParameters.CertificateFormat);
             Assert.Equal(BatchTestHelpers.TestCertificateAlgorithm, requestParameters.ThumbprintAlgorithm);
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             Assert.Equal(certDataBase64String, requestParameters.Data);
 
             // Verify that when a file path is specified with a password, the request body matches expectations
-            cmdlet.Password = BatchTestHelpers.TestCertificatePassword;
+            cmdlet.Password = BatchTestHelpers.TestCertificatePassword.ConvertToSecureString();
             cmdlet.ExecuteCmdlet();
             Assert.Equal(CertificateFormat.Pfx, requestParameters.CertificateFormat);
             Assert.Equal(BatchTestHelpers.TestCertificateAlgorithm, requestParameters.ThumbprintAlgorithm);

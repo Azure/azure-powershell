@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
-online version: http://go.microsoft.com/fwlink/?LinkID=690161
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurermkeyvault
 schema: 2.0.0
 ---
 
@@ -14,27 +15,30 @@ Gets key vaults.
 
 ### GetVaultByName
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [<CommonParameters>]
+Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListVaultsByResourceGroup
 ```
-Get-AzureRmKeyVault [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmKeyVault [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzureRmKeyVault [-InRemovedState] [<CommonParameters>]
+Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAllVaultsInSubscription
 ```
-Get-AzureRmKeyVault [-Tag <Hashtable>] [<CommonParameters>]
+Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +91,21 @@ subscription and in eastus2 region.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InRemovedState
 Specifies whether to show the previously deleted vaults in the output.
 
@@ -126,7 +145,7 @@ Parameter Sets: GetVaultByName
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,7 +157,7 @@ Parameter Sets: ListVaultsByResourceGroup
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -170,7 +189,7 @@ Parameter Sets: GetVaultByName, ByDeletedVault
 Aliases: Name
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

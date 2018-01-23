@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 0AC17275-17A9-47DE-BF04-C1A51DF057DC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmsqlserverautobackupconfig
 schema: 2.0.0
 ---
 
@@ -14,20 +15,21 @@ Creates a configuration object for SQL Server automatic backup.
 
 ### StorageUriSqlServerAutoBackup (Default)
 ```
-New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
- [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageUri] <Uri>]
- [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable]
+ [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption] [[-CertificatePassword] <SecureString>]
+ [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
  [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
- [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
+ [-LogBackupFrequencyInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### StorageContextSqlServerAutoBackup
 ```
-New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
- [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageContext] <AzureStorageContext>]
- [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
- [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
- [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
+New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable]
+ [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption] [[-CertificatePassword] <SecureString>]
+ [[-StorageContext] <IStorageContext>] [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs]
+ [-BackupScheduleType <String>] [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>]
+ [-FullBackupWindowInHours <Int32>] [-LogBackupFrequencyInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +122,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -254,7 +271,7 @@ To obtain an **AzureStorageContext** object, use the New-AzureStorageContext cmd
 The default is the storage account that is associated with the SQL Server virtual machine.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: StorageContextSqlServerAutoBackup
 Aliases: 
 

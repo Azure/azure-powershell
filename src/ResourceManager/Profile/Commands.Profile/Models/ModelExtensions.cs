@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -37,10 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return subscription;
         }
 
-        public static List<AzureTenant> MergeTenants(
-            this IAzureAccount account,
-            IEnumerable<TenantIdDescription> tenants,
-            IAccessToken token)
+        public static List<AzureTenant> MergeTenants( this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
         {
             List<AzureTenant> result = null;
             if (tenants != null)
@@ -58,5 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             return result;
         }
+
     }
 }

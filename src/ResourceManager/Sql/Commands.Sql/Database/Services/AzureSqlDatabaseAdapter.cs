@@ -125,59 +125,60 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Creates or updates an Azure Sql Database.
+        /// Creates or updates an Azure Sql Database with Hyak SDK.
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
-        /// <returns>The upserted Azure Sql Database</returns>
+        /// <returns>The upserted Azure Sql Database from Hyak SDK</returns>
         internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
-            // Use AutoRest or Hyak SDK depending on model parameters.
-            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
-            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
-            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
-            // which currently is quite difficult.
-            if (!string.IsNullOrEmpty(model.SampleName))
+            // Use Hyak SDK
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new DatabaseCreateOrUpdateParameters
             {
-                // Use AutoRest SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new Management.Sql.Models.Database
+                Location = model.Database.Location,
+                Tags = model.Database.Tags,
+                Properties = new DatabaseCreateOrUpdateProperties()
                 {
-                    Location = model.Database.Location,
-                    Tags = model.Database.Tags,
                     Collation = model.Database.CollationName,
                     Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
-                    MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
+                    MaxSizeBytes = model.Database.MaxSizeBytes,
                     RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
                     ElasticPoolName = model.Database.ElasticPoolName,
                     RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                    ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
-                    SampleName = model.SampleName
-                });
+                    ReadScale = model.Database.ReadScale.ToString(),
+                }
+            });
 
-                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
-            }
-            else
+            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Sql Database with new AutoRest SDK.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
+        internal AzureSqlDatabaseModel UpsertDatabaseWithNewSdk(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
+        {
+            // Use AutoRest SDK
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new Management.Sql.Models.Database
             {
-                // Use Hyak SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new DatabaseCreateOrUpdateParameters
-                {
-                    Location = model.Database.Location,
-                    Tags = model.Database.Tags,
-                    Properties = new DatabaseCreateOrUpdateProperties()
-                    {
-                        Collation = model.Database.CollationName,
-                        Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
-                        MaxSizeBytes = model.Database.MaxSizeBytes,
-                        RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
-                        ElasticPoolName = model.Database.ElasticPoolName,
-                        RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                        ReadScale = model.Database.ReadScale.ToString(),
-                    }
-                });
+                Location = model.Database.Location,
+                Tags = model.Database.Tags,
+                Collation = model.Database.CollationName,
+                Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
+                RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                ElasticPoolName = model.Database.ElasticPoolName,
+                RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
+                SampleName = model.SampleName,
+                ZoneRedundant = model.Database.ZoneRedundant
+            });
 
-                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
-            }
+            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
         }
 
         /// <summary>
@@ -286,8 +287,61 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StandaloneDatabaseActivityNotSupported));
+                var response = Communicator.ListOperations(resourceGroupName, serverName, databaseName);
+                IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
+                {
+                    return new AzureSqlDatabaseActivityModel()
+                    {
+                        DatabaseName = r.DatabaseName,
+                        ErrorCode = r.ErrorCode,
+                        ErrorMessage = r.ErrorDescription,
+                        ErrorSeverity = r.ErrorSeverity,
+                        Operation = r.Operation,
+                        OperationId = Guid.Parse(r.Name),
+                        PercentComplete = r.PercentComplete,
+                        ServerName = r.ServerName,
+                        StartTime = r.StartTime,
+                        State = r.State,
+                        Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
+                        {
+                            Current = new Dictionary<string, string>(),
+                            Requested = new Dictionary<string, string>()
+                        }
+                    };
+                });
+
+                // Check if we have a operation id constraint
+                if (operationId.HasValue)
+                {
+                    list = list.Where(pl => Guid.Equals(pl.OperationId, operationId));
+                }
+
+                return list.ToList();
             }
+        }
+
+        internal IEnumerable<AzureSqlDatabaseActivityModel> CancelDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
+        {
+            if (!string.IsNullOrEmpty(elasticPoolName))
+            {
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.ElasticPoolDatabaseActivityCancelNotSupported));
+            }
+
+            if (!operationId.HasValue)
+            {
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.OperationIdRequired));
+            }
+
+            Communicator.CancelOperation(resourceGroupName, serverName, databaseName, operationId.Value);
+
+            // After Cancel event is fired, state will be in 'CancelInProgress' for a while but should expect to finish in a minute
+
+            return ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, databaseName, operationId);
+        }
+
+        public void RenameDatabase(string resourceGroupName, string serverName, string databaseName, string newName)
+        {
+            Communicator.Rename(resourceGroupName, serverName, databaseName, newName);
         }
     }
 }

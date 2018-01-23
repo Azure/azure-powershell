@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------Caatag,
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Dns
         private const string ParameterSetPtr = "Ptr" ;
         private const string ParameterSetNs = "Ns";
         private const string ParameterSetMx = "Mx";
+        private const string ParameterSetCaa = "Caa";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The IPv4 address for the A record to add.", ParameterSetName = ParameterSetA)]
         [ValidateNotNullOrEmpty]
@@ -88,6 +89,20 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string Cname { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags for the CAA record to add. Must be a number between 0 and 255.", ParameterSetName = ParameterSetCaa)]
+        [ValidateNotNullOrEmpty]
+        public byte CaaFlags { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag field of the CAA record to add.", ParameterSetName = ParameterSetCaa)]
+        [ValidateNotNullOrEmpty]
+        public string CaaTag { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value field for the CAA record to add.", ParameterSetName = ParameterSetCaa)]
+        [ValidateNotNull]
+        [AllowEmptyString]
+        [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
+        public string CaaValue { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DnsRecordBase result = null;
@@ -134,6 +149,11 @@ namespace Microsoft.Azure.Commands.Dns
                 case ParameterSetPtr:
                     {
                         result = new PtrRecord {Ptrdname = this.Ptrdname};
+                        break;
+                    }
+                case ParameterSetCaa:
+                    {
+                        result = new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue};
                         break;
                     }
                 default:

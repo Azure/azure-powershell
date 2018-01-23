@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.InputObject = null;
             cmdlet.DestinationPath = null;
 
-            string fileName = "stdout.txt";
+            string filePath = "stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromTaskResponseInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromTaskResponseInterceptor(cmdlet.Path);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 // Fill required task details
                 cmdlet.JobId = "job-1";
                 cmdlet.TaskId = "task";
-                cmdlet.Name = fileName;
+                cmdlet.Path = filePath;
 
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = null;
             cmdlet.ComputeNodeId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.InputObject = null;
             cmdlet.DestinationPath = null;
 
-            string fileName = "startup\\stdout.txt";
+            string filePath = "startup\\stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromComputeNodeResponseInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromComputeNodeResponseInterceptor(cmdlet.Path);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 // Fill required compute node details
                 cmdlet.PoolId = "pool";
                 cmdlet.ComputeNodeId = "computeNode1";
-                cmdlet.Name = fileName;
+                cmdlet.Path = filePath;
 
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.InputObject = null;
             cmdlet.DestinationPath = null;
             cmdlet.ByteRangeStart = rangeStart;
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "stdout.txt";
             bool hit = false;
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromTaskResponseInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromTaskResponseInterceptor(cmdlet.Path);
             RequestInterceptor examiner = BatchTestHelpers.ExamineRequestInterceptor<FileGetFromTaskBatchRequest>(req =>
             {
                 hit = true;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 // Fill required task details
                 cmdlet.JobId = "job-1";
                 cmdlet.TaskId = "task";
-                cmdlet.Name = fileName;
+                cmdlet.Path = fileName;
 
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();

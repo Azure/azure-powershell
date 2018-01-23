@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: D82270AD-50C2-4980-ABE2-58049C187875
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/new-azurermschedulerjobcollection
 schema: 2.0.0
 ---
 
@@ -14,8 +15,8 @@ Creates a job collection.
 
 ```
 New-AzureRmSchedulerJobCollection -ResourceGroupName <String> -JobCollectionName <String> -Location <String>
- [-Plan <String>] [-MaxJobCount <Int32>] [-Frequency <String>] [-Interval <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Plan <String>] [-MaxJobCount <Int32>] [-Frequency <String>] [-Interval <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ The **New-AzureRmSchedulerJobCollection** cmdlet creates a job collection in Azu
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Frequency
 Specifies the maximum frequency that you can specify on any job in the job collection.

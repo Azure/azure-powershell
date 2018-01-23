@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 2DBAF415-A039-479E-B3CA-E00FD5E476C9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicyassignment
 schema: 2.0.0
 ---
 
@@ -12,23 +13,24 @@ Gets policy assignments.
 
 ## SYNTAX
 
-### The list all policy assignments parameter set. (Default)
+### GetAllPolicyAssignments (Default)
 ```
-Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy assignment name parameter set.
+### GetPolicyAssignmentName
 ```
 Get-AzureRmPolicyAssignment [-Name <String>] -Scope <String> [-PolicyDefinitionId <String>]
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### The policy assignment Id parameter set.
+### GetPolicyAssignmentId
 ```
 Get-AzureRmPolicyAssignment -Id <String> [-PolicyDefinitionId <String>] [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +66,22 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -78,7 +95,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
+Parameter Sets: GetPolicyAssignmentId
 Aliases: ResourceId
 
 Required: True
@@ -132,8 +149,8 @@ Specifies the name of the policy assignment that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
-Aliases: 
+Parameter Sets: GetPolicyAssignmentName
+Aliases:
 
 Required: False
 Position: Named
@@ -147,8 +164,8 @@ Specifies the ID of the policy definition of the policy assignments that this cm
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set., The policy assignment Id parameter set.
-Aliases: 
+Parameter Sets: GetPolicyAssignmentName, GetPolicyAssignmentId
+Aliases:
 
 Required: False
 Position: Named
@@ -163,7 +180,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,8 +194,8 @@ Specifies the scope at which the policy is applied for the assignment that this 
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment name parameter set.
-Aliases: 
+Parameter Sets: GetPolicyAssignmentName
+Aliases:
 
 Required: True
 Position: Named

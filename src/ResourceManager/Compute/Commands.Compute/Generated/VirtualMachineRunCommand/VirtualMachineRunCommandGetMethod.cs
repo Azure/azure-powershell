@@ -116,4 +116,66 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new object[] { location, commandId });
         }
     }
+
+    [Cmdlet(VerbsCommon.Get, "AzureRmVMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSRunCommandDocument))]
+    public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
+    {
+        protected override void ProcessRecord()
+        {
+            ExecuteClientAction(() =>
+            {
+                string location = this.Location;
+                string commandId = this.CommandId;
+
+                if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
+                {
+                    var result = VirtualMachineRunCommandsClient.Get(location, commandId);
+                    var psObject = new PSRunCommandDocument();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandDocument, PSRunCommandDocument>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(location))
+                {
+                    var result = VirtualMachineRunCommandsClient.List(location);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = VirtualMachineRunCommandsClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSRunCommandDocumentBase>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandDocumentBase, PSRunCommandDocumentBase>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/runCommands")]
+        public string Location { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string CommandId { get; set; }
+    }
 }

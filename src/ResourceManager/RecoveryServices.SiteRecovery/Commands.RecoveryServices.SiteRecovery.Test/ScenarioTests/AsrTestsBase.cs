@@ -30,25 +30,27 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests
+namespace RecoveryServices.SiteRecovery.Test
 {
     public abstract class AsrTestsBase : RMTestBase
     {
         protected string vaultSettingsFilePath;
-        private readonly ASRVaultCreds asrVaultCreds;
+        protected string powershellFile;
+        private ASRVaultCreds asrVaultCreds;
         private CSMTestEnvironmentFactory csmTestFactory;
-        private readonly EnvironmentSetupHelper helper;
+        private EnvironmentSetupHelper helper;
 
         protected AsrTestsBase()
         {
-            this.vaultSettingsFilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\vaultSettings.VaultCredentials");
+        }
 
-            if (File.Exists(this.vaultSettingsFilePath))
+        protected void initialize()
+        {
+            try
             {
-                try
+                if (FileUtilities.DataStore.ReadFileAsText(this.vaultSettingsFilePath).ToLower().Contains("<asrvaultcreds"))
                 {
                     var serializer1 = new DataContractSerializer(typeof(ASRVaultCreds));
                     using (var s = new FileStream(
@@ -60,27 +62,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
                         this.asrVaultCreds = (ASRVaultCreds)serializer1.ReadObject(s);
                     }
                 }
-                catch (XmlException xmlException)
+                else
                 {
-                    throw new XmlException(
-                        "XML is malformed or file is empty",
-                        xmlException);
-                }
-                catch (SerializationException serializationException)
-                {
-                    throw new SerializationException(
-                        "XML is malformed or file is empty",
-                        serializationException);
+                    var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));
+                    using (var s = new FileStream(
+                        this.vaultSettingsFilePath,
+                        FileMode.Open,
+                        FileAccess.Read,
+                        FileShare.Read))
+                    {
+                        RSVaultAsrCreds aadCreds = (RSVaultAsrCreds)serializer.ReadObject(s);
+                        asrVaultCreds = new ASRVaultCreds();
+                        asrVaultCreds.ChannelIntegrityKey = aadCreds.ChannelIntegrityKey;
+                        asrVaultCreds.ResourceGroupName = aadCreds.VaultDetails.ResourceGroup;
+                        asrVaultCreds.Version = "2.0";
+                        asrVaultCreds.SiteId = aadCreds.SiteId;
+                        asrVaultCreds.SiteName = aadCreds.SiteName;
+                        asrVaultCreds.ResourceNamespace = aadCreds.VaultDetails.ProviderNamespace;
+                        asrVaultCreds.ARMResourceType = aadCreds.VaultDetails.ResourceType;
+                    }
                 }
             }
-            else
+            catch (XmlException xmlException)
             {
-                throw new FileNotFoundException(
-                    string.Format(
-                        "Vault settings file not found at '{0}', please pass the file downloaded from portal",
-                        this.vaultSettingsFilePath));
+                throw new XmlException(
+                    "XML is malformed or file is empty",
+                    xmlException);
             }
-
+            catch (SerializationException serializationException)
+            {
+                throw new SerializationException(
+                    "XML is malformed or file is empty",
+                    serializationException);
+            }
             this.helper = new EnvironmentSetupHelper();
         }
 
@@ -159,12 +173,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var testFolderName = scenario;
-                var callingClassName = callingClassType.Split(
-                        new[] { "." },
-                        StringSplitOptions.RemoveEmptyEntries)
-                    .Last();
-                var psFile = "ScenarioTests\\" + callingClassName + ".ps1";
                 var rmProfileModule = this.helper.RMProfileModule;
                 var rmModulePath =
                     this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1");
@@ -173,7 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 
                 var modules = new List<string>();
 
-                modules.Add(psFile);
+                modules.Add(powershellFile);
                 modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);

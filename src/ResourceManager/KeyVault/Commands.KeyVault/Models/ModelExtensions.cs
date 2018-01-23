@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if NETSTANDARD
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+#else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+#endif
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -97,6 +101,24 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             try
             {
+#if NETSTANDARD
+                var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
+                if (obj != null)
+                {
+                    if (obj.Type.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = user.DisplayName;
+                        upnOrSpn = user.UserPrincipalName;
+                    }
+                    else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var servicePrincipal = adClient.FilterServicePrincipals(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = servicePrincipal.DisplayName;
+                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                }
+#else
                 var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
@@ -113,6 +135,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
                 }
+
+#endif
             }
             catch
             {

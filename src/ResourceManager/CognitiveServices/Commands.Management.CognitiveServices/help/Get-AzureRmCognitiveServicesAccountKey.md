@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
+Module Name: AzureRM.CognitiveServices
 ms.assetid: 73B1EB7E-568E-44E8-993A-91678B7D8AEE
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountkey
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets the API keys for an account.
 ## SYNTAX
 
 ```
-Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +34,21 @@ Use New-AzureRmCognitiveServicesAccountKey to regenerate a key.
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the account.

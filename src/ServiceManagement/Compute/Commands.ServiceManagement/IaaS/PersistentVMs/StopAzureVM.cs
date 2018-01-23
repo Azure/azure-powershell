@@ -86,7 +86,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                             this.CurrentDeploymentNewSM.Name,
                             roleNames[0],
                             new VirtualMachineShutdownParameters { PostShutdownAction = PostShutdownAction.Stopped }),
-                        (s, response) => this.ContextFactory<OperationStatusResponse, ManagementOperationContext>(response, s));
+                        (s, response) => this.ContextFactory(response, s,
+                                                ServiceManagementProfile.Mapper.Map<OperationStatusResponse, ManagementOperationContext>,
+                                                ServiceManagementProfile.Mapper.Map));
                 }
                 else
                 {
@@ -104,7 +106,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                                     this.CurrentDeploymentNewSM.Name,
                                     roleNames[0],
                                     new VirtualMachineShutdownParameters { PostShutdownAction = PostShutdownAction.StoppedDeallocated }),
-                                (s, response) => ContextFactory<OperationStatusResponse, ManagementOperationContext>(response, s)));
+                                (s, response) => ContextFactory(response, s,
+                                                    ServiceManagementProfile.Mapper.Map<OperationStatusResponse, ManagementOperationContext>,
+                                                    ServiceManagementProfile.Mapper.Map)));
                     }
                     else
                     {
@@ -116,7 +120,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                                     this.CurrentDeploymentNewSM.Name,
                                     roleNames[0], 
                                     new VirtualMachineShutdownParameters { PostShutdownAction = PostShutdownAction.StoppedDeallocated }),
-                                (s, response) => this.ContextFactory<OperationStatusResponse, ManagementOperationContext>(response, s));
+                                (s, response) => this.ContextFactory(response, s,
+                                                        ServiceManagementProfile.Mapper.Map<OperationStatusResponse, ManagementOperationContext>,
+                                                        ServiceManagementProfile.Mapper.Map));
                     }
                 }
             }

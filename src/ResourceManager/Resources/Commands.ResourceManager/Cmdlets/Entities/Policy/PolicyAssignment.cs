@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// <summary>
         /// The policy assignment properties.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
+        [JsonProperty(Required = Required.Always)]
         public PolicyAssignmentProperties Properties { get; set; }
 
         /// <summary>
@@ -32,5 +32,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The policy sku.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public PolicySku Sku { get; set; }
     }
 }

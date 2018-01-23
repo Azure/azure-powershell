@@ -45,8 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 {
                     var certificate = new CertificateConfiguration
                     {
-                        Thumbprint = setting.Attribute("thumbprint").Value,
-                        ThumbprintAlgorithm = setting.Attribute("thumbprintAlgorithm").Value
+                        Thumbprint = setting.Attribute("thumbprint") == null ? null : setting.Attribute("thumbprint").Value,
+                        ThumbprintAlgorithm = setting.Attribute("thumbprintAlgorithm") == null ? null : setting.Attribute("thumbprintAlgorithm").Value,
+                        SourceLocation = setting.Attribute("sourceLocation") == null ? null : setting.Attribute("sourceLocation").Value,
                     };
 
                     this.Certificates.Add(setting.Attribute("name").Value, certificate);
@@ -104,8 +105,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             {
                 XElement certificateElement = new XElement(this.ns + "Certificate");
                 certificateElement.SetAttributeValue("name", certificate.Key);
-                certificateElement.SetAttributeValue("thumbprint", certificate.Value.Thumbprint);
-                certificateElement.SetAttributeValue("thumbprintAlgorithm", certificate.Value.ThumbprintAlgorithm);
+                if (certificate.Value.Thumbprint != null)
+                {
+                    certificateElement.SetAttributeValue("thumbprint", certificate.Value.Thumbprint);
+                }
+                if (certificate.Value.ThumbprintAlgorithm != null)
+                {
+                    certificateElement.SetAttributeValue("thumbprintAlgorithm", certificate.Value.ThumbprintAlgorithm);
+                }
+                if (certificate.Value.SourceLocation != null)
+                {
+                    certificateElement.SetAttributeValue("sourceLocation", certificate.Value.SourceLocation);
+                }
                 certificatesElement.Add(certificateElement);
             }
 

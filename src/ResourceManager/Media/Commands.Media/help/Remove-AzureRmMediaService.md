@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+Module Name: AzureRM.Media
 ms.assetid: 6AB6C366-4925-4370-A33E-EDAF4BE1E230
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/remove-azurermmediaservice
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Removes a media service.
 ## SYNTAX
 
 ```
-Remove-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

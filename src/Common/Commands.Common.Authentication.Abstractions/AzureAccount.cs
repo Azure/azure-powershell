@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             public const string Certificate = "Certificate",
             User = "User",
             ServicePrincipal = "ServicePrincipal",
-            AccessToken = "AccessToken";
+            AccessToken = "AccessToken",
+            ManagedService = "ManagedService";
         }
 
         /// <summary>
@@ -105,9 +106,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         AccessToken = "AccessToken",
 
         /// <summary>
+        /// Access token for AD Graph service.
+        /// </summary>
+        GraphAccessToken = "GraphAccessToken",
+
+        /// <summary>
+        /// Access token for KeyVault service.
+        /// </summary>
+        KeyVaultAccessToken = "KeyVault",
+
+        /// <summary>
         /// Thumbprint for associated certificate
         /// </summary>
-        CertificateThumbprint = "CertificateThumbprint";
+        CertificateThumbprint = "CertificateThumbprint",
+
+        /// <summary>
+        /// Login Uri for Managed Service Login
+        /// </summary>
+        MSILoginUri = "MSILoginUri";
+
 
         }
     }

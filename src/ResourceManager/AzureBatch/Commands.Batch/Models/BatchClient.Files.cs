@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         // Lists the node files under a task.
         private IEnumerable<PSNodeFile> ListNodeFilesByTask(ListNodeFileOptions options)
         {
-            // Get the single node file matching the specified name
-            if (!string.IsNullOrEmpty(options.NodeFileName))
+            // Get the single node file matching the specified file path
+            if (!string.IsNullOrEmpty(options.Path))
             {
-                WriteVerbose(string.Format(Resources.GetNodeFileByTaskByName, options.NodeFileName, options.TaskId));
+                WriteVerbose(string.Format(Resources.GetNodeFileByTaskByName, options.Path, options.TaskId));
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                NodeFile nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.NodeFileName, options.AdditionalBehaviors);
+                NodeFile nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.Path, options.AdditionalBehaviors);
                 PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
                 return new PSNodeFile[] { psNodeFile };
             }
@@ -103,12 +103,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         // Lists the node files under a compute node.
         private IEnumerable<PSNodeFile> ListNodeFilesByComputeNode(ListNodeFileOptions options)
         {
-            // Get the single node file matching the specified name
-            if (!string.IsNullOrEmpty(options.NodeFileName))
+            // Get the single node file matching the specified file path
+            if (!string.IsNullOrEmpty(options.Path))
             {
-                WriteVerbose(string.Format(Resources.GetNodeFileByComputeNodeByName, options.NodeFileName, options.ComputeNodeId));
+                WriteVerbose(string.Format(Resources.GetNodeFileByComputeNodeByName, options.Path, options.ComputeNodeId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                NodeFile nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.NodeFileName, options.AdditionalBehaviors);
+                NodeFile nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.Path, options.AdditionalBehaviors);
                 PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
                 return new PSNodeFile[] { psNodeFile };
             }
@@ -164,13 +164,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 case PSNodeFileType.Task:
                     {
                         JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
-                        jobOperations.DeleteNodeFile(parameters.JobId, parameters.TaskId, parameters.NodeFileName, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
+                        jobOperations.DeleteNodeFile(parameters.JobId, parameters.TaskId, parameters.Path, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
                         break;
                     }
                 case PSNodeFileType.ComputeNode:
                     {
                         PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-                        poolOperations.DeleteNodeFile(parameters.PoolId, parameters.ComputeNodeId, parameters.NodeFileName, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
+                        poolOperations.DeleteNodeFile(parameters.PoolId, parameters.ComputeNodeId, parameters.Path, recursive: recursive, additionalBehaviors: parameters.AdditionalBehaviors);
                         break;
                     }
                 case PSNodeFileType.PSNodeFileInstance:
@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 case PSNodeFileType.Task:
                     {
                         JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                        nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.NodeFileName, options.AdditionalBehaviors);
+                        nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.Path, options.AdditionalBehaviors);
                         break;
                     }
                 case PSNodeFileType.ComputeNode:
                     {
                         PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                        nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.NodeFileName, options.AdditionalBehaviors);
+                        nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.Path, options.AdditionalBehaviors);
                         break;
                     }
                 case PSNodeFileType.PSNodeFileInstance:
@@ -255,14 +255,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (stream != null)
             {
                 // Don't dispose supplied Stream
-                file.CopyToStream(stream, additionalBehaviors);
+                file.CopyToStream(stream, additionalBehaviors: additionalBehaviors);
             }
             else
             {
-                WriteVerbose(string.Format(Resources.DownloadingNodeFile, file.Name, destinationPath));
+                WriteVerbose(string.Format(Resources.DownloadingNodeFile, file.Path, destinationPath));
                 using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
                 {
-                    file.CopyToStream(fs, additionalBehaviors);
+                    file.CopyToStream(fs, additionalBehaviors: additionalBehaviors);
                 }
             }
         }

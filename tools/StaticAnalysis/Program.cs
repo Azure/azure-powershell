@@ -26,7 +26,7 @@ namespace StaticAnalysis
     /// </summary>
     public class Program
     {
-        static readonly IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
+        static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
             new HelpAnalyzer.HelpAnalyzer(),
             new DependencyAnalyzer.DependencyAnalyzer(),
@@ -55,7 +55,7 @@ namespace StaticAnalysis
                 Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
                 Path.Combine(installDir, @"ServiceManagement\Azure\"),
                 Path.Combine(installDir, @"Storage\")
-           };
+           }.Where((d) => Directory.Exists(d)).ToList<string>();
 
                 var reportsDirectory = Directory.GetCurrentDirectory();
                 bool logReportsDirectoryWarning = true;
@@ -70,6 +70,17 @@ namespace StaticAnalysis
                 if (args.Length > 2)
                 {
                     bool.TryParse(args[2], out useExceptions);
+                }
+
+                bool skipHelp = true;
+                if (args.Length > 3)
+                {
+                    bool.TryParse(args[3], out skipHelp);
+                }
+
+                if (skipHelp)
+                {
+                    Analyzers = Analyzers.Where((a) => !(a is HelpAnalyzer.HelpAnalyzer)).ToList();
                 }
                 
                 analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :

@@ -72,15 +72,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.8\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.3.1\lib\net452\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -129,16 +129,24 @@
     <Compile Include="Authentication\CertificateApplicationCredentialProvider.cs" />
     <Compile Include="Authentication\ConsoleParentWindow.cs" />
     <Compile Include="Authentication\CredStore.cs" />
+    <Compile Include="Authentication\IdentityTokenHelpers.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />
     <Compile Include="Authentication\KeyStoreApplicationCredentialProvider.cs" />
+    <Compile Include="Authentication\ManagedServiceAccessToken.cs" />
+    <Compile Include="Authentication\ManagedServiceTokenInfo.cs" />
     <Compile Include="Authentication\ProtectedFileTokenCache.cs" />
+    <Compile Include="Authentication\RawAccessToken.cs" />
     <Compile Include="Authentication\ServicePrincipalKeyStore.cs" />
     <Compile Include="Authentication\ServicePrincipalTokenProvider.cs" />
     <Compile Include="Authentication\UserTokenProvider.cs" />
     <Compile Include="AzureSessionInitializer.cs" />
+    <Compile Include="ContextAutosaveSettings.cs" />
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
+    <Compile Include="HttpClientOperationsFactory.cs" />
+    <Compile Include="IHttpOperations.cs" />
+    <Compile Include="IHttpOperationsFactory.cs" />
     <Compile Include="LegacySupport.cs" />
     <Compile Include="Models\MemoryDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,10 +170,6 @@
     <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

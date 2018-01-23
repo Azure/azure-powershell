@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Fetches backup management servers registered to the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"),
-    OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
+        OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
     public class GetAzureRmRecoveryServicesBackupManagementServer
         : RecoveryServicesBackupCmdletBase
     {

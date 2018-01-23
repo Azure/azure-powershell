@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Scheduler
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 7016BAA9-C25D-404E-9F75-2BE49FBF91A8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmsqlserverautopatchingconfig
 schema: 2.0.0
 ---
 
@@ -13,8 +14,9 @@ Creates a configuration object for automatic patching on a virtual machine.
 ## SYNTAX
 
 ```
-New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
- [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [<CommonParameters>]
+New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>]
+ [-MaintenanceWindowStartingHour <Int32>] [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

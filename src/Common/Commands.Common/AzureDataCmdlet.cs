@@ -94,44 +94,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
 #endif
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            if (_dataCollectionProfile == null)
+            get
             {
-                InitializeDataCollectionProfile();
+                return Resources.ARMDataCollectionMessage;
             }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            try
-            {
-                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
-                {
-                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
-                }
-
-                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-            }
-            catch
-            {
-                // do not throw if the profile cannot be written
-            }
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            InitializeDataCollectionProfile();
-
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            WriteWarning(Resources.RDFEDataCollectionMessage);
-
-            _dataCollectionProfile.EnableAzureDataCollection = true;
-            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()

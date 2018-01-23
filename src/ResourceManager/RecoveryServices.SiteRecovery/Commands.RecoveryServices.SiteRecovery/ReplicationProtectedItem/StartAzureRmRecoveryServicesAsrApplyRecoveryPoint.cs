@@ -15,6 +15,7 @@
 using System;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -133,6 +134,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;
             }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Create the InMageAzureV2 specific Apply Recovery Point Input.
+                var inMageAzureV2ApplyRecoveryPointInput =
+                    new InMageAzureV2ApplyRecoveryPointInput();
+                input.Properties.ProviderSpecificDetails = inMageAzureV2ApplyRecoveryPointInput;
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
+                        this.ReplicationProtectedItem.ReplicationProvider));
+            }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
                 this.fabricName,
@@ -151,12 +174,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Protection Container.
         /// </summary>
-        public string protectionContainerName;
+        private string protectionContainerName;
 
         /// <summary>
         ///     Gets or sets Name of the Fabric.
         /// </summary>
-        public string fabricName;
+        private string fabricName;
 
         /// <summary>
         ///     Primary Kek Cert pfx file.

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
-online version: 
+Module Name: AzureRM.RecoveryServices.SiteRecovery
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrprotectioncontainer
 schema: 2.0.0
 ---
 
@@ -13,18 +14,20 @@ Gets ASR protection containers in the Recovery Services vault.
 
 ### ByFabricObject (Default)
 ```
-Get-AzureRmRecoveryServicesAsrProtectionContainer -Fabric <ASRFabric> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrProtectionContainer -Fabric <ASRFabric>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
-Get-AzureRmRecoveryServicesAsrProtectionContainer -Name <String> -Fabric <ASRFabric> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrProtectionContainer -Name <String> -Fabric <ASRFabric>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithFriendlyName
 ```
 Get-AzureRmRecoveryServicesAsrProtectionContainer -FriendlyName <String> -Fabric <ASRFabric>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,10 +39,42 @@ Replication policies define replication settings for protected items and can be 
 
 ### Example 1
 ```
-PS C:\> $ProtectionContainers = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer
+PS C:\> $ProtectionContainers = Get-AzureRmRecoveryServicesAsrProtectionContainer -Fabric $fabric
 ```
 
-Gets all the ASR protection containers in the specified ASR fabric (the pipeline input in the above example.)
+List of protection container in fabric $fabric.
+
+### Example 2
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
+FriendlyName                : xxxxxxxx
+Name                        : xxxxx
+ID                          : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxx/replicationFabrics/xxxxxxxxxxxxxxxxxxxxxxxxx/replicationProtectionContainers/xxxxxxxxxxxxxxxxxxxxxxxxx
+Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers
+FabricFriendlyName          : xxxxxxxxxxxxxxxxxxxxxxxxx
+FabricType                  : VMware
+Role                        : Primary
+AvailablePolicies           : {V2aTestPolicy, v2ahydra, v2aswag-failback, v2aswag}
+ProtectionContainerMappings : {pcmmapping, v2aPowerold, 636569dc-79bc-4f50-b83d-89f58717f0b2, df7aa204-b0ef-4d62-943e-324551030e5b}
+```
+
+Protection container in fabric $fabric with name.
+
+### Example 3
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrProtectionContainer -FriendlyName xxxxxxxx  -Fabric $fabric
+FriendlyName                : xxxxxxxx
+Name                        : xxxxx
+ID                          : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxx/replicationFabrics/xxxxxxxxxxxxxxxxxxxxxxxxx/replicationProtectionContainers/xxxxxxxxxxxxxxxxxxxxxxxxx
+Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers
+FabricFriendlyName          : xxxxxxxxxxxxxxxxxxxxxxxxx
+FabricType                  : VMware
+Role                        : Primary
+AvailablePolicies           : {V2aTestPolicy, v2ahydra, v2aswag-failback, v2aswag}
+ProtectionContainerMappings : {pcmmapping, v2aPowerold, 636569dc-79bc-4f50-b83d-89f58717f0b2, df7aa204-b0ef-4d62-943e-324551030e5b}
+```
+
+Protection container in fabric $fabric with friendly Name.
 
 ## PARAMETERS
 
@@ -82,6 +117,21 @@ Parameter Sets: ByObjectWithName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

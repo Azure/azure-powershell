@@ -17,6 +17,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -152,6 +153,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private Hashtable BlobMetadata = null;
 
+        [Parameter(HelpMessage = "Page Blob Tier", Mandatory = false)]
+        public PremiumPageBlobTier PremiumPageBlobTier
+        {
+            get
+            {
+                return pageBlobTier.Value;
+            }
+
+            set
+            {
+                pageBlobTier = value;
+            }
+        }
+
+        private PremiumPageBlobTier? pageBlobTier = null;
+
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
 
         /// <summary>
@@ -205,11 +222,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 data.Record,
                 this.OutputStream).ConfigureAwait(false);
 
-            if (this.BlobProperties != null || this.BlobMetadata != null)
+            if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null)
             {
                 await TaskEx.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
-                    this.SetBlobMeta(localChannel, blob, this.BlobMetadata)).ConfigureAwait(false);
+                    this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
+                    this.SetBlobTier(localChannel, blob, pageBlobTier)).ConfigureAwait(false);
             }
 
             try
@@ -407,6 +425,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
+        /// set blob AccessTier
+        /// </summary>
+        /// <param name="azureBlob">CloudBlob object</param>
+        /// <param name="blockBlobTier">Block Blob Tier</param>
+        /// <param name="pageBlobTier">Page Blob Tier</param>
+        private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier)
+        {
+            if (pageBlobTier == null)
+            {
+                return;
+            }
+            
+            StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
+
+            // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
+            if (pageBlobTier != null)
+            {
+                await Channel.SetPageBlobTierAsync((CloudPageBlob)blob, pageBlobTier.Value, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary>
         /// On Task run successfully
         /// </summary>
         /// <param name="data">User data</param>
@@ -420,11 +460,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 AccessCondition accessCondition = null;
                 StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-                if (BlobProperties != null || BlobMetadata != null)
+                if (BlobProperties != null || BlobMetadata != null || this.pageBlobTier != null)
                 {
-                    Task[] tasks = new Task[2];
+                    Task[] tasks = new Task[3];
                     tasks[0] = SetBlobProperties(localChannel, blob, BlobProperties);
                     tasks[1] = SetBlobMeta(localChannel, blob, BlobMetadata);
+                    tasks[2] = SetBlobTier(localChannel, blob, pageBlobTier);
                     Task.WaitAll(tasks);
                 }
 
@@ -451,6 +492,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
+                pageBlobTier);
+
             if (BlobProperties != null)
             {
                 ValidateBlobProperties(BlobProperties);
@@ -491,7 +535,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
                     break;
             }
-
         }
     }
 }

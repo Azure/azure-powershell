@@ -55,13 +55,13 @@
     <Compile Include="Models\DnsBaseCmdlet.cs" />
     <Compile Include="Models\DnsRecordSet.cs" />
     <Compile Include="Models\DnsZone.cs" />
-    <Compile Include="Records\GetAzureDnsRescordSet.cs" />
+    <Compile Include="Records\GetAzureDnsRecordSet.cs" />
     <Compile Include="Records\NewAzureRmDnsRecordConfig.cs" />
     <Compile Include="Records\RemoveAzureDnsRecordSet.cs" />
     <Compile Include="Records\SetAzureDnsRecordSet.cs" />
     <Compile Include="Records\RemoveAzureDnsRecordConfig.cs" />
     <Compile Include="Records\AddAzureDnsRecordConfig.cs" />
-    <Compile Include="Records\NewAzureDnsRescordSet.cs" />
+    <Compile Include="Records\NewAzureDnsRecordSet.cs" />
     <Compile Include="Zones\GetAzureDnsZone.cs" />
     <Compile Include="Zones\RemoveAzureDnsZone.cs" />
     <Compile Include="Zones\SetAzureDnsZone.cs" />
@@ -80,18 +80,22 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Dns, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.1.7.2-preview\lib\net45\Microsoft.Azure.Management.Dns.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.2.0.0-preview\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -121,6 +125,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Dns\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

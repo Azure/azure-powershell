@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        [Alias("CommonEnvironmentSetting")]
         public IDictionary CommonEnvironmentSettings { get; set; }
 
         [Parameter]

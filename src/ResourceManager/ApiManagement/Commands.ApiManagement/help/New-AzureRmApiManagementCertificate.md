@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcertificate
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Creates an API Management certificate to be used during Authentication with Back
 
 ## SYNTAX
 
-### Load from file (Default)
+### LoadFromFile (Default)
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxFilePath <String> -PfxPassword <String> [<CommonParameters>]
+ -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
 New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxBytes <Byte[]> -PfxPassword <String> [<CommonParameters>]
+ -PfxBytes <Byte[]> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +32,11 @@ The **New-AzureRmApiManagementCertificate** cmdlet creates an Azure API Manageme
 
 ### Example 1: Create and upload a certificate
 ```
+PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
-This command creates an API Management certificate and uploads it.
+This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
 
 ## PARAMETERS
 
@@ -69,6 +71,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+ 
+ ```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PfxBytes
 Specifies an array of bytes of the certificate file in .pfx format.
 This parameter is required if you do not specify the *PfxFilePath* parameter.
@@ -91,7 +108,7 @@ This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Load from file
+Parameter Sets: LoadFromFile
 Aliases: 
 
 Required: True

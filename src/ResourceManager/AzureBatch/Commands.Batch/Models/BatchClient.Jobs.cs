@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(Resources.GetAllJobsLifetimeStatistics);
 
             JobOperations jobOperations = context.BatchOMClient.JobOperations;
-            JobStatistics jobStatistics = jobOperations.GetAllJobsLifetimeStatistics(additionalBehaviors);
+            JobStatistics jobStatistics = jobOperations.GetAllLifetimeStatistics(additionalBehaviors);
             PSJobStatistics psJobStatistics = new PSJobStatistics(jobStatistics);
 
             return psJobStatistics;

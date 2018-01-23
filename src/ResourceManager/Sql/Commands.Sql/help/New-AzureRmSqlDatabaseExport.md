@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 3D4822DD-736B-42DF-8D9A-1CB23FEF052E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabaseexport
 schema: 2.0.0
 ---
 
@@ -15,8 +16,8 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ```
 New-AzureRmSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
  -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
- [-AuthenticationType <AuthenticationType>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AuthenticationType <AuthenticationType>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,7 @@ Specifies the name of the SQL administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,7 +71,7 @@ Specifies the password of the SQL administrator.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +98,7 @@ This parameter is only available on SQL Database V12 servers.
 ```yaml
 Type: AuthenticationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Sql, AdPassword
 
 Required: False
@@ -113,12 +114,27 @@ Specifies the name of the SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +144,7 @@ Specifies the name of the resource group for the SQL Database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,7 +159,7 @@ Specifies the name of the SQL Database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -158,7 +174,7 @@ Specifies the access key for the storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -180,7 +196,7 @@ This value uses a Shared Access Signature (SAS) key.
 ```yaml
 Type: StorageKeyType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: StorageAccessKey, SharedAccessKey
 
 Required: True
@@ -196,7 +212,7 @@ Specifies the blob link, as a URL, to the .bacpac file.
 ```yaml
 Type: Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

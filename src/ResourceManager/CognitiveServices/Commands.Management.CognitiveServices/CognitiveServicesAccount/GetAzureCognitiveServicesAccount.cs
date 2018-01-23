@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
-using System.Globalization;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -41,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = AccountNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -62,13 +65,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.List();
+                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.List(), false);
 
                     WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
                 }
                 else if (string.IsNullOrEmpty(this.Name))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName);
+                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName), true);
                     if (cognitiveServicesAccounts == null)
                     {
                         WriteWarningWithTimestamp("Received empty accounts list");
@@ -77,13 +80,34 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
                 else
                 {
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(
                         this.ResourceGroupName,
                         this.Name);
 
                     WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }
             });
+        }
+
+        private IEnumerable<CognitiveServicesAccount> GetWithPaging(IPage<CognitiveServicesAccount> firstPage, bool isResourceGroup)
+        {
+            var cognitiveServicesAccounts = new List<CognitiveServicesAccount>(firstPage);
+            IPage<CognitiveServicesAccount> nextPage = null;
+            for (var nextLink = firstPage.NextPageLink; !string.IsNullOrEmpty(nextLink); nextLink = nextPage.NextPageLink)
+            {
+                if (isResourceGroup)
+                {
+                    nextPage = this.CognitiveServicesClient.Accounts.ListByResourceGroupNext(nextLink);
+                }
+                else
+                {
+                    nextPage = this.CognitiveServicesClient.Accounts.ListNext(nextLink);
+                }
+
+                cognitiveServicesAccounts.AddRange(nextPage);
+            }
+
+            return cognitiveServicesAccounts;
         }
     }
 }

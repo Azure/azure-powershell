@@ -20,14 +20,10 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Host;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -49,6 +45,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
+        [Parameter(Mandatory =false, HelpMessage= "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [Alias("AzureRmContext", "AzureCredential")]
         public IAzureContextContainer DefaultProfile
         {
             get
@@ -68,6 +66,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 _profile = value;
             }
+        }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
+        /// <summary>
+        /// Return a default context safely if it is available, without throwing if it is not setup
+        /// </summary>
+        /// <param name="context">The default context</param>
+        /// <returns>True if there is a valid default context, false otherwise</returns>
+        public virtual bool TryGetDefaultContext(out IAzureContext context)
+        {
+            bool result = false;
+            context = null;
+            if (DefaultProfile != null && DefaultProfile.DefaultContext != null && DefaultProfile.DefaultContext.Account != null)
+            {
+                context = DefaultProfile.DefaultContext;
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -165,46 +188,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 resourceId), action, promptForContinuation);
         }
 
-        protected override void SaveDataCollectionProfile()
-        {
-            if (_dataCollectionProfile == null)
-            {
-                InitializeDataCollectionProfile();
-            }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            try
-            {
-                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
-                {
-                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
-                }
-
-                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-            }
-            catch
-            {
-                // do not throw on errors writing to the data store
-            }
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            InitializeDataCollectionProfile();
-
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            WriteWarning(Resources.ARMDataCollectionMessage);
-
-            _dataCollectionProfile.EnableAzureDataCollection = true;
-            SaveDataCollectionProfile();
-        }
-
         protected override void InitializeQosEvent()
         {
             var commandAlias = this.GetType().Name;
@@ -231,13 +214,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
-            if (this.DefaultProfile != null &&
-                this.DefaultProfile.DefaultContext != null &&
-                this.DefaultProfile.DefaultContext.Account != null &&
-                !string.IsNullOrWhiteSpace(this.DefaultProfile.DefaultContext.Account.Id))
+            IAzureContext context;
+            if (TryGetDefaultContext(out context) 
+                && context.Account != null 
+                && !string.IsNullOrWhiteSpace(context.Account.Id))
             {
-                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.DefaultProfile.DefaultContext.Account.Id.ToString());
+                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
             }
             else
             {
@@ -248,11 +230,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();
-            if (DefaultContext != null && DefaultContext.Account != null
-                && DefaultContext.Account.Id != null)
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
-                    DefaultContext.Account.Id));
+                    WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
+                    context.Account.Id));
             }
         }
 
@@ -293,15 +277,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void BeginProcessing()
         {
             AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            if (DefaultContext != null && DefaultContext.Subscription != null)
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Subscription != null)
             {
                 AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
                     () =>
                     {
                         var client = new ResourceManagementClient(
-                            DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
-                        client.SubscriptionId = DefaultContext.Subscription.Id;
+                            context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager));
+                        client.SubscriptionId = context.Subscription.Id;
                         return client;
                     },
                     s => DebugMessages.Enqueue(s)));

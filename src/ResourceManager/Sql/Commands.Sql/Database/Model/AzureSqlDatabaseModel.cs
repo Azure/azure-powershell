@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
     public class AzureSqlDatabaseModel
     {
         /// <summary>
+        /// Template to generate database id
+        /// </summary>
+        internal const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
+
+        /// <summary>
         /// Gets or sets the name of the resource group
         /// </summary>
         public string ResourceGroupName { get; set; }
@@ -129,6 +134,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DatabaseReadScale? ReadScale { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option of the database.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -176,6 +186,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
+
+            ZoneRedundant = false;
         }
 
         /// <summary>
@@ -215,6 +227,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
+
+            ZoneRedundant = database.ZoneRedundant;
         }
     }
 }

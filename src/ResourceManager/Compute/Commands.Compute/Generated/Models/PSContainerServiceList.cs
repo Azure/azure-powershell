@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public PSContainerService ToPSContainerService ()
         {
-            return AutoMapper.Mapper.Map<PSContainerService>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService>(this);
         }
     }
 }

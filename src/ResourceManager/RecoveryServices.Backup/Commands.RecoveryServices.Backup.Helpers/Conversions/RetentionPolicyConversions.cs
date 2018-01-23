@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps long term retention policy from service response.
         /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
-            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy)
+            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy, string timeZone)
         {
             if (serviceClientRetPolicy == null)
             {
@@ -46,25 +47,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (serviceClientRetPolicy.DailySchedule != null)
             {
                 ltrPolicy.IsDailyScheduleEnabled = true;
-                ltrPolicy.DailySchedule = GetPSLTRDailySchedule(serviceClientRetPolicy.DailySchedule);
+                ltrPolicy.DailySchedule = GetPSLTRDailySchedule(serviceClientRetPolicy.DailySchedule, timeZone);
             }
 
             if (serviceClientRetPolicy.WeeklySchedule != null)
             {
                 ltrPolicy.IsWeeklyScheduleEnabled = true;
-                ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(serviceClientRetPolicy.WeeklySchedule);
+                ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(serviceClientRetPolicy.WeeklySchedule, timeZone);
             }
 
             if (serviceClientRetPolicy.MonthlySchedule != null)
             {
                 ltrPolicy.IsMonthlyScheduleEnabled = true;
-                ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(serviceClientRetPolicy.MonthlySchedule);
+                ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(serviceClientRetPolicy.MonthlySchedule, timeZone);
             }
 
             if (serviceClientRetPolicy.YearlySchedule != null)
             {
                 ltrPolicy.IsYearlyScheduleEnabled = true;
-                ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule);
+                ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule, timeZone);
             }
 
             // safe side validate
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
-           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy)
+           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy, string timeZone)
         {
             if (hydraRetPolicy == null)
             {
@@ -231,7 +232,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return yearsCount;
         }
 
-        private static DailyRetentionSchedule GetPSLTRDailySchedule(ServiceClientModel.DailyRetentionSchedule serviceClientDaily)
+        private static DailyRetentionSchedule GetPSLTRDailySchedule(ServiceClientModel.DailyRetentionSchedule serviceClientDaily,
+            string timeZone)
         {
             if (serviceClientDaily == null)
             {
@@ -241,12 +243,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             DailyRetentionSchedule psDaily = new DailyRetentionSchedule();
 
             psDaily.DurationCountInDays = GetRetentionDurationInDays(serviceClientDaily.RetentionDuration);
-            psDaily.RetentionTimes = ParseDateTimesToUTC(serviceClientDaily.RetentionTimes);
+            psDaily.RetentionTimes = ParseDateTimesToUTC(serviceClientDaily.RetentionTimes, timeZone);
 
             return psDaily;
         }
 
-        private static WeeklyRetentionSchedule GetPSLTRWeeklySchedule(ServiceClientModel.WeeklyRetentionSchedule serviceClientWeekly)
+        private static WeeklyRetentionSchedule GetPSLTRWeeklySchedule(ServiceClientModel.WeeklyRetentionSchedule serviceClientWeekly,
+            string timeZone)
         {
             if (serviceClientWeekly == null)
             {
@@ -256,7 +259,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             WeeklyRetentionSchedule psWeekly = new WeeklyRetentionSchedule();
 
             psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(serviceClientWeekly.RetentionDuration);
-            psWeekly.RetentionTimes = ParseDateTimesToUTC(serviceClientWeekly.RetentionTimes);
+            psWeekly.RetentionTimes = ParseDateTimesToUTC(serviceClientWeekly.RetentionTimes, timeZone);
             psWeekly.DaysOfTheWeek =
                 HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
                     serviceClientWeekly.DaysOfTheWeek);
@@ -264,7 +267,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psWeekly;
         }
 
-        private static MonthlyRetentionSchedule GetPSLTRMonthlySchedule(ServiceClientModel.MonthlyRetentionSchedule serviceClientMonthly)
+        private static MonthlyRetentionSchedule GetPSLTRMonthlySchedule(ServiceClientModel.MonthlyRetentionSchedule serviceClientMonthly,
+            string timeZone)
         {
             if (serviceClientMonthly == null)
             {
@@ -274,7 +278,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             MonthlyRetentionSchedule psMonthly = new MonthlyRetentionSchedule();
 
             psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(serviceClientMonthly.RetentionDuration);
-            psMonthly.RetentionTimes = ParseDateTimesToUTC(serviceClientMonthly.RetentionTimes);
+            psMonthly.RetentionTimes = ParseDateTimesToUTC(serviceClientMonthly.RetentionTimes, timeZone);
             psMonthly.RetentionScheduleFormatType =
                 serviceClientMonthly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientMonthly.RetentionScheduleDaily);
@@ -283,7 +287,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psMonthly;
         }
 
-        private static YearlyRetentionSchedule GetPSLTRYearlySchedule(ServiceClientModel.YearlyRetentionSchedule serviceClientYearly)
+        private static YearlyRetentionSchedule GetPSLTRYearlySchedule(ServiceClientModel.YearlyRetentionSchedule serviceClientYearly,
+            string timeZone)
         {
             if (serviceClientYearly == null)
             {
@@ -293,7 +298,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             YearlyRetentionSchedule psYearly = new YearlyRetentionSchedule();
 
             psYearly.DurationCountInYears = GetRetentionDurationInYears(serviceClientYearly.RetentionDuration);
-            psYearly.RetentionTimes = ParseDateTimesToUTC(serviceClientYearly.RetentionTimes);
+            psYearly.RetentionTimes = ParseDateTimesToUTC(serviceClientYearly.RetentionTimes, timeZone);
             psYearly.RetentionScheduleFormatType =
                 serviceClientYearly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientYearly.RetentionScheduleDaily);
@@ -378,10 +383,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ServiceClientModel.SimpleRetentionPolicy simpleRetPolicy =
                     new ServiceClientModel.SimpleRetentionPolicy();
 
-                string durationType = psRetPolicy.RetentionDurationType.ToString();
                 simpleRetPolicy.RetentionDuration = new ServiceClientModel.RetentionDuration();
                 simpleRetPolicy.RetentionDuration.DurationType =
-                    durationType.ToEnum<ServiceClientModel.RetentionDurationType>();
+                    ServiceClientHelpers.GetServiceClientRetentionDurationType(psRetPolicy.RetentionDurationType);
                 simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionCount;
 
                 return simpleRetPolicy;
@@ -496,8 +500,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                                                   psMonthly.RetentionTimes);
 
             serviceClientMonthly.RetentionScheduleFormatType =
-                psMonthly.RetentionScheduleFormatType
-                    .ToEnum<ServiceClientModel.RetentionScheduleFormat>();
+                ServiceClientHelpers.GetServiceClientRetentionScheduleFormat(
+                    psMonthly.RetentionScheduleFormatType);
 
             if (psMonthly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {
@@ -529,8 +533,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                                                  psYearly.RetentionTimes);
 
             serviceClientYearly.RetentionScheduleFormatType =
-                    psYearly.RetentionScheduleFormatType
-                        .ToEnum<ServiceClientModel.RetentionScheduleFormat>();
+                    ServiceClientHelpers.GetServiceClientRetentionScheduleFormat(
+                    psYearly.RetentionScheduleFormatType);
 
             if (psYearly.RetentionScheduleFormatType == RetentionScheduleFormat.Daily)
             {

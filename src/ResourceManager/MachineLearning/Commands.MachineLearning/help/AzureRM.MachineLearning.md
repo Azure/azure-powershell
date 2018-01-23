@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
 Download Help Link: 
@@ -11,6 +11,9 @@ Locale: en-US
 {{Manually Enter Description Here}}
 
 ## AzureRM.MachineLearning Cmdlets
+### [Add-AzureRmMlWebServiceRegionalProperty](Add-AzureRmMlWebServiceRegionalProperty.md)
+Creates regional web service properties.
+
 ### [Export-AzureRmMlWebService](Export-AzureRmMlWebService.md)
 Exports the web service definition object as a JSON formatted string.
 
@@ -39,11 +42,7 @@ Moves a commitment association from one commitment plan to another.
 Creates a new commitment plan.
 
 ### [New-AzureRmMlWebService](New-AzureRmMlWebService.md)
-
-Creates a new Azure Machine Learning web service.
-
-### [Add-AzureRmMlWebServiceRegionalProperty](Add-AzureRmMlWebServiceRegionalProperty.md)
-Creates regional web service properties.
+Creates a new web service.
 
 ### [Remove-AzureRmMlCommitmentPlan](Remove-AzureRmMlCommitmentPlan.md)
 Deletes a commitment plan.

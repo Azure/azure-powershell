@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+Module Name: AzureRM.Media
 ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservicestorageconfig
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Create a storage account configuration for the media service cmdlets.
 ## SYNTAX
 
 ```
-New-AzureRmMediaServiceStorageConfig [-StorageAccountId] <String> [-IsPrimary] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmMediaServiceStorageConfig [-DefaultProfile <IAzureContextContainer>] [-StorageAccountId] <String>
+ [-IsPrimary] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ The command names this storage account Storage1 and the type is named Standard_G
 The second command creates a storage configuration object as the primary storage account associated with the media service using the storage account ID information stored in the $StorageAccount variable.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IsPrimary
 Indicates that the cmdlet creates the storage account as the primary storage for the media service.

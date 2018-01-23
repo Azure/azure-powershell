@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.AnalysisServices
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa21
 Download Help Link: None_Azure

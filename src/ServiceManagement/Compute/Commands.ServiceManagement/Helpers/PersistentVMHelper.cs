@@ -145,9 +145,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
         public static Collection<ConfigurationSet> MapConfigurationSets(IList<Management.Compute.Models.ConfigurationSet> configurationSets)
         {
             var result = new Collection<ConfigurationSet>();
-            var n = configurationSets.Where(c => c.ConfigurationSetType == "NetworkConfiguration").Select(Mapper.Map<Model.NetworkConfigurationSet>).ToList();
-            var w = configurationSets.Where(c => c.ConfigurationSetType == ConfigurationSetTypes.WindowsProvisioningConfiguration).Select(Mapper.Map<WindowsProvisioningConfigurationSet>).ToList();
-            var l = configurationSets.Where(c => c.ConfigurationSetType == ConfigurationSetTypes.LinuxProvisioningConfiguration).Select(Mapper.Map<LinuxProvisioningConfigurationSet>).ToList();
+            var n = configurationSets.Where(c => c.ConfigurationSetType == "NetworkConfiguration").Select(ServiceManagementProfile.Mapper.Map<Model.NetworkConfigurationSet>).ToList();
+            var w = configurationSets.Where(c => c.ConfigurationSetType == ConfigurationSetTypes.WindowsProvisioningConfiguration).Select(ServiceManagementProfile.Mapper.Map<WindowsProvisioningConfigurationSet>).ToList();
+            var l = configurationSets.Where(c => c.ConfigurationSetType == ConfigurationSetTypes.LinuxProvisioningConfiguration).Select(ServiceManagementProfile.Mapper.Map<LinuxProvisioningConfigurationSet>).ToList();
             n.ForEach(result.Add);
             w.ForEach(result.Add);
             l.ForEach(result.Add);
@@ -159,12 +159,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             var result = new Collection<Management.Compute.Models.ConfigurationSet>();
             foreach (var networkConfig in configurationSets.OfType<NetworkConfigurationSet>())
             {
-                result.Add(Mapper.Map<Management.Compute.Models.ConfigurationSet>(networkConfig));
+                result.Add(ServiceManagementProfile.Mapper.Map<Management.Compute.Models.ConfigurationSet>(networkConfig));
             }
 
             foreach (var windowsConfig in configurationSets.OfType<WindowsProvisioningConfigurationSet>())
             {
-                var newWinCfg = Mapper.Map<Management.Compute.Models.ConfigurationSet>(windowsConfig);
+                var newWinCfg = ServiceManagementProfile.Mapper.Map<Management.Compute.Models.ConfigurationSet>(windowsConfig);
                 if (windowsConfig.WinRM != null)
                 {
                     newWinCfg.WindowsRemoteManagement = new WindowsRemoteManagementSettings();
@@ -188,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
 
             foreach (var linuxConfig in configurationSets.OfType<LinuxProvisioningConfigurationSet>())
             {
-                result.Add(Mapper.Map<Management.Compute.Models.ConfigurationSet>(linuxConfig));
+                result.Add(ServiceManagementProfile.Mapper.Map<Management.Compute.Models.ConfigurationSet>(linuxConfig));
             }
 
             return result;

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Retrieves Protectable Items.
         /// </summary>
-        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <returns>Protection entity list response</returns>
         public List<ProtectableItem> GetAzureSiteRecoveryProtectableItem(
             string fabricName,
@@ -40,15 +42,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .GetAwaiter()
                 .GetResult()
                 .Body;
+
             var pages = Utilities.GetAllFurtherPages(
                 this.GetSiteRecoveryClient()
                     .ReplicationProtectableItems
                     .ListByReplicationProtectionContainersNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
                 this.GetRequestHeaders(true));
-            pages.Insert(
-                0,
-                firstPage);
+
+            pages.Insert(0, firstPage);
 
             return Utilities.IpageToList(pages);
         }
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Retrieves Protectable Item.
         /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicatedProtectedItemName">Virtual Machine Name</param>
         /// <returns>Replicated Protected Item response</returns>
@@ -73,6 +76,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .GetAwaiter()
                 .GetResult()
                 .Body;
+        }
+
+        /// <summary>
+        ///     Discovers Protectable Items.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="input">Discover Protectable Item Request</param>
+        /// <returns>Long running operation response</returns>
+        public PSSiteRecoveryLongRunningOperation NewAzureSiteRecoveryProtectableItem(
+            string fabricName,
+            string protectionContainerName,
+            DiscoverProtectableItemRequest input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionContainers.BeginDiscoverProtectableItemWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
     }
 }

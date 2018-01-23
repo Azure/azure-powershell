@@ -19,10 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -121,12 +121,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class SetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Set))
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
@@ -136,14 +135,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var result = VirtualMachineScaleSetsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetsClient.Reimage(resourceGroupName, vmScaleSetName, instanceIds);
                         var psObject = new PSOperationStatusResponse();
-                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
 
@@ -164,6 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -208,5 +208,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter ReimageAll { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

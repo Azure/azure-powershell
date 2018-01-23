@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+Module Name: AzureRM.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccount
 schema: 2.0.0
 ---
 
@@ -14,12 +15,14 @@ Gets a Storage account.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmStorageAccount [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +30,7 @@ The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all
 
 ## EXAMPLES
 
-### Example 1: Get a specified storage account
+### Example 1: Get a specified Storage account
 ```
 PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
 ```
@@ -49,6 +52,21 @@ PS C:\>Get-AzureRmStorageAccount
 This command gets all of the Storage accounts in the subscription.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Storage account to get.

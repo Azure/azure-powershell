@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -28,37 +27,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureCorrelationIdLog()
+        public void TestGetAzureLogAllParameters()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureCorrelationIdLog");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureResourceGroupLog()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureResourceGroupLog");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureResourceLog()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureResourceLog");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureResourceProviderLog()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureResourceProviderLog");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureSubscriptionIdLog()
-        {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLog");
+            TestsController.NewInstance.RunPsTest("Test-GetAzureLogAllParameters");
         }
 
         [Fact]

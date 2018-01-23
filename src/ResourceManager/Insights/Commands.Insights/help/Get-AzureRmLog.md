@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermlog
 schema: 2.0.0
 ---
 
@@ -12,34 +13,38 @@ Gets a log of events.
 
 ## SYNTAX
 
-### Query on CorrelationId
+### GetByCorrelationId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-CorrelationId] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-CorrelationId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Query on ResourceIdName
+### GetByResourceId
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceId] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Query on ResourceGroupProvider
+### GetByResourceGroup
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceGroup] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Query on ResourceProvider
+### GetByResourceProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-ResourceProvider] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Query at subscription level
+### GetBySubscription
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-MaxEvents <Int32>] [<CommonParameters>]
+ [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +114,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 9: Get an event log for a resource group
 ```
-PS C:\>Get-AzureRmLog -ResourceGroup "Contoso-Web-CentralUS"
+PS C:\>Get-AzureRmLog -ResourceGroupName "Contoso-Web-CentralUS"
 ```
 
 This command lists at most 1000 the events associated with the specified resource group that took place 7 days from the current date/time.
@@ -214,13 +219,28 @@ This parameter is required.
 
 ```yaml
 Type: String
-Parameter Sets: Query on CorrelationId
+Parameter Sets: GetByCorrelationId
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -259,14 +279,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxEvents
+### -MaxRecord
 Specifies the total number of records to fetch for the specified filter.
 The default value is 1000 and the maximum value accepted is 100000. Negative values and 0 are ignored and the default value will be used.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: MaxRecords
+Aliases: MaxRecords, MaxEvents
 
 Required: False
 Position: Named
@@ -275,13 +295,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceGroupProvider
-Aliases: 
+Parameter Sets: GetByResourceGroup
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -295,7 +315,7 @@ Specifies the resource ID.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceIdName
+Parameter Sets: GetByResourceId
 Aliases: 
 
 Required: True
@@ -310,7 +330,7 @@ Specifies a filter by resource provider.
 
 ```yaml
 Type: String
-Parameter Sets: Query on ResourceProvider
+Parameter Sets: GetByResourceProvider
 Aliases: 
 
 Required: True
@@ -360,7 +380,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-## OUTPUTS
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
 
 ### None
 

@@ -11,12 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //---------------------------------------------------------------------------------
- using System.Management.Automation;
- using AutoMapper;
- using Microsoft.Azure.Management.Network;
- using Microsoft.Azure.Commands.Network.Models;
- using MNM = Microsoft.Azure.Management.Network.Models;
-		
+using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
 namespace Microsoft.Azure.Commands.Network		
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
             Mandatory = true,		
             ValueFromPipelineByPropertyName = true,		
-            HelpMessage = "The resource group name.")]		
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]		
         public virtual string ResourceGroupName { get; set; }
 
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
                 var stats = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.GetStats(		
                     ResourceGroupName,		
                     ExpressRouteCircuitName);		
-                var psStats = Mapper.Map<PSExpressRouteCircuitStats>(stats);		
+                var psStats = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitStats>(stats);		
                 WriteObject(psStats, true);		
             }		
             else		
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName,		
                     ExpressRouteCircuitName,		
                     PeeringType);		
-                var psStats = Mapper.Map<PSExpressRouteCircuitStats>(stats);		
+                var psStats = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitStats>(stats);		
                 WriteObject(psStats, true);		
             }		
         }		

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSNetworkWatcher ToPsNetworkWatcher(NetworkWatcher networkWatcher)
         {
-            var psNetworkWatcher = Mapper.Map<PSNetworkWatcher>(networkWatcher);
+            var psNetworkWatcher = NetworkResourceManagerProfile.Mapper.Map<PSNetworkWatcher>(networkWatcher);
             psNetworkWatcher.Tag =
                 TagsConversionHelper.CreateTagHashtable(networkWatcher.Tags);
 

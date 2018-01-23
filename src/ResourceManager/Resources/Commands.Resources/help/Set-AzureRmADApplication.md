@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: BA97DB6F-F64D-417E-BD72-C2EBB2EC1AA4
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermadapplication
 schema: 2.0.0
 ---
 
@@ -15,15 +16,15 @@ Updates an existing azure active directory application.
 ### ApplicationObjectIdWithUpdateParamsParameterSet
 ```
 Set-AzureRmADApplication -ObjectId <String> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithUpdateParamsParameterSet
 ```
 Set-AzureRmADApplication -ApplicationId <String> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,14 +33,14 @@ To update the credentials associated with this application, please use New-Azure
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Set-AzureRmADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName "UpdatedAppName" -HomePage "http://www.microsoft.com" -IdentifierUris "http://UpdatedApp" -AvailableToOtherTenants $false
 ```
 
 Updates the properties of an existing azure active directory application with objectId "fb7b3405-ca44-4b5b-8584-12392f5d96d7".
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS E:\> Set-AzureRmADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName "UpdatedAppName"
 ```
@@ -54,7 +55,7 @@ The id of the application to update.
 ```yaml
 Type: String
 Parameter Sets: ApplicationIdWithUpdateParamsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,12 +70,27 @@ The value specifying whether the application is updated to be a single tenant or
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -84,7 +100,7 @@ New Display name for the application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +115,7 @@ New URL of the application homepage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +130,7 @@ New URIs that identify the application.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +145,7 @@ The object id of the application to update.
 ```yaml
 Type: String
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -144,7 +160,7 @@ New reply urls for the application.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

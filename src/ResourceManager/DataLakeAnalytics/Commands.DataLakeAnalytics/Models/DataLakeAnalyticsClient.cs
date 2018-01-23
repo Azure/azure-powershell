@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             IList<DataLakeStoreAccountInfo> additionalDataLakeStoreAccounts = null,
             IList<StorageAccountInfo> additionalStorageAccounts = null,
             Hashtable customTags = null,
-            int? maxDegreeOfParallelism = 0,
+            int? maxAnalyticsUnits = 0,
             int? maxJobCount = 0,
             int? queryStoreRetention = 0,
             TierType? tier = null,
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 };
             }
 
-            if(maxDegreeOfParallelism.HasValue && maxDegreeOfParallelism > 0)
+            if(maxAnalyticsUnits.HasValue && maxAnalyticsUnits > 0)
             {
-                parameters.MaxDegreeOfParallelism = maxDegreeOfParallelism;
+                parameters.MaxDegreeOfParallelism = maxAnalyticsUnits;
             }
 
             if(maxJobCount.HasValue && maxJobCount > 0)
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return _accountClient.Account.Get(resourceGroupName, accountName);
         }
 
-        public List<DataLakeAnalyticsAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
+        public List<DataLakeAnalyticsAccountBasic> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
             var parameters = new ODataQuery<DataLakeAnalyticsAccount>
             {
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 Skip = skip
             };
 
-            var accountList = new List<DataLakeAnalyticsAccount>();
+            var accountList = new List<DataLakeAnalyticsAccountBasic>();
             var response = string.IsNullOrEmpty(resourceGroupName)
                 ? _accountClient.Account.List(parameters)
                 : _accountClient.Account.ListByResourceGroup(resourceGroupName, parameters);
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)
+        private IPage<DataLakeAnalyticsAccountBasic> ListAccountsWithNextLink(string nextLink)
         {
             return _accountClient.Account.ListNext(nextLink);
         }
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         #endregion
         #region Compute Policy Operations
-        public ComputePolicy CreateComputePolicy(string resourceGroupName, string accountName, string policyName, Guid objectId, string objectType, int? maxDopPerJob = null, int? minPriorityPerJob = null)
+        public ComputePolicy CreateComputePolicy(string resourceGroupName, string accountName, string policyName, Guid objectId, string objectType, int? maxAnalyticsUnitsPerJob = null, int? minPriorityPerJob = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -1129,12 +1129,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 ObjectId = objectId,
                 ObjectType = objectType,
-                MaxDegreeOfParallelismPerJob = maxDopPerJob,
+                MaxDegreeOfParallelismPerJob = maxAnalyticsUnitsPerJob,
                 MinPriorityPerJob = minPriorityPerJob
             });
         }
 
-        public ComputePolicy UpdateComputePolicy(string resourceGroupName, string accountName, string policyName, int? maxDopPerJob = null, int? minPriorityPerJob = null)
+        public ComputePolicy UpdateComputePolicy(string resourceGroupName, string accountName, string policyName, int? maxAnalyticsUnitsPerJob = null, int? minPriorityPerJob = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return _accountClient.ComputePolicies.Update(resourceGroupName, accountName, policyName, new ComputePolicy
             {
-                MaxDegreeOfParallelismPerJob = maxDopPerJob,
+                MaxDegreeOfParallelismPerJob = maxAnalyticsUnitsPerJob,
                 MinPriorityPerJob = minPriorityPerJob
             });
         }
@@ -1237,17 +1237,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return _jobClient.Job.Get(accountName, jobId);
         }
 
-        public JobInformation SubmitJob(string accountName, JobInformation jobToSubmit)
+        public JobInformation SubmitJob(string accountName, Guid jobId, CreateJobParameters jobToSubmit)
         {
-            return
-                _jobClient.Job.Create(accountName, jobToSubmit.JobId.GetValueOrDefault(),
-                    jobToSubmit);
+            return _jobClient.Job.Create(accountName, jobId, jobToSubmit);
         }
 
-        public JobInformation BuildJob(string accountName, JobInformation jobToBuild)
+        public JobInformation BuildJob(string accountName, BuildJobParameters jobToBuild)
         {
-            return
-                _jobClient.Job.Build(accountName, jobToBuild);
+            return _jobClient.Job.Build(accountName, jobToBuild);
         }
 
         public void CancelJob(string accountName, Guid jobId)
@@ -1265,7 +1262,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return _jobClient.Job.GetStatistics(accountName, jobId);
         }
 
-        public List<JobInformation> ListJobs(string accountName, string filter, int? top,
+        public List<JobInformationBasic> ListJobs(string accountName, string filter, int? top,
             int? skip, string orderBy, out bool moreJobs)
         {
             moreJobs = false;
@@ -1282,7 +1279,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 OrderBy = orderBy
             };
 
-            var jobList = new List<JobInformation>();
+            var jobList = new List<JobInformationBasic>();
             var response = _jobClient.Job.List(accountName, parameters);
             var curCount = 0;
             jobList.AddRange(response);
@@ -1362,7 +1359,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         #region private helpers
 
-        private IPage<JobInformation> ListJobsWithNextLink(string nextLink)
+        private IPage<JobInformationBasic> ListJobsWithNextLink(string nextLink)
         {
             return _jobClient.Job.ListNext(nextLink);
         }

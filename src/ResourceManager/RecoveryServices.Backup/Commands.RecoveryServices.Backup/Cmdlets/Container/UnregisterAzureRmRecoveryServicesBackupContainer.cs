@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Unregisters container from the recovery services vault.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer",
+        SupportsShouldProcess = true)]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
         : RecoveryServicesBackupCmdletBase
     {
@@ -33,6 +34,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
+
+        /// <summary>
+        /// Return the container to be deleted
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return the container to be deleted.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -56,7 +63,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 ServiceClientAdapter.UnregisterContainers(containerName);
-            });
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(Container);
+                }
+            }, ShouldProcess(Container.Name, VerbsLifecycle.Unregister));
         }
     }
 }

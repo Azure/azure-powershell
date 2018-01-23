@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.DataFactories
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}

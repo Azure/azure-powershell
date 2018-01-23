@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
+            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar"};
             cmdlet.CertificateReferences = new PSCertificateReference[]
             {
                 new PSCertificateReference()
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Metadata.Add("meta1", "value1");
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
             cmdlet.StartTask = new PSStartTask("cmd /c echo start task");
-            cmdlet.TargetDedicated = 3;
+            cmdlet.TargetDedicatedComputeNodes = 3;
+            cmdlet.TargetLowPriorityComputeNodes = 2;
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
@@ -117,6 +119,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.ApplicationLicenses[0], requestParameters.ApplicationLicenses[0]);
+            Assert.Equal(cmdlet.ApplicationLicenses[1], requestParameters.ApplicationLicenses[1]);
             Assert.Equal(cmdlet.CertificateReferences.Length, requestParameters.CertificateReferences.Count);
             Assert.Equal(cmdlet.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
             Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
@@ -130,7 +134,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.Metadata["meta1"], requestParameters.Metadata[0].Value);
             Assert.Equal(cmdlet.ResizeTimeout, requestParameters.ResizeTimeout);
             Assert.Equal(cmdlet.StartTask.CommandLine, requestParameters.StartTask.CommandLine);
-            Assert.Equal(cmdlet.TargetDedicated, requestParameters.TargetDedicated);
+            Assert.Equal(cmdlet.TargetDedicatedComputeNodes, requestParameters.TargetDedicatedNodes);
+            Assert.Equal(cmdlet.TargetLowPriorityComputeNodes, requestParameters.TargetLowPriorityNodes);
             Assert.Equal(cmdlet.TaskSchedulingPolicy.ComputeNodeFillType.ToString(), requestParameters.TaskSchedulingPolicy.NodeFillType.ToString());
             Assert.Equal(cmdlet.VirtualMachineConfiguration.NodeAgentSkuId, requestParameters.VirtualMachineConfiguration.NodeAgentSKUId);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Publisher, requestParameters.VirtualMachineConfiguration.ImageReference.Publisher);
@@ -168,7 +173,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.AutoScaleEvaluationInterval, requestParameters.AutoScaleEvaluationInterval);
             Assert.Equal(cmdlet.AutoScaleFormula, requestParameters.AutoScaleFormula);
             Assert.Equal(true, requestParameters.EnableAutoScale);
-            Assert.Equal(null, requestParameters.TargetDedicated);
+            Assert.Equal(null, requestParameters.TargetDedicatedNodes);
         }
 
         [Fact]
@@ -205,6 +210,90 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(cmdlet.NetworkConfiguration.SubnetId, subnetId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolOSDiskGetsPassedToRequest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testPool";
+            cmdlet.TargetDedicatedComputeNodes = 3;
+
+            Azure.Batch.Common.CachingType cachingType = Azure.Batch.Common.CachingType.ReadWrite;
+            cmdlet.VirtualMachineConfiguration =
+                new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent")
+                {
+                    OSDisk = new PSOSDisk(cachingType)
+                };
+            PoolAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cachingType.ToString().ToLowerInvariant(), 
+                requestParameters.VirtualMachineConfiguration.OsDisk.Caching.ToString().ToLowerInvariant());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolUserAccountsGetPassedToRequest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testPool";
+            cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
+            cmdlet.TargetDedicatedComputeNodes = 3;
+
+            PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);
+            PSUserAccount nonAdminUser = new PSUserAccount("user2", "password2", Azure.Batch.Common.ElevationLevel.NonAdmin);
+            PSUserAccount sshUser = new PSUserAccount("user3", "password3", linuxUserConfiguration: new PSLinuxUserConfiguration(uid: 1, gid: 2, sshPrivateKey: "my ssh key"));
+            cmdlet.UserAccount = new [] { adminUser, nonAdminUser, sshUser };
+
+            PoolAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(3, requestParameters.UserAccounts.Count);
+            Assert.Equal(adminUser.Name, requestParameters.UserAccounts[0].Name);
+            Assert.Equal(adminUser.Password, requestParameters.UserAccounts[0].Password);
+            Assert.Equal(adminUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.UserAccounts[0].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(nonAdminUser.Name, requestParameters.UserAccounts[1].Name);
+            Assert.Equal(nonAdminUser.Password, requestParameters.UserAccounts[1].Password);
+            Assert.Equal(nonAdminUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.UserAccounts[1].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(sshUser.Name, requestParameters.UserAccounts[2].Name);
+            Assert.Equal(sshUser.Password, requestParameters.UserAccounts[2].Password);
+            Assert.Equal(sshUser.ElevationLevel.ToString().ToLowerInvariant(),
+                requestParameters.UserAccounts[2].ElevationLevel.ToString().ToLowerInvariant());
+            Assert.Equal(sshUser.LinuxUserConfiguration.Uid, requestParameters.UserAccounts[2].LinuxUserConfiguration.Uid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.Gid, requestParameters.UserAccounts[2].LinuxUserConfiguration.Gid);
+            Assert.Equal(sshUser.LinuxUserConfiguration.SshPrivateKey, requestParameters.UserAccounts[2].LinuxUserConfiguration.SshPrivateKey);
         }
     }
 }

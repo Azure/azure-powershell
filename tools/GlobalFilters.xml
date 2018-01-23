@@ -177,10 +177,16 @@
         <string>ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\ServiceConfiguration.cscfg</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx</string>
-		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteAppPasswordCredentials.json</string>
-		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
+		    <string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteAppPasswordCredentials.json</string>
+		    <string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
         <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\client.rb</string>
         <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem</string>
+        <string>ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD.json</string>
+        <string>ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\client.rb</string>
+        <string>ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem</string>
+        <string>ResourceManager\\Network\\Stack\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD.json</string>
+        <string>ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert1.pfx</string>
+        <string>ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert2.pfx</string>
 		<string>\\bin\\Debug\\</string>
 		<string>\\package[s]?\\</string>
       </Filters>

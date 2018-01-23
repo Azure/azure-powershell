@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: F6D8710D-1D42-493C-B7F1-EDA35FCCDC23
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/get-azurermschedulerjobhistory
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets job history.
 
 ```
 Get-AzureRmSchedulerJobHistory -ResourceGroupName <String> -JobCollectionName <String> -JobName <String>
- [-JobExecutionStatus <String>] [<CommonParameters>]
+ [-JobExecutionStatus <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +29,21 @@ The **Get-AzureRmSchedulerJobHistory** cmdlet gets history for an Azure Schedule
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -JobCollectionName
 Specifies the name of a job collection.

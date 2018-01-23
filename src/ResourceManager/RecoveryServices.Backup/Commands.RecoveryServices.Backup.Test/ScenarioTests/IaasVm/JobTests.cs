@@ -31,79 +31,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobs()
+        public void TestAzureVMGetJobs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobs");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsTimeFilter()
+        public void TestAzureVMGetJobsTimeFilter()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsTimeFilter");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetJobsTimeFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsStatusFilter()
+        public void TestAzureVMWaitJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsStatusFilter");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMWaitJob");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsOperationFilter()
+        public void TestAzureVMCancelJob()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsOperationFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobsBackupManagementTypeFilter()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobsBackupManagementTypeFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetJobDetails()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetJobDetails");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestWaitJobScenario()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-WaitJobScenario");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestWaitJobPipeScenario()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-WaitJobPipeScenario");
-        }
-
-        public void TestCancelJobScenario()
-        {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-CancelJobScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMCancelJob");
         }
     }
 }

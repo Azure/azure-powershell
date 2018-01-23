@@ -28,8 +28,12 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net;
+using System.Text.RegularExpressions;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
+using Job = Microsoft.Azure.Management.Automation.Models.Job;
+using JobSchedule = Microsoft.Azure.Management.Automation.Models.JobSchedule;
+using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -1304,6 +1308,185 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
+        public NodeConfigurationDeployment StartNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, 
+            string nodeConfiguraionName, string[][] nodeNames, Schedule schedule)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty().ValidAutomationAccountName();
+            Requires.Argument("NodeConfiguraionName", nodeConfiguraionName).NotNullOrEmpty().ValidNodeConfigurationName();
+
+            const string runbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+
+            IDictionary<string, string> processedParameters =
+                    this.ProcessRunbookParameters(BuildParametersForNodeConfigurationDeploymentRunbook(),
+                        ProcessParametersFornodeConfigurationRunbook(resourceGroupName, automationAccountName,
+                            nodeConfiguraionName, nodeNames));
+
+            JobSchedule jobSchedule = null;
+            Job job = null;
+
+            if (schedule == null)
+            {
+                job = this.automationManagementClient.Jobs.Create(
+                    resourceGroupName,
+                    automationAccountName,
+                    new JobCreateParameters
+                    {
+                        Properties = new JobCreateProperties
+                        {
+                            Runbook = new RunbookAssociationProperty
+                            {
+                                Name = runbookName
+                            },
+                            Parameters = processedParameters ?? null
+                        }
+                    }).Job;
+            }
+            else
+            {
+                jobSchedule = this.automationManagementClient.JobSchedules.Create(
+                    resourceGroupName,
+                    automationAccountName,
+                    new JobScheduleCreateParameters
+                    {
+                        Properties = new JobScheduleCreateProperties
+                        {
+                            Schedule = new ScheduleAssociationProperty {Name = schedule.Name},
+                            Runbook = new RunbookAssociationProperty {Name = runbookName},
+                            Parameters = processedParameters ?? null
+                        }
+                    }).JobSchedule;
+            }
+
+            return new NodeConfigurationDeployment(resourceGroupName, automationAccountName, nodeConfiguraionName, job, jobSchedule);
+        }
+
+        public NodeConfigurationDeployment GetNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, Guid jobId)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty().ValidAutomationAccountName();
+
+            var nodeLists = new List<IList<string>>();
+            var nodesStatus = new List<IDictionary<string, string>>();
+            Job job = null;
+            string nodeConfigurationName = null;
+
+            if (jobId != Guid.Empty)
+            {
+                job = this.automationManagementClient.Jobs.Get(resourceGroupName, automationAccountName, jobId).Job;
+
+                nodeConfigurationName = PowerShellJsonConverter
+                    .Deserialize(job.Properties.Parameters["NodeConfigurationName"]).ToString();
+
+                // Fetch Nodes from the Param List.
+                var nodesJsonArray = PowerShellJsonConverter.Serialize(job.Properties.Parameters["ListOfNodeNames"]);
+                var stringArray =
+                    Newtonsoft.Json.Linq.JArray.Parse(JsonConvert.DeserializeObject<string>(nodesJsonArray));
+
+                nodeLists.AddRange(stringArray.Select(jt => jt.Select(node => node.ToString()).ToList()));
+
+                // Fetch the status of each node.
+                foreach (var nodeList in nodeLists)
+                {
+                    IDictionary<string, string> dscNodeGroup = new Dictionary<string, string>();
+                    foreach (var node in nodeList)
+                    {
+                        var nextLink = string.Empty;
+                        IEnumerable<Model.DscNode> dscNodes;
+                        do
+                        {
+                            dscNodes = this.ListDscNodesByName(resourceGroupName, automationAccountName, node, null,
+                                ref nextLink);
+                        } while (!string.IsNullOrEmpty(nextLink));
+                        dscNodeGroup.Add(node, dscNodes.First().Status);
+                    }
+                    nodesStatus.Add(dscNodeGroup);
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(jobId), Resources.NoJobIdPassedToGetJobInformationCall);
+            }
+            return new NodeConfigurationDeployment(resourceGroupName, automationAccountName, nodeConfigurationName, job, nodesStatus);
+        }
+
+
+        public NodeConfigurationDeploymentSchedule GetNodeConfigurationDeploymentSchedule(string resourceGroupName, string automationAccountName, Guid jobScheduleId)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty().ValidAutomationAccountName();
+
+            AutomationManagement.Models.JobSchedule jobSchedule = null;
+
+            if (jobScheduleId != Guid.Empty)
+            {
+                try {
+                    jobSchedule = this.automationManagementClient.JobSchedules.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    jobScheduleId).JobSchedule;
+                } catch (CloudException cloudException)
+                {
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        throw new ResourceNotFoundException(typeof(JobSchedule),
+                            string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleWithIdNotFound, jobScheduleId));
+                    }
+
+                    throw;
+                }
+            }
+            return new NodeConfigurationDeploymentSchedule(resourceGroupName, automationAccountName, jobSchedule);
+        }
+
+        public IEnumerable<NodeConfigurationDeployment> ListNodeConfigurationDeployment(string resourceGroupName, string automationAccountName,
+            DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty().ValidAutomationAccountName();
+
+            JobListResponse response;
+            const string runbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.Jobs.List(
+                    resourceGroupName,
+                    automationAccountName,
+                    new JobListParameters
+                    {
+                        StartTime = (startTime.HasValue) ? FormatDateTime(startTime.Value) : null,
+                        EndTime = (endTime.HasValue) ? FormatDateTime(endTime.Value) : null,
+                        RunbookName = runbookName,
+                        Status = jobStatus,
+                    });
+            }
+            else
+            {
+                response = this.automationManagementClient.Jobs.ListNext(nextLink);
+            }
+
+            nextLink = response.NextLink;
+            return response.Jobs.Select(c => new NodeConfigurationDeployment(resourceGroupName, automationAccountName, null, c));
+        }
+
+        public IEnumerable<NodeConfigurationDeploymentSchedule> ListNodeConfigurationDeploymentSchedules(string resourceGroupName, string automationAccountName, ref string nextLink)
+        {
+            const string runbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+
+            var response = string.IsNullOrEmpty(nextLink) ? this.automationManagementClient.JobSchedules.List(resourceGroupName, automationAccountName) : this.automationManagementClient.JobSchedules.ListNext(nextLink);
+
+            nextLink = response.NextLink;
+
+            return response.JobSchedules.Where(js => string.Equals(js.Properties.Runbook.Name, runbookName, StringComparison.OrdinalIgnoreCase)).
+                Select(js => new NodeConfigurationDeploymentSchedule(resourceGroupName, automationAccountName, js));
+        }
+
+        public void StopNodeConfigurationDeployment(string resourceGroupName, string automationAccountName, Guid jobId)
+        {
+            this.StopJob(resourceGroupName, automationAccountName, jobId);
+        }
+
         #endregion
 
         #region dsc reports
@@ -1551,6 +1734,89 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("automationAccountName", automationAccountName).NotNull();
             Requires.Argument("jobId", jobId).NotNull();
             return new Model.JobStream(jobStream, resourceGroupName, automationAccountName, jobId);
+        }
+
+        private IDictionary<string, object> ProcessParametersFornodeConfigurationRunbook(string resourceGroup,
+            string automationAccountName, string nodeConfigurationName, string[][] nodeNames, int waitingPeriod = 0,
+            int numberOfAttempts = 0)
+        {
+            var parameters = new Dictionary<string, object>();
+
+            try
+            {
+                parameters.Add("ResourceGroupName", resourceGroup);
+                parameters.Add("AutomationAccountName", automationAccountName);
+                parameters.Add("NodeConfigurationName", nodeConfigurationName);
+                parameters.Add("ListOfNodeNames", nodeNames);
+            }
+            catch (JsonSerializationException)
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson, nodeNames));
+            }
+
+            if (waitingPeriod != 0)
+            {
+                parameters.Add("WaitingPeriod", waitingPeriod.ToString());
+            }
+            if (numberOfAttempts != 0)
+            {
+                parameters.Add("NumberOfTriesPerGroup", numberOfAttempts.ToString());
+            }
+
+            return parameters;
+        }
+
+        private IEnumerable<KeyValuePair<string, RunbookParameter>> BuildParametersForNodeConfigurationDeploymentRunbook
+            ()
+        {
+            var paramsForRunbook = new List<KeyValuePair<string, RunbookParameter>>
+            {
+                new KeyValuePair<string, RunbookParameter>("ResourceGroupName", new RunbookParameter
+                {
+                    IsMandatory = true,
+                    Position = 0,
+                    DefaultValue = "",
+                    Type = "System.String"
+                }),
+                new KeyValuePair<string, RunbookParameter>("AutomationAccountName", new RunbookParameter
+                {
+                    IsMandatory = true,
+                    Position = 1,
+                    DefaultValue = "",
+                    Type = "System.String"
+                }),
+                new KeyValuePair<string, RunbookParameter>("NodeConfigurationName", new RunbookParameter
+                {
+                    IsMandatory = true,
+                    Position = 2,
+                    DefaultValue = "",
+                    Type = "System.String"
+                }),
+                new KeyValuePair<string, RunbookParameter>("ListOfNodeNames", new RunbookParameter
+                {
+                    IsMandatory = true,
+                    Position = 3,
+                    Type = "System.Array"
+                }),
+                new KeyValuePair<string, RunbookParameter>("WaitingPeriod", new RunbookParameter
+                {
+                    IsMandatory = false,
+                    Position = 4,
+                    DefaultValue = "60",
+                    Type = "System.Int32"
+                }),
+                new KeyValuePair<string, RunbookParameter>("NumberOfTriesPerGroup", new RunbookParameter
+                {
+                    IsMandatory = false,
+                    Position = 5,
+                    DefaultValue = "100",
+                    Type = "System.Int32"
+                })
+            };
+
+            return paramsForRunbook;
         }
 
         #endregion

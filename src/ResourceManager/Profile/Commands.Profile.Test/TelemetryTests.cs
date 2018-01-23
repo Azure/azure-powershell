@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -23,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
 using System.IO;
+using System.Text;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
@@ -138,9 +140,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             try
             {
-                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
-                command.CommandRuntime = new MockCommandRuntime();
-                command.InvokeBeginProcessing();
+                var controller = DataCollectionController.Create(AzureSession.Instance);
+                var profile = controller.GetProfile(() => { });
+                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
             }
             finally
             {
@@ -162,10 +164,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = mock.Object;
             try
             {
-                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
-                command.CommandRuntime = new MockCommandRuntime();
-                command.InvokeBeginProcessing();
-                command.InvokeEndProcessing();
+                var controller = DataCollectionController.Create(AzureSession.Instance);
+                var profile = controller.GetProfile(() => { });
+                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
             }
             finally
             {
@@ -186,10 +187,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = mock.Object;
             try
             {
-                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
-                command.CommandRuntime = new MockCommandRuntime();
-                command.InvokeBeginProcessing();
-                command.InvokeEndProcessing();
+                var controller = DataCollectionController.Create(AzureSession.Instance);
+                var profile = controller.GetProfile(() => { });
+                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
             }
             finally
             {
@@ -209,10 +209,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = mock.Object;
             try
             {
-                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
-                command.CommandRuntime = new MockCommandRuntime();
-                command.InvokeBeginProcessing();
-                command.InvokeEndProcessing();
+                var controller = DataCollectionController.Create(AzureSession.Instance);
+                var profile = controller.GetProfile(() => { });
+                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
             }
             finally
             {
@@ -220,5 +219,30 @@ namespace Microsoft.Azure.Commands.Profile.Test
             }
 
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesWriteErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Returns(false);
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>()));
+            mock.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>())).Throws(new ArgumentException("This exception should be caught"));
+            mock.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>())).Throws(new ArgumentException("This exception should be caught"));
+            mock.Setup(f => f.WriteFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Encoding>())).Throws(new ArgumentException("This exception should be caught"));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, new AzurePSDataCollectionProfile(true));
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+        }
+
     }
 }

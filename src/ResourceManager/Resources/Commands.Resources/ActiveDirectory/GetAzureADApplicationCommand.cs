@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else
                 {
-                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
+                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>();
 
                     if (ApplicationId != Guid.Empty)
                     {

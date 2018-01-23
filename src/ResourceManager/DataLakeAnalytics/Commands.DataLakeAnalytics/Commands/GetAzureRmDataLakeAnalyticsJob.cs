@@ -24,12 +24,12 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<JobInformation>), typeof(JobInformation))]
+     OutputType(typeof(List<PSJobInformationBasic>), typeof(JobInformation))]
     [Alias("Get-AdlJob")]
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Resource Group and Account";
-        internal const string JobInfoParameterSetName = "Specific JobInformation";
+        internal const string BaseParameterSetName = "GetAllInResourceGroupAndAccount";
+        internal const string JobInfoParameterSetName = "GetBySpecificJobInformation";
 
         [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0,
             Mandatory = true,
@@ -193,8 +193,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 // List the jobs with the given filters
                 bool warnUser;
-                var list = DataLakeAnalyticsClient.ListJobs(Account,
-                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc", out warnUser);
+                var list = DataLakeAnalyticsClient.ListJobs(Account, 
+                    string.IsNullOrEmpty(filterString) ? null : filterString, Top, null, "submitTime desc", out warnUser)
+                    .Select(element => new PSJobInformationBasic(element))
+                    .ToList();
                 if (warnUser)
                 {
                     WriteWarning(string.Format(Resources.MoreJobsToGetWarning, Top.HasValue ? Top.Value : 500));

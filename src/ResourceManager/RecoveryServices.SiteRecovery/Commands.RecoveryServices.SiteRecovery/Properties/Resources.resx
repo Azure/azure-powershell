@@ -295,6 +295,18 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="NicNotFoundInVMForUpdateVmProperties" xml:space="preserve">
     <value>Nic not found in VM</value>
   </data>
+  <data name="UnsupportedFabricTypeForDiscoverVirtualMachines" xml:space="preserve">
+    <value>Unsupported fabric type {0} for discover virtual machines</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForUpdateMobilityService" xml:space="preserve">
+    <value>Unsupported replication provider {0} for update mobility service</value>
+  </data>
+  <data name="UnsupportedReplicationProtectionActionForUnplannedFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for unplanned failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
+  </data>
+  <data name="UnsupportedFabricTypeForDiscoverVirtualMachines" xml:space="preserve">
+    <value>Unsupported fabric type {0} for discover virtual machines</value>
+  </data>
   <data name="UnsupportedReplicationProvidedForUpdateVmProperties" xml:space="preserve">
     <value>Unsupported replication provider for set VM properties</value>
   </data>
@@ -378,5 +390,55 @@ Please provide a storage account with the same location as that of the vault.</v
   </data>
   <data name="NetworkMappingNotFound" xml:space="preserve">
     <value>Network mapping details not found.</value>
+  </data>
+  <data name="InvalidIpAddress" xml:space="preserve">
+    <value>Enter valid IP address.</value>
+  </data>
+  <data name="InvalidDirectionForAzureToVMWare" xml:space="preserve">
+    <value>Invalid direction for Azure To VMWare</value>
+  </data>
+  <data name="InvalidDirectionForVMWareToAzure" xml:space="preserve">
+    <value>Invalid direction for VMWare To Azure</value>
+  </data>
+  <data name="UnsupportedReplicationProtectionActionForCommit" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for commit for replication provider {0}. Use recovery plan action for the same purpose.</value>
+  </data>
+  <data name="UnsupportedReplicationProtectionActionForTestFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for test failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForApplyRecoveryPoint" xml:space="preserve">
+    <value>Unsupported replication provider {0} for apply recovery point</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForPlannedFailover" xml:space="preserve">
+    <value>Unsupported replication provider {0} for planned failover</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForReprotect" xml:space="preserve">
+    <value>Unsupported replication provider {0} for reprotect</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForUpdatePolicy" xml:space="preserve">
+    <value>The replication policy update operation for the replication provider {0} is not currently supported using this PowerShell cmdlet. This will be supported in an upcoming release of the AzureRm.RecoveryServices.SiteRecovery module. For the time being, you can perform this operation by going to the Recovery Services vault in the Azure portal.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForTestFailover" xml:space="preserve">
+    <value>Unsupported replication provider {0} for test failover</value>
+  </data>
+  <data name="EmailFormatInvalid" xml:space="preserve">
+    <value>Email is not in correct format.</value>
+  </data>
+  <data name="EmailLengthExceeded" xml:space="preserve">
+    <value>Email length cannot be greater than 254 chars.</value>
+  </data>
+  <data name="EmailsCountExceeded" xml:space="preserve">
+    <value>maximum number of email addresses allowed is 20.</value>
+  </data>
+  <data name="InvalidIpAddress" xml:space="preserve">
+    <value>Enter valid IP address.</value>
+  </data>
+  <data name="ResumeTFOJobNotSupported" xml:space="preserve">
+    <value>Message: Invalid JobId parameter. The resume job operation cannot be performed on the TestFailover job with Job Id {0} as the operation has already reached a terminal state. To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.
+Possible Causes: The resume job operation is not allowed on this Job.
+Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.</value>
+  </data>
+  <data name="UnsupportedReplicationReprotectScenerio" xml:space="preserve">
+    <value>Unsupported Replication Reprotect Scenerio.</value>
   </data>
 </root>

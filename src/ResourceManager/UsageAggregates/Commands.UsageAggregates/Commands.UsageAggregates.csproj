@@ -60,6 +60,9 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
     <None Include="TestTheCmdLet.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +85,13 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>  
+        <OutFiles Include="$(OutDir)\**\*.*"/>  
+    </ItemGroup>  
+    <Copy  
+            SourceFiles="@(OutFiles)"  
+            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\%(RecursiveDir)%(Filename)%(Extension)')"  
+     />  
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

@@ -1,0 +1,77 @@
+﻿{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Subscription/subscriptionDefinitions?api-version=2017-11-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL3N1YnNjcmlwdGlvbkRlZmluaXRpb25zP2FwaS12ZXJzaW9uPTIwMTctMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fbeb25a7-aa70-4f2f-981e-6e908f5d0280"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient/1.0.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/MyProdSubscription\",\r\n      \"name\": \"MyProdSubscription\",\r\n      \"properties\": {\r\n        \"etag\": \"MfjP0w==\",\r\n        \"subscriptionDisplayName\": \"MyProdSubscription\",\r\n        \"subscriptionId\": \"86869d42-1782-4337-98b0-c905fb937d46\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod1\",\r\n      \"name\": \"e2esubprod1\",\r\n      \"properties\": {\r\n        \"etag\": \"To8acg==\",\r\n        \"subscriptionDisplayName\": \"mye2esubprod1\",\r\n        \"subscriptionId\": \"430ed244-e513-4b13-b113-e877158ed7f5\",\r\n        \"offerType\": \"MS-AZR-0017P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod6\",\r\n      \"name\": \"e2esubprod6\",\r\n      \"properties\": {\r\n        \"etag\": \"YRP88g==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod6\",\r\n        \"subscriptionId\": \"a21087f6-05f2-4be3-a831-185aad424df6\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Subscription/subscriptionDefinitions/e2esubprod7\",\r\n      \"name\": \"e2esubprod7\",\r\n      \"properties\": {\r\n        \"etag\": \"DqdLvg==\",\r\n        \"subscriptionDisplayName\": \"e2esubprod7\",\r\n        \"subscriptionId\": \"519fce51-f304-4f10-9d03-777b7c47c8f0\",\r\n        \"offerType\": \"MS-AZR-0148P\"\r\n      },\r\n      \"type\": \"Microsoft.Subscription/subscriptionDefinitions\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1282"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "e914624d-5e6f-4dd8-92dc-162d876085d1"
+        ],
+        "x-ms-correlation-request-id": [
+          "e914624d-5e6f-4dd8-92dc-162d876085d1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171123T073143Z:e914624d-5e6f-4dd8-92dc-162d876085d1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 23 Nov 2017 07:31:43 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "430ed244-e513-4b13-b113-e877158ed7f5"
+  }
+}

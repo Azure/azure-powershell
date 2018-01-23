@@ -56,39 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected override IAzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            if (_dataCollectionProfile == null)
+            get
             {
-                InitializeDataCollectionProfile();
+                return Resources.RDFEDataCollectionMessage;
             }
-
-            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            try
-            {
-                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-            }
-            catch
-            {
-                // do not throw if serializing or writing the file fails
-            }
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            InitializeDataCollectionProfile();
-
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                return;
-            }
-
-            WriteWarning(Resources.RDFEDataCollectionMessage);
-
-            _dataCollectionProfile.EnableAzureDataCollection = true;
-            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()

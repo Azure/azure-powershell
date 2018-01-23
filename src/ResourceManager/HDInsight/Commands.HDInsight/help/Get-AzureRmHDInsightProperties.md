@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+Module Name: AzureRM.HDInsight
 ms.assetid: 606C5453-F841-4574-95F8-5CC29A4186E1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightproperties
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets properties about the HDInsight service, such as available locations and cap
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightProperties [-Location] <String> [<CommonParameters>]
+Get-AzureRmHDInsightProperties [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +31,21 @@ PS C:\>Get-AzureRmHDInsightProperties -Location "East US 2"
 This command gets properties from an HDInsight service from location East US 2.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location for which to fetch HDInsight properties.

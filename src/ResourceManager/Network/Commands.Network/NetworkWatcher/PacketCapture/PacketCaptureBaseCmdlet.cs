@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSPacketCaptureResult GetPacketCapture(string resourceGroupName, string name, string packetCaptureName)
         {
             PacketCaptureResult packetCapture = this.PacketCaptures.Get(resourceGroupName, name, packetCaptureName);
-            PSPacketCaptureResult psPacketCapture = Mapper.Map<PSPacketCaptureResult>(packetCapture);
+            PSPacketCaptureResult psPacketCapture = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureResult>(packetCapture);
 
             return psPacketCapture;
         }

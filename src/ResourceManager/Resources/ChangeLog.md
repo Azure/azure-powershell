@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,53 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+* Added alias from Get-AzureRmProviderOperation to Get-AzureRmResourceProviderAction to conform with naming conventions
+* Get-AzureRmProviderOperation: Added alias from -OperationSearchString to -Name and set default value of -OperationSearchString to "*", which will return all provider operations.
 
+## Version 5.1.1
+* Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
+    - Users can now use Get-AzureRMRoleAssignment with assignments having roledefinition names irrespective of the type of role
+* Fixed issue where Set-AzureRMRoleRoleDefinition used to throw RD not found error when there was a new scope in assignablescopes
+    - Users can now use Set-AzureRMRoleRoleDefinition with assignable scopes including new scopes irrespective of the position of the scope
+* Allow scopes to end with "/"
+    - Users can now use RoleDefinition and RoleAssignment commandlets with scopes ending with "/" ,consistent with API and CLI
+* Allow users to create RoleAssignment using delegation flag
+    - Users can now use New-AzureRMRoleAssignment with an option of adding the delegation flag
+* Fix RoleAssignment get to respect the scope parameter
+* Add an alias for ServicePrincipalName in the New-AzureRmRoleAssignment Commandlet
+    - Users can now use the ApplicationId instead of the ServicePrincipalName when using the New-AzureRmRoleAssignment commandlet
+
+## Version 5.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 4.4.1
+
+## Version 4.4.0
+* Add ManagedApplication cmdlets
+    - New-AzureRmManagedApplication cmdlet to create a managed application
+    - Get-AzureRmManagedApplication cmdlet to list all managed applications under a subscription or to get a specific managed application
+    - Remove-AzureRmManagedApplication cmdlet to delete a managed application
+    - Set-AzureRmManagedApplication cmdlet to update an existing managed application
+* Add ManagedApplicationDefinition cmdlets
+    - New-AzureRmManagedApplicationDefinition cmdlet to create a managed application definition using a zip file uri or using mainTemplate and createUiDefinition json files
+    - Get-AzureRmManagedApplicationDefinition cmdlet to list all managed application definitions under a resource group or to get a specific managed application definition
+    - Remove-AzureRmManagedApplicationDefinition cmdlet to delete a managed application definition
+    - Set-AzureRmManagedApplicationDefinition cmdlet to update an existing managed application definition
+* Add PolicySetDefinition cmdlets
+    - New-AzureRmPolicySetDefinition cmdlet to create a policy set definition
+    - Get-AzureRmPolicySetDefinition cmdlet to list all policy set definitions or to get a specific policy set definition
+    - Remove-AzureRmPolicySetDefinition cmdlet to delete a policy set definition
+    - Set-AzureRmPolicySetDefinition cmdlet to update an existing policy set definition
+* Add -PolicySetDefinition, -Sku and -NotScope parameters to New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment cmdlets
+* Add support to pass in policy url to New-AzureRmPolicyDefinition and Set-AzureRmPolicyDefinition cmdlets
+* Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
+* Add Support for removal of roleassignment using PSRoleAssignment object
+    - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
+    
 ## Version 4.3.1
 
 ## Version 4.3.0

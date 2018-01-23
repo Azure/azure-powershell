@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: F3774658-A5E4-40BE-9A85-B33C70BC0A09
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/get-azurermbackupcontainer
 schema: 2.0.0
 ---
 
@@ -15,7 +16,7 @@ Gets Backup containers.
 ```
 Get-AzureRmBackupContainer [-Name <String>] -Type <AzureBackupContainerType>
  [-ManagedResourceGroupName <String>] [-Status <AzureBackupContainerRegistrationStatus>]
- [-Vault] <AzureRMBackupVault> [<CommonParameters>]
+ [-Vault] <AzureRMBackupVault> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,21 @@ co03-vm                      AzureVM            Registered
 This command gets the registered virtual machines from the vault in $Vault.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ManagedResourceGroupName
 Specifies the name of the resource group associated with the container.

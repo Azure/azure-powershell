@@ -123,7 +123,7 @@ namespace Common.Authentication.Test
             factory.AddUserAgent("test3");
             factory.AddUserAgent("tesT3");
             
-            Assert.Equal(4, factory.UserAgents.Count);
+            Assert.Equal(4, factory.UserAgents.Length);
             Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test1" && u.Product.Version == "123"));
             Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test2" && u.Product.Version == "123"));
             Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test1" && u.Product.Version == "456"));

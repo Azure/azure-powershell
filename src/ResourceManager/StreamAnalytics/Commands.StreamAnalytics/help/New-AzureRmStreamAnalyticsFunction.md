@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 79EB2AD9-BFE1-49BE-870F-7DFC99D6FE17
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsfunction
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates or replaces a function in a Stream Analytics job.
 
 ```
 New-AzureRmStreamAnalyticsFunction [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +53,21 @@ PS C:\>New-AzureRmStreamAnalyticsFunction -ResourceGroupName "StreamAnalytics-De
 This command replaces the definition of the existing function named ScoreTweet with the definition in Function22.json.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -File
 Specifies the path of a .json file that contains the JSON representation of the Stream Analytics function.

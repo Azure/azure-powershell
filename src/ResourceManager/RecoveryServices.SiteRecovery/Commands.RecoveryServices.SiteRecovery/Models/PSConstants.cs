@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string A2A = "A2A";
 
         /// <summary>
+        ///     Represents Type of health event.
+        /// </summary>
+        public const string AgentHealth = "AgentHealth";
+
+        /// <summary>
         ///     ASR vault type
         /// </summary>
         public const string ASRVaultType = "HyperVRecoveryManagerVault";
@@ -87,6 +92,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string CreateVmIfNotFound = "CreateVmIfNotFound";
 
         /// <summary>
+        ///     Name value for configure alert setting.
+        /// </summary>
+        public const string DefaultAlertSettingName = "DefaultAlertSetting";
+
+        /// <summary>
         ///     Represents Direction string value.
         /// </summary>
         public const string Direction = "Direction";
@@ -120,6 +130,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Group Type: Failover
         /// </summary>
         public const string Failover = "Failover";
+
+        /// <summary>
+        ///    false.
+        /// </summary>
+        public const string False = "False";
 
         /// <summary>
         ///     Represents Optimize value ForDowntime.
@@ -206,6 +221,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string NetworkType = "NetworkType";
 
         /// <summary>
+        ///     Never Enable RDP On Target Option while Enabling Protection for InMageAzureV2.
+        /// </summary>
+        public const string NeverEnableRDPOnTargetOption = "Never";
+
+        /// <summary>
         ///     Represents New string value.
         /// </summary>
         public const string New = "New";
@@ -259,6 +279,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents OnlineReplicationMethod string constant.
         /// </summary>
         public const string OnlineReplicationMethod = "Online";
+
+        /// <summary>
+        ///     Represents string constant for OperatingSystem.
+        /// </summary>
+        public const string OperatingSystem = "OperatingSystem";
 
         /// <summary>
         ///     Represents OS Linux.
@@ -321,6 +346,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string RecoveryLocation = "Recovery";
 
         /// <summary>
+        ///     Recovery Tag for Latest Recovery Point.
+        /// </summary>
+        public const string RecoveryTagLatest = "Latest";
+
+        /// <summary>
+        ///     Recovery Tag for Latest Available Recovery Point.
+        /// </summary>
+        public const string RecoveryTagLatestAvailable = "LatestAvailable";
+
+        /// <summary>
+        ///     Recovery Tag for Latest Available Application Consistent Recovery Point.
+        /// </summary>
+        public const string RecoveryTagLatestAvailableApplicationConsistent =
+            "LatestAvailableApplicationConsistent";
+
+        /// <summary>
         ///     Represents direction secondary to primary.
         /// </summary>
         public const string RecoveryToPrimary = "RecoveryToPrimary";
@@ -366,6 +407,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string SelectedByUser = "SelectedByUser";
 
         /// <summary>
+        ///     Represents Type of health event.
+        /// </summary>
+        public const string ServerHealth = "ServerHealth";
+
+        /// <summary>
         ///     Group Type: Shutdown
         /// </summary>
         public const string Shutdown = "Shutdown";
@@ -376,6 +422,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Sync = "Sync";
 
         /// <summary>
+        ///     Azure VM temporary disk name, to be excluded as part of switch protection.
+        /// </summary>
+        public const string TemporaryStorage = "Temporary Storage";
+
+        /// <summary>
         ///     Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string Thirty = "30";
@@ -384,6 +435,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string ThreeHundred = "300";
+
+        /// <summary>
+        ///    True.
+        /// </summary>
+        public const string True = "True";
 
         /// <summary>
         ///     Vault Credential version.
@@ -399,6 +455,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     The version of Extended resource info.
         /// </summary>
         public const string VaultSecurityInfoVersion = "1.0";
+
+        /// <summary>
+        ///     Represents Type of health event.
+        /// </summary>
+        public const string VmHealth = "VmHealth";
 
         /// <summary>
         ///     FabricType - VMM.
@@ -528,6 +589,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string ReplicationProtectedItems = "replicationProtectedItems";
 
         /// <summary>
+        ///     Replication Protected Items
+        /// </summary>
+        public const string ReplicationProtectableItems = "replicationProtectableItems";
+
+        /// <summary>
         ///     Replication Protection Containers
         /// </summary>
         public const string ReplicationProtectionContainers = "replicationProtectionContainers";
@@ -580,9 +646,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string VaultUsages = "usages";
 
         /// <summary>
-        ///     VCenters resource name.
+        ///     vCenters resource name.
         /// </summary>
-        public const string VCenters = "replicationvCenters";
+        public const string vCenters = "replicationvCenters";
 
         /// <summary>
         ///     Virtual Networks
@@ -722,8 +788,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     ARM Resource path for Vcenters.
         /// </summary>
-        public const string VCenterResourceIdPath =
-            FabricResourceIdPath + "/" + ARMResourceTypeConstants.VCenters + "/{1}";
+        public const string vCenterResourceIdPath =
+            FabricResourceIdPath + "/" + ARMResourceTypeConstants.vCenters + "/{1}";
 
         #region External ARM Resource Id
 
@@ -794,8 +860,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Replication Networks Route Path
         /// </summary>
         public const string NetworksRoutePath = FabricsRoutePath +
-                                                "/{fabricName}/" +
-                                                ARMResourceTypeConstants.ReplicationNetworks;
+            "/{fabricName}/" +
+            ARMResourceTypeConstants.ReplicationNetworks;
 
         /// <summary>
         ///     Operations route path.
@@ -919,10 +985,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ARMResourceTypeConstants.StorageClassification;
 
         /// <summary>
-        ///     VCenters route path.
+        ///     vCenters route path.
         /// </summary>
-        public const string VCentersRoutePath = FabricsRoutePath +
-                                                "/{fabricName}/" +
-                                                ARMResourceTypeConstants.VCenters;
+        public const string vCentersRoutePath = FabricsRoutePath +
+            "/{fabricName}/" +
+            ARMResourceTypeConstants.vCenters;
+    }
+
+    /// <summary>
+    ///     Status of whether email alerts should be sent or not.
+    /// </summary>
+    public static class SendToOwners
+    {
+        /// <summary>
+        ///     Indicates that email alerts must not be sent.
+        /// </summary>
+        public const string DoNotSend = "DoNotSend";
+
+        /// <summary>
+        ///     Indicates that email alerts is off for owners.
+        /// </summary>
+        public const string Off = "Off";
+
+        /// <summary>
+        ///     Indicates that email alerts is on for owners.
+        /// </summary>
+        public const string On = "On";
+
+        /// <summary>
+        ///     Indicates that email alerts must be sent.
+        /// </summary>
+        public const string Send = "Send";
+    }
+
+    /// <summary>
+    ///     ASR Heatlth Event Severity mapped with Monitoring Event in SRS.
+    /// </summary>
+    public static class ASRHealthEventServerity
+    {
+        /// <summary>
+        ///     Represents severity of the health event-Critical.
+        /// </summary>
+        public const string Critical = "Critical";
+
+        /// <summary>
+        ///     Represents severity of the health event - Ok.
+        /// </summary>
+        public const string OK = "OK";
+
+        /// <summary>
+        ///     Represents severity of the health event -Unknowns.
+        /// </summary>
+        public const string Unknown = "Unknown";
+
+        /// <summary>
+        ///     Represents severity of the health event -Warning.
+        /// </summary>
+        public const string Warning = "Warning";
     }
 }

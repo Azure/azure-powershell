@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     }
                 }
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             }
         }

@@ -49,7 +49,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.AffinityGroups
                 ExecuteClientActionNewSM(null, 
                     CommandRuntime.ToString(), 
                     () => this.ManagementClient.AffinityGroups.Get(this.Name),
-                    (s, affinityGroup) => (new int[1]).Select(i => ContextFactory<AffinityGroupGetResponse, AffinityGroupContext>(affinityGroup, s))
+                    (s, affinityGroup) => (new int[1]).Select(i => ContextFactory(affinityGroup, s,
+                                                                    ServiceManagementProfile.Mapper.Map<AffinityGroupGetResponse, AffinityGroupContext>,
+                                                                    ServiceManagementProfile.Mapper.Map))
                 );
             }
             else
@@ -57,7 +59,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.AffinityGroups
                 ExecuteClientActionNewSM(null, 
                     CommandRuntime.ToString(), 
                     () => this.ManagementClient.AffinityGroups.List(),
-                    (s, affinityGroups) => affinityGroups.AffinityGroups.Select(ag => ContextFactory<AffinityGroupListResponse.AffinityGroup, AffinityGroupContext>(ag, s))
+                    (s, affinityGroups) => affinityGroups.AffinityGroups
+                                            .Select(ag => ContextFactory(ag, s,
+                                                            ServiceManagementProfile.Mapper.Map<AffinityGroupListResponse.AffinityGroup, AffinityGroupContext>,
+                                                            ServiceManagementProfile.Mapper.Map))
                 );
             }
         }

@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlsyncmember
 schema: 2.0.0
 ---
 
@@ -9,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Creates an Azure SQL Database Sync Member.
 
-
 ## SYNTAX
 
 ### AzureSqlDatabase (Default)
@@ -17,7 +17,7 @@ Creates an Azure SQL Database Sync Member.
 New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServerName <String>
  -MemberDatabaseName <String> -MemberDatabaseCredential <PSCredential> [-SyncDirection <String>]
  [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OnPremisesDatabaseSyncAgentComponent
@@ -25,14 +25,15 @@ New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServ
 New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -SyncAgentResourceGroupName <String>
  -SyncAgentServerName <String> -SyncAgentName <String> -SqlServerDatabaseId <String> [-SyncDirection <String>]
  [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OnPremisesDatabaseSyncAgentResourceID
 ```
 New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -SqlServerDatabaseId <String>
  -SyncAgentResourceID <String> [-SyncDirection <String>] [-SyncGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,7 @@ MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
 MemberDatabaseUserName      : myAccount
 MemberDatabasePassword      : 
-SyncState                   : UnProvisioned 
+SyncState                   : UnProvisioned
 ```
 
 This command creates a sync member for an Azure SQL database.
@@ -84,27 +85,12 @@ MemberServerName            :
 MemberDatabaseName          : 
 MemberDatabaseUserName      : myAccount
 MemberDatabasePassword      : 
-SyncState                   : UnProvisioned 
+SyncState                   : UnProvisioned
 ```
 
 This command creates a sync member for an on-premises SQL database.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 The name of the Azure SQL Database.
@@ -112,12 +98,27 @@ The name of the Azure SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,7 +128,7 @@ The credential (username and password) of the Azure SQL Database.
 ```yaml
 Type: PSCredential
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +143,7 @@ The Azure SQL Database name of the member database.
 ```yaml
 Type: String
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +158,7 @@ The database type of the member database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: SqlServerDatabase, AzureSqlDatabase
 
 Required: True
@@ -173,7 +174,7 @@ The Azure SQL Server Name of the member database.
 ```yaml
 Type: String
 Parameter Sets: AzureSqlDatabase
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -203,7 +204,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -218,7 +219,7 @@ The name of the Azure SQL Server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -233,7 +234,7 @@ The id of the SQL server database which is connected by the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent, OnPremisesDatabaseSyncAgentResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -248,7 +249,7 @@ The name of the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -263,7 +264,7 @@ The name of the resource group where the sync agent is under.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -278,7 +279,7 @@ The resource ID of the sync agent.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -293,7 +294,7 @@ The name of the Azure SQL Server where the sync agent is under.
 ```yaml
 Type: String
 Parameter Sets: OnPremisesDatabaseSyncAgentComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -308,7 +309,7 @@ The sync direction of this sync member.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Bidirectional, OneWayMemberToHub, OneWayHubToMember
 
 Required: False
@@ -324,12 +325,27 @@ The sync group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -348,6 +364,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

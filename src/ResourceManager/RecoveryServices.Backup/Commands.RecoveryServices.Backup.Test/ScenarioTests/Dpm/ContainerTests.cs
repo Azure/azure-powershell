@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.DPM)]
-        public void TestGetBackupManagementServer()
+        public void TestBmsGetContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Dpm, "Test-GetContainerScenario");
+                PsBackupProviderTypes.Dpm, "Test-BmsGetContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.DPM)]
-        public void TestUnregisterDpmContainer()
+        public void TestBmsUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Dpm, "Test-UnregisterContainerScenario");
+                PsBackupProviderTypes.Dpm, "Test-BmsUnregisterContainer");
         }
     }
 }

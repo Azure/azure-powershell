@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,33 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add cmdlets to get and set Storage service properties
+	- Get-AzureStorageServiceProperty
+	- Update-AzureStorageServiceProperty
+
+## Version 4.0.2
+* Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
+
+## Version 4.0.0
+* Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
+* Add File Share Snapshot Support Feature
+    - Add 'SnapshotTime' parameter to Get-AzureStorageShare
+    - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+	
+## Version 3.4.1
+
+## Version 3.4.0
+* Upgrade to Azure Storage Client Library 8.4.0 and Azure Storage DataMovement Library 0.6.1
+* Add PremiumPageBlobTier Support in Upload and Copy Blob API
+    - Set-AzureStorageBlobContent
+	- Start-AzureStorageBlobCopy
+* Refine the Console Output Format of AzureStorageContainer, AzureStorageBlob, AzureStorageQueue, AzureStorageTable
+    - Get-AzureStorageContainer
+    - Get-AzureStorageBlob
+    - Get-AzureStorageQueue
+    - Get-AzureStorageTable
 
 ## Version 3.3.1
 

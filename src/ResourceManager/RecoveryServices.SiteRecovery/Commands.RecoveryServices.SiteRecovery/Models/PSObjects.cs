@@ -189,7 +189,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ID = fabric.Id;
             this.Type = fabric.Type;
             this.SiteIdentifier = fabric.Properties.InternalIdentifier;
-            this.fabricSpecificDetails = fabric.Properties.CustomDetails;
+
+            // Populate Fabric Specific Details for VMWare.
+            if (fabric.Properties.CustomDetails is VMwareDetails)
+            {
+                this.FabricType = Constants.VMware;
+                var vmwareFabricSpecificDetails =
+                    fabric.Properties.CustomDetails as VMwareDetails;
+                var inMageFabricSpecificDetails = new ASRVMWareSpecificDetails
+                {
+                    HostName = vmwareFabricSpecificDetails.HostName,
+                    IpAddress = vmwareFabricSpecificDetails.IpAddress,
+                    AgentVersion = vmwareFabricSpecificDetails.AgentVersion,
+                    ProtectedServers = vmwareFabricSpecificDetails.ProtectedServers,
+                    LastHeartbeat = vmwareFabricSpecificDetails.LastHeartbeat,
+                    CsServiceStatus = vmwareFabricSpecificDetails.CsServiceStatus,
+                    VersionStatus = vmwareFabricSpecificDetails.VersionStatus,
+                    ProcessServers = new List<ASRProcessServer>(),
+                    MasterTargetServers = new List<ASRMasterTargetServer>(),
+                    RunAsAccounts = new List<ASRRunAsAccount>()
+                };
+
+                foreach (var p in vmwareFabricSpecificDetails.ProcessServers)
+                {
+                    inMageFabricSpecificDetails.ProcessServers.Add(new ASRProcessServer(p));
+                }
+
+                foreach (var m in vmwareFabricSpecificDetails.MasterTargetServers)
+                {
+                    inMageFabricSpecificDetails.MasterTargetServers.Add(
+                        new ASRMasterTargetServer(m));
+                }
+
+                foreach (var r in vmwareFabricSpecificDetails.RunAsAccounts)
+                {
+                    inMageFabricSpecificDetails.RunAsAccounts.Add(new ASRRunAsAccount(r));
+                }
+
+                this.FabricSpecificDetails = inMageFabricSpecificDetails;
+            }
+            else if (fabric.Properties.CustomDetails is HyperVSiteDetails)
+            {
+                this.FabricType = Constants.HyperVSite;
+            }
+            else if (fabric.Properties.CustomDetails is VmmDetails)
+            {
+                this.FabricType = Constants.VMM;
+            }
         }
 
         #endregion
@@ -217,6 +263,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Type { get; set; }
 
         /// <summary>
+        ///     Gets or sets fabric type.
+        /// </summary>
+        public string FabricType { get; set; }
+
+        /// <summary>
         ///     Gets or sets site SiteIdentifier.
         /// </summary>
         public string SiteIdentifier { get; set; }
@@ -224,9 +275,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets site SiteIdentifier.
         /// </summary>
-        public FabricSpecificDetails fabricSpecificDetails { get; set; }
+        public ASRFabricSpecificDetails FabricSpecificDetails { get; set; }
 
         #endregion
+    }
+
+    /// <summary>
+    ///     Fabric Specific Details.
+    /// </summary>
+    public class ASRFabricSpecificDetails
+    {
     }
 
     /// <summary>
@@ -526,6 +584,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 this.ReplicationProviderSettings = replicationProviderSettings;
             }
+            else if (policy.Properties.ProviderSpecificDetails is InMageAzureV2PolicyDetails)
+            {
+                var details =
+                    (InMageAzureV2PolicyDetails) policy.Properties.ProviderSpecificDetails;
+
+                var replicationProviderSettings =
+                    new ASRInMageAzureV2PolicyDetails
+                    {
+                        AppConsistentFrequencyInMinutes =
+                            (int)details.AppConsistentFrequencyInMinutes,
+                        RecoveryPointHistory = (int)details.RecoveryPointHistory,
+                        RecoveryPointThresholdInMinutes =
+                            (int)details.RecoveryPointThresholdInMinutes,
+                        CrashConsistentFrequencyInMinutes =
+                            (int)details.CrashConsistentFrequencyInMinutes,
+                        MultiVmSyncStatus = details.MultiVmSyncStatus
+                    };
+
+                this.ReplicationProviderSettings = replicationProviderSettings;
+                this.ReplicationProvider = Constants.InMageAzureV2;
+            }
+            else if (policy.Properties.ProviderSpecificDetails is InMagePolicyDetails)
+            {
+                var details =
+                    (InMagePolicyDetails) policy.Properties.ProviderSpecificDetails;
+
+                var replicationProviderSettings = new ASRInMagePolicyDetails
+                {
+                    AppConsistentFrequencyInMinutes = (int)details.AppConsistentFrequencyInMinutes,
+                    RecoveryPointHistory = (int)details.RecoveryPointHistory,
+                    RecoveryPointThresholdInMinutes = (int)details.RecoveryPointThresholdInMinutes,
+                    MultiVmSyncStatus = details.MultiVmSyncStatus
+                };
+
+                this.ReplicationProviderSettings = replicationProviderSettings;
+                this.ReplicationProvider = Constants.InMage;
+            }
         }
 
         #region Properties
@@ -666,6 +761,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     InMageAzureV2 Specific Policy Details.
+    /// </summary>
+    public class ASRInMageAzureV2PolicyDetails : ASRPolicyProviderSettingsDetails
+    {
+        // Gets or sets the app consistent snapshot frequency in minutes.
+        public int AppConsistentFrequencyInMinutes { get; set; }
+
+        // Gets or sets the crash consistent snapshot frequency in minutes.
+        public int CrashConsistentFrequencyInMinutes { get; set; }
+
+        // Gets or sets a value indicating whether multi-VM sync has to be enabled.
+        public string MultiVmSyncStatus { get; set; }
+
+        // Gets or sets the duration in minutes until which the recovery points need to be stored.
+        public int RecoveryPointHistory { get; set; }
+
+        // Gets or sets the recovery point threshold in minutes. 
+        public int RecoveryPointThresholdInMinutes { get; set; }
+    }
+
+    /// <summary>
+    ///     InMage Specific Policy Details.
+    /// </summary>
+    public class ASRInMagePolicyDetails : ASRPolicyProviderSettingsDetails
+    {
+        // Gets or sets the app consistent snapshot frequency in minutes.
+        public int AppConsistentFrequencyInMinutes { get; set; }
+
+        // Gets or sets a value indicating whether multi-VM sync has to be enabled.
+        public string MultiVmSyncStatus { get; set; }
+
+        // Gets or sets the duration in minutes until which the recovery points need to be stored.
+        public int RecoveryPointHistory { get; set; }
+
+        // Gets or sets the recovery point threshold in minutes. 
+        public int RecoveryPointThresholdInMinutes { get; set; }
+    }
+
+    /// <summary>
     ///     ASR VM Nic Details
     /// </summary>
     public class ASRVMNicDetails
@@ -694,19 +828,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Gets or sets ipv4 address type.
+        /// </summary>
+        public string IpAddressType { get; set; }
+
+        /// <summary>
         ///     Gets or sets the nic Id.
         /// </summary>
         public string NicId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets VM network name.
-        /// </summary>
-        public string VMNetworkName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets VM subnet name.
-        /// </summary>
-        public string VMSubnetName { get; set; }
 
         /// <summary>
         ///     Gets or sets recovery VM network Id.
@@ -724,14 +853,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ReplicaNicStaticIPAddress { get; set; }
 
         /// <summary>
-        ///     Gets or sets ipv4 address type.
-        /// </summary>
-        public string IpAddressType { get; set; }
-
-        /// <summary>
         ///     Gets or sets selection type for failover.
         /// </summary>
         public string SelectionType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets VM network name.
+        /// </summary>
+        public string VMNetworkName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets VM subnet name.
+        /// </summary>
+        public string VMSubnetName { get; set; }
     }
 
     /// <summary>
@@ -767,35 +901,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
                 {
-                    if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
-                    {
-                        var providerSettings =
-                            (HyperVVirtualMachineDetails)pi.Properties.CustomDetails;
+                    var providerSettings =
+                        (HyperVVirtualMachineDetails)pi.Properties.CustomDetails;
 
-                        var diskDetails = providerSettings.DiskDetails;
-                        this.UpdateDiskDetails(diskDetails);
-                        this.OS = providerSettings.OsDetails == null ? null
-                            : providerSettings.OsDetails.OsType;
-                        this.FabricObjectId = providerSettings.SourceItemId;
-                    }
+                    var diskDetails = providerSettings.DiskDetails;
+                    this.UpdateDiskDetails(diskDetails);
+                    this.OS = providerSettings.OsDetails == null
+                        ? null
+                        : providerSettings.OsDetails.OsType;
+                    this.FabricObjectId = providerSettings.SourceItemId;
+                }
+                else if (pi.Properties.CustomDetails is VMwareVirtualMachineDetails)
+                {
+                    var providerSettings =
+                        (VMwareVirtualMachineDetails) pi.Properties.CustomDetails;
+
+                    // Set the VMWare specific properties.
+                    this.FabricSpecificVMDetails = new ASRVMWareSpecificVMDetails
+                    {
+                        IpAddress = providerSettings.IpAddress,
+                        AgentVersion = providerSettings.AgentVersion,
+                        AgentInstalled = providerSettings.AgentInstalled,
+                        AgentGeneratedId = providerSettings.AgentGeneratedId,
+                        PoweredOn = providerSettings.PoweredOn,
+                        DiscoveryType = providerSettings.DiscoveryType
+                    };
+
+                    // Update Disk Details for VMWare.
+                    var diskDetails = providerSettings.DiskDetails;
+                    this.UpdateDiskDetails(diskDetails);
+                    this.OS = providerSettings.OsType;
                 }
             }
         }
 
         /// <summary>
-        ///     Gets or sets Friendly Name of the Protection entity.
+        ///     Gets or sets OS.
         /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Name of the Protection entity.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Protection entity ID.
-        /// </summary>
-        public string ID { get; set; }
+        public List<AsrVirtualHardDisk> Disks { get; set; }
 
         /// <summary>
         ///     Gets or sets fabric object ID.
@@ -803,19 +946,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FabricObjectId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protection container ID.
+        ///     Gets or sets Fabric Specific Virtual Machine Details.
         /// </summary>
-        public string ProtectionContainerId { get; set; }
+        public ASRFabricSpecificVMDetails FabricSpecificVMDetails { get; set; }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether it is protected or not.
+        ///     Gets or sets Friendly Name of the Protection entity.
         /// </summary>
-        public string ProtectionStatus { get; set; }
+        public string FriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets a value that lists allowed operations.
+        ///     Gets or sets Protection entity ID.
         /// </summary>
-        public IList<string> ProtectionReadinessErrors { get; set; }
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the Protection entity.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets OS.
+        /// </summary>
+        public string OS { get; set; }
 
         /// <summary>
         ///     Gets or sets OSDiskVHDId.
@@ -828,32 +981,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string OSDiskName { get; set; }
 
         /// <summary>
-        ///     Gets or sets OS.
+        ///     Gets or sets Protection container ID.
         /// </summary>
-        public string OS { get; set; }
+        public string ProtectionContainerId { get; set; }
 
         /// <summary>
-        ///     Gets or sets OS.
+        ///     Gets or sets a value that lists allowed operations.
         /// </summary>
-        public List<VirtualHardDisk> Disks { get; set; }
+        public IList<string> ProtectionReadinessErrors { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication provider.
+        ///     Gets or sets a value indicating whether it is protected or not.
         /// </summary>
-        public IList<string> SupportedReplicationProviders { get; set; }
+        public string ProtectionStatus { get; set; }
 
         /// <summary>
         ///     Gets or sets Replication protected item id.
         /// </summary>
         public string ReplicationProtectedItemId { get; set; }
 
+        /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public IList<string> SupportedReplicationProviders { get; set; }
+
         private void UpdateDiskDetails(
             IList<DiskDetails> diskDetails)
         {
-            this.Disks = new List<VirtualHardDisk>();
+            this.Disks = new List<AsrVirtualHardDisk>();
             foreach (var disk in diskDetails)
             {
-                var hd = new VirtualHardDisk();
+                var hd = new AsrVirtualHardDisk();
                 hd.Id = disk.VhdId;
                 hd.Name = disk.VhdName;
                 this.Disks.Add(hd);
@@ -861,20 +1019,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var OSDisk = diskDetails.SingleOrDefault(
                 d => string.Compare(
-                         d.VhdType,
-                         "OperatingSystem",
-                         StringComparison.OrdinalIgnoreCase) ==
-                     0);
+                        d.VhdType,
+                        Constants.OperatingSystem,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0);
             if (OSDisk != null)
             {
                 this.OSDiskId = OSDisk.VhdId;
                 this.OSDiskName = OSDisk.VhdName;
             }
         }
+
+        // Update Disk Details for VMWare.
+        private void UpdateDiskDetails(IList<InMageDiskDetails> diskDetails)
+        {
+            // Update all the Disks.
+            this.Disks = new List<AsrVirtualHardDisk>();
+            foreach (var disk in diskDetails)
+            {
+                var hd = new AsrVirtualHardDisk();
+                hd.Id = disk.DiskId;
+                hd.Name = disk.DiskName;
+
+                // Update all the Volumes in this Disk.
+                hd.Volumes = new List<AsrVolume>();
+                foreach (var vol in disk.VolumeList)
+                {
+                    var volume = new AsrVolume();
+                    volume.Label = vol.Label;
+                    volume.Name = vol.Name;
+                    hd.Volumes.Add(volume);
+                }
+                this.Disks.Add(hd);
+            }
+
+            // Update the OS Disk.
+            var OSDisk =
+                diskDetails.SingleOrDefault(
+                    d => string.Compare(
+                            d.DiskType,
+                            Constants.OperatingSystem,
+                            StringComparison.OrdinalIgnoreCase) ==
+                        0);
+            if (OSDisk != null)
+            {
+                this.OSDiskId = OSDisk.DiskId;
+                this.OSDiskName = OSDisk.DiskName;
+            }
+        }
     }
 
     /// <summary>
-    ///     Azure Site Recovery Replication Protected Item.
+    ///     Fabric Specific Virtual Machine Details.
+    /// </summary>
+    public class ASRFabricSpecificVMDetails
+    {
+    }
+
+    /// Azure Site Recovery Replication Protected Item.
     /// </summary>
     public class ASRReplicationProtectedItem
     {
@@ -926,7 +1128,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaAzureReplicationDetails)
             {
                 var providerSpecificDetails =
-                    (HyperVReplicaAzureReplicationDetails)rpi.Properties.ProviderSpecificDetails;
+                    (HyperVReplicaAzureReplicationDetails) rpi.Properties.ProviderSpecificDetails;
 
                 this.ReplicationProvider = Constants.HyperVReplicaAzure;
                 this.RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
@@ -955,46 +1157,123 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             else if (rpi.Properties.ProviderSpecificDetails is InMageAzureV2ReplicationDetails)
             {
                 this.ReplicationProvider = Constants.InMageAzureV2;
+                var providerSpecificDetails =
+                    (InMageAzureV2ReplicationDetails) rpi.Properties.ProviderSpecificDetails;
+
+                // Set the common properties specific to InMageAzureV2.
+                this.RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
+                this.RecoveryAzureVMSize = providerSpecificDetails.RecoveryAzureVMSize;
+                this.RecoveryResourceGroupId =
+                    providerSpecificDetails.RecoveryAzureResourceGroupId;
+                this.RecoveryAzureStorageAccount =
+                    providerSpecificDetails.RecoveryAzureStorageAccount;
+                this.SelectedRecoveryAzureNetworkId =
+                    providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+
+                if (providerSpecificDetails.VmNics != null)
+                {
+                    this.NicDetailsList = new List<ASRVMNicDetails>();
+                    foreach (var n in providerSpecificDetails.VmNics)
+                    {
+                        this.NicDetailsList.Add(new ASRVMNicDetails(n));
+                    }
+                }
+
+                // Set the InMageAzureV2 specific properties.
+                var inMageAzureV2RPIDetails =
+                    new ASRInMageAzureV2SpecificRPIDetails
+                    {
+                        IpAddress = providerSpecificDetails.IpAddress,
+                        ProcessServerId = providerSpecificDetails.ProcessServerId,
+                        MasterTargetId = providerSpecificDetails.MasterTargetId,
+                        OSType = providerSpecificDetails.OsType,
+                        OSDiskId = providerSpecificDetails.OsDiskId,
+                        VHDName = providerSpecificDetails.VhdName,
+                        MultiVmGroupId = providerSpecificDetails.MultiVmGroupId,
+                        MultiVmGroupName = providerSpecificDetails.MultiVmGroupName,
+                        AgentVersion = providerSpecificDetails.AgentVersion,
+                        DiscoveryType = providerSpecificDetails.DiscoveryType,
+                        LastHeartbeat = providerSpecificDetails.LastHeartbeat,
+                        ProtectionStage = providerSpecificDetails.ProtectionStage,
+                        RecoveryAzureLogStorageAccountId =
+                            providerSpecificDetails.RecoveryAzureLogStorageAccountId
+                    };
+
+                if (providerSpecificDetails.ProtectedDisks != null)
+                {
+                    inMageAzureV2RPIDetails.ProtectedDiskDetails = new List<AsrVirtualHardDisk>();
+                    foreach (var pd in providerSpecificDetails.ProtectedDisks)
+                    {
+                        inMageAzureV2RPIDetails.ProtectedDiskDetails.Add(
+                            new AsrVirtualHardDisk
+                            {
+                                Id = pd.DiskId,
+                                Name = pd.DiskName
+                            });
+                    }
+                }
+
+                this.ProviderSpecificDetails = inMageAzureV2RPIDetails;
             }
             else if (rpi.Properties.ProviderSpecificDetails is InMageReplicationDetails)
             {
                 this.ReplicationProvider = Constants.InMage;
+                var providerSpecificDetails =
+                    (InMageReplicationDetails) rpi.Properties.ProviderSpecificDetails;
+                // Set the common properties specific to InMage.
+                if (providerSpecificDetails.VmNics != null)
+                {
+                    this.NicDetailsList = new List<ASRVMNicDetails>();
+                    foreach (var n in providerSpecificDetails.VmNics)
+                    {
+                        this.NicDetailsList.Add(new ASRVMNicDetails(n));
+                    }
+                }
+
+                // Set the InMage specific properties.
+                var inMageRPIDetails = new ASRInMageSpecificRPIDetails
+                {
+                    IpAddress = providerSpecificDetails.IpAddress,
+                    ProcessServerId = providerSpecificDetails.ProcessServerId,
+                    MasterTargetId = providerSpecificDetails.MasterTargetId,
+                    OSType = providerSpecificDetails.OsDetails != null
+                        ? providerSpecificDetails.OsDetails.OsType
+                        : null,
+                    OSDiskId = providerSpecificDetails.OsDetails != null
+                        ? providerSpecificDetails.OsDetails.OsVhdId
+                        : null,
+                    VHDName = providerSpecificDetails.OsDetails != null
+                        ? providerSpecificDetails.OsDetails.VhdName
+                        : null,
+                    MultiVmGroupId = providerSpecificDetails.MultiVmGroupId,
+                    MultiVmGroupName = providerSpecificDetails.MultiVmGroupName,
+                    AgentVersion = providerSpecificDetails.AgentDetails.AgentVersion,
+                    DiscoveryType = providerSpecificDetails.DiscoveryType,
+                    LastHeartbeat = providerSpecificDetails.LastHeartbeat,
+                    ProtectionStage = providerSpecificDetails.ProtectionStage
+                };
+
+                if (providerSpecificDetails.ProtectedDisks != null)
+                {
+                    inMageRPIDetails.ProtectedDiskDetails = new List<AsrVirtualHardDisk>();
+                    foreach (var d in providerSpecificDetails.ProtectedDisks)
+                    {
+                        inMageRPIDetails.ProtectedDiskDetails.Add(
+                            new AsrVirtualHardDisk
+                            {
+                                Id = d.DiskId,
+                                Name = d.DiskName
+                            });
+                    }
+                }
+
+                this.ProviderSpecificDetails = inMageRPIDetails;
             }
             else if (rpi.Properties.ProviderSpecificDetails is A2AReplicationDetails)
             {
-                this.ReplicationProvider = Constants.InMage;
+                this.ReplicationProvider = Constants.A2A;
             }
         }
-
-        /// <summary>
-        ///     Gets or sets Friendly Name of the Protection entity.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Name of the Protection entity.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Protection entity ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        ///     Gets or sets type of the Protection entity.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Current Scenario Details
-        /// </summary>
-        public CurrentScenarioDetails CurrentScenario { get; set; }
-
-        /// <summary>
-        ///     Gets or sets a value that lists allowed operations.
-        /// </summary>
-        public IList<string> AllowedOperations { get; set; }
 
         /// <summary>
         ///     Gets or sets a active location of protection entity.
@@ -1002,14 +1281,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ActiveLocation { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication provider.
+        ///     Gets or sets a value that lists allowed operations.
         /// </summary>
-        public string ReplicationProvider { get; set; }
+        public IList<string> AllowedOperations { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Current Scenario Details
+        /// </summary>
+        public CurrentScenarioDetails CurrentScenario { get; set; }
 
         /// <summary>
         ///     Gets or sets Failover Recovery Point Id
         /// </summary>
         public string FailoverRecoveryPointId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Friendly Name of the Protection entity.
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection entity ID.
+        /// </summary>
+        public string ID { get; set; }
 
         /// <summary>
         ///     Gets or sets Last Successful Failover Time
@@ -1020,6 +1314,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Last Successful TestFailover Time
         /// </summary>
         public DateTime? LastSuccessfulTestFailoverTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the Protection entity.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Nic Details of the Virtual machine.
+        /// </summary>
+        public List<ASRVMNicDetails> NicDetailsList { get; set; }
 
         /// <summary>
         ///     Gets or sets Policy Friendly Name
@@ -1064,7 +1368,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Provider Specific Details
         /// </summary>
-        public ReplicationProviderSpecificSettings ProviderSpecificDetails { get; set; }
+        public ASRProviderSpecificRPIDetails ProviderSpecificDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure Storage Account of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureStorageAccount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure VM Name of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure VM Size of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureVMSize { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Fabric Friendly Name
@@ -1082,6 +1401,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryProtectionContainerFriendlyName { get; set; }
 
         /// <summary>
+        ///     Gets or sets Recovery Azure Storage Account of the Virtual machine.
+        /// </summary>
+        public string RecoveryResourceGroupId { get; set; }
+
+        /// <summary>
         ///     Gets or sets Recovery Services Provider Id
         /// </summary>
         public string RecoveryServicesProviderId { get; set; }
@@ -1097,6 +1421,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public IList<HealthError> ReplicationHealthErrors { get; set; }
 
         /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Selected Recovery Azure Network Id of the Virtual machine.
+        /// </summary>
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
         ///     Gets or sets Test Failover State
         /// </summary>
         public string TestFailoverState { get; set; }
@@ -1107,29 +1441,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestFailoverStateDescription { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Azure VM Name of the Virtual machine.
+        ///     Gets or sets type of the Protection entity.
         /// </summary>
-        public string RecoveryAzureVMName { get; set; }
+        public string Type { get; set; }
+    }
 
-        /// <summary>
-        ///     Gets or sets Recovery Azure VM Size of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureVMSize { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Recovery Azure Storage Account of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureStorageAccount { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Selected Recovery Azure Network Id of the Virtual machine.
-        /// </summary>
-        public string SelectedRecoveryAzureNetworkId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Nic Details of the Virtual machine.
-        /// </summary>
-        public List<ASRVMNicDetails> NicDetailsList { get; set; }
+    /// <summary>
+    ///     Provider Specific Replication Protected Item Details.
+    /// </summary>
+    public class ASRProviderSpecificRPIDetails
+    {
     }
 
     /// <summary>
@@ -1159,19 +1480,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Gets or sets Name of the Recovery Point.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         ///     Gets or sets Recovery Point ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        ///     Gets or sets type of the Recovery Point.
+        ///     Gets or sets Name of the Recovery Point.
         /// </summary>
-        public string Type { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Point Time.
@@ -1182,6 +1498,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Recovery Point Type.
         /// </summary>
         public string RecoveryPointType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets type of the Recovery Point.
+        /// </summary>
+        public string Type { get; set; }
     }
 
     /// <summary>
@@ -1259,14 +1580,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Gets or sets the task name.
+        ///     Gets or sets the end time.
         /// </summary>
-        public string Name { get; set; }
+        public DateTime EndTime { get; set; }
 
         /// <summary>
         ///     Gets or sets Job ID.
         /// </summary>
         public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the task name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the start time.
+        /// </summary>
+        public DateTime StartTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the Status.
@@ -1277,16 +1608,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the State description, which tells the exact internal state.
         /// </summary>
         public string StateDescription { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the start time.
-        /// </summary>
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the end time.
-        /// </summary>
-        public DateTime EndTime { get; set; }
     }
 
     /// <summary>
@@ -1327,14 +1648,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Gets or sets the task name.
+        ///     Gets or sets the end time.
         /// </summary>
-        public string Name { get; set; }
+        public DateTime EndTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the GroupTaskDetails
+        /// </summary>
+        public ASRGroupTaskDetails GroupTaskDetails { get; set; }
 
         /// <summary>
         ///     Gets or sets Job ID.
         /// </summary>
         public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the task name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the start time.
+        /// </summary>
+        public DateTime StartTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the Status.
@@ -1345,21 +1681,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the State description, which tells the exact internal state.
         /// </summary>
         public string StateDescription { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the start time.
-        /// </summary>
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the end time.
-        /// </summary>
-        public DateTime EndTime { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the GroupTaskDetails
-        /// </summary>
-        public ASRGroupTaskDetails GroupTaskDetails { get; set; }
     }
 
     /// <summary>
@@ -1520,14 +1841,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRErrorDetails
     {
         /// <summary>
-        ///     Gets or sets the Service error details.
-        /// </summary>
-        public ASRServiceError ServiceErrorDetails { get; set; }
-
-        /// <summary>
         ///     Gets or sets the Provider error details.
         /// </summary>
         public ASRProviderError ProviderErrorDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Service error details.
+        /// </summary>
+        public ASRServiceError ServiceErrorDetails { get; set; }
 
         /// <summary>
         ///     Gets or sets the Id of the task.
@@ -1587,14 +1908,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Gets or sets the Time of the error creation.
+        /// </summary>
+        public DateTime CreationTimeUtc { get; set; }
+
+        /// <summary>
         ///     Gets or sets the Error code.
         /// </summary>
         public int ErrorCode { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Error message
-        /// </summary>
-        public string ErrorMessage { get; set; }
 
         /// <summary>
         ///     Gets or sets the Provider error Id
@@ -1602,9 +1923,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ErrorId { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Time of the error creation.
+        ///     Gets or sets the Error message
         /// </summary>
-        public DateTime CreationTimeUtc { get; set; }
+        public string ErrorMessage { get; set; }
     }
 
     /// <summary>
@@ -1612,6 +1933,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRStorageClassification
     {
+        /// <summary>
+        ///     Gets or sets Storage classification friendly name.
+        /// </summary>
+        public string FriendlyName { get; set; }
+
         /// <summary>
         ///     Gets or sets Storage classification ARM Id.
         /// </summary>
@@ -1621,11 +1947,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Storage classification ARM name.
         /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Storage classification friendly name.
-        /// </summary>
-        public string FriendlyName { get; set; }
     }
 
     /// <summary>
@@ -1658,7 +1979,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Disk details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class VirtualHardDisk
+    public class AsrVirtualHardDisk
     {
         /// <summary>
         ///     Gets or sets the VHD id.
@@ -1668,6 +1989,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets the name.
+        /// </summary>
+        [DataMember]
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the List of Volumes.
+        /// </summary>
+        [DataMember]
+        public List<AsrVolume> Volumes { get; set; }
+    }
+
+    /// <summary>
+    ///     Volume details in the Disk.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class AsrVolume
+    {
+        /// <summary>
+        ///     Gets or sets the Volume Label.
+        /// </summary>
+        [DataMember]
+        public string Label { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Volume Name.
         /// </summary>
         [DataMember]
         public string Name { get; set; }
@@ -1686,16 +2032,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string NicId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the VM subnet.
+        ///     Gets or sets the static IP address of the replica NIC.
         /// </summary>
         [DataMember]
-        public string VMSubnetName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Name of the VM network.
-        /// </summary>
-        [DataMember]
-        public string VMNetworkName { get; set; }
+        public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
         ///     Gets or sets Id of the recovery VM Network.
@@ -1710,9 +2050,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMSubnetName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the static IP address of the replica NIC.
+        ///     Gets or sets Name of the VM network.
         /// </summary>
         [DataMember]
-        public string RecoveryNicStaticIPAddress { get; set; }
+        public string VMNetworkName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the VM subnet.
+        /// </summary>
+        [DataMember]
+        public string VMSubnetName { get; set; }
     }
+
+    /// <summary>
+    ///     CS Accounts Details.
+    /// </summary>
+    public class ASRRunAsAccount
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRRunAsAccount" /> class.
+        /// </summary>
+        /// <param name="runAsAccountDetails">Run as account object.</param>
+        public ASRRunAsAccount(RunAsAccount runAsAccountDetails)
+        {
+            this.AccountId = runAsAccountDetails.AccountId;
+            this.AccountName = runAsAccountDetails.AccountName;
+        }
+
+        /// <summary>
+        ///     Gets or sets the CS RunAs account Id.
+        /// </summary>
+        public string AccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the CS RunAs account name.
+        /// </summary>
+        public string AccountName { get; set; }
+    }
+
 }

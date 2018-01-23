@@ -67,8 +67,24 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\RemoveAzureRmAccount.cs" />
+    <Compile Include="AutoSave\DisableAzureRmContextAutosave.cs" />
+    <Compile Include="AutoSave\GetAzureRmContextAutosaveSetting.cs" />
+    <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
+    <Compile Include="Common\AzureContextModificationCmdlet.cs" />
+    <Compile Include="Common\AzureProfileConstants.cs" />
+    <Compile Include="Common\AzureRmProfileConstants.cs" />
+    <Compile Include="Common\ContextModificationScope.cs" />
+    <Compile Include="Common\ScopeHelpers.cs" />
+    <Compile Include="Context\ClearAzureRmContext.cs" />
+    <Compile Include="Context\RemoveAzureRmContext.cs" />
+    <Compile Include="Context\RenameAzureRmContext.cs" />
+    <Compile Include="Context\SelectAzureRmContext.cs" />
     <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
     <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />
+    <Compile Include="Default\ClearAzureRmDefault.cs" />
+    <Compile Include="Default\GetAzureRmDefault.cs" />
+    <Compile Include="Default\SetAzureRMDefault.cs" />
     <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
@@ -82,14 +98,9 @@
     <Compile Include="Errors\ResolveError.cs" />
     <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
+    <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
-    <Compile Include="Models\PSAzureContext.cs" />
-    <Compile Include="Models\PSAzureEnvironment.cs" />
-    <Compile Include="Models\PSAzureFeedback.cs" />
-    <Compile Include="Models\PSAzureProfile.cs" />
-    <Compile Include="Models\PSAzureRmAccount.cs" />
-    <Compile Include="Models\PSAzureSubscription.cs" />
-    <Compile Include="Models\PSAzureTenant.cs" />
+    <Compile Include="Models\PSResourceGroup.cs" />
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />
@@ -105,6 +116,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tenant\GetAzureRMTenant.cs" />
+    <Compile Include="Utilities\EnvironmentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
@@ -115,11 +127,15 @@
       <Link>AzureRM.Profile.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="AzureRmProfileStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -129,6 +145,22 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Commands.Common.Authorization.csproj">
+      <Project>{24508e26-154d-47f1-80ee-439bf0710996}</Project>
+      <Name>Commands.Common.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
+      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
+      <Name>Commands.Common.Graph.RBAC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
+      <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
+      <Name>Commands.Common.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
+      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
+      <Name>Commands.Common.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
@@ -155,6 +187,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

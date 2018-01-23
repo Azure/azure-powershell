@@ -12,11 +12,12 @@
 $VerbosePreference = "Continue";
 $ErrorActionPreference = “Stop”;
 
+Write-Host "Stopping VM before clearing encryption settings";
+Stop-AzureRmVM -Name $vmName -ResourceGroupName $resourceGroupName -Force;
+
 $vm = Get-AzureRmVm -ResourceGroupName $resourceGroupName -Name $vmName;
 $backupEncryptionSettings = $vm.StorageProfile.OsDisk.EncryptionSettings;
 
-Write-Host "Stopping VM before clearing encryption settings";
-Stop-AzureRmVM -Name $vmName -ResourceGroupName $resourceGroupName -Force;
 
 ## Clear encryption settings from VM model
 Write-Host "Clearing Encryption settings from VM";

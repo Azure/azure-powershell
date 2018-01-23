@@ -46,7 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 null,
                 this.CommandRuntime.ToString(),
                 () => this.NetworkClient.StaticIPs.Check(VNetName, IPAddress),
-                (operation, response) => ContextFactory<NetworkStaticIPAvailabilityResponse, VirtualNetworkStaticIPAvailabilityContext>(response, operation));
+                (operation, response) => ContextFactory(response, operation,
+                                            ServiceManagementProfile.Mapper.Map<NetworkStaticIPAvailabilityResponse, VirtualNetworkStaticIPAvailabilityContext>,
+                                            ServiceManagementProfile.Mapper.Map));
         }
     }
 }

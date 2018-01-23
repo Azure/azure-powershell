@@ -142,6 +142,13 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string AzureDiskEncryptionStatus = "AzureRmVMDiskEncryptionStatus";
         public const string AzureDiskEncryption = "AzureRmVMDiskEncryption";
 
+        // AzureVmssDiskEncryption
+        public const string AzureVmssDiskEncryptionExtension = "AzureRmVmssDiskEncryptionExtension";
+        public const string AzureVmssDiskEncryption = "AzureRmVmssDiskEncryption";
+        public const string AzureVmssVMDiskEncryption = "AzureRmVmssVMDiskEncryption";
+        public const string GetAzureRmVmssDiskEncryptionAlias = "Get-AzureRmVmssDiskEncryptionStatus";
+        public const string GetAzureRmVmssVMDiskEncryptionAlias = "Get-AzureRmVmssVMDiskEncryptionStatus";
+
         //AzureVMBackup
         public const string AzureVMBackup = "AzureRmVMBackup";
         public const string AzureVMBackupExtension = "AzureRmVMBackupExtension";

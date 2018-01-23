@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other">The account to copy from (source)</param>
         public static void CopyFrom(this IAzureAccount account, IAzureAccount source)
         {
-            if (source != null)
+            if (account != null && source != null)
             {
                 account.Credential = source.Credential;
                 account.Id = source.Id;
@@ -197,7 +197,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     account.TenantMap[item.Key] = item.Value;
                 }
+
                 account.CopyPropertiesFrom(source);
+            }
+        }
+
+        /// <summary>
+        /// Update non-null non-identity account properties from the given account
+        /// </summary>
+        /// <param name="account">The account to copy to (target)</param>
+        /// <param name="other">The account to copy from (source)</param>
+        public static void Update(this IAzureAccount account, IAzureAccount source)
+        {
+            if (account != null && source != null)
+            {
+                account.Credential = source.Credential ?? account.Credential;
+                foreach (var item in source.TenantMap)
+                {
+                    account.TenantMap[item.Key] = item.Value;
+                }
+
+                account.UpdateProperties(source);
             }
         }
     }

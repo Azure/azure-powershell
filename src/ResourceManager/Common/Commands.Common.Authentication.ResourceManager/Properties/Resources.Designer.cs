@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties.Resourc" +
-                            "es", typeof(Resources).GetTypeInfo().Assembly);
+                            "es", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -68,6 +67,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         internal static string CertificateNotFoundInStore {
             get {
                 return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not acquire access to file &apos;{0}&apos; please try again in a few minutes..
+        /// </summary>
+        internal static string FileLockFailure {
+            get {
+                return ResourceManager.GetString("FileLockFailure", resourceCulture);
             }
         }
         
@@ -99,11 +107,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid file path must be provided..
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
         /// </summary>
         internal static string NoInternetConnection {
             get {
                 return ResourceManager.GetString("NoInternetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid implementation of IDataStore must be provided..
+        /// </summary>
+        internal static string NullDataStore {
+            get {
+                return ResourceManager.GetString("NullDataStore", resourceCulture);
             }
         }
         
@@ -212,6 +238,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         internal static string SessionNotInitialized {
             get {
                 return ResourceManager.GetString("SessionNotInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot read the file at &apos;{0}&apos;. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes..
+        /// </summary>
+        internal static string UnreadableStream {
+            get {
+                return ResourceManager.GetString("UnreadableStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot write to the file at &apos;{0}&apos;. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes..
+        /// </summary>
+        internal static string UnwritableStream {
+            get {
+                return ResourceManager.GetString("UnwritableStream", resourceCulture);
             }
         }
     }

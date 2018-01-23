@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (FullUri)
             {
-                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileShare.Uri.AbsoluteUri.ToString(), sasToken);
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileShare.SnapshotQualifiedUri.AbsoluteUri.ToString(), sasToken);
 
                 WriteObject(fullUri);
             }

@@ -48,6 +48,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public Microsoft.Azure.Batch.Common.DependencyAction? DependencyAction
+        {
+            get
+            {
+                return this.omObject.DependencyAction;
+            }
+            set
+            {
+                this.omObject.DependencyAction = value;
+            }
+        }
+        
         public Microsoft.Azure.Batch.Common.JobAction? JobAction
         {
             get

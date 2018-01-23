@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {RecordType.SOA, typeof (SoaRecord)},
             {RecordType.PTR, typeof (PtrRecord)},
             {RecordType.SRV, typeof (SrvRecord)},
-            {RecordType.TXT, typeof (TxtRecord)}
+            {RecordType.TXT, typeof (TxtRecord)},
+            {RecordType.CAA, typeof (CaaRecord)}
         };
 
         public DnsClient(IAzureContext context)
@@ -97,17 +98,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return ToDnsZone(response);
         }
 
-        public bool DeleteDnsZone(
+        public void DeleteDnsZone(
             DnsZone zone,
             bool overwrite)
         {
-            var deleteResult = this.DnsManagementClient.Zones.Delete(
+            this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
-                ifMatch: overwrite ? null : zone.Etag,
-                ifNoneMatch: null);
-
-            return deleteResult.Status == Sdk.OperationStatus.Succeeded ;
+                ifMatch: overwrite ? null : zone.Etag);
         }
 
         public DnsZone GetDnsZone(string name, string resourceGroupName)
@@ -123,11 +121,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (getResponse != null && getResponse.NextPageLink != null)
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroupNext(getResponse.NextPageLink);
+                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroupNext(getResponse.NextPageLink);
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListInResourceGroup(resourceGroupName);    
+                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroup(resourceGroupName);    
                 }
                 
                 results.AddRange(getResponse.Select(ToDnsZone));
@@ -144,11 +142,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (getResponse != null && getResponse.NextPageLink != null)
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListInSubscriptionNext(getResponse.NextPageLink);
+                    getResponse = this.DnsManagementClient.Zones.ListNext(getResponse.NextPageLink);
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListInSubscription();
+                    getResponse = this.DnsManagementClient.Zones.List();
                 }
 
                 results.AddRange(getResponse.Select(ToDnsZone));
@@ -186,7 +184,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
             var properties = new RecordSet
             {
-                Name = recordSetName,
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
                 TTL = ttl,
             };
@@ -245,6 +242,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 case RecordType.SOA:
                     properties.SoaRecord = (Sdk.SoaRecord) resourceRecords[0].ToMamlRecord();
                     break;
+                case RecordType.CAA:
+                    properties.CaaRecords = resourceRecords.Select(x => (Sdk.CaaRecord)(x as CaaRecord).ToMamlRecord()).ToList();
+                    break;
             }
         }
 
@@ -259,6 +259,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             properties.SoaRecord = null;
             properties.SrvRecords = recordType == RecordType.SRV ? new List<Management.Dns.Models.SrvRecord>() : null;
             properties.TxtRecords = recordType == RecordType.TXT ? new List<Management.Dns.Models.TxtRecord>() : null;
+            properties.CaaRecords = recordType == RecordType.CAA ? new List<Management.Dns.Models.CaaRecord>() : null;
         }
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
@@ -270,7 +271,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.RecordType,
                 new RecordSet
                 {
-                    Name = recordSet.Name,
                     TTL = recordSet.Ttl,
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
@@ -309,6 +309,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         recordSet.RecordType == RecordType.CNAME
                             ? GetMamlRecords<CnameRecord, Management.Dns.Models.CnameRecord>(recordSet.Records).SingleOrDefault()
                             : null,
+                    CaaRecords =
+                        recordSet.RecordType == RecordType.CAA
+                            ? GetMamlRecords<CaaRecord, Management.Dns.Models.CaaRecord>(recordSet.Records)
+                            : null,
                 },
                 ifMatch: overwrite ? "*" : recordSet.Etag,
                 ifNoneMatch: null);
@@ -323,8 +327,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.ZoneName,
                 recordSet.Name,
                 recordSet.RecordType,
-                ifMatch: overwrite ? "*" : recordSet.Etag,
-                ifNoneMatch: null);
+                ifMatch: overwrite ? "*" : recordSet.Etag);
             return true;
         }
 
@@ -369,11 +372,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (listResponse != null && listResponse.NextPageLink != null)
                 {
-                    listResponse = this.DnsManagementClient.RecordSets.ListAllInResourceGroupNext(listResponse.NextPageLink);
+                    listResponse = this.DnsManagementClient.RecordSets.ListByDnsZoneNext(listResponse.NextPageLink);
                 }
                 else
                 {
-                    listResponse = this.DnsManagementClient.RecordSets.ListAllInResourceGroup(
+                    listResponse = this.DnsManagementClient.RecordSets.ListByDnsZone(
                                     resourceGroupName,
                                     zoneName);
                 }
@@ -432,6 +435,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             result.AddRange(GetPowerShellRecords(recordSet.SrvRecords));
             result.AddRange(GetPowerShellRecords(recordSet.TxtRecords));
             result.AddRange(GetPowerShellRecords(recordSet.PtrRecords));
+            result.AddRange(GetPowerShellRecords(recordSet.CaaRecords));
             if (recordSet.CnameRecord != null)
             {
                 result.Add(DnsRecordBase.FromMamlRecord(recordSet.CnameRecord));

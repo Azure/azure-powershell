@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertruleemail
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Creates an email action for an alert rule.
 ## SYNTAX
 
 ```
-New-AzureRmAlertRuleEmail [[-CustomEmails] <String[]>] [-SendToServiceOwners] [<CommonParameters>]
+New-AzureRmAlertRuleEmail [[-CustomEmail] <String[]>] [-SendToServiceOwner] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,27 +31,27 @@ This command creates an alert rule email action to send for its service owners w
 
 ### Example 2: Create an alert rule email action for non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails "pattif@contoso.com, davidchew@contoso.net"
+PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.com,davidchew@contoso.net
 ```
 
 This command creates an alert rule email action for the specified email addresses, but not for the service owners.
 
 ### Example 3: Create an alert rule email action for service owners and non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails "pattif@contoso.net" -SendToServiceOwners
+PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.net -SendToServiceOwners
 ```
 
 This command creates an alert rule email action for the specified address and for its service owners.
 
 ## PARAMETERS
 
-### -CustomEmails
+### -CustomEmail
 Specifies a list of comma-separated e-mail addresses.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: CustomEmails
 
 Required: False
 Position: 0
@@ -59,13 +60,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SendToServiceOwners
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SendToServiceOwner
 Indicates that this operation sends an e-mail to the service owners when the rule fires.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: SendToServiceOwners
 
 Required: False
 Position: Named

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermroledefinition
 schema: 2.0.0
 ---
 
@@ -14,17 +15,20 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow] [<CommonParameters>]
+Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
 ```
-Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [<CommonParameters>]
+Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow] [<CommonParameters>]
+Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,14 +37,14 @@ To inspect individual operations that a role grants access to, review the Action
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS C:\> Get-AzureRmRoleDefinition -Name Reader
 ```
 
 Get the Reader role definition
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS C:\> Get-AzureRmRoleDefinition
 ```
@@ -55,7 +59,7 @@ If specified, displays all role definitions.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -70,12 +74,27 @@ If specified, only displays the custom created roles in the directory.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: RoleDefinitionCustomParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,7 +104,7 @@ Role definition Id.
 ```yaml
 Type: Guid
 Parameter Sets: RoleDefinitionIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,7 +121,7 @@ Reader, Contributor, Virtual Machine Contributor.
 ```yaml
 Type: String
 Parameter Sets: RoleDefinitionNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -117,7 +136,7 @@ Role definition scope.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +151,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### String
-
 Parameter 'Scope' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

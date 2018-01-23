@@ -83,6 +83,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunDSMSHostedServiceTest()
+        {
+            this.RunPowerShellTest("Run-DSMSHostedServiceTest");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void RunNewAzureComputeArgumentListTests()
         {
             this.RunPowerShellTest("Run-NewAzureComputeArgumentListTests");

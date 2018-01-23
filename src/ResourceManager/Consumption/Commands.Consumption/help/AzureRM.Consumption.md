@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Consumption
 Module Guid: c1f34ce9-bf46-4180-b36c-be232a1f8f65
 Download Help Link: 

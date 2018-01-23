@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourcegroup
 schema: 2.0.0
 ---
 
@@ -12,15 +13,16 @@ Gets resource groups.
 
 ## SYNTAX
 
-### Lists the resource group based on the name. (Default)
+### GetByResourceGroupName (Default)
 ```
 Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Lists the resource group based on the Id.
+### GetByResourceGroupId
 ```
-Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +48,25 @@ PS C:\>(Get-AzureRmResourceGroup -Name "ContosoRG").Tags
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
+### Example 3: Show the Resource groups by location
+```
+PS C:\> Get-AzureRmResourceGroup |
+  Sort Location,ResourceGroupName |
+  Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
+```
+
+### Example 4: Show the names of all the Resource groups in a particular location
+```
+PS C:\> Get-AzureRmResourceGroup -Location westus2 |
+   Sort ResourceGroupName | 
+   Format-Wide ResourceGroupName -Column 4
+```
+
+### Example 5: Show the Resource groups whose names begin with WebServer
+```
+PS C:\> Get-AzureRmResourceGroup | Where ResourceGroupName -like WebServer*
+```
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -55,7 +76,22 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,7 +106,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based on the Id.
+Parameter Sets: GetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: False
@@ -86,7 +122,7 @@ Specifies the location of the resource group to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +137,7 @@ Wildcard characters are not permitted.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resource group based on the name.
+Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: False
@@ -117,7 +153,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

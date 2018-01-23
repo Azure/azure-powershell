@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using Microsoft.Azure.Commands.Insights.Metrics;
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             Assert.True(filter != null && filter.Filter == null);
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
-            cmdlet.MetricNames = new[] { "n1", "n2" };
+            cmdlet.MetricName = new[] { "n1", "n2" };
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
             Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));

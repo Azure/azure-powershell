@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricclientcertificate
 schema: 2.0.0
 ---
 
@@ -14,26 +15,28 @@ Remove a client certificate(s) or certificate subject(s) name(s) from being used
 ### SingleUpdateWithCommonName
 ```
 Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -CommonName <String> -IssuerThumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CommonName <String> -IssuerThumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
 Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -Thumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Thumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithCommonName
 ```
 Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -ClientCertificateCommonName <PSClientCertificateCommonName[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ClientCertificateCommonName <PSClientCertificateCommonName[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
 Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-AdminClientThumbprint <String[]>] [-ReadonlyClientThumbprint <String[]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AdminClientThumbprint <String[]>] [-ReadonlyClientThumbprint <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +95,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

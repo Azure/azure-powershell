@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: DD150A2C-27D5-4119-9B43-FAB82F9F7D5B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/enable-azurermbackupprotection
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Associates an item with an Azure Backup protection policy.
 
 ```
 Enable-AzureRmBackupProtection -Policy <AzureRMBackupProtectionPolicy>
- [-Item] <AzureRMBackupContainerContextObject> [<CommonParameters>]
+ [-Item] <AzureRMBackupContainerContextObject> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +48,21 @@ The command gets the backup item from that container by using the Get-AzureRmBac
 The current cmdlet enables the policy stored in $Policy for the item that the command passes to that cmdlet.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Item
 Specifies the Backup item for which this cmdlet enables protection.

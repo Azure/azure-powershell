@@ -89,6 +89,19 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public Hashtable Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Elastic Pool
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Elastic Pool")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -128,6 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Dtu = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null,
                 Edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null,
                 StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (int?)StorageMB : null,
+                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
             });
             return newEntity;
         }

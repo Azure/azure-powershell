@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementApi))]
     public class ImportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
-        private const string FromLocalFile = "From Local File";
-        private const string FromUrl = "From URL";
+        private const string FromLocalFile = "ImportFromLocalFile";
+        private const string FromUrl = "ImportFromUrl";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

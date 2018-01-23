@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkGatewayConnection ToPsVirtualNetworkGatewayConnection(VirtualNetworkGatewayConnection vnetGatewayConnection)
         {
-            var psVirtualNetworkGatewayConnection = Mapper.Map<PSVirtualNetworkGatewayConnection>(vnetGatewayConnection);
+            var psVirtualNetworkGatewayConnection = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetworkGatewayConnection>(vnetGatewayConnection);
 
             psVirtualNetworkGatewayConnection.Tag = TagsConversionHelper.CreateTagHashtable(vnetGatewayConnection.Tags);
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         public string GetVirtualNetworkGatewayConnectionSharedKey(string resourceGroupName, string name)
         {
             var getVirtualNetworkGatewayConnectionSharedKeyResponse = this.VirtualNetworkGatewayConnectionClient.GetSharedKey(resourceGroupName, name);
-            var psVirtualNetworkGatewayConnectionSharedKey = Mapper.Map<string>(getVirtualNetworkGatewayConnectionSharedKeyResponse.Value);
+            var psVirtualNetworkGatewayConnectionSharedKey = NetworkResourceManagerProfile.Mapper.Map<string>(getVirtualNetworkGatewayConnectionSharedKeyResponse.Value);
             return psVirtualNetworkGatewayConnectionSharedKey;
         }
 

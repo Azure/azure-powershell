@@ -63,7 +63,12 @@ function Test-BatchAccountEndToEnd
         Assert-AreEqual 1 $updatedAccount.Tags.Count
         Assert-AreEqual $newTagValue $updatedAccount.Tags[$newTagName]
 
-        # Get the account keys
+        # Get the account keys (without resource group)
+        $accountWithKeys = Get-AzureRmBatchAccountKeys -Name $accountName
+        Assert-NotNull $accountWithKeys.PrimaryAccountKey
+        Assert-NotNull $accountWithKeys.SecondaryAccountKey
+
+        # Get the account keys (with resource group)
         $accountWithKeys = Get-AzureRmBatchAccountKeys -Name $accountName -ResourceGroupName $resourceGroup
         Assert-NotNull $accountWithKeys.PrimaryAccountKey
         Assert-NotNull $accountWithKeys.SecondaryAccountKey
@@ -80,8 +85,8 @@ function Test-BatchAccountEndToEnd
         {
             # Delete the account
             Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
-            $errorMessage = "The Resource 'Microsoft.Batch/batchAccounts/$accountName' under resource group '$resourceGroup' was not found."
-            Assert-Throws { Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
+            $errorMessage = "The specified account does not exist."
+            Assert-ThrowsContains { Get-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
         }
         finally
         {
@@ -105,6 +110,6 @@ function Test-GetBatchNodeAgentSkus
     {
         Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
         Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
-        Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
+        Assert-AreNotEqual $null $nodeAgentSku.VerifiedImageReferences
     }
 }

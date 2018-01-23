@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.InputObject = null;
 
             // Don't go to the service on a Delete NodeFile call
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.TaskId = null;
             cmdlet.PoolId = "testPool";
             cmdlet.ComputeNodeId = "computeNode-1";
-            cmdlet.Name = "stdout.txt";
+            cmdlet.Path = "stdout.txt";
 
             // Verify no exceptions occur
             cmdlet.ExecuteCmdlet();
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.InputObject = null;
 
             // Don't go to the service on a Delete NodeFile call
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             // Fill required task details
             cmdlet.JobId = "job-1";
             cmdlet.TaskId = "task";
-            cmdlet.Name = "stdout.txt";
+            cmdlet.Path = "stdout.txt";
 
             // Verify no exceptions occur
             cmdlet.ExecuteCmdlet();

@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all authorization server";
-        private const string GetById = "Get by Id";
+        private const string GetAll = "GetAllAuthorizationServers";
+        private const string GetById = "GetByServerId";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

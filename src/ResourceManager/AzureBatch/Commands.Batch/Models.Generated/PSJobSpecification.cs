@@ -249,6 +249,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public Microsoft.Azure.Batch.Common.OnAllTasksComplete? OnAllTasksComplete
+        {
+            get
+            {
+                return this.omObject.OnAllTasksComplete;
+            }
+            set
+            {
+                this.omObject.OnAllTasksComplete = value;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.OnTaskFailure? OnTaskFailure
+        {
+            get
+            {
+                return this.omObject.OnTaskFailure;
+            }
+            set
+            {
+                this.omObject.OnTaskFailure = value;
+            }
+        }
+        
         public PSPoolInformation PoolInformation
         {
             get

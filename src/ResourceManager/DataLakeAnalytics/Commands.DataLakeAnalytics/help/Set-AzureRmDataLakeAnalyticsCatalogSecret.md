@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: CAB32C72-5C16-467E-BC57-749EC49916BB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/set-azurermdatalakeanalyticscatalogsecret
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Modifies a Data Lake Analytics catalog secret.
 
 ## SYNTAX
 
-### Specify full URI
+### SetByFullUri
 ```
 Set-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
- [-DatabaseHost] <String> [-Port] <Int32> [<CommonParameters>]
+ [-DatabaseHost] <String> [-Port] <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Specify host name and port
+### SetByHostNameAndPort
 ```
 Set-AzureRmDataLakeAnalyticsCatalogSecret [-Account] <String> [-DatabaseName] <String> [-Secret] <PSCredential>
- [-Uri] <Uri> [<CommonParameters>]
+ [-Uri] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +59,7 @@ Specifies the host name for the database the secret is associated with in the fo
 
 ```yaml
 Type: String
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullUri
 Aliases: Host
 
 Required: True
@@ -83,12 +84,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port number of the secret.
 
 ```yaml
 Type: Int32
-Parameter Sets: Specify full URI
+Parameter Sets: SetByFullUri
 Aliases: 
 
 Required: True
@@ -118,7 +134,7 @@ Specifies the Uniform Resource Identifier (URI) for the secret.
 
 ```yaml
 Type: Uri
-Parameter Sets: Specify host name and port
+Parameter Sets: SetByHostNameAndPort
 Aliases: 
 
 Required: True

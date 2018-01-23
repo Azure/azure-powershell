@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+Module Name: AzureRM.OperationalInsights
 ms.assetid: 99865242-6623-425E-92F2-0B229FC4EDAC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/enable-azurermoperationalinsightslinuxcustomlogcollection
 schema: 2.0.0
 ---
 
@@ -15,13 +16,13 @@ Starts collection of custom logs from Linux computers.
 ### ByWorkspaceName (Default)
 ```
 Enable-AzureRmOperationalInsightsLinuxCustomLogCollection [-ResourceGroupName] <String>
- [-WorkspaceName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WorkspaceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Enable-AzureRmOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzureRmOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ The **Enable-AzureRmOperationalInsightsLinuxCustomLogCollection** cmdlet starts 
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of a resource group that contains Linux computers.
@@ -118,7 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSWorkspace
-
 Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
 ## OUTPUTS
