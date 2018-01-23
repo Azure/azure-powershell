@@ -24,6 +24,8 @@
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running KeyVault cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
     * Affected cmdlet is: Remove-AzureRmKeyVault
+* Fixed bug in Set-AzureRmKeyVaultAccessPolicy where the AAD filter was setting SPN to the provided UPN, rather than setting the UPN
+   - See the following issue for more information: https://github.com/Azure/azure-powershell/issues/5201
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

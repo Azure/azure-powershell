@@ -152,7 +152,9 @@ PrivateData = @{
         ReleaseNotes = '* Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running KeyVault cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
-    * Affected cmdlet is: Remove-AzureRmKeyVault'
+    * Affected cmdlet is: Remove-AzureRmKeyVault
+* Fixed bug in Set-AzureRmKeyVaultAccessPolicy where the AAD filter was setting SPN to the provided UPN, rather than setting the UPN
+    - See the following issue for more information: https://github.com/Azure/azure-powershell/issues/5201'
 
         # Prerelease string of this module
         # Prerelease = ''
