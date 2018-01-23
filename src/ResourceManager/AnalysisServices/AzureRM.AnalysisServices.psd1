@@ -75,9 +75,9 @@ FunctionsToExport = @()
 CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer', 
                'Suspend-AzureRmAnalysisServicesServer', 
                'Get-AzureRmAnalysisServicesServer',
-		'Get-AzureRmAnalysisServicesServerGatewayStatus',
+			   'Get-AzureRmAnalysisServicesServerGatewayStatus',
                'Remove-AzureRmAnalysisServicesServer',
-		'Remove-AzureRmAnalysisServicesServerGateway',
+			   'Remove-AzureRmAnalysisServicesServerGateway',
                'Set-AzureRmAnalysisServicesServer', 
                'Test-AzureRmAnalysisServicesServer', 
                'New-AzureRmAnalysisServicesServer'

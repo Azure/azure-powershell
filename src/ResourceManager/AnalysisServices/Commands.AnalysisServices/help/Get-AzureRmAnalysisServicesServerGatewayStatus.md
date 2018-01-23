@@ -1,14 +1,14 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
 Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesservergatewaystatus
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver
 schema: 2.0.0
 ---
 
 # Get-AzureRmAnalysisServicesServer
 
 ## SYNOPSIS
-Gets the status of the gateway associated to an Analysis Services server.
+Gets the details of an Analysis Services server.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzureRmAnalysisServicesServerGatewayStatus [[-ResourceGroupName] <String>] [
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAnalysisServicesServerGatewayStatus cmdlet gets the status of the gateway associated to an Analysis Services server.
+The Get-AzureRmAnalysisServicesServer cmdlet gets the details of an Analysis Services server.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The Get-AzureRmAnalysisServicesServerGatewayStatus cmdlet gets the status of the
 PS C:\>Get-AzureRmAnalysisServicesServerGatewayStatus -ResourceGroupName "ResourceGroupTest" -Name "testserver"
 ```
 
-This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroupTest.
+This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroup03.
 
 ## PARAMETERS
 
@@ -83,10 +83,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServerGatewayStatus
+### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: Get-AzureAsGateway
+Alias: Get-AzureAs
 
 ## RELATED LINKS
 
