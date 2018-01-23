@@ -37,6 +37,19 @@ function Test-ExceptionWithShortWait
     Assert-ThrowsContains { $results = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan -Wait $wait } "GatewayTimeout"
 }
 
+function Test-AsJob
+{
+    $wsId = "DEMO_WORKSPACE"
+    $query = "union * | take 10"
+    $timespan = (New-Timespan -Hours 1)
+
+    $job = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId $wsId -Query $query -Timespan $timespan -AsJob
+	$job | Wait-Job
+	$results = $job | Receive-Job
+
+    AssertQueryResults $results 10
+}
+
 function AssertQueryResults($results, $takeCount)
 {
     Assert-NotNull $results

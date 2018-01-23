@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
     [Cmdlet("Invoke", "AzureRmOperationalInsightsQuery", DefaultParameterSetName = ParamSetNameByWorkspaceId),
         OutputType(typeof(PSQueryResponse))]
-    public class InvokeOperationalInsightsQuery : ResourceManager.Common.AzureRMCmdlet
+    public class InvokeOperationalInsightsQuery : ResourceManager.Common.AzureRmLongRunningCmdlet
     {
         private const string ParamSetNameByWorkspaceId = "ByWorkspaceId";
         private const string ParamSetNameByWorkspaceObject = "ByWorkspaceObject";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
             }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParamSetNameByWorkspaceId)
             {
