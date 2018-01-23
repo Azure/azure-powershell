@@ -1,10 +1,10 @@
 {
   "Cmdlets": [
     {
-      "VerbName": "Disconnect",
+      "VerbName": "Remove",
       "NounName": "AzureRmAccount",
-      "Name": "Disconnect-AzureRmAccount",
-      "ClassName": "Microsoft.Azure.Commands.Profile.DisconnectAzureRmAccountCommand",
+      "Name": "Remove-AzureRmAccount",
+      "ClassName": "Microsoft.Azure.Commands.Profile.RemoveAzureRMAccountCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -696,7 +696,6 @@
         }
       ],
       "AliasList": [
-        "Remove-AzureRmAccount",
         "Logout-AzAccount",
         "Logout-AzureRmAccount"
       ]
@@ -4146,10 +4145,10 @@
       "AliasList": []
     },
     {
-      "VerbName": "Connect",
+      "VerbName": "Add",
       "NounName": "AzureRmAccount",
-      "Name": "Connect-AzureRmAccount",
-      "ClassName": "Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand",
+      "Name": "Add-AzureRmAccount",
+      "ClassName": "Microsoft.Azure.Commands.Profile.AddAzureRMAccountCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -5473,7 +5472,6 @@
         }
       ],
       "AliasList": [
-        "Add-AzureRmAccount",
         "Login-AzureRmAccount",
         "Login-AzAccount"
       ]

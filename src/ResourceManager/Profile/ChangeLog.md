@@ -25,7 +25,6 @@
   * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
   * Fixed KeyVault Authentication when logging in with user-provided access tokens
 
-
 ## Version 4.1.1
 - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
     - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
