@@ -98,8 +98,6 @@ function Run-TestProtectedAsJob
   return $job
 }
 
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId 00977cdb-163f-435f-9c32-39ec8ae61f4d
 # Login or skip if the context exists.
 if(!(Test-Path azpsTestContext.json)) {
   Connect-AzureRmAccount > $null
