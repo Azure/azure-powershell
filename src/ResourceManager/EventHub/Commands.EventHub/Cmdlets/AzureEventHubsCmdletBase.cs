@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
 
+        //Parameter sets for ResourceID
+        protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
+        protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";

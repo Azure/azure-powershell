@@ -40,15 +40,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
-        [Parameter(Mandatory = false, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            ResourceIdentifier getParamGeoDR = new ResourceIdentifier();
+
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+                getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
@@ -64,7 +69,27 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     }
                 }
             }
-            else
+
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                {
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                        WriteObject(drConfiguration);
+                    }
+                    else
+                    {
+                        IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                        WriteObject(drConfigurationList.ToList(), true);
+                    }
+                }
+            }
+
+            if (ParameterSetName == GeoDRParameterSet)
             {
                 if (!string.IsNullOrEmpty(Name))
                 {

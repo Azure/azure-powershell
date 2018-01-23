@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public PSEventHubDRConfigurationAttributes InputObject { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRConfigResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "GeoDRConfiguration Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -61,7 +65,22 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     }
                 }
             }
-            else
+
+            if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                {
+                    Client.DeleteEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+            }
+
+            if (ParameterSetName == GeoDRBreakPairFailOverParameterSet)
             {
                 Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                 if (PassThru)

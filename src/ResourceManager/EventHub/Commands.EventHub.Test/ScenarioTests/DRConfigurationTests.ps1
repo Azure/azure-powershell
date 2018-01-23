@@ -150,12 +150,12 @@ function DRConfigurationTests
 	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id "DRConfig created earlier is not found."
 	
 	Write-Debug " Get the created DRConfiguration for Secondary Namespace"
-	$createdDRConfigSecondary = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
+	$createdDRConfigSecondary = Get-AzureRmEventHubGeoDRConfiguration -ResourceId $createdNamespace2.Id -Name $drConfigName
 	Assert-AreEqual $createdDRConfigSecondary.Role "Secondary"
 	
-	# Get the Created DRConfiguration
-	Write-Debug " Get all the created DRConfiguration"
-	$createdEventHubDRConfigList = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1
+	# Get the Created DRConfiguration using Namespace ResourceId
+	Write-Debug " Get all the created DRConfiguration using Namespace ResourceId"
+	$createdEventHubDRConfigList = Get-AzureRmEventHubGeoDRConfiguration -ResourceId $createdNamespace1.Id
 
 	# Assert
 	Assert-AreEqual $createdEventHubDRConfigList.Count 1 "EventHub DRConfig created earlier is not found in list"
@@ -236,7 +236,7 @@ function DRConfigurationTests
 	Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
-	# Wait till the Namespace Provisioning  state changes to succeeded
+	# Wait till the Namespace Provisioning  state changes to succeeded\
 	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
 
 	Write-Debug " Delete namespaces"

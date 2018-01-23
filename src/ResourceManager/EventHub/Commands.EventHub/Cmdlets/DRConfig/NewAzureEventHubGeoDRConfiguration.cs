@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string AlternateName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSEventHubDRConfigurationAttributes drConfiguration = new PSEventHubDRConfigurationAttributes() { PartnerNamespace = this.PartnerNamespace };
@@ -65,7 +69,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
                 }
             }
-            else
+
+            if (ParameterSetName == NamespaceResourceIdParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
+                {
+                    WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                }
+            }
+
+            if(ParameterSetName == GeoDRParameterSet)
             {
                 if (ShouldProcess(target: Name, action: string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
                 {
