@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
@@ -22,9 +23,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Cmdlet(VerbsCommon.Get, "AzureRmApiManagement", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<PsApiManagement>))]
     public class GetAzureApiManagement : AzureApiManagementCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ApiManagementParameterSetName = "Specific API Management Service";
+        internal const string BaseParameterSetName = "GetBySubscription";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string ApiManagementParameterSetName = "GetByResource";
 
         [Parameter(
             ParameterSetName = ResourceGroupParameterSetName,
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which want to create API Management service.")]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

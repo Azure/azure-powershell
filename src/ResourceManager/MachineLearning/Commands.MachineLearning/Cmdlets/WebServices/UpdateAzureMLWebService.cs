@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -30,12 +31,11 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [OutputType(typeof(WebService))]
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {
-        protected const string UpdateFromArgumentsParameterSet = 
-            "Update specific properties of the .";
-        protected const string UpdateFromObjectParameterSet = 
-            "Create a new Azure ML webservice from a WebService instance definition.";
+        protected const string UpdateFromArgumentsParameterSet = "UpdateFromParameters";
+        protected const string UpdateFromObjectParameterSet = "UpdateFromObject";
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

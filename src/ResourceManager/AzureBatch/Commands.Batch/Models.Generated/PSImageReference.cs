@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, sku, version);
         }
         
+        public PSImageReference(string virtualMachineImageId)
+        {
+            this.omObject = new Microsoft.Azure.Batch.ImageReference(virtualMachineImageId);
+        }
+        
         internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
         {
             if ((omObject == null))
@@ -77,6 +82,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.Version;
+            }
+        }
+        
+        public string VirtualMachineImageId
+        {
+            get
+            {
+                return this.omObject.VirtualMachineImageId;
             }
         }
     }

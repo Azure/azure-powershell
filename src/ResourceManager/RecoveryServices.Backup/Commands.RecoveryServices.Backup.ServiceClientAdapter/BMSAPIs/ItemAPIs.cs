@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
             Func<RestAzureNS.IPage<ProtectedItemResource>> listAsync =
-                () => BmsAdapter.Client.ProtectedItems.ListWithHttpMessagesAsync(
+                () => BmsAdapter.Client.BackupProtectedItems.ListWithHttpMessagesAsync(
                     resourceName,
                     resourceGroupName,
                     queryFilter,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             Func<string, RestAzureNS.IPage<ProtectedItemResource>> listNextAsync =
-                nextLink => BmsAdapter.Client.ProtectedItems.ListNextWithHttpMessagesAsync(
+                nextLink => BmsAdapter.Client.BackupProtectedItems.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 

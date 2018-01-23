@@ -1408,6 +1408,78 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk6956/providers/Microsoft.Web/sites/onesdk6609/slots/staging/publishxml?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazY5NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvb25lc2RrNjYwOS9zbG90cy9zdGFnaW5nL3B1Ymxpc2h4bWw/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"format\": \"WebDeploy\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "6bbd4fc4-567f-49e2-b58d-7541a99a4576"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "<publishData>\r\n  <publishProfile profileName=\"onesdk6609-staging - Web Deploy\" publishMethod=\"MSDeploy\" publishUrl=\"onesdk6609-staging.scm.azurewebsites.net:443\" msdeploySite=\"onesdk6609__staging\" userName=\"$onesdk6609__staging\" userPWD=\"pQMzRbaWQJhshregGenljb9Gy16gYSFRBw0HG7jtKQMwA7M7zyW7e44nMfSD\" destinationAppUrl=\"http://onesdk6609-staging.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n  <publishProfile profileName=\"onesdk6609-staging - FTP\" publishMethod=\"FTP\" publishUrl=\"ftp://waws-prod-cq1-001.ftp.azurewebsites.windows.net/site/wwwroot\" ftpPassiveMode=\"True\" userName=\"onesdk6609__staging\\$onesdk6609__staging\" userPWD=\"pQMzRbaWQJhshregGenljb9Gy16gYSFRBw0HG7jtKQMwA7M7zyW7e44nMfSD\" destinationAppUrl=\"http://onesdk6609-staging.azurewebsites.net\" SQLServerDBConnectionString=\"\" mySQLDBConnectionString=\"\" hostingProviderForumLink=\"\" controlPanelLink=\"\" webSystem=\"WebSites\">\r\n    <databases />\r\n  </publishProfile>\r\n</publishData>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1052"
+        ],
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1172"
+        ],
+        "x-ms-request-id": [
+          "afdfe6d6-479b-4d3b-b789-b15beba9456a"
+        ],
+        "x-ms-correlation-request-id": [
+          "afdfe6d6-479b-4d3b-b789-b15beba9456a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151026T231512Z:afdfe6d6-479b-4d3b-b789-b15beba9456a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Oct 2015 23:15:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
       "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk6956/providers/Microsoft.Web/sites/onesdk6609/slots/staging/newpassword?api-version=2015-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazY5NTYvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvb25lc2RrNjYwOS9zbG90cy9zdGFnaW5nL25ld3Bhc3N3b3JkP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
       "RequestMethod": "POST",

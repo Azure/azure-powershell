@@ -83,7 +83,8 @@
 
     { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
 
-    { "regex": "PowerBI", "alias": "Power BI" }, 
+    { "regex": "PowerBIEmbedded", "group": "Power BI", "alias": "Power BI Embedded Capacity" }, 
+    { "regex": "PowerBIWorkspace", "group": "Power BI", "alias": "Power BI Workspace Collections" }, 
 
     { "regex": "RedisCache", "alias": "Redis Cache" }, 
 
@@ -97,6 +98,10 @@
 
     { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
 
+    { "regex": "Marketplace", "alias": "Marketplace" }, 
+
+    { "regex": "DataMigration", "alias": "Data Migration" }, 
+
     { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
     { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
 
@@ -105,10 +110,18 @@
     { "regex": "Media", "alias": "Media Services" }, 
 
     { "regex": "UsageAggregates", "alias": "Usage Aggregates" }, 
+    
+    { "regex": "EventGrid", "alias": "Event Grid" }, 
+    
+    { "regex": "Container", "alias": "Container Instances" }, 
 
     { "regex": "Tags", "alias": "Tags" }, 
     
     { "regex": "Profile", "alias": "Profile" }, 
+    
+    { "regex": "Reservations", "alias": "Reservations" }, 
+
+    { "regex": "Subscription", "alias": "Subscription" }, 
 
     { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 

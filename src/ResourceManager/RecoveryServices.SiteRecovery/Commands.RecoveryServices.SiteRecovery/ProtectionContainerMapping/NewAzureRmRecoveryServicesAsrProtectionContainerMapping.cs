@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzureAssociation();
+                        this.EnterpriseToAzureAndVMwareToAzureAssociation();
                         break;
                     case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterpriseAssociation();
+                        this.EnterpriseToEnterpriseAndVMwareToVMwareAssociation();
                         break;
                 }
             }
@@ -133,11 +133,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Associates Azure Policy with enterprise based protection containers
         /// </summary>
-        private void EnterpriseToAzureAssociation()
+        private void EnterpriseToAzureAndVMwareToAzureAssociation()
         {
             if (string.Compare(
                     this.Policy.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMageAzureV2,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
@@ -153,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Associates Policy with enterprise based protection containers
         /// </summary>
-        private void EnterpriseToEnterpriseAssociation()
+        private void EnterpriseToEnterpriseAndVMwareToVMwareAssociation()
         {
             if ((string.Compare(
                      this.Policy.ReplicationProvider,
@@ -164,6 +169,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                      this.Policy.ReplicationProvider,
                      Constants.HyperVReplica2012R2,
                      StringComparison.OrdinalIgnoreCase) !=
+                 0) &&
+                 (string.Compare(
+                      this.Policy.ReplicationProvider,
+                      Constants.InMage,
+                      StringComparison.OrdinalIgnoreCase) !=
                  0))
             {
                 throw new InvalidOperationException(

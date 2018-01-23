@@ -15,7 +15,8 @@
 using System.Configuration;
 using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices.Backup;
+using RecoveryServicesBackupNS = Microsoft.Azure.Management.RecoveryServices.Backup;
+using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -30,7 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         const string AzureFabricName = "Azure";
         public const string ResourceProviderProductionNamespace = "Microsoft.RecoveryServices";
 
-        ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient> BmsAdapter;
+        ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
+
+        ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 
         /// <summary>
         /// Resource provider namespace that this adapter uses to 
@@ -62,7 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="context">Azure context</param>
         public ServiceClientAdapter(IAzureContext context)
         {
-            BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient>(context);
+            BmsAdapter = new ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient>(context);
+            RSAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesClient>(context);
         }
     }
 }

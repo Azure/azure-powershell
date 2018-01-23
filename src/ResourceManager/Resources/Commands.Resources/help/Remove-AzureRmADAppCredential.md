@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: C61FA834-BEBE-4DBF-888F-C6CB8CC95390
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadappcredential
 schema: 2.0.0
 ---
 
@@ -14,24 +15,26 @@ Removes a credential from an application.
 
 ### ApplicationObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzureRmADAppCredential -ObjectId <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADAppCredential -ObjectId <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithAllParameterSet
 ```
-Remove-AzureRmADAppCredential -ObjectId <String> [-All] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmADAppCredential -ObjectId <String> [-All] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithKeyIdParameterSet
 ```
-Remove-AzureRmADAppCredential -ApplicationId <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADAppCredential -ApplicationId <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithAllParameterSet
 ```
-Remove-AzureRmADAppCredential -ApplicationId <String> [-All] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmADAppCredential -ApplicationId <String> [-All] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +44,7 @@ The credential to be removed is identified by its key ID if an individual creden
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Remove-AzureRmADAppCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
@@ -49,7 +52,7 @@ PS E:\> Remove-AzureRmADAppCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5
 This command removes a credential key from an application.
 In this example, the key with Id "9044423a-60a3-45ac-9ab1-09534157ebb" will be removed from the application.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS E:\> Remove-AzureRmADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -All
 ```
@@ -65,7 +68,7 @@ Switch to remove all the credentials associated with the application.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ApplicationObjectIdWithAllParameterSet, ApplicationIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,12 +83,27 @@ The id of the application to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: ApplicationIdWithKeyIdParameterSet, ApplicationIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,7 +113,7 @@ Switch to delete credential without a confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +129,7 @@ The key Ids for the application can be obtained using the Get-AzureRmADAppCreden
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet, ApplicationIdWithKeyIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -126,7 +144,7 @@ The object id of the application to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet, ApplicationObjectIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

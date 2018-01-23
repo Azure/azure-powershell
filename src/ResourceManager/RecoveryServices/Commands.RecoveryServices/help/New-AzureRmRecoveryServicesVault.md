@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+Module Name: AzureRM.RecoveryServices
 ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Creates a new Recovery Services vault.
 ## SYNTAX
 
 ```
-New-AzureRmRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,10 +23,12 @@ The **New-AzureRmRecoveryServicesVault** cmdlet creates a new Recovery Services 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```
+PS C:\> New-AzureRmRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location "eastasia"
 ```
 
-```
+Create recovery service vault in resource group and given location.
 
 ## PARAMETERS
 
@@ -96,6 +99,19 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

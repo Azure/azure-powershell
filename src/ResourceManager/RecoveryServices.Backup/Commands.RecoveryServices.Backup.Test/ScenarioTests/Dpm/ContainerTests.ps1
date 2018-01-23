@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetContainerScenario
+function Test-BmsGetContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -22,7 +22,7 @@ function Test-GetContainerScenario
 	Assert-AreEqual $namedContainer.FriendlyName "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 }
 
-function Test-UnregisterContainerScenario
+function Test-BmsUnregisterContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;

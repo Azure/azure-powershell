@@ -65,7 +65,7 @@ function Test-ZoneCrud
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*was not found*"
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } 
 	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
@@ -97,7 +97,7 @@ function Test-ZoneCrudTrimsDot
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "*was not found*"
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName }
 	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
@@ -131,7 +131,7 @@ function Test-ZoneCrudWithPiping
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*was not found*"
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName }
 	Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
 }
 
@@ -160,7 +160,7 @@ function Test-ZoneCrudWithPipingTrimsDot
 
 	Assert-True { $removed }
 
-	Assert-ThrowsLike { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "*was not found*"
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName }
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 

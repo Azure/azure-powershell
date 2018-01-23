@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
 
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     // Map to the sdk object
-                    var routeFilterModel = Mapper.Map<MNM.RouteFilter>(this.RouteFilter);
+                    var routeFilterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteFilter>(this.RouteFilter);
                     routeFilterModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteFilter.Tag, validate: true);
 
                     // Execute the PUT RouteTable call

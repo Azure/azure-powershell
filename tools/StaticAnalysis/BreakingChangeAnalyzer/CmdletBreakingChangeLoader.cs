@@ -164,7 +164,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         }
                     }
 
-                    if (cmdletMetadata.ParameterSets.Count == 0)
+                    if (!cmdletMetadata.ParameterSets
+                                        .Where(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
+                                        .Any())
                     {
                         ParameterSetMetadata defaultSet = new ParameterSetMetadata()
                         {

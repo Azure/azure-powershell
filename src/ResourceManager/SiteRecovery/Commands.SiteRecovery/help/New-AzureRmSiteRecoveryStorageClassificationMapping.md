@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 4B4CB198-ABD3-4926-808D-2087151EA06B
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/new-azurermsiterecoverystorageclassificationmapping
 schema: 2.0.0
 ---
 
@@ -15,7 +16,8 @@ Creates a storage classification mapping in Site Recovery.
 ```
 New-AzureRmSiteRecoveryStorageClassificationMapping [-Name <String>]
  -PrimaryStorageClassification <ASRStorageClassification>
- -RecoveryStorageClassification <ASRStorageClassification> [<CommonParameters>]
+ -RecoveryStorageClassification <ASRStorageClassification> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +26,21 @@ The **New-AzureRmSiteRecoveryStorageClassificationMapping** cmdlet creates a sto
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 ```yaml
@@ -74,7 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRStorageClassification
-
 Parameter 'PrimaryStorageClassification' accepts value of type 'ASRStorageClassification' from the pipeline
 
 ## OUTPUTS

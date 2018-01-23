@@ -97,21 +97,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         ConfigurationSets = PersistentVMHelper.MapConfigurationSets(vm.ConfigurationSets),
                         DataVirtualHardDisks = new Collection<PVM.DataVirtualHardDisk>(),
                         Label = vm.Label,
-                        OSVirtualHardDisk = Mapper.Map(vm.OSVirtualHardDisk, new PVM.OSVirtualHardDisk()),
+                        OSVirtualHardDisk = ServiceManagementProfile.Mapper.Map(vm.OSVirtualHardDisk, new PVM.OSVirtualHardDisk()),
                         RoleName = vm.RoleName,
                         RoleSize = vm.RoleSize.ToString(),
                         RoleType = vm.RoleType,
                         DefaultWinRmCertificateThumbprint = vm.DefaultWinRmCertificateThumbprint,
                         ProvisionGuestAgent = vm.ProvisionGuestAgent,
-                        ResourceExtensionReferences = Mapper.Map<PVM.ResourceExtensionReferenceList>(vm.ResourceExtensionReferences),
-                        DebugSettings = Mapper.Map<PVM.DebugSettings>(vm.DebugSettings)
+                        ResourceExtensionReferences = ServiceManagementProfile.Mapper.Map<PVM.ResourceExtensionReferenceList>(vm.ResourceExtensionReferences),
+                        DebugSettings = ServiceManagementProfile.Mapper.Map<PVM.DebugSettings>(vm.DebugSettings)
                     }
                 };
 
                 if (vm.DataVirtualHardDisks != null)
                 {
                     vm.DataVirtualHardDisks.ForEach(
-                        d => vmContext.VM.DataVirtualHardDisks.Add(Mapper.Map<PVM.DataVirtualHardDisk>(d)));
+                        d => vmContext.VM.DataVirtualHardDisks.Add(ServiceManagementProfile.Mapper.Map<PVM.DataVirtualHardDisk>(d)));
                 }
                 else
                 {

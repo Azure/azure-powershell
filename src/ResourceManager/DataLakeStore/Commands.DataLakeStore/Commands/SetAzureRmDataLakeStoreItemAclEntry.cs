@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
-        internal const string BaseParameterSetName = "Set ACL Entries using ACL object";
-        internal const string SpecificAceParameterSetName = "Set specific ACE";
+        internal const string BaseParameterSetName = "SetByACLObject";
+        internal const string SpecificAceParameterSetName = "SetSpecificACE";
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]

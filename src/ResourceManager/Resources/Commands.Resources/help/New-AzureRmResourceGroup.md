@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 0632DAD6-F331-454F-9E7E-2164AB413E77
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Creates an Azure resource group.
 
 ```
 New-AzureRmResourceGroup -Name <String> -Location <String> [-Tag <Hashtable>] [-Force] [-ApiVersion <String>]
- [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,16 +33,23 @@ Azure resource group is a collection of Azure resources that are deployed as a u
 
 ### Example 1: Create an empty resource group
 ```
-PS C:\>New-AzureRmResourceGroup -Name "RG01" -Location "South Central US"
+PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US"
 ```
 
 This command creates a resource group that has no resources. You can use the
 **New-AzureRmResource** or **New-AzureRmResourceGroupDeployment** cmdlets to add resources and
 deployments to this resource group.
 
-### Example 2: Create a resource group with tags
+### Example 2: Create an empty resource group using positional parameters
 ```
-PS C:\>New-AzureRmResourceGroup -Name "RG01" -Location "South Central US" -Tag @{"Empty"=$null; "Department"="Marketing"}
+PS> New-AzureRmResourceGroup RG01 "South Central US"
+```
+
+This command creates a resource group that has no resources.
+
+### Example 3: Create a resource group with tags
+```
+PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
 ```
 
 This command creates an empty resource group. This command is the same as the command in Example 1,
@@ -60,6 +68,21 @@ You can specify a different version than the default version.
 Type: String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

@@ -48,12 +48,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.1.0.0\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.3.0.0\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObsoletedModels\ProvisioningState.cs" />
     <Compile Include="Models\PSCognitiveServicesAccount.cs" />
     <Compile Include="Models\PSCognitiveServicesAccountKeys.cs" />
     <Compile Include="Models\PSCognitiveServicesSkus.cs" />
@@ -74,7 +75,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="notice.txt" />
     <None Include="..\AzureRM.CognitiveServices.psd1">
       <Link>AzureRM.CognitiveServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -85,6 +85,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +109,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="notice.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />

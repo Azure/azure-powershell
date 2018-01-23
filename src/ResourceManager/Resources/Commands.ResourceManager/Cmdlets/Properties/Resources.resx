@@ -402,4 +402,16 @@
   <data name="InvalidLocation" xml:space="preserve">
     <value>Provided location is not supported</value>
   </data>
+  <data name="InvalidUriContent" xml:space="preserve">
+    <value>The uri {0} is inaccessible, or the content is invalid.</value>
+  </data>
+  <data name="InvalidUriScheme" xml:space="preserve">
+    <value>Please make sure the uri starts with http:// or https://.</value>
+  </data>
+  <data name="InvalidUriString" xml:space="preserve">
+    <value>The specified uri string {0} is invalid.</value>
+  </data>
+  <data name="InvalidFilePath" xml:space="preserve">
+    <value>The provided file {0} doesn't exist</value>
+  </data>
 </root>

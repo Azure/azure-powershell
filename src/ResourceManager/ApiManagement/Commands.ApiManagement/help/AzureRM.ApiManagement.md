@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: None
@@ -114,7 +114,7 @@ Creates a new Backend Credential contract.
 Creates a new Backend Proxy Object.
 
 ### [New-AzureRmApiManagementCertificate](New-AzureRmApiManagementCertificate.md)
-Creates an API Management certificate.
+Creates an API Management certificate to be used during Authentication with Backend.
 
 ### [New-AzureRmApiManagementContext](New-AzureRmApiManagementContext.md)
 Creates an instance of PsAzureApiManagementContext.

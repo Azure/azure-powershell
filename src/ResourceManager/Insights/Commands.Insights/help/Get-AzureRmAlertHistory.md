@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 1EDFCAC4-6A66-4124-8192-B7F0D3C5BCFC
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermalerthistory
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Gets the history of alerts.
 
 ```
 Get-AzureRmAlertHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-DetailedOutput] [<CommonParameters>]
+ [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,6 @@ CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
 Description          : 'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' has been resolved for Website: 
                        garyyang1 (Default-Web-EastUS) 
-EventChannels        : Admin, Operation
 EventDataId          : 769fab1c-fc9f-4e18-bc3a-fa79fbdd3616
 EventName            : Alert
 EventSource          : microsoft.insights/alertrules
@@ -82,7 +82,6 @@ CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
 Description          : 'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' was activated for Website: garyyang1
                        (Default-Web-EastUS) 
-EventChannels        : Admin, Operation
 EventDataId          : 66277c94-2097-4f5f-860d-e585f1206cd7
 EventName            : Alert
 EventSource          : microsoft.insights/alertrules
@@ -128,7 +127,6 @@ CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
 Description          : 'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' was activated for Website: garyyang1
                        (Default-Web-EastUS) 
-EventChannels        : Admin, Operation
 EventDataId          : ec9f7b3c-c6ea-4b45-bd15-ff43e38491e3
 EventName            : Alert
 EventSource          : microsoft.insights/alertrules
@@ -182,7 +180,6 @@ CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzg4ODU3OTI5OTI2
 Description          : 'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' has been resolved for Website: 
                        garyyang1 (Default-Web-EastUS) 
-EventChannels        : Admin, Operation
 EventDataId          : 769fab1c-fc9f-4e18-bc3a-fa79fbdd3616
 EventName            : Alert
 EventSource          : microsoft.insights/alertrules
@@ -228,7 +225,6 @@ CorrelationId        : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        LTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTkyNzgyODY1MDU5NTE0
 Description          : 'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' was activated for Website: garyyang1
                        (Default-Web-EastUS) 
-EventChannels        : Admin, Operation
 EventDataId          : ec9f7b3c-c6ea-4b45-bd15-ff43e38491e3
 EventName            : Alert
 EventSource          : microsoft.insights/alertrules
@@ -281,6 +277,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -368,7 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
 
 ## NOTES
 

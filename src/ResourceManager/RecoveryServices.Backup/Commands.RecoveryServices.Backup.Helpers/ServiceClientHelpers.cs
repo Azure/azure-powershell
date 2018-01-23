@@ -87,19 +87,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="backupManagementType">Powershell backup management type</param>
         /// <returns>Service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType?
+        public static string
             GetServiceClientBackupManagementType(
                 CmdletModel.BackupManagementType? backupManagementType)
         {
-            ServiceClientModel.BackupManagementType? providerType = null;
+            string providerType = null;
 
             switch (backupManagementType)
             {
                 case CmdletModel.BackupManagementType.AzureVM:
-                    providerType = ServiceClientModel.BackupManagementType.AzureIaasVM;
+                    providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
                 case CmdletModel.BackupManagementType.AzureSQL:
-                    providerType = ServiceClientModel.BackupManagementType.AzureSql;
+                    providerType = ServiceClientModel.BackupManagementType.AzureSql.ToString();
                     break;
                 default:
                     break;
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         /// <param name="backupManagementType"></param>
         /// <returns>service backup management type</returns>
-        public static ServiceClientModel.BackupManagementType?
+        public static string
             GetServiceClientBackupManagementType(string backupManagementType)
         {
-            ServiceClientModel.BackupManagementType? providerType = null;
+            string providerType = null;
 
             if (string.IsNullOrEmpty(backupManagementType))
             {
@@ -127,6 +127,136 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return GetServiceClientBackupManagementType(
                 backupManagementType.ToEnum<CmdletModel.BackupManagementType>());
+        }
+
+        /// <summary>
+        /// Gets the job status using which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the job status of powershell object.
+        /// </summary>
+        /// <param name="jobStatus">Powershell job status enum value</param>
+        /// <returns>Service job status</returns>
+        public static string
+            GetServiceClientJobStatus(
+                CmdletModel.JobStatus? pSJobStatus)
+        {
+            string jobStatus = null;
+
+            switch (pSJobStatus)
+            {
+                case CmdletModel.JobStatus.Cancelled:
+                    jobStatus = ServiceClientModel.JobStatus.Cancelled.ToString();
+                    break;
+                case CmdletModel.JobStatus.Cancelling:
+                    jobStatus = ServiceClientModel.JobStatus.Cancelling.ToString();
+                    break;
+                case CmdletModel.JobStatus.Completed:
+                    jobStatus = ServiceClientModel.JobStatus.Completed.ToString();
+                    break;
+                case CmdletModel.JobStatus.CompletedWithWarnings:
+                    jobStatus = ServiceClientModel.JobStatus.CompletedWithWarnings.ToString();
+                    break;
+                case CmdletModel.JobStatus.Failed:
+                    jobStatus = ServiceClientModel.JobStatus.Failed.ToString();
+                    break;
+                case CmdletModel.JobStatus.InProgress:
+                    jobStatus = ServiceClientModel.JobStatus.InProgress.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return jobStatus;
+        }
+
+        /// <summary>
+        /// Gets the retention duration type using which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the retention duration type of powershell object.
+        /// </summary>
+        /// <param name="pSRetentionDurationType">Powershell retention duration type enum value</param>
+        /// <returns>Service retention duration type</returns>
+        public static string
+            GetServiceClientRetentionDurationType(
+                CmdletModel.RetentionDurationType? pSRetentionDurationType)
+        {
+            string retentionDurationtype = null;
+
+            switch (pSRetentionDurationType)
+            {
+                case CmdletModel.RetentionDurationType.Days:
+                    retentionDurationtype = ServiceClientModel.RetentionDurationType.Days.ToString();
+                    break;
+                case CmdletModel.RetentionDurationType.Weeks:
+                    retentionDurationtype = ServiceClientModel.RetentionDurationType.Weeks.ToString();
+                    break;
+                case CmdletModel.RetentionDurationType.Months:
+                    retentionDurationtype = ServiceClientModel.RetentionDurationType.Months.ToString();
+                    break;
+                case CmdletModel.RetentionDurationType.Years:
+                    retentionDurationtype = ServiceClientModel.RetentionDurationType.Years.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return retentionDurationtype;
+        }
+
+        /// <summary>
+        /// Gets the retention schedule format using which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the retention schedule format of powershell object.
+        /// </summary>
+        /// <param name="pSRetentionScheduleFormat">Powershell retention schedule format enum value</param>
+        /// <returns>Service retention schedule format</returns>
+        public static string
+            GetServiceClientRetentionScheduleFormat(
+                CmdletModel.RetentionScheduleFormat? pSRetentionScheduleFormat)
+        {
+            string retentionScheduleFormat = null;
+
+            switch (pSRetentionScheduleFormat)
+            {
+                case CmdletModel.RetentionScheduleFormat.Daily:
+                    retentionScheduleFormat = ServiceClientModel.RetentionScheduleFormat.Daily.ToString();
+                    break;
+                case CmdletModel.RetentionScheduleFormat.Weekly:
+                    retentionScheduleFormat = ServiceClientModel.RetentionScheduleFormat.Weekly.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return retentionScheduleFormat;
+        }
+
+        /// <summary>
+        /// Gets the schedule run type using which the service client calls 
+        /// are to be made to contact the backend service. 
+        /// This is determined by the schedule run type of powershell object.
+        /// </summary>
+        /// <param name="pSScheduleRunType">Powershell schedule run type enum value</param>
+        /// <returns>Service schedule run type</returns>
+        public static string
+            GetServiceClientScheduleRunType(
+                CmdletModel.ScheduleRunType? pSScheduleRunType)
+        {
+            string scheduleRunType = null;
+
+            switch (pSScheduleRunType)
+            {
+                case CmdletModel.ScheduleRunType.Daily:
+                    scheduleRunType = ServiceClientModel.ScheduleRunType.Daily.ToString();
+                    break;
+                case CmdletModel.ScheduleRunType.Weekly:
+                    scheduleRunType = ServiceClientModel.ScheduleRunType.Weekly.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return scheduleRunType;
         }
 
         /// <summary>

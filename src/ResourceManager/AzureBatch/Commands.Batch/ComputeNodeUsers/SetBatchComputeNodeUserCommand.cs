@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The account password.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch
             UpdateComputeNodeUserParameters parameters = new UpdateComputeNodeUserParameters(this.BatchContext,
                 this.PoolId, this.ComputeNodeId, this.Name, this.AdditionalBehaviors)
             {
-                Password = this.Password,
+                Password = this.Password?.ConvertToString(),
                 ExpiryTime = this.ExpiryTime
             };
             this.BatchClient.UpdateComputeNodeUser(parameters);

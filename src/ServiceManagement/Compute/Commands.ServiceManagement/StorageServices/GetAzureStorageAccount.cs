@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Management.Storage;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
 {
@@ -49,8 +50,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                     () => this.StorageClient.StorageAccounts.Get(this.StorageAccountName),
                     (s, response) =>
                     {
-                        var context = ContextFactory<StorageAccountGetResponse, StorageServicePropertiesOperationContext>(response, s);
-                        Mapper.Map(response.StorageAccount.Properties, context);
+                        var context = ContextFactory(response, s, 
+                            ServiceManagementProfile.Mapper.Map<StorageAccountGetResponse, StorageServicePropertiesOperationContext>, 
+                            ServiceManagementProfile.Mapper.Map);
+                        ServiceManagementProfile.Mapper.Map(response.StorageAccount.Properties, context);
                         return PSStorageService.Create(this.StorageClient, context);
                     });
             }
@@ -63,8 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                     (s, storageServices) => 
                         storageServices.StorageAccounts.Select(r =>
                         {
-                            var context = ContextFactory<StorageAccount, StorageServicePropertiesOperationContext>(r, s);
-                            Mapper.Map(r.Properties, context);
+                            var context = ContextFactory(r, s,
+                                ServiceManagementProfile.Mapper.Map<StorageAccount, StorageServicePropertiesOperationContext>,
+                                ServiceManagementProfile.Mapper.Map);
+                            ServiceManagementProfile.Mapper.Map(r.Properties, context);
                             return PSStorageService.Create(this.StorageClient, context);
                         }));
             }

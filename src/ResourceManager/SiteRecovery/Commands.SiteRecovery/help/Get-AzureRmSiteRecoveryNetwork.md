@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 4CC5E6A8-B51A-49ED-BB93-FE63F1500780
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoverynetwork
 schema: 2.0.0
 ---
 
@@ -14,37 +15,43 @@ Gets information about the networks managed by Site Recovery for the current vau
 
 ### Default (Default)
 ```
-Get-AzureRmSiteRecoveryNetwork [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServerObject
 ```
-Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByNameLegacy
 ```
-Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -Name <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyNameLegacy
 ```
-Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -FriendlyName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFabricObject
 ```
-Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -Name <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -FriendlyName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +60,21 @@ The **Get-AzureRmSiteRecoveryNetwork** cmdlet gets information about Azure Site 
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Fabric
 ```yaml
@@ -140,27 +162,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRFabric
-
 Parameter 'Fabric' accepts value of type 'ASRFabric' from the pipeline
 
 ### String
-
 Parameter 'FriendlyName' accepts value of type 'String' from the pipeline
 
 ### String
-
 Parameter 'FriendlyName' accepts value of type 'String' from the pipeline
 
 ### String
-
 Parameter 'Name' accepts value of type 'String' from the pipeline
 
 ### String
-
 Parameter 'Name' accepts value of type 'String' from the pipeline
 
 ### ASRServer
-
 Parameter 'Server' accepts value of type 'ASRServer' from the pipeline
 
 ## OUTPUTS

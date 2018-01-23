@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadspcredential
 schema: 2.0.0
 ---
 
@@ -14,25 +15,26 @@ Removes a credential from a service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithAllParameterSet
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithAllParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +45,7 @@ The credential to be removed is identified by its key ID if an individual creden
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Remove-AzureRmADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
@@ -51,7 +53,7 @@ PS E:\> Remove-AzureRmADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5e
 This command removes a credential key from a service principal.
 In this example, the key with Id "9044423a-60a3-45ac-9ab1-09534157ebb" will be removed from the service principal.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS E:\> Remove-AzureRmADSpCredential -ServicePrincipalName http://test123 -All
 ```
@@ -67,12 +69,27 @@ Switch to remove all the credentials associated with the service principal.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ObjectIdWithAllParameterSet, SPNWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -82,7 +99,7 @@ Switch to delete credential without a confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +115,7 @@ The key Ids for a service principal can be obtained using the Get-AzureRmADSpCre
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +130,7 @@ The object id of the service principal to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: ObjectIdWithKeyIdParameterSet, ObjectIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +145,7 @@ The name (SPN) of the service principal to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: SPNWithKeyIdParameterSet, SPNWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

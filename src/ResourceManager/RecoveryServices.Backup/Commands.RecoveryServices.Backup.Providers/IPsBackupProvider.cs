@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -56,5 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         List<CmdletModel.BackupEngineBase> ListBackupManagementServers();
 
         List<ItemBase> ListProtectedItems();
+
+        RPMountScriptDetails ProvisionItemLevelRecoveryAccess();
+
+        void RevokeItemLevelRecoveryAccess();
     }
 }

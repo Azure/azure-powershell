@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -100,7 +102,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             resumeJobParams.Properties = new ResumeJobParamsProperties();
             resumeJobParams.Properties.Comments = this.Comment;
-
+            var job = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(this.Name);
+            if (job != null)
+            {
+                if (job.Properties.ScenarioName.Equals("TestFailover", System.StringComparison.CurrentCultureIgnoreCase))
+                {
+                    throw new InvalidOperationException(
+                      string.Format(Resources.ResumeTFOJobNotSupported, job.Name));
+                }
+            }
             var response = this.RecoveryServicesClient.ResumeAzureSiteRecoveryJob(
                 this.Name,
                 resumeJobParams);

@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -26,35 +27,15 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAvailableWafRuleSets"), 
         OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
     [Alias("List-AzureRmApplicationGatewayAvailableWafRuleSets")]
-    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet, IModuleAssemblyInitializer
+    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             var availableWafRuleSets = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
-            var psAvailableWafRuleSets = Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
+            var psAvailableWafRuleSets = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
             WriteObject(psAvailableWafRuleSets);
-        }
-
-        /// <summary>
-        /// Setup necessary functionality when module gets imported.
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmNetworkStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
-            }
         }
     }
 }

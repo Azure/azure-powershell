@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Microsoft.Rest.Azure;
+    using Newtonsoft.Json;
 
     public static class IotHubUtils
     {
         const string TotalDeviceCountMetricName = "TotalDeviceCount";
         const string UnlimitedString = "Unlimited";
-        const string IotHubConnectionStringTemplate = "HostName={0};ShareAccessKeyName={1};SharedAccessKey={2}";
+        const string IotHubConnectionStringTemplate = "HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}";
 
         public static T2 ConvertObject<T1, T2>(T1 iotHubObject)
         {
@@ -193,6 +193,45 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
                 CurrentValue = ((long)iotHubQuotaMetric.CurrentValue).ToString(),
                 MaxValue = iotHubQuotaMetric.Name.Equals(TotalDeviceCountMetricName, StringComparison.OrdinalIgnoreCase) ? UnlimitedString : ((long)iotHubQuotaMetric.MaxValue).ToString()
             };
+        }
+
+        public static PSCertificateDescription ToPSCertificateDescription(CertificateDescription certificateDescription)
+        {
+            return ConvertObject<CertificateDescription, PSCertificateDescription>(certificateDescription);
+        }
+
+        public static IEnumerable<PSCertificate> ToPSCertificates(CertificateListDescription certificateListDescription)
+        {
+            return ConvertObject<IEnumerable<CertificateDescription>, IEnumerable<PSCertificate>>(certificateListDescription.Value);
+        }
+
+        public static PSCertificateWithNonceDescription ToPSCertificateWithNonceDescription(CertificateWithNonceDescription certificateWithNonceDescription)
+        {
+            return ConvertObject<CertificateWithNonceDescription, PSCertificateWithNonceDescription>(certificateWithNonceDescription);
+        }
+
+        public static string GetResourceGroupName(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        public static string GetIotHubName(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>\S+)/certificates/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["iothubname"].Value : null;
+        }
+
+        public static string GetIotHubCertificateName(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/certificates/(?<iothubcertificatename>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["iothubcertificatename"].Value : null;
         }
     }
 }

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadgroup
 schema: 2.0.0
 ---
 
@@ -14,17 +15,17 @@ Filters active directory groups.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADGroup [-ObjectId <Guid>] [<CommonParameters>]
+Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADGroup -SearchString <String> [<CommonParameters>]
+Get-AzureRmADGroup -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADGroup -ObjectId <Guid> [<CommonParameters>]
+Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,21 +33,21 @@ Filters active directory groups.
 
 ## EXAMPLES
 
-### --------------------------  Filters groups using object id  --------------------------
+### Filters groups using object id
 ```
 PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Gets group with 85F89C90-780E-4AA6-9F4F-6F268D322EEE id
 
-### --------------------------  Filters groups using Search String  --------------------------
+### Filters groups using Search String
 ```
 PS C:\> Get-AzureRmADGroup -SearchString Joe
 ```
 
 Filters all ad groups that has Joe in the display name.
 
-### --------------------------  List AD groups  --------------------------
+### List AD groups
 ```
 PS C:\> Get-AzureRmADGroup
 ```
@@ -55,13 +56,28 @@ Gets all AD groups
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Object id of the group.
 
 ```yaml
 Type: Guid
 Parameter Sets: EmptyParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,7 +89,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -88,7 +104,7 @@ The group display name
 ```yaml
 Type: String
 Parameter Sets: SearchStringParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

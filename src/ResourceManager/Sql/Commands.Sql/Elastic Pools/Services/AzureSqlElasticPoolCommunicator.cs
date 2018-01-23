@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
         {
-            return GetCurrentSqlClient().ElasticPools.ListActivity(resourceGroupName, serverName, elasticPoolName).ToList();
+            return GetCurrentSqlClient().ElasticPoolActivities.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         internal IList<Management.Sql.Models.ElasticPoolDatabaseActivity> ListDatabaseActivity(string resourceGroupName, string serverName, string poolName)
         {
-            return GetCurrentSqlClient().ElasticPools.ListDatabaseActivity(resourceGroupName, serverName, poolName).ToList();
+            return GetCurrentSqlClient().ElasticPoolDatabaseActivities.ListByElasticPool(resourceGroupName, serverName, poolName).ToList();
         }
 
         /// <summary>

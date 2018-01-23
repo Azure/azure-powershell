@@ -160,9 +160,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
                 iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
                 iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
-                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy);
+                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
+                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
-                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy);
+                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
+                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
             }
             else if (serviceClientResponse.Properties.GetType() ==
                 typeof(ServiceClientModel.AzureSqlProtectionPolicy))
@@ -187,7 +189,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
                     (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
                 sqlPolicyModel.RetentionPolicy =
-                    PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy);
+                    PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
             }
             else
             {

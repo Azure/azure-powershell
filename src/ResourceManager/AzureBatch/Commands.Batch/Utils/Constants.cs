@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchJobPrepAndReleaseStatus = "AzureBatchJobPreparationAndReleaseTaskStatus";
         public const string AzureBatchJobStatistics = "AzureBatchJobStatistics";
         public const string AzureBatchTask = "AzureBatchTask";
+        public const string AzureBatchTaskCounts = "AzureBatchTaskCounts";
         public const string AzureBatchSubtask = "AzureBatchSubtask";
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";

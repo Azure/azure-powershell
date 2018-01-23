@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-//using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.EventHub;
@@ -52,8 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 return new EventHubsController();
             }
         }
-
-
+        
         public EventHubsController()
         {
             helper = new EnvironmentSetupHelper();
@@ -73,8 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 callingClassType,
                 mockName);
         }
-
-
+        
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
@@ -140,9 +137,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             EventHubsManagementClient = GetEventHubsManagementClient(context);
             helper.SetupManagementClients(EventHubsManagementClient);
             helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
-        }
-
-        
+        }        
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -161,7 +156,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         private SubscriptionClient GetSubscriptionClient()
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-        
+        }        
     }
 }

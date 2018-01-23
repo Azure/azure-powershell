@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var routeFilter = this.RouteFilterClient.Get(resourceGroupName, name, expandResource);
 
-            var psRouteFilter = Mapper.Map<PSRouteFilter>(routeFilter);
+            var psRouteFilter = NetworkResourceManagerProfile.Mapper.Map<PSRouteFilter>(routeFilter);
             psRouteFilter.ResourceGroupName = resourceGroupName;
             psRouteFilter.Tag = TagsConversionHelper.CreateTagHashtable(routeFilter.Tags);
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSRouteFilter ToPsRouteFilter(RouteFilter routeFilter)
         {
-            var psRouteFilter = Mapper.Map<PSRouteFilter>(routeFilter);
+            var psRouteFilter = NetworkResourceManagerProfile.Mapper.Map<PSRouteFilter>(routeFilter);
 
             psRouteFilter.Tag = TagsConversionHelper.CreateTagHashtable(routeFilter.Tags);
 

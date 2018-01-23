@@ -33,6 +33,8 @@ using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using OperatingSystem = Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -99,6 +101,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
@@ -178,6 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "The resource group location")]
+        [LocationCompleter("Microsoft.ServiceFabric/clusters")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,

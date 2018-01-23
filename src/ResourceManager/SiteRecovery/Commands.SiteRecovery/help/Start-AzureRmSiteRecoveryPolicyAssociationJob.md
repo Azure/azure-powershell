@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 3DDC8DD8-889C-4C76-B32E-3D2C2AD0AC79
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/start-azurermsiterecoverypolicyassociationjob
 schema: 2.0.0
 ---
 
@@ -15,14 +16,15 @@ Starts a Site Recovery replication policy association job.
 ### EnterpriseToAzure (Default)
 ```
 Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy <ASRPolicy>
- -PrimaryProtectionContainer <ASRProtectionContainer> [<CommonParameters>]
+ -PrimaryProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
 ```
 Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy <ASRPolicy>
  -PrimaryProtectionContainer <ASRProtectionContainer> -RecoveryProtectionContainer <ASRProtectionContainer>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +33,21 @@ The **Start-AzureRmSiteRecoveryPolicyAssociationJob** cmdlet initiates an associ
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Policy
 Specifies the Site Recovery policy object.
@@ -83,7 +100,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRPolicy
-
 Parameter 'Policy' accepts value of type 'ASRPolicy' from the pipeline
 
 ## OUTPUTS

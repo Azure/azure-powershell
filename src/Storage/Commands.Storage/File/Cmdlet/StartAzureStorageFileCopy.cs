@@ -281,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(blob.GenerateCopySourceBlob(), null, null, this.RequestOptions, this.OperationContext, CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
@@ -321,7 +321,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(sourceFile.Uri.ToString(), destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
@@ -334,7 +334,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(this.AbsoluteUri, destFile.Uri.ToString()),
+                () => this.ConfirmOverwrite(this.AbsoluteUri, destFile.SnapshotQualifiedUri.ToString()),
                 () => destFile.StartCopyAsync(new Uri(this.AbsoluteUri), null, null, this.RequestOptions, this.OperationContext));
 
             this.RunTask(taskGenerator);

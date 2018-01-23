@@ -18,12 +18,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementNode"), OutputType(typeof(Node))]
     public class GetServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "The targeted resource group.",
             ParameterSetName = "ByNodeName", ValueFromPipelineByPropertyName = true, Position = 0)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the node to retrieve.",

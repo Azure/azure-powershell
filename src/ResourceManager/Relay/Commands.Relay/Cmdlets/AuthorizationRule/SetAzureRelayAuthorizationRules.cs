@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Relay.Models;
 using Microsoft.Azure.Management.Relay.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Relay.Commands
 {
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

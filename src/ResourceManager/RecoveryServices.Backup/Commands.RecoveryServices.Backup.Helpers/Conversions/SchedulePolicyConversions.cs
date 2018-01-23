@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps simple schedule policy from service response.
         /// </summary>
         public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
-            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy)
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy, string timeZone)
         {
             if (serviceClientPolicy == null)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             psPolicy.ScheduleRunFrequency =
                 (ScheduleRunType)Enum.Parse(
                     typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
-            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes);
+            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes, timeZone);
 
             // safe side validation
             psPolicy.Validate();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to parse utc time from local time.
         /// </summary>
-        public static List<DateTime> ParseDateTimesToUTC(IList<DateTime?> localTimes)
+        public static List<DateTime> ParseDateTimesToUTC(IList<DateTime?> localTimes, string timeZone)
         {
             if (localTimes == null || localTimes.Count == 0)
             {
@@ -78,9 +78,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     throw new ArgumentNullException("Policy date time object is null");
                 }
                 temp = localTime;
-                if (localTime.Kind != DateTimeKind.Utc)
+                if (!string.IsNullOrEmpty(timeZone))
                 {
-                    temp = localTime.ToUniversalTime();
+                    TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+                    temp = DateTime.SpecifyKind(temp, DateTimeKind.Unspecified);
+                    temp = TimeZoneInfo.ConvertTimeToUtc(temp, timeZoneInfo);
                 }
                 utcTimes.Add(temp);
             }
@@ -101,7 +103,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();
             serviceClientPolicy.ScheduleRunFrequency =
-                psPolicy.ScheduleRunFrequency.ToEnum<ServiceClientModel.ScheduleRunType>();
+                ServiceClientHelpers.GetServiceClientScheduleRunType(
+                    psPolicy.ScheduleRunFrequency);
 
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {

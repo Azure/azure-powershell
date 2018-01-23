@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, removeNodePoolId, 2);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, removeNodePoolId);
                 },
                 () =>

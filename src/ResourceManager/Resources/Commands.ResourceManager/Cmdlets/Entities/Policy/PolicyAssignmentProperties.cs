@@ -29,15 +29,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string Scope { get; set; }
 
         /// <summary>
+        /// The not scopes array.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] NotScopes { get; set; }
+
+        /// <summary>
         /// The display name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The description.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The policy assignment metadata.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public JObject Metadata { get; set; }
+
+        /// <summary>
         /// The policy definition id.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Required = Required.Default)]
         public string PolicyDefinitionId { get; set; }
 
         /// <summary>

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: 8C5D29AD-0B15-4CD4-8637-86ABD19F41C8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlcapability
 schema: 2.0.0
 ---
 
@@ -15,12 +16,14 @@ Gets SQL Database capabilities for the current subscription.
 ### FilterResults (Default)
 ```
 Get-AzureRmSqlCapability [-LocationName] <String> [-ServerVersionName <String>] [-EditionName <String>]
- [-ServiceObjectiveName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceObjectiveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultResults
 ```
-Get-AzureRmSqlCapability [-LocationName] <String> [-Defaults] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlCapability [-LocationName] <String> [-Defaults] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,13 +65,28 @@ This command gets default capabilities for SQL Databases for the specified servi
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Defaults
 Indicates that this cmdlet gets only defaults.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +101,7 @@ Specifies the name of the database edition for which this cmdlet gets capabiliti
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +117,7 @@ For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -114,7 +132,7 @@ Specifies the name of the server version for which this cmdlet gets capabilities
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +147,7 @@ Specifies the name of the service objective for which this cmdlet gets capabilit
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -181,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

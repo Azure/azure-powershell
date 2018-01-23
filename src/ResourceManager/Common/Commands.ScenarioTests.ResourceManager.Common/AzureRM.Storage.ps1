@@ -21,9 +21,13 @@ function Get-AzureRmStorageAccount
         $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $name, [System.Threading.CancellationToken]::None)
     }
     $sa = $getTask.Result
-	$id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
-    $account = Get-StorageAccount $ResourceGroupName $Name $id
-    Write-Output $account
+
+    if($sa -ne $null)
+    {
+        $id = "/subscriptions/" + $context.Subscription.Id + "/resourceGroups/"+ $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + $Name	  
+        $account = Get-StorageAccount $ResourceGroupName $Name $id
+        Write-Output $account
+    }
   }
   END {}
 
@@ -128,7 +132,13 @@ function Get-AzureRmStorageAccountKey
     $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    if ($version.Major -gt 3)
+    if ($version.Major -gt 5)
+    {
+        $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
+        $result = $getTask.GetAwaiter().GetResult()
+        Write-Output $result.Body.Keys
+    }
+    elseif ($version.Major -gt 3)
     {
         $getTask = $client.StorageAccounts.ListKeysWithHttpMessagesAsync($ResourceGroupName, $name, $null, [System.Threading.CancellationToken]::None)
         $result = $getTask.GetAwaiter().GetResult()

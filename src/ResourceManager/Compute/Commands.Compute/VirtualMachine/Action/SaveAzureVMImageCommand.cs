@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.Name,
                     parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
 
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {

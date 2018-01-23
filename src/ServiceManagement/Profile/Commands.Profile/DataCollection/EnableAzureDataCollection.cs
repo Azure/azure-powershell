@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -29,9 +32,10 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         protected void SetDataCollectionProfile(bool enable)
         {
-            var profile = GetDataCollectionProfile();
+            var profile = _dataCollectionProfile;
             profile.EnableAzureDataCollection = enable;
-            SaveDataCollectionProfile();
+            DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
+            AzureSession.Instance.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(profile), true);
         }
     }
 }

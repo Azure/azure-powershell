@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8942D757-B204-49CE-BCDE-68C3722913B3
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/get-azurermservermanagementsession
 schema: 2.0.0
 ---
 
@@ -15,17 +16,19 @@ Gets a Server Management session.
 ### ByNodeName
 ```
 Get-AzureRmServerManagementSession [-ResourceGroupName] <String> [-NodeName] <String> [-SessionName] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySession
 ```
-Get-AzureRmServerManagementSession [[-SessionName] <String>] [-Session] <Session> [<CommonParameters>]
+Get-AzureRmServerManagementSession [[-SessionName] <String>] [-Session] <Session>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByNode
 ```
-Get-AzureRmServerManagementSession [-Node] <Node> [<CommonParameters>]
+Get-AzureRmServerManagementSession [-Node] <Node> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +42,21 @@ The **Get-AzureRmServerManagementSession** cmdlet gets a single Azure Server Man
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Node
 Specifies an existing **Node** object that is used to get the *ResourceGroupName* and the *NodeName* parameters.
@@ -134,11 +152,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Node
-
 Parameter 'Node' accepts value of type 'Node' from the pipeline
 
 ### Session
-
 Parameter 'Session' accepts value of type 'Session' from the pipeline
 
 ## OUTPUTS

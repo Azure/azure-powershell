@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [Cmdlet("Add", "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
-    public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
+    public class AddAzureASAccountCommand : AzurePSCmdlet
     {
         private const string UserParameterSet = "UserParameterSetName";
         private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
@@ -85,19 +86,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
         }
 
-        protected override void SaveDataCollectionProfile()
+        protected override string DataCollectionWarning
         {
-            // No data collection for this commandlet 
-        }
-
-        protected override void SetDataCollectionProfileIfNotExists()
-        {
-            // No data collection for this commandlet 
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
         }
 
         protected override void BeginProcessing()
         {
-            base.BeginProcessing();
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+
             if (string.IsNullOrEmpty(RolloutEnvironment))
             {
                 RolloutEnvironment = AsAzureClientSession.GetDefaultEnvironmentName();
@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             {
                 AsEnvironment = AsAzureClientSession.Instance.Profile.CreateEnvironment(RolloutEnvironment);
             }
+            base.BeginProcessing();
         }
 
         protected override void InitializeQosEvent()
@@ -186,23 +187,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password);
 
                 WriteObject(asAzureProfile);
-            }
-        }
-
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AnalysisServicesDataplaneStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
             }
         }
     }

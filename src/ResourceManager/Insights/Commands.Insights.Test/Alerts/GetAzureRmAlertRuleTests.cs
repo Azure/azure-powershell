@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         public GetAzureRmAlertRuleTests(ITestOutputHelper output)
         {
-            //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

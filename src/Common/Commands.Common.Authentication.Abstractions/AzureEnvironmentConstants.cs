@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         public const string AzureActiveDirectoryEndpoint = "https://login.microsoftonline.com/";
         public const string ChinaActiveDirectoryEndpoint = "https://login.chinacloudapi.cn/";
-        public const string USGovernmentActiveDirectoryEndpoint = "https://login-us.microsoftonline.com/";
+        public const string USGovernmentActiveDirectoryEndpoint = "https://login.microsoftonline.us/";
         public const string GermanActiveDirectoryEndpoint = "https://login.microsoftonline.de/";
 
         /// <summary>
@@ -125,5 +125,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The token audience for authorizing DataLake requests
         /// </summary>
         public const string AzureDataLakeServiceEndpointResourceId = "https://datalake.azure.net";
+
+        public const string BatchEndpointResourceId = "https://batch.core.windows.net/";
+        public const string ChinaBatchEndpointResourceId = "https://batch.chinacloudapi.cn/";
+        public const string USGovernmentBatchEndpointResourceId = "https://batch.core.usgovcloudapi.net/";
+        public const string GermanBatchEndpointResourceId = "https://batch.cloudapi.de/";
     }
 }

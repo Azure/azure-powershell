@@ -19,12 +19,14 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using Base;
     using Management.ServerManagement;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementNode"), OutputType(typeof(Node))]
     public class NewServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 0)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group location.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "ByName", Position = 2)]
+        [LocationCompleter("Microsoft.ServerManagement/nodes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -59,7 +62,9 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
 
         [Parameter(Mandatory = false, HelpMessage = "Key/value pairs associated with the object.",
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmServerManagementNode: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -86,14 +91,17 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
                 Location,
                 GatewayName));
 
+#pragma warning disable CS0618
             var node = Node.Create(Client.Node.Create(ResourceGroupName,
                 NodeName,
                 Location,
-                Tags,
+                Tag,
                 gatewayId,
                 ComputerName ?? NodeName,
                 Credential.UserName,
                 ToPlainText(Credential.Password)));
+#pragma warning restore CS0618
+
             if (node != null)
             {
                 node.Credential = Credential;

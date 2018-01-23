@@ -39,3 +39,40 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - November 2017
+
+The following cmdlets were affected this release:
+
+**Add-AzureRmApplicationGatewaySslCertificate**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+Add-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password "plain-text string"
+
+# New
+Add-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmApplicationGatewaySslCertificate**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password $SecureStringVariable
+```
+
+**Set-AzureRmApplicationGatewaySslCertificate**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+Set-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password "plain-text string"
+
+# New
+Set-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password $SecureStringVariable
+```

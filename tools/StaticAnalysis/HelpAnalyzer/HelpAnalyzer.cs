@@ -80,7 +80,8 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
-                    if (directory.Contains("ServiceManagement"))
+                    var dirs = Directory.EnumerateDirectories(directory);
+                    if (dirs == null || !dirs.Any((d) => string.Equals(Path.GetFileName(d), "help", StringComparison.OrdinalIgnoreCase)))
                     {
                         AnalyzeMamlHelp(directory, helpLogger, processedHelpFiles, savedDirectory);
                     }

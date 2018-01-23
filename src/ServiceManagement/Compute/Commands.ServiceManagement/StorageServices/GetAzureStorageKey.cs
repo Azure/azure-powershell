@@ -46,7 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                 () => this.StorageClient.StorageAccounts.GetKeys(this.StorageAccountName),
                 (s, response) =>
                 {
-                    var context = ContextFactory<StorageAccountGetKeysResponse, StorageServiceKeyOperationContext>(response, s);
+                    var context = ContextFactory(response, s,
+                                    ServiceManagementProfile.Mapper.Map<StorageAccountGetKeysResponse, StorageServiceKeyOperationContext>,
+                                    ServiceManagementProfile.Mapper.Map);
                     ((StorageServiceKeyOperationContext) context).StorageAccountName = this.StorageAccountName;
                     return context;
                 });

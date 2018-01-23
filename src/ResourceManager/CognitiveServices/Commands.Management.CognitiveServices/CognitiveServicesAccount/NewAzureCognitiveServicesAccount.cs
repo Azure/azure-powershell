@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Collections;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -67,6 +69,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -112,12 +115,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                     }
 
-                    var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
+                    var createAccountResponse = this.CognitiveServicesClient.Accounts.Create(
                                     this.ResourceGroupName,
                                     this.Name,
                                     createParameters);
 
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
                     this.WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }

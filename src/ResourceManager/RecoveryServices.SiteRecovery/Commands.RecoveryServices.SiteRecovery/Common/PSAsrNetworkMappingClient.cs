@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
     }

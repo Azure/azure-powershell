@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.3.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 0.2.7
+
+## Version 0.2.6
+
 ## Version 0.2.4
 
 ## Version 0.2.3

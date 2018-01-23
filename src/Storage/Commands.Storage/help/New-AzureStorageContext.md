@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 383402B2-6B7C-41AB-AFF9-36C86156B0A9
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontext
 schema: 2.0.0
 ---
 
@@ -132,7 +132,7 @@ The command creates the context for the account named ContosoGeneral that uses t
 
 ### Example 9: Create a context by using an SAS token
 ```
-C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "raud"
+C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "rad"
 PS C:\> $Context = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -SasToken $SasToken
 PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
 ```

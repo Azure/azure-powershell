@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: BB90E6BB-7F53-4441-A7B2-EDA940621D49
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/find-azurermresource
 schema: 2.0.0
 ---
 
@@ -12,42 +13,44 @@ Searches for resources based on specified parameters.
 
 ## SYNTAX
 
-### Lists the resources based on the specified scope. (Default)
+### GetBySpecifiedScope (Default)
 ```
 Find-AzureRmResource [-ResourceNameContains <String>] [-ResourceNameEquals <String>] [-ResourceType <String>]
  [-ExtensionResourceType <String>] [-Top <Int32>] [-ODataQuery <String>] [-ResourceGroupNameContains <String>]
  [-ResourceGroupNameEquals <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Lists the resources based on the specified scope at the tenant level.
+### GetBySpecifiedScopeAtTenantLevel
 ```
 Find-AzureRmResource [-ResourceNameContains <String>] [-ResourceNameEquals <String>] -ResourceType <String>
  [-ExtensionResourceType <String>] [-Top <Int32>] [-ODataQuery <String>] [-ExpandProperties] [-TenantLevel]
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Get a resources using a multi-subscription query.
+### GetByMultiSubscriptionQuery
 ```
 Find-AzureRmResource [-ResourceNameContains <String>] [-ResourceNameEquals <String>] -ResourceType <String>
  [-ExtensionResourceType <String>] [-Top <Int32>] [-ODataQuery <String>] [-ResourceGroupNameContains <String>]
  [-ResourceGroupNameEquals <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### GetByTagObject
+```
+Find-AzureRmResource [-Top <Int32>] [-ODataQuery <String>] [-Tag <Hashtable>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Lists resources by a tag object specified as a hashset.
-```
-Find-AzureRmResource [-Top <Int32>] [-ODataQuery <String>] [-Tag <Hashtable>] [-ExpandProperties]
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
-```
-
-### Lists resources by a tag specified as a individual name and value parameters.
+### GetByTagNameValue
 ```
 Find-AzureRmResource [-Top <Int32>] [-ODataQuery <String>] [-TagName <String>] [-TagValue <String>]
- [-ExpandProperties] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-ExpandProperties] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +90,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpandProperties
 Indicates that this cmdlet expands the properties of the resource.
 
@@ -110,7 +128,7 @@ For instance:
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope., Lists the resources based on the specified scope at the tenant level., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScope, GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
 Aliases:
 
 Required: False
@@ -197,7 +215,7 @@ The cmdlet searches for resources in those resource groups.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScope, GetByMultiSubscriptionQuery
 Aliases: ResourceGroupName
 
 Required: False
@@ -212,7 +230,7 @@ The resource group name for a full match.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScope, GetByMultiSubscriptionQuery
 Aliases:
 
 Required: False
@@ -228,7 +246,7 @@ The cmdlet searches for resources which contain this value as a substring.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope., Lists the resources based on the specified scope at the tenant level., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScope, GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
 Aliases: Name
 
 Required: False
@@ -243,7 +261,7 @@ The resource name for a full match. e.g. if your resource name is testResource, 
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope., Lists the resources based on the specified scope at the tenant level., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScope, GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
 Aliases:
 
 Required: False
@@ -263,7 +281,7 @@ This cmdlet searches for resources of the specified type.
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope.
+Parameter Sets: GetBySpecifiedScope
 Aliases:
 
 Required: False
@@ -275,7 +293,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Lists the resources based on the specified scope at the tenant level., Get a resources using a multi-subscription query.
+Parameter Sets: GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
 Aliases:
 
 Required: True
@@ -290,7 +308,7 @@ The tag filter for the OData query. The expected format is @{tagName=$null} or @
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Lists resources by a tag object specified as a hashset.
+Parameter Sets: GetByTagObject
 Aliases:
 
 Required: False
@@ -303,7 +321,7 @@ Accept wildcard characters: False
 ### -TagName
 ```yaml
 Type: String
-Parameter Sets: Lists resources by a tag specified as a individual name and value parameters.
+Parameter Sets: GetByTagNameValue
 Aliases:
 
 Required: False
@@ -316,7 +334,7 @@ Accept wildcard characters: False
 ### -TagValue
 ```yaml
 Type: String
-Parameter Sets: Lists resources by a tag specified as a individual name and value parameters.
+Parameter Sets: GetByTagNameValue
 Aliases:
 
 Required: False
@@ -331,7 +349,7 @@ Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Lists the resources based on the specified scope at the tenant level.
+Parameter Sets: GetBySpecifiedScopeAtTenantLevel
 Aliases:
 
 Required: True

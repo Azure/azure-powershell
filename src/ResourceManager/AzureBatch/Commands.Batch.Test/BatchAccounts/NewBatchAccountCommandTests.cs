@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -46,18 +47,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string location = "location";
-            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            AccountCreateParameters actualCreateParameters = null;
 
-            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, null)).Returns(expected);
+            // Setup the mock client to return a fake response and capture the account create parameters
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, location);
+            BatchAccountContext fakeResponse = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
 
+            batchClientMock.Setup(b => b.CreateAccount(It.IsAny<AccountCreateParameters>()))
+                .Returns(fakeResponse)
+                .Callback((AccountCreateParameters p) => actualCreateParameters = p);
+
+            // Setup and run the cmdlet
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
-
             cmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+            // Verify the fake response was written to the pipeline and that the captured account create
+            // parameters matched expectations.
+            commandRuntimeMock.Verify(r => r.WriteObject(fakeResponse), Times.Once());
+            Assert.Equal(accountName, actualCreateParameters.BatchAccount);
+            Assert.Equal(resourceGroup, actualCreateParameters.ResourceGroup);
+            Assert.Equal(location, actualCreateParameters.Location);
         }
 
         [Fact]
@@ -68,20 +79,70 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string resourceGroup = "resourceGroup";
             string location = "location";
             string storageId = "storageId";
+            AccountCreateParameters actualCreateParameters = null;
 
-            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            // Setup the mock client to return a fake response and capture the account create parameters
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, location);
+            BatchAccountContext fakeResponse = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
 
-            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, storageId)).Returns(expected);
+            batchClientMock.Setup(b => b.CreateAccount(It.IsAny<AccountCreateParameters>()))
+                .Returns(fakeResponse)
+                .Callback((AccountCreateParameters p) => actualCreateParameters = p);
 
+            // Setup and run the cmdlet
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
             cmdlet.AutoStorageAccountId = storageId;
-
             cmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+            // Verify the fake response was written to the pipeline and that the captured account create
+            // parameters matched expectations.
+            commandRuntimeMock.Verify(r => r.WriteObject(fakeResponse), Times.Once());
+            Assert.Equal(accountName, actualCreateParameters.BatchAccount);
+            Assert.Equal(resourceGroup, actualCreateParameters.ResourceGroup);
+            Assert.Equal(location, actualCreateParameters.Location);
+            Assert.Equal(storageId, actualCreateParameters.AutoStorageAccountId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateUserSubscriptionBatchAccount()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string location = "location";
+            string keyVaultId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.KeyVault/vaults/myVault";
+            string keyVaultUrl = "https://myVault.vault.azure.com";
+            PoolAllocationMode allocationMode = PoolAllocationMode.UserSubscription;
+            AccountCreateParameters actualCreateParameters = null;
+
+            // Setup the mock client to return a fake response and capture the account create parameters
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, location);
+            BatchAccountContext fakeResponse = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
+
+            batchClientMock.Setup(b => b.CreateAccount(It.IsAny<AccountCreateParameters>()))
+                .Returns(fakeResponse)
+                .Callback((AccountCreateParameters p) => actualCreateParameters = p);
+
+            // Setup and run the cmdlet
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.Location = location;
+            cmdlet.PoolAllocationMode = allocationMode;
+            cmdlet.KeyVaultId = keyVaultId;
+            cmdlet.KeyVaultUrl = keyVaultUrl;
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the fake response was written to the pipeline and that the captured account create
+            // parameters matched expectations.
+            commandRuntimeMock.Verify(r => r.WriteObject(fakeResponse), Times.Once());
+            Assert.Equal(accountName, actualCreateParameters.BatchAccount);
+            Assert.Equal(resourceGroup, actualCreateParameters.ResourceGroup);
+            Assert.Equal(location, actualCreateParameters.Location);
+            Assert.Equal(allocationMode, actualCreateParameters.PoolAllocationMode);
+            Assert.Equal(keyVaultId, actualCreateParameters.KeyVaultId);
+            Assert.Equal(keyVaultUrl, actualCreateParameters.KeyVaultUrl);
         }
     }
 }

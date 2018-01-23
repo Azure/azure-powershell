@@ -18,6 +18,110 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 4.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* **Add-AzureRMLogAlertRule**
+    - After October 1st using this cmdlet no longer had any effect as this functionality was transitioned to Activity Log Alerts. Please see https://aka.ms/migratemealerts for more information.
+* **Get-AzureRMUsage**
+    - Deprecated as announced since April 2017
+* **Add-AzureRmMetricAlertRule** / **Add-AzureRmWebtestAlertRule**
+    - The argument ResourceGroup has been renamed as ResourceGroupName
+    - The parameter Actions has been renamed to Action and the Actions has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **Add-AzureRmAutoscaleSetting**
+    - The argument ResourceGroup has been renamed as ResourceGroupName, i.e. a non-breaking change.
+    - The parameter AutoscaleProfiles has been renamed to AutoscaleProfiles and the AutoscaleProfiles has been added to the alias list
+    - The parameter Notifications has been renamed to Notification and the Notifications has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **Remove-AzureRmAutoscaleSetting**
+    - The argument ResourceGroup has been renamed as ResourceGroupName
+* **Get-AzureRmAlertRule**
+    - The argument ResourceGroup has been renamed as ResourceGroupName
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+* **Remove-AzureRmAlertRule**
+    - The argument ResourceGroup has been renamed as ResourceGroupName
+    - The cmdlet now implements the ShouldProcess protocol.
+* **Get-AzureRmAutoscaleSetting**
+    - The argument ResourceGroup has been renamed as ResourceGroupName
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+* **Remove-AzureRmLogProfile**
+    - The cmdlet now implements the ShouldProcess protocol.
+* **Add-AzureRmLogProfile**
+    - The parameter Locations has been renamed to Location and the Locations has been added to the alias list
+    - The parameter RetentionInDays has been renamed to RetentionInDay and the RetentionInDays has been added to the alias list
+    - The parameter Categories has been renamed to Category and the Categories has been added to the alias list
+    - The cmdlet now implements the ShouldProcess protocol.
+    - Warning message about the future deprecation of the plural parameter names added.
+* **Get-AzureRmMetricDefinition** / **Get-AzureRmMetric**
+    - The parameter MetricNames has been renamed to MetricName and the MetricNames has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **Get-AzureRmLog**
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+    - The parameter MaxEvents has been renamed as MaxRecord (there was already an alias MaxRecords which is kept.) MaxEvents has been moved to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **Get-AzureRmAlertHistory** / **GetAzureRmAutoscaleHistory**
+    - Warning message added for the future deprecation of the DetailedOutput parameter.
+* **New-AzureRmAutoscaleNotification**
+    - The parameter SendEmailToSubscriptionCoAdministrators has been renamed to SendEmailToSubscriptionCoAdministrator and the SendEmailToSubscriptionCoAdministrators has been added to the alias list
+    - The parameter CustomEmails has been renamed to CustomEmail and the CustomEmails has been added to the alias list
+    - The parameter Webhooks has been renamed to Webhook and the Webhooks has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **New-AzureRmAutoscaleProfile**
+    - The parameter ScheduleDays has been renamed to ScheduleDay and the ScheduleDays has been added to the alias list
+    - The parameter ScheduleHours has been renamed to ScheduleHour and the ScheduleHours has been added to the alias list
+    - The parameter ScheduleMinutes has been renamed to ScheduleMinute and the ScheduleMinutes has been added to the alias list
+    - The parameter Rules has been renamed to Rule and the Rules has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **New-AzureRmAutoscaleWebhook**
+    - The parameter Properties has been renamed to Property and the Properties has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **New-AzureRmAlertRuleEmail**
+    - The parameter CustomEmails has been renamed to CustomEmail and the CustomEmails has been added to the alias list
+    - The parameter SendToServiceOwners has been renamed to SendToServiceOwner and the SendToServiceOwners has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* **New-AzureRmAlertRuleWebhook**
+    - The parameter Properties has been renamed to Property and the Properties has been added to the alias list
+    - Warning message about the future deprecation of the plural parameter names added.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
+## Version 3.4.1
+    * Add-AzureRmLogAlertRule
+        - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
+        - Help file modified to include the deprecation warning and the details.
+    * Disable-AzureRmActivityLogAlert, Disable-AzureRmActivityLogAlert, Remove-AzureRmActivityLogAlert, Set-AzureRmActivityLogAlert
+        - Help file modified: removed text stating that the Force arguments was accepted since that argument is not accepted.
+
+## Version 3.4.0
+    * New cmdlet Disable-AzureRmActivityLogAlert
+        - A new cmdlet to disable an existing activity log alert.
+        - Optionally the Tags are settable with this cmdlet too.
+    * New cmdlet Enable-AzureRmActivityLogAlert
+        - A new cmdlet to enable an existing activity log alert.
+        - Optionally the Tags are settable with this cmdlet too.
+    * New cmdlet Get-AzureRmActivityLogAlert
+        - A new cmdlet to retrieve one or more activity log alerts.
+        - The alerts can be retrieved by name, resource group, or subscription.
+    * New cmdlet New-AzureRmActionGroup
+        - A new cmdlet to create an ActionGroup object in memory (no request involved.)
+    * New cmdlet New-AzureRmActivityLogAlertCondition
+        - A new cmdlet to create an activity log alert leaf condition object in memory (no request involved.)
+    * New cmdlet Set-AzureRmActivityLogAlert
+        - A new cmdlet to create or update an activity log alert.
+    * New cmdlet Remove-AzureRmActivityLogAlert
+        - A new cmdlet to remove one activity log alert.
+    * New cmdlet Set-AzureRmActionGroup
+        - A new cmdlet to create a new or update an existing action group.
+    * New cmdlet Get-AzureRmActionGroup
+        - A new cmdlet to retrieve one or more action groups.
+        - The action groups can be retrieved by name, resource group, or subscription.
+    * New cmdlet Remove-AzureRmActionGroup
+        - A new cmdlet to remove one action group.
+    * New cmdlet New-AzureRmActionGroupReceiver
+        - A new cmdlet to create an new action group receiver in memory.
 
 ## Version 3.3.1
 

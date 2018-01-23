@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -28,15 +29,14 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
     {
-        protected const string RemoveByNameGroupParameterSet = 
-            "Remove an Azure ML web service resouce by name and resource group.";
-        protected const string RemoveByObjectParameterSet = 
-            "Remove an Azure ML web service specified as an object.";
+        protected const string RemoveByNameGroupParameterSet = "RemoveByNameAndResourceGroup";
+        protected const string RemoveByObjectParameterSet = "RemoveByObject";
 
         [Parameter(
             ParameterSetName = RemoveAzureMLWebService.RemoveByNameGroupParameterSet, 
             Mandatory = true, 
             HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
             string taskId,
             string poolId,
             string computeNodeId,
-            string nodeFileName,
+            string path,
             PSNodeFile nodeFile,
             string destinationPath,
             Stream stream,
             ByteRange byteRange,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-            : base(context, jobId, taskId, poolId, computeNodeId, nodeFileName, nodeFile, additionalBehaviors)
+            : base(context, jobId, taskId, poolId, computeNodeId, path, nodeFile, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
             {

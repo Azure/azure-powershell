@@ -79,6 +79,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Get task counts for the specified job.
+        /// </summary>
+        /// <param name="options">Options for GetTaskCounts().</param>
+        /// <returns>The task counts for the specified job.</returns>
+        public PSTaskCounts GetTaskCounts(GetTaskCountsOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            string jobId = options.Job == null ? options.JobId : options.Job.Id;
+
+            if (string.IsNullOrWhiteSpace(jobId))
+            {
+                throw new ArgumentNullException("jobId");
+            }
+
+            WriteVerbose(string.Format(Resources.GetTaskCounts, jobId));
+
+            JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+            return new PSTaskCounts(jobOperations.GetJobTaskCounts(jobId, options.AdditionalBehaviors));
+        }
+
+        /// <summary>
         /// Creates a new task.
         /// </summary>
         /// <param name="parameters">The parameters to use when creating the task.</param>
@@ -91,7 +116,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             CloudTask task = new CloudTask(parameters.TaskId, parameters.CommandLine);
             task.DisplayName = parameters.DisplayName;
-            task.RunElevated = parameters.RunElevated;
+
+            if (parameters.AuthenticationTokenSettings != null)
+            {
+                task.AuthenticationTokenSettings = parameters.AuthenticationTokenSettings.omObject;
+            }
+
+            if (parameters.UserIdentity != null)
+            {
+                task.UserIdentity = parameters.UserIdentity.omObject;
+            }
 
             if (parameters.EnvironmentSettings != null)
             {
@@ -144,6 +178,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Utils.Utils.ExitConditionsSyncCollections(parameters.ExitConditions);
                 task.ExitConditions = parameters.ExitConditions.omObject;
             }
+
+            if (parameters.OutputFiles != null)
+            {
+                task.OutputFiles = parameters.OutputFiles.ToList().ConvertAll(outputFile => outputFile.omObject);
+            }
+
+            task.ContainerSettings = parameters.ContainerSettings?.omObject;
 
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)

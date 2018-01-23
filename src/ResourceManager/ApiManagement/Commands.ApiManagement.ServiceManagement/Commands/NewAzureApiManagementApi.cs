@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Web API Path. Last part of the API's public URL. This URL will be used by API consumers for sending requests to the web service." +
-                          " Must be 1 to 400 characters long. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
+                          " Must be 0 to 400 characters long. This parameter is required.")]
+        [ValidateNotNull]
         public String Path { get; set; }
 
         [Parameter(

@@ -82,7 +82,7 @@ function Test-AzureProvider-WithZoneMappings
 function Test-AzureProviderOperation
 {
     # Get all operations by all providers
-    $allActions = Get-AzureRmProviderOperation *
+    $allActions = Get-AzureRmProviderOperation
 	Assert-True { $allActions.Length -gt 0 }
 
 	# Get all operations of microsoft.insights provider
@@ -141,7 +141,7 @@ function Test-AzureProviderOperation
 	Assert-True { $action.Length -eq 0 }
 
 	# Get operations for non-existing provider
-	$exceptionMessage = "ProviderNotFound: Provider NonExistentProvider not found.";
+	$exceptionMessage = "Provider NonExistentProvider not found.";
 	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/* } $exceptionMessage
 
 	# Get operations for non-existing provider

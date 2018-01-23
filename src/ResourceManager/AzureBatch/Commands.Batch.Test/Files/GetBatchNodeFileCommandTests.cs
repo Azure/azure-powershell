@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = null;
             cmdlet.TaskId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Task = null;
             cmdlet.Filter = null;
 
@@ -93,14 +93,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = "job-1";
             cmdlet.TaskId = "task";
-            cmdlet.Name = "stdout.txt";
+            cmdlet.Path = "stdout.txt";
             cmdlet.Filter = null;
 
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
-            AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByTaskResponse();
+            AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByTaskResponse();
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.FileGetNodeFilePropertiesFromTaskOptions,
-                AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>>(response);
+                ProxyModels.FileGetPropertiesFromTaskOptions,
+                AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Verify that the cmdlet wrote the node file returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
-            Assert.Equal(cmdlet.Name, pipeline[0].Name);
+            Assert.Equal(cmdlet.Path, pipeline[0].Path);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = "job-1";
             cmdlet.TaskId = "task";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = "startswith(name,'std')";
 
             string[] namesOfConstructedNodeFiles = new[] { "stdout.txt", "stderr.txt" };
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Name));
+                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = "job-1";
             cmdlet.TaskId = "task";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = null;
 
             string[] namesOfConstructedNodeFiles = new[] { "stdout.txt", "stderr.txt", "wd" };
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Name));
+                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.JobId = "job-1";
             cmdlet.TaskId = "task";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = null;
             int maxCount = 2;
             cmdlet.MaxCount = maxCount;
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = null;
             cmdlet.ComputeNodeId = null;
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.ComputeNode = null;
             cmdlet.Filter = null;
 
@@ -291,14 +291,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "pool";
             cmdlet.ComputeNodeId = "vm1";
-            cmdlet.Name = "startup\\stdout.txt";
+            cmdlet.Path = "startup\\stdout.txt";
             cmdlet.Filter = null;
 
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
-            AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByComputeNodeResponse();
+            AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders> response = BatchTestHelpers.CreateNodeFileGetPropertiesByComputeNodeResponse();
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.FileGetNodeFilePropertiesFromComputeNodeOptions,
-                AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>>(response);
+                ProxyModels.FileGetPropertiesFromComputeNodeOptions,
+                AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromComputeNodeHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Verify that the cmdlet wrote the node file returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
-            Assert.Equal(cmdlet.Name, pipeline[0].Name);
+            Assert.Equal(cmdlet.Path, pipeline[0].Path);
         }
 
         [Fact]
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "pool";
             cmdlet.ComputeNodeId = "computeNode1";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = "startswith(name,'startup')";
 
             string[] namesOfConstructedNodeFiles = new[] { "startup\\stdout.txt", "startup\\stderr.txt" };
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Name));
+                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "pool";
             cmdlet.ComputeNodeId = "computeNode1";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = null;
 
             string[] namesOfConstructedNodeFiles = new[] { "startup", "workitems", "shared" };
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Name));
+                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "pool";
             cmdlet.ComputeNodeId = "computeNode1";
-            cmdlet.Name = null;
+            cmdlet.Path = null;
             cmdlet.Filter = null;
             int maxCount = 2;
             cmdlet.MaxCount = maxCount;

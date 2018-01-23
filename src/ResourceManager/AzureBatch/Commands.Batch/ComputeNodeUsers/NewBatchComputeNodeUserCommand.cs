@@ -16,6 +16,8 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
+using System.Security;
+using Microsoft.WindowsAzure.Commands.Common;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Mandatory = true, HelpMessage = "The account password.")]
         [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch
                 this.ComputeNode, this.AdditionalBehaviors)
             {
                 ComputeNodeUserName = this.Name,
-                Password = this.Password,
+                Password = this.Password?.ConvertToString(),
                 ExpiryTime = this.ExpiryTime,
                 IsAdmin = this.IsAdmin.IsPresent
             };

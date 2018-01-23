@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     using Microsoft.Azure.Commands.Scheduler.Properties;
     using Microsoft.Azure.Commands.Scheduler.Utilities;
     using SchedulerModels = Microsoft.Azure.Management.Scheduler.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Update existing storage queue job.
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     public class UpdateAzureSchedulerStorageQueueJobCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

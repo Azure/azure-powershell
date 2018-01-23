@@ -37,6 +37,37 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         private Lazy<Runspace> runspace;
 
+        private static IMapper _mapper = null;
+
+        private static readonly object _lock = new object();
+
+        private static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        var config = new MapperConfiguration(cfg =>
+                        {
+                            cfg.CreateMap<AzureOperationResponse, ManagementOperationContext>()
+                                  .ForMember(c => c.OperationId, o => o.MapFrom(r => r.RequestId))
+                                  .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.StatusCode.ToString()));
+
+                            cfg.CreateMap<OperationStatusResponse, ManagementOperationContext>()
+                                  .ForMember(c => c.OperationId, o => o.MapFrom(r => r.Id))
+                                  .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.Status.ToString()));
+                        });
+
+                        _mapper = config.CreateMapper();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
+
         protected ServiceManagementBaseCmdlet()
         {
             IClientProvider clientProvider = new ClientProvider(this);
@@ -180,6 +211,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             TDestination result = Mapper.Map<TSource, TDestination>(s1);
             result = Mapper.Map(s2, result);
+            result.OperationDescription = CommandRuntime.ToString();
+
+            return result;
+        }
+
+        protected TDestination ContextFactory<TSource, TDestination>(
+            TSource s1, 
+            OperationStatusResponse s2, 
+            Func<TSource, TDestination> firstMap,
+            Func<OperationStatusResponse, TDestination, TDestination> secondMap) where TDestination : ManagementOperationContext
+        {
+            TDestination result = firstMap(s1);
+            result = secondMap(s2, result);
             result.OperationDescription = CommandRuntime.ToString();
 
             return result;

@@ -112,6 +112,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetCAA()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCAA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetCAANonEmpty()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCAANonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetNS()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNS");

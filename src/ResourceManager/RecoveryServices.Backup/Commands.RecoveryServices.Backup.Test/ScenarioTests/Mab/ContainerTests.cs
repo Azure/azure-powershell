@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.MAB)]
-        public void TestGetMabContainerScenario()
+        public void TestMabGetContainers()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Mab, "Test-GetContainerScenario");
+                PsBackupProviderTypes.Mab, "Test-MabGetContainers");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.MAB)]
-        public void TestUnregisterMabContainer()
+        public void TestMabUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Mab, "Test-UnregisterContainerScenario");
+                PsBackupProviderTypes.Mab, "Test-MabUnregisterContainer");
         }
     }
 }

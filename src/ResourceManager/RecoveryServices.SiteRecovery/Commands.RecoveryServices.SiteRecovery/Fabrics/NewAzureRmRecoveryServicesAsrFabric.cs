@@ -72,8 +72,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.Name,
                     input);
 
-                this.WriteObject(response);
-
                 var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
                     PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 

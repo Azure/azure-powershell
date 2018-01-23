@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeTest.cs" />
@@ -196,6 +197,9 @@
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationWebhookTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationDscCompilationJobTest.cs" />
+    <Compile Include="UnitTests\StopAzureAutomationDscNodeConfigurationDeploymentTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentTest.cs" />
+    <Compile Include="UnitTests\StartAzureAutomationDscNodeConfigurationDeploymentTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />

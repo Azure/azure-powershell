@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -81,6 +82,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestAEMExtensionAdvancedLinuxMD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD");
+        }
+
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        public void TestAEMExtensionAdvancedLinuxMD_ESeries()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_E");
+        }
+
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        public void TestAEMExtensionAdvancedLinuxMD_DSeries()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_D");
         }
     }
 }

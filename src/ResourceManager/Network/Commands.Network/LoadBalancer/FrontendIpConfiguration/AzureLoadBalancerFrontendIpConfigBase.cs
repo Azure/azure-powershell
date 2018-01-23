@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -61,6 +62,12 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResourcePublicIpAddress",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
+            ValueFromPipelineByPropertyName = true)]
+            public List<string> Zone { get; set; }
 
         public override void Execute()
         {

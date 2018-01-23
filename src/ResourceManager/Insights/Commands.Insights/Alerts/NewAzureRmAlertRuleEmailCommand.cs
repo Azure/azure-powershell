@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Management.Automation;
@@ -23,35 +22,47 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Create an AlertRuleWebhook action
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleEmail"), OutputType(typeof(RuleEmailAction))]
-    public class NewAzureRmAlertRuleEmailCommand : AzureRMCmdlet
+    public class NewAzureRmAlertRuleEmailCommand : MonitorCmdletBase
     {
         /// <summary>
         /// Gets or sets the CustomEmails list of the action. A comma-separated list of e-mail addresses
         /// </summary>
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of custom e-mails")]
         [ValidateNotNullOrEmpty]
-        public string[] CustomEmails { get; set; }
+        [Alias("CustomEmails")]
+        public string[] CustomEmail { get; set; }
 
         /// <summary>
         /// Gets or sets the SendToServiceOwners flag of the action
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The send to service owner flag")]
-        public SwitchParameter SendToServiceOwners { get; set; }
+        [Alias("SendToServiceOwners")]
+        public SwitchParameter SendToServiceOwner { get; set; }
+
+        /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// </summary>
+        protected override void ProcessRecordInternal()
+        { }
 
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!this.SendToServiceOwners && (this.CustomEmails == null || this.CustomEmails.Length < 1))
+            this.WriteIdentifiedWarning(
+                cmdletName: "New-AzureRmAlertRuleEmail",
+                topic: "Parameter name change",
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
+            if (!this.SendToServiceOwner && (this.CustomEmail == null || this.CustomEmail.Length < 1))
             {
                 throw new ArgumentException("Either SendToServiceOwners must be set or at least one custom email must be present");
             }
 
             var action = new RuleEmailAction
             {
-                CustomEmails = this.CustomEmails,
-                SendToServiceOwners = this.SendToServiceOwners
+                CustomEmails = this.CustomEmail,
+                SendToServiceOwners = this.SendToServiceOwner
             };
 
             WriteObject(action);

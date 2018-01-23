@@ -306,4 +306,28 @@
   <data name="InvalidManagementTokenAudience" xml:space="preserve">
     <value>No value was specified for the token audience for the management endpoint in environment '{0}'.  Please use Set-AzureRmEnvironment -Name {0} -ActiveDirectoryServiceEndpointResourceId token-audience-value</value>
   </data>
+  <data name="TokenIssuerTrace" xml:space="preserve">
+    <value>[Common.Authentication]: Parsed token '{0}' with json value '{1}' and decoded issuer '{2}'.</value>
+    <comment>0 = raw token; 1 = decoded token; 2 = issuer</comment>
+  </data>
+  <data name="AccessTokenResourceNotFound" xml:space="preserve">
+    <value>Cannot retrieve access token for resource '{0}'.  Please ensure that you have provided the appropriate access tokens when using access token login.</value>
+    <comment>{0} = authentication resource id</comment>
+  </data>
+  <data name="MSITokenRequestFailed" xml:space="preserve">
+    <value>There was an error retrieving the managed service access token for resource '{0}' using the URI '{1}'.  Please check that this managed service is configured to emit tokens at this address and that the associated managed service identity has the appropriate role assignment and try logging in again.</value>
+    <comment>{0} = resource id, {1} = MSI login uri</comment>
+  </data>
+  <data name="HttpClientAddingHeader" xml:space="preserve">
+    <value>[HttpClientOperations]: Adding Header '{0}'</value>
+    <comment>{0} = header name</comment>
+  </data>
+  <data name="HttpClientOperationsInvocationId" xml:space="preserve">
+    <value>[HttpClientOperations {0}]</value>
+    <comment>{0} = unique Id</comment>
+  </data>
+  <data name="HttpRequestExceptionMessage" xml:space="preserve">
+    <value>Unexpected response status code '{0}' received for request '{{{1} {2}}} Body: {{{3}}}</value>
+    <comment>{0} = response code, {1} = Http Verb; {2} = Uri; {3} = response body</comment>
+  </data>
 </root>

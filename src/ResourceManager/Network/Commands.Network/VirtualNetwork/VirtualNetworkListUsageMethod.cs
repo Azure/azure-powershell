@@ -29,6 +29,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             var vnetUsageList = new List<PSVirtualNetworkUsage>();
             foreach (var vVirtualNetwork in vVirtualNetworkList)
             {
-                var vVirtualNetworkModel = Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
+                var vVirtualNetworkModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
                 vnetUsageList.Add(vVirtualNetworkModel);
             }
             WriteObject(vnetUsageList, true);

@@ -492,7 +492,9 @@ function Test-CreateNewWebApp
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
@@ -534,7 +536,9 @@ function Test-CreateNewWebAppOnAse
 		$serverFarm = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 
 		# Create new web app
-		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName
+		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
@@ -587,7 +591,9 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 		
 		# Change service plan
-		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2
+		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -AsJob
+		$job | Wait-Job
+		$webApp = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
@@ -661,14 +667,14 @@ function Test-RemoveWebApp
 		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName
 		
 		# Assert
 		Assert-AreEqual $appName $webapp.Name
 		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
 
 		# Remove web app via pipeline obj
-		$webapp | Remove-AzureRmWebApp -Force
+		$webapp | Remove-AzureRmWebApp -Force -AsJob | Wait-Job
 
 		# Retrieve web app by name
 		$webappNames = Get-AzureRmWebApp -ResourceGroupName $rgname | Select -expand Name
@@ -732,6 +738,13 @@ function Test-WebAppPublishingProfile
 
 		# Assert
 		Assert-True { $fileZillaProfile.Name -eq $appName }
+
+		# Get web app publishing profile without OutputFile
+		[xml]$profile = Get-AzureRmWebAppPublishingProfile -ResourceGroupName $rgname -Name $appName
+
+		# Assert
+		Assert-NotNull $profile
+
 	}
 	finally
 	{

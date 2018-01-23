@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you swap two web app slots using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Switch, "AzureRmWebAppSlot", SupportsShouldProcess = true)]
-    public class SwitchAzureWebAppSlot : WebAppBaseCmdlet, IModuleAssemblyInitializer
+    public class SwitchAzureWebAppSlot : WebAppBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the source slot.")]
         [ValidateNotNullOrEmpty]
@@ -122,26 +123,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         break;
 
                 }
-            }
-        }
-
-        /// <summary>
-        /// Load global aliases for ARM
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "WebsitesStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch(Exception) when (TestMockSupport.RunningMocked)
-            {
-                // This will throw exception for tests, ignore.
             }
         }
     }

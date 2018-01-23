@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementOperation), ParameterSetName = new[] { FindById })]
     public class GetAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
-        private const string FindById = "Find by ID";
-        private const string AllApiOperations = "All API Operations";
+        private const string FindById = "GetById";
+        private const string AllApiOperations = "GetAllApiOperations";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

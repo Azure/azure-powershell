@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use Set-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "Specify full URI";
-        internal const string HostAndPortParameterSetName = "Specify host name and port";
+        internal const string BaseParameterSetName = "SetByFullUri";
+        internal const string HostAndPortParameterSetName = "SetByHostNameAndPort";
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "The account name that contains the catalog to update the secret in.")]

@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.RecoveryServices.Backup
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
@@ -16,6 +16,9 @@ Starts a backup for a Backup item.
 
 ### [Disable-AzureRmRecoveryServicesBackupProtection](Disable-AzureRmRecoveryServicesBackupProtection.md)
 Disables protection for a Backup-protected item.
+
+### [Disable-AzureRmRecoveryServicesBackupRPMountScript](Disable-AzureRmRecoveryServicesBackupRPMountScript.md)
+Dismounts all the files of the recovery point.
 
 ### [Enable-AzureRmRecoveryServicesBackupProtection](Enable-AzureRmRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
@@ -43,6 +46,9 @@ Gets the recovery points for a backed up item.
 
 ### [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](Get-AzureRmRecoveryServicesBackupRetentionPolicyObject.md)
 Gets a base retention policy object.
+
+### [Get-AzureRmRecoveryServicesBackupRPMountScript](Get-AzureRmRecoveryServicesBackupRPMountScript.md)
+Downloads a script to mount all the files of the recovery point.
 
 ### [Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](Get-AzureRmRecoveryServicesBackupSchedulePolicyObject.md)
 Gets a base schedule policy object.

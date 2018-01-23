@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("New-AdlCatalogCredential")]
     public class NewAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "Specify full URI";
-        internal const string HostAndPortParameterSetName = "Specify host name and port";
+        internal const string BaseParameterSetName = "CreateByFullURI";
+        internal const string HostAndPortParameterSetName = "CreateByHostNameAndPort";
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "The account name that contains the catalog to create the credential in.")]

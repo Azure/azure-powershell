@@ -49,5 +49,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryNameAvailability");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureContainerRegistryReplication()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureContainerRegistryWebhook()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryWebhook");
+        }
     }
 }

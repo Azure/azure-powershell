@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -26,15 +27,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     public abstract class ResourceWithParameterCmdletBase : ResourceManagerCmdletBase
     {
-        protected const string TemplateFileParameterObjectParameterSetName = "Deployment via template file and template parameters object";
-        protected const string TemplateFileParameterFileParameterSetName = "Deployment via template file and template parameters file";
-        protected const string TemplateFileParameterUriParameterSetName = "Deployment via template file template parameters uri";
-        protected const string TemplateUriParameterObjectParameterSetName = "Deployment via template uri and template parameters object";
-        protected const string TemplateUriParameterFileParameterSetName = "Deployment via template uri and template parameters file";
-        protected const string TemplateUriParameterUriParameterSetName = "Deployment via template uri and template parameters uri";
-        protected const string ParameterlessTemplateFileParameterSetName = "Deployment via template file without parameters";
-        protected const string ParameterlessGalleryTemplateParameterSetName = "Deployment via Gallery without parameters";
-        protected const string ParameterlessTemplateUriParameterSetName = "Deployment via template uri without parameters";
+        protected const string TemplateFileParameterObjectParameterSetName = "ByTemplateFileAndParameterObject";
+        protected const string TemplateFileParameterFileParameterSetName = "ByTemplateFileAndParameterFile";
+        protected const string TemplateFileParameterUriParameterSetName = "ByTemplateFileAndParameterUri";
+        protected const string TemplateUriParameterObjectParameterSetName = "ByTemplateUriAndParameterObject";
+        protected const string TemplateUriParameterFileParameterSetName = "ByTemplateUriAndParameterFile";
+        protected const string TemplateUriParameterUriParameterSetName = "ByTemplateUriAndParameterUri";
+        protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
+        protected const string ParameterlessGalleryTemplateParameterSetName = "ByGalleryWithNoParameters";
+        protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 

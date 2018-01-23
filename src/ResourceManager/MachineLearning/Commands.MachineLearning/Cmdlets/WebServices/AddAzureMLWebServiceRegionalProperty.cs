@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of region")]
+        [LocationCompleter("Microsoft.MachineLearning/webServices")]
         [ValidateNotNullOrEmpty]
         public string Region { get; set; }
 

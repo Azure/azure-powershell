@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
@@ -23,15 +24,14 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [OutputType(typeof(WebServiceKeys))]
     public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {
-        private const string GetKeysByGroupAndName = 
-            "Get an Azure ML web service's access keys given its name and resource group.";
-        private const string GetKeysByInstance = 
-            "Get the access kesy for the given web service instance.";
+        private const string GetKeysByGroupAndName = "GetByNameAndResourceGroup";
+        private const string GetKeysByInstance = "GetByInstance";
 
         [Parameter(
             ParameterSetName = GetAzureMLWebServiceKeys.GetKeysByGroupAndName, 
             Mandatory = true, 
             HelpMessage = "The name of the resource group for the Azure ML web services.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

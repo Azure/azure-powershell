@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             frontendIpConfig.Name = this.Name;
+            frontendIpConfig.Zones = this.Zone;
 
             frontendIpConfig.Subnet = null;
             if (!string.IsNullOrEmpty(this.SubnetId))

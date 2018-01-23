@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
-    OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
+        OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
     public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 4,
             HelpMessage = ParamHelpMsgs.Container.ResourceGroupName)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -88,6 +90,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Enum.TryParse(BackupManagementType, out backupManagementType);
                     backupManagementTypeNullable = backupManagementType;
                 }
+
+                // Forcing this cmdlet to return only Registered containers for now. 
+                // Once we support containers returning other status types, one can undo this behavior.
+                Status = ContainerRegistrationStatus.Registered;
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()

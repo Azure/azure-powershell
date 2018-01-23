@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = RemoveVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of resource group for Azure key vault to remove.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = RemoveDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
+        [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
@@ -82,6 +85,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = RemoveDeletedVaultParameterSet,
             HelpMessage = "Remove the previously deleted vault permanently.")]
         public SwitchParameter InRemovedState { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         #endregion
 

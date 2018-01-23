@@ -16,6 +16,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address location.")]
+        [LocationCompleter("Microsoft.Network/networkInterfaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -163,6 +166,20 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
+            HelpMessage = "ApplicationSecurityGroupId")]
+        public List<string> ApplicationSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "ApplicationSecurityGroup")]
+        public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "The private ip address of the Network Interface " +
                           "if static allocation is specified.")]
         [Parameter(
@@ -220,6 +237,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
 
         public override void Execute()
@@ -310,6 +330,15 @@ namespace Microsoft.Azure.Commands.Network
                             this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                         }
                     }
+
+                    if (this.ApplicationSecurityGroup != null)
+                    {
+                        this.ApplicationSecurityGroupId = new List<string>();
+                        foreach (var asg in this.ApplicationSecurityGroup)
+                        {
+                            this.ApplicationSecurityGroupId.Add(asg.Id);
+                        }
+                    }
                 }
 
                 var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
@@ -361,6 +390,15 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
+                if (this.ApplicationSecurityGroupId != null)
+                {
+                    nicIpConfiguration.ApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
+                    foreach (var id in this.ApplicationSecurityGroupId)
+                    {
+                        nicIpConfiguration.ApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = id });
+                    }
+                }
+
                 networkInterface.IpConfigurations = new List<PSNetworkInterfaceIPConfiguration>();
                 networkInterface.IpConfigurations.Add(nicIpConfiguration);
             }
@@ -385,9 +423,11 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+            var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
-            networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
+
+			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
              

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServerManagement.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: C579BF90-FD8B-4384-96EB-46154E308492
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servermanagement/get-azurermservermanagementgateway
 schema: 2.0.0
 ---
 
@@ -14,22 +15,25 @@ Gets one or more Server Management Gateways.
 
 ### NoParams (Default)
 ```
-Get-AzureRmServerManagementGateway [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Many-ByResourceGroup
 ```
-Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Single-ByName
 ```
-Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String> [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single-ByObject
 ```
-Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +74,21 @@ GATEWAYPC        4/13/2016 6:35:04 PM   1.0.1104.0      Microsoft Windows 10 Ent
 This command gets all instances of a Server Management Gateway named Gateway01 that belong to the resource group named Group002.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Gateway
 Specifies a gateway that this cmdlet gets.
@@ -128,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Gateway
-
 Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
 
 ## OUTPUTS

@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-online version: 
+Module Name: AzureRM.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/update-azurermdatalakeanalyticscomputepolicy
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Updates a Data Lake Analytics compute policy rule for a specific AAD entity.
 
 ```
 Update-AzureRmDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <String> [-Name] <String>
- [-MaxDegreeOfParallelismPerJob <Int32>] [-MinPriorityPerJob <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxAnalyticsUnitsPerJob <Int32>] [-MinPriorityPerJob <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,17 +25,17 @@ The **Update-AzureRmDataLakeAnalyticsComputePolicy** updates the specified compu
 
 ### Example 1: update one rule in a compute policy
 ```
-PS C:\>Update-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -MaxDegreeOfParallelismPerJob 5
+PS C:\>Update-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -MaxAnalyticsUnitsPerJob 5
 ```
 
-This command updates a policy called "myPolicy" in account "contosoadla" to ensure the user cannot submit any job with more than 5 parallelism.
+This command updates a policy called "myPolicy" in account "contosoadla" to ensure the user cannot submit any job with more than 5 analytics units.
 
 ### Example 2: Create a compute policy with both rules update
 ```
-PS C:\>Update-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -MaxDegreeOfParallelismPerJob 5 -MinPriorityPerJob 100
+PS C:\>Update-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -MaxAnalyticsUnitsPerJob 5 -MinPriorityPerJob 100
 ```
 
-This command creates a policy called "myPolicy" in account "contosoadla" to ensure the user cannot submit any job with more than 5 parallelism or with a priority lower than 100
+This command creates a policy called "myPolicy" in account "contosoadla" to ensure the user cannot submit any job with more than 5 analytics units or with a priority lower than 100
 
 ## PARAMETERS
 
@@ -52,13 +54,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxDegreeOfParallelismPerJob
-The maximum supported degree of parallelism per job for this policy. Either this, MinPriorityPerJob, or both parameters must be specified.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxAnalyticsUnitsPerJob
+The maximum supported analytics units per job for this policy. Either this, MinPriorityPerJob, or both parameters must be specified.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxDegreeOfParallelismPerJob
 
 Required: False
 Position: Named
@@ -68,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinPriorityPerJob
-The minimum supported priority per job for this policy. Either this, MaxDegreeOfParallelismPerJob, or both parameters must be specified.
+The minimum supported priority per job for this policy. Either this, MaxAnalyticsUnitsPerJob, or both parameters must be specified.
 
 ```yaml
 Type: Int32

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnode
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Remove nodes from the specific node type from a cluster.
 
 ```
 Remove-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -NumberOfNodesToRemove <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -NumberOfNodesToRemove <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +31,21 @@ PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contos
 This command will remove 2 nodes from the NodeType 'nt1'.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specify the name of the cluster.
@@ -135,4 +152,5 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
 [Add-AzureRmServiceFabricNode](./Add-AzureRmServiceFabricNode.md) 

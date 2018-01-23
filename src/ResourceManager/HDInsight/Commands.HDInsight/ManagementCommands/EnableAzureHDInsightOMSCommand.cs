@@ -18,6 +18,8 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using System.Management.Automation;
 using System.IO;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -27,7 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         SupportsShouldProcess = true)]
     [Alias("Enable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
-    public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase, IModuleAssemblyInitializer
+    public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             HelpMessage = "Gets or sets the resource group of the cluster.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         #endregion
@@ -76,26 +79,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 var operationResource = HDInsightManagementClient.EnableOMS(ResourceGroupName, Name, monitoringParams);
                 WriteObject(operationResource);
-            }
-        }
-
-        /// <summary>
-        /// Load global aliases for HDInsight
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmHDInsightStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This may throw exception for tests, ignore.
             }
         }
     }

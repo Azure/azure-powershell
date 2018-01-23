@@ -87,5 +87,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the tags associated with the Elastic Pool.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone redundant option of the elastic pool.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
     }
 }

@@ -15,6 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -83,6 +85,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter PerformMaintenance { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
@@ -96,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var op = this.VirtualMachineClient.PerformMaintenanceWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
-                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                         WriteObject(result);
                     });
                 }
@@ -107,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
-                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                         WriteObject(result);
                     });
                 }

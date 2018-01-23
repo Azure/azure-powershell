@@ -96,6 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 "Terminate the existing iCSCI connection for file folder restore";
             public const string KeyFileDownloadLocation =
                 "Location where the key file should be downloaded in the case of encrypted VMs.";
+            public const string FileDownloadLocation =
+                "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory.";
         }
 
         internal static class RestoreDisk
@@ -103,6 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+            public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
         }
     }
 }

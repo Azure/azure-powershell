@@ -59,26 +59,14 @@
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
     <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespaceAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespaceKey.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespaceAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNameSpaceKey.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureServiceBusNamespace.cs" />
-    <Compile Include="Cmdlets\Namespace\SetAzureServiceBusNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Operations\GetAzureServiceBusOperations.cs" />
     <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueueAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueueKey.cs" />
     <Compile Include="Cmdlets\Queue\NewAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\NewAzureServiceBusQueueAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Queue\NewAzureServiceBusQueueKey.cs" />
     <Compile Include="Cmdlets\Queue\RemoveAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\RemoveAzureServiceBusQueueAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Queue\SetAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\SetAzureServiceBusQueueAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Rule\GetAzureServiceBusRule.cs" />
     <Compile Include="Cmdlets\Rule\NewAzureServiceBusRule.cs" />
     <Compile Include="Cmdlets\Rule\RemoveAzureServiceBusRule.cs" />
@@ -88,15 +76,9 @@
     <Compile Include="Cmdlets\Subscription\RemoveAzureServiceBusSubscription.cs" />
     <Compile Include="Cmdlets\Subscription\SetAzureServiceBusSubscription.cs" />
     <Compile Include="Cmdlets\Topic\GetAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\GetAzureServiceBusTopicAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Topic\GetAzureServiceBusTopicKey.cs" />
     <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopicAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopicKey.cs" />
     <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopicAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopicAuthorizationRules.cs" />
     <Compile Include="Models\ActionAttributes.cs" />
     <Compile Include="Models\CheckNameAvailabilityAttributes.cs" />
     <Compile Include="Models\CheckNameAvailabilityResultAttributes.cs" />
@@ -135,6 +117,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

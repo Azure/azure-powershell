@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // define parameter sets.
-        internal const string BaseParameterSetName = "No diagnostic logging";
-        internal const string DiagnosticParameterSetName = "Include diagnostic logging";
+        internal const string BaseParameterSetName = "NoDiagnosticLogging";
+        internal const string DiagnosticParameterSetName = "IncludeDiagnosticLogging";
 
         // default number of threads
         private int numThreadsPerFile = -1;

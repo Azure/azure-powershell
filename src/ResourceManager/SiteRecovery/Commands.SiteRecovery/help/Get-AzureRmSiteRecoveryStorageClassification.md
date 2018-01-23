@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.SiteRecovery.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 3F62A993-18BF-4189-A7C0-BB877F550AA5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.siterecovery/get-azurermsiterecoverystorageclassification
 schema: 2.0.0
 ---
 
@@ -14,27 +15,31 @@ Gets storage classifications in Site Recovery.
 
 ### Default (Default)
 ```
-Get-AzureRmSiteRecoveryStorageClassification [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassification [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmSiteRecoveryStorageClassification -Name <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassification -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmSiteRecoveryStorageClassification -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassification -FriendlyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFabricObject
 ```
-Get-AzureRmSiteRecoveryStorageClassification -Fabric <ASRFabric> [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassification -Fabric <ASRFabric> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByServerObject
 ```
-Get-AzureRmSiteRecoveryStorageClassification -Server <ASRServer> [<CommonParameters>]
+Get-AzureRmSiteRecoveryStorageClassification -Server <ASRServer> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +48,21 @@ The **Get-AzureRmSiteRecoveryStorageClassification** cmdlet gets storage classif
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Fabric
 ```yaml
@@ -106,11 +126,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ASRFabric
-
 Parameter 'Fabric' accepts value of type 'ASRFabric' from the pipeline
 
 ### ASRServer
-
 Parameter 'Server' accepts value of type 'ASRServer' from the pipeline
 
 ## OUTPUTS

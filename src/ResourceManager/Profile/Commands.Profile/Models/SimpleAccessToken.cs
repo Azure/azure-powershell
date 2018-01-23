@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string LoginType
         {
-            get { return Common.Authentication.LoginType.OrgId; }
+            get { return Commands.Common.Authentication.LoginType.OrgId; }
         }
 
         /// <summary>

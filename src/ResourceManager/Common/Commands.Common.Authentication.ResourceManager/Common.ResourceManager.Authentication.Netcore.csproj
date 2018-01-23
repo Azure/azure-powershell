@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Common.ResourceManager.Authentication</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -17,21 +19,18 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Hyak.Common" Version="1.1.3" />
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.2.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.8" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Authentication.Abstractions.NetCore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Authentication.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
   </ItemGroup>
 

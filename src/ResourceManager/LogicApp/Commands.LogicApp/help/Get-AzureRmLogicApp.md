@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+Module Name: AzureRM.LogicApp
 ms.assetid: 7BFCD982-EC80-418B-BB52-C9941D028F76
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapp
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets a logic app from a resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Version <String>] [<CommonParameters>]
+Get-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Version <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +56,21 @@ Version                      : 08587489107859952120
 This command gets a logic app from the resource group named ResourceGroup11.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the logic app that this cmdlet gets.

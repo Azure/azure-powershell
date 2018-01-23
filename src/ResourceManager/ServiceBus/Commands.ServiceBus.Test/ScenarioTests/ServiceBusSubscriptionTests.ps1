@@ -115,7 +115,6 @@ function ServiceBusSubscriptionTests
     Assert-True {$resultGetSub.Name -eq $subName} "Subscription created earlier is not found."
 
 	# Update the subscription.
-	$resultGetSub.IsReadOnly = $True
 	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -InputObject $resultGetSub
 		
 	Assert-True {$resultSetSub.Name -eq $resultGetSub.Name} "Subscription Updated earlier is not found."

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -21,7 +21,8 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
  [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
- [<CommonParameters>]
+ [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -32,7 +33,8 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
  [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [<CommonParameters>]
+ [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +61,27 @@ The first two commands get a virtual network called myvnet and a subnet called m
     configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
     
+
+### 2: Associating an IP configuration with an applicaiton security groupp
+```
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+$asg = Get-ApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
+
+$nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+$nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
+    -Primary
+
+$nic | Set-AzureRmNetworkInterface
+```
+
+In this example, the variable $asg contains a reference to an application security group.
+    The fourth command gets the network interface nic1 associated with the IP
+    configuration that needs to be updated. The Set-AzureRmNetworkInterfaceIpConfig sets the private IP address of the primary IP
+    configuration ipconfig1 to 10.0.0.11 and creates an association with the retrieved application security group.
+    Finally, the last command updates the network interface ensuring the changes
+    have been made successfully.
 
 ## PARAMETERS
 
@@ -89,6 +112,51 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroup
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationSecurityGroupId
+Specifies a collection of application security group references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -39,3 +39,73 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - November 2017
+
+The following cmdlets were affected this release:
+
+**New-AzureRmADAppCredential**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmADAppCredential [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmADAppCredential [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmADApplication**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmADApplication [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmADApplication [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmADServicePrincipal**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmADServicePrincipal [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmADServicePrincipal [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmADSpCredential**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmADSpCredential [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmADSpCredential [other required parameters] -Password $SecureStringVariable
+```
+
+**New-AzureRmADUser**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmADUser [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmADUser [other required parameters] -Password $SecureStringVariable
+```
+
+**Set-AzureRmADUser**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+Set-AzureRmADUser [other required parameters] -Password "plain-text string"
+
+# New
+Set-AzureRmADUser [other required parameters] -Password $SecureStringVariable
+```

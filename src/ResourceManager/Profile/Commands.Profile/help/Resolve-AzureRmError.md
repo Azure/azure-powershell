@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/resolve-azurermerror
 schema: 2.0.0
 ---
 
@@ -13,12 +14,12 @@ Display detailed information about PowerShell errors, with extended details for 
 
 ### AnyErrorParameterSet (Default)
 ```
-Resolve-AzureRmError [[-Error] <ErrorRecord[]>] [<CommonParameters>]
+Resolve-AzureRmError [[-Error] <ErrorRecord[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LastErrorParameterSet
 ```
-Resolve-AzureRmError [-Last] [<CommonParameters>]
+Resolve-AzureRmError [-Last] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +168,21 @@ Get details of the specified error.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, tenant and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Error
 One or more error records to resolve.  If no parameters are specified, all errors in the session are resolved.
 
@@ -198,7 +214,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -208,8 +223,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord
+Information about a powershell error that does not involve an excpetion.
+
 ### Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord
+Information about an error including detailed information on the exception that raised the error.
+
 ### Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord
+Information about errors in cleint/server communications.  This will often contain important information about the error from the server.
 
 ## NOTES
 

@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ComputeAutomationAutoMapperProfile.Initialize();
         }
 
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
@@ -136,6 +135,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgradesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetRollingUpgrades;
+            }
+        }
+
         public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetsClient
         {
             get
@@ -228,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 Type propType = elem[i].GetType();
 
-                                if (propType.IsSerializable)
+                                if (propType.IsSerializable || propType.Equals(typeof(Newtonsoft.Json.Linq.JObject)))
                                 {
                                     tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
                                 }

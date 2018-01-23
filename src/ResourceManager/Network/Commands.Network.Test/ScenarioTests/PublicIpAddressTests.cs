@@ -88,5 +88,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-StandardSku");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressZones()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressZones");
+        }
     }
 }

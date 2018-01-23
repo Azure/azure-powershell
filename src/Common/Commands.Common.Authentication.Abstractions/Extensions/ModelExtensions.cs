@@ -107,11 +107,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="source"></param>
         public static void CopyPropertiesFrom(this IExtensibleModel model, IExtensibleModel source)
         {
-            if (source != null)
+            if (model != null && source != null)
             {
                 foreach (var item in source.ExtendedProperties)
                 {
                     model.ExtendedProperties[item.Key] = item.Value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Copy Unset propeties from another extensible model to this one
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="newModel"></param>
+        public static void UpdateProperties(this IExtensibleModel model, IExtensibleModel newModel)
+        {
+            if (model != null && newModel != null)
+            {
+                foreach (var item in newModel.ExtendedProperties)
+                {
+                    model.SetProperty(item.Key, item.Value);
                 }
             }
         }

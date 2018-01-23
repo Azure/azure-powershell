@@ -33,7 +33,7 @@ function Test-Disk
         $access = 'Read';
 
         # Config create test
-        $diskconfig = New-AzureRmDiskConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+        $diskconfig = New-AzureRmDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
         # Encryption test
         $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
         $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -52,11 +52,16 @@ function Test-Disk
         $diskconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $diskconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $diskconfig.CreationData.ImageReference = $null;
+        
+        Assert-AreEqual "1" $diskconfig.Zones
+        $diskconfig.Zones = $null
 
-        New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $job = New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig -AsJob
+		$job | Wait-Job
 
         # Get disk test
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
         Assert-AreEqual StandardLRS $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
@@ -69,10 +74,12 @@ function Test-Disk
 
         # Config update test
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob
+		$job | Wait-Job
 
         # Remove test
-        Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force;
+        $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob
+		$job | Wait-Job
     }
     finally
     {
@@ -118,7 +125,8 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $snapshotconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+        $job = New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob
+		$job | Wait-Job
 
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
@@ -134,10 +142,12 @@ function Test-Snapshot
 
         # Config update test
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig;
+        $job = Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob
+		$job | Wait-Job
 
         # Remove test
-        Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force;
+        $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob
+		$job | Wait-Job
     }
     finally
     {

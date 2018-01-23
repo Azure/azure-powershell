@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermpolicyassignment
 schema: 2.0.0
 ---
 
@@ -12,24 +13,47 @@ Creates a policy assignment.
 
 ## SYNTAX
 
-### Policy assignment without parameters (Default)
+### CreateWithoutParameters (Default)
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Sku <Hashtable>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy parameter object
+### CreateWithPolicyParameterObject
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- -PolicyParameterObject <Hashtable> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### Policy assignment with parameters via policy parameter string
+### CreateWithPolicyParameterString
 ```
-New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-DisplayName <String>] -PolicyDefinition <PSObject>
- -PolicyParameter <String> [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
+ -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### CreateWithPolicySetParameterObject
+```
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### CreateWithPolicySetParameterString
+```
+New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
+ -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -64,12 +88,42 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The description for policy assignment
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -79,7 +133,7 @@ Specifies a display name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,9 +187,24 @@ Specifies a name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NotScope
+The not scopes for policy assignment.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -147,8 +216,20 @@ Specifies a policy, as a **PSObject** object that contains the policy rule.
 
 ```yaml
 Type: PSObject
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: CreateWithoutParameters, CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicyParameterString
+Aliases:
 
 Required: True
 Position: Named
@@ -162,8 +243,8 @@ The policy parameter file path or policy parameter string.
 
 ```yaml
 Type: String
-Parameter Sets: Policy assignment with parameters via policy parameter string
-Aliases: 
+Parameter Sets: CreateWithPolicyParameterString, CreateWithPolicySetParameterString
+Aliases:
 
 Required: True
 Position: Named
@@ -177,13 +258,40 @@ The policy parameter object.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Policy assignment with parameters via policy parameter object
-Aliases: 
+Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicySetParameterObject
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySetDefinition
+The policy set definition object.
+
+```yaml
+Type: PSObject
+Parameter Sets: CreateWithoutParameters, CreateWithPolicyParameterObject, CreateWithPolicyParameterString
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -193,7 +301,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -211,9 +319,24 @@ For instance, to assign a policy to a resource group, specify the following:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Fre
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: SkuObject
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

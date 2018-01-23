@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: {{Please enter FwLink manually}}
@@ -62,3 +62,20 @@ Removes an IotHub Key.
 ### [Set-AzureRmIotHub](Set-AzureRmIotHub.md)
 Updates the properties of an IotHub.
 
+### [Add-AzureRmIotHubCertificate](Add-AzureRmIotHubCertificate.md)
+Create/update an Azure IoT Hub certificate.
+
+### [Get-AzureRmIotHubCertificate](Get-AzureRmIotHubCertificate.md)
+Lists all certificates or a particular certificate contained within an Azure IoT Hub. 
+
+### [Get-AzureRmIotHubCertificateVerificationCode](Get-AzureRmIotHubCertificateVerificationCode.md)
+Generates a verification code for an Azure IoT Hub certificate. 
+
+### [Get-AzureRmIotHubOperations](Get-AzureRmIotHubOperations.md)
+Lists all operations within an Azure IoT Hub. 
+
+### [Remove-AzureRmIotHubCertificate](Remove-AzureRmIotHubCertificate.md)
+Deletes an Azure IoT Hub certificate.
+
+### [Set-AzureRmIotHubVerifiedCertificate](Set-AzureRmIotHubVerifiedCertificate.md)
+Verifies an Azure IoT Hub certificate. 

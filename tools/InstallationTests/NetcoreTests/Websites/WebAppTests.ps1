@@ -308,9 +308,9 @@ function Test-CloneNewWebAppAndDeploymentSlots
 	$resourceType = "Microsoft.Web/sites"
 
 	# Destination setup
-	$destPlanName = "$(Get-WebHostPlanName)Destination"
+	$destPlanName = "$($planName)Destination"
 	$destLocation = Get-SecondaryLocation
-	$destAppName = "$(Get-WebsiteName)Destination"
+	$destAppName = "$($appname)Destination"
 
 	try
 	{

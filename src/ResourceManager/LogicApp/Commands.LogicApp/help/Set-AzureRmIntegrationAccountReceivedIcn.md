@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-online version: 
+Module Name: AzureRM.LogicApp
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccountreceivedicn
 schema: 2.0.0
 ---
 
@@ -13,8 +14,8 @@ Updates the integration account received interchange control number (ICN) in the
 
 ```
 Set-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumberValue <String> -IsMessageProcessingFailed <Boolean> [-AgreementType <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ControlNumberValue <String> -IsMessageProcessingFailed <Boolean> [-AgreementType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AgreementType
+The integration account agreement type (X12 or Edifact).
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: MessageType
+Accepted values: X12, Edifact
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ControlNumberValue
 The integration account control number value.
 
@@ -75,6 +92,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,21 +185,6 @@ Aliases: wi
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AgreementType
-The integration account agreement type (X12 or Edifact).
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: MessageType
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

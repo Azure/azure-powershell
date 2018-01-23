@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: FF3AD436-CA33-4A52-8580-D2345D80A231
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azurestorageshare
 schema: 2.0.0
 ---
 
@@ -14,15 +14,16 @@ Deletes a file share.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageShare [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureStorageShare [-Name] <String> [-IncludeAllSnapshot] [-Force] [-PassThru]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Remove-AzureStorageShare [-Share] <CloudFileShare> [-Force] [-PassThru] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureStorageShare [-Share] <CloudFileShare> [-IncludeAllSnapshot] [-Force] [-PassThru]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,13 @@ PS C:\>Remove-AzureStorageShare -Name "ContosoShare06"
 ```
 
 This command removes the file share named ContosoShare06.
+
+### Example 2: Remove a file share and all its snapshots
+```
+PS C:\>Remove-AzureStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
+```
+
+This command removes the file share named ContosoShare06 and all its snapshots.
 
 ## PARAMETERS
 
@@ -92,7 +100,22 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to remove the share and all content in it
+Force to remove the share with all of its snapshots, and all content.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeAllSnapshot
+Remove File Share with all of its snapshots
 
 ```yaml
 Type: SwitchParameter

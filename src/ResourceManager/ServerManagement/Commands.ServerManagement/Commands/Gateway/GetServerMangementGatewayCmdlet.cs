@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
     using Management.ServerManagement;
     using Management.ServerManagement.Models;
     using Model;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmServerManagementGateway", DefaultParameterSetName = "NoParams"),
      OutputType(typeof(Gateway))]
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
             ValueFromPipelineByPropertyName = true, ParameterSetName = "Many-ByResourceGroup", Position = 0)]
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = "Single-ByName", Position = 0)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the gateway to get the status for.",

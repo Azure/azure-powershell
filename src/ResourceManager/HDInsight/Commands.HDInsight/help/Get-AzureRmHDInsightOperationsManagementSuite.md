@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-online version: 
+Module Name: AzureRM.HDInsight
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightoperationsmanagementsuite
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Gets the status of Operations Management Suite (OMS) installation on the cluster
 
 ```
 Get-AzureRmHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,21 @@ ClusterMonitoringEnabled
 Operations Management Suite (OMS) is disabled on the cluster because the ClusterMonitoringEnabled property is false.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 The name of the cluster to get the status of Operations Management Suite(OMS).

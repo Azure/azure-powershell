@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: F6B24F96-6016-4645-9F92-F584B73657D5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob
 schema: 2.0.0
 ---
 
@@ -17,8 +18,8 @@ Set-AzureRmSchedulerServiceBusTopicJob -ResourceGroupName <String> -JobCollectio
  -JobName <String> -ServiceBusTopicPath <String> -ServiceBusNamespace <String>
  -ServiceBusTransportType <String> -ServiceBusMessage <String> -ServiceBusSasKeyName <String>
  -ServiceBusSasKeyValue <String> [-StartTime <DateTime>] [-Interval <Int32>] [-Frequency <String>]
- [-EndTime <DateTime>] [-ExecutionCount <Int32>] [-JobState <String>] [-ErrorActionType <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EndTime <DateTime>] [-ExecutionCount <Int32>] [-JobState <String>] [-ErrorActionType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,21 @@ If you omit a required parameter, the cmdlet prompts you for the value.
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EndTime
 Specifies an end time, as a **DateTime** object, for the job.

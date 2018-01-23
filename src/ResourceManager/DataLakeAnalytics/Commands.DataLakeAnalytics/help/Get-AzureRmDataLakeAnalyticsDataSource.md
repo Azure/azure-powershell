@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 0377C4E9-C1DC-49BA-BBC4-5598C83234F8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsdatasource
 schema: 2.0.0
 ---
 
@@ -12,21 +13,22 @@ Gets a Data Lake Analytics data source.
 
 ## SYNTAX
 
-### List all data sources (Default)
+### GetAllDataSources (Default)
 ```
-Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get a Data Lake Store account
+### GetDataLakeStoreAccount
 ```
 Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-DataLakeStore] <String>
- [[-ResourceGroupName] <String>] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Get a Blob storage account
+### GetBlobStorageAccount
 ```
 Get-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [[-ResourceGroupName] <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +72,7 @@ Specifies the name of the Azure Blob Storage data source.
 
 ```yaml
 Type: String
-Parameter Sets: Get a Blob storage account
+Parameter Sets: GetBlobStorageAccount
 Aliases: AzureBlob
 
 Required: True
@@ -85,13 +87,28 @@ Specifies the name of the Data Lake Store account.
 
 ```yaml
 Type: String
-Parameter Sets: Get a Data Lake Store account
+Parameter Sets: GetDataLakeStoreAccount
 Aliases: 
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

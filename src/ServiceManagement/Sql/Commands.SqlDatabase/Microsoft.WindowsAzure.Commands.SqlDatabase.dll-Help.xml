@@ -803,7 +803,7 @@ PS C:\&gt;Get-AzureSqlDatabaseCopy -ServerName "lpqd0zbr8y" -DatabaseCopy $myDbC
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $blobName
+        <dev:code>PS C:\&gt; C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainerName $ContainerName -DatabaseName $DatabaseName -BlobName $blobName
 C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:code>
         <dev:remarks>
           <maml:para>This example returns the status of an export request</maml:para>
@@ -5618,37 +5618,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
           <command:parameterValue required="true" variableLength="false">ServerDataServiceSqlAuth</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>StorageContainer</maml:name>
-          <maml:description>
-            <maml:para>The Blob storage container object into which the data is exported.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>DatabaseName</maml:name>
-          <maml:description>
-            <maml:para>The name of the database from which the data is exported.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>BlobName</maml:name>
-          <maml:description>
-            <maml:para>The name of the Blob storage into which to export the database.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Start-AzureSqlDatabaseExport</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-          <maml:name>SqlConnectionContext</maml:name>
-          <maml:description>
-            <maml:para>The connection context to a SQL Database Server containing the SQL Database.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ServerDataServiceSqlAuth</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>StorageContext</maml:name>
           <maml:description>
             <maml:para>The context of the Blob storage.</maml:para>
@@ -5687,19 +5656,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
         <command:parameterValue required="true" variableLength="false">ServerDataServiceSqlAuth</command:parameterValue>
         <dev:type>
           <maml:name>ServerDataServiceSqlAuth</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-        <maml:name>StorageContainer</maml:name>
-        <maml:description>
-          <maml:para>The Blob storage container object into which the data is exported.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureStorageContainer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5810,8 +5766,7 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
         <dev:code>PS C:\&gt; C:\PS&gt;$credential = Get-Credential
 C:\PS&gt;$SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credentials $credential
 C:\PS&gt;$StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-C:\PS&gt;$Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
+C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainerName $ContainerName -StorageContext $StorageCtx -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
         <dev:remarks>
           <maml:para>This example initiates an export process from the SQL Database, "$DatabaseName", to the Blob storage, "$BlobName".</maml:para>
         </dev:remarks>
@@ -5855,51 +5810,6 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
       <maml:para>Use the Start-AzureSqlDatabaseImport cmdlet to initiate an import operation from Blob storage to an Azure SQL Database. If the database does not exist, it is created using the size and edition values specified. The operation requires a database server connection context. Use the Get-AzureSqlDatabaseImportExportStatus cmdlet to get status on the import operation.</maml:para>
     </maml:description>
     <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Start-AzureSqlDatabaseImport</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
-          <maml:name>SqlConnectionContext</maml:name>
-          <maml:description>
-            <maml:para>The connection context to a SQL Database Server containing the SQL Database.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ServerDataServiceSqlAuth</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>StorageContainer</maml:name>
-          <maml:description>
-            <maml:para>The name of the storage container containing the Blob from which to import.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>DatabaseName</maml:name>
-          <maml:description>
-            <maml:para>The name of the database into which the data is imported. If the database does not exist, it is created with this name.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>BlobName</maml:name>
-          <maml:description>
-            <maml:para>The name of the Blob storage from which to import the database.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Edition</maml:name>
-          <maml:description>
-            <maml:para>If the database does not exist, it is created as this edition. Acceptable values are Web and Business. The default is Web.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DatabaseEdition</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DatabaseMaxSize</maml:name>
-          <maml:description>
-            <maml:para>If the database does not exist, it is created with this maximum size in gigabytes. The acceptable values differ based on edition.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSqlDatabaseImport</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
@@ -5962,19 +5872,6 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
         <command:parameterValue required="true" variableLength="false">ServerDataServiceSqlAuth</command:parameterValue>
         <dev:type>
           <maml:name>ServerDataServiceSqlAuth</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-        <maml:name>StorageContainer</maml:name>
-        <maml:description>
-          <maml:para>The name of the storage container containing the Blob from which to import.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureStorageContainer</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureStorageContainer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -6111,8 +6008,7 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
         <dev:code>PS C:\&gt; C:\PS&gt;$credential = Get-Credential
 C:\PS&gt;$SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credentials $credential
 C:\PS&gt;$StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-C:\PS&gt;$Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-C:\PS&gt;$importRequest = Start-AzureSqlDatabaseImport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
+C:\PS&gt;$importRequest = Start-AzureSqlDatabaseImport -SqlConnectionContext $SqlCtx -StorageContainerName $ContainerName -StorageContext $StorageContext -DatabaseName $DatabaseName -BlobName $BlobName</dev:code>
         <dev:remarks>
           <maml:para>This example initiates an import process from the Blob storage, "$BlobName", into the SQL Database, "DatabaseName".</maml:para>
         </dev:remarks>

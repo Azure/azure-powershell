@@ -118,7 +118,8 @@ function Test-VirtualMachineExtension
         # Set extension settings by raw strings
         $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-        Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
+        $job = Set-AzureRmVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -AsJob
+		$job | Wait-Job 
 
         # Get VM Extension
         $ext = Get-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
@@ -968,9 +969,11 @@ function Test-VirtualMachineAccessExtension
         $extver = '2.0';
         $user2 = "Bar12";
         $password2 = 'FoO@123' + $rgname;
+        $securePassword2 = ConvertTo-SecureString $password2 -AsPlainText -Force;
 
         # Set custom script extension
-        Set-AzureRmVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -UserName $user2 -Password $password2;
+        $cred2 = New-Object System.Management.Automation.PSCredential ($user2, $securePassword2);
+        Set-AzureRmVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -Credential $cred2
 
         $publisher = 'Microsoft.Compute';
         $exttype = 'VMAccessAgent';
@@ -1044,18 +1047,19 @@ function Test-AzureDiskEncryptionExtension
 
     #KeyVault config variables
     $vaultName = "detestvault";
+    $vault2Name = "detestvault2";
     $kekName = "dstestkek";
 
     #VM config variables
     $vmName = "detestvm";
-    $vmsize = 'Standard_D2';
+    $vmsize = 'Standard_DS2';
     $imagePublisher = "MicrosoftWindowsServer";
     $imageOffer = "WindowsServer";
     $imageSku ="2012-R2-Datacenter";
 
     #Storage config variables
     $storageAccountName = "deteststore";
-    $stotype = 'Standard_LRS';
+    $stotype = 'Premium_LRS';
     $vhdContainerName = "vhds";
     $osDiskName = 'osdisk' + $vmName;
     $dataDiskName = 'datadisk' + $vmName;
@@ -1117,6 +1121,17 @@ function Test-AzureDiskEncryptionExtension
         $keyVaultResourceId = $keyVault.ResourceId;
         $keyEncryptionKeyUrl = $kek.Key.kid;
 
+        # Create the 2nd key vault
+        $keyVault2 = New-AzureRmKeyVault -VaultName $vault2Name -ResourceGroupName $rgname -Location $loc -Sku standard;
+        $keyVault2 = Get-AzureRmKeyVault -VaultName $vault2Name -ResourceGroupName $rgname
+        #set enabledForDiskEncryption
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $vault2Name -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #set permissions to AAD app to write secrets and keys
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $vault2Name -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
+
+        $diskEncryptionKeyVaultUrl2 = $keyVault2.VaultUri;
+        $keyVaultResourceId2 = $keyVault2.ResourceId;
+
         # VM Profile & Hardware   
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
@@ -1168,6 +1183,9 @@ function Test-AzureDiskEncryptionExtension
         Assert-NotNull $OsVolumeEncryptionSettings;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+
+        # Change settings on the VM
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl2 -DiskEncryptionKeyVaultId $keyVaultResourceId2 -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
 
         #Add a couple of data volumes to encrypt them
         $p = Add-AzureRmVMDataDisk -VM $p -Name $extraDataDiskName1 -Caching 'ReadOnly' -DiskSizeInGB 2 -Lun 1 -VhdUri $dataDiskVhdUri -CreateOption Empty;

@@ -18,11 +18,13 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.RedisCache.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsData.Import, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ImportAzureRedisCache : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,19 +48,14 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
+            ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
+
+            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.ImportingRedisCache, Name),
                 string.Format(Resources.ImportRedisCache, Name),
                 Name,
                 () => CacheClient.ImportToCache(ResourceGroupName, Name, Files, Format));
-            }
-            else
-            {
-                CacheClient.ImportToCache(ResourceGroupName, Name, Files, Format);
-            }
 
             if (PassThru)
             {

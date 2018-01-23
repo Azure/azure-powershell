@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     certRef.ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm;
                     certRef.Thumbprint = thumbprint;
                     certRef.Visibility = CertificateVisibility.Task;
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, 0, certRef);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 0, targetLowPriority: 0, certReference: certRef);
                     ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
                     ScenarioTestHelpers.WaitForCertificateToFailDeletion(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
                 },

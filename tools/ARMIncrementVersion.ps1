@@ -12,7 +12,7 @@ Param(
 
 function ReplaceVersion([string]$key, [string]$line)
 {
-	$matches = ([regex]::matches($line, "$key = '([\d\.]+)'"))
+	$matches = ([regex]::matches($line, "$key\s*=\s*['\""]([\d\.]+)['\""]"))
 	if($matches.Count -eq 1)
         {
             $packageVersion = $matches.Groups[1].Value
@@ -57,7 +57,7 @@ function ReplaceVersion([string]$key, [string]$line)
             }
             
             $version = [String]::Join(".", $version)
-            $line.Replace("$key = '$packageVersion'", "$key = '$version'")
+            $line -Replace "$key(\s*)=(\s*)(['\""])$packageVersion(['\""])", ($key + '${1}=${2}${3}'  + $version + '$4')
         } else {
             $line
         }

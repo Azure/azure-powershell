@@ -48,9 +48,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerRegistry.1.2.0-preview\lib\net45\Microsoft.Azure.Management.ContainerRegistry.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.ContainerRegistry, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerRegistry.2.0.0\lib\net452\Microsoft.Azure.Management.ContainerRegistry.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
@@ -62,18 +61,32 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureContainerRegistryWebhookEvent.cs" />
+    <Compile Include="Commands\UpdateAzureContainerRegistryWebhook.cs" />
     <Compile Include="Commands\GetAzureContainerRegistry.cs" />
+    <Compile Include="Commands\GetAzureContainerRegistryReplication.cs" />
+    <Compile Include="Commands\GetAzureContainerRegistryWebhook.cs" />
+    <Compile Include="Commands\NewAzureContainerRegistryReplication.cs" />
+    <Compile Include="Commands\NewAzureContainerRegistryWebhook.cs" />
+    <Compile Include="Commands\RemoveAzureContainerRegistryReplication.cs" />
+    <Compile Include="Commands\RemoveAzureContainerRegistryWebhook.cs" />
     <Compile Include="Commands\TestAzureContainerRegistryNameAvailability.cs" />
     <Compile Include="Commands\GetAzureContainerRegistryCredential.cs" />
+    <Compile Include="Commands\TestAzureContainerRegistryWebhook.cs" />
     <Compile Include="Commands\UpdateAzureContainerRegistry.cs" />
     <Compile Include="Commands\RemoveAzureContainerRegistry.cs" />
     <Compile Include="Commands\NewAzureContainerRegistry.cs" />
     <Compile Include="Commands\UpdateAzureContainerRegistryCredential.cs" />
+    <Compile Include="Models\ConversionUtilities.cs" />
     <Compile Include="Models\DeploymentTemplate.cs" />
     <Compile Include="Models\PSContainerRegistry.cs" />
     <Compile Include="Models\ContainerRegistryClient.cs" />
     <Compile Include="Models\ContainerRegistryCmdletBase.cs" />
     <Compile Include="Models\PSContainerRegistryCredential.cs" />
+    <Compile Include="Models\PSContainerRegistryReplication.cs" />
+    <Compile Include="Models\PSContainerRegistryWebhook.cs" />
+    <Compile Include="Models\PSContainerRegistryWebhookEvent.cs" />
+    <Compile Include="Models\PSContainerRegistryEventInfo.cs" />
     <Compile Include="Models\ResourceManagerClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +101,9 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">

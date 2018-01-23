@@ -96,5 +96,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the virtual machine identity.
         public VirtualMachineIdentity Identity { get; set; }
 
+        // Gets or sets the virtual machine zones.
+        public IList<string> Zones { get; set; }
+
+        // Gets or sets the FQDN.
+        public string FullyQualifiedDomainName { get; set; }
     }
 }

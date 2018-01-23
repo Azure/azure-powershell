@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -21,11 +22,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     ///    A wrapper for all ADLA supported data sources.
     ///    This object is returned from a GET
     /// </summary>
-    [Obsolete("In a future release this object will have all 'Properties' properties flattened and the 'Properties' property will be removed. Until then, nested properies will be duplicated.")]
     public class PSDataLakeAnalyticsAccount : DataLakeAnalyticsAccount
     {
-        [Obsolete("This property will be removed in a future release")]
-        public PSDataLakeAnalyticsAccountProperties Properties { get; set; }
+        /// <summary>
+        /// Gets or sets the list of Data Lake storage accounts associated
+        /// with this account.
+        /// </summary>
+        public new IList<PSDataLakeStoreAccountInfo> DataLakeStoreAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of Azure Blob storage accounts associated
+        /// with this account.
+        /// </summary>
+        public new IList<PSStorageAccountInfo> StorageAccounts { get; set; }
 
         public PSDataLakeAnalyticsAccount(DataLakeAnalyticsAccount baseAccount) :
             base(
@@ -38,15 +47,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseAccount.Tags,
                 baseAccount.ProvisioningState,
                 baseAccount.State,
+                baseAccount.CreationTime,
+                baseAccount.LastModifiedTime,
+                baseAccount.Endpoint,
+                baseAccount.AccountId,
                 baseAccount.MaxDegreeOfParallelism,
                 baseAccount.QueryStoreRetention,
                 baseAccount.MaxJobCount,
                 baseAccount.SystemMaxDegreeOfParallelism,
                 baseAccount.SystemMaxJobCount,
                 baseAccount.StorageAccounts,
-                baseAccount.CreationTime,
-                baseAccount.LastModifiedTime,
-                baseAccount.Endpoint,
                 baseAccount.NewTier,
                 baseAccount.CurrentTier,
                 baseAccount.FirewallState,
@@ -56,7 +66,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseAccount.MinPriorityPerJob,
                 baseAccount.ComputePolicies)
         {
-            Properties = new PSDataLakeAnalyticsAccountProperties(baseAccount);
+            if (baseAccount.DataLakeStoreAccounts != null)
+            {
+                DataLakeStoreAccounts = new List<PSDataLakeStoreAccountInfo>(baseAccount.DataLakeStoreAccounts.Count);
+                foreach (var entry in baseAccount.DataLakeStoreAccounts)
+                {
+                    DataLakeStoreAccounts.Add(new PSDataLakeStoreAccountInfo(entry));
+                }
+            }
+
+            if (baseAccount.StorageAccounts != null)
+            {
+                StorageAccounts = new List<PSStorageAccountInfo>(baseAccount.StorageAccounts.Count);
+                foreach (var entry in baseAccount.StorageAccounts)
+                {
+                    StorageAccounts.Add(new PSStorageAccountInfo(entry));
+                }
+            }
         }
     }
 }

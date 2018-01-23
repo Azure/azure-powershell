@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
         [ValidateNotNullOrEmpty]
-        public string[] MetricNames { get; set; }
+        [Alias("MetricNames")]
+        public string[] MetricName { get; set; }
 
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
@@ -56,9 +57,9 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         protected string ProcessParameters()
         {
             var buffer = new StringBuilder();
-            if (this.MetricNames != null)
+            if (this.MetricName != null)
             {
-                var metrics = this.MetricNames
+                var metrics = this.MetricName
                     .Select(n => string.Concat("name.value eq '", n, "'"))
                     .Aggregate((a, b) => string.Concat(a, " or ", b));
                 buffer.Append(metrics);
@@ -72,6 +73,15 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            string cmdletName = "Get-AzureRmMetricDefinition";
+            this.WriteIdentifiedWarning(
+                cmdletName: cmdletName,
+                topic: "Parameter deprecation", 
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
+            this.WriteIdentifiedWarning(
+                cmdletName: cmdletName,
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 

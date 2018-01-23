@@ -132,6 +132,10 @@
   <data name="BothSubscriptionIdAndNameProvided" xml:space="preserve">
     <value>Please provide either a subscription ID or a subscription name.</value>
   </data>
+  <data name="CannotSetDefaultContext" xml:space="preserve">
+    <value>Unable to set default context '{0}'.</value>
+    <comment>{0} is the context</comment>
+  </data>
   <data name="ChangingContextSubscription" xml:space="preserve">
     <value>Switching targeted subscription in the context to '{0}'</value>
     <comment>{0} is subscription (name or id)</comment>
@@ -147,8 +151,19 @@
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
   </data>
+  <data name="ContextCannotBeNull" xml:space="preserve">
+    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+  </data>
   <data name="ContextChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
+  </data>
+  <data name="ContextNameTarget" xml:space="preserve">
+    <value>Context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="CouldNotRetrieveAutosaveSetting" xml:space="preserve">
+    <value>No autosave setting detected in environment variable '{0}'. </value>
+    <comment>{0} = variable name</comment>
   </data>
   <data name="CurrentTenantInUse" xml:space="preserve">
     <value>Current tenant with Id '{0}' will be used.</value>
@@ -159,11 +174,27 @@
   <data name="DataCollectionEnabledWarning" xml:space="preserve">
     <value>Cmdlets will send data to Microsoft to help improve the customer experience</value>
   </data>
+  <data name="DefaultResourceGroupChangeWarning" xml:space="preserve">
+    <value>Changing default resource group to '{0}'</value>
+  </data>
+  <data name="DefaultResourceGroupKey" xml:space="preserve">
+    <value>Default Resource Group</value>
+  </data>
+  <data name="DefaultResourceGroupRemovalWarning" xml:space="preserve">
+    <value>Removing default resource group</value>
+  </data>
+  <data name="DefaultResourceGroupTarget" xml:space="preserve">
+    <value>Current context</value>
+  </data>
   <data name="DisableDataCollection" xml:space="preserve">
     <value>Turn off data collection for Azure PowerShell cmdlets</value>
   </data>
   <data name="EnableDataCollection" xml:space="preserve">
     <value>Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience</value>
+  </data>
+  <data name="ErrorRetrievingAutosaveSetting" xml:space="preserve">
+    <value>Unable to retrieve variable value '{0}' to determine AutoSaveSetting, received exception '{1}'.</value>
+    <comment>{0} = variable name; {1} = exception</comment>
   </data>
   <data name="FileNotFound" xml:space="preserve">
     <value>Cannot find file '{0}'</value>
@@ -189,6 +220,10 @@
   </data>
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
+  </data>
+  <data name="OverwriteContextWarning" xml:space="preserve">
+    <value>Overwrite context '{0}' with context '{1}'</value>
+    <comment>{0} = target context name, {1} = source context name</comment>
   </data>
   <data name="ProcessImportContextFromFile" xml:space="preserve">
     <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}</value>
@@ -217,8 +252,37 @@
     <value>Personally identifiable information and secrets may be written to the file at '{0}'.  Please ensure that the saved file is assigned appropriate access controls</value>
     <comment>{0} is file path</comment>
   </data>
+  <data name="RemoveContextMessage" xml:space="preserve">
+    <value>Remove context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="RemoveContextTarget" xml:space="preserve">
+    <value>Context</value>
+  </data>
+  <data name="RemoveDefaultContextCaption" xml:space="preserve">
+    <value>Remove Default Context</value>
+  </data>
+  <data name="RemoveDefaultContextQuery" xml:space="preserve">
+    <value>'{0}' is the default context used for communicating with Azure.  Are you sure you want to remove the default context?</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="RenameContextMessage" xml:space="preserve">
+    <value>Rename context '{0}' to '{1}'</value>
+    <comment>{0} = source context name, {1} = target context name</comment>
+  </data>
+  <data name="ReplaceContextCaption" xml:space="preserve">
+    <value>Overwrite existing context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="ReplaceContextQuery" xml:space="preserve">
+    <value>Are you sure you want to replace existing context '{0}'?</value>
+    <comment>{0} = context name</comment>
+  </data>
   <data name="RmProfileNull" xml:space="preserve">
     <value>The Resource Manager context was not properly initialized.  Please load the module again.</value>
+  </data>
+  <data name="SelectContextPrompt" xml:space="preserve">
+    <value>Change the current context</value>
   </data>
   <data name="SelectedSubscriptionNotActive" xml:space="preserve">
     <value>Selected subscription is in '{0}' state. </value>
@@ -242,8 +306,9 @@
   <data name="SendFeedbackRecommendationQuestion" xml:space="preserve">
     <value>With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?</value>
   </data>
-  <data name="SetAzureRmContextNoParameterSet" xml:space="preserve">
-    <value>Please provide either a subscription ID, subscription name, tenant Id or domain.</value>
+  <data name="SetPropertyAction" xml:space="preserve">
+    <value>Setting property '{0}'='{1}'</value>
+    <comment>{0} = key, {1} = value</comment>
   </data>
   <data name="SubscriptionChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets in this session at a different subscription</value>
@@ -251,8 +316,15 @@
   <data name="SubscriptionNameNotFoundError" xml:space="preserve">
     <value>Unable to find subscription with name '{0}'.</value>
   </data>
+  <data name="SubscriptionNameOrIdNotFound" xml:space="preserve">
+    <value>Provided subscription '{0}' does not exist.</value>
+    <comment>{0} = subscription name or subscription id</comment>
+  </data>
   <data name="SubscriptionNotFoundError" xml:space="preserve">
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
+  </data>
+  <data name="SubscriptionOrTenantRequired" xml:space="preserve">
+    <value>Please provide a valid tenant or a valid subscription.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
@@ -274,5 +346,61 @@
   </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>
+  </data>
+  <data name="AutosaveSettingFromEnvironment" xml:space="preserve">
+    <value>Using autosave setting from environment variable '{0}'='{1}'.</value>
+    <comment>{0} = variable name; {1} = variable value</comment>
+  </data>
+  <data name="InvalidEndpointProvided" xml:space="preserve">
+    <value>Endpoint provided is invalid. Please check the value and retry again with the correct value.</value>
+  </data>
+  <data name="ClearContextProcessMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions for the current process.</value>
+  </data>
+  <data name="ClearContextProcessTarget" xml:space="preserve">
+    <value>Current process context</value>
+  </data>
+  <data name="ClearContextUserContinueMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions in all sessions for the current user?</value>
+  </data>
+  <data name="ClearContextUserProcessMessage" xml:space="preserve">
+    <value>Remove all accounts and subscriptions for all sessiosn started by the current user</value>
+  </data>
+  <data name="ClearContextUserTarget" xml:space="preserve">
+    <value>All contexts for the current user</value>
+  </data>
+  <data name="AutosaveDisabledForContextParameter" xml:space="preserve">
+    <value>Turning Autosave off because an AzureRmContext was passed as a parameter.</value>
+  </data>
+  <data name="AutosaveSettingFinalValue" xml:space="preserve">
+    <value>Using Autosave scope '{0}'</value>
+    <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromFile" xml:space="preserve">
+    <value>Read context save mode from file '{0}', Mode = '{1}'.</value>
+    <comment>{0} = autosave settings file name, {1} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromScope" xml:space="preserve">
+    <value>Setting Autosave scope to '{0}' as specified in the cmdlet parameters.</value>
+    <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="AutosaveSettingFromSession" xml:space="preserve">
+    <value>Autosave setting from startup session: '{0}'</value>
+    <comment>{0} = CurrentUser | Process</comment>
+  </data>
+  <data name="RemoveDefaultsCaption" xml:space="preserve">
+    <value>Remove defaults?</value>
+  </data>
+  <data name="RemoveDefaultsMessage" xml:space="preserve">
+    <value>Remove all existing defaults in the current context?</value>
+  </data>
+  <data name="CreateResourceGroupCaption" xml:space="preserve">
+    <value>Create Resource Group?</value>
+  </data>
+  <data name="CreateResourceGroupMessage" xml:space="preserve">
+    <value>Create new resource group '{0}' and set as default?</value>
+  </data>
+  <data name="SubscriptionOrTenantMissing" xml:space="preserve">
+    <value>Must supply Subscription Id and Tenant Id when using -SkipValidation</value>
   </data>
 </root>

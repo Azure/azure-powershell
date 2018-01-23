@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerSynchronizeSingle()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeSingle");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
         public void TestAnalysisServicesServerLoginWithSPN()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");

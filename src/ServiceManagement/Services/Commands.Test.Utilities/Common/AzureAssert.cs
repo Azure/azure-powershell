@@ -28,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     using DefinitionConfigurationSetting = Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema.ConfigurationSetting;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Commands.Common;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public static class AzureAssert
     {

@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetContainerScenario
+function Test-MabGetContainers
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -24,7 +24,7 @@ function Test-GetContainerScenario
 	Assert-AreEqual $namedContainer.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 }
 
-function Test-UnregisterContainerScenario
+function Test-MabUnregisterContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;

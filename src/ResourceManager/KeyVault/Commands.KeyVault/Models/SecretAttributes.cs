@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.NotBefore = notBefore;
             this.ContentType = contentType;
             this.Tags = tags;
-            this.PurgeDisabled = false;
         }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.ContentType = contentType;
             this.RecoveryLevel = deletionRecoveryLevel;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
-            this.PurgeDisabled = false;
         }
 
         public bool? Enabled { get; set; }
@@ -64,12 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public Hashtable Tags { get; set; }
 
-        /// <summary>
-        /// Obsolete flag indicating that the secret is protected against purge.
-        /// </summary>
-        /// <remarks>
-        /// Deprecated, will be removed in the next PowerShell release.
-        /// </remarks>
+        [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }

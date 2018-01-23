@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            _userAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddUserAgent(string productName, string productVersion)
         {
-            this.UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            this._userAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
@@ -195,7 +195,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             this.AddUserAgent(productName, string.Empty);
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        HashSet<ProductInfoHeaderValue> _userAgents { get; set; }
+
+        public ProductInfoHeaderValue[] UserAgents
+        {
+            get
+            {
+                return _userAgents?.ToArray();
+            }
+        }
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
@@ -242,6 +250,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
 
             return client;
+        }
+
+        public void RemoveUserAgent(string name)
+        {
+            this._userAgents?.RemoveWhere(p => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

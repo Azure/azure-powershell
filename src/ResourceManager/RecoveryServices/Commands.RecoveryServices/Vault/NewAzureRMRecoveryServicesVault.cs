@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets the location of the vault
         /// </summary>
         [Parameter(Mandatory = true)]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

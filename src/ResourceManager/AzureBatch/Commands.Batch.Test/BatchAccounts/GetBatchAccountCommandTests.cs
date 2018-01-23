@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             BatchAccount accountResource01 = BatchTestHelpers.CreateAccountResource(accountName01, resourceGroup);
             string accountName02 = "account02";
             BatchAccount accountResource02 = BatchTestHelpers.CreateAccountResource(accountName02, resourceGroup);
-            BatchAccountContext expected01 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource01);
-            BatchAccountContext expected02 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource02);
+            BatchAccountContext expected01 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource01, null);
+            BatchAccountContext expected02 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource02, null);
 
             batchClientMock.Setup(b => b.ListAccounts(null, resourceGroup)).Returns(new List<BatchAccountContext>() { expected01, expected02 });
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
             batchClientMock.Setup(b => b.GetAccount(resourceGroup, accountName)).Returns(expected);
 
             cmdlet.AccountName = accountName;

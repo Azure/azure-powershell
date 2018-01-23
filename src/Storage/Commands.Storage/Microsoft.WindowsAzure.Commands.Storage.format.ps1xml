@@ -21,6 +21,14 @@
             <Label>LastModified</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSnapshot</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SnapshotTime</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -30,6 +38,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.LastModified</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.IsSnapshot</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SnapshotTime</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -43,7 +57,7 @@
         <TypeName>Microsoft.WindowsAzure.Storage.File.CloudFileDirectory</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>$_.Parent.Uri</ScriptBlock>
+        <ScriptBlock>$_.Parent.SnapshotQualifiedUri</ScriptBlock>
         <Label>Directory</Label>
       </GroupBy>
       <TableControl>
@@ -162,6 +176,11 @@
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AccessTier</Label>
+            <Alignment>Left</Alignment>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SnapshotTime</Label>
             <width>20</width>
             <Alignment>Left</Alignment>
@@ -184,6 +203,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
@@ -369,6 +391,11 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AccessTier</Label>
+            <Alignment>Left</Alignment>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SnapshotTime</Label>
             <Alignment>Left</Alignment>
             <Width>20</Width>
@@ -391,6 +418,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ICloudBlob.Properties.StandardBlobTier</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
@@ -544,6 +574,64 @@
               <ListItem>
                 <Label>Metrics.RetentionDays</Label>
                 <ScriptBlock>$_.Metrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DefaultServiceVersion</Label>
+                <PropertyName>DefaultServiceVersion</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Logging.Version</Label>
+                <ScriptBlock>$_.Logging.Version</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Logging.LoggingOperations</Label>
+                <ScriptBlock>$_.Logging.LoggingOperations</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Logging.RetentionDays</Label>
+                <ScriptBlock>$_.Logging.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HourMetrics.Version</Label>
+                <ScriptBlock>$_.HourMetrics.Version</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HourMetrics.MetricsLevel</Label>
+                <ScriptBlock>$_.HourMetrics.MetricsLevel</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HourMetrics.RetentionDays</Label>
+                <ScriptBlock>$_.HourMetrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.Version</Label>
+                <ScriptBlock>$_.MinuteMetrics.Version</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.MetricsLevel</Label>
+                <ScriptBlock>$_.MinuteMetrics.MetricsLevel</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.RetentionDays</Label>
+                <ScriptBlock>$_.MinuteMetrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Cors</Label>
+                <ScriptBlock>$_.Cors</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>DefaultServiceVersion</Label>

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermenvironment
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Get endpoints and metadata for an instance of Azure services.
 ## SYNTAX
 
 ```
-Get-AzureRmEnvironment [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmEnvironment [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +90,7 @@ PublishSettingsFileUrl                            : https://manage.windowsazure.
 ResourceManagerUrl                                : https://management.usgovcloudapi.net/
 SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
 StorageEndpointSuffix                             : core.usgovcloudapi.net
-ActiveDirectoryAuthority                          : https://login-us.microsoftonline.com/
+ActiveDirectoryAuthority                          : https://login.microsoftonline.us/
 GraphUrl                                          : https://graph.windows.net/
 GraphEndpointResourceId                           : https://graph.windows.net/
 TrafficManagerDnsSuffix                           : usgovtrafficmanager.net
@@ -102,6 +103,21 @@ AzureKeyVaultServiceEndpointResourceId            : https://vault.usgovcloudapi.
 This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Azure instance to get.

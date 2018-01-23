@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/remove-azurermrelaynamespace
 schema: 2.0.0
 ---
 
@@ -12,12 +13,12 @@ Removes the namespace from the specified resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmRelayNamespace [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmRelayNamespace [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzureRmRelayNamespace** cmdlet removes the namespace from the specified resource group.
-
 
 ## EXAMPLES
 
@@ -29,6 +30,21 @@ PS C:\> Remove-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestU
 Removes the Relay namespace `TestNameSpace-Relay1` from the specified resource group `Default-ServiceBus-WestUS`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Relay Namespace Name.
