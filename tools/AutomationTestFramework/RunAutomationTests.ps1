@@ -14,6 +14,7 @@
 param (
     [Parameter(Mandatory = $true)]
     [string] $spPassword,
+    [string] $modulesDir = '',
     [bool] $createPackages = $true,
     [bool] $uploadPackages = $true,
     [bool] $processRunbooks = $true,
@@ -79,6 +80,7 @@ try {
             -archiveDir $packagingDir
         Create-SignedModules `
             -signedModules $signedModules `
+            -modulesDir $modulesDir `
             -archiveDir $packagingDir
         Create-SmokeTestModule `
             -srcPath $srcPath `
