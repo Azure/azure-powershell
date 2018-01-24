@@ -12,10 +12,23 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ## SYNTAX
 
+### GeoDRBreakPairFailOverPropertiesSet (Default)
 ```
 Set-AzureRmServiceBusGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String>
- [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### GeoDRConfigurationInputObjectSet
+```
+Set-AzureRmServiceBusGeoDRConfigurationBreakPair [-InputObject] <PSServiceBusDRConfigurationAttributes>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoDRConfigResourceIdParameterSet
+```
+Set-AzureRmServiceBusGeoDRConfigurationBreakPair [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +38,7 @@ The **Set-AzureRmServiceBusGeoDRConfigurationBreakPair** cmdlet disables the Dis
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmServiceBusDRConfigurationsBreakPairing -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Set-AzureRmServiceBusGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
 ```
 
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
@@ -62,18 +75,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation
+### -InputObject
+Service Bus GeoDR Configuration Object
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: PSServiceBusDRConfigurationAttributes
+Parameter Sets: GeoDRConfigurationInputObjectSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -82,8 +95,8 @@ DR Configuration Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: Alias
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 2
@@ -97,8 +110,8 @@ Namespace Name - Primary Namespace
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 1
@@ -108,8 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -128,8 +140,23 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+GeoDRConfiguration Resource Id
+
+```yaml
+Type: String
+Parameter Sets: GeoDRConfigResourceIdParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -161,11 +188,12 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 
 ## NOTES

@@ -86,11 +86,11 @@
     <Compile Include="Models\PSCheckNameAvailabilityAttributes.cs" />
     <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
     <Compile Include="Models\PSCorrelationFilterAttributes.cs" />
-    <Compile Include="Models\PSFilterTypeEnum.cs" />
+    <Compile Include="Models\FilterTypeEnum.cs" />
     <Compile Include="Models\PSListKeysAttributes.cs" />
     <Compile Include="Models\PSNamespaceAttributes.cs" />
     <Compile Include="Models\PSNamespaceLongRunningOperation.cs" />
-    <Compile Include="Models\PSNamespaceState.cs" />
+    <Compile Include="Models\NamespaceState.cs" />
     <Compile Include="Models\PSOperationAttributes.cs" />
     <Compile Include="Models\PSOperationDisplayAttributes.cs" />
     <Compile Include="Models\PSQueueAttributes.cs" />

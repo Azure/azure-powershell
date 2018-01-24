@@ -12,10 +12,23 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ## SYNTAX
 
+### GeoDRBreakPairFailOverPropertiesSet (Default)
 ```
 Set-AzureRmServiceBusGeoDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String>
- [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### GeoDRConfigurationInputObjectSet
+```
+Set-AzureRmServiceBusGeoDRConfigurationFailOver [-InputObject] <PSServiceBusDRConfigurationAttributes>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoDRConfigResourceIdParameterSet
+```
+Set-AzureRmServiceBusGeoDRConfigurationFailOver [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +38,7 @@ The **Set-AzureRmServiceBusGeoDRConfigurationFailOver** cmdlet envokes GEO DR fa
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmServiceBusDRConfigurationFailOver -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\> Set-AzureRmServiceBusGeoDRConfigurationFailOver -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
 Invokes the Failover over alias "SampleDRCongifName", reconfigures and point to Secondary namespace "SampleNamespace_Secondary"
@@ -62,18 +75,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation
+### -InputObject
+Service Bus GeoDR Configuration Object
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: PSServiceBusDRConfigurationAttributes
+Parameter Sets: GeoDRConfigurationInputObjectSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -82,8 +95,8 @@ DR Configuration Name - Alias
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: Alias
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 2
@@ -97,8 +110,8 @@ Namespace Name - Secondary Namespace
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 1
@@ -108,8 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -128,7 +140,22 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+GeoDRConfiguration Resource Id
+
+```yaml
+Type: String
+Parameter Sets: GeoDRConfigResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -161,11 +188,12 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 
 ## NOTES

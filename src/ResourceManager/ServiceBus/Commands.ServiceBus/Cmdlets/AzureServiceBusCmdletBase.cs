@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.ServiceBus;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Xml;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,13 +34,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
-        public const string InputFileParameterSetName = "InputFileParameterSet";
-        public const string SASRuleParameterSetName = "SASRuleParameterSet";
-        public const string QueueParameterSetName = "QueueParameterSet";
-        public const string TopicParameterSetName = "TopicParameterSet";
-        public const string SubscriptionParameterSetName = "SubscriptionParameterSet";
-        public const string RegenerateKeysSetName = "RegenerateKeysSet";
-
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
 
@@ -77,7 +72,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicInputObjectParameterSet = "TopicInputObjectSet";
         protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
-        protected const string AliasInputObjectParameterSet = "AliasInputObjectSet";
+        protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+
+        //Parameter sets for ResourceID
+        protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
+        protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
-        protected const string AliasPropertiesParameterSet = "AliasPropertiesSet";
+        protected const string GeoDRBreakPairFailOverParameterSet = "GeoDRBreakPairFailOverPropertiesSet";
+        protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -99,8 +100,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
-        protected const string AliasAliasName = "Alias";
-        protected const string AliasAliasObj = "AliasObj";
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
@@ -252,6 +251,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             return default(T);
+        }
+
+        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
+        {
+            ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
+            returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];
+            return returnResourceIdentifier;
         }
 
         #region TagsHelper

@@ -12,9 +12,24 @@ Creates an new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
+### GeoDRPropertiesSet (Default)
 ```
 New-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  [-PartnerNamespace] <String> [[-AlternateName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### NamespaceInputObjectSet
+```
+New-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [-Name] <String>
+ [-PartnerNamespace] <String> [[-AlternateName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### NamespaceResourceIdParameterSet
+```
+New-AzureRmServiceBusGeoDRConfiguration [-Name] <String> [-PartnerNamespace] <String>
+ [[-AlternateName] <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Namespace Object
+
+```yaml
+Type: PSNamespaceAttributes
+Parameter Sets: NamespaceInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 DR Configuration Name
 
@@ -104,7 +134,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
 Required: True
@@ -134,8 +164,23 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: ResourceGroup
+Parameter Sets: GeoDRPropertiesSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Namespace Resource Id
+
+```yaml
+Type: String
+Parameter Sets: NamespaceResourceIdParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -167,6 +212,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 
 ## OUTPUTS

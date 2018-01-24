@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create New NameSpace:{0} for ResourceGroup:{1}.
+        ///   Looks up a localized string similar to Create New Namespace:{0} for ResourceGroup:{1}.
         /// </summary>
         internal static string CreateNamesapce {
             get {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Alias: {0} of NnameSpace{1}.
+        ///   Looks up a localized string similar to Deleting Alias: {0} of Nnamespace{1}.
         /// </summary>
         internal static string DRRemoveAlias {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Queue:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Deleting Queue:{0} of Namespace:{1}.
         /// </summary>
         internal static string RemoveQueue {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Rule:{0} for Subscription:{1} of NameSpace:{2}.
+        ///   Looks up a localized string similar to Deleting Rule:{0} for Subscription:{1} of Namespace:{2}.
         /// </summary>
         internal static string RemoveRule {
             get {
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Subscription:{0} for Topic:{1} of NameSpace:{2}.
+        ///   Looks up a localized string similar to Deleting Subscription:{0} for Topic:{1} of Namespace:{2}.
         /// </summary>
         internal static string RemoveSubscription {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Topic:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Deleting Topic:{0} of Namespace:{1}.
         /// </summary>
         internal static string RemoveTopic {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Queue:{0} of the NameSpace:{1}.
+        ///   Looks up a localized string similar to Updating Queue:{0} of the Namespace:{1}.
         /// </summary>
         internal static string UpdateQueue {
             get {
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Topic:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Update Topic:{0} of Namespace:{1}.
         /// </summary>
         internal static string UpdateTopic {
             get {

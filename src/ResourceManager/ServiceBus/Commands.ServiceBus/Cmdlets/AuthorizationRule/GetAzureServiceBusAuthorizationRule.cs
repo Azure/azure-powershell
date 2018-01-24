@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = " GeoDR Configuration Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string AliasName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]

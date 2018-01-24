@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias Name")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string AliasName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
