@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.RedisCache
 ms.assetid: BCF989AE-A718-4AFE-B7C0-8B148468D4EE
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachediagnostics
 schema: 2.0.0
@@ -14,7 +14,7 @@ Disables diagnostics on an Azure Redis Cache.
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName <String> -Name <String>
+Remove-AzureRmRedisCacheDiagnostics [-ResourceGroupName <String>] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Specifies the name of the cache.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,9 +70,9 @@ Specifies the name of the resource group that contains the cache.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
