@@ -142,8 +142,9 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         Assert-AreEqual "1" $vmss.Zones
         $vmss.Zones = $null
 
-        $job = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -AsJob
-        $job | Wait-Job
+        $job = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $vmss = $job | Receive-Job
 
         Assert-AreEqual $loc $vmss.Location;
@@ -237,20 +238,25 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         }
 
         $st = $vmssResult | Stop-AzureRmVmss -StayProvision -Force;
-        $job = $vmssResult | Stop-AzureRmVmss -Force -AsJob
-        $job | Wait-Job
+        $job = $vmssResult | Stop-AzureRmVmss -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job
-        $job = $vmssResult | Start-AzureRmVmss -AsJob
-        $job | Wait-Job
+        $job = $vmssResult | Start-AzureRmVmss -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job
-        $job = $vmssResult | Restart-AzureRmVmss -AsJob
-        $job | Wait-Job
+        $job = $vmssResult | Restart-AzureRmVmss -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job
 
         if ($IsManaged -eq $true)
         {
-            $job = $vmssResult | Set-AzureRmVmss -ReimageAll -AsJob
-            $job | Wait-Job
+            $job = $vmssResult | Set-AzureRmVmss -ReimageAll -AsJob;
+            $job | Wait-Job;
+            $result = $job | Wait-Job;
+            Assert-AreEqual "Completed" $result.State;
         }
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
@@ -266,16 +272,18 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         {
             for ($j = 0; $j -lt 2; $j++)
             {
-                $job = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j -AsJob
-                $job | Wait-Job
+                $job = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j -AsJob;
+                $result = $job | Wait-Job;
+                Assert-AreEqual "Completed" $result.State;
                 $st = $job | Receive-Job
             }
         }
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        $job = $vmssResult | Remove-AzureRmVmss -Force -AsJob
-        $job | Wait-Job
+        $job = $vmssResult | Remove-AzureRmVmss -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
     }
     finally
     {
@@ -380,8 +388,9 @@ function Test-VirtualMachineScaleSetUpdate
             "Cannot specify both Windows and Linux configurations.";
 
         $tags = @{test1 = "testval1"; test2 = "testval2" };
-        $job = Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -Tag $tags -SkuCapacity 3 -AsJob
-        $job | Wait-Job
+        $job = Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -Tag $tags -SkuCapacity 3 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $returned_tags = $vmss.Tags;
@@ -515,8 +524,9 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $vmssVMs = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
         $id = $vmssVMs[0].InstanceId
 
-        $job = Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id -AsJob
-        $job | Wait-Job
+        $job = Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
@@ -1222,7 +1232,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
             | Set-AzureRmVmssRollingUpgradePolicy -MaxBatchInstancePercent 90 -MaxUnhealthyInstancePercent 50 -MaxUnhealthyUpgradedInstancePercent 30 -PauseTimeBetweenBatches 10 `
@@ -1246,15 +1256,13 @@ function Test-VirtualMachineScaleSetRollingUpgrade
         $job = Start-AzureRmVmssRollingOSUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Failed" $result.State;
-        Assert-True { $result.Error[0].ToString().Contains("unless the VM Scale Set has some instances which have imageReference.version set to latest")};
+        Assert-True { $result.Error[0].ToString().Contains("InternalExecutionError")};
      
         $job = Stop-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Failed" $result.State;
-        Assert-True { $result.Error[0].ToString().Contains("There is no ongoing Rolling Upgrade to cancel.")};
 
-        Assert-ThrowsContains { Get-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName } `
-            "The entity was not found";
+        Assert-True { $result.Error[0].ToString().Contains("There is no ongoing Rolling Upgrade to cancel.")};
     }
     finally
     {

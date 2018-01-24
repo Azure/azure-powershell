@@ -160,12 +160,15 @@ function Test-VirtualMachine
         Assert-AreEqual "BGInfo" $vm1.Extensions[0].VirtualMachineExtensionType
         Assert-AreEqual "Microsoft.Compute" $vm1.Extensions[0].Publisher
 
-        $job = Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob
-		$job | Wait-Job
-        $job = Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob
-		$job | Wait-Job
-        $job = Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned -AsJob
-		$job | Wait-Job
+        $job = Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $job = Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $job = Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Update
         $p.Location = $vm1.Location;
@@ -207,9 +210,10 @@ function Test-VirtualMachine
         Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
-        $job = Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force -AsJob
-        $job | Wait-Job
-		$vms = Get-AzureRmVM -ResourceGroupName $rgname;
+        $job = Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $vms = Get-AzureRmVM -ResourceGroupName $rgname;
         Assert-AreEqual $vms $null;
 
         # Availability Set
@@ -384,8 +388,9 @@ function Test-VirtualMachinePiping
 
         $dest = Get-ComputeTestResourceName;
         $templatePath = "$TestOutputRoot\template.txt";
-        $job = Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath -AsJob
-		$job | Wait-Job
+        $job = Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
@@ -461,8 +466,9 @@ function Test-VirtualMachineUpdateWithoutNic
              | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $job = $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc -AsJob
-		$job | Wait-Job
+        $job = $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Get VM
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
@@ -1320,8 +1326,9 @@ function Test-VirtualMachineDataDisk
         $vm1 = Add-AzureRmVMDataDisk -VM $vm1 -Name $dataDiskName3 -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
 
         # Update
-        $job = Update-AzureRmVM -ResourceGroupName $rgname -VM $vm1 -AsJob
-		$job | Wait-Job
+        $job = Update-AzureRmVM -ResourceGroupName $rgname -VM $vm1 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
@@ -2700,8 +2707,9 @@ function Test-VirtualMachineRedeploy
         Assert-NotNull $vm2.Location;
 
         # Redeploy the VM
-        $job = Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Redeploy -AsJob
-		$job | Wait-Job
+        $job = Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Redeploy -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
@@ -2987,8 +2995,9 @@ function Test-VirtualMachineManagedDiskConversion
         Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
 
         # Convert VM to managed disks
-        $job = ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname -AsJob
-		$job | Wait-Job
+        $job = ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgname -VMName $vmname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $vm2 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
