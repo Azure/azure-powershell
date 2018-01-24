@@ -136,12 +136,12 @@ function Test-GetTopology
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
 
         #Verification
-        Assert-AreEqual $topology.Resources.Count 9
-        Assert-AreEqual $topology.Resources[2].Name $vm.Name
-        Assert-AreEqual $topology.Resources[2].Id $vm.Id
-        Assert-AreEqual $topology.Resources[2].Associations[0].Name $nic.Name
-        Assert-AreEqual $topology.Resources[2].Associations[0].ResourceId $nic.Id
-        Assert-AreEqual $topology.Resources[2].Associations[0].AssociationType Contains
+        $topologyItem = $topology.Resources | Where-Object { $_.Id -eq $vm.Id}
+
+        Assert-AreEqual $topologyItem.Name $vm.Name
+        Assert-AreEqual $topologyItem.Associations[0].Name $nic.Name
+        Assert-AreEqual $topologyItem.Associations[0].ResourceId $nic.Id
+        Assert-AreEqual $topologyItem.Associations[0].AssociationType Contains
     }
     finally
     {
@@ -166,8 +166,8 @@ function Test-GetSecurityGroupView
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
     $templateFile = "..\..\TestData\Deployment.json"
-    
-    try 
+
+    try
     {
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
@@ -180,15 +180,15 @@ function Test-GetSecurityGroupView
         
         # Create Network Watcher
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
-        
+
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
-        
+
         #Get network security group
         $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
         
         # Set security rule
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
+        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name $securityRuleName -Description "test" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
         $nsg[0] | Set-AzureRmNetworkSecurityGroup
 
         #Use it when running test in record mode
@@ -198,14 +198,16 @@ function Test-GetSecurityGroupView
         $job = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $nw -Target $vm.Id -AsJob
 		$job | Wait-Job
 		$nsgView = $job | Receive-Job
+        $nsgEffectiveRule = $nsgView.NetworkInterfaces[0].EffectiveSecurityRules | Where-Object { $_.Name -like "*${securityRuleName}" };
 
         #Verification
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Access Deny
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].DestinationPortRange 80-80
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Direction Outbound
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Name UserRule_scr1
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Protocol TCP
-        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Priority 122
+        Assert-NotNull $nsgEffectiveRule
+        Assert-AreEqual $nsgEffectiveRule.Access Deny
+        Assert-AreEqual $nsgEffectiveRule.DestinationPortRange 80-80
+        Assert-AreEqual $nsgEffectiveRule.Direction Outbound
+        Assert-AreEqual $nsgEffectiveRule.Name ("UserRule_" + $securityRuleName)
+        Assert-AreEqual $nsgEffectiveRule.Protocol TCP
+        Assert-AreEqual $nsgEffectiveRule.Priority 122
     }
     finally
     {
@@ -283,18 +285,18 @@ function Test-VerifyIPFlow
     $location = "West Central US"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-	$nwRgName = Get-ResourceGroupName
-	$securityGroupName = Get-ResourceName
-	$templateFile = "..\..\TestData\Deployment.json"
-    
-    try 
+    $nwRgName = Get-ResourceGroupName
+    $securityGroupName = Get-ResourceName
+    $templateFile = "..\..\TestData\Deployment.json"
+
+    try
     {
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
-        
+
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
@@ -303,13 +305,16 @@ function Test-VerifyIPFlow
         
         #Get network security group
         $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
+        # Drop security rules to avoid conflicts
+        $nsg[0].SecurityRules = $null;
+        $nsgResult = $nsg[0] | Set-AzureRmNetworkSecurityGroup
 
         # Set security rules
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test1" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
-        $nsg[0] | Set-AzureRmNetworkSecurityGroup
+        $nsgResult | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test1" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
+        $nsgResult | Set-AzureRmNetworkSecurityGroup
 
-        $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name sr2 -Description "test2" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
-        $nsg[0] | Set-AzureRmNetworkSecurityGroup
+        $nsgResult | Add-AzureRmNetworkSecurityRuleConfig -Name sr2 -Description "test2" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
+        $nsgResult | Set-AzureRmNetworkSecurityGroup
 
         #Start-Sleep -s 300
 

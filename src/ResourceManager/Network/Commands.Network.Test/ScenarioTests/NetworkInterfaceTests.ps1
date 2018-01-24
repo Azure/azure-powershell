@@ -111,15 +111,16 @@ function Test-NetworkInterfaceCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
-    
-    try 
+
+    try
     {
         # Create the resource group
-        
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
+
         # Create the publicip
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
@@ -138,7 +139,6 @@ function Test-NetworkInterfaceCRUD
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
 
-        
         # Check publicIp address reference
         $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
@@ -163,7 +163,7 @@ function Test-NetworkInterfaceCRUD
 		$job | Wait-Job
 		$delete = $job | Receive-Job
         Assert-AreEqual true $delete
-        
+
         $list = Get-AzureRmNetworkInterface -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
