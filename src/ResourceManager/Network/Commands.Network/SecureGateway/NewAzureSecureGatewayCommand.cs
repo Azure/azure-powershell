@@ -95,11 +95,6 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                Sku = new PSSecureGatewaySku()
-                {
-                    Name = MNM.SecureGatewaySkuName.StandardLarge,
-                    Tier = MNM.SecureGatewayTier.Standard
-                },
                 IpConfigurations = this.IpConfigurations,
                 ApplicationRuleCollections = this.ApplicationRuleCollections
             };
@@ -107,6 +102,11 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecureGateway>(secureGw);
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            nsgModel.Sku = new MNM.SecureGatewaySku
+            {
+                Name = MNM.SecureGatewaySkuName.StandardLarge,
+                Tier = MNM.SecureGatewayTier.Standard
+            };
 
             // Execute the Create Secure Gateway call
             this.SecureGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);

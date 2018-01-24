@@ -21,19 +21,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSSecureGateway : PSTopLevelResource
     {
-        public PSSecureGatewaySku Sku { get; set; }
-
         public List<PSSecureGatewayIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
         
         public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string SkuText
-        {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented); }
-        }
 
         [JsonIgnore]
         public string IpConfigurationsText

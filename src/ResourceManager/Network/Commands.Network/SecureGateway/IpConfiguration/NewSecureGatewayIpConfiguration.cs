@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
@@ -20,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmSecureGatewayIpConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSSecureGatewayIpConfiguration))]
     public class NewAzureSecureGatewayIpConfigurationCommand : NetworkBaseCmdlet
     {
+        private const string SecureGatewaySubnetName = "SecureGatewaySubnet";
+        private const int SecureGatewaySubnetMinSize = 24;
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the IP Configuration")]
@@ -28,19 +33,34 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The Secure Gateway Subnet")]
-        public PSSubnet Subnet { get; set; }
+            HelpMessage = "The Virtual Network where the Secure Gateway will be deployed")]
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
+            PSSubnet secGwSubnet = null;
+            try
+            {
+                secGwSubnet = this.VirtualNetwork.Subnets.Single(subnet => SecureGatewaySubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException("The Virtual Network argument should contain a Subnet named SecureGatewaySubnet");
+            }
+
+            var subnetSize = int.Parse(secGwSubnet.AddressPrefix.Split(new[] { '/' })[1]);
+            if (subnetSize > SecureGatewaySubnetMinSize)
+            {
+                throw new ArgumentException("The AddressPrefix (" + secGwSubnet.AddressPrefix + ") of the SecureGatewaySubnet os the referenced Virtual Network must be at least /24");
+            }
+
             var ipConfig = new PSSecureGatewayIpConfiguration
             {
                 Name = this.Name,
-                Subnet = new PSResourceId()
+                Subnet = new PSResourceId { Id = secGwSubnet.Id }
             };
-            ipConfig.Subnet.Id = this.Subnet.Id;
 
             WriteObject(ipConfig);
         }
