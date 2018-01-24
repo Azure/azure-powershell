@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "The gateway name for configuring on the server.")]
+        [ValidateNotNullOrEmpty]
+        public string GatewayName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
@@ -102,7 +107,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, GatewayName);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }

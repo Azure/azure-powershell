@@ -74,8 +74,10 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer', 
                'Suspend-AzureRmAnalysisServicesServer', 
-               'Get-AzureRmAnalysisServicesServer', 
-               'Remove-AzureRmAnalysisServicesServer', 
+               'Get-AzureRmAnalysisServicesServer',
+		'Get-AzureRmAnalysisServicesServerGatewayStatus',
+               'Remove-AzureRmAnalysisServicesServer',
+		'Remove-AzureRmAnalysisServicesServerGateway',
                'Set-AzureRmAnalysisServicesServer', 
                'Test-AzureRmAnalysisServicesServer', 
                'New-AzureRmAnalysisServicesServer'
@@ -84,7 +86,7 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 
+AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Get-AzureAsGateway', 'Remove-AzureAs', 'Remove-AzureAsGateway',
                'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs'
 
 # DSC resources to export from this module

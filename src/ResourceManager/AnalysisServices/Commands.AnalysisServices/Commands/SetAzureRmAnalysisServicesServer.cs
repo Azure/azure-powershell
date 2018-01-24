@@ -63,10 +63,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "The gateway name for configuring on the server.")]
+        [ValidateNotNullOrEmpty]
+        public string GatewayName { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = true,
             ParameterSetName = ParamSetDisableBackup,
             HelpMessage = "The switch to turn off backup of the server.")]
         public SwitchParameter DisableBackup { get; set; }
@@ -103,7 +108,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, GatewayName);
 
                 if(PassThru.IsPresent)
                 {

@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string BackupBlobContainerUri { get; set; }
 
+        public GatewayDetails GatewayDetails { get; set; }
+
         public ServerSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
@@ -61,9 +63,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,
-                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku): new Dictionary<string, string>(),
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new Dictionary<string, string>(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
-                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
+                GatewayDetails = server.GatewayDetails != null ? GatewayInfo.FromResourceGateway(server.GatewayDetails) : new Dictionary<string, string>()
             };
         }
 
@@ -83,5 +86,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
     public class AzureAnalysisServicesServerDetail : AzureAnalysisServicesServer
     {
         public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
+
+        public new System.Collections.Generic.IDictionary<string, string> GatewayDetails { get; set; }
     }
 }

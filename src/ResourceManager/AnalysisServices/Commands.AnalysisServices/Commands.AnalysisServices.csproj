@@ -35,13 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Analysis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Analysis, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.2.0.0\lib\net452\Microsoft.Azure.Management.Analysis.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.2.0.2\lib\net452\Microsoft.Azure.Management.Analysis.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\RemoveAzureRmAnalysisServicesServerGateway.cs" />
+    <Compile Include="Commands\GetAzureRmAnalysisServicesServerGatewayStatus.cs" />
     <Compile Include="Commands\ResumeAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\SuspendAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\GetAzureRmAnalysisServicesServer.cs" />
@@ -52,6 +62,7 @@
     <Compile Include="Models\AnalysisServicesClient.cs" />
     <Compile Include="Models\AnalysisServicesCmdletBase.cs" />
     <Compile Include="Models\AzureAnalysisServicesServer.cs" />
+    <Compile Include="Models\GatewayInfo.cs" />
     <Compile Include="Models\ServerSku.cs" />
     <Compile Include="Models\StringOrByteArrayInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
