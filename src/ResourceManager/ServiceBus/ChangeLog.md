@@ -30,6 +30,9 @@
 		- Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
 	-Deleting an Alias(Disaster Recovery configuration)
 		- Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+* Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
+		- Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ## Version 0.5.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.

@@ -12,9 +12,22 @@ Deletes an Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
+### GeoDRBreakPairFailOverPropertiesSet (Default)
 ```
 Remove-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoDRConfigurationInputObjectSet
+```
+Remove-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSServiceBusDRConfigurationAttributes> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoDRConfigResourceIdParameterSet
+```
+Remove-AzureRmServiceBusGeoDRConfiguration [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,18 +74,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation
+### -InputObject
+Service Bus GeoDR Configuration Object
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: PSServiceBusDRConfigurationAttributes
+Parameter Sets: GeoDRConfigurationInputObjectSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -81,7 +94,7 @@ Alias (GeoDR) Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
 Aliases:
 
 Required: True
@@ -96,7 +109,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
 Aliases:
 
 Required: True
@@ -107,8 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -127,8 +139,23 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: ResourceGroup
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+GeoDRConfiguration Resource Id
+
+```yaml
+Type: String
+Parameter Sets: GeoDRConfigResourceIdParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -160,6 +187,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 
 ## OUTPUTS

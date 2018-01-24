@@ -33,13 +33,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [ValidateNotNullOrEmpty]        
         public string ResourceGroupName { get; set; }
 
-        [Parameter( Mandatory = true, ParameterSetName = NamespaceCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Servicebus Namespace Name")]
+        [Parameter( Mandatory = true, ParameterSetName = NamespaceCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Servicebus Namespace Name")]
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Servicebus Namespace Name")]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias Name")]
-        [Alias(AliasAliasName)]
         public string AliasName { get; set; }
 
         public override void ExecuteCmdlet()

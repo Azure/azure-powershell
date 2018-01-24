@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public enum PSFilterTypeEnum
+    public enum FilterTypeEnum
     {        
         SqlFilter,     
         CorrelationFilter

@@ -17,51 +17,90 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
     /// 'Set-AzureRmServicebusGeoDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureServiceBusGeoDRConfigurationFailOver : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias")]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAliasName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus GeoDR Configuration Object")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceBusDRConfigurationAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRConfigResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "GeoDRConfiguration Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.DRFailOver, Name, Namespace),
-                string.Format(Resources.DRFailOver, Name, Namespace),
-                Name,
-                () =>
+            if (ParameterSetName == GeoDRInputObjectParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+
+                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
                     if (PassThru)
                     {
                         WriteObject(true);
                     }
-                });
+                    else
+                    {
+                        WriteObject(false);
+                    }
+                }
+            }
+
+            if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
+            {
+                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                {
+                    Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                    else
+                    {
+                        WriteObject(false);
+                    }
+                }
+            }
+
+            if (ParameterSetName == GeoDRBreakPairFailOverParameterSet)
+            {
+                Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
+                else
+                {
+                    WriteObject(false);
+                }
+            }
         }
     }
 }

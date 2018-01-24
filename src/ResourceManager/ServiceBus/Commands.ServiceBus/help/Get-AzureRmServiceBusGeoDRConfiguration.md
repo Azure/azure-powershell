@@ -12,8 +12,21 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## SYNTAX
 
+### GeoDRPropertiesSet (Default)
 ```
 Get-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NamespaceInputObjectSet
+```
+Get-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzureRmServiceBusGeoDRConfiguration [-ResourceId] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,6 +66,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Namespace Object
+
+```yaml
+Type: PSNamespaceAttributes
+Parameter Sets: NamespaceInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 DR Configuration Name
 
@@ -73,7 +101,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
 Required: True
@@ -88,8 +116,23 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: ResourceGroup
+Parameter Sets: GeoDRPropertiesSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Namespace Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -105,6 +148,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 
 ## OUTPUTS
