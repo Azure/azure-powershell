@@ -144,6 +144,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
+        public SwitchParameter Forces { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
