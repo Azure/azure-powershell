@@ -513,7 +513,7 @@
   </Target>
 
   <Target Name="StaticAnalysisErrorMessage">
-    <Message Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
+    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
   </Target>
 
   <!-- Publish all packages -->
