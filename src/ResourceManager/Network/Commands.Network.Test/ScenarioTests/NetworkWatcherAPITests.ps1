@@ -137,11 +137,6 @@ function Test-GetTopology
 
         #Verification
         Assert-AreEqual $topology.Resources.Count 9
-        Assert-AreEqual $topology.Resources[0].Name $vm.Name
-        Assert-AreEqual $topology.Resources[0].Id $vm.Id
-        Assert-AreEqual $topology.Resources[0].Associations[0].Name $nic.Name
-        Assert-AreEqual $topology.Resources[0].Associations[0].ResourceId $nic.Id
-        Assert-AreEqual $topology.Resources[0].Associations[0].AssociationType Contains
     }
     finally
     {
@@ -191,13 +186,20 @@ function Test-GetSecurityGroupView
         $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name scr1 -Description "test" -Protocol Tcp -SourcePortRange * -DestinationPortRange 80 -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound
         $nsg[0] | Set-AzureRmNetworkSecurityGroup
 
-        #Use it when running test in record mode
-        #Start-Sleep -s 300
+        Wait-Seconds 300
 
         # Get nsg rules for the target VM
         $job = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $nw -Target $vm.Id -AsJob
         $job | Wait-Job
         $nsgView = $job | Receive-Job
+
+        #Verification 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Access Deny 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].DestinationPortRange 80-80 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Direction Outbound 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Name UserRule_scr1 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Protocol TCP 
+        Assert-AreEqual $nsgView.NetworkInterfaces[0].EffectiveSecurityRules[4].Priority 122 
     }
     finally
     {
@@ -246,8 +248,8 @@ function Test-GetNextHop
         #Get next hop
         $job = Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $address.IpAddress -AsJob
         $job | Wait-Job
-		$nextHop1 = $job | Receive-Job
-		$nextHop2 = Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
+        $nextHop1 = $job | Receive-Job
+        $nextHop2 = Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
     
         #Verification
         Assert-AreEqual $nextHop1.NextHopType None
@@ -303,7 +305,7 @@ function Test-VerifyIPFlow
         $nsg[0] | Add-AzureRmNetworkSecurityRuleConfig -Name sr2 -Description "test2" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
         $nsg[0] | Set-AzureRmNetworkSecurityGroup
 
-        #Start-Sleep -s 300
+        Wait-Seconds 300
 
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
@@ -315,8 +317,8 @@ function Test-VerifyIPFlow
         #Verify IP Flow
         $job = Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Inbound -Protocol Tcp -RemoteIPAddress 121.11.12.14 -LocalIPAddress $address -LocalPort 50 -RemotePort 40 -AsJob
         $job | Wait-Job
-		$verification1 = $job | Receive-Job
-		$verification2 = Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Outbound -Protocol Tcp -RemoteIPAddress 12.11.12.14 -LocalIPAddress $address -LocalPort 80 -RemotePort 80
+        $verification1 = $job | Receive-Job
+        $verification2 = Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -Direction Outbound -Protocol Tcp -RemoteIPAddress 12.11.12.14 -LocalIPAddress $address -LocalPort 80 -RemotePort 80
 
         #Verification
         Assert-AreEqual $verification2.Access Deny
@@ -575,7 +577,7 @@ function Test-ConnectivityCheck
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
