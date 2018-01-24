@@ -25,43 +25,37 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubNamespaceVerb), OutputType(typeof(List<NamespaceAttributes>))]
+    [Cmdlet(VerbsCommon.Get, EventHubNamespaceVerb), OutputType(typeof(List<PSNamespaceAttributes>))]
     public class GetAzureRmEventHubNamespace : AzureEventHubsCmdletBase
     {
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "EventHub Namespace Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name")]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
+
+
 
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get EventHub namespace
-                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
+                PSNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
                 WriteObject(attributes);
             }
             else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 // List all EventHub namespace in given resource group
-                IEnumerable< NamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
+                IEnumerable< PSNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }
             else
             {
                 // List all EventHub namespaces in the given subscription
-                IEnumerable<NamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
+                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
                 WriteObject(namespaceList.ToList(), true);
             }
         }

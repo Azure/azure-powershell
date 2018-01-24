@@ -20,13 +20,13 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public class AuthorizationRuleKeysAttributes
+    public class PSListKeysAttributes
     {
         public const string DefaultClaimType = "SharedAccessKey";
         public const string DefaultClaimValue = "None";
         internal const string DefaultNamespaceAuthorizationRule = "RootManageSharedAccessKey";
 
-        public AuthorizationRuleKeysAttributes(AccessKeys listKeysResource)
+        public PSListKeysAttributes(AccessKeys listKeysResource)
         {
             if (listKeysResource != null)
             {
@@ -35,8 +35,20 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 PrimaryKey = listKeysResource.PrimaryKey;
                 SecondaryKey = listKeysResource.SecondaryKey;
                 KeyName = listKeysResource.KeyName;
+                AliasPrimaryConnectionString = listKeysResource.AliasPrimaryConnectionString;
+                AliasSecondaryConnectionString = listKeysResource.AliasSecondaryConnectionString;
             };
         }
+
+        /// <summary>
+        /// AliasPrimaryConnectionString of the created Alias AuthorizationRule.
+        /// </summary>
+        public string AliasPrimaryConnectionString { get; set; }
+
+        /// <summary>
+        /// AliasSecondaryConnectionString of the created Alias
+        /// </summary>
+        public string AliasSecondaryConnectionString { get; set; }
 
         /// <summary>
         /// PrimaryConnectionString of the created Namespace AuthorizationRule.

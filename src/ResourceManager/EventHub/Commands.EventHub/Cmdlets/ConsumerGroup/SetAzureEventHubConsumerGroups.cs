@@ -22,51 +22,36 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <summary>
     /// 'Set-AzureRmEventHubConsumerGroup' Cmdlet updates the specified of Consumer Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ConsumerGroupVerb, SupportsShouldProcess = true), OutputType(typeof(ConsumerGroupAttributes))]
+    [Cmdlet(VerbsCommon.Set, ConsumerGroupVerb, SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
     public class SetAzureEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-             ValueFromPipelineByPropertyName = true,
-             Position = 2,
-             HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-             ValueFromPipelineByPropertyName = true,
-             Position = 3,
-             HelpMessage = "ConsumerGroup Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "ConsumerGroup Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
-            HelpMessage = " User Metadata for ConsumerGroup")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = " User Metadata for ConsumerGroup")]
         [ValidateNotNullOrEmpty]
         public string UserMetadata { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConsumerGroupAttributes consumerGroup = new ConsumerGroupAttributes();
+            PSConsumerGroupAttributes consumerGroup = new PSConsumerGroupAttributes();
             consumerGroup.Name = Name;
 
             if (!string.IsNullOrEmpty(UserMetadata))

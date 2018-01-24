@@ -24,10 +24,17 @@ Get-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Namespace] 
  [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### AliasAuthoRuleSet
+```
+Get-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+```
+
 ## DESCRIPTION
 The Get-AzureRmEventHubAuthorizationRule cmdlet gets either the details of an authorization rule, or a list of all authorization rules for a specified Event Hub.
 If the name of an authorization rule is provided, the details of that single authorization rule are returned.
 If the name of an authorization rule is not provided, a list of all authorization rules for the specified Event Hub is returned.
+If (Disaster Recovery) Alias name provided, the details of authorization rule of the Namespace for Alias configured is returned. 
 
 ## EXAMPLES
 
@@ -45,7 +52,29 @@ PS C:\> Get-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupN
 
 Gets a list of all authorization rules in the Event Hub \`MyEventHubName\`, which is scoped by the namespace \`MyNamespaceName\`.
 
+### Example 3
+```
+PS C:\> Get-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AliasName MyAliasNameName -Name MyAuthRuleName
+```
+
+Gets the authorization rule \`MyAuthRuleName\` in the namespace \`MyNamespaceName\`.
+
 ## PARAMETERS
+
+### -AliasName
+Alias Name.
+
+```yaml
+Type: String
+Parameter Sets: AliasAuthoRuleSet
+Aliases: Alias
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -97,7 +126,19 @@ Namespace Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: NamespaceAuthorizationRuleSet, EventhubAuthorizationRuleSet
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: AliasAuthoRuleSet
 Aliases: NamespaceName
 
 Required: True
@@ -108,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+Resource Group Name.
 
 ```yaml
 Type: String
@@ -123,15 +164,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
+
 
 ## NOTES
 

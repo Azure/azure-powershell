@@ -207,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
 
 ## NOTES
 

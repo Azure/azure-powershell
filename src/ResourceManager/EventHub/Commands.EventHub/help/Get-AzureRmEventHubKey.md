@@ -24,8 +24,14 @@ Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-Eve
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### AliasAuthoRuleSet
+```
+Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+```
+
 ## DESCRIPTION
-The Get-AzureRmEventHubKey cmdlet returns Primary and Secondary connectionstrings and keys details of the specified Event Hubs authorization rule.
+The Get-AzureRmEventHubKey cmdlet returns Primary and Secondary connectionstrings and keys details of the specified NameSpace/Event Hubs/Alias authorization rule.
 
 ## EXAMPLES
 
@@ -36,7 +42,29 @@ PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -Namespace
 
 Gets details of Primary and Secondary connectionstrings and keys for the authorization rule \`MyAuthRuleName\`.
 
+### Example 1
+```
+PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AliasName MyAliasName -Name MyAuthRuleName
+```
+
+Gets details of Primary, Secondary, AliasPrimary and AliasSecondary connectionstrings and keys for the authorization rule \`MyAuthRuleName\`.
+
 ## PARAMETERS
+
+### -AliasName
+Alias Name.
+
+```yaml
+Type: String
+Parameter Sets: AliasAuthoRuleSet
+Aliases: Alias
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -100,7 +128,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: EventhubAuthorizationRuleSet
+Parameter Sets: EventhubAuthorizationRuleSet, AliasAuthoRuleSet
 Aliases: NamespaceName
 
 Required: True
@@ -111,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+Resource Group Name.
 
 ```yaml
 Type: String
@@ -126,17 +154,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes
+
 
 ## NOTES
 
 ## RELATED LINKS
-
