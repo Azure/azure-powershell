@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     {
                         WriteObject(true);
                     }
+                    else
+                    {
+                        WriteObject(false);
+                    }
                 }
             }
 
@@ -76,6 +80,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     if (PassThru)
                     {
                         WriteObject(true);
+                    }
+                    else
+                    {
+                        WriteObject(false);
                     }
                 }
             }

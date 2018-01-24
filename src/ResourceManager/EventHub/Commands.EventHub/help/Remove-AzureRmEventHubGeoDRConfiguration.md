@@ -1,47 +1,66 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version: 
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubDRConfiguration
+# Remove-AzureRmEventHubGeoDRConfiguration
 
 ## SYNOPSIS
 Deletes an Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
-### AliasPropertiesSet (Default)
+### GeoDRBreakPairFailOverPropertiesSet (Default)
 ```
-Remove-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [[-InputObject] <EventHubDRConfigurationAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AliasInputObjectSet
+### GeoDRConfigurationInputObjectSet
 ```
-Remove-AzureRmEventHubDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
- [-InputObject] <EventHubDRConfigurationAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+Remove-AzureRmEventHubGeoDRConfiguration [-InputObject] <PSEventHubDRConfigurationAttributes> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GeoDRConfigResourceIdParameterSet
+```
+Remove-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHubDRConfiguration** cmdlet deletes an Alias(Disaster Recovery configuration)
+The **Remove-AzureRmEventHubGeoDRConfiguration** cmdlet deletes an Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Remove-AzureRmEventHubDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\>Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
 Deletes an Alias(Disaster Recovery configuration)
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -56,29 +75,17 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Alias Configuration object.
+Eventhub GeoDR Configuration Object
 
 ```yaml
-Type: EventHubDRConfigurationAttributes
-Parameter Sets: AliasPropertiesSet
-Aliases: AliasObj
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: EventHubDRConfigurationAttributes
-Parameter Sets: AliasInputObjectSet
-Aliases: AliasObj
+Type: PSEventHubDRConfigurationAttributes
+Parameter Sets: GeoDRConfigurationInputObjectSet
+Aliases:
 
 Required: True
-Position: 3
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -87,8 +94,8 @@ Alias (GeoDR)
 
 ```yaml
 Type: String
-Parameter Sets: AliasPropertiesSet
-Aliases: Alias
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 2
@@ -97,25 +104,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: String
-Parameter Sets: AliasInputObjectSet
-Aliases: Alias
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 1
@@ -124,13 +119,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Resource Group Name.
+Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Aliases:
 
 Required: True
 Position: 0
@@ -139,18 +149,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -ResourceId
+GeoDRConfiguration Resource Id
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: GeoDRConfigResourceIdParameterSet
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -177,7 +187,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventHub.Models.EventHubDRConfigurationAttributes
+Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes
 
 
 ## OUTPUTS
@@ -188,4 +198,3 @@ Microsoft.Azure.Commands.EventHub.Models.EventHubDRConfigurationAttributes
 ## NOTES
 
 ## RELATED LINKS
-
