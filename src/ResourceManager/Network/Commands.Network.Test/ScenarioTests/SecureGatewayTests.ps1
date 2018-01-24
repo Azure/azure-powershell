@@ -74,7 +74,7 @@ function Test-SecureGatewayCRUD
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Associate the Virtual Network to Secure Gateway
-        $ipConfig = New-AzureRmSecureGatewayIpConfiguration -Name "IpConf" -Subnet $vnet.Subnets[0]
+        $ipConfig = New-AzureRmSecureGatewayIpConfiguration -Name "IpConf" -VirtualNetwork $vnet
         $secureGateway.IpConfigurations = @($ipConfig)
 
         # Update the Gateway
