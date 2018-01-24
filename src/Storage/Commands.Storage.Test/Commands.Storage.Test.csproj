@@ -211,6 +211,7 @@
     <Compile Include="Common\ResourceNotFoundExceptionTest.cs" />
     <Compile Include="Common\AccessPolicyHelperTest.cs" />
     <Compile Include="Common\SasTokenHelperTest.cs" />
+    <Compile Include="Common\PSServicePropertiesTest.cs" />
     <Compile Include="Common\StorageCloudCmdletBaseTest.cs" />
     <Compile Include="Common\StorageExceptionUtilTest.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageFileContentTest.cs" />

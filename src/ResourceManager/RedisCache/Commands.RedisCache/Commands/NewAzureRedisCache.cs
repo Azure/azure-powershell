@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
         public string StaticIP { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "List of zones.")]
+        public string[] Zone { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -150,9 +156,16 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             }
 
-            var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, SubnetId, StaticIP);
-            var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
-            WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
+            ConfirmAction(
+              string.Format(Resources.CreateRedisCache, Name),
+              Name,
+              () => 
+              {
+                  var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, 
+                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, SubnetId, StaticIP, Tag, Zone);
+                  var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
+                  WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
+              });
         }
     }
 }
