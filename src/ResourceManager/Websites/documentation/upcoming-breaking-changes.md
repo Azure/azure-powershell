@@ -7,7 +7,7 @@
 
     ## Release X.0.0 - January 2017
 
-    The following cmdlets were affected this release:
+    The following cmdlets were affected by this release:
 
     **Cmdlet 1**
     - Description of what has changed
@@ -26,3 +26,18 @@
 -->
 
 # Upcoming Breaking Changes
+## Release 6.0.0 - May 2018
+
+The following cmdlets were affected by this release:
+
+**Get-AzureRmAppServicePlan**
+- Output type changed from ServerFarmWithRichSku to AppServicePlan
+
+**Set-AzureRmAppServicePlan**
+- Output type changed from ServerFarmWithRichSku to AppServicePlan
+
+**New-AzureRmAppServicePlan**
+- Output type changed from ServerFarmWithRichSku to AppServicePlan
+
+**Get-AzureRmWebApp**
+- AppServicePlan parameter type changed from ServerFarmWithRichSku to AppServicePlan
