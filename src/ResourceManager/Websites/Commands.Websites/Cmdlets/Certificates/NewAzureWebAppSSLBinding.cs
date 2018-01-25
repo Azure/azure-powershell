@@ -121,11 +121,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var certificateName = GenerateCertName(certificateDetails.Thumbprint, webapp.HostingEnvironmentProfile != null ? webapp.HostingEnvironmentProfile.Name : null, webapp.Location, resourceGroupName);
                     var certificate = new Certificate(
                         webapp.Location,
-#if !NETSTANDARD
-                        pfxBlob: Convert.ToBase64String(certificateBytes),
-#else
                         pfxBlob: certificateBytes,
-#endif
                         password: CertificatePassword,
                         hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
                                                         webapp.HostingEnvironmentProfile :

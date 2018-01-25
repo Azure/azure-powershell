@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "NumberOfWorkers"
             };
 
-        private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)\((?<slotName>[^\)]+)\)$");
+        private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)/(?<slotName>[^\)]+)$");
 
         private static readonly Regex WebAppResourceIdRegex =
             new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/sites\/(?<siteName>[^\/]+)$", RegexOptions.IgnoreCase);
@@ -61,11 +61,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 kvp => kvp.Key.ToString(), kvp =>
                 {
                     var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
-#if !NETSTANDARD
-                    var type = (DatabaseServerType?)Enum.Parse(typeof(DatabaseServerType), typeValuePair["Type"].ToString(), true);
-#else
                     var type = (ConnectionStringType)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
-#endif
                     return new ConnStringValueTypePair
                     {
                         Type = type,
@@ -288,11 +284,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             string webAppNameTemp, slotNameTemp;
             if (TryParseAppAndSlotNames(
-#if !NETSTANDARD
-                webapp.SiteName, 
-#else
-                webapp.Name,
-#endif
+                webapp.Name, 
                 out webAppNameTemp, 
                 out slotNameTemp))
             {
@@ -329,6 +321,104 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             return certificates.ToArray();
+        }
+
+        internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
+        {
+            return new SiteConfigResource()
+            {
+                AlwaysOn = config.AlwaysOn,
+                ApiDefinition = config.ApiDefinition,
+                AppCommandLine = config.AppCommandLine,
+                AppSettings = config.AppSettings,
+                AutoHealEnabled = config.AutoHealEnabled,
+                AutoHealRules = config.AutoHealRules,
+                AutoSwapSlotName = config.AutoSwapSlotName,
+                ConnectionStrings = config.ConnectionStrings,
+                Cors = config.Cors,
+                DefaultDocuments = config.DefaultDocuments,
+                DetailedErrorLoggingEnabled = config.DetailedErrorLoggingEnabled,
+                DocumentRoot = config.DocumentRoot,
+                Experiments = config.Experiments,
+                HandlerMappings = config.HandlerMappings,
+                HttpLoggingEnabled = config.HttpLoggingEnabled,
+                IpSecurityRestrictions = config.IpSecurityRestrictions,
+                JavaContainer = config.JavaContainer,
+                JavaContainerVersion = config.JavaContainerVersion,
+                JavaVersion = config.JavaVersion,
+                Limits = config.Limits,
+                LinuxFxVersion = config.LinuxFxVersion,
+                LoadBalancing = config.LoadBalancing,
+                LocalMySqlEnabled = config.LocalMySqlEnabled,
+                LogsDirectorySizeLimit = config.LogsDirectorySizeLimit,
+                ManagedPipelineMode = config.ManagedPipelineMode,
+                NetFrameworkVersion = config.NetFrameworkVersion,
+                NodeVersion = config.NodeVersion,
+                NumberOfWorkers = config.NumberOfWorkers,
+                PhpVersion = config.PhpVersion,
+                PublishingUsername = config.PublishingUsername,
+                Push = config.Push,
+                PythonVersion = config.PythonVersion,
+                RemoteDebuggingEnabled = config.RemoteDebuggingEnabled,
+                RemoteDebuggingVersion = config.RemoteDebuggingVersion,
+                RequestTracingEnabled = config.RequestTracingEnabled,
+                RequestTracingExpirationTime = config.RequestTracingExpirationTime,
+                ScmType = config.ScmType,
+                TracingOptions = config.TracingOptions,
+                Use32BitWorkerProcess = config.Use32BitWorkerProcess,
+                VirtualApplications = config.VirtualApplications,
+                VnetName = config.VnetName,
+                WebSocketsEnabled = config.WebSocketsEnabled,
+            };
+        }
+
+        internal static SiteConfig ConvertToSiteConfig(this SiteConfigResource config)
+        {
+            return new SiteConfig()
+            {
+                AlwaysOn = config.AlwaysOn,
+                ApiDefinition = config.ApiDefinition,
+                AppCommandLine = config.AppCommandLine,
+                AppSettings = config.AppSettings,
+                AutoHealEnabled = config.AutoHealEnabled,
+                AutoHealRules = config.AutoHealRules,
+                AutoSwapSlotName = config.AutoSwapSlotName,
+                ConnectionStrings = config.ConnectionStrings,
+                Cors = config.Cors,
+                DefaultDocuments = config.DefaultDocuments,
+                DetailedErrorLoggingEnabled = config.DetailedErrorLoggingEnabled,
+                DocumentRoot = config.DocumentRoot,
+                Experiments = config.Experiments,
+                HandlerMappings = config.HandlerMappings,
+                HttpLoggingEnabled = config.HttpLoggingEnabled,
+                IpSecurityRestrictions = config.IpSecurityRestrictions,
+                JavaContainer = config.JavaContainer,
+                JavaContainerVersion = config.JavaContainerVersion,
+                JavaVersion = config.JavaVersion,
+                Limits = config.Limits,
+                LinuxFxVersion = config.LinuxFxVersion,
+                LoadBalancing = config.LoadBalancing,
+                LocalMySqlEnabled = config.LocalMySqlEnabled,
+                LogsDirectorySizeLimit = config.LogsDirectorySizeLimit,
+                ManagedPipelineMode = config.ManagedPipelineMode,
+                NetFrameworkVersion = config.NetFrameworkVersion,
+                NodeVersion = config.NodeVersion,
+                NumberOfWorkers = config.NumberOfWorkers,
+                PhpVersion = config.PhpVersion,
+                PublishingUsername = config.PublishingUsername,
+                Push = config.Push,
+                PythonVersion = config.PythonVersion,
+                RemoteDebuggingEnabled = config.RemoteDebuggingEnabled,
+                RemoteDebuggingVersion = config.RemoteDebuggingVersion,
+                RequestTracingEnabled = config.RequestTracingEnabled,
+                RequestTracingExpirationTime = config.RequestTracingExpirationTime,
+                ScmType = config.ScmType,
+                TracingOptions = config.TracingOptions,
+                Use32BitWorkerProcess = config.Use32BitWorkerProcess,
+                VirtualApplications = config.VirtualApplications,
+                VnetName = config.VnetName,
+                WebSocketsEnabled = config.WebSocketsEnabled,
+            };
         }
     }
 }
