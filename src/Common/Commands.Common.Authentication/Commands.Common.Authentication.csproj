@@ -132,6 +132,8 @@
     <Compile Include="Authentication\IdentityTokenHelpers.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />
     <Compile Include="Authentication\KeyStoreApplicationCredentialProvider.cs" />
+    <Compile Include="Authentication\ManagedServiceAccessToken.cs" />
+    <Compile Include="Authentication\ManagedServiceTokenInfo.cs" />
     <Compile Include="Authentication\ProtectedFileTokenCache.cs" />
     <Compile Include="Authentication\RawAccessToken.cs" />
     <Compile Include="Authentication\ServicePrincipalKeyStore.cs" />
@@ -142,6 +144,9 @@
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
+    <Compile Include="HttpClientOperationsFactory.cs" />
+    <Compile Include="IHttpOperations.cs" />
+    <Compile Include="IHttpOperationsFactory.cs" />
     <Compile Include="LegacySupport.cs" />
     <Compile Include="Models\MemoryDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
