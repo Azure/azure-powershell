@@ -45,35 +45,35 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayApplicationRuleProtocol> Protocols { get; set; }
+        public List<PSSecureGatewayApplicationRuleProtocol> Protocol { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The target URLs of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> TargetUrls { get; set; }
+        public List<string> TargetUrl { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The actions of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayApplicationRuleAction> Actions { get; set; }
+        public List<PSSecureGatewayApplicationRuleAction> Action { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (this.Protocols == null || this.Protocols.Count == 0)
+            if (this.Protocol == null || this.Protocol.Count == 0)
             {
                 throw new ArgumentException("At least one application rule protocol should be specified!");
             }
 
-            if (this.TargetUrls == null || this.TargetUrls.Count == 0)
+            if (this.TargetUrl == null || this.TargetUrl.Count == 0)
             {
                 throw new ArgumentException("At least one application rule target URL should be specified!");
             }
 
-            if (this.Actions == null || this.Actions.Count == 0)
+            if (this.Action == null || this.Action.Count == 0)
             {
                 throw new ArgumentException("At least one application rule action should be specified!");
             }
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Commands.Network
                 Priority = this.Priority,
                 Description = this.Description,
                 Direction = MNM.SecureGatewayRuleDirection.Outbound,
-                Protocols = this.Protocols,
-                TargetUrls = this.TargetUrls,
-                Actions = this.Actions
+                Protocols = this.Protocol,
+                TargetUrls = this.TargetUrl,
+                Actions = this.Action
             };
             WriteObject(applicationRule);
         }

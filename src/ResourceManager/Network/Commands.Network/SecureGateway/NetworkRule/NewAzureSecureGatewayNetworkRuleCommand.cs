@@ -45,63 +45,63 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> Protocols { get; set; }
+        public List<string> Protocol { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The source IPs of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceIps { get; set; }
+        public List<string> SourceIp { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination IPs of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationIps { get; set; }
+        public List<string> DestinationIp { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The source ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourcePorts { get; set; }
+        public List<string> SourcePort { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationPorts { get; set; }
+        public List<string> DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The actions of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayNetworkRuleAction> Actions { get; set; }
+        public List<PSSecureGatewayNetworkRuleAction> Action { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (this.Protocols == null || this.Protocols.Count == 0)
+            if (this.Protocol == null || this.Protocol.Count == 0)
             {
                 throw new ArgumentException("At least one network rule protocol should be specified!");
             }
-            if (this.SourcePorts == null || this.SourcePorts.Count == 0)
+            if (this.SourcePort == null || this.SourcePort.Count == 0)
             {
                 throw new ArgumentException("At least one network rule source IP should be specified!");
             }
-            if (this.DestinationPorts == null || this.DestinationPorts.Count == 0)
+            if (this.DestinationPort == null || this.DestinationPort.Count == 0)
             {
                 throw new ArgumentException("At least one network rule destination IP should be specified!");
             }
-            if (this.SourcePorts == null || this.SourcePorts.Count == 0)
+            if (this.SourcePort == null || this.SourcePort.Count == 0)
             {
                 throw new ArgumentException("At least one network rule source port should be specified!");
             }
-            if (this.DestinationPorts == null || this.DestinationPorts.Count == 0)
+            if (this.DestinationPort == null || this.DestinationPort.Count == 0)
             {
                 throw new ArgumentException("At least one network rule destination port should be specified!");
             }
-            if (this.Actions == null || this.Actions.Count == 0)
+            if (this.Action == null || this.Action.Count == 0)
             {
                 throw new ArgumentException("At least one network rule action should be specified!");
             }
@@ -112,12 +112,12 @@ namespace Microsoft.Azure.Commands.Network
                 Priority = this.Priority,
                 Description = this.Description,
                 Direction = MNM.SecureGatewayRuleDirection.Outbound,
-                Protocols = this.Protocols,
-                SourceIps = this.SourceIps,
-                DestinationIps = this.DestinationIps,
-                SourcePorts = this.SourcePorts,
-                DestinationPorts = this.DestinationPorts,
-                Actions = this.Actions
+                Protocols = this.Protocol,
+                SourceIps = this.SourceIp,
+                DestinationIps = this.DestinationIp,
+                SourcePorts = this.SourcePort,
+                DestinationPorts = this.DestinationPort,
+                Actions = this.Action
             };
             WriteObject(networkRule);
         }
