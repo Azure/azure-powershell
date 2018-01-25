@@ -24,19 +24,24 @@ namespace Microsoft.Azure.Management.WebSites
     public static class WebsitesClientExtensions
     {
 #if !NETSTANDARD
-        public static ISitesOperations WebApps(this WebSiteManagementClient client)
+        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
         {
-            return client.Sites;
+            return client.WebApps;
         }
 
-        public static IServerFarmsOperations AppServicePlans(this WebSiteManagementClient client)
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
         {
-            return client.ServerFarms;
+            return client.DeletedWebApps;
+        }
+
+        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
+        {
+            return client.AppServicePlans;
         }
          
         public static string ApiVersion(this WebSiteManagementClient client)
         {
-            return client.ApiVersion;
+            return client.ApiVersion();
         }
         
         public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
@@ -44,25 +49,6 @@ namespace Microsoft.Azure.Management.WebSites
             return client.Certificates;
         }
 
-        public static IList<ServerFarmWithRichSku> Value(this ServerFarmCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<Site> Value(this SiteCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<ResourceMetric> Value(this ResourceMetricCollection collection)
-        {
-            return collection.Value;
-        }
-
-        public static IEnumerable<BackupItem> Value(this BackupItemCollection collection)
-        {
-            return collection.Value;
-        }
 #else
         public static void Save(this System.Xml.Linq.XDocument xdoc, string fileName, System.Xml.Linq.SaveOptions options)
         {
@@ -285,10 +271,10 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.ListMetricsSlot(resourceGroupName, name, slot, details, filter);
         }
 
-        public static SiteConfig UpdateSiteConfigSlot(this IWebAppsOperations webApp,
+        public static SiteConfigResource UpdateSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
-            SiteConfig siteConfig, 
+            SiteConfigResource siteConfig, 
             string slot)
         {
             return webApp.UpdateConfigurationSlot(resourceGroupName, name, siteConfig, slot);
@@ -309,8 +295,8 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.UpdateConnectionStringsSlot(resourceGroupName, name, connectionStrings, slot);
         }
 
-        public static SiteConfig UpdateSiteConfig(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, SiteConfig siteConfig)
+        public static SiteConfigResource UpdateSiteConfig(this IWebAppsOperations webApp,
+            string resourceGroupName, string name, SiteConfigResource siteConfig)
         {
             return webApp.UpdateConfiguration(resourceGroupName, name, siteConfig);
         }
@@ -329,13 +315,13 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.UpdateConnectionStrings(resourceGroupName, name, connectionStrings);
         }
 
-        public static SiteConfig GetSiteConfigSlot(this IWebAppsOperations webApp,
+        public static SiteConfigResource GetSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, string slot)
         {
             return webApp.GetConfigurationSlot(resourceGroupName, name, slot);
         }
 
-        public static SiteConfig GetSiteConfig(this IWebAppsOperations webApp,
+        public static SiteConfigResource GetSiteConfig(this IWebAppsOperations webApp,
             string resourceGroupName, string name)
         {
             return webApp.GetConfiguration(resourceGroupName, name);
@@ -449,18 +435,6 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.Restore(resourceGroupName, name, backupId, request);
         }
 
-        public static RecoverResponse RecoverSiteSlot(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, CsmSiteRecoveryEntity recoveryEntity, string slot)
-        {
-            return webApp.RecoverSlot(resourceGroupName, name, recoveryEntity, slot);
-        }
-
-        public static RecoverResponse RecoverSite(this IWebAppsOperations webApp,
-            string resourceGroupName, string name, CsmSiteRecoveryEntity recoveryEntity)
-        {
-            return webApp.Recover(resourceGroupName, name, recoveryEntity);
-        }
-        
         public static SlotConfigNamesResource GetSlotConfigNames(this IWebAppsOperations webApp,
             string resourceGroupName, string name)
         {
