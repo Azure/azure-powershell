@@ -403,4 +403,7 @@
   <data name="SubscriptionOrTenantMissing" xml:space="preserve">
     <value>Must supply Subscription Id and Tenant Id when using -SkipValidation</value>
   </data>
+  <data name="RunLoginCmdlet" xml:space="preserve">
+    <value>Run Connect-AzureRmAccount to login.</value>
+  </data>
 </root>

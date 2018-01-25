@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disconnect-AzureRmAccount
 
 ## SYNOPSIS
-Disconnect from a connected Azure account and removes all credentials and contexts associated with that account.
+Disconnects a connected Azure account and removes all credentials and contexts associated with that account.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Disconnect-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModif
 ```
 
 ## DESCRIPTION
-The Disconnect-AzureRmAccount cmdlet disconnects from a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
+The Disconnect-AzureRmAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
 
 After executing this cmdlet, you will need to login again using Connect-AzureRmAccount.
 
