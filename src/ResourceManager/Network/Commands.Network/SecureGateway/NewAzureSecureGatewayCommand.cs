@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "IpConfigurations")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayIpConfiguration> IpConfigurations { get; set; }
+        public List<PSSecureGatewayIpConfiguration> IpConfiguration { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of SecureGatewayApplicationRuleCollections")]
-        public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
+        public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                IpConfigurations = this.IpConfigurations,
-                ApplicationRuleCollections = this.ApplicationRuleCollections
+                IpConfigurations = this.IpConfiguration,
+                ApplicationRuleCollections = this.ApplicationRuleCollection
             };
 
             // Map to the sdk object

@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayNetworkRule> Rules { get; set; }
+        public List<PSSecureGatewayNetworkRule> Rule { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (this.Rules == null || this.Rules.Count == 0)
+            if (this.Rule == null || this.Rule.Count == 0)
             {
                 throw new ArgumentException("At least one application rule should be specified!");
             }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rules
+                Rules = this.Rule
             };
             WriteObject(networkRuleCollection);
         }
