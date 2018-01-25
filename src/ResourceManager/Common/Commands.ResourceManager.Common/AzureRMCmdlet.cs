@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
                 {
-                    throw new PSInvalidOperationException("Run Connect-AzureRmAccount to login.");
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
                 }
 
                 return DefaultProfile.DefaultContext;

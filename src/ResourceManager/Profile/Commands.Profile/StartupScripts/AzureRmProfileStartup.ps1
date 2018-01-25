@@ -18,7 +18,6 @@
     "Login-AzureRmAccount" = "Connect-AzureRmAccount";
     "Select-AzureRmSubscription" = "Set-AzureRmContext";
 	"Save-AzureRmProfile" = "Save-AzureRmContext";
-	"Select-AzureRmProfile" = "Import-AzureRmContext";
 	"Resolve-Error" = "Resolve-AzureRmError";
     "Remove-AzureRmAccount" = "Disconnect-AzureRmAccount";
 	"Logout-AzAccount" = "Disconnect-AzureRmAccount";

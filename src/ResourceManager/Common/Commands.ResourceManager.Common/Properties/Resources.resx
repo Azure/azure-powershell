@@ -219,4 +219,7 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   <data name="DefaultResourceGroupKey" xml:space="preserve">
     <value>Default Resource Group</value>
   </data>
+  <data name="RunConnectAccount" xml:space="preserve">
+    <value>Run Connect-AzureRmAccount to login.</value>
+  </data>
 </root>

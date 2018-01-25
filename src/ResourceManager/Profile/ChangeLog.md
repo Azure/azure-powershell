@@ -20,6 +20,7 @@
 ## Current Release
 * `Add-AzureRmAccount` has been renamed as `Connect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Login-AzAccount` and `Login-AzureRmAccount`) have been redirected to the new cmdlet name.
 * `Remove-AzureRmAccount` has been renamed as `Disconnect-AzureRmAccount`; an alias has been added for the old cmdlet name, and other aliases (`Logout-AzAccount` and `Logout-AzureRmAccount`) have been redirected to the new cmdlet name.
+* Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Add-AzureRmAccount
   * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
