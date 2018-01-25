@@ -14,6 +14,23 @@
 
 <#
 .SYNOPSIS
+Creates a storage container and uploads a file
+#>
+function Upload-FileToStorageContainer($stoname, $stokey, $containerName, $fileName )
+{
+		#upload file to storage container
+		$StorageContext = New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey $stokey -Endpoint $env:STORAGEENDPOINTSUFFIX
+		New-AzureStorageContainer -Context $StorageContext -Name $containerName;
+		$UploadFile = @{
+			Context = $StorageContext;
+			Container = $containerName;
+			File = $fileName;
+		}
+		Set-AzureStorageBlobContent @UploadFile;
+}
+
+<#
+.SYNOPSIS
 Gets valid resource group name
 #>
 function Get-ResourceGroupName
