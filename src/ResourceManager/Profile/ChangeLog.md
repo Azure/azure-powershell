@@ -22,6 +22,8 @@
 * Add-AzureRmAccount
   * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
   * Fixed KeyVault Authentication when logging in with user-provided access tokens
+* Add-AzureRmEnvironment and Set-AzureRmEnvironment
+  * Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.  
 
 ## Version 4.1.1
 - Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/

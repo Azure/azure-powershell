@@ -79,7 +79,8 @@ See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](htt
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
