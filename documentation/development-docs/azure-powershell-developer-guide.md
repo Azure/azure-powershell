@@ -141,6 +141,8 @@ For more information about on-boarding a new library in the SDK for .NET reposit
 
 Before development, you must meet with the Azure PowerShell team to have a design review for your proposed PowerShell cmdlets. We advise that this review is held no earlier than three weeks out from code complete of the release you want to ship the cmdlets with. For a small number of cmdlet changes and/or additions, an email containing the markdown files for the proposed changes is suggested. For a large number of changes and/or additions, a meeting is required with the Azure PowerShell team.
 
+Before submitting a design review, please be sure that you have read the [Azure PowerShell Design Guidelines](./azure-powershell-design-guidelines.md) document.
+
 Please email the **azdevxpsdr** alias to set up this review and include the following information:
 - Short description of the top-level scenarios
 - Proposed cmdlet syntax
@@ -225,7 +227,7 @@ The following is a list of additional common code projects that can be used:
 
 ## PowerShell Cmdlet Design Guidelines
 
-Please check out the [PowerShell Cmdlet Design Guidelines](https://github.com/Azure/azure-powershell/wiki/PowerShell-Cmdlet-Design-Guidelines) page for more information on how to create cmdlets that follow the PowerShell guidelines.
+Please check out the [PowerShell Cmdlet Design Guidelines](./azure-powershell-design-guidelines.md) page for more information on how to create cmdlets that follow the PowerShell guidelines.
 
 ## Enable Running PowerShell when Debugging
 

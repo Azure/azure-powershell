@@ -151,12 +151,14 @@ Parameters of type `bool` are _strongly_ discouraged in PowerShell. The `SwitchP
 
 ### Closed Set of Values
 
-If there is a closed set of values applicable for a given parameter, use either a `ValidateSet` or an enumeration type. This functionality allows users to tab through the different values they can provide. From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx):
+If there is a closed set of values applicable for a given parameter, use either a `ValidateSet`, enumeration type, or an `ArgumentCompleter`. This functionality allows users to tab through the different values they can provide. From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx):
 
 > _There are two ways to create a parameter whose value can be selected from a set of options._
 > 
 > - _Define an enumeration type (or use an existing type) that specifies the valid values. Then, use the enumeration type to create a parameter of that type._
 > - _Add the **ValidateSet** attribute to the parameter declaration._
+
+In addition, you can choose to add an `ArgumentCompleter` to a parameter to allow users to tab through a closed set of values, _but this does not restrict users on the values they can provide._ For more information on `ArgumentCompleters`, please see the [below section](#argument-completers)
 
 ### Consistent Parameter Types
 
@@ -210,7 +212,7 @@ In most Azure PowerShell cmdlets, there is a bare minimum of three parameter set
 
 This parameter set should be implemented by _every_ cmdlet - in most cases, the user provides the name of the resource that they are acting upon (`Name`) and the resource group in which they are acting in (`ResourceGroupName`).
 
-The interactive parameter set **will always be the default parameter set** for a cmdlet. This means that when PowerShell is unable to determine which parameter set a user is in, it will default to the interactive parameter set and prompt the user to provide values for the missing mandatory parameters.
+The interactive parameter set **will always be the default parameter set** for a cmdlet (specified by the `DefaultParameterSetName` property in the `Cmdlet` attribute). This means that when PowerShell is unable to determine which parameter set a user is in, it will default to the interactive parameter set and prompt the user to provide values for the missing mandatory parameters.
 
 #### ResourceId Parameter Set
 
