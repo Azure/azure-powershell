@@ -46,13 +46,13 @@ if (ShouldProcess(target, actionMessage))
 
 Notice that to _automatically skip prompts_ for such a cmdlet requires the user to supply the `Force` parameter.
 
-```
+```powershell
 Remove-Foo -Force
 ```
 
 Also note that if you are unsure of the `$ConfirmPreference` setting int he current environment, you can skip both sets of prompts using the following:
 
-```
+```powershell
 Remove-Foo -Force -Confirm:$false
 ```
 

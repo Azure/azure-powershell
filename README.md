@@ -61,7 +61,7 @@ For more detailed instructions on using Azure PowerShell, please refer to the [g
 To connect to Azure, use the [`Add-AzureRmAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount) cmdlet.
 
 ```powershell
-# Interactive log in - you will get a diaglog box asking for your Azure credentials
+# Interactive login - you will get a dialog box asking for your Azure credentials
 Add-AzureRmAccount
 
 # Non-interactive login - you will need to use a service principal
