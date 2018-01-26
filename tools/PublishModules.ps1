@@ -296,6 +296,26 @@ if ($repo -ne $null) {
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 }
 
+$packageFolder = "$PSScriptRoot\..\src\Package"
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
+    
+if ($isNetCore -eq "true")
+{
+    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\ResourceManager"
+}
+else
+{
+    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+}
+
+if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") )
+{
+    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\Storage\Azure.Storage"
+} 
+
 $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
