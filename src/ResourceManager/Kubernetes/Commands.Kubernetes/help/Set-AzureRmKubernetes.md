@@ -271,9 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-{{Fill Tags Description}}
-
-
+Tags to be applied to the resource
 
 ```yaml
 Type: Hashtable

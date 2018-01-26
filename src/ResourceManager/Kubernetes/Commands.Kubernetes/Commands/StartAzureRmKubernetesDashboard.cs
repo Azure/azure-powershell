@@ -21,6 +21,7 @@ using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
 using Microsoft.Azure.Commands.Kubernetes.Properties;
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.")]
+            HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.",
+            Position = 0)]
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
 
@@ -124,7 +126,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 var tmpFileName = Path.GetTempFileName();
                 var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
                     .KubeConfig;
-                File.WriteAllText(
+                AzureSession.Instance.DataStore.WriteFile(
                     tmpFileName,
                     Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
 
@@ -180,6 +182,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         private void PopBrowser(string uri)
         {
+#if NETSTANDARD
+
             var browserProcess = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -189,7 +193,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
             };
 
-#if NETSTANDARD
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 WriteVerbose("Starting on OSX with open");
@@ -224,20 +227,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
             _dashPod = dashPod;
         }
 
-        public override string StatusMessage
-        {
-            get
-            {
-                return _statusMsg;
-            }
-        }
+        public override string StatusMessage => _statusMsg;
         public override bool HasMoreData { get; }
         public override string Location { get; }
 
-        public int Pid
-        {
-            get { return _pid; }
-        }
+        public int Pid => _pid;
 
         public override void StopJob()
         {
@@ -245,7 +239,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             SetJobState(JobState.Stopping);
             try
             {
-                Process.GetProcessById(_pid)?.Kill();
+                Process.GetProcessById(_pid).Kill();
             }
             catch (Exception)
             {
