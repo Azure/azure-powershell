@@ -8,6 +8,13 @@ namespace Commands.Common.Tests
 {
     public class ProbeTests
     {
+        private readonly string _pwsh;
+
+        public ProbeTests()
+        {
+            _pwsh = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "powershell" : "pwsh";
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FalseWhenProgramDoesNotExistTest()
@@ -19,7 +26,7 @@ namespace Commands.Common.Tests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TrueWhenProgramDoesExistTest()
         {
-            Assert.True(GeneralUtilities.Probe("powershell", " -c 'echo hello world!'"));
+            Assert.True(GeneralUtilities.Probe(_pwsh, " -c 'echo hello world!'"));
         }
 
         [Fact]
@@ -28,7 +35,7 @@ namespace Commands.Common.Tests
         {
             Assert.False(
                 GeneralUtilities.Probe(
-                    "powershell", " -c 'echo foo'",
+                    _pwsh, " -c 'echo foo'",
                     criterion: (processExitInfo) =>
                     {
                         return processExitInfo.StdOut.Any(x => x.Contains("bar"));
@@ -41,7 +48,7 @@ namespace Commands.Common.Tests
         {
             Assert.True(
                 GeneralUtilities.Probe(
-                    "powershell", " -c 'echo foo'",
+                    _pwsh, " -c 'echo foo'",
                     criterion: (processExitInfo) =>
                     {
                         return processExitInfo.StdOut.Any(x => x.Contains("foo"));
@@ -52,7 +59,7 @@ namespace Commands.Common.Tests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FailIfProcessTakesTooLongToRespondTest()
         {
-            Assert.False(GeneralUtilities.Probe("powershell", "-c \"sleep 4\""));
+            Assert.False(GeneralUtilities.Probe(_pwsh, "-c \"sleep 4\""));
         }
     }
 }
