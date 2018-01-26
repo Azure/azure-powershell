@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
             };
             process.Start();
-            Thread.Sleep(1500);
+            TestMockSupport.Delay(1500);
             _pid = process.Id;
             SetJobState(JobState.Running);
             _statusMsg = string.Format(Resources.StartedKubectl, kubectlCmd);

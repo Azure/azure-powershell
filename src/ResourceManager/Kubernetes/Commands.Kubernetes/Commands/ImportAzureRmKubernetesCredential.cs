@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 "A kubectl config file to create or update. Use '-' to print YAML to stdout instead.  Default: %Home%/.kube/config.")]
         public string ConfigPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Import Kubernetes config even if it is the defualt")]
+        [Parameter(Mandatory = false, HelpMessage = "Import Kubernetes config even if it is the default")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]
