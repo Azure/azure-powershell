@@ -175,6 +175,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
         /// <exception cref="ArgumentException">The SSH key or file argument was null and there was no default pub key in path.</exception>
         protected string GetSshKey(string sshKeyOrFile)
         {
+            const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
+
             // SSH key was specified as either a file or as key data
             if (!string.IsNullOrEmpty(SshKeyValue))
             {
@@ -196,7 +198,6 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 ".ssh",
                 "id_rsa.pub");
 
-            const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
             if (!File.Exists(path))
                 throw new ArgumentException(string.Format("Could not find SSH public key in {0}. See {1} for help generating a key pair.", path, helpLink));
 
