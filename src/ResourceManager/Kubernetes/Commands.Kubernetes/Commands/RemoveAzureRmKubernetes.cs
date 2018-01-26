@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string Id { get; set; }
 
         /// <summary>
@@ -100,12 +102,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     }
             }
 
-            var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
+            var msg = $"{Name} in {ResourceGroupName}";
 
             ConfirmAction(Force.IsPresent,
-                "Do you want to delete the managed Kubernetes cluster?",
-                "Removing the managed Kubernetes cluster.",
-                string.Format("AzureRmKubernetes {0} in {1}", Name, ResourceGroupName),
+                Resources.DoYouWantToDeleteTheManagedKubernetesCluster,
+                Resources.RemovingTheManagedKubernetesCluster,
+                msg,
                 () =>
                 {
                     RunCmdLet(() =>

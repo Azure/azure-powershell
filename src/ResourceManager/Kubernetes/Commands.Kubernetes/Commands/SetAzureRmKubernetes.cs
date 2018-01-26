@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Generated.Models;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string Id { get; set; }
 
         public override void ExecuteCmdlet()
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
                 case InputObjectParameterSet:
                 {
-                    WriteVerbose("Using cluster from pipeline.");
+                    WriteVerbose(Resources.UsingClusterFromPipeline);
                     cluster = PSMapper.Instance.Map<ManagedCluster>(InputObject);
                     var resource = new ResourceIdentifier(cluster.Id);
                     ResourceGroupName = resource.ResourceGroupName;
@@ -73,9 +75,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
             }
 
-            var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
+            var msg = $"{Name} in {ResourceGroupName}";
 
-            if (ShouldProcess(msg, "Update or create a managed Kubernetes cluster."))
+            if (ShouldProcess(msg, Resources.UpdateOrCreateAManagedKubernetesCluster))
             {
                 RunCmdLet(() =>
                 {
@@ -86,22 +88,20 @@ namespace Microsoft.Azure.Commands.Kubernetes
                             cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
                         }
 
-                        WriteVerbose(string.Format("Resource group: {0}, Name: {1}", ResourceGroupName, Name));
-
                         if (MyInvocation.BoundParameters.ContainsKey("Location"))
                         {
-                            throw new CmdletInvocationException("Location can't be updated for existing cluster.");
+                            throw new CmdletInvocationException(Resources.LocationCannotBeUpdateForExistingCluster);
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("DnsNamePrefix"))
                         {
-                            WriteVerbose("Updating DnsNamePrefix");
+                            WriteVerbose(Resources.UpdatingDnsNamePrefix);
                             cluster.DnsPrefix = DnsNamePrefix;
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("SshKeyValue"))
                         {
-                            WriteVerbose("Updating SshKeyValue");
+                            WriteVerbose(Resources.UpdatingSshKeyValue);
                             cluster.LinuxProfile.Ssh.PublicKeys = new List<ContainerServiceSshPublicKey>
                             {
                                 new ContainerServiceSshPublicKey(GetSshKey(SshKeyValue))
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
                         if (ParameterSetName == SpParamSet)
                         {
-                            WriteVerbose("Updating service principal");
+                            WriteVerbose(Resources.UpdatingServicePrincipal);
                             var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret.UserName, ClientIdAndSecret.Password.ToString());
 
                             var spProfile = new ContainerServiceServicePrincipalProfile(
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
                         if (MyInvocation.BoundParameters.ContainsKey("AdminUserName"))
                         {
-                            WriteVerbose("Updating admin username");
+                            WriteVerbose(Resources.UpdatingAdminUsername);
                             cluster.LinuxProfile.AdminUsername = AdminUserName;
                         }
 
@@ -143,39 +143,39 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
                         if (MyInvocation.BoundParameters.ContainsKey("NodeVmSize"))
                         {
-                            WriteVerbose("Updating node VM size");
+                            WriteVerbose(Resources.UpdatingNodeVmSize);
                             defaultAgentPoolProfile.VmSize = NodeVmSize;
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("NodeCount"))
                         {
-                            WriteVerbose("Updating node count");
+                            WriteVerbose(Resources.UpdatingNodeCount);
                             defaultAgentPoolProfile.Count = NodeCount;
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("NodeOsDiskSize"))
                         {
-                            WriteVerbose("Updating node OS disk size");
+                            WriteVerbose(Resources.UpdatingNodeOsDiskSize);
                             defaultAgentPoolProfile.OsDiskSizeGB = NodeOsDiskSize;
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("KubernetesVersion"))
                         {
-                            WriteVerbose("Updating Kubernetes version");
+                            WriteVerbose(Resources.UpdatingKubernetesVersion);
                             cluster.KubernetesVersion = KubernetesVersion;
                         }
 
                         if (MyInvocation.BoundParameters.ContainsKey("Tag"))
                         {
-                            WriteVerbose("Updating tags");
+                            WriteVerbose(Resources.UpdatingTags);
                             cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
                         }
 
-                        WriteVerbose("Updating your managed Kubernetes cluster.");
+                        WriteVerbose(Resources.UpdatingYourManagedKubernetesCluster);
                     }
                     else
                     {
-                        WriteVerbose("Preparing for deployment of your new managed Kubernetes cluster.");
+                        WriteVerbose(Resources.PreparingForDeploymentOfYourNewManagedKubernetesCluster);
                         cluster = BuildNewCluster();
                     }
 

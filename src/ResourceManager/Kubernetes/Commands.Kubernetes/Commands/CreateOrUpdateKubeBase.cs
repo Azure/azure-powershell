@@ -19,9 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Generated.Models;
 using Microsoft.Azure.Commands.Kubernetes.Models;
@@ -34,6 +32,9 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
     {
         protected const string DefaultParamSet = "defaultParameterSet";
         protected const string SpParamSet = "servicePrincipalParameterSet";
-        protected readonly Regex _dnsRegex = new Regex("[^A-Za-z0-9-]");
+        protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
 
         [Parameter(
             Position = 0,
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             {
                 var rg = RmClient.ResourceGroups.Get(ResourceGroupName);
                 Location = rg.Location;
-                WriteVerbose(string.Format("Using location {0} from the resource group {1}.", Location,
+                WriteVerbose(string.Format(Resources.UsingLocationFromTheResourceGroup, Location,
                     ResourceGroupName));
             }
 
@@ -131,7 +132,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 DnsNamePrefix = DefaultDnsPrefix();
             }
 
-            WriteVerbose(string.Format("Using DNS name prefix {0}.", DnsNamePrefix));
+            WriteVerbose(string.Format(Resources.UsingDnsNamePrefix, DnsNamePrefix));
             SshKeyValue = GetSshKey(SshKeyValue);
 
             var defaultAgentPoolProfile = new ContainerServiceAgentPoolProfile(
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
 
-            WriteVerbose(string.Format("Deploying your managed Kubernetes cluster.", AcsSpFilePath));
+            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
             var managedCluster = new ManagedCluster(
                 Location,
                 name: Name,
@@ -182,27 +183,23 @@ namespace Microsoft.Azure.Commands.Kubernetes
             {
                 if (File.Exists(sshKeyOrFile))
                 {
-                    WriteVerbose(string.Format("Fetching SSH public key from file {0}", sshKeyOrFile));
+                    WriteVerbose(string.Format(Resources.FetchSshPublicKeyFromFile, sshKeyOrFile));
                     return File.ReadAllText(sshKeyOrFile);
                 }
-                else
-                {
-                    WriteVerbose("Using SSH public key data as command line string.");
-                    return sshKeyOrFile;
-                }
+
+                WriteVerbose(Resources.UsingSshPublicKeyDataAsCommandLineString);
+                return sshKeyOrFile;
             }
 
             // SSH key value was not specified, so look in the home directory for the default pub key
-            var path = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                ".ssh",
-                "id_rsa.pub");
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa.pub");
+            if (!AzureSession.Instance.DataStore.FileExists(path))
+            {
+                throw new ArgumentException(string.Format(Resources.CouldNotFindSshPublicKeyInError, path, helpLink));
+            }
 
-            if (!File.Exists(path))
-                throw new ArgumentException(string.Format("Could not find SSH public key in {0}. See {1} for help generating a key pair.", path, helpLink));
-
-            WriteVerbose(string.Format("Fetching SSH public key from file {0}", path));
-            return File.ReadAllText(path);
+            WriteVerbose(string.Format(Resources.FetchSshPublicKeyFromFile, path));
+            return AzureSession.Instance.DataStore.ReadFileAsText(path);
 
             // we didn't find an SSH key and there was no SSH public key in the home directory
         }
@@ -213,7 +210,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             if (acsServicePrincipal == null)
             {
                 WriteVerbose(string.Format(
-                    "No Service Principal found in {0} for this subscription. Creating a new Service Principal.",
+                    Resources.NoServicePrincipalFoundCreatingANewServicePrincipal,
                     AcsSpFilePath));
 
                 // if nothing to load, make one
@@ -222,12 +219,10 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     clientSecret = RandomBase64String(16);
                 }
                 var salt = RandomBase64String(3);
-                var url = string.Format("http://{0}.{1}.{2}.cloudapp.azure.com", salt, DnsNamePrefix, Location);
+                var url = $"http://{salt}.{DnsNamePrefix}.{Location}.cloudapp.azure.com";
 
                 acsServicePrincipal = BuildServicePrincipal(Name, url, clientSecret);
-                WriteVerbose(string.Format(
-                    "Created a new Service Principal and assigned the contributor role for this subcription.",
-                    AcsSpFilePath));
+                WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
             }
             return acsServicePrincipal;
@@ -255,12 +250,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                                 true,
                                 passwordCredentials: new List<PasswordCredential> { pwCreds });
                 sp = GraphClient.ServicePrincipals.Create(spCreateParams);
-            }, "Service Principal Create");
+            }, Resources.ServicePrincipalCreate);
 
             if (!success)
             {
-                throw new CmdletInvocationException(
-                    "Could not create a service principal with the right permissions. Are you an Owner on this project?");
+                throw new CmdletInvocationException(Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
             AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
@@ -272,30 +266,30 @@ namespace Microsoft.Azure.Commands.Kubernetes
             try
             {
                 var exists = Client.ManagedClusters.Get(ResourceGroupName, Name) != null;
-                WriteVerbose(string.Format("Cluster exists: {0}", exists));
+                WriteVerbose(string.Format(Resources.ClusterExists, exists));
                 return exists;
             }
             catch (CloudException)
             {
-                WriteVerbose("Cluster does not exist.");
+                WriteVerbose(Resources.ClusterDoesNotExist);
                 return false;
             }
         }
 
         protected void AddSubscriptionRoleAssignment(string role, string appId)
         {
-            var scope = string.Format("/subscriptions/{0}", DefaultContext.Subscription.Id);
+            var scope = $"/subscriptions/{DefaultContext.Subscription.Id}";
             var roleId = GetRoleId(role, scope);
             var success = RetryAction(() =>
                 AuthClient.RoleAssignments.Create(scope, appId, new RoleAssignmentCreateParameters()
                 {
                     Properties = new RoleAssignmentProperties(roleId, appId)
-                }), "Add Role Assignment");
+                }), Resources.AddRoleAssignment);
 
             if (!success)
             {
                 throw new CmdletInvocationException(
-                    "Could not create a service principal with the right permissions. Are you an Owner on this project?");
+                    Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
         }
 
@@ -317,9 +311,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 }
                 catch (Exception ex)
                 {
-                    WriteVerbose(string.Format("Retry {0} for {1} after error: {2}", i, actionName ?? "action", ex.Message));
+                    WriteVerbose(string.Format(Resources.RetryAfterActionError, i, actionName ?? "action", ex.Message));
                     // AAD might puke here, so we catch it and try again until success
-                    Thread.Sleep(1000 * i);
+                    TestMockSupport.Delay(1000 * i);
                 }
             }
             return success;
@@ -333,7 +327,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         protected Dictionary<string, AcsServicePrincipal> LoadServicePrincipals()
         {
-            return File.Exists(AcsSpFilePath)
+            return AzureSession.Instance.DataStore.FileExists(AcsSpFilePath)
                 ? JsonConvert.DeserializeObject<Dictionary<string, AcsServicePrincipal>>(
                     File.ReadAllText(AcsSpFilePath))
                 : null;
@@ -343,8 +337,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
         {
             var config = LoadServicePrincipals() ?? new Dictionary<string, AcsServicePrincipal>();
             config[DefaultContext.Subscription.Id] = acsServicePrincipal;
-            Directory.CreateDirectory(Path.GetDirectoryName(AcsSpFilePath));
-            File.WriteAllText(AcsSpFilePath, JsonConvert.SerializeObject(config));
+            AzureSession.Instance.DataStore.CreateDirectory(Path.GetDirectoryName(AcsSpFilePath));
+            AzureSession.Instance.DataStore.WriteFile(AcsSpFilePath, JsonConvert.SerializeObject(config));
         }
 
         protected static string RandomBase64String(int size)
@@ -355,17 +349,21 @@ namespace Microsoft.Azure.Commands.Kubernetes
             return Convert.ToBase64String(secretBytes);
         }
 
+        /// <summary>
+        /// Build a semi-random DNS prefix based on the name of the cluster, resource group, and last 6 digits of the subscription
+        /// </summary>
+        /// <returns>Default DNS prefix string</returns>
         protected string DefaultDnsPrefix()
         {
-            var namePart = string.Join("", _dnsRegex.Replace(Name, "").Take(10));
+            var namePart = string.Join("", DnsRegex.Replace(Name, "").Take(10));
             if (char.IsDigit(namePart[0]))
             {
                 namePart = "a" + string.Join("", namePart.Skip(1));
             }
 
-            var rgPart = _dnsRegex.Replace(ResourceGroupName, "");
+            var rgPart = DnsRegex.Replace(ResourceGroupName, "");
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(6));
-            return string.Format("{0}-{1}-{2}", namePart, rgPart, subPart);
+            return $"{namePart}-{rgPart}-{subPart}";
         }
     }
 }
