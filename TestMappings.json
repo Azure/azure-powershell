@@ -35,8 +35,10 @@
     ".\\src\\ResourceManager\\ContainerRegistry\\Commands.ContainerRegistry.Test\\bin\\Debug\\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"
   ],
   "src/ResourceManager/DataFactories/": [
-    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll",
-    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll"
+    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll"
+  ],
+  "src/ResourceManager/DataFactoryV2/": [
+    ".\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll"
   ],
   "src/ResourceManager/DataLakeAnalytics/": [
     ".\\src\\ResourceManager\\DataLakeAnalytics\\Commands.DataLakeAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"

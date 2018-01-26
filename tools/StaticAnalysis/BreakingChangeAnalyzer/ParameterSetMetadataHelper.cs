@@ -139,9 +139,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterSet,
+                        description: string.Format(Properties.Resources.RemovedParameterSetDescription,
+                            oldParameterSet.Name, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.RemovedParameterSetRemediation,
+                            oldParameterSet.Name, cmdlet.Name));
                 }
             }
         }

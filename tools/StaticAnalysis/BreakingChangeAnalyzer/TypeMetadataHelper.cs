@@ -74,9 +74,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var newTypeMetadata = _newTypeDictionary[newPropertyType];
 
                     // Define variables for logging
-                    int problemId = 0;
-                    string description = string.Empty;
-                    string remediation = string.Empty;
+                    int problemId = ProblemIds.BreakingChangeProblemId.ChangedElementType;
+                    string description = string.Format(Properties.Resources.ChangedElementTypeDescription,
+                                            oldProperty, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+                    string remediation = string.Format(Properties.Resources.ChangedElementTypeRemediation,
+                                            oldProperty, oldTypeMetadata.ElementType);
 
                     // If the type is an array, check for any breaking changes
                     if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
@@ -110,9 +112,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: 0,
-                            description: string.Empty,
-                            remediation: string.Empty);
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedPropertyType,
+                            description: string.Format(Properties.Resources.ChangedPropertyTypeDescription,
+                                oldProperty, oldType.Name, oldPropertyType, newPropertyType),
+                            remediation: string.Format(Properties.Resources.ChangedPropertyTypeRemediation,
+                                oldProperty, oldPropertyType));
                     }
                 }
                 else
@@ -121,9 +125,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedProperty,
+                        description: string.Format(Properties.Resources.RemovedPropertyDescription,
+                            oldProperty, oldType.Name),
+                        remediation: string.Format(Properties.Resources.RemovedPropertyRemediation,
+                            oldProperty, oldType.Name));
                 }
             }
         }
@@ -249,9 +255,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            int problemId = 0;
-            string description = string.Empty;
-            string remediation = string.Empty;
+            int problemId = ProblemIds.BreakingChangeProblemId.ChangedParameterElementType;
+            string description = string.Format(Properties.Resources.ChangedParameterElementTypeDescription,
+                                    parameter.Name, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+            string remediation = string.Format(Properties.Resources.ChangedParameterElementTypeRemediation,
+                                    parameter.Name, oldTypeMetadata.ElementType);
 
             // If the type is an array, check for any breaking changes
             if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
@@ -273,9 +281,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
-                    problemId: 0,
-                    description: string.Empty,
-                    remediation: string.Empty);
+                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterType,
+                    description: string.Format(Properties.Resources.ChangedParameterTypeDescription,
+                        cmdlet.Name, oldTypeMetadata.Name, parameter.Name),
+                    remediation: string.Format(Properties.Resources.ChangedParameterTypeRemediation,
+                        parameter.Name, oldTypeMetadata.Name));
             }
             else
             {
@@ -297,9 +307,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            int problemId = 0;
-            string description = string.Empty;
-            string remediation = string.Empty;
+            int problemId = ProblemIds.BreakingChangeProblemId.ChangedOutputElementType;
+            string description = string.Format(Properties.Resources.ChangedOutputElementTypeDescription,
+                                    oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+            string remediation = string.Format(Properties.Resources.ChangedOutputElementTypeRemediation,
+                                    oldTypeMetadata.ElementType);
 
             // If the type is an array, check for any breaking changes
             if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
@@ -453,9 +465,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: 0,
-                description: string.Empty,
-                remediation: string.Empty);
+                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericType,
+                description: string.Format(Properties.Resources.ChangedGenericTypeDescription,
+                    target, oldTypeMetadata.Name, newTypeMetadata.Name),
+                remediation: string.Format(Properties.Resources.ChangedGenericTypeRemediation,
+                    target, oldTypeMetadata.Name));
 
             return false;
         }
@@ -486,9 +500,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: 0,
-                description: string.Empty,
-                remediation: string.Empty);
+                problemId: ProblemIds.BreakingChangeProblemId.DifferentGenericTypeArgumentSize,
+                description: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeDescription,
+                    oldTypeMetadata.Name, target, oldTypeMetadata.GenericTypeArguments.Count,
+                    newTypeMetadata.GenericTypeArguments.Count),
+                remediation: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeRemediation,
+                    oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
 
             return false;
         }
@@ -517,9 +534,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             issueLogger.LogBreakingChangeIssue(
                 cmdlet: cmdlet,
                 severity: 0,
-                problemId: 0,
-                description: string.Empty,
-                remediation: string.Empty);
+                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericTypeArgument,
+                description: string.Format(Properties.Resources.ChangedGenericTypeArgumentDescription,
+                    target, oldArgument, newArgument),
+                remediation: string.Format(Properties.Resources.ChangedGenericTypeArgumentRemediation,
+                    target, oldArgument));
 
             return false;
         }

@@ -92,9 +92,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameter,
+                        description: string.Format(Properties.Resources.RemovedParameterDescription,
+                            cmdlet.Name, oldParameter.Name),
+                        remediation: string.Format(Properties.Resources.RemovedParameterRemediation,
+                            oldParameter.Name, cmdlet.Name));
                 }
             }
         }
@@ -150,9 +152,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
+                        description: string.Format(Properties.Resources.RemovedParameterAliasDescription,
+                            cmdlet.Name, oldAlias, oldParameter.Name),
+                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation,
+                            oldAlias, oldParameter.Name));
                 }
             }
         }
@@ -186,9 +190,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
-                    problemId: 0,
-                    description: string.Empty,
-                    remediation: string.Empty);
+                    problemId: ProblemIds.BreakingChangeProblemId.AddedValidateSet,
+                    description: string.Format(Properties.Resources.AddedValidateSetDescription,
+                        oldParameter.Name, cmdlet.Name),
+                    remediation: string.Format(Properties.Resources.AddedValidateSetRemediation,
+                        oldParameter.Name));
 
                 return;
             }
@@ -212,9 +218,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
+                        description: string.Format(Properties.Resources.RemovedValidateSetValueDescription,
+                            oldParameter.Name, cmdlet.Name, oldValue),
+                        remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
+                            oldValue, oldParameter.Name));
                 }
             }
         }
@@ -241,9 +249,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
+                        description: string.Format(Properties.Resources.AddedValidateRangeDescription,
+                            oldParameter.Name, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.AddedValidateRangeRemediation,
+                            oldParameter.Name));
                 }
                 else
                 {
@@ -253,9 +263,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: 0,
-                            description: string.Empty,
-                            remediation: string.Empty);
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMinimumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMin, newParameter.ValidateRangeMin),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMinimumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMin));
                     }
 
                     // If the maximum value of the range has decreased, log an issue
@@ -264,9 +276,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         issueLogger.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
-                            problemId: 0,
-                            description: string.Empty,
-                            remediation: string.Empty);
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
+                            description: string.Format(Properties.Resources.ChangedValidateRangeMaximumDescription,
+                                oldParameter.Name, oldParameter.ValidateRangeMax, newParameter.ValidateRangeMax),
+                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMaximumRemediation,
+                                oldParameter.Name, oldParameter.ValidateRangeMax));
                     }
                 }
             }
@@ -292,9 +306,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: 0,
-                        description: string.Empty,
-                        remediation: string.Empty);
+                        problemId: ProblemIds.BreakingChangeProblemId.AddedValidateNotNullOrEmpty,
+                        description: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyDescription,
+                            oldParameter.Name, cmdlet.Name),
+                        remediation: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyRemediation,
+                            oldParameter.Name));
             }
         }
 
