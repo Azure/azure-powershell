@@ -23,6 +23,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -41,6 +42,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
+        private const string ProxyUrl = "http://127.0.0.1:8001";
+
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
@@ -58,6 +61,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string Id { get; set; }
 
         /// <summary>
@@ -115,7 +119,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             RunCmdLet(() =>
             {
                 if (!GeneralUtilities.Probe("kubectl"))
-                    throw new CmdletInvocationException("kubectl is required to be installed and on your path to execute this command. Kubectl is available here: https://kubernetes.io/docs/tasks/tools/install-kubectl/.");
+                    throw new CmdletInvocationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
 
                 var tmpFileName = Path.GetTempFileName();
                 var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
@@ -124,19 +128,15 @@ namespace Microsoft.Azure.Commands.Kubernetes
                     tmpFileName,
                     Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
 
-                var proxyUrl = "http://127.0.0.1:8001";
-
                 WriteVerbose(string.Format(
-                    "Running: kubectl get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard",
+                    Resources.RunningKubectlGetPodsKubeconfigNamespaceSelector,
                     tmpFileName));
                 var proc = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "kubectl",
-                        Arguments = string.Format(
-                            "get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard",
-                            tmpFileName),
+                        Arguments = $"get pods --kubeconfig {tmpFileName} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard",
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         CreateNoWindow = true
@@ -150,13 +150,13 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
 
                 WriteVerbose(string.Format(
-                    "Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090",
+                    Resources.RunningInBackgroundJobKubectlTunnel,
                     tmpFileName, dashPodName));
 
                 var exitingJob = JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel");
                 if (exitingJob != null)
                 {
-                    WriteVerbose("Stopping existing Kubectl-Tunnel job.");
+                    WriteVerbose(Resources.StoppingExistingKubectlTunnelJob);
                     exitingJob.StopJob();
                     JobRepository.Remove(exitingJob);
                 }
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 var job = new KubeTunnelJob(tmpFileName, dashPodName);
                 if (!DisableBrowser)
                 {
-                    WriteVerbose("Setting up browser pop.");
+                    WriteVerbose(Resources.SettingUpBrowserPop);
                     job.StartJobCompleted += (sender, evt) =>
                     {
-                        WriteVerbose(string.Format("Starting browser: {0}", proxyUrl));
-                        PopBrowser(proxyUrl);
+                        WriteVerbose(string.Format(Resources.StartingBrowser, ProxyUrl));
+                        PopBrowser(ProxyUrl);
                     };
                 }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 return;
             }
 #endif
-            WriteVerbose("Starting on default");
+            WriteVerbose(Resources.StartingOnDefault);
             Process.Start(uri);
         }
     }
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
         public override void StopJob()
         {
-            _statusMsg = string.Format("Stopping process with id {0}", _pid);
+            _statusMsg = string.Format(Resources.StoppingProcessWithId, _pid);
             SetJobState(JobState.Stopping);
             try
             {
@@ -249,19 +249,17 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
             catch (Exception)
             {
-                _statusMsg = "pid doesn't exit or job is already dead";
+                _statusMsg = Resources.PidDoesntExistOrJobIsAlreadyDead;
             }
             SetJobState(JobState.Stopped);
-            _statusMsg = string.Format("Stopped process with id {0}", _pid);
+            _statusMsg = string.Format(Resources.StoppedProcesWithId, _pid);
             OnStopJobCompleted(new AsyncCompletedEventArgs(null, false, _statusMsg));
         }
 
         public override void StartJob()
         {
-            var kubectlCmd = string.Format(
-                        "--kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090", _credFilePath,
-                        _dashPod);
-            _statusMsg = string.Format("Starting: `kubectl {0}`", kubectlCmd);
+            var kubectlCmd = $"--kubeconfig {_credFilePath} --namespace kube-system port-forward {_dashPod} 8001:9090";
+            _statusMsg = string.Format(Resources.StartingKubectl, kubectlCmd);
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -278,9 +276,8 @@ namespace Microsoft.Azure.Commands.Kubernetes
             Thread.Sleep(1500);
             _pid = process.Id;
             SetJobState(JobState.Running);
-            _statusMsg = string.Format("Started: `kubectl {0}`", kubectlCmd);
-            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false,
-                string.Format("Process started with id: {0}.", _pid)));
+            _statusMsg = string.Format(Resources.StartedKubectl, kubectlCmd);
+            OnStartJobCompleted(new AsyncCompletedEventArgs(null, false, string.Format(Resources.ProcessStartedWithId, _pid)));
         }
 
         public override void StartJobAsync()

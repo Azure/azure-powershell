@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -32,29 +33,29 @@ namespace Microsoft.Azure.Commands.Kubernetes
 
             Action action = () =>
             {
-                WriteVerbose("Preparing for deployment of your managed Kubernetes cluster.");
+                WriteVerbose(Resources.PreparingForDeploymentOfYourManagedKubernetesCluster);
                 var managedCluster = BuildNewCluster();
                 var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                 var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
                 WriteObject(psObj);
             };
 
-            var msg = string.Format("{0} in {1}", Name, ResourceGroupName);
+            var msg = $"{Name} in {ResourceGroupName}";
 
             if (Exists())
             {
-                WriteVerbose("Cluster already exists, confirm action.");
+                WriteVerbose(Resources.ClusterAlreadyExistsConfirmAction);
                 ConfirmAction(
                     Force,
-                    "Do you want to create a new managed Kubernetes cluster?",
-                    "Creating a managed Kubernetes cluster.",
+                    Resources.DoYouWantToCreateANewManagedKubernetesCluster,
+                    Resources.CreatingAManagedKubernetesCluster,
                     msg,
                     action);
             }
             else
             {
-                WriteVerbose("Cluster is new.");
-                if (ShouldProcess(msg, "Creating a managed Kubernetes cluster."))
+                WriteVerbose(Resources.ClusterIsNew);
+                if (ShouldProcess(msg, Resources.CreatingAManagedKubernetesCluster))
                 {
                     RunCmdLet(action);
                 }

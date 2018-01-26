@@ -14,6 +14,7 @@
 
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 
 namespace Microsoft.Azure.Commands.Kubernetes
 {
@@ -32,13 +33,13 @@ namespace Microsoft.Azure.Commands.Kubernetes
                 var exitingJob = JobRepository.Jobs.FirstOrDefault(j => j.Name == "Kubectl-Tunnel") as KubeTunnelJob;
                 if (exitingJob != null)
                 {
-                    WriteVerbose(string.Format("Stopping existing Kubectl-Tunnel job with pid {0}.", exitingJob.Pid));
+                    WriteVerbose(string.Format(Resources.StoppingExistingKubectlTunnelJobWithPid, exitingJob.Pid));
                     exitingJob.StopJob();
                     JobRepository.Remove(exitingJob);
                 }
                 else
                 {
-                    WriteVerbose("Did not find job.");
+                    WriteVerbose(Resources.DidNotFindJob);
                 }
 
                 if (PassThru)

@@ -18,8 +18,8 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kubernetes
@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string Id { get; set; }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
                         WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>));
                         break;
                     default:
-                        throw new ArgumentException("Bad parameterset name. This is a bug and should be reported.");
+                        throw new ArgumentException(Resources.ParameterSetError);
                 }
             });
         }

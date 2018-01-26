@@ -20,6 +20,7 @@ using System.Management.Automation;
 using System.Text;
 using Microsoft.Azure.Commands.Kubernetes.Generated;
 using Microsoft.Azure.Commands.Kubernetes.Models;
+using Microsoft.Azure.Commands.Kubernetes.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string Id { get; set; }
 
         /// <summary>
@@ -119,9 +121,9 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
 
             ConfirmAction(Force.IsPresent,
-                "Do you want to import the Kubernetes config?",
-                "Importing Kubernetes config resource.",
-                string.Format("AzureRmKubernetesCredential {0} in {1}", Name, ResourceGroupName),
+                Resources.DoYouWantToImportTheKubernetesConfig,
+                Resources.ImportingKubernetesConfigResource,
+                string.Format(Resources.KubernetesCredentialAction, Name, ResourceGroupName),
                 () =>
                     RunCmdLet(() =>
                     {
@@ -132,12 +134,12 @@ namespace Microsoft.Azure.Commands.Kubernetes
                                 ".kube",
                                 "config");
                             WriteVerbose(
-                                string.Format("File was not specified. Writing credential to {0}.", ConfigPath));
+                                string.Format(Resources.FileWasNotSpecifiedWritingCredentialTo, ConfigPath));
                         }
 
                         WriteVerbose(Admin
-                            ? "Fetching the clusterAdmin kubectl config"
-                            : "Fetching the default clusterUser kubectl config");
+                            ? Resources.FetchingTheClusterAdminKubectlConfig
+                            : Resources.FetchingTheDefaultClusterUserKubectlConfig);
                         var accessProfile = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name,
                             Admin ? "clusterAdmin" : "clusterUser");
 
@@ -167,7 +169,7 @@ namespace Microsoft.Azure.Commands.Kubernetes
             }
             if (!File.Exists(ConfigPath))
             {
-                WriteVerbose(string.Format("No config file located at {0}. Creating Kube config.", ConfigPath));
+                WriteVerbose(string.Format(Resources.NoConfigFileLocatedAtCreatingKubeConfig, ConfigPath));
                 File.WriteAllText(ConfigPath, config);
             }
             else

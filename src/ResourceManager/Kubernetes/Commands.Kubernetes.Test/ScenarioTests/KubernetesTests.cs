@@ -1,5 +1,9 @@
+using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -13,6 +17,11 @@ namespace Commands.Kubernetes.Test.ScenarioTests
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
+            {
+                AzureSession.Instance.DataStore = new MemoryDataStore();
+                AzureSession.Instance.DataStore.WriteFile(@"C:\Users\dajustic\.ssh\id_rsa.pub", File.ReadAllText("Fixtures/id_rsa.pub"));
+            }
         }
 
         [Fact]
