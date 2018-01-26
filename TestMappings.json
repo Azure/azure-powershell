@@ -2,10 +2,22 @@
   ".github": [],
   "documentation": [],
   "setup": [],
+  ".gitattributes": [],
+  "CONTRIBUTING.md": [],
+  "ChangeLog.md": [],
+  "LICENSE.txt": [],
+  "README.md": [],
+  "appveyor.yml": [],
+  "src/Common/Commands.Common.Authentication.Test/": [
+    ".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
+  ],
   "src/ResourceManager/AnalysisServices/": [],
   "src/ResourceManager/ApiManagement/": [
     ".\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.Test.dll"
   ],
+  "src/ResourceManager/ApplicationInsights/": [
+    ".\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApplicationInsights.Test.dll"
+  ],  
   "src/ResourceManager/Automation/": [
     ".\\src\\ResourceManager\\Automation\\Commands.Automation.Test\\bin\\Debug\\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"
   ],
@@ -30,6 +42,9 @@
   ],
   "src/ResourceManager/Consumption/": [
     ".\\src\\ResourceManager\\Consumption\\Commands.Consumption.Test\\bin\\Debug\\Microsoft.Azure.Commands.Consumption.Test.dll"
+  ],
+  "src/ResourceManager/ContainerInstance": [
+    ".\\src\\ResourceManager\\ContainerInstance\\Commands.ContainerInstance.Test\\bin\\Debug\\Microsoft.Azure.Commands.ContainerInstance.Test.dll"
   ],
   "src/ResourceManager/ContainerRegistry/": [
     ".\\src\\ResourceManager\\ContainerRegistry\\Commands.ContainerRegistry.Test\\bin\\Debug\\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"
@@ -76,6 +91,9 @@
   "src/ResourceManager/MachineLearningCompute/" : [
      ".\\src\\ResourceManager\\MachineLearningCompute\\Commands.MachineLearningCompute.Test\\bin\\Debug\\Microsoft.Azure.Commands.MachineLearningCompute.Test.dll"
   ],
+  "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
+    ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
+  ],
   "src/ResourceManager/Media/": [],
   "src/ResourceManager/Network/": [
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll"
@@ -89,8 +107,14 @@
   "src/ResourceManager/PowerBIEmbedded/": [
     ".\\src\\ResourceManager\\PowerBIEmbedded\\Commands.PowerBIEmbedded.Test\\bin\\Debug\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"
   ],
+  "src/ResourceManager/Profile/": [
+    ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
+  ],
   "src/ResourceManager/RecoveryServices.Backup/": [
     ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"
+  ],
+  "src/ResourceManager/RecoveryServices.SiteRecovery/": [
+    ".\\src\\ResourceManager\\RecoveryServices.SiteRecovery\\Commands.RecoveryServices.SiteRecovery.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.dll"
   ],
   "src/ResourceManager/RecoveryServices/": [
     ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"
@@ -101,11 +125,11 @@
   "src/ResourceManager/Relay/": [
     ".\\src\\ResourceManager\\Relay\\Commands.Relay.Test\\bin\\Debug\\Microsoft.Azure.Commands.Relay.Test.dll"
   ],
-  "src/ResourceManager/Resources/": [
-    ".\\src\\ResourceManager\\Resources\\Commands.Resources.Test\\bin\\Debug\\Microsoft.Azure.Commands.Resources.Test.dll"
-  ],
   "src/ResourceManager/Reservations/": [
     ".\\src\\ResourceManager\\Reservations\\Commands.Reservations.Test\\bin\\Debug\\Microsoft.Azure.Commands.Reservations.Test.dll"
+  ],
+  "src/ResourceManager/Resources/": [
+    ".\\src\\ResourceManager\\Resources\\Commands.Resources.Test\\bin\\Debug\\Microsoft.Azure.Commands.Resources.Test.dll"
   ],
   "src/ResourceManager/Scheduler/": [
     ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"
@@ -165,23 +189,5 @@
   ],
   "tools/BuildPackagesTask/": [
     ".\\tools\\BuildPackagesTask\\Microsoft.Azure.Build.Tasks.Test\\bin\\Debug\\Microsoft.Azure.Build.Tasks.Test.dll"
-  ],
-  ".gitattributes": [],
-  "CONTRIBUTING.md": [],
-  "ChangeLog.md": [],
-  "LICENSE.txt": [],
-  "README.md": [],
-  "appveyor.yml": [],
-  "src/Common/Commands.Common.Authentication.Test/": [
-    ".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
-  ],
-  "src/ResourceManager/Profile/Commands.Profile.Test/": [
-    ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
-  ],
-  "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
-    ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
-  ],
- "src/ResourceManager/ApplicationInsights/": [
-    ".\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApplicationInsights.Test.dll"
-  ]  
+  ]
 }
