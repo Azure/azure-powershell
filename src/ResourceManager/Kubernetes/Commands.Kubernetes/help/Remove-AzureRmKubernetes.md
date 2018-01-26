@@ -73,7 +73,9 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Id of a managed Kubernetes cluster```yaml
+Id of a managed Kubernetes cluster
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSet
 Aliases:
@@ -86,7 +88,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.```yaml
+A PSKubernetesCluster object, normally passed through the pipeline.
+
+```yaml
 Type: PSKubernetesCluster
 Parameter Sets: InputObjectParameterSet
 Aliases:

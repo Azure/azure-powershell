@@ -57,7 +57,9 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Id of a managed Kubernetes cluster```yaml
+Id of a managed Kubernetes cluster
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSet
 Aliases:
