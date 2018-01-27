@@ -124,6 +124,7 @@
     <Compile Include="ScenarioTests\TestController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fixtures\acsServicePrincipal.json" />
     <None Include="Fixtures\id_rsa.pub" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

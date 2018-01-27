@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -20,7 +21,9 @@ namespace Commands.Kubernetes.Test.ScenarioTests
             if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
             {
                 AzureSession.Instance.DataStore = new MemoryDataStore();
-                AzureSession.Instance.DataStore.WriteFile(@"C:\Users\dajustic\.ssh\id_rsa.pub", File.ReadAllText("Fixtures/id_rsa.pub"));
+                var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText("Fixtures/id_rsa.pub"));
+                AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), "Fixtures/acsServicePrincipal.json");
             }
         }
 
