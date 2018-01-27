@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Certificate support for IoTHub cmdlets
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 ## Version 3.0.0
 * Add support for online help

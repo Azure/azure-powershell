@@ -55,60 +55,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
+        public SwitchParameter UseOriginalStorageAccount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                StorageAccountName = StorageAccountName.ToLower();
-                ResourceIdentity identity = new ResourceIdentity();
-                identity.ResourceName = StorageAccountName;
-                identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
-                identity.ResourceProviderApiVersion = "2015-12-01";
-                identity.ResourceType = string.Empty;
-                identity.ParentResourcePath = string.Empty;
 
-                GenericResource resource = null;
-                try
-                {
-                    WriteDebug(string.Format("Query Microsoft.ClassicStorage with name = {0}",
-                        StorageAccountName));
-                    resource = RmClient.Resources.GetAsync(
-                        StorageAccountResourceGroupName,
-                        identity.ResourceProviderNamespace,
-                        identity.ParentResourcePath,
-                        identity.ResourceType,
-                        identity.ResourceName,
-                        identity.ResourceProviderApiVersion,
-                        CancellationToken.None).Result;
-                }
-                catch (Exception)
-                {
-                    identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
-                    identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = RmClient.Resources.GetAsync(
-                        StorageAccountResourceGroupName,
-                        identity.ResourceProviderNamespace,
-                        identity.ParentResourcePath,
-                        identity.ResourceType,
-                        identity.ResourceName,
-                        identity.ResourceProviderApiVersion,
-                        CancellationToken.None).Result;
-                }
-
-                string storageAccountId = resource.Id;
-                string storageAccountlocation = resource.Location;
-                string storageAccountType = resource.Type;
-
-                WriteDebug(string.Format("StorageId = {0}", storageAccountId));
+                GenericResource storageAccountResource = GetStorageAccountResource();
+                WriteDebug(string.Format("StorageId = {0}", storageAccountResource.Id));
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
                 {
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountId, storageAccountId},
-                    {RestoreBackupItemParams.StorageAccountLocation, storageAccountlocation},
-                    {RestoreBackupItemParams.StorageAccountType, storageAccountType}
+                    {RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id},
+                    {RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location},
+                    {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type},
+                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent}
                 }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
@@ -118,6 +87,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(jobResponse, Resources.RestoreOperation);
             }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
+        }
+
+        private GenericResource GetStorageAccountResource()
+        {
+            StorageAccountName = StorageAccountName.ToLower();
+            ResourceIdentity identity = new ResourceIdentity();
+            identity.ResourceName = StorageAccountName;
+            identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
+            identity.ResourceProviderApiVersion = "2015-12-01";
+            identity.ResourceType = string.Empty;
+            identity.ParentResourcePath = string.Empty;
+
+            GenericResource resource = null;
+            try
+            {
+                WriteDebug(string.Format("Query Microsoft.ClassicStorage with name = {0}",
+                    StorageAccountName));
+                resource = RmClient.Resources.GetAsync(
+                    StorageAccountResourceGroupName,
+                    identity.ResourceProviderNamespace,
+                    identity.ParentResourcePath,
+                    identity.ResourceType,
+                    identity.ResourceName,
+                    identity.ResourceProviderApiVersion,
+                    CancellationToken.None).Result;
+            }
+            catch (Exception)
+            {
+                identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
+                identity.ResourceProviderApiVersion = "2016-01-01";
+                resource = RmClient.Resources.GetAsync(
+                    StorageAccountResourceGroupName,
+                    identity.ResourceProviderNamespace,
+                    identity.ParentResourcePath,
+                    identity.ResourceType,
+                    identity.ResourceName,
+                    identity.ResourceProviderApiVersion,
+                    CancellationToken.None).Result;
+            }
+
+            return resource;
         }
     }
 }

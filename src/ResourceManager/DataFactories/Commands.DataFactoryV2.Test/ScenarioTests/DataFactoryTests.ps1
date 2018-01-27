@@ -146,3 +146,34 @@ function Test-GetFactoryByNameParameterSet
 
     Assert-ThrowsContains { Get-AzureRmDataFactoryV2 -DataFactoryName $dfname } "ResourceGroupName"
 }
+
+<#
+.SYNOPSIS
+Updates a data factory and then does a Get to verify that both are identical.
+#>
+function Test-UpdateDataFactory
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+		Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $actual = Update-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Tag @{newTag = "NewTagValue"}
+        $expected = Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.DataFactoryId $actual.DataFactoryId
+        Assert-AreEqual $expected.Tag $actual.Tag
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+

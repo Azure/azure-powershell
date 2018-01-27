@@ -28,10 +28,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         private ResourcesClient resourcesClient;
 
+#if !NETSTANDARD
         /// <summary>
         /// Field that holds the gallery templates client instance
         /// </summary>
         private GalleryTemplatesClient galleryTemplatesClient;
+#endif
 
         /// <summary>
         /// Field that holds the policies client instance
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             set { this.resourcesClient = value; }
         }
 
+#if !NETSTANDARD
         /// <summary>
         /// Gets or sets the gallery templates client
         /// </summary>
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             set { this.galleryTemplatesClient = value; }
         }
+#endif
 
         /// <summary>
         /// Gets or sets the policies client

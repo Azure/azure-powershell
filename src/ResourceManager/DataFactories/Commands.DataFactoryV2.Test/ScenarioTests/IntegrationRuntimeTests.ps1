@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 Creates a self-hosted integration runtime and then does operations.
@@ -50,21 +49,6 @@ function Test-SelfHosted-IntegrationRuntime
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id
         Assert-AreEqual $actual.Name $expected.Name
 
-        $key = Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname
-        Assert-NotNull $key
-        Assert-NotNull $key.AuthKey1
-        Assert-NotNull $key.AuthKey2
-
-        $key = New-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname `
-            -KeyName authKey1 `
-            -Force
-        Assert-NotNull $key
-        Assert-NotNull $key.AuthKey1
-
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname
@@ -87,10 +71,74 @@ function Test-SelfHosted-IntegrationRuntime
 
 <#
 .SYNOPSIS
-Creates a managed elastic integration runtime and then does operations.
+Creates a SSIS-Azure integration runtime and then does operations.
+Deletes the created integration runtime at the end.
+
+Before running this test, make sure setting the following environment variables:
+CatalogServerEndpoint: The catalog server endpoint for catalog database
+CatalogAdminUsername: The admin user name on this server
+CatalogAdminPassword: The password of the admin user.
+#>
+function Test-SsisAzure-IntegrationRuntime
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $dfname `
+            -Location $dflocation `
+            -Force
+     
+        $irname = "ssis-azure-ir"
+        $description = "SSIS-Azure integration runtime"
+   
+        $secpasswd = ConvertTo-SecureString $Env:CatalogAdminPassword -AsPlainText -Force
+        $mycreds = New-Object System.Management.Automation.PSCredential($Env:CatalogAdminUsername, $secpasswd)
+        $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Description $description `
+            -Type Managed `
+            -Location 'East US' `
+            -NodeSize Standard_A4_v2 `
+            -NodeCount 1 `
+            -CatalogServerEndpoint $Env:CatalogServerEndpoint `
+            -CatalogAdminCredential $mycreds `
+            -CatalogPricingTier 'S1' `
+            -MaxParallelExecutionsPerNode 1 `
+            -LicenseType LicenseIncluded `
+            -Force
+
+        $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname
+        Assert-AreEqual $actual.Name $expected.Name
+
+        Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+        Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
+
+        Start-Sleep -Seconds 15
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates an azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
 #>
-function Test-ManagedElastic-IntegrationRuntime
+function Test-Azure-IntegrationRuntime
 {
     $dfname = Get-DataFactoryName
     $rgname = Get-ResourceGroupName

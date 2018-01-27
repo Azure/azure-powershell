@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeCredential = "AzureRmDataFactoryV2IntegrationRuntimeCredential";
 
+        public const string IntegrationRuntimeUpgrade = "AzureRmDataFactoryV2IntegrationRuntimeUpgrade";
+
         public const string Dataset = "AzureRmDataFactoryV2Dataset";
 
         public const string Pipeline = "AzureRmDataFactoryV2Pipeline";
@@ -53,6 +55,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpFactoryObject = "The data factory object.";
 
         public const string HelpFactoryName = "The data factory name.";
+
+        public const string HelpTagsForFactory = "The tags of the data factory.";
+
+        public const string HelpIdentityForFactory = "The identity for the data factory.";
 
         public const string HelpPipelineName = "The pipeline name.";
 
@@ -102,13 +108,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
 
+        public const string HelpIntegrationRuntimeLicenseType = "The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.";
+
         public const string HelpIntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
 
+        public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
+
+        public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
+
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
+
+        public const string HelpPipelineRun = "The information about the pipeline run.";
 
         public const string HelpActivityName = "The name of the activity.";
 
@@ -149,7 +163,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeTypeManaged = "Managed";
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
-        
+
+        public const string IntegrationRuntimeAutoUpdateEnabled = "On";
+
+        public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
+
         public const string TriggerName = "TriggerName";
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
     }
 }

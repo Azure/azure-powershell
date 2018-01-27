@@ -92,6 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return result;
             }
         }
+#endif
 
         protected override string DataCollectionWarning
         {
@@ -100,7 +101,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return Resources.ARMDataCollectionMessage;
             }
         }
-#endif
 
         protected override void InitializeQosEvent()
         {

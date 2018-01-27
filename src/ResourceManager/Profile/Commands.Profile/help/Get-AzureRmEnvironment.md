@@ -90,7 +90,7 @@ PublishSettingsFileUrl                            : https://manage.windowsazure.
 ResourceManagerUrl                                : https://management.usgovcloudapi.net/
 SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
 StorageEndpointSuffix                             : core.usgovcloudapi.net
-ActiveDirectoryAuthority                          : https://login-us.microsoftonline.com/
+ActiveDirectoryAuthority                          : https://login.microsoftonline.us/
 GraphUrl                                          : https://graph.windows.net/
 GraphEndpointResourceId                           : https://graph.windows.net/
 TrafficManagerDnsSuffix                           : usgovtrafficmanager.net

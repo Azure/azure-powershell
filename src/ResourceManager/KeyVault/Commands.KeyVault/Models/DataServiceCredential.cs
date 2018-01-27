@@ -74,21 +74,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static string GetTenantId(IAzureContext context)
         {
-            var tenantId = string.Empty;
             if (context.Account == null)
+            {
                 throw new ArgumentException(KeyVaultProperties.Resources.ArmAccountNotFound);
+            }
 
-            if (context.Account.Type != AzureAccount.AccountType.User &&
-                context.Account.Type != AzureAccount.AccountType.ServicePrincipal)
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
-
-            if (context.Subscription != null && context.Account != null)
+            var tenantId = string.Empty;
+            if (context.Tenant != null && context.Tenant.GetId() != Guid.Empty)
+            {
+                tenantId = context.Tenant.Id.ToString();
+            }
+            else if (string.IsNullOrWhiteSpace(tenantId) && context.Subscription != null && context.Account != null)
+            {
                 tenantId = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
                        .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
                        .FirstOrDefault();
+            }
 
-            if (string.IsNullOrWhiteSpace(tenantId) && context.Tenant != null && context.Tenant.GetId() != Guid.Empty)
-                tenantId = context.Tenant.Id.ToString();
             return tenantId;
         }
 

@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Creates a new integration account map.
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Parameter(ParameterSetName = "PrivateKey", Mandatory = true)]
         [Parameter(ParameterSetName = "PublicKey", Mandatory = true)]
         [Parameter(ParameterSetName = "Both", Mandatory = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

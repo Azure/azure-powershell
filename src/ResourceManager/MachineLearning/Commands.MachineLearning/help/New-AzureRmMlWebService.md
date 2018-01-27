@@ -32,10 +32,6 @@ If a web service with the same name exists in the resource group, the call acts 
 ## EXAMPLES
 
 ### --------------------------  Example 1: Create a new service from a Json file based definition  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -DefinitionFile "C:\mlservice.json"
 ```
@@ -43,10 +39,6 @@ New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservice
 Creates a new Azure Machine Learning web service named "mywebservicename" in the "myresourcegroup" group and South Central US region, based on the definition present in the referenced json file.
 
 ### --------------------------  Example 2: Create a new service from an object instance  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -NewWebServiceDefinition $serviceDefinitionObject
 ```

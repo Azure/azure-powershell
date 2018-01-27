@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
         public List<string> Location { get; set; }
 
         [Parameter(
@@ -80,6 +83,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = false,
             HelpMessage = "The name of the city.")]
         public string City { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {

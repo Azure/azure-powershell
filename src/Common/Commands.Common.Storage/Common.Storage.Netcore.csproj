@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Common.Storage</AssemblyName>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Storage</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>True</SignAssembly>
+    <DelaySign>True</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.5.0-preview" />
+    <PackageReference Include="WindowsAzure.Storage" Version="8.1.1" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Adapters\**" />
+    <EmbeddedResource Remove="Adapters\**" />
+    <None Remove="Adapters\**" />
+    <Compile Remove="Stack\AzureContextExtensions.cs" />
+    <Compile Remove="Stack\AzureStorageContext.cs" />
+    <Compile Remove="Stack\BlobUploadParameters.cs" />
+    <Compile Remove="Stack\IStorageClientWrapper.cs" />
+    <Compile Remove="Stack\IStorageContextProvider.cs" />
+    <Compile Remove="Stack\LazyAzureStorageContext.cs" />
+    <Compile Remove="Stack\StorageClientWrapper.cs" />
+    <Compile Remove="Stack\StorageIdentity.cs" />
+    <Compile Remove="Stack\StorageUtilities.cs" />
+    <Compile Remove="Stack\WindowsAzureSubscriptionExtensions.cs" />
+    <Compile Remove="Stack\Properties\AssemblyInfo.cs" />
+    <Compile Remove="Stack\Properties\Resources.Designer.cs" />
+    <EmbeddedResource Remove="Stack\Properties\Resources.resx" />
+    <None Remove="Stack\MSSharedLibKey.snk" />
+    <None Remove="Stack\packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Common\Common.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

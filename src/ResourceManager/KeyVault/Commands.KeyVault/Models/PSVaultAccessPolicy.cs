@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if NETSTANDARD
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+#else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+#endif
 using System;
 using System.Collections.Generic;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;

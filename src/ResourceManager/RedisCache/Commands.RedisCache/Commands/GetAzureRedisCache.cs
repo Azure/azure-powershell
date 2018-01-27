@@ -14,33 +14,41 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.Rest.Azure;
-    using System.Collections.Generic;
-    using System.Management.Automation;
+    using Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCache", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<RedisCacheAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCache"), OutputType(typeof(List<RedisCacheAttributes>))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
     {
-        internal const string BaseParameterSetName = "GetAllInSubscription";
-        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
-        internal const string RedisCacheParameterSetName = "GetByRedisCache";
-
-        [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
-        [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which want to create cache.")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of redis cache.")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(Name))
             {
-                // Get for single cache
-                WriteObject(new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName));
+                if (!string.IsNullOrEmpty(ResourceGroupName))
+                {
+                    // Get single cache directly by RP call
+                    WriteObject(new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName));
+                }
+                else
+                {
+                    // Get single cache from list of caches
+                    RedisResource response = CacheClient.GetCache(Name);
+                    WriteObject(new RedisCacheAttributes(response, Utility.GetResourceGroupNameFromRedisCacheId(response.Id)));
+                }
             }
             else
             {

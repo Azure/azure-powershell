@@ -14,41 +14,46 @@
 
 using System;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for operation context
     /// </summary>
-    [TestClass]
     public class CmdletOperationContextTest : StorageTestBase
     {
-        [TestMethod]
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitTest()
         {
             CmdletOperationContext.Init();
-            Assert.IsNotNull(CmdletOperationContext.StartTime);
-            Assert.IsNotNull(CmdletOperationContext.ClientRequestId);
+            Assert.NotNull(CmdletOperationContext.StartTime);
+            Assert.NotNull(CmdletOperationContext.ClientRequestId);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetClientRequestIDTest()
         {
             string id = CmdletOperationContext.GenClientRequestID();
-            Assert.IsNotNull(id);
+            Assert.NotNull(id);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRunningMillisecondsTest()
         {
             CmdletOperationContext.Init();
             double msTime = CmdletOperationContext.GetRunningMilliseconds();
-            Assert.IsTrue(msTime >= 0);
+            Assert.True(msTime >= 0);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CmdletOperationContextInitTwiceTest()
         {
             CmdletOperationContext.Init();
@@ -57,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             Thread.Sleep(sleepInterval);
             CmdletOperationContext.Init();
             DateTime snapshotTime2 = CmdletOperationContext.StartTime;
-            Assert.AreEqual(snapshotTime, snapshotTime2, "The start time should be equal after many times init");
+            Assert.Equal(snapshotTime, snapshotTime2);
         }
     }
 }

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -30,12 +32,15 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The geographic region to create the data factory.")]
+        [LocationCompleter("Microsoft.DataFactory/datafactories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmDataFactory: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -43,15 +48,17 @@ namespace Microsoft.Azure.Commands.DataFactories
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
+#pragma warning disable CS0618
             CreatePSDataFactoryParameters parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
-                Tags = Tags,
+                Tags = Tag,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };
+#pragma warning restore CS0618
 
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
         }

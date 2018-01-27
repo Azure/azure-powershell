@@ -89,10 +89,16 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		[ValidateNotNullOrEmpty]
 		public Guid SourceServerSubscriptionId { get; set; }
 
-		/// <summary>
-		/// Get entity method - nothing to return
-		/// </summary>
-		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Get entity method - nothing to return
+        /// </summary>
+        protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
 		{
 			return new List<Model.AzureSqlServerDnsAliasModel>();
 		}

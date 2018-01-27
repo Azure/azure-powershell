@@ -88,10 +88,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServicesRd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Test", "RecoveryServices\Commands.RecoveryServices.Test\Commands.RecoveryServices.Test.csproj", "{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteApp", "RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj", "{492D2AF2-950B-4F2E-8079-8794305313FD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteApp.Test", "RemoteApp\Commands.RemoteApp.Test\Commands.RemoteApp.Test.csproj", "{CA82D500-1940-4068-A076-D7A8AD459FB0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StorSimple", "StorSimple\Commands.StorSimple\Commands.StorSimple.csproj", "{11524D98-6C40-4091-A8E1-86463FEE607C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
@@ -101,8 +97,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StorSimple.Test", "StorSimple\Commands.StorSimple.Test\Commands.StorSimple.Test.csproj", "{0FA676D5-1349-4086-B33F-65EC2CB7DA41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteAppScenarioTest", "RemoteApp\Commands.RemoteApp.ScenarioTest\Commands.RemoteAppScenarioTest.csproj", "{C2FA83A2-8668-49DD-A1A0-0359653571CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
@@ -246,14 +240,6 @@ Global
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{492D2AF2-950B-4F2E-8079-8794305313FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{492D2AF2-950B-4F2E-8079-8794305313FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{492D2AF2-950B-4F2E-8079-8794305313FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{492D2AF2-950B-4F2E-8079-8794305313FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA82D500-1940-4068-A076-D7A8AD459FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA82D500-1940-4068-A076-D7A8AD459FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA82D500-1940-4068-A076-D7A8AD459FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA82D500-1940-4068-A076-D7A8AD459FB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11524D98-6C40-4091-A8E1-86463FEE607C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11524D98-6C40-4091-A8E1-86463FEE607C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11524D98-6C40-4091-A8E1-86463FEE607C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -274,10 +260,6 @@ Global
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -307,9 +289,7 @@ Global
 		{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{FDB897BD-FCB4-44A1-8D66-AC99F22EC737} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{CA82D500-1940-4068-A076-D7A8AD459FB0} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{0FA676D5-1349-4086-B33F-65EC2CB7DA41} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

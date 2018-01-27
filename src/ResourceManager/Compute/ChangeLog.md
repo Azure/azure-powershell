@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
+
+* Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
+* Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+## Version 4.1.1
+* Get-AzureRmComputeResourceSku shows zone information.
+* Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
+* Added -AsJob support for long-running Compute cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    - Affected cmdlets include: New-, Update-, Set-, Remove-, Start-, Restart-, Stop- cmdlets for Virtual Machines and Virtual Machine Scale Sets
+* Added simplified parameter set to New-AzureRmVM, which creates a Virtual Machine and all required resources using smart defaults
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

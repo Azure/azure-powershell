@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Name of resource group under which want to retrieve the account.")]
         [Parameter(ParameterSetName = AccountParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which want to retrieve the account.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

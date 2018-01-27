@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             ParameterSetName = GetAzureMLWebServiceKeys.GetKeysByGroupAndName, 
             Mandatory = true, 
             HelpMessage = "The name of the resource group for the Azure ML web services.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

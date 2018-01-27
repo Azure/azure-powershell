@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Management.Automation;
 using System.Globalization;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 

@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Services
 		/// </summary>
 		public IAzureContext Context { get; set; }
 
-		/// <summary>
-		/// Creates a communicator for Azure Sql Server DNS Aliases
-		/// </summary>
-		/// <param name="profile"></param>
-		/// <param name="subscription"></param>
-		public AzureSqlServerDnsAliasCommunicator(IAzureContext context)
+        /// <summary>
+        /// Creates a communicator for Azure Sql Server DNS Aliases
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <param name="subscription"></param>
+        public AzureSqlServerDnsAliasCommunicator(IAzureContext context)
 		{
 			Context = context;
 			if (context.Subscription != Subscription)

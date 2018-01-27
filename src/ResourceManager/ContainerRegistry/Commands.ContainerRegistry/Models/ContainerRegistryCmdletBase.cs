@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -21,10 +22,24 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string ContainerRegistryNoun = "AzureRmContainerRegistry";
         protected const string ContainerRegistryCredentialNoun = ContainerRegistryNoun + "Credential";
         protected const string ContainerRegistryNameAvailabilityNoun = "AzureRmContainerRegistryNameAvailability";
+        protected const string ContainerRegistryReplicationNoun = "AzureRmContainerRegistryReplication";
+        protected const string ContainerRegistryWebhookNoun = "AzureRmContainerRegistryWebhook";
+        protected const string ContainerRegistryWebhookEventNoun = "AzureRmContainerRegistryWebhookEvent";
 
         protected const string ContainerRegistryNameAlias = "ContainerRegistryName";
         protected const string RegistryNameAlias = "RegistryName";
         protected const string ResourceNameAlias = "ResourceName";
+        protected const string ReplicationNameAlias = "ReplicationName";
+        protected const string ReplicationLocationAlias = "ReplicationLocation";
+        protected const string ResourceIdAlias = "Id";
+
+        protected const string WebhookNameAlias = "WebhookName";
+        protected const string WebhookActionsAlias = "WebhookActions";
+        protected const string WebhookUriAlias = "WebhookUri";
+        protected const string WebhookHeadersAlias = "WebhookHeaders";
+        protected const string WebhookStatusAlias = "WebhookStatus";
+        protected const string WebhookScopeAlias = "WebhookScope";
+        protected const string WebhookLocationAlias = "WebhookLocation";
 
         protected const string ContainerRegistrySkuAlias = "ContainerRegistrySku";
         protected const string RegistrySkuAlias = "RegistrySku";
@@ -32,16 +47,34 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string TagsAlias = "Tags";
         protected const string EnableAdminAlias = "EnableAdmin";
         protected const string DisableAdminAlias = "DisableAdmin";
-
-        protected const string AllowedSkuNames = "Allowed values: Basic.";
-        protected const string AllowedPasswordNames = "Allowed values: password, password2.";
-
-        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        
+        protected const string ListRegistriesParameterSet = "ListRegistriesParameterSet";
         protected const string RegistryNameParameterSet = "RegistryNameParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string NameResourceGroupParameterSet = "NameResourceGroupParameterSet";
         protected const string RegistryObjectParameterSet = "RegistryObjectParameterSet";
-        protected const string EnableAdminUserParameterSet = "EnableAdminUserParameterSet";
-        protected const string DisableAdminUserParameterSet = "DisableAdminUserParameterSet";
+        protected const string ReplicationObjectParameterSet = "ReplicationObjectParameterSet";
+        protected const string WebhookObjectParameterSet = "WebhookObjectParameterSet";
+        protected const string EnableAdminUserByResourceNameParameterSet = "EnableAdminUserByResourceNameParameterSet";
+        protected const string DisableAdminUserByResourceNameParameterSet = "DisableAdminUserByResourceNameParameterSet";
+        protected const string EnableAdminUserByResourceIdParameterSet = "EnableAdminUserByResourceIdParameterSet";
+        protected const string DisableAdminUserByResourceIdParameterSet = "DisableAdminUserByResourceIdParameterSet";
+        protected const string ListWebhookByNameResourceGroupParameterSet = "ListWebhookByNameResourceGroupParameterSet";
+        protected const string ListWebhookByRegistryObjectParameterSet = "ListWebhookByRegistryObjectParameterSet";
+        protected const string ShowWebhookByNameResourceGroupParameterSet = "ShowWebhookByNameResourceGroupParameterSet";
+        protected const string ShowWebhookByRegistryObjectParameterSet = "ShowWebhookByRegistryObjectParameterSet";
+        protected const string ListWebhookEventsByNameResourceGroupParameterSet = "ListWebhookEventsByNameResourceGroupParameterSet";
+        protected const string ListWebhookEventsByWebhookObjectParameterSet = "ListWebhookEventsByWebhookObjectParameterSet";
+        protected const string ShowReplicationByNameResourceGroupParameterSet = "ShowReplicationByNameResourceGroupParameterSet";
+        protected const string ShowReplicationByRegistryObjectParameterSet = "ShowReplicationByRegistryObjectParameterSet";
+        protected const string ListReplicationByNameResourceGroupParameterSet = "ListReplicationByNameResourceGroupParameterSet";
+        protected const string ListReplicationByRegistryObjectParameterSet = "ListReplicationByRegistryObjectParameterSet";
+
+        protected const string InvalidRegistryResourceIdErrorMessage = "This is an invalid container registry resource id";
+        protected const string InvalidRegistryOrWebhookResourceIdErrorMessage = "This is an invalid container registry resource id or webhook resource id";
+        protected const string InvalidWebhookResourceIdErrorMessage = "This is an invalid webhook resource id";
+        protected const string InvalidRegistryOrReplicationResourceIdErrorMessage = "This is an invalid container registry resource id or replication resource id";
+        protected const string InvalidReplicationResourceIdErrorMessage = "This is an invalid replication resource id";
 
         protected struct PasswordNameStrings
         {
@@ -57,13 +90,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 if (_RegistryClient == null)
                 {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    _RegistryClient = new ContainerRegistryClient(DefaultContext);
                 }
+
+                this._RegistryClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._RegistryClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._RegistryClient.WarningLogger = WriteWarningWithTimestamp;
                 return _RegistryClient;
             }
 
@@ -95,6 +127,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 _ResourceManagerClient = value;
             }
+        }
+
+        protected void WriteInvalidResourceIdError(string msg)
+        {
+            WriteError(new ErrorRecord(new PSArgumentException(msg, "ResourceId"), string.Empty, ErrorCategory.InvalidArgument, null));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlsyncagent
@@ -88,7 +88,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -103,7 +103,7 @@ The name of the Azure SQL Server the sync agent is in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -118,7 +118,7 @@ The database used to store sync related metadata.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -133,7 +133,7 @@ The resource group the sync metadata database belongs to.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +148,7 @@ The resource ID of  the sync metadata database.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseResourceID
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -163,7 +163,7 @@ The server on which the sync metadata database is hosted.
 ```yaml
 Type: String
 Parameter Sets: SyncDatabaseComponent
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

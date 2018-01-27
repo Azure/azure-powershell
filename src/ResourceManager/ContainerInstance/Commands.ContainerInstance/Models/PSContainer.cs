@@ -62,7 +62,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         /// <summary>
         /// Gets or sets the events.
         /// </summary>
-        public IList<PSContainerEvent> Events { get; set; }
+        public IList<PSEvent> Events { get; set; }
+
+        /// <summary>
+        /// Gets or sets the restart count.
+        /// </summary>
+        public int? RestartCount { get; set; }
 
         /// <summary>
         /// Gets or sets the CPU.
@@ -103,7 +108,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 EnvironmentVariables = container?.EnvironmentVariables?.ToDictionary(e => e.Name, e => e.Value),
                 CurrentState = ContainerInstanceAutoMapperProfile.Mapper.Map<PSContainerState>(container?.InstanceView?.CurrentState),
                 PreviousState = ContainerInstanceAutoMapperProfile.Mapper.Map<PSContainerState>(container?.InstanceView?.PreviousState),
-                Events = container?.InstanceView?.Events?.Select(e => ContainerInstanceAutoMapperProfile.Mapper.Map<PSContainerEvent>(e)).ToList(),
+                Events = container?.InstanceView?.Events?.Select(e => ContainerInstanceAutoMapperProfile.Mapper.Map<PSEvent>(e)).ToList(),
+                RestartCount = container?.InstanceView?.RestartCount,
                 Cpu = container?.Resources?.Requests?.Cpu,
                 MemoryInGb = container?.Resources?.Requests?.MemoryInGB,
                 CpuLimit = container?.Resources?.Limits?.Cpu,

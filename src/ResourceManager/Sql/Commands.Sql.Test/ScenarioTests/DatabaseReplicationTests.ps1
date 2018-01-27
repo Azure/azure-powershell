@@ -39,8 +39,11 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	try
 	{	
 		# Create a local database copy
-		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -CopyDatabaseName $copyDatabaseName
+		$job = New-AzureRmSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -CopyDatabaseName $copyDatabaseName -AsJob
+		$job | Wait-Job
+		$dbLocalCopy = $job.Output
+
 		Assert-AreEqual $dbLocalCopy.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.DatabaseName $database.DatabaseName
@@ -140,8 +143,9 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	try
 	{	
 		# Get Secondary
-		New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+		$job = New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -AsJob
+		$job | Wait-Job
 
 		$secondary = Get-AzureRmSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
@@ -237,7 +241,8 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 
 		$secondary = Get-AzureRmSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
 
-		$secondary | Set-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover
+		$job = $secondary | Set-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover -AsJob
+		$job | Wait-Job
 	}
 	finally
 	{

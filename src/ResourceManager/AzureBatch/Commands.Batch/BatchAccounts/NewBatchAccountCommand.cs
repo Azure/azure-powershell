@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Batch.Models;
 using System.Collections;
 using System.Management.Automation;
@@ -31,11 +32,13 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The region where the account will be created.")]
+        [LocationCompleter("Microsoft.Batch/batchAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group where the account will be created.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
