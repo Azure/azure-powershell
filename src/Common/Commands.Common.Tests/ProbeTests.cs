@@ -2,6 +2,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Commands.Common.Tests
