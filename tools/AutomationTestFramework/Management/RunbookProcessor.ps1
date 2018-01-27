@@ -91,25 +91,7 @@ function Create-Runbooks (
     }
 }
 
-# https://www.codeisahighway.com/how-to-easily-and-silently-obtain-accesstoken-bearer-from-an-existing-azure-powershell-session/
-function Get-AzureRmAccessToken() {
-    $azureRmProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-    if(-not $azureRmProfile.Accounts.Count) {
-        Write-Error "Ensure you have logged in before calling this function."
-        return
-    }
-  
-    $currentAzureContext = Get-AzureRmContext
-    $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azureRmProfile)
-    Write-Debug ("Getting access token for tenant" + $currentAzureContext.Subscription.TenantId)
-    $token = $profileClient.AcquireAccessToken($currentAzureContext.Subscription.TenantId)
-    $token.AccessToken
-}
-
 function Start-Runbooks ([hashtable] $automation, [string] $runbooksPath) {
-    # Remove any previous jobs from this PS session
-    Get-Job | Remove-Job
-
     foreach ($runbook in Get-ChildItem $runbooksPath) {
         $bookName = $runbook.BaseName
         Write-Verbose "Uploading '$bookName' runbook..."
@@ -117,25 +99,17 @@ function Start-Runbooks ([hashtable] $automation, [string] $runbooksPath) {
         Write-Verbose "Publishing '$bookName' runbook..."
         $null = Publish-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop
         
-        $accessToken = Get-AzureRmAccessToken
-        $accountId = $(Get-AzureRmContext).Account.Id
-        $subscriptionName = $(Get-AzureRmContext).Subscription.Name
-        Write-Verbose "Starting '$bookName' runbook..."
-        $null = Start-Job `
-            -Name $bookName `
-            -ArgumentList $accessToken,$accountId,$subscriptionName,$bookName,$automation `
-            -ScriptBlock {
-            param($accessToken,$accountId,$subscriptionName,$bookName,$automation)
-            Login-AzureRmAccount -AccessToken $accessToken -AccountId $accountId -Subscription $subscriptionName
-            Start-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop -Wait -MaxWaitSeconds 3600
+        Start-Job -Name $bookName -ArgumentList (Get-AzureRmContext),$bookName,$automation -ScriptBlock { 
+            param ($context,$bookName,$automation) 
+            Start-AzureRmAutomationRunbook -DefaultProfile $context -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop -Wait -MaxWaitSeconds 3600
         }
         Write-Verbose "$bookName started."
     }
 }
 
-function Wait-RunbookResults ([hashtable] $automation) {
+function Wait-RunbookResults ([hashtable] $automation, $jobs) {
     Write-Verbose 'Waiting for runbooks to complete...'
-    $failedJobs = Get-Job | Wait-Job | ForEach-Object {
+    $failedJobs = $jobs | Wait-Job | ForEach-Object {
         $name = $_.Name
         # https://stackoverflow.com/a/8751271/294804
         $state = $_.State
