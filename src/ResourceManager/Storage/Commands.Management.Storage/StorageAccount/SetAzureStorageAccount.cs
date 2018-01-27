@@ -20,13 +20,14 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
 
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -186,6 +188,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
+        public SwitchParameter UpgradeToStorageV2 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -243,7 +253,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (NetworkRuleSet != null)
                     {
-                        updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                        updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                    }
+
+                    if (UpgradeToStorageV2.IsPresent)
+                    {
+                        updateParameters.Kind = Kind.StorageV2;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

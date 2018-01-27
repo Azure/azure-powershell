@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 2B82F5BA-ABC6-4B37-B641-353CFE814290
@@ -57,7 +57,7 @@ Specifies whether the threat detection policy contacts administrators by using e
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +78,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DetectionType[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, None
 
 Required: False
@@ -94,7 +94,7 @@ Specifies a semicolon-separated list of email addresses to which the policy send
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +125,7 @@ Specifies the name of the resource group to which the server belongs.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,7 +140,7 @@ The number of retention days for the audit logs
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ Specifies the name of the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -170,7 +170,7 @@ Specifies the name of the storage account to be used. Wildcards are not permitte
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

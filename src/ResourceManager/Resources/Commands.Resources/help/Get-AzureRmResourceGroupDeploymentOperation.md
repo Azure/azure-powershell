@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 9F29DFCB-A02B-45A5-99B9-C054BF4FCA6C
@@ -30,7 +30,7 @@ For more on this setting and how to enable it, see New-AzureRmResourceGroupDeplo
 
 ## EXAMPLES
 
-### --------------------------  Get1  --------------------------
+### Get1
 ```
 PS C:\>Get-AzureRmResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
 ```
@@ -46,7 +46,7 @@ If not specified, the API version is automatically determined as the latest avai
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +145,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -160,7 +160,7 @@ The subscription to use.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,4 +184,3 @@ Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
 ## NOTES
 
 ## RELATED LINKS
-

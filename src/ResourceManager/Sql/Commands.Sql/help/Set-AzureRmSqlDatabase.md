@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -13,17 +13,23 @@ Sets properties for a database, or moves an existing database into an elastic po
 
 ## SYNTAX
 
+### Update
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <DatabaseEdition>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Rename
+```
+Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Set-AzureRmSqlDatabase** cmdlet sets properties for an Azure SQL database.
-In addition, you can specify the *ElasticPoolName* parameter to move a database into an elastic pool.
-If a database is already in an elastic pool, you can use the *RequestedServiceObjectiveName* parameter to assign a performance level.
+The **Set-AzureRmSqlDatabase** cmdlet sets properties for a database in Azure SQL Database. This cmdlet can modify the service tier (*Edition*), performance level (*RequestedServiceObjectiveName*), and storage max size (*MaxSizeBytes*) for the database.  In addition, you can specify the *ElasticPoolName* parameter to move a database into an elastic pool. If a database is already in an elastic pool, you can use the *RequestedServiceObjectiveName* parameter to move the database out of an elastic pool and into a performance level for single databases.
 
 ## EXAMPLES
 
@@ -77,7 +83,46 @@ Tags                          :
 
 This command adds a database named Database01 to the elastic pool named ElasticPool01 hosted on the server named Server01.
 
+### Example 3: Modify the storage max size of a database
+```
+PS C:\>Set-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -MaxSizeBytes 1099511627776
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition                       : Standard
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              : 
+MaxSizeBytes                  : 1099511627776
+Status                        : Online
+CreationDate                  : 8/24/2017 9:00:37 AM
+CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+CurrentServiceObjectiveName   : S3
+RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+RequestedServiceObjectiveName : 
+ElasticPoolName               : 
+EarliestRestoreDate           : 
+Tags                          :
+```
+
+This command updates a database named Database01 to set its max size to 1 TB.
+
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 Specifies the name of the database.
@@ -122,8 +167,8 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: DatabaseEdition
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -138,8 +183,8 @@ Specifies name of the elastic pool in which to move the database.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -155,10 +200,25 @@ See the *MaxSizeGB* parameter for acceptable values per edition.
 
 ```yaml
 Type: Int64
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewName
+The new name to rename the database to.
+
+```yaml
+Type: String
+Parameter Sets: Rename
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,8 +230,8 @@ The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 
 ```yaml
 Type: DatabaseReadScale
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 Accepted values: Disabled, Enabled
 
 Required: False
@@ -188,8 +248,8 @@ in the Microsoft Developer Network Library.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -204,7 +264,7 @@ Specifies the name of resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -219,7 +279,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -235,7 +295,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases: Tag
 
 Required: False
@@ -250,8 +310,8 @@ The zone redundancy to associate with the Azure Sql Database
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named

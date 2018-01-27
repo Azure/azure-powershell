@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Insights.dll',
@@ -81,13 +81,24 @@ FunctionsToExport = @()
 CmdletsToExport = 'Remove-AzureRmRedisCachePatchSchedule', 
                'New-AzureRmRedisCacheScheduleEntry', 
                'Get-AzureRmRedisCachePatchSchedule', 
-               'New-AzureRmRedisCachePatchSchedule', 'Reset-AzureRmRedisCache', 
-               'Export-AzureRmRedisCache', 'Import-AzureRmRedisCache', 
+               'New-AzureRmRedisCachePatchSchedule', 
+               'Reset-AzureRmRedisCache', 
+               'Export-AzureRmRedisCache', 
+               'Import-AzureRmRedisCache', 
                'Remove-AzureRmRedisCacheDiagnostics', 
-               'Set-AzureRmRedisCacheDiagnostics', 'Set-AzureRmRedisCache', 
-               'New-AzureRmRedisCacheKey', 'Get-AzureRmRedisCacheKey', 
-               'Get-AzureRmRedisCache', 'Remove-AzureRmRedisCache', 
-               'New-AzureRmRedisCache'
+               'Set-AzureRmRedisCacheDiagnostics', 
+               'Set-AzureRmRedisCache', 
+               'New-AzureRmRedisCacheKey', 
+               'Get-AzureRmRedisCacheKey', 
+               'Get-AzureRmRedisCache', 
+               'Remove-AzureRmRedisCache', 
+               'New-AzureRmRedisCache',
+               'New-AzureRmRedisCacheLink',
+               'Remove-AzureRmRedisCacheLink',
+               'Get-AzureRmRedisCacheLink',
+               'New-AzureRmRedisCacheFirewallRule',
+               'Remove-AzureRmRedisCacheFirewallRule',
+               'Get-AzureRmRedisCacheFirewallRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -18,16 +18,12 @@ Creates an operationalization cluster for use in tests.
 #>
 function GetDefaultClusterProperties
 {
-    $servicePrincipalId = "00000000-0000-0000-0000-000000000000"
-    $servicePrincipalSecret = "abcde"
     $orchestratorType = "Kubernetes"
     $location = "East US 2 EUAP"
     $clusterType = "ACS"
     $description = "Deployed from powershell"
 
-    $servicePrincipalProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.ServicePrincipalProperties($servicePrincipalId, $servicePrincipalSecret)
-    $orchestratorProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.KubernetesClusterProperties($servicePrincipalProps)
-    $containerServiceProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties($orchestratorType, $orchestratorProps)
+    $containerServiceProps = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties($orchestratorType)
     $cluster = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.OperationalizationCluster `
 		-Property @{Location = $location; ClusterType = $clusterType; ContainerService = $containerServiceProps; Description = $description}
 
@@ -65,11 +61,45 @@ function SetupTest([String] $ResourceGroupName, [String] $Location = "East US 2"
     New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location -Force
 }
 
-function TeardownTest([String] $ResourceGroupName)
+<#
+.SYNOPSIS
+Deletes all resources created by the tests.
+#>
+function TeardownTest([String] $ResourceGroupName, [String] $ManagedByResourceGroupName)
 {
+	if (!$ManagedByResourceGroupName)
+	{
+		$ManagedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $ResourceGroupName
+	}
+
     Write-Debug "Delete resource group"
-    Write-Debug " Resource Group Name : $resourceGroupName"
+    Write-Debug " Resource Group Name : $ResourceGroupName"
     Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
+
+	Write-Debug "Deleting managed by resource group: $ManagedByResourceGroupName"
+	Remove-AzureRmResourceGroup -Name $ManagedByResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Deletes all resources created by the tests.
+#>
+function GetUniqueName([String] $prefix)
+{
+	$suffix = getAssetName
+	return "$prefix-$suffix"
+}
+
+<#
+.SYNOPSIS
+Gets the managed by resource group name
+#>
+function GetManagedByResourceGroupName([String] $ResourceGroupName)
+{
+	$cluster = Get-AzureRmMlOpCluster -ResourceGroupName $ResourceGroupName
+	$success = $cluster.StorageAccount.ResourceId -match "$ResourceGroupName-azureml-\w{5}"
+	$managedByResourceGroupName = $matches[0]
+	return $managedByResourceGroupName
 }
 
 <#
@@ -79,13 +109,13 @@ Tests creating, getting, and removing an operationalization cluster.
 function Test-NewGetRemove
 {
     # Setup
-    $resourceGroupName = "mlcrp-cmdlet-test-new-get-remove"
-    $clusterName = "mlcrp-cmdlet-test-new-get-remove"
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-new")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-new")
 
     SetupTest $resourceGroupName
 
     # Create the cluster
-    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location "East US 2 EUAP" `
+    $result = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location "East US 2" `
 		-ClusterType "ACS" -Description "Powershell test cluster" -OrchestratorType "Kubernetes" `
 		-ClientId "00000000-0000-0000-0000-000000000000" -Secret "abcde" `
 		-MasterCount 1 -AgentCount 2 -AgentVmSize Standard_D3_v2
@@ -128,13 +158,16 @@ function Test-NewGetRemove
 
     Assert-True { $clusterExists }
 
+	# Get the managed by resource group name before deleting
+	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
+
     # Remove the cluster
     Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Remove-AzureRmMlOpCluster 
 
     Assert-ThrowsContains { Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
     # Cleanup
-    TeardownTest $resourceGroupName
+    TeardownTest -ResourceGroupName $resourceGroupName -ManagedByResourceGroupName $managedByResourceGroupName
 }
 
 <#
@@ -144,8 +177,8 @@ Tests getting the access keys of an operationalization cluster.
 function Test-GetKeys
 {
     # Setup
-    $resourceGroupName = "mlcrp-cmdlet-test-keys"
-    $clusterName = "mlcrp-cmdlet-test-keys"
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-keys")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-keys")
 
     SetupTest $resourceGroupName
 
@@ -192,7 +225,7 @@ function Test-GetKeys
     Assert-NotNull { $keys.AppInsights.InstrumentationKey }
 
     # Cleanup
-    TeardownTest $resourceGroupName
+    TeardownTest -ResourceGroupName $resourceGroupName
 }
 
 <#
@@ -202,8 +235,8 @@ Tests checking if there is an update available for a operationalization cluster'
 function Test-UpdateSystemServices
 {
     # Setup
-    $resourceGroupName = "mlcrp-cmdlet-test-system-update"
-    $clusterName = "mlcrp-cmdlet-test-system-update"
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-system-update")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-system-update")
 
     SetupTest $resourceGroupName
 
@@ -228,6 +261,68 @@ function Test-UpdateSystemServices
 	$updateAvailability = Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName $resourceGroupName -Name $clusterName
     Assert-True { $updateAvailability.UpdatesAvailable -eq "No" }
 
-    ## Cleanup
-    TeardownTest $resourceGroupName
+    # Cleanup
+    TeardownTest -ResourceGroupName $resourceGroupName
+}
+
+<#
+.SYNOPSIS
+Tests setting the properties of an operationalization cluster.
+#>
+function Test-Set
+{
+    # Setup
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-set")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-set")
+
+    SetupTest $resourceGroupName
+
+    # Create the cluster
+    $cluster = GetDefaultClusterProperties
+    $createdCluster = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+
+	# Update the cluster
+	$newAgentCount = $createdCluster.ContainerService.AgentCount + 1
+	$updatedCluster = Set-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -AgentCount $newAgentCount
+    Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
+	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
+
+	# Update the cluster with input object
+	$newAgentCount = $newAgentCount - 1
+	$updatedCluster.ContainerService.AgentCount = $newAgentCount
+	$updatedCluster = Set-AzureRmMlOpCluster -InputObject $updatedCluster
+    Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
+	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
+
+	# Update the cluster with resource id
+	$newAgentCount = $newAgentCount + 1
+	$updatedCluster = Set-AzureRmMlOpCluster -ResourceId $updatedCluster.Id -AgentCount $newAgentCount
+    Assert-True { $updatedCluster.ProvisioningState -eq "Succeeded" }
+	Assert-True { $updatedCluster.ContainerService.AgentCount -eq $newAgentCount }
+
+    # Cleanup
+    TeardownTest -ResourceGroupName $resourceGroupName
+}
+
+function Test-RemoveIncludeAllResources
+{
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-remove-all")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-remove-all")
+
+    SetupTest $resourceGroupName
+
+    # Create the cluster
+    $cluster = GetDefaultLocalClusterProperties
+    $createdCluster = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+
+	# Get the managed by resource group name before deleting
+	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
+
+	# Delete the cluster
+	Remove-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -IncludeAllResources
+
+    Assert-Throws ( Get-AzureRmResourceGroup -ResourceGroupName $managedByResourceGroupName )
+
+    # Cleanup
+	Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName -Force
 }

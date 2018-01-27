@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.DisableDR, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "New-AzureRmRecoveryServicesAsrReplicationProtectedItem cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class NewAzureRmSiteRecoveryReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -174,7 +177,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                 if (string.IsNullOrWhiteSpace(this.OS))
                 {
-                    providerSettings.OSType = ((string.Compare(this.ProtectableItem.OS, Constants.OSWindows, StringComparison.OrdinalIgnoreCase) == 0) || 
+                    providerSettings.OSType = ((string.Compare(this.ProtectableItem.OS, Constants.OSWindows, StringComparison.OrdinalIgnoreCase) == 0) ||
                         (string.Compare(this.ProtectableItem.OS, Constants.OSLinux) == 0)) ? this.ProtectableItem.OS : Constants.OSWindows;
                 }
                 else

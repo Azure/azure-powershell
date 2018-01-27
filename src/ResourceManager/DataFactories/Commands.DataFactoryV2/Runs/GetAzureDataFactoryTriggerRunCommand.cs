@@ -49,11 +49,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
-            {
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
-            }
+            ByFactoryObject();
+
             TriggerRunFilterOptions triggerRunFilter = new TriggerRunFilterOptions
             {
                 ResourceGroupName = ResourceGroupName,

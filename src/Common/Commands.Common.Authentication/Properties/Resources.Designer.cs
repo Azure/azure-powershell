@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot retrieve access token for resource &apos;{0}&apos;.  Please ensure that you have provided the appropriate access tokens when using access token login..
+        /// </summary>
+        public static string AccessTokenResourceNotFound {
+            get {
+                return ResourceManager.GetString("AccessTokenResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account needs to be specified.
         /// </summary>
         public static string AccountNeedsToBeSpecified {
@@ -223,6 +232,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
+        /// </summary>
+        public static string HttpClientAddingHeader {
+            get {
+                return ResourceManager.GetString("HttpClientAddingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [HttpClientOperations {0}].
+        /// </summary>
+        public static string HttpClientOperationsInvocationId {
+            get {
+                return ResourceManager.GetString("HttpClientOperationsInvocationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected response status code &apos;{0}&apos; received for request &apos;{{{1} {2}}} Body: {{{3}}}.
+        /// </summary>
+        public static string HttpRequestExceptionMessage {
+            get {
+                return ResourceManager.GetString("HttpRequestExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Illegal characters in path..
         /// </summary>
         public static string IllegalPath {
@@ -336,6 +372,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string InvalidSubscriptionState {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error retrieving the managed service access token for resource &apos;{0}&apos; using the URI &apos;{1}&apos;.  Please check that this managed service is configured to emit tokens at this address and that the associated managed service identity has the appropriate role assignment and try logging in again..
+        /// </summary>
+        public static string MSITokenRequestFailed {
+            get {
+                return ResourceManager.GetString("MSITokenRequestFailed", resourceCulture);
             }
         }
         

@@ -31,6 +31,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Network/applicationSecurityGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -69,6 +72,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {

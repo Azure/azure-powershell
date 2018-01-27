@@ -105,6 +105,16 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public IList<Volume> Volumes { get; set; }
 
         /// <summary>
+        /// Gets or sets the state of the container group.
+        /// </summary>
+        public string State { get; set; }
+
+        /// <summary>
+        /// Gets or sets the events.
+        /// </summary>
+        public IList<PSEvent> Events { get; set; }
+
+        /// <summary>
         /// Build a PSContainerGroup from a ContainerGroup object.
         /// </summary>
         public static PSContainerGroup FromContainerGroup(ContainerGroup containerGroup)
@@ -123,7 +133,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 IpAddress = containerGroup?.IpAddress?.Ip,
                 Ports = containerGroup?.IpAddress?.Ports?.Select(p => ContainerInstanceAutoMapperProfile.Mapper.Map<PSPort>(p)).ToList(),
                 OsType = containerGroup?.OsType,
-                Volumes = containerGroup?.Volumes
+                Volumes = containerGroup?.Volumes,
+                State = containerGroup?.InstanceView?.State,
+                Events = containerGroup?.InstanceView?.Events?.Select(e => ContainerInstanceAutoMapperProfile.Mapper.Map<PSEvent>(e)).ToList()
             };
         }
     }

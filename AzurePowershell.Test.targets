@@ -26,7 +26,6 @@
 		<WebsitesTestDebug>.\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll</WebsitesTestDebug>
 		<LogicAppTestDebug>.\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll</LogicAppTestDebug>
 		<SchedulerTestDebug>.\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll</SchedulerTestDebug>
-		<RemoteAppTestDebug>.\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll</RemoteAppTestDebug>
 		<ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
 		<SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
 		<HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
@@ -184,11 +183,6 @@
 
 	<Target Name="TestBatch">
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(BatchTestDebug)" Html="$(TestOutputDirectory)\BatchTestDebug.xunit.dll.html" Verbose="false"
-		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-	</Target>
-
-	<Target Name="TestRemoteApp">
-		<Xunit.Runner.MSBuild.xunit Assemblies="$(RemoteAppTestDebug)" Html="$(TestOutputDirectory)\RemoteAppTestDebug.xunit.dll.html" Verbose="false"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
 	</Target>
 

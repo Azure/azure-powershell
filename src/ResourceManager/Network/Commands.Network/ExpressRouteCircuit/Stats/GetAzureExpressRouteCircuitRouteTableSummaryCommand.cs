@@ -12,15 +12,16 @@
 // limitations under the License.		
 // 		
 
- using System.Collections;
- using System.Collections.Generic;
- using System.Management.Automation;
- using AutoMapper;
- using Microsoft.Azure.Management.Network;
- using Microsoft.Azure.Commands.Network.Models;
- using MNM = Microsoft.Azure.Management.Network.Models;
- using System;
- using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
+using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -53,10 +55,10 @@ namespace Microsoft.Azure.Commands.Network
         public string PeeringType { get; set; }
 
         [Parameter(
-                     Mandatory = true,
-                     HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+            Mandatory = true,
+            HelpMessage = "The DevicePath, can be either Primary or Secondary")]
         [ValidateNotNullOrEmpty]
-        public DevicePathEnum DevicePath { get; set; }		
+        public DevicePathEnum DevicePath { get; set; }
 
         public override void Execute()
         {

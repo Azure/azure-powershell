@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             Constants.RunbookType.PowerShellWorkflow,
             Constants.RunbookType.GraphicalPowerShellWorkflow,
             Constants.RunbookType.Graph,
+            Constants.RunbookType.Python2,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }

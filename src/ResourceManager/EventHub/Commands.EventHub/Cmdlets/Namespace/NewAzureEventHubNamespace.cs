@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
@@ -75,6 +77,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             HelpMessage = "EventHub Namespace Location.",
             ParameterSetName = AutoInflateParameterSet
             )]
+        [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

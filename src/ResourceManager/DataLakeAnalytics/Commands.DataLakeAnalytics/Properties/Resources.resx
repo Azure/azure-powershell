@@ -259,18 +259,24 @@
     <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
   </data>
   <data name="MissingComputePolicyField" xml:space="preserve">
-    <value>-MaxDegreeOfParallelismPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy.</value>
+    <value>-MaxAnalyticsUnitsPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy.</value>
   </data>
   <data name="RemoveDataLakeAnalyticsComputePolicy" xml:space="preserve">
     <value>Removing Data Lake Analytics compute policy: '{0}' ...</value>
   </data>
-  <data name="InvalidDegreeOfParallelism" xml:space="preserve">
-    <value>Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero</value>
+  <data name="InvalidAnalyticsUnits" xml:space="preserve">
+    <value>Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -AnalyticsUnits. Please adjust your scripts to pass in a value greater than zero</value>
   </data>
   <data name="NewDataLakeComputePolicy" xml:space="preserve">
     <value>Creating Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
   </data>
   <data name="UpdateDataLakeComputePolicy" xml:space="preserve">
     <value>Update Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
+  </data>
+  <data name="InvalidScriptParameterType" xml:space="preserve">
+    <value>Type '{0}' is an unsupported script parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag.</value>
+  </data>
+  <data name="ScriptParameterValueIsNull" xml:space="preserve">
+    <value>The script parameter value for '{0}' is null.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add-AzureRmAccount
+  * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
+  * Fixed KeyVault Authentication when logging in with user-provided access tokens
+
+## Version 4.1.1
+- Updated USGovernmentActiveDirectoryEndpoint to https://login.microsoftonline.us/
+    - For more information about the Azure Government endpoint mappings, please see the following: https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-developer-guide#endpoint-mapping
+- Added -AsJob support for cmdlets, enabling selected cmdlets to execute in the background and return a job to track and control progress
+- Added -AsJob parameter to Get-AzureRmSubscription cmdlet
 
 ## Version 4.0.0
 - Set-AzureRmDefault

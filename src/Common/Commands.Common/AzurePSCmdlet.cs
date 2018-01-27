@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                lock(lockObject)
+                lock (lockObject)
                 {
                     DataCollectionController controller;
                     if (_cachedProfile == null && AzureSession.Instance.TryGetComponent(DataCollectionController.RegistryKey, out controller))
@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             set
             {
-                lock(lockObject)
+                lock (lockObject)
                 {
                     _cachedProfile = value;
                 }
@@ -233,7 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            AzureSession.Instance.ClientFactory.AddUserAgent(ModuleName, string.Format("v{0}", ModuleVersion));            
+            AzureSession.Instance.ClientFactory.AddUserAgent(ModuleName, string.Format("v{0}", ModuleVersion));
             AzureSession.Instance.ClientFactory.AddUserAgent(PSVERSION, string.Format("v{0}", PSVersion));
 
             AzureSession.Instance.ClientFactory.AddHandler(
@@ -636,11 +636,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             try
             {
                 base.ProcessRecord();
-                ExecuteCmdlet();
+                this.ExecuteSynchronouslyOrAsJob();
             }
             catch (Exception ex) when (!IsTerminatingError(ex))
             {
                 WriteExceptionError(ex);
+            }
+        }
+
+        /// <summary>
+        /// Job Name paroperty iof this cmdlet is run as a job
+        /// </summary>
+        public virtual string ImplementationBackgroundJobDescription
+        {
+            get
+            {
+                string name = "Long Running Azure Operation";
+                string commandName = MyInvocation?.MyCommand?.Name;
+                if (!string.IsNullOrWhiteSpace(commandName))
+                {
+                    name = string.Format("Long Running Operation for '{0}'", commandName);
+                }
+
+                return name;
             }
         }
 

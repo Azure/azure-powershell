@@ -16,14 +16,17 @@ using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Set, Constants.DataFactory, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
+    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -35,6 +38,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The geographic region to create the data factory.")]
+        [LocationCompleter("Microsoft.DataFactory/factories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

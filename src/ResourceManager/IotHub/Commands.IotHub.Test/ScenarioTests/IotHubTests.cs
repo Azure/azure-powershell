@@ -39,5 +39,17 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureIotHubCertificateLifeCycle()
+        {
+            IotHubController.NewInstance.RunPsTestWorkflow(
+                () => { return new[] { "Test-AzureRmIotHubCertificateLifecycle" }; },
+                null,
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 }

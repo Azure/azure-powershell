@@ -13,10 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -30,10 +34,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory=true, ParameterSetName=StorageContextParameterSet, ValueFromPipeline=true, 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
-        public AzureStorageContext Context { get; set; }
+        public IStorageContext Context { get; set; }
 
         [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet, 
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -47,11 +52,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             CloudStorageAccount account;
             if (Context != null)
             {
-                account = Context.StorageAccount;
+                account = Context.GetCloudStorageAccount();
             }
             else
             {
-                account = StorageUtilities.GenerateCloudStorageAccount(StorageClient, ResourceGroupName, StorageAccountName);
+                account = (new ARMStorageProvider(StorageClient)).GetCloudStorageAccount(StorageAccountName, ResourceGroupName);
             }
 
             // Clear the current storage account for both SM and RM

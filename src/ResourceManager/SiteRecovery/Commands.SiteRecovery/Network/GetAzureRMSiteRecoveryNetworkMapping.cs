@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -24,6 +25,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryNetworkMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRNetworkMapping>))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Get-AzureRmRecoveryServicesAsrNetworkMapping cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class GetAzureRmSiteRecoveryNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -165,7 +169,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Filter Enterprise to Enterprise Network mappings
         /// </summary>
         private void FilterE2EMappings()
-        {              
+        {
             foreach (NetworkMapping networkMapping in networkMappingsListResponse.NetworkMappingsList)
             {
                 string primaryFabricName = Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);

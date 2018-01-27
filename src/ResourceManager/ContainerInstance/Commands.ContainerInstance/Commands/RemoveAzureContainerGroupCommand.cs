@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.ContainerInstance.Models;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

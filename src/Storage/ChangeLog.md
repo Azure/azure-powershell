@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add cmdlets to get and set Storage service properties
+	- Get-AzureStorageServiceProperty
+	- Update-AzureStorageServiceProperty
+
+## Version 4.0.2
+* Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
 
 ## Version 4.0.0
 * Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
         public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
+        public const string ManagedServiceParameterSet = "ManagedServiceLogin";
 
         protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
@@ -78,6 +79,8 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = false, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet,
+                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
@@ -99,8 +102,22 @@ namespace Microsoft.Azure.Commands.Profile
         
         [Parameter(ParameterSetName = AccessTokenParameterSet, 
                     Mandatory = true, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet,
+                    Mandatory = false, HelpMessage = "Account Id for managed service")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
+
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
+        [Alias("MSI")]
+        public SwitchParameter ManagedService { get; set; }
+
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Port number for managed service login.")]
+        [PSDefaultValue(Help = "50342", Value = 50342)]
+        public int ManagedServicePort { get; set; } = 50342;
+
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Host name for managed service login.")]
+        [PSDefaultValue(Help = "localhost", Value = "localhost")]
+        public string ManagedServiceHostName { get; set; } = "localhost";
         
         [Alias("SubscriptionName", "SubscriptionId")]
         [Parameter(ParameterSetName = UserParameterSet,
@@ -111,12 +128,18 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the default context from this login")]
         [ValidateNotNullOrEmpty]
         public string ContextName { get; set; }
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
+                    Mandatory = false, HelpMessage = "Skip validation for access token")]
+        public SwitchParameter SkipValidation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
@@ -163,7 +186,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             AzureAccount azureAccount = new AzureAccount();
 
-            switch(ParameterSetName)
+            switch (ParameterSetName)
             {
                 case AccessTokenParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.AccessToken;
@@ -175,6 +198,16 @@ namespace Microsoft.Azure.Commands.Profile
                 case ServicePrincipalCertificateParameterSet:
                 case ServicePrincipalParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    break;
+                case ManagedServiceParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.ManagedService;
+                    azureAccount.Id = MyInvocation.BoundParameters.ContainsKey(nameof(AccountId))? AccountId : string.Format("MSI@{0}", ManagedServicePort);
+                    var builder = new UriBuilder();
+                    builder.Scheme = "http";
+                    builder.Host = ManagedServiceHostName;
+                    builder.Port = ManagedServicePort;
+                    builder.Path = "/oauth2/token";
+                    azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, builder.Uri.ToString());
                     break;
                 default:
                     azureAccount.Type = AzureAccount.AccountType.User;
@@ -219,6 +252,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionId,
                         subscriptionName,
                         password,
+                        SkipValidation,
                         (s) => WriteWarning(s),
                         name));
                });
@@ -266,11 +300,6 @@ namespace Microsoft.Azure.Commands.Profile
 #if DEBUG
                 }
 #endif
-                var invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmProfileStartup.ps1")));
-                var result = invoker.Invoke();
                 
                 bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);

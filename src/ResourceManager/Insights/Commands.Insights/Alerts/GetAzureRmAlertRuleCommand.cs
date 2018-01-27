@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(ParameterSetName = GetAzureRmAlertRuleParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithNameParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = GetAzureRmAlertRuleWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }

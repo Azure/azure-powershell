@@ -197,6 +197,7 @@
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="ErrorResolutionTests.cs" />
     <Compile Include="LocationCompleterUnitTests.cs" />
+    <Compile Include="LongRunningCmdletTests.cs" />
     <Compile Include="MockDataStore.cs" />
     <Compile Include="MockServiceClient.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
