@@ -27,7 +27,7 @@ param (
 
 try {
     $srcPath = "$PSScriptRoot\..\..\src"
-    $projectList = @('Compute', 'Network', 'Profile', 'Resources', 'Sql', 'Storage', 'Websites')
+    $projectList = @('Profile', 'Compute', 'Resources', 'Storage', 'Websites', 'Network', 'Sql')
     $testResourcesDir = "$PSScriptRoot\TestResources"
     $packagingDir = "$PSScriptRoot\Package"
     $helperModuleName = 'Smoke.Helper'
@@ -52,7 +52,7 @@ try {
         Path = "$testResourcesDir\RunbookTemplate.ps1"
     }
 
-    $signedModuleList = @('AzureRM.Resources', 'AzureRM.Compute', 'AzureRM.Automation', 'AzureRM.Network', 'AzureRM.Storage', 'AzureRM.Websites', 'AzureRM.KeyVault', 'AzureRM.Sql')
+    $signedModuleList = @('AzureRM.Automation', 'AzureRM.Compute','AzureRM.Resources', 'AzureRM.Storage', 'AzureRM.Websites', 'AzureRM.Network', 'AzureRM.Sql')
     # Profile is required to be uploaded first. Storage is required second (for AzureRm.Storage). Then, the rest of the order doesn't matter.
     # Note: These are lists so that the addition operation is handled properly.
     $signedModules = @{
@@ -107,11 +107,13 @@ try {
             -srcPath $srcPath `
             -projectList $projectList `
             -outputPath $runbooksPath
-        Start-Runbooks `
+        $jobs = Start-Runbooks `
             -automation $automation `
             -runbooksPath $runbooksPath
         if ($waitForResults) {
-            $success = Wait-RunbookResults -automation $automation
+            $success = Wait-RunbookResults `
+                -automation $automation `
+                -jobs $jobs
         }
         Write-Verbose '============================================='
     }
