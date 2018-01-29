@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the  Resource Group to which this cmdlet assigns the copied database.
+Specifies the name of the  Resource Group that contains the database to copy.
 
 ```yaml
 Type: String
