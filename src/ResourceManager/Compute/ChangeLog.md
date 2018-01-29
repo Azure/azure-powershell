@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
