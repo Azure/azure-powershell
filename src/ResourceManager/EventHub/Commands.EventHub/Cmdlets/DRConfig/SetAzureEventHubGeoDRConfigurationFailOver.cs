@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Set-AzureRmEventHubDRConfigurationFailOver' Cmdlet envokes Geo DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationFailOver : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -51,52 +51,59 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {
+            ResourceIdentifier getParamGeoDR = new ResourceIdentifier();
+
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+                getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
                 
-                if(getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                if(getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
                     {
-                        WriteObject(true);
+                        Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
-                    else
-                    {
-                        WriteObject(false);
-                    }
-                }                
-            }
-
-            if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
-            {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
-
-                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                    else
-                    {
-                        WriteObject(false);
-                    }
-                }
-            }
-
-            if(ParameterSetName == GeoDRBreakPairFailOverParameterSet)
-            {
-                Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
-                if (PassThru)
-                {
-                    WriteObject(true);
                 }
                 else
                 {
                     WriteObject(false);
+                }
+            }
+
+            if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
+            {
+                getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                {
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
+                    {
+                        Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                }
+                else
+                {
+                    WriteObject(false);
+                }
+            }
+
+            if(ParameterSetName == GeoDRParameterSet)
+            {
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
+                {
+                    Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
         }

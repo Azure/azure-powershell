@@ -12,7 +12,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## SYNTAX
 
-### GeoDRPropertiesSet (Default)
+### GeoDRParameterSet (Default)
 ```
 Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -30,7 +30,6 @@ Get-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
 The **Get-AzureRmEventHubGeoDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## EXAMPLES
@@ -101,7 +100,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -116,7 +115,7 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True

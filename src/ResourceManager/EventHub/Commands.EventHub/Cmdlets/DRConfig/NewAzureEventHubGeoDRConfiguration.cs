@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -50,9 +54,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string AlternateName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,7 +69,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
-                    WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
+                    {
+                        WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    }
                 }
             }
 
@@ -76,13 +82,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
-                    WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
+                    {
+                        WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    }   
                 }
             }
 
             if(ParameterSetName == GeoDRParameterSet)
             {
-                if (ShouldProcess(target: Name, action: string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, Namespace)))
                 {
                     WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                 }

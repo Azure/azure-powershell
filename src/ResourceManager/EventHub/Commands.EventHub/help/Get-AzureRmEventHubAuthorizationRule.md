@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubauthorizationrule
+Module Name: AzureRM.EventHub
+online version:
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Get-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Namespace] 
 ### AliasAuthoRuleSet
 ```
 Get-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +62,12 @@ Gets the authorization rule \`MyAuthRuleName\` in the namespace \`MyNamespaceNam
 ## PARAMETERS
 
 ### -AliasName
-Alias Name.
+Alias Name
 
 ```yaml
 Type: String
 Parameter Sets: AliasAuthoRuleSet
-Aliases: Alias
+Aliases:
 
 Required: True
 Position: 2
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Eventhub
-Eventhub Name.
+Eventhub Name
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-AuthorizationRule Name.
+AuthorizationRule Name
 
 ```yaml
 Type: String
@@ -122,23 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: NamespaceAuthorizationRuleSet, EventhubAuthorizationRuleSet
-Aliases: NamespaceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: AliasAuthoRuleSet
+Parameter Sets: (All)
 Aliases: NamespaceName
 
 Required: True
@@ -149,12 +137,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource Group Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -180,4 +168,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
-

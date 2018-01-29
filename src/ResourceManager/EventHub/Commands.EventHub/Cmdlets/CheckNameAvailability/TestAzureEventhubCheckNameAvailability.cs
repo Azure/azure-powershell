@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// 'Test-AzureRmEventHubName' Cmdlet Check Availability of the NameSpace Name and DRConfig name
     /// </summary>
-    [Cmdlet("Test", "AzureRmEventHubName", DefaultParameterSetName = NamespaceCheckNameAvailabilityParameterSet), OutputType(typeof(List<PSCheckNameAvailabilityResultAttributes>))]
+    [Cmdlet("Test", "AzureRmEventHubName", DefaultParameterSetName = NamespaceCheckNameAvailabilityParameterSet), OutputType(typeof(PSCheckNameAvailabilityResultAttributes))]
     public class TestAzureEventhubCheckNameAvailability : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

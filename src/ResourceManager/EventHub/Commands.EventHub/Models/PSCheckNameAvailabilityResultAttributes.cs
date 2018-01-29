@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 'TooManyNamespaceInCurrentSubscription'</param>
         /// <param name="message">The detailed info regarding the reason
         /// associated with the namespace.</param>
-        public PSCheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), PSUnavailableReasonAttributes? reason = default(PSUnavailableReasonAttributes?), string message = default(string))
+        public PSCheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), UnavailableReasonAttributes? reason = default(UnavailableReasonAttributes?), string message = default(string))
         {
             NameAvailable = nameAvailable;
             Reason = reason;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         {
             NameAvailable = checkNameAvailabilityResult.NameAvailable;
             
-            Reason = (PSUnavailableReasonAttributes)Enum.Parse(typeof(PSUnavailableReasonAttributes), checkNameAvailabilityResult.Reason.ToString(), true);
+            Reason = (UnavailableReasonAttributes)Enum.Parse(typeof(UnavailableReasonAttributes), checkNameAvailabilityResult.Reason.ToString(), true);
 
             Message = checkNameAvailabilityResult.Message;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 'NameInUse', 'NameInLockdown',
         /// 'TooManyNamespaceInCurrentSubscription'
         /// </summary>
-        public PSUnavailableReasonAttributes? Reason { get; set; }
+        public UnavailableReasonAttributes? Reason { get; set; }
 
         /// <summary>
         /// Gets the detailed info regarding the reason associated with the

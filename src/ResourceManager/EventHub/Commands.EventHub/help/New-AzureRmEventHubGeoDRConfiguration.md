@@ -12,24 +12,25 @@ Creates an new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
-### GeoDRPropertiesSet (Default)
+### GeoDRParameterSet (Default)
 ```
 New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-PartnerNamespace] <String> [-AlternateName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PartnerNamespace] <String> [-AlternateName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
 New-AzureRmEventHubGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [-Name] <String>
- [-PartnerNamespace] <String> [-AlternateName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PartnerNamespace] <String> [-AlternateName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-New-AzureRmEventHubGeoDRConfiguration [-Name] <String> [-PartnerNamespace] <String> [-AlternateName <String>]
- [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-Name] <String> [-PartnerNamespace] <String>
+ [-AlternateName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,13 +69,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -133,7 +134,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -163,7 +164,7 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -185,6 +186,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

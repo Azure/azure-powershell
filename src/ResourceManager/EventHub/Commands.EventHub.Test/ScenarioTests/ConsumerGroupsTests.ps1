@@ -74,6 +74,6 @@ function ConsumerGroupsTests
     Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
-	Write-Debug " Delete resourcegroup"
+	Write-Debug " Delete resourcegroup" 
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }

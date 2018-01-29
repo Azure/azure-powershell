@@ -12,7 +12,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ## SYNTAX
 
-### GeoDRBreakPairFailOverPropertiesSet (Default)
+### GeoDRParameterSet (Default)
 ```
 Set-AzureRmEventHubGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String>
  [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -44,21 +44,6 @@ PS C:\> Set-AzureRmEventHubGeoDRConfigurationBreakPair -ResourceGroupName "Sampl
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -95,7 +80,7 @@ DR Configuration Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -110,7 +95,7 @@ Namespace Name - Primary Namespace
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -121,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
@@ -140,7 +126,7 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Parameter Sets: GeoDRParameterSet
 Aliases:
 
 Required: True
@@ -162,6 +148,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
