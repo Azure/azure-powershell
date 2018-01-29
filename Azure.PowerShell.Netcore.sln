@@ -45,10 +45,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Network.Netcore", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.KeyVault.Netcore", "src\ResourceManager\KeyVault\Commands.KeyVault\Commands.KeyVault.Netcore.csproj", "{814E7BBB-3D69-410A-81CF-374C29CC5C6B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A5866E6E-1EC6-41CF-AAD3-B772EC2788DB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceManager", "ResourceManager", "{5FE0F1B6-1779-46B6-A460-B47838A93EAD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes\Commands.Kubernetes.Netcore.csproj", "{80657644-11E5-435B-A3DB-DFBB7115089F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Test.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes.Test\Commands.Kubernetes.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
@@ -303,10 +299,6 @@ Global
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Debug|x86.Build.0 = Debug|Any CPU
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F285DFCD-181C-4D53-83B1-9239EB7919D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F285DFCD-181C-4D53-83B1-9239EB7919D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F285DFCD-181C-4D53-83B1-9239EB7919D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F285DFCD-181C-4D53-83B1-9239EB7919D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Release|x64.ActiveCfg = Release|Any CPU
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Release|x64.Build.0 = Release|Any CPU
 		{814E7BBB-3D69-410A-81CF-374C29CC5C6B}.Release|x86.ActiveCfg = Release|Any CPU
