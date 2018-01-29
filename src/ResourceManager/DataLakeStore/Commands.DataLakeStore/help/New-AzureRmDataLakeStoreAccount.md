@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 58AAA284-45A3-4360-B321-FBE0A3F5D7A9
@@ -16,7 +16,7 @@ Creates a new Data Lake Store account.
 ### UserOrSystemAssignedEncryption (Default)
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
+ [[-DefaultGroup] <String>] [[-Tag] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
  [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>] [-Tier <TierType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [
 ### DisableEncryption
 ```
 New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-DefaultGroup] <String>] [[-Tags] <Hashtable>] [-DisableEncryption] [-Tier <TierType>]
+ [[-DefaultGroup] <String>] [[-Tag] <Hashtable>] [-DisableEncryption] [-Tier <TierType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Specifies the object ID of the AzureActive Directory group to use as the default
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -78,7 +78,7 @@ Indicates that the account will not have any form of encryption applied to it.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DisableEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```yaml
 Type: EncryptionConfigType
 Parameter Sets: UserOrSystemAssignedEncryption
-Aliases: 
+Aliases:
 Accepted values: UserManaged, ServiceManaged
 
 Required: False
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UserOrSystemAssignedEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UserOrSystemAssignedEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UserOrSystemAssignedEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -149,7 +149,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -164,7 +164,7 @@ Specifies the name of the account to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -179,7 +179,7 @@ Specifies the name of the resource group that contains the account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -188,14 +188,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies tags as key-value pairs.
 You can use tags to identify a Data Lake Store account from other Azure resources.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 4
@@ -210,7 +210,7 @@ The desired commitment tier for this account to use.
 ```yaml
 Type: TierType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Consumption, Commitment1TB, Commitment10TB, Commitment100TB, Commitment500TB, Commitment1PB, Commitment5PB
 
 Required: False

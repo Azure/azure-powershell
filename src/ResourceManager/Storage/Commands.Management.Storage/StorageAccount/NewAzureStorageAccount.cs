@@ -138,6 +138,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -176,7 +179,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
-                createParameters.Encryption.KeySource = "Microsoft.Storage";
+                if (createParameters.Encryption != null)
+                {
+                    createParameters.Encryption.KeySource = "Microsoft.Storage";
+                }
             }
 
             if (this.AccessTier != null)

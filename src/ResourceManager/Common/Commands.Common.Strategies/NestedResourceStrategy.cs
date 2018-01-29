@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -48,5 +49,37 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 name => new[] { provider, name},
                 get,
                 createOrUpdate);
+
+        public static NestedResourceStrategy<TModel, TParentModel> Create<TModel, TParentModel>(
+            string provider,
+            Func<TParentModel, IList<TModel>> getList,
+            Action<TParentModel, IList<TModel>> setList,
+            Func<TModel, string> getName,
+            Action<TModel, string> setName)
+            where TModel : class
+            where TParentModel : class
+            => Create<TModel, TParentModel>(
+                provider,
+                (parentModel, name) => getList(parentModel)?.FirstOrDefault(model => getName(model) == name),
+                (parentModel, name, model) =>
+                {
+                    setName(model, name);
+                    var list = getList(parentModel);
+                    if (list == null)
+                    {
+                        list = new List<TModel> { model };
+                        setList(parentModel, list);
+                        return;
+                    }
+                    var modelAndIndex = list
+                        .Select((m, i) => new { m, i })
+                        .FirstOrDefault(mi => getName(mi.m) == name);
+                    if (modelAndIndex != null)
+                    {
+                        list[modelAndIndex.i] = model;
+                        return;
+                    }
+                    list.Add(model);
+                });
     }
 }

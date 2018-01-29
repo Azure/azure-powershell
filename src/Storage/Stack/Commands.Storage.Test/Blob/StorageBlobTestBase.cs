@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -26,7 +26,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
     /// <summary>
     /// Test base class for storage blob
     /// </summary>
-    [TestClass]
     public class StorageBlobTestBase : StorageTestBase
     {
         /// <summary>
@@ -55,8 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             set;
         }
 
-        [TestInitialize]
-        public void InitMock()
+        public StorageBlobTestBase()
         {
             AzureSessionInitializer.InitializeAzureSession();
             BlobMock = new MockStorageBlobManagement();
@@ -64,10 +62,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             AzureSession.Instance.DataStore = new MemoryDataStore();
         }
 
-        [TestCleanup]
-        public void CleanMock()
+            public void InitMock()
         {
-            BlobMock = null;
+            AzureSessionInitializer.InitializeAzureSession();
+            BlobMock = new MockStorageBlobManagement();
+            MockCmdRunTime = new MockCommandRuntime();
+            AzureSession.Instance.DataStore = new MemoryDataStore();
         }
 
         /// <summary>

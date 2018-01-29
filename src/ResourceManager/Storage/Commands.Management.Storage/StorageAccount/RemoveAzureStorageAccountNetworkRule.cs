@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias("SubnetId", "VirtualNetworkId")]
         public string[] VirtualNetworkResourceId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

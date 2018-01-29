@@ -103,6 +103,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public int? MaxParallelExecutionsPerNode { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.IntegrationRuntimeLicenseIncluded,
+            Constants.IntegrationRuntimeBasePrice,
+            IgnoreCase = true)]
+        public string LicenseType { get; set; }
+
+        [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
@@ -336,6 +346,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Resources.IntegrationRuntimeInvalidVnet),
                         "Type");
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(LicenseType))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+
+                integrationRuntime.SsisProperties.LicenseType = LicenseType;
             }
 
             integrationRuntime.Validate();

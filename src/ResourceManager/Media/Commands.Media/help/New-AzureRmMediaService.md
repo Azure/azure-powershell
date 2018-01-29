@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
 Module Name: AzureRM.Media
 ms.assetid: 5CEA7323-4CF7-42B2-BA94-BB3C8F73D2E9
@@ -16,14 +16,14 @@ Creates a media service if the media service already exists, all its properties 
 ### StorageAccountIdParamSet
 ```
 New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
- [-StorageAccountId] <String> [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-StorageAccountId] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### StorageAccountsParamSet
 ```
 New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
- [-StorageAccounts] <PSStorageAccount[]> [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-StorageAccounts] <PSStorageAccount[]> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -138,7 +138,7 @@ Specifies the region that this cmdlet creates the media service in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -153,7 +153,7 @@ Specifies the name of the resource group that the media service is assigned to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -183,7 +183,7 @@ Specifies an array of storage accounts to associate with the media service.
 ```yaml
 Type: PSStorageAccount[]
 Parameter Sets: StorageAccountsParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -192,13 +192,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies tags for the media service.
+### -Tag
+The tags associated with the media service account.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named

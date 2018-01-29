@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
 {
-    [TestClass]
     public class SetAzureStorageServiceHourMetricsTest : StorageTestBase
     {
         /// <summary>
@@ -28,8 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
         /// </summary>
         public SetAzureStorageServiceMetricsCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public SetAzureStorageServiceHourMetricsTest()
         {
             command = new SetAzureStorageServiceMetricsCommand
             {
@@ -37,18 +36,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetMetricsLevelTest()
         {
-            Assert.AreEqual(MetricsLevel.None, command.GetMetricsLevel("none"));
-            Assert.AreEqual(MetricsLevel.Service, command.GetMetricsLevel("Service"));
-            Assert.AreEqual(MetricsLevel.ServiceAndApi, command.GetMetricsLevel("ServiceAndApi"));
+            Assert.Equal(MetricsLevel.None, command.GetMetricsLevel("none"));
+            Assert.Equal(MetricsLevel.Service, command.GetMetricsLevel("Service"));
+            Assert.Equal(MetricsLevel.ServiceAndApi, command.GetMetricsLevel("ServiceAndApi"));
             AssertThrows<ArgumentException>(() => command.GetMetricsLevel("stdio"));
         }
     }
