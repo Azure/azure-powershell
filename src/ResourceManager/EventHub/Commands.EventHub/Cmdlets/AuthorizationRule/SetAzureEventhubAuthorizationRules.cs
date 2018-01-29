@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
         public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = AuthoRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        
         [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [Parameter(Mandatory = false, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]

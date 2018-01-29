@@ -106,10 +106,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                 }
                 
             }
-            else
-            {
-                WriteObject(false);
-            }
         }
     }
 }
