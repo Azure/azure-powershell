@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
-        protected const string GeoDRBreakPairFailOverParameterSet = "GeoDRBreakPairFailOverPropertiesSet";
-        protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
+        protected const string GeoDRParametersForBreakPairFailOverSet = "GeoDRParametersForBreakPairFailOverSet";
+        protected const string GeoDRParameterSet = "GeoDRParameterSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";

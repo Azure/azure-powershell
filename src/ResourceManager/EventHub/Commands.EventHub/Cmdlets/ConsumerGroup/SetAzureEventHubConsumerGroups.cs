@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = " User Metadata for ConsumerGroup")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "User Metadata for ConsumerGroup")]
         [ValidateNotNullOrEmpty]
         public string UserMetadata { get; set; }
 

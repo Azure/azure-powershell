@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Checks the Availability of the given NameSpace Name or Alias (DR Configuration N
 
 ### NamespaceCheckNameAvailabilitySet (Default)
 ```
-Test-AzureRmEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>]
+Test-AzureRmEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AliasCheckNameAvailabilitySet
@@ -57,7 +57,7 @@ DR Configuration Name - Alias Name
 ```yaml
 Type: String
 Parameter Sets: AliasCheckNameAvailabilitySet
-Aliases: Alias
+Aliases:
 
 Required: True
 Position: 2
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -82,24 +82,12 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Eventhub Namespace Name.
+Eventhub Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: NamespaceCheckNameAvailabilitySet
-Aliases: NamespaceName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: AliasCheckNameAvailabilitySet
-Aliases: NamespaceName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: 0
@@ -109,12 +97,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource Group Name
 
 ```yaml
 Type: String
 Parameter Sets: AliasCheckNameAvailabilitySet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -134,10 +122,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.EventHub, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes
 
 
 ## NOTES
 
 ## RELATED LINKS
-

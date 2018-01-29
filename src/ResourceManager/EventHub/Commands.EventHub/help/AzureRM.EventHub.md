@@ -75,7 +75,7 @@ Updates the specified Event Hubs consumer group.
 Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ### [Set-AzureRmEventHubGeoDRConfigurationFailOver](Set-AzureRmEventHubGeoDRConfigurationFailOver.md)
-Envokes Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+Invokes Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
 Updates the specified Event Hubs namespace.

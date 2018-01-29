@@ -57,8 +57,8 @@ Tests EventHubs DRConfiguration Create List Remove operations.
 
 function DRConfigurationTests
 {
-	# Setup    
-	$location_south = "South Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
+	# Setup
+	$location_south =  "South Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
 	$location_north = "North Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
 	$resourceGroupName = getAssetName
 	$namespaceName1 = getAssetName "Eventhub-Namespace-"

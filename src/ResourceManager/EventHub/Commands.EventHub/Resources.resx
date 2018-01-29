@@ -138,6 +138,9 @@
   <data name="DRFailOver" xml:space="preserve">
     <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
   </data>
+  <data name="DRNew" xml:space="preserve">
+    <value>Creating new Alias :{0} under Namespace:{1}</value>
+  </data>
   <data name="DRRemoveAlias" xml:space="preserve">
     <value>Deleting Alias: {0} of Namespace{1}</value>
   </data>

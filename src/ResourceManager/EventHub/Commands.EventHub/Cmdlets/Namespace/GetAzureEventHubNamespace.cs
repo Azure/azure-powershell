@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
-
-
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 // List all EventHub namespace in given resource group
-                IEnumerable< PSNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
+                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }
             else
