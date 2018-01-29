@@ -18,14 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added Location Completer to -Location parameters allowing tab completion through valid Locations
-* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Updated to use the 2018-01-01 API version.
 
 ## Version 0.3.0
 * Added the following new cmdlet:
     - Update-AzureRmEventGridSubscription
         - Update the properties of an Event Grid event subscription.
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 
 ## Version 0.2.0
