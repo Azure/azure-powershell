@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -49,11 +53,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "AlternateName")]
         [ValidateNotNullOrEmpty]
-        public string AlternateName { get; set; }
+        public string AlternateName { get; set; }        
 
-        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

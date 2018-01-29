@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                     {
                         WriteObject(true);
                     }
-                    else
-                    {
-                        WriteObject(false);
-                    }
+                }
+                else
+                {
+                    WriteObject(false);
                 }
             }
 
@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                     {
                         WriteObject(true);
                     }
-                    else
-                    {
-                        WriteObject(false);
-                    }
+                }
+                else
+                {
+                    WriteObject(false);
                 }
             }
 
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                 {
                     WriteObject(true);
                 }
-                else
-                {
-                    WriteObject(false);
-                }
+            }
+            else
+            {
+                WriteObject(false);
             }
         }
     }

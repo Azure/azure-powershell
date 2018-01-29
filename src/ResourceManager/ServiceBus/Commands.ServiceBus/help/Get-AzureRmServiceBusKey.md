@@ -77,7 +77,7 @@ Alias Name
 ```yaml
 Type: String
 Parameter Sets: AliasAuthoRuleSet
-Aliases: Alias
+Aliases:
 
 Required: True
 Position: 2
