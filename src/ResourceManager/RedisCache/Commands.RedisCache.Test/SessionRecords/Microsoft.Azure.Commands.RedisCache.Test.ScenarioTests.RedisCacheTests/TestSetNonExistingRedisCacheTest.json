@@ -1,21 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/Redis/nonexistingrediscache?api-version=2016-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/Redis/nonexistingrediscache?api-version=2017-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f2bedd26-52cc-49cd-a3fd-714669821637"
+          "6a802f46-272c-41da-869e-e9a7b6cfaa93"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
-          "Windows_10_Enterprise/6.3.14393",
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.4.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'PowerShellTestNonExisting' could not be found.\"\r\n  }\r\n}",
@@ -36,13 +37,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "2da04fc8-a6df-4d9d-b327-58d1b7f0db13"
+          "afa96041-bec1-496c-a68b-f3055906e20a"
         ],
         "x-ms-correlation-request-id": [
-          "2da04fc8-a6df-4d9d-b327-58d1b7f0db13"
+          "afa96041-bec1-496c-a68b-f3055906e20a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20161111T174239Z:2da04fc8-a6df-4d9d-b327-58d1b7f0db13"
+          "WESTUS2:20180109T003331Z:afa96041-bec1-496c-a68b-f3055906e20a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +52,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 11 Nov 2016 17:42:38 GMT"
+          "Tue, 09 Jan 2018 00:33:30 GMT"
         ]
       },
       "StatusCode": 404
