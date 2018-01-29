@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.VMOSDiskName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -57,21 +55,18 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskVhdUri)]
         [ValidateNotNullOrEmpty]
         public string VhdUri { get; set; }
 
         [Parameter(
             Position = 3,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskCaching)]
         public CachingTypes? Caching { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(
             Position = 4,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMSourceImageUri)]
         [ValidateNotNullOrEmpty]
         public string SourceImageUri { get; set; }
@@ -79,31 +74,26 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             Position = 5,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
         public DiskCreateOptionTypes CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
             Position = 6,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         [Parameter(
             ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Position = 6,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         public SwitchParameter Windows { get; set; }
 
         [Parameter(
             ParameterSetName = LinuxParamSet,
             Position = 6,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         [Parameter(
             ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Position = 6,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
 
@@ -111,13 +101,11 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 7,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
         [Parameter(
             ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 7,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
         public string DiskEncryptionKeyUrl { get; set; }
 
@@ -125,13 +113,11 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 8,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
         [Parameter(
             ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 8,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
         public string DiskEncryptionKeyVaultId { get; set; }
 
@@ -139,13 +125,11 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 9,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
         [Parameter(
             ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 9,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
         public string KeyEncryptionKeyUrl { get; set; }
 
@@ -153,33 +137,28 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 10,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         [Parameter(
             ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 10,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         public string KeyEncryptionKeyVaultId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskSizeInGB)]
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskId)]
         [ValidateNotNullOrEmpty]
         public string ManagedDiskId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
         public StorageAccountTypes? StorageAccountType { get; set; }
