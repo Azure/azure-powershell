@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == GeoDRInputObjectParameterSet)
@@ -62,10 +65,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                     {
                         WriteObject(true);
                     }
-                    else
-                    {
-                        WriteObject(false);
-                    }
+                }
+                else
+                {
+                    WriteObject(false);
                 }
             }
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
@@ -79,10 +82,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                     {
                         WriteObject(true);
                     }
-                    else
-                    {
-                        WriteObject(false);
-                    }
+                }
+                else
+                {
+                    WriteObject(false);
                 }
             }
             if (ParameterSetName == GeoDRBreakPairFailOverParameterSet)
@@ -92,10 +95,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                 {
                     WriteObject(true);
                 }
-                else
-                {
-                    WriteObject(false);
-                }
+            }
+            else
+            {
+                WriteObject(false);
             }
         }
     }

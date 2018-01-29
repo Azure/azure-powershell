@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets a description of the specified authorization rule for a given Namespace or Queue or Topic or Alias (GeoDR Configurations). 
 
+
 ## SYNTAX
 
 ### NamespaceAuthorizationRuleSet (Default)
@@ -77,7 +78,7 @@ GeoDR Configuration Name
 ```yaml
 Type: String
 Parameter Sets: AliasAuthoRuleSet
-Aliases: Alias
+Aliases:
 
 Required: True
 Position: 2
