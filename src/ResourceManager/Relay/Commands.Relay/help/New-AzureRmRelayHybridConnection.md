@@ -214,30 +214,6 @@ System.String
 
 ### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 
-### Examples - 1 : InputObject
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:04:15 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n2
-Name                        : TestHybirdConnection2
-Type                        : Microsoft.Relay/HybridConnections
-
-### Examples - 2 : Properties
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:04:15 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n1
-Name                        : TestHybirdConnection1
-Type                        : Microsoft.Relay/HybridConnections
-
 ## NOTES
 
 ## RELATED LINKS
