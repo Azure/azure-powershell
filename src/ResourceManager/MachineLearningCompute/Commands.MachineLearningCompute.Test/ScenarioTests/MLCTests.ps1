@@ -39,7 +39,7 @@ Creates a local operationalization cluster for use in tests.
 function GetDefaultLocalClusterProperties
 {
     $location = "East US 2 EUAP"
-    $clusterType = "West Central US"
+    $clusterType = "Local"
     $description = "Deployed from powershell"
 
     $cluster = New-Object Microsoft.Azure.Management.MachineLearningCompute.Models.OperationalizationCluster `
@@ -302,4 +302,27 @@ function Test-Set
 
     # Cleanup
     TeardownTest -ResourceGroupName $resourceGroupName
+}
+
+function Test-RemoveIncludeAllResources
+{
+    $resourceGroupName = GetUniqueName("mlcrp-cmdlet-test-remove-all")
+    $clusterName = GetUniqueName("mlcrp-cmdlet-test-remove-all")
+
+    SetupTest $resourceGroupName
+
+    # Create the cluster
+    $cluster = GetDefaultLocalClusterProperties
+    $createdCluster = New-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Cluster $cluster
+
+	# Get the managed by resource group name before deleting
+	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
+
+	# Delete the cluster
+	Remove-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName -IncludeAllResources
+
+    Assert-Throws ( Get-AzureRmResourceGroup -ResourceGroupName $managedByResourceGroupName )
+
+    # Cleanup
+	Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName -Force
 }

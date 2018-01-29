@@ -82,16 +82,6 @@ The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the sp
 ## EXAMPLES
 
 ### --------------------------  Example 1: Create an Azure HDInsight cluster  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
-
-
-
-
 ```
 PS C:\&gt; # Primary storage account info
         $storageAccountResourceGroupName = "Group"

@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -50,8 +51,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
+        [Obsolete("New-AzureRmDataLakeAnalyticsAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The maximum supported analytics units for this account.")]
@@ -117,7 +120,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         Name,
                         Location,
                         defaultStorage,
-                        customTags: Tags,
+                        customTags: Tag,
                         maxAnalyticsUnits: MaxAnalyticsUnits,
                         maxJobCount: MaxJobCount,
                         queryStoreRetention: QueryStoreRetention,

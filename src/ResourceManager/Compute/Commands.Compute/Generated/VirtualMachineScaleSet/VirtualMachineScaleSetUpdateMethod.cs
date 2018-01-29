@@ -149,9 +149,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
@@ -386,6 +383,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         private void BuildPatchObject()
         {

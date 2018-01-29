@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
-        public const string CommonAdTenant = "Common";
+        public const string CommonAdTenant = "Common", DefaultMSILoginUri = "http://localhost:50342/oauth2/token";
 
         public AuthenticationFactory()
         {
@@ -62,7 +62,61 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 configuration.ClientRedirectUri,
                 configuration.ResourceClientUri,
                 configuration.ValidateAuthority);
-            if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+            if (account != null && account.Type == AzureAccount.AccountType.ManagedService)
+            {
+                if (environment == null)
+                {
+                    throw new InvalidOperationException("Environment is required for MSI Login");
+                }
+
+                if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+                {
+                    account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
+                }
+
+                if (string.IsNullOrWhiteSpace(tenant))
+                {
+                    tenant = environment.AdTenant ?? "Common";
+                }
+
+                token = new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
+            }
+            else if (account != null && environment != null
+                && account.Type == AzureAccount.AccountType.AccessToken)
+            {
+                var rawToken = new RawAccessToken
+                {
+                    TenantId = tenant,
+                    UserId = account.Id,
+                    LoginType = AzureAccount.AccountType.AccessToken
+                };
+
+                if ((string.Equals(resourceId, environment.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
+                     || string.Equals(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
+                     && account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken))
+                {
+                    rawToken.AccessToken = account.GetProperty(AzureAccount.Property.KeyVaultAccessToken);
+                }
+                else if ((string.Equals(resourceId, environment.GraphEndpointResourceId, StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(AzureEnvironment.Endpoint.GraphEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
+                    && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
+                {
+                    rawToken.AccessToken = account.GetProperty(AzureAccount.Property.GraphAccessToken);
+                }
+                else if ((string.Equals(resourceId, environment.ActiveDirectoryServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
+                    && account.IsPropertySet(AzureAccount.Property.AccessToken))
+                {
+                    rawToken.AccessToken = account.GetAccessToken();
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(Resources.AccessTokenResourceNotFound, resourceId));
+                }
+
+                token = rawToken;
+            }
+            else if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
             {
                 var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
 #if !NETSTANDARD
@@ -309,6 +363,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
+        {
+            return environment.GetEndpoint(resourceIdorEndpointName) ?? resourceIdorEndpointName;
+        }
+
         private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,
             string resourceId, TokenCache tokenCache)
         {
@@ -325,7 +384,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
             }
 
-            var audience = environment.GetEndpoint(resourceId);
+            var audience = environment.GetEndpoint(resourceId)?? resourceId;
             if (string.IsNullOrWhiteSpace(audience))
             {
                 string message = Resources.InvalidManagementTokenAudience;

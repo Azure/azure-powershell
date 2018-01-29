@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
@@ -36,12 +36,12 @@ If there are existing role assignments made to the custom role to be deleted, th
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 Get-AzureRmRoleDefinition -Name "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
 ```
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 ```
@@ -69,7 +69,7 @@ If set, does not prompt for a confirmation before deleting the custom role
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Id of the Role definition to be deleted
 ```yaml
 Type: Guid
 Parameter Sets: RoleDefinitionIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Name of the Role definition to be deleted.
 ```yaml
 Type: String
 Parameter Sets: RoleDefinitionNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,7 +127,7 @@ Role definition scope.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

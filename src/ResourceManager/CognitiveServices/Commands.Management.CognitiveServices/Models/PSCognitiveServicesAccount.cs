@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.AccountType = cognitiveServicesAccount.Kind;
             this.Etag = cognitiveServicesAccount.Etag;
             this.ResourceType = cognitiveServicesAccount.Type;
-            this.ProvisioningState = cognitiveServicesAccount.ProvisioningState;
+#pragma warning disable CS0436 // Type conflicts with imported type
+#pragma warning disable CS0618 // Type or member is obsolete
+            this.ProvisioningState = (ProvisioningState)Enum.Parse(typeof(ProvisioningState), cognitiveServicesAccount.ProvisioningState);
+#pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0436 // Type conflicts with imported type
             this.Tags = cognitiveServicesAccount.Tags;
         }
 
@@ -55,7 +59,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public string Etag { get; private set; }
 
+#pragma warning disable CS0436 // Type conflicts with imported type
+#pragma warning disable CS0618 // Type or member is obsolete
         public ProvisioningState? ProvisioningState { get; private set; }
+#pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         public IDictionary<string, string> Tags { get; private set; }
 

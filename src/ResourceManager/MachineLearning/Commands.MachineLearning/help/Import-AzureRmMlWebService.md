@@ -28,18 +28,11 @@ The Import-AzureRmMlWebService cmdlet imports , specified either directly or in 
 ## EXAMPLES
 
 ### --------------------------  Example 1: Import from string  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Import-AzureRmMlWebService -JsonString $jsonDefinition
 ```
 
 ### --------------------------  Example 2: Import from file path  --------------------------
-@{paragraph=PS C:\\\>}
-
-
 ```
 Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
 ```
