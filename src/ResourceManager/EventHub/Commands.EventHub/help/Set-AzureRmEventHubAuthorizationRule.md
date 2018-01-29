@@ -33,12 +33,6 @@ Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Name] <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AuthoRulePropertiesSet
-```
-Set-AzureRmEventHubAuthorizationRule [-ResourceGroupName] <String> [-Name] <String> [-Rights] <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Set-AzureRmEventHubAuthorizationRule cmdlet updates the specified authorization rule on the given Event Hub.
 
