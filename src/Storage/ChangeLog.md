@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Add cmdlets to get and set Storage service properties
 	- Get-AzureStorageServiceProperty
 	- Update-AzureStorageServiceProperty
