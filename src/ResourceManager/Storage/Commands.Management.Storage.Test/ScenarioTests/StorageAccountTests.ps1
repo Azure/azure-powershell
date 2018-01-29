@@ -546,7 +546,7 @@ function Test-NetworkRule
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation_Canary  ResourceManagement;
+        $loc = Get-ProviderLocation ResourceManagement;
         $ip1 = "20.11.0.0/16";
         $ip2 = "10.0.0.0/7";
         $ip3 = "11.1.1.0/24";
