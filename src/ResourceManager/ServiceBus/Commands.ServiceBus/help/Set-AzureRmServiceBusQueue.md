@@ -31,7 +31,7 @@ PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
 PS C:\> $QueueObj.SupportOrdering = $True
 
 PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
-```
+
 Name                                : SB-Queue_exampl1
 LockDuration                        : 
 AccessedAt                          : 1/1/0001 12:00:00 AM
