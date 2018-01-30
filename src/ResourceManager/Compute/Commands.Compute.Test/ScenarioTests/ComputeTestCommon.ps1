@@ -400,7 +400,7 @@ function Get-DefaultCRPWindowsImageOffline
 # Get Default CRP Linux Image Object Offline
 function Get-DefaultCRPLinuxImageOffline
 {
-    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'openSUSE-Leap' '42.3' 'latest';
 }
 
 <#

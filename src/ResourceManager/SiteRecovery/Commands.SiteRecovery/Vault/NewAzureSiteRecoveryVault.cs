@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -21,6 +23,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Used to initiate a vault create operation.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryVault")]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "New-AzureRmRecoveryServicesVault cmdlet from the AzureRm.RecoveryServices module instead.",
+        false)]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -36,6 +41,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,6 +49,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets the location of the vault
         /// </summary>
         [Parameter(Mandatory = true)]
+        [LocationCompleter("Microsoft.SiteRecovery/SiteRecoveryVault")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

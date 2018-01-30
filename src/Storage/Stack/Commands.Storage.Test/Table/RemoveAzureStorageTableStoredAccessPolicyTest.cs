@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
     using Microsoft.WindowsAzure.Storage.Table;
@@ -23,13 +25,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
     using System.Globalization;
     using System.Linq;
 
-    [TestClass]
     public class RemoveAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
     {
         public RemoveAzureStorageTableStoredAccessPolicyCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public RemoveAzureStorageTableStoredAccessPolicyTest()
         {
             command = new RemoveAzureStorageTableStoredAccessPolicyCommand(tableMock)
             {
@@ -37,13 +37,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveStoredAccessPolicyNotExistsTest()
         {
             AddTestStoredAccessPolicy();
@@ -55,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             clearTest();
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveStoredAccessPolicySuccessTest()
         {
             AddTestStoredAccessPolicy();
@@ -63,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             string tableName = "sampleTable";
 
             command.RemoveAzureTableStoredAccessPolicy(tableMock, tableName, policyName);
-            Assert.IsTrue(!tableMock.tablePermissions.SharedAccessPolicies.Keys.Contains(policyName));
+            Assert.True(!tableMock.tablePermissions.SharedAccessPolicies.Keys.Contains(policyName));
 
             clearTest();
         }

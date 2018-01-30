@@ -1,0 +1,1348 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourcegroups/RGName-ps7121?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczcxMjE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121\",\r\n  \"name\": \"RGName-ps7121\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "180"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "2c038758-6c0e-4af9-928d-370e22b740de"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c038758-6c0e-4af9-928d-370e22b740de"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191629Z:2c038758-6c0e-4af9-928d-370e22b740de"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:29 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "3ec762b4-1eba-4382-a6c9-1fa95cfa3a7c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"endpoint\": null\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com:443/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/27DE3F4D-BFF8-4973-A426-1FF2405ACF1E?api-version=2017-09-15-preview"
+        ],
+        "x-ms-request-id": [
+          "290d5413-af6b-4a1a-a6b3-b39d29906419"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "755ab3ee-e870-4ac9-b2dd-29caa98b4ac8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191631Z:755ab3ee-e870-4ac9-b2dd-29caa98b4ac8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "99"
+        ],
+        "x-ms-client-request-id": [
+          "907f2c97-2cdd-41b9-9cbc-d0d92227eb8d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"endpoint\": null\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "339"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com:443/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/D7871838-5DB1-445F-9F2C-FD970A9E64E9?api-version=2017-09-15-preview"
+        ],
+        "x-ms-request-id": [
+          "d56c6c4e-e562-454e-8450-ef69ac1c3703"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "327e4e02-e48d-4f68-8524-78486681dc4e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191641Z:327e4e02-e48d-4f68-8524-78486681dc4e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "99"
+        ],
+        "x-ms-client-request-id": [
+          "ac5adf00-5db0-47c8-a27e-8dcfa955b897"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"endpoint\": null\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "339"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com:443/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/0FB8D88C-DF79-40DB-A1C8-96FEC4AB2334?api-version=2017-09-15-preview"
+        ],
+        "x-ms-request-id": [
+          "f476606b-306f-40d8-9018-684d1e6cfbdf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "4151977c-ebbb-464e-8210-a78901e0e7ca"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191652Z:4151977c-ebbb-464e-8210-a78901e0e7ca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval10\",\r\n    \"test2\": \"testval20\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "101"
+        ],
+        "x-ms-client-request-id": [
+          "e773ecb0-1583-43d1-8952-d1c5c34428e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"endpoint\": null\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval10\",\r\n    \"test2\": \"testval20\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "341"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com:443/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/337FC01D-ABAC-4996-B305-FED6B394DBFF?api-version=2017-09-15-preview"
+        ],
+        "x-ms-request-id": [
+          "1fe0077b-449e-4399-8e7b-cc51d6d7f0b8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e7c2f9a-d61a-427e-a533-7395b16e0bc9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191702Z:1e7c2f9a-d61a-427e-a533-7395b16e0bc9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/27DE3F4D-BFF8-4973-A426-1FF2405ACF1E?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvbnNTdGF0dXMvMjdERTNGNEQtQkZGOC00OTczLUE0MjYtMUZGMjQwNUFDRjFFP2FwaS12ZXJzaW9uPTIwMTctMDktMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/27DE3F4D-BFF8-4973-A426-1FF2405ACF1E?api-version=2017-09-15-preview\",\r\n  \"name\": \"27de3f4d-bff8-4973-a426-1ff2405acf1e\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "288"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7fb874fe-711f-44a5-9052-3b5911dab8ef"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "845145a3-6510-46cc-b3a5-3120b3c31762"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191641Z:845145a3-6510-46cc-b3a5-3120b3c31762"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "370"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ae2885c3-5315-4c87-b73a-e43af770a3ed"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "12ccc796-b039-4354-96dd-e13d2407024f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191641Z:12ccc796-b039-4354-96dd-e13d2407024f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "38777d3c-8d51-4245-9196-d6350b91fbaf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "370"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "122e3562-0e2d-4478-b18b-081d233330dd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f13f5ed-b7ad-4fa7-91db-d13b8749fe8b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191641Z:5f13f5ed-b7ad-4fa7-91db-d13b8749fe8b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "405"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1161fa16-6667-4330-9a6c-93c93dc4e30c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "58e513a4-180a-48a7-bfbf-822499804575"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191652Z:58e513a4-180a-48a7-bfbf-822499804575"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7584d57-77ee-4e7d-8fd0-41faec327bcb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "405"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b40d8f18-b038-4556-a401-657e0612fca1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a73c2f5-ce83-49b5-a5ae-7f1c4bfa39b9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191652Z:7a73c2f5-ce83-49b5-a5ae-7f1c4bfa39b9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "405"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ba5b5fc1-d19d-4ae8-b3dc-64aa85035b50"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2aedab6-c99d-4cb8-9abd-2587e1f8f8b1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191702Z:c2aedab6-c99d-4cb8-9abd-2587e1f8f8b1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "30fa2bea-6c6b-41f4-97e8-442cc4f2e0c4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "405"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6995c400-82da-4c4b-86bc-503b7215ec77"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "644fcbaa-4729-4748-9c18-5194d39bdf63"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191702Z:644fcbaa-4729-4748-9c18-5194d39bdf63"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec165d23-ce9e-4de5-baad-8a1cf4f9fe8a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval1\",\r\n    \"test2\": \"testval2\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "405"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e9718f91-e6a7-40c0-8c08-030385b95d90"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "0abb0401-96e0-43a7-ae89-4e1033bd6ec0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191702Z:0abb0401-96e0-43a7-ae89-4e1033bd6ec0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7055.westus2-1.eventgrid.azure.net/api/events\"\r\n  },\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"test1\": \"testval10\",\r\n    \"test2\": \"testval20\"\r\n  },\r\n  \"id\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055\",\r\n  \"name\": \"PSTestTopic-ps7055\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "407"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "74b0541e-420e-401a-aebe-823053e8b16a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "701ffc4f-eb9d-4a36-b0d2-ffda2b9bc61b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191713Z:701ffc4f-eb9d-4a36-b0d2-ffda2b9bc61b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/D7871838-5DB1-445F-9F2C-FD970A9E64E9?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvbnNTdGF0dXMvRDc4NzE4MzgtNURCMS00NDVGLTlGMkMtRkQ5NzBBOUU2NEU5P2FwaS12ZXJzaW9uPTIwMTctMDktMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/D7871838-5DB1-445F-9F2C-FD970A9E64E9?api-version=2017-09-15-preview\",\r\n  \"name\": \"d7871838-5db1-445f-9f2c-fd970a9e64e9\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "288"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2d37e6c3-1c10-44a4-94d9-9f4619004f6c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "98611e7e-9bc9-49bd-95c6-2f12f2106094"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191651Z:98611e7e-9bc9-49bd-95c6-2f12f2106094"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:16:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/0FB8D88C-DF79-40DB-A1C8-96FEC4AB2334?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvbnNTdGF0dXMvMEZCOEQ4OEMtREY3OS00MERCLUExQzgtOTZGRUM0QUIyMzM0P2FwaS12ZXJzaW9uPTIwMTctMDktMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/0FB8D88C-DF79-40DB-A1C8-96FEC4AB2334?api-version=2017-09-15-preview\",\r\n  \"name\": \"0fb8d88c-df79-40db-a1c8-96fec4ab2334\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "288"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "70a41811-92b0-42a8-b9de-18ab29fd7d3c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "726f4f3b-af69-41e7-a8da-12ab7c8f5bb1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191702Z:726f4f3b-af69-41e7-a8da-12ab7c8f5bb1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/337FC01D-ABAC-4996-B305-FED6B394DBFF?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvbnNTdGF0dXMvMzM3RkMwMUQtQUJBQy00OTk2LUIzMDUtRkVENkIzOTREQkZGP2FwaS12ZXJzaW9uPTIwMTctMDktMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationsStatus/337FC01D-ABAC-4996-B305-FED6B394DBFF?api-version=2017-09-15-preview\",\r\n  \"name\": \"337fc01d-abac-4996-b305-fed6b394dbff\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "288"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7d95919b-bacb-452f-8ddd-d79a837fe098"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "242fcac4-c4f6-4760-bce9-c26fc0b87239"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191712Z:242fcac4-c4f6-4760-bce9-c26fc0b87239"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/RGName-ps7121/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7055?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczcxMjEvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzA1NT9hcGktdmVyc2lvbj0yMDE3LTA5LTE1LXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "430e5d5c-0fad-4d2d-bf39-0b574114a91c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "c8b3ea84-3aae-4ef8-8262-cb6f33c44db9"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8b3ea84-3aae-4ef8-8262-cb6f33c44db9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191713Z:c8b3ea84-3aae-4ef8-8262-cb6f33c44db9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:12 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationResults/54896555-9338-40A9-AAA7-39C82F45CEF9?api-version=2017-09-15-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/locations/westus2/operationResults/54896555-9338-40A9-AAA7-39C82F45CEF9?api-version=2017-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvblJlc3VsdHMvNTQ4OTY1NTUtOTMzOC00MEE5LUFBQTctMzlDODJGNDVDRUY5P2FwaS12ZXJzaW9uPTIwMTctMDktMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/1.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "481697bd-897f-4549-b5ee-c63b8ee34ae4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "f98bef0a-1944-476d-8108-1dbcdd448113"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191723Z:f98bef0a-1944-476d-8108-1dbcdd448113"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:22 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourcegroups/RGName-ps7121?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczcxMjE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "5508ae19-a962-4e2c-8a97-c541578e3b4f"
+        ],
+        "x-ms-correlation-request-id": [
+          "5508ae19-a962-4e2c-8a97-c541578e3b4f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191723Z:5508ae19-a962-4e2c-8a97-c541578e3b4f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:23 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpjeE1qRXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-request-id": [
+          "a42dae63-3404-411d-b517-89835be31aeb"
+        ],
+        "x-ms-correlation-request-id": [
+          "a42dae63-3404-411d-b517-89835be31aeb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191723Z:a42dae63-3404-411d-b517-89835be31aeb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:23 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpjeE1qRXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-request-id": [
+          "b4c6227b-2a75-4d96-8b00-57200ca95a91"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4c6227b-2a75-4d96-8b00-57200ca95a91"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191738Z:b4c6227b-2a75-4d96-8b00-57200ca95a91"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:37 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzcxMjEtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTVmM2RjZDQtY2FjNy00M2I0LTk5MGItYTEzOWQ2MmExZWIyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpjeE1qRXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-request-id": [
+          "e0553164-9394-48e0-a3f0-2c5866ef6594"
+        ],
+        "x-ms-correlation-request-id": [
+          "e0553164-9394-48e0-a3f0-2c5866ef6594"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171208T191753Z:e0553164-9394-48e0-a3f0-2c5866ef6594"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Dec 2017 19:17:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "": [
+      "ps7055",
+      "ps7121"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "55f3dcd4-cac7-43b4-990b-a139d62a1eb2"
+  }
+}

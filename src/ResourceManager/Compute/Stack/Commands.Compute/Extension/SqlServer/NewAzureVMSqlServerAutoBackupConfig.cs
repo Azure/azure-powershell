@@ -20,6 +20,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.Azure.Management.Storage;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -44,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
         Position = 0,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
+        public IStorageContext StorageContext
         {
             get;
             set;

@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
-                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;

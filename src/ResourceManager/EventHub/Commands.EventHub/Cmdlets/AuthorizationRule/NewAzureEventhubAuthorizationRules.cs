@@ -13,61 +13,50 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.EventHub.Models;
-using Microsoft.Azure.Management.EventHub.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.EventHub.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
     /// 'New-AzureRmRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class NewAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Listen", "Send", "Manage",
-            IgnoreCase = true)]
+        [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+            PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
 
             foreach (string test in Rights)
@@ -76,14 +65,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             }
 
             //Create a new Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateNamespaceAuthorizationrule, Name, Namespace)))
                 {
                     WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
                 }
 
             // Create a new EventHub authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateEventHubAuthorizationrule, Name, EventHub)))
                 {
                     WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));

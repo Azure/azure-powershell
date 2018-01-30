@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: DAEF11C1-281B-4BED-9283-2296E0B57018
@@ -163,7 +163,7 @@ Specifies the name of the advisor that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -193,7 +193,7 @@ Indicates that the cmdlet includes the recommended actions of the advisors that 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -208,7 +208,7 @@ Specifies name of the resource group of the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -223,7 +223,7 @@ Specifies the name of the server for the advisor that this cmdlet requests.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

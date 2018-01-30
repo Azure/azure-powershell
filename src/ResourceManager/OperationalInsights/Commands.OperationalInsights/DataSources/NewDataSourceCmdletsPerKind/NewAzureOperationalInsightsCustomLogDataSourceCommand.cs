@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 

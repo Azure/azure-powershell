@@ -15,63 +15,48 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given WcfRelay Authorization Rule
+    /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given EventHub Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(ListKeysAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
     public class NewAzureEventhubKey : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [Alias(AliasEventHubName)]
         [ValidateNotNullOrEmpty]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 4,
-            HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.")]
-        [ValidateSet(RegeneKeys.PrimaryKey,
-            RegeneKeys.SecondaryKey,
-            IgnoreCase = true)]
+        [Parameter(Mandatory = true, Position = 4, HelpMessage = "Regenerate Keys - 'PrimaryKey'/'SecondaryKey'")]
+        [ValidateSet(RegeneKeys.PrimaryKey, RegeneKeys.SecondaryKey, IgnoreCase = true)]
         public string RegenerateKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var regenKey = new RegenerateAccessKeyParameters { Key = RegenerateKey };
 
-
             // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
@@ -79,8 +64,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 }
             }
 
-            // Generate new WcfRelay List Keys for the specified AuthorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            // Generate new EventHub List Keys for the specified AuthorizationRule
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
                 {

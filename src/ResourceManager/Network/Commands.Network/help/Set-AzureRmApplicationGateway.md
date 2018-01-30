@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 7C8B47B4-2F6A-45EF-A351-88C8C3F9D0D3
@@ -14,7 +14,7 @@ Updates an application gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway>
+Set-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -44,6 +44,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

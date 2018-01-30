@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
@@ -67,7 +67,7 @@ Specifies the name of the feature to get.
 ```yaml
 Type: String
 Parameter Sets: GetFeature
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ Indicates that this cmdlet gets all features.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ListAvailableParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Specifies the namespace for which this cmdlet gets provider features.
 ```yaml
 Type: String
 Parameter Sets: ListAvailableParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetFeature
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

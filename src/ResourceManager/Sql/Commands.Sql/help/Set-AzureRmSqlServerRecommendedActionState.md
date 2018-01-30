@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 26EC220C-5123-4CEF-8CC6-5FFD08F33481
@@ -68,7 +68,7 @@ Specifies the name of the advisor that contains the recommended action.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ Specifies the name of the recommended action for which this cmdlet updates the s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ Specifies the name of the resource group of the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -128,7 +128,7 @@ Specifies the name of the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -152,7 +152,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: RecommendedActionState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Active, Pending, PendingRevert, RevertCancelled, Ignored, Resolved
 
 Required: True

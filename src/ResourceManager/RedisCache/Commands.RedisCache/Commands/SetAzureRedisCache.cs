@@ -17,21 +17,21 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
-        internal const string MaxMemoryParameterSetName = "OnlyMaxMemoryPolicy";
-
-        [Parameter(ParameterSetName = MaxMemoryParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which you want to create cache.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = MaxMemoryParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
         public int? ShardCount { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
@@ -68,7 +71,16 @@ namespace Microsoft.Azure.Commands.RedisCache
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);
             }
 
-            RedisResource response = CacheClient.GetCache(ResourceGroupName, Name);
+            RedisResource response = null;
+            if (string.IsNullOrEmpty(ResourceGroupName))
+            {
+                response = CacheClient.GetCache(Name);
+                ResourceGroupName = Utility.GetResourceGroupNameFromRedisCacheId(response.Id);
+            }
+            else
+            {
+                response = CacheClient.GetCache(ResourceGroupName, Name);
+            }
 
             string skuName;
             string skuFamily;
@@ -100,9 +112,16 @@ namespace Microsoft.Azure.Commands.RedisCache
                 ShardCount = response.ShardCount;
             }
 
-            var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount);
-            var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
-            WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
+            ConfirmAction(
+              string.Format(Resources.UpdateRedisCache, Name),
+              Name,
+              () =>
+              {
+                  var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity, 
+                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, Tag);
+                  var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
+                  WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
+              });
         }
     }
 }

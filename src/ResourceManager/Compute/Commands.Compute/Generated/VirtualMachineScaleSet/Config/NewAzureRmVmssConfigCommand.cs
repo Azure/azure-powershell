@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
 
         [Parameter(

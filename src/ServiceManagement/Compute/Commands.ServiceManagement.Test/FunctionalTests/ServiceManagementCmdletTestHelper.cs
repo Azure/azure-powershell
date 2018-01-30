@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
@@ -1200,17 +1199,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         // Set-AzureServiceDiagnosticsExtension
         public ManagementOperationContext SetAzureServiceDiagnosticsExtension
-            (string service, AzureStorageContext storageContext, string config = null, string[] roles = null, string slot = null)
+            (string service, IStorageContext storageContext, string config = null, string[] roles = null, string slot = null)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, IStorageContext storageContext, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, cert, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, IStorageContext storageContext, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, thumbprint, algorithm, config, roles, slot));
         }

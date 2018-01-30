@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
@@ -22,39 +23,28 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     [Cmdlet(VerbsCommon.Remove, EventHubAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -63,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public override void ExecuteCmdlet()
         {
             // Delete Namespace authorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
@@ -78,8 +68,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     }
                 });
 
-            // Delete WcfRelay authorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)
+            // Delete Eventhub authorizationRule
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingEventHubAuthorizationRule, Namespace, EventHub, Name),

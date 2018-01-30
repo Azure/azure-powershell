@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
@@ -16,8 +16,8 @@ Creates an elastic database pool for a SQL Database.
 ```
 New-AzureRmSqlElasticPool -ElasticPoolName <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
  [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +51,20 @@ in. The command specifies DTU property values for the pool and the databases in 
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseDtuMax
 Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume.
 The default values for the different editions are as follows:
@@ -65,7 +79,7 @@ For details about which values are valid, see the table for your specific size p
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +97,7 @@ For details about which values are valid, see the table for your specific size p
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +137,7 @@ For details about which values are valid, see the table for your specific size p
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +161,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -178,7 +192,7 @@ Specifies the name of the resource group to which this cmdlet assigns the elasti
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -193,7 +207,7 @@ Specifies the name of the server that hosts the elastic pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -211,7 +225,7 @@ See [eDTU and storage limits](/azure/sql-database/sql-database-elastic-pool#edtu
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -244,7 +258,7 @@ The zone redundancy to associate with the Azure Sql Elastic Pool
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

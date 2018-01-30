@@ -15,7 +15,7 @@
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -89,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionParameterSetName, HelpMessage = "Diagnostics Storage Name")]
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Storage Name")]
         [ValidateNotNullOrEmpty]
-        public override AzureStorageContext StorageContext
+        public override IStorageContext StorageContext
         {
             get;
             set;

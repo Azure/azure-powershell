@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Management.Automation;
 
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
             HelpMessage = "Location of the virtual network.")]
-
+        [LocationCompleter("Microsoft.ApiManagement/service")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -6,6 +6,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group that contains the storage account.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

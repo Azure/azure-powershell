@@ -16,64 +16,48 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
     /// 'New-AzureRmEventHub' Cmdlet creates a new EventHub
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubVerb, SupportsShouldProcess = true), OutputType(typeof(EventHubAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubVerb, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }        
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Eventhub Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Eventhub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-           ParameterSetName = EventhubInputObjectParameterSet,
-           ValueFromPipelineByPropertyName = true,           
-           HelpMessage = "EventHub Input object.")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "EventHub Input object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]
-        public EventHubAttributes InputObject { get; set; }
+        public PSEventHubAttributes InputObject { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           ParameterSetName = EventhubPropertiesParameterSet,
-           HelpMessage = "Eventhub Message Retention In Days.")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Eventhub Message Retention In Days")]
         [ValidateNotNullOrEmpty]
         public long? MessageRetentionInDays { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           ParameterSetName = EventhubPropertiesParameterSet,
-           HelpMessage = "Eventhub PartitionCount.")]
+        [Parameter(Mandatory = false, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Eventhub PartitionCount")]
         [ValidateNotNullOrEmpty]
         public long? PartitionCount { get; set; }       
 
 
         public override void ExecuteCmdlet()
         {
-            EventHubAttributes eventHub = new EventHubAttributes();
+            PSEventHubAttributes eventHub = new PSEventHubAttributes();
 
             if (InputObject != null)
             {

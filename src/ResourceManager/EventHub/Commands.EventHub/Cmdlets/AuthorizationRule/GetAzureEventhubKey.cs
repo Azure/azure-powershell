@@ -15,43 +15,38 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
     /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(ListKeysAttributes))]
+    [Cmdlet(VerbsCommon.Get, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
     public class GetAzureEventhubKey : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = EventhubAuthoRuleParameterSet,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AliasAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias Name")]
+        [ValidateNotNullOrEmpty]
+        public string AliasName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
@@ -60,19 +55,26 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         {
 
             // Get a Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
-                ListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
+                PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
                 WriteObject(keys,true);
             }
 
-            // Get a WcfRelay List Keys for the specified AuthorizationRule
-            if (ParameterSetName == EventhubAuthoRuleParameterSet)              
+            // Get a EventHub List Keys for the specified AuthorizationRule
+            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
             {
-                ListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
+                PSListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
                 WriteObject(keys,true);
             }
-            
+
+            // Get Alias List Keys for the specified AuthorizationRule
+            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
+            {
+                PSListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
+                WriteObject(keys, true);
+            }
+
         }
     }
 }

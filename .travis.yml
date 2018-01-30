@@ -1,0 +1,39 @@
+sudo: required
+language: csharp
+mono: none
+dotnet: 2.1.2
+dist: trusty
+
+env:
+  - NAME="azure-powershell-core" CONFIG="Release"
+
+services:
+ - docker
+
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install docker-ce
+ - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+ - curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
+ - sudo apt-get update
+ - sudo apt-get install -y powershell
+ - sudo pwsh -NonInteractive -NoLogo -NoProfile -Command "Install-Module platyPS -Force -Confirm:\$false -Scope CurrentUser"
+
+script:
+ - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
+ 
+after_success:
+ - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker build . -t $DOCKER_USER/$NAME:$TRAVIS_COMMIT --build-arg CONFIG=$CONFIG;
+    docker tag $DOCKER_USER/$NAME:$TRAVIS_COMMIT $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
+
+    docker login -u $DOCKER_USER -p $DOCKER_PASS;
+
+    docker push $DOCKER_USER/$NAME:$TRAVIS_COMMIT;
+    docker push $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
+
+    if [ "$TRAVIS_BRANCH" == "master" ]; then 
+     docker tag $DOCKER_USER/$NAME:$TRAVIS_COMMIT $DOCKER_USER/$NAME:latest;
+     docker push $DOCKER_USER/$NAME:latest;
+    fi;
+   fi

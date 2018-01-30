@@ -21,6 +21,7 @@ using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -116,6 +117,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose access policy is being modified.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 

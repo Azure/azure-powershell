@@ -20,13 +20,15 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Authorization.Models;
 
     /// <summary>
     /// Get an existing resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Alias("Get-AzureRmResourceProviderAction")]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";
@@ -35,9 +37,10 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string OperationSearchString { get; set; }
+        public string OperationSearchString { get; set; } = "*";
 
         /// <summary>
         /// Executes the cmdlet
@@ -90,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources
             // Filter the list of all operation names to what matches the wildcard
             WildcardPattern wildcard = new WildcardPattern(actionSearchString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
 
-            List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
+            var providers = new List<ProviderOperationsMetadata>();
             string provider = this.OperationSearchString.Split(Separator).First();
             if (provider.Equals(WildCardCharacter))
             {
@@ -132,11 +135,11 @@ namespace Microsoft.Azure.Commands.Resources
             return operations;
         }
 
-        private static bool IsUserOperation(Operation operation)
+        private static bool IsUserOperation(ProviderOperation operation)
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
-        private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
+        private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
             psOperation.Operation = operation.Name;

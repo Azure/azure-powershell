@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ContainerInstance
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 schema: 2.0.0
 ---
@@ -14,18 +14,28 @@ Creates a container group.
 
 ### CreateContainerGroupBaseParamSet (Default)
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
- [-OsType <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32>]
- [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String> [-Location <String>]
+ [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
+ [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateContainerGroupWithRegistryParamSet
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
- [-OsType <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32>]
- [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
- -RegistryCredential <PSCredential> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+ -RegistryCredential <PSCredential> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
+ [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateContainerGroupWithAzureFileMountParamSet
+```
+New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+ -AzureFileVolumeShareName <String> -AzureFileVolumeAccountCredential <PSCredential>
+ -AzureFileVolumeMountPath <String> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
+ [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +46,7 @@ The **New-AzureRmContainerGroup** cmdlets creates a container group.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image nginx -OsType Linux -IpAddressType Public -Port 8000
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image nginx -OsType Linux -IpAddressType Public -Port @(8000)
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -52,6 +62,8 @@ IpAddress                : 13.88.10.240
 Ports                    : {8000}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 This commands creates a container group using latest nginx image and requests a public IP address with opening port 8000.
@@ -74,11 +86,37 @@ IpAddress                :
 Ports                    :
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 This commands creates a container group and runs a custom script inside the container.
 
-### Example 3: Creates a container group using image in Azure Container Registry
+### Example 3: Creates a run-to-completion container group.
+```
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image alpine -OsType Linux -Command "echo hello" -RestartPolicy Never
+
+ResourceGroupName        : demo
+Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Name                     : mycontainer
+Type                     : Microsoft.ContainerInstance/containerGroups
+Location                 : westus
+Tags                     :
+ProvisioningState        : Creating
+Containers               : {mycontainer}
+ImageRegistryCredentials :
+RestartPolicy            :
+IpAddress                :
+Ports                    :
+OsType                   : Linux
+Volumes                  :
+State                    : Running
+Events                   : {}
+```
+
+This commands creates a container group which prints out 'hello' and stops.
+
+### Example 4: Creates a container group using image in Azure Container Registry
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("myacr", $secpasswd)
@@ -98,11 +136,13 @@ IpAddress                : 13.88.10.240
 Ports                    : {80}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 This commands creates a container group using a nginx image in Azure Container Registry.
 
-### Example 4: Creates a container group using image in custom container image registry
+### Example 5: Creates a container group using image in custom container image registry
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
@@ -122,11 +162,84 @@ IpAddress                : 13.88.10.240
 Ports                    : {80}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 This commands creates a container group using a custom image from a custom container image registry.
 
+### Example 6: Creates a container group that mounts Azure File volume
+```
+PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzureFileVolumeShareName myshare -AzureFileVolumeAccountKey $mycred -AzureFileVolumeMountPath /mnt/azfile
+
+ResourceGroupName        : demo
+Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Name                     : mycontainer
+Type                     : Microsoft.ContainerInstance/containerGroups
+Location                 : westus
+Tags                     :
+ProvisioningState        : Creating
+Containers               : {mycontainer}
+ImageRegistryCredentials : {myserver.com}
+RestartPolicy            :
+IpAddress                : 13.88.10.240
+Ports                    : {80}
+OsType                   : Linux
+Volumes                  : {AzureFile}
+State                    : Running
+Events                   : {}
+```
+
+This commands creates a container group that mounts the provided Azure File share to `/mnt/azfile`.
+
 ## PARAMETERS
+
+### -AzureFileVolumeAccountCredential
+The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.
+
+```yaml
+Type: PSCredential
+Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileVolumeMountPath
+The mount path for the Azure File volume.
+
+```yaml
+Type: String
+Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFileVolumeShareName
+The name of the Azure File share to mount.
+
+```yaml
+Type: String
+Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Command
 The command to run in the container.
@@ -198,7 +311,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -285,11 +398,10 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-The port to open.
-Default: 80
+The port(s) to open. Default: [80]
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -342,6 +454,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestartPolicy
+The container restart policy. Default: Always
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Always, Never, OnFailure
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

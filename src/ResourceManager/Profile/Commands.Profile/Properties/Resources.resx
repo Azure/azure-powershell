@@ -149,10 +149,10 @@
     <comment>{0} is tenant, {1} is subscription</comment>
   </data>
   <data name="CommonTenantAuthFailed" xml:space="preserve">
-    <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
+    <value>Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzureRmAccount.</value>
   </data>
   <data name="ContextCannotBeNull" xml:space="preserve">
-    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+    <value>Context cannot be null.  Please log in using Connect-AzureRmAccount.</value>
   </data>
   <data name="ContextChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
@@ -219,7 +219,7 @@
     <value>(no account provided)</value>
   </data>
   <data name="NoValidTenant" xml:space="preserve">
-    <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
+    <value>Please provide a valid tenant Id on the command line or execute Connect-AzureRmAccount.</value>
   </data>
   <data name="OverwriteContextWarning" xml:space="preserve">
     <value>Overwrite context '{0}' with context '{1}'</value>
@@ -327,7 +327,7 @@
     <value>Please provide a valid tenant or a valid subscription.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
-    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
+    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzureRmAccount</value>
   </data>
   <data name="TenantChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets in this session at a different tenant</value>
@@ -342,7 +342,7 @@
     <value>Unable to acquire token for tenant '{0}'</value>
   </data>
   <data name="UnableToLogin" xml:space="preserve">
-    <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant.</value>
+    <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Connect-AzureRmAccount to view the subscriptions in this tenant.</value>
   </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>
@@ -399,5 +399,11 @@
   </data>
   <data name="CreateResourceGroupMessage" xml:space="preserve">
     <value>Create new resource group '{0}' and set as default?</value>
+  </data>
+  <data name="SubscriptionOrTenantMissing" xml:space="preserve">
+    <value>Must supply Subscription Id and Tenant Id when using -SkipValidation</value>
+  </data>
+  <data name="RunLoginCmdlet" xml:space="preserve">
+    <value>Run Connect-AzureRmAccount to login.</value>
   </data>
 </root>

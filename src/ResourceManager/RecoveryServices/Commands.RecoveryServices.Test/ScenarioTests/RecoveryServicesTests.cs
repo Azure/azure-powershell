@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VaultCRUDTests()
+        public void TestRecoveryServicesVaultCRUD()
         {
-            TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCRUDTests");
+            TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCRUD");
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void VaultCredFileDownloadTest()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRSVaultSettingsFile()
         {
-            TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCredFileDownloadTest");
+            TestController.NewInstance.RunPsTest("Test-GetRSVaultSettingsFile");
         }
     }
 }

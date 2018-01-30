@@ -42,7 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
@@ -54,10 +56,16 @@
     <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AzureEventHubsCmdletBase.cs" />
+    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureEventhubCheckNameAvailability.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\GetAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\SetAzureEventHubConsumerGroups.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureEventHubGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubGeoDRConfigurationBreakPair.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubGeoDRConfigurationFailOver.cs" />
     <Compile Include="Cmdlets\EventHub\GetAzureEventHubs.cs" />
     <Compile Include="Cmdlets\EventHub\NewAzureEventHub.cs" />
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />
@@ -66,19 +74,26 @@
     <Compile Include="Cmdlets\Namespace\NewAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespace.cs" />
-    <Compile Include="Models\AuthorizationRuleAttributes.cs" />
-    <Compile Include="Models\AuthorizationRuleKeysAttributes.cs" />
-    <Compile Include="Models\CaptureDescriptionAttributes.cs" />
-    <Compile Include="Models\ConsumerGroupAttributes.cs" />
-    <Compile Include="Models\DestinationAttributes.cs" />
+    <Compile Include="Models\PSAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\PSAuthorizationRuleKeysAttributes.cs" />
+    <Compile Include="Models\PSCaptureDescriptionAttributes.cs" />
+    <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
+    <Compile Include="Models\PSConsumerGroupAttributes.cs" />
+    <Compile Include="Models\PSDestinationAttributes.cs" />
     <Compile Include="Models\EnumEncodingCaptureDescription.cs" />
-    <Compile Include="Models\EventHubsAttributes.cs" />
-    <Compile Include="Models\NamespaceAttributes.cs" />
+    <Compile Include="Models\PSEventHubDRConfigurationAttributes.cs" />
+    <Compile Include="Models\PSEventHubsAttributes.cs" />
+    <Compile Include="Models\PSNamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceState.cs" />
-    <Compile Include="Models\ListKeysAttributes.cs" />
-    <Compile Include="Models\RegenerateKeysAttributes.cs" />
-    <Compile Include="Models\SharedAccessAuthorizationRuleAttributes.cs" />
-    <Compile Include="Resources.Designer.cs" />
+    <Compile Include="Models\PSListKeysAttributes.cs" />
+    <Compile Include="Models\PSRegenerateKeysAttributes.cs" />
+    <Compile Include="Models\PSSharedAccessAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\UnavailableReasonAttributes.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\EventHubsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,9 +108,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources.resx" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -111,7 +126,12 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">

@@ -20,7 +20,9 @@ app.config
 # User-specific files
 *.suo
 *.user
+*.userprefs
 *.sln.docstates
+.vscode
 
 # Build results
 [Dd]ebug/
@@ -210,3 +212,8 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+.vscode/
+/tools/AutomationTestFramework/RunBooks
+/tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
+Results
+Package

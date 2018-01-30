@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: F6EA099A-D588-49AE-9D2C-865BC32685BA
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccountnameavailability
 schema: 2.0.0
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzureRmStorageAccountNameAvailability
 
 ## SYNOPSIS
-Checks the availability of a storage account name.
+Checks the availability of a Storage account name.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ The **Get-AzureRmStorageAccountNameAvailability** cmdlet checks whether the name
 
 ## EXAMPLES
 
-### Example 1: Check availability of a storage account name
+### Example 1: Check availability of a Storage account name
 ```
 PS C:\>Get-AzureRmStorageAccountNameAvailability -Name 'ContosoStorage03'
 ```
@@ -33,7 +33,7 @@ This command checks the availability of the name ContosoStorage03.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

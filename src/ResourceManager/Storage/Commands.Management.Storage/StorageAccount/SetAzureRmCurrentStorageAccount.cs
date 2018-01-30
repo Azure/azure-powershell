@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceNameParameterSet,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlServerAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlDatabaseAuditing.cs" />
@@ -225,6 +226,9 @@
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
@@ -426,9 +430,6 @@
     <Compile Include="VirtualNetworkRule\Model\AzureSqlServerVirtualNetworkRuleModel.cs" />
     <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleAdapter.cs" />
     <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleCommunicator.cs" />
-    <None Include="SqlStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -453,8 +454,7 @@
     <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.8.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

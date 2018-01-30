@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using System;
@@ -164,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Get a service channel object using specified storage account
         /// </summary>
-        /// <param name="account">Cloud storage account object</param>
+        /// <param name="context">storage context</param>
         /// <returns>IStorageBlobManagement channel object</returns>
         protected IStorageBlobManagement CreateChannel(AzureStorageContext context)
         {

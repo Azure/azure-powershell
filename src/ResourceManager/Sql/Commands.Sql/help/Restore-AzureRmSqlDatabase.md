@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 72E0E558-74D7-4A50-A975-FA7D0C0B301E
@@ -17,7 +17,7 @@ Restores a SQL database.
 ```
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
- [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ResourceGroupName] <String>
+ [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Res
 ```
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
- [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ResourceGroupName] <String>
+ [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <St
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -103,6 +103,20 @@ The second command restores the backup in $GeoBackup to the SQL database named R
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -125,7 +139,7 @@ To get a **DateTime** object, use the Get-Date cmdlet.
 ```yaml
 Type: DateTime
 Parameter Sets: FromDeletedDatabaseBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -148,7 +162,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -164,7 +178,7 @@ Specifies the name of the elastic pool in which to put the SQL database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,7 +194,7 @@ You can use the Get-AzureRMSqlDeletedDatabaseBackup cmdlet to get the backup of 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FromDeletedDatabaseBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -196,7 +210,7 @@ You can use the Get-AzureRMSqlDatabaseGeoBackup cmdlet to get a geo-redundant ba
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FromGeoBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,7 +225,7 @@ Indicates that this cmdlet restores a SQL database from a long term retention ba
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FromLongTermRetentionBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -226,7 +240,7 @@ Indicates that this cmdlet restores a SQL database from a point-in-time backup.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FromPointInTimeBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -244,7 +258,7 @@ Use this parameter together with the *FromPointInTimeBackup* parameter.
 ```yaml
 Type: DateTime
 Parameter Sets: FromPointInTimeBackup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -256,7 +270,7 @@ Accept wildcard characters: False
 ```yaml
 Type: DateTime
 Parameter Sets: FromDeletedDatabaseBackup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -271,7 +285,7 @@ Specifies the name of the resource group to which this cmdlet assigns the SQL da
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -301,7 +315,7 @@ Specifies the name of the SQL database server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -316,7 +330,7 @@ Specifies the name of the service objective.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -331,7 +345,7 @@ Specifies the name of the database to restore to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

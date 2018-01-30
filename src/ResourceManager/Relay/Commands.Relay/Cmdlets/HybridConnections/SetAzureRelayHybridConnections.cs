@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Relay.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 

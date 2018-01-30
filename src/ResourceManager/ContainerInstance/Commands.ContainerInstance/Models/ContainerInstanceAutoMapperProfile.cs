@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
             {
                 cfg.CreateMap<PSContainerGroup, PSContainerGroupList>();
                 cfg.CreateMap<Port, PSPort>();
-                cfg.CreateMap<ContainerEvent, PSContainerEvent>();
+                cfg.CreateMap<EventModel, PSEvent>();
                 cfg.CreateMap<ContainerState, PSContainerState>();
             });
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -66,6 +68,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Position = 9, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -20,11 +20,10 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.DataMovement;
 using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob

@@ -15,6 +15,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the managed application resource group parameter
         /// </summary>
         [Parameter(ParameterSetName = SetAzureManagedApplicationCmdlet.ManagedApplicationNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

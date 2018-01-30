@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             IList<DataLakeStoreAccountInfo> additionalDataLakeStoreAccounts = null,
             IList<StorageAccountInfo> additionalStorageAccounts = null,
             Hashtable customTags = null,
-            int? maxDegreeOfParallelism = 0,
+            int? maxAnalyticsUnits = 0,
             int? maxJobCount = 0,
             int? queryStoreRetention = 0,
             TierType? tier = null,
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 };
             }
 
-            if(maxDegreeOfParallelism.HasValue && maxDegreeOfParallelism > 0)
+            if(maxAnalyticsUnits.HasValue && maxAnalyticsUnits > 0)
             {
-                parameters.MaxDegreeOfParallelism = maxDegreeOfParallelism;
+                parameters.MaxDegreeOfParallelism = maxAnalyticsUnits;
             }
 
             if(maxJobCount.HasValue && maxJobCount > 0)
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         #endregion
         #region Compute Policy Operations
-        public ComputePolicy CreateComputePolicy(string resourceGroupName, string accountName, string policyName, Guid objectId, string objectType, int? maxDopPerJob = null, int? minPriorityPerJob = null)
+        public ComputePolicy CreateComputePolicy(string resourceGroupName, string accountName, string policyName, Guid objectId, string objectType, int? maxAnalyticsUnitsPerJob = null, int? minPriorityPerJob = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -1129,12 +1129,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 ObjectId = objectId,
                 ObjectType = objectType,
-                MaxDegreeOfParallelismPerJob = maxDopPerJob,
+                MaxDegreeOfParallelismPerJob = maxAnalyticsUnitsPerJob,
                 MinPriorityPerJob = minPriorityPerJob
             });
         }
 
-        public ComputePolicy UpdateComputePolicy(string resourceGroupName, string accountName, string policyName, int? maxDopPerJob = null, int? minPriorityPerJob = null)
+        public ComputePolicy UpdateComputePolicy(string resourceGroupName, string accountName, string policyName, int? maxAnalyticsUnitsPerJob = null, int? minPriorityPerJob = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return _accountClient.ComputePolicies.Update(resourceGroupName, accountName, policyName, new ComputePolicy
             {
-                MaxDegreeOfParallelismPerJob = maxDopPerJob,
+                MaxDegreeOfParallelismPerJob = maxAnalyticsUnitsPerJob,
                 MinPriorityPerJob = minPriorityPerJob
             });
         }

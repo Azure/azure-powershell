@@ -109,7 +109,7 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName `
                                             -AadClientID $aadClientID -AadClientSecret $aadClientSecret `
                                             -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId `
-                                            -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
+                                            -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force
 
         $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
@@ -166,6 +166,29 @@ function Test-DisableVirtualMachineScaleSetDiskEncryption
         $result_string = $result | Out-String;
 
         $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 2;
+        $result_string = $result | Out-String;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set Disk Encryption Extension
+#>
+function Test-DisableVirtualMachineScaleSetDiskEncryption2
+{
+    try
+    {
+        # Common
+        $loc = 'westcentralus';
+        $rgname = "hyleevmssdetest2"
+        $vmssName = 'vmss' + $rgname;
+
+        $result = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $result_string = $result | Out-String;
     }
     finally
@@ -283,7 +306,8 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
     Assert-AreEqual "Encrypted" $result.DataVolumesEncrypted;
     $output = $result | Out-String;
 
-    Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
+    $job = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob
+	$job | Wait-Job
 
     $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
     $output = $result | Out-String;

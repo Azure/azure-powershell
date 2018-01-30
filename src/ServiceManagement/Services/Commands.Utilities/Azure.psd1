@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -83,7 +83,6 @@ NestedModules = @('.\Automation\Microsoft.Azure.Commands.Automation.dll',
                '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll', 
                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll', 
                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll', 
-               '.\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll', 
                '.\Services\Microsoft.WindowsAzure.Commands.dll', 
                '.\Services\Microsoft.WindowsAzure.Commands.Profile.dll', 
                '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll', 
@@ -311,32 +310,7 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Get-AzureSiteRecoveryVaultSettings', 'Get-AzureSiteRecoveryVM', 
                'Import-AzureSiteRecoveryVaultSettingsFile', 
                'Update-AzureSiteRecoveryProtectionEntity', 
-               'Get-AzureRemoteAppPlan', 
-               'Get-AzureRemoteAppCollectionUsageDetails', 
-               'Get-AzureRemoteAppCollectionUsageSummary', 
-               'Get-AzureRemoteAppCollection', 'Get-AzureRemoteAppLocation', 
-               'New-AzureRemoteAppCollection', 'Remove-AzureRemoteAppCollection', 
-               'Set-AzureRemoteAppCollection', 'Update-AzureRemoteAppCollection', 
-               'Get-AzureRemoteAppOperationResult', 'Get-AzureRemoteAppProgram', 
-               'Get-AzureRemoteAppStartMenuProgram', 
-               'Publish-AzureRemoteAppProgram', 'Unpublish-AzureRemoteAppProgram', 
-               'Add-AzureRemoteAppUser', 'Remove-AzureRemoteAppUser', 
-               'Send-AzureRemoteAppSessionMessage', 
-               'Disconnect-AzureRemoteAppSession', 
-               'Invoke-AzureRemoteAppSessionLogoff', 
-               'Get-AzureRemoteAppTemplateImage', 'Get-AzureRemoteAppSession', 
-               'Get-AzureRemoteAppUser', 'Export-AzureRemoteAppTemplateImage', 
-               'New-AzureRemoteAppTemplateImage', 
-               'Remove-AzureRemoteAppTemplateImage', 
-               'Rename-AzureRemoteAppTemplateImage', 'Copy-AzureRemoteAppUserDisk', 
-               'Export-AzureRemoteAppUserDisk', 'Remove-AzureRemoteAppUserDisk', 
-               'Clear-AzureRemoteAppVmStaleAdObject', 'Get-AzureRemoteAppVM', 
-               'Get-AzureRemoteAppVmStaleAdObject', 'Restart-AzureRemoteAppVM', 
-               'Get-AzureRemoteAppVNet', 'Get-AzureRemoteAppVpnDeviceConfigScript', 
-               'Get-AzureRemoteAppVpnDevice', 'New-AzureRemoteAppVNet', 
-               'Remove-AzureRemoteAppVNet', 'Reset-AzureRemoteAppVpnSharedKey', 
-               'Set-AzureRemoteAppVNet', 'Get-AzureRemoteAppWorkspace', 
-               'Set-AzureRemoteAppWorkspace', 'Get-AzureWebsiteMetric', 
+               'Get-AzureWebsiteMetric',
                'Publish-AzureWebsiteProject', 'Update-AzureWebsiteRepository', 
                'Switch-AzureWebsiteSlot', 
                'Disable-AzureWebsiteApplicationDiagnostic', 
@@ -558,7 +532,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Removed all RemoteApp cmdlets'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

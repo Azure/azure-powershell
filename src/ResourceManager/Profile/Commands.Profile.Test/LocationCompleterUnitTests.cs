@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock2" }, resourceTypeLocationDictionary), new string[] { "\"westus\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock2" }, resourceTypeLocationDictionary), new string[] { "\'westus\'" });
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3" }, resourceTypeLocationDictionary), new string[] { "\"westus\"", "\"centralus\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3" }, resourceTypeLocationDictionary), new string[] { "\'westus\'", "\'centralus\'" });
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock4" }, resourceTypeLocationDictionary), new string[] { "\"westus\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock4" }, resourceTypeLocationDictionary), new string[] { "\'westus\'" });
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock5", "Microsoft.Mock/mock6" }, resourceTypeLocationDictionary), new string[] { "\"eastus\"", "\"china\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock5", "Microsoft.Mock/mock6" }, resourceTypeLocationDictionary), new string[] { "\'eastus\'", "\'china\'" });
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock7" }, resourceTypeLocationDictionary), new string[] { "\"westus\"", "\"centralus\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock7" }, resourceTypeLocationDictionary), new string[] { "\'westus\'", "\'centralus\'" });
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var resourceTypeLocationDictionary = SetMockDictionary();
 
-            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "microsofT.mock/mock2" }, resourceTypeLocationDictionary), new string[] { "\"westus\"" });
+            Assert.Equal(LocationCompleterAttribute.FindLocations(new string[] { "microsofT.mock/mock2" }, resourceTypeLocationDictionary), new string[] { "\'westus\'" });
         }
 
         public IDictionary<string, ICollection<string>> SetMockDictionary()

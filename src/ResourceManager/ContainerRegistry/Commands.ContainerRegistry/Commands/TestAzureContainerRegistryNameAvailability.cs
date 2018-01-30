@@ -17,14 +17,11 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun), OutputType(typeof(RegistryNameStatus))]
+    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun)]
+    [OutputType(typeof(RegistryNameStatus))]
     public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Container Registry Name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
