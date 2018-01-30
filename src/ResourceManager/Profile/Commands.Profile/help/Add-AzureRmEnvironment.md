@@ -448,7 +448,7 @@ Accept wildcard characters: False
 ```
 
 ### -BatchEndpointResourceId
-Specifies the endpoint for the Operational Insights query access. 
+The resource identifier of the Azure Batch service that is the recipient of the requested token
 
 ```yaml
 Type: String
