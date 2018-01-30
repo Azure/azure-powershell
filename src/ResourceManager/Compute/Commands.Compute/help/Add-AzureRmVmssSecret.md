@@ -147,7 +147,7 @@ Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet
 
 ## OUTPUTS
 
-###
+### None
 This cmdlet does not generate any output.
 
 ## NOTES
