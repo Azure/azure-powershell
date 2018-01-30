@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public SwitchParameter AsJob { get; set; }
         
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp or functionapp")]
-        public bool AssignIdentity { get; set; }
+        public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp")]
-        public bool HttpsOnly { get; set; }
+        public SwitchParameter HttpsOnly { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
-                            HttpsOnly = parameters.Contains("HttpsOnly") ? (bool?)HttpsOnly : null
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? (bool?)HttpsOnly : false
                         };
 
                         if (parameters.Contains("AssignIdentity"))
