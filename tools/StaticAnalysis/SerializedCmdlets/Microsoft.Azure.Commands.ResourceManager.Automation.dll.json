@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RunbookWorker": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
               "ResourceGroupName": "System.String",
@@ -287,6 +287,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -305,7 +309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Value": "System.Collections.Hashtable",
               "Time": "System.DateTimeOffset",
@@ -559,7 +563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -828,6 +832,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -1155,6 +1163,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -1617,7 +1629,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -1891,6 +1903,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -1909,7 +1925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -2299,6 +2315,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -2317,7 +2337,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -2589,6 +2609,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -2607,7 +2631,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -3338,7 +3362,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Time": "System.DateTimeOffset",
               "JobId": "System.Guid",
@@ -3381,7 +3405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3506,7 +3530,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3643,7 +3667,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -4208,7 +4232,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -4866,7 +4890,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -5596,7 +5620,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Time": "System.DateTimeOffset",
               "JobId": "System.Guid",
@@ -5639,7 +5663,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.StreamType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5759,7 +5783,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.StreamType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5891,7 +5915,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -6166,6 +6190,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -6184,7 +6212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -6468,6 +6496,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -6961,7 +6993,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -7245,6 +7277,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -7263,7 +7299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -7903,6 +7939,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -7921,7 +7961,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -8194,6 +8234,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -8212,7 +8256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -8611,6 +8655,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -8629,7 +8677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -9095,7 +9143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -9500,7 +9548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -9866,7 +9914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -10122,7 +10170,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -10760,7 +10808,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -10857,7 +10905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
             "GenericTypeArguments": []
@@ -10891,7 +10939,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11481,7 +11529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
                   "GenericTypeArguments": []
@@ -11738,7 +11786,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -12589,7 +12637,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -12994,7 +13042,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -13443,7 +13491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -14290,7 +14338,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -14685,6 +14733,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByRunbookName",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -17086,7 +17138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -17911,7 +17963,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -18383,7 +18435,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -18750,7 +18802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -19116,7 +19168,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -19535,7 +19587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -19597,8 +19649,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Tags",
-          "AliasList": [],
+          "Name": "Tag",
+          "AliasList": [
+            "Tags"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.IDictionary",
@@ -19757,8 +19811,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Tags",
-                "AliasList": [],
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.IDictionary",
@@ -19928,8 +19984,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Tags",
-                "AliasList": [],
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.IDictionary",
@@ -20089,7 +20147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -20202,7 +20260,8 @@
             "GraphicalPowerShell",
             "PowerShellWorkflow",
             "GraphicalPowerShellWorkflow",
-            "Graph"
+            "Graph",
+            "Python2"
           ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
@@ -20448,7 +20507,8 @@
                   "GraphicalPowerShell",
                   "PowerShellWorkflow",
                   "GraphicalPowerShellWorkflow",
-                  "Graph"
+                  "Graph",
+                  "Python2"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -20644,7 +20704,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -21068,7 +21128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -21574,7 +21634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -21871,7 +21931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -22168,7 +22228,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -22339,7 +22399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -22619,6 +22679,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -22637,7 +22701,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -22682,7 +22746,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -22920,7 +22984,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -23052,7 +23116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -23182,7 +23246,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -23477,7 +23541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -23760,7 +23824,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -24177,7 +24241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -24392,7 +24456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -25205,7 +25269,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -25266,7 +25330,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -25314,7 +25378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -25448,7 +25512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
                     "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -25633,7 +25697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
                     "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -25830,7 +25894,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -26347,7 +26411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
               "JobScheduleId": "System.Guid",
@@ -26617,6 +26681,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByAll",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -26700,7 +26768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -27034,7 +27102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
                     "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -27367,7 +27435,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -27723,7 +27791,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -27989,7 +28057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -28207,7 +28275,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -28511,7 +28579,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -28783,7 +28851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -29815,7 +29883,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29825,7 +29893,7 @@
     "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RegistrationTime": "System.DateTimeOffset",
         "Name": "System.String",
@@ -29890,6 +29958,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -30021,7 +30090,7 @@
     "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DayOfWeek": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
         "DaysOfMonth": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]"
@@ -30032,7 +30101,7 @@
     "Microsoft.Azure.Commands.Automation.Model.DayOfWeek": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Occurrence": "System.String",
         "Day": "System.String"
@@ -30043,7 +30112,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -30053,7 +30122,7 @@
     "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
       "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -30061,7 +30130,7 @@
     "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -30069,7 +30138,7 @@
     "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DaysOfWeek": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -30115,7 +30184,7 @@
     "Microsoft.Azure.Commands.Automation.Model.Job": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobParameters": "System.Collections.Hashtable",
         "CreationTime": "System.DateTimeOffset",
@@ -30139,7 +30208,7 @@
     "Microsoft.Azure.Commands.Automation.Model.JobSchedule": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Parameters": "System.Collections.Hashtable",
         "ResourceGroupName": "System.String",

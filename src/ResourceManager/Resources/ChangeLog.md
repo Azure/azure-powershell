@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
