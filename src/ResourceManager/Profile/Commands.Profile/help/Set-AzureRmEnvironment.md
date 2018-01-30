@@ -32,7 +32,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
 ```
 Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
- [[-DataLakeAudience] <String>] [[-AzureOperationalInsightsEndpoint] <String>] 
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]] [[-AzureOperationalInsightsEndpoint] <String>] 
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [-Scope <ContextModificationScope>] 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -70,6 +70,7 @@ AzureKeyVaultDnsSuffix                            :
 AzureDataLakeStoreFileSystemEndpointSuffix        :
 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
 AzureKeyVaultServiceEndpointResourceId            :
+BatchEndpointResourceId                           :
 AzureOperationalInsightsEndpoint                  :
 AzureOperationalInsightsEndpointResourceId        :
 
@@ -96,6 +97,7 @@ AzureKeyVaultDnsSuffix                            :
 AzureDataLakeStoreFileSystemEndpointSuffix        :
 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
 AzureKeyVaultServiceEndpointResourceId            :
+BatchEndpointResourceId                           :
 AzureOperationalInsightsEndpoint                  :
 AzureOperationalInsightsEndpointResourceId        :
 ```
@@ -460,7 +462,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 22
+Position: 20
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
