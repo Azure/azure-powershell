@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 
 ## Version 4.2.0
 * Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
