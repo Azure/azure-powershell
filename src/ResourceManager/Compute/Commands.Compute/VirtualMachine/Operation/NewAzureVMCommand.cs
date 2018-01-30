@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (target.Get(availabilitySet) != null)
             {
-                throw new CloudException("Availability set doesn't exsist.");
+                throw new InvalidOperationException("Availability set doesn't exist.");
             }
 
             // apply target state
