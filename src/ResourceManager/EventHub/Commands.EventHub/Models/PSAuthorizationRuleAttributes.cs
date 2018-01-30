@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     /// 
     /// </summary>
     /// 
-    public class SharedAccessAuthorizationRuleAttributes
+    public class PSAuthorizationRuleAttributes
     {
 
-        public SharedAccessAuthorizationRuleAttributes()
+        public PSAuthorizationRuleAttributes()
         { }
 
         /// <summary>
@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// 
         /// </summary>
         /// <param name="authRuleResource"></param>
-        public SharedAccessAuthorizationRuleAttributes(AuthorizationRule authRuleResource)
+        public PSAuthorizationRuleAttributes(AuthorizationRule authRuleResource)
         {
             if (authRuleResource != null)
             {
                 Id = authRuleResource.Id;
                 Name = authRuleResource.Name;
-                Type = authRuleResource.Type;                
-                Rights = authRuleResource.Rights;
+                Type = authRuleResource.Type;
+                Rights = authRuleResource.Rights.ToList();
             }
         }
 

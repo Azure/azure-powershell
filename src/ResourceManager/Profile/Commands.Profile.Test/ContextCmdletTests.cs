@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.True(context == null || context.Account == null || context.Account.Id == null);
             Assert.True(commandRuntimeMock.ErrorStream.Count == 1);
             var error = commandRuntimeMock.ErrorStream[0];
-            Assert.Equal("Run Login-AzureRmAccount to login.", error.Exception.Message);
+            Assert.Equal("Run Connect-AzureRmAccount to login.", error.Exception.Message);
         }
 
         [Fact]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
             Assert.True(commandRuntimeMock.ErrorStream.Count == 1);
             var error = commandRuntimeMock.ErrorStream[0];
-            Assert.Equal("Run Login-AzureRmAccount to login.", error.Exception.Message);
+            Assert.Equal("Run Connect-AzureRmAccount to login.", error.Exception.Message);
         }
 
 

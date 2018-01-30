@@ -24,12 +24,12 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// Cmdlet to log into an environment and download the subscriptions
+    /// Cmdlet to log out of an environment
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAccount", DefaultParameterSetName = ContextNameParameterSet, SupportsShouldProcess=true)]
-    [Alias("Logout-AzAccount", "Logout-AzureRmAccount")]
+    [Cmdlet(VerbsCommunications.Disconnect, "AzureRmAccount", DefaultParameterSetName = ContextNameParameterSet, SupportsShouldProcess=true)]
+    [Alias("Logout-AzAccount", "Logout-AzureRmAccount", "Remove-AzureRmAccount")]
     [OutputType(typeof(PSAzureRmAccount))]
-    public class RemoveAzureRMAccountCommand : AzureContextModificationCmdlet
+    public class DisconnectAzureRmAccountCommand : AzureContextModificationCmdlet
     {
         private const string UserIdParameterSet = "UserId";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";

@@ -20,6 +20,7 @@ using System.Management.Automation;
 using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (DefaultContext == null)
             {
                 WriteError(new ErrorRecord(
-                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
+                        new PSInvalidOperationException(Resources.RunLoginCmdlet),
                         string.Empty,
                         ErrorCategory.AuthenticationError,
                         null));
