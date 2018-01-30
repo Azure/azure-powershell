@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
               "Environments": "System.Collections.Hashtable"
@@ -553,7 +553,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails[], Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails[], Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails",
             "GenericTypeArguments": []
@@ -920,7 +920,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
         "Environment": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
@@ -932,7 +932,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "UniqueId": "System.String",
@@ -946,7 +946,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoints": "System.Collections.Hashtable",
         "Name": "System.String"
@@ -973,7 +973,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "SyncState": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
         "UpdatedAt": "System.DateTime",
@@ -989,7 +989,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

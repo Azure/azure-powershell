@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Add-AzureRmAccount
   * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
