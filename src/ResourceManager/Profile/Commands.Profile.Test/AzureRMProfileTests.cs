@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> { DefaultSubscription.ToString() };
             var profile = SetupLogin(tenants, subscriptions, subscriptions);
-            var cmdlet = new AddAzureRMAccountCommand();
+            var cmdlet = new ConnectAzureRmAccountCommand();
             cmdlet.CommandRuntime = new MockCommandRuntime();
             cmdlet.DefaultProfile = profile;
             var accessToken1 = Guid.NewGuid().ToString();
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlet.GraphAccessToken = graphToken1;
             cmdlet.KeyVaultAccessToken = keyVaultToken1;
             cmdlet.AccountId = "user1@contoso.org";
-            cmdlet.SetParameterSet(AddAzureRMAccountCommand.AccessTokenParameterSet);
+            cmdlet.SetParameterSet(ConnectAzureRmAccountCommand.AccessTokenParameterSet);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -954,7 +954,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken));
             Assert.Equal(keyVaultToken1, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
             var toss = SetupLogin(tenants, subscriptions, subscriptions);
-            var cmdlet2 = new AddAzureRMAccountCommand();
+            var cmdlet2 = new ConnectAzureRmAccountCommand();
             cmdlet2.CommandRuntime = new MockCommandRuntime();
             cmdlet2.DefaultProfile = profile;
             var accessToken2 = Guid.NewGuid().ToString();
@@ -964,7 +964,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlet2.GraphAccessToken = graphToken2;
             cmdlet2.KeyVaultAccessToken = keyVaultToken2;
             cmdlet2.AccountId = "user1@contoso.org";
-            cmdlet2.SetParameterSet(AddAzureRMAccountCommand.AccessTokenParameterSet);
+            cmdlet2.SetParameterSet(ConnectAzureRmAccountCommand.AccessTokenParameterSet);
             cmdlet2.InvokeBeginProcessing();
             cmdlet2.ExecuteCmdlet();
             Assert.NotNull(profile);
