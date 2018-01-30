@@ -18,12 +18,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
-    public class EventHubAttributes
+    public class PSEventHubAttributes
     {
-        public EventHubAttributes()
+        public PSEventHubAttributes()
         { }
 
-        public EventHubAttributes(Microsoft.Azure.Management.EventHub.Models.Eventhub ehResource)
+        public PSEventHubAttributes(Microsoft.Azure.Management.EventHub.Models.Eventhub ehResource)
         {
             if (ehResource != null)
             {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 Status = ehResource.Status;
                 UpdatedAt = ehResource.UpdatedAt;
                 if (ehResource.CaptureDescription != null)
-                    CaptureDescription = new CaptureDescriptionAttributes(ehResource.CaptureDescription);
+                    CaptureDescription = new PSCaptureDescriptionAttributes(ehResource.CaptureDescription);
                 else
                     CaptureDescription = null;
             }
@@ -79,6 +79,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Gets or sets properties of capture description
         /// </summary>
-        public CaptureDescriptionAttributes CaptureDescription { get; set; }
+        public PSCaptureDescriptionAttributes CaptureDescription { get; set; }
     }
 }
