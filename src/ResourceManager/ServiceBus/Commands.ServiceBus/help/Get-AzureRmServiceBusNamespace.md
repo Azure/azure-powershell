@@ -23,11 +23,12 @@ The **Get-AzureRmServiceBusNamespace** cmdlet gets a description for the specifi
 ## EXAMPLES
 
 ### Example 1
+
 ```
 PS C:\> Get-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
-```
+
 Name               : SB-Example1
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 Location           : West US
 Sku                : Name : Standard , Capacity : 1 , Tier : Standard
 ProvisioningState  : Succeeded
@@ -35,7 +36,7 @@ CreatedAt          : 1/20/2017 1:40:01 AM
 UpdatedAt          : 1/20/2017 1:40:24 AM
 ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 
-Returns a description of the specified Service Bus namespace.
+```
 
 ## PARAMETERS
 

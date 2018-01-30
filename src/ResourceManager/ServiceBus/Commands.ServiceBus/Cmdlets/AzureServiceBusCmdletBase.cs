@@ -84,8 +84,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string QueuePropertiesParameterSet = "QueuePropertiesSet";
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
-        protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
-        protected const string GeoDRBreakPairFailOverParameterSet = "GeoDRBreakPairFailOverPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
 
         //Alias - used in Cmdlets

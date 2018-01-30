@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Remove-AzureRmServicebusGeoDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveServicBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]   
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR) Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Alias (GeoDR) Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -58,12 +58,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
 
-                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.DeleteServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
+                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRRemoveAlias, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
                     {
-                        WriteObject(true);
+                        Client.DeleteServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
                 }
                 else
@@ -75,12 +78,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
 
-                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.DeleteServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
+                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRRemoveAlias, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
                     {
-                        WriteObject(true);
+                        Client.DeleteServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
                 }
                 else
@@ -88,17 +94,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                     WriteObject(false);
                 }
             }
-            if (ParameterSetName == GeoDRBreakPairFailOverParameterSet)
+            if (ParameterSetName == GeoDRParameterSet)
             {
-                Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
-                if (PassThru)
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRRemoveAlias, Name, Namespace)))
                 {
-                    WriteObject(true);
+                    Client.DeleteServiceBusDRConfiguration(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
-            }
-            else
-            {
-                WriteObject(false);
             }
         }
     }

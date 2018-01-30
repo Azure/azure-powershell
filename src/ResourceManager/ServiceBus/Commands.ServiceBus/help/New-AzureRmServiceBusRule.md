@@ -28,7 +28,7 @@ The **New-AzureRmServiceBusRule** cmdlet Creates a new rule for given subscripti
 PS C:\> New-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule -SqlExpression "mysqlexpression='test'"
 ```
 
-The **New-AzureRmServiceBusRule** cmdlet creates a new rule for the specified Subscription.
+The New-AzureRmServiceBusRule cmdlet creates a new rule for the specified Subscription.
 
 ## PARAMETERS
 

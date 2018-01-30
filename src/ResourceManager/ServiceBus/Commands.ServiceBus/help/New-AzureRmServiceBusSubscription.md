@@ -28,8 +28,6 @@ The **New-AzureRmServiceBusSubscription** cmdlet creates a new subscription to t
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
-```
-Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 
 Name                                      : SB-TopicSubscription-Example1
 AccessedAt                                : 1/20/2017 3:18:54 AM
@@ -45,7 +43,8 @@ MessageCount                              : 0
 RequiresSession                           : False
 Status                                    : Active
 UpdatedAt                                 : 1/20/2017 3:18:54 AM
-
+```
+Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 

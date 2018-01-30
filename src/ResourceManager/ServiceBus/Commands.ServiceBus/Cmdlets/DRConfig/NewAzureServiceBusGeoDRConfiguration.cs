@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string PartnerNamespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "AlternateName")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "AlternateName")]
         [ValidateNotNullOrEmpty]
         public string AlternateName { get; set; }        
 
@@ -70,7 +70,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
-                    WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
+                    {
+                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    }
                 }
             }
 
@@ -80,13 +83,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
-                    WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
+                    {
+                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                    }
                 }
             }
 
             if (ParameterSetName == GeoDRParameterSet)
             {
-                if (ShouldProcess(target: Name, action: string.Format("Creating new Alias :{0} under NameSpace:{1} ", Name, Namespace)))
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, Namespace)))
                 {
                     WriteObject(Client.CreateServiceBusDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                 }

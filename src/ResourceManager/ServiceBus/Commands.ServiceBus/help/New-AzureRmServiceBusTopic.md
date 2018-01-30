@@ -29,12 +29,9 @@ The **New-AzureRmServiceBusTopic** cmdlet creates a new Service Bus topic in the
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -EnablePartitioning $True
-```
-
-Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
+Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
                                       B-Topic_exampl1
 Type                                : Microsoft.ServiceBus/Topic
 AccessedAt                          : 
@@ -54,6 +51,8 @@ SubscriptionCount                   :
 SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 3:16:43 AM
 
+```
+Creates a new Service Bus topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 

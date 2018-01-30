@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
     /// Defines values for UnavailableReason.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSUnavailableReasonAttributes
+    public enum UnavailableReasonAttributes
     {
         [EnumMember(Value = "None")]
         None,

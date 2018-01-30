@@ -100,8 +100,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         public long? SizeInBytes { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the messages")]
-        [ValidateNotNullOrEmpty]
-        
+        [ValidateNotNullOrEmpty]        
         public string ForwardTo { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the Dead Letter message")]
@@ -149,7 +148,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.RequiresSession = RequiresSession;
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;          
+                queueAttributes.SizeInBytes = SizeInBytes;
+
+            if (ForwardTo != null)
+                queueAttributes.ForwardTo = ForwardTo;
+
+            if (ForwardDeadLetteredMessagesTo != null)
+                queueAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo;
+
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {
