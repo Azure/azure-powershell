@@ -50,8 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\RemoveAzureRmAnalysisServicesServerGateway.cs" />
-    <Compile Include="Commands\GetAzureRmAnalysisServicesServerGatewayStatus.cs" />
+    <Compile Include="Commands\GetAzureRmAnalysisServicesServerGateway.cs" />
     <Compile Include="Commands\ResumeAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\SuspendAzureRmAnalysisServicesServer.cs" />
     <Compile Include="Commands\GetAzureRmAnalysisServicesServer.cs" />

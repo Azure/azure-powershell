@@ -7,29 +7,21 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
-    class GatewayCollection
+    public class GatewayCollection
     {
         public GatewayInfo[] value { get; set; }
     }
 
-    class GatewayInfo
+    public class GatewayInfo
     {
         public GatewayProperties properties {get; set;}
         public string id { get; set; }
         public string name { get; set; }
         public string type { get; set; }
         public string location { get; set; }
-        public static Dictionary<string, string> FromResourceGateway(GatewayDetails gateway)
-        {
-            Dictionary<string, string> gatewaydetails = new Dictionary<string, string>();
-            gatewaydetails["ResourceId"] = gateway.GatewayResourceId;
-            gatewaydetails["ObjectId"] = gateway.GatewayObjectId;
-            gatewaydetails["DmtsClusterUri"] = gateway.DmtsClusterUri;
-            return gatewaydetails;
-        }
     }
 
-    class GatewayProperties
+    public class GatewayProperties
     {
         public GatewayInstallation connectionGatewayInstallation { get; set; }
         public string[] contactInformation { get; set; }
@@ -40,7 +32,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         
     }
 
-    class GatewayInstallation
+    public class GatewayInstallation
     {
         public string location { get; set; }
         public string name { get; set; }

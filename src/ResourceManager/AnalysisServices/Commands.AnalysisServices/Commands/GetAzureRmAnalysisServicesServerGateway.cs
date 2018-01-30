@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -19,10 +20,10 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServerGatewayStatus"),
-        OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesGateway"),
+        OutputType(typeof(GatewayInfo))]
     [Alias("Get-AzureAsGateway")]
-    public class GetAzureAnalysisServicesServerGatewayStatus: AnalysisServicesCmdletBase
+    public class GetAzureAnalysisServicesServerGateway: AnalysisServicesCmdletBase
     {
         [Parameter(Position = 0,
             ValueFromPipelineByPropertyName = true, Mandatory = true,
@@ -38,10 +39,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
-            try
+			AnalysisServicesServer currentServer = null;
+			if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out currentServer))
+			{
+				throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+			}
+
+			if (currentServer.GatewayDetails == null)
+			{
+				throw new InvalidOperationException(string.Format("Current Ananlysis Server {0} is not associated with any gateway.", Name));
+			}
+
+			try
             {
-                var gatewayStatus = AnalysisServicesClient.GetGatewayStatus(ResourceGroupName, Name);
-                WriteObject(gatewayStatus.Status.Value);
+				GatewayInfo gatewayInfo = AnalysisServicesClient.GetGatewayInfo(currentServer.GatewayDetails.GatewayResourceId);
+				gatewayInfo.properties.status = AnalysisServicesClient.GetGatewayStatus(ResourceGroupName, Name).ToString();
+                WriteObject(gatewayInfo);
             }
             catch(GatewayListStatusErrorException ex)
             {

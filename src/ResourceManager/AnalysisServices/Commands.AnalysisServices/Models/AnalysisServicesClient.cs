@@ -88,7 +88,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             GatewayDetails gatewayDetails = null;
-            if (!string.IsNullOrEmpty(gatewayName))
+			if (gatewayName == "-")
+			{
+				_client.Servers.DissociateGateway(resourceGroupName, serverName);
+			}
+			else if (!string.IsNullOrEmpty(gatewayName))
             {
                 gatewayDetails = getConnectionGateway(gatewayName);
             }
@@ -117,8 +121,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.GatewayDetails = gatewayDetails;
                 }
 
-                newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
-            }
+                newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);				
+			}
             else
             {
                 newOrUpdatedServer = _client.Servers.Create(
@@ -210,18 +214,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             return _client.Servers.ListGatewayStatus(resourceGroupName, serverName);
         }
 
-        public AnalysisServicesServer DissociateGateway(string resourceGroupName, string serverName)
-        {
-            if (string.IsNullOrEmpty(resourceGroupName))
-            {
-                resourceGroupName = GetResourceGroupByServer(serverName);
-            }
-
-            _client.Servers.DissociateGateway(resourceGroupName, serverName);
-
-            return GetServer(resourceGroupName, serverName);
-        }
-
         private string GetResourceGroupByServer(string serverName)
         {
             try
@@ -269,7 +261,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             _client.Servers.Resume(resourceGroupName, serverName);
         }
 
-        private const string WebResourceProviderVersion = "api-version=2016-06-01";
+		public GatewayInfo GetGatewayInfo(string resourceId)
+		{
+			var availableGateways = getAvailableGateways();
+			foreach (var gateway in availableGateways.value)
+			{
+				if (gateway.id.Equals(resourceId))
+				{
+					return gateway;
+				}
+			}
+
+			return null;
+		}
+
+
+		private const string WebResourceProviderVersion = "api-version=2016-06-01";
 
         private GatewayDetails getConnectionGateway(string Name)
         {
