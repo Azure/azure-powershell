@@ -1,10 +1,26 @@
 ﻿# Strategies
 
+## Design
+
+- Strategies for resources. It's a meta information about Azure resources which is missed in Azure SDK.
+      - Generic strategy interfaces.
+      - Specific implementations for different Azure resources. Each resource type should have only one implementation.
+- Configuration graph (DAG)
+      - Generic configuration interfaces.
+      - Specific implementations for different Azure resources. Each resource type may have different configuration implementations.
+
+- Utilities
+  - Azure State
+  - Generic JSON serializer/deserializer from/to JObject.
+  - Task Progress which works with graphs.
+  - Async support for PS
+  - Template support (WIP)
+
 ## Wish List
 
 ### CmdLets
 
-1. `-AsAtmTemplate` should work even if the user is not log in.
+1. `-AsArmTemplate` should work even if the user is not log in.
 
 ### AutRest
 
