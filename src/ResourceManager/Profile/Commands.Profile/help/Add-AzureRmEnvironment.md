@@ -32,7 +32,9 @@ Add-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
 ```
 Add-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
- [[-DataLakeAudience] <String>] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]]
+ [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>] 
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -456,7 +458,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 22
+Position: 20
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
