@@ -72,19 +72,22 @@ NestedModules = @('.\Microsoft.Azure.Commands.EventHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace', 
-               'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace', 
-               'New-AzureRmEventHubAuthorizationRule', 
-               'Get-AzureRmEventHubAuthorizationRule', 
-               'Set-AzureRmEventHubAuthorizationRule', 
-               'Remove-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey', 
-               'New-AzureRmEventHubKey', 'New-AzureRmEventHub', 
-               'Get-AzureRmEventHub', 'Set-AzureRmEventHub', 
-               'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup', 
-               'Get-AzureRmEventHubConsumerGroup', 
-               'Set-AzureRmEventHubConsumerGroup', 
-               'Remove-AzureRmEventHubConsumerGroup'
 
+CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace',
+               'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace',
+               'New-AzureRmEventHubAuthorizationRule',
+               'Get-AzureRmEventHubAuthorizationRule',
+               'Set-AzureRmEventHubAuthorizationRule',
+               'Remove-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey',
+               'New-AzureRmEventHubKey', 'New-AzureRmEventHub',
+               'Get-AzureRmEventHub', 'Set-AzureRmEventHub',
+               'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup',
+               'Get-AzureRmEventHubConsumerGroup',
+               'Set-AzureRmEventHubConsumerGroup',
+               'Remove-AzureRmEventHubConsumerGroup', 'New-AzureRmEventHubGeoDRConfiguration', 'Get-AzureRmEventHubGeoDRConfiguration', 'Remove-AzureRmEventHubGeoDRConfiguration',
+	       'Set-AzureRmEventHubGeoDRConfigurationBreakPair', 'Set-AzureRmEventHubGeoDRConfigurationFailOver',
+	       'Test-AzureRmEventHubName'
+			   
 # Variables to export from this module
 # VariablesToExport = @()
 
@@ -141,4 +144,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
