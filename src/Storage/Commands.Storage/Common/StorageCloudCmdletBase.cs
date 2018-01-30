@@ -160,7 +160,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         protected ProgressRecord summaryRecord;
 
         private LimitedConcurrencyTaskScheduler taskScheduler;
-
         /// <summary>
         /// Cmdlet operation context.
         /// </summary>
@@ -513,6 +512,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             CmdletCancellationToken.Register(() => OutputStream.CancelConfirmRequest());
         }
 
+        internal void UpdateTaskWriters()
+        {
+            OutputStream.OutputWriter = WriteObject;
+            OutputStream.ErrorWriter = WriteExceptionError;
+            OutputStream.ProgressWriter = WriteProgress;
+            OutputStream.VerboseWriter = WriteVerbose;
+            OutputStream.DebugWriter = WriteDebugWithTimestamp;
+            OutputStream.ConfirmWriter = ShouldProcess;
+        }
+
         /// <summary>
         /// Set up MultiThread environment
         /// </summary>
@@ -556,9 +565,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             WriteProgress(summaryRecord);
         }
 
-        internal void RunTask(Func<long, Task> taskGenerator)
+        internal void RunTask(Func<long, Task> taskGenerator, bool runSynchronously = false)
         {
+            UpdateTaskWriters();
             taskScheduler.RunTask(taskGenerator);
+            if (enableMultiThread && runSynchronously)
+            {
+                MultiThreadEndProcessing();
+            }
         }
 
         /// <summary>

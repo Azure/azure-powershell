@@ -114,6 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Continuation Token.")]
         public BlobContinuationToken ContinuationToken { get; set; }
 
+        [Parameter(Mandatory =false, HelpMessage ="Run this task in the background and return a job object for tracking execution progress.")]
+        public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageBlobCommand class.
         /// </summary>
@@ -281,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 taskGenerator = (taskId) => ListBlobsByName(taskId, localChannel, localContainerName, localBlobName);
             }
 
-            RunTask(taskGenerator);
+            RunTask(taskGenerator, true);
         }
     }
 }
