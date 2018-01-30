@@ -69,12 +69,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
         }
 
+        [Fact(Skip = "Snapshots release postponed for API rework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSnapshots()
         {
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSnapshots");
         }
 
+        [Fact(Skip = "Snapshots release postponed for API rework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreWebAppSnapshot()
         {
