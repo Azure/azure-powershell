@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Test Virtual Machines
+.DESCRIPTION
+SmokeTest
 #>
 function Test-VirtualMachine
 {
