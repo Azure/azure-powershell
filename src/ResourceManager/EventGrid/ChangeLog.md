@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+*  Updated to use the 2018-01-01 API version.
 
 ## Version 0.3.0
 * Added the following new cmdlet:
