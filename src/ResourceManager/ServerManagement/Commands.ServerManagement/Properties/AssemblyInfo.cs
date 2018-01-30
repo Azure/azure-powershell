@@ -1,4 +1,4 @@
-﻿// Copyright Microsoft Corporation
+// Copyright Microsoft Corporation
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,5 +26,5 @@ using Microsoft.WindowsAzure.Commands.Common;
 [assembly: AssemblyCopyright(AzurePowerShell.AssemblyCopyright)]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: AssemblyVersion("4.0.0")]
-[assembly: AssemblyFileVersion("4.0.0")]
+[assembly: AssemblyVersion("4.1.0")]
+[assembly: AssemblyFileVersion("4.1.0")]
