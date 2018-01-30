@@ -25,11 +25,9 @@ The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the sp
 ### Example 1
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
-```
-Returns the description of the specified topic for the given Service Bus namespace.
 
 Name                                : SB-Topic_exampl1
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
+Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/S
                                       B-Topic_exampl1
 Type                                : Microsoft.ServiceBus/Topic
 AccessedAt                          : 1/20/2017 3:18:54 AM
@@ -48,7 +46,8 @@ Status                              : Active
 SubscriptionCount                   : 1
 SupportOrdering                     : False
 UpdatedAt                           : 1/20/2017 3:16:43 AM
-
+```
+Returns the description of the specified topic for the given Service Bus namespace.
 
 ## PARAMETERS
 

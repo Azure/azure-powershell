@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Set-AzureRmServicebusGeoDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRBreakPairFailOverParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureServiceBusGeoDRConfigurationFailOver : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name - Secondary Namespace")]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GeoDRBreakPairFailOverParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias")]
+        [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "DR Configuration Name - Alias")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -57,12 +57,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
 
-                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
+                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
                     {
-                        WriteObject(true);
+                        Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
                 }
                 else
@@ -75,12 +78,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             {
                 ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
 
-                if (getParamGeoDR.ResourceName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
+                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
-                    Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                    if (PassThru)
+                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
                     {
-                        WriteObject(true);
+                        Client.SetServiceBusDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
                 }
                 else
@@ -89,17 +95,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                 }
             }
 
-            if (ParameterSetName == GeoDRBreakPairFailOverParameterSet)
+            if (ParameterSetName == GeoDRParameterSet)
             {
-                Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
-                if (PassThru)
+                if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, Name, Namespace)))
                 {
-                    WriteObject(true);
+                    Client.SetServiceBusDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
-            }
-            else
-            {
-                WriteObject(false);
             }
         }
     }

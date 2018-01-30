@@ -28,7 +28,7 @@ The **Set-AzureRmServiceBusNamespace** cmdlet updates the description of the spe
 PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
 
 Name               : SB-Example1
-Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 Location           : West US
 Sku                : Name : Standard , Capacity : 10 , Tier : Standard
 ProvisioningState  : Succeeded

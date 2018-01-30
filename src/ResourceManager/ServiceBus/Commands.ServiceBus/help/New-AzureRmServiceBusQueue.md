@@ -30,9 +30,6 @@ The **New-AzureRmServiceBusQueue** cmdlet creates a Service Bus queue in the spe
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -EnablePartitioning $True
-```
-
-Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 Name                                : SB-Queue_exampl1
 LockDuration                        : 
@@ -53,6 +50,8 @@ RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
 UpdatedAt                           : 1/20/2017 2:51:37 AM
+```
+Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
 

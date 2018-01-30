@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
         
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "ServiceBus Subscription definition")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 3, HelpMessage = "ServiceBus Subscription definition")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasSubscriptionObj)]
         public PSSubscriptionAttributes InputObject { get; set; }

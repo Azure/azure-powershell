@@ -16,6 +16,16 @@ Returns a description for the specified Service Bus queue.
 Get-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
+## DESCRIPTION
+The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified Service Bus queue.
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
+
 LockDuration                        : 
 AccessedAt                          : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
@@ -34,22 +44,14 @@ RequiresSession                     : False
 SizeInBytes                         : 
 Status                              : Active
 UpdatedAt                           : 1/20/2017 2:51:37 AM
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
+Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
                                       B-Queue_example1
 Name                                : SB-Queue_example1
 Type                                : Microsoft.ServiceBus/Queues
 
-## DESCRIPTION
-The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified Service Bus queue.
-
-## EXAMPLES
-
-### Example 1
-```
-PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 ```
 
-Returns the description of the queue. 
+Returns the description of the queue.
 
 ## PARAMETERS
 

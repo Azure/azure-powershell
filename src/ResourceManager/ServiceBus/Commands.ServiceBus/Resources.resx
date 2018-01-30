@@ -144,6 +144,9 @@
   <data name="DRBreakPairing" xml:space="preserve">
     <value>Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}</value>
   </data>
+  <data name="DRCreateAlias" xml:space="preserve">
+    <value>Creating new Alias :{0} under Namespace:{1}</value>
+  </data>
   <data name="DRFailOver" xml:space="preserve">
     <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
   </data>

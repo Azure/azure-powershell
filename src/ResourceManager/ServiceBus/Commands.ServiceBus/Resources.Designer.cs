@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating new Alias :{0} under Namespace:{1}.
+        /// </summary>
+        internal static string DRCreateAlias {
+            get {
+                return ResourceManager.GetString("DRCreateAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}.
         /// </summary>
         internal static string DRFailOver {

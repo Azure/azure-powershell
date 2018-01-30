@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
+        public SwitchParameter UseOriginalStorageAccount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -70,7 +76,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
                     {RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id},
                     {RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location},
-                    {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type}
+                    {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type},
+                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent}
                 }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(

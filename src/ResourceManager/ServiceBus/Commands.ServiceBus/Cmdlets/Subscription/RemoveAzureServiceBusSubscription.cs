@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Topic Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Subscription Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

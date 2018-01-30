@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
 * Added below new commandlets for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
 		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
@@ -33,6 +34,10 @@
 * Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations. 
 	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
 		- Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+
+## Version 0.5.1
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 ## Version 0.5.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.

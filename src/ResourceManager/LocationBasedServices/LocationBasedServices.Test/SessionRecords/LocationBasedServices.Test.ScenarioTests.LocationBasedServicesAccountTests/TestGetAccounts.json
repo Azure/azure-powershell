@@ -1,0 +1,798 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/providers/Microsoft.LocationBasedServices?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTG9jYXRpb25CYXNlZFNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/providers/Microsoft.LocationBasedServices\",\r\n  \"namespace\": \"Microsoft.LocationBasedServices\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"accounts\",\r\n      \"locations\": [\r\n        \"Global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-01-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-01-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "448"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "20e2559c-0c49-48a1-8b14-54addc574068"
+        ],
+        "x-ms-correlation-request-id": [
+          "20e2559c-0c49-48a1-8b14-54addc574068"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224500Z:20e2559c-0c49-48a1-8b14-54addc574068"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourcegroups/pstestrg4264?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDI2ND9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264\",\r\n  \"name\": \"pstestrg4264\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "425b11d2-607d-4623-9f40-1d7a7f512098"
+        ],
+        "x-ms-correlation-request-id": [
+          "425b11d2-607d-4623-9f40-1d7a7f512098"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224502Z:425b11d2-607d-4623-9f40-1d7a7f512098"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:01 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cy9sYnNhcHN0ZXN0cmc0MjY0P2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "x-ms-client-request-id": [
+          "6b3277d4-aa71-44cc-98f1-6fd09fb5696f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n  \"name\": \"lbsapstestrg4264\",\r\n  \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"S0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "335"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "a0485263-5c6b-40fb-8a2f-ff57e5359c3a"
+        ],
+        "x-ms-correlation-request-id": [
+          "a0485263-5c6b-40fb-8a2f-ff57e5359c3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224505Z:a0485263-5c6b-40fb-8a2f-ff57e5359c3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cy9sYnNhcHN0ZXN0cmc0MjY0P2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b2b5f3d-df10-41ba-9036-2339fce27491"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n  \"name\": \"lbsapstestrg4264\",\r\n  \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"S0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "335"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "ef6e6a74-7bcb-46d4-b968-34770908642c"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef6e6a74-7bcb-46d4-b968-34770908642c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224505Z:ef6e6a74-7bcb-46d4-b968-34770908642c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cy9sYnNhcHN0ZXN0cmc0MjY0P2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7bfd89f2-7a15-4d29-8cd4-da4975307a57"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n  \"name\": \"lbsapstestrg4264\",\r\n  \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"S0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "335"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "366042d6-e93e-4dca-952b-d0b3a4145dfc"
+        ],
+        "x-ms-correlation-request-id": [
+          "366042d6-e93e-4dca-952b-d0b3a4145dfc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224505Z:366042d6-e93e-4dca-952b-d0b3a4145dfc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cy9sYnNhcHN0ZXN0cmc0MjY0P2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1995ca0d-e9b8-4fba-9389-a90e5d198bfa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n  \"name\": \"lbsapstestrg4264\",\r\n  \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"S0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "335"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "95f97559-3c62-461e-9bde-eba471daab6c"
+        ],
+        "x-ms-correlation-request-id": [
+          "95f97559-3c62-461e-9bde-eba471daab6c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224506Z:95f97559-3c62-461e-9bde-eba471daab6c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:06 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cz9hcGktdmVyc2lvbj0yMDE3LTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "28e07ced-abe4-49fd-a375-c62cf98a3760"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n      \"name\": \"lbsapstestrg4264\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "400"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "a8da5192-b352-4669-b4ab-72c262afc0ec"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8da5192-b352-4669-b4ab-72c262afc0ec"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224506Z:a8da5192-b352-4669-b4ab-72c262afc0ec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:06 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/providers/Microsoft.LocationBasedServices/accounts?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTG9jYXRpb25CYXNlZFNlcnZpY2VzL2FjY291bnRzP2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3f61f5b2-2455-4c1c-9207-3d692cd4e5ee"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/perfeastus\",\r\n      \"name\": \"perfeastus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperfwestus2\",\r\n      \"name\": \"bperfwestus2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/chgennar-test/providers/Microsoft.LocationBasedServices/accounts/Dynatrace_Temp_Account\",\r\n      \"name\": \"Dynatrace_Temp_Account\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/loadtest2\",\r\n      \"name\": \"loadtest2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/aeastus\",\r\n      \"name\": \"aeastus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Test/providers/Microsoft.LocationBasedServices/accounts/test-jinzhkey\",\r\n      \"name\": \"test-jinzhkey\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/LoadTestTrafficX1\",\r\n      \"name\": \"LoadTestTrafficX1\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/RaySam-IOT/providers/Microsoft.LocationBasedServices/accounts/RaySamDev\",\r\n      \"name\": \"RaySamDev\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/Usability_TEST\",\r\n      \"name\": \"Usability_TEST\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/jeffcoutestrg/providers/Microsoft.LocationBasedServices/accounts/Test1\",\r\n      \"name\": \"Test1\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/chgennar_bug_bash/providers/Microsoft.LocationBasedServices/accounts/chgennar_bug_bash\",\r\n      \"name\": \"chgennar_bug_bash\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Test/providers/Microsoft.LocationBasedServices/accounts/testjinzh2\",\r\n      \"name\": \"testjinzh2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/ihvoitka_lbs/providers/Microsoft.LocationBasedServices/accounts/ihvoitka_lbs\",\r\n      \"name\": \"ihvoitka_lbs\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/JeffCouTestRG/providers/Microsoft.LocationBasedServices/accounts/JeffCouTest1\",\r\n      \"name\": \"JeffCouTest1\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"tags\": {\r\n        \"owner\": \"jeffcou\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/ResourceNameSample\",\r\n      \"name\": \"ResourceNameSample\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/ChadraTestALBS/providers/Microsoft.LocationBasedServices/accounts/chadra4\",\r\n      \"name\": \"chadra4\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Test/providers/Microsoft.LocationBasedServices/accounts/test123\",\r\n      \"name\": \"test123\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/skamma_First/providers/Microsoft.LocationBasedServices/accounts/LbsForTest\",\r\n      \"name\": \"LbsForTest\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/TestAcct\",\r\n      \"name\": \"TestAcct\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bpwesteu\",\r\n      \"name\": \"bpwesteu\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/awesteu\",\r\n      \"name\": \"awesteu\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/YuqiTest/providers/Microsoft.LocationBasedServices/accounts/Yuqi_Test\",\r\n      \"name\": \"Yuqi_Test\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264\",\r\n      \"name\": \"lbsapstestrg4264\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/testtest\",\r\n      \"name\": \"testtest\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformancewestus\",\r\n      \"name\": \"bperformancewestus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/webscout/providers/Microsoft.LocationBasedServices/accounts/webscout\",\r\n      \"name\": \"webscout\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/Wolverine_2\",\r\n      \"name\": \"Wolverine_2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/JeffCouTestRG2/providers/Microsoft.LocationBasedServices/accounts/JeffCouTest4\",\r\n      \"name\": \"JeffCouTest4\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/loadtest1\",\r\n      \"name\": \"loadtest1\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/awestus\",\r\n      \"name\": \"awestus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/bretm1/providers/Microsoft.LocationBasedServices/accounts/bretm-lbs\",\r\n      \"name\": \"bretm-lbs\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/DELETE_ME\",\r\n      \"name\": \"DELETE_ME\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformanceeastus\",\r\n      \"name\": \"bperformanceeastus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/perfwestus\",\r\n      \"name\": \"perfwestus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/RaySam-Test/providers/Microsoft.LocationBasedServices/accounts/RaySam P- Test\",\r\n      \"name\": \"RaySam P- Test\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Aikman2/providers/Microsoft.LocationBasedServices/accounts/chadratest1\",\r\n      \"name\": \"chadratest1\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"tags\": {\r\n        \"owner\": \"chadra\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/BrendanBilling/providers/Microsoft.LocationBasedServices/accounts/BrendanBilling\",\r\n      \"name\": \"BrendanBilling\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Test/providers/Microsoft.LocationBasedServices/accounts/test2-jinzh\",\r\n      \"name\": \"test2-jinzh\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/JeffCouTestRG/providers/Microsoft.LocationBasedServices/accounts/JeffCouTest3\",\r\n      \"name\": \"JeffCouTest3\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformancewestus2\",\r\n      \"name\": \"bperformancewestus2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/Bug_Bash_Key\",\r\n      \"name\": \"Bug_Bash_Key\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/brendanperformance\",\r\n      \"name\": \"brendanperformance\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/ChadTestLBS/providers/Microsoft.LocationBasedServices/accounts/chad_test5\",\r\n      \"name\": \"chad_test5\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformancewestus4\",\r\n      \"name\": \"bperformancewestus4\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/JeffCouTest/providers/Microsoft.LocationBasedServices/accounts/foofoo\",\r\n      \"name\": \"foofoo\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformancewesteu\",\r\n      \"name\": \"bperformancewesteu\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/DocumentationAssets/providers/Microsoft.LocationBasedServices/accounts/TestAccount\",\r\n      \"name\": \"TestAccount\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperfwesteu2\",\r\n      \"name\": \"bperfwesteu2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/OldManLogan/providers/Microsoft.LocationBasedServices/accounts/Wolverine\",\r\n      \"name\": \"Wolverine\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/JeffCouTestRG/providers/Microsoft.LocationBasedServices/accounts/JeffCouTest2\",\r\n      \"name\": \"JeffCouTest2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"tags\": {\r\n        \"owner\": \"jeffcou\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/davsta/providers/Microsoft.LocationBasedServices/accounts/davsta-lbs\",\r\n      \"name\": \"davsta-lbs\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/testtest2\",\r\n      \"name\": \"testtest2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bpeastus\",\r\n      \"name\": \"bpeastus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/mifaltest/providers/Microsoft.LocationBasedServices/accounts/mifaltest\",\r\n      \"name\": \"mifaltest\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperfwestus\",\r\n      \"name\": \"bperfwestus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/Test/providers/Microsoft.LocationBasedServices/accounts/test-jinzh2\",\r\n      \"name\": \"test-jinzh2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/kevinslbs/providers/Microsoft.LocationBasedServices/accounts/kevinslbs\",\r\n      \"name\": \"kevinslbs\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pRunner/providers/Microsoft.LocationBasedServices/accounts/pApiRunner\",\r\n      \"name\": \"pApiRunner\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformanceeastus2\",\r\n      \"name\": \"bperformanceeastus2\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperformancewestus3\",\r\n      \"name\": \"bperformancewestus3\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/albs-global/providers/Microsoft.LocationBasedServices/accounts/ApiRunner\",\r\n      \"name\": \"ApiRunner\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperfwesteu\",\r\n      \"name\": \"bperfwesteu\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/jeffcoutestrg/providers/Microsoft.LocationBasedServices/accounts/jeffcoutest4\",\r\n      \"name\": \"jeffcoutest4\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"tags\": {\r\n        \"test\": \"true\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/lbs-runners/providers/Microsoft.LocationBasedServices/accounts/lbs-runners\",\r\n      \"name\": \"lbs-runners\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/RaySam-IOT/providers/Microsoft.LocationBasedServices/accounts/Connected Balls\",\r\n      \"name\": \"Connected Balls\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/brendanc-test/providers/Microsoft.LocationBasedServices/accounts/bperfeastus\",\r\n      \"name\": \"bperfeastus\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/InternalPreview/providers/Microsoft.LocationBasedServices/accounts/InternalPreview\",\r\n      \"name\": \"InternalPreview\",\r\n      \"type\": \"Microsoft.LocationBasedServices/accounts\",\r\n      \"location\": \"global\",\r\n      \"tags\": {\r\n        \"internal\": \"true\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "25004"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "462ac164-5b62-4a14-bbbf-2c49c0790d31"
+        ],
+        "x-ms-correlation-request-id": [
+          "462ac164-5b62-4a14-bbbf-2c49c0790d31"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224507Z:462ac164-5b62-4a14-bbbf-2c49c0790d31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:06 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg4264/providers/Microsoft.LocationBasedServices/accounts/lbsapstestrg4264?api-version=2017-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDI2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvY2F0aW9uQmFzZWRTZXJ2aWNlcy9hY2NvdW50cy9sYnNhcHN0ZXN0cmc0MjY0P2FwaS12ZXJzaW9uPTIwMTctMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "61f7fc3d-5249-4f5b-b3be-23a6505dc698"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.LocationBasedServices.Client/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "6cf03378-64b6-434e-b59d-3913e91144ed"
+        ],
+        "x-ms-correlation-request-id": [
+          "6cf03378-64b6-434e-b59d-3913e91144ed"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224508Z:6cf03378-64b6-434e-b59d-3913e91144ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:08 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourcegroups/pstestrg4264?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDI2ND9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "cfeac476-67c8-4b2c-ab6f-b0c598ba96ef"
+        ],
+        "x-ms-correlation-request-id": [
+          "cfeac476-67c8-4b2c-ab6f-b0c598ba96ef"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224509Z:cfeac476-67c8-4b2c-ab6f-b0c598ba96ef"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:09 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TmpRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "a091eddf-cc30-4558-a367-4df63f892b99"
+        ],
+        "x-ms-correlation-request-id": [
+          "a091eddf-cc30-4558-a367-4df63f892b99"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224509Z:a091eddf-cc30-4558-a367-4df63f892b99"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:09 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TmpRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "afde83a5-b067-4b55-a03c-b9695a65bf6a"
+        ],
+        "x-ms-correlation-request-id": [
+          "afde83a5-b067-4b55-a03c-b9695a65bf6a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224524Z:afde83a5-b067-4b55-a03c-b9695a65bf6a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:24 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TmpRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-request-id": [
+          "652f335a-0b03-4f40-bca4-ff5f7f5194b8"
+        ],
+        "x-ms-correlation-request-id": [
+          "652f335a-0b03-4f40-bca4-ff5f7f5194b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224540Z:652f335a-0b03-4f40-bca4-ff5f7f5194b8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:39 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyNjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TmpRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "ccd97f4c-18c5-4f08-9177-ab5008ecaebe"
+        ],
+        "x-ms-correlation-request-id": [
+          "ccd97f4c-18c5-4f08-9177-ab5008ecaebe"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180121T224555Z:ccd97f4c-18c5-4f08-9177-ab5008ecaebe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 21 Jan 2018 22:45:54 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-GetAzureLocationBasedServicesAccount": [
+      "pstestrg4264"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "21a9967a-e8a9-4656-a70b-96ff1c4d05a0"
+  }
+}
