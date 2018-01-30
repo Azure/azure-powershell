@@ -20,13 +20,13 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public class ListKeysAttributes
+    public class PSAuthorizationRuleKeysAttributes
     {
         public const string DefaultClaimType = "SharedAccessKey";
         public const string DefaultClaimValue = "None";
         internal const string DefaultNamespaceAuthorizationRule = "RootManageSharedAccessKey";
 
-        public ListKeysAttributes(AccessKeys listKeysResource)
+        public PSAuthorizationRuleKeysAttributes(AccessKeys listKeysResource)
         {
             if (listKeysResource != null)
             {
