@@ -5,30 +5,30 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profi
 schema: 2.0.0
 ---
 
-# Add-AzureRmAccount
+# Connect-AzureRmAccount
 
 ## SYNOPSIS
-Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
+Connect to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
 
 ## SYNTAX
 
 ### UserWithSubscriptionId (Default)
 ```
-Add-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-TenantId <String>]
+Connect-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-TenantId <String>]
  [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal] -TenantId <String>
+Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal] -TenantId <String>
  [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
+Connect-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
  [-ServicePrincipal] -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,7 +36,7 @@ Add-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -Appl
 
 ### AccessTokenWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
+Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
  [-GraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>]
  [-ContextName <String>] [-SkipValidation] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -51,32 +51,35 @@ Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <Str
 ```
 
 ## DESCRIPTION
-The Add-AzureRmAcccount cmdlet adds an authenticated Azure account to use for Azure Resource Manager cmdlet requests.
+The Connect-AzureRmAccount cmdlet connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
 
 You can use this authenticated account only with Azure Resource Manager cmdlets.
+
 To add an authenticated account for use with Service Management cmdlets, use the Add-AzureAccount or the Import-AzurePublishSettingsFile cmdlet.
+
+After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzureRmAccount.
 
 ## EXAMPLES
 
-### Example 1: Add an account that requires interactive login
+### Example 1: Use an interactive login to connect to an Azure account
 ```
-PS C:\>Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 Account: azureuser@contoso.com
 Environment: AzureCloud
 Subscription: xxxx-xxxx-xxxx-xxxx
 Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
-This command adds an Azure Resource Manager account.
+This command connects to an Azure account.
 
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
 
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
-### Example 2: Add an account that authenticates with organizational ID credentials
+### Example 2: Connect to an Azure account using organizational ID credentials
 ```
-PS C:\>$Credential = Get-Credential
-PS C:\> Add-AzureRmAccount -Credential $Credential
+PS C:\> $Credential = Get-Credential
+PS C:\> Connect-AzureRmAccount -Credential $Credential
 Account: azureuser@contoso.com
 Environment: AzureChinaCloud
 Subscription: xxxx-xxxx-xxxx-xxxx
@@ -85,15 +88,16 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
 
-The second command adds an Azure Resource Manager account with the credentials in $Credential.
+The second command connects to an Azure account using the credentials stored in $Credential.
 
 This account authenticates with Azure Resource Manager using organizational ID credentials.
+
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 
-### Example 3: Add an account that authenticates with service principal credentials
+### Example 3: Connect to an Azure service principal account
 ```
-PS C:\>$Credential = Get-Credential
-PS C:\> Add-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+PS C:\> $Credential = Get-Credential
+PS C:\> Connect-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
 Account: xxxx-xxxx-xxxx-xxxx
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
@@ -102,19 +106,20 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
 
-The second command adds an Azure Resource Manager account with the credentials stored in $Credential for the specified Tenant.
+The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
+
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
-### Example 4: Add an account for a specific tenant and subscription
+### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
 ```
-PS C:\>Add-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
+PS C:\> Connect-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 Account: pfuller@contoso.com
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
 Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
-This command adds an Azure Resource Manager account to run cmdlets for the specified tenant and subscription by default.
+This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
 ### Example 5: Add an Account Using Managed Service Identity Login
 ```
@@ -504,4 +509,3 @@ Credentials, subscription, account, and tenant information for the logged in use
 ## NOTES
 
 ## RELATED LINKS
-

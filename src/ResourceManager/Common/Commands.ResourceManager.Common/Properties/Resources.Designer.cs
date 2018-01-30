@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
         /// </summary>
         public static string ContextCannotBeNull {
             get {
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile cannot be null.  Please run Add-AzureRmAccount..
+        ///   Looks up a localized string similar to Profile cannot be null.  Please run Connect-AzureRmAccount..
         /// </summary>
         public static string ProfileCannotBeNull {
             get {
@@ -292,6 +292,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string ResourceProviderRegisterSuccessful {
             get {
                 return ResourceManager.GetString("ResourceProviderRegisterSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        /// </summary>
+        public static string RunConnectAccount {
+            get {
+                return ResourceManager.GetString("RunConnectAccount", resourceCulture);
             }
         }
         
