@@ -153,18 +153,15 @@ function EventSubscriptionTests_ResourceGroup {
     $result = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName" -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
 
-    # Currently blocked by a EventGrid Service issue, hence commenting it out for now until the Service fix gets deployed.
-    # TODO: Uncomment this once the Service fix gets deployed.
-
-    # Write-Debug "Updating eventSubscription $eventSubscriptionName to resource group $resourceGroupName"
-    # $newLabels = "Marketing", "Sales"
-    # $updateResult = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Label $newLabels
-    # Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
-    # Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
-	# $updatedLabels = $updateResult.Labels
-	# Assert-AreEqual 2 $updatedLabels.Count;
-    # Assert-AreEqual "Marketing" $updatedLabels[0];
-    # Assert-AreEqual "Sales" $updatedLabels[1];
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to resource group $resourceGroupName"
+    $newLabels = "Marketing", "Sales"
+    $updateResult = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Label $newLabels
+    Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+    Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
+    $updatedLabels = $updateResult.Labels
+    Assert-AreEqual 2 $updatedLabels.Count;
+    Assert-AreEqual "Marketing" $updatedLabels[0];
+    Assert-AreEqual "Sales" $updatedLabels[1];
 
     Write-Debug "Listing all the event subscriptions created for resourceGroup $resourceGroup"
     $allCreatedSubscriptions = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName"
