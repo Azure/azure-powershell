@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
-                            HttpsOnly = parameters.Contains("HttpsOnly") ? (bool?)HttpsOnly : false
+                            HttpsOnly = parameters.Contains("HttpsOnly")
                         };
 
                         if (parameters.Contains("AssignIdentity"))

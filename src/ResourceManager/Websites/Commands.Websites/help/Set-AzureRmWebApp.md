@@ -93,7 +93,9 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Enable MSI on an existing azure webapp or functionapp```yaml
+Enable MSI on an existing azure webapp or functionapp
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: S1
 Aliases: 
@@ -226,7 +228,9 @@ Accept wildcard characters: False
 ```
 
 ### -HttpsOnly
-Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp```yaml
+Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: S1
 Aliases: 
