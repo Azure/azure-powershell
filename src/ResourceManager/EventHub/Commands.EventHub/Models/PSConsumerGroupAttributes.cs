@@ -20,12 +20,12 @@ using System.Reflection;
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
 
-    public class ConsumerGroupAttributes
+    public class PSConsumerGroupAttributes
     {
-        public ConsumerGroupAttributes()
+        public PSConsumerGroupAttributes()
         { }
 
-        public ConsumerGroupAttributes(ConsumerGroup consumerGroupResourceResource)
+        public PSConsumerGroupAttributes(ConsumerGroup consumerGroupResourceResource)
         {
             if (consumerGroupResourceResource != null)
             {
