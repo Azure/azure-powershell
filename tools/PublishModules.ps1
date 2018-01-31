@@ -154,7 +154,7 @@ function Update-NugetPackage
         Remove-Item -Recurse -Path $packPath -Force
         Remove-Item -Path $contentPath -Force
         $content = (Get-Content -Path $modulePath) -join "`r`n"
-        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content = $content -replace $regex2, ("<requireLicenseAcceptance>true</requireLicenseAcceptance>")
         $content | Out-File -FilePath $modulePath -Force
         &$NugetExe pack $modulePath -OutputDirectory $BasePath
     }
@@ -180,11 +180,17 @@ function Change-RMModule
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
         Write-Output "Changing to directory for module modifications $TempRepoPath"
+        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
+        {
+            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
+        }
+
         pushd $TempRepoPath
         try
         {
-          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".nupkg")
-          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".zip")
+          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".zip")
           $dirPath = Join-Path -Path . -ChildPath $moduleName
           $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
@@ -295,26 +301,6 @@ if ($repo -ne $null) {
 } else {
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 }
-
-$packageFolder = "$PSScriptRoot\..\src\Package"
-if ($Profile -eq "Stack")
-{
-    $packageFolder = "$PSScriptRoot\..\src\Stack"
-}
-    
-if ($isNetCore -eq "true")
-{
-    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\ResourceManager"
-}
-else
-{
-    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-}
-
-if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") )
-{
-    $env:PSModulePath="$env:PSModulePath;$packageFolder\$buildConfig\Storage\Azure.Storage"
-} 
 
 $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
