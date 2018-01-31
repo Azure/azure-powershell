@@ -222,6 +222,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
+            var client = new Client(DefaultProfile.DefaultContext);
+
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
@@ -236,7 +238,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var imageArray = ImageName.Split(':');
                 if (imageArray.Length != 4)
                 {
-                    throw new Exception("Invalid ImageName");
+                    throw new InvalidOperationException("Invalid ImageName");
                 }
                 image = new Commands.Common.Strategies.Compute.Image
                 {
@@ -245,7 +247,24 @@ namespace Microsoft.Azure.Commands.Compute
                     sku = imageArray[2],
                     version = imageArray[3],
                 };
-                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
+                var compute = client.GetClient<ComputeManagementClient>();
+                if (image.version.ToLower() == "latest")
+                {
+                    var images = await compute.VirtualMachineImages.ListAsync(
+                        "eastus", image.publisher, image.offer, image.sku);
+                    image.version = images
+                        .Select(i =>
+                        {
+                            Version v;
+                            Version.TryParse(i.Name, out v);
+                            return v;
+                        })
+                        .Aggregate((a, b) => a < b ? b : a)
+                        .ToString();
+                }
+                var imageModel = await compute.VirtualMachineImages.GetAsync(
+                    "eastus", image.publisher, image.offer, image.sku, image.version);
+                isWindows = imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows;
             }
             else if (!string.IsNullOrEmpty(DiskFile))
             {
@@ -357,8 +376,6 @@ namespace Microsoft.Azure.Commands.Compute
                     disk: disk,
                     size: Size);
             }
-
-            var client = new Client(DefaultProfile.DefaultContext);
 
             // get current Azure state
             var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
