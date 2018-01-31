@@ -20,51 +20,59 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class ListKeysAttributes
+    public class PSSharedAccessAuthorizationRuleAttributes
     {
         public const string DefaultClaimType = "SharedAccessKey";
         public const string DefaultClaimValue = "None";
         internal const string DefaultNamespaceAuthorizationRule = "RootManageSharedAccessKey";
 
-        public ListKeysAttributes(AccessKeys listKeysResource)
+        public PSSharedAccessAuthorizationRuleAttributes()
+        { }
+
+        public PSSharedAccessAuthorizationRuleAttributes(SBAuthorizationRule authRuleResource)
         {
-            if (listKeysResource != null)
+            if (authRuleResource != null)
             {
-                PrimaryConnectionString = listKeysResource.PrimaryConnectionString;
-                SecondaryConnectionString = listKeysResource.SecondaryConnectionString;
-                PrimaryKey = listKeysResource.PrimaryKey;
-                SecondaryKey = listKeysResource.SecondaryKey;
-                KeyName = listKeysResource.KeyName;
-            };
+                if(authRuleResource.Id !=null)
+                Id = authRuleResource.Id;
+                if (authRuleResource.Name != null)
+                    Name = authRuleResource.Name;
+                if (authRuleResource.Type != null)
+                    Type = authRuleResource.Type;
+                if (authRuleResource.Rights!= null)
+                    Rights = authRuleResource.Rights;
+            }
         }
 
         /// <summary>
-        /// PrimaryConnectionString of the created Namespace AuthorizationRule.
+        /// Gets or sets the Id of the Namespace
         /// </summary>
-        public string PrimaryConnectionString { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// SecondaryConnectionString of the created Namespace
-        /// AuthorizationRule
+        /// Gets or sets the Type of the Namespace
         /// </summary>
-        public string SecondaryConnectionString { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
-        /// A base64-encoded 256-bit primary key for signing and validating
-        /// the SAS token
+        /// Gets or sets the name of the Namespace
         /// </summary>
-        public string PrimaryKey { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// A base64-encoded 256-bit primary key for signing and validating
-        /// the SAS token
+        /// Gets or sets the location the Namespace is in
         /// </summary>
-        public string SecondaryKey { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
-        /// A string that describes the authorization rule
+        /// Gets or sets the tags associated with the Namespace.
         /// </summary>
-        public string KeyName { get; set; }
+        public Dictionary<string, string> Tags { get; set; }
 
+        /// <summary>
+        /// The rights associated with the rule.
+        /// </summary>
+        public IList<AccessRights?> Rights { get; set; }
+       
     }
 }

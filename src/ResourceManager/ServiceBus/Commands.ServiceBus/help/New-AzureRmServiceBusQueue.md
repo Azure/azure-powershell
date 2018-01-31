@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusqueue
 schema: 2.0.0
 ---
@@ -30,8 +30,27 @@ The **New-AzureRmServiceBusQueue** cmdlet creates a Service Bus queue in the spe
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -EnablePartitioning $True
-```
 
+Name                                : SB-Queue_exampl1
+LockDuration                        : 
+AccessedAt                          : 
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 2:51:36 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : 
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+UpdatedAt                           : 1/20/2017 2:51:37 AM
+```
 Creates a new Service Bus queue `SB-Queue_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ## PARAMETERS
@@ -346,26 +365,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-Name                                : SB-Queue_exampl1
-LockDuration                        : 
-AccessedAt                          : 
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:36 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
-EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : 
-RequiresDuplicateDetection          : False
-RequiresSession                     : False
-SizeInBytes                         : 
-Status                              : Active
-UpdatedAt                           : 1/20/2017 2:51:37 AM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## NOTES
 

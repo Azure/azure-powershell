@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,45 +21,52 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    public class ActionAttributes
+    public class PSSQLFilterAttributes
     {
-        
         /// <summary>
-        /// Initializes a new instance of the Action class.
+        /// Initializes a new instance of the SqlFilter class.
         /// </summary>
-        /// <param name="sqlExpression">SQL expression. e.g.
+        public PSSQLFilterAttributes()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the SqlFilter class.
+        /// </summary>
+        /// <param name="sqlExpression">The SQL expression. e.g.
         /// MyProperty='ABC'</param>
         /// <param name="compatibilityLevel">This property is reserved for
         /// future use. An integer value showing the compatibility level,
         /// currently hard-coded to 20.</param>
         /// <param name="requiresPreprocessing">Value that indicates whether
         /// the rule action requires preprocessing.</param>
-        public ActionAttributes(string sqlExpression = default(string), int? compatibilityLevel = default(int?), bool? requiresPreprocessing = default(bool?))
+        public PSSQLFilterAttributes(string sqlExpression = default(string), int? compatibilityLevel = default(int?), bool? requiresPreprocessing = default(bool?))
         {
             SqlExpression = sqlExpression;
             CompatibilityLevel = compatibilityLevel;
             RequiresPreprocessing = requiresPreprocessing;
         }
 
-        public ActionAttributes()
-        { }
-
-        public ActionAttributes(Management.ServiceBus.Models.Action action)
+        public PSSQLFilterAttributes(Management.ServiceBus.Models.SqlFilter sqlFilter)
         {
-            SqlExpression = action.SqlExpression;
-            CompatibilityLevel = action.CompatibilityLevel;
-            RequiresPreprocessing = action.RequiresPreprocessing;
+            if (sqlFilter != null)
+            {
+                SqlExpression = sqlFilter.SqlExpression;
+                CompatibilityLevel = sqlFilter.CompatibilityLevel;
+                RequiresPreprocessing = sqlFilter.RequiresPreprocessing;
+            }
         }
+
         /// <summary>
-        /// Gets or sets SQL expression. e.g. MyProperty='ABC'
+        /// Gets or sets the SQL expression. e.g. MyProperty='ABC'
         /// </summary>
         public string SqlExpression { get; set; }
 
         /// <summary>
-        /// Gets or sets this property is reserved for future use. An integer
-        /// value showing the compatibility level, currently hard-coded to 20.
+        /// Gets this property is reserved for future use. An integer value
+        /// showing the compatibility level, currently hard-coded to 20.
         /// </summary>
-        public int? CompatibilityLevel { get; set; }
+        public int? CompatibilityLevel { get; private set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether the rule action requires
