@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 8C5D29AD-0B15-4CD4-8637-86ABD19F41C8
@@ -86,7 +86,7 @@ Indicates that this cmdlet gets only defaults.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Specifies the name of the database edition for which this cmdlet gets capabiliti
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,7 +132,7 @@ Specifies the name of the server version for which this cmdlet gets capabilities
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +147,7 @@ Specifies the name of the service objective for which this cmdlet gets capabilit
 ```yaml
 Type: String
 Parameter Sets: FilterResults
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -199,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

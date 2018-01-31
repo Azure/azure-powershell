@@ -17,23 +17,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using InternalRmNS = Microsoft.Azure.Management.Internal.Resources;
+using LegacyTest = Microsoft.Azure.Test;
+using ResourceManagementNS = Microsoft.Azure.Management.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
     public class TestController
     {
-        CSMTestEnvironmentFactory csmTestFactory;
+        LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         EnvironmentSetupHelper helper;
 
         public RecoveryServicesClient RsClient { get; private set; }
 
-        public ResourceManagementClient RmClient { get; private set; }
+        public ResourceManagementNS.ResourceManagementClient RmClient { get; private set; }
+
+        public InternalRmNS.ResourceManagementClient InternalRmClient { get; private set; }
 
         public static TestController NewInstance
         {
@@ -51,23 +54,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
             RsClient = GetRsClient(context);
-            RmClient = GetRmClient(context);
+            RmClient = GetRmClient();
+            InternalRmClient = GetInternalRmClient(context);
 
             helper.SetupManagementClients(
                 RsClient,
-                RmClient);
+                RmClient,
+                InternalRmClient);
         }
 
-        private ResourceManagementClient GetRmClient(RestTestFramework.MockContext context)
+        private InternalRmNS.ResourceManagementClient GetInternalRmClient(RestTestFramework.MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(
+            return context.GetServiceClient<InternalRmNS.ResourceManagementClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ResourceManagementNS.ResourceManagementClient GetRmClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementNS.ResourceManagementClient>(
+                this.csmTestFactory);
         }
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = Azure.Test.TestUtilities.GetCallingClass(2);
-            var mockName = Azure.Test.TestUtilities.GetCurrentMethodName(2);
+            var callingClassType = LegacyTest.TestUtilities.GetCallingClass(2);
+            var mockName = LegacyTest.TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
                 () => scripts,
@@ -81,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -101,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             using (RestTestFramework.MockContext context =
                 RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                csmTestFactory = new CSMTestEnvironmentFactory();
+                csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
@@ -125,6 +136,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 modules.Add(psFile);
                 modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
+                modules.Add(helper.RMResourceModule);
+                modules.Add("AzureRM.Resources.ps1");
 
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
 
@@ -153,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private RecoveryServicesClient GetRsClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesClient>(
-                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

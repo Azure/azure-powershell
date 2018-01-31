@@ -169,3 +169,13 @@ function Get-ProviderLocation_Canary($provider)
 {
     "eastus2euap"
 }
+
+
+<#
+.SYNOPSIS
+Gets the Stage location for a provider
+#>
+function Get-ProviderLocation_Stage($provider)
+{
+    "eastus2(stage)"
+}

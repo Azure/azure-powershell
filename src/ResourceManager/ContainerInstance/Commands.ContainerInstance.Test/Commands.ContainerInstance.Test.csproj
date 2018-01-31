@@ -47,7 +47,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.0-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.1-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -187,10 +187,13 @@
     <None Include="ScenarioTests\ContainerInstanceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestContainerGroupCommands.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestContainerInstanceLog.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestContainerInstanceLog.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests.ContainerInstanceTests\TestCreateContainerGroupWithVolume.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

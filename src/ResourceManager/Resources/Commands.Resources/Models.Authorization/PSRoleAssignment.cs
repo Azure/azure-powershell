@@ -33,5 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public Guid ObjectId { get; set; }
 
         public string ObjectType { get; set; }
+
+        public bool CanDelegate { get; set; }
     }
 }

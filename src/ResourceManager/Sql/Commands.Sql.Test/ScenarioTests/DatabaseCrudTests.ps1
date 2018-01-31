@@ -35,7 +35,10 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
@@ -55,8 +58,11 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$databaseName = Get-DatabaseName
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
-		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+		$job2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -AsJob
+		$job2 | Wait-Job
+		$dwdb  = $job2.Output
+
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 		Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb.Edition DataWarehouse
@@ -144,8 +150,11 @@ function Test-CreateDatabaseWithZoneRedundancy
 
 		# Create database with no zone redundancy set
 		$databaseName = Get-DatabaseName
-		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -Edition Premium
+		$job = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -AsJob
+		$job | Wait-Job
+		$db = $job.Output
+
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.ZoneRedundant
@@ -204,8 +213,11 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 	try
 	{
 		# Alter all properties
-		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_new_value"}
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_new_value"} -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.MaxSizeBytes 1GB
 		Assert-AreEqual $db1.Edition Basic
@@ -233,8 +245,11 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
-		$dwdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
-				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
+				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse -AsJob
+		$job | Wait-Job
+		$dwdb2 = $job.Output
+
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
@@ -322,6 +337,48 @@ function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 		Assert-AreEqual "tag_new_value2" $db1.Tags["tag_key"]
 		Assert-NotNull $db1.ZoneRedundant
 		Assert-AreEqual "true" $db1.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests renaming a database
+#>
+function Test-RenameDatabase
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$location = "westcentralus"
+		$server = Create-ServerForTest $rg $location
+	
+		# Create with default values
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+		Assert-AreEqual $db1.DatabaseName $databaseName
+
+		# Rename with params
+		$name2 = "name2"
+		$db2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -NewName $name2
+		Assert-AreEqual $db2.DatabaseName $name2
+
+		Assert-ThrowsContains -script { $db1 | Get-AzureRmSqlDatabase } -message "not found"
+		$db2 | Get-AzureRmSqlDatabase
+
+		# Rename with piping
+		$name3 = "name3"
+		$db3 = $db2 | Set-AzureRmSqlDatabase -NewName $name3
+		Assert-AreEqual $db3.DatabaseName $name3
+
+		Assert-ThrowsContains -script { $db1 | Get-AzureRmSqlDatabase } -message "not found"
+		Assert-ThrowsContains -script { $db2 | Get-AzureRmSqlDatabase } -message "not found"
+		$db3 | Get-AzureRmSqlDatabase
 	}
 	finally
 	{

@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = false,
             HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

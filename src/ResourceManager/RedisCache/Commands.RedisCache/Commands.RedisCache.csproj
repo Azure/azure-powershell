@@ -46,64 +46,60 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Insights">
+    <Reference Include="Microsoft.Azure.Insights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.13.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.4.2.0-preview\lib\net45\Microsoft.Azure.Management.Redis.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.4.4.0\lib\net452\Microsoft.Azure.Management.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.1.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\RemoveAzureRedisCachePatchSchedule.cs" />
-    <Compile Include="Commands\NewAzureRedisCacheScheduleEntry.cs" />
-    <Compile Include="Commands\GetAzureRedisCachePatchSchedule.cs" />
-    <Compile Include="Commands\NewAzureRedisCachePatchSchedule.cs" />
-    <Compile Include="Commands\ResetAzureRedisCache.cs" />
     <Compile Include="Commands\ExportAzureRedisCache.cs" />
-    <Compile Include="Commands\ImportAzureRedisCache.cs" />
-    <Compile Include="Commands\RemoveAzureRedisCacheDiagnostics.cs" />
-    <Compile Include="Commands\SetAzureRedisCacheDiagnostics.cs" />
-    <Compile Include="Commands\SetAzureRedisCache.cs" />
-    <Compile Include="Commands\NewAzureRedisCacheKey.cs" />
-    <Compile Include="Commands\GetAzureRedisCacheKey.cs" />
     <Compile Include="Commands\GetAzureRedisCache.cs" />
-    <Compile Include="Commands\RemoveAzureRedisCache.cs" />
+    <Compile Include="Commands\GetAzureRedisCacheKey.cs" />
+    <Compile Include="Commands\GetAzureRedisCacheLink.cs" />
+    <Compile Include="Commands\GetAzureRedisCacheFirewallRule.cs" />
+    <Compile Include="Commands\GetAzureRedisCachePatchSchedule.cs" />
+    <Compile Include="Commands\ImportAzureRedisCache.cs" />
     <Compile Include="Commands\NewAzureRedisCache.cs" />
+    <Compile Include="Commands\NewAzureRedisCacheKey.cs" />
+    <Compile Include="Commands\NewAzureRedisCacheFirewallRule.cs" />
+    <Compile Include="Commands\NewAzureRedisCacheLink.cs" />
+    <Compile Include="Commands\NewAzureRedisCachePatchSchedule.cs" />
+    <Compile Include="Commands\NewAzureRedisCacheScheduleEntry.cs" />
+    <Compile Include="Commands\RemoveAzureRedisCache.cs" />
+    <Compile Include="Commands\RemoveAzureRedisCacheDiagnostics.cs" />
+    <Compile Include="Commands\RemoveAzureRedisCacheLink.cs" />
+    <Compile Include="Commands\RemoveAzureRedisCacheFirewallRule.cs" />
+    <Compile Include="Commands\RemoveAzureRedisCachePatchSchedule.cs" />
+    <Compile Include="Commands\ResetAzureRedisCache.cs" />
+    <Compile Include="Commands\SetAzureRedisCache.cs" />
+    <Compile Include="Commands\SetAzureRedisCacheDiagnostics.cs" />
+    <Compile Include="Models\PSRedisLinkedServer.cs" />
+    <Compile Include="Models\PSRedisFirewallRule.cs" />
     <Compile Include="Models\PSScheduleEntry.cs" />
     <Compile Include="Models\RedisCacheAttributesWithAccessKeys.cs" />
     <Compile Include="Models\RedisCacheAttributes.cs" />
@@ -129,6 +125,9 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

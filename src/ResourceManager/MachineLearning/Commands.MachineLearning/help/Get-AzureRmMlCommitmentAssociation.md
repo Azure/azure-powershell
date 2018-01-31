@@ -24,19 +24,11 @@ Depending on the paramenters passed, the cmdlet returns a specific commitment as
 ## EXAMPLES
 
 ### --------------------------  Example 1: Get a specific commitment association  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentAssociation -ResourceGroupName "MyResourceGroup" -CommitmentPlanName "MyCommitmentPlanName" -Name "MyCommitmentAssociationName"
 ```
 
 ### --------------------------  Example 2: Get all commitment associations for the specified commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentAssociation -ResourceGroupName "MyResourceGroup" -CommitmentPlanName "MyCommitmentPlanName"
 ```

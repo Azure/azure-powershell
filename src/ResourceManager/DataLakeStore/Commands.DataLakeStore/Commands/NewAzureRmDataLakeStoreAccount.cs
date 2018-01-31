@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the account.",
             ParameterSetName = EncryptionDisabledParameterSetName)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Azure region where the account should be created.",
             ParameterSetName = EncryptionDisabledParameterSetName)]
+        [LocationCompleter("Microsoft.DataLakeStore/accounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -72,8 +76,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account",
             ParameterSetName = EncryptionDisabledParameterSetName)]
+        [Obsolete("New-AzureRmDataLakeStoreAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "Indicates what type of encryption to provision the account with. By default, encryption is ServiceManaged. If no encryption is desired, it must be explicitly set with the -DisableEncryption flag",
@@ -188,7 +194,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             Name,
                             DefaultGroup,
                             Location,
-                            Tags,
+                            Tag,
                             identity,
                             config,
                             encryptionType: Encryption,
@@ -203,7 +209,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             Name,
                             DefaultGroup,
                             Location,
-                            Tags,
+                            Tag,
                             tier: Tier)));
             }
         }

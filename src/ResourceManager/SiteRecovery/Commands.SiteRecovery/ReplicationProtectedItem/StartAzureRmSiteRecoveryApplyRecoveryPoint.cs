@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryApplyRecoveryPoint", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class StartAzureRmSiteRecoveryApplyRecoveryPoint : SiteRecoveryCmdletBase
     {
         #region local parameters
@@ -157,6 +160,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));
-        }      
+        }
     }
 }

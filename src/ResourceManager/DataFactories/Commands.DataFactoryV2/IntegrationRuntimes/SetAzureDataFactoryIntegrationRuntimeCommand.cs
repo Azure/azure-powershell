@@ -20,6 +20,7 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeLocation)]
+        [LocationCompleter("Microsoft.DataFactory/factories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -99,6 +101,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
         public int? MaxParallelExecutionsPerNode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.IntegrationRuntimeLicenseIncluded,
+            Constants.IntegrationRuntimeBasePrice,
+            IgnoreCase = true)]
+        public string LicenseType { get; set; }
 
         [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
@@ -259,8 +271,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminUserName = CatalogAdminCredential.UserName;
-                integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminPassword = 
-                    new SecureString(ConvertToUnsecureString(CatalogAdminCredential.Password));
+                var passWord = ConvertToUnsecureString(CatalogAdminCredential.Password);
+                if (passWord != null && passWord.Length > 128)
+                {
+                    throw new PSArgumentException("The password exceeds maximum length of '128'", "CatalogAdminCredential");
+                }
+                integrationRuntime.SsisProperties.CatalogInfo.CatalogAdminPassword = new SecureString(passWord);
             }
 
             if (!string.IsNullOrWhiteSpace(CatalogPricingTier))
@@ -330,6 +346,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Resources.IntegrationRuntimeInvalidVnet),
                         "Type");
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(LicenseType))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+
+                integrationRuntime.SsisProperties.LicenseType = LicenseType;
             }
 
             integrationRuntime.Validate();

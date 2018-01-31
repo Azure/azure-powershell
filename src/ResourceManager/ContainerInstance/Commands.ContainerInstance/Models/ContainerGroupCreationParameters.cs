@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public const string DefaultOsType = OperatingSystemTypes.Linux;
 
         /// <summary>
-        /// The default port.
+        /// The default ports.
         /// </summary>
-        public const int DefaultPort = 80;
+        public static readonly int[] DefaultPorts = new int[] { 80 };
 
         /// <summary>
         /// The default CPU.
@@ -77,14 +77,19 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public string OsType { get; set; }
 
         /// <summary>
+        /// Gets or sets the restart policy.
+        /// </summary>
+        public string RestartPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets the IP address type.
         /// </summary>
         public string IpAddressType { get; set; }
 
         /// <summary>
-        /// Gets or sets the port.
+        /// Gets or sets the ports.
         /// </summary>
-        public int Port { get; set; }
+        public int[] Ports { get; set; }
 
         /// <summary>
         /// Gets or sets the container image.
@@ -127,6 +132,26 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public string RegistryPassword { get; set; }
 
         /// <summary>
+        /// Gets or sets the Azure File volume share name.
+        /// </summary>
+        public string AzureFileVolumeShareName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure File volume storage account name.
+        /// </summary>
+        public string AzureFileVolumeAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure File volume storage account key.
+        /// </summary>
+        public string AzureFileVolumeAccountKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure File volume mount path.
+        /// </summary>
+        public string AzureFileVolumeMountPath { get; set; }
+
+        /// <summary>
         /// Validates the creation parameters.
         /// </summary>
         public void Validate()
@@ -158,6 +183,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 }
 
                 this.RegistryServer = acrServer;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AzureFileVolumeMountPath) && this.AzureFileVolumeMountPath.Contains(":"))
+            {
+                throw new ArgumentException("Azure File volume mount path must not contain ':'");
             }
         }
 

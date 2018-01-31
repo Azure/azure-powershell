@@ -1589,4 +1589,58 @@ The data is collected by Microsoft.
 Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
 Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enable-AzureDataCollection.</value>
   </data>
+  <data name="BaseShouldMethodFailureReason" xml:space="preserve">
+    <value>Execution failed because a background thread could not prompt the user.</value>
+  </data>
+  <data name="LROJobName" xml:space="preserve">
+    <value>Azure Long-Running Job</value>
+  </data>
+  <data name="LROTaskExceptionMessage" xml:space="preserve">
+    <value>The cmdlet failed in background execution.  The returned error was '{0}'.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the '-AsJob' parameter.</value>
+    <comment>0(string): exception message in background task</comment>
+  </data>
+  <data name="ShouldContinueFail" xml:space="preserve">
+    <value>Please execute the cmdlet again and include the 'Force' parameter, if available, to avoid unnecessary prompts.</value>
+  </data>
+  <data name="ShouldProcessFailConfirm" xml:space="preserve">
+    <value>Please execute the cmdlet again and omit the 'Confirm' parameter when using the 'AsJob' parameter.</value>
+  </data>
+  <data name="ShouldProcessFailImpact" xml:space="preserve">
+    <value>Please increase the user $ConfirmPreference setting, or include turn off confirmation using '-Confirm:$false' when using the 'AsJob' parameter and execute the cmdet again.</value>
+  </data>
+  <data name="ShouldProcessFailWhatIf" xml:space="preserve">
+    <value>Please execute the cmdlet again and omit the 'WhatIf' parameter when using the 'AsJob' parameter.</value>
+  </data>
+  <data name="TraceBeginLROJob" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Starting cmdlet execution, setting for cmdlet confirmation required: '{0}'</value>
+    <comment>0(bool): whether cmdlet confirmation is required</comment>
+  </data>
+  <data name="TraceBlockLROThread" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Blocking job for ShouldMethod '{0}'</value>
+    <comment>0(string): method type</comment>
+  </data>
+  <data name="TraceEndLROJob" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Completing cmdlet execution in RunJob</value>
+  </data>
+  <data name="TraceHandleLROStateChange" xml:space="preserve">
+    <value>[AzureLongRunningJob]: State change from '{0}' to '{1}' because '{2}'</value>
+    <comment>0(string): last state, 1(string): new state, 2(string): state change reason</comment>
+  </data>
+  <data name="TraceHandlerCancelJob" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Unblocking job due to stoppage or failure</value>
+  </data>
+  <data name="TraceHandlerUnblockJob" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Unblocking job that was previously blocked.</value>
+  </data>
+  <data name="TraceLROJobException" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Error in cmdlet execution</value>
+  </data>
+  <data name="TraceRemoveLROEventHandler" xml:space="preserve">
+    <value>[AzureLongRunningJob]: Removing state changed event handler, exception '{0}'</value>
+    <comment>0(string): exception message</comment>
+  </data>
+  <data name="TraceUnblockLROThread" xml:space="preserve">
+    <value>[AzureLongRunningJob]: ShouldMethod '{0}' unblocked.</value>
+    <comment>0(string): methodType</comment>
+  </data>
 </root>

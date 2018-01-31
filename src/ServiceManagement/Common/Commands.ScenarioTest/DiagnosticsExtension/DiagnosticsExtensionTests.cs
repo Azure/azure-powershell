@@ -103,5 +103,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Test-AzureServiceDiagnosticsExtensionWrongServiceName");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.DiagnosticsExtension)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestAzureServiceDiagnosticsExtensionStorageContext()
+        {
+            this.RunPowerShellTest("Test-AzureServiceDiagnosticsExtensionStorageContext");
+        }
     }
 }

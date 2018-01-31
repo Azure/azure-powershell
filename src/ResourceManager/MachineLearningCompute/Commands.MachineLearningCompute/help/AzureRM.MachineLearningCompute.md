@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.MachineLearningCompute
-Module Guid:
-Download Help Link:
-Help Version:
+Module Guid: 
+Download Help Link: 
+Help Version: 
 Locale: en-US
 ---
 
@@ -22,6 +22,9 @@ Creates a new operationalization cluster.
 
 ### [Remove-AzureRmMlOpCluster](Remove-AzureRmMlOpCluster.md)
 Removes an operationalization cluster.
+
+### [Set-AzureRmMlOpCluster](Set-AzureRmMlOpCluster.md)
+Sets the properties of an operationalization cluster.
 
 ### [Test-AzureRmMlOpClusterSystemServicesUpdateAvailability](Test-AzureRmMlOpClusterSystemServicesUpdateAvailability.md)
 Checks if there are updates available for the system services associated with an operationalization cluster.

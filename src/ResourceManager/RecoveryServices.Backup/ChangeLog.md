@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -UseOriginalStorageAccount option to the Restore-AzureRmRecoveryServicesBackupItem cmdlet. 
+	- Enabling this flag results in restoring disks to their original storage accounts which allows users to maintain the configuration of restored VM as close to the original VMs as possible. 
+	- It also helps in improving the performance of the restore operation.
+
+## Version 4.0.3
+* Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.
+* Fixed bug - AzureVmItem now has a property that shows the last time a backup operation has happened - LastBackupTime.
 
 ## Version 4.0.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

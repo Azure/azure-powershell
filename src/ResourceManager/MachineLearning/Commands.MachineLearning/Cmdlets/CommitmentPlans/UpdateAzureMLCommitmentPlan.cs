@@ -20,6 +20,8 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     using Common.Authentication.Abstractions;
+    using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -28,6 +30,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,8 +52,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
         public int SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags for the commitment plan resource.")]
+        [Obsolete("Update-AzureRmMlCommitmentPlan: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
             /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
@@ -73,8 +78,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
             int skuCapacity = this.SkuCapacity == 0 ? 1 : this.SkuCapacity;
             var sku = new ResourceSku(skuCapacity, this.SkuName, this.SkuTier);
 
-            var tags = this.Tags.Cast<DictionaryEntry>()
+#pragma warning disable CS0618
+            var tags = this.Tag.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string) kvp.Key, kvp => (string) kvp.Value);
+#pragma warning restore CS0618
 
             CommitmentPlanPatchPayload patchPayload = new CommitmentPlanPatchPayload
             {

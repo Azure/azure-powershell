@@ -15,65 +15,13 @@
 using System.Collections.Generic;
 using System;
 
-#if !NETSTANDARD
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-#else
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
-#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourceExtensions
     {
-#if !NETSTANDARD
-        public static DeploymentExtended Deployment(this DeploymentGetResult deployment)
-        {
-            return deployment.Deployment;
-        }
-
-        public static IList<DeploymentOperation> Operations(this DeploymentOperationsListResult result)
-        {
-            return result.Operations;
-        }
-
-        public static string NextLink(this DeploymentOperationsListResult result)
-        {
-            return result.NextLink;
-        }
-
-        public static bool Exists(this DeploymentExistsResult result)
-        {
-            return result.Exists;
-        }
-        
-        public static DeploymentMode Mode(this DeploymentPropertiesExtended deploymentProperties)
-        {
-            return deploymentProperties.Mode;
-        }
-        
-        public static DateTime Timestamp(this DeploymentPropertiesExtended deploymentProperties)
-        {
-            return deploymentProperties.Timestamp;
-        }
-        
-        public static DeploymentDebugSetting DebugSetting(this DeploymentPropertiesExtended deploymentProperties)
-        {
-            return deploymentProperties.DebugSettingResponse;
-        }
-        
-        public static string DetailLevel(this DeploymentDebugSetting settings)
-        {
-            return settings.DeploymentDebugDetailLevel;
-        }
-        
-        public static IEnumerable<Subscriptions.Models.Location> Locations(this Subscriptions.Models.LocationListResult locations)
-        {
-            return locations.Locations;
-        }
-
-#else
         public static IEnumerable<Location> Locations(this IEnumerable<Location> locations)
         {
             return locations;
@@ -124,9 +72,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             return value;
         }
-#endif
     }
-#if NETSTANDARD
+
     public static class ProvisioningState
     {
         public const string Accepted = "Accepted";
@@ -141,5 +88,4 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public const string Running = "Running";
         public const string Succeeded = "Succeeded";
     }
-#endif
 }

@@ -376,7 +376,7 @@
     <value>Virtual Network Rule with name: '{0}' already exists for server '{1}'</value>
   </data>
   <data name="SetAzureSqlServerTransparentDataEncryptionProtectorWarning" xml:space="preserve">
-    <value>Warning: Cutting off access to the key '{0}' may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
+    <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
   </data>
   <data name="ElasticPoolDatabaseActivityCancelNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name cannot be specified for this operation</value>
@@ -398,5 +398,8 @@
   </data>
   <data name="ServerDnsAliasNameExists" xml:space="preserve">
     <value>Server Dns Alias with name: '{0}' already exists.</value>
+  </data>
+  <data name="auditChangeGroupDeprecationMessage" xml:space="preserve">
+    <value>The action group 'AUDIT_CHANGE_GROUP' is not supported. It will be removed in a future release.</value>
   </data>
 </root>
