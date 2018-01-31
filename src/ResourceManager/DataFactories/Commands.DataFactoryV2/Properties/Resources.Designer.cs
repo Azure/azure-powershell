@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -134,7 +134,29 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
                 return ResourceManager.GetString("DataFactoryRemoving", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFactoryUpdateConfirm
+        {
+            get
+            {
+                return ResourceManager.GetString("DataFactoryUpdateConfirm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating properties of the data factory &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFactoryUpdating
+        {
+            get
+            {
+                return ResourceManager.GetString("DataFactoryUpdating", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove dataset &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
@@ -408,6 +430,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update node &apos;{0}&apos; in integration runtime &apos;{1}&apos;?.
+        /// </summary>
+        internal static string IntegrationRuntimeNodeUpdateMessage {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeNodeUpdateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating integration runtime node {0}..
+        /// </summary>
+        internal static string IntegrationRuntimeNodeUpdating {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeNodeUpdating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Integration runtime &apos;{0}&apos; does not exist in the data factory &apos;{1}&apos;..
         /// </summary>
         internal static string IntegrationRuntimeNotFound {
@@ -462,11 +502,38 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update integration runtime &apos;{0}&apos;?.
+        /// </summary>
+        internal static string IntegrationRuntimeUpdateMessage {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeUpdateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating integration runtime &apos;{0}&apos; in data factory &apos;{1}&apos;..
         /// </summary>
         internal static string IntegrationRuntimeUpdating {
             get {
                 return ResourceManager.GetString("IntegrationRuntimeUpdating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to upgrade integration runtime &apos;{0}&apos;..
+        /// </summary>
+        internal static string IntegrationRuntimeUpgrade {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeUpgrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrading integration runtime &apos;{0}&apos;..
+        /// </summary>
+        internal static string IntegrationRuntimeUpgrading {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeUpgrading", resourceCulture);
             }
         }
         
@@ -554,6 +621,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        /// </summary>
+        internal static string LongRunningStatusError {
+            get {
+                return ResourceManager.GetString("LongRunningStatusError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
         /// </summary>
         internal static string NeedIntegrationRuntimeType {
@@ -624,6 +700,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         internal static string PipelineRemoving {
             get {
                 return ResourceManager.GetString("PipelineRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string PipelineRunStopConfirmation {
+            get {
+                return ResourceManager.GetString("PipelineRunStopConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping pipeline run &apos;{0}&apos; in data factory &apos;{1}&apos;.
+        /// </summary>
+        internal static string PipelineRunStopping {
+            get {
+                return ResourceManager.GetString("PipelineRunStopping", resourceCulture);
             }
         }
         

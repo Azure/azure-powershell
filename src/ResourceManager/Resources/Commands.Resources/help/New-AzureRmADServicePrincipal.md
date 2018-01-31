@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
@@ -21,7 +21,7 @@ New-AzureRmADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureCont
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureCont
 
 ### DisplayNameWithPasswordPlainParameterSet
 ```
-New-AzureRmADServicePrincipal -DisplayName <String> -Password <String> [-StartDate <DateTime>]
+New-AzureRmADServicePrincipal -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -81,7 +81,7 @@ In order to update the application specific parameters please use Set-AzureRmADA
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 New-AzureRmADServicePrincipal -ApplicationId 34a28ad2-dec4-4a41-bc3b-d22ddf90000e
 ```
@@ -92,9 +92,10 @@ DisplayName                    Type                           ObjectId
 -----------                    ----                           --------
 DemoApp                        ServicePrincipal               f95b6f5c-fc98-4af0-bb8a-34a14ca1dca1
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
-New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp
+$SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp -Password $SecureStringPassword
 ```
 
 Creates a new service principal.
@@ -114,7 +115,7 @@ If an application id is not specified, one will be generated.
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationWithoutCredentialParameterSet, ApplicationWithPasswordPlainParameterSet, ApplicationWithPasswordCredentialParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -130,7 +131,7 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -160,7 +161,7 @@ The friendly name of the service principal.
 ```yaml
 Type: String
 Parameter Sets: DisplayNameWithoutCredentialParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyPlainParameterSet, DisplayNameWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -177,7 +178,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -192,7 +193,7 @@ The list of certificate credentials associated with the service principal.
 ```yaml
 Type: PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -205,9 +206,9 @@ Accept wildcard characters: False
 The password to be associated with the service principal.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, DisplayNameWithPasswordPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -222,7 +223,7 @@ The list of password credentials associated with the service principal.
 ```yaml
 Type: PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -239,7 +240,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

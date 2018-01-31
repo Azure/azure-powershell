@@ -19,6 +19,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint? Priority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The location of the endpoint.")]
+        [LocationCompleter("Microsoft.Network/trafficmanagerprofiles")]
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 

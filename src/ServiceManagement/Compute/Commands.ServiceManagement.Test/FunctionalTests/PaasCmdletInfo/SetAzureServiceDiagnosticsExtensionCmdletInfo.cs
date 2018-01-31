@@ -14,14 +14,14 @@
 
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PaasCmdletInfo
 {
     public class SetAzureServiceDiagnosticsExtensionCmdletInfo : CmdletsInfo
     {
 
-        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, AzureStorageContext storageContext, string config, string[] roles, string slot)
+        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, IStorageContext storageContext, string config, string[] roles, string slot)
         {
             this.cmdletName = Utilities.SetAzureServiceDiagnosticsExtensionCmdletName;
             this.cmdletParams.Add(new CmdletParam("ServiceName", service));
@@ -37,13 +37,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, AzureStorageContext storageContext, X509Certificate2 cert, string config, string[] roles, string slot)
+        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, IStorageContext storageContext, X509Certificate2 cert, string config, string[] roles, string slot)
             : this(service, storageContext, config, roles, slot)
         {
             this.cmdletParams.Add(new CmdletParam("X509Certificate", cert));
         }
 
-        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, AzureStorageContext storageContext, string thumbprint, string algorithm, string config, string[] roles, string slot)
+        public SetAzureServiceDiagnosticsExtensionCmdletInfo(string service, IStorageContext storageContext, string thumbprint, string algorithm, string config, string[] roles, string slot)
             : this(service, storageContext, config, roles, slot)
         {
             this.cmdletParams.Add(new CmdletParam("CertificateThumbprint", thumbprint));

@@ -14,6 +14,7 @@
 
 using System.Net;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveAzureRmAutoscaleSettingParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }

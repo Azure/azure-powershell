@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 40674DC7-E35F-4C9F-8CE0-D1C6F524C9FB
@@ -77,7 +77,7 @@ Specifies the name of the resource group to which the Azure SQL server is assign
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,7 +92,7 @@ Specifies the name of the Azure SQL server for which this cmdlet gets the auditi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

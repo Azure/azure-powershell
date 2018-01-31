@@ -15,21 +15,26 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Rest.Serialization;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
     public class PSSelfHostedIntegrationRuntimeStatus : PSSelfHostedIntegrationRuntime
     {
         private readonly SelfHostedIntegrationRuntimeStatus _status;
+        private readonly JsonSerializerSettings _deserializerSettings;
 
         public PSSelfHostedIntegrationRuntimeStatus(
             IntegrationRuntimeResource integrationRuntime,
             SelfHostedIntegrationRuntimeStatus status,
             string resourceGroupName,
-            string factoryName)
+            string factoryName,
+            JsonSerializerSettings deserializerSettings)
             : base(integrationRuntime, resourceGroupName, factoryName)
         {
             _status = status;
+            _deserializerSettings = deserializerSettings;
         }
 
         public IList<SelfHostedIntegrationRuntimeNode> Nodes => _status.Nodes;
@@ -53,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 }
                 else
                 {
-                    return TimeSpan.Parse(_status.UpdateDelayOffset);
+                    return SafeJsonConvert.DeserializeObject<TimeSpan>(_status.UpdateDelayOffset, _deserializerSettings);
                 }
             }
         } 

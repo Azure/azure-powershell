@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Set, Constants.LinkedService, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
         SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
+    [Alias(VerbsCommon.New + "-" + Constants.LinkedService)]
     public class SetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

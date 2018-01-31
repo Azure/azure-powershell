@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -53,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
         public SwitchParameter Force { get; set; }
-
 
         [Parameter(
             Mandatory = false)]

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Set, Constants.Trigger, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
         SupportsShouldProcess = true), OutputType(typeof(PSTrigger))]
+    [Alias(VerbsCommon.New + "-" + Constants.Trigger)]
     public class SetAzureDataFactoryTriggerCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

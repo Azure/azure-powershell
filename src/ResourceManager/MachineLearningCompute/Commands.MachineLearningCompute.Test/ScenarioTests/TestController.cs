@@ -12,16 +12,18 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
 {
-    public class TestController 
+    public class TestController
     {
         private EnvironmentSetupHelper helper;
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
         public MachineLearningComputeManagementClient MachineLearningComputeManagementClient { get; private set; }
+        public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public static TestController NewInstance
         {
@@ -120,10 +122,12 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            NewResourceManagementClient = context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             MachineLearningComputeManagementClient = context.GetServiceClient<MachineLearningComputeManagementClient>();
 
             helper.SetupManagementClients(
                 this.ResourceManagementClient,
+                this.NewResourceManagementClient,
                 this.MachineLearningComputeManagementClient);
         }
     }

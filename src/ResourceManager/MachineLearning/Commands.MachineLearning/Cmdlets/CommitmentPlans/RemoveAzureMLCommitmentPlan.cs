@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using Management.MachineLearning.CommitmentPlans.Models;
     using Utilities;
     using Common.Authentication.Abstractions;
+    using ResourceManager.Common.ArgumentCompleters;
+
     [Cmdlet(VerbsCommon.Remove, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             ParameterSetName = RemoveAzureMLCommitmentPlan.RemoveByNameGroupParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

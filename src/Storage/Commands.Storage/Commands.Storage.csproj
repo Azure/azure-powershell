@@ -60,11 +60,11 @@
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WindowsAzure.Storage.8.5.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WindowsAzure.Storage.8.6.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.6.3\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.6.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.6.5\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,12 +120,14 @@
     <Compile Include="Common\BlobToFileSystemNameResolver.cs" />
     <Compile Include="Blob\Cmdlet\StartAzureStorageBlobCopy.cs" />
     <Compile Include="Blob\Cmdlet\StopAzureStorageBlobCopy.cs" />
+    <Compile Include="Common\Cmdlet\GetAzureStorageServiceProperties.cs" />
     <Compile Include="Common\Cmdlet\NewAzureStorageAccountSasToken.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageCORSRule.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageCORSRule.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageServiceLogging.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageServiceMetrics.cs" />
     <Compile Include="Common\Cmdlet\RemoveAzureStorageCORSRule.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageServiceProperties.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageServiceLogging.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageServiceMetrics.cs" />
     <Compile Include="Common\ConfirmTaskCompletionSource.cs" />
@@ -184,6 +186,7 @@
     <Compile Include="Model\Contract\StorageQueueManagement.cs" />
     <Compile Include="Model\Contract\StorageTableManagement.cs" />
     <Compile Include="Model\ResourceModel\PSCorsRule.cs" />
+    <Compile Include="Model\ResourceModel\PSSeriviceProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Contract\IStorageBlobManagement.cs" />
     <Compile Include="Model\Contract\StorageBlobManagement.cs" />

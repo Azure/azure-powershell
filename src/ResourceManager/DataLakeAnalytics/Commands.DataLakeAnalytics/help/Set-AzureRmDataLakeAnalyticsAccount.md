@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: 8B10E476-F283-4BDC-BFAD-A33F8EC38341
@@ -14,8 +14,8 @@ Modifies a Data Lake Analytics account.
 ## SYNTAX
 
 ```
-Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tags] <Hashtable>] [[-ResourceGroupName] <String>]
- [-MaxDegreeOfParallelism <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
+Set-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-Tag] <Hashtable>] [[-ResourceGroupName] <String>]
+ [-MaxAnalyticsUnits <Int32>] [-MaxJobCount <Int32>] [-QueryStoreRetention <Int32>] [-Tier <TierType>]
  [-FirewallState <FirewallState>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Optionally allow/block Azure originating IPs through the firewall.
 ```yaml
 Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -71,7 +71,7 @@ Optionally enable/disable existing firewall rules.
 ```yaml
 Type: FirewallState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -81,13 +81,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxDegreeOfParallelism
-The optional maximum supported degree of parallelism to update the account with.
+### -MaxAnalyticsUnits
+The optional maximum supported analytics units to update the account with.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: MaxDegreeOfParallelism
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ The optional maximum supported jobs running under the account at the same time t
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Specifies the Data Lake Analytics account name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,7 +132,7 @@ The optional number of days that job metadata is retained to set in the account.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +147,7 @@ Specifies the resource group name of the Data Lake Analytics account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -156,13 +156,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.
+### -Tag
+A string,string dictionary of tags associated with this account that should replace the current set of tags
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 1
@@ -177,7 +177,7 @@ The desired commitment tier for this account to use.
 ```yaml
 Type: TierType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Consumption, Commitment100AUHours, Commitment500AUHours, Commitment1000AUHours, Commitment5000AUHours, Commitment10000AUHours, Commitment50000AUHours, Commitment100000AUHours, Commitment500000AUHours
 
 Required: False

@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -Location parameter of a cmdlet with valid locations (as determined by the list of ResourceTypes given)
     /// </summary>
-    public class LocationCompleterAttribute : ArgumentCompleterAttribute
+    public class LocationCompleterAttribute : PSCompleterBaseAttribute
     {
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
+        private static string[] _resourceTypes;
+        private static int _timeout = 3;
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
         {
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                 {
                     IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                     var contextHash = HashContext(context);
+                    IDictionary<string, ICollection<string>> output;
                     if (!_resourceTypeLocationDictionary.ContainsKey(contextHash))
                     {
                         try
@@ -54,31 +57,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 instance.ClientFactory.GetCustomHandlers());
                             client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
-                            if (allProviders.Wait(TimeSpan.FromSeconds(3)))
+                            if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
                                 if (allProviders.Result != null)
                                 {
                                     _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                                    output = _resourceTypeLocationDictionary[contextHash];
                                 }
                                 else
                                 {
-                                    _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(new List<Provider>());
+                                    output = CreateLocationDictionary(new List<Provider>());
 #if DEBUG
-                                    throw new Exception("Result from client.Providers is null");
+                                    throw new InvalidOperationException("Result from client.Providers is null");
 #endif
                                 }
                             }
                             else
                             {
-                                _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+                                output = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
 #if DEBUG
-                                throw new Exception(Resources.TimeOutForProviderList);
+                                throw new InvalidOperationException(Resources.TimeOutForProviderList);
 #endif
                             }
                         }
                         catch (Exception ex)
                         {
-                            _resourceTypeLocationDictionary[contextHash] = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
+                            output = new ConcurrentDictionary<string, ICollection<string>>(StringComparer.OrdinalIgnoreCase);
                             if (ex == null) { }
 #if DEBUG
                             throw ex;
@@ -86,7 +90,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         }
                     }
 
-                    return _resourceTypeLocationDictionary[contextHash];
+                    else
+                    {
+                        output = _resourceTypeLocationDictionary[contextHash];
+                    }
+
+                    return output;
                 }
             }
         }
@@ -96,8 +105,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), LocationCompleter(new string[] { "Microsoft.Batch/operationss" })]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public LocationCompleterAttribute(params string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
+        public LocationCompleterAttribute(params string[] resourceTypes)
         {
+            _resourceTypes = resourceTypes;
+        }
+
+        public override string[] GetCompleterValues()
+        {
+            return FindLocations(_resourceTypes);
+        }
+
+        public static string[] FindLocations(string[] resourceTypes, int timeout)
+        {
+            _timeout = timeout;
+            return FindLocations(resourceTypes);
         }
 
         public static string[] FindLocations(string[] resourceTypes)
@@ -152,7 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 #endif
             for (int i = 0; i < distinctLocations.Length; i++)
             {
-                distinctLocations[i] = String.Format("\"{0}\"", distinctLocations[i]);
+                distinctLocations[i] = String.Format("\'{0}\'", distinctLocations[i]);
             }
             return distinctLocations;
         }

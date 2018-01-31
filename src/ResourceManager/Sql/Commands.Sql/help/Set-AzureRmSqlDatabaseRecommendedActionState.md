@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: BDBA3AA3-DCC6-4C83-84C8-EE6D93BFE1D3
@@ -70,7 +70,7 @@ Specifies the name of the advisor for which this recommended action belongs to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +85,7 @@ Specifies the name of the database for which this cmdlet sets the recommended ac
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +115,7 @@ Specifies the name of the recommended action for which state is being updated.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -130,7 +130,7 @@ Specifies the name of the resource group of the server that contains this databa
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,7 +145,7 @@ Specifies the name of the server the database is in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,7 +169,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: RecommendedActionState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Active, Pending, PendingRevert, RevertCancelled, Ignored, Resolved
 
 Required: True

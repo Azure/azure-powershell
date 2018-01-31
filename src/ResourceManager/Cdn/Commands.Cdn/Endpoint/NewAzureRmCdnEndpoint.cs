@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile.", ParameterSetName = FieldsParameterSet)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         public PSProfile CdnProfile { get; set; }
         
         [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
+        [LocationCompleter("Microsoft.Cdn/profiles/endpoints")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -92,7 +95,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
-        public Hashtable Tags { get; set; }
+        [Obsolete("New-AzureRmCdnEndpoint: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -120,6 +125,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         private void NewEndpoint()
         {
+#pragma warning disable CS0618
             var endpoint = CdnManagementClient.Endpoints.Create(
                 ResourceGroupName,
                 ProfileName,
@@ -138,8 +144,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                             (QueryStringCachingBehavior?)null,
                 OptimizationType = OptimizationType,
                 GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                Tags = Tags.ToDictionaryTags()
+                Tags = Tag.ToDictionaryTags()
             });
+#pragma warning restore CS0618
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());
