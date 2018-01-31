@@ -163,11 +163,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "DefaultParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "DefaultParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 

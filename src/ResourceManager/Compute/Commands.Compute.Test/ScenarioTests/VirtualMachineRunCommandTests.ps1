@@ -112,6 +112,8 @@ function Test-VirtualMachineSetRunCommand
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
+        $vms = Get-AzureRmVM -ResourceGroupName $rgname;
+        Assert-AreEqual $vms $null; 
     }
     finally
     {

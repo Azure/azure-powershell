@@ -36,8 +36,7 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
  [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
- [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>]
- [-IdentityType <ResourceIdentityType>] [-IdentityId <String[]>] [-AssignIdentity]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-AssignIdentity]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -171,7 +170,7 @@ The user identity references will be ARM resource ids in the form: '/subscriptio
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: 
 
 Required: False
@@ -194,7 +193,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: 
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 

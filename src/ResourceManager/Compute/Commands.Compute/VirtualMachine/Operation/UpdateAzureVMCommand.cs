@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -27,8 +27,36 @@ namespace Microsoft.Azure.Commands.Compute
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
+    public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
+        private const string IdParameterSet = "IdParameterSetName";
+        private const string AssignIdentityParameterSet = "AssignIdentityParameterSet";
+
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = AssignIdentityParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = IdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        public string Id { get; set; }
+
         [Alias("VMProfile")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -40,25 +68,44 @@ namespace Microsoft.Azure.Commands.Compute
         public Hashtable Tag { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = false)]
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            ValueFromPipelineByPropertyName = false)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = ResourceGroupNameParameterSet,
+            ValueFromPipelineByPropertyName = false)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            ValueFromPipelineByPropertyName = false)]
         public string[] IdentityId { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = AssignIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (this.ParameterSetName.Equals(IdParameterSet))
+            {
+                this.ResourceGroupName = GetResourceGroupNameFromId(this.Id);
+            }
 
             if (ShouldProcess(this.VM.Name, VerbsData.Update))
             {
