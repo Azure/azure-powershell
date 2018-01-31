@@ -433,7 +433,7 @@ function Test-AnalysisServicesServerGatewayAssociation
 	try
 	{  
 		# Creating server
-		$location = "East US 2"
+		$location = "West US"
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -464,22 +464,26 @@ function Test-AnalysisServicesServerGatewayAssociation
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 		
 		# List gateway status of the server.
-		$status = Get-AzureRmAnalysisServicesServerGatewayStatus -ResourceGroupName $resourceGroupName -Name $serverName
-		Assert-True {$status -like "A unified gateway is not associated with server*"}
+		$gateway = Get-AzureRmAnalysisServicesGateway -ResourceGroupName $resourceGroupName -Name $serverName
+		Assert-True {$gateway.status -like "*is not associated with any gateway*"}
 
 		# Associate a pre-created gateway for the server
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -GatewayName $env:ASAZURE_TEST_GATEWAY_NAME -PassThru
-		Assert-NotNull {$serverGetItem.GatewayDetails}
-		Assert-NotNull {$serverGetItem.GatewayDetails.ResourceId}
-		Assert-NotNull {$serverGetItem.GatewayDetails.ObjectId}
-		Assert-NotNull {$serverGetItem.GatewayDetails.DmtsClusterUri}
+		Assert-NotNull {$serverUpdated.GatewayDetails}
+		Assert-NotNull {$serverUpdated.GatewayDetails.ResourceId}
+		Assert-NotNull {$serverUpdated.GatewayDetails.ObjectId}
+		Assert-NotNull {$serverUpdated.GatewayDetails.DmtsClusterUri}
 
-		# List gateway status of the server.
-		$status = Get-AzureRmAnalysisServicesServerGatewayStatus -ResourceGroupName $resourceGroupName -Name $serverName
-		Assert-AreEqual "Live" $status
+		start-sleep -s 1
+
+		# Get gateway of the server.
+		$gateway = Get-AzureRmAnalysisServicesGateway -ResourceGroupName $resourceGroupName -Name $serverName
+		Assert-NotNull {$gateway.properties}
+		Assert-NotNull {$gateway.id}
+		Assert-AreEqual "Live" $gateway.status
 
 		# Dissociate the pre-created gateway for the server
-		$serverUpdated = Remove-AzureRmAnalysisServicesServerGateway -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DissociateGateway -PassThru
 		Assert-True {[string]::IsNullOrEmpty($serverGetItem.GatewayDetails.ResourceId)}
 		
 		# Delete Analysis Servicesserver

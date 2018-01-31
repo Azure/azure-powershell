@@ -45,22 +45,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 				throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
 			}
 
-			if (currentServer.GatewayDetails == null)
-			{
-				throw new InvalidOperationException(string.Format("Current Ananlysis Server {0} is not associated with any gateway.", Name));
-			}
+			GatewayInfo gatewayInfo = new GatewayInfo();
 
-			try
-            {
-				GatewayInfo gatewayInfo = AnalysisServicesClient.GetGatewayInfo(currentServer.GatewayDetails.GatewayResourceId);
-				gatewayInfo.properties.status = AnalysisServicesClient.GetGatewayStatus(ResourceGroupName, Name).ToString();
-                WriteObject(gatewayInfo);
-            }
-            catch(GatewayListStatusErrorException ex)
-            {
-                var errorMessage = ex.Body.Error.Message.ToString();
-                WriteObject(errorMessage);
-            }
+			if (currentServer.GatewayDetails == null || currentServer.GatewayDetails.GatewayResourceId == null)
+			{
+				gatewayInfo.status = string.Format("Current Ananlysis Server {0} is not associated with any gateway.", Name);
+				WriteObject(gatewayInfo);
+			}
+			else {
+				try
+				{
+					gatewayInfo = AnalysisServicesClient.GetGatewayInfo(currentServer.GatewayDetails.GatewayResourceId);
+					gatewayInfo.status = AnalysisServicesClient.GetGatewayStatus(ResourceGroupName, Name).Status.ToString();
+					WriteObject(gatewayInfo);
+				}
+				catch (GatewayListStatusErrorException ex)
+				{
+					gatewayInfo.status = ex.Body.Error.Message.ToString();
+					WriteObject(gatewayInfo);
+				}
+			}
         }
     }
 }

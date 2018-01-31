@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         public string name { get; set; }
         public string type { get; set; }
         public string location { get; set; }
+		public string status { get; set; }
     }
 
     public class GatewayProperties
