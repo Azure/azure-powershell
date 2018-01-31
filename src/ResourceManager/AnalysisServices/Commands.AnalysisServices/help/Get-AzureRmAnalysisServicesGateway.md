@@ -13,7 +13,7 @@ Gets the details of an Analysis Services server.
 ## SYNTAX
 
 ```
-Get-AzureRmAnalysisServicesServerGatewayStatus [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzureRmAnalysisServicesGateway [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The Get-AzureRmAnalysisServicesServer cmdlet gets the details of an Analysis Ser
 
 ### Example 1
 ```
-PS C:\>Get-AzureRmAnalysisServicesServerGatewayStatus -ResourceGroupName "ResourceGroupTest" -Name "testserver"
+PS C:\>Get-AzureRmAnalysisServicesGateway -ResourceGroupName "ResourceGroupTest" -Name "testserver"
 ```
 
 This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroup03.
@@ -86,7 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: Get-AzureAs
+Alias: Get-AzureAsGateway
 
 ## RELATED LINKS
 
