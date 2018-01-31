@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup
+Module Name: AzureRM.EventHub
+online version:
 schema: 2.0.0
 ---
 
@@ -18,9 +18,6 @@ New-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <Str
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
-The New-AzureRmEventHubConsumerGroup cmdlet creates a new consumer group for the specified Event Hub.
-
 ## EXAMPLES
 
 ### Example 1
@@ -33,7 +30,7 @@ Creates the consumer group \`MyConsumerGroupName\` in the Event Hub \`MyEventHub
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -48,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHub
-EventHub Name.
+EventHub Name
 
 ```yaml
 Type: String
@@ -63,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ConsumerGroup Name.
+ConsumerGroup Name
 
 ```yaml
 Type: String
@@ -78,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
@@ -93,12 +90,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+Resource Group Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -108,12 +105,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-User metadata for the consumer group.
+User Metadata for ConsumerGroup
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -132,7 +129,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,23 +145,25 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+
 
 ## NOTES
 
 ## RELATED LINKS
-
