@@ -94,13 +94,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return CmdletHelpers.CreateHostingEnvironmentProfile(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseResourceGroupName, aseName);
         }
 
-        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan)
+        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan, Site siteEnvelope =null)
         {
             var webSiteToUpdate = new Site()
             {
                 ServerFarmId = appServicePlan,
-                Location = location
+                Location = location,
             };
+
+            if (siteEnvelope!=null)
+            {
+                webSiteToUpdate = siteEnvelope;
+            }
 
             string qualifiedSiteName;
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
@@ -216,7 +221,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().GetSlot(resourceGroupName, webSiteName, slotName) :
                 WrappedWebsitesClient.WebApps().Get(resourceGroupName, webSiteName);
 
-            GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
+         GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
 
             return site;
         }
