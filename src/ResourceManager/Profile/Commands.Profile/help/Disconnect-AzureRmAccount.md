@@ -5,67 +5,67 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profi
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAccount
+# Disconnect-AzureRmAccount
 
 ## SYNOPSIS
-Remove all credentials and contexts associated with the given account.
+Disconnects a connected Azure account and removes all credentials and contexts associated with that account.
 
 ## SYNTAX
 
 ### ContextName (Default)
 ```
-Remove-AzureRmAccount [-ContextName <String>] [-Scope <ContextModificationScope>]
+Disconnect-AzureRmAccount [-ContextName <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserId
 ```
-Remove-AzureRmAccount [-Username] <String> [-Scope <ContextModificationScope>]
+Disconnect-AzureRmAccount [-Username] <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipal
 ```
-Remove-AzureRmAccount -ApplicationId <String> -TenantId <String> [-Scope <ContextModificationScope>]
+Disconnect-AzureRmAccount -ApplicationId <String> -TenantId <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzureRmAccount [-InputObject] <PSAzureRmAccount> [-Scope <ContextModificationScope>]
+Disconnect-AzureRmAccount [-InputObject] <PSAzureRmAccount> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContextObject
 ```
-Remove-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificationScope>]
+Disconnect-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove all credentials, and contexts (subscription and tenant information) associated with the given account.  After 
-executing this cmdlet, you will need to login again using Add-AzureRmAccount
+The Disconnect-AzureRmAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
+
+After executing this cmdlet, you will need to login again using Connect-AzureRmAccount.
 
 ## EXAMPLES
 
-### Log out the curent account
+### Logout of the current account
 ```
-PS C:\> Remove-AzureRmAccount
-```
-
-Logs out the account associated with the current context.
-
-### Log out the account associated with a particular context
-```
-PS C:\> Get-AzureRmContext "Work" | Remove-AzureRmAccount -Scope CurrentUser
+PS C:\> Disconnect-AzureRmAccount
 ```
 
-Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrentUser' scope, all credentials and 
-contexts will be permanently deleted.
+Logs out of the Azure account associated with the current context.
+
+### Logout of the account associated with a particular context
+```
+PS C:\> Get-AzureRmContext "Work" | Disconnect-AzureRmAccount -Scope CurrentUser
+```
+
+Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrentUser' scope, all credentials and contexts will be permanently deleted.
 
 ### Log out a particular user
 ```
-PS C:\> Remove-AzureRmAccount -Username 'user1@contoso.org'
+PS C:\> Disconnect-AzureRmAccount -Username 'user1@contoso.org'
 ```
 
 Logs out the 'user1@contoso.org' user - all credentials and all contexts associated with this user will be removed.
@@ -240,4 +240,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
