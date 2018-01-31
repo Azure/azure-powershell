@@ -22,7 +22,7 @@ namespace VersionController.Models
         public VersionMetadataHelper(VersionFileHelper fileHelper)
         {
             _fileHelper = fileHelper;
-            _logger = new AnalysisLogger(_fileHelper.DebugDirectory, _fileHelper.PackageDirectory);
+            _logger = new AnalysisLogger(_fileHelper.PackageDirectory, _fileHelper.ExceptionsDirectory);
         }
 
         /// <summary>

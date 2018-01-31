@@ -38,6 +38,8 @@ namespace VersionController.Models
 
         public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
 
+        public string ExceptionsDirectory => Path.Combine(PackageDirectory, @"Exceptions");
+
         public List<string> OutputDirectories => _outputDirectories;
 
         public List<string> ProjectDirectories => _projectDirectories;
