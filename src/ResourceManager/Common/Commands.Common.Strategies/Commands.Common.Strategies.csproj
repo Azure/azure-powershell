@@ -60,6 +60,7 @@
     <Compile Include="IResourceStrategy.cs" />
     <Compile Include="IShouldProcess.cs" />
     <Compile Include="ITaskProgress.cs" />
+    <Compile Include="Mutable.cs" />
     <Compile Include="ProgressMap.cs" />
     <Compile Include="TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
