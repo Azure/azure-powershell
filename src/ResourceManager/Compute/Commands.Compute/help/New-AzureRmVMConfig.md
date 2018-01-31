@@ -23,8 +23,8 @@ New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] 
 ### AssignIdentityParameterSet
 ```
 New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
- [[-LicenseType] <String>] [[-IdentityType] <ResourceIdentityType>] [-AssignIdentity] [-IdentityId <String[]>]
- [-Zone <String[]>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-LicenseType] <String>] [-AssignIdentity] [-Zone <String[]>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +100,7 @@ The user identity references will be ARM resource ids in the form: '/subscriptio
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: 
 
 Required: False
@@ -115,7 +115,7 @@ The identity of the virtual machine, if configured.
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: 
 Accepted values: SystemAssigned
 
