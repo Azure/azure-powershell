@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            string domainNameLabel,
+            Mutable<string> domainNameLabel,
             string allocationMethod)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -45,8 +47,24 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = domainNameLabel,                       
+                        DomainNameLabel = domainNameLabel.Value,                       
                     }
                 });
+
+        public static async Task FindDomainNameLabelAsync(
+            Mutable<string> domainNameLabel,
+            string name,
+            string location,
+            IClient client)
+        {
+            if (domainNameLabel.Value == null)
+            {
+                var networkClient = client.GetClient<NetworkManagementClient>();
+                do
+                {
+                    domainNameLabel.Value = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6)).ToLower();
+                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel.Value)).Available != true);
+            }
+        }
     }
 }
