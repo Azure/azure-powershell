@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Commands;
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -26,7 +27,7 @@ using System.Xml.Linq;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.Servicebus
+namespace Microsoft.Azure.Commands.ServiceBus
 {
     public class ServiceBusClient
     {
@@ -52,28 +53,28 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #region Namespace
-        public NamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
+        public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
             SBNamespace response = Client.Namespaces.Get(resourceGroupName, namespaceName);
-            return new NamespaceAttributes(response);
+            return new PSNamespaceAttributes(response);
         }
 
-        public IEnumerable<NamespaceAttributes> ListNamespaces(string resourceGroupName)
+        public IEnumerable<PSNamespaceAttributes> ListNamespaces(string resourceGroupName)
         {
             Rest.Azure.IPage<SBNamespace> response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resource));
+            IEnumerable<PSNamespaceAttributes> resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
             return resourceList;
         }
 
-        public IEnumerable<NamespaceAttributes> ListAllNamespaces()
+        public IEnumerable<PSNamespaceAttributes> ListAllNamespaces()
         {
             Rest.Azure.IPage<SBNamespace> response = Client.Namespaces.List();
-            var resourceList = response.Select(resource => new NamespaceAttributes(resource));
+            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
             return resourceList;
         }
 
 
-        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -91,11 +92,11 @@ namespace Microsoft.Azure.Commands.Servicebus
             }
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new NamespaceAttributes(response);
+            return new PSNamespaceAttributes(response);
         }
 
 
-        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
         {
 
             var parameter = new SBNamespace()
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Servicebus
             parameter.Sku = tempSku;
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new NamespaceAttributes(response);
+            return new PSNamespaceAttributes(response);
         }
 
         public void BeginDeleteNamespace(string resourceGroupName, string namespaceName)
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         }        
 
-        private static void RetryAfter(NamespaceLongRunningOperation longrunningResponse, int longRunningOperationInitialTimeout)
+        private static void RetryAfter(PSNamespaceLongRunningOperation longrunningResponse, int longRunningOperationInitialTimeout)
         {
             if (longRunningOperationInitialTimeout >= 0)
             {
@@ -146,34 +147,34 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         #region NameSpace AuthorizationRules
 
-        public SharedAccessAuthorizationRuleAttributes GetNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
+        public PSSharedAccessAuthorizationRuleAttributes GetNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
             SBAuthorizationRule response = Client.Namespaces.GetAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
 
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListNamespaceAuthorizationRules(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListNamespaceAuthorizationRules(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<SBAuthorizationRule> response = Client.Namespaces.ListAuthorizationRules(resourceGroupName, namespaceName);
-            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            IEnumerable<PSSharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
 
             return resourceList;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameters)
+        public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new SBAuthorizationRule()
             {
                 Rights = parameters.Rights.ToList()
             };
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1);
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
         public bool DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
-            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(PSSharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }
@@ -182,13 +183,13 @@ namespace Microsoft.Azure.Commands.Servicebus
             return true;
         }
 
-        public ListKeysAttributes GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
+        public PSListKeysAttributes GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
         {
             var listKeys = Client.Namespaces.ListKeys(resourceGroupName, namespaceName, authRuleName);
-            return new ListKeysAttributes(listKeys);
+            return new PSListKeysAttributes(listKeys);
         }
 
-        public ListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
         {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
@@ -196,7 +197,7 @@ namespace Microsoft.Azure.Commands.Servicebus
             else
                 regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
-            return new ListKeysAttributes(regenerateKeyslistKeys);
+            return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
 
         #endregion 
@@ -204,7 +205,7 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         #region Queues 
 
-        public QueueAttributes CreateUpdateQueue(string resourceGroupName, string namespaceName, string queueName, QueueAttributes queue)
+        public PSQueueAttributes CreateUpdateQueue(string resourceGroupName, string namespaceName, string queueName, PSQueueAttributes queue)
         {
             SBQueue parameters = new SBQueue();
 
@@ -234,16 +235,16 @@ namespace Microsoft.Azure.Commands.Servicebus
                 parameters.Status = queue.Status;
         
             SBQueue response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
-            return new QueueAttributes(response);
+            return new PSQueueAttributes(response);
         }
 
-        public QueueAttributes GetQueue(string resourceGroupName, string namespaceName, string queueName)
+        public PSQueueAttributes GetQueue(string resourceGroupName, string namespaceName, string queueName)
         {
             SBQueue response = Client.Queues.Get(resourceGroupName, namespaceName, queueName);
-            return new QueueAttributes(response);
+            return new PSQueueAttributes(response);
         }
 
-        public QueueAttributes UpdateQueue(string resourceGroupName, string namespaceName, string queueName, string location, bool enableExpress, bool isAnonymousAccessible)
+        public PSQueueAttributes UpdateQueue(string resourceGroupName, string namespaceName, string queueName, string location, bool enableExpress, bool isAnonymousAccessible)
         {
             SBQueue parameters = new SBQueue(){
                 
@@ -252,13 +253,13 @@ namespace Microsoft.Azure.Commands.Servicebus
             };
 
             var response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
-            return new QueueAttributes(response);
+            return new PSQueueAttributes(response);
         }
 
-        public IEnumerable<QueueAttributes> ListQueues(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSQueueAttributes> ListQueues(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<SBQueue> response = Client.Queues.ListByNamespace(resourceGroupName, namespaceName);
-            IEnumerable<QueueAttributes> resourceList = response.Select(resource => new QueueAttributes(resource));
+            IEnumerable<PSQueueAttributes> resourceList = response.Select(resource => new PSQueueAttributes(resource));
             return resourceList;
         }
 
@@ -268,34 +269,34 @@ namespace Microsoft.Azure.Commands.Servicebus
             return true;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameters)
+        public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new SBAuthorizationRule()
             {
                 Rights = parameters.Rights.ToList()
             };
             var response = Client.Queues.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, queueName, authorizationRuleName, parameter1);
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public SharedAccessAuthorizationRuleAttributes GetServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName, string authRuleName)
+        public PSSharedAccessAuthorizationRuleAttributes GetServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName, string authRuleName)
         {
             SBAuthorizationRule response = Client.Queues.GetAuthorizationRule(resourceGroupName, namespaceName, queueName, authRuleName);
 
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName)
+        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName)
         {
             Rest.Azure.IPage<SBAuthorizationRule> response = Client.Queues.ListAuthorizationRules(resourceGroupName, namespaceName,queueName);
-            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            IEnumerable<PSSharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
 
             return resourceList;
         }
 
         public bool DeleteServiceBusQueueAuthorizationRules(string resourceGroupName, string namespaceName, string queueName, string authRuleName)
         {
-            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(PSSharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }
@@ -304,13 +305,13 @@ namespace Microsoft.Azure.Commands.Servicebus
             return true;
         }
 
-        public ListKeysAttributes GetQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName)
+        public PSListKeysAttributes GetQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName)
         {
             var listKeys = Client.Queues.ListKeys(resourceGroupName, namespaceName, queueName, authRuleName);
-            return new ListKeysAttributes(listKeys);
+            return new PSListKeysAttributes(listKeys);
         }
 
-        public ListKeysAttributes NewQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes NewQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName, string regenerateKeys)
         {
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
@@ -318,7 +319,7 @@ namespace Microsoft.Azure.Commands.Servicebus
             else
                 regenerateKeyslistKeys = Client.Queues.RegenerateKeys(resourceGroupName, namespaceName, queueName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
-            return new ListKeysAttributes(regenerateKeyslistKeys);
+            return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
 
         #endregion Queues
@@ -327,7 +328,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         #region Topics 
 
 
-        public TopicAttributes CreateUpdateTopic(string resourceGroupName, string namespaceName, string topicName, TopicAttributes topic)
+        public PSTopicAttributes CreateUpdateTopic(string resourceGroupName, string namespaceName, string topicName, PSTopicAttributes topic)
         {
             var parameters = new SBTopic();
 
@@ -353,16 +354,16 @@ namespace Microsoft.Azure.Commands.Servicebus
                 parameters.SupportOrdering = topic.SupportOrdering;
 
             var response = Client.Topics.CreateOrUpdate(resourceGroupName, namespaceName, topicName, parameters);
-            return new TopicAttributes(response);
+            return new PSTopicAttributes(response);
         }
 
-        public TopicAttributes GetTopic(string resourceGroupName, string namespaceName, string topicName)
+        public PSTopicAttributes GetTopic(string resourceGroupName, string namespaceName, string topicName)
         {
             SBTopic response = Client.Topics.Get(resourceGroupName, namespaceName, topicName);
-            return new TopicAttributes(response);
+            return new PSTopicAttributes(response);
         }
 
-        public TopicAttributes UpdateTopic(string resourceGroupName, string namespaceName, string topicName, string location, bool enableExpress, bool isAnonymousAccessible)
+        public PSTopicAttributes UpdateTopic(string resourceGroupName, string namespaceName, string topicName, string location, bool enableExpress, bool isAnonymousAccessible)
         {
             SBTopic parameters = new SBTopic()
             {
@@ -370,13 +371,13 @@ namespace Microsoft.Azure.Commands.Servicebus
             };
 
             var response = Client.Topics.CreateOrUpdate(resourceGroupName, namespaceName, topicName, parameters);
-            return new TopicAttributes(response);
+            return new PSTopicAttributes(response);
         }
 
-        public IEnumerable<TopicAttributes> ListTopics(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSTopicAttributes> ListTopics(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<SBTopic> response = Client.Topics.ListByNamespace(resourceGroupName, namespaceName);
-            IEnumerable<TopicAttributes> resourceList = response.Select(resource => new TopicAttributes(resource));
+            IEnumerable<PSTopicAttributes> resourceList = response.Select(resource => new PSTopicAttributes(resource));
             return resourceList;
         }
 
@@ -386,34 +387,34 @@ namespace Microsoft.Azure.Commands.Servicebus
             return true;
         }
 
-        public SharedAccessAuthorizationRuleAttributes CreateOrUpdateServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameters)
+        public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
         {
             var parameter1 = new SBAuthorizationRule()
             {
                 Rights = parameters.Rights.ToList()
             };
             var response = Client.Topics.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, topicName, authorizationRuleName, parameter1);
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public SharedAccessAuthorizationRuleAttributes GetServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName, string authRuleName)
+        public PSSharedAccessAuthorizationRuleAttributes GetServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName, string authRuleName)
         {
             SBAuthorizationRule response = Client.Topics.GetAuthorizationRule(resourceGroupName, namespaceName, topicName, authRuleName);
 
-            return new SharedAccessAuthorizationRuleAttributes(response);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
         }
 
-        public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName)
+        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListServiceBusTopicAuthorizationRules(string resourceGroupName, string namespaceName, string topicName)
         {
             Rest.Azure.IPage<SBAuthorizationRule> response = Client.Topics.ListAuthorizationRules(resourceGroupName, namespaceName, topicName);
-            IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
+            IEnumerable<PSSharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
 
             return resourceList;
         }
 
         public bool DeleteServiceBusTopicAuthorizationRule(string resourceGroupName, string namespaceName, string topicName, string authRuleName)
         {
-            if (string.Equals(ListKeysAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(PSListKeysAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }
@@ -422,13 +423,13 @@ namespace Microsoft.Azure.Commands.Servicebus
             return true;
         }
 
-        public ListKeysAttributes GetTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName)
+        public PSListKeysAttributes GetTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName)
         {
             var listKeys = Client.Topics.ListKeys(resourceGroupName, namespaceName, topicName, authRuleName);
-            return new ListKeysAttributes(listKeys);
+            return new PSListKeysAttributes(listKeys);
         }
 
-        public ListKeysAttributes NewTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes NewTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName, string regenerateKeys)
         {           
             AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
@@ -436,14 +437,14 @@ namespace Microsoft.Azure.Commands.Servicebus
             else
                 regenerateKeyslistKeys = Client.Topics.RegenerateKeys(resourceGroupName, namespaceName, topicName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
-            return new ListKeysAttributes(regenerateKeyslistKeys);
+            return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
 
         #endregion Topics
 
         #region Subscription
 
-        public SubscriptionAttributes CreateUpdateSubscription(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, SubscriptionAttributes subscription)
+        public PSSubscriptionAttributes CreateUpdateSubscription(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, PSSubscriptionAttributes subscription)
         {
             var parameters = new SBSubscription();
 
@@ -466,19 +467,19 @@ namespace Microsoft.Azure.Commands.Servicebus
             
 
             var response = Client.Subscriptions.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, parameters);
-            return new SubscriptionAttributes(response);
+            return new PSSubscriptionAttributes(response);
         }
 
-        public SubscriptionAttributes GetSubscription(string resourceGroupName, string namespaceName, string topicName, string subscriptionName)
+        public PSSubscriptionAttributes GetSubscription(string resourceGroupName, string namespaceName, string topicName, string subscriptionName)
         {
             SBSubscription response = Client.Subscriptions.Get(resourceGroupName, namespaceName, topicName, subscriptionName);
-            return new SubscriptionAttributes(response);
+            return new PSSubscriptionAttributes(response);
         }
         
-        public IEnumerable<SubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName)
+        public IEnumerable<PSSubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName)
         {
             Rest.Azure.IPage<SBSubscription> response = Client.Subscriptions.ListByTopic(resourceGroupName, namespaceName,topicName);
-            IEnumerable<SubscriptionAttributes> resourceList = response.Select(resource => new SubscriptionAttributes(resource));
+            IEnumerable<PSSubscriptionAttributes> resourceList = response.Select(resource => new PSSubscriptionAttributes(resource));
             return resourceList;
         }
 
@@ -489,12 +490,10 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #endregion Subscription
-
-
-
+        
         #region Rules
 
-        public RulesAttributes CreateUpdateRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, RulesAttributes ruleAttributes)
+        public PSRulesAttributes CreateUpdateRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, PSRulesAttributes ruleAttributes)
         {
             var parameters = new Rule()
             {
@@ -516,19 +515,19 @@ namespace Microsoft.Azure.Commands.Servicebus
             };
 
             var response = Client.Rules.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, ruleName, parameters);
-            return new RulesAttributes(response);
+            return new PSRulesAttributes(response);
         }
 
-        public RulesAttributes GetRule(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName)
+        public PSRulesAttributes GetRule(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName)
         {
             Rule response = Client.Rules.Get(resourceGroupName, namespaceName, topicName, subscriptionName, ruleName);
-            return new RulesAttributes(response);
+            return new PSRulesAttributes(response);
         }
 
-        public IEnumerable<RulesAttributes> ListRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName)
+        public IEnumerable<PSRulesAttributes> ListRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName)
         {
             Rest.Azure.IPage<Rule> response = Client.Rules.ListBySubscriptions(resourceGroupName, namespaceName, topicName, subscriptionName);
-            IEnumerable<RulesAttributes> resourceList = response.Select(resource => new RulesAttributes(resource));
+            IEnumerable<PSRulesAttributes> resourceList = response.Select(resource => new PSRulesAttributes(resource));
             return resourceList;
         }
 
@@ -540,6 +539,71 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #endregion Rules
+
+        #region DRConfiguration
+        public PSServiceBusDRConfigurationAttributes GetServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
+            return new PSServiceBusDRConfigurationAttributes(response);
+        }
+
+        public IEnumerable<PSServiceBusDRConfigurationAttributes> ListAllServiceBusDRConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new PSServiceBusDRConfigurationAttributes(resource));
+            return resourceList;
+        }
+
+        public PSServiceBusDRConfigurationAttributes CreateServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias, PSServiceBusDRConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.ServiceBus.Models.ArmDisasterRecovery();
+
+            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
+                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
+            return new PSServiceBusDRConfigurationAttributes(response);
+        }
+
+        public bool DeleteServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            return true;
+        }
+
+        public void SetServiceBusDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
+            Thread.Sleep(TimeSpan.FromSeconds(5));            
+        }
+
+        public void SetServiceBusDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
+        {
+            Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
+        }
+
+        public PSListKeysAttributes GetAliasListKeys(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var listKeys = Client.DisasterRecoveryConfigs.ListKeys(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new PSListKeysAttributes(listKeys);
+        }
+
+        public PSSharedAccessAuthorizationRuleAttributes GetAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
+        {
+            var response = Client.DisasterRecoveryConfigs.GetAuthorizationRule(resourceGroupName, namespaceName, aliasName, authRuleName);
+            return new PSSharedAccessAuthorizationRuleAttributes(response);
+        }
+
+        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.ListAuthorizationRules(resourceGroupName, namespaceName, aliasName);
+            var resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
+            return resourceList;
+        }
+
+
+        #endregion
 
         public static string GenerateRandomKey()
         {
@@ -554,17 +618,23 @@ namespace Microsoft.Azure.Commands.Servicebus
 
 
         #region Operations
-        public IEnumerable<OperationAttributes> GetOperations()
+        public IEnumerable<PSOperationAttributes> GetOperations()
         {
             var response = Client.Operations.List();
-            var resourceList = response.Select(resource => new OperationAttributes(resource));
+            var resourceList = response.Select(resource => new PSOperationAttributes(resource));
             return resourceList;
         }
 
-        public CheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
+        public PSCheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
         {
             var response = Client.Namespaces.CheckNameAvailabilityMethod(new CheckNameAvailability(namespaceName));
-            return new CheckNameAvailabilityResultAttributes(response);
+            return new PSCheckNameAvailabilityResultAttributes(response);
+        }
+
+        public PSCheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
+        {
+            var response = Client.DisasterRecoveryConfigs.CheckNameAvailabilityMethod(resourceGroup, namespaceName, new CheckNameAvailability(aliasName));
+            return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
         #endregion

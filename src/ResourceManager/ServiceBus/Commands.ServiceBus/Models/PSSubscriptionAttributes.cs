@@ -20,12 +20,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class SubscriptionAttributes
+    public class PSSubscriptionAttributes
     {
-        public SubscriptionAttributes()
+        public PSSubscriptionAttributes()
         { }
 
-        public SubscriptionAttributes(SBSubscription subscriptionResource)
+        public PSSubscriptionAttributes(SBSubscription subscriptionResource)
         {
             if (subscriptionResource != null)
             {                
@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Status = subscriptionResource.Status;
                 UpdatedAt = subscriptionResource.UpdatedAt;
                 Name = subscriptionResource.Name;
+                ForwardTo = subscriptionResource.ForwardTo;
+                ForwardDeadLetteredMessagesTo = subscriptionResource.ForwardDeadLetteredMessagesTo;
             }
         }
 
@@ -123,6 +125,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// The exact time the message has been updated.
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }        
+        public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or sets queue/Topic name to forward the messages
+        /// </summary>
+        public string ForwardTo { get; set; }
+
+        /// <summary>
+        /// Gets or sets queue/Topic name to forward the Dead Letter message
+        /// </summary>
+        public string ForwardDeadLetteredMessagesTo { get; set; }
+
     }
 }
