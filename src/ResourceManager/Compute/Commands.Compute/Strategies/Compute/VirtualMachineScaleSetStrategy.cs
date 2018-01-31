@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
     {
         public static ResourceStrategy<VirtualMachineScaleSet> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine scale set",
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachineScaleSets,
                 getAsync: (o, p) => o.GetAsync(
@@ -104,12 +103,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     var ipConfig = new VirtualMachineScaleSetIPConfiguration
                     {
                         Name = name,
-                        LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>(
-                            new[] {
-                                new Microsoft.Azure.Management.Compute.Models.SubResource(
-                                    id: backendAdressPool.GetId(subscriptionId).IdToString())
-                            }),
-                        Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
+                        LoadBalancerBackendAddressPools = new []
+                        {
+                            new Azure.Management.Compute.Models.SubResource(
+                                id: backendAdressPool.GetIdStr(subscriptionId))
+                        },
+                        Subnet = new ApiEntityReference { Id = subnet.GetIdStr(subscriptionId) }
                     };
 
 
@@ -120,8 +119,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             new VirtualMachineScaleSetNetworkConfiguration
                             {
                                 Name = name,
-                                IpConfigurations = new List<VirtualMachineScaleSetIPConfiguration>(
-                                                new [] { ipConfig }),
+                                IpConfigurations = new [] { ipConfig },
                                 Primary = true
                             }
                         }

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         var frontEndConfig = CreateFrontendIpConfig(
                                 froontendPoolName: name,
                                 subscriptionId: subscriptionId,
-                                subnetId: subnet.GetId(subscriptionId).IdToString(),
-                                publicIpAddressId: publicIPAddress.GetId(subscriptionId).IdToString(),
+                                subnetId: subnet.GetIdStr(subscriptionId),
+                                publicIpAddressId: publicIPAddress.GetIdStr(subscriptionId),
                                 privateIpAddress: null,
                                 zones: zones);
 
