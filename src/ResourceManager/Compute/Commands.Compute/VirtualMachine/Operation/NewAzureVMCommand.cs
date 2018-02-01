@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Compute
             DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            bool isWindows;
+            var isWindows = new Mutable<bool>();
             Commands.Common.Strategies.Compute.Image image = null;
             if (ImageName.Contains(':'))
             {
@@ -262,12 +262,12 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
                     "eastus", image.publisher, image.offer, image.sku, image.version);
-                isWindows = imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows;
+                isWindows.Value = imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows;
             }
             else if (!string.IsNullOrEmpty(DiskFile))
             {
                 // disk file parameter set requires the OS type input
-                isWindows = !Linux;
+                isWindows.Value = !Linux;
             }
             else
             {
@@ -284,10 +284,10 @@ namespace Microsoft.Azure.Commands.Compute
                         }))
                     .FirstOrDefault();
                 image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
+                isWindows.Value = osTypeAndImage.OsType == "Windows";
             }
             
-            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
+            var openPorts = Mutable.Create(OpenPorts ?? (isWindows.Value ? new[] { 3389, 5985 } : new[] { 22 }));
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Compute
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
-                openPorts: OpenPorts);
+                openPorts: openPorts);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
             ResourceConfig<VirtualMachine> virtualMachine = null;
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(isWindows
+                asyncCmdlet.WriteVerbose(isWindows.Value
                     ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
                     : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
                 asyncCmdlet.WriteObject(psResult);
