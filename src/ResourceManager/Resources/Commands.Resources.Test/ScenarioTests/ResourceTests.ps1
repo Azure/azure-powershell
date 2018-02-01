@@ -480,7 +480,7 @@ function Test-GetResourceWithCollection
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
+	$rglocation = "East US"
 	$apiversion = "2015-08-01"
 
 	# Test
