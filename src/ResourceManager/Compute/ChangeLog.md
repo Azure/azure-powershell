@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 
 ## Version 4.2.0
