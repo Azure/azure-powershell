@@ -4,6 +4,10 @@
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
 
+Take a test run now from Azure Cloud Shell! 
+
+[![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com/powershell) 
+
 * For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://docs.microsoft.com/en-us/azure/).
 * For comprehensive documentation on the developer cmdlets see the [overview of Azure PowerShell](https://aka.ms/azpsdocs).
 * For suggesting improvements, join our improvement discussion ([Issue #3692](https://github.com/Azure/azure-powershell/issues/3692)).
@@ -17,7 +21,7 @@ Below is a table containing the various Azure PowerShell rollup modules found in
 | Rollup Module for ARM Cmdlets                                   | `AzureRM`         | [![AzureRM](https://img.shields.io/powershellgallery/v/AzureRM.svg?style=flat-square&label=AzureRM)](https://www.powershellgallery.com/packages/AzureRM/) |
 | Rollup Module for .NET Core Cmdlets                             | `AzureRM.Netcore` | [![AzureRM.Netcore](https://img.shields.io/powershellgallery/v/AzureRM.Netcore.svg?style=flat-square&label=AzureRM.Netcore)](https://www.powershellgallery.com/packages/AzureRM.Netcore/) |
 | Rollup Module for Administrative Modules in Azure Stack         | `AzureStack`      | [![AzureStack](https://img.shields.io/powershellgallery/v/AzureStack.svg?style=flat-square&label=AzureStack)](https://www.powershellgallery.com/packages/AzureStack/) |
-| Rolledup Module for Service Management Cmdlets                  | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
+| Rollup Module for Service Management Cmdlets                  | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
 
 ## Features
 
@@ -128,10 +132,10 @@ If you use both mechanisms on the same subscription, Microsoft Azure Active Dire
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # Non-interactive login - use service principals
-Add-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $pscredential -TenantId $tenantid
+Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $pscredential -TenantId $tenantid
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
@@ -140,7 +144,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
 ### Microsoft Azure China
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureChinaCloud
+Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
@@ -149,7 +153,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
 ### Microsoft Azure US Government
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureUSGovernment
+Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
@@ -158,7 +162,7 @@ New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
 ### Microsoft Azure Germany
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName AzureGermanCloud
+Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 # Use the cmdlets to manage your services/applications
 New-AzureRmResourceGroup -Name myresourceGroup -Location "Germany Central"

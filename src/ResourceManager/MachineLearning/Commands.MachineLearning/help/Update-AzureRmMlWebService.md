@@ -36,10 +36,6 @@ Pass only the properties that you want modified.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Selective update arguments  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Update-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Description "new update to description" -Keys @{Primary='changed primary key'} -Diagnostics @{Level='All'}
 ```
@@ -47,10 +43,6 @@ Update-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebserv
 Here, we change the description, primary access key and enable the diagnostics collection for all traces during runtime for the web service.
 
 ### --------------------------  Example 2: Update based on a web service instance  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 $updates = @{ Properties = @{ Title="New Title"; RealtimeConfiguration = @{ MaxConcurrentCalls=25 }}}
 

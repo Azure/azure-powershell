@@ -24,28 +24,16 @@ Depending on the paramenters passed, the cmdlet returns the a specific commitmen
 ## EXAMPLES
 
 ### --------------------------  Example 1: Get a specific commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ### --------------------------  Example 2: Get all commitment plan resources in current subscription  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentPlan
 ```
 
 ### --------------------------  Example 3: Get all commitment plans in the current subscription and given resource group  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 ```

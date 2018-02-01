@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: FDA33633-EB2E-4095-8498-DF8910F1D434
@@ -14,7 +14,7 @@ Removes a route table.
 ## SYNTAX
 
 ```
-Remove-AzureRmRouteTable -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
+Remove-AzureRmRouteTable -ResourceGroupName <String> -Name <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,6 +35,21 @@ This command removes the route table named RouteTable01 in the resource group na
 The cmdlet prompts you for confirmation before it removes the table.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

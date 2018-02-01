@@ -13,18 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System.ServiceModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for communication exception util
     /// </summary>
-    [TestClass]
     public class CommunicationExceptionUtilTest : StorageTestBase
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsNotFoundExceptionTest()
         {
             string message = "CommunicationExceptionUtilTest";

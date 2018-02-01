@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+* Update the Auditing commands parameters description
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob parameter to long running cmdlets
+* Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
 * Fixed issue https://github.com/Azure/azure-powershell/issues/4974

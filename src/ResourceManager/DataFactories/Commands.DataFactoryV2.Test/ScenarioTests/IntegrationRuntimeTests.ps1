@@ -112,6 +112,7 @@ function Test-SsisAzure-IntegrationRuntime
             -CatalogAdminCredential $mycreds `
             -CatalogPricingTier 'S1' `
             -MaxParallelExecutionsPerNode 1 `
+            -LicenseType LicenseIncluded `
             -Force
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

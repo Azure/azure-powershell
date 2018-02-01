@@ -15,7 +15,7 @@ Switches a secondary database to be primary in order to initiate failover.
 
 ### NoOptionsSet (Default)
 ```
-Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String>
+Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-AsJob]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupNa
 ### ByFailoverParams
 ```
 Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-Failover]
- [-AllowDataLoss] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-AllowDataLoss] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +49,21 @@ Indicates that this failover operation permits data loss.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByFailoverParams
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -64,7 +78,7 @@ Specifies the name of the Azure SQL Database Secondary.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -94,7 +108,7 @@ Indicates that this operation is a failover.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByFailoverParams
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,7 +123,7 @@ Specifies the name of the resource group to which the partner Azure SQL Database
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +138,7 @@ Specifies the name of the resource group to which the Azure SQL Database Seconda
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -139,7 +153,7 @@ Specifies the name of the SQL Server that hosts the Azure SQL Database Secondary
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

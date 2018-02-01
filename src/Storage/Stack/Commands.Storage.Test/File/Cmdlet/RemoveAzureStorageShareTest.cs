@@ -15,17 +15,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class RemoveAzureStorageShareTest : StorageFileTestBase<RemoveAzureStorageShare>
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveShareUsingShareNameTest()
         {
             this.CmdletInstance.RunCmdlet(
@@ -38,7 +39,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 .AssertSingleObject(x => x.Name == "share");
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveFileUsingShareObjectTest()
         {
             this.CmdletInstance.RunCmdlet(

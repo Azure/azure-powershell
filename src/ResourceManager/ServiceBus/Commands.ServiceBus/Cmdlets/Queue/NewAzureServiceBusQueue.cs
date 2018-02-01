@@ -23,129 +23,98 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <summary>
     /// 'New-AzureRmServiceBusQueue' Cmdlet creates a new Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(QueueAttributes))]
+    [Cmdlet(VerbsCommon.New, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
     public class NewAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EnablePartitioning")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EnablePartitioning")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? EnablePartitioning { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Lock Duration")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Lock Duration")]
         
         public string LockDuration { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
         [ValidateNotNullOrEmpty]
         public string AutoDeleteOnIdle { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
         [ValidateNotNullOrEmpty]
         public string DefaultMessageTimeToLive { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Duplicate Detection History Time Window - TimeSpan, that defines the duration of the duplicate detection history. The default value is 10 minutes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Duplicate Detection History Time Window - TimeSpan, that defines the duration of the duplicate detection history. The default value is 10 minutes.")]
         [ValidateNotNullOrEmpty]
         public string DuplicateDetectionHistoryTimeWindow { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Dead Lettering On Message Expiration")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dead Lettering On Message Expiration")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? DeadLetteringOnMessageExpiration { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EnableExpress - a value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EnableExpress - a value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? EnableExpress { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "MaxDeliveryCount - the maximum delivery count. A message is automatically deadlettered after this number of deliveries.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "MaxDeliveryCount - the maximum delivery count. A message is automatically deadlettered after this number of deliveries.")]
         [ValidateNotNullOrEmpty]
         public int? MaxDeliveryCount { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.")]
         [ValidateNotNullOrEmpty]
         public long? MaxSizeInMegabytes { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "MessageCount - the number of messages in the queue.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "MessageCount - the number of messages in the queue")]
         [ValidateNotNullOrEmpty]
         public long? MessageCount { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "RequiresDuplicateDetection - a value that indicates whether the queue supports the concept of session")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "RequiresDuplicateDetection - a value that indicates whether the queue supports the concept of session")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? RequiresDuplicateDetection { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "RequiresSession - the value indicating if this queue requires duplicate detection.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "RequiresSession - the value indicating if this queue requires duplicate detection")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? RequiresSession { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "SizeInBytes - the size of the queue in bytes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "SizeInBytes - the size of the queue in bytes")]
         [ValidateNotNullOrEmpty]
         public long? SizeInBytes { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the messages")]
+        [ValidateNotNullOrEmpty]        
+        public string ForwardTo { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the Dead Letter message")]
+        [ValidateNotNullOrEmpty]
+        public string ForwardDeadLetteredMessagesTo { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            QueueAttributes queueAttributes = new QueueAttributes();
+            PSQueueAttributes queueAttributes = new PSQueueAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+            PSNamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
             
             queueAttributes.Name = Name;
+
             queueAttributes.EnablePartitioning = EnablePartitioning;
 
             if (LockDuration != null)
@@ -179,7 +148,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 queueAttributes.RequiresSession = RequiresSession;
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;          
+                queueAttributes.SizeInBytes = SizeInBytes;
+
+            if (ForwardTo != null)
+                queueAttributes.ForwardTo = ForwardTo;
+
+            if (ForwardDeadLetteredMessagesTo != null)
+                queueAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo;
+
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {
