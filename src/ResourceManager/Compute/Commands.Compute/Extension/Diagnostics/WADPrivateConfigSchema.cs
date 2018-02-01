@@ -28,6 +28,8 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
         
         private EventHub eventHubField;
         
+        private AzureMonitorAccount azureMonitorAccountField;
+        
         private SecondaryStorageAccounts secondaryStorageAccountsField;
         
         private SecondaryEventHubs secondaryEventHubsField;
@@ -49,6 +51,16 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
             }
             set {
                 this.eventHubField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AzureMonitorAccount AzureMonitorAccount {
+            get {
+                return this.azureMonitorAccountField;
+            }
+            set {
+                this.azureMonitorAccountField = value;
             }
         }
         
@@ -92,6 +104,7 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
         public StorageAccount() {
             this.keyField = "";
             this.endpointField = "https://core.windows.net";
+            this.sasTokenField = "";
         }
         
         /// <remarks/>
@@ -128,16 +141,15 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
                 this.endpointField = value;
             }
         }
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string sasToken
-        {
-            get
-            {
+        [System.ComponentModel.DefaultValueAttribute("")]
+        public string sasToken {
+            get {
                 return this.sasTokenField;
             }
-            set
-            {
+            set {
                 this.sasTokenField = value;
             }
         }
@@ -231,6 +243,60 @@ namespace Microsoft.Cis.Monitoring.Wad.PrivateConfigConverter {
             }
             set {
                 this.storageAccountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration")]
+    public partial class ServicePrincipalMetaType {
+        
+        private string principalIdField;
+        
+        private string secretField;
+        
+        /// <remarks/>
+        public string PrincipalId {
+            get {
+                return this.principalIdField;
+            }
+            set {
+                this.principalIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Secret {
+            get {
+                return this.secretField;
+            }
+            set {
+                this.secretField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration")]
+    public partial class AzureMonitorAccount {
+        
+        private ServicePrincipalMetaType servicePrincipalMetaField;
+        
+        /// <remarks/>
+        public ServicePrincipalMetaType ServicePrincipalMeta {
+            get {
+                return this.servicePrincipalMetaField;
+            }
+            set {
+                this.servicePrincipalMetaField = value;
             }
         }
     }

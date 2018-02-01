@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             return this.Client.Topics.CreateOrUpdate(resourceGroupName, topicName, topic);
         }
 
+        public Topic UpdateTopic(string resourceGroupName, string topicName, Dictionary<string, string> tags)
+        {
+            return this.Client.Topics.Update(resourceGroupName, topicName, tags);
+        }
+
         public void DeleteTopic(string resourceGroupName, string topicName)
         {
             this.Client.Topics.Delete(resourceGroupName, topicName);
@@ -173,7 +178,69 @@ namespace Microsoft.Azure.Commands.EventGrid
                 eventSubscription.Labels = new List<string>(labels);
             }
 
-            return this.Client.EventSubscriptions.Create(scope, eventSubscriptionName, eventSubscription);
+            return this.Client.EventSubscriptions.CreateOrUpdate(scope, eventSubscriptionName, eventSubscription);
+        }
+
+        public EventSubscription UpdateEventSubscription(
+            string scope,
+            string eventSubscriptionName,
+            string endpoint,
+            string endpointType,
+            string subjectBeginsWith,
+            string subjectEndsWith,
+            bool? isSubjectCaseSensitive,
+            string[] includedEventTypes,
+            string[] labels)
+        {
+            EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
+            const string WebHookEventSubscriptionDestination = "webhook";
+            const string EventHubEventSubscriptionDestination = "eventhub";
+
+            if (!string.IsNullOrEmpty(endpoint))
+            {
+                // An endpoint was specified, so it needs to be included as part of the update parameters
+                // Defaulting to webhook if endpoint type was not specified
+                if (string.IsNullOrEmpty(endpointType) ||
+                    string.Equals(endpointType, WebHookEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new WebHookEventSubscriptionDestination()
+                    {
+                        EndpointUrl = endpoint
+                    };
+                }
+                else if (string.Equals(endpointType, EventHubEventSubscriptionDestination, StringComparison.OrdinalIgnoreCase))
+                {
+                    eventSubscriptionUpdateParameters.Destination = new EventHubEventSubscriptionDestination()
+                    {
+                        ResourceId = endpoint
+                    };
+                }
+                else
+                {
+                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook or EventHub");
+                }
+            }
+
+            if (includedEventTypes == null)
+            {
+                includedEventTypes = new string[1];
+                includedEventTypes[0] = "All";
+            }
+
+            eventSubscriptionUpdateParameters.Filter = new EventSubscriptionFilter()
+            {
+                SubjectBeginsWith = subjectBeginsWith,
+                SubjectEndsWith = subjectEndsWith,
+                IsSubjectCaseSensitive = isSubjectCaseSensitive,
+                IncludedEventTypes = new List<string>(includedEventTypes)
+            };
+
+            if (labels != null)
+            {
+                eventSubscriptionUpdateParameters.Labels = new List<string>(labels);
+            }
+
+            return this.Client.EventSubscriptions.Update(scope, eventSubscriptionName, eventSubscriptionUpdateParameters);
         }
 
         public void DeleteEventSubscription(string scope, string eventSubscriptionName)

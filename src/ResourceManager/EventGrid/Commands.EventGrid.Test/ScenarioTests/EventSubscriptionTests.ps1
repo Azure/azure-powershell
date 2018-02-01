@@ -51,6 +51,12 @@ function EventSubscriptionTests_CustomTopic {
     $result = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -TopicName $topicName | Get-AzureRmEventGridSubscription -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
 
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
+    $result = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint https://requestb.in/1kxxoui1 -EventSubscriptionName $eventSubscriptionName
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+    Assert-AreEqual $webHookDestination.EndpointBaseUrl "https://requestb.in/1kxxoui1"
+
     Write-Debug "Listing all the event subscriptions created for $topicName in the resourceGroup $resourceGroup"
     $allCreatedSubscriptions = Get-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -IncludeFullEndpointUrl
     Assert-True {$allCreatedSubscriptions.Count -eq 2 } "#1. Event Subscriptions created earlier are not found in the list"
@@ -100,6 +106,13 @@ function EventSubscriptionTests_CustomTopic2 {
     $result = Get-AzureRmEventGridSubscription -ResourceGroupName $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
 
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
+    $updateResult = $result | Update-AzureRmEventGridSubscription -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "NewSuffix"
+    Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+	$webHookDestination = $updateResult.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+    Assert-AreEqual $webHookDestination.EndpointBaseUrl "https://requestb.in/1kxxoui1"
+    Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
+
     Write-Debug " Deleting event subscription $eventSubscriptionName"
     Get-AzureRmEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | Remove-AzureRmEventGridSubscription -EventSubscriptionName $eventSubscriptionName
 
@@ -139,6 +152,16 @@ function EventSubscriptionTests_ResourceGroup {
     Write-Debug "Getting the created event subscription $eventSubscriptionName"
     $result = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName" -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
+
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to resource group $resourceGroupName"
+    $newLabels = "Marketing", "Sales"
+    $updateResult = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Label $newLabels
+    Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+    Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
+    $updatedLabels = $updateResult.Labels
+    Assert-AreEqual 2 $updatedLabels.Count;
+    Assert-AreEqual "Marketing" $updatedLabels[0];
+    Assert-AreEqual "Sales" $updatedLabels[1];
 
     Write-Debug "Listing all the event subscriptions created for resourceGroup $resourceGroup"
     $allCreatedSubscriptions = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName"
@@ -187,6 +210,13 @@ function EventSubscriptionTests_Subscription {
     $result = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
 
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to Azure subscription $subscriptionId"
+    $updateResult = Update-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Endpoint https://requestb.in/1kxxoui1
+    Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+    Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
+	$webHookDestination = $updateResult.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+    Assert-AreEqual $webHookDestination.EndpointBaseUrl "https://requestb.in/1kxxoui1"
+
     Write-Debug "Listing all the event subscriptions created for subscription $subscriptionId"
     $allCreatedEventSubscriptions = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId"
 
@@ -234,6 +264,13 @@ function EventSubscriptionTests_Resource {
     Write-Debug "Getting the created event subscription $eventSubscriptionName"
     $result = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" -EventSubscriptionName $eventSubscriptionName
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
+
+    Write-Debug "Updating eventSubscription $eventSubscriptionName to Azure resource $subscriptionId"
+    $updateResult = Update-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Endpoint https://requestb.in/1kxxoui1
+    Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+    Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
+	$webHookDestination = $updateResult.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+    Assert-AreEqual $webHookDestination.EndpointBaseUrl "https://requestb.in/1kxxoui1"
 
     Write-Debug "Getting the created event subscription $eventSubscriptionName with full endpoint URL"
     $result = Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl

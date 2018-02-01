@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Set-AzureRmAutomationRunbook
+
 ## Version 4.1.1
 * Update to Import-AzureRMAutomationRunbook
     - Support is now being provided for Python2 runbooks

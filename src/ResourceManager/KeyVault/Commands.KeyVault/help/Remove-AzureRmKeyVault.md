@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
@@ -16,12 +16,12 @@ Deletes a key vault.
 ### ByAvailableVault
 ```
 Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-Force] [-InRemovedState]
+Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-Force] [-InRemovedState] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,6 +50,21 @@ If you do not specify the resource group name, the cmdlet searches for the named
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -72,7 +87,7 @@ By default, this cmdlet prompts you to confirm that you want to delete the key v
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -87,7 +102,7 @@ Remove the previously deleted vault permanently.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +117,7 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -114,7 +129,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -129,7 +144,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -144,7 +159,7 @@ Specifies the name of the key vault to remove.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

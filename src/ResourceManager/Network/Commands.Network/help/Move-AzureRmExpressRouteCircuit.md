@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: F845ED42-A7C1-4CCC-9AD8-E9A91C3EEC7A
@@ -15,7 +15,7 @@ Moves an ExpressRoute circuit from the classic deployment model to the Resource 
 
 ```
 Move-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- -ServiceKey <String> [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -ServiceKey <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,6 +34,21 @@ Move-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Locat
 ```
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

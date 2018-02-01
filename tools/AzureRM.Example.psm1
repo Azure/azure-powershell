@@ -32,7 +32,9 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
         $sb = [scriptblock]::Create("param(`$commandName, `$parameterName, `$wordToComplete, `$commandAst, `$fakeBoundParameter) `
         `$completerObject = New-Object $type -ArgumentList $args `
         `$arguments = `$completerObject.GetCompleterValues() `
-        `$arguments | Where-Object { `$_ -Like `"`$wordToComplete*`" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new(`$_, `$_, 'ParameterValue', `$_) }")
+        `$wordToCompleteTrimQuote = `$wordToComplete.Trim(`"'`")
+        `$wordToCompleteTrimmed = `$wordToCompleteTrimQuote.Trim(`"```"`")
+        `$arguments | Where-Object { (`$_ -Like `"`$wordToComplete*`")  -or (`$_ -Like `"```'`$wordToCompleteTrimmed*```'`") } | ForEach-Object { [System.Management.Automation.CompletionResult]::new(`$_, `$_, 'ParameterValue', `$_) }")
         Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock $sb
     }
 }

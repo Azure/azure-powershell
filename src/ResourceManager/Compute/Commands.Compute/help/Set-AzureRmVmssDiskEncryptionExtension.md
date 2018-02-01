@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension
 schema: 2.0.0
 ---
@@ -134,7 +135,9 @@ Accept wildcard characters: False
 ```
 
 ### -ForceUpdate
-Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

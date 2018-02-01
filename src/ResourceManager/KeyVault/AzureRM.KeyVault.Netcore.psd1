@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = '.\AzureRM.KeyVault.Netcore.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.9.6'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,12 +51,12 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.9.6'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.KeyVault.dll',
-    'netcoreapp2.0\Microsoft.Azure.KeyVault.WebKey.dll',
-    'netcoreapp2.0\Microsoft.Azure.Management.KeyVault.dll'
+RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll',
+    '.\Microsoft.Azure.KeyVault.WebKey.dll',
+    '.\Microsoft.Azure.Management.KeyVault.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -65,10 +65,10 @@ RequiredAssemblies = 'netcoreapp2.0\Microsoft.Azure.KeyVault.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.KeyVault.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.KeyVault.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.KeyVault.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.KeyVault.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -139,7 +139,7 @@ PrivateData = @{
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
 
-        # A URL to the main website focd .netcoreapp2.0\..this project.
+        # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'
 
         # A URL to an icon representing this module.
