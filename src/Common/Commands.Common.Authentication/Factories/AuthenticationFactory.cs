@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
-        public const string CommonAdTenant = "Common";
+        public const string CommonAdTenant = "Common", DefaultMSILoginUri = "http://localhost:50342/oauth2/token";
 
         public AuthenticationFactory()
         {
@@ -62,7 +62,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 configuration.ClientRedirectUri,
                 configuration.ResourceClientUri,
                 configuration.ValidateAuthority);
-            if (account != null && environment != null
+            if (account != null && account.Type == AzureAccount.AccountType.ManagedService)
+            {
+                if (environment == null)
+                {
+                    throw new InvalidOperationException("Environment is required for MSI Login");
+                }
+
+                if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+                {
+                    account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
+                }
+
+                if (string.IsNullOrWhiteSpace(tenant))
+                {
+                    tenant = environment.AdTenant ?? "Common";
+                }
+
+                token = new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
+            }
+            else if (account != null && environment != null
                 && account.Type == AzureAccount.AccountType.AccessToken)
             {
                 var rawToken = new RawAccessToken
@@ -342,6 +361,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
                 throw new ArgumentException(Resources.InvalidArmContext, ex);
             }
+        }
+
+        private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
+        {
+            return environment.GetEndpoint(resourceIdorEndpointName) ?? resourceIdorEndpointName;
         }
 
         private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,

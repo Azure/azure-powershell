@@ -18,10 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+
+## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
 * Added alias from Get-AzureRmProviderOperation to Get-AzureRmResourceProviderAction to conform with naming conventions
+* Get-AzureRmProviderOperation: Added alias from -OperationSearchString to -Name and set default value of -OperationSearchString to "*", which will return all provider operations.
 
 ## Version 5.1.1
 * Fixed issue where Get-AzureRMRoleAssignment would result in a assignments without roledefiniton name for custom roles
