@@ -62,9 +62,7 @@
     <Compile Include="Cmdlets\MergeReservation.cs" />
     <Compile Include="Cmdlets\PatchReservation.cs" />
     <Compile Include="Cmdlets\SplitReservation.cs" />
-    <Compile Include="Common\AzureReservationsAutoRegisterCmdletBase.cs" />
     <Compile Include="Common\AzureReservationsCmdletBase.cs" />
-    <Compile Include="Common\AzureReservationsAutoRegisterDelegatingHandler.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Custom\PSCatalog.cs" />
     <Compile Include="Custom\PSAppliedReservationOrderId.cs" />
