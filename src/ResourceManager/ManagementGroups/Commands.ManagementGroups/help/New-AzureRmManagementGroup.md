@@ -18,7 +18,7 @@ New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-Pa
 ```
 
 ## DESCRIPTION
-The **Add-AzureRMManagementGroup** cmdlet creates a management group.
+The **New-AzureRMManagementGroup** cmdlet creates a management group.
 
 ## EXAMPLES
 
