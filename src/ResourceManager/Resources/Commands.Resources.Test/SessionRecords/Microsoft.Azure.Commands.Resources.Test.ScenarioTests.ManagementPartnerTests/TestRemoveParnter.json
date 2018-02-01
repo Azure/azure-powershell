@@ -1,0 +1,76 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123456?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU2P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9f2f6aa0-4a94-4132-98ce-9786fd7c9476"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "request-id": [
+          "098e281d-e52d-4da1-bb41-10669f626bfe"
+        ],
+        "x-gsm": [
+          "8.1.0.38 (AD-CAB-Provisioning:dev.44ef628fd.180131-1010)"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1197"
+        ],
+        "x-ms-request-id": [
+          "0856b55c-3c3a-430e-9675-cb4a3081b1a7"
+        ],
+        "x-ms-correlation-request-id": [
+          "0856b55c-3c3a-430e-9675-cb4a3081b1a7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180201T081700Z:0856b55c-3c3a-430e-9675-cb4a3081b1a7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 01 Feb 2018 08:17:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "d14e8666-b43e-4f12-aa78-06c49c4859de",
+    "TenantId": "1b1121dd-6900-412a-af73-e8d44f81e1c1",
+    "Domain": ""
+  }
+}
