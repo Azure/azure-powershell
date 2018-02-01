@@ -67,6 +67,17 @@ function Create-ModulePsm1
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
+     if ($ModulePath -like "*Profile*")
+     {
+         Write-Host "here"
+        $template = $template -replace "%PSVersionDeprecationMessage%", "Write-Warning `"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
+     }
+     else
+     {
+        Write-Host "here1"
+         $template = $template -replace "%PSVersionDeprecationMessage%", ""
+     }
+
      $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
      $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
 
