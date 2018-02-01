@@ -121,7 +121,8 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         {
             string subscriptionId = AppliedScope;
             string prefix = "/subscriptions/";
-            if (subscriptionId.Contains(prefix) && subscriptionId.Length > prefix.Length)
+            if (subscriptionId.IndexOf(prefix, StringComparison.InvariantCultureIgnoreCase) >= 0
+                && subscriptionId.Length > prefix.Length)
             {
                 subscriptionId = subscriptionId.Substring(prefix.Length);
             }
