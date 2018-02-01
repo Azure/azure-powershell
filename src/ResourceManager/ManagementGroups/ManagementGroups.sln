@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F5201D-6067-430E-B303-4E367652991B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F5201D-6067-430E-B303-4E367652991B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F5201D-6067-430E-B303-4E367652991B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F5201D-6067-430E-B303-4E367652991B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

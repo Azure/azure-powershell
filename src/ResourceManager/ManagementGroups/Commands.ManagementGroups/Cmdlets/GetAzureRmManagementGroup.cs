@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ManagementGroups;
-using Microsoft.Azure.Management.ManagementGroups.Models;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {

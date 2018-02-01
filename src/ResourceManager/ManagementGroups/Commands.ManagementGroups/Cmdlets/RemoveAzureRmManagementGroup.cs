@@ -1,6 +1,7 @@
 ﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ManagementGroups.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
@@ -18,14 +19,22 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; } = null;
 
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
+            HelpMessage = Constants.HelpMessages.Force, Position = 1)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                ManagementGroupsApiClient.GroupId = GroupName;
-                var response = ManagementGroupsApiClient.ManagementGroups.DeleteWithHttpMessagesAsync()
-                        .GetAwaiter().GetResult();
-                WriteObject(JsonConvert.SerializeObject(response.Response.ReasonPhrase));
+                if (Force.IsPresent || ShouldProcess(
+                        string.Format(Resource.RemoveManagementGroupShouldProcessTarget, GroupName),
+                        string.Format(Resource.RemoveManagementGroupShouldProcessAction, GroupName)))
+                {
+                    ManagementGroupsApiClient.GroupId = GroupName;
+
+                    ManagementGroupsApiClient.ManagementGroups.Delete();
+                }
             }
             catch (ErrorResponseException ex)
             {

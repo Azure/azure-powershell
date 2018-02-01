@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Common
 {

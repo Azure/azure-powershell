@@ -1,7 +1,7 @@
-﻿namespace Microsoft.Azure.Commands.ManagementGroups.Models
-{
-    using Microsoft.Azure.Management.ManagementGroups.Models;
+﻿using Microsoft.Azure.Management.ResourceManager.Models;
 
+namespace Microsoft.Azure.Commands.ManagementGroups.Models
+{
     public class PSParentGroupInfo
     {
         public string ParentId { get; set; }

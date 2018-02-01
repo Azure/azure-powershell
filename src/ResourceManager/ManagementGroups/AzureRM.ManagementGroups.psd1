@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ManagementGroups.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.ManagementGroups.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmManagementGroup', 'Add-AzureRmManagementGroup', 'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup', 'Add-AzureRmManagementGroupSubscription', 'Remove-AzureRmManagementGroupSubscription'
+CmdletsToExport = 'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup', 'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup', 'New-AzureRmManagementGroupSubscription', 'Remove-AzureRmManagementGroupSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()

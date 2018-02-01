@@ -3,8 +3,8 @@
 namespace Microsoft.Azure.Commands.ManagementGroups.Common
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.ManagementGroups.Models;
     using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

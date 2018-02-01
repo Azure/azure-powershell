@@ -6,8 +6,11 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
-    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
-    public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
+    /// <summary>
+    /// New-AzureRmManagementGroup Cmdlet
+    /// </summary>
+    [Cmdlet(VerbsCommon.New, "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+    public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -32,15 +35,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             try
             {
                 if (Force.IsPresent || ShouldProcess(
-                        string.Format(Resource.UpdateManagementGroupShouldProcessTarget, GroupName),
-                        string.Format(Resource.UpdateManagementGroupShouldProcessAction, GroupName)))
+                        string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName), 
+                        string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
                     CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
                     ManagementGroupsApiClient.GroupId = GroupName;
-
-                    var response = ManagementGroupsApiClient.ManagementGroups.Update(createGroupRequest);
+                    var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(createGroupRequest);
                     WriteObject(new PSManagementGroup(response));
-
                 }
             }
             catch (ErrorResponseException ex)

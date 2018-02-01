@@ -23,48 +23,42 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Properties</Label>
-                <PropertyName>Properties</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupProperties</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
                 <Label>TenantId</Label>
                 <PropertyName>TenantId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DisplayName</Label>
                 <PropertyName>DisplayName</PropertyName>
+              </ListItem>        
+              <ListItem>
+                <Label>UpdatedTime</Label>
+                <PropertyName>UpdatedTime</PropertyName>
+              </ListItem>   
+              <ListItem>
+                <Label>UpdatedBy</Label>
+                <PropertyName>UpdatedBy</PropertyName>
+              </ListItem>   
+              <ListItem>
+                <Label>ParentId</Label>
+                <PropertyName>ParentId</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Details</Label>
-                <PropertyName>Details</PropertyName>
+                <Label>ParentDisplayName</Label>
+                <PropertyName>ParentDisplayName</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Children</Label>
                 <PropertyName>Children</PropertyName>
-              </ListItem>
+              </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupChildrenInfo</Name>
+      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupChildInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupChildrenInfo</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupChildInfo</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -83,64 +77,8 @@
                 <PropertyName>DisplayName</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TenantId</Label>
-                <PropertyName>TenantId</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Children</Label>
                 <PropertyName>Children</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSParentGroupInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSParentGroupInfo</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>ParentId</Label>
-                <PropertyName>ParentId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>DisplayName</Label>
-                <PropertyName>DisplayName</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupDetails</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Version</Label>
-                <PropertyName>Version</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>UpdatedTime</Label>
-                <PropertyName>UpdatedTime</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>UpdatedBy</Label>
-                <PropertyName>UpdatedBy</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Parent</Label>
-                <PropertyName>Parent</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -169,35 +107,13 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Properties</Label>
-                <PropertyName>Properties</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupInfoProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ManagementGroups.Models.PSManagementGroupInfoProperties</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
                 <Label>TenantId</Label>
                 <PropertyName>TenantId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DisplayName</Label>
                 <PropertyName>DisplayName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Details</Label>
-                <PropertyName>Details</PropertyName>
-              </ListItem>
+              </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>

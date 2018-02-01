@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ManagementGroups.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
@@ -23,16 +24,23 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [ValidateNotNullOrEmpty]
         public Guid SubscriptionId { get; set; }
 
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
+            HelpMessage = Constants.HelpMessages.Force, Position = 2)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                ManagementGroupsApiClient.GroupId = GroupName;
-                ManagementGroupsApiClient.SubscriptionId = SubscriptionId.ToString();
+                if (Force.IsPresent || ShouldProcess(
+                        string.Format(Resource.RemoveManagementGroupSubShouldProcessTarget, SubscriptionId,GroupName),
+                        string.Format(Resource.RemoveManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
+                {
+                    ManagementGroupsApiClient.GroupId = GroupName;
+                    ManagementGroupsApiClient.SubscriptionId = SubscriptionId.ToString();
 
-                var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.DeleteWithHttpMessagesAsync()
-                    .GetAwaiter().GetResult();
-                WriteObject(response.Response.ReasonPhrase);
+                    ManagementGroupsApiClient.ManagementGroupSubscriptions.Delete();
+                }
             }
             catch (ErrorResponseException ex)
             {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Management.ManagementGroups.Models;
+﻿using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Models
 {
@@ -10,20 +10,23 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public string Name { get; private set; }
 
-        public PSManagementGroupInfoProperties Properties { get; private set; }
+        public string TenantId { get; private set; }
+
+        public string DisplayName { get; private set; }
 
         public PSManagementGroupInfo()
         {
         }
 
-        public PSManagementGroupInfo(ManagementGroupInfo managementGroup)
+        public PSManagementGroupInfo(ManagementGroupInfo managementGroupInfo)
         {
-            if (managementGroup != null)
+            if (managementGroupInfo != null)
             {
-                Id = managementGroup.Id;
-                Type = managementGroup.Type;
-                Name = managementGroup.Name;
-                Properties = new PSManagementGroupInfoProperties(managementGroup.Properties);
+                Id = managementGroupInfo.Id;
+                Type = managementGroupInfo.Type;
+                Name = managementGroupInfo.Name;
+                TenantId = managementGroupInfo.TenantId;
+                DisplayName = managementGroupInfo.DisplayName;
             }
         }
     }
