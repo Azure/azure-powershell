@@ -23,8 +23,8 @@ function Test-CreatesNewSimpleResource
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation "Microsoft.Sql/servers"
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Sql/servers"
 
@@ -57,10 +57,9 @@ function Test-CreatesNewComplexResource
 	$rgname = Get-ResourceGroupName
 	$rnameParent = Get-ResourceName
 	$rnameChild = Get-ResourceName
-	$resourceTypeParent = "Microsoft.Sql/servers"
 	$resourceTypeChild = "Microsoft.Sql/servers/databases"
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation $resourceTypeParent
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US"
 	$apiversion = "2014-04-01"
 
 	# Test
@@ -108,10 +107,9 @@ function Test-GetResourcesViaPiping
 	$rgname = Get-ResourceGroupName
 	$rnameParent = Get-ResourceName
 	$rnameChild = Get-ResourceName
-	$resourceTypeParent = "Microsoft.Sql/servers"
 	$resourceTypeChild = "Microsoft.Sql/servers/databases"
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation $resourceTypeParent
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US"
 	$apiversion = "2014-04-01"
 
 	# Test
@@ -140,7 +138,7 @@ function Test-GetResourcesFromEmptyGroup
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
-	$location = Get-ProviderLocation ResourceManagement
+	$location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $location
@@ -187,7 +185,7 @@ function Test-GetResourceForNonExisingResource
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceGroupName
-	$location = Get-ProviderLocation ResourceManagement
+	$location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$resourceTypeWeb = "Microsoft.Web/sites"
 	$resourceTypeSql = "Microsoft.Sql/servers"
 	$apiversion = "2014-04-01"
@@ -211,10 +209,9 @@ function Test-GetResourcesViaPipingFromAnotherResource
 	$rgname = Get-ResourceGroupName
 	$rnameParent = Get-ResourceName
 	$rnameChild = Get-ResourceName
-	$resourceTypeParent = "Microsoft.Sql/servers"
 	$resourceTypeChild = "Microsoft.Sql/servers/databases"
-	$rglocation = Get-ProviderLocation ResourceManagement
-	$location = Get-ProviderLocation $resourceTypeParent
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US"
 	$apiversion = "2014-04-01"
 
 	# Test
@@ -241,7 +238,7 @@ function Test-MoveAResource
 	$rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName + "test3"
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -295,7 +292,7 @@ function Test-SetAResource
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -337,7 +334,7 @@ function Test-SetAResourceWithPatch
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -366,7 +363,7 @@ function Test-FindAResource
 	$rgname = Get-ResourceGroupName
 	$rname = "testname"
 	$rname2 = "test2name"
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -409,7 +406,7 @@ function Test-FindAResource-ByTag
 	$rgname = Get-ResourceGroupName
 	$rname = "testname"
 	$rname2 = "test2name"
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -451,7 +448,7 @@ function Test-GetResourceExpandProperties
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -483,7 +480,7 @@ function Test-GetResourceWithCollection
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "East US"
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
 	$apiversion = "2015-08-01"
 
 	# Test
@@ -504,7 +501,7 @@ function Test-ManageResourceWithZones
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$location = "Central US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
@@ -551,7 +548,7 @@ function Test-RemoveAResource
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = "testname"
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -580,7 +577,7 @@ function Test-RemoveASetOfResources
 	$rgname = Get-ResourceGroupName
 	$rname = "testname"
 	$rname2 = "test2name"
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
