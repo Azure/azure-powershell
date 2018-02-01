@@ -45,7 +45,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private const int MaxConnectionLimit = 1000;
         private const long NeverExpireValue = 253402300800000;
         internal const int ImportExportMaxThreads = 256;
+        private readonly LoggingConfiguration _adlsLoggerConfig;
+
         #region Constructors
+
+        static DataLakeStoreFileSystemClient()
+        {
+            // ConfigurationItemFactory.Default.Targets.RegisterDefinition("AdlsLogger", typeof(AdlsLoggerTarget));
+            Target.Register<Microsoft.Azure.Commands.DataLakeStore.Models.AdlsLoggerTarget>("AdlsLogger"); //generic
+            LogManager.ReconfigExistingLoggers();
+        }
 
         public DataLakeStoreFileSystemClient(IAzureContext context)
         {
@@ -66,6 +75,22 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 ServicePointManager.DefaultConnectionLimit);
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.UseNagleAlgorithm = false;
+        }
+
+        public DataLakeStoreFileSystemClient(IAzureContext context, DataLakeStoreFileSystemCmdletBase cmdlet) : this(context)
+        {
+            
+            _adlsLoggerConfig = new LoggingConfiguration();
+            
+            var adlsTarget = new AdlsLoggerTarget{ 
+                DebugMessageQueue = cmdlet.DebugMessages
+            };
+            _adlsLoggerConfig.AddTarget("logger", adlsTarget);
+
+            var rule2 = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
+            _adlsLoggerConfig.LoggingRules.Add(rule2);
+            
+            LogManager.Configuration = _adlsLoggerConfig;
         }
 
         #endregion
@@ -499,24 +524,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// </summary>
         /// <param name="level">Logging level- debug or error</param>
         /// <param name="fileName">Path of file where logging will be done</param>
-        public void SetupLogging(LogLevel level, string fileName)
+        public void SetupFileLogging(LogLevel level, string fileName)
         {
-            // Step 1. Create configuration object 
-            var config = new LoggingConfiguration();
-
-            // Step 2. Create targets and add them to the configuration 
             var fileTarget = new FileTarget();
-            config.AddTarget("file", fileTarget);
+            _adlsLoggerConfig.AddTarget("file", fileTarget);
 
-            // Step 3. Set target properties 
             fileTarget.FileName = fileName;
-            fileTarget.Layout = "${message}";
+            
+            var rule2 = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, fileTarget);
+            _adlsLoggerConfig.LoggingRules.Add(rule2);
 
-            // Step 4. Define rules
-            var rule2 = new LoggingRule("asdl.dotnet.*", NLog.LogLevel.Debug, fileTarget);
-            config.LoggingRules.Add(rule2);
-            // Step 5. Activate the configuration
-            LogManager.Configuration = config;
+            //Re-enable the configuration
+            LogManager.Configuration = _adlsLoggerConfig;
         }
         /// <summary>
         /// Performs the bulk copy and tracks the progress
