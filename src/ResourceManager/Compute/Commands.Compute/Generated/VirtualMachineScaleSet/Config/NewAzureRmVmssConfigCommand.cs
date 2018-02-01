@@ -162,14 +162,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Priority { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ParameterSetName = "DefaultParameterSet",
+            Mandatory = true,
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
