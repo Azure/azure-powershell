@@ -32,7 +32,8 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
 
         # Create a new VM using the tiny VHD file
         [string]$file = ".\VhdFiles\tiny.vhd";
-        $vm = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -DiskFile $file;
+		[string]$domainNameLabel = "$name-$rgname";
+        $vm = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -DiskFile $file -DomainNameLabel $domainNameLabel;
         Assert-AreEqual $vm.Name $rgname;
         Assert-AreEqual $vm.Location $loc;
         Assert-Null $vm.OSProfile $null;
