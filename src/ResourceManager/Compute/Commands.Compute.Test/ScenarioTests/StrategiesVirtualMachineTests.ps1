@@ -38,30 +38,3 @@ function Test-SimpleNewVm
         Clean-ResourceGroup $vmname
     }
 }
-
-<#
-.SYNOPSIS
-Test Simple Paremeter Set for New Vm with availability sets
-#>
-function Test-SimpleNewVmAvailabilitySet
-{
-    # Setup
-    $vmname = Get-ResourceName
-
-    try
-    {
-		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-
-        # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -AvailabilitySetName $vmname
-
-		Assert-AreEqual $vmname $x.Name;		
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $vmname
-    }
-}
