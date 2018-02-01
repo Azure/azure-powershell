@@ -270,8 +270,6 @@ namespace Microsoft.Azure.Commands.Compute
                 image = osTypeAndImage.Image;
                 isWindows = osTypeAndImage.OsType == "Windows";
             }
-
-            var domainNameLabel = Mutable.Create(DomainNameLabel);
             
             OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
@@ -281,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: domainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
@@ -376,13 +374,13 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // generate a domain name label if it's not specified.
-            await PublicIPAddressStrategy.FindDomainNameLabelAsync(
-                domainNameLabel: domainNameLabel,
+            DomainNameLabel = await PublicIPAddressStrategy.FindDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
                 name: Name,
                 location: Location,
                 client: client);
 
-            var fqdn = PublicIPAddressStrategy.Fqdn(domainNameLabel, Location);
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
