@@ -71,6 +71,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to add management partner with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string AddManagementParnter {
+            get {
+                return ResourceManager.GetString("AddManagementParnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application with AppId &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ApplicationWithAppIdDoesntExist {
@@ -539,6 +548,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removed management partner with id &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovedManagementPartner {
+            get {
+                return ResourceManager.GetString("RemovedManagementPartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove management partner with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveManagementParnter {
+            get {
+                return ResourceManager.GetString("RemoveManagementParnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -922,6 +949,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnregisterProviderMessage {
             get {
                 return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to change the management partner to &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateManagementParnter {
+            get {
+                return ResourceManager.GetString("UpdateManagementParnter", resourceCulture);
             }
         }
     }
