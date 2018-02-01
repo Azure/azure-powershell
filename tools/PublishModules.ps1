@@ -185,7 +185,7 @@ function Change-RMModule
         {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
-
+        
         pushd $TempRepoPath
         try
         {
