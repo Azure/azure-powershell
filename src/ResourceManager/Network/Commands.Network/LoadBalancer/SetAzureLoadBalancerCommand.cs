@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The loadBalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
 

@@ -23,10 +23,6 @@ Retrieves usage history information for a specified commitment plan, including r
 ## EXAMPLES
 
 ### --------------------------  Example 1: Get usage history for a specific commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```

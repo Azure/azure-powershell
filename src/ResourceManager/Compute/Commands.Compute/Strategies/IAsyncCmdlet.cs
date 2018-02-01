@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
@@ -25,6 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
         void WriteObject(object value);
 
-        void WriteProgress(ProgressRecord progressRecord);
+        void ReportTaskProgress(ITaskProgress taskProgress);
     }
 }

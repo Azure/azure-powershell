@@ -35,11 +35,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		[ValidateNotNullOrEmpty]
 		public string Name { get; set; }
 
-		/// <summary>
-		/// Check to see if the Server Dns Alias already exists for this server
-		/// </summary>
-		/// <returns>Null if the Server DNS Alias doesn't exist.  Otherwise throws exception</returns>
-		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Check to see if the Server Dns Alias already exists for this server
+        /// </summary>
+        /// <returns>Null if the Server DNS Alias doesn't exist.  Otherwise throws exception</returns>
+        protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
 		{
 			try
 			{

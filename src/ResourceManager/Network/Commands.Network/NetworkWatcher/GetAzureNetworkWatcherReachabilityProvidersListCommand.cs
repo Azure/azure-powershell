@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
             HelpMessage = "The name of the city.")]
         public string City { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();

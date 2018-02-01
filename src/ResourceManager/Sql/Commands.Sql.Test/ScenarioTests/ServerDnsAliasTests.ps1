@@ -28,7 +28,10 @@ function Test-CreateServerDNSAlias
 
 	try
 	{
-		$serverDnsAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName
+		$job = New-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName -AsJob
+		$job | Wait-Job
+		$serverDnsAlias = $job.Output
+
 		Assert-AreEqual $serverDnsAlias.ServerName $server.ServerName
 		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
 	}
@@ -102,7 +105,10 @@ function Test-RemoveServerDNSAlias
 		Assert-AreEqual $serverDnsAlias.DnsAliasName $serverDnsAliasName
 
 		# Remove Server DNS Alias
-		$resp = Remove-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName -Force
+		$job = Remove-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName $serverDnsAliasName -Force -AsJob
+		$job | Wait-Job
+		$resp = $job.Output
+
 		$all = Get-AzureRmSqlServerDNSAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual $all.Count 0
 	}
@@ -138,7 +144,9 @@ function Test-UpdateServerDNSAlias
 		$subId = (Get-AzureRmContext).Subscription.Id
 
 		# Update Server DNS Alias
-		Set-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -SourceServerName $server.ServerName -DnsAliasName $serverDnsAliasName -TargetServerName $server2.ServerName -SourceServerResourceGroupName $rg.ResourceGroupName -SourceServerSubscriptionId $subId
+		$job = Set-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -SourceServerName $server.ServerName -DnsAliasName $serverDnsAliasName `
+			-TargetServerName $server2.ServerName -SourceServerResourceGroupName $rg.ResourceGroupName -SourceServerSubscriptionId $subId -AsJob
+		$job | Wait-Job
 
 		$resp = Get-AzureRmSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server2.ServerName -DnsAliasName $serverDnsAliasName
 		Assert-AreEqual $resp.ServerName $server2.ServerName

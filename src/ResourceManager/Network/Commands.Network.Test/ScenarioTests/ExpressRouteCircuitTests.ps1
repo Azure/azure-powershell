@@ -42,7 +42,9 @@ function Test-ExpressRouteRouteFilters
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location
 
       # Create the route filter
-      $filter = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Force
+      $job = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Force -AsJob
+	  $job | Wait-Job
+	  $filter = $job | Receive-Job
 
       #verification
       Assert-AreEqual $rgName $filter.ResourceGroupName
@@ -53,7 +55,9 @@ function Test-ExpressRouteRouteFilters
 	  $rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force
 	  $filter = Get-AzureRmRouteFilter -Name filter -ResourceGroupName filter
 	  $filter.Rules.Add($rule)
-	  $filter = Set-AzureRmRouteFilter -RouteFilter $filter -Force
+	  $job = Set-AzureRmRouteFilter -RouteFilter $filter -Force -AsJob
+	  $job | Wait-Job
+	  $filter = $job | Receive-Job
 
 	  #verification
       Assert-AreEqual $rgName $filter.ResourceGroupName
@@ -70,7 +74,6 @@ function Test-ExpressRouteRouteFilters
       Assert-AreEqual $filterName $filter.Name
       Assert-NotNull $filter.Location
       Assert-AreEqual 0 @($filter.Rules).Count
-
     }
     finally
     {
@@ -97,8 +100,10 @@ function Test-ExpressRouteCircuitStageCRUD
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
       
       # Create the ExpressRouteCircuit
-	  $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -AllowClassicOperations $true;
-      
+	  $job = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -AllowClassicOperations $true -AsJob
+      $job | Wait-Job
+	  $circuit = $job | Receive-Job
+
       $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
       # set
       $circuit.AllowClassicOperations = $false
@@ -109,10 +114,13 @@ function Test-ExpressRouteCircuitStageCRUD
 			
 
 	  #move
-	  Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force
-            
+	  $job = Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force -AsJob
+      $job | Wait-Job
+		      
       # Delete Circuit
-      $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
 		      
       $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
@@ -177,7 +185,9 @@ function Test-ExpressRouteCircuitCRUD
       $getCircuit.Sku.Tier = "Premium"
       $getCircuit.Sku.Family = "UnlimitedData"
 
-      $getCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $getCircuit 
+      $job = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $getCircuit -AsJob
+	  $job | Wait-Job
+	  $getCircuit = $job | Receive-Job
       Assert-AreEqual $rgName $getCircuit.ResourceGroupName
       Assert-AreEqual $circuitName $getCircuit.Name
       Assert-NotNull $getCircuit.Location
@@ -251,7 +261,7 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 		Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 		Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
-		
+
 		# get peering
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering
 		Assert-AreEqual "AzurePrivatePeering" $p.Name
