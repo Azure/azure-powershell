@@ -19,12 +19,16 @@
 -->
 ## Current Release
 * Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+## Version 4.2.0
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
-
 * Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
 * Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
