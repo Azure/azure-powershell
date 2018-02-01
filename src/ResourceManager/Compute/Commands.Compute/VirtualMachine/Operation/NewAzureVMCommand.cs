@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.Compute
                 location: Location,
                 client: client);
 
-            var fqdn = domainNameLabel.Value + "." + Location + ".cloudapp.azure.com";
+            var fqdn = PublicIPAddressStrategy.Fqdn(domainNameLabel, Location);
 
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          

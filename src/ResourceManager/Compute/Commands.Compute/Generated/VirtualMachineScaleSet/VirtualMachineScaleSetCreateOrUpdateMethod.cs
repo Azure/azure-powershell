@@ -266,7 +266,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // generate a domain name label if it's not specified.
             await PublicIPAddressStrategy.FindDomainNameLabelAsync(
-                domainNameLabel: domainNameLabel, name: VMScaleSetName, location: Location, client: client);
+                domainNameLabel: domainNameLabel,
+                name: VMScaleSetName,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(domainNameLabel, Location);
 
             var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
 
@@ -288,6 +293,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 var psObject = new PSVirtualMachineScaleSet();
                 ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
+                psObject.FullyQualifiedDomainName = fqdn;
                 asyncCmdlet.WriteObject(psObject);
             }
         }

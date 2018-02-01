@@ -63,8 +63,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 do
                 {
                     domainNameLabel.Value = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6)).ToLower();
-                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel.Value)).Available != true);
+                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel.Value)).Available
+                    != true);
             }
         }
+
+        public static string Fqdn(Mutable<string> domainNameLabel, string location)
+            => domainNameLabel.Value + "." + location + ".cloudapp.azure.com";
     }
 }
