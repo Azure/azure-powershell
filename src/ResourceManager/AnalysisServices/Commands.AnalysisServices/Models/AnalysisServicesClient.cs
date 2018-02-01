@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Analysis;
 using Microsoft.Azure.Management.Analysis.Models;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections;
 using System.Collections.Generic;

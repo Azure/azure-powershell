@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public SwitchParameter PassThru { get; set; }
 
 		[Parameter(Mandatory = false)]
-		public SwitchParameter DissociateGateway { get; set; }
+		public SwitchParameter DisconnectGateway { get; set; }
 
 		[Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = true,
             ParameterSetName = ParamSetDisableBackup,
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-				if (DissociateGateway.IsPresent)
+				if (DisconnectGateway.IsPresent)
 				{
 					GatewayName = "-";
 				}
