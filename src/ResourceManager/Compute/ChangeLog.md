@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
@@ -67,7 +68,7 @@
     - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
 
 ## Version 3.3.1
-* 
+*
 ## Version 3.3.0
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
@@ -84,7 +85,7 @@
   - New-AzureRmSnapshot
   - Update-AzureRmDisk
   - Update-AzureRmSnapshot
-  
+
 ## Version 3.2.0
 * Storage account type support for Image disk:
     - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
