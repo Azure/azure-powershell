@@ -483,8 +483,8 @@ function Test-AnalysisServicesServerGatewayAssociation
 		Assert-AreEqual "Live" $gateway.status
 
 		# Dissociate the pre-created gateway for the server
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DissociateGateway -PassThru
-		Assert-True {[string]::IsNullOrEmpty($serverGetItem.GatewayDetails.ResourceId)}
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DisconnectGateway -PassThru
+		Assert-True {[string]::IsNullOrEmpty($serverUpdated.GatewayDetails.ResourceId)}
 		
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
