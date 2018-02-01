@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
         private const string IdParameterSet = "IdParameterSetName";
         private const string AssignIdentityParameterSet = "AssignIdentityParameterSet";
+        private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
 
         [Parameter(
            Mandatory = true,
@@ -43,6 +44,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ParameterSetName = AssignIdentityParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ExplicitIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter()]
@@ -68,23 +75,15 @@ namespace Microsoft.Azure.Commands.Compute
         public Hashtable Tag { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ParameterSetName = ResourceGroupNameParameterSet,
-            ValueFromPipelineByPropertyName = false)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = IdParameterSet,
+            Mandatory = true,
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = ResourceGroupNameParameterSet,
-            ValueFromPipelineByPropertyName = false)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = IdParameterSet,
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         public string[] IdentityId { get; set; }
 

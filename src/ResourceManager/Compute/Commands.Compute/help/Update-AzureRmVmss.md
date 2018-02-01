@@ -13,6 +13,7 @@ Updates the state of a VMSS.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
@@ -24,11 +25,28 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
  [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
  [-PlanProduct <String>] [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>]
- [-LicenseType <String>] [-IdentityType <ResourceIdentityType>] [-SkuName <String>]
- [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>]
- [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>]
- [-ImageReferenceVersion <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LicenseType <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
+ [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>]
+ [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
+ [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>]
+ [-ManagedDiskStorageAccountType <StorageAccountTypes>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-SinglePlacementGroup <Boolean>] [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>]
+ [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
+ [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
+ [-PlanProduct <String>] [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>]
+ [-LicenseType <String>] -IdentityType <ResourceIdentityType> [-SkuName <String>] [-PlanPromotionCode <String>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
+ [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,11 +214,11 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -572,7 +590,7 @@ Specifies the size of all the instances of VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 
 Required: False

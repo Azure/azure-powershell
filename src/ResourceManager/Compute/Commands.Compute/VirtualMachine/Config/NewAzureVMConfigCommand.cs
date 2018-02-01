@@ -61,14 +61,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Position = 4,
-            ParameterSetName = "DefaultParameterSet",
+            Mandatory = true,
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 

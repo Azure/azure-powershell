@@ -16,7 +16,14 @@ Creates a configurable virtual machine object.
 ### DefaultParameterSet (Default)
 ```
 New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
- [[-LicenseType] <String>] [[-IdentityType] <ResourceIdentityType>] [-IdentityId <String[]>] [-Zone <String[]>]
+ [[-LicenseType] <String>] [-Zone <String[]>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
+ [[-LicenseType] <String>] [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
  [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -100,7 +107,7 @@ The user identity references will be ARM resource ids in the form: '/subscriptio
 
 ```yaml
 Type: String[]
-Parameter Sets: DefaultParameterSet
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 
 Required: False
@@ -115,11 +122,11 @@ The identity of the virtual machine, if configured.
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: DefaultParameterSet
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 Accepted values: SystemAssigned
 
-Required: False
+Required: True
 Position: 4
 Default value: None
 Accept pipeline input: False
