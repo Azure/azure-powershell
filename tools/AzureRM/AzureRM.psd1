@@ -104,8 +104,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.2.0';
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.2'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.0.1'; }, 
-               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.0'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '4.1.0'; })
+               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.0'; }
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
