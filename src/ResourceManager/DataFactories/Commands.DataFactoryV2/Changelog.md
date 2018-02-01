@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
 
 ## Version 0.5.0
 * Enabled Azure Key Vault support for all data store linked services
