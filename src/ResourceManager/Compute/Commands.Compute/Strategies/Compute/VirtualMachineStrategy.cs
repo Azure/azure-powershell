@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            bool isWindows,
+            Mutable<bool> isWindows,
             string adminUsername,
             string adminPassword,
             Image image,
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     OsProfile = new OSProfile
                     {
                         ComputerName = name,
-                        WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
-                        LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
+                        WindowsConfiguration = isWindows.Value ? new WindowsConfiguration { } : null,
+                        LinuxConfiguration = isWindows.Value ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            bool isWindows,
+            Mutable<bool> isWindows,
             ResourceConfig<Disk> disk,
             string size)
             => Strategy.CreateResourceConfig(
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         {
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
-                            OsType = isWindows ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
+                            OsType = isWindows.Value ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,

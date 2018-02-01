@@ -34,13 +34,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 createTime: _ => 15);
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name, int[] openPorts)
+            this ResourceConfig<ResourceGroup> resourceGroup, string name, Mutable<int[]> openPorts)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: _ => new NetworkSecurityGroup
                 {
                     SecurityRules = openPorts
+                        .Value
                         .Select((port, index) => new SecurityRule
                         {
                             Name = name + port,
