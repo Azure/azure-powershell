@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Mutable<string> domainNameLabel,
+            Func<string> getDomainNameLabel,
             string allocationMethod)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -47,28 +47,29 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = domainNameLabel.Value,                       
+                        DomainNameLabel = getDomainNameLabel(),
                     }
                 });
 
-        public static async Task FindDomainNameLabelAsync(
-            Mutable<string> domainNameLabel,
+        public static async Task<string> FindDomainNameLabelAsync(
+            string domainNameLabel,
             string name,
             string location,
             IClient client)
         {
-            if (domainNameLabel.Value == null)
+            if (domainNameLabel == null)
             {
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {
-                    domainNameLabel.Value = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6)).ToLower();
-                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel.Value)).Available
+                    domainNameLabel = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6)).ToLower();
+                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel)).Available
                     != true);
             }
+            return domainNameLabel;
         }
 
-        public static string Fqdn(Mutable<string> domainNameLabel, string location)
-            => domainNameLabel.Value + "." + location + ".cloudapp.azure.com";
+        public static string Fqdn(string domainNameLabel, string location)
+            => domainNameLabel + "." + location + ".cloudapp.azure.com";
     }
 }

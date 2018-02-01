@@ -204,13 +204,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
-            var domainNameLabel = Mutable.Create(DomainNameLabel);
-
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: domainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -265,13 +263,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // generate a domain name label if it's not specified.
-            await PublicIPAddressStrategy.FindDomainNameLabelAsync(
-                domainNameLabel: domainNameLabel,
+            DomainNameLabel = await PublicIPAddressStrategy.FindDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
                 name: VMScaleSetName,
                 location: Location,
                 client: client);
 
-            var fqdn = PublicIPAddressStrategy.Fqdn(domainNameLabel, Location);
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
             var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
 
