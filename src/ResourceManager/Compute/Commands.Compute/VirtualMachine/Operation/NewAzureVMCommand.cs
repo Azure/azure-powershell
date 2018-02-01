@@ -252,14 +252,12 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var images = await compute.VirtualMachineImages.ListAsync(
                         "eastus", image.publisher, image.offer, image.sku);
+                    // According to Compute API: 
+                    // "The allowed formats are Major.Minor.Build or 'latest'. 
+                    //  Major, Minor, and Build are decimal numbers."
                     image.version = images
-                        .Select(i =>
-                        {
-                            Version v;
-                            Version.TryParse(i.Name, out v);
-                            return v;
-                        })
-                        .Aggregate((a, b) => a < b ? b : a)
+                        .Select(i => ImageVersion.Parse(i.Name))
+                        .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
                         .ToString();
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
