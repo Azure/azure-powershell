@@ -17,9 +17,9 @@ Updates an integration runtime.
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-Name] <String>
+ [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -27,7 +27,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-ResourceId] <String>
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-InputObject] <PSIntegrationRuntime>
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ The catalog database administrator credential of the integration runtime.
 ```yaml
 Type: PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +82,7 @@ The catalog database pricing tier of the integration runtime.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ The catalog database server endpoint of the integration runtime.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,7 +112,7 @@ The data factory name.
 ```yaml
 Type: String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -142,7 +142,7 @@ The integration runtime description.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -157,7 +157,7 @@ Runs the cmdlet without prompting for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,12 +172,28 @@ The integration runtime object.
 ```yaml
 Type: PSIntegrationRuntime
 Parameter Sets: ByIntegrationRuntimeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +203,7 @@ The integration runtime location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +218,7 @@ Maximum parallel execution count per node for a managed dedicated integration ru
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,7 +248,7 @@ Target nodes count of the integration runtime.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,7 +263,7 @@ The integration runtime node size.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -262,7 +278,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -307,7 +323,7 @@ The integration runtime type.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Managed, SelfHosted
 
 Required: False
@@ -323,7 +339,7 @@ The ID of the VNet that the integration runtime joins.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

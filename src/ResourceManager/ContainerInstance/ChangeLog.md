@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.2
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
 ## Version 0.2.1
 * Apply Azure Container Instance SDK 2017-10-01
     - Support container run-to-completion

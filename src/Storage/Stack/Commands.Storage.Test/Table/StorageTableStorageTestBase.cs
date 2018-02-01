@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Table;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
@@ -29,17 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 
         protected StorageCloudTableCmdletBase CurrentTableCmd { get; set; }
 
-        [TestInitialize]
-        public void InitMock()
+        public StorageTableStorageTestBase()
         {
             tableMock = new MockStorageTableManagement();
             MockCmdRunTime = new MockCommandRuntime();
-        }
-
-        [TestCleanup]
-        public void CleanMock()
-        {
-            tableMock = null;
         }
 
         public void AddTestTables()

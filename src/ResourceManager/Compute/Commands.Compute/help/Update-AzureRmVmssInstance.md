@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: E8C9D68E-7C68-43D0-B348-72E9713CB99F
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmssinstance
 schema: 2.0.0
@@ -13,8 +14,8 @@ Starts a manual upgrade of the VMSS instance.
 ## SYNTAX
 
 ```
-Update-AzureRmVmssInstance [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmVmssInstance [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String[]>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -43,7 +43,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        [Obsolete("Set-AzureRmDataLakeStoreAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Optionally enable/disable the existing trusted ID providers.")]
@@ -86,9 +88,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DefaultGroup = currentAccount.DefaultGroup;
             }
 
-            if (Tags == null)
+            if (Tag == null)
             {
-                Tags = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
+                Tag = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
             }
 
             if (!TrustedIdProviderState.HasValue)
@@ -137,7 +139,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         TrustedIdProviderState.GetValueOrDefault(),
                         FirewallState.GetValueOrDefault(),
                         AllowAzureIpState.GetValueOrDefault(),
-                        Tags,
+                        Tag,
                         tier: Tier,
                         userConfig: updateConfig)));
         }

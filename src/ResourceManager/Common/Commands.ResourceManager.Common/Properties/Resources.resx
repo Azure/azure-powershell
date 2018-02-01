@@ -121,7 +121,7 @@
     <value>Can not remove tag/tag value because it's being referenced by other resources.</value>
   </data>
   <data name="ContextCannotBeNull" xml:space="preserve">
-    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+    <value>Context cannot be null.  Please log in using Connect-AzureRmAccount.</value>
   </data>
   <data name="DataCollectionActivity" xml:space="preserve">
     <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
@@ -165,7 +165,7 @@ Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet c
     <value>No valid ResourceType given to LocationCompleter.</value>
   </data>
   <data name="ProfileCannotBeNull" xml:space="preserve">
-    <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
+    <value>Profile cannot be null.  Please run Connect-AzureRmAccount.</value>
   </data>
   <data name="RemoveTagMessage" xml:space="preserve">
     <value>Removing tag ....</value>
@@ -218,5 +218,8 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   </data>
   <data name="DefaultResourceGroupKey" xml:space="preserve">
     <value>Default Resource Group</value>
+  </data>
+  <data name="RunConnectAccount" xml:space="preserve">
+    <value>Run Connect-AzureRmAccount to login.</value>
   </data>
 </root>

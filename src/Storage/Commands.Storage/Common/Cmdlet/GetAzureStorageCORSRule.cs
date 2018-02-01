@@ -44,47 +44,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override void ExecuteCmdlet()
         {
             ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-            List<PSCorsRule> ruleList = new List<PSCorsRule>();
-
-            foreach (var corsRule in currentServiceProperties.Cors.CorsRules)
-            {
-                PSCorsRule psCorsRule = new PSCorsRule();
-                psCorsRule.AllowedOrigins = this.ListToArray(corsRule.AllowedOrigins);
-                psCorsRule.AllowedHeaders = this.ListToArray(corsRule.AllowedHeaders);
-                psCorsRule.ExposedHeaders = this.ListToArray(corsRule.ExposedHeaders);
-                psCorsRule.AllowedMethods = this.ConvertCorsHttpMethodToString(corsRule.AllowedMethods);
-                psCorsRule.MaxAgeInSeconds = corsRule.MaxAgeInSeconds;
-                ruleList.Add(psCorsRule);
-            }
-
-            WriteObject(ruleList.ToArray());
-        }
-
-        private string[] ConvertCorsHttpMethodToString(CorsHttpMethods methods)
-        {
-            List<string> methodList = new List<string>();
-
-            foreach (CorsHttpMethods methodValue in Enum.GetValues(typeof(CorsHttpMethods)).Cast<CorsHttpMethods>())
-            {
-                if (methodValue != CorsHttpMethods.None && (methods & methodValue) != 0)
-                {
-                    methodList.Add(methodValue.ToString());
-                }
-            }
-
-            return methodList.ToArray();
-        }
-
-        private string[] ListToArray(IList<string> stringList)
-        {
-            if (null == stringList)
-            {
-                return null;
-            }
-
-            string[] stringArray = new string[stringList.Count];
-            stringList.CopyTo(stringArray, 0);
-            return stringArray;
+            
+            WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
         }
     }
 }

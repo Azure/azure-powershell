@@ -18,7 +18,7 @@ Creates an Azure Web App.
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileId] <String>]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-DefaultProfile <IAzureContextContainer>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <St
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileName] <String>]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-DefaultProfile <IAzureContextContainer>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -256,6 +256,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -265,6 +280,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameter 'SourceWebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

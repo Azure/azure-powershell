@@ -113,7 +113,7 @@ function Get-RandomItemName
         $prefix = "pslibtest";
     }
 
-    $str = $prefix + ((Get-Random) % 10000);
+    $str = $prefix + (([guid]::NewGuid().ToString() -replace '-','')[0..9] -join '');
     return $str;
 }
 
@@ -168,4 +168,14 @@ Gets the Canary location for a provider
 function Get-ProviderLocation_Canary($provider)
 {
     "eastus2euap"
+}
+
+
+<#
+.SYNOPSIS
+Gets the Stage location for a provider
+#>
+function Get-ProviderLocation_Stage($provider)
+{
+    "eastus2(stage)"
 }

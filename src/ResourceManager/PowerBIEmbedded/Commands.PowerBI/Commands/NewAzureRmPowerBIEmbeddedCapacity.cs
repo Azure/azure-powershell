@@ -105,12 +105,6 @@ namespace Microsoft.Azure.Commands.PowerBI
                     }
                 }
 
-                var availableSkus = PowerBIClient.ListSkusForNew();
-                if (!availableSkus.Value.Any(v => v.Name == Sku))
-                {
-                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
-                }
-
                 var createdCapacity = PowerBIClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null);
                 WriteObject(createdCapacity);
             }
