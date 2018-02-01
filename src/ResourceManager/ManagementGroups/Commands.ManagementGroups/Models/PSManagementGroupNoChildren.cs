@@ -4,7 +4,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Models
 {
-    public class PSManagementGroup
+    public class PSManagementGroupNoChildren
     {
         public string Id { get; private set; }
 
@@ -24,14 +24,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
 
         public string ParentDisplayName { get; set; }
 
-        public IList<PSManagementGroupChildInfo> Children { get; private set; }
 
 
-        public PSManagementGroup()
+        public PSManagementGroupNoChildren()
         {
         }
 
-        public PSManagementGroup(ManagementGroup managementGroup)
+        public PSManagementGroupNoChildren(ManagementGroup managementGroup)
         {
             if (managementGroup != null)
             {
@@ -53,11 +52,6 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Models
                     {
                         ParentDisplayName = managementGroup.Details.Parent.DisplayName;
                     }
-                }
-
-                if (managementGroup.Children != null)
-                {
-                    this.Children = managementGroup.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
                 }
             }
         }

@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/testGroup123?api-version=2017-11-01-preview&$expand=children&$recurse=true",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL3Rlc3RHcm91cDEyMz9hcGktdmVyc2lvbj0yMDE3LTExLTAxLXByZXZpZXcmJGV4cGFuZD1jaGlsZHJlbiYkcmVjdXJzZT10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "abd054e4-e4ad-464c-8e58-3ce8e8387fed"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ResourceManager.ManagementGroupsAPIClient/1.7.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/testGroup123\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"testGroup123\",\r\n  \"properties\": {\r\n    \"tenantId\": \"6b2064b9-34bd-46e6-9092-52f2dd5f7fc0\",\r\n    \"displayName\": \"TestGroup123\",\r\n    \"details\": {\r\n      \"version\": 1,\r\n      \"updatedTime\": \"2018-01-30T08:31:44.3076091Z\",\r\n      \"updatedBy\": \"64360beb-ffb4-43a8-9314-01aa34db95a9\",\r\n      \"parent\": {\r\n        \"parentId\": \"/providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0\",\r\n        \"displayName\": \"6b2064b9-34bd-46e6-9092-52f2dd5f7fc0\"\r\n      }\r\n    },\r\n    \"children\": [\r\n      {\r\n        \"childType\": \"/managementGroup\",\r\n        \"childId\": \"/providers/Microsoft.Management/managementGroups/testGroup123Child1\",\r\n        \"displayName\": \"TestGroup123->Child1\",\r\n        \"children\": [\r\n          {\r\n            \"childType\": \"/managementGroup\",\r\n            \"childId\": \"/providers/Microsoft.Management/managementGroups/testGroup123Child1Child1\",\r\n            \"displayName\": \"TestGroup123->Child1->Child1\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"childType\": \"/subscription\",\r\n        \"childId\": \"/subscriptions/394ae65d-9e71-4462-930f-3332dedf845c\",\r\n        \"displayName\": \"Pay-As-You-Go\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "991"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14982"
+        ],
+        "x-ms-request-id": [
+          "westus:d9ad4ebf-da8c-4cde-a80c-e1ca25f0b83b"
+        ],
+        "x-ba-restapi": [
+          "1.0.3.483"
+        ],
+        "request-id": [
+          "1b222759-4e88-4f9a-9bf6-44d442ea3fe6"
+        ],
+        "x-ms-correlation-request-id": [
+          "5939f1e2-51d5-4416-9282-89ddda7dc78c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180201T095224Z:5939f1e2-51d5-4416-9282-89ddda7dc78c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 01 Feb 2018 09:52:23 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "394ae65d-9e71-4462-930f-3332dedf845c"
+  }
+}

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
-         SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+         SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class NewAzureRmManagementGroupSubscription : AzureManagementGroupAutoRegisterCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
@@ -36,10 +36,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
                         string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
-                    ManagementGroupsApiClient.GroupId = GroupName;
-                    ManagementGroupsApiClient.SubscriptionId = SubscriptionId.ToString();
-
-                    ManagementGroupsApiClient.ManagementGroupSubscriptions.Create();
+                    ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
                 }
             }
             catch (ErrorResponseException ex)

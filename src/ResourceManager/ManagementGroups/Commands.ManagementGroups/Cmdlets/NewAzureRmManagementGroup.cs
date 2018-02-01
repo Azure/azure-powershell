@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
                     CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
-                    ManagementGroupsApiClient.GroupId = GroupName;
-                    var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(createGroupRequest);
-                    WriteObject(new PSManagementGroup(response));
+                    var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
+                    WriteObject(new PSManagementGroupNoChildren(response));
                 }
             }
             catch (ErrorResponseException ex)

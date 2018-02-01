@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Management.Automation;
+﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
 using Microsoft.Azure.Management.ResourceManager;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// <summary>
     /// Get-AzureRmManagementGroup Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,"AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Get,"AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         /// <summary>
@@ -35,9 +34,15 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             {
                 if (!string.IsNullOrEmpty(GroupName))
                 {
-                    ManagementGroupsApiClient.GroupId = GroupName;
-                    var response = ManagementGroupsApiClient.ManagementGroups.Get(Expand.IsPresent?"children":null, Recurse.IsPresent);
-                    WriteObject(new PSManagementGroup(response));
+                    var response = ManagementGroupsApiClient.ManagementGroups.Get(GroupName, Expand.IsPresent?"children":null, Recurse.IsPresent);
+                    if (!Expand.IsPresent)
+                    {
+                        WriteObject(new PSManagementGroupNoChildren(response));
+                    }
+                    else
+                    {
+                        WriteObject(new PSManagementGroup(response));
+                    }
                 }
                 else
                 {

@@ -6,7 +6,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
-    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
@@ -36,10 +36,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.UpdateManagementGroupShouldProcessAction, GroupName)))
                 {
                     CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
-                    ManagementGroupsApiClient.GroupId = GroupName;
-
-                    var response = ManagementGroupsApiClient.ManagementGroups.Update(createGroupRequest);
-                    WriteObject(new PSManagementGroup(response));
+                    var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, createGroupRequest);
+                    WriteObject(new PSManagementGroupNoChildren(response));
 
                 }
             }

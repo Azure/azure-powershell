@@ -2,7 +2,6 @@
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
@@ -11,7 +10,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroup",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
-         SupportsShouldProcess = false, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+         SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
     public class RemoveAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
@@ -25,15 +24,14 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+
             try
             {
                 if (Force.IsPresent || ShouldProcess(
                         string.Format(Resource.RemoveManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.RemoveManagementGroupShouldProcessAction, GroupName)))
                 {
-                    ManagementGroupsApiClient.GroupId = GroupName;
-
-                    ManagementGroupsApiClient.ManagementGroups.Delete();
+                    ManagementGroupsApiClient.ManagementGroups.Delete(GroupName);
                 }
             }
             catch (ErrorResponseException ex)
