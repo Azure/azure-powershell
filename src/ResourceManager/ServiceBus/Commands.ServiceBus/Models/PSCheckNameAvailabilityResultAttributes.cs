@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
     /// <summary>
     /// Description of a Check Name availability request properties.
     /// </summary>
-    public partial class CheckNameAvailabilityResultAttributes
+    public partial class PSCheckNameAvailabilityResultAttributes
     {
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailabilityResult
         /// class.
         /// </summary>
-        public CheckNameAvailabilityResultAttributes() { }
+        public PSCheckNameAvailabilityResultAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailabilityResult
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// 'TooManyNamespaceInCurrentSubscription'</param>
         /// <param name="message">The detailed info regarding the reason
         /// associated with the namespace.</param>
-        public CheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), UnavailableReasonAttributes? reason = default(UnavailableReasonAttributes?), string message = default(string))
+        public PSCheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), UnavailableReasonAttributes? reason = default(UnavailableReasonAttributes?), string message = default(string))
         {
             NameAvailable = nameAvailable;
             Reason = reason;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         }
 
 
-        public CheckNameAvailabilityResultAttributes(CheckNameAvailabilityResult checkNameAvailabilityResult)
+        public PSCheckNameAvailabilityResultAttributes(CheckNameAvailabilityResult checkNameAvailabilityResult)
         {
             NameAvailable = checkNameAvailabilityResult.NameAvailable;
             //if (checkNameAvailabilityResult.Reason)

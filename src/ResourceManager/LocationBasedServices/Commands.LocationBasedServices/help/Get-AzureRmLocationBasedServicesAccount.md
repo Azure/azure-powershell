@@ -145,7 +145,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Location Based Services Account ResourceId.```yaml
+Location Based Services Account ResourceId.
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:

@@ -44,8 +44,9 @@
 
     { "regex": "Storage", "alias": "Storage" }, 
 
-    { "regex": "Relay", "group": "Service Bus", "alias": "Service Bus" }, 
-    { "regex": "ServiceBus", "group": "Service Bus", "alias": "Service Bus" }, 
+    { "regex": "Relay", "alias": "Relay" },
+	
+    { "regex": "ServiceBus", "alias": "Service Bus" }, 
 
     { "regex": "Sql", "alias": "SQL" }, 
 
