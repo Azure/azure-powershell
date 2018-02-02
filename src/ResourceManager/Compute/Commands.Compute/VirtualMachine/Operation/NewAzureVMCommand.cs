@@ -222,72 +222,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
-            var client = new Client(DefaultProfile.DefaultContext);
-
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
             DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
-            SecurityGroupName = SecurityGroupName ?? Name;
-
-            bool isWindows;
-            Commands.Common.Strategies.Compute.Image image = null;
-            if (ImageName.Contains(':'))
-            {
-                var imageArray = ImageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new InvalidOperationException("Invalid ImageName");
-                }
-                image = new Commands.Common.Strategies.Compute.Image
-                {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
-                };
-                var compute = client.GetClient<ComputeManagementClient>();
-                if (image.version.ToLower() == "latest")
-                {
-                    var images = await compute.VirtualMachineImages.ListAsync(
-                        "eastus", image.publisher, image.offer, image.sku);
-                    // According to Compute API: 
-                    // "The allowed formats are Major.Minor.Build or 'latest'. 
-                    //  Major, Minor, and Build are decimal numbers."
-                    image.version = images
-                        .Select(i => ImageVersion.Parse(i.Name))
-                        .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
-                        .ToString();
-                }
-                var imageModel = await compute.VirtualMachineImages.GetAsync(
-                    "eastus", image.publisher, image.offer, image.sku, image.version);
-                isWindows = imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows;
-            }
-            else if (!string.IsNullOrEmpty(DiskFile))
-            {
-                // disk file parameter set requires the OS type input
-                isWindows = !Linux;
-            }
-            else
-            {
-                // get image
-                var osTypeAndImage = Images
-                    .Instance
-                    .SelectMany(osAndMap => osAndMap
-                        .Value
-                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                        .Select(nameAndImage => new
-                        {
-                            OsType = osAndMap.Key,
-                            Image = nameAndImage.Value
-                        }))
-                    .FirstOrDefault();
-                image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
-            }
-            
-            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
+            SecurityGroupName = SecurityGroupName ?? Name;           
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -304,7 +244,9 @@ namespace Microsoft.Azure.Commands.Compute
                 Name, subnet, publicIpAddress, networkSecurityGroup);
             ResourceConfig<VirtualMachine> virtualMachine = null;
 
-            if (image != null)
+            bool isWindows = false;
+            Commands.Common.Strategies.Compute.Image image = null;
+            if (DiskFile == null)
             {
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
@@ -317,6 +259,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
+                isWindows = !Linux;
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
@@ -375,6 +318,8 @@ namespace Microsoft.Azure.Commands.Compute
                     size: Size);
             }
 
+            var client = new Client(DefaultProfile.DefaultContext);
+
             // get current Azure state
             var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
 
@@ -388,6 +333,60 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
+
+            if (DiskFile == null)
+            {
+                if (ImageName.Contains(':'))
+                {
+                    var imageArray = ImageName.Split(':');
+                    if (imageArray.Length != 4)
+                    {
+                        throw new InvalidOperationException("Invalid ImageName");
+                    }
+                    image = new Commands.Common.Strategies.Compute.Image
+                    {
+                        publisher = imageArray[0],
+                        offer = imageArray[1],
+                        sku = imageArray[2],
+                        version = imageArray[3],
+                    };
+                    var compute = client.GetClient<ComputeManagementClient>();
+                    if (image.version.ToLower() == "latest")
+                    {
+                        var images = await compute.VirtualMachineImages.ListAsync(
+                            Location, image.publisher, image.offer, image.sku);
+                        // According to Compute API: 
+                        // "The allowed formats are Major.Minor.Build or 'latest'. 
+                        //  Major, Minor, and Build are decimal numbers."
+                        image.version = images
+                            .Select(i => ImageVersion.Parse(i.Name))
+                            .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
+                            .ToString();
+                    }
+                    var imageModel = await compute.VirtualMachineImages.GetAsync(
+                        Location, image.publisher, image.offer, image.sku, image.version);
+                    isWindows = imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows;
+                }
+                else
+                {
+                    // get image
+                    var osTypeAndImage = Images
+                        .Instance
+                        .SelectMany(osAndMap => osAndMap
+                            .Value
+                            .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
+                            .Select(nameAndImage => new
+                            {
+                                OsType = osAndMap.Key,
+                                Image = nameAndImage.Value
+                            }))
+                        .FirstOrDefault();
+                    image = osTypeAndImage.Image;
+                    isWindows = osTypeAndImage.OsType == "Windows";
+                }
+            }
+
+            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
 
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
