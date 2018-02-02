@@ -60,9 +60,10 @@ function Test-ContainerService
         $job = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
             -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
         | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName -Count 1 `
-        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -AsJob
-		$job | Wait-Job
-		$container = $job | Receive-Job
+        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $container = $job | Receive-Job
 
         $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
         $output = $cs | Out-String;
@@ -72,9 +73,10 @@ function Test-ContainerService
         $output = $cslist | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
 
-        $job = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force -AsJob
-		$job | Wait-Job
-		$st = $job | Receive-Job
+        $job = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job
     }
     finally
     {
@@ -140,13 +142,15 @@ function Test-ContainerServiceUpdate
             -Count 1 `
         | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
 
-        Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
+        $job = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
         | Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
         | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
             -VmSize $vmSize `
             -DnsPrefix $agentPoolDnsPrefixName `
             -Count 2 `
-        | Update-AzureRmContainerService
+        | Update-AzureRmContainerService -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
     }

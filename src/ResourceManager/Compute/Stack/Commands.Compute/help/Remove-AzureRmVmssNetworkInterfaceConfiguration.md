@@ -42,7 +42,9 @@ The second command removes the network interface configuration named ContosoVmss
 ## PARAMETERS
 
 ### -Id
-Specifies the ID of the network interface configuration that this cmdlet removes.```yaml
+Specifies the ID of the network interface configuration that this cmdlet removes.
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSet
 Aliases: 
