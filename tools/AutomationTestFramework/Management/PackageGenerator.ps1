@@ -129,12 +129,14 @@ function Get-LatestBuildPath([string] $searchPath) {
         } -End { $path }
 }
 
-function Create-SignedModules([hashtable] $signedModules, [string] $archiveDir) {
-    $latestBuildPath = Get-LatestBuildPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
-    Write-Verbose "Latest drop path found: $($latestBuildPath.FullName)"
-    $path = Join-Path $latestBuildPath.FullName 'pkgs'
+function Create-SignedModules([hashtable] $signedModules, [string] $modulesDir, [string] $archiveDir) {
+    if([string]::IsNullOrEmpty($modulesDir)) {
+        $latestBuildPath = Get-LatestBuildPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
+        Write-Verbose "Latest drop path found: $($latestBuildPath.FullName)"
+        $modulesDir = Join-Path $latestBuildPath.FullName 'pkgs'
+    }
     Convert-NupkgToZip `
-        -path $path `
+        -path $modulesDir `
         -moduleList ($signedModules.Profile + $signedModules.Storage + $signedModules.Other) `
         -outputPath $archiveDir
     Write-Verbose "Signed module zips created in '$archiveDir'."
