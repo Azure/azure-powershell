@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
             Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
-            Image image,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet)
             => Strategy.CreateResourceConfig(
