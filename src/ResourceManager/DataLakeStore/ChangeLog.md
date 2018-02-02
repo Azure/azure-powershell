@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -17,8 +17,14 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Version 5.2.0-preview
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+* Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
 
 ## Version 5.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
