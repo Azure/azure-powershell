@@ -44,8 +44,9 @@
 
     { "regex": "Storage", "alias": "Storage" }, 
 
-    { "regex": "Relay", "group": "Service Bus", "alias": "Service Bus" }, 
-    { "regex": "ServiceBus", "group": "Service Bus", "alias": "Service Bus" }, 
+    { "regex": "Relay", "alias": "Relay" },
+	
+    { "regex": "ServiceBus", "alias": "Service Bus" }, 
 
     { "regex": "Sql", "alias": "SQL" }, 
 
@@ -125,5 +126,7 @@
 
     { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
-    { "regex": "Resources", "group": "Resources", "alias": "Resources" }
+    { "regex": "Resources", "group": "Resources", "alias": "Resources" },
+
+    { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  }
 ]
