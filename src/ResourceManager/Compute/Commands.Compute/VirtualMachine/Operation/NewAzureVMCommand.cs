@@ -276,10 +276,17 @@ namespace Microsoft.Azure.Commands.Compute
                     ResourceGroupName,
                     Name,
                     new StorageAccountCreateParameters
+                {
+#if !NETSTANDARD
+                    AccountType = AccountType.PremiumLRS,
+#else
+                    Sku = new Microsoft.Azure.Management.Storage.Models.Sku
                     {
-                        AccountType = AccountType.PremiumLRS,
-                        Location = Location
-                    });
+                        Name = SkuName.PremiumLRS
+                    },
+#endif
+                    Location = Location
+                });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
