@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
