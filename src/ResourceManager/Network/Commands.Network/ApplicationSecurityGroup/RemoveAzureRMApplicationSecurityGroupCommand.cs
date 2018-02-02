@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
         public SwitchParameter Force { get; set; }
 
-
         [Parameter(
             Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

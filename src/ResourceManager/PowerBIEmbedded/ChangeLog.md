@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.1.2
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
 ## Version 4.1.1
 * Add support for Power BI Embedded Capacity cmdlets
 * New Cmdlet Get-AzureRmPowerBIEmbeddedCapacity - Gets the details of a PowerBI Embedded Capacity.

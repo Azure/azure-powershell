@@ -252,7 +252,7 @@ function Test-StorageAccount
 
     # Login as the subscription user
   	$environment = Get-AzureRmEnvironment -Name $AzureStackConfig.AzureStackMachineName
-	Add-AzureRmAccount -Environment $environment -Credential $TenantUserCredential        
+	Connect-AzureRmAccount -Environment $environment -Credential $TenantUserCredential        
 
     # Get the created offer as the tenant
     $tenantOffer = Get-Offer -OfferName $offerName

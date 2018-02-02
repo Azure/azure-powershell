@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Network
         public string PeeringType { get; set; }
 
         [Parameter(
-                     Mandatory = true,
-                     HelpMessage = "The DevicePath, can be either Primary or Secondary")]
+            Mandatory = true,
+            HelpMessage = "The DevicePath, can be either Primary or Secondary")]
         [ValidateNotNullOrEmpty]
-        public DevicePathEnum DevicePath { get; set; }		
+        public DevicePathEnum DevicePath { get; set; }
 
         public override void Execute()
         {
