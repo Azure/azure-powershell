@@ -14,7 +14,7 @@ Deletes the azure active directory service principal.
 ## SYNTAX
 
 ```
-Remove-AzureRmADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force]
+Remove-AzureRmADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force] [-RemoveApplication]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +31,21 @@ PS C:\> Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447
 Deletes the given azure active directory service principal.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -92,13 +107,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -RemoveApplication
+Remove underlying Active Directory Application
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named

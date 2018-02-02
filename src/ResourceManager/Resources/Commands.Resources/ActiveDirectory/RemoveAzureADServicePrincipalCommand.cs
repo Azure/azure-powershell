@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
@@ -37,6 +39,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Remove underlying Active Directory Application")]
+        public SwitchParameter RemoveApplication { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -49,6 +54,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ProjectResources.RemoveServicePrincipal,
                     ObjectId.ToString(),
                     () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
+
+                if (RemoveApplication)
+                {
+                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>();
+                    string appId = servicePrincipal.ApplicationId.ToString();
+                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
+                    PSADApplication application = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter).First();
+                    ActiveDirectoryClient.RemoveApplication(application.ObjectId.ToString());
+                }
 
                 if (PassThru)
                 {
