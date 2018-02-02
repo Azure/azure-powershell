@@ -62,7 +62,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
     have been made successfully.
     
 
-### 2: Associating an IP configuration with an applicaiton security groupp
+### 2: Associating an IP configuration with an application security group
 ```
 $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet

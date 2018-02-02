@@ -15,8 +15,7 @@ Filters active directory service principals.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADServicePrincipal [-ServicePrincipalName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
@@ -111,18 +110,6 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalName
 SPN of the service.
-
-```yaml
-Type: String
-Parameter Sets: EmptyParameterSet
-Aliases: SPN
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: String

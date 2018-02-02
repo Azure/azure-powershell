@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusnamespace
 schema: 2.0.0
 ---
@@ -186,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## NOTES
 
