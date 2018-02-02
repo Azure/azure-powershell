@@ -15,7 +15,7 @@ Creates a new Analysis Services server
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-GatewayName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +141,21 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table set as tags on the server.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GatewayName
+The on-premise gateway name that would like to associate with the server.
 
 ```yaml
 Type: Hashtable
