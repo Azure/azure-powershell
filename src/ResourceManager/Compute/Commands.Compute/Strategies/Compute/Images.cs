@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
 {
     static class Images
     {

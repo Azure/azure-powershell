@@ -20,8 +20,9 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
 {
     public static class VirtualMachineScaleSetStrategy
     {
@@ -42,10 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
-            bool isWindows,
+            Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
-            Image image,
             string vmSize,
             int instanceCount,
             UpgradeMode? upgradeMode)
@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 name: name,
                 createModel: subscriptionId =>
                 {
+                    var imageAndOsType = getImageAndOsType();
                     var vmss = new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
@@ -84,8 +85,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
                     {
                         ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
-                        LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
+                        WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration { } : null,
+                        LinuxConfiguration = imageAndOsType.IsWindows ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     };
@@ -94,21 +95,21 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     {
                         ImageReference = new ImageReference
                         {
-                            Publisher = image.publisher,
-                            Offer = image.offer,
-                            Sku = image.sku,
-                            Version = image.version
+                            Publisher = imageAndOsType.Image.publisher,
+                            Offer = imageAndOsType.Image.offer,
+                            Sku = imageAndOsType.Image.sku,
+                            Version = imageAndOsType.Image.version
                         }
                     };
 
                     var ipConfig = new VirtualMachineScaleSetIPConfiguration
                     {
                         Name = name,
-                        LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>(
-                            new[] {
-                                new Microsoft.Azure.Management.Compute.Models.SubResource(
+                        LoadBalancerBackendAddressPools = new[] 
+                            {
+                                new Azure.Management.Compute.Models.SubResource(
                                     id: backendAdressPool.GetId(subscriptionId).IdToString())
-                            }),
+                            },
                         Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
                     };
 
@@ -120,8 +121,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             new VirtualMachineScaleSetNetworkConfiguration
                             {
                                 Name = name,
-                                IpConfigurations = new List<VirtualMachineScaleSetIPConfiguration>(
-                                                new [] { ipConfig }),
+                                IpConfigurations = new [] { ipConfig },
                                 Primary = true
                             }
                         }
@@ -131,6 +131,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     return vmss;
                 },
                 dependencies: new IEntityConfig[] { subnet, backendAdressPool }
-                                                  .Concat(frontendIpConfigurations));
+                    .Concat(frontendIpConfigurations));
     }
 }

@@ -18,8 +18,9 @@ using System.Linq;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using System;
+using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkSecurityGroupStrategy
     {
@@ -56,5 +57,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         })
                         .ToList()
                 });
+
+        public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            int[] openPorts,
+            Func<bool> isWindows)
+            => resourceGroup.CreateNetworkSecurityGroupConfig(
+                name,
+                () => openPorts ?? (isWindows() ? new[] { 3389, 5985 } : new[] { 22 }));
     }
 }
