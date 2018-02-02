@@ -163,8 +163,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
             var imageAndOsType = new ImageAndOsType(false, null);
-
-            // BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
             
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
@@ -237,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (result != null)
             {
                 var psObject = new PSVirtualMachineScaleSet();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
                 asyncCmdlet.WriteObject(psObject);
             }
         }
@@ -317,8 +315,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string LoadBalancerName { get; set; }
 
-        // [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        // public int[] BackendPort { get; set; }
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public int[] BackendPort { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
