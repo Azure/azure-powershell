@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Network
 {
@@ -34,14 +35,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 createTime: _ => 15);
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name, Mutable<int[]> openPorts)
+            this ResourceConfig<ResourceGroup> resourceGroup, string name, Func<int[]> getOpenPorts)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: _ => new NetworkSecurityGroup
                 {
-                    SecurityRules = openPorts
-                        .Value
+                    SecurityRules = getOpenPorts()
                         .Select((port, index) => new SecurityRule
                         {
                             Name = name + port,

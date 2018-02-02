@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            Mutable<bool> isWindows,
+            Func<bool> isWindows,
             string adminUsername,
             string adminPassword,
             Image image,
@@ -50,8 +51,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     OsProfile = new OSProfile
                     {
                         ComputerName = name,
-                        WindowsConfiguration = isWindows.Value ? new WindowsConfiguration { } : null,
-                        LinuxConfiguration = isWindows.Value ? null : new LinuxConfiguration(),
+                        WindowsConfiguration = isWindows() ? new WindowsConfiguration { } : null,
+                        LinuxConfiguration = isWindows() ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            Mutable<bool> isWindows,
+            Func<bool> isWindows,
             ResourceConfig<Disk> disk,
             string size)
             => Strategy.CreateResourceConfig(
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         {
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
-                            OsType = isWindows.Value ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
+                            OsType = isWindows() ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,
