@@ -64,17 +64,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                             .Where(z => z != null)
                             .ToList(),
 
-                        UpgradePolicy = upgradeMode.HasValue ?
-                            new UpgradePolicy
-                            {
-                                Mode = upgradeMode
-                            }
-                            : new UpgradePolicy
-                            {
-                                Mode = UpgradeMode.Manual
-                            },
+                        UpgradePolicy =new UpgradePolicy
+                        {
+                            Mode = upgradeMode ?? UpgradeMode.Manual
+                        },
 
-                        Sku = new Microsoft.Azure.Management.Compute.Models.Sku()
+                        Sku = new Azure.Management.Compute.Models.Sku()
                         {
                             Capacity = instanceCount,
                             Name = vmSize,
