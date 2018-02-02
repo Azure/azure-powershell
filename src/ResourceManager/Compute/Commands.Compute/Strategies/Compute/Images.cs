@@ -12,134 +12,135 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
 {
     static class Images
     {
-        public static Dictionary<string, Dictionary<string, Image>> Instance { get; } =
-            new Dictionary<string, Dictionary<string, Image>>
+        public static Dictionary<string, Dictionary<string, ImageReference>> Instance { get; } =
+            new Dictionary<string, Dictionary<string, ImageReference>>
             {
                 {
                     "Linux",
-                    new Dictionary<string, Image>
+                    new Dictionary<string, ImageReference>
                     {
                         {
                             "CentOS",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "OpenLogic",
-                                offer = "CentOS",
-                                sku = "7.3",
-                                version = "latest",
+                                Publisher = "OpenLogic",
+                                Offer = "CentOS",
+                                Sku = "7.3",
+                                Version = "latest",
                             }
                         },
                         {
                             "CoreOS",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "CoreOS",
-                                offer = "CoreOS",
-                                sku = "Stable",
-                                version = "latest",
+                                Publisher = "CoreOS",
+                                Offer = "CoreOS",
+                                Sku = "Stable",
+                                Version = "latest",
 
                             }
                         },
                         {
                             "Debian",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "credativ",
-                                offer = "Debian",
-                                sku = "8",
-                                version = "latest",
+                                Publisher = "credativ",
+                                Offer = "Debian",
+                                Sku = "8",
+                                Version = "latest",
                             }
                         },
                         {
                             "openSUSE-Leap",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "SUSE",
-                                offer = "openSUSE-Leap",
-                                sku = "42.2",
-                                version = "latest",
+                                Publisher = "SUSE",
+                                Offer = "openSUSE-Leap",
+                                Sku = "42.2",
+                                Version = "latest",
                             }
                         },
                         {
                             "RHEL",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "RedHat",
-                                offer = "RHEL",
-                                sku = "7.3",
-                                version = "latest"
+                                Publisher = "RedHat",
+                                Offer = "RHEL",
+                                Sku = "7.3",
+                                Version = "latest"
                             }
                         },
                         {
                             "SLES",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "SUSE",
-                                offer = "SLES",
-                                sku = "12-SP2",
-                                version = "latest",
+                                Publisher = "SUSE",
+                                Offer = "SLES",
+                                Sku = "12-SP2",
+                                Version = "latest",
                             }
                         },
                         {
                             "UbuntuLTS",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "Canonical",
-                                offer = "UbuntuServer",
-                                sku = "16.04-LTS",
-                                version = "latest",
+                                Publisher = "Canonical",
+                                Offer = "UbuntuServer",
+                                Sku = "16.04-LTS",
+                                Version = "latest",
                             }
                         }
                     }
                 },
                 {
                     "Windows",
-                    new Dictionary<string, Image>
+                    new Dictionary<string, ImageReference>
                     {
                         {
                             "Win2016Datacenter",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "MicrosoftWindowsServer",
-                                offer = "WindowsServer",
-                                sku = "2016-Datacenter",
-                                version = "latest",
+                                Publisher = "MicrosoftWindowsServer",
+                                Offer = "WindowsServer",
+                                Sku = "2016-Datacenter",
+                                Version = "latest",
                             }
                         },
                         {
                             "Win2012R2Datacenter",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "MicrosoftWindowsServer",
-                                offer = "WindowsServer",
-                                sku = "2012-R2-Datacenter",
-                                version = "latest",
+                                Publisher = "MicrosoftWindowsServer",
+                                Offer = "WindowsServer",
+                                Sku = "2012-R2-Datacenter",
+                                Version = "latest",
                             }
                         },
                         {
                             "Win2012Datacenter",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "MicrosoftWindowsServer",
-                                offer = "WindowsServer",
-                                sku = "2012-Datacenter",
-                                version = "latest",
+                                Publisher = "MicrosoftWindowsServer",
+                                Offer = "WindowsServer",
+                                Sku = "2012-Datacenter",
+                                Version = "latest",
                             }
                         },
                         {
                             "Win2008R2SP1",
-                            new Image
+                            new ImageReference
                             {
-                                publisher = "MicrosoftWindowsServer",
-                                offer = "WindowsServer",
-                                sku = "2008-R2-SP1",
-                                version = "latest",
+                                Publisher = "MicrosoftWindowsServer",
+                                Offer = "WindowsServer",
+                                Sku = "2008-R2-SP1",
+                                Version = "latest",
                             }
                         }
                     }

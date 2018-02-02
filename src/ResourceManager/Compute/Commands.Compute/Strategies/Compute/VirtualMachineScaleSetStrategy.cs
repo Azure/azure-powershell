@@ -93,23 +93,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
 
                     vmss.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile
                     {
-                        ImageReference = new ImageReference
-                        {
-                            Publisher = imageAndOsType.Image.publisher,
-                            Offer = imageAndOsType.Image.offer,
-                            Sku = imageAndOsType.Image.sku,
-                            Version = imageAndOsType.Image.version
-                        }
+                        ImageReference = imageAndOsType.Image
                     };
 
                     var ipConfig = new VirtualMachineScaleSetIPConfiguration
                     {
                         Name = name,
                         LoadBalancerBackendAddressPools = new[] 
-                            {
-                                new Azure.Management.Compute.Models.SubResource(
-                                    id: backendAdressPool.GetId(subscriptionId).IdToString())
-                            },
+                        {
+                            new Azure.Management.Compute.Models.SubResource(
+                                id: backendAdressPool.GetId(subscriptionId).IdToString())
+                        },
                         Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
                     };
 

@@ -75,13 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                         },
                         StorageProfile = new StorageProfile
                         {
-                            ImageReference = new ImageReference
-                            {
-                                Publisher = imageAndOsType.Image.publisher,
-                                Offer = imageAndOsType.Image.offer,
-                                Sku = imageAndOsType.Image.sku,
-                                Version = imageAndOsType.Image.version
-                            }
+                            ImageReference = imageAndOsType.Image
                         }
                     };
                 },

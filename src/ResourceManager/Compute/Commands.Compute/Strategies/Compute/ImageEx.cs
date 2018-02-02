@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                 {
                     throw new InvalidOperationException("Invalid ImageName");
                 }
-                var image = new Image
+                var image = new ImageReference
                 {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
+                    Publisher = imageArray[0],
+                    Offer = imageArray[1],
+                    Sku = imageArray[2],
+                    Version = imageArray[3],
                 };
                 var compute = client.GetClient<ComputeManagementClient>();
-                if (image.version.ToLower() == "latest")
+                if (image.Version.ToLower() == "latest")
                 {
                     var images = await compute.VirtualMachineImages.ListAsync(
-                        location, image.publisher, image.offer, image.sku);
+                        location, image.Publisher, image.Offer, image.Sku);
                     // According to Compute API: 
                     // "The allowed formats are Major.Minor.Build or 'latest'. 
                     //  Major, Minor, and Build are decimal numbers."
-                    image.version = images
+                    image.Version = images
                         .Select(i => ImageVersion.Parse(i.Name))
                                                 .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
                                                 .ToString();
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
-                    location, image.publisher, image.offer, image.sku, image.version);
+                    location, image.Publisher, image.Offer, image.Sku, image.Version);
                 return new ImageAndOsType(
                     imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows,
                     image);
