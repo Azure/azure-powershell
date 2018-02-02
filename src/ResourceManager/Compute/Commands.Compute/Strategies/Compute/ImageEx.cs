@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                     //  Major, Minor, and Build are decimal numbers."
                     image.Version = images
                         .Select(i => ImageVersion.Parse(i.Name))
-                                                .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
-                                                .ToString();
+                        .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
+                        .ToString();
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
