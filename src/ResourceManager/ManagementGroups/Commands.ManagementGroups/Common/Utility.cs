@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Common
 {
     using System.Collections.Generic;
     using Microsoft.Rest.Azure;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     static class Utility
     {

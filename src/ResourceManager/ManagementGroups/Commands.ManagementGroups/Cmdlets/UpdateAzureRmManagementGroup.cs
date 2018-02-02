@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
-    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupNoChildren))]
     public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
@@ -28,24 +28,20 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         public string GroupName { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.DisplayName, Position = 1)]
+            HelpMessage = Constants.HelpMessages.DisplayName)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; } = null;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.ParentId, Position = 2)]
+            HelpMessage = Constants.HelpMessages.ParentId)]
         [ValidateNotNullOrEmpty]
         public string ParentId { get; set; } = null;
-
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.Force, Position = 3)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (Force.IsPresent || ShouldProcess(
+                if (ShouldProcess(
                         string.Format(Resource.UpdateManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.UpdateManagementGroupShouldProcessAction, GroupName)))
                 {

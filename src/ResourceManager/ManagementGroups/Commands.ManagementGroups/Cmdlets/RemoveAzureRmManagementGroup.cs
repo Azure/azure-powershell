@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroup",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
-         SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+         SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
@@ -32,20 +32,24 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; } = null;
 
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.Force, Position = 1)]
-        public SwitchParameter Force { get; set; }
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
 
             try
             {
-                if (Force.IsPresent || ShouldProcess(
+                if (ShouldProcess(
                         string.Format(Resource.RemoveManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.RemoveManagementGroupShouldProcessAction, GroupName)))
                 {
                     ManagementGroupsApiClient.ManagementGroups.Delete(GroupName);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
             catch (ErrorResponseException ex)

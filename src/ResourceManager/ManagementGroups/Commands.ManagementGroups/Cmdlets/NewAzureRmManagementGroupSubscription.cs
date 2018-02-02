@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
-         SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(string))]
+         SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class NewAzureRmManagementGroupSubscription : AzureManagementGroupAutoRegisterCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
@@ -38,19 +38,23 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [ValidateNotNullOrEmpty]
         public Guid SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.Force, Position = 2)]
-        public SwitchParameter Force { get; set; }
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (Force.IsPresent || ShouldProcess(
+                if (ShouldProcess(
                         string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
                         string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
                     ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
             catch (ErrorResponseException ex)

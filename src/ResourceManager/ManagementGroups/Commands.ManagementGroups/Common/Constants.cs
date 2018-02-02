@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
     {
         public class ParameterSetNames
         {
+            public const string GetParameterSet = "GetOperation";
+            public const string ListParameterSet = "ListOperation";
             public const string GroupOperationsParameterSet = "GroupOperations";
             public const string SubscriptionOperationsParameterSet = "SubscriptionOperations";
         }
