@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model",
             "Name": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
               "ResourceGroupName": "System.String",
@@ -224,7 +224,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model",
             "Name": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
               "ResourceGroupName": "System.String",
@@ -276,6 +276,22 @@
         },
         {
           "Name": "IgnoreMissingVnetServiceEndpoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -398,6 +414,28 @@
             {
               "ParameterMetadata": {
                 "Name": "IgnoreMissingVnetServiceEndpoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -510,7 +548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model",
             "Name": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
               "ResourceGroupName": "System.String",
@@ -543,6 +581,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ServerName",
@@ -623,6 +677,28 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -720,7 +796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model",
             "Name": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model.AzureSqlServerVirtualNetworkRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
               "ResourceGroupName": "System.String",
@@ -772,6 +848,22 @@
         },
         {
           "Name": "IgnoreMissingVnetServiceEndpoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -915,6 +1007,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -1006,7 +1120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -1040,6 +1154,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ServerName",
@@ -1123,6 +1253,28 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -1420,6 +1572,22 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -1501,6 +1669,28 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -1976,7 +2166,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
             "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2070,7 +2260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2354,7 +2544,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
             "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2382,6 +2572,22 @@
         },
         {
           "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -2464,7 +2670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2504,6 +2710,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -4726,6 +4954,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceGroupName",
           "AliasList": [],
           "Type": {
@@ -4887,6 +5131,28 @@
             {
               "ParameterMetadata": {
                 "Name": "AssignIdentity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -5519,7 +5785,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -5729,7 +5995,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -5778,6 +6044,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ServerName",
@@ -5886,6 +6168,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -5977,7 +6281,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -6225,7 +6529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionStrings": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings",
               "SecureConnectionState": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType",
@@ -6940,6 +7244,22 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -7158,6 +7478,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -7350,7 +7692,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7359,6 +7701,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ServerName",
@@ -7562,7 +7920,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7571,6 +7929,28 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -7997,6 +8377,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -8100,6 +8496,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -8267,6 +8685,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -11023,7 +11463,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11132,6 +11572,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -11223,7 +11679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -11353,6 +11809,28 @@
             {
               "ParameterMetadata": {
                 "Name": "ZoneRedundant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -11717,7 +12195,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11826,6 +12304,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -11917,7 +12411,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -12047,6 +12541,28 @@
             {
               "ParameterMetadata": {
                 "Name": "ZoneRedundant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -12641,6 +13157,22 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -12783,6 +13315,28 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -13155,6 +13709,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ServerName",
           "AliasList": [],
           "Type": {
@@ -13233,6 +13803,28 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -13384,6 +13976,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -13505,6 +14119,22 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceGroupName",
           "AliasList": [],
           "Type": {
@@ -13592,6 +14222,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -13694,6 +14346,22 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceGroupName",
           "AliasList": [],
           "Type": {
@@ -13784,6 +14452,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "AliasList": [],
                 "Type": {
@@ -13853,7 +14543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
               "DatabaseName": "System.String",
@@ -14062,7 +14752,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -15361,7 +16051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
               "DatabaseName": "System.String",
@@ -16708,7 +17398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -16882,7 +17572,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -17094,7 +17784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -17170,7 +17860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -17350,7 +18040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -17504,7 +18194,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -17717,7 +18407,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -17794,7 +18484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -17990,7 +18680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -18166,7 +18856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -18417,7 +19107,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -18629,7 +19319,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -18701,7 +19391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -18734,6 +19424,22 @@
         },
         {
           "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -18869,6 +19575,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -18909,7 +19637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "ServerName": "System.String",
@@ -18932,6 +19660,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -19032,6 +19782,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -19068,6 +19840,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -19136,7 +19930,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -19251,6 +20045,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "DefaultProfile",
@@ -19419,6 +20229,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -19466,7 +20298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -19499,6 +20331,22 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ServerName",
@@ -19581,6 +20429,28 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -19826,7 +20696,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19906,7 +20776,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20012,7 +20882,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20122,7 +20992,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20227,7 +21097,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20291,7 +21161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20371,7 +21241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20455,7 +21325,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20543,7 +21413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20653,7 +21523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20739,7 +21609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsUpToDate": "System.Nullable`1[System.Boolean]",
               "LastAliveTime": "System.Nullable`1[System.DateTime]",
@@ -20957,7 +21827,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentLinkedDatabaseModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentLinkedDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentLinkedDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SeverName": "System.String",
               "DatabaseId": "System.String",
@@ -21171,7 +22041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -21430,7 +22300,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupLogModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupLogModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupLogModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "TimeStamp": "System.Nullable`1[System.DateTime]",
               "LogLevel": "System.String",
@@ -21804,7 +22674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MemberDatabasePassword": "System.Security.SecureString",
               "ResourceId": "System.String",
@@ -22103,7 +22973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tables": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel]",
               "LastUpdateTime": "System.Nullable`1[System.DateTime]"
@@ -22385,7 +23255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsUpToDate": "System.Nullable`1[System.Boolean]",
               "LastAliveTime": "System.Nullable`1[System.DateTime]",
@@ -22961,7 +23831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentKeyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentKeyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentKeyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncAgentKey": "System.String"
             },
@@ -23166,7 +24036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -23697,7 +24567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MemberDatabasePassword": "System.Security.SecureString",
               "ResourceId": "System.String",
@@ -25006,7 +25876,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsUpToDate": "System.Nullable`1[System.Boolean]",
               "LastAliveTime": "System.Nullable`1[System.DateTime]",
@@ -25300,7 +26170,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -25635,7 +26505,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MemberDatabasePassword": "System.Security.SecureString",
               "ResourceId": "System.String",
@@ -26010,7 +26880,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -26383,7 +27253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MemberDatabasePassword": "System.Security.SecureString",
               "ResourceId": "System.String",
@@ -26720,7 +27590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -27017,7 +27887,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -27348,7 +28218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Schema": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
               "LastSyncTime": "System.Nullable`1[System.DateTime]",
@@ -27837,7 +28707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -27931,7 +28801,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -28970,7 +29840,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -29003,6 +29873,22 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -29176,7 +30062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -29234,6 +30120,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -29433,7 +30341,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -29491,6 +30399,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -29646,7 +30576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -29704,6 +30634,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -29859,7 +30811,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -29917,6 +30869,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -30050,7 +31024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -30108,6 +31082,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -31607,7 +32603,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -31739,7 +32735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -31910,7 +32906,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -32042,7 +33038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -32213,7 +33209,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -32329,7 +33325,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -32494,7 +33490,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -32602,7 +33598,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -32946,7 +33942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -32978,7 +33974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -33128,7 +34124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -33172,7 +34168,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -33293,7 +34289,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -33417,7 +34413,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -33789,7 +34785,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -33821,7 +34817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -33927,7 +34923,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -33971,7 +34967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -34103,6 +35099,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceGroupName",
           "AliasList": [],
           "Type": {
@@ -34194,6 +35206,28 @@
             {
               "ParameterMetadata": {
                 "Name": "AllowDataLoss",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -35273,7 +36307,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -35321,7 +36355,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -35369,6 +36403,22 @@
         },
         {
           "Name": "ZoneRedundant",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -35541,7 +36591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35607,7 +36657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35673,6 +36723,28 @@
             {
               "ParameterMetadata": {
                 "Name": "ZoneRedundant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -36053,7 +37125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -36101,7 +37173,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -36152,6 +37224,22 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -36245,6 +37333,28 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -36354,7 +37464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -36420,7 +37530,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -36504,6 +37614,28 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -36632,6 +37764,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ServerName",
                 "AliasList": [],
                 "Type": {
@@ -36723,7 +37877,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditActionGroup": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
@@ -36936,7 +38090,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditActionGroup": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
@@ -37109,7 +38263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditActionGroup": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
@@ -37171,7 +38325,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -37381,7 +38535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -37604,7 +38758,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditActionGroup": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
@@ -37648,7 +38802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -37820,7 +38974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -38021,7 +39175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -38231,7 +39385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -38405,7 +39559,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -38653,7 +39807,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -38865,7 +40019,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -38889,7 +40043,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -38921,7 +40075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -39129,7 +40283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -39173,7 +40327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -39453,7 +40607,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -39477,7 +40631,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -39493,7 +40647,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -39685,7 +40839,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -39707,7 +40861,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -39967,7 +41121,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "StorageKeyType": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
@@ -40728,7 +41882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -40844,7 +41998,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -40993,7 +42147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -41093,7 +42247,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -41485,7 +42639,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -41601,7 +42755,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -41995,7 +43149,7 @@
     "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42050,7 +43204,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdoNetConnectionString": "System.String",
         "OdbcConnectionString": "System.String",
@@ -42063,7 +43217,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42079,7 +43233,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42087,7 +43241,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MaskingFunction": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction",
         "NumberFrom": "System.Nullable`1[System.Double]",
@@ -42108,7 +43262,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42136,7 +43290,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
       "GenericTypeArguments": []
@@ -42144,7 +43298,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42152,7 +43306,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42160,7 +43314,7 @@
     "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tables": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel]",
         "MasterSyncMemberName": "System.String"
@@ -42171,7 +43325,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -42181,7 +43335,7 @@
     "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Columns": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel]",
         "QuotedName": "System.String"
@@ -42192,7 +43346,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -42202,7 +43356,7 @@
     "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "QuotedName": "System.String",
         "DataSize": "System.String",
@@ -42232,7 +43386,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -42242,7 +43396,7 @@
     "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HasError": "System.Boolean",
         "Columns": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel]",
@@ -42256,7 +43410,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -42266,7 +43420,7 @@
     "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataSync.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HasError": "System.Boolean",
         "IsPrimaryKey": "System.Boolean",
@@ -42282,7 +43436,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Edition": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -42313,7 +43467,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42332,7 +43486,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -42342,7 +43496,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42360,7 +43514,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
       "GenericTypeArguments": []
@@ -42368,7 +43522,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42376,7 +43530,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -42384,7 +43538,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

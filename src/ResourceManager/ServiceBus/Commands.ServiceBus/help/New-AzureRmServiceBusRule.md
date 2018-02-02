@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusrule
 schema: 2.0.0
 ---
@@ -28,7 +28,7 @@ The **New-AzureRmServiceBusRule** cmdlet Creates a new rule for given subscripti
 PS C:\> New-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule -SqlExpression "mysqlexpression='test'"
 ```
 
-The **New-AzureRmServiceBusRule** cmdlet creates a new rule for the specified Subscription.
+The New-AzureRmServiceBusRule cmdlet creates a new rule for the specified Subscription.
 
 ## PARAMETERS
 
@@ -177,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.RulesAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
 
 ## NOTES
 

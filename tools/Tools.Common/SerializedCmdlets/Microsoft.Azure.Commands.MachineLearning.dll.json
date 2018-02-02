@@ -1141,8 +1141,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Tags",
-          "AliasList": [],
+          "Name": "Tag",
+          "AliasList": [
+            "Tags"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -1313,8 +1315,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Tags",
-                "AliasList": [],
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
