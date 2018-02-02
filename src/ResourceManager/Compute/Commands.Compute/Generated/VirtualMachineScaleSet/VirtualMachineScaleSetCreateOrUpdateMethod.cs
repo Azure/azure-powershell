@@ -20,17 +20,15 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.Compute;
 using Microsoft.Azure.Commands.Compute.Strategies.Network;
+using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
