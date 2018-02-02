@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
 
         //Parse Storage NetworkRule object in SDK to wrapped PSNetworkRuleSet
-        public static PSNetworkRuleSet ParsePSNetworkRule(StorageNetworkAcls rules)
+        public static PSNetworkRuleSet ParsePSNetworkRule(NetworkRuleSet rules)
         {
             if (rules == null)
             {
@@ -257,13 +257,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
 
         //Parse wrapped PSNetworkRuleSet to storage NetworkRule object in SDK
-        public static StorageNetworkAcls ParseStorageNetworkRule(PSNetworkRuleSet rules)
+        public static NetworkRuleSet ParseStorageNetworkRule(PSNetworkRuleSet rules)
         {
             if (rules == null)
             {
                 return null;
             }
-            StorageNetworkAcls returnRules = new StorageNetworkAcls();
+            NetworkRuleSet returnRules = new NetworkRuleSet();
             returnRules.Bypass = ParseStorageNetworkRuleBypass(rules.Bypass);
             returnRules.DefaultAction = ParseStorageNetworkRuleDefaultAction(rules.DefaultAction);
 

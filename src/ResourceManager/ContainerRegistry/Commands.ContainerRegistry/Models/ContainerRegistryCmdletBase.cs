@@ -90,13 +90,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 if (_RegistryClient == null)
                 {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
+                    _RegistryClient = new ContainerRegistryClient(DefaultContext);
                 }
+
+                this._RegistryClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this._RegistryClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._RegistryClient.WarningLogger = WriteWarningWithTimestamp;
                 return _RegistryClient;
             }
 

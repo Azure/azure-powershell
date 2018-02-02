@@ -115,6 +115,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -205,7 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
-                Database = upsertedDatabase      
+                Database = upsertedDatabase
             };
         }
 

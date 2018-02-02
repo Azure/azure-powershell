@@ -127,7 +127,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active directory.</value>
   </data>
   <data name="ArmAccountNotFound" xml:space="preserve">
-    <value>No account found in the context. Please login using Login-AzureRMAccount.</value>
+    <value>No account found in the context. Please login using Connect-AzureRMAccount.</value>
   </data>
   <data name="BackupKeyFileAlreadyExists" xml:space="preserve">
     <value>The backup key file '{0}' already exists.</value>
@@ -202,7 +202,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>No subscription is currently selected. Use Set-AzureRmContext to activate a subscription.</value>
   </data>
   <data name="InvalidSubscriptionState" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials.</value>
+    <value>Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
@@ -223,7 +223,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
   </data>
   <data name="NoTenantInContext" xml:space="preserve">
-    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
   </data>
   <data name="PermissionSetIncludesAllPlusOthers" xml:space="preserve">
     <value>Invalid permissions to {0}. The list contains "all" along with other permissions. Please remove "all" from the list or include only "all" in the list.</value>

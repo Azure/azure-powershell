@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 5.0.4
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
 ## Version 5.0.3
 * Add deprecation warnings for all cmdlets in this module in preparation for the next breaking change release.
     - Please see the upcoming breaking changes guide for more information on how to migrate your cmdlets from AzureRM.

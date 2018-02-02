@@ -43,5 +43,12 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-Set");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveIncludeAllResources()
+        {
+            TestController.NewInstance.RunPsTest(this.interceptor, "Test-RemoveIncludeAllResources");
+        }
     }
 }

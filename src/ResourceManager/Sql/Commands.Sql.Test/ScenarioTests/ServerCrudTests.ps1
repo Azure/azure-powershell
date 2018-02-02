@@ -15,6 +15,8 @@
 <#
 	.SYNOPSIS
 	Tests creating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-CreateServer
 {
@@ -30,7 +32,11 @@ function Test-CreateServer
 	try
 	{
 		# With all parameters
-		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
+		$job = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -AsJob
+		$job | Wait-Job
+		$server1 = $job.Output
+
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.ServerVersion $version
 		Assert-AreEqual $server1.SqlAdministratorLogin $serverLogin
@@ -44,6 +50,8 @@ function Test-CreateServer
 <#
 	.SYNOPSIS
 	Tests updating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-UpdateServer
 {
@@ -57,7 +65,9 @@ function Test-UpdateServer
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
-		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString
+		$server1 = Set-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-SqlAdministratorPassword $secureString
+		
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
@@ -80,6 +90,8 @@ function Test-UpdateServer
 <#
 	.SYNOPSIS
 	Tests Getting a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-GetServer
 {
@@ -122,6 +134,8 @@ function Test-GetServer
 <#
 	.SYNOPSIS
 	Tests Removing a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-RemoveServer
 {
