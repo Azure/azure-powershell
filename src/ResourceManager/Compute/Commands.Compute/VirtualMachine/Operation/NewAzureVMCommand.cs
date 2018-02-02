@@ -28,6 +28,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
@@ -200,6 +201,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string AvailabilitySetName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -244,8 +249,12 @@ namespace Microsoft.Azure.Commands.Compute
                 isWindows: () => imageAndOsType.IsWindows);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
-            ResourceConfig<VirtualMachine> virtualMachine = null;
 
+            var availabilitySet = AvailabilitySetName == null 
+                ? null
+                : resourceGroup.CreateAvailabilitySetConfig(name: Name);
+
+            ResourceConfig<VirtualMachine> virtualMachine = null;
             if (DiskFile == null)
             {
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
@@ -254,7 +263,8 @@ namespace Microsoft.Azure.Commands.Compute
                     getImageAndOsType: () => imageAndOsType,
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
             else
             {
@@ -284,24 +294,35 @@ namespace Microsoft.Azure.Commands.Compute
                         Math.DivRem(filePath.Length, divisor, out rem);
                         if (rem != 0)
                         {
-                            throw new ArgumentOutOfRangeException("filePath", string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
+                            throw new ArgumentOutOfRangeException(
+                                "filePath",
+                                string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
                         }
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
                 BlobUri destinationUri = null;
-                BlobUri.TryParseUri(new Uri(string.Format("{0}{1}/{2}{3}", storageAccount.PrimaryEndpoints.Blob, Name.ToLower(), Name.ToLower(), ".vhd")), out destinationUri);
+                BlobUri.TryParseUri(
+                    new Uri(string.Format(
+                        "{0}{1}/{2}{3}",
+                        storageAccount.PrimaryEndpoints.Blob,
+                        Name.ToLower(),
+                        Name.ToLower(),
+                        ".vhd")),
+                    out destinationUri);
                 if (destinationUri == null || destinationUri.Uri == null)
                 {
                     throw new ArgumentNullException("destinationUri");
                 }
-                var storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
+                var storageCredentialsFactory = new StorageCredentialsFactory(
+                    this.ResourceGroupName, storageClient, DefaultContext.Subscription);
                 var parameters = new UploadParameters(destinationUri, null, filePath, true, 2)
                 {
                     Cmdlet = this,
                     BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
                 };
-                if (!string.Equals(Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(
+                    Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
                 {
                     var st2 = VhdUploaderModel.Upload(parameters);
                 }
@@ -314,7 +335,8 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface: networkInterface,
                     isWindows: imageAndOsType.IsWindows,
                     disk: disk,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
 
             var client = new Client(DefaultProfile.DefaultContext);
@@ -332,7 +354,12 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
+            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
+
+            if (target.Get(availabilitySet) != null)
+            {
+                throw new InvalidOperationException("Availability set doesn't exist.");
+            }
 
             // apply target state
             var newState = await virtualMachine

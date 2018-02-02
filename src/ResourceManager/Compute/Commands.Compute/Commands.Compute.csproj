@@ -272,6 +272,7 @@
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Strategies\AsyncCmdletExtensions.cs" />
     <Compile Include="Strategies\Client.cs" />
+    <Compile Include="Strategies\Compute\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\Compute\ComputeStrategy.cs" />
     <Compile Include="Strategies\Compute\ImageAndOsType.cs" />
     <Compile Include="Strategies\Compute\ImageEx.cs" />
