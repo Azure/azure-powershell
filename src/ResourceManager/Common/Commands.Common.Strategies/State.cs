@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public TModel Get<TModel>(ResourceConfig<TModel> config)
             where TModel : class
-            => _Map.GetOrNull(config.DefaultIdStr()) as TModel;
+            => _Map.GetOrNull(config?.DefaultIdStr()) as TModel;
 
         public TModel GetOrAdd<TModel>(ResourceConfig<TModel> config, Func<TModel> f)
             where TModel : class
