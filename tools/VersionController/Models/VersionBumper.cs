@@ -210,6 +210,7 @@ namespace VersionController.Models
             }
 
             var tempModuleContent = File.ReadAllLines(tempModuleManifestPath);
+            tempModuleContent = tempModuleContent.Select(l => l = l.Replace(moduleName + "-temp", moduleName)).ToArray();
             File.WriteAllLines(projectModuleManifestPath, tempModuleContent);
             File.Delete(tempModuleManifestPath);
         }
