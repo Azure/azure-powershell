@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.1.0'
+ModuleVersion = '5.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll','.\Microsoft.Azure.DataLake.Store.dll','.\NLog.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,8 +63,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               '.\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.DataLakeStore.dll')
@@ -152,13 +151,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added Location Completer to -Location parameters allowing tab completion through valid Locations
-* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeStoreAccount and Set-AzureRmDataLakeStoreAccount'
-
-        # Prerelease string of this module
-        # Prerelease = ''
-
+        ReleaseNotes = '
+		* Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+		* Import-AzureRMDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+		* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+		* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+		* Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
+		'
+		
+		# Prerelease string of this module
+		Prerelease = 'preview'
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
 

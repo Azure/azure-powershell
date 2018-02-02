@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Management.DataLake.Store.Models;
 using System.Management.Automation;
+using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -41,18 +41,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            FileType fileType;
+            DirectoryEntryType fileType;
             if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out fileType))
             {
                 if (PathType == DataLakeStoreEnums.PathType.Any)
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.FILE)
+                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == DirectoryEntryType.FILE)
                 {
                     WriteObject(true);
                 }
-                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == FileType.DIRECTORY)
+                else if (PathType == DataLakeStoreEnums.PathType.Folder && fileType == DirectoryEntryType.DIRECTORY)
                 {
                     WriteObject(true);
                 }

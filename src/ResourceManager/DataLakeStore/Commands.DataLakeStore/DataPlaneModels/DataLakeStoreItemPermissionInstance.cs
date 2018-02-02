@@ -20,7 +20,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The object that is used to manage permissions for files and folders.
+    /// The object that is used to manage permissions for files and folders. Currently not used by any cmdlets. However since it is exposed won't be able to remove
     /// </summary>
     public class DataLakeStoreItemPermissionInstance
     {
