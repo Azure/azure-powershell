@@ -69,12 +69,15 @@ function Create-ModulePsm1
 
      if ($ModulePath -like "*Profile*")
      {
-        $SpecialFolderPath = [Environment]::GetFolderPath("ApplicationData")
+        $SpecialFolderPath = Join-Path -Path ([Environment]::GetFolderPath("ApplicationData")) -ChildPath "Windows Azure Powershell"
+        $DeprecationFile = Join-Path -Path $SpecialFolderPath -ChildPath "PSDeprecationWarning.txt"
         $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
         $template = $template -replace "%PSVersionDeprecationMessage%", 
-            "if (!(Test-Path '$SpecialFolderPath\Windows Azure Powershell\PSDeprecationWarning.txt')) { `
+            "if (!(Test-Path '$DeprecationFile')) { `
                 Write-Warning $WarningMessage `
-                $WarningMessage | Out-File -FilePath '$SpecialFolderPath\Windows Azure Powershell\PSDeprecationWarning.txt' `
+                try { `
+                $WarningMessage | Out-File -FilePath '$DeprecationFile' `
+                } catch {} `
             }"
      }
      else
