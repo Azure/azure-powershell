@@ -135,7 +135,9 @@ Accept wildcard characters: False
 ```
 
 ### -ForceUpdate
-Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

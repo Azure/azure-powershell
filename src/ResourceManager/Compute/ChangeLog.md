@@ -19,7 +19,12 @@
 -->
 ## Current Release
 * Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
+* Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+* User assigned identity support for VM and VM scale set
+- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
+* Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Added Priority parameter to New-AzureRmVmssConfig
 
 ## Version 4.2.0
 * Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
@@ -72,7 +77,7 @@
     - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
 
 ## Version 3.3.1
-* 
+*
 ## Version 3.3.0
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
@@ -89,7 +94,7 @@
   - New-AzureRmSnapshot
   - Update-AzureRmDisk
   - Update-AzureRmSnapshot
-  
+
 ## Version 3.2.0
 * Storage account type support for Image disk:
     - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk

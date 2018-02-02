@@ -306,8 +306,9 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
     Assert-AreEqual "Encrypted" $result.DataVolumesEncrypted;
     $output = $result | Out-String;
 
-    $job = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob
-	$job | Wait-Job
+    $job = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
+    $result = $job | Wait-Job;
+    Assert-AreEqual "Completed" $result.State;
 
     $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
     $output = $result | Out-String;
