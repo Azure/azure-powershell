@@ -206,6 +206,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 return;
             }
 
+            // Write warning when user SAS credential since get container ACL will fail
+            AzureStorageContext storageContext = this.GetCmdletStorageContext();
+            if (storageContext != null && storageContext.StorageAccount != null && storageContext.StorageAccount.Credentials != null && storageContext.StorageAccount.Credentials.IsSAS)
+            {
+                WriteWarning("Get Container ACL will fail with SAS token credentials.");
+            }
+
             IStorageBlobManagement localChannel = Channel;
             foreach (Tuple<CloudBlobContainer, BlobContinuationToken> containerInfo in containerList)
             {
