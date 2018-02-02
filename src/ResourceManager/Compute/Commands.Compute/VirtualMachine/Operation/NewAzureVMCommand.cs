@@ -272,18 +272,14 @@ namespace Microsoft.Azure.Commands.Compute
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
-                var st1 = storageClient.StorageAccounts.Create(ResourceGroupName, Name, new StorageAccountCreateParameters
-                {
-#if !NETSTANDARD
-                    AccountType = AccountType.PremiumLRS,
-#else
-                    Sku = new SM.Sku
+                var st1 = storageClient.StorageAccounts.Create(
+                    ResourceGroupName,
+                    Name,
+                    new StorageAccountCreateParameters
                     {
-                        Name = SkuName.PremiumLRS
-                    },
-#endif
-                    Location = Location
-                });
+                        AccountType = AccountType.PremiumLRS,
+                        Location = Location
+                    });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
