@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                     }
                 });
 
-        public static async Task<string> FindDomainNameLabelAsync(
+        public static async Task<string> UpdateDomainNameLabelAsync(
             string domainNameLabel,
             string name,
             string location,
@@ -62,8 +62,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {
-                    domainNameLabel = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6)).ToLower();
-                } while ((await networkClient.CheckDnsNameAvailabilityAsync(location, domainNameLabel)).Available
+                    domainNameLabel = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6))
+                        .ToLower();
+                } while ((await networkClient.CheckDnsNameAvailabilityAsync(
+                            location,
+                            domainNameLabel))
+                        .Available
                     != true);
             }
             return domainNameLabel;

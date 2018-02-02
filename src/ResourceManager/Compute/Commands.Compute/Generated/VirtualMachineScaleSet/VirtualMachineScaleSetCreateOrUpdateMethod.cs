@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // generate a domain name label if it's not specified.
-            DomainNameLabel = await PublicIPAddressStrategy.FindDomainNameLabelAsync(
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
                 domainNameLabel: DomainNameLabel,
                 name: VMScaleSetName,
                 location: Location,
