@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
 {
     sealed class Image
     {
