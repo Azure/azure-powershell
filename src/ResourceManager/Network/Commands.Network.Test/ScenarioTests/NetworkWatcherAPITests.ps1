@@ -26,7 +26,7 @@ function Get-TestResourcesDeployment([string]$rgn)
     $networkSecurityGroupName = Get-ResourceName
     $diagnosticsStorageAccountName = Get-ResourceName
     
-        $paramFile = ".\DeploymentParameters.json"
+        $paramFile = ".\TestData\DeploymentParameters.json"
         $paramContent =
 @"
 {
@@ -110,7 +110,7 @@ function Test-GetTopology
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -165,7 +165,7 @@ function Test-GetSecurityGroupView
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -229,7 +229,7 @@ function Test-GetNextHop
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -285,7 +285,7 @@ function Test-VerifyIPFlow
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -354,7 +354,7 @@ function Test-PacketCapture
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
@@ -590,7 +590,7 @@ function Test-ConnectivityCheck
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
