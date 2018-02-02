@@ -13,13 +13,14 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "Login-AzureRmAccount" = "Add-AzureRmAccount";
+    "Add-AzureRmAccount" = "Connect-AzureRmAccount";
+    "Login-AzAccount" = "Connect-AzureRmAccount";
+    "Login-AzureRmAccount" = "Connect-AzureRmAccount";
     "Select-AzureRmSubscription" = "Set-AzureRmContext";
 	"Save-AzureRmProfile" = "Save-AzureRmContext";
-	"Select-AzureRmProfile" = "Import-AzureRmContext";
 	"Resolve-Error" = "Resolve-AzureRmError";
-	"Logout-AzAccount" = "Remove-AzureRmAccount";
-	"Logout-AzureRmAccount" = "Remove-AzureRmAccount";
-	"Login-AzAccount" = "Add-AzureRmAccount";
+    "Remove-AzureRmAccount" = "Disconnect-AzureRmAccount";
+	"Logout-AzAccount" = "Disconnect-AzureRmAccount";
+	"Logout-AzureRmAccount" = "Disconnect-AzureRmAccount";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null
 
