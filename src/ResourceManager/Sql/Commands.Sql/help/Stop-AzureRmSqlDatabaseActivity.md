@@ -9,7 +9,7 @@ schema: 2.0.0
 # Stop-AzureRmSqlDatabaseActivity
 
 ## SYNOPSIS
-Cancels the asynchronous updateslo operation on the database.
+Cancels the asynchronous updates operation on the database.
 
 ## SYNTAX
 
@@ -20,11 +20,11 @@ Stop-AzureRmSqlDatabaseActivity [-ServerName] <String> [-ElasticPoolName <String
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous updateslo operation on the database.
+The **Stop-AzureRmSqlDatabaseActivity** cmdlet cancels the asynchronous updates operation on the database.
 
 ## EXAMPLES
 
-### Example 1: Cancel the asynchronous updateslo operation on the database
+### Example 1: Cancel the asynchronous updates operation on the database
 ```
 PS C:\>Stop-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 
@@ -42,7 +42,7 @@ PercentComplete :
 Properties      : Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseActivityModel+DatabaseState
 ```
 
-This command cancels the asynchronous updateslo operation on the database.
+This command cancels the asynchronous updates operation on the database.
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ Specifies the name of the database for which this cmdlet gets status.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ The name of the Azure SQL Elastic Pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Specifies the ID of the operation that this cmdlet gets.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,7 +112,7 @@ Specifies the name of the resource group to which the database is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -127,7 +127,7 @@ Specifies the name of the Microsoft SQL Server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -179,4 +179,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermimage
 schema: 2.0.0
 ---
@@ -12,7 +13,7 @@ Removes an image.
 ## SYNTAX
 
 ```
-Remove-AzureRmImage [-AsJob] [-ResourceGroupName] <String> [-ImageName] <String> [-Force]
+Remove-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

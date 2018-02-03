@@ -72,7 +72,7 @@ $ErrorActionPreference = "Stop"
         if(-not $SvcPrincipals)
         {
             # AAD app wasn't created 
-            Write-Error "Failed to create AAD app $aadAppName. Please log-in to Azure using Login-AzureRmAccount  and try again";
+            Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzureRmAccount and try again";
             return;
         }
         $aadClientID = $servicePrincipal.ApplicationId;

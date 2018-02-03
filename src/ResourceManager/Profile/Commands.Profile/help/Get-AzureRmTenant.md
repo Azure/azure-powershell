@@ -23,7 +23,7 @@ The Get-AzureRmTenant cmdlet gets tenants authorized for the current user.
 
 ### Example 1: Getting all tenants
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmTenant
 
 TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -37,7 +37,7 @@ This example shows how to get all of the authorized tenants of an Azure account.
 
 ### Example 2: Getting a specific tenant
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx

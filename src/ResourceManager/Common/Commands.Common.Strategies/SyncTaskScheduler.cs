@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,11 +39,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public void BeginInvoke(Action action)
             => _Tasks.Enqueue(new Task(action));
 
-        public void Wait(Task task)
+        /// <summary>
+        /// Wait for the given task to complete.
+        /// </summary>
+        /// <param name="task">running task</param>
+        /// <param name="progressUpdate">an action to update/show task progress.</param>
+        public void Wait(Task task, Action progressUpdate)
         {
             while (!task.IsCompleted)
             {
                 HandleActions();
+                progressUpdate();
                 Thread.Yield();
             }
             HandleActions();

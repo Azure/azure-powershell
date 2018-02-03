@@ -52,7 +52,7 @@ Specifies the name of the resource group that contains the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -67,7 +67,7 @@ Specifies the server for which this cmdlet gets a vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

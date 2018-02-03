@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup
@@ -14,7 +14,7 @@ Creates an application security group.
 
 ```
 New-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> -Location <String>
- [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,6 +31,21 @@ PS C:\> New-AzureRmPublicIpAddress -ResourceGroupName "MyResourceGroup" -Name "M
 This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may also refer to the group as their sources or destinations.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

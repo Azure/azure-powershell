@@ -15,21 +15,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Queue;
 using Microsoft.WindowsAzure.Storage.Queue;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
 {
-    [TestClass]
     public class GetAzureStorageQueueTest : StorageQueueTestBase
     {
         public GetAzureStorageQueueCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public GetAzureStorageQueueTest()
         {
             command = new GetAzureStorageQueueCommand(queueMock)
             {
@@ -37,43 +36,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByNameWithEmptyNameTest()
         {
             List<CloudQueue> queueList = command.ListQueuesByName("").ToList();
-            Assert.AreEqual(0, queueList.Count);
+            Assert.Equal(0, queueList.Count);
 
             AddTestQueues();
             queueList = command.ListQueuesByName("").ToList();
-            Assert.AreEqual(2, queueList.Count);
+            Assert.Equal(2, queueList.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByNameWithWildCardTest()
         {
             List<CloudQueue> queueList = command.ListQueuesByName("te*t").ToList();
-            Assert.AreEqual(0, queueList.Count);
+            Assert.Equal(0, queueList.Count);
 
             AddTestQueues();
 
             queueList = command.ListQueuesByName("te*t").ToList();
-            Assert.AreEqual(2, queueList.Count);
+            Assert.Equal(2, queueList.Count);
 
             queueList = command.ListQueuesByName("tx*t").ToList();
-            Assert.AreEqual(0, queueList.Count);
+            Assert.Equal(0, queueList.Count);
 
             queueList = command.ListQueuesByName("t?st").ToList();
-            Assert.AreEqual(1, queueList.Count);
-            Assert.AreEqual("test", queueList[0].Name);
+            Assert.Equal(1, queueList.Count);
+            Assert.Equal("test", queueList[0].Name);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByNameWithInvalidNameTest()
         {
             string invalidName = "a";
@@ -84,7 +80,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.InvalidQueueName, invalidName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByNameWitNotExistsQueueTest()
         {
             string notExistingName = "abcdefg";
@@ -92,71 +89,77 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.QueueNotFound, notExistingName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByNameSuccessfullyTest()
         {
             AddTestQueues();
 
             MockCmdRunTime.ResetPipelines();
             List<CloudQueue> queueList = command.ListQueuesByName("text").ToList();
-            Assert.AreEqual(1, queueList.Count);
-            Assert.AreEqual("text", queueList[0].Name);
+            Assert.Equal(1, queueList.Count);
+            Assert.Equal("text", queueList[0].Name);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByPrefixWithEmptyPrefixTest()
         {
             AssertThrows<ArgumentException>(() => command.ListQueuesByPrefix(String.Empty),
                 String.Format(Resources.InvalidQueueName, String.Empty));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByPrefixWithInvalidPrefixTest()
         {
             string prefix = "?";
             AssertThrows<ArgumentException>(() => command.ListQueuesByPrefix(prefix).ToList(), String.Format(Resources.InvalidQueueName, prefix));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListQueuesByPrefixSuccessfullyTest()
         {
             AddTestQueues();
 
             List<CloudQueue> queueList = command.ListQueuesByPrefix("te").ToList();
-            Assert.AreEqual(2, queueList.Count);
-            Assert.IsTrue(queueList.Any(item => item.Name == "test"));
-            Assert.IsTrue(queueList.Any(item => item.Name == "text"));
+            Assert.Equal(2, queueList.Count);
+            Assert.True(queueList.Any(item => item.Name == "test"));
+            Assert.True(queueList.Any(item => item.Name == "text"));
 
             queueList = command.ListQueuesByPrefix("testx").ToList();
-            Assert.AreEqual(0, queueList.Count);
+            Assert.Equal(0, queueList.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteQueueWithCountTest()
         {
             command.WriteQueueWithCount(null);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
 
             MockCmdRunTime.ResetPipelines();
             command.WriteQueueWithCount(queueMock.queueList);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
 
             AddTestQueues();
             MockCmdRunTime.ResetPipelines();
             command.WriteQueueWithCount(queueMock.queueList);
-            Assert.AreEqual(2, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(2, MockCmdRunTime.OutputPipeline.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandGetQueueTest()
         {
             AddTestQueues();
             command.Name = "test";
             command.ExecuteCmdlet();
-            Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(1, MockCmdRunTime.OutputPipeline.Count);
 
             AzureStorageQueue queue = (AzureStorageQueue)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.AreEqual(command.Name, queue.Name);
+            Assert.Equal(command.Name, queue.Name);
         }
     }
 }
