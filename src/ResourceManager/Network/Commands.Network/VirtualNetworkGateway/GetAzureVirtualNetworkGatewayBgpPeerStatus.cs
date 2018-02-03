@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "IP of the peer to retrieve status for")]
         public virtual string Peer { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();

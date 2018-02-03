@@ -38,7 +38,7 @@ Specifies the name of the database for which this cmdlet sets the geo backup pol
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -68,7 +68,7 @@ Specifies the name of the resource group of the server that contains this databa
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -83,7 +83,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -102,7 +102,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: GeoBackupPolicyState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Disabled, Enabled
 
 Required: True

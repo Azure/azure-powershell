@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        [Parameter(Mandatory =false, HelpMessage= "The credentials, account, tenant, and subscription used for communication with azure.")]
+        [Parameter(Mandatory =false, HelpMessage= "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias("AzureRmContext", "AzureCredential")]
         public IAzureContextContainer DefaultProfile
         {
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
                 {
-                    throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
                 }
 
                 return DefaultProfile.DefaultContext;
