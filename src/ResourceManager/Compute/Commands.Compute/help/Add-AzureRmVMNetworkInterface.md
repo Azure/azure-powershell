@@ -96,7 +96,7 @@ Specifies the network interface.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]
 Parameter Sets: GetNicFromNicObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -111,7 +111,7 @@ Indicates that this cmdlet adds the network interface as the primary interface.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: GetNicFromNicId
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2

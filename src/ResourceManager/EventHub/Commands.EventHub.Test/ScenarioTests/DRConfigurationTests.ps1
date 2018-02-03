@@ -49,7 +49,6 @@ function WaitforStatetoBeSucceded_namespace
 
 }
 
-
 <#
 .SYNOPSIS
 Tests EventHubs DRConfiguration Create List Remove operations.
@@ -58,8 +57,8 @@ Tests EventHubs DRConfiguration Create List Remove operations.
 function DRConfigurationTests
 {
 	# Setup
-	$location_south =  "South Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
-	$location_north = "North Central US" #Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
+	$location_south =  Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
+	$location_north = Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
 	$resourceGroupName = getAssetName
 	$namespaceName1 = getAssetName "Eventhub-Namespace-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace-"
