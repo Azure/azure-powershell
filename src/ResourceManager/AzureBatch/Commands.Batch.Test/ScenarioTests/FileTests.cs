@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip="CR Testing needs investigating")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoteDesktopProtocolFile()
         {
