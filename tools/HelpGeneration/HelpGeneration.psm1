@@ -104,7 +104,7 @@ function Validate-MarkdownHelp
             $content = Get-Content $file.FullName
             for ($idx = 0; $idx -lt $content.Length; $idx++)
             {
-                switch -Wildcard ($content[$idx])
+                switch -Regex ($content[$idx])
                 {
                     "## SYNOPSIS"
                     {
@@ -209,11 +209,16 @@ function Validate-MarkdownHelp
                             $fileErrors += "No examples found"
                         }
                     }
-                    "*@{Text=}*"
+                    "@{Text=}"
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)
                         $fileErrors += "No description found for parameter $parameter"
+                    }
+                    ".``````yaml"
+                    {
+                        $parameter = $content[$idx-1].Substring(5)
+                        $fileErrors += "Trailing yaml string found in description for parameter $parameter"
                     }
                     default
                     {

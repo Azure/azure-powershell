@@ -239,8 +239,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType =
                 ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
+            bool osaOption = (bool)ProviderData[RestoreBackupItemParams.OsaOption];
 
-            var response = ServiceClientAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType);
+            var response = ServiceClientAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType, osaOption);
             return response;
         }
 

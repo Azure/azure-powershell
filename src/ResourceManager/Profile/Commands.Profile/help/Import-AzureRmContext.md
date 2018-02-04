@@ -32,7 +32,7 @@ Cmdlets that you run in the current session use this information to authenticate
 
 ### Example 1: Importing a context from a AzureRmProfile
 ```
-PS C:\> Import-AzureRmContext -AzureContext (Add-AzureRmAccount)
+PS C:\> Import-AzureRmContext -AzureContext (Connect-AzureRmAccount)
 
 Environment           : AzureCloud
 Account               : test@outlook.com

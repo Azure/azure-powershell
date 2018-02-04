@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 3FBF91B8-8EF9-4E05-AD7E-AEFC6EBBFB8E
@@ -83,7 +83,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ If you do not specify this parameter, the cmdlet returns all locks at, above, or
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +198,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -214,7 +214,7 @@ This cmdlet gets locks for this resource group.
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroup, ByResourceGroupLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -230,7 +230,7 @@ This cmdlet gets locks for this resource.
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -246,7 +246,7 @@ This cmdlet gets locks for this resource.
 ```yaml
 Type: String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -262,7 +262,7 @@ The cmdlet gets locks for this scope.
 ```yaml
 Type: String
 Parameter Sets: BySpecifiedScope
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -277,7 +277,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
