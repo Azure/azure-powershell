@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         /// <param name="e">StorageException from storage client</param>
         /// <returns>Whether the storageexception is caused by Fordidden</returns>
-        public static bool IsFordiddenException(this StorageException e)
+        public static bool IsForbiddenException(this StorageException e)
         {
             return e.RequestInformation != null && e.RequestInformation.HttpStatusCode == 403;
         }
