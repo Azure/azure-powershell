@@ -135,11 +135,7 @@ function Get-StorageManagementTestResourceName
     
     try
     {
-        if ((Get-StorageTestMode) -eq 'Playback') {
-            $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
-        } else {
-            $assetName = Get-RandomItemName;
-        }
+		$assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
     }
     catch
     {
@@ -162,7 +158,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    "westus"
+    "eastasia"
 }
 
 <#
