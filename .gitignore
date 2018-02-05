@@ -213,3 +213,9 @@ FakesAssemblies/
 pingme.txt
 groupMapping*.json
 .vscode/
+/tools/AutomationTestFramework/RunBooks
+/tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
+Results
+Package
+.DS_Store
+.idea
