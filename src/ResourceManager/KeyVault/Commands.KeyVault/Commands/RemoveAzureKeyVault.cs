@@ -86,6 +86,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Remove the previously deleted vault permanently.")]
         public SwitchParameter InRemovedState { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
