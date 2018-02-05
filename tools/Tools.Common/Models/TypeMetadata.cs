@@ -242,6 +242,11 @@ namespace Tools.Common.Models
                     moduleMetadata.ProcessedTypes.Add(thisPropertyFullName, true);
                 }
 
+                if (!string.Equals(thisPropertyFullName, otherPropertyFullName))
+                {
+                    return false;
+                }
+
                 var thisPropertyTypeMetadata = moduleMetadata.TypeDictionary[thisPropertyFullName];
                 var otherPropertyTypeMetadata = moduleMetadata.TypeDictionary[otherPropertyFullName];
 

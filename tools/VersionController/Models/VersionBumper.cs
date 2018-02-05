@@ -211,6 +211,8 @@ namespace VersionController.Models
 
             var tempModuleContent = File.ReadAllLines(tempModuleManifestPath);
             tempModuleContent = tempModuleContent.Select(l => l = l.Replace(moduleName + "-temp", moduleName)).ToArray();
+            var pattern = @"RootModule(\s*)=(\s*)(['\""])" + moduleName + @"(\.)psm1(['\""])";
+            tempModuleContent = tempModuleContent.Select(l => Regex.Replace(l, pattern, @"# RootModule = ''")).ToArray();
             File.WriteAllLines(projectModuleManifestPath, tempModuleContent);
             File.Delete(tempModuleManifestPath);
         }
