@@ -26,9 +26,10 @@ function Test-SimpleNewVmss
         $username = "admin01"
         $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$name$rgname".tolower();
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
