@@ -32,7 +32,7 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
 
         # Create a new VM using the tiny VHD file
         [string]$file = ".\VhdFiles\tiny.vhd";
-		[string]$domainNameLabel = "$name-$rgname";
+		[string]$domainNameLabel = "$name-$rgname".tolower();
         $vm = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -DiskFile $file -DomainNameLabel $domainNameLabel;
         Assert-AreEqual $vm.Name $rgname;
         Assert-AreEqual $vm.Location $loc;
@@ -73,7 +73,8 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         $expectedErrorMessage = "*unsupported format*";
         try
         {
-            $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1;
+			[string]$domainNameLabel = "$name-$rgname".tolower();
+            $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -DomainNameLabel $domainNameLabel;
         }
         catch
         {
