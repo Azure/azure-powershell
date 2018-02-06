@@ -13,7 +13,7 @@ Remove management partner
 ## SYNTAX
 
 ```
-Remove-AzureRmManagementPartner [-PartnerId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,9 +60,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -Force
-Do not ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

@@ -13,7 +13,7 @@ Add a management partner
 ## SYNTAX
 
 ```
-New-AzureRmManagementPartner [-PartnerId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+New-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,9 +60,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -Force
-Do not ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

@@ -54,7 +54,7 @@ Tests add management partner
 function Test-NewPartner
 {
 	$partnerId="123457"
-	$partner = New-AzureRmManagementPartner -PartnerId $partnerId -Force
+	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
 	# Assert
 	Assert-AreEqual $partnerId $partner.PartnerId
@@ -71,7 +71,7 @@ Tests update management partner
 function Test-UpdatePartner
 {
 	$partnerId="123456"
-	$partner = Update-AzureRmManagementPartner -PartnerId $partnerId -Force
+	$partner = Update-AzureRmManagementPartner -PartnerId $partnerId
 
 	# Assert
 	Assert-AreEqual $partnerId $partner.PartnerId
@@ -87,5 +87,5 @@ Tests remove management partner
 function Test-RemovePartner
 {
 	$partnerId="123456"
-	$partner = Remove-AzureRmManagementPartner -PartnerId $partnerId -Force
+	$partner = Remove-AzureRmManagementPartner -PartnerId $partnerId
 }
