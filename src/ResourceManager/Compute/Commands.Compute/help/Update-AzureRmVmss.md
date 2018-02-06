@@ -17,15 +17,15 @@ Updates the state of a VMSS.
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>]
- [-ManagedDiskStorageAccountType <StorageAccountTypes>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
- [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
- [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
- [-SinglePlacementGroup <Boolean>] [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>]
- [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
- [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
- [-PlanProduct <String>] [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>]
- [-LicenseType <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
+ [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
+ [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
+ [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>]
+ [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>]
+ [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>]
+ [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>] [-PlanName <String>]
+ [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>] [-PlanProduct <String>]
+ [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>] [-LicenseType <String>]
+ [-SkuName <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
  [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>]
  [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -191,7 +191,7 @@ The user identity references will be ARM resource ids in the form: '/subscriptio
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 
 Required: False
@@ -590,7 +590,7 @@ Specifies the size of all the instances of VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: ExplicitIdentityParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
