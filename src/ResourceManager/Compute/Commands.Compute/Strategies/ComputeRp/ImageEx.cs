@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -18,7 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 var imageArray = imageName.Split(':');
                 if (imageArray.Length != 4)
                 {
-                    throw new InvalidOperationException("Invalid ImageName");
+                    throw new InvalidOperationException(
+                        string.Format(Resources.InvalidImageName, imageName));
                 }
                 var image = new ImageReference
                 {
