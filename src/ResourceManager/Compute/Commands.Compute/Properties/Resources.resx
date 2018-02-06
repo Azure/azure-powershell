@@ -568,4 +568,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="NotManagedDisk" xml:space="preserve">
     <value>The given disk is not a managed disk.</value>
   </data>
+  <data name="InvalidImageName" xml:space="preserve">
+    <value>Invalid ImageName {0}</value>
+    <comment>{0} = ImageName</comment>
+  </data>
 </root>
