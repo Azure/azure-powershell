@@ -81,7 +81,7 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         $expectedErrorMessage = "*unsupported format*";
         try
         {
-			[string]$domainNameLabel = "$name-$rgname".tolower();
+			[string]$domainNameLabel = "$rgname-$rgname".tolower();
             $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
         }
         catch
