@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.Management.Compute.Models;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     sealed class ImageAndOsType
     {

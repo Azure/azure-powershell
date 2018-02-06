@@ -15,7 +15,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class Images
     {

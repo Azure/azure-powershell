@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class VirtualMachineStrategy
     {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration { } : null,
+                            WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration() : null,
                             LinuxConfiguration = imageAndOsType.IsWindows ? null : new LinuxConfiguration(),
                             AdminUsername = adminUsername,
                             AdminPassword = adminPassword,

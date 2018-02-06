@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     public static class VirtualMachineScaleSetStrategy
     {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
                     {
                         ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration { } : null,
+                        WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration() : null,
                         LinuxConfiguration = imageAndOsType.IsWindows ? null : new LinuxConfiguration(),
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
