@@ -4,7 +4,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.Common</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

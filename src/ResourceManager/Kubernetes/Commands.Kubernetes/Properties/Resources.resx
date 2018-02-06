@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ParameterSetError" xml:space="preserve">
+    <value>The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues</value>
+  </data>
+  <data name="UsingLocationFromTheResourceGroup" xml:space="preserve">
+    <value>Using location {0} from the resource group {1}.</value>
+  </data>
+  <data name="UsingDnsNamePrefix" xml:space="preserve">
+    <value>Using DNS name prefix {0}.</value>
+  </data>
+  <data name="DeployingYourManagedKubeCluster" xml:space="preserve">
+    <value>Deploying your managed Kubernetes cluster.</value>
+  </data>
+  <data name="FetchSshPublicKeyFromFile" xml:space="preserve">
+    <value>Fetching SSH public key from file {0}</value>
+  </data>
+  <data name="UsingSshPublicKeyDataAsCommandLineString" xml:space="preserve">
+    <value>Using SSH public key data as command line string.</value>
+  </data>
+  <data name="CouldNotFindSshPublicKeyInError" xml:space="preserve">
+    <value>Could not find SSH public key in {0}. See {1} for help generating a key pair.</value>
+  </data>
+  <data name="NoServicePrincipalFoundCreatingANewServicePrincipal" xml:space="preserve">
+    <value>No Service Principal found in {0} for this subscription. Creating a new Service Principal.</value>
+  </data>
+  <data name="CreatedANewServicePrincipalAndAssignedTheContributorRole" xml:space="preserve">
+    <value>Created a new Service Principal and assigned the contributor role for this subcription.</value>
+  </data>
+  <data name="ServicePrincipalCreate" xml:space="preserve">
+    <value>Service Principal Create</value>
+  </data>
+  <data name="CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner" xml:space="preserve">
+    <value>Could not create a service principal with the right permissions. Are you an Owner on this project?</value>
+  </data>
+  <data name="ClusterExists" xml:space="preserve">
+    <value>Cluster exists: {0}</value>
+  </data>
+  <data name="ClusterDoesNotExist" xml:space="preserve">
+    <value>Cluster does not exist.</value>
+  </data>
+  <data name="AddRoleAssignment" xml:space="preserve">
+    <value>Add Role Assignment</value>
+  </data>
+  <data name="RetryAfterActionError" xml:space="preserve">
+    <value>Retry {0} for {1} after error: {2}</value>
+  </data>
+  <data name="DoYouWantToImportTheKubernetesConfig" xml:space="preserve">
+    <value>Do you want to import the Kubernetes config?</value>
+  </data>
+  <data name="ImportingKubernetesConfigResource" xml:space="preserve">
+    <value>Importing Kubernetes config resource.</value>
+  </data>
+  <data name="KubernetesCredentialAction" xml:space="preserve">
+    <value>AzureRmKubernetesCredential {0} in {1}</value>
+  </data>
+  <data name="FileWasNotSpecifiedWritingCredentialTo" xml:space="preserve">
+    <value>File was not specified. Writing credential to {0}.</value>
+  </data>
+  <data name="FetchingTheClusterAdminKubectlConfig" xml:space="preserve">
+    <value>Fetching the clusterAdmin kubectl config</value>
+  </data>
+  <data name="FetchingTheDefaultClusterUserKubectlConfig" xml:space="preserve">
+    <value>Fetching the default clusterUser kubectl config</value>
+  </data>
+  <data name="NoConfigFileLocatedAtCreatingKubeConfig" xml:space="preserve">
+    <value>No config file located at {0}. Creating Kube config.</value>
+  </data>
+  <data name="PreparingForDeploymentOfYourManagedKubernetesCluster" xml:space="preserve">
+    <value>Preparing for deployment of your managed Kubernetes cluster.</value>
+  </data>
+  <data name="ClusterAlreadyExistsConfirmAction" xml:space="preserve">
+    <value>Cluster already exists, confirm action.</value>
+  </data>
+  <data name="DoYouWantToCreateANewManagedKubernetesCluster" xml:space="preserve">
+    <value>Do you want to create a new managed Kubernetes cluster?</value>
+  </data>
+  <data name="CreatingAManagedKubernetesCluster" xml:space="preserve">
+    <value>Creating a managed Kubernetes cluster.</value>
+  </data>
+  <data name="ClusterIsNew" xml:space="preserve">
+    <value>Cluster is new.</value>
+  </data>
+  <data name="DoYouWantToDeleteTheManagedKubernetesCluster" xml:space="preserve">
+    <value>Do you want to delete the managed Kubernetes cluster?</value>
+  </data>
+  <data name="RemovingTheManagedKubernetesCluster" xml:space="preserve">
+    <value>Removing the managed Kubernetes cluster.</value>
+  </data>
+  <data name="UsingClusterFromPipeline" xml:space="preserve">
+    <value>Using cluster from pipeline.</value>
+  </data>
+  <data name="UpdateOrCreateAManagedKubernetesCluster" xml:space="preserve">
+    <value>Update or create a managed Kubernetes cluster.</value>
+  </data>
+  <data name="LocationCannotBeUpdateForExistingCluster" xml:space="preserve">
+    <value>Location can't be updated for existing cluster.</value>
+  </data>
+  <data name="UpdatingDnsNamePrefix" xml:space="preserve">
+    <value>Updating DnsNamePrefix</value>
+  </data>
+  <data name="UpdatingSshKeyValue" xml:space="preserve">
+    <value>Updating SshKeyValue</value>
+  </data>
+  <data name="UpdatingServicePrincipal" xml:space="preserve">
+    <value>Updating service principal</value>
+  </data>
+  <data name="UpdatingAdminUsername" xml:space="preserve">
+    <value>Updating admin username</value>
+  </data>
+  <data name="UpdatingNodeVmSize" xml:space="preserve">
+    <value>Updating node VM size</value>
+  </data>
+  <data name="UpdatingNodeCount" xml:space="preserve">
+    <value>Updating node count</value>
+  </data>
+  <data name="UpdatingNodeOsDiskSize" xml:space="preserve">
+    <value>Updating node OS disk size</value>
+  </data>
+  <data name="UpdatingKubernetesVersion" xml:space="preserve">
+    <value>Updating Kubernetes version</value>
+  </data>
+  <data name="UpdatingTags" xml:space="preserve">
+    <value>Updating tags</value>
+  </data>
+  <data name="UpdatingYourManagedKubernetesCluster" xml:space="preserve">
+    <value>Updating your managed Kubernetes cluster.</value>
+  </data>
+  <data name="PreparingForDeploymentOfYourNewManagedKubernetesCluster" xml:space="preserve">
+    <value>Preparing for deployment of your new managed Kubernetes cluster.</value>
+  </data>
+  <data name="KubectlIsRequriedToBeInstalledAndOnYourPathToExecute" xml:space="preserve">
+    <value>kubectl is required to be installed and on your path to execute this command. Kubectl is available here: https://kubernetes.io/docs/tasks/tools/install-kubectl/.</value>
+  </data>
+  <data name="RunningKubectlGetPodsKubeconfigNamespaceSelector" xml:space="preserve">
+    <value>Running: kubectl get pods --kubeconfig {0} --namespace kube-system --output name --selector k8s-app=kubernetes-dashboard</value>
+  </data>
+  <data name="RunningInBackgroundJobKubectlTunnel" xml:space="preserve">
+    <value>Running in background job Kubectl-Tunnel: kubectl --kubeconfig {0} --namespace kube-system port-forward {1} 8001:9090</value>
+  </data>
+  <data name="StoppingExistingKubectlTunnelJob" xml:space="preserve">
+    <value>Stopping existing Kubectl-Tunnel job.</value>
+  </data>
+  <data name="SettingUpBrowserPop" xml:space="preserve">
+    <value>Setting up browser pop.</value>
+  </data>
+  <data name="StartingBrowser" xml:space="preserve">
+    <value>Starting browser: {0}</value>
+  </data>
+  <data name="StartingOnDefault" xml:space="preserve">
+    <value>Starting on default</value>
+  </data>
+  <data name="StoppingProcessWithId" xml:space="preserve">
+    <value>Stopping process with id {0}</value>
+  </data>
+  <data name="PidDoesntExistOrJobIsAlreadyDead" xml:space="preserve">
+    <value>pid doesn't exist or job is already dead</value>
+  </data>
+  <data name="StoppedProcesWithId" xml:space="preserve">
+    <value>Stopped process with id {0}</value>
+  </data>
+  <data name="StartingKubectl" xml:space="preserve">
+    <value>Starting: `kubectl {0}`</value>
+  </data>
+  <data name="StartedKubectl" xml:space="preserve">
+    <value>Started: `kubectl {0}`</value>
+  </data>
+  <data name="ProcessStartedWithId" xml:space="preserve">
+    <value>Process started with id: {0}.</value>
+  </data>
+  <data name="StoppingExistingKubectlTunnelJobWithPid" xml:space="preserve">
+    <value>Stopping existing Kubectl-Tunnel job with pid {0}.</value>
+  </data>
+  <data name="DidNotFindJob" xml:space="preserve">
+    <value>Did not find job.</value>
+  </data>
+</root>
