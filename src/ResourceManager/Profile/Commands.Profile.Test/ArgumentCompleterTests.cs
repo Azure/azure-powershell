@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             xunitLogger = new XunitTracingInterceptor(output);
         }
 
-        [Fact]
+        [Fact(Skip="CR testing needs investigation")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCompleter()
         {
