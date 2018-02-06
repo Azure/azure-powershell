@@ -37,6 +37,17 @@ PS C:\> $getHybirdConnection = Get-AzureRmRelayHybridConnection -ResourceGroupNa
 PS C:\> $getHybirdConnection.UserMetadata = "TestHybirdConnection2"
 PS C:\> $getHybirdConnection.RequiresClientAuthorization = $False
 PS C:\> New-AzureRmRelayHybridConnection -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection
+
+CreatedAt                   : 4/26/2017 10:04:15 PM
+UpdatedAt                   : 4/26/2017 10:04:15 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : User Meta data
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
+                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
+                              n2
+Name                        : TestHybirdConnection2
+Type                        : Microsoft.Relay/HybridConnections
 ```
 
 Creates a new HybirdConnection \`TestHybirdConnection2\` in the specified Relay namespace \`TestNameSpace-HybirdConnection\`.
@@ -44,6 +55,17 @@ Creates a new HybirdConnection \`TestHybirdConnection2\` in the specified Relay 
 ### Example 2 - Properties
 ```
 PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1 -RequiresClientAuthorization $True -UserMetadata "User Meta data"
+
+CreatedAt                   : 4/26/2017 10:04:15 PM
+UpdatedAt                   : 4/26/2017 10:04:15 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : User Meta data
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
+                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
+                              n1
+Name                        : TestHybirdConnection1
+Type                        : Microsoft.Relay/HybridConnections
 ```
 
 Creates a new HybirdConnection \`TestHybirdConnection1\` in the specified Relay namespace \`TestNameSpace-HybirdConnection\`.
@@ -213,30 +235,6 @@ System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-
-### Examples - 1 : InputObject
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:04:15 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n2
-Name                        : TestHybirdConnection2
-Type                        : Microsoft.Relay/HybridConnections
-
-### Examples - 2 : Properties
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:04:15 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n1
-Name                        : TestHybirdConnection1
-Type                        : Microsoft.Relay/HybridConnections
 
 ## NOTES
 
