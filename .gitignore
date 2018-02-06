@@ -217,3 +217,5 @@ groupMapping*.json
 /tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
 Results
 Package
+.DS_Store
+.idea
