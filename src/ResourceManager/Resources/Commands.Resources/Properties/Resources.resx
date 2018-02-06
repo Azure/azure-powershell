@@ -405,14 +405,23 @@
   <data name="ServicePrincipalWithSPNDoesntExist" xml:space="preserve">
     <value>Service principal with SPN '{0}' does not exist.</value>
   </data>
-  <data name="RemoveManagementParnter" xml:space="preserve">
+  <data name="RemoveManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to remove management partner with id '{0}'.</value>
   </data>
-  <data name="AddManagementParnter" xml:space="preserve">
+  <data name="RemoveManagementParnterAction" xml:space="preserve">
+    <value>Removing management partner with id '{0}'.</value>
+  </data>
+  <data name="NewManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to add management partner with id '{0}'.</value>
   </data>
-  <data name="UpdateManagementParnter" xml:space="preserve">
+  <data name="NewManagementParnterAction" xml:space="preserve">
+    <value>Adding management partner with id '{0}'.</value>
+  </data>
+  <data name="UpdateManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to change the management partner to '{0}'.</value>
+  </data>
+  <data name="UpdateManagementParnterAction" xml:space="preserve">
+    <value>Updating the management partner to '{0}'.</value>
   </data>
   <data name="RemovedManagementPartner" xml:space="preserve">
     <value>Removed management partner with id '{0}'</value>

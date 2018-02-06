@@ -12,26 +12,15 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNull]
         public string PartnerId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the force parameter.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            string confirmMessage  = string.Format(PartnerResources.AddManagementParnter, PartnerId);
-          
-            ConfirmAction(
-                Force,
-                confirmMessage,
-                PartnerResources.AddManagementParnter,
-                PartnerId,
-                () =>
-                {
-                    var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner.CreateAsync(PartnerId).Result);
-                    WriteObject(response);
-                });
+            if (ShouldProcess(string.Format(PartnerResources.NewManagementParnterTarget, PartnerId),
+                string.Format(PartnerResources.NewManagementParnterAction,PartnerId)))
+            {
+                var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner
+                    .CreateAsync(PartnerId).Result);
+                WriteObject(response);
+            }
         }
     }
 }
