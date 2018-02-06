@@ -82,6 +82,10 @@ function ServiceBusRuleTests
 
 	#remove Rule
 	Remove-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -Force
+
+	# Get rule List to verfiy the deleted rule
+	$ruleList_delete = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName
+	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"	
 	
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
