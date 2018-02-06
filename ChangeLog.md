@@ -1,4 +1,83 @@
-﻿## 5.2.0 - January 2018
+﻿## 5.3.0 - February 2018
+#### AzureRM.Profile
+* 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.
+* 'Remove-AzureRmAccount' has been renamed as 'Disconnect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Logout-AzAccount' and 'Logout-AzureRmAccount') have been redirected to the new cmdlet name.
+* Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
+* Add-AzureRmEnvironment and Set-AzureRmEnvironment
+  - Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.  
+
+#### AzureRM.AnalysisServices
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.Compute
+* Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* User assigned identity support for VM and VM scale set
+- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
+* Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Added Priority parameter to New-AzureRmVmssConfig
+
+#### AzureRM.DataLakeAnalytics
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.DataLakeStore
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
+
+#### AzureRM.EventGrid
+* Updated to use the 2018-01-01 API version.
+
+#### AzureRM.EventHub
+* Added below new commands for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmEventHubGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmEventHubGeoDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+* Added below new commands for checking the Namespace Name and GeoDr Configuration Name - Alias availability. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name: 
+		- Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+
+#### AzureRM.Insights
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.KeyVault
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.Network
+* Fix overwrite message 'Are you sure you want to overwriteresource'
+
+#### AzureRM.OperationalInsights
+* Added support for V2 API querying via Invoke-AzureRmOperationalInsightsQuery. See [https://dev.loganalytics.io/](https://dev.loganalytics.io/) for more info on the new API.
+
+#### AzureRM.Resources
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+
+#### AzureRM.ServiceBus
+* Added below new commandlets for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+* Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
+		- Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+
+#### AzureRM.UsageAggregates
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+## 5.2.0 - January 2018
 #### AzureRM.Profile
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Add-AzureRmAccount
