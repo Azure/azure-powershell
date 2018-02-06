@@ -486,6 +486,74 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 #endif
         }
+
+        /// <summary>
+        /// Execute a process and check for a clean exit to determine if the process exists.
+        /// </summary>
+        /// <param name="programName">Name of the program to start.</param>
+        /// <param name="args">Command line argumentes provided to the program.</param>
+        /// <param name="waitTime">Time to wait for the process to close.</param>
+        /// <param name="criterion">Function to evaluate the process response to determine success. The default implementation returns true if the exit code equals 0.</param>
+        /// <returns></returns>
+        public static bool Probe(string programName, string args = "", int waitTime = 3000, Func<ProcessExitInfo, bool> criterion = null)
+        {
+            try
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = programName,
+                        Arguments = args,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false
+                    }
+                };
+                var stdout = new List<string>();
+                var stderr = new List<string>();
+                process.OutputDataReceived += (s, e) => stdout.Add(e.Data);
+                process.ErrorDataReceived += (s, e) => stderr.Add(e.Data);
+                process.Start();
+                process.BeginErrorReadLine();
+                process.BeginOutputReadLine();
+                process.WaitForExit(waitTime);
+                var exitInfo = new ProcessExitInfo { ExitCode = process.ExitCode, StdOut = stdout, StdErr = stderr };
+                var exitCode = process.ExitCode;
+                return criterion == null ? exitInfo.ExitCode == 0 : criterion(exitInfo);
+            }
+            catch (InvalidOperationException)
+            {
+                // The excutable failed to execute prior wait time expiring.
+                return false;
+            }
+            catch (SystemException)
+            {
+                // The excutable doesn't exist on path. Rather than handling Win32 exception, chose to handle a less platform specific sys exception.
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Process exit information
+        /// </summary>
+        public class ProcessExitInfo
+        {
+            /// <summary>
+            /// Exit code of a process
+            /// </summary>
+            public int ExitCode { get; set; }
+
+            /// <summary>
+            /// List of all lines from STDOUT
+            /// </summary>
+            public IList<string> StdOut { get; set; }
+
+            /// <summary>
+            /// List of all lines from STDERR
+            /// </summary>
+            public IList<string> StdErr { get; set; }
+        }
 		
         public static string DownloadFile(string uri)
         {
