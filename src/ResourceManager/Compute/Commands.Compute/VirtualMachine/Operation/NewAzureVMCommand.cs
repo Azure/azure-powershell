@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.Compute;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;

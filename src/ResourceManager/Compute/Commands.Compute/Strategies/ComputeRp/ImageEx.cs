@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ImageEx
     {

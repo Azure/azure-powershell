@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ComputePolicy
     {
