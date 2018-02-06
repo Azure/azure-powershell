@@ -32,13 +32,21 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
 
         # Create a new VM using the tiny VHD file
         [string]$file = ".\VhdFiles\tiny.vhd";
-		[string]$domainNameLabel = "$name-$rgname".tolower();
-        $vm = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -DiskFile $file -DomainNameLabel $domainNameLabel;
-        Assert-AreEqual $vm.Name $rgname;
+        $vmname = $rgname + 'vm';
+        [string]$domainNameLabel = "$name-$rgname".tolower();
+		$vm = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Location $loc -DiskFile $file -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
+        Assert-AreEqual $vm.Name $vmname;
         Assert-AreEqual $vm.Location $loc;
         Assert-Null $vm.OSProfile $null;
         Assert-Null $vm.StorageProfile.DataDisks;
         Assert-NotNull $vm.StorageProfile.OSDisk.ManagedDisk;
+        # Check the dependent disk resource
+        $stoname = $vmname;
+        $diskname = $vmname;
+        $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual Import $disk.CreationData.CreateOption;
+        Assert-AreEqual "https://${stoname}.blob.core.windows.net/${rgname}/${diskname}.vhd" $disk.CreationData.SourceUri;
     }
     finally
     {
@@ -74,7 +82,7 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         try
         {
 			[string]$domainNameLabel = "$name-$rgname".tolower();
-            $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -DomainNameLabel $domainNameLabel;
+            $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
         }
         catch
         {

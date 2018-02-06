@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
@@ -312,6 +313,17 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
+                var resourceClient =
+                        AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+                if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
+                {
+                    var st0 = resourceClient.ResourceGroups.CreateOrUpdate(ResourceGroupName, new ResourceGroup
+                    {
+                        Location = Location,
+                        Name = ResourceGroupName
+                    });
+                }
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
@@ -349,7 +361,7 @@ namespace Microsoft.Azure.Commands.Compute
                     new Uri(string.Format(
                         "{0}{1}/{2}{3}",
                         storageAccount.PrimaryEndpoints.Blob,
-                        Name.ToLower(),
+                        ResourceGroupName.ToLower(),
                         Name.ToLower(),
                         ".vhd")),
                     out destinationUri);
@@ -488,7 +500,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
-
                         var currentBginfoVersion = GetBginfoExtension();
 
                         if (!string.IsNullOrEmpty(currentBginfoVersion))
