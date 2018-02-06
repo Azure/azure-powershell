@@ -26,7 +26,7 @@ function Test-SimpleNewVm
 		$username = "admin01"
 		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$name-$rgname".tolower();
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
 		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
