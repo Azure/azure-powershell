@@ -44,8 +44,8 @@ $cmdlets | ForEach-Object {
 };
 
 # Write to files.
-$warnings | ConvertTo-Json | Out-File $WarningFile;
-$results | ConvertTo-Json | Out-File $OutputFile;
+$warnings | ConvertTo-Json | Out-File $WarningFile -Encoding utf8;
+$results | ConvertTo-Json | Out-File $OutputFile -Encoding utf8;
 
 # Print conclusion.
 Write-Host ""
