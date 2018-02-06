@@ -33,6 +33,7 @@
 * Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
 * Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+* Fixed a non-existing resource group creation problem for New-AzureRmVM
 
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
