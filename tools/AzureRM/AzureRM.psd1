@@ -96,7 +96,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.3.0';
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '5.3.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.1'; }, 
                @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '4.1.0'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.0'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.1'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.1'; }, 
                @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.4'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.2.0'; }, 
@@ -163,6 +163,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '5.3.0 - February 2018
 AzureRM.Profile
+* Added deprecation warning for PowerShell 3 and 4
 * ''Add-AzureRmAccount'' has been renamed as ''Connect-AzureRmAccount''; an alias has been added for the old cmdlet name, and other aliases (''Login-AzAccount'' and ''Login-AzureRmAccount'') have been redirected to the new cmdlet name.
 * ''Remove-AzureRmAccount'' has been renamed as ''Disconnect-AzureRmAccount''; an alias has been added for the old cmdlet name, and other aliases (''Logout-AzAccount'' and ''Logout-AzureRmAccount'') have been redirected to the new cmdlet name.
 * Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
@@ -222,6 +223,7 @@ AzureRM.Resources
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
 
 AzureRM.ServiceBus
+* Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
 * Added below new commandlets for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
 		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]

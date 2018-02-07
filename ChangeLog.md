@@ -1,5 +1,6 @@
 ﻿## 5.3.0 - February 2018
 #### AzureRM.Profile
+* Added deprecation warning for PowerShell 3 and 4
 * 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.
 * 'Remove-AzureRmAccount' has been renamed as 'Disconnect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Logout-AzAccount' and 'Logout-AzureRmAccount') have been redirected to the new cmdlet name.
 * Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
@@ -59,6 +60,7 @@
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
 
 #### AzureRM.ServiceBus
+* Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
 * Added below new commandlets for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
 		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
