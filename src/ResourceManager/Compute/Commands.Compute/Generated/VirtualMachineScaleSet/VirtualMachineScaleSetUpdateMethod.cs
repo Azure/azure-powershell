@@ -187,6 +187,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool? EnableAutomaticUpdate { get; set; }
 
         [Parameter(
+            ParameterSetName = "ExplicitIdentityParameterSet",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
@@ -313,7 +314,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
