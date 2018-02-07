@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+* Register-AzureRmResourceProvider: Added missing example in the docs
 
 ## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
