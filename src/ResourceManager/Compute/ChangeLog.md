@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
 * `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
 * Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
