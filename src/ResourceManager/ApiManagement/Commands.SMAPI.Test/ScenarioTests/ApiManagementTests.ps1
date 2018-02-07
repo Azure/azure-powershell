@@ -164,7 +164,7 @@ function Api-ImportExportWadlTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $wadlPath = "./Resources/WADLYahoo.xml"
+    $wadlPath = "$TestOutputRoot/Resources/WADLYahoo.xml"
     $path = "wadlapi"
     $wadlApiId = getAssetName
 
@@ -196,7 +196,7 @@ function Api-ImportExportSwaggerTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $swaggerPath = "./Resources/SwaggerPetStoreV2.json"
+    $swaggerPath = "$TestOutputRoot/Resources/SwaggerPetStoreV2.json"
     $swaggerUrl = "http://petstore.swagger.io/v2/swagger.json"
     $path1 = "swaggerapifromFile"
     $path2 = "swaggerapifromUrl"
@@ -241,7 +241,7 @@ function Api-ImportExportWsdlTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $wsdlPath1 = "./Resources/Weather.wsdl"
+    $wsdlPath1 = "$TestOutputRoot/Resources/Weather.wsdl"
     $wsdlUrl = "http://www.webservicex.net/stockquote.asmx?WSDL"
     $path1 = "soapapifromFile"
     $path2 = "soapapifromUrl"
@@ -295,7 +295,7 @@ function Api-ImportWsdlToCreateSoapToRestApi {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $wsdlPath1 = "./Resources/Weather.wsdl"
+    $wsdlPath1 = "$TestOutputRoot/Resources/Weather.wsdl"
     $path1 = "soapToRestApi"
     $wsdlApiId1 = getAssetName	
     $wsdlServiceName1 = "Weather" # from file Weather.wsdl
@@ -1092,10 +1092,10 @@ function Policy-CrudTest {
 
     # load from file get to pipeline scenarios
 
-    $tenantValidPath = "./Resources/TenantValidPolicy.xml"
-    $productValidPath = "./Resources/ProductValidPolicy.xml"
-    $apiValidPath = "./Resources/ApiValidPolicy.xml"
-    $operationValidPath = "./Resources/OperationValidPolicy.xml"
+    $tenantValidPath = "$TestOutputRoot/Resources/TenantValidPolicy.xml"
+    $productValidPath = "$TestOutputRoot/Resources/ProductValidPolicy.xml"
+    $apiValidPath = "$TestOutputRoot/Resources/ApiValidPolicy.xml"
+    $operationValidPath = "$TestOutputRoot/Resources/OperationValidPolicy.xml"
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
@@ -2057,7 +2057,7 @@ function Backend-CrudTest {
         Assert-AreEqual 1 $backend.Properties.Count
         Assert-NotNull $backend.Proxy
         Assert-AreEqual $backend.Proxy.Url "http://12.168.1.1:8080"
-        Assert-NotNull $backend.Proxy.ProxyCredential
+        Assert-NotNull $backend.Proxy.ProxyCredentials
     }
     finally {
         # remove created backend
