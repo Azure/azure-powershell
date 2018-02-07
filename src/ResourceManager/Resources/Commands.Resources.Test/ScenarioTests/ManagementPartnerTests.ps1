@@ -20,7 +20,11 @@ Tests get management partner
 #>
 function Test-GetPartner
 {
+    # Setup
 	$partnerId="123457"
+	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+
+    # Test
 	$partner = Get-AzureRmManagementPartner -PartnerId $partnerId
 
 	# Assert
@@ -28,6 +32,9 @@ function Test-GetPartner
 	Assert-NotNull $partner.TenantId
 	Assert-NotNull $partner.ObjectId
     Assert-NotNull $partner.State
+
+    # cleanup
+    Remove-AzureRmManagementPartner -PartnerId $partnerId
 }
 
 
@@ -37,13 +44,21 @@ Tests get management partner without parnter id
 #>
 function Test-GetPartnerNoPartnerId
 {
+	 # Setup
+	$partnerId="123457"
+	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+
+    # Test
 	$partner = Get-AzureRmManagementPartner
 
 	# Assert
-	Assert-NotNull $partner.PartnerId
+	Assert-AreEqual $partnerId $partner.PartnerId
 	Assert-NotNull $partner.TenantId
 	Assert-NotNull $partner.ObjectId
     Assert-NotNull $partner.State
+
+    # cleanup
+    Remove-AzureRmManagementPartner -PartnerId $partnerId
 }
 
 
@@ -61,6 +76,9 @@ function Test-NewPartner
 	Assert-NotNull $partner.TenantId
 	Assert-NotNull $partner.ObjectId
     Assert-NotNull $partner.State
+
+    # cleanup
+    Remove-AzureRmManagementPartner -PartnerId $partnerId
 }
 
 
@@ -70,14 +88,22 @@ Tests update management partner
 #>
 function Test-UpdatePartner
 {
-	$partnerId="123456"
-	$partner = Update-AzureRmManagementPartner -PartnerId $partnerId
+	# Setup
+	$partnerId="123457"
+	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+
+    # Test
+    $newParnterId="123456"
+	$partner = Update-AzureRmManagementPartner -PartnerId $newParnterId
 
 	# Assert
-	Assert-AreEqual $partnerId $partner.PartnerId
+	Assert-AreEqual $newParnterId $partner.PartnerId
 	Assert-NotNull $partner.TenantId
 	Assert-NotNull $partner.ObjectId
     Assert-NotNull $partner.State
+
+    # cleanup
+    Remove-AzureRmManagementPartner -PartnerId $newParnterId
 }
 
 <#
@@ -86,6 +112,10 @@ Tests remove management partner
 #>
 function Test-RemovePartner
 {
-	$partnerId="123456"
-	$partner = Remove-AzureRmManagementPartner -PartnerId $partnerId
+	# Setup
+	$partnerId="123457"
+	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
+    
+    # Test
+	Remove-AzureRmManagementPartner -PartnerId $partnerId
 }
