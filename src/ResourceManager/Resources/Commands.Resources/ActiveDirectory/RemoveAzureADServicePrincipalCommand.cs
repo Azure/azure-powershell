@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, HelpMessage = "Remove underlying Active Directory Application")]
         public SwitchParameter RemoveApplication { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
