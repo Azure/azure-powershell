@@ -130,5 +130,6 @@
 
     { "regex": "ManagementGroups", "alias": "Management Groups"},
 
-    { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  }
+    { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
+    { "regex": "Kubernetes", "group": "Kubernetes", "alias": "Kubernetes" }
 ]
