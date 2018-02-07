@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.3.0
+* Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 * Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
 * Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
