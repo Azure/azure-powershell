@@ -12,6 +12,9 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## SYNTAX
 
+## DESCRIPTION
+Get-AzureRmEventHubGeoDRConfiguration cmdlet
+
 ### GeoDRParameterSet (Default)
 ```
 Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name <String>]
