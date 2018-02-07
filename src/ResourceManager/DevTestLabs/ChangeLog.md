@@ -19,7 +19,6 @@
 -->
 ## Current Release
 
-## Version 5.2.0
 * Fixed all of the GET cmdlets which previously weren't working.
 
 ## Version 4.0.1
