@@ -13,7 +13,7 @@ Remove management partner
 ## SYNTAX
 
 ```
-Remove-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzureRmManagementPartner [-PartnerId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,8 @@ Remove management partner for this user in this tenant
 
 ### Example 1
 ```powershell
-PS C:\>Remove-AzureRmManagementPartner -PartnerId 123457
+PS C:\>Remove-AzureRmManagementPartner -PartnerId 123457 -PassThru
+true
 ```
 
 Remove management partner for this user in this tenant
