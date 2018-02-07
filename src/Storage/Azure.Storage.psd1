@@ -152,9 +152,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add cmdlets to get and set Storage service properties
-	- Get-AzureStorageServiceProperty
-	- Update-AzureStorageServiceProperty'
+        ReleaseNotes = '* Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
+	- Get-AzureStorageContainer'
 
         # Prerelease string of this module
         # Prerelease = ''
