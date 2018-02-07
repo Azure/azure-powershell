@@ -16,7 +16,7 @@
   ],
   "src/ResourceManager/ApiManagement/": [
     ".\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.Test.dll",
-    ".\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.ServiceManagement.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.dll"
+    ".\\src\\ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.dll"
   ],
   "src/ResourceManager/ApplicationInsights/": [
     ".\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApplicationInsights.Test.dll"
