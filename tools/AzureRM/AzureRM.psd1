@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.3.0'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.3'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.0'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '5.1.0'; }, 
