@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
@@ -232,7 +233,6 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
             var imageAndOsType = new ImageAndOsType(false, null);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
@@ -362,7 +362,14 @@ namespace Microsoft.Azure.Commands.Compute
 
             Location = current.UpdateLocation(Location, virtualMachine);
 
-            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: Name,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
             if (DiskFile == null)
             {
