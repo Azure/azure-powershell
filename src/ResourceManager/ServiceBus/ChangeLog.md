@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.1
 * Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
 
 ## Version 0.6.0
