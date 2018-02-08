@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 
 ## Version 0.6.2
