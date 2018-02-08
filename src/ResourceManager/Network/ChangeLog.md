@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 * Fix overwrite message 'Are you sure you want to overwriteresource'
 
 ## Version 5.1.0
