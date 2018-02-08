@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
@@ -20,12 +21,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
     public class QueryTests : OperationalInsightsScenarioTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQuery()
         {
             RunDataPowerShellTest("Test-SimpleQuery");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQueryWithTimespan()
         {
             RunDataPowerShellTest("Test-SimpleQueryWithTimespan");
@@ -38,6 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithShortWait()
         {
             RunDataPowerShellTest("Test-ExceptionWithShortWait");
