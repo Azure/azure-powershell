@@ -205,27 +205,6 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithForceSw
         }
     }
 }
-
-namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithoutForceSwitch
-{
-    using System.Management.Automation;
-
-    /// <summary>
-    /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
-    /// </summary>
-    [Cmdlet(VerbsData.Export, "ShouldContinueVerbWithoutForceSwitch")]
-    public class ShouldContinueVerbWithoutForceSwitch : Cmdlet
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        protected override void BeginProcessing()
-        {
-            WriteObject("TestCmdLet BeginProcessing()");
-            WriteInformation("Info", null);
-        }
-    }
-}
 #endregion
 
 #region CmdletWithUnapprovedVerb

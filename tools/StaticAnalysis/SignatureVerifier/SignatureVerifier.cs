@@ -139,23 +139,6 @@ namespace StaticAnalysis.SignatureVerifier
                                             "Verify that ConfirmImpact is changed appropriately by the cmdlet. " +
                                             "It is very rare for a cmdlet to change the ConfirmImpact.");
                                     }
-                                    if (cmdlet.IsShouldContinueVerb && !cmdlet.HasForceSwitch)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                           cmdlet: cmdlet,
-                                           severity: 2,
-                                        problemId: SignatureProblemId.CmdletWithDestructiveVerbNoForce,
-                                        description:
-                                            string.Format(
-                                                "{0} does not have a Force parameter but the cmdlet verb '{1}' " +
-                                                "indicates that it may perform destructive actions under certain " +
-                                                "circumstances. Consider whether the cmdlet should have a Force " +
-                                                "parameter anduse ShouldContinue under some circumstances. ",
-                                                cmdlet.Name, cmdlet.VerbName),
-                                        remediation: "Consider wether the cmdlet should have a Force " +
-                                                      "parameter and use ShouldContinue under some circumstances. ");
-                                    }
-
                                     if (!cmdlet.IsApprovedVerb)
                                     {
                                         issueLogger.LogSignatureIssue(
