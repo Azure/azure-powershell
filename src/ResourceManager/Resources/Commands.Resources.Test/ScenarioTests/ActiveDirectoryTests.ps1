@@ -535,7 +535,9 @@ function Test-NewADServicePrincipal
     Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
 
     # Delete SP
-    Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force
+	Assert-NotNull { Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId }
+    Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force -RemoveApplication
+	Assert-Null { Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId }
 }
 
 <#
