@@ -11,10 +11,6 @@ schema: 2.0.0
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## SYNTAX
-
-## DESCRIPTION
-Get-AzureRmEventHubGeoDRConfiguration cmdlet
-
 ### GeoDRParameterSet (Default)
 ```
 Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name <String>]
@@ -33,6 +29,7 @@ Get-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
 The **Get-AzureRmEventHubGeoDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## EXAMPLES
