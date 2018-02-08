@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: foo
+    server: https://hello-test-cbbdae-24ec3dcb.hcp.centralus.azmk8s.io:443
+  name: hello
+contexts:
+- context:
+    cluster: hello
+    user: clusterUser_test_hello
+  name: hello
+current-context: hello
+kind: Config
+users:
+- name: clusterUser_test_hello
+  user:
+    client-certificate-data: baz
+    client-key-data: foo
+    token: buzz
