@@ -93,17 +93,17 @@ function Test-UpdatePartner
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
     # Test
-    $newParnterId="123456"
-	$partner = Update-AzureRmManagementPartner -PartnerId $newParnterId
+    $newPartnerId="123456"
+	$partner = Update-AzureRmManagementPartner -PartnerId $newPartnerId
 
 	# Assert
-	Assert-AreEqual $newParnterId $partner.PartnerId
+	Assert-AreEqual $newPartnerId $partner.PartnerId
 	Assert-NotNull $partner.TenantId
 	Assert-NotNull $partner.ObjectId
     Assert-NotNull $partner.State
 
     # cleanup
-    Remove-AzureRmManagementPartner -PartnerId $newParnterId
+    Remove-AzureRmManagementPartner -PartnerId $newPartnerId
 }
 
 <#
