@@ -34,25 +34,11 @@ namespace Microsoft.Azure.Commands.Resources
             if (ShouldProcess(string.Format(PartnerResources.RemoveManagementParnterTarget, PartnerId),
                 string.Format(PartnerResources.RemoveManagementParnterAction, PartnerId)))
             {
-                Exception exception = null;
-                try
-                {
-                    AceProvisioningManagementPartnerApiClient.Partner.DeleteAsync(PartnerId).Wait();
-                }
-                catch (Exception ex)
-                {
-                    exception = ex;
-                }
+                AceProvisioningManagementPartnerApiClient.Partner.DeleteAsync(PartnerId).Wait();
 
                 if (PassThru.IsPresent)
                 {
-                    if (exception == null)
-                    {
-                        WriteObject(true);
-                        return;
-                    }
-
-                    WriteObject(exception);
+                    WriteObject(true);
                 }
             }
         }
