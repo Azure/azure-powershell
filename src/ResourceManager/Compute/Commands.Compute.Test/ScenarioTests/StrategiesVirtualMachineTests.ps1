@@ -76,6 +76,7 @@ function Test-SimpleNewVmWithAvailabilitySet
 			-AvailabilitySet $asname
 
 		Assert-AreEqual $vmname $x.Name;		
+		Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
     }
     finally
     {
