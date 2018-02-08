@@ -288,7 +288,9 @@ Accept wildcard characters: False
 ```
 
 ### -DnsNameLabel
-The DNS name label for the IP address.```yaml
+The DNS name label for the IP address.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
