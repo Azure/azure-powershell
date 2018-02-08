@@ -124,7 +124,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerMultiVipPublic()
         {
@@ -159,28 +159,28 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalBasicSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLoadBalancerCRUDPublicStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicStandardSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStandardSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDInternalHighlyAvailableBasicSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDInternalHighlyAvailableStandardSku()
         {
