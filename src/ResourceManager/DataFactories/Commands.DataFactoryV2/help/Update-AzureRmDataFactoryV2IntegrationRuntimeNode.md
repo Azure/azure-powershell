@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
+Module Name: AzureRM.DataFactoryV2
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/update-azurermdatafactoryv2integrationruntimenode
 schema: 2.0.0
 ---
@@ -212,7 +213,7 @@ Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSSelfHostedIntegrationRuntimeNode
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime

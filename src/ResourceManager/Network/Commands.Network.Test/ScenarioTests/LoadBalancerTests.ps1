@@ -52,8 +52,10 @@ function Test-LoadBalancerCRUD-Public
         $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
-        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
-        
+        $job = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -AsJob
+        $job | Wait-Job
+		$actualLb = $job | Receive-Job
+
         $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
         # Verification
@@ -91,7 +93,9 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
 
         # Delete
-        $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        $job = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force -AsJob
+		$job | Wait-Job
+		$deleteLb = $job | Receive-Job
         Assert-AreEqual true $deleteLb
         
         $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
@@ -868,7 +872,9 @@ function Test-LoadBalancerChildResource
 
         # Test BackendAddressPool cmdlets
         $backendAddressPoolName2 = Get-ResourceName
-        $lb =  Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName2 | Set-AzureRmLoadBalancer
+        $job =  Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName2 | Set-AzureRmLoadBalancer -AsJob
+		$job | Wait-Job
+		$lb = $job | Receive-Job
 
         Assert-AreEqual 2 @($lb.BackendAddressPools).Count
         Assert-AreEqual $backendAddressPoolName2 $lb.BackendAddressPools[1].Name

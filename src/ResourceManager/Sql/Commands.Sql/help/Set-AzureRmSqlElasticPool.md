@@ -16,12 +16,12 @@ Modifies properties of an elastic database pool in Azure SQL Database.
 ```
 Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
  [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlElasticPool** cmdlet modifies properties for an elastic database pool in an Azure SQL Database. This cmdlet can modify the minimum Database Throughput Units (DTUs) per database in addition to the maximum DTUs per database, the number of DTUs for the pool, and the storage limit for the pool.
+The **Set-AzureRmSqlElasticPool** cmdlet sets properties for an elastic pool in Azure SQL Database. This cmdlet can modify the eDTUs per pool (*Dtu*), storage max size per pool (*StorageMB*), maximum eDTUs per database (*DatabaseDtuMax*), and minimum eDTUs per database (*DatqabaseDtuMin*).
 
 Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
@@ -48,7 +48,7 @@ Tags              :
 This command modifies properties for an elastic pool named elasticpool01. The command sets the
 number of DTUs for the elastic pool to 1000 and sets the minimum and maximum DTUs.
 
-### Example 2: Modify the max storage of an elastic pool
+### Example 2: Modify the storage max size of an elastic pool
 ```
 PS C:\>Set-AzureRmSqlDatabaseElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -StorageMB 2097152
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/Server01/elasticPools/ElasticPool01
@@ -71,6 +71,20 @@ storage for an elastic pool to 2 TB.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseDtuMax
 Specifies the maximum number of DTUs that any single database in the pool can consume. 
 
@@ -87,7 +101,7 @@ values for different editions are as follows:
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +120,7 @@ The default value is zero (0).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +159,7 @@ editions are as follows:
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,7 +183,7 @@ edition. The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -200,7 +214,7 @@ Specifies the name of the resource group to which the elastic pool is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -215,7 +229,7 @@ Specifies the name of the server that hosts the elastic pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -231,7 +245,7 @@ New-AzureRmSqlElasticPool cmdlet.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -264,7 +278,7 @@ The zone redundancy to associate with the Azure Sql Elastic Pool
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

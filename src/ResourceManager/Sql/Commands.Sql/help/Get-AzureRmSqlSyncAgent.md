@@ -109,7 +109,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +124,7 @@ The name of the Azure SQL Server the sync agent is in.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

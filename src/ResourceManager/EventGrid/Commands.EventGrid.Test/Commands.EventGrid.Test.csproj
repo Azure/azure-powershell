@@ -56,12 +56,11 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.0.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.EventGrid">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.EventHub">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -202,7 +201,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsNewKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsUpdate.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsSet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTypeTests\EventGrid_TopicTypes.json">

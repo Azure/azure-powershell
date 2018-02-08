@@ -67,7 +67,7 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\RemoveAzureRmAccount.cs" />
+    <Compile Include="Account\DisconnectAzureRmAccount.cs" />
     <Compile Include="AutoSave\DisableAzureRmContextAutosave.cs" />
     <Compile Include="AutoSave\GetAzureRmContextAutosaveSetting.cs" />
     <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
@@ -104,7 +104,7 @@
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />
-    <Compile Include="Account\AddAzureRmAccount.cs" />
+    <Compile Include="Account\ConnectAzureRmAccount.cs" />
     <Compile Include="Context\GetAzureRMContext.cs" />
     <Compile Include="Context\SetAzureRMContext.cs" />
     <Compile Include="Context\ImportAzureRMContext.cs" />
@@ -127,15 +127,15 @@
       <Link>AzureRM.Profile.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="AzureRmProfileStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">

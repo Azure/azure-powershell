@@ -43,7 +43,7 @@ Specifies the name of the column targeted by the masking rule.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -58,7 +58,7 @@ Specifies the name of the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -88,7 +88,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +104,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,7 +119,7 @@ Specifies the name of the resource group to which the database is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -134,7 +134,7 @@ Specifies the name of a schema.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -149,7 +149,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -164,7 +164,7 @@ Specifies the name of an Azure SQL table.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

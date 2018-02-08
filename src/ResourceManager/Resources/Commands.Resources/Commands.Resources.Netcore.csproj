@@ -5,19 +5,19 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Resources</AssemblyName>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.Resources</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureRM.Resources.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureRM.Resources.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Resources.Netcore\</OutputPath>
     <DocumentationFile></DocumentationFile>
     <SignAssembly>True</SignAssembly>
     <DelaySign>True</DelaySign>
@@ -25,10 +25,10 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <ItemGroup >
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.5.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.6.0-preview" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
@@ -77,6 +77,10 @@
     <None Update="Microsoft.Azure.Commands.Resources.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

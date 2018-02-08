@@ -34,9 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.0.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.EventGrid, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventGrid.1.2.0-preview\lib\net452\Microsoft.Azure.Management.EventGrid.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -45,6 +45,7 @@
     <Compile Include="EventSubscription\GetAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\NewAzureEventGridSubscription.cs" />
     <Compile Include="EventSubscription\RemoveAzureEventGridSubscription.cs" />
+    <Compile Include="EventSubscription\UpdateAzureEventGridSubscription.cs" />
     <Compile Include="Models\PSEventSubscription.cs" />
     <Compile Include="Models\PSEventSubscriptionListInstance.cs" />
     <Compile Include="Models\PSTopic.cs" />
@@ -91,6 +92,9 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />

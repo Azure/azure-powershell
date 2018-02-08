@@ -110,25 +110,6 @@ function Get-TargetModules
     }
 }
 
-function Add-PSM1Dependency
-{
-  [CmdletBinding()]
-  param(
-  [string] $Path)
-
-  PROCESS 
-  {
-    $file = Get-Item -Path $Path
-    $manifestFile = $file.Name
-    $psm1file = $manifestFile -replace ".psd1", ".psm1"
-    if($isNetCore -eq "false") {
-      Update-ModuleManifest -Path $Path -RootModule $psm1file
-    }
-  }
-
-}
-
-
 function Remove-ModuleDependencies
 {
   [CmdletBinding()]
@@ -173,7 +154,7 @@ function Update-NugetPackage
         Remove-Item -Recurse -Path $packPath -Force
         Remove-Item -Path $contentPath -Force
         $content = (Get-Content -Path $modulePath) -join "`r`n"
-        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content = $content -replace $regex2, ("<requireLicenseAcceptance>true</requireLicenseAcceptance>")
         $content | Out-File -FilePath $modulePath -Force
         &$NugetExe pack $modulePath -OutputDirectory $BasePath
     }
@@ -199,11 +180,17 @@ function Change-RMModule
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
         Write-Output "Changing to directory for module modifications $TempRepoPath"
+        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
+        {
+            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
+        }
+        
         pushd $TempRepoPath
         try
         {
-          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".nupkg")
-          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".zip")
+          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".zip")
           $dirPath = Join-Path -Path . -ChildPath $moduleName
           $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
@@ -216,7 +203,6 @@ function Change-RMModule
           Write-Output "Expanding $zipPath"
           Expand-Archive $zipPath -DestinationPath $dirPath
           Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Add-PSM1Dependency -Path $unzippedManifest
           Write-Output "Removing module manifest dependencies for $unzippedManifest"
           Remove-ModuleDependencies -Path $unzippedManifest
           Remove-Item -Path $zipPath -Force

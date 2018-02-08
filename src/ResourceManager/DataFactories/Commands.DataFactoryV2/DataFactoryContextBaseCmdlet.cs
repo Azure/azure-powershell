@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -35,5 +36,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpFactoryName)]
         [ValidateNotNullOrEmpty]
         public string DataFactoryName { get; set; }
+
+        protected void ByFactoryObject()
+        {
+            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+            {
+                DataFactoryName = DataFactory.DataFactoryName;
+                ResourceGroupName = DataFactory.ResourceGroupName;
+            }
+        }
     }
 }

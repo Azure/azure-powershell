@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
@@ -40,9 +39,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             _storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        public string GetStorageAccountAccessKey(string resourceGroupName, string accountName)
+        public Registry CreateRegistry(string resourceGroupName, string registryName, Registry registry)
         {
-            return _storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName).Keys[0].Value;
+            return _client.Registries.Create(resourceGroupName, registryName, registry);
         }
 
         public Registry GetRegistry(string resourceGroupName, string registryName)
@@ -54,8 +53,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             string resourceGroupName,
             string registryName,
             bool? adminUserEnabled,
-            string storageAccountName = null,
-            string storageAccountResourceGroup = null,
+            string sku = null,
+            string storageAccountId = null,
             IDictionary<string, string> tags = null)
         {
             var parameters = new RegistryUpdateParameters()
@@ -63,19 +62,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 AdminUserEnabled = adminUserEnabled
             };
 
-            if (storageAccountName != null)
+            if(sku != null)
             {
-                if (storageAccountResourceGroup == null)
-                {
-                    throw new ArgumentNullException("Storage account resource group cannot be null.");
-                }
+                parameters.Sku = new Management.ContainerRegistry.Models.Sku(sku);
+            }            
 
-                var storageAccountAccessKey = GetStorageAccountAccessKey(storageAccountResourceGroup, storageAccountName);
-
-                parameters.StorageAccount = new StorageAccountParameters()
+            if (storageAccountId != null)
+            {
+                parameters.StorageAccount = new StorageAccountProperties()
                 {
-                    Name = storageAccountName,
-                    AccessKey = storageAccountAccessKey
+                    Id = storageAccountId
                 };
             }
 
@@ -116,9 +112,42 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
         }
 
+        public IList<PSContainerRegistry> ListAllRegistries(string resourceGroupName)
+        {
+            List<PSContainerRegistry> list = new List<PSContainerRegistry>();
+
+            var registries = ListRegistries(resourceGroupName);
+            foreach (Registry registry in registries)
+            {
+                list.Add(new PSContainerRegistry(registry));
+            }
+
+            while (!string.IsNullOrEmpty(registries.NextPageLink))
+            {
+                registries = ListRegistriesUsingNextLink(resourceGroupName, registries.NextPageLink);
+                foreach (Registry registry in registries)
+                {
+                    var psRegistry = new PSContainerRegistry(registry);
+                    list.Add(psRegistry);
+                }
+            }
+            return list;
+        }
+
+        public string GetRegistryLocation(string resourceGroupName, string registryName)
+        {
+            var registry = GetRegistry(resourceGroupName, registryName);
+            return registry?.Location;
+        }
+
         public RegistryListCredentialsResult ListRegistryCredentials(string resourceGroupName, string registryName)
         {
             return _client.Registries.ListCredentials(resourceGroupName, registryName);
+        }
+
+        public RegistryUsageListResult ListRegistryUsage(string resourceGroupName, string registryName)
+        {
+            return _client.Registries.ListUsages(resourceGroupName, registryName);
         }
 
         public RegistryListCredentialsResult RegenerateRegistryCredential(string resourceGroupName, string registryName, PasswordName passwordName)
@@ -129,6 +158,149 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public RegistryNameStatus CheckRegistryNameAvailability(string registryName)
         {
             return _client.Registries.CheckNameAvailability(registryName);
+        }
+
+        public Replication CreateReplication(string resourceGroupName, string registryName, string replicationName, string location, IDictionary<string, string> tags)
+        {
+            return _client.Replications.Create(resourceGroupName, registryName, replicationName, location, tags);
+        }
+
+        public void DeleteReplication(string resourceGroupName, string registryName, string replicationName)
+        {
+            _client.Replications.Delete(resourceGroupName, registryName, replicationName);
+        }
+        
+        public Replication UpdateReplication(string resourceGroupName, string registryName, string replicationName, IDictionary<string, string> tags)
+        {
+            return _client.Replications.Update(resourceGroupName, registryName, replicationName, tags);
+        }
+
+        public IPage<Replication> ListReplications(string resourceGroupName, string registryName)
+        {
+            return _client.Replications.List(resourceGroupName, registryName);
+        }
+
+        public IList<PSContainerRegistryReplication> ListAllReplications(string resourceGroupName, string registryName)
+        {
+            var replications = ListReplications(resourceGroupName, registryName);
+            var replicationList = new List<PSContainerRegistryReplication>();
+            foreach (var r in replications)
+            {
+                replicationList.Add(new PSContainerRegistryReplication(r));
+            }
+
+            while (!string.IsNullOrEmpty(replications.NextPageLink))
+            {
+                replications = ListReplicationsUsingNextLink(replications.NextPageLink);
+                foreach (var r in replications)
+                {
+                    replicationList.Add(new PSContainerRegistryReplication(r));
+                }
+            }
+            return replicationList;
+        }
+
+        public IPage<Replication> ListReplicationsUsingNextLink(string nextLink)
+        {
+            return _client.Replications.ListNext(nextLink);
+        }
+
+        public Replication GetReplication(string resourceGroupName, string registryName, string replicationName)
+        {
+            return _client.Replications.Get(resourceGroupName, registryName, replicationName);
+        }
+
+        public Webhook CreateWebhook(string resourceGroupName, string registryName, string webhookName, WebhookCreateParameters parameters)
+        {
+            return _client.Webhooks.Create(resourceGroupName, registryName, webhookName, parameters);
+        }
+
+        public Webhook UpdateWebhook(string resourceGroupName, string registryName, string webhookName, WebhookUpdateParameters parameters)
+        {
+            return _client.Webhooks.Update(resourceGroupName, registryName, webhookName, parameters);
+        }
+
+        public void DeleteWebhook(string resourceGroupName, string registryName, string webhookName)
+        {
+            _client.Webhooks.Delete(resourceGroupName, registryName, webhookName);
+        }
+
+        public EventInfo PingWebhook(string resourceGroupName, string registryName, string webhookName)
+        {
+            return _client.Webhooks.Ping(resourceGroupName, registryName, webhookName);
+        }
+
+        public Webhook GetWebhook(string resourceGroupName, string registryName, string webhookName)
+        {
+            return _client.Webhooks.Get(resourceGroupName, registryName, webhookName);
+        }
+
+        public IPage<Webhook> ListWebhooks(string resourceGroupName, string registryName)
+        {
+            return _client.Webhooks.List(resourceGroupName, registryName);
+        }
+
+        public IPage<Webhook> ListWebhooksUsingNextLink(string nextLink)
+        {
+            return _client.Webhooks.ListNext(nextLink);
+        }
+
+        public IPage<EventModel> ListWebhookEvents(string resourceGroupName, string registryName, string webhookName)
+        {
+            return _client.Webhooks.ListEvents(resourceGroupName, registryName, webhookName);
+        }
+
+        public IList<PSContainerRegistryWebhook> ListAllWebhook(string resourceGroupName, string registryName)
+        {
+            var webhooks = ListWebhooks(resourceGroupName, registryName);
+            var webhookList = new List<PSContainerRegistryWebhook>();
+
+            foreach (var webhook in webhooks)
+            {
+                webhookList.Add(new PSContainerRegistryWebhook(webhook));
+            }
+
+            while (!string.IsNullOrEmpty(webhooks.NextPageLink))
+            {
+                webhooks = ListWebhooksUsingNextLink(webhooks.NextPageLink);
+
+                foreach (var webhook in webhooks)
+                {
+                    webhookList.Add(new PSContainerRegistryWebhook(webhook));
+                }
+            }
+            return webhookList;
+        }
+
+        public IList<PSContainerRegistryWebhookEvent> ListAllWebhookEvent(string resourceGroupName, string registryName, string webhookName)
+        {
+            var webhookEvents = ListWebhookEvents(resourceGroupName, registryName, webhookName);
+            var webhookEventList = new List<PSContainerRegistryWebhookEvent>();
+
+            foreach (var webhookEvent in webhookEvents)
+            {
+                webhookEventList.Add(new PSContainerRegistryWebhookEvent(webhookEvent));
+            }
+
+            while (!string.IsNullOrEmpty(webhookEvents.NextPageLink))
+            {
+                webhookEvents = ListWebhookEventsUsingNextLink(webhookEvents.NextPageLink);
+                foreach (var webhookEvent in webhookEvents)
+                {
+                    webhookEventList.Add(new PSContainerRegistryWebhookEvent(webhookEvent));
+                }
+            }
+            return webhookEventList;
+        }
+
+        public IPage<EventModel> ListWebhookEventsUsingNextLink(string nextLink)
+        {
+            return _client.Webhooks.ListEventsNext(nextLink);
+        }
+        
+        public CallbackConfig GetWebhookGetCallbackConfig(string resourceGroupName, string registryName, string webhookName)
+        {
+            return _client.Webhooks.GetCallbackConfig(resourceGroupName, registryName, webhookName);
         }
     }
 }

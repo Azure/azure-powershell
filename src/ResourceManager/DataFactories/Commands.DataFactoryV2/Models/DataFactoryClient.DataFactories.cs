@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     public partial class DataFactoryClient
     {
-        public virtual PSDataFactory GetDataFactory(string resourceGroupName, string dataFactoryName)
+        public PSDataFactory GetDataFactory(string resourceGroupName, string dataFactoryName)
         {
             Factory response = this.DataFactoryManagementClient.Factories.Get(resourceGroupName, dataFactoryName);
 
             return response != null ? new PSDataFactory(response, resourceGroupName) : null;
         }
 
-        public virtual List<PSDataFactory> ListDataFactories(DataFactoryFilterOptions filterOptions)
+        public List<PSDataFactory> ListDataFactories(DataFactoryFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactories;
         }
 
-        public virtual List<PSDataFactory> ListDataFactoriesBySubscription(DataFactoryFilterOptions filterOptions)
+        public List<PSDataFactory> ListDataFactoriesBySubscription(DataFactoryFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactories;
         }
 
-        public virtual List<PSDataFactory> FilterPSDataFactories(DataFactoryFilterOptions filterOptions)
+        public List<PSDataFactory> FilterPSDataFactories(DataFactoryFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -124,38 +124,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactories;
         }
 
-        public virtual Factory CreateOrUpdateDataFactory(string resourceGroupName, string dataFactoryName,
-            string loggingStorageAccountNme, string loggingStorageAccountKey, string location, IDictionary<string, string> tags)
-        {
-            Factory response = this.DataFactoryManagementClient.Factories.CreateOrUpdate(
-                resourceGroupName,
-                dataFactoryName,
-                new Factory
-                {
-                    Location = location,
-                    Tags = tags,
-                    Identity = new FactoryIdentity()
-                });
-
-            return response;
-        }
-
-        public virtual PSDataFactory CreatePSDataFactory(CreatePSDataFactoryParameters parameters)
+        public PSDataFactory CreatePSDataFactory(CreatePSDataFactoryParameters parameters)
         {
             PSDataFactory dataFactory = null;
             Action createDataFactory = () =>
             {
-                var tags = new Dictionary<string, string>();
-                if (parameters.Tags != null)
-                {
-                    tags = parameters.Tags.ToDictionary();
-                }
-
                 dataFactory =
                     new PSDataFactory(
-                        CreateOrUpdateDataFactory(parameters.ResourceGroupName, parameters.DataFactoryName,
-                            parameters.LoggingStorageAccountName, parameters.LoggingStorageAccountKey,
-                            parameters.Location, tags), parameters.ResourceGroupName);
+                        this.DataFactoryManagementClient.Factories.CreateOrUpdate(
+                            parameters.ResourceGroupName,
+                            parameters.DataFactoryName,
+                            new Factory
+                            {
+                                Location = parameters.Location,
+                                Tags = parameters.Tags?.ToDictionary(),
+                                Identity = new FactoryIdentity()
+                            }),
+                        parameters.ResourceGroupName);
             };
 
             parameters.ConfirmAction(
@@ -182,6 +167,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return dataFactory;
         }
 
+        public PSDataFactory UpdatePSDataFactory(UpdatePSDataFactoryParameters parameters)
+        {
+            var updateParams = new FactoryUpdateParameters(parameters.Tags?.ToDictionary());
+            return new PSDataFactory(
+                this.DataFactoryManagementClient.Factories.Update(
+                    parameters.ResourceGroupName,
+                    parameters.DataFactoryName,
+                    updateParams),
+                parameters.ResourceGroupName);
+        }
+
         private bool CheckDataFactoryExists(string resourceGroupName, string dataFactoryName, out PSDataFactory dataFactory)
         {
             try
@@ -204,7 +200,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
         }
 
-        public virtual HttpStatusCode DeleteDataFactory(string resourceGroupName, string dataFactoryName)
+        public HttpStatusCode DeleteDataFactory(string resourceGroupName, string dataFactoryName)
         {
             Rest.Azure.AzureOperationResponse response =
                 this.DataFactoryManagementClient.Factories.DeleteWithHttpMessagesAsync(resourceGroupName, dataFactoryName).Result;

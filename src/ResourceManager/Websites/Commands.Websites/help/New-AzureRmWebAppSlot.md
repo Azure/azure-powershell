@@ -16,7 +16,7 @@ Creates an Azure Web App slot.
 ```
 New-AzureRmWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [-IgnoreSourceControl] [-IgnoreCustomHostNames]
- [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
+ [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -197,6 +197,21 @@ Required: False
 Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

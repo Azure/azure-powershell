@@ -22,12 +22,13 @@ namespace Microsoft.Azure.Commands.Resources
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+    using Microsoft.Azure.Management.Authorization.Models;
 
     /// <summary>
     /// Get an existing resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Alias("Get-AzureRmResourceProviderAction")]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";
@@ -36,9 +37,10 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string OperationSearchString { get; set; }
+        public string OperationSearchString { get; set; } = "*";
 
         /// <summary>
         /// Executes the cmdlet

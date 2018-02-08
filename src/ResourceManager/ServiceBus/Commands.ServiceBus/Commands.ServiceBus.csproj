@@ -42,12 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.3\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusAuthorizationRule.cs" />
@@ -58,6 +56,11 @@
     <Compile Include="Cmdlets\AuthorizationRule\SetAzureServiceBusAuthorizationRule.cs" />
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
     <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureServiceBusGeoDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationBreakPair.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationFailOver.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespace.cs" />
@@ -79,25 +82,26 @@
     <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopic.cs" />
     <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopic.cs" />
     <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopic.cs" />
-    <Compile Include="Models\ActionAttributes.cs" />
-    <Compile Include="Models\CheckNameAvailabilityAttributes.cs" />
-    <Compile Include="Models\CheckNameAvailabilityResultAttributes.cs" />
-    <Compile Include="Models\CorrelationFilterAttributes.cs" />
+    <Compile Include="Models\PSActionAttributes.cs" />
+    <Compile Include="Models\PSCheckNameAvailabilityAttributes.cs" />
+    <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
+    <Compile Include="Models\PSCorrelationFilterAttributes.cs" />
     <Compile Include="Models\FilterTypeEnum.cs" />
-    <Compile Include="Models\ListKeysAttributes.cs" />
-    <Compile Include="Models\NamespaceAttributes.cs" />
-    <Compile Include="Models\NamespaceLongRunningOperation.cs" />
+    <Compile Include="Models\PSListKeysAttributes.cs" />
+    <Compile Include="Models\PSNamespaceAttributes.cs" />
+    <Compile Include="Models\PSNamespaceLongRunningOperation.cs" />
     <Compile Include="Models\NamespaceState.cs" />
-    <Compile Include="Models\OperationAttributes.cs" />
-    <Compile Include="Models\OperationDisplayAttributes.cs" />
-    <Compile Include="Models\QueueAttributes.cs" />
-    <Compile Include="Models\RegenerateKeysAttributes.cs" />
-    <Compile Include="Models\ResourceAttributes.cs" />
-    <Compile Include="Models\RulesAttributes.cs" />
-    <Compile Include="Models\SharedAccessAuthorizationRuleAttributes.cs" />
-    <Compile Include="Models\SQLFilterAttributes.cs" />
-    <Compile Include="Models\SubscriptionAttributes.cs" />
-    <Compile Include="Models\TopicAttributes.cs" />
+    <Compile Include="Models\PSOperationAttributes.cs" />
+    <Compile Include="Models\PSOperationDisplayAttributes.cs" />
+    <Compile Include="Models\PSQueueAttributes.cs" />
+    <Compile Include="Models\PSRegenerateKeysAttributes.cs" />
+    <Compile Include="Models\PSResourceAttributes.cs" />
+    <Compile Include="Models\PSRulesAttributes.cs" />
+    <Compile Include="Models\PSServiceBusDRConfigurationAttributes.cs" />
+    <Compile Include="Models\PSSharedAccessAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\PSSQLFilterAttributes.cs" />
+    <Compile Include="Models\PSSubscriptionAttributes.cs" />
+    <Compile Include="Models\PSTopicAttributes.cs" />
     <Compile Include="Models\UnavailableReasonAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -115,8 +119,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

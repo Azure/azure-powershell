@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProperty")]
     [Alias("Get-AzureRmRecoveryServicesBackupProperties")]
     [OutputType(typeof(ASRVaultBackupProperties))]
-    public class GetAzureRmRecoveryServicesBackupProperty : RecoveryServicesCmdletBase, IModuleAssemblyInitializer
+    public class GetAzureRmRecoveryServicesBackupProperty : RecoveryServicesCmdletBase
     {
         #region Parameters
 
@@ -58,23 +58,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             catch (Exception exception)
             {
                 this.HandleException(exception);
-            }
-        }
-
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmRecoveryServicesStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
             }
         }
     }

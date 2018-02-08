@@ -113,7 +113,7 @@ function Get-RandomItemName
         $prefix = "pslibtest";
     }
 
-    $str = $prefix + ((Get-Random) % 10000);
+    $str = $prefix + (([guid]::NewGuid().ToString() -replace '-','')[0..9] -join '');
     return $str;
 }
 
@@ -135,7 +135,11 @@ function Get-StorageManagementTestResourceName
     
     try
     {
-        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
+        if ((Get-StorageTestMode) -eq 'Playback') {
+            $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
+        } else {
+            $assetName = Get-RandomItemName;
+        }
     }
     catch
     {
@@ -168,4 +172,14 @@ Gets the Canary location for a provider
 function Get-ProviderLocation_Canary($provider)
 {
     "eastus2euap"
+}
+
+
+<#
+.SYNOPSIS
+Gets the Stage location for a provider
+#>
+function Get-ProviderLocation_Stage($provider)
+{
+    "eastus2(stage)"
 }

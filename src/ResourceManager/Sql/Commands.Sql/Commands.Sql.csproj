@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlServerAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlDatabaseAuditing.cs" />
@@ -225,6 +226,9 @@
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
@@ -426,9 +430,6 @@
     <Compile Include="VirtualNetworkRule\Model\AzureSqlServerVirtualNetworkRuleModel.cs" />
     <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleAdapter.cs" />
     <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleCommunicator.cs" />
-    <None Include="SqlStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

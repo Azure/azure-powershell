@@ -178,6 +178,30 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        /// <summary>
+        /// Safely copy the selected parameter set from one cmdlet to another
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="source">The cmdlet to copy the parameter set name from</param>
+        /// <param name="target">The cmdlet to copy to</param>
+        public static void SafeCopyParameterSet<T>(this T source, T target) where T : AzurePSCmdlet
+        {
+            if (source != null && target != null)
+            {
+                if (!string.IsNullOrWhiteSpace(source.ParameterSetName))
+                {
+                    try
+                    {
+                        target.SetParameterSet(source.ParameterSetName);
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
+
         public static string AsAbsoluteLocation(this string realtivePath)
         {
             return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));

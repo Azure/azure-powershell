@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+## Version 4.2.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeAnalyticsAccount and Set-AzureRmDataLakeAnalyticsAccount
+
+## Version 4.1.1
+* Added a parameter called ScriptParameter to Submit-AzureRmDataLakeAnalyticsJob
+    - Detailed information about ScriptParameter can be found using Get-Help on Submit-AzureRmDataLakeAnalyticsJob
+* For New-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+    - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+* For New-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+    - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
+* For Set-AzureRmDataLakeAnalyticsAccount, changed the parameter MaxDegreeOfParallelism to MaxAnalyticsUnits
+    - Added an alias for the parameter MaxAnalyticsUnits: MaxDegreeOfParallelism
+* For Submit-AzureRmDataLakeAnalyticsJob, changed the parameter DegreeOfParallelism to AnalyticsUnits
+    - Added an alias for the parameter AnalyticsUnits: DegreeOfParallelism
+* For Update-AzureRmDataLakeAnalyticsComputePolicy, changed the parameter MaxDegreeOfParallelismPerJob to MaxAnalyticsUnitsPerJob
+    - Added an alias for the parameter MaxAnalyticsUnitsPerJob: MaxDegreeOfParallelismPerJob
 
 ## Version 4.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.

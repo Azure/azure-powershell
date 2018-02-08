@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
-    public class GetAzureSqlServer : AzureSqlServerCmdletBase, IModuleAssemblyInitializer
+    public class GetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -99,26 +99,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerModel> model)
         {
             return model;
-        }
-
-        /// <summary>
-        /// Add Sql aliases
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "SqlStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This may throw exception for tests, ignore.
-            }
         }
     }
 }

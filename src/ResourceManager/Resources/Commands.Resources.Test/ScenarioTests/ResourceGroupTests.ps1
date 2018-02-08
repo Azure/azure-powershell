@@ -20,7 +20,7 @@ function Test-CreatesNewSimpleResourceGroup
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     try 
     {
@@ -47,7 +47,7 @@ function Test-UpdatesExistingResourceGroup
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     try 
     {
@@ -82,13 +82,14 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     # Setup
     $rgname1 = Get-ResourceGroupName
     $rgname2 = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     # Test
     New-AzureRmResourceGroup -Name $rgname1 -Location $location
     New-AzureRmResourceGroup -Name $rgname2 -Location $location
 
-    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
+    $job = Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force -AsJob
+	Wait-Job $job
 
     # Assert
     Get-AzureRmResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
@@ -200,7 +201,7 @@ function Test-NewDeploymentAndProviderRegistration
     # Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $template = "Microsoft.Cache.0.4.0-preview"
     $provider = "microsoft.cache"
 
@@ -249,8 +250,10 @@ function Test-RemoveDeployment
     {
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "East US"
-        $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
+        $job = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
+		Wait-Job $job
+		$deployment = Receive-Job $job
+		Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {
@@ -268,7 +271,7 @@ function Test-FindResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$originalResorcrGroups = Find-AzureRmResourceGroup
 	$originalCount = @($originalResorcrGroups).Count 
 
@@ -334,7 +337,7 @@ function Test-ExportResourceGroup
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
@@ -367,7 +370,7 @@ function Test-ResourceGroupWithPositionalParams
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = "West US"
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     try
     {

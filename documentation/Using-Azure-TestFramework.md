@@ -39,7 +39,7 @@ In order to Record/Playback a test, you need to setup a connection string that c
 
 ### New-TestCredential
 
-This cmdlet, located in Repo-Tasks, will allow you to create a credentials file (located in C:/Users/\<currentuser\>/.azure/testcredentials.json) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.  This cmdlet is not currently available for .NET SDK development.
+This cmdlet, located in [Repo-Tasks.psd1](/tools/Repo-Tasks.psd1), which pulls in [TestFx-Tasks.psd1](/tools/Modules/TestFx-Tasks.psd1) and [Build-Tasks.psd1](/tools/Modules/Build-Tasks.psd1), will allow you to create a credentials file (located in C:/Users/\<currentuser\>/.azure/testcredentials.json) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.  This cmdlet is not currently available for .NET SDK development.
 
 #### Create New Service Principal
 
@@ -144,7 +144,7 @@ To use this option, set the following environment variable before starting Visua
 
 ## Record or Playback Tests
 
-1. Run the test and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
+1. [Run the test](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide#running-tests) and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
 2. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
 3. To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback"
 

@@ -26,7 +26,59 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common
 {
-    public class AzureLongRunningJob<T> : Job, ICommandRuntime where T : AzurePSCmdlet
+    /// <summary>
+    /// Abstract class for uniform processing of jobs
+    /// </summary>
+    public abstract class AzureLongRunningJob : Job
+    {
+        protected AzureLongRunningJob(string command, string name) : base(command, name)
+        {
+        }
+
+        /// <summary>
+        /// Run a cmdlet execution as a Job - this is intended to run in a background thread
+        /// </summary>
+        /// <param name="state">The Job record that will track the progress of this job </param>
+        public abstract void RunJob(object state);
+
+        /// <summary>
+        /// Return cmdlet runtime that will report results to this job
+        /// </summary>
+        /// <returns>An IcommandRuntime that reports results to this job</returns>
+        public abstract ICommandRuntime GetJobRuntime();
+
+        /// <summary>
+        /// Mark the job as started
+        /// </summary>
+        public abstract bool TryStart();
+
+        /// <summary>
+        /// Mark the job as Blocked
+        /// </summary>
+        public abstract bool TryBlock();
+
+
+        /// <summary>
+        /// Complete the job (will mark job as Completed or Failed, depending on the execution details)
+        /// </summary>
+        public abstract void Complete();
+
+        /// <summary>
+        /// Mark the Job as Failed
+        /// </summary>
+        public abstract void Fail();
+
+        /// <summary>
+        /// Stop the job
+        /// </summary>
+        public abstract void Cancel();
+    }
+
+    /// <summary>
+    /// Cmdlet-specific Implementation class for long running jobs
+    /// </summary>
+    /// <typeparam name="T">The type of the cmdlet being executed</typeparam>
+    public class AzureLongRunningJob<T> : AzureLongRunningJob, ICommandRuntime where T : AzurePSCmdlet
     {
         string _status = "Running";
         T _cmdlet;
@@ -58,7 +110,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             _cmdlet = CopyCmdlet(cmdlet);
             _shouldConfirm = ShouldConfirm(cmdlet);
-            _cmdlet.CommandRuntime = this.GetJobRuntime();
+            _cmdlet.CommandRuntime = this;
             _runtime = cmdlet.CommandRuntime;
             _execute = executeCmdlet;
             this.PSJobTypeName = this.GetType().Name;
@@ -196,6 +248,7 @@ namespace Microsoft.Azure.Commands.Common
                 field.SafeCopyValue(source: cmdlet, target: returnValue);
             }
 
+            cmdlet.SafeCopyParameterSet(returnValue);
             return returnValue as U;
         }
 
@@ -203,7 +256,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Run a cmdlet execution as a Job - this is intended to run in a background thread
         /// </summary>
         /// <param name="state">The Job record that will track the progress of this job </param>
-        public virtual void RunJob(object state)
+        public override void RunJob(object state)
         {
             if (TryStart())
             {
@@ -239,7 +292,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Return cmdlet runtime that will report results to this job
         /// </summary>
         /// <returns>An IcommandRuntime that reports results to this job</returns>
-        public virtual ICommandRuntime GetJobRuntime()
+        public override ICommandRuntime GetJobRuntime()
         {
             return this as ICommandRuntime;
         }
@@ -307,7 +360,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Mark the task as started
         /// </summary>
-        public bool TryStart()
+        public override bool TryStart()
         {
             bool result = false;
             lock (_lockObject)
@@ -326,7 +379,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Mark the task as blocked
         /// </summary>
-        public bool TryBlock()
+        public override bool TryBlock()
         {
             bool result = false;
             lock (_lockObject)
@@ -345,7 +398,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Mark the job as Failed
         /// </summary>
-        public void Fail()
+        public override void Fail()
         {
             lock (_lockObject)
             {
@@ -357,7 +410,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Mark the job as successfully complete
         /// </summary>
-        public void Complete()
+        public override void Complete()
         {
             lock (_lockObject)
             {
@@ -378,7 +431,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Mark the job as cancelled
         /// </summary>
-        public void Cancel()
+        public override void Cancel()
         {
             lock (_lockObject)
             {
@@ -787,8 +840,7 @@ namespace Microsoft.Azure.Commands.Common
                 try
                 {
                     stateChangedEventHandler(null, new JobStateEventArgs(this.JobStateInfo));
-
-                    if (!gotResultEvent.IsSet && this.TryBlock())
+                    if (!gotResultEvent.IsSet)
                     {
                         WriteDebug(string.Format(Resources.TraceBlockLROThread, methodType));
                         ShouldMethodInvoker methodInvoker = new ShouldMethodInvoker
@@ -800,16 +852,18 @@ namespace Microsoft.Azure.Commands.Common
                         };
 
                         BlockedActions.Enqueue(new ShouldMethodStreamItem(methodInvoker));
-
-                        gotResultEvent.Wait();
-                        WriteDebug(string.Format(Resources.TraceUnblockLROThread, shouldMethod));
-                        TryStart();
-                        lock (resultsLock)
+                        if (this.TryBlock())
                         {
-                            if (closureSafeExceptionThrownOnCmdletThread == null) // stateChangedEventHandler didn't set the results?  = ok to clobber results?
+                            gotResultEvent.Wait();
+                            WriteDebug(string.Format(Resources.TraceUnblockLROThread, shouldMethod));
+                            TryStart();
+                            lock (resultsLock)
                             {
-                                closureSafeExceptionThrownOnCmdletThread = methodInvoker.ThrownException;
-                                methodResult = methodInvoker.MethodResult;
+                                if (closureSafeExceptionThrownOnCmdletThread == null) // stateChangedEventHandler didn't set the results?  = ok to clobber results?
+                                {
+                                    closureSafeExceptionThrownOnCmdletThread = methodInvoker.ThrownException;
+                                    methodResult = methodInvoker.MethodResult;
+                                }
                             }
                         }
                     }
@@ -829,6 +883,9 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        /// <summary>
+        /// Stop job execution
+        /// </summary>
         public override void StopJob()
         {
             ShouldMethodStreamItem stream;

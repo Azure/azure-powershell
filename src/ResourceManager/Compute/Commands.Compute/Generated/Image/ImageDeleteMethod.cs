@@ -22,7 +22,6 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -122,9 +121,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
@@ -150,5 +146,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

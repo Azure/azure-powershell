@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Storage
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccountkey
 schema: 2.0.0
@@ -42,7 +42,7 @@ PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "MyS
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer

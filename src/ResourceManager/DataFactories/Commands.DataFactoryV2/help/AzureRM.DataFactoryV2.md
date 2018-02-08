@@ -107,11 +107,17 @@ Starts a trigger in a data factory.
 ### [Stop-AzureRmDataFactoryV2IntegrationRuntime](Stop-AzureRmDataFactoryV2IntegrationRuntime.md)
 Stops a managed dedicated integration runtime.
 
+### [Stop-AzureRmDataFactoryV2PipelineRun](Stop-AzureRmDataFactoryV2PipelineRun.md)
+Stops a pieline run in a data factory.
+
 ### [Stop-AzureRmDataFactoryV2Trigger](Stop-AzureRmDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.
 
 ### [Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential](Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.
+
+### [Update-AzureRmDataFactoryV2](Update-AzureRmDataFactoryV2.md)
+Updates the properties of a data factory.
 
 ### [Update-AzureRmDataFactoryV2IntegrationRuntime](Update-AzureRmDataFactoryV2IntegrationRuntime.md)
 Updates an integration runtime.

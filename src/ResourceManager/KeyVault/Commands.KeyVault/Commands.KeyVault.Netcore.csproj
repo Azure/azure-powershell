@@ -4,22 +4,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <AssemblyName>Microsoft.Azure.Commands.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.KeyVault</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureRM.KeyVault.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.KeyVault.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureRM.KeyVault.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.KeyVault.Netcore\</OutputPath>
     <DocumentationFile></DocumentationFile>
     <SignAssembly>True</SignAssembly>
     <DelaySign>True</DelaySign>
@@ -27,7 +27,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.3.0-preview" />
@@ -71,6 +71,10 @@
     <None Update="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

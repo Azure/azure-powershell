@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+## Version 0.6.2
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 0.6.1
 * Remove validate set of location into dynamic lookup so that all clouds are supported.
 
 ## Version 0.5.0

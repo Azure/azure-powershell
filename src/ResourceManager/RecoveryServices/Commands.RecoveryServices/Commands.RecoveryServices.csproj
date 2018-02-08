@@ -85,12 +85,12 @@
       <Link>AzureRM.RecoveryServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="AzureRmRecoveryServicesStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

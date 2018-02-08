@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 9BE2E42C-594B-4B67-866C-BBA3B84AA5FD
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmssadditionalunattendcontent
 schema: 2.0.0

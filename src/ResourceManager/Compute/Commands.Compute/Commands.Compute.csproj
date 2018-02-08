@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -276,6 +276,28 @@
     <Compile Include="StorageServices\CloudPageBlobObjectFactory.cs" />
     <Compile Include="StorageServices\SaveAzureVhdCommand.cs" />
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
+    <Compile Include="Strategies\AsyncCmdletExtensions.cs" />
+    <Compile Include="Strategies\Client.cs" />
+    <Compile Include="Strategies\Compute\AvailabilitySetStrategy.cs" />
+    <Compile Include="Strategies\Compute\ComputeStrategy.cs" />
+    <Compile Include="Strategies\Compute\Image.cs" />
+    <Compile Include="Strategies\Compute\Images.cs" />
+    <Compile Include="Strategies\Compute\VirtualMachineScaleSetStrategy.cs" />
+    <Compile Include="Strategies\Compute\VirtualMachineStrategy.cs" />
+    <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
+    <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
+    <Compile Include="Strategies\Network\LoadBalancerStrategy.cs" />
+    <Compile Include="Strategies\Compute\ManagedDiskStrategy.cs" />
+    <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
+    <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
+    <Compile Include="Strategies\Network\NetworkStrategy.cs" />
+    <Compile Include="Strategies\Network\PublicIPAddressStrategy.cs" />
+    <Compile Include="Strategies\Network\SubnetStrategy.cs" />
+    <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
+    <Compile Include="Strategies\ResourceManager\ResourceConfigExtensions.cs" />
+    <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
+    <Compile Include="Strategies\ShouldProcess.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
@@ -335,6 +357,10 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj">
+      <Project>{eea69772-d41b-482a-9252-2b4595c59e53}</Project>
+      <Name>Commands.Common.Strategies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
@@ -373,6 +399,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -50,7 +50,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.3.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.4.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -60,6 +60,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFactories\UpdateAzureDataFactoryCommand.cs" />
     <Compile Include="DataFactoryContextBaseGetCmdlet.cs" />
     <Compile Include="DataFactoryContextBaseSetCmdlet.cs" />
     <Compile Include="DataFactoryContextActionBaseCmdlet.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\UpdatePSDataFactoryParameters.cs" />
     <Compile Include="Models\PSManagedIntegrationRuntimeNode.cs" />
     <Compile Include="Models\PSSelfHostedIntegrationRuntimeNode.cs" />
     <Compile Include="Models\TriggerRunFilterOptions.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="ParameterSetNames.cs" />
     <Compile Include="Runs\GetAzureDataFactoryPipelineRunCommand.cs" />
     <Compile Include="Runs\GetAzureDataFactoryTriggerRunCommand.cs" />
+    <Compile Include="Runs\StopAzureDataFactoryPipelineRunCommand.cs" />
     <Compile Include="Triggers\StopAzureDataFactoryTriggerCommand.cs" />
     <Compile Include="Triggers\StartAzureDataFactoryTriggerCommand.cs" />
     <Compile Include="Triggers\GetAzureDataFactoryTriggerCommand.cs" />
@@ -168,6 +171,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Commands.Storage.Queue;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
 {
-    [TestClass]
     public class RemoveAzureStorageQueueTest : StorageQueueTestBase
     {
         internal FakeRemoveAzureQueueCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public RemoveAzureStorageQueueTest()
         {
             command = new FakeRemoveAzureQueueCommand(queueMock)
                 {
@@ -34,13 +33,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveQueueWithInvalidNameTest()
         {
             string name = "a*b";
@@ -48,7 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.InvalidQueueName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveQueueWithNoExistQueueTest()
         {
             string name = "test";
@@ -56,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.QueueNotFound, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveQueueSuccessfullyTest()
         {
             string name = "test";
@@ -64,14 +60,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
             MockCmdRunTime.ResetPipelines();
             AddTestQueues();
             bool removed = command.RemoveAzureQueue(name);
-            Assert.IsTrue(removed);
+            Assert.False(removed);
 
             MockCmdRunTime.ResetPipelines();
             AddTestQueues();
             name = "text";
             command.confirm = true;
             removed = command.RemoveAzureQueue(name);
-            Assert.IsTrue(removed);
+            Assert.True(removed);
 
             MockCmdRunTime.ResetPipelines();
             AddTestQueues();
@@ -79,10 +75,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
             command.Force = true;
             command.confirm = false;
             removed = command.RemoveAzureQueue(name);
-            Assert.IsTrue(removed);
+            Assert.True(removed);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandRemoveAzureQueue()
         {
             string name = "test";

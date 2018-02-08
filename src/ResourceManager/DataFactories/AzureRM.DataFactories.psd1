@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactories.dll',
@@ -135,7 +135,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed assembly loading issue that caused some cmdlets to fail when executing'
+        ReleaseNotes = '* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataFactory'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

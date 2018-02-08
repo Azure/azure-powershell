@@ -175,7 +175,9 @@ function Test-ApplicationGatewayCRUD
 		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
+		$job = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probe01, $probe02 -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig -AsJob
+		$job | Wait-Job
+		$appgw = $job | Receive-Job
 
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -198,10 +200,12 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $getgw.Probes[1]
 		Assert-NotNull $getgw.Probes[1].Match
 		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
-		Assert-AreEqual 0 $getgw.Probes[1].Match.StatusCodes.Count
+		Assert-AreEqual 1 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
-		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
+		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
+		$job | Wait-Job
+		$backendHealth = $job | Receive-Job
 		Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
 
 		# Get Application Gateway backend health without expanded resource
@@ -256,7 +260,8 @@ function Test-ApplicationGatewayCRUD
 		$getgw = Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
 
 		# Modify existing application gateway with new configuration
-		Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$job = Set-AzureRmApplicationGateway -ApplicationGateway $getgw -AsJob
+		$job | Wait-Job
 
 		# Modify WAF config and verify that it can be retrieved
 		$getgw = Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw -Enabled $true -FirewallMode Detection
@@ -301,7 +306,9 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual "Running" $getgw.OperationalState
 
 		# Stop Application Gateway
-		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$job = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw -AsJob
+		$job | Wait-Job
+		$getgw = $job | Receive-Job
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
  

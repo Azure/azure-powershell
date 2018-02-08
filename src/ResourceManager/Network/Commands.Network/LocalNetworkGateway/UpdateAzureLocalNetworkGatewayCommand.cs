@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Weight added to BGP routes learned from this local network gateway")]
         public int PeerWeight { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
 

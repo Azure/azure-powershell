@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
-        public string StackDirectory = @"..\..\..\..\..\Stack\Debug";
+        public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
 
         protected List<string> modules;
 
@@ -65,7 +65,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public EnvironmentSetupHelper()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var datastore = new MemoryDataStore();
+            IDataStore datastore = new MemoryDataStore();
+            if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
+            {
+                datastore = AzureSession.Instance.DataStore;
+            }
+
             AzureSession.Instance.DataStore = datastore;
             var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
@@ -174,6 +179,32 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        public string StackRMResourceModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+            }
+        }
+
+        public string StackRMStorageModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+            }
+        }
+
+        public string StackRMStorageDataPlaneModule
+        {
+            get
+            {
+                return Path.Combine(this.StackDirectory,
+                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
+            }
+        }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
