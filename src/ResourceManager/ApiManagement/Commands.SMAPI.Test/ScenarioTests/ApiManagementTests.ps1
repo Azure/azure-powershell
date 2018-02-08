@@ -1180,9 +1180,9 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $tenantValid -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureRmApiManagementPolicy -Context $context  -SaveAs 'TenantPolicy.xml' -Force
-        $exists = [System.IO.File]::Exists('TenantPolicy.xml')
-        $policy = gc 'TenantPolicy.xml'
+        Get-AzureRmApiManagementPolicy -Context $context  -SaveAs "$TestOutputRoot/TenantPolicy.xml" -Force
+        $exists = [System.IO.File]::Exists("$TestOutputRoot/TenantPolicy.xml")
+        $policy = gc "$TestOutputRoot/TenantPolicy.xml"
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally {
@@ -1200,9 +1200,9 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs 'ProductPolicy.xml' -Force 
-        $exists = [System.IO.File]::Exists('ProductPolicy.xml')
-        $policy = gc 'ProductPolicy.xml'
+        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Force 
+        $exists = [System.IO.File]::Exists("$TestOutputRoot/ProductPolicy.xml")
+        $policy = gc "$TestOutputRoot/ProductPolicy.xml"
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally {
@@ -1213,7 +1213,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm 'ProductPolicy.xml'
+            rm "$TestOutputRoot/ProductPolicy.xml"
         }
         catch {}
     }
@@ -1225,9 +1225,9 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs 'ApiPolicy.xml' -Force
-        $exists = [System.IO.File]::Exists('ApiPolicy.xml')
-        $policy = gc 'ApiPolicy.xml'
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs "$TestOutputRoot/ApiPolicy.xml" -Force
+        $exists = [System.IO.File]::Exists("$TestOutputRoot/ApiPolicy.xml")
+        $policy = gc "$TestOutputRoot/ApiPolicy.xml"
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally {
@@ -1238,7 +1238,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm 'ApiPolicy.xml'
+            rm "$TestOutputRoot/ApiPolicy.xml"
         }
         catch {}
     }
@@ -1253,9 +1253,9 @@ function Policy-CrudTest {
         Assert-AreEqual $true $set
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
-            -SaveAs 'OperationPolicy.xml' -Force
-        $exists = [System.IO.File]::Exists('OperationPolicy.xml')
-        $policy = gc 'OperationPolicy.xml'
+            -SaveAs "$TestOutputRoot/OperationPolicy.xml" -Force
+        $exists = [System.IO.File]::Exists("$TestOutputRoot/OperationPolicy.xml")
+        $policy = gc "$TestOutputRoot/OperationPolicy.xml"
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally {
@@ -1266,7 +1266,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm 'OperationPolicy.xml'
+            rm "$TestOutputRoot/OperationPolicy.xml"
         }
         catch {}
     }
