@@ -43,7 +43,7 @@ The command overwrites an existing file.
 
 ### Example 3: Add a VHD file and specify the number of threads
 ```
-PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
+PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfUploaderThreads 32
 ```
 
 This command adds a .vhd file to a storage account.
