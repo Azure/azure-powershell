@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: c => c.OsProfile.WindowsConfiguration != null ? 240 : 120);
+                createTime: c =>
+                    c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
+                        ? 240
+                        : 120);
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -41,7 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             string adminUsername,
             string adminPassword,
             Image image,
-            string size)
+            string size,
+            ResourceConfig<AvailabilitySet> availabilitySet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name, 
@@ -79,7 +83,64 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             Version = image.version
                         }
                     },
+                    AvailabilitySet = availabilitySet == null 
+                        ? null 
+                        : new Azure.Management.Compute.Models.SubResource
+                            {
+                                Id = availabilitySet.GetId(subscription).IdToString()
+                            }
                 },
-                dependencies: new[] { networkInterface });
+                dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
+
+        public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            ResourceConfig<NetworkInterface> networkInterface,
+            bool isWindows,
+            ResourceConfig<Disk> disk,
+            string size,
+            ResourceConfig<AvailabilitySet> availabilitySet)
+            => Strategy.CreateResourceConfig(
+                resourceGroup: resourceGroup,
+                name: name,
+                createModel: subscription => new VirtualMachine
+                {
+                    OsProfile = null,
+                    NetworkProfile = new NetworkProfile
+                    {
+                        NetworkInterfaces = new[]
+                        {
+                            new NetworkInterfaceReference
+                            {
+                                Id = networkInterface.GetId(subscription).IdToString()
+                            }
+                        }
+                    },
+                    HardwareProfile = new HardwareProfile
+                    {
+                        VmSize = size
+                    },
+                    StorageProfile = new StorageProfile
+                    {
+                        OsDisk = new OSDisk
+                        {
+                            Name = disk.Name,
+                            CreateOption = DiskCreateOptionTypes.Attach,
+                            OsType = isWindows ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
+                            ManagedDisk = new ManagedDiskParameters
+                            {
+                                StorageAccountType = StorageAccountTypes.PremiumLRS,
+                                Id = disk.GetId(subscription).IdToString()
+                            }
+                        }
+                    },
+                    AvailabilitySet = availabilitySet == null
+                        ? null
+                        : new Azure.Management.Compute.Models.SubResource
+                        {
+                            Id = availabilitySet.GetId(subscription).IdToString()
+                        }
+                },
+                dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
     }
 }

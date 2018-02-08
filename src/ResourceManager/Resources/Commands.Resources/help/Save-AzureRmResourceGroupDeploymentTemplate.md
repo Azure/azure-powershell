@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 8BB4AD6B-EBE3-442A-83E7-B77A31573208
@@ -41,7 +41,7 @@ If not specified, the latest API version is used.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +86,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,7 +140,7 @@ Specifies the output path of the template file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ Indicates that this cmdlet use pre-release API versions when automatically deter
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,4 +222,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

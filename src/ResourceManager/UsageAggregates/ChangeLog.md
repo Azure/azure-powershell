@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 
 ## Version 4.0.0
 * Add support for online help

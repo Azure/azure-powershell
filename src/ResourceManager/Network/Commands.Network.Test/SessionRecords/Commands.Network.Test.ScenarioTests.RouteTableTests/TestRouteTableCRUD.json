@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network\",\r\n  \"namespace\": \"Microsoft.Network\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\r\n      \"roleDefinitionId\": \"13ba9ab4-19f0-4804-adc4-14ece36cc7a1\"\r\n    },\r\n    {\r\n      \"applicationId\": \"7c33bfcb-8d33-48d6-8e60-dc6404003489\",\r\n      \"roleDefinitionId\": \"ad6261e4-fa9a-4642-aa5f-104f1b67e9e3\"\r\n    },\r\n    {\r\n      \"applicationId\": \"1e3e4475-288f-4018-a376-df66fd7fac5f\",\r\n      \"roleDefinitionId\": \"1d538b69-3d87-4e56-8ff8-25786fd48261\"\r\n    },\r\n    {\r\n      \"applicationId\": \"a0be0c72-870e-46f0-9c49-c98333a996f7\",\r\n      \"roleDefinitionId\": \"7ce22727-ffce-45a9-930c-ddb2e56fa131\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"virtualNetworks\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"publicIPAddresses\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"loadBalancers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkSecurityGroups\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationSecurityGroups\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"routeTables\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkWatchers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkWatchers/connectionMonitors\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualNetworkGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"localNetworkGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"connections\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/CheckDnsNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualNetworkAvailableEndpointServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"dnsOperationResults\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnsOperationStatuses\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/A\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/AAAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CNAME\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/PTR\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/MX\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/TXT\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SRV\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SOA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/NS\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/recordsets\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/all\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficmanagerprofiles\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2015-11-01\",\r\n        \"2015-04-28-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkTrafficManagerNameAvailability\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2015-11-01\",\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficManagerUserMetricsKeys\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficManagerGeographicHierarchies\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteCircuits\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteServiceProviders\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGatewayAvailableWafRuleSets\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGatewayAvailableSslOptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"routeFilters\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"bgpServiceCommunities\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualWans\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"vpnSites\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualHubs\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network\",\r\n  \"namespace\": \"Microsoft.Network\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"2cf9eb86-36b5-49dc-86ae-9a63135dfa8c\",\r\n      \"roleDefinitionId\": \"13ba9ab4-19f0-4804-adc4-14ece36cc7a1\"\r\n    },\r\n    {\r\n      \"applicationId\": \"7c33bfcb-8d33-48d6-8e60-dc6404003489\",\r\n      \"roleDefinitionId\": \"ad6261e4-fa9a-4642-aa5f-104f1b67e9e3\"\r\n    },\r\n    {\r\n      \"applicationId\": \"1e3e4475-288f-4018-a376-df66fd7fac5f\",\r\n      \"roleDefinitionId\": \"1d538b69-3d87-4e56-8ff8-25786fd48261\"\r\n    },\r\n    {\r\n      \"applicationId\": \"a0be0c72-870e-46f0-9c49-c98333a996f7\",\r\n      \"roleDefinitionId\": \"7ce22727-ffce-45a9-930c-ddb2e56fa131\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"virtualNetworks\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"publicIPAddresses\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"loadBalancers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkSecurityGroups\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationSecurityGroups\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"routeTables\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkWatchers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"networkWatchers/connectionMonitors\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualNetworkGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"localNetworkGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"connections\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGateways\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/CheckDnsNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualNetworkAvailableEndpointServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficmanagerprofiles\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2015-11-01\",\r\n        \"2015-04-28-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkTrafficManagerNameAvailability\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2015-11-01\",\r\n        \"2015-04-28-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficManagerUserMetricsKeys\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-09-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"trafficManagerGeographicHierarchies\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-05-01\",\r\n        \"2017-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteCircuits\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"expressRouteServiceProviders\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\",\r\n        \"2016-11-01\",\r\n        \"2016-10-01\",\r\n        \"2016-09-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\",\r\n        \"2014-12-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGatewayAvailableWafRuleSets\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"applicationGatewayAvailableSslOptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"routeFilters\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"West US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"bgpServiceCommunities\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-04-01\",\r\n        \"2017-03-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"dnsOperationResults\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnsOperationStatuses\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/A\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/AAAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CNAME\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/PTR\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/MX\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/TXT\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SRV\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/SOA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/NS\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/CAA\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/recordsets\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"dnszones/all\",\r\n      \"locations\": [\r\n        \"global\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\",\r\n        \"2017-09-15-preview\",\r\n        \"2017-09-01\",\r\n        \"2016-04-01\",\r\n        \"2015-11-30\",\r\n        \"2015-11-15-preview\",\r\n        \"2015-05-04-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualWans\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"vpnSites\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualHubs\",\r\n      \"locations\": [\r\n        \"West US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-11-01\",\r\n        \"2017-10-01\",\r\n        \"2017-09-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "19128"
+          "20114"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14999"
         ],
         "x-ms-request-id": [
-          "26dc9c9f-ccda-4b85-b391-3eef7d9f6d8f"
+          "9c688583-d2fc-4752-8e53-dc3b758d7d95"
         ],
         "x-ms-correlation-request-id": [
-          "26dc9c9f-ccda-4b85-b391-3eef7d9f6d8f"
+          "9c688583-d2fc-4752-8e53-dc3b758d7d95"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041609Z:26dc9c9f-ccda-4b85-b391-3eef7d9f6d8f"
+          "WESTEUROPE:20180123T135700Z:9c688583-d2fc-4752-8e53-dc3b758d7d95"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:08 GMT"
+          "Tue, 23 Jan 2018 13:56:59 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourcegroups/ps3127?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlZ3JvdXBzL3BzMzEyNz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps9522?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzOTUyMj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -64,7 +64,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127\",\r\n  \"name\": \"ps3127\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522\",\r\n  \"name\": \"ps9522\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "165"
@@ -79,16 +79,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-request-id": [
-          "64df8600-5b39-4afe-b006-64751d7db1ef"
+          "8af42f81-9643-4e99-a195-525847f2e6ea"
         ],
         "x-ms-correlation-request-id": [
-          "64df8600-5b39-4afe-b006-64751d7db1ef"
+          "8af42f81-9643-4e99-a195-525847f2e6ea"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041610Z:64df8600-5b39-4afe-b006-64751d7db1ef"
+          "WESTEUROPE:20180123T135703Z:8af42f81-9643-4e99-a195-525847f2e6ea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -97,31 +97,31 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:09 GMT"
+          "Tue, 23 Jan 2018 13:57:03 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ea493f91-5548-4f3d-b442-6e67c739671f"
+          "f81358fb-1b21-44fd-b3b1-c2988979958d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/routeTables/ps4493' under resource group 'ps3127' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/routeTables/ps4517' under resource group 'ps9522' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "146"
@@ -139,13 +139,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ba973b49-70cb-46f5-8e1d-04b8fa0ed403"
+          "8a08023c-21e9-487a-a703-d3deef968fcb"
         ],
         "x-ms-correlation-request-id": [
-          "ba973b49-70cb-46f5-8e1d-04b8fa0ed403"
+          "8a08023c-21e9-487a-a703-d3deef968fcb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041611Z:ba973b49-70cb-46f5-8e1d-04b8fa0ed403"
+          "WESTEUROPE:20180123T135705Z:8a08023c-21e9-487a-a703-d3deef968fcb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -154,25 +154,25 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:10 GMT"
+          "Tue, 23 Jan 2018 13:57:04 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "952"
@@ -187,7 +187,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "88b09a47-ccd8-4c01-8233-8f24c5b45031"
+          "bb5650a3-7c4d-4899-b34c-954c232a2fbe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -196,199 +196,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"8809e104-754b-4d08-90fd-4153abb53f56\""
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
-        ],
-        "x-ms-correlation-request-id": [
-          "14653171-8aa4-41b3-abe7-360567e64397"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:14653171-8aa4-41b3-abe7-360567e64397"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:22 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "56755103-4337-4314-801f-64effdd6dc0f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "952"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7200e525-76bf-47db-ae5f-64536ab3eecd"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"8809e104-754b-4d08-90fd-4153abb53f56\""
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
-        ],
-        "x-ms-correlation-request-id": [
-          "3964822b-a215-4807-82c5-e86e82fe2e36"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:3964822b-a215-4807-82c5-e86e82fe2e36"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:22 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7633d610-7e9e-4b15-a880-7f7d329d67e7"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "952"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "a406784d-cc92-443f-85d7-000290414b51"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"8809e104-754b-4d08-90fd-4153abb53f56\""
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
-        ],
-        "x-ms-correlation-request-id": [
-          "c1ba63b5-3c8d-46f4-95e1-039539c6bb33"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:c1ba63b5-3c8d-46f4-95e1-039539c6bb33"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:22 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0a17bca0-38ef-4734-bf61-a8ca351f09ee"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "952"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "8ea89cf2-3705-4a81-85cc-9be8be15282b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"8809e104-754b-4d08-90fd-4153abb53f56\""
+          "W/\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -398,34 +206,40 @@
           "14990"
         ],
         "x-ms-correlation-request-id": [
-          "ebb907c3-fcbd-4ebb-a12b-f265a3ef1763"
+          "0d0c02eb-59e1-4b19-a42e-c0134ca2443b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:ebb907c3-fcbd-4ebb-a12b-f265a3ef1763"
+          "WESTEUROPE:20180123T135721Z:0d0c02eb-59e1-4b19-a42e-c0134ca2443b"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:23 GMT"
+          "Tue, 23 Jan 2018 13:57:21 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e574216c-5e8b-43cf-8821-f439984c6323"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1379"
+          "952"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -437,7 +251,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fa74c59f-d03f-4827-a600-e4bb6bac31e4"
+          "0a9b0403-d067-4c48-957f-9c82ecb5f9bf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -446,7 +260,71 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"01b49c5e-0686-4db5-9eb4-2502d51d124d\""
+          "W/\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e1726c3-7725-4165-a7e6-3d3844acf2b3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135721Z:1e1726c3-7725-4165-a7e6-3d3844acf2b3"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9423a46-5b4c-4033-9a72-bf7e1e8a05ad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "401893de-a9a3-4f7f-9961-42828bf9e3c7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -456,40 +334,40 @@
           "14988"
         ],
         "x-ms-correlation-request-id": [
-          "4cdacb8e-79dc-45cf-8049-e900d7a53d21"
+          "bd280d00-9263-4ea0-ab52-e0de057c7afd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041634Z:4cdacb8e-79dc-45cf-8049-e900d7a53d21"
+          "WESTEUROPE:20180123T135722Z:bd280d00-9263-4ea0-ab52-e0de057c7afd"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:34 GMT"
+          "Tue, 23 Jan 2018 13:57:22 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b74c0fe-182a-496d-b1d4-b99b2b536f2f"
+          "9ba7aacc-d10c-413f-bcbb-3a73287335c3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1379"
+          "952"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -501,7 +379,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "98aad6f9-7048-49df-b578-e87e62b67f61"
+          "1e75db2c-6233-4f5f-99fc-c0250d6c55bc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -510,71 +388,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"01b49c5e-0686-4db5-9eb4-2502d51d124d\""
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
-        ],
-        "x-ms-correlation-request-id": [
-          "d20c069e-28fc-4a51-b96a-8e3d40ca4022"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041634Z:d20c069e-28fc-4a51-b96a-8e3d40ca4022"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:34 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "60950d49-c02e-41e9-9ed3-5051c7c0bc17"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"01b49c5e-0686-4db5-9eb4-2502d51d124d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1379"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "8a5fbe49-f597-4491-86b3-870d6a26bcb7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"01b49c5e-0686-4db5-9eb4-2502d51d124d\""
+          "W/\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -584,34 +398,34 @@
           "14986"
         ],
         "x-ms-correlation-request-id": [
-          "190f4ea5-063b-41da-9969-c0f9d27bf97a"
+          "8fbf9538-37df-4eee-836b-410b89204a7b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041634Z:190f4ea5-063b-41da-9969-c0f9d27bf97a"
+          "WESTEUROPE:20180123T135723Z:8fbf9538-37df-4eee-836b-410b89204a7b"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:34 GMT"
+          "Tue, 23 Jan 2018 13:57:22 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "900"
+          "1379"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -623,7 +437,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "79d1ee57-e3ae-49be-937a-e37775560df4"
+          "ed7595a3-330e-46a1-a809-03ae833cca16"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -632,7 +446,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\""
+          "W/\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -642,37 +456,159 @@
           "14984"
         ],
         "x-ms-correlation-request-id": [
-          "65ed681f-1726-4755-8dfc-78258e2531ed"
+          "cf299da7-481c-4312-835e-ab24026e75f1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041645Z:65ed681f-1726-4755-8dfc-78258e2531ed"
+          "WESTEUROPE:20180123T135734Z:cf299da7-481c-4312-835e-ab24026e75f1"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:44 GMT"
+          "Tue, 23 Jan 2018 13:57:34 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c3bff718-4eed-4926-a8fa-006567fece21"
+          "d1e60b5c-3a28-4a55-90d9-ba2b70ddcb84"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1f1a8148-3230-43bf-88b7-238c3a110825"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "24ef33e4-7edd-4fd0-a270-1041c571dfc4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135734Z:24ef33e4-7edd-4fd0-a270-1041c571dfc4"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:34 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b68ca8ce-d832-4439-bff8-22b139eaf171"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cd006dbb-cbd1-41a2-8538-9a6edc84da9b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"0668f9cf-fd5d-4dd6-8287-39d4e7daa7be\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "af443713-84ab-42e3-821e-5bf7b863510a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135735Z:af443713-84ab-42e3-821e-5bf7b863510a"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:34 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "900"
@@ -687,7 +623,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a46c18e6-5454-4018-9dc4-5b24c93a3b3f"
+          "aa35b229-807d-4b1d-97f8-373092d171c7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -696,30 +632,94 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"7c956bb7-cf3f-4029-9ac9-f425c13d213c\""
+          "W/\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14983"
+          "14980"
         ],
         "x-ms-correlation-request-id": [
-          "c5d29d3b-894a-4c25-b7e3-1f8fad4150dd"
+          "1707157b-b491-4f6c-ac9b-0faa130bc1e5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041645Z:c5d29d3b-894a-4c25-b7e3-1f8fad4150dd"
+          "WESTEUROPE:20180123T135746Z:1707157b-b491-4f6c-ac9b-0faa130bc1e5"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:44 GMT"
+          "Tue, 23 Jan 2018 13:57:46 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7d99fafd-82ab-4692-9143-a23d1fdb328d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "900"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "96978281-61cf-41d4-8f96-b65696a42a42"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"c1bd5077-61a6-44d6-ac66-a8f0ca87c21e\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "8753eff1-8be9-492d-bf4c-fadfe4667f67"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135746Z:8753eff1-8be9-492d-bf4c-fadfe4667f67"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:46 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"routes\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        },\r\n        \"name\": \"route1\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -730,19 +730,19 @@
           "295"
         ],
         "x-ms-client-request-id": [
-          "8c63be61-71fc-48a7-a347-73e7455dcc70"
+          "cf9afced-545a-4054-8e68-e497eacfdb0e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"4186f7b7-7e4d-4c6b-822c-fc7831bf7234\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"4186f7b7-7e4d-4c6b-822c-fc7831bf7234\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"e90564e0-7e65-401c-a89c-78609e7e7945\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"e90564e0-7e65-401c-a89c-78609e7e7945\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "950"
@@ -760,10 +760,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "737ac7ff-9fd7-4012-a5dc-154c729fd297"
+          "3b83803d-c9ff-4e5f-bb15-b48c665fd693"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/737ac7ff-9fd7-4012-a5dc-154c729fd297?api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/3b83803d-c9ff-4e5f-bb15-b48c665fd693?api-version=2017-11-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -776,23 +776,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "44ea3700-9352-4116-8a5c-6e21d772cf48"
+          "3fb45a11-dc81-446c-b287-72084a2f4bcb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041612Z:44ea3700-9352-4116-8a5c-6e21d772cf48"
+          "WESTEUROPE:20180123T135710Z:3fb45a11-dc81-446c-b287-72084a2f4bcb"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:11 GMT"
+          "Tue, 23 Jan 2018 13:57:10 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"routes\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        },\r\n        \"name\": \"route1\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        },\r\n        \"name\": \"route2\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -803,19 +803,19 @@
           "461"
         ],
         "x-ms-client-request-id": [
-          "24bd1e9c-0b8f-40cf-83ff-27484da27e3a"
+          "8fc41479-1695-483e-b326-3ad5ecb21073"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"8fa1463e-ab57-4152-a181-44e570fffa7b\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n        \"etag\": \"W/\\\"8fa1463e-ab57-4152-a181-44e570fffa7b\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"8fa1463e-ab57-4152-a181-44e570fffa7b\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"4ac26ca1-2c2b-4a53-8b50-63890fd13e42\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route1\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n        \"etag\": \"W/\\\"4ac26ca1-2c2b-4a53-8b50-63890fd13e42\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.1.0/24\",\r\n          \"nextHopType\": \"VirtualAppliance\",\r\n          \"nextHopIpAddress\": \"23.108.1.1\"\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"4ac26ca1-2c2b-4a53-8b50-63890fd13e42\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1376"
@@ -833,10 +833,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "c0a94485-a905-4f7c-9527-362215db8ca7"
+          "d0de3c21-ed47-47b1-a15e-40f85bb514fa"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/c0a94485-a905-4f7c-9527-362215db8ca7?api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/d0de3c21-ed47-47b1-a15e-40f85bb514fa?api-version=2017-11-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -849,23 +849,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "30b45f66-1953-4734-a369-69980c050faa"
+          "a8f205b7-8feb-4b80-b64a-2e9784317049"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041624Z:30b45f66-1953-4734-a369-69980c050faa"
+          "WESTEUROPE:20180123T135723Z:a8f205b7-8feb-4b80-b64a-2e9784317049"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:23 GMT"
+          "Tue, 23 Jan 2018 13:57:23 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"routes\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        },\r\n        \"name\": \"route2\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -876,19 +876,19 @@
           "243"
         ],
         "x-ms-client-request-id": [
-          "3171405c-d3b6-431c-8895-f14e3b9a67c1"
+          "11f6eef7-88f5-45ef-a284-1ea70cb40111"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps4493\",\r\n  \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n  \"etag\": \"W/\\\"12ed1960-d0f9-49b5-b506-b942cd072ffc\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route2\",\r\n        \"etag\": \"W/\\\"12ed1960-d0f9-49b5-b506-b942cd072ffc\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4517\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n  \"etag\": \"W/\\\"6a8b7609-3ae9-447f-8a14-f51d29c6223f\\\"\",\r\n  \"type\": \"Microsoft.Network/routeTables\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n    \"disableBgpRoutePropagation\": false,\r\n    \"routes\": [\r\n      {\r\n        \"name\": \"route2\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route2\",\r\n        \"etag\": \"W/\\\"6a8b7609-3ae9-447f-8a14-f51d29c6223f\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"192.168.2.0/24\",\r\n          \"nextHopType\": \"VnetLocal\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "898"
@@ -906,10 +906,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "1fe71e22-1098-4fc5-90c6-51f23c5df772"
+          "51d99a97-2b1d-4d1e-877e-03ec9d448706"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/1fe71e22-1098-4fc5-90c6-51f23c5df772?api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/51d99a97-2b1d-4d1e-877e-03ec9d448706?api-version=2017-11-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -922,31 +922,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "81c42e22-eeda-43fe-bf02-42b8738f5e53"
+          "e1991e32-6d22-412c-8843-58104e744720"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041634Z:81c42e22-eeda-43fe-bf02-42b8738f5e53"
+          "WESTEUROPE:20180123T135735Z:e1991e32-6d22-412c-8843-58104e744720"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:34 GMT"
+          "Tue, 23 Jan 2018 13:57:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/737ac7ff-9fd7-4012-a5dc-154c729fd297?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy83MzdhYzdmZi05ZmQ3LTQwMTItYTVkYy0xNTRjNzI5ZmQyOTc/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/3b83803d-c9ff-4e5f-bb15-b48c665fd693?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8zYjgzODAzZC1jOWZmLTRlNWYtYmIxNS1iNDhjNjY1ZmQ2OTM/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -964,68 +964,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "00fca02b-04a8-4fd2-abfd-d1c5ee665736"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
-        ],
-        "x-ms-correlation-request-id": [
-          "ae06c310-22ce-4c43-9e08-2673b78bda86"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:ae06c310-22ce-4c43-9e08-2673b78bda86"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:22 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXM/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a1d55f60-6372-469a-a993-f1961bfacfe3"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps4493\",\r\n      \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493\",\r\n      \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n      \"type\": \"Microsoft.Network/routeTables\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"5587fdcf-7c28-4d51-80d8-4796ce9644df\",\r\n        \"disableBgpRoutePropagation\": false,\r\n        \"routes\": [\r\n          {\r\n            \"name\": \"route1\",\r\n            \"id\": \"/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493/routes/route1\",\r\n            \"etag\": \"W/\\\"8809e104-754b-4d08-90fd-4153abb53f56\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"addressPrefix\": \"192.168.1.0/24\",\r\n              \"nextHopType\": \"VirtualAppliance\",\r\n              \"nextHopIpAddress\": \"23.108.1.1\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1077"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "6f82e498-74a4-4790-b3b0-d77a4c0d5e8e"
+          "0fa0b319-1309-4eba-9089-576d96e12107"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1041,34 +980,95 @@
           "14991"
         ],
         "x-ms-correlation-request-id": [
-          "f049c6c4-e237-4425-b88b-4598da607209"
+          "3b45381e-8ec5-40f5-8452-3c72b315d663"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041623Z:f049c6c4-e237-4425-b88b-4598da607209"
+          "WESTEUROPE:20180123T135721Z:3b45381e-8ec5-40f5-8452-3c72b315d663"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:22 GMT"
+          "Tue, 23 Jan 2018 13:57:21 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXM/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXM/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a93912a2-aad8-4c0d-a8c0-91ef712c2a6a"
+          "ed3379d9-ddef-4093-bf7a-0ba3f4ae5959"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps4517\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517\",\r\n      \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n      \"type\": \"Microsoft.Network/routeTables\",\r\n      \"location\": \"westus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"e5398a1c-6188-476a-b425-e99d53bcbf37\",\r\n        \"disableBgpRoutePropagation\": false,\r\n        \"routes\": [\r\n          {\r\n            \"name\": \"route1\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517/routes/route1\",\r\n            \"etag\": \"W/\\\"b0f8701d-0c41-41f7-bc8f-0b01f5003f06\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"addressPrefix\": \"192.168.1.0/24\",\r\n              \"nextHopType\": \"VirtualAppliance\",\r\n              \"nextHopIpAddress\": \"23.108.1.1\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1077"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "02773561-04c0-43de-8eaa-138897aaf209"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "222dd517-589f-4aec-be0a-8ccd51132854"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135722Z:222dd517-589f-4aec-be0a-8ccd51132854"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:22 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXM/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "969361bf-2b39-480c-97a4-ee4e182d51ee"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -1086,7 +1086,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "15fa29cc-d14d-445e-a246-972fd4f0ec17"
+          "20c0ce78-b5dd-4731-ac32-605e90ec61a2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1099,31 +1099,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14981"
+          "14977"
         ],
         "x-ms-correlation-request-id": [
-          "96467d4f-0ad8-452c-8325-9e91025d63d7"
+          "f2914c06-5ca6-4771-9819-c823303f9cd2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041656Z:96467d4f-0ad8-452c-8325-9e91025d63d7"
+          "WESTEUROPE:20180123T135758Z:f2914c06-5ca6-4771-9819-c823303f9cd2"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:55 GMT"
+          "Tue, 23 Jan 2018 13:57:58 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/c0a94485-a905-4f7c-9527-362215db8ca7?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy9jMGE5NDQ4NS1hOTA1LTRmN2MtOTUyNy0zNjIyMTVkYjhjYTc/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/d0de3c21-ed47-47b1-a15e-40f85bb514fa?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy9kMGRlM2MyMS1lZDQ3LTQ3YjEtYTE1ZS00MGY4NWJiNTE0ZmE/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -1141,62 +1141,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3077302d-e416-4756-aa40-b37030651c73"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
-        ],
-        "x-ms-correlation-request-id": [
-          "6e07503d-3e5e-4de5-99ff-580e63efc575"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041634Z:6e07503d-3e5e-4de5-99ff-580e63efc575"
-        ],
-        "Date": [
-          "Tue, 16 Jan 2018 04:16:34 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/1fe71e22-1098-4fc5-90c6-51f23c5df772?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8xZmU3MWUyMi0xMDk4LTRmYzUtOTBjNi01MWYyM2M1ZGY3NzI/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "29"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e2786461-1095-4c2d-b0ac-eb84a0799beb"
+          "c08f4d1a-f7d8-4716-8aa2-304479875c9a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1212,34 +1157,89 @@
           "14985"
         ],
         "x-ms-correlation-request-id": [
-          "ac6974ae-e1af-4084-849b-0c796fd10321"
+          "37a09e14-5db7-452b-8c60-7d5dfbadc93c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041645Z:ac6974ae-e1af-4084-849b-0c796fd10321"
+          "WESTEUROPE:20180123T135734Z:37a09e14-5db7-452b-8c60-7d5dfbadc93c"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:44 GMT"
+          "Tue, 23 Jan 2018 13:57:33 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/ps3127/providers/Microsoft.Network/routeTables/ps4493?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlR3JvdXBzL3BzMzEyNy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NDkzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/51d99a97-2b1d-4d1e-877e-03ec9d448706?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy81MWQ5OWE5Ny0yYjFkLTRkMWUtODc3ZS0wM2VjOWQ0NDg3MDY/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ac7a4245-0fd6-453c-bfe7-74b9b1a7355b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd04fcac-cf33-4874-b004-9e08d140a398"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20180123T135746Z:fd04fcac-cf33-4874-b004-9e08d140a398"
+        ],
+        "Date": [
+          "Tue, 23 Jan 2018 13:57:45 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9522/providers/Microsoft.Network/routeTables/ps4517?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTUyMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcm91dGVUYWJsZXMvcHM0NTE3P2FwaS12ZXJzaW9uPTIwMTctMTEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e001e4c4-2829-4c72-9b8d-a75df56ef690"
+          "2d6cc429-b376-401e-9bdb-8971b2c81bce"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -1257,10 +1257,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "f16901f2-748c-4935-b1f2-7554894bb09f"
+          "45342d3c-4e4a-4a04-8ef6-14327487f340"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/f16901f2-748c-4935-b1f2-7554894bb09f?api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/45342d3c-4e4a-4a04-8ef6-14327487f340?api-version=2017-11-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1269,38 +1269,38 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operationResults/f16901f2-748c-4935-b1f2-7554894bb09f?api-version=2017-10-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operationResults/45342d3c-4e4a-4a04-8ef6-14327487f340?api-version=2017-11-01"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "3328b298-40ac-4762-a437-b91b697f973b"
+          "a7d7340a-abb6-4953-bec5-13a59030ccb7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041645Z:3328b298-40ac-4762-a437-b91b697f973b"
+          "WESTEUROPE:20180123T135747Z:a7d7340a-abb6-4953-bec5-13a59030ccb7"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:45 GMT"
+          "Tue, 23 Jan 2018 13:57:47 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/providers/Microsoft.Network/locations/westus.validation/operations/f16901f2-748c-4935-b1f2-7554894bb09f?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy9mMTY5MDFmMi03NDhjLTQ5MzUtYjFmMi03NTU0ODk0YmIwOWY/YXBpLXZlcnNpb249MjAxNy0xMC0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westus.validation/operations/45342d3c-4e4a-4a04-8ef6-14327487f340?api-version=2017-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy80NTM0MmQzYy00ZTRhLTRhMDQtOGVmNi0xNDMyNzQ4N2YzNDA/YXBpLXZlcnNpb249MjAxNy0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.7.2115.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/16.1.0.0"
+          "FxVersion/4.7.2563.0",
+          "OSName/Windows8.1Enterprise",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/17.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -1318,7 +1318,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1712c36e-3beb-4bc1-b133-9ec9bb19629a"
+          "e9a0a739-ffd1-430a-9a7f-4242a8b8df7f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1331,23 +1331,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14982"
+          "14978"
         ],
         "x-ms-correlation-request-id": [
-          "6cf85158-5c56-4a58-a64b-55f5e80e3989"
+          "48724c3d-8fa5-4dda-977f-2bd5a8149178"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041655Z:6cf85158-5c56-4a58-a64b-55f5e80e3989"
+          "WESTEUROPE:20180123T135758Z:48724c3d-8fa5-4dda-977f-2bd5a8149178"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:55 GMT"
+          "Tue, 23 Jan 2018 13:57:57 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourcegroups/ps3127?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L3Jlc291cmNlZ3JvdXBzL3BzMzEyNz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps9522?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzOTUyMj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1370,16 +1370,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1198"
         ],
         "x-ms-request-id": [
-          "b92f86cf-2d32-4200-a8c5-9f30534b3075"
+          "bab508da-516d-48ac-9d28-228912315ecb"
         ],
         "x-ms-correlation-request-id": [
-          "b92f86cf-2d32-4200-a8c5-9f30534b3075"
+          "bab508da-516d-48ac-9d28-228912315ecb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041656Z:b92f86cf-2d32-4200-a8c5-9f30534b3075"
+          "WESTEUROPE:20180123T135802Z:bab508da-516d-48ac-9d28-228912315ecb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1388,17 +1388,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:56 GMT"
+          "Tue, 23 Jan 2018 13:58:01 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNeE1qY3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMU1qSXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1424,16 +1424,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "14998"
         ],
         "x-ms-request-id": [
-          "bdb35364-ebfe-432b-acce-d64d56366865"
+          "c3a9ce26-a701-4c5a-9a90-b3a00c0212d0"
         ],
         "x-ms-correlation-request-id": [
-          "bdb35364-ebfe-432b-acce-d64d56366865"
+          "c3a9ce26-a701-4c5a-9a90-b3a00c0212d0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041656Z:bdb35364-ebfe-432b-acce-d64d56366865"
+          "WESTEUROPE:20180123T135802Z:c3a9ce26-a701-4c5a-9a90-b3a00c0212d0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1442,17 +1442,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:16:56 GMT"
+          "Tue, 23 Jan 2018 13:58:01 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNeE1qY3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMU1qSXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1478,16 +1478,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14963"
+          "14997"
         ],
         "x-ms-request-id": [
-          "8f092b5d-5056-4c8f-bf5a-6b6d18ca1b4b"
+          "912b1f72-20e4-4ada-b7d2-97cc5751680e"
         ],
         "x-ms-correlation-request-id": [
-          "8f092b5d-5056-4c8f-bf5a-6b6d18ca1b4b"
+          "912b1f72-20e4-4ada-b7d2-97cc5751680e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041711Z:8f092b5d-5056-4c8f-bf5a-6b6d18ca1b4b"
+          "WESTEUROPE:20180123T135818Z:912b1f72-20e4-4ada-b7d2-97cc5751680e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1496,17 +1496,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:17:11 GMT"
+          "Tue, 23 Jan 2018 13:58:17 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNeE1qY3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMU1qSXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1532,16 +1532,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14962"
+          "14996"
         ],
         "x-ms-request-id": [
-          "678f7862-97c1-4f1d-8505-155e3783e181"
+          "db0701e3-9e70-42f6-b2b0-f5f083d3a119"
         ],
         "x-ms-correlation-request-id": [
-          "678f7862-97c1-4f1d-8505-155e3783e181"
+          "db0701e3-9e70-42f6-b2b0-f5f083d3a119"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041727Z:678f7862-97c1-4f1d-8505-155e3783e181"
+          "WESTEUROPE:20180123T135833Z:db0701e3-9e70-42f6-b2b0-f5f083d3a119"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1550,17 +1550,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:17:26 GMT"
+          "Tue, 23 Jan 2018 13:58:33 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzMxMjctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjkyNmZjNzUtY2U3ZC00YzllLWE4N2YtYzRlMzhjNTk0ZWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNeE1qY3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk1MjItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMU1qSXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1583,16 +1583,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14961"
+          "14995"
         ],
         "x-ms-request-id": [
-          "704d55da-1416-46d4-8852-676ff6d19398"
+          "0f7c73ac-ea06-4953-9c91-880905302bf1"
         ],
         "x-ms-correlation-request-id": [
-          "704d55da-1416-46d4-8852-676ff6d19398"
+          "0f7c73ac-ea06-4953-9c91-880905302bf1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180116T041742Z:704d55da-1416-46d4-8852-676ff6d19398"
+          "WESTEUROPE:20180123T135848Z:0f7c73ac-ea06-4953-9c91-880905302bf1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1601,7 +1601,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Jan 2018 04:17:41 GMT"
+          "Tue, 23 Jan 2018 13:58:48 GMT"
         ]
       },
       "StatusCode": 200
@@ -1609,12 +1609,12 @@
   ],
   "Names": {
     "Test-RouteTableCRUD": [
-      "ps3127",
-      "ps4493",
-      "ps326"
+      "ps9522",
+      "ps4517",
+      "ps5168"
     ]
   },
   "Variables": {
-    "SubscriptionId": "6926fc75-ce7d-4c9e-a87f-c4e38c594eb5"
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
   }
 }

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusauthorizationrule
 schema: 2.0.0
 ---
@@ -15,21 +15,21 @@ Removes the authorization rule of a Service Bus namespace or queue or topic from
 ### NamespaceAuthorizationRuleSet (Default)
 ```
 Remove-AzureRmServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [[-InputObject] <SharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
+ [[-InputObject] <PSSharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueueAuthorizationRuleSet
 ```
 Remove-AzureRmServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Queue] <String>
- [-Name] <String> [[-InputObject] <SharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
+ [-Name] <String> [[-InputObject] <PSSharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicAuthorizationRuleSet
 ```
 Remove-AzureRmServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Name] <String> [[-InputObject] <SharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
+ [-Name] <String> [[-InputObject] <PSSharedAccessAuthorizationRuleAttributes>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Removes the authorization rule `SBAuthoRule1` of topic `SBTopic` from the specif
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -82,7 +82,7 @@ Do not ask for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,10 +92,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-ServiceBus AuthorizationRule Object.
+ServiceBus AuthorizationRule Object
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: PSSharedAccessAuthorizationRuleAttributes
 Parameter Sets: (All)
 Aliases: AuthRuleObj
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-AuthorizationRule Name.
+AuthorizationRule Name
 
 ```yaml
 Type: String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
@@ -137,12 +137,13 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Queue Name.
+Queue Name
 
 ```yaml
 Type: String
@@ -167,12 +168,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Resource Group Name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -182,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Topic
-Topic Name.
+Topic Name
 
 ```yaml
 Type: String
@@ -228,17 +229,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
+
 
 ## OUTPUTS
 
 ### System.Boolean
 
+
 ## NOTES
 
 ## RELATED LINKS
-

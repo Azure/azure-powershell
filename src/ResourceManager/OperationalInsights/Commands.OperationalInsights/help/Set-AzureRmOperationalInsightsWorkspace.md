@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 54DFBB63-AE8C-4918-870F-19FAD6CC5E4A
@@ -16,13 +16,13 @@ Updates a workspace.
 ### ByName (Default)
 ```
 Set-AzureRmOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [[-Sku] <String>]
- [[-Tags] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Set-AzureRmOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [[-Tags] <Hashtable>]
+Set-AzureRmOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [[-Tag] <Hashtable>]
  [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Specifies the workspace name.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -83,7 +83,7 @@ Specifies the Azure resource group name.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -98,7 +98,7 @@ The workspace data retention in days. 730 days is the maximum allowed for all ot
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: free, standard, premium, pernode, standalone
 
 Required: False
@@ -128,13 +128,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies the resource tags for the workspace.
+### -Tag
+The resource tags for the workspace.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: 4
@@ -149,7 +149,7 @@ Specifies the workspace to be updated.
 ```yaml
 Type: PSWorkspace
 Parameter Sets: ByObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

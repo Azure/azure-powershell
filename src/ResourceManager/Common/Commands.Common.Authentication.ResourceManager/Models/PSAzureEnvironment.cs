@@ -107,6 +107,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
             SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
             StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
             TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+            AzureOperationalInsightsEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
+            AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -224,6 +227,36 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The token audience required for communicating with the Azure Log Analytics query service in this environment
+        /// </summary>
+        public string AzureOperationalInsightsEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, value);
+            }
+        }
+
+        /// <summary>
+        /// The endpoint to use when communicating with the Azure Log Analytics query service in this environment
+        /// </summary>
+        public string AzureOperationalInsightsEndpoint
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, value);
+            }
+        }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -261,7 +294,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
                        && DataLakeEndpointResourceId == other.DataLakeEndpointResourceId
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
-                       && BatchEndpointResourceId == other.BatchEndpointResourceId;
+                       && BatchEndpointResourceId == other.BatchEndpointResourceId
+                       && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
+                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
             }
 
             return false;
