@@ -166,7 +166,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicStandardSku");
         }
 
-        [Fact)]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
