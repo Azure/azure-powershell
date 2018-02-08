@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+* Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
 
 ## Version 5.2.0
