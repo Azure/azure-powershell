@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
@@ -45,9 +46,19 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
+                IAzureContext context;
+                if (TryGetDefaultContext(out context)
+                    && context.Account != null
+                    && context.Subscription != null)
+                {
+                    if (context.Subscription.Id != SubscriptionId.ToString())
+                    {
+                        Utility.AzureManagementGroupAutoRegisterSubscription(SubscriptionId.ToString(), context);
+                    }
+                }
                 if (ShouldProcess(
-                        string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
-                        string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
+                    string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
+                    string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
                     ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
 
