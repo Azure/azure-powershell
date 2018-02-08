@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                             : null;
 
                         // write progress only if it's changed.
-                        if (x != previousX || previousOperation != operation)
+                        if (x != previousX || operation != previousOperation)
                         {
                             cmdlet.WriteProgress(
                                 new ProgressRecord(
