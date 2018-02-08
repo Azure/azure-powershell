@@ -47,20 +47,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this StateOperationContext context, ResourceConfig<TModel> config)
             where TModel : class
             => await context.GetOrAdd(
-                    config,
-                    async () =>
+                config,
+                async () =>
+                {
+                    var info = await config.GetAsync(context.Client, context.CancellationToken);
+                    // Get state of dependencies if the resource doesn't exist
+                    if (info == null)
                     {
-                        var info = await config.GetAsync(context.Client, context.CancellationToken);
-                        // Get state of dependencies if the resource doesn't exist
-                        if (info == null)
-                        {
-                            var tasks = config
-                                .GetResourceDependencies()
-                                .Select(context.GetStateAsyncDispatch);
-                            await Task.WhenAll(tasks);
-                        }
-                        return info;
-                    });
+                        var tasks = config
+                            .GetResourceDependencies()
+                            .Select(context.GetStateAsyncDispatch);
+                        await Task.WhenAll(tasks);
+                    }
+                    return info;
+                });
 
         sealed class GetStateAsyncVisitor : IResourceConfigVisitor<StateOperationContext, Task>
         {

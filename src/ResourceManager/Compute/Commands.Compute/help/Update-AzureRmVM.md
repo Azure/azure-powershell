@@ -15,16 +15,27 @@ Updates the state of an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tag <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-AssignIdentity] [-ResourceGroupName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AssignIdentityParameterSet
+```
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AssignIdentity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
+ -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tag <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-AssignIdentity] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +60,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -63,10 +74,10 @@ Specify the system assigned identity for the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: AssignIdentityParameterSet
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,7 +105,7 @@ Specifies the Resource ID of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: IdParameterSetName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -103,16 +114,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IdentityId
+Specifies the list of user identities associated with the virtual machine scale set.
+The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: String[]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 The type of identity used for the virtual machine. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases: 
 Accepted values: SystemAssigned
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,8 +151,8 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSetName
-Aliases:
+Parameter Sets: ResourceGroupNameParameterSetName, AssignIdentityParameterSet, ExplicitIdentityParameterSet
+Aliases: 
 
 Required: True
 Position: 0

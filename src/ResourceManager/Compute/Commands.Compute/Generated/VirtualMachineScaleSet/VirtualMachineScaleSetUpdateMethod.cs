@@ -22,7 +22,6 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -150,7 +149,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -160,7 +158,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -172,7 +169,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetUpdate VirtualMachineScaleSetUpdate { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -181,205 +177,178 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceSku { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? EnableAutomaticUpdate { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public StorageAccountTypes? ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PlanPublisher { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? ProvisionVMAgent { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? BootDiagnosticsEnabled { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? Overprovision { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public int? MaxBatchInstancePercent { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string TimeZone { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string BootDiagnosticsStorageUri { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? AutomaticOSUpgrade { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? SinglePlacementGroup { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string CustomData { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public UpgradeMode? UpgradePolicyMode { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceId { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? DisablePasswordAuthentication { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PlanName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public int? MaxUnhealthyUpgradedInstancePercent { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferencePublisher { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PlanProduct { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageUri { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string SkuTier { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] VhdContainer { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
+            ParameterSetName = "ExplicitIdentityParameterSet",
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = "ExplicitIdentityParameterSet",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PlanPromotionCode { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public int? MaxUnhealthyInstancePercent { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public int? SkuCapacity { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceOffer { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PauseTimeBetweenBatches { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public CachingTypes? OsDiskCaching { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ImageReferenceVersion { get; set; }
@@ -429,6 +398,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.IdentityId != null)
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Identity == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSetUpdate.Identity.IdentityIds = this.IdentityId;
             }
 
             if (this.ManagedDiskStorageAccountType != null)
@@ -1011,6 +993,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.IdentityId != null)
+            {
+                if (this.VirtualMachineScaleSet.Identity == null)
+                {
+                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSet.Identity.IdentityIds = this.IdentityId;
             }
 
             if (this.ManagedDiskStorageAccountType != null)

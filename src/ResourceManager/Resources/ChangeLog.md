@@ -24,6 +24,7 @@
     - Get-AzureRmManagementPartner cmdlet to list the management partner for the current user
     - Remove-AzureRmManagementPartner cmdlet to delete a management partner
     - Update-AzureRmManagementPartner cmdlet to update an existing management partner
+* Register-AzureRmResourceProvider: Added missing example in the docs
 
 ## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
