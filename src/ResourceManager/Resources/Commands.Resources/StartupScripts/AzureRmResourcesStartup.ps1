@@ -14,4 +14,4 @@
 
 @{
     "Get-AzureRmResourceProviderAction" = "Get-AzureRmProviderOperation";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" -Scope Global | Out-Null
