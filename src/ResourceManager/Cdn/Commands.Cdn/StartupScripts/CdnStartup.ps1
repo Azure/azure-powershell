@@ -14,4 +14,4 @@
 
 @{
     "Validate-AzureRmCdnCustomDomain" = "Test-AzureRmCdnCustomDomain";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" -Scope Global | Out-Null

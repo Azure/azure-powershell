@@ -22,5 +22,5 @@
     "Remove-AzureRmAccount" = "Disconnect-AzureRmAccount";
 	"Logout-AzAccount" = "Disconnect-AzureRmAccount";
 	"Logout-AzureRmAccount" = "Disconnect-AzureRmAccount";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" -Scope Global | Out-Null
 
