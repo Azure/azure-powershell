@@ -13,19 +13,28 @@ Creates a virtual machine.
 
 ## SYNTAX
 
-### DefaultParameterSet (Default)
-```
-New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SimpleParameterSet
+### SimpleParameterSet (Default)
 ```
 New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> -Credential <PSCredential>
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-ImageName <String>]
+ [-Size <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DefaultParameterSet
+```
+New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
+ [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiskFileParameterSet
+```
+New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String>
+ [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
+ [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
+ [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux]
  [-Size <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +119,7 @@ The address prefix for the virtual network which will be created for the VM.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -125,8 +134,9 @@ The IP allocation method for the public IP which will be created for the VM.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
+Accepted values: Static, Dynamic
 
 Required: False
 Position: Named
@@ -195,12 +205,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskFile
+The local path to the virtual hard disk file to be uploaded to the cloud and for creating the VM, and it must have '.vhd' as its suffix.
+
+```yaml
+Type: String
+Parameter Sets: DiskFileParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DomainNameLabel
 The subdomain label for the fully-qualified domain name (FQDN) of the VM.  This will take the form `{domainNameLabel}.{location}.cloudapp.azure.com`.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -248,8 +273,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Linux
+Indicates whether the disk file is for Linux VM, if specified; or Windows, if not specified by default.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: DiskFileParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies a location for the virtual machine.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: String
@@ -259,19 +311,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -280,7 +320,7 @@ The name of the VM resource.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: True
@@ -295,7 +335,7 @@ A list of ports to open on the network security group (NSG) for the created VM. 
 
 ```yaml
 Type: Int32[]
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -310,7 +350,7 @@ The name of a new (or existing) public IP address for the created VM to use.  If
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -325,25 +365,25 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
 Parameter Sets: DefaultParameterSet
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -352,7 +392,7 @@ The name of a new (or existing) network security group (NSG) for the created VM 
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -367,7 +407,7 @@ The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -382,7 +422,7 @@ The address prefix for the subnet which will be created for the VM.
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -397,7 +437,7 @@ The name of a new (or existing) subnet for the created VM to use.  If not specif
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False
@@ -407,7 +447,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies that resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
 Each resource or resource group can have a maximum of 15 tags.
@@ -415,7 +455,7 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -429,7 +469,7 @@ The name of a new (or existing) virtual network for the created VM to use.  If n
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases: 
 
 Required: False

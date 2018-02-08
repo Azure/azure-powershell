@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
@@ -53,14 +53,14 @@ Creates a new azure active directory application.
 
 ## EXAMPLES
 
-### --------------------------  Create new AAD application.  --------------------------
+### Create new AAD application.
 ```
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
 ```
 
 Creates a new azure active directory application without any credentials.
 
-### --------------------------  Create new AAD application with password.  --------------------------
+### Create new AAD application with password.
 ```
 PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
@@ -77,7 +77,7 @@ The value specifying whether the application is a single tenant or a multi-tenan
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,7 +93,7 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,7 +123,7 @@ Display name of the new application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,7 +140,7 @@ For an "asymmetric" type credential, this must be set to on or before the date t
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ The URL to the application homepage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,7 +170,7 @@ The URIs that identify the application.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -185,7 +185,7 @@ The list of certificate credentials associated with the application.
 ```yaml
 Type: PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -200,7 +200,7 @@ The password to be associated with the application.
 ```yaml
 Type: SecureString
 Parameter Sets: ApplicationWithPasswordPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -215,7 +215,7 @@ The list of password credentials associated with the application.
 ```yaml
 Type: PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -230,7 +230,7 @@ The application reply urls.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,7 +247,7 @@ For an "asymmetric" type credential, this must be set to on or after the date th
 ```yaml
 Type: DateTime
 Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 920C028B-0471-43EB-9123-C444289FD845
@@ -14,7 +14,7 @@ Modifies a runbook.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationRunbook [-Name] <String> [-Description <String>] [-Tags <IDictionary>]
+Set-AzureRmAutomationRunbook [-Name] <String> [-Description <String>] [-Tag <IDictionary>]
  [-LogProgress <Boolean>] [-LogVerbose <Boolean>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ Specifies the name of the Automation account in which this cmdlet modifies a run
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +69,7 @@ Specifies a description for the runbook.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Specifies whether the runbook logs progress.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Specifies whether logging includes detailed information.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Specifies the name of the resource group for which this cmdlet modifies a runboo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -138,13 +138,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags to replace the current tags of the modified runbook.
+### -Tag
+The runbook tags.
 
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named
