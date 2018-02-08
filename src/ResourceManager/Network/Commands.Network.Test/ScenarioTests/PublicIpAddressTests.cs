@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-ReverseFqdn");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicIpAddressIpVersion()
         {
@@ -82,14 +82,14 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-BasicSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicIpStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-StandardSku");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicIpAddressZones()
         {

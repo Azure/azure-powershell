@@ -34,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkExpressRouteGatewayCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayCRUD()
         {
@@ -48,19 +48,19 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayP2SAndSKU");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         public void TestSetVirtualNetworkGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-SetVirtualNetworkGatewayCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayActiveActiveFeatureOperations");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         public void VirtualNetworkGatewayRouteApiTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
@@ -73,7 +73,7 @@ namespace Commands.Network.Test.ScenarioTests
                 "Test-VirtualNetworkGatewayGenerateVpnProfile -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VirtualNetworkGatewayIkeV2Test()
         {
