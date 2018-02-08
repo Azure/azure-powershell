@@ -723,7 +723,7 @@ function Test-ConnectionMonitor
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
