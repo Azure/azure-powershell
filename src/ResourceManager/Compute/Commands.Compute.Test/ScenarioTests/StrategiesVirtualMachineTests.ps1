@@ -85,7 +85,6 @@ function Test-SimpleNewVmWithAvailabilitySet
     }
 }
 
-
 <#
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
@@ -106,11 +105,8 @@ function Test-SimpleNewVmWithDefaultDomainName
 		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
 		Assert-AreEqual $vmname $x.Name
-		# $fqdn = $x.Fqdn.Split(".")
-		# $domainName = $fqdn[0].Split("-")
-		# Assert-AreEqual 2 $domainName.Length
-		# Assert-AreEqual $vmname $domainName[0]
-		# Assert-AreEqual 6 $domainName[1]
+		$fqdn = $x.FullyQualifiedDomainName
+		Assert-AreEqual "ps9301-a469f1.eastus.cloudapp.azure.com" $fqdn
     }
     finally
     {
@@ -119,6 +115,52 @@ function Test-SimpleNewVmWithDefaultDomainName
     }
 }
 
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmWithDefaultDomainName2
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string] $vmname = "vm1"
+
+        # Common
+		$x = New-AzureRmVM `
+			-ResourceGroupName $rgname `
+			-Name $vmname `
+			-Credential $cred `
+			-DomainNameLabel "vm2-012345" `
+			-ImageName "ubuntults"
+
+		Assert-AreEqual $vmname $x.Name
+		$fqdn = $x.FullyQualifiedDomainName
+		Assert-AreEqual "vm2-012345.eastus.cloudapp.azure.com" $fqdn
+
+		# second VM
+		[string] $vmname2 = "vm2"
+		$x2 = New-AzureRmVM `
+			-ResourceGroupName $rgname `
+			-Name $vmname2 `
+			-Credential $cred `
+			-ImageName "ubuntults"
+
+		Assert-AreEqual $vmname2 $x2.Name
+		$fqdn2 = $x2.FullyQualifiedDomainName
+		Assert-AreEqual "vm2-543210.eastus.cloudapp.azure.com" $fqdn2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
 
 <#
 .SYNOPSIS
