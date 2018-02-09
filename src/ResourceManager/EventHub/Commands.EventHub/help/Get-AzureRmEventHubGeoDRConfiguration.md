@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubGeodrconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubGeodrconfiguration
 schema: 2.0.0
 ---
 
@@ -30,6 +30,7 @@ Get-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
 The **Get-AzureRmEventHubGeoDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## EXAMPLES
