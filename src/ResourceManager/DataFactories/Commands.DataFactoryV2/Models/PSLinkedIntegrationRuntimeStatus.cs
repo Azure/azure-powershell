@@ -12,30 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
-    public class PSSelfHostedIntegrationRuntime : PSIntegrationRuntime
+    public class PSLinkedIntegrationRuntimeStatus : PSSelfHostedIntegrationRuntimeStatus
     {
-        public PSSelfHostedIntegrationRuntime(
+        public PSLinkedIntegrationRuntimeStatus(
             IntegrationRuntimeResource integrationRuntime,
+            SelfHostedIntegrationRuntimeStatus status,
             string resourceGroupName,
-            string factoryName)
-            : base(integrationRuntime, resourceGroupName, factoryName)
+            string factoryName,
+            JsonSerializerSettings deserializerSettings,
+            string authType)
+            : base(integrationRuntime, status, resourceGroupName, factoryName, deserializerSettings)
         {
-            if (IntegrationRuntime.Properties == null)
-            {
-                IntegrationRuntime.Properties = new SelfHostedIntegrationRuntime();
-            }
-
-            if (SelfHostedIntegrationRuntime == null)
-            {
-                throw new PSArgumentException("The resource is not a valid self-hosted integration runtime.");
-            }
+            AuthorizationType = authType;
         }
 
-        protected SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
+        public string AuthorizationType { get; private set; }
+
+        private new IList<LinkedIntegrationRuntime> Links { get; set; }
     }
 }
