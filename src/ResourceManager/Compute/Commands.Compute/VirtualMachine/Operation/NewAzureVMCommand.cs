@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName ?? Name;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            var imageAndOsType = new ImageAndOsType(false, null);
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
                 openPorts: OpenPorts,
-                isWindows: () => imageAndOsType.IsWindows);
+                getOsType: () => imageAndOsType.OsType);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
 
@@ -281,7 +281,9 @@ namespace Microsoft.Azure.Commands.Compute
                         Name = ResourceGroupName
                     });
                 }
-                imageAndOsType = new ImageAndOsType(!Linux, null);
+                imageAndOsType = new ImageAndOsType(
+                    Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
+                    null);
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
@@ -349,7 +351,7 @@ namespace Microsoft.Azure.Commands.Compute
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: networkInterface,
-                    isWindows: imageAndOsType.IsWindows,
+                    osType: imageAndOsType.OsType,
                     disk: disk,
                     size: Size,
                     availabilitySet: availabilitySet);
@@ -402,7 +404,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(imageAndOsType.IsWindows
+                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
                     ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
                     : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
                 asyncCmdlet.WriteObject(psResult);

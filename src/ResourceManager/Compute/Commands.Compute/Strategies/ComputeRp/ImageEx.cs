@@ -58,9 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
-                return new ImageAndOsType(
-                    imageModel.OsDiskImage.OperatingSystem == OperatingSystemTypes.Windows,
-                    image);
+                return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
             }
             else
             {
@@ -71,7 +69,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         .Value
                         .Where(nameAndImage => nameAndImage.Key.ToLower() == imageName.ToLower())
                         .Select(nameAndImage => new ImageAndOsType(
-                            osAndMap.Key == "Windows",
+                            osAndMap.Key == "Windows" 
+                                ? OperatingSystemTypes.Windows
+                                : OperatingSystemTypes.Linux,
                             nameAndImage.Value)))
                     .FirstOrDefault();
             }

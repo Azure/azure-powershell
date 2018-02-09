@@ -58,8 +58,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration() : null,
-                            LinuxConfiguration = imageAndOsType.IsWindows ? null : new LinuxConfiguration(),
+                            WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows
+                                ? new WindowsConfiguration()
+                                : null,
+                            LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
+                                ? new LinuxConfiguration()
+                                : null,
                             AdminUsername = adminUsername,
                             AdminPassword = adminPassword,
                         },
@@ -95,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            bool isWindows,
+            OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet)
@@ -125,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
-                            OsType = isWindows ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
+                            OsType = osType,
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,

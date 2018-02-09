@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
-            var imageAndOsType = new ImageAndOsType(false, null);
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
             
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
