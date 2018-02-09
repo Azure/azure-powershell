@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
@@ -62,9 +63,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             int[] openPorts,
-            Func<bool> isWindows)
+            Func<OperatingSystemTypes> getOsType)
             => resourceGroup.CreateNetworkSecurityGroupConfig(
                 name,
-                () => openPorts ?? (isWindows() ? new[] { 3389, 5985 } : new[] { 22 }));
+                () => openPorts ?? 
+                    (getOsType() == OperatingSystemTypes.Windows ? new[] { 3389, 5985 } : new[] { 22 }));
     }
 }

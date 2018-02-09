@@ -18,13 +18,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     sealed class ImageAndOsType
     {
-        public bool IsWindows { get; }
+        public OperatingSystemTypes OsType { get; }
 
         public ImageReference Image { get; }
 
-        public ImageAndOsType(bool isWindows, ImageReference image)
+        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image)
         {
-            IsWindows = isWindows;
+            OsType = osType;
             Image = image;
         }
     }

@@ -80,8 +80,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
                     {
                         ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = imageAndOsType.IsWindows ? new WindowsConfiguration() : null,
-                        LinuxConfiguration = imageAndOsType.IsWindows ? null : new LinuxConfiguration(),
+                        WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows 
+                            ? new WindowsConfiguration()
+                            : null,
+                        LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
+                            ? new LinuxConfiguration()
+                            : null,
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     };
