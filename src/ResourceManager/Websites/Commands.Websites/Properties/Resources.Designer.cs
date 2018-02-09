@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.WebApps.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -130,6 +129,24 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static string RemovingWebsite {
             get {
                 return ResourceManager.GetString("RemovingWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string SimpleWebAppCreateAction {
+            get {
+                return ResourceManager.GetString("SimpleWebAppCreateAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WebApp &apos;{0}&apos;.
+        /// </summary>
+        internal static string SimpleWebAppCreateTarget {
+            get {
+                return ResourceManager.GetString("SimpleWebAppCreateTarget", resourceCulture);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
     {
         public static ResourceStrategy<ServerFarmWithRichSku> Strategy { get; } = AppServicePolicy.Create<ServerFarmWithRichSku, IServerFarmsOperations>(
             type: "ServerFarm",
-            provider: "AppServicePlan",
+            provider: "AppService",
             getOperations: client => client.ServerFarms,
             getAsync: (o, p) => o.GetServerFarmAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateServerFarmAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
