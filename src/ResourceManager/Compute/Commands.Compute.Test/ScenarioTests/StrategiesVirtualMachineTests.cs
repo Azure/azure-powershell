@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVm");
         }
+
+        [Fact] 
+        [Trait(Category.AcceptanceType, Category.CheckIn)] 
+        public void TestSimpleNewVmWithAvailabilitySet2()
+        { 
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2"); 
+        }
     }
 }
