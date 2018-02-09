@@ -23,7 +23,6 @@ using Microsoft.Azure.Management.WebSites;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
-using System.Xml.Linq;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -35,6 +34,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml;
+using Microsoft.Azure.Commands.WebApps.Properties;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             ValidateWebAppName(Name);
             if (ParameterSetName == SimpleParameterSet)
             {
-                if (ShouldProcess(string.Format("WebApp '{0}'", Name), "Create"))
+                if (ShouldProcess(string.Format(Resources.SimpleWebAppCreateTarget, Name), Resources.SimpleWebAppCreateAction))
                 {
                     var adapter = new PSCmdletAdapter(this);
                     adapter.WaitForCompletion(CreateWithSimpleParameters);
@@ -135,7 +135,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void ValidateWebAppName(string name)
         {
-
+            var available = WebsitesClient.WrappedWebsitesClient.GlobalModel.CheckNameAvailability(new ResourceNameAvailabilityRequest { Name = name, Type = "Site" });
+            if (available.NameAvailable.HasValue && !available.NameAvailable.Value)
+            {
+                throw new InvalidOperationException(string.Format("Website name '{0}' is not available.  Please try a different name.", name));
+            }
         }
 
         public void CreateWithClonedWebApp()

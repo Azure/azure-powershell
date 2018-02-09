@@ -141,4 +141,11 @@
   <data name="RemovingWebAppSSLBinding" xml:space="preserve">
     <value>Are you sure you want to remove the web app ssl binding for hostname '{0}'</value>
   </data>
+  <data name="SimpleWebAppCreateAction" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="SimpleWebAppCreateTarget" xml:space="preserve">
+    <value>WebApp '{0}'</value>
+    <comment>{0} = WebAppName</comment>
+  </data>
 </root>
