@@ -12,7 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
+using System;
+using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -50,6 +55,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName()
         {
+            // mock UniqueId.Create()
+            var i = 0;
+            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static|BindingFlags.NonPublic);
+            Func<string> replacement = () =>
+            {
+                var result = new[] { "a469f1", "a469f1", "345dbc" }[i];
+                ++i;
+                return result;
+            };
+            create.SetValue(null, replacement);
+
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName");
         }
     }
