@@ -25,6 +25,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 var slots = WebsitesClient.ListWebApps(srcResourceGroupName, srcwebAppName);
                 if (slots != null && slots.Any())
                 {
-                    slotNames = slots.Select(s => s.Name.Replace(srcwebAppName + "/", string.Empty)).ToArray();
+                    slotNames = slots.Select(s => Regex.Replace(s.Name, "^([^/]+/)", string.Empty)).ToArray();
                     cloneWebAppSlots = true;
                 }
             }
