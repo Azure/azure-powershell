@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var availabilitySet = AvailabilitySetName == null 
                 ? null
-                : resourceGroup.CreateAvailabilitySetConfig(name: Name);
+                : resourceGroup.CreateAvailabilitySetConfig(name: AvailabilitySetName);
 
             ResourceConfig<VirtualMachine> virtualMachine = null;
             if (image != null)
