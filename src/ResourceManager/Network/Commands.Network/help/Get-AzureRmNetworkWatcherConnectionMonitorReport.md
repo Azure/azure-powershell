@@ -12,34 +12,34 @@ Query a snapshot of the most recent connection states.
 
 ## SYNTAX
 
-### SetByResource (Default)
-```
-Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher <PSNetworkWatcher> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
-```
-
-### SetByName
+### SetByName (Default)
 ```
 Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Name <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SetByResource
+```
+Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher <PSNetworkWatcher> -Name <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-Get-AzureRmNetworkWatcherConnectionMonitorReport -Location <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmNetworkWatcherConnectionMonitorReport -Location <String> -Name <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Get-AzureRmNetworkWatcherConnectionMonitorReport -ResourceId <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmNetworkWatcherConnectionMonitorReport -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
-Get-AzureRmNetworkWatcherConnectionMonitorReport -InputObject <PSConnectionMonitorResult> [-Name <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmNetworkWatcherConnectionMonitorReport -InputObject <PSConnectionMonitorResult> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ The Get-AzureRmNetworkWatcherConnectionMonitorReport cmdlet returns the report o
 
 ## EXAMPLES
 
-### ---------------  Example 1: Get the most recent connection snapshot of the connection monitor by name in the specified location ---------------
+### Example 1: Get the most recent connection snapshot of the connection monitor by name in the specified location
 ```
 PS C:\> Get-AzureRmNetworkWatcherConnectionMonitorReport -Location centraluseuap -Name cm
 
@@ -208,7 +208,6 @@ States : [
              ]
            }
          ]
-
 ```
 
 In this example we query the most recent connection states of the specified connection monitor.
@@ -221,11 +220,11 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -251,12 +250,12 @@ Connection monitor object.
 ```yaml
 Type: PSConnectionMonitorResult
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -266,12 +265,12 @@ Location of the network watcher.
 ```yaml
 Type: String
 Parameter Sets: SetByLocation
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -280,13 +279,13 @@ The connection monitor name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases: ConnectionMonitorName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -296,7 +295,7 @@ The network watcher resource.
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -311,12 +310,12 @@ The name of network watcher.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -326,12 +325,12 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -341,7 +340,7 @@ Resource ID of the connection monitor.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -350,37 +349,49 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
-Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
-
+System.String Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorQueryResult
 
-
 ## NOTES
 Keywords: azure, azurerm, arm, resource, connectivity, management, manager, network, networking, network watcher, connection monitor
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
-[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
-[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
 
-[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
-[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
-[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
-[Get-AzureRmNetworkWatcherTroubleshootingResult](./Get-AzureRmNetworkWatcherTroubleshootingResult.md)
+[New-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
-[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
-[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
-[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
-[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+[Get-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor](./New-AzureRmNetworkWatcherConnectionMonitor.md)
-[Get-AzureRmNetworkWatcherConnectionMonitor](./Get-AzureRmNetworkWatcherConnectionMonitor.md)
+[Remove-AzureRmNetworkWatcher]()
+
+[Get-AzureRmNetworkWatcherNextHop]()
+
+[Get-AzureRmNetworkWatcherSecurityGroupView]()
+
+[Get-AzureRmNetworkWatcherTopology]()
+
+[Get-AzureRmNetworkWatcherTroubleshootingResult]()
+
+[New-AzureRmNetworkWatcherPacketCapture]()
+
+[New-AzureRmPacketCaptureFilterConfig]()
+
+[Get-AzureRmNetworkWatcherPacketCapture]()
+
+[Remove-AzureRmNetworkWatcherPacketCapture]()
+
+[Stop-AzureRmNetworkWatcherPacketCapture]()
+
+[New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[Get-AzureRmNetworkWatcherConnectionMonitor]()
 

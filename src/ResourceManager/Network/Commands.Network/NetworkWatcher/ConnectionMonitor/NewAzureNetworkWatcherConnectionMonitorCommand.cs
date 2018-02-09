@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Monitoring interval in seconds.")]
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.")]
         [ValidateNotNullOrEmpty]
         public int? MonitoringIntervalInSeconds { get; set; }
 
@@ -125,24 +125,19 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public string resourceGroupName = string.Empty;
-        public string networkWatcherName = string.Empty;
-
         public override void Execute()
         {
             base.Execute();
+
+            string resourceGroupName = this.ResourceGroupName;
+            string networkWatcherName = this.NetworkWatcherName;
 
             if (ParameterSetName.Contains("SetByResource"))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 networkWatcherName = this.NetworkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByName"))
-            {
-                resourceGroupName = this.ResourceGroupName;
-                networkWatcherName = this.NetworkWatcherName;
-            }
-            else
+            else if (ParameterSetName.Contains("SetByLocation"))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
@@ -164,13 +159,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    var connectionMonitor = CreateConnectionMonitor();
+                    var connectionMonitor = CreateConnectionMonitor(resourceGroupName, networkWatcherName);
                     WriteObject(connectionMonitor);
                 },
                 () => present);
         }
 
-        private PSConnectionMonitorResult CreateConnectionMonitor()
+        private PSConnectionMonitorResult CreateConnectionMonitor(string resourceGroupName, string networkWatcherName)
         {
             MNM.ConnectionMonitor parameters = new MNM.ConnectionMonitor
             {

@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             string connectionMonitorName = this.Name;
-            string resourceGroupName = string.Empty;
-            string networkWatcherName = string.Empty;
+            string resourceGroupName = this.ResourceGroupName;
+            string networkWatcherName = this.NetworkWatcherName;
 
             if (ParameterSetName.Contains("SetByResourceId"))
             {
@@ -115,11 +115,6 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 networkWatcherName = this.NetworkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByName"))
-            {
-                resourceGroupName = this.ResourceGroupName;
-                networkWatcherName = this.NetworkWatcherName;
-            }
             else if (ParameterSetName.Contains("SetByInputObject"))
             {
                 ConnectionMonitorDetails connectionMonitorDetails = new ConnectionMonitorDetails();
@@ -129,7 +124,7 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = connectionMonitorDetails.ResourceGroupName;
                 networkWatcherName = connectionMonitorDetails.NetworkWatcherName;
             }
-            else
+            else if (ParameterSetName.Contains("SetByLocation"))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
