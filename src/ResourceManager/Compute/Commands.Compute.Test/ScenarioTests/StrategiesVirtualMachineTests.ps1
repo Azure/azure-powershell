@@ -93,16 +93,17 @@ Test Simple Paremeter Set for New Vm
 function Test-SimpleNewVmWithDefaultDomainName
 {
     # Setup
-    $vmname = Get-ResourceName
+    $rgname = Get-ResourceName
 
     try
     {
 		$username = "admin01"
 		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string] $vmname = "ps9301"
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred
+		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
 		Assert-AreEqual $vmname $x.Name
 		# $fqdn = $x.Fqdn.Split(".")
