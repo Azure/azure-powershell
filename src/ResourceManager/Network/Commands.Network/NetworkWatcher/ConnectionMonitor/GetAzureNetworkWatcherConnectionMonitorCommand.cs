@@ -83,16 +83,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         public override void Execute()
         {
             base.Execute();
 
             string connectionMonitorName = this.Name;
-            string resourceGroupName = string.Empty;
-            string networkWatcherName = string.Empty;
+            string resourceGroupName = this.ResourceGroupName;
+            string networkWatcherName = this.NetworkWatcherName;
 
             if (ParameterSetName.Contains("SetByResourceId"))
             {
@@ -108,12 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 networkWatcherName = this.NetworkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByName"))
-            {
-                resourceGroupName = this.ResourceGroupName;
-                networkWatcherName = this.NetworkWatcherName;
-            }
-            else
+            else if (ParameterSetName.Contains("SetByLocation"))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
                 

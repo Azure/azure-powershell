@@ -12,28 +12,28 @@ Returns connection monitor with specified name or the list of connection monitor
 
 ## SYNTAX
 
-### SetByResource (Default)
-```
-Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
-```
-
-### SetByName
+### SetByName (Default)
 ```
 Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Name <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SetByResource
+```
+Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-Get-AzureRmNetworkWatcherConnectionMonitor -Location <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmNetworkWatcherConnectionMonitor -Location <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Get-AzureRmNetworkWatcherConnectionMonitor -ResourceId <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmNetworkWatcherConnectionMonitor -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ The Get-AzureRmNetworkWatcherConnectionMonitor cmdlet returns the connection mon
 
 ## EXAMPLES
 
-### ---------------  Example 1: Get connection monitor by name in the specified location ---------------
+### Example 1: Get connection monitor by name in the specified location
 ```
 PS C:\> Get-AzureRmNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
 
@@ -77,21 +77,6 @@ In this example we get connection monitor by name in the specified location.
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -113,12 +98,12 @@ Location of the network watcher.
 ```yaml
 Type: String
 Parameter Sets: SetByLocation
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,7 +112,7 @@ The connection monitor name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases: ConnectionMonitorName
 
 Required: False
@@ -143,7 +128,7 @@ The network watcher resource.
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,12 +143,12 @@ The name of network watcher.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,12 +158,12 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,7 +173,7 @@ Resource ID of the connection monitor.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -198,37 +183,48 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
-
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, connectivity, management, manager, network, networking, network watcher, connection monitor
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
-[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
-[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
 
-[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
-[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
-[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
-[Get-AzureRmNetworkWatcherTroubleshootingResult](./Get-AzureRmNetworkWatcherTroubleshootingResult.md)
+[New-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
-[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
-[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
-[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
-[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+[Get-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor](./New-AzureRmNetworkWatcherConnectionMonitor.md)
-[Get-AzureRmNetworkWatcherConnectionMonitorReport](./Get-AzureRmNetworkWatcherConnectionMonitorReport.md)
+[Remove-AzureRmNetworkWatcher]()
+
+[Get-AzureRmNetworkWatcherNextHop]()
+
+[Get-AzureRmNetworkWatcherSecurityGroupView]()
+
+[Get-AzureRmNetworkWatcherTopology]()
+
+[Get-AzureRmNetworkWatcherTroubleshootingResult]()
+
+[New-AzureRmNetworkWatcherPacketCapture]()
+
+[New-AzureRmPacketCaptureFilterConfig]()
+
+[Get-AzureRmNetworkWatcherPacketCapture]()
+
+[Remove-AzureRmNetworkWatcherPacketCapture]()
+
+[Stop-AzureRmNetworkWatcherPacketCapture]()
+
+[New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[Get-AzureRmNetworkWatcherConnectionMonitorReport]()
+
