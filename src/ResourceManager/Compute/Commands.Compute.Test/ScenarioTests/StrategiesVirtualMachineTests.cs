@@ -55,18 +55,46 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName()
         {
-            // mock UniqueId.Create()
-            var i = 0;
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static|BindingFlags.NonPublic);
-            Func<string> replacement = () =>
+            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
+            var oldCreate = create.GetValue(null); 
+            try
             {
-                var result = new[] { "a469f1", "a469f1", "345dbc" }[i];
-                ++i;
-                return result;
-            };
-            create.SetValue(null, replacement);
+                // mock UniqueId.Create()
+                Func<string> replacement = () => "a469f1";
+                create.SetValue(null, replacement);
 
-            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName");
+                ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName");
+            }
+            finally
+            {
+                create.SetValue(null, oldCreate);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithDefaultDomainName2()
+        {
+            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
+            var oldCreate = create.GetValue(null);
+            try
+            {
+                // mock UniqueId.Create()
+                var i = 0;
+                Func<string> replacement = () =>
+                {
+                    var result = new[] { "012345", "012345", "012345", "543210" }[i];
+                    ++i;
+                    return result;
+                };
+                create.SetValue(null, replacement);
+
+                ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName2");
+            }
+            finally
+            {
+                create.SetValue(null, oldCreate);
+            }
         }
     }
 }
