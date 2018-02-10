@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
         }
 
-        private void TestDomainNameX(string psTest, Func<string> getUniqueId)
+        private void TestDomainName(string psTest, Func<string> getUniqueId)
         {
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
             var oldCreate = create.GetValue(null);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName()
         {
-            TestDomainNameX("Test-SimpleNewVmWithDefaultDomainName", () => "a469f1");
+            TestDomainName("Test-SimpleNewVmWithDefaultDomainName", () => "a469f1");
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
             var i = 0;
-            TestDomainNameX("Test-SimpleNewVmWithDefaultDomainName2", () =>
+            TestDomainName("Test-SimpleNewVmWithDefaultDomainName2", () =>
             {
                 var result = new[] { "012346", "012346", "012346", "543210" }[i];
                 ++i;
