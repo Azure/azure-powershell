@@ -136,12 +136,12 @@ function Test-SimpleNewVmWithDefaultDomainName2
 			-ResourceGroupName $rgname `
 			-Name $vmname `
 			-Credential $cred `
-			-DomainNameLabel "vm2-012345" `
+			-DomainNameLabel "vm2-012346" `
 			-ImageName "ubuntults"
 
 		Assert-AreEqual $vmname $x.Name
 		$fqdn = $x.FullyQualifiedDomainName
-		Assert-AreEqual "vm2-012345.eastus.cloudapp.azure.com" $fqdn
+		Assert-AreEqual "vm2-012346.eastus.cloudapp.azure.com" $fqdn
 
 		# second VM
 		[string] $vmname2 = "vm2"
