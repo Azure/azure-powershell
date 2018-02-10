@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Network;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -51,19 +52,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmWithDefaultDomainName()
+        private void TestDomainNameX(string psTest, Func<string> getUniqueId)
         {
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null); 
+            var oldCreate = create.GetValue(null);
             try
             {
                 // mock UniqueId.Create()
-                Func<string> replacement = () => "a469f1";
-                create.SetValue(null, replacement);
+                create.SetValue(null, getUniqueId);
 
-                ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName");
+                var callingClassType = TestUtilities.GetCallingClass(2);
+                var mockName = TestUtilities.GetCurrentMethodName(2);
+
+                ComputeTestController.NewInstance.RunPsTestWorkflow(
+                    () => new[] { psTest },
+                    // no custom initializer
+                    null,
+                    // no custom cleanup 
+                    null,
+                    callingClassType,
+                    mockName);
             }
             finally
             {
@@ -73,28 +81,22 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithDefaultDomainName()
+        {
+            TestDomainNameX("Test-SimpleNewVmWithDefaultDomainName", () => "a469f1");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null);
-            try
+            var i = 0;
+            TestDomainNameX("Test-SimpleNewVmWithDefaultDomainName2", () =>
             {
-                // mock UniqueId.Create()
-                var i = 0;
-                Func<string> replacement = () =>
-                {
-                    var result = new[] { "012345", "012345", "012345", "543210" }[i];
-                    ++i;
-                    return result;
-                };
-                create.SetValue(null, replacement);
-
-                ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithDefaultDomainName2");
-            }
-            finally
-            {
-                create.SetValue(null, oldCreate);
-            }
+                var result = new[] { "012346", "012346", "012346", "543210" }[i];
+                ++i;
+                return result;
+            });
         }
     }
 }
