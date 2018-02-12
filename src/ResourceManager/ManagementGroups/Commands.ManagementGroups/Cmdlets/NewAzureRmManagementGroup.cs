@@ -15,8 +15,8 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName), 
                         string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
-                    CreateGroupRequest createGroupRequest = new CreateGroupRequest(DisplayName, ParentId);
+                    CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
                     var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
                     WriteObject(new PSManagementGroupNoChildren(response));
                 }

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Models
 {

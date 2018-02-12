@@ -15,8 +15,8 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Azure.Management.ManagementGroups.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
