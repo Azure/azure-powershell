@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Management.Compute.Models;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    public class StrategiesVmssTests
+    sealed class ImageAndOsType
     {
-        public StrategiesVmssTests(Xunit.Abstractions.ITestOutputHelper output)
-        {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(
-                new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-        }
+        public OperatingSystemTypes OsType { get; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmss()
+        public ImageReference Image { get; }
+
+        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image)
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmss");
+            OsType = osType;
+            Image = image;
         }
     }
 }
