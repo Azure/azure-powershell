@@ -1,8 +1,12 @@
 # Network
-## Tests
-If the test requires to register for a feature, here is an example how to register for a feature.
+## Running Tests
+There is a [Jenkins job](https://azuresdkci.westus2.cloudapp.azure.com/view/PowerShell/job/ps-network-test/) available for running Network Scenario tests. To run, use the [Build with Parameters](https://azuresdkci.westus2.cloudapp.azure.com/view/PowerShell/job/ps-network-test/build) button and enter the appropriate information. You can change the `fork` and `branch` for the [azure-powershell](https://github.com/Azure/azure-powershell) GitHub repo. Additionally, you can use your own service principal and subscription by entering the `clientID`, `clientSecret`, `tenantId`, and `subId`. The default values use our test subscription and service principal for running tests.
+
+
+## Feature Registration
+Some tests may fail if you do not have the appropriate features enabled on your subscription. If the test requires a certain feature, here is an example how to register for a feature.
 ```powershell
-# If you're not registered with the provider...
+# If your subscription is not registered with the provider...
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 # Register the feature
 Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
