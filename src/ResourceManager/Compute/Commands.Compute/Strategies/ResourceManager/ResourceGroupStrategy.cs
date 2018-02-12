@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
+namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
 {
     static class ResourceGroupStrategy
     {

@@ -14,36 +14,41 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class VirtualNetworkStrategy
+    static class ManagedDiskStrategy
     {
-        public static ResourceStrategy<VirtualNetwork> Strategy { get; }
-            = NetworkStrategy.Create(
-                provider: "virtualNetworks",
-                getOperations: client => client.VirtualNetworks,
+        public static ResourceStrategy<Disk> Strategy { get; }
+            = ComputePolicy.Create(
+                provider: "disks",
+                getOperations: client => client.Disks,
                 getAsync: (o, p) => o.GetAsync(
-                    p.ResourceGroupName, p.Name, null, p.CancellationToken),
+                    p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: _ => 15);
+                createTime: d => 120);
 
-        public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
+        public static ResourceConfig<Disk> CreateManagedDiskConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            string addressPrefix)
+            string sourceUri)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ => new VirtualNetwork
+                createModel: subscription => new Disk
                 {
-                    AddressSpace = new AddressSpace
+                    Sku = new DiskSku
                     {
-                        AddressPrefixes = new[] { addressPrefix }
+                        Name = StorageAccountTypes.PremiumLRS
+                    },
+                    CreationData = new CreationData
+                    {
+                        CreateOption = DiskCreateOption.Import,
+                        SourceUri = sourceUri
                     }
                 });
     }

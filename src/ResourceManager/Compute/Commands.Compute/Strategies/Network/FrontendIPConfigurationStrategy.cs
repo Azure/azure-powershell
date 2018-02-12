@@ -13,15 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class FrontendIPConfigurationStrategy
     {

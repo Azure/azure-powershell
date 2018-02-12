@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
 
 ## Version 4.3.0
 * Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.

@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ComputePolicy
     {
