@@ -89,3 +89,36 @@ function Test-SimpleNewVmWithAvailabilitySet2
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmImageName
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower()
+
+        # Common
+		$x = New-AzureRmVM `
+			-Name $vmname `
+			-Credential $cred `
+			-DomainNameLabel $domainNameLabel `
+			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.127.20170406"
+
+		Assert-AreEqual $vmname $x.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
