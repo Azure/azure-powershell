@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
 
     public static class LoadBalancerStrategy

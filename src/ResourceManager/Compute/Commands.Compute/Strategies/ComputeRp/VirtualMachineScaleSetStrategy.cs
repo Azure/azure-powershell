@@ -20,8 +20,9 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     public static class VirtualMachineScaleSetStrategy
     {
@@ -42,10 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
-            bool isWindows,
+            Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
-            Image image,
             string vmSize,
             int instanceCount,
             UpgradeMode? upgradeMode)
@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                 name: name,
                 createModel: subscriptionId =>
                 {
+                    var imageAndOsType = getImageAndOsType();
                     var vmss = new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
@@ -63,17 +64,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             .Where(z => z != null)
                             .ToList(),
 
-                        UpgradePolicy = upgradeMode.HasValue ?
-                            new UpgradePolicy
-                            {
-                                Mode = upgradeMode
-                            }
-                            : new UpgradePolicy
-                            {
-                                Mode = UpgradeMode.Manual
-                            },
+                        UpgradePolicy =new UpgradePolicy
+                        {
+                            Mode = upgradeMode ?? UpgradeMode.Manual
+                        },
 
-                        Sku = new Microsoft.Azure.Management.Compute.Models.Sku()
+                        Sku = new Azure.Management.Compute.Models.Sku()
                         {
                             Capacity = instanceCount,
                             Name = vmSize,
@@ -84,31 +80,29 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
                     {
                         ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
-                        LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
+                        WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows 
+                            ? new WindowsConfiguration()
+                            : null,
+                        LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
+                            ? new LinuxConfiguration()
+                            : null,
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     };
 
                     vmss.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile
                     {
-                        ImageReference = new ImageReference
-                        {
-                            Publisher = image.publisher,
-                            Offer = image.offer,
-                            Sku = image.sku,
-                            Version = image.version
-                        }
+                        ImageReference = imageAndOsType.Image
                     };
 
                     var ipConfig = new VirtualMachineScaleSetIPConfiguration
                     {
                         Name = name,
-                        LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>(
-                            new[] {
-                                new Microsoft.Azure.Management.Compute.Models.SubResource(
-                                    id: backendAdressPool.GetId(subscriptionId).IdToString())
-                            }),
+                        LoadBalancerBackendAddressPools = new[] 
+                        {
+                            new Azure.Management.Compute.Models.SubResource(
+                                id: backendAdressPool.GetId(subscriptionId).IdToString())
+                        },
                         Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
                     };
 
@@ -120,8 +114,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                             new VirtualMachineScaleSetNetworkConfiguration
                             {
                                 Name = name,
-                                IpConfigurations = new List<VirtualMachineScaleSetIPConfiguration>(
-                                                new [] { ipConfig }),
+                                IpConfigurations = new [] { ipConfig },
                                 Primary = true
                             }
                         }
@@ -131,6 +124,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                     return vmss;
                 },
                 dependencies: new IEntityConfig[] { subnet, backendAdressPool }
-                                                  .Concat(frontendIpConfigurations));
+                    .Concat(frontendIpConfigurations));
     }
 }
