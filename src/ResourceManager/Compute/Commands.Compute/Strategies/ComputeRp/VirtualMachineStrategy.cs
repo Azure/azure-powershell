@@ -17,8 +17,10 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using System;
+using Microsoft.Azure.Commands.Common.Strategies;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class VirtualMachineStrategy
     {
@@ -40,55 +42,56 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            bool isWindows,
+            Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
-            Image image,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
-                name: name, 
-                createModel: subscription => new VirtualMachine
+                name: name,
+                createModel: subscription =>
                 {
-                    OsProfile = new OSProfile
+                    var imageAndOsType = getImageAndOsType();
+                    return new VirtualMachine
                     {
-                        ComputerName = name,
-                        WindowsConfiguration = isWindows ? new WindowsConfiguration { } : null,
-                        LinuxConfiguration = isWindows ? null : new LinuxConfiguration(),
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
-                    },
-                    NetworkProfile = new NetworkProfile
-                    {
-                        NetworkInterfaces = new[]
+                        OsProfile = new OSProfile
                         {
-                            new NetworkInterfaceReference
+                            ComputerName = name,
+                            WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows
+                                ? new WindowsConfiguration()
+                                : null,
+                            LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
+                                ? new LinuxConfiguration()
+                                : null,
+                            AdminUsername = adminUsername,
+                            AdminPassword = adminPassword,
+                        },
+                        NetworkProfile = new NetworkProfile
+                        {
+                            NetworkInterfaces = new[]
                             {
-                                Id = networkInterface.GetId(subscription).IdToString()
+                                new NetworkInterfaceReference
+                                {
+                                    Id = networkInterface.GetId(subscription).IdToString()
+                                }
                             }
-                        }
-                    },
-                    HardwareProfile = new HardwareProfile
-                    {
-                        VmSize = size
-                    },
-                    StorageProfile = new StorageProfile
-                    {
-                        ImageReference = new ImageReference
+                        },
+                        HardwareProfile = new HardwareProfile
                         {
-                            Publisher = image.publisher,
-                            Offer = image.offer,
-                            Sku = image.sku,
-                            Version = image.version
-                        }
-                    },
-                    AvailabilitySet = availabilitySet == null 
-                        ? null 
-                        : new Azure.Management.Compute.Models.SubResource
+                            VmSize = size
+                        },
+                        StorageProfile = new StorageProfile
+                        {
+                            ImageReference = imageAndOsType.Image
+                        },
+                        AvailabilitySet = availabilitySet == null
+                            ? null
+                            : new Azure.Management.Compute.Models.SubResource
                             {
                                 Id = availabilitySet.GetId(subscription).IdToString()
                             }
+                    };
                 },
                 dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
 
@@ -96,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            bool isWindows,
+            OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet)
@@ -126,7 +129,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Compute
                         {
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
-                            OsType = isWindows ? OperatingSystemTypes.Windows : OperatingSystemTypes.Linux,
+                            OsType = osType,
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,
