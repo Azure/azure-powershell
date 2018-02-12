@@ -20,6 +20,7 @@
 ## Current Release
 * Fix overwrite message 'Are you sure you want to overwriteresource'
 * Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Fix to support 32 bit AS Numbers in the Powershell API for Public and Private Expressroute Peerings
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
