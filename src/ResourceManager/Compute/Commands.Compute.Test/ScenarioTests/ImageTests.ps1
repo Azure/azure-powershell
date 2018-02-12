@@ -33,7 +33,7 @@ function Test-Image
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -155,7 +155,7 @@ function Test-ImageCapture
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;

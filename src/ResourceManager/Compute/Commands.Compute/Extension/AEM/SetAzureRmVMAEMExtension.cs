@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.SkuName());
+                        this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.Sku.Name.ToString());
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = 1 });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = 1 });
                     }

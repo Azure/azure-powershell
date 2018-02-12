@@ -25,7 +25,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -69,7 +69,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -104,7 +104,6 @@ function Test-SetAzureRmVMSqlServerAKVExtension
 		Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[1].CredentialName "CredentialTest"
 
         # 6) Test with correct Name and Version
-
         Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
 
         # 7) Test with correct Name and incorrect Version
@@ -134,7 +133,7 @@ function Test-SetAzureRmVMSqlServerExtension
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -178,7 +177,7 @@ function Test-SetAzureRmVMSqlServerExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -190,7 +189,7 @@ function Test-SetAzureRmVMSqlServerExtension
         # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
         $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
 		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
         Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
@@ -249,7 +248,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -305,7 +304,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
         # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
         $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
 		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString `
 			-BackupScheduleType Manual -BackupSystemDbs -FullBackupStartHour 10 -FullBackupWindowInHours 5 -FullBackupFrequency Daily -LogBackupFrequencyInMinutes 30

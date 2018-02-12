@@ -20,7 +20,7 @@ function Test-GetAzureRmVMDscExtension
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;

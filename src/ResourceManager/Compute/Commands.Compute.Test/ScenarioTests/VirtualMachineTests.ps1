@@ -34,7 +34,7 @@ function Test-VirtualMachine
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -294,7 +294,7 @@ function Test-VirtualMachinePiping
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -425,7 +425,7 @@ function Test-VirtualMachineUpdateWithoutNic
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -689,7 +689,7 @@ function Test-VirtualMachineSizeAndUsage
         $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A1';
+        $vmsize = 'Standard_A1_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -AvailabilitySetId $aset.Id;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -870,7 +870,7 @@ function Test-VirtualMachinePIRv2
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -979,7 +979,7 @@ function Test-VirtualMachineCapture
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -1097,7 +1097,7 @@ function Test-VirtualMachineCaptureNegative
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -1194,7 +1194,7 @@ function Test-VirtualMachineDataDisk
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -1399,7 +1399,7 @@ function Test-VirtualMachineDataDiskNegative
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A0';
+        $vmsize = 'Basic_A0';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         # NRP
@@ -1478,7 +1478,7 @@ function Test-VirtualMachinePlan
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A0';
+        $vmsize = 'Standard_A1_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         # NRP
@@ -1635,7 +1635,7 @@ function Test-VirtualMachineTags
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A0';
+        $vmsize = 'Standard_A1_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         # NRP
@@ -1740,7 +1740,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -1846,7 +1846,7 @@ function Test-LinuxVirtualMachine
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -1970,9 +1970,9 @@ function Test-GetVMSizeFromAllLocations
     {
         $vmsizes = Get-AzureRmVMSize -Location $loc;
         Assert-True { $vmsizes.Count -gt 0 }
-        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
+        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A2_v2' }).Count -eq 1 }
 
-        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
+        Write-Output ('Found VM Size Standard_A2_v2 in Location: ' + $loc);
     }
 }
 
@@ -2013,7 +2013,7 @@ function Test-VirtualMachineListWithPaging
         $st = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         $numberOfInstances = 51;
-        $vmSize = 'Standard_A0';
+        $vmSize = 'Standard_A1_v2';
 
         $templateFile = ".\Templates\azuredeploy.json";
         $paramFile = ".\Templates\azuredeploy-parameters-51vms.json";
@@ -2077,7 +2077,7 @@ function Test-VirtualMachineWithDifferentStorageResource
         New-AzureRmResourceGroup -Name $rgname_storage  -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2341,7 +2341,7 @@ function Test-VirtualMachineWithEmptyAuc
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2487,6 +2487,11 @@ Test Virtual Machines
 #>
 function Test-VirtualMachineWithBYOL
 {
+	# To run this test in Record mode, first upload a vhd to a storage account and then update the following information.
+	$stoname = "mybyolosimage";
+	$containername = "vhdsrc";
+	$vhdname = "win2012-tag0.vhd";
+
     # Setup
     $rgname = Get-ComputeTestResourceName
 
@@ -2497,7 +2502,7 @@ function Test-VirtualMachineWithBYOL
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2525,14 +2530,13 @@ function Test-VirtualMachineWithBYOL
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
-        $stoname = "mybyolosimagerdfe";
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $userImageUrl = "https://mybyolosimagerdfe.blob.core.windows.net/vhdsrc2/win2012-tag2.vhd";
+        $userImageUrl = "https://$stoname.blob.core.windows.net/$containername/$vhdname";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Windows -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -SourceImage $userImageUrl -CreateOption FromImage;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
@@ -2624,7 +2628,7 @@ function Test-VirtualMachineRedeploy
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2754,7 +2758,7 @@ function Test-VirtualMachineGetStatus
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2892,7 +2896,7 @@ function Test-VirtualMachineManagedDiskConversion
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -3034,7 +3038,7 @@ function Test-VirtualMachinePerformanceMaintenance
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -3107,7 +3111,7 @@ function Test-VirtualMachineIdentity
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -3185,7 +3189,7 @@ function Test-VirtualMachineIdentityUpdate
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP

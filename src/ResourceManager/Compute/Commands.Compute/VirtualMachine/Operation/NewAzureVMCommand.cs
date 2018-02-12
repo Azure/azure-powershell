@@ -329,14 +329,10 @@ namespace Microsoft.Azure.Commands.Compute
                             AzureEnvironment.Endpoint.ResourceManager);
                 var st1 = storageClient.StorageAccounts.Create(ResourceGroupName, Name, new StorageAccountCreateParameters
                 {
-#if !NETSTANDARD
-                    AccountType = AccountType.PremiumLRS,
-#else
                     Sku = new SM.Sku
                     {
                         Name = SkuName.PremiumLRS
                     },
-#endif
                     Location = Location
                 });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
@@ -608,8 +604,8 @@ namespace Microsoft.Azure.Commands.Compute
                         var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
-                            && osDiskStorageAccount.Sku() != null
-                            && !osDiskStorageAccount.SkuName().ToLowerInvariant().Contains("premium"))
+                            && osDiskStorageAccount.Sku != null
+                            && osDiskStorageAccount.Sku.Tier.Equals(SkuTier.Standard))
                         {
                             return osDiskStorageAccount.PrimaryEndpoints.Blob;
                         }
@@ -670,8 +666,10 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.Sku() != null
-                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
+                    e => e.Location.Canonicalize().Equals(this.Location.Canonicalize())
+                        && e.Sku != null
+                        && e.Sku.Tier.Equals(SkuTier.Standard)
+                        && (e.Kind == null || e.Kind.Equals(Kind.Storage)));
             }
             catch (InvalidOperationException e)
             {
@@ -693,15 +691,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
             while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
-            var storaeAccountParameter = new StorageAccountCreateParameters
+            var storageAccountParameter = new StorageAccountCreateParameters
             {
                 Location = this.Location ?? this.VM.Location,
+                Sku = new Microsoft.Azure.Management.Storage.Models.Sku(SkuName.StandardGRS)
             };
-            storaeAccountParameter.SetAsStandardGRS();
 
             try
             {
-                client.StorageAccounts.Create(this.ResourceGroupName, storageAccountName, storaeAccountParameter);
+                client.StorageAccounts.Create(this.ResourceGroupName, storageAccountName, storageAccountParameter);
                 var getresponse = client.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
                 WriteWarning(string.Format(Properties.Resources.CreatingStorageAccountForBootDiagnostics, storageAccountName));
 

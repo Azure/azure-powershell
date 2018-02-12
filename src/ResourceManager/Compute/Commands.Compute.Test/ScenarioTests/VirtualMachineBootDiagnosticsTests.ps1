@@ -30,7 +30,7 @@ function Test-VirtualMachineBootDiagnostics
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -310,7 +310,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -415,7 +415,7 @@ function Test-VirtualMachineBootDiagnosticsSet
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;

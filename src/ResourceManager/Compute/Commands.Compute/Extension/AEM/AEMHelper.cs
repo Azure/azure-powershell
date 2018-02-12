@@ -330,9 +330,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             var resourceGroup = this.GetResourceGroupFromId(account.Id);
             var keys = this._StorageClient.StorageAccounts.ListKeys(resourceGroup, account.Name);
 
-            _StorageKeyCache.Add(account.Name, keys.GetKey1());
+            _StorageKeyCache.Add(account.Name, keys.Keys[0].Value);
 
-            return keys.GetKey1();
+            return keys.Keys[0].Value;
         }
 
         internal string GetCoreEndpoint(string storageAccountName)
@@ -365,9 +365,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal bool IsPremiumStorageAccount(StorageAccount account)
         {
-            if (account.Sku() != null)
+            if (account.Sku != null)
             {
-                return account.IsPremiumLrs();
+                return account.Sku.Tier.Equals(SkuTier.Premium);
             }
 
             WriteError("No AccountType for storage account {0} found", account.Name);

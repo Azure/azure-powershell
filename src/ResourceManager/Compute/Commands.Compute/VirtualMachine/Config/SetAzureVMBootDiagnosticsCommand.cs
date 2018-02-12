@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 
-                    if (storageAccount.IsPremiumLrs())
+                    if (storageAccount.Sku.Tier.Equals(SkuTier.Premium))
                     {
                         ThrowPremiumStorageError(this.StorageAccountName);
                     }

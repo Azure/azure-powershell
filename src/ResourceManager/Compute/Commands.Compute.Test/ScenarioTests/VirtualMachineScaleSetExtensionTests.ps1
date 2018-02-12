@@ -91,7 +91,7 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         $imgRef = Get-DefaultCRPImage -loc $loc;
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'automatic' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'automatic' `
          | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
          | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
          | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -244,7 +244,7 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'Manual' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -256,7 +256,7 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
 
         Assert-AreEqual $loc.Replace(" ", "") $result.Location;
         Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
+        Assert-AreEqual 'Standard_A1_v2' $result.sku.name;
         Assert-AreEqual 'manual' $result.upgradepolicy.mode;
 
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;

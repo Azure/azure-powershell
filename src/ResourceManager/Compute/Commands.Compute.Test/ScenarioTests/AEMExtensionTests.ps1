@@ -771,7 +771,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
     $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
-    $vmsize = if ([string]::IsNullOrEmpty($vmsize)) { 'Standard_A2' } else { $vmsize }
+    $vmsize = if ([string]::IsNullOrEmpty($vmsize)) { 'Standard_A2_v2' } else { $vmsize }
     $stotype = if ([string]::IsNullOrEmpty($stotype)) { 'Standard_LRS' } else { $stotype }
     $nicCount = if ([string]::IsNullOrEmpty($nicCount)) { 1 } else { [int]$nicCount }
 
@@ -813,7 +813,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $stoname = 'sto' + $rgname;
     $s = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
