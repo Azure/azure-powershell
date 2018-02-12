@@ -142,7 +142,7 @@ function ExecuteCmdlet($HyperVVMName, $ExportPath, $HyperVServer, $Force)
         }
     }
 
-    if ($PSCmdlet.ShouldProcess($Name, "Converting a Hyper-V VM to Azure supported VHD file(s)..."))
+    if ($PSCmdlet.ShouldProcess($HyperVVMName, "Converting a Hyper-V VM to Azure supported VHD file(s)..."))
     {
         $vhdFiles = Export-DiskFiles $HyperVServer $HyperVVMName $ExportPath;
 
