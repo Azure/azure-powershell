@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
         }
 
-        private void TestDomainName(string psTest, Func<string> getUniqueId)
+        public static void TestDomainName(string psTest, Func<string> getUniqueId)
         {
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
             var oldCreate = create.GetValue(null);
