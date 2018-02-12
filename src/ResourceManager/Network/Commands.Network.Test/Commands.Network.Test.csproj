@@ -188,6 +188,7 @@
     <Compile Include="ScenarioTests\ExpressRouteCircuitTests.cs" />
     <Compile Include="ScenarioTests\RouteTableTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
+    <Compile Include="ScenarioTests\RouteTableTestsGenerated.cs" />
     <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\UsageTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
@@ -252,6 +253,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NetworkSecurityGroupTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RouteTableTestsGenerated.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TestDnsAvailabilityTest.ps1">
@@ -498,6 +502,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpStandardSku.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteCRUDAllParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteTableCRUDAllParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteTableCRUDMinimalParameters.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTests\TestEmptyRouteTable.json">
