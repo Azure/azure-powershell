@@ -48,6 +48,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Templates;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -412,10 +413,10 @@ namespace Microsoft.Azure.Commands.Compute
                         new Output
                         {
                             type = "object",
-                            value = 
-                                "[reference('" + 
-                                virtualMachine.GetIdFromResourceGroup().IdToString() + 
-                                "', '" + 
+                            value =
+                                "[reference('" +
+                                virtualMachine.GetIdFromResourceGroup().IdToString() +
+                                "', '" +
                                 virtualMachine.Strategy.GetApiVersion(client) +
                                 "')]"
                         }
@@ -484,19 +485,20 @@ namespace Microsoft.Azure.Commands.Compute
                         new ShouldProcess(asyncCmdlet),
                         asyncCmdlet.ReportTaskProgress);
 
-            var result = newState.Get(virtualMachine);
-            if (result == null)
-            {
-                result = current.Get(virtualMachine);
-            }
-            if (result != null)
-            {
-                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
-                    ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
-                    : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
-                asyncCmdlet.WriteObject(psResult);
+                var result = newState.Get(virtualMachine);
+                if (result == null)
+                {
+                    result = current.Get(virtualMachine);
+                }
+                if (result != null)
+                {
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                    psResult.FullyQualifiedDomainName = fqdn;
+                    asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
+                        ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                        : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+                    asyncCmdlet.WriteObject(psResult);
+                }
             }
         }
 

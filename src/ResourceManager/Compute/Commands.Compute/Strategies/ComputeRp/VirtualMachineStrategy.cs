@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 new NetworkInterfaceReference
                                 {
-                                    Id = networkInterface.GetId(subscription).IdToString()
+                                    Id = networkInterface.GetIdStr(subscription)
                                 }
                             }
                         },
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ? null
                             : new Azure.Management.Compute.Models.SubResource
                             {
-                                Id = availabilitySet.GetId(subscription).IdToString()
+                                Id = availabilitySet.GetIdStr(subscription)
                             }
                     };
                 },
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ? null
                         : new Azure.Management.Compute.Models.SubResource
                         {
-                            Id = availabilitySet.GetId(subscription).IdToString()
+                            Id = availabilitySet.GetIdStr(subscription)
                         }
                 },
                 dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
