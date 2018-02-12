@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\ConvertTo-AzureRmVhd.psm1'
+RootModule = '.\AzureRM.Compute.ManagedService.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.1.0'
@@ -66,13 +66,13 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Compute.ManagedService.dll')
+NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'ConvertTo-AzureRmVhd'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @('ConvertTo-AzureRmVhd')
+CmdletsToExport = 'ConvertTo-AzureRmVhd'
 
 # Variables to export from this module
 # VariablesToExport = @()
