@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
         {
             var asyncCmdlet = new AsyncCmdlet(cmdlet);
+            string previousX = null;
+            string previousOperation = null;
             asyncCmdlet.Scheduler.Wait(
                 createAndStartTask(asyncCmdlet),
                 () =>
@@ -51,17 +53,25 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                         var percent = (int)(progress * 100.0);
                         var r = new[] { "|", "/", "-", "\\" };
                         var x = r[DateTime.Now.Second % 4];
-                        cmdlet.WriteProgress(
-                            new ProgressRecord(
-                                0,
-                                "Creating Azure resources",
-                                percent + "% " + x)
-                            {
-                                CurrentOperation = activeTasks.Count > 0 
-                                    ? "Creating " + string.Join(", ", activeTasks) + "."
-                                    : null,
-                                PercentComplete = percent,
-                            });
+                        var operation = activeTasks.Count > 0
+                            ? "Creating " + string.Join(", ", activeTasks) + "."
+                            : null;
+
+                        // write progress only if it's changed.
+                        if (x != previousX || operation != previousOperation)
+                        {
+                            cmdlet.WriteProgress(
+                                new ProgressRecord(
+                                    0,
+                                    "Creating Azure resources",
+                                    percent + "% " + x)
+                                {
+                                    CurrentOperation = operation,
+                                    PercentComplete = percent,
+                                });
+                            previousX = x;
+                            previousOperation = operation;
+                        }
                     }
                 });
         }
