@@ -27,10 +27,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", "AzureRmRouteConfig"), OutputType(typeof(PSRoute))]
-     public class GetAzureRmRouteConfigCommand : NetworkBaseCmdlet
+    public class GetAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vRoutes =
                         this.RouteTable.Routes.First(
