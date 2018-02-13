@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
