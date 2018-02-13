@@ -122,3 +122,36 @@ function Test-SimpleNewVmImageName
         Clean-ResourceGroup $vmname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "xsd3490285".tolower()
+
+        # Common
+		$x = New-AzureRmVM `
+			-Name $vmname `
+			-Credential $cred `
+			-DomainNameLabel $domainNameLabel `
+			-ImageName "MicrosoftSQLServer:SQL2017-Ubuntu1604:Enterprise:latest"
+
+		Assert-AreEqual $vmname $x.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
