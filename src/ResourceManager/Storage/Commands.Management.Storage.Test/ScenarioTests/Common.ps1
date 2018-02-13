@@ -158,7 +158,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    "eastasia"
+	Get-Location "Microsoft.Storage" "storageAccounts" "West US"
 }
 
 <#
