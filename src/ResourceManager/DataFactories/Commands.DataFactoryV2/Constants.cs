@@ -166,6 +166,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
 
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
         public const string IntegrationRuntimeAutoUpdateEnabled = "On";
 
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
