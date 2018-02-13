@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
 
 ## Version 0.5.0
 * Enabled Azure Key Vault support for all data store linked services

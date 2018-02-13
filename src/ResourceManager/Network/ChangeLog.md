@@ -33,6 +33,7 @@
     - Stop-AzureRmNetworkWatcherConnectionMonitor
 * Added cmdlet to remove connection monitor
     - Remove-AzureRmNetworkWatcherConnectionMonitor
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
