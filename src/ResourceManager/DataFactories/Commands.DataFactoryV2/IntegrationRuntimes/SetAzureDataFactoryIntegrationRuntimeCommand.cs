@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
         [ValidateNotNull]
-        public string AuthKey { get; set; }
+        public System.Security.SecureString AuthKey { get; set; }
 
         [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
@@ -172,7 +172,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         var selfHosted = new SelfHostedIntegrationRuntime();
                         if (AuthKey != null)
                         {
-                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(AuthKey));
+                            var authKey = ConvertToUnsecureString(AuthKey);
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
                         }
 
                         resource.Properties = selfHosted;
