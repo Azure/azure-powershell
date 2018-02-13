@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.3.0'
+ModuleVersion = '4.3.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -210,12 +210,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ''AvailabilitySetName'' parameter to the simplified parameterset of ''New-AzureRmVm''.
-* Corrected usage of ''Login-AzureRmAccount'' to use ''Connect-AzureRmAccount''
-* User assigned identity support for VM and VM scale set
-- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
-* Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
-* Added Priority parameter to New-AzureRmVmssConfig'
+        ReleaseNotes = '* Query image details for OS Version for New-AzureRmVm, New-AzureRmVMSS'
 
         # Prerelease string of this module
         # Prerelease = ''
