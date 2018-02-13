@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.3.1
 * `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
 
 ## Version 4.3.0
