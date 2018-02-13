@@ -18,83 +18,83 @@ Deployment of resources: VM, storage account, network interface, nsg, virtual ne
 #>
 function Get-TestResourcesDeployment([string]$rgn)
 {
-	$virtualMachineName = Get-ResourceName
-	$storageAccountName = Get-ResourceName
-	$routeTableName = Get-ResourceName
-	$virtualNetworkName = Get-ResourceName
-	$networkInterfaceName = Get-ResourceName
-	$networkSecurityGroupName = Get-ResourceName
-	$diagnosticsStorageAccountName = Get-ResourceName
-	
-		$paramFile = "..\..\TestData\DeploymentParameters.json"
-		$paramContent =
+    $virtualMachineName = Get-ResourceName
+    $storageAccountName = Get-ResourceName
+    $routeTableName = Get-ResourceName
+    $virtualNetworkName = Get-ResourceName
+    $networkInterfaceName = Get-ResourceName
+    $networkSecurityGroupName = Get-ResourceName
+    $diagnosticsStorageAccountName = Get-ResourceName
+    
+        $paramFile = ".\TestData\DeploymentParameters.json"
+        $paramContent =
 @"
 {
-			"rgName": {
-			"value": "$rgn"
-			},
-			"location": {
-			"value": "$location"
-			},
-			"virtualMachineName": {
-			"value": "$virtualMachineName"
-			},
-			"virtualMachineSize": {
-			"value": "Standard_DS1_v2"
-			},
-			"adminUsername": {
-			"value": "netanaytics12"
-			},
-			"storageAccountName": {
-			"value": "$storageAccountName"
-			},
-			"routeTableName": {
-			"value": "$routeTableName"
-			},
-			"virtualNetworkName": {
-			"value": "$virtualNetworkName"
-			},
-			"networkInterfaceName": {
-			"value": "$networkInterfaceName"
-			},
-			"networkSecurityGroupName": {
-			"value": "$networkSecurityGroupName"
-			},
-			"adminPassword": {
-			"value": "netanalytics-32${resourceGroupName}"
-			},
-			"storageAccountType": {
-			"value": "Premium_LRS"
-			},
-			"diagnosticsStorageAccountName": {
-			"value": "$diagnosticsStorageAccountName"
-			},
-			"diagnosticsStorageAccountId": {
-			"value": "Microsoft.Storage/storageAccounts/${diagnosticsStorageAccountName}"
-			},
-			"diagnosticsStorageAccountType": {
-			"value": "Standard_LRS"
-			},
-			"addressPrefix": {
-			"value": "10.17.3.0/24"
-			},
-			"subnetName": {
-			"value": "default"
-			},
-			"subnetPrefix": {
-			"value": "10.17.3.0/24"
-			},
-			"publicIpAddressName": {
-			"value": "${virtualMachineName}-ip"
-			},
-			"publicIpAddressType": {
-			"value": "Dynamic"
-			}
+            "rgName": {
+            "value": "$rgn"
+            },
+            "location": {
+            "value": "$location"
+            },
+            "virtualMachineName": {
+            "value": "$virtualMachineName"
+            },
+            "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+            },
+            "adminUsername": {
+            "value": "netanaytics12"
+            },
+            "storageAccountName": {
+            "value": "$storageAccountName"
+            },
+            "routeTableName": {
+            "value": "$routeTableName"
+            },
+            "virtualNetworkName": {
+            "value": "$virtualNetworkName"
+            },
+            "networkInterfaceName": {
+            "value": "$networkInterfaceName"
+            },
+            "networkSecurityGroupName": {
+            "value": "$networkSecurityGroupName"
+            },
+            "adminPassword": {
+            "value": "netanalytics-32${resourceGroupName}"
+            },
+            "storageAccountType": {
+            "value": "Premium_LRS"
+            },
+            "diagnosticsStorageAccountName": {
+            "value": "$diagnosticsStorageAccountName"
+            },
+            "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/${diagnosticsStorageAccountName}"
+            },
+            "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+            },
+            "addressPrefix": {
+            "value": "10.17.3.0/24"
+            },
+            "subnetName": {
+            "value": "default"
+            },
+            "subnetPrefix": {
+            "value": "10.17.3.0/24"
+            },
+            "publicIpAddressName": {
+            "value": "${virtualMachineName}-ip"
+            },
+            "publicIpAddressType": {
+            "value": "Dynamic"
+            }
 }
 "@;
 
-		$st = Set-Content -Path $paramFile -Value $paramContent -Force;
-		AzureRm.Resources\New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        $st = Set-Content -Path $paramFile -Value $paramContent -Force;
+        AzureRm.Resources\New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
 <#
@@ -110,7 +110,7 @@ function Test-GetTopology
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -160,7 +160,7 @@ function Test-GetSecurityGroupView
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -221,9 +221,9 @@ function Test-GetNextHop
     $location = "centraluseuap"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-	$nwRgName = Get-ResourceGroupName
-	$securityRuleName = Get-ResourceName
-	$templateFile = "..\..\TestData\Deployment.json"
+    $nwRgName = Get-ResourceGroupName
+    $securityRuleName = Get-ResourceName
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -277,9 +277,9 @@ function Test-VerifyIPFlow
     $location = "centraluseuap"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-	$nwRgName = Get-ResourceGroupName
-	$securityGroupName = Get-ResourceName
-	$templateFile = "..\..\TestData\Deployment.json"
+    $nwRgName = Get-ResourceGroupName
+    $securityGroupName = Get-ResourceName
+    $templateFile = ".\TestData\Deployment.json"
     
     try 
     {
@@ -346,7 +346,7 @@ function Test-PacketCapture
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
@@ -376,15 +376,15 @@ function Test-PacketCapture
 
         #Create packet capture
         $job = New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
-		$job | Wait-Job
+        $job | Wait-Job
         New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -TimeLimitInSeconds 1
         Start-Sleep -s 2
 
         #Get packet capture
         $job = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
         $job | Wait-Job
-		$pc1 = $job | Receive-Job
-		$pc2 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
+        $pc1 = $job | Receive-Job
+        $pc2 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
         $pcList = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw
 
         #Verification
@@ -402,14 +402,14 @@ function Test-PacketCapture
 
         #Stop packet capture
         $job = Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
-		$job | Wait-Job
+        $job | Wait-Job
 
         #Get packet capture
         $pc1 = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1
 
         #Remove packet capture
         $job = Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
-		$job | Wait-Job
+        $job | Wait-Job
 
         #List packet captures
         $pcList = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $nw
@@ -543,10 +543,10 @@ function Test-FlowLog
 
         $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -AsJob
         $job | Wait-Job
-		$config = $job | Receive-Job
-		$job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
-		$job | Wait-Job
-		$status = $job | Receive-Job
+        $config = $job | Receive-Job
+        $job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
+        $job | Wait-Job
+        $status = $job | Receive-Job
 
         # Validation
         Assert-AreEqual $config.TargetResourceId $getNsg.Id
@@ -582,7 +582,7 @@ function Test-ConnectivityCheck
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = ".\TestData\Deployment.json"
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
@@ -608,8 +608,8 @@ function Test-ConnectivityCheck
 
         #Connectivity check
         $job = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80 -AsJob
-		$job | Wait-Job
-		$check = $job | Receive-Job
+        $job | Wait-Job
+        $check = $job | Receive-Job
 
         #Verification
         Assert-AreEqual $check.ConnectionStatus "Reachable"
@@ -651,8 +651,8 @@ function Test-ReachabilityReport
 
         $job = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10" -AsJob
         $job | Wait-Job
-		$report1 = $job | Receive-Job
-		$report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
+        $report1 = $job | Receive-Job
+        $report2 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -StartTime "2017-10-05" -EndTime "2017-10-10"
         $report3 = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle" -StartTime "2017-10-05" -EndTime "2017-10-10"
 
         Assert-AreEqual $report1.AggregationLevel "Country"
@@ -696,8 +696,8 @@ function Test-ProvidersList
 
         $job = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -AsJob
         $job | Wait-Job
-		$list1 = $job | Receive-Job
-		$list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
+        $list1 = $job | Receive-Job
+        $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
         $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
 
         Assert-AreEqual $list1.Countries.CountryName "United States"
