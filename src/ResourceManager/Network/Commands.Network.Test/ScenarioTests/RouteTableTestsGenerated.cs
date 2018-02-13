@@ -12,34 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using System;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class ResourceLockTests : RMTestBase
+    public class RouteTableTestsGenerated : RMTestBase
     {
-        public ResourceLockTests(ITestOutputHelper output)
+        public RouteTableTestsGenerated(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResourceLockCRUDTest()
+        public void TestRouteCRUDMinimalParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResourceLockNonExisting()
+        public void TestRouteCRUDAllParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockNonExisting");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDAllParameters"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteTableCRUDMinimalParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDMinimalParameters"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteTableCRUDAllParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDAllParameters"));
         }
     }
 }
