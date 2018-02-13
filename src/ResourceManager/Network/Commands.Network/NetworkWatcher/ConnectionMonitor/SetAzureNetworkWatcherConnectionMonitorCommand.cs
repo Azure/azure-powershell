@@ -95,7 +95,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the connection monitor source.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
@@ -185,7 +184,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in the specified location");
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);

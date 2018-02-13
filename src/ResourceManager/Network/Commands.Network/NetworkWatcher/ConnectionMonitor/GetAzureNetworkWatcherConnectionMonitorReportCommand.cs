@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in the specified location");
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
