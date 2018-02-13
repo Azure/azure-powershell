@@ -143,10 +143,13 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 RestartPolicy = parameters.RestartPolicy
             };
 
-            if (string.Equals(IpAddress.Type, parameters.IpAddressType, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(IpAddress.Type, parameters.IpAddressType, StringComparison.OrdinalIgnoreCase) || 
+                !string.IsNullOrEmpty(parameters.DnsNameLabel))
             {
                 container.Ports = parameters.Ports.Select(p => new ContainerPort(p)).ToList();
-                containerGroup.IpAddress = new IpAddress(parameters.Ports.Select(p => new Port(p)).ToList());
+                containerGroup.IpAddress = new IpAddress(
+                    ports: parameters.Ports.Select(p => new Port(p)).ToList(),
+                    dnsNameLabel: parameters.DnsNameLabel);
             }
 
             if (!string.IsNullOrEmpty(parameters.RegistryServer))

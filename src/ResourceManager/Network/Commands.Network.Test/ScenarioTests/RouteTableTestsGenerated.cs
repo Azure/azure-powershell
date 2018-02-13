@@ -12,49 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
+using System;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class ContainerInstanceTests : RMTestBase
+    public class RouteTableTestsGenerated : RMTestBase
     {
-        public ContainerInstanceTests(ITestOutputHelper output)
+        public RouteTableTestsGenerated(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroup()
+        public void TestRouteCRUDMinimalParameters()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroup");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestContainerInstanceLog()
+        public void TestRouteCRUDAllParameters()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerInstanceLog");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDAllParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroupWithVolume()
+        public void TestRouteTableCRUDMinimalParameters()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithVolumeMount");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroupWithDnsNameLabel()
+        public void TestRouteTableCRUDAllParameters()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithDnsNameLabel");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDAllParameters"));
         }
     }
 }
