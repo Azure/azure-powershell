@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ContainerTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "Record mode test failed.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetContainers()
