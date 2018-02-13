@@ -434,7 +434,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             DataFactoryManagementClient.DeserializationSettings,
                             selfHosted.LinkedInfo is LinkedIntegrationRuntimeKey 
                                 ? Constants.LinkedIntegrationRuntimeKeyAuth
-                                : Constants.LinkedIntegrationRuntimeRbacAuth);
+                                : Constants.LinkedIntegrationRuntimeRbacAuth,
+                            status.Name,
+                            status.Properties.DataFactoryName);
                     }
 
                     return new PSSelfHostedIntegrationRuntimeStatus(

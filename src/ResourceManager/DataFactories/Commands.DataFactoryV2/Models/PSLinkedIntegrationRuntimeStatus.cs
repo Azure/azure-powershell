@@ -26,11 +26,29 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             string resourceGroupName,
             string factoryName,
             JsonSerializerSettings deserializerSettings,
-            string authType)
+            string authType,
+            string origIntegrationRuntimeName,
+            string origDataFactoryName)
             : base(integrationRuntime, status, resourceGroupName, factoryName, deserializerSettings)
         {
+            DataFactoryName = factoryName;
+            ResourceGroupName = resourceGroupName;
+            OriginalIntegrationRuntimeName = origIntegrationRuntimeName;
+            OriginalDataFactoryName = origDataFactoryName;
             AuthorizationType = authType;
         }
+
+        public new string Name => IntegrationRuntime.Name;
+
+        public new string Type => Constants.IntegrationRuntimeSelfhostedLinked;
+
+        public new string DataFactoryName { get; private set; }
+
+        public new string ResourceGroupName { get; private set; }
+
+        public string OriginalIntegrationRuntimeName { get; private set; }
+
+        public string OriginalDataFactoryName { get; private set; }
 
         public string AuthorizationType { get; private set; }
 
