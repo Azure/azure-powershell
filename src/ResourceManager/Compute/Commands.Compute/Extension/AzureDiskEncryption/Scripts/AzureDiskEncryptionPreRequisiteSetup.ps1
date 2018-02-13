@@ -63,10 +63,20 @@ $ErrorActionPreference = "Stop"
         $now = [System.DateTime]::Now;
         $oneYearFromNow = $now.AddYears(1);
         $aadClientSecret = [Guid]::NewGuid().ToString();
-        $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
-
         Write-Host "Creating new AAD application ($aadAppName)";
-        $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
+
+        #New-AzureRmADApplication cmdlet expects SecureString as -Password parameter for versions >= 5.0.0. Earlier versions expect plain string.
+        $azureResourcesModule = Get-Module 'AzureRM.Resources';
+        if($azureResourcesModule.Version.Major -ge 5)
+        {
+            $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
+            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
+        }
+        else
+        {
+            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+        }
+
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
         $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)
