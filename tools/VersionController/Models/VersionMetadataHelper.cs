@@ -430,5 +430,58 @@ namespace VersionController.Models
 
             return versionBump;
         }
+
+        /// <summary>
+        /// Generate the serialized module metadata for a given module.
+        /// </summary>
+        public void SerializeModule()
+        {
+            var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
+            var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
+            var outputDirectories = _fileHelper.OutputDirectories;
+            var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
+            var moduleName = _fileHelper.ModuleName;
+
+            IEnumerable<string> nestedModules = null;
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
+                var cmdletResult = powershell.Invoke();
+                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
+            }
+
+            if (nestedModules.Any())
+            {
+                List<string> requiredModules = null;
+                using (PowerShell powershell = PowerShell.Create())
+                {
+                    powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").RequiredModules");
+                    var cmdletResult = powershell.Invoke();
+                    requiredModules = cmdletResult.Select(c => c.ToString())
+                                                  .Join(outputDirectories,
+                                                        module => 1,
+                                                        directory => 1,
+                                                        (module, directory) => Path.Combine(directory, module))
+                                                  .Where(f => Directory.Exists(f))
+                                                  .ToList();
+                }
+
+                requiredModules.Add(outputModuleDirectory);
+                foreach (var nestedModule in nestedModules)
+                {
+                    var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(outputModuleManifestPath, out _appDomain);
+                    var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
+                    var serializedCmdletName = nestedModule + ".json";
+                    var serializedCmdletFile = Path.Combine(serializedCmdletsDirectory, serializedCmdletName);
+
+                    SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
+                }
+            }
+            else
+            {
+                throw new NullReferenceException("No nested modules found for " + moduleName);
+            }
+        }
     }
 }

@@ -13,8 +13,8 @@ namespace VersionController.Models
         private VersionFileHelper _fileHelper;
         private VersionMetadataHelper _metadataHelper;
 
-        private string _localVersion;
-        private string _galleryVersion;
+        private string _localVersion, _galleryVersion;
+        private bool _isPreview, _isNewModule;
 
         public VersionValidator(VersionFileHelper fileHelper)
         {
@@ -96,20 +96,21 @@ namespace VersionController.Models
         {
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
 
-            string result = string.Empty;
+            string localVersion = string.Empty;
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").Version");
+                powershell.AddScript("$moduleMetadata = Test-ModuleManifest -Path " + outputModuleManifestPath + ";$moduleMetadata.Version;$moduleMetadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
-                result = cmdletResult.FirstOrDefault()?.ToString();
+                localVersion = cmdletResult[0]?.ToString();
+                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
             }
 
-            if (result == null)
+            if (localVersion == null)
             {
                 throw new Exception("Unable to obtain the version from the locally built module manifest file.");
             }
 
-            return result;
+            return localVersion;
         }
 
         /// <summary>
@@ -143,6 +144,13 @@ namespace VersionController.Models
                 {
                     throw ex;
                 }
+                else
+                {
+                    Console.WriteLine("Validated that " + moduleName + " is a new module.");
+                    _galleryVersion = _localVersion;
+                    _isNewModule = true;
+                    return true;
+                }
             }
 
             SaveGalleryModule();
@@ -162,6 +170,13 @@ namespace VersionController.Models
         {
             var moduleName = _fileHelper.ModuleName;
 
+            // Don't validate a version bump for new module
+            if (_isNewModule)
+            {
+                Console.WriteLine("Skipping version bump validation for " + moduleName + " since it is a new module.");
+                return;
+            }
+
             Version version = _metadataHelper.GetVersionBumpUsingGallery();
             if (string.Equals(moduleName, "AzureRM.Profile"))
             {
@@ -177,20 +192,29 @@ namespace VersionController.Models
             }
 
             var splitVersion = _galleryVersion.Split('.').Select(v => int.Parse(v)).ToArray();
-            if (version == Version.MAJOR)
+
+            // PATCH update for preview modules (0.x.x or x.x.x-preview)
+            if (splitVersion[0] == 0 || _isPreview)
             {
-                splitVersion[0]++;
-                splitVersion[1] = 0;
-                splitVersion[2] = 0;
-            }
-            else if (version == Version.MINOR)
-            {
-                splitVersion[1]++;
-                splitVersion[2] = 0;
+                splitVersion[2]++;
             }
             else
             {
-                splitVersion[2]++;
+                if (version == Version.MAJOR)
+                {
+                    splitVersion[0]++;
+                    splitVersion[1] = 0;
+                    splitVersion[2] = 0;
+                }
+                else if (version == Version.MINOR)
+                {
+                    splitVersion[1]++;
+                    splitVersion[2] = 0;
+                }
+                else
+                {
+                    splitVersion[2]++;
+                }
             }
 
             var tempVersion = string.Join(".", splitVersion);
@@ -288,6 +312,12 @@ namespace VersionController.Models
         {
             var rollupModuleManifestPath = _fileHelper.RollupModuleManifestPath;
             var moduleName = _fileHelper.ModuleName;
+
+            if (_isPreview)
+            {
+                Console.WriteLine("Skipping AzureRM bump validation since " + moduleName + " is a preview module.");
+                return;
+            }
 
             var file = File.ReadAllLines(rollupModuleManifestPath);
             var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _localVersion + @"(['\""])";

@@ -14,6 +14,7 @@ namespace VersionController.Models
         private VersionMetadataHelper _metadataHelper;
 
         private string _oldVersion, _newVersion;
+        private bool _isPreview;
 
         public VersionBumper(VersionFileHelper fileHelper)
         {
@@ -32,9 +33,10 @@ namespace VersionController.Models
 
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("(Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ").Version");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
                 var cmdletResult = powershell.Invoke();
-                _oldVersion = cmdletResult.FirstOrDefault()?.ToString();
+                _oldVersion = cmdletResult[0]?.ToString();
+                _isPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
             }
 
             if (_oldVersion == null)
@@ -42,9 +44,19 @@ namespace VersionController.Models
                 throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
             }
 
-            _newVersion = GetBumpedVersion();
+            _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
 
-            Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
+            if (_oldVersion == _newVersion)
+            {
+                Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
+
+                // Generate the serialized module metadata file
+                _metadataHelper.SerializeModule();
+            }
+            else
+            {
+                Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
+            }
 
             UpdateSerializedAssemblyVersion();
             UpdateChangeLog();
@@ -64,6 +76,7 @@ namespace VersionController.Models
         private string GetBumpedVersion()
         {
             var moduleName = _fileHelper.ModuleName;
+            var splitVersion = _oldVersion.Split('.').Select(v => int.Parse(v)).ToArray();
             var versionBump = _metadataHelper.GetVersionBumpUsingSerialized();
             if (string.Equals(moduleName, "AzureRM.Profile"))
             {
@@ -78,21 +91,28 @@ namespace VersionController.Models
                 }
             }
 
-           var splitVersion = _oldVersion.Split('.').Select(v => int.Parse(v)).ToArray();
-            if (versionBump == Version.MAJOR)
+            // PATCH update for preview modules (0.x.x or x.x.x-preview)
+            if (splitVersion[0] == 0 || _isPreview)
             {
-                splitVersion[0]++;
-                splitVersion[1] = 0;
-                splitVersion[2] = 0;
-            }
-            else if (versionBump == Version.MINOR)
-            {
-                splitVersion[1]++;
-                splitVersion[2] = 0;
+                splitVersion[2]++;
             }
             else
             {
-                splitVersion[2]++;
+                if (versionBump == Version.MAJOR)
+                {
+                    splitVersion[0]++;
+                    splitVersion[1] = 0;
+                    splitVersion[2] = 0;
+                }
+                else if (versionBump == Version.MINOR)
+                {
+                    splitVersion[1]++;
+                    splitVersion[2] = 0;
+                }
+                else
+                {
+                    splitVersion[2]++;
+                }
             }
 
             return string.Join(".", splitVersion);
@@ -134,6 +154,12 @@ namespace VersionController.Models
         {
             var rollupModuleManifestPath = _fileHelper.RollupModuleManifestPath;
             var moduleName = _fileHelper.ModuleName;
+
+            // Skip this step since preview modules should not be included in AzureRM
+            if (_isPreview)
+            {
+                return;
+            }
 
             var file = File.ReadAllLines(rollupModuleManifestPath);
             var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
@@ -182,7 +208,7 @@ namespace VersionController.Models
                 releaseNotes.Add(file[idx]);
             }
 
-            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l)).ToList();
+            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l)).Select(l => l.Replace("`", "'")).ToList();
         }
 
         /// <summary>
@@ -291,6 +317,32 @@ namespace VersionController.Models
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Check whether or not the given module is new by searching for past entries in the change log.
+        /// </summary>
+        /// <returns>True if the module is new, false otherwise.</returns>
+        private bool IsNewModule()
+        {
+            var changeLogPath = _fileHelper.ChangeLogPath;
+
+            var file = File.ReadAllLines(changeLogPath);
+            var idx = 0;
+            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            {
+                idx++;
+            }
+
+            while (++idx < file.Length)
+            {
+                if (file[idx].Contains("## Version"))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
