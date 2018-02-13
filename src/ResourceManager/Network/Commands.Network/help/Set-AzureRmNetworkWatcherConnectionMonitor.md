@@ -431,3 +431,6 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 [Start-AzureRmNetworkWatcherConnectionMonitor]()
 
+[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherConnectionMonitor]()
