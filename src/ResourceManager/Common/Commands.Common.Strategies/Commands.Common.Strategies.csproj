@@ -72,7 +72,7 @@
     <Compile Include="Json\PrimitiveConverter.cs" />
     <Compile Include="Json\IConverter.cs" />
     <Compile Include="Json\Converters.cs" />
-    <Compile Include="ProgressMap.cs" />
+    <Compile Include="Progress\ProgressMap.cs" />
     <Compile Include="ResourceType.cs" />
     <Compile Include="Templates\DeploymentParameter.cs" />
     <Compile Include="Templates\Output.cs" />
@@ -81,10 +81,10 @@
     <Compile Include="Templates\Resource.cs" />
     <Compile Include="Templates\Template.cs" />
     <Compile Include="Templates\TemplateExtensions.cs" />
-    <Compile Include="TimeSlot.cs" />
+    <Compile Include="Progress\TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="SyncTaskScheduler.cs" />
-    <Compile Include="TimeSlotExtensions.cs" />
+    <Compile Include="Progress\TimeSlotExtensions.cs" />
     <Compile Include="UpdateStateExtensions.cs" />
     <Compile Include="CreateOrUpdateAsyncParams.cs" />
     <Compile Include="EntityConfigExtensions.cs" />
