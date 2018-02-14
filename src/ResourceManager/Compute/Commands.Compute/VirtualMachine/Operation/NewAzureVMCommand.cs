@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Compute;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
@@ -234,7 +235,6 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
             bool isWindows;
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var availabilitySet = AvailabilitySetName == null 
                 ? null
-                : resourceGroup.CreateAvailabilitySetConfig(name: Name);
+                : resourceGroup.CreateAvailabilitySetConfig(name: AvailabilitySetName);
 
             ResourceConfig<VirtualMachine> virtualMachine = null;
             if (image != null)
@@ -408,7 +408,14 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: Name,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
             // create target state
             var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);

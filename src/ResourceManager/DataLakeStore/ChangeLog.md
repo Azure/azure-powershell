@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
-* Corrected the error message of `Test-AzureRmDataLakeStoreAccount` when running this cmdlet without having logged in with `Login-AzureRmAccount`
+
+## Version 5.1.1
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
 
 ## Version 5.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
