@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/test-azurermeventhubname
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/test-azurermeventhubname
 schema: 2.0.0
 ---
 
