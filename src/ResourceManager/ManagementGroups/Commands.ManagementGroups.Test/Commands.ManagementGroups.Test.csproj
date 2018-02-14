@@ -9,8 +9,8 @@
     <ProjectGuid>{B0671436-C487-4CD4-AF06-28B4BE57D9E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.ManagementGroups.Test</RootNamespace>
-    <AssemblyName>Commands.ManagementGroups.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.ManagementGroups.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.ManagementGroups.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
