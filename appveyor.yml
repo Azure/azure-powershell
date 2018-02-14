@@ -12,7 +12,7 @@ before_build:
   - ps: Install-Module -Name SplitPipeline -Force
   - ps: Install-Module -Name platyPS -Force
   - ps: Install-Module -Name Azure -Force
-  - ps: Install-Module -Name AzureRM -Force
+  - ps: Install-Module -Name AzureRM -Force -AllowClobber
   - ps: Install-Module -Name AzureStack -Force
   - ps: Install-Product node $env:nodejs_version
   - git config --global credential.helper store
