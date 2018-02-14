@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSRunCommandDocument))]
     public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
