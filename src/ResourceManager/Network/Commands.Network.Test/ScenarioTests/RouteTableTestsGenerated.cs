@@ -12,54 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class ManagementPartnerTests : RMTestBase
+    public class RouteTableTestsGenerated : RMTestBase
     {
-        public ManagementPartnerTests(ITestOutputHelper output)
+        public RouteTableTestsGenerated(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPartner()
+        public void TestRouteCRUDMinimalParameters()
         {
-            ResourcesController.NewInstance.RunPsTest( "Test-GetPartner");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPartnerNoParnterId()
+        public void TestRouteCRUDAllParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetPartnerNoPartnerId");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDAllParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewParnter()
+        public void TestRouteTableCRUDMinimalParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewPartner");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateParnter()
+        public void TestRouteTableCRUDAllParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-UpdatePartner");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveParnter()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RemovePartner");
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDAllParameters"));
         }
     }
 }

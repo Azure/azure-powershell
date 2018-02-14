@@ -38,7 +38,6 @@ using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Resources.Models.Gallery;
-using Microsoft.Azure.Management.ManagementPartner;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-        public ACEProvisioningManagementPartnerAPIClient ACEProvisioningManagementPartnerAPIClient { get; private set; }
 
 
         public string UserDomain { get; private set; }
@@ -185,7 +183,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
-            ACEProvisioningManagementPartnerAPIClient = GetACEProvisioningGSMAPIClient(context);
             var testEnvironment = this.csmTestFactory.GetTestEnvironment();
             var credentials = new SubscriptionCredentialsAdapter(
                 testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
@@ -200,8 +197,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AuthorizationManagementClient,
                 GraphClient,
                 InsightsClient,
-                this.FeatureClient,
-                ACEProvisioningManagementPartnerAPIClient);
+                this.FeatureClient);
         }
 
         private GraphRbacManagementClient GetGraphClient(MockContext context)
@@ -273,11 +269,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private ACEProvisioningManagementPartnerAPIClient GetACEProvisioningGSMAPIClient(MockContext context)
-        {
-            return context.GetServiceClient<ACEProvisioningManagementPartnerAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

@@ -19,11 +19,14 @@
 -->
 ## Current Release
 * Fix overwrite message 'Are you sure you want to overwriteresource'
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
 
 ## Version 5.0.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.

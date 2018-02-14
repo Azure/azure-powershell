@@ -394,24 +394,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding management partner with id &apos;{0}&apos;..
-        /// </summary>
-        internal static string NewManagementParnterAction {
-            get {
-                return ResourceManager.GetString("NewManagementParnterAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to add management partner with id &apos;{0}&apos;..
-        /// </summary>
-        internal static string NewManagementParnterTarget {
-            get {
-                return ResourceManager.GetString("NewManagementParnterTarget", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -561,24 +543,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovedManagementPartner {
             get {
                 return ResourceManager.GetString("RemovedManagementPartner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing management partner with id &apos;{0}&apos;..
-        /// </summary>
-        internal static string RemoveManagementParnterAction {
-            get {
-                return ResourceManager.GetString("RemoveManagementParnterAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove management partner with id &apos;{0}&apos;..
-        /// </summary>
-        internal static string RemoveManagementParnterTarget {
-            get {
-                return ResourceManager.GetString("RemoveManagementParnterTarget", resourceCulture);
             }
         }
         
@@ -966,24 +930,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnregisterProviderMessage {
             get {
                 return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Updating the management partner to &apos;{0}&apos;..
-        /// </summary>
-        internal static string UpdateManagementParnterAction {
-            get {
-                return ResourceManager.GetString("UpdateManagementParnterAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to change the management partner to &apos;{0}&apos;..
-        /// </summary>
-        internal static string UpdateManagementParnterTarget {
-            get {
-                return ResourceManager.GetString("UpdateManagementParnterTarget", resourceCulture);
             }
         }
     }
