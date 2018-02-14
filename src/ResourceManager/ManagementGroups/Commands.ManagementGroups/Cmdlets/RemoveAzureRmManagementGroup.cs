@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
+using Microsoft.Azure.Commands.ManagementGroups.Models;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
 
@@ -27,6 +28,17 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
          SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = false, 
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSManagementGroup ManagementGroup { get; set; }
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet, Mandatory = false,
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSManagementGroupNoChildren ManagementGroupNoChildren { get; set; }
+
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -40,6 +52,15 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 
             try
             {
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ManagementGroupParameterSet))
+                {
+                    GroupName = ManagementGroup.Name;
+                }
+                else if (ParameterSetName.Equals(Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet))
+                {
+                    GroupName = ManagementGroupNoChildren.Name;
+                }
+
                 if (ShouldProcess(
                         string.Format(Resource.RemoveManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.RemoveManagementGroupShouldProcessAction, GroupName)))

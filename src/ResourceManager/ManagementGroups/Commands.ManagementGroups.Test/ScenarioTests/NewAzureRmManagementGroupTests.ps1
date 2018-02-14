@@ -19,54 +19,55 @@ Test New-AzureRmManagementGroup
 
 function Test-NewManagementGroup
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup4
-	$expectedTenantId = "6b2064b9-34bd-46e6-9092-52f2dd5f7fc0"
-	$expectedType =  "/providers/Microsoft.Management/managementGroups"
-	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup4"
-	$expectedName = "TestPSNewGroup4"
-	$expectedDisplayName = "TestPSNewGroup4"
+    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup
+	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup
 
-	Assert-AreEqual $response.TenantId $expectedTenantId
+	$expectedType =  "/providers/Microsoft.Management/managementGroups"
+	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup"
+	$expectedName = "TestPSNewGroup"
+	$expectedDisplayName = "TestPSNewGroup"
+
 	Assert-AreEqual $response.Type $expectedType
 	Assert-AreEqual $response.Id $expectedId
 	Assert-AreEqual $response.Name $expectedName
 	Assert-AreEqual $response.DisplayName $expectedDisplayName
-	Assert-Null $response.ParentId 
-	Assert-Null $response.ParentDisplayName 
+	Assert-NotNull $response.ParentId 
+	Assert-NotNull $response.ParentDisplayName 
+
 }
 
 function Test-NewManagementGroupWithDisplayName
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup1 -DisplayName TestNewGrp1DisplayName
+    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup2 -DisplayName TestDisplayName
+	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup2
 
-	$expectedTenantId = "6b2064b9-34bd-46e6-9092-52f2dd5f7fc0"
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
-	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup1"
-	$expectedName = "TestPSNewGroup1"
-	$expectedDisplayName = "TestNewGrp1DisplayName"
+	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup2"
+	$expectedName = "TestPSNewGroup2"
+	$expectedDisplayName = "TestDisplayName"
 
-	Assert-AreEqual $response.TenantId $expectedTenantId
 	Assert-AreEqual $response.Type $expectedType
 	Assert-AreEqual $response.Id $expectedId
 	Assert-AreEqual $response.Name $expectedName
 	Assert-AreEqual $response.DisplayName $expectedDisplayName
-	Assert-Null $response.ParentId 
-	Assert-Null $response.ParentDisplayName 
+	Assert-NotNull $response.ParentId 
+	Assert-NotNull $response.ParentDisplayName 
 }
 
 function Test-NewManagementGroupWithParentId
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup2 -ParentId /providers/Microsoft.Management/managementGroups/testGroup123
+	New-AzureRmManagementGroup -GroupName TestParent5
+    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup5 -ParentId /providers/Microsoft.Management/managementGroups/TestParent5
+	Remove-AzureRmManagementGroup -GroupName TestPSNewGroup5
+	Remove-AzureRmManagementGroup -GroupName TestParent5
 
-	$expectedTenantId = "6b2064b9-34bd-46e6-9092-52f2dd5f7fc0"
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
-	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup2"
-	$expectedName = "TestPSNewGroup2"
-	$expectedDisplayName = "TestPSNewGroup2"
-	$expectedParentId = "/providers/Microsoft.Management/managementGroups/testGroup123"
-	$expectedParentDisplayName = "TestGroup123"
+	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup5"
+	$expectedName = "TestPSNewGroup5"
+	$expectedDisplayName = "TestPSNewGroup5"
+	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestParent5"
+	$expectedParentDisplayName = "TestParent5"
 
-	Assert-AreEqual $response.TenantId $expectedTenantId
 	Assert-AreEqual $response.Type $expectedType
 	Assert-AreEqual $response.Id $expectedId
 	Assert-AreEqual $response.Name $expectedName
@@ -77,17 +78,18 @@ function Test-NewManagementGroupWithParentId
 
 function Test-NewManagementGroupWithDisplayNameAndParentId
 {
-    $response = New-AzureRmManagementGroup -GroupName TestPSNewGroup3 -DisplayName TestNewGrp3DisplayName -ParentId /providers/Microsoft.Management/managementGroups/testGroup123
+	New-AzureRmManagementGroup -GroupName TestParent4
+    $response = New-AzureRmManagementGroup -GroupName TestPSGroup4 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestParent4
+	Remove-AzureRmManagementGroup -GroupName TestPSGroup4
+	Remove-AzureRmManagementGroup -GroupName TestParent4
 
-	$expectedTenantId = "6b2064b9-34bd-46e6-9092-52f2dd5f7fc0"
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
-	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup3"
-	$expectedName = "TestPSNewGroup3"
-	$expectedDisplayName = "TestNewGrp3DisplayName"
-	$expectedParentId = "/providers/Microsoft.Management/managementGroups/testGroup123"
-	$expectedParentDisplayName = "TestGroup123"
+	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGroup4"
+	$expectedName = "TestPSGroup4"
+	$expectedDisplayName = "TestDisplayName"
+	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestParent4"
+	$expectedParentDisplayName = "TestParent4"
 
-	Assert-AreEqual $response.TenantId $expectedTenantId
 	Assert-AreEqual $response.Type $expectedType
 	Assert-AreEqual $response.Id $expectedId
 	Assert-AreEqual $response.Name $expectedName

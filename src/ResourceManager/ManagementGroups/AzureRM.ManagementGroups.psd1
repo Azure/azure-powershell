@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.ManagementGroups.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -107,11 +107,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = 'First Preview Release of MangementGroups Powershell'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
+		
+		Prerelease = 'preview'
 
     } # End of PSData hashtable
     

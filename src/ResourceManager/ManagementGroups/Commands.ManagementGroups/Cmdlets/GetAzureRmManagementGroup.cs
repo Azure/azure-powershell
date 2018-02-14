@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                     var response = ManagementGroupsApiClient.ManagementGroups.List();
                     var items = response.Select(managementGroup => new PSManagementGroupInfo(managementGroup))
                         .ToList();
-                    WriteObject(items);
+                    WriteObject(items, true);
                 }
             }
             catch (ErrorResponseException ex)
