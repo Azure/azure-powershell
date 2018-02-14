@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -28,7 +27,6 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string PerformMaintenanceResourceGroupNameParameterSet = "PerformMaintenanceResourceGroupNameParameterSetName";
         protected const string RestartIdParameterSet = "RestartIdParameterSetName";
         protected const string PerformMaintenanceIdParameterSet = "PerformMaintenanceIdParameterSetName";
-
 
         [Parameter(
            Mandatory = true,
@@ -93,6 +91,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
                 base.ExecuteCmdlet();
+
+                if (this.ParameterSetName.Equals(RestartIdParameterSet) || this.ParameterSetName.Equals(PerformMaintenanceIdParameterSet))
+                {
+                    this.ResourceGroupName = GetResourceGroupNameFromId(this.Id);
+                }
 
                 if (this.PerformMaintenance.IsPresent)
                 {

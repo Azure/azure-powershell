@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         public IMonitorManagementClient MonitorManagementClient
         {
-            // The premise is that a command to establish a context (like Add-AzureRmAccount) has
+            // The premise is that a command to establish a context (like Connect-AzureRmAccount) has
             //   been called before this command in order to have a correct CurrentContext
             get
             {

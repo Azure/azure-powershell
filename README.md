@@ -58,21 +58,21 @@ For more detailed instructions on using Azure PowerShell, please refer to the [g
 
 ### Log in to Azure
 
-To connect to Azure, use the [`Add-AzureRmAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount) cmdlet.
+To connect to Azure, use the [`Connect-AzureRmAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet.
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # Non-interactive login - you will need to use a service principal
-Add-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $PSCredential -TenantId $TenantId
+Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $PSCredential -TenantId $TenantId
 ```
 
 To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `Environment` parameter:
 
 ```powershell
 # Log into a specific cloud - in this case, the Azure China cloud
-Add-AzureRmAccount -Environment AzureChinaCloud
+Connect-AzureRmAccount -Environment AzureChinaCloud
 ```
 
 ### Getting and setting your session context

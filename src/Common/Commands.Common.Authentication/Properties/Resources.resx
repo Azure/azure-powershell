@@ -142,7 +142,7 @@
     <value>The environment name '{0}' is not found.</value>
   </data>
   <data name="ExpiredRefreshToken" xml:space="preserve">
-    <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
+    <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
   </data>
   <data name="FilePathIsNotValid" xml:space="preserve">
     <value>File path is not valid</value>
@@ -193,7 +193,7 @@
     <value>Removing public environment is not supported.</value>
   </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
-    <value>Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
+    <value>Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
   </data>
   <data name="ServiceNameExists" xml:space="preserve">
     <value>The provided service name {0} already exists, please pick another name</value>
@@ -259,7 +259,7 @@
     <value>Multiple tokens were found for this user. Please clear your token cache using, Clear-AzureProfile and try this command again.</value>
   </data>
   <data name="AdalUserInteractionRequired" xml:space="preserve">
-    <value>User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
+    <value>User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets.</value>
   </data>
   <data name="TenantNotFound" xml:space="preserve">
     <value>No tenant was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount.</value>
@@ -283,19 +283,19 @@
     <value>[Common.Authentication]: Authenticating for account {0} with single tenant {1}</value>
   </data>
   <data name="ArmAccountNotFound" xml:space="preserve">
-    <value>No account found in the context. Please login using Login-AzureRMAccount.</value>
+    <value>No account found in the context. Please login using Connect-AzureRmAccount.</value>
   </data>
   <data name="ArmUserInteractionRequired" xml:space="preserve">
-    <value>User Interaction is required to authenticate this user. Please execute Login-AzureRMAccount without parameters and enter your credentials.</value>
+    <value>User Interaction is required to authenticate this user. Please execute Connect-AzureRmAccount without parameters and enter your credentials.</value>
   </data>
   <data name="InvalidArmContext" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Login-AzureRMAccount to set up your Azure credentials.</value>
+    <value>Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials.</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login.</value>
   </data>
   <data name="NoTenantInContext" xml:space="preserve">
-    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login.</value>
   </data>
   <data name="UnsupportedCredentialType" xml:space="preserve">
     <value>Certificate authentication is not supported for account type {0}.</value>
