@@ -671,6 +671,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Name = "testCloud",
                 ActiveDirectoryAuthority = "http://contoso.com"
             };
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "http://contoso.io");
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "http://insights.contoso.io/");
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
@@ -713,6 +715,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var jCurrentProfile = currentProfile.ToString();
             var jDeserializedProfile = deserializedProfile.ToString();
             Assert.Equal(jCurrentProfile, jDeserializedProfile);
+            Assert.True(deserializedProfile.DefaultContext.Environment.IsPropertySet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.True(deserializedProfile.DefaultContext.Environment.IsPropertySet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
+            Assert.Equal("http://contoso.io", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.Equal("http://insights.contoso.io/", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
         }
 
         [Fact]
@@ -745,7 +751,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
       ""AdTenant"": null,
       ""VersionProfiles"": [],
-      ""ExtendedProperties"": {}
+      ""ExtendedProperties"": {
+        ""OperationalInsightsEndpoint"": ""http://contoso.io"",
+        ""OperationalInsightsEndpointResourceId"": ""http://insights.contoso.io/""
+      }
     }
   },
   ""Contexts"": {
@@ -797,7 +806,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
         ""AdTenant"": null,
         ""VersionProfiles"": [],
-        ""ExtendedProperties"": {}
+        ""ExtendedProperties"": {
+          ""OperationalInsightsEndpoint"": ""http://contoso.io"",
+          ""OperationalInsightsEndpointResourceId"": ""http://insights.contoso.io/""
+        }
       },
       ""VersionProfile"": null,
       ""TokenCache"": {
@@ -818,6 +830,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Name = "testCloud",
                 ActiveDirectoryAuthority = "http://contoso.com"
             };
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "http://contoso.io");
+            environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "http://insights.contoso.io/");
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
@@ -915,7 +929,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> { DefaultSubscription.ToString() };
             var profile = SetupLogin(tenants, subscriptions, subscriptions);
-            var cmdlet = new AddAzureRMAccountCommand();
+            var cmdlet = new ConnectAzureRmAccountCommand();
             cmdlet.CommandRuntime = new MockCommandRuntime();
             cmdlet.DefaultProfile = profile;
             var accessToken1 = Guid.NewGuid().ToString();
@@ -925,7 +939,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlet.GraphAccessToken = graphToken1;
             cmdlet.KeyVaultAccessToken = keyVaultToken1;
             cmdlet.AccountId = "user1@contoso.org";
-            cmdlet.SetParameterSet(AddAzureRMAccountCommand.AccessTokenParameterSet);
+            cmdlet.SetParameterSet(ConnectAzureRmAccountCommand.AccessTokenParameterSet);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -940,7 +954,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken));
             Assert.Equal(keyVaultToken1, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
             var toss = SetupLogin(tenants, subscriptions, subscriptions);
-            var cmdlet2 = new AddAzureRMAccountCommand();
+            var cmdlet2 = new ConnectAzureRmAccountCommand();
             cmdlet2.CommandRuntime = new MockCommandRuntime();
             cmdlet2.DefaultProfile = profile;
             var accessToken2 = Guid.NewGuid().ToString();
@@ -950,7 +964,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlet2.GraphAccessToken = graphToken2;
             cmdlet2.KeyVaultAccessToken = keyVaultToken2;
             cmdlet2.AccountId = "user1@contoso.org";
-            cmdlet2.SetParameterSet(AddAzureRMAccountCommand.AccessTokenParameterSet);
+            cmdlet2.SetParameterSet(ConnectAzureRmAccountCommand.AccessTokenParameterSet);
             cmdlet2.InvokeBeginProcessing();
             cmdlet2.ExecuteCmdlet();
             Assert.NotNull(profile);
