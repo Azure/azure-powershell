@@ -48,8 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.2-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -142,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\A2A\AsrA2ATests.cs" />
     <Compile Include="ScenarioTests\B2A\AsrB2ATests.cs" />
     <Compile Include="ScenarioTests\Common\AsrTests.cs" />
     <Compile Include="ScenarioTests\Constants.cs" />
@@ -153,6 +153,12 @@
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ScenarioTests\A2A\AsrA2ATests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\A2A\AsrA2A.VaultCredentials">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\B2A\AsrB2ATests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -182,6 +188,33 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\E2E\E2E.VaultCredentials">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AEnableDR.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2APolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AProtectionContainer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AProtectionContainerMapping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestCreateFabric.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestGetAsrNetworkMapping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewA2ADiskReplicationConfig1.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewAsrFabric.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewAsrNetworkMapping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrB2ATests\*.json">
