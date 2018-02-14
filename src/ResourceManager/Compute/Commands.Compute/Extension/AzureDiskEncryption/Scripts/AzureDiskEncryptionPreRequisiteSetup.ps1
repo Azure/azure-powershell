@@ -65,7 +65,6 @@ $ErrorActionPreference = "Stop"
         $aadClientSecret = [Guid]::NewGuid().ToString();
         Write-Host "Creating new AAD application ($aadAppName)";
 
-        #New-AzureRmADApplication cmdlet expects SecureString as -Password parameter for versions >= 5.0.0. Earlier versions expect plain string.
         $azureResourcesModule = Get-Module 'AzureRM.Resources';
         if($azureResourcesModule.Version.Major -ge 5)
         {
