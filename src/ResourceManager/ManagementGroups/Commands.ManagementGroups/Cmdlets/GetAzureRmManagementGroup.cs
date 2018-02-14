@@ -15,8 +15,8 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models; 
+using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Azure.Management.ManagementGroups.Models; 
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                     var response = ManagementGroupsApiClient.ManagementGroups.List();
                     var items = response.Select(managementGroup => new PSManagementGroupInfo(managementGroup))
                         .ToList();
-                    WriteObject(items);
+                    WriteObject(items, true);
                 }
             }
             catch (ErrorResponseException ex)

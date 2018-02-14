@@ -19,7 +19,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;

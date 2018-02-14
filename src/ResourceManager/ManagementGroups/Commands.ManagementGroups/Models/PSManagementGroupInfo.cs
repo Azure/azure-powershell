@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Models
 {

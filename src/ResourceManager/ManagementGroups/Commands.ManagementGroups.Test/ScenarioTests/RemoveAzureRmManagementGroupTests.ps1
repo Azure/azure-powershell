@@ -19,7 +19,8 @@ Test Remove-AzureRmManagementGroup
 
 function Test-RemoveManagementGroup
 {
-    $response = Remove-AzureRmManagementGroup -GroupName TestPSNewGroup3
+	New-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+    $response = Remove-AzureRmManagementGroup -GroupName TestPSRemoveGroup
 
 	Assert-Null $response
 }

@@ -17,14 +17,15 @@
 Test GroupSubscriptionOperations
 #>
 
-function Test-NewManagementGroupSubscription
+function Test-NewRemoveManagementGroupSubscription
 {
-	$response = New-AzureRmManagementGroupSubscription -GroupName testGroup123 -SubscriptionId 8158c3e6-0c47-4d68-af4c-d521343aa3f8
-	Assert-Null $response
-}
+	New-AzureRmManagementGroup -GroupName TestSubGroup
 
-function Test-RemoveManagementGroupSubscription
-{
-	$response = Remove-AzureRmManagementGroupSubscription -GroupName testGroup123 -SubscriptionId 8158c3e6-0c47-4d68-af4c-d521343aa3f8
-	Assert-Null $response
+	$response1 = New-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 8158c3e6-0c47-4d68-af4c-d521343aa3f8
+	$response2 = Remove-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 8158c3e6-0c47-4d68-af4c-d521343aa3f8
+	
+	Remove-AzureRmManagementGroup -GroupName TestSubGroup
+
+	Assert-Null $response1
+	Assert-Null $response2
 }

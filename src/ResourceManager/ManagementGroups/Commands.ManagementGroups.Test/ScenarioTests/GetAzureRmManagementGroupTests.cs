@@ -31,13 +31,6 @@ namespace Commands.ManagementGroups.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListManagementGroups()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, @"Test-ListManagementGroups");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroup()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, @"Test-GetManagementGroup");

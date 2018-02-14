@@ -31,16 +31,9 @@ namespace Commands.ManagementGroups.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewManagementGroupSubscription()
+        public void TestNewRemoveManagementGroupSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, @"Test-NewManagementGroupSubscription");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveManagementGroupSubscription()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, @"Test-RemoveManagementGroupSubscription");
+            TestController.NewInstance.RunPowerShellTest(_logger, @"Test-NewRemoveManagementGroupSubscription");
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
             public const string ListParameterSet = "ListOperation";
             public const string GroupOperationsParameterSet = "GroupOperations";
             public const string SubscriptionOperationsParameterSet = "SubscriptionOperations";
+            public const string ManagementGroupParameterSet = "ManagementGroupObject";
+            public const string ManagementGroupNoChildrenParameterSet = "ManagementGroupNoChildren";
         }
 
         public class HelpMessages
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
             public const string DisplayName = "Display Name of the management group";
             public const string Expand = "Expand the output to list the children of the management group";
             public const string Force = "Force the action and skip confirmations";
+            public const string InputObject = "Input Object from the Get call";
         }
     }
 }

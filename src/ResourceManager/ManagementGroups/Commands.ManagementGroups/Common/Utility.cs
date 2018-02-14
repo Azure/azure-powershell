@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Management.ManagementGroups.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -22,7 +23,6 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
 {
     using System.Collections.Generic;
     using Microsoft.Rest.Azure;
-    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Azure.Management.Internal.Resources.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
