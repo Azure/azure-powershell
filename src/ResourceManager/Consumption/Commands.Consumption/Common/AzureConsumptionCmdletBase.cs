@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Commands.Consumption.Common
     {
         private IConsumptionManagementClient _consumptionManagementClient;
 
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
-
         /// <summary>
         /// Gets or sets the Consumption management client.
         /// </summary>

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         public override void ExecuteCmdlet()
         {
             var schedule = DataServiceClient.Schedules.Get(
-                ResourceGroupName,
                 LabName,
                 WellKnownPolicyNames.LabVmsShutdown);
 

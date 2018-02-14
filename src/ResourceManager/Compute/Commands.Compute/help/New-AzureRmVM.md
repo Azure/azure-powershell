@@ -25,7 +25,7 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
 ### DefaultParameterSet
 ```
 New-AzureRmVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tags <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -199,7 +199,7 @@ Parameter Sets: DefaultParameterSet
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -447,7 +447,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies that resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
 Each resource or resource group can have a maximum of 15 tags.
@@ -455,7 +455,7 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named
