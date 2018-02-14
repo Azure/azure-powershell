@@ -18,12 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
-* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
-* User assigned identity support for VM and VM scale set
-- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
 * Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
 * Added Priority parameter to New-AzureRmVmssConfig
+
+## Version 4.3.0
+* Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
+* User assigned identity support for VM and VM scale set
+- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
+
 
 ## Version 4.2.0
 * Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
