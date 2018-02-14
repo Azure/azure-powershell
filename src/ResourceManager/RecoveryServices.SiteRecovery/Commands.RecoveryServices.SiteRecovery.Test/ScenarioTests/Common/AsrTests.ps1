@@ -269,3 +269,23 @@ function Test-NotificationSettings
     Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableNotification
 }
 
+<#
+.SYNOPSIS
+    Test to set-asrVaultContext on newly created vault.
+    Bug 1968348
+    To Handle the case when cert is not uploaded to RecoveryServices and usage api is returning null. Upload Cert by calling get-AzureRmRecoveryServicesVaultSettingsFile.
+#>
+function Test-vaultSet
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    
+    $vaultName ='testNewVaultPs' 
+    $resourceGroup = 'testtest'
+    $vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $resourceGroup -Name $vaultName
+    set-asrVaultContext -Vault  $vault
+
+}
+
