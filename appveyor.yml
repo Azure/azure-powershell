@@ -13,7 +13,7 @@ before_build:
   - ps: Install-Module -Name platyPS -Force
   - ps: Install-Module -Name Azure -Force
   - ps: Install-Module -Name AzureRM -Force -AllowClobber
-  - ps: Install-Module -Name AzureStack -Force
+  - ps: Install-Module -Name AzureStack -Force -AllowClobber
   - ps: Install-Product node $env:nodejs_version
   - git config --global credential.helper store
   - ps: ac "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
