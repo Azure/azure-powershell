@@ -161,7 +161,9 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The file path of the node file to delete.```yaml
+The file path of the node file to delete.
+
+```yaml
 Type: String
 Parameter Sets: Task, ComputeNode
 Aliases: Name

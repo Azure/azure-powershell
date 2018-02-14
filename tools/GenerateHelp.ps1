@@ -25,7 +25,7 @@ if ($ValidateMarkdownHelp)
     $NewExceptionsPath = "$PSScriptRoot\..\src\Package"
     Copy-Item -Path "$PSScriptRoot\HelpGeneration\Exceptions\ValidateHelpIssues.csv" -Destination $SuppressedExceptionsPath
     New-Item -Path $NewExceptionsPath -Name ValidateHelpIssues.csv -ItemType File -Force | Out-Null
-    Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" "Module,Target,Description"
+    Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" "Target,Description"
     $HelpFolders | foreach { Validate-MarkdownHelp $_ $SuppressedExceptionsPath $NewExceptionsPath }
     $Exceptions = Import-Csv "$NewExceptionsPath\ValidateHelpIssues.csv"
     if (($Exceptions | Measure-Object).Count -gt 0)

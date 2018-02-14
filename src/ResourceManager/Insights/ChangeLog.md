@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.2
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
 ## Version 4.0.1
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

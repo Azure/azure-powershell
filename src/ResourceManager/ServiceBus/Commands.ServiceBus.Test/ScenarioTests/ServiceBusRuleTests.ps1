@@ -14,121 +14,78 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-    return "RGName-" + (getAssetName)
-	#return "Default-ServiceBus-WestUS"
-}
-
-<#
-.SYNOPSIS
-Get Topic name
-#>
-function Get-TopicName
-{
-    return "SBTopic-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Topic name
-#>
-function Get-SubscriptionName
-{
-    return "SBSubscription-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get Rule name
-#>
-function Get-RuleName
-{
-    return "SBRule-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
-Get  Namespace name
-#>
-function Get-NamespaceName
-{
-    return "SBNamespace-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
 Tests Rule Create List Remove operations.
 #>
 function ServiceBusRuleTests
 {
     # Setup    
     $location = Get-Location
- 
+	$resourceGroupName = getAssetName "RGName-"
+	$namespaceName = getAssetName "Namespace1-"
+	$nameTopic = getAssetName "Topic-"
+	$subName = getAssetName "Subscription-"
+	$ruleName = getAssetName "Rule-"
+	 
     Write-Debug "Create resource group"
-    $resourceGroupName = Get-ResourceGroupName
+	Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
-    Write-Debug "ResourceGroup name : $resourceGroupName" 
-
-    $namespaceName = Get-NamespaceName
-    
+        
     Write-Debug " Create new Topic namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
     
-
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
-   		
-	Assert-AreEqual $createdNamespace.Name $namespaceName
-	Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
 
-    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
+	Assert-AreEqual $createdNamespace.Name $namespaceName	
+
+    Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
 
 	Write-Debug "Create Topic"
-	$nameTopic = Get-TopicName
+	
 	$result = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -EnablePartitioning $TRUE
-	Assert-True {$result.Name -eq $nameTopic} "In CreateTopic response Name not found"
+	Assert-AreEqual $result.Name $nameTopic "In CreateTopic response Name not found"
 
 	$resultGetTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
-	Assert-True {$resultGetTopic.Name -eq $result.Name} "In 'Get-AzureRmServiceBusTopic' response, Topic Name not found"
+	Assert-AreEqual $resultGetTopic.Name $result.Name "In 'Get-AzureRmServiceBusTopic' response, Topic Name not found"
 	
 	$resultGetTopic.EnableExpress = $TRUE
 
 	$resltSetTopic = Set-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetTopic.Name -InputObject $resultGetTopic
-	Assert-True {$resltSetTopic.Name -eq $resultGetTopic.Name} "In GetTopic response, TopicName not found"
+	Assert-AreEqual $resltSetTopic.Name $resultGetTopic.Name "In GetTopic response, TopicName not found"
 
 	# Get all Topics
 	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
 	
-	#Create Subscription
-	$subName = Get-SubscriptionName
+	#Create Subscription	
 	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName
+	Assert-AreEqual $resltNewSub.Name $subName "Created Subscription not found"
 
 	# Get Created Subscritpiton Name 
 	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName
+	Assert-AreEqual $resultGetSub.Name $subName "Get-Sub, Created Subscription not found"
 
-	# Create Rule
-	$ruleName = Get-RuleName
+	# Create Rule	
 	$createRule = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -SqlExpression "myproperty='test'"
-
-	Assert-True {$createRule.Name -eq $ruleName} "Rule created earlier is not found."
+	Assert-AreEqual $createRule.Name $ruleName "Rule created earlier is not found."
 	
 	# Get Rule
 	$getRule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName
+	Assert-AreEqual $getRule.Name $ruleName "Get-rule, Rule created earlier is not found."
 
 	# Update Rule
 	$getRule.SqlFilter.SqlExpression = "myproperty='testing'"
 
-	$setRule = Set-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -InputObject $getRule
-	
-	Assert-True {$setRule.SqlFilter.SqlExpression -eq "myproperty='testing'"} "Rule's SqlExpression updated earlier is not found."
+	$setRule = Set-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -InputObject $getRule	
+	Assert-AreEqual $setRule.SqlFilter.SqlExpression "myproperty='testing'" "Rule's SqlExpression updated earlier is not found."
 
 	#remove Rule
 	Remove-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -Force
+
+	# Get rule List to verfiy the deleted rule
+	$ruleList_delete = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName
+	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"	
 	
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
@@ -143,11 +100,7 @@ function ServiceBusRuleTests
 	}
 
 	Write-Debug "Delete NameSpace"
-	 $createdNamespaces = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
-	for ($i = 0; $i -lt $createdNamespaces.Count; $i++)
-	{
-		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $createdNamespaces[$i].Name
-	}
+	Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

@@ -15,6 +15,8 @@
 <#
 	.SYNOPSIS
 	Tests creating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-CreateServer
 {
@@ -48,6 +50,8 @@ function Test-CreateServer
 <#
 	.SYNOPSIS
 	Tests updating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-UpdateServer
 {
@@ -86,6 +90,8 @@ function Test-UpdateServer
 <#
 	.SYNOPSIS
 	Tests Getting a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-GetServer
 {
@@ -128,6 +134,8 @@ function Test-GetServer
 <#
 	.SYNOPSIS
 	Tests Removing a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-RemoveServer
 {
