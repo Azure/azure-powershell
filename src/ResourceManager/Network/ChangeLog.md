@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix overwrite message 'Are you sure you want to overwriteresource'
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.

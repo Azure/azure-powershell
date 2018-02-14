@@ -65,25 +65,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if(PeerAddressType == IPv6)
             {
-                peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
-                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
-                if (!string.IsNullOrEmpty(this.RouteFilterId))
-                {
-                    peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
-                    peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
-                }
+                this.SetIpv6PeeringParameters(peering);
             }
             else
             {
                 // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-                peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
-                if (!string.IsNullOrEmpty(this.RouteFilterId))
-                {
-                    peering.RouteFilter = new PSRouteFilter();
-                    peering.RouteFilter.Id = this.RouteFilterId;
-                }
+                this.SetIpv4PeeringParameters(peering);
             }
 
             this.ConstructMicrosoftConfig(peering);
