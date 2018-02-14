@@ -20,6 +20,7 @@
 
 ## Current Release
 * Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Enable integration runtime to be shared across data factory
 
 ## Version 0.5.0
 * Enabled Azure Key Vault support for all data store linked services
