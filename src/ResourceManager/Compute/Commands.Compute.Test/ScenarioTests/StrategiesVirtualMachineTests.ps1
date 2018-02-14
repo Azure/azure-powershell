@@ -23,14 +23,17 @@ function Test-SimpleNewVm
 
     try
     {
-		$username = "admin01"
-		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred
+        $job = New-AzureRmVM -Name $vmname -Credential $cred -AsJob
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $x = $job | Receive-Job;
 
-		Assert-AreEqual $vmname $x.Name;		
+        Assert-AreEqual $vmname $x.Name;        
     }
     finally
     {
