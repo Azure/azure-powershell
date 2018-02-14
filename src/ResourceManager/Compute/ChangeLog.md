@@ -25,8 +25,6 @@
 * Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 * Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
-* Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
-* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 * User assigned identity support for VM and VM scale set
 - IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
 
