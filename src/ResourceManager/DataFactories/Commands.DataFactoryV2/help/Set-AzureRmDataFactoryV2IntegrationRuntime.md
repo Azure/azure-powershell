@@ -17,9 +17,9 @@ Updates an integration runtime.
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <String>] [-Force] [-Name] <String>
- [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
+ [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -27,7 +27,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <String>] [-Force]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <String>] [-Force]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -66,7 +66,7 @@ The cmdlet updates the description of integration runtime named 'test-selfhost-i
 The authentication key of the self-hosted integration runtime.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 
