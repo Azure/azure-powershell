@@ -14,13 +14,14 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.ManagementPartner;
-using PartnerResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using PartnerResources = Microsoft.Azure.Commands.ManagementPartner.Properties.Resources;
 
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.ManagementPartner
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmManagementPartner", SupportsShouldProcess = true), OutputType(typeof(PSManagementPartner))]
-    public class NewManagementPartner:AzureManagementPartnerCmdletsBase
+    [Cmdlet(VerbsData.Update, "AzureRmManagementPartner", SupportsShouldProcess = true),
+     OutputType(typeof(PSManagementPartner))]
+    public class UpdateManagementPartner : AzureManagementPartnerCmdletsBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The management partner id")]
         [ValidateNotNull]
@@ -28,11 +29,11 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(string.Format(PartnerResources.NewManagementParnterTarget, PartnerId),
-                string.Format(PartnerResources.NewManagementParnterAction,PartnerId)))
+            if (ShouldProcess(string.Format(PartnerResources.UpdateManagementParnterTarget, PartnerId),
+                string.Format(PartnerResources.UpdateManagementParnterAction, PartnerId)))
             {
                 var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner
-                    .CreateAsync(PartnerId).Result);
+                    .UpdateAsync(PartnerId).Result);
                 WriteObject(response);
             }
         }

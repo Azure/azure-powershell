@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
 
 ## Version 4.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

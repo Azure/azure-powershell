@@ -101,12 +101,6 @@
     <Compile Include="Gallery\OfferDetails.cs" />
     <Compile Include="Gallery\Plan.cs" />
     <Compile Include="Gallery\Product.cs" />
-    <Compile Include="ManagementPartner\NewManagementPartner.cs" />
-    <Compile Include="ManagementPartner\AzureManagementPartnerCmdletsBase.cs" />
-    <Compile Include="ManagementPartner\GetManagementPartner.cs" />
-    <Compile Include="ManagementPartner\PSManagementPartner.cs" />
-    <Compile Include="ManagementPartner\RemoveManagementPartner.cs" />
-    <Compile Include="ManagementPartner\UpdateManagementPartner.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />

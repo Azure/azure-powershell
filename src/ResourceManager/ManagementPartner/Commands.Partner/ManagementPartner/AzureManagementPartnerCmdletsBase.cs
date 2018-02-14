@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.ManagementPartner;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.ManagementPartner
 {
     public abstract class AzureManagementPartnerCmdletsBase:AzureRMCmdlet
     {
