@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.ManagementPartner;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
 {
     public class ManagementPartnerTests : RMTestBase
     {
@@ -31,35 +32,35 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartner()
         {
-            ResourcesController.NewInstance.RunPsTest( "Test-GetPartner");
+            TestController.NewInstance.RunPsTest( "Test-GetPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartnerNoParnterId()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetPartnerNoPartnerId");
+            TestController.NewInstance.RunPsTest("Test-GetPartnerNoPartnerId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewParnter()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewPartner");
+            TestController.NewInstance.RunPsTest("Test-NewPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateParnter()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-UpdatePartner");
+            TestController.NewInstance.RunPsTest("Test-UpdatePartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveParnter()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemovePartner");
+            TestController.NewInstance.RunPsTest("Test-RemovePartner");
         }
     }
 }

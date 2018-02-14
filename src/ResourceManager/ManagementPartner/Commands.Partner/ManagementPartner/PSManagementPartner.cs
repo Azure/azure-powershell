@@ -12,22 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Management.ManagementPartner;
+using System;
+using Microsoft.Azure.Management.ManagementPartner.Models;
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.ManagementPartner
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmManagementPartner"), OutputType(typeof(PSManagementPartner))]
-    public class GetManagementPartner : AzureManagementPartnerCmdletsBase
+    class PSManagementPartner
     {
-        [Parameter(Position = 0, Mandatory = false)]
         public string PartnerId { get; set; }
+        public string TenantId { get; set; }
+        public string ObjectId { get; set; }
+        public string State { get; set; }
 
-        public override void ExecuteCmdlet()
+        public PSManagementPartner(PartnerResponse partnerResponse)
         {
-            PartnerId = PartnerId ?? string.Empty;
-            var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner.GetAsync(PartnerId).Result);
-            WriteObject(response);
+            PartnerId = partnerResponse.PartnerId;
+            TenantId = partnerResponse.TenantId;
+            ObjectId = partnerResponse.ObjectId;
+            State = partnerResponse.State;
         }
     }
 }

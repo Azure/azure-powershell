@@ -15,9 +15,9 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.ManagementPartner;
-using PartnerResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using PartnerResources = Microsoft.Azure.Commands.ManagementPartner.Properties.Resources;
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.ManagementPartner
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementPartner", SupportsShouldProcess = true)]
     public class RemoveManagementPartner : AzureManagementPartnerCmdletsBase
