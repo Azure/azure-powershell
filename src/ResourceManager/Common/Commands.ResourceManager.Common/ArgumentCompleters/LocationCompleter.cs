@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 #endif
             for (int i = 0; i < distinctLocations.Length; i++)
             {
-                distinctLocations[i] = String.Format("\"{0}\"", distinctLocations[i]);
+                distinctLocations[i] = String.Format("\'{0}\'", distinctLocations[i]);
             }
             return distinctLocations;
         }

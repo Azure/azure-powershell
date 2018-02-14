@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -24,6 +26,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -33,8 +36,16 @@ namespace Microsoft.Azure.Commands.Profile.Test
         static readonly ProgressRecord Progress = new ProgressRecord(0, "activity", "description");
         static readonly ErrorRecord Error = new ErrorRecord(new InvalidOperationException("invalid operation"), "12345", ErrorCategory.InvalidOperation, new object());
         static readonly object Output = new TestCmdletOutput();
+        static readonly object lockObject = new object();
 
         ManualResetEvent jobCompleted = new ManualResetEvent(false);
+        private XunitTracingInterceptor xunitLogger;
+
+        public LongRunningCmdletTests(ITestOutputHelper output)
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            xunitLogger = new XunitTracingInterceptor(output);
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -56,7 +67,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<ICommandRuntime> mockRuntime;
             var cmdlet = SetupCmdlet(true, false, out mockRuntime);
             var job = cmdlet.ExecuteAsJob("Test Job") as AzureLongRunningJob<AzureStreamTestCmdlet>;
-            job.StateChanged += this.HandleStateChange;
             WaitForCompletion(job, j =>
             {
                 ValidateCompletedCmdlet(job);
@@ -226,9 +236,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public void HandleStateChange(object sender, JobStateEventArgs args)
         {
-            lock (this)
+            lock (lockObject)
             {
                 var job = sender as AzureLongRunningJob;
+                xunitLogger.Information(string.Format("[statechangedhandler]: previous state: '{0}', current state: '{1}'", args.PreviousJobStateInfo?.State, args.JobStateInfo?.State));
                 if (args.JobStateInfo.State == JobState.Completed || args.JobStateInfo.State == JobState.Failed || args.JobStateInfo.State == JobState.Stopped)
                 {
                     this.jobCompleted.Set();
@@ -254,7 +265,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             job.StateChanged += this.HandleStateChange;
             try
             {
-                if (this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10)))
+                HandleStateChange(job, new JobStateEventArgs(job.JobStateInfo, new JobStateInfo(JobState.NotStarted)));
+                if (this.jobCompleted.WaitOne(TimeSpan.FromSeconds(30)))
                 {
                     validate(job);
                 }
@@ -266,6 +278,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             finally
             {
                 job.StateChanged -= this.HandleStateChange;
+               foreach (var message in job.Debug)
+                {
+                    xunitLogger.Information(message?.Message);
+                }
             }
 
         }
@@ -287,6 +303,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             public string Property { get { return "PropertyValue"; } }
         }
 
+        [Cmdlet(VerbsDiagnostic.Test, "AzureJob",ConfirmImpact =ConfirmImpact.High)]
         public class AzureStreamTestCmdlet : AzurePSCmdlet
         {
             public IList<ErrorRecord> Error { get; set; } = new List<ErrorRecord>();

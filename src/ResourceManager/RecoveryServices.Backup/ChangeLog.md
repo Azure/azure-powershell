@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 ## Version 4.0.3
 * Fixed bug - Get-AzureRmRecoveryServicesBackupItem should do case insensitive comparison for container name filter.

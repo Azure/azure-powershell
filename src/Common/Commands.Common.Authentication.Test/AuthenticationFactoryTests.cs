@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Linq;
 
 namespace Common.Authentication.Test
 {
@@ -98,5 +99,55 @@ namespace Common.Authentication.Test
            
             Assert.False(((MockAccessTokenProvider)authFactory.TokenProvider).AdalConfiguration.ValidateAuthority);            
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAuthenticateWithAccessToken()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string tenant = Guid.NewGuid().ToString();
+            string userId = "user1@contoso.org";
+            var armToken = Guid.NewGuid().ToString();
+            var graphToken = Guid.NewGuid().ToString();
+            var kvToken = Guid.NewGuid().ToString();
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.AccessToken
+            };
+            account.SetTenants(tenant);
+            account.SetAccessToken(armToken);
+            account.SetProperty(AzureAccount.Property.GraphAccessToken, graphToken);
+            account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, kvToken);
+            var authFactory = new AuthenticationFactory();
+            var environment = AzureEnvironment.PublicEnvironments.Values.First();
+            var checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null);
+            VerifyToken(checkArmToken, armToken, userId, tenant);
+            checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.ActiveDirectoryServiceEndpointResourceId);
+            VerifyToken(checkArmToken, armToken, userId, tenant);
+            var checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            VerifyToken(checkGraphToken, graphToken, userId, tenant);
+            checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.GraphEndpointResourceId);
+            VerifyToken(checkGraphToken, graphToken, userId, tenant);
+            var checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.AzureKeyVaultServiceEndpointResourceId);
+            VerifyToken(checkKVToken, kvToken, userId, tenant);
+            checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+            VerifyToken(checkKVToken, kvToken, userId, tenant);
+        }
+
+        void VerifyToken(IAccessToken checkToken, string expectedAccessToken, string expectedUserId, string expectedTenant)
+        {
+
+            Assert.True(checkToken is RawAccessToken);
+            Assert.Equal(expectedAccessToken, checkToken.AccessToken);
+            Assert.Equal(expectedUserId, checkToken.UserId);
+            Assert.Equal(expectedTenant, checkToken.TenantId);
+            checkToken.AuthorizeRequest((type, token) =>
+            {
+                Assert.Equal(expectedAccessToken, token);
+                Assert.Equal("Bearer", type);
+            });
+        }
+
     }
 }

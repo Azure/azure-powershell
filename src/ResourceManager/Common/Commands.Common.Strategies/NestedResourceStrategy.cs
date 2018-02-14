@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class NestedResourceStrategy
     {
         public static NestedResourceStrategy<TModel, TParentModel> Create<TModel, TParentModel>(
-            string header,
+            string provider,
             Func<TParentModel, string, TModel> get,
             Action<TParentModel, string, TModel> createOrUpdate)
             where TModel : class
             where TParentModel : class
             => new NestedResourceStrategy<TModel, TParentModel>(
-                name => new[] { header, name},
+                name => new[] { provider, name},
                 get,
                 createOrUpdate);
     }

@@ -301,6 +301,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             context.WithTenant(tenant).WithSubscription(subscription);
             _profile.TrySetDefaultContext(name, context);
+            _profile.DefaultContext.ExtendedProperties.Clear();
             return context;
         }
 

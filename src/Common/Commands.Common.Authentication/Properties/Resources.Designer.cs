@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot retrieve access token for resource &apos;{0}&apos;.  Please ensure that you have provided the appropriate access tokens when using access token login..
+        /// </summary>
+        public static string AccessTokenResourceNotFound {
+            get {
+                return ResourceManager.GetString("AccessTokenResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account needs to be specified.
         /// </summary>
         public static string AccountNeedsToBeSpecified {
