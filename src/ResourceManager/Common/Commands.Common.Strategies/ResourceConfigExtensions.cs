@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this ResourceStrategy<TModel> strategy,
             IResourceConfig resourceGroup,
             string name,
-            Func<string, TModel> createModel = null,
+            Func<IEngine, TModel> createModel = null,
             IEnumerable<IEntityConfig> dependencies = null)
             where TModel : class, new()
             => new ResourceConfig<TModel>(

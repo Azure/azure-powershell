@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscriptionId =>
+                createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
                     var vmss = new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
-                            ?.Select(f => f.CreateModel(subscriptionId))
+                            ?.Select(f => f.CreateModel(engine))
                             ?.Where(z => z?.Zones != null)
                             .SelectMany(z => z.Zones)
                             .Where(z => z != null)
@@ -99,10 +99,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Name = name,
                         LoadBalancerBackendAddressPools = new []
                         {
-                            new Azure.Management.Compute.Models.SubResource(
-                                id: backendAdressPool.GetIdStr(subscriptionId))
+                            new Azure.Management.Compute.Models.SubResource
+                            {
+                                Id = engine.GetId(backendAdressPool)
+                            }
                         },
-                        Subnet = new ApiEntityReference { Id = subnet.GetIdStr(subscriptionId) }
+                        Subnet = new ApiEntityReference { Id = engine.GetId(subnet) }
                     };
 
 

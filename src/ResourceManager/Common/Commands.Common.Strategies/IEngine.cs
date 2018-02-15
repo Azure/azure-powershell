@@ -12,20 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public static class NestedResourceConfigExtensions
+    public interface IEngine
     {
-        public static NestedResourceConfig<TModel, TParenModel> CreateConfig<TModel, TParenModel>(
-            this NestedResourceStrategy<TModel, TParenModel> strategy,
-            IEntityConfig<TParenModel> parent,
-            string name,
-            Func<IEngine, TModel> createModel = null)
-            where TModel : class, new()
-            where TParenModel : class
-            => new NestedResourceConfig<TModel, TParenModel>(
-                strategy, parent, name, createModel ?? (_ => new TModel()));
+        string GetId<TModel>(IEntityConfig<TModel> config)
+            where TModel : class;
     }
 }

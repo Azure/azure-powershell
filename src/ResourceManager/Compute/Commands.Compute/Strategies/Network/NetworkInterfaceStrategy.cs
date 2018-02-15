@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new NetworkInterface
+                createModel: engine => new NetworkInterface
                 {
                     IpConfigurations = new []
                     {
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = new Subnet { Id = subnet.GetIdStr(subscription) },
+                            Subnet = new Subnet { Id = engine.GetId(subnet) },
                             PublicIPAddress = new PublicIPAddress
                             {
-                                Id = publicIPAddress.GetIdStr(subscription)
+                                Id = engine.GetId(publicIPAddress)
                             }
                         }
                     },
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         ? null 
                         : new NetworkSecurityGroup
                         {
-                            Id = networkSecurityGroup.GetIdStr(subscription)
+                            Id = engine.GetId(networkSecurityGroup)
                         }
                 },
                 dependencies: new IEntityConfig[] 

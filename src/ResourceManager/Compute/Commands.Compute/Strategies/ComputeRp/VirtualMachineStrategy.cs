@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription =>
+                createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
                     return new VirtualMachine
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 new NetworkInterfaceReference
                                 {
-                                    Id = networkInterface.GetIdStr(subscription)
+                                    Id = engine.GetId(networkInterface)
                                 }
                             }
                         },
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ? null
                             : new Azure.Management.Compute.Models.SubResource
                             {
-                                Id = availabilitySet.GetIdStr(subscription)
+                                Id = engine.GetId(availabilitySet)
                             }
                     };
                 },
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new VirtualMachine
+                createModel: engine => new VirtualMachine
                 {
                     OsProfile = null,
                     NetworkProfile = new NetworkProfile
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             new NetworkInterfaceReference
                             {
-                                Id = networkInterface.GetIdStr(subscription)
+                                Id = engine.GetId(networkInterface)
                             }
                         }
                     },
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,
-                                Id = disk.GetIdStr(subscription)
+                                Id = engine.GetId(disk)
                             }
                         }
                     },
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ? null
                         : new Azure.Management.Compute.Models.SubResource
                         {
-                            Id = availabilitySet.GetIdStr(subscription)
+                            Id = engine.GetId(availabilitySet)
                         }
                 },
                 dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });

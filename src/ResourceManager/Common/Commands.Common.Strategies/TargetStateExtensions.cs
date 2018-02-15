@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             string location)
             where TModel : class
         {
-            var context = new Context(current, subscription, location);
+            var context = new Context(current, new Engine(subscription), location);
             context.AddIfRequired(config);
             return context.Target;
         }
@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public IState Current { get; }
 
-            public string Subscription { get; }
+            public IEngine Engine { get; }
 
             public string Location { get; }
 
-            public Context(IState current, string subscriptionId, string location)
+            public Context(IState current, IEngine engine, string location)
             {
                 Current = current;
-                Subscription = subscriptionId;
+                Engine = engine;
                 Location = location;
             }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         {
                             AddIfRequired(dependency);
                         }
-                        var model = config.CreateModel(Subscription);
+                        var model = config.CreateModel(Engine);
                         config.Strategy.SetLocation(model, Location);
                         return model;
                     });
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 var model = config.Strategy.Get(parentModel, config.Name);
                 if (model == null)
                 {
-                    model = config.CreateModel(Subscription);
+                    model = config.CreateModel(Engine);
                     config.Strategy.CreateOrUpdate(parentModel, config.Name, model);
                 }
                 return model;
