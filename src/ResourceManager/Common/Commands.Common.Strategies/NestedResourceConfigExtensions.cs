@@ -22,9 +22,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this NestedResourceStrategy<TModel, TParenModel> strategy,
             IEntityConfig<TParenModel> parent,
             string name,
-            Func<string, TModel> createModel)
-            where TModel : class
+            Func<IEngine, TModel> createModel = null)
+            where TModel : class, new()
             where TParenModel : class
-            => new NestedResourceConfig<TModel, TParenModel>(strategy, parent, name, createModel);
+            => new NestedResourceConfig<TModel, TParenModel>(
+                strategy, parent, name, createModel ?? (_ => new TModel()));
     }
 }

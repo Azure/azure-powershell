@@ -37,34 +37,30 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 => Strategy.CreateConfig(
                     parent: loadBalancer,
                     name: name,
-                    createModel: subscriptionId => {
-
-                        var frontEndConfig = CreateFrontendIpConfig(
-                                froontendPoolName: name,
-                                subscriptionId: subscriptionId,
-                                subnetId: subnet.GetId(subscriptionId).IdToString(),
-                                publicIpAddressId: publicIPAddress.GetId(subscriptionId).IdToString(),
-                                privateIpAddress: null,
-                                zones: zones);
-
-                        return frontEndConfig;
-                    });
+                    createModel: engine => CreateFrontendIpConfig(
+                        froontendPoolName: name,
+                        engine: engine,
+                        subnet: subnet,
+                        publicIpAddress: publicIPAddress,
+                        privateIpAddress: null,
+                        zones: zones));
 
         internal static FrontendIPConfiguration CreateFrontendIpConfig(
             string froontendPoolName,
-            string subscriptionId,
-            string subnetId,
-            string publicIpAddressId,
+            IEngine engine,
+            NestedResourceConfig<Subnet, VirtualNetwork> subnet,
+            ResourceConfig<PublicIPAddress> publicIpAddress,
             string privateIpAddress,
             IList<string> zones)
         {
-            var frontendIpConfig = new FrontendIPConfiguration();
-            frontendIpConfig.Name = froontendPoolName;
-            frontendIpConfig.Zones = zones;
-
-            if (!string.IsNullOrEmpty(subnetId))
+            var frontendIpConfig = new FrontendIPConfiguration
             {
-                frontendIpConfig.Subnet = new Subnet(subnetId);
+                Zones = zones
+            };
+
+            if (subnet != null)
+            {
+                frontendIpConfig.Subnet = new Subnet { Id = engine.GetId(subnet) };
 
                 if (!string.IsNullOrEmpty(privateIpAddress))
                 {
@@ -76,16 +72,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Dynamic;
                 }
             }
-            else if (!string.IsNullOrEmpty(publicIpAddressId))
+            else if (publicIpAddress != null)
             {
-                frontendIpConfig.PublicIPAddress = new PublicIPAddress(publicIpAddressId);
+                frontendIpConfig.PublicIPAddress = new PublicIPAddress
+                {
+                    Id = engine.GetId(publicIpAddress)
+                };
             }
-
-            frontendIpConfig.Id =
-                LoadBalancerStrategy.GetResourceNotSetId(
-                    subscriptionId,
-                    LoadBalancerStrategy.LoadBalancerFrontendIpConfigName,
-                    frontendIpConfig.Name);
 
             return frontendIpConfig;
         }

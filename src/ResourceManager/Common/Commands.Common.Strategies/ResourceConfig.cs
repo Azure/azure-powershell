@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public string Name { get; }
 
-        public Func<string, TModel> CreateModel { get; }
+        public Func<IEngine, TModel> CreateModel { get; }
 
         public IEnumerable<IEntityConfig> Dependencies { get; }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             ResourceStrategy<TModel> strategy,
             string resourceGroupName,
             string name,
-            Func<string, TModel> createModel,
+            Func<IEngine, TModel> createModel,
             IEnumerable<IEntityConfig> dependencies)
         {
             Strategy = strategy;
