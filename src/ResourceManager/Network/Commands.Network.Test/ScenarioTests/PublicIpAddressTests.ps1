@@ -299,6 +299,9 @@ function Test-PublicIpAddressCRUD-IpTag
       
       $IpTag = New-AzureRmPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
 
+      Assert-AreEqual $IpTag.IpTagType "FirstPartyUsage"
+      Assert-AreEqual $IpTag.Tag "/Sql"
+
       # Create publicIpAddres
       $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -IpTag $IpTag
       $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname

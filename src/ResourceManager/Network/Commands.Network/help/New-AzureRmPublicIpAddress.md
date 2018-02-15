@@ -50,6 +50,7 @@ $dnsPrefix.$location.cloudapp.azure.com.
 
 ### 3: Create a new public IP address with IpTag
 ```
+$ipTag = New-AzureRmPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
 $publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags ipTag
 ```
 
@@ -58,7 +59,8 @@ $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of thi
 public IP address is immediately allocated to this resource as the -AllocationMethod is specified
 as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
 start (or create) the associated resource (like a VM or load balancer). An Iptag is used to 
-specific the Tags associated with resource.
+specific the Tags associated with resource. Iptag can be specified using New-AzureRmPublicIpTag
+and passed as input through -IpTags.
 
 ## PARAMETERS
 
@@ -171,7 +173,9 @@ Accept wildcard characters: False
 ```
 
 ### -IpTag
-IpTag List.```yaml
+IpTag List.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]
 Parameter Sets: (All)
 Aliases: 
