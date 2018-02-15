@@ -112,6 +112,8 @@ function Test-SsisAzure-IntegrationRuntime
 
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
+        $sasuri = "https://ssisazurefileshare.blob.core.windows.net/privatepreview?st=2018-02-04T05%3A08%3A00Z&se=2020-02-05T05%3A08%3A00Z&sp=rwl&sv=2017-04-17&sr=c&sig=*******"
+   
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -125,6 +127,8 @@ function Test-SsisAzure-IntegrationRuntime
             -CatalogPricingTier 'S1' `
             -MaxParallelExecutionsPerNode 1 `
             -LicenseType LicenseIncluded `
+            -Edition Enterprise `
+            -SetupScriptContainerSasUri $sasuri `
             -Force
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

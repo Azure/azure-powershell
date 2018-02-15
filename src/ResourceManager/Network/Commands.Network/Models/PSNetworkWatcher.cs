@@ -20,6 +20,5 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSNetworkWatcher : PSTopLevelResource
     {
         public string ProvisioningState { get; set; }
-
     }
 }
