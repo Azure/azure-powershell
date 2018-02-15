@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         }
 
         [Fact]
-        [Trait(Category.KeyVault, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConvertStringAndSecureString()
         {
             var origStr = "this is test string";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         }
 
         [Fact]
-        [Trait(Category.KeyVault, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetWebKeyFromByok()
         {
             Random rnd = new Random();
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         }
 
         [Fact]
-        [Trait(Category.KeyVault, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetWebKeyFromCertificate()
         {
             string password = "123";
