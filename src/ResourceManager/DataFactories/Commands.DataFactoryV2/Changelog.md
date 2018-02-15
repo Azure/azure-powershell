@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
 * Fix credential encryption issue that caused no meaningful error for some encryption operations. 
 
 ## Version 0.5.0
