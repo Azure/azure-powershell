@@ -4,7 +4,6 @@
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
 
     ## Current Release
-    * Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
