@@ -160,7 +160,7 @@ The acceptable values for this parameter are:
 Type: DatabaseEdition
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
 
 Required: False
 Position: Named
