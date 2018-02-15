@@ -2,8 +2,7 @@
 {
     public class TemplateEngine : IEngine
     {
-        public string GetId<TModel>(IEntityConfig<TModel> config)
-            where TModel : class
+        public string GetId(IEntityConfig config)
             => "[concat(resourceGroup().id, '" + config.GetProvidersId().IdToString() + "')]";
 
         public static TemplateEngine Instance { get; }
