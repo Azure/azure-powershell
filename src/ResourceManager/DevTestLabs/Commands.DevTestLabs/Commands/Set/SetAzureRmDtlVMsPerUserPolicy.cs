@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             try
             {
                 inputPolicy = DataServiceClient.Policies.Get(
-                                ResourceGroupName,
                                 LabName,
                                 Constants.Default,
                                 PolicyName);
