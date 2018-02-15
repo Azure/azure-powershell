@@ -37,8 +37,8 @@ function Test-VirtualNetworkCRUD
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $job = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -AsJob
         $job | Wait-Job
-		$actual = $job | Receive-Job
-		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $actual = $job | Receive-Job
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         Assert-AreEqual $expected.ResourceGroupName $rgname    
         Assert-AreEqual $expected.Name $actual.Name    
@@ -86,8 +86,8 @@ function Test-VirtualNetworkCRUD
         # Delete VirtualNetwork
         $job = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force -AsJob
         $job | Wait-Job
-		$delete = $job | Receive-Job
-		Assert-AreEqual true $delete
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
                 
         $list = Get-AzureRmvirtualNetwork -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
@@ -209,20 +209,20 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
         Assert-AreEqual 1 @($expected.Subnets).Count
         Assert-AreEqual $subnetName $expected.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
-		Assert-AreEqual true $expected.EnableDDoSProtection
-		Assert-AreEqual false $expected.EnableVmProtection
+        Assert-AreEqual true $expected.EnableDDoSProtection
+        Assert-AreEqual false $expected.EnableVmProtection
         
-		$expected.EnableDDoSProtection=$false
-		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
-		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $expected.EnableDDoSProtection=$false
+        Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual false $expected.EnableDDoSProtection
-		Assert-AreEqual false $expected.EnableVmProtection
+        Assert-AreEqual false $expected.EnableVmProtection
 
-		$expected.EnableVmProtection=$true
-		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
-		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $expected.EnableVmProtection=$true
+        Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual false $expected.EnableDDoSProtection
-		Assert-AreEqual true $expected.EnableVmProtection
+        Assert-AreEqual true $expected.EnableVmProtection
         
         # Delete VirtualNetwork
         $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
@@ -278,8 +278,8 @@ function Test-VirtualNetworkPeeringCRUD
 
         # Add Peering to vnet1
         $job = $vnet1 | Add-AzureRmVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -AllowForwardedTraffic -AsJob
-		$job | Wait-Job
-		$peer = $job | Receive-Job
+        $job | Wait-Job
+        $peer = $job | Receive-Job
         
         Assert-AreEqual $peer.ResourceGroupName $rgname    
         Assert-AreEqual $peer.Name $peerName    
@@ -326,8 +326,8 @@ function Test-VirtualNetworkPeeringCRUD
         $getPeer.AllowForwardedTraffic = $false
         
         $job = $getPeer | Set-AzureRmVirtualNetworkPeering -AsJob
-		$job | Wait-Job
-		$setPeer = $job | Receive-Job
+        $job | Wait-Job
+        $setPeer = $job | Receive-Job
         
         Assert-AreEqual $setPeer.ResourceGroupName $rgname    
         Assert-AreEqual $setPeer.Name $peerName    
@@ -343,8 +343,8 @@ function Test-VirtualNetworkPeeringCRUD
         
         # Delete Peer
         $job = Remove-AzureRmVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname -Force -PassThru -AsJob
-		$job | Wait-Job
-		$delete = $job | Receive-Job
+        $job | Wait-Job
+        $delete = $job | Receive-Job
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
