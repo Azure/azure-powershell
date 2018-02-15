@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             // Get a Topic List Keys for the specified AuthorizationRule
             if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
             {
-                PSListKeysAttributes keys = Client.GetQueueKey(ResourceGroupName, Namespace, Topic, Name);
+                PSListKeysAttributes keys = Client.GetTopicKey(ResourceGroupName, Namespace, Topic, Name);
                 WriteObject(keys,true);
             }
 
