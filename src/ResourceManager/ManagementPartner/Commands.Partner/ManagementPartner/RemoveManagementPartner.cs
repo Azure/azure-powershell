@@ -34,11 +34,18 @@ namespace Microsoft.Azure.Commands.ManagementPartner
             if (ShouldProcess(string.Format(PartnerResources.RemoveManagementParnterTarget, PartnerId),
                 string.Format(PartnerResources.RemoveManagementParnterAction, PartnerId)))
             {
-                AceProvisioningManagementPartnerApiClient.Partner.DeleteAsync(PartnerId).Wait();
-
-                if (PassThru.IsPresent)
+                try
                 {
-                    WriteObject(true);
+                    AceProvisioningManagementPartnerApiClient.Partner.DeleteAsync(PartnerId).Wait();
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (AggregateException ex)
+                {
+                    LogException(ex);
                 }
             }
         }

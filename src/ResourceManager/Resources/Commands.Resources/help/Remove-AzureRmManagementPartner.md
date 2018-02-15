@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmManagementPartner
 
 ## SYNOPSIS
-Remove management partner
+Delete the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzureRmManagementPartner [-PartnerId] <String> [-PassThru] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-Remove management partner for this user in this tenant
+Delete the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ PS C:\>Remove-AzureRmManagementPartner -PartnerId 123457 -PassThru
 true
 ```
 
-Remove management partner for this user in this tenant
+Remove management partner 
 
 ## PARAMETERS
 

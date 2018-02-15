@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmManagementPartner
 
 ## SYNOPSIS
-Get the current management partner id
+Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal. 
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzureRmManagementPartner [[-PartnerId] <String>] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-Get management partner id for the current user under this tenant
+Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal. 
 
 ## EXAMPLES
 

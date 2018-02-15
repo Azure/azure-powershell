@@ -138,4 +138,7 @@
   <data name="UpdateManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to change the management partner to '{0}'.</value>
   </data>
+  <data name="NotFoundManagementParnterMessage" xml:space="preserve">
+    <value>Can't find a management partner</value>
+  </data>
 </root>
