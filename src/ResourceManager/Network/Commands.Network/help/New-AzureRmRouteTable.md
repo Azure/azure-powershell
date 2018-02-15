@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.Network.dll-Help
+Module Name: AzureRM.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutetable
 schema: 2.0.0
@@ -15,8 +15,9 @@ Creates a route table.
 
 ```
 New-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>] [-DisableBgpRoutePropagation <Boolean>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>]
+ [-DisableBgpRoutePropagation] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,15 +92,17 @@ Accept wildcard characters: False
 ```
 
 ### -DisableBgpRoutePropagation
-Disable BGP Route auto propagation.```yaml
-Type: Boolean
+Disable BGP Route auto propagation.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
