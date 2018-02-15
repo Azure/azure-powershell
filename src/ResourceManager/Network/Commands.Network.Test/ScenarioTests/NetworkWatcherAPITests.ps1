@@ -713,3 +713,107 @@ function Test-ProvidersList
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test ConnectionMonitor APIs.
+#>
+function Test-ConnectionMonitor
+{
+    # Setup
+    $resourceGroupName = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+    $location = "westcentralus"
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-ResourceGroupName
+    $securityGroupName = Get-ResourceName
+    $templateFile = "..\..\TestData\Deployment.json"
+    $cmName1 = Get-ResourceName
+    $cmName2 = Get-ResourceName
+    
+    try 
+    {
+        # Create Resource group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+        
+        # Create Resource group for Network Watcher
+        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Create Network Watcher
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+
+        #Get Vm
+        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        
+        #Install networkWatcherAgent on Vm
+        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+
+        #Create connection monitor
+        $job1 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        #Validation
+        Assert-AreEqual $cm1.Name $cmName1
+        Assert-AreEqual $cm1.Source.ResourceId $vm.Id
+        Assert-AreEqual $cm1.Destination.Address bing.com
+        Assert-AreEqual $cm1.Destination.Port 80
+
+        $job2 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -SourceResourceId $vm.Id -DestinationAddress google.com -DestinationPort 80 -AsJob
+        $job2 | Wait-Job
+        $cm2 = $job2 | Receive-Job
+
+        #Validation
+        Assert-AreEqual $cm2.Name $cmName2
+        Assert-AreEqual $cm2.Source.ResourceId $vm.Id
+        Assert-AreEqual $cm2.Destination.Address google.com
+        Assert-AreEqual $cm2.Destination.Port 80
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        #Stop connection monitor
+        Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+
+        #Get connection monitor
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+
+        #Validation
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+
+        #Start connection monitor
+        Start-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+
+        #Get connection monitor
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+
+        #Validation
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        #Query connection monitor
+        Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
+
+        #Get connection monitor list
+        $cmList = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw
+
+        #Validation
+        Assert-AreEqual $cmList.Count 2
+
+        #Remove connection monitor
+        Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+
+        #Get connection monitor list
+        $cmList = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw
+
+        #Validation
+        Assert-AreEqual $cmList.Count 1
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
