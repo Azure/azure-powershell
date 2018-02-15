@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Strategies.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                                 properties = jsonModel["properties"] as JObject,
                                 dependsOn = dependencies
                                     .Where(d => d.ResourceGroup != null)
-                                    .Select(d => d.GetIdStr())
+                                    .Select(TemplateEngine.Instance.GetId)
                                     .ToArray()
                             };
                         });
