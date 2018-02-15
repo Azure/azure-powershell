@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
         
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-Disk");
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-Snapshot");
