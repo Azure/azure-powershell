@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public string GetId<TModel>(IEntityConfig<TModel> config) where TModel : class
-            => config.GetId(_SubscriptionId).IdToString();
+            => config.GetIdStr(_SubscriptionId);
     }
 }
