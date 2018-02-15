@@ -21,7 +21,8 @@ Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -Provider
 Register the feature `AllowApplicationSecurityGroups` for `Microsoft.Network` to your subscription.
 
 ### LoadBalancerTests
-Register the feature `AllowILBAllPortsRule` for `Microsoft.Network` to your subscription.
+Register the feature `AllowILBAllPortsRule` for `Microsoft.Network` to your subscription.  
+Register for the [Load Balancer Standard Preview](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#sign-up-by-using-powershell).
 
 ### PublicIpAddressTests
 [Enable Availability Zones](https://ms.portal.azure.com/#blade/Microsoft_Azure_Compute/EnableAvailabilityZonesBlade) for your subscription.
