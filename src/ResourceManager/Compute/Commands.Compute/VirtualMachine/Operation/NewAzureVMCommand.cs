@@ -274,7 +274,6 @@ namespace Microsoft.Azure.Commands.Compute
                     getImageAndOsType: () => imageAndOsType,
                     adminUsername: Credential.UserName,
                     adminPassword: password,
-
                     size: Size,
                     availabilitySet: availabilitySet);
             }
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Commands.Compute
             if (AsArmTemplate)
             {
                 // create target state
-                var target = virtualMachine.GetTargetState(current, null, Location);
+                var target = virtualMachine.GetTargetState(current, TemplateEngine.Instance, Location);
 
                 if (target.Get(availabilitySet) != null)
                 {
@@ -466,8 +465,8 @@ namespace Microsoft.Azure.Commands.Compute
             else
             {
                 // create target state
-                var target = virtualMachine.GetTargetState(
-                    current, client.SubscriptionId, Location);
+                var engine = new SdkEngine(client.SubscriptionId);
+                var target = virtualMachine.GetTargetState(current, engine, Location);
 
                 if (target.Get(availabilitySet) != null)
                 {

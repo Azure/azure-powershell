@@ -82,6 +82,7 @@
     <Compile Include="Templates\Parameter.cs" />
     <Compile Include="Templates\Resource.cs" />
     <Compile Include="Templates\Template.cs" />
+    <Compile Include="Templates\TemplateEngine.cs" />
     <Compile Include="Templates\TemplateExtensions.cs" />
     <Compile Include="Progress\TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
