@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static IState GetTargetState<TModel>(
             this ResourceConfig<TModel> config,
             IState current,
-            string subscription,
+            IEngine engine,
             string location)
             where TModel : class
         {
-            var context = new Context(current, new Engine(subscription), location);
+            var context = new Context(current, engine, location);
             context.AddIfRequired(config);
             return context.Target;
         }
