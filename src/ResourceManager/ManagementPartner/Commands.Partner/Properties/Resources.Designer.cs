@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t find a management partner.
+        ///   Looks up a localized string similar to Doesn&apos;t find a management partner.
         /// </summary>
         internal static string NotFoundManagementParnterMessage {
             get {

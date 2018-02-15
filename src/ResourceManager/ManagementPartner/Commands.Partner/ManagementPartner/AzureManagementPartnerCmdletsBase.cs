@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner
 
         protected void LogException(AggregateException ex)
         {
+            WriteObject(ex.Message);
             foreach (var innerEx in ex.InnerExceptions)
             {
                 WriteObject(innerEx.Message);
