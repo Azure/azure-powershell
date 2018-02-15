@@ -159,7 +159,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
             PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            DomainNameLabel = DomainNameLabel ?? (VMScaleSetName + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
             LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
@@ -203,12 +202,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
-            
+
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -244,7 +243,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 image: image,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
-                upgradeMode: (MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode") == true ) ? UpgradePolicyMode : (UpgradeMode?) null);
+                upgradeMode: (MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode") == true ) 
+                    ? UpgradePolicyMode 
+                    : (UpgradeMode?) null);
 
             var client = new Client(DefaultProfile.DefaultContext);
 
@@ -260,6 +261,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: VMScaleSetName,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+
             var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
 
             var newState = await virtualMachineScaleSet
@@ -268,7 +278,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                    target,
                    new CancellationToken(),
                    new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
+                   asyncCmdlet.ReportTaskProgress);
 
             var result = newState.Get(virtualMachineScaleSet);
             if(result == null)
@@ -279,7 +289,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (result != null)
             {
                 var psObject = new PSVirtualMachineScaleSet();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
+                psObject.FullyQualifiedDomainName = fqdn;
                 asyncCmdlet.WriteObject(psObject);
             }
         }

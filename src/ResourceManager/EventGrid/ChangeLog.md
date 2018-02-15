@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.1
 * Updated to use the 2018-01-01 API version.
 
 ## Version 0.3.0
