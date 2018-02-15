@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         public override void ExecuteCmdlet()
         {
             var policy = DataServiceClient.Policies.Get(
-                ResourceGroupName,
                 LabName,
                 Constants.Default,
                 WellKnownPolicyNames.MaxVmsAllowedPerLab);

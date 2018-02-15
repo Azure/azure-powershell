@@ -15,8 +15,8 @@ Updates the state of a container service.
 
 ```
 Update-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <PSContainerService> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ContainerService] <PSContainerService> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ The command passes the result to the current cmdlet.
 The current cmdlet updates the container service to reflect the changes that were made in this command.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ContainerService
 Specifies a local **ContainerService** object that contains changes.

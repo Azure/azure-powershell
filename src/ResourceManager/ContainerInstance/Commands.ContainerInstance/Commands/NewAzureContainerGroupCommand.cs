@@ -141,6 +141,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The DNS name label for the IP address.")]
+        [ValidateNotNullOrEmpty]
+        public string DnsNameLabel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The port(s) to open. Default: [80]")]
         [ValidateNotNullOrEmpty]
         public int[] Port { get; set; }
@@ -183,6 +189,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     OsType = this.OsType ?? ContainerGroupCreationParameters.DefaultOsType,
                     RestartPolicy = this.RestartPolicy ?? ContainerGroupRestartPolicy.Always,
                     IpAddressType = this.IpAddressType,
+                    DnsNameLabel = this.DnsNameLabel,
                     Ports = this.Port ?? ContainerGroupCreationParameters.DefaultPorts,
                     ContainerImage = this.Image,
                     EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariable),

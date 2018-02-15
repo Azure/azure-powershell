@@ -33,7 +33,7 @@ using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class NewAzureRmRouteTable : NetworkBaseCmdlet
