@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmManagementPartner
 
 ## SYNOPSIS
-Add a management partner
+Associates a Microsoft Partner Network(MPN) ID to the current authenticated user or service principal.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-Add a management partner to the current user in this tenant
+Associates a Microsoft Partner Network(MPN) ID to the current authenticated user or service principal.
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ PartnerId TenantId                             ObjectId                         
 123457    1b1121dd-6900-412a-af73-e8d44f81e1c1 aa67f786-0552-423e-8849-244ed12bf581 Active
 ```
 
-Add a management partner to the current user in this tenant 
+Add a management partner 
 
 ## PARAMETERS
 

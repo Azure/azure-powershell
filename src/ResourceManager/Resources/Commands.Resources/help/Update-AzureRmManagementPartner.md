@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmManagementPartner
 
 ## SYNOPSIS
-Update the management partner
+Updates the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Update-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-Update the management partner to a new one for this user in this tenant
+Updates the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ PartnerId TenantId                             ObjectId                         
 123457    1b1121dd-6900-412a-af73-e8d44f81e1c1 aa67f786-0552-423e-8849-244ed12bf581 Active
 ```
 
-Update the management partner to a new one for this user in this tenant
+Update the management partner to a new one
 
 ## PARAMETERS
 

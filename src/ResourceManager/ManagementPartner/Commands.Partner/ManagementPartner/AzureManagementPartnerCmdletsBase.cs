@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.ManagementPartner;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -33,6 +34,14 @@ namespace Microsoft.Azure.Commands.ManagementPartner
             }
 
             set { aceProvisioningManagementPartnerApiClient = value; }
+        }
+
+        protected void LogException(AggregateException ex)
+        {
+            foreach (var innerEx in ex.InnerExceptions)
+            {
+                WriteObject(innerEx.Message);
+            }
         }
     }
 }

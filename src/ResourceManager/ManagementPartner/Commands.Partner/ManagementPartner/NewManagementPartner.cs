@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.ManagementPartner;
 using PartnerResources = Microsoft.Azure.Commands.ManagementPartner.Properties.Resources;
@@ -31,9 +32,17 @@ namespace Microsoft.Azure.Commands.ManagementPartner
             if (ShouldProcess(string.Format(PartnerResources.NewManagementParnterTarget, PartnerId),
                 string.Format(PartnerResources.NewManagementParnterAction,PartnerId)))
             {
-                var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner
-                    .CreateAsync(PartnerId).Result);
-                WriteObject(response);
+                try
+                {
+                    var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner
+                        .CreateAsync(PartnerId).Result);
+                    WriteObject(response);
+                }
+                catch (AggregateException ex)
+                {
+                    LogException(ex);
+                }
+           
             }
         }
     }
