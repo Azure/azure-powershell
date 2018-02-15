@@ -545,7 +545,7 @@ function Test-PublicIpAddressZones
     $rglocation = Get-ProviderLocation ResourceManagement
     # TODO: replace hardcoded location
     # $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
-    $location = "eastus2"; # = Get-ProviderLocation $resourceTypeParent
+    $location = "centralus"; # = Get-ProviderLocation $resourceTypeParent
 
     try
      {
