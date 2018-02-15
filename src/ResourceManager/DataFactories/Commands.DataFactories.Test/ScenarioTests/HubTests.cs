@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHub()
         {
             RunPowerShellTest("Test-Hub");
