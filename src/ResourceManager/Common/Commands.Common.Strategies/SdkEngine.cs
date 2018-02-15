@@ -14,11 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    sealed class Engine : IEngine
+    /// <summary>
+    /// Engine for REST API calls using Azure SDK.
+    /// </summary>
+    public sealed class SdkEngine : IEngine
     {
         string _SubscriptionId { get; }
 
-        public Engine(string subscriptionId)
+        public SdkEngine(string subscriptionId)
         {
             _SubscriptionId = subscriptionId;
         }

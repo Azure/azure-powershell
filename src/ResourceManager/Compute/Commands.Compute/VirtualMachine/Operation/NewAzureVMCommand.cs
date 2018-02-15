@@ -379,7 +379,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = virtualMachine.GetTargetState(current, engine, Location);
 
             if (target.Get(availabilitySet) != null)
             {

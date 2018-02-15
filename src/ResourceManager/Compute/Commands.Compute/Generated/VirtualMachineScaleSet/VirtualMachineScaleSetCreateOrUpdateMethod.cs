@@ -224,7 +224,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
-            var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = virtualMachineScaleSet.GetTargetState(current, engine, Location);
 
             var newState = await virtualMachineScaleSet
                .UpdateStateAsync(
