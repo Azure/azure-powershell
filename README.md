@@ -8,9 +8,6 @@ Take a test run now from Azure Cloud Shell!
 
 [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com/powershell) 
 
-* For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://docs.microsoft.com/en-us/azure/).
-* For comprehensive documentation on the developer cmdlets see the [overview of Azure PowerShell](https://aka.ms/azpsdocs).
-* For suggesting improvements, join our improvement discussion ([Issue #3692](https://github.com/Azure/azure-powershell/issues/3692)).
 
 ## Modules
 
@@ -23,219 +20,148 @@ Below is a table containing the various Azure PowerShell rollup modules found in
 | Rollup Module for Administrative Modules in Azure Stack         | `AzureStack`      | [![AzureStack](https://img.shields.io/powershellgallery/v/AzureStack.svg?style=flat-square&label=AzureStack)](https://www.powershellgallery.com/packages/AzureStack/) |
 | Rollup Module for Service Management Cmdlets                  | `Azure`           | [![Azure](https://img.shields.io/powershellgallery/v/Azure.svg?style=flat-square&label=Azure)](https://www.powershellgallery.com/packages/Azure/) |
 
-## Features
-
-* Account management
-  * Login with Microsoft account, Organizational account, or Service Principal through Microsoft Azure Active Directory
-  * Save Credentials to disk with Save-AzureRmContext and load saved credentials using Import-AzureRmContext
-* Environment
-  * Get the different out-of-box Microsoft Azure environments
-  * Add/Set/Remove customized environments (like your Azure Stack or Windows Azure Pack environments)
-* Management and data plane cmdlets for Azure services in ARM and RDFE
-  * Virtual Machine
-  * App Service (Websites)
-  * SQL Database
-  * Storage
-  * Backup
-  * HDInsight
-  * Batch
-  * Container Registry
-  * StorSimple
-  * API Management
-  * IoT Hub
-  * Content Delivery Network (CDN)
-  * Express Route
-  * RecoveryServices and SiteRecovery
-  * DNS
-  * Machine Learning
-  * Service Fabric
-  * Network
-  * Media Services
-  * Stream Analytics
-  * Event Hubs
-  * Data Factory
-  * Key Vault
-  * Service Bus
-  * Scheduler
-  * DevTest Labs
-  * Notification Hubs
-  * Automation
-  * Operational Insights
-  * Traffic Manager
-  * Redis Cache
-  * Power BI Embedded
-  * Data Lake Store
-  * Data Lake Analytics
-  * Cognitive Services
-  * Logic Apps
-  * Analysis Services
-
-* Windows Azure Pack
-  * Web Site: CRUD web site, deployment, configure and get log, start/stop/restart/show web site
-  * Service Bus: CRD namespace
-  * VM: CRUD VM, get OS disk, size profile and VM template, start/stop/restart/suspend/resume VM
-  * VNET: CRUD VNET and subnet.
-  * Cloud Service: CRUD cloud service.
-* Windows Azure Stack
-  * Azure Stack Administration
-  * Storage Service Management
-
-
-For detail descriptions and examples of the cmdlets, type
-* ```Get-Help Azure``` to get all of the Azure PowerShell cmdlets.
-* ```Get-Help AzureRM``` to get all of the Azure Resource Manager (ARM) cmdlets.
-* ```Get-Help <cmdlet name>``` to get the details of a specific cmdlet.
-
-## Supported Environments
-
-* [Microsoft Azure](https://azure.microsoft.com)
-* [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/)
-* [Windows Azure Pack](https://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
-* [Microsoft Azure China](https://www.azure.cn/)
-* [Microsoft Azure US Government](https://azure.microsoft.com/en-us/features/gov/)
-
 ## Installation
 
+For more detailed instructions on installing Azure PowerShell, please refer to the [installation guide](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
+
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted) for Windows 7 SP1, 8.1, Server 2008 SP1, Server 2012 and Server 2012 R2.
-2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
-3. To install legacy RDFE cmdlets, run ```Install-Module Azure```
 
-### Microsoft Web Platform Installer
+Run the following command in an elevated PowerShell session to install the rollup module for Azure Resource Manager cmdlets:
 
-1. Install [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Open Microsoft Web Platform Installer and search for __Microsoft Azure PowerShell__.
-3. Install.
+```powershell
+Install-Module -Name AzureRM
+```
 
-You can also find the standalone installers for all versions of Azure PowerShell in the [releases section](https://github.com/Azure/azure-powershell/releases)
+To install the module containing the legacy RDFE cmdlets, run the following command in an elevated PowerShell session:
 
-### Supported PowerShell Versions
+```powershell
+Install-Module -Name Azure
+```
 
-* [Windows Management Framework 3](https://www.microsoft.com/en-us/download/details.aspx?id=34595)
-* [Windows Management Framework 4](https://www.microsoft.com/en-us/download/details.aspx?id=40855)
-* [Windows Management Framework 5](https://www.microsoft.com/en-us/download/details.aspx?id=50395)
+If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 
-## Using Azure PowerShell
+```powershell
+# Update to the latest version of AzureRM
+Update-Module -Name AzureRM
 
-In general, follow these steps to start using Microsoft Azure PowerShell
+# Update to the latest version of Azure
+Update-Module -Name Azure
+```
 
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps).
-* Use the cmdlets
+### Web Platform Installer
 
-The first step can be different for the possible environments you could be targeting. The following are detailed instructions for each supported environment.
+Download and install the [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx). Once installed, open the program and search for _Microsoft Azure PowerShell_. Click the _Add_ button followed by the _Install_ button at the bottom to begin the installation process.
 
-### Microsoft Azure
+## Usage
 
-If you use both mechanisms on the same subscription, Microsoft Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ```Remove-AzureAccount```, which will remove the Microsoft Azure Active Directory information and bring management certificate authentication back in.
+For more detailed instructions on using Azure PowerShell, please refer to the [getting started guide](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps).
 
-#### Login directly from PowerShell (Microsoft Azure Active Directory authentication)
+### Log in to Azure
+
+To connect to Azure, use the [`Connect-AzureRmAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet.
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
 Connect-AzureRmAccount
 
-# Non-interactive login - use service principals
-Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $pscredential -TenantId $tenantid
-
-# Use the cmdlets to manage your services/applications
-New-AzureRmResourceGroup -Name myresourceGroup -Location "West US"
+# Non-interactive login - you will need to use a service principal
+Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $PSCredential -TenantId $TenantId
 ```
 
-### Microsoft Azure China
+To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `Environment` parameter:
 
 ```powershell
-Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
-
-# Use the cmdlets to manage your services/applications
-New-AzureRmResourceGroup -Name myresourceGroup -Location "China East"
+# Log into a specific cloud - in this case, the Azure China cloud
+Connect-AzureRmAccount -Environment AzureChinaCloud
 ```
 
-### Microsoft Azure US Government
+### Getting and setting your session context
+
+To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzureRmContext`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext) cmdlet:
 
 ```powershell
-Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
+# Get the context you are currently using
+Get-AzureRmContext
 
-# Use the cmdlets to manage your services/applications
-New-AzureRmResourceGroup -Name myresourceGroup -Location "US Gov Virginia"
+# List all available contexts in the current session
+Get-AzureRmContext -ListAvailable
 ```
 
-### Microsoft Azure Germany
+To get the subscriptions in a tenant, use the [`Get-AzureRmSubscription`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription) cmdlet:
 
 ```powershell
-Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
+# Get all of the subscriptions in your current tenant
+Get-AzureRmSubscription
 
-# Use the cmdlets to manage your services/applications
-New-AzureRmResourceGroup -Name myresourceGroup -Location "Germany Central"
+# Get all of the subscriptions in a specific tenant
+Get-AzureRmSubscription -TenantId $TenantId
 ```
 
-### Windows Azure Pack
+To change the subscription that you are using for your current context, use the [`Set-AzureRmContext`]() cmdlet:
 
 ```powershell
-# Add your Windows Azure Pack environment to your Microsoft Azure PowerShell installation.
-# You will need to know the following information of your Windows Azure Pack environment.
-# 1. URL to download the publish settings file    Mandatory
-# 2. Management service endpoint                  Optional
-# 3. Management Portal URL                        Optional
-# 4. Storage service endpoint                     Optional
-Add-WAPackEnvironment -Name "MyWAPackEnv" `
-    -PublishSettingsFileUrl "URL to download the publish settings file>" `
-    -ServiceEndpoint "<Management service endpoint>" `
-    -ManagementPortalUrl "<Storage service endpoint>" `
-    -StorageEndpoint "<Management Portal URL>"
+# Set the context to a specific subscription
+Set-AzureRmContext -Subscription $SubscriptionName -Name "MyContext"
 
-# Download a file which contains the publish settings information of your subscription.
-# Use the -Environment parameter to target your Windows Azure Pack environment.
-# This will open a browser window and ask you to log in to get the file.
-Get-WAPackPublishSettingsFile -Environment "MyWAPackEnv"
-
-# Import the file you just downloaded.
-# Notice that the file contains credential of your subscription so you don't want to make it public
-# (like check in to source control, etc.).
-Import-WAPackPublishSettingsFile "<file location>"
-
-# Use the cmdlets to manage your services/applications
-New-WAPackWebsite -Name mywebsite
+# Set the context using piping
+Get-AzureRmSubscription -SubscriptionName $SubscriptionName | Set-AzureRmContext -Name "MyContext"
 ```
 
-## Find Your Way
+### Discovering cmdlets
 
-All the cmdlets can be put into 3 categories:
-
-1. ARM management cmdlets use the `AzureRm` prefix (New-AzureRmResourceGroup, Get-AzureRmVM)
-2. Legacy RDFE management cmdlets use the `Azure` prefix (Get-AzureVM)
-3. Data plane cmdlets that work in ARM or RDFE use the `Azure` prefix (Get-AzureBlob)
-
-
-You can use the following cmdlet to find out all the cmdlets for your environment
+Use the `Get-Command` cmdlet to discover cmdlets within a specific module, or cmdlets that follow a specific search pattern:
 
 ```powershell
-# Return all the cmdlets for Azure Resource Manager (ARM)
-Get-Command *AzureRm*
+# View all cmdlets in the AzureRM.Profile module
+Get-Command -Module AzureRM.Profile
 
-# Return all the cmdlets for Microsoft Azure
-Get-Command *Azure*
+# View all cmdlets that contain "VirtualNetwork"
+Get-Command -Name "*VirtualNetwork*"
 
-# Return all the cmdlets for Windows Azure Pack
-Get-Command *WAPack*
+# View all cmdlets that contain "VM" in the AzureRM.Compute module
+Get-Command -Module AzureRM.Compute -Name "*VM*"
 ```
 
-If you want to migrate some scripts from Microsoft Azure to Windows Azure Pack or vice versa, as long as the cmdlets you are using are in category 1, you should be able to migrate smoothly.
+### Cmdlet help and examples
 
-## Need Help?
+To view the help content for a cmdlet, use the `Get-Help` cmdlet:
 
-Be sure to check out the [Azure Support Community](https://azure.microsoft.com/en-us/support/forums/) if you have trouble with the provided code.
+```powershell
+# View the basic help content for Get-AzureRmSubscription
+Get-Help -Name Get-AzureRmSubscription
 
-## Contribute Code or Provide Feedback
+# View the examples for Get-AzureRmSubscription
+Get-Help -Name Get-AzureRmSubscription -Examples
+
+# View the full help content for Get-AzureRmSubscription
+Get-Help -Name Get-AzureRmSubscription -Full
+
+# View the help content for Get-AzureRmSubscription on https://docs.microsoft.com
+Get-Help -Name Get-AzureRmSubscription -Online
+```
+
+## Reporting Issues and Feedback
+
+### Issues
+
+If you find any bugs when using the Azure PowerShell modules, please file an issue [here](https://github.com/Azure/azure-powershell/issues), making sure to fill out the provided template with the appropriate information.
+
+Alternatively, be sure to check out the [Azure Support Community](https://azure.microsoft.com/en-us/support/forums/) if you have trouble with any of the cmdlets or Azure services.
+
+### Feedback
+
+If there is a feature you would like to see in Azure PowerShell, please use the [`Send-Feedback`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback) cmdlet, or file an issue [here](https://github.com/Azure/azure-powershell/issues), to send the team direct feedback.
+
+## Contribute Code
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
 
 More information about contributing to this repo can be found in [CONTRIBUTING md](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md) and the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide) folder.
 
-If you encounter any bugs with the library please file an issue in the [issues section](https://github.com/Azure/azure-powershell/issues) section of the project.
+## Learn More
 
-# Learn More
-
-* [Microsoft Azure Script Center](https://azure.microsoft.com/en-us/documentation/scripts/)
+* [Microsoft Azure Documentation](https://docs.microsoft.com/en-us/azure/)
+* [PowerShell Documentation](https://docs.microsoft.com/en-us/powershell/)
 
 ---
 _This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments._
