@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.1
 * New Cmdlet Get-AzureRmReservationOrder
     - cmdlet to retrieve azure reservation order.
 * New Cmdlet Get-AzureRmReservation
