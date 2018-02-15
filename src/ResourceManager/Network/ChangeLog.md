@@ -16,6 +16,7 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
+--->
 
 ## Current Release
 * Fix overwrite message 'Are you sure you want to overwriteresource'

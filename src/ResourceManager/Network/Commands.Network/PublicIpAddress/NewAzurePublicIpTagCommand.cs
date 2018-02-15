@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.Network
             "FirstPartyUsage",
             "NetworkDomain",
             IgnoreCase = true)]
-        public virtual string IpTagType { get; set; }
+        public string IpTagType { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag value Example:/Sql")]
         [ValidateNotNullOrEmpty]
-        public virtual string Tag { get; set; }
+        public string Tag { get; set; }
 
         public override void Execute()
         {
