@@ -20,7 +20,7 @@ Gets the primary and secondary connection strings for the given Namespace or Que
 ### [Get-AzureRmServiceBusNamespace](Get-AzureRmServiceBusNamespace.md)
 Gets a description for the specified Service Bus namespace within the resource group.
 
-### [Get-AzureRmServiceBusGeoDRConfigurations](Get-AzureRmServiceBusGeoDRConfigurations.md)
+### [Get-AzureRmServiceBusGeoDRConfiguration](Get-AzureRmServiceBusGeoDRConfiguration.md)
 Gets a description Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzureRmServiceBusOperation](Get-AzureRmServiceBusOperation.md)
@@ -47,7 +47,7 @@ Regenerates the primary or secondary connection strings for the Service Bus name
 ### [New-AzureRmServiceBusNamespace](New-AzureRmServiceBusNamespace.md)
 Creates a new Service Bus namespace.
 
-### [New-AzureRmServiceBusDRConfigurations](New-AzureRmServiceBusGeoDRConfigurations.md)
+### [New-AzureRmServiceBusDRConfiguration](New-AzureRmServiceBusGeoDRConfiguration.md)
 Creates an new Alias(Disaster Recovery configuration)
 
 ### [New-AzureRmServiceBusQueue](New-AzureRmServiceBusQueue.md)
@@ -68,7 +68,7 @@ Removes the authorization rule of a Service Bus namespace or queue or topic from
 ### [Remove-AzureRmServiceBusNamespace](Remove-AzureRmServiceBusNamespace.md)
 Removes the namespace from the specified resource group. 
 
-### [Remove-AzureRmServiceBusGeoDRConfigurations](Remove-AzureRmServiceBusGeoDRConfigurations.md)
+### [Remove-AzureRmServiceBusGeoDRConfiguration](Remove-AzureRmServiceBusGeoDRConfiguration.md)
 Removes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzureRmServiceBusQueue](Remove-AzureRmServiceBusQueue.md)
@@ -89,10 +89,10 @@ Updates the specified authorization rule description for the given Service Bus n
 ### [Set-AzureRmServiceBusNamespace](Set-AzureRmServiceBusNamespace.md)
 Updates the description of an existing Service Bus namespace.
 
-### [Set-AzureRmServiceBusGeoDRConfigurationsBreakPair](Set-AzureRmServiceBusGeoDRConfigurationsBreakPair.md)
+### [Set-AzureRmServiceBusGeoDRConfigurationBreakPair](Set-AzureRmServiceBusGeoDRConfigurationBreakPair.md)
 Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
-### [Set-AzureRmServiceBusGeoDRConfigurationsFailOver](Set-AzureRmServiceBusGeoDRConfigurationsFailOver.md)
+### [Set-AzureRmServiceBusGeoDRConfigurationFailOver](Set-AzureRmServiceBusGeoDRConfigurationFailOver.md)
 Envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmServiceBusQueue](Set-AzureRmServiceBusQueue.md)
