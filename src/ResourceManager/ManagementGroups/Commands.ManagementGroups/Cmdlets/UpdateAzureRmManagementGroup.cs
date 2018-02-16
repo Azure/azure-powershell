@@ -20,52 +20,62 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
 {
-    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupNoChildren))]
+    [Cmdlet("Update", "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
     public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = false,
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public PSManagementGroup ManagementGroup { get; set; }
+        public PSManagementGroup InputObject { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public PSManagementGroupNoChildren ManagementGroupNoChildren { get; set; }
-
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = false)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName)]
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.DisplayName)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = false,
+            HelpMessage = Constants.HelpMessages.DisplayName, ValueFromPipeline = false)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; } = null;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = false,
-            HelpMessage = Constants.HelpMessages.ParentId)]
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.ParentId)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.ParentId)]
         [ValidateNotNullOrEmpty]
         public string ParentId { get; set; } = null;
 
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = false)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.ParentObject, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public PSManagementGroup ParentObject;
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (ParameterSetName.Equals(Constants.ParameterSetNames.ManagementGroupParameterSet))
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ManagementGroupParameterSet) 
+                    || ParameterSetName.Equals(Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet))
                 {
-                    GroupName = ManagementGroup.Name;
+                    GroupName = InputObject.Name;
                 }
-                else if (ParameterSetName.Equals(Constants.ParameterSetNames.ManagementGroupNoChildrenParameterSet))
+
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ParentGroupParameterSet)
+                    || ParameterSetName.Equals(Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet))
                 {
-                    GroupName = ManagementGroupNoChildren.Name;
+                    ParentId = ParentObject.Id;
                 }
 
                 if (ShouldProcess(
@@ -74,8 +84,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                 {
                     CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
                     var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, createGroupRequest);
-                    WriteObject(new PSManagementGroupNoChildren(response));
-
+                    WriteObject(new PSManagementGroup(response));
                 }
             }
             catch (ErrorResponseException ex)

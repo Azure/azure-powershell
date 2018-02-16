@@ -62,7 +62,6 @@
     <Compile Include="Models\PSManagementGroup.cs" />
     <Compile Include="Models\PSManagementGroupChildInfo.cs" />
     <Compile Include="Models\PSManagementGroupInfo.cs" />
-    <Compile Include="Models\PSManagementGroupNoChildren.cs" />
     <Compile Include="Models\PSParentGroupInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">

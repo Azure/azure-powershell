@@ -23,15 +23,19 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// <summary>
     /// New-AzureRmManagementGroup Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupNoChildren))]
+    [Cmdlet(VerbsCommon.New, "AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.ParentObject)]
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = false,
+            HelpMessage = Constants.HelpMessages.DisplayName, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; } = null;
 
@@ -40,17 +44,26 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ParentId { get; set; } = null;
 
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.ParentObject, ValueFromPipeline = false)]
+        public PSManagementGroup ParentObject;
+
         public override void ExecuteCmdlet()
         {
             try
             {
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ParentGroupParameterSet))
+                {
+                    ParentId = ParentObject.Id;
+                }
+
                 if (ShouldProcess(
                         string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName), 
                         string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
                     CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
                     var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
-                    WriteObject(new PSManagementGroupNoChildren(response));
+                    WriteObject(new PSManagementGroup(response));
                 }
             }
             catch (ErrorResponseException ex)

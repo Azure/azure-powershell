@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     /// <summary>
     /// Get-AzureRmManagementGroup Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,"AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupInfo), typeof(PSManagementGroupNoChildren))]
+    [Cmdlet(VerbsCommon.Get,"AzureRmManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupInfo), typeof(PSManagementGroup), typeof(string))]
     public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         /// <summary>
@@ -49,14 +49,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                 if (!string.IsNullOrEmpty(GroupName))
                 {
                     var response = ManagementGroupsApiClient.ManagementGroups.Get(GroupName, Expand.IsPresent?"children":null, Recurse.IsPresent);
-                    if (!Expand.IsPresent)
-                    {
-                        WriteObject(new PSManagementGroupNoChildren(response));
-                    }
-                    else
-                    {
                         WriteObject(new PSManagementGroup(response));
-                    }
                 }
                 else
                 {
