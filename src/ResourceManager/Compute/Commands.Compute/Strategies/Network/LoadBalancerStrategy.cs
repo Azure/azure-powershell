@@ -40,15 +40,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            string froontendPoolName,
-            string backendPoolName,
+            // string froontendPoolName,
+            // string backendPoolName,
             IList<string> zones,
             ResourceConfig<PublicIPAddress> publicIPAddress,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: null,
-                dependencies: new IEntityConfig[] { subnet, publicIPAddress });
+                createModel: engine =>
+                {
+                    // workaround to add dependencies to the resource because 
+                    // nested recources (such as FrontendIPConfiguration) 
+                    // do not support dependencies.
+                    engine.GetId(publicIPAddress);
+                    engine.GetId(subnet);
+                    // empty configuration.
+                    return new LoadBalancer();
+                });
     }
 }

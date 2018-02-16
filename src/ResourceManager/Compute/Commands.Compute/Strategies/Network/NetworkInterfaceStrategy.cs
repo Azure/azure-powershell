@@ -61,12 +61,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         {
                             Id = engine.GetId(networkSecurityGroup)
                         }
-                },
-                dependencies: new IEntityConfig[] 
-                {
-                    subnet,
-                    publicIPAddress,
-                    networkSecurityGroup
                 });
     }
 }
