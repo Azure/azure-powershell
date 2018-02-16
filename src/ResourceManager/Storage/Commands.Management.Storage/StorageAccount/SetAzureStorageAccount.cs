@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -103,11 +104,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Service that will enable encryption.")]
+        [Obsolete("Encryption at Rest is enabled by default for this storage account.", false)]
         public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Service that will disable encryption.")]
+        [Obsolete("Encryption at Rest is enabled by default for this storage account. This feature cannot be disabled.", false)]
         public EncryptionSupportServiceEnum? DisableEncryptionService { get; set; }
 
         [Parameter(
@@ -243,13 +246,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.Identity = new Identity();
                     }
 
-                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    if (StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
-                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+                        updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
                     }
                     if (NetworkRuleSet != null)
                     {

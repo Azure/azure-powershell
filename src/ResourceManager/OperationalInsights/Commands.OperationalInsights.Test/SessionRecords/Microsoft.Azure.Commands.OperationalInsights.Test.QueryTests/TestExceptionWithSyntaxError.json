@@ -1,0 +1,75 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/v1/workspaces/DEMO_WORKSPACE/query",
+      "EncodedRequestUri": "L3YxL3dvcmtzcGFjZXMvREVNT19XT1JLU1BBQ0UvcXVlcnk=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"query\": \"union * | foobar\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ],
+        "x-api-key": [
+          "DEMO_KEY"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2556.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient/0.18.0.0"
+        ],
+        "prefer": [
+          "response-v1=true"
+        ],
+        "x-ms-app": [
+          "csharpsdk,LogAnalyticsPSClient"
+        ],
+        "x-ms-client-request-id": [
+          "0d774458-f893-4316-ad23-29e57dab6830"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"The request had some invalid properties\",\r\n    \"code\": \"BadArgumentError\",\r\n    \"innererror\": {\r\n      \"code\": \"SyntaxError\",\r\n      \"message\": \"A recognition error occurred in the query.\",\r\n      \"innererror\": {\r\n        \"code\": \"SYN0002\",\r\n        \"message\": \"Query could not be parsed at 'foobar' on line [1,10]\",\r\n        \"line\": 1,\r\n        \"pos\": 10,\r\n        \"token\": \"foobar\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "312"
+        ],
+        "Content-Location": [
+          "https://eastus.api.loganalytics.io/v1/workspaces/DEMO_WORKSPACE/query"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Retry-After,Age,WWW-Authenticate"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Date": [
+          "Wed, 29 Nov 2017 17:27:41 GMT"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Via": [
+          "1.1 draft-oms-green.bb1b31a0-d3a7-11e7-b9c4-70b3d5800008"
+        ]
+      },
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {}
+}
