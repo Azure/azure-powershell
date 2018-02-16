@@ -152,11 +152,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-		* Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
-		* Import-AzureRMDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
-		* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
-		* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
-		* Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
+		* Update the version of the ADLS dataplane SDK to 1.1.2 
 		'
 		
 		# Prerelease string of this module
