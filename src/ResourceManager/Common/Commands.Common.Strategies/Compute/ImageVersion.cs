@@ -12,24 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System.Linq;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Common.Strategies.Compute
 {
-    public class StrategiesVmssTests
+    public sealed class ImageVersion
     {
-        public StrategiesVmssTests(Xunit.Abstractions.ITestOutputHelper output)
+        public string Original { get; }
+
+        public ulong[] Parts { get; }
+
+        ImageVersion(string original, ulong[] parts)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(
-                new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            Original = original;
+            Parts = parts;
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmss()
+        public int CompareTo(ImageVersion version)
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmss");
+            var sign = Parts
+                .Zip(version.Parts, (a, b) => a.CompareTo(b))
+                .FirstOrDefault(s => s != 0);
+            return sign == 0 ? Parts.Length.CompareTo(version.Parts.Length) : sign;
         }
+
+        public static ImageVersion Parse(string version)
+            => new ImageVersion(version, version.Split('.').Select(ulong.Parse).ToArray());
+
+        public override string ToString()
+            => Original;
     }
 }

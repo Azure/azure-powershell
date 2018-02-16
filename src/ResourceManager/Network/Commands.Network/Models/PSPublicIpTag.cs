@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Compute
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    sealed class Image
+    public class PSPublicIpTag
     {
-        public string publisher;
+        public string IpTagType { get; set; }
 
-        public string offer;
-
-        public string sku;
-
-        public string version;
+        public string Tag { get; set; }
     }
 }
