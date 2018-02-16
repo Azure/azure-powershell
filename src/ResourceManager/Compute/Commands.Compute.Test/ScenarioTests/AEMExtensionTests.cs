@@ -31,24 +31,28 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicLinuxWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinuxWAD");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicLinux()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinux");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
@@ -61,12 +65,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxWAD");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinux()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
@@ -79,20 +85,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD");
         }
 
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD_ESeries()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_E");
         }
 
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD_DSeries()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_D");

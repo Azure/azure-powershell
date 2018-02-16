@@ -30,7 +30,7 @@ using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable", SupportsShouldProcess = true)]
     public partial class RemoveAzureRmRouteTable : NetworkBaseCmdlet
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Commands.Network.Automation
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         [Parameter(
             Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
