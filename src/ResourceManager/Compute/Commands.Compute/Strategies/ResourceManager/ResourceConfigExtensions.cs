@@ -26,13 +26,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
             this ResourceStrategy<TModel> strategy,
             ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Func<IEngine, TModel> createModel = null,
-            IEnumerable<IEntityConfig> dependencies = null)
+            Func<IEngine, TModel> createModel = null)
             where TModel : class, new()
-            => strategy.CreateConfig(
+        {
+            var engine = new DependencyEngine();
+            // update dependencies
+            createModel(engine);
+            // create config.
+            return strategy.CreateConfig(
                 resourceGroup.Name,
                 name,
                 createModel,
-                dependencies.EmptyIfNull().Where(d => d != null).Concat(new[] { resourceGroup }));
+                engine
+                    .Dependencies
+                    .Values
+                    .Concat(new[] { resourceGroup }));
+        }
     }
 }

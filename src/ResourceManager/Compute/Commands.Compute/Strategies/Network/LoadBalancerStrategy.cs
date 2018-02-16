@@ -49,7 +49,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: null,
-                dependencies: new IEntityConfig[] { subnet, publicIPAddress });
+                createModel: engine =>
+                {
+                    // workaround to add dependencies to the resource because 
+                    // nested recources (such as FrontendIPConfiguration 
+                    // do not support dependencies.
+                    engine.GetId(publicIPAddress);
+                    engine.GetId(subnet);
+                    // empty configuration.
+                    return new LoadBalancer();
+                });
     }
 }

@@ -124,8 +124,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
 
                     return vmss;
-                },
-                dependencies: new IEntityConfig[] { subnet, backendAdressPool }
-                    .Concat(frontendIpConfigurations));
+                });
     }
 }

@@ -92,8 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 Id = engine.GetId(availabilitySet)
                             }
                     };
-                },
-                dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
+                });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -143,7 +142,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             Id = engine.GetId(availabilitySet)
                         }
-                },
-                dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
+                });
     }
 }
