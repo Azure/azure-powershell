@@ -12,9 +12,16 @@ Removes a Management Group
 
 ## SYNTAX
 
+### GroupOperations (Default)
 ```
-Remove-AzureRmManagementGroup [-GroupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+Remove-AzureRmManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ManagementGroupObject
+```
+Remove-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,21 +35,6 @@ PS C:\> Remove-AzureRmManagementGroup -GroupName "TestGroup"
 ```
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -59,31 +51,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force the action and skip confirmations
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GroupName
 Management Group Id
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupOperations
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Input Object from the Get call
+
+```yaml
+Type: PSManagementGroup
+Parameter Sets: ManagementGroupObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return `true` on successful execution
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: GroupOperations
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,15 +127,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.String
-
 
 ## NOTES
 

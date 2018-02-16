@@ -12,9 +12,17 @@ Creates a Management Group
 
 ## SYNTAX
 
+### GroupOperations (Default)
 ```
-New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParentGroupObject
+```
+New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,8 +43,8 @@ UpdatedTime       : 2/1/2018 11:06:27 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          :
 ParentDisplayName :
-
 ```
+
 Creation of a new group with `DisplayName` and `ParentId` set to `null`. The `DisplayName` will be same as the `GroupName` and the parent of the group will be the tenant.  
 
 ### Example 2: Create a Management Group with a parent
@@ -52,8 +60,8 @@ UpdatedTime       : 2/1/2018 11:06:27 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          :
 ParentDisplayName :
-
 ```
+
 In this case, the parent of the group will be the tenant and the `DisplayName` will be set to the value given.
 
 ### Example 3: Create a Management Group with a parent and a display name
@@ -69,25 +77,9 @@ UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentDisplayName : TestGroupParent
-
 ```
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -119,21 +111,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force the action and skip confirmations
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GroupName
 Management Group Id
 
@@ -154,11 +131,41 @@ Parent Id of the management group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupOperations
 Aliases: 
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Parent Object
+
+```yaml
+Type: PSManagementGroup
+Parameter Sets: ParentGroupObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -180,15 +187,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.String
-
 
 ## NOTES
 

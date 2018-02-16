@@ -12,9 +12,15 @@ Gets Management Group(s)
 
 ## SYNTAX
 
+### ListOperation (Default)
 ```
-Get-AzureRmManagementGroup [[-GroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-Expand]
- [-Recurse] [-WhatIf] [-Confirm]
+Get-AzureRmManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetOperation
+```
+Get-AzureRmManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand]
+ [-Recurse] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +43,6 @@ Type        : /providers/Microsoft.Management/managementGroups
 Name        : TestGroupChild
 TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 DisplayName : TestGroupChildDisplayName
-
 ```
 
 ### Example 2: Get specific Management Group
@@ -52,8 +57,7 @@ DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
-ParentDisplayName : 
-
+ParentDisplayName :
 ```
 
 ### Example 3: Get specific Management Group and first level of hierarchy
@@ -78,8 +82,8 @@ ChildType   : /managementGroup
 ChildId     : /providers/Microsoft.Management/managementGroups/TestGroup1
 DisplayName : TestGroup1DisplayName
 Children    :
-
 ```
+
 With the `Expand` flag, one can navigate through the `Children` array and get details for each child. For example, `Children[0]` will give details for the group with display name `TestGroup1DisplayName`.
 
 ### Example 4: Get specific Management Group and all levels of hiearchy
@@ -110,26 +114,10 @@ PS C:\> $response.Children[0].Children[0]
 ChildType   : /managementGroup
 ChildId     : /providers/Microsoft.Management/managementGroups/TestRecurseChild
 DisplayName : TestRecurseChild
-Children    : 
-
+Children    :
 ```
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -151,7 +139,7 @@ Expand the output to list the children of the management group
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: GetOperation
 Aliases: 
 
 Required: False
@@ -166,10 +154,10 @@ Management Group Id
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetOperation
 Aliases: 
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
@@ -181,8 +169,23 @@ Recursively list the children of the management group
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: GetOperation
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -207,15 +210,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.String
-
 
 ## NOTES
 

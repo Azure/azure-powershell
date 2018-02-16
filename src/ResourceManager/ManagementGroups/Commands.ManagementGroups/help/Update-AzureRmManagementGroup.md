@@ -12,9 +12,30 @@ Updates a Management Group
 
 ## SYNTAX
 
+### GroupOperations (Default)
 ```
-Update-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParentAndManagementGroupObject
+```
+Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName] <String>
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ManagementGroupObject
+```
+Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [[-DisplayName] <String>] [[-ParentId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParentGroupObject
+```
+Update-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +56,6 @@ UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-
 ```
 
 ### Example 2: Update Management Group ParentId
@@ -51,27 +71,9 @@ UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentDisplayName : TestGroupParent
-
 ```
-
-
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -93,7 +95,7 @@ Display Name of the management group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupOperations, ManagementGroupObject, ParentGroupObject
 Aliases: 
 
 Required: False
@@ -103,16 +105,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force the action and skip confirmations
-
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ParentAndManagementGroupObject
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -123,7 +122,7 @@ Management Group Id
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupOperations, ParentGroupObject
 Aliases: 
 
 Required: True
@@ -133,16 +132,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Input Object from the Get call
+
+```yaml
+Type: PSManagementGroup
+Parameter Sets: ParentAndManagementGroupObject, ManagementGroupObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ParentId
 Parent Id of the management group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GroupOperations, ManagementGroupObject
 Aliases: 
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Input Object from the Get call
+
+```yaml
+Type: PSManagementGroup
+Parameter Sets: ParentAndManagementGroupObject, ParentGroupObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -164,15 +208,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.String
-
 
 ## NOTES
 
