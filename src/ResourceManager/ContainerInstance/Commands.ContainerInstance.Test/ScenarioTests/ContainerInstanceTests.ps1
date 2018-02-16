@@ -130,6 +130,57 @@ function Test-AzureRmContainerGroupWithVolumeMount
 
 <#
 .SYNOPSIS
+Test New-AzureRmContainerGroup with DNS name label.
+#>
+function Test-AzureRmContainerGroupWithDnsNameLabel
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $containerGroupName = Get-RandomContainerGroupName
+	$fqdn = $containerGroupName + ".westus.azurecontainer.io"
+    $location = Get-ProviderLocation "Microsoft.ContainerInstance/ContainerGroups"
+    $image = "nginx"
+    $osType = "Linux"
+    $restartPolicy = "Never"
+    $port1 = 8000
+    $port2 = 8001
+
+    try
+    {
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -OsType $osType -RestartPolicy $restartPolicy -DnsNameLabel $containerGroupName -Port @($port1, $port2) -Cpu 1 -Memory 1.5
+
+        Assert-AreEqual $containerGroupCreated.ResourceGroupName $resourceGroupName
+        Assert-AreEqual $containerGroupCreated.Name $containerGroupName
+        Assert-AreEqual $containerGroupCreated.Location $location
+        Assert-AreEqual $containerGroupCreated.OsType $osType
+        Assert-AreEqual $containerGroupCreated.RestartPolicy $restartPolicy
+        Assert-NotNull $containerGroupCreated.IpAddress
+        Assert-AreEqual $containerGroupCreated.DnsNameLabel $containerGroupName
+        Assert-AreEqual $containerGroupCreated.Fqdn $fqdn
+        Assert-AreEqual $containerGroupCreated.Ports.Count 2
+        Assert-NotNull $containerGroupCreated.Containers
+        Assert-AreEqual $containerGroupCreated.Containers[0].Image $image
+        Assert-AreEqual $containerGroupCreated.Containers[0].Cpu 1
+        Assert-AreEqual $containerGroupCreated.Containers[0].MemoryInGb 1.5
+
+        $retrievedContainerGroup = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName
+        Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroup
+
+        $retrievedContainerGroupList = Get-AzureRmContainerGroup -ResourceGroupName $resourceGroupName
+        Assert-AreEqual $retrievedContainerGroupList.Count 1
+        Assert-ContainerGroup $containerGroupCreated $retrievedContainerGroupList[0]
+
+        $retrievedContainerGroup | Remove-AzureRmContainerGroup
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Assert a container group object.
 
 .PARAMETER expected
@@ -155,6 +206,7 @@ function Assert-ContainerGroup
     Assert-AreEqual $Actual.RestartPolicy $Expected.RestartPolicy
     Assert-NotNull $Actual.IpAddress
     Assert-AreEqual $Actual.Ports.Count $Expected.Ports.Count
+	Assert-AreEqual $Actual.DnsNameLabel $Expected.DnsNameLabel
     Assert-NotNull $Actual.Containers
     Assert-AreEqual $Actual.Containers[0].Image $Expected.Containers[0].Image
     Assert-AreEqual $Actual.Containers[0].Cpu $Expected.Containers[0].Cpu
