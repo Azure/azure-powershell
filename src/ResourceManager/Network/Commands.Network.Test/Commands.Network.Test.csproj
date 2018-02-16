@@ -534,6 +534,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTests\TestRouteTableSubnetRef.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTests\TestRouteWithDisableBgpRoutePropagation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.TestDnsAvailabilityTest\TestDnsAvailability.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
