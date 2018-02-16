@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -45,19 +46,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayApplicationRuleProtocol> Protocol { get; set; }
+        public List<string> Protocol { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The target URLs of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> TargetUrl { get; set; }
+        public List<string> TargetFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The actions of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayApplicationRuleAction> Action { get; set; }
+        public List<string> ActionType { get; set; }
 
         public override void Execute()
         {
@@ -68,15 +69,67 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("At least one application rule protocol should be specified!");
             }
 
-            if (this.TargetUrl == null || this.TargetUrl.Count == 0)
+            if (this.TargetFqdn == null || this.TargetFqdn.Count == 0)
             {
                 throw new ArgumentException("At least one application rule target URL should be specified!");
             }
 
-            if (this.Action == null || this.Action.Count == 0)
+            if (this.ActionType == null || this.ActionType.Count == 0)
             {
                 throw new ArgumentException("At least one application rule action should be specified!");
             }
+
+            // User can pass "http" or "HTTP" protocol instead of "Http"
+            var protocolsAsWeExpectThem = this.Protocol.Select(userProtocolText =>
+            {
+                string expectedProtocolText = null;
+                uint port;
+
+                if (MNM.SecureGatewayApplicationRuleProtocolType.Http.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    expectedProtocolText = MNM.SecureGatewayApplicationRuleProtocolType.Http;
+                    port = 80;
+                }
+                else if (MNM.SecureGatewayApplicationRuleProtocolType.Https.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    expectedProtocolText = MNM.SecureGatewayApplicationRuleProtocolType.Https;
+                    port = 443;
+                }
+                else
+                {
+                    throw new ArgumentException($"Unsupported protocol {userProtocolText}.");
+                }
+
+                return new PSSecureGatewayApplicationRuleProtocol
+                {
+                    ProtocolType = expectedProtocolText,
+                    Port = port
+                };
+            }).ToList();
+
+            // User can pass "allow" or "ALLOW" action instead of "Allow"
+            var actionsAsWeExpectThem = this.ActionType.Select(userActionText =>
+            {
+                string actionText = null;
+
+                if (MNM.SecureGatewayApplicationRuleActionType.Allow.Equals(userActionText, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    actionText = MNM.SecureGatewayApplicationRuleActionType.Allow;
+                }
+                else if (MNM.SecureGatewayApplicationRuleActionType.Deny.Equals(userActionText, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    actionText = MNM.SecureGatewayApplicationRuleActionType.Deny;
+                }
+                else
+                {
+                    throw new ArgumentException($"Unsupported action {userActionText}.");
+                }
+
+                return new PSSecureGatewayApplicationRuleAction
+                {
+                    Type = actionText
+                };
+            }).ToList();
 
             var applicationRule = new PSSecureGatewayApplicationRule
             {
@@ -84,9 +137,9 @@ namespace Microsoft.Azure.Commands.Network
                 Priority = this.Priority,
                 Description = this.Description,
                 Direction = MNM.SecureGatewayRuleDirection.Outbound,
-                Protocols = this.Protocol,
-                TargetUrls = this.TargetUrl,
-                Actions = this.Action
+                Protocols = protocolsAsWeExpectThem,
+                TargetUrls = this.TargetFqdn,
+                Actions = actionsAsWeExpectThem
             };
             WriteObject(applicationRule);
         }
