@@ -31,6 +31,14 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        protected IVirtualNetworksOperations VirtualNetworkClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.VirtualNetworks;
+            }
+        }
+
         public bool IsSecureGatewayPresent(string resourceGroupName, string name)
         {
             try

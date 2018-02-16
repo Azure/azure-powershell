@@ -53,5 +53,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             return this.ApplicationRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
         }
+
+        public void RemoveApplicationRuleCollectionByName(string ruleCollectionName)
+        {
+            var ruleCollection = this.GetApplicationRuleCollectionByName(ruleCollectionName);
+            this.ApplicationRuleCollections?.Remove(ruleCollection);
+        }
+
+        public void RemoveApplicationRuleCollectionByPriority(uint priority)
+        {
+            var ruleCollection = this.GetApplicationRuleCollectionByPriority(priority);
+            this.ApplicationRuleCollections?.Remove(ruleCollection);
+        }
     }
 }
