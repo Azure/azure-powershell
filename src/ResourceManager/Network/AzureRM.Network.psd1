@@ -322,9 +322,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmSecureGateway',
                'New-AzureRmSecureGatewayIpConfiguration',
                'New-AzureRmSecureGatewayApplicationRuleCollection',
-               'New-AzureRmSecureGatewayApplicationRule',
-               'New-AzureRmSecureGatewayApplicationRuleAction',
-               'New-AzureRmSecureGatewayApplicationRuleProtocol'
+               'New-AzureRmSecureGatewayApplicationRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
