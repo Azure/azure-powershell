@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -25,6 +27,11 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmSecureGateway", SupportsShouldProcess = true), OutputType(typeof(PSSecureGateway))]
     public class NewAzureSecureGatewayCommand : SecureGatewayBaseCmdlet
     {
+        private const string SecureGatewaySubnetName = "SecureGatewaySubnet";
+        private const int SecureGatewaySubnetMinSize = 25;
+        private const string SecureGatewayIpConfigurationName = "SecureGatewayIpConfiguration";
+        private List<PSSecureGatewayIpConfiguration> ipConfigurations;
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
@@ -48,10 +55,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "IpConfigurations")]
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Virtual Network Name")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayIpConfiguration> IpConfiguration { get; set; }
+        public string VirtualNetworkName { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -72,6 +79,41 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            // Get the virtual network and build ipConfiguration
+            if (!string.IsNullOrEmpty(VirtualNetworkName))
+            {
+                var virtualNetwork = this.VirtualNetworkClient.Get(this.ResourceGroupName, VirtualNetworkName);
+                if (virtualNetwork == null)
+                {
+                    throw new ArgumentException($"Virtual Network {VirtualNetworkName} does not exist in Resource Group {this.ResourceGroupName}!");
+                }
+
+                MNM.Subnet secGwSubnet = null;
+                try
+                {
+                    secGwSubnet = virtualNetwork.Subnets.Single(subnet => SecureGatewaySubnetName.Equals(subnet.Name));
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new ArgumentException($"Virtual Network {VirtualNetworkName} should contain a Subnet named SecureGatewaySubnet");
+                }
+
+                var subnetSize = int.Parse(secGwSubnet.AddressPrefix.Split(new[] { '/' })[1]);
+                if (subnetSize > SecureGatewaySubnetMinSize)
+                {
+                    throw new ArgumentException("The AddressPrefix (" + secGwSubnet.AddressPrefix + ") of the SecureGatewaySubnet os the referenced Virtual Network must be at least /24");
+                }
+
+                this.ipConfigurations = new List<PSSecureGatewayIpConfiguration>
+                {
+                    new PSSecureGatewayIpConfiguration
+                    {
+                        Name = SecureGatewayIpConfigurationName,
+                        Subnet = new PSResourceId { Id = secGwSubnet.Id }
+                    }
+                };
+            }
+
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsSecureGatewayPresent(this.ResourceGroupName, this.Name);
@@ -95,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                IpConfigurations = this.IpConfiguration,
+                IpConfigurations = this.ipConfigurations,
                 ApplicationRuleCollections = this.ApplicationRuleCollection
             };
 
