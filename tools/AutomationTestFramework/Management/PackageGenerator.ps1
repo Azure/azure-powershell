@@ -92,8 +92,9 @@ function Convert-NupkgToZip (
         $null = New-Item -ItemType directory -Path $outputPath -ErrorAction Stop
     }
 
-    $modulePathFilters = $moduleList | ForEach-Object { 
-        $nupkgPath = Join-Path $path "${_}*.nupkg" 
+    $modulePathFilters = $moduleList | ForEach-Object {
+        # https://msdn.microsoft.com/en-us/library/aa717088(v=vs.85).aspx
+        $nupkgPath = Join-Path $path "${_}.[0-9]*.nupkg"
         @{Name = $_; Path = $nupkgPath; Exists = Test-Path $nupkgPath}
     }
     # https://stackoverflow.com/a/26559478/294804
@@ -129,12 +130,14 @@ function Get-LatestBuildPath([string] $searchPath) {
         } -End { $path }
 }
 
-function Create-SignedModules([hashtable] $signedModules, [string] $archiveDir) {
-    $latestBuildPath = Get-LatestBuildPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
-    Write-Verbose "Latest drop path found: $($latestBuildPath.FullName)"
-    $path = Join-Path $latestBuildPath.FullName 'pkgs'
+function Create-SignedModules([hashtable] $signedModules, [string] $modulesDir, [string] $archiveDir) {
+    if([string]::IsNullOrEmpty($modulesDir)) {
+        $latestBuildPath = Get-LatestBuildPath -searchPath '\\aaptfile01\ADXSDK\PowerShell'
+        Write-Verbose "Latest drop path found: $($latestBuildPath.FullName)"
+        $modulesDir = Join-Path $latestBuildPath.FullName 'pkgs'
+    }
     Convert-NupkgToZip `
-        -path $path `
+        -path $modulesDir `
         -moduleList ($signedModules.Profile + $signedModules.Storage + $signedModules.Other) `
         -outputPath $archiveDir
     Write-Verbose "Signed module zips created in '$archiveDir'."

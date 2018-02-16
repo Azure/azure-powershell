@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Apply Azure Container Instance SDK 2018-02-01
+    - Support DNS name label
 
 ## Version 0.2.2
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

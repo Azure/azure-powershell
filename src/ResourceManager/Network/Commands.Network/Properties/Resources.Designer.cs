@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to overwriteresource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to overwrite resource &apos;{0}&apos;.
         /// </summary>
         public static string OverwritingResource {
             get {
