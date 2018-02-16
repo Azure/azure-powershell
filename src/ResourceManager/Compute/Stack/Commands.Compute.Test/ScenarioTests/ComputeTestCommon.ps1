@@ -413,7 +413,6 @@ function Get-DefaultCRPWindowsImageOffline
 # Get Default CRP Linux Image Object Offline
 function Get-DefaultCRPLinuxImageOffline
 {
-    #return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
 	return Create-ComputeVMImageObject 'Canonical' 'UbuntuServer' '14.04.3-LTS' '1.0.0';
 }
 
