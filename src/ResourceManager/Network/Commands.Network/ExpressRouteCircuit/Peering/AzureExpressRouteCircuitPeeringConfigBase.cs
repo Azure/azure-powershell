@@ -145,5 +145,28 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
         }
+
+        public void SetIpv6PeeringParameters(PSPeering peering)
+        {
+            peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+            peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
+                peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
+            }
+        }
+
+        public void SetIpv4PeeringParameters(PSPeering peering)
+        {
+            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.RouteFilter = new PSRouteFilter();
+                peering.RouteFilter.Id = this.RouteFilterId;
+            }
+        }
     }
 }

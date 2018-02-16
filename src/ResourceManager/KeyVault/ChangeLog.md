@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+## Version 4.1.1
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

@@ -95,5 +95,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ProvidersList");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectionMonitor()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectionMonitor");
+        }
     }
 }

@@ -13,6 +13,7 @@ Updates the state of a VMSS.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
@@ -24,7 +25,25 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>] [-PlanName <String>]
  [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>] [-PlanProduct <String>]
  [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>] [-LicenseType <String>]
- [-IdentityType <ResourceIdentityType>] [-SkuName <String>] [-PlanPromotionCode <String>]
+ [-SkuName <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
+ [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>]
+ [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
+ [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>]
+ [-ManagedDiskStorageAccountType <StorageAccountTypes>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-SinglePlacementGroup <Boolean>] [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>]
+ [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
+ [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
+ [-PlanProduct <String>] [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>]
+ [-LicenseType <String>] -IdentityType <ResourceIdentityType> [-SkuName <String>] [-PlanPromotionCode <String>]
  [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
  [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -37,10 +56,10 @@ The **Update-AzureRmVmss** cmdlet updates the state of a Virtual Machine Scale S
 
 ### Example 1: Update the state of a VMSS to the state of a local VMSS object.
 ```
-PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet "LocalVMSS"
+PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
 ```
 
-This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
+This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object, $LocalVMSS.
 
 ## PARAMETERS
 
@@ -166,19 +185,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityId
+Specifies the list of user identities associated with the virtual machine scale set.
+The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: String[]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
-Specify the identity for the virtual machine scale set.
+Specifies the type of identity used for the virtual machine scale set.
+The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
+The type 'None' will remove any identities from the virtual machine scale set.
 The acceptable values for this parameter are:
 
 - SystemAssigned
+- UserAssigned
+- SystemAssignedUserAssigned
+- None
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
-Accepted values: SystemAssigned
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
