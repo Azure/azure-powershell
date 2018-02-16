@@ -65,7 +65,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public EnvironmentSetupHelper()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var datastore = new MemoryDataStore();
+            IDataStore datastore = new MemoryDataStore();
+            if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
+            {
+                datastore = AzureSession.Instance.DataStore;
+            }
+
             AzureSession.Instance.DataStore = datastore;
             var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));

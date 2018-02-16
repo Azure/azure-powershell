@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -53,14 +52,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.ResourceGroupName = GetResourceGroupNameFromId(this.Id);
             }
-        }
-
-        protected string GetResourceGroupNameFromId(string idString)
-        {
-            var match = Regex.Match(idString, @"resourceGroups/([A-Za-z0-9\-]+)/");
-            return (match.Success)
-                ? match.Groups[1].Value
-                : null;
         }
     }
 }

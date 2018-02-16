@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhub
 schema: 2.0.0
 ---
 
