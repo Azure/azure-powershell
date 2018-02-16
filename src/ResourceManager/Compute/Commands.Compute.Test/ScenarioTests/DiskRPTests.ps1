@@ -56,8 +56,9 @@ function Test-Disk
         Assert-AreEqual "1" $diskconfig.Zones
         $diskconfig.Zones = $null
 
-        $job = New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig -AsJob
-		$job | Wait-Job
+        $job = New-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Get disk test
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
@@ -69,17 +70,23 @@ function Test-Disk
         Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
 
         # Grant access test
-        Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5;
-        Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname;
+        $job = Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $job = Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Config update test
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob
-		$job | Wait-Job
+        $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Remove test
-        $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob
-		$job | Wait-Job
+        $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
     }
     finally
     {
@@ -125,8 +132,9 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $snapshotconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob
-		$job | Wait-Job
+        $job = New-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
@@ -137,17 +145,23 @@ function Test-Snapshot
         Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
 
         # Grant access test
-        Grant-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5;
-        Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname;
+        $job = Grant-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Config update test
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
-        $job = Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob
-		$job | Wait-Job
+        $job = Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
 
         # Remove test
-        $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob
-		$job | Wait-Job
+        $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
     }
     finally
     {

@@ -120,11 +120,13 @@ namespace Microsoft.Azure.Commands.Network
                 // PublicIpAddress
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSPublicIpAddress, MNM.PublicIPAddress>();
+                cfg.CreateMap<CNM.PSPublicIpTag, MNM.IpTag>();
                 cfg.CreateMap<CNM.PSPublicIpAddressSku, MNM.PublicIPAddressSku>();
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+                cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
 
@@ -262,6 +264,24 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureReachabilityReportItem, CNM.PSAzureReachabilityReportItem>();
                 cfg.CreateMap<MNM.AzureReachabilityReportLatencyInfo, CNM.PSAzureReachabilityReportLatencyInfo>();
 
+                // ConnectionMonitor
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSConnectionMonitor, MNM.ConnectionMonitor>();
+                cfg.CreateMap<CNM.PSConnectionMonitorSource, MNM.ConnectionMonitorSource>();
+                cfg.CreateMap<CNM.PSConnectionMonitorDestination, MNM.ConnectionMonitorDestination>();
+                cfg.CreateMap<CNM.PSConnectionMonitorParameters, MNM.ConnectionMonitorParameters>();
+                cfg.CreateMap<CNM.PSConnectionMonitorResult, MNM.ConnectionMonitorResult>();
+                cfg.CreateMap<CNM.PSConnectionMonitorQueryResult, MNM.ConnectionMonitorQueryResult>();
+                cfg.CreateMap<CNM.PSConnectionStateSnapshot, MNM.ConnectionStateSnapshot>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ConnectionMonitor, CNM.PSConnectionMonitor>();
+                cfg.CreateMap<MNM.ConnectionMonitorSource, CNM.PSConnectionMonitorSource>();
+                cfg.CreateMap<MNM.ConnectionMonitorDestination, CNM.PSConnectionMonitorDestination>();
+                cfg.CreateMap<MNM.ConnectionMonitorParameters, CNM.PSConnectionMonitorParameters>();
+                cfg.CreateMap<MNM.ConnectionMonitorResult, CNM.PSConnectionMonitorResult>();
+                cfg.CreateMap<MNM.ConnectionMonitorQueryResult, CNM.PSConnectionMonitorQueryResult>();
+                cfg.CreateMap<MNM.ConnectionStateSnapshot, CNM.PSConnectionStateSnapshot>();
 
                 // LoadBalancer
                 // CNM to MNM

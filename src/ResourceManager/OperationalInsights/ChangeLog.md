@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+* Added support for V2 API querying via Invoke-AzureRmOperationalInsightsQuery. See [https://dev.loganalytics.io/](https://dev.loganalytics.io/) for more info on the new API.
+
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
