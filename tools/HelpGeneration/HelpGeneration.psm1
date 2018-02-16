@@ -17,7 +17,7 @@ function Generate-MarkdownHelp
     }
 
     $NewHelpFolderPath = "$ModuleFolderPath\temp_help"
-    $psd1 = Get-ChildItem $ModuleFolderPath | where { $_.Name -eq "$($ModuleFolder.Name).psd1" }    
+    $psd1 = Get-ChildItem $ModuleFolderPath | where { $_.Name -eq "$($ModuleFolder.Name).psd1" }
     Import-Module $psd1.FullName -Scope Global
     New-Item -Path $NewHelpFolderPath -ItemType Directory -Force | Out-Null
     Copy-Item -Path "$HelpFolderPath\*" -Destination $NewHelpFolderPath
@@ -46,7 +46,7 @@ function Compare-MarkdownHelp
         [String]$NewHelpFolderPath
     )
 
-    $comparatorInstance = New-Object MarkdownComparator.Comparator    
+    $comparatorInstance = New-Object MarkdownComparator.Comparator
     $OldHelpFolder = Get-Item $OldHelpFolderPath
     $errors = @()
     foreach ($oldFile in Get-ChildItem $OldHelpFolder)
@@ -56,7 +56,7 @@ function Compare-MarkdownHelp
         {
             continue;
         }
-        
+
         try
         {
             $result = $comparatorInstance.Compare($oldFile.FullName, $newFilePath)
@@ -89,7 +89,7 @@ function Validate-MarkdownHelp
     PROCESS
     {
         $HelpFolder = Get-Item $HelpFolderPath
-        $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv" | where { $_.Module -eq "$($HelpFolder.Parent.Name)" }
+        $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
         $MarkdownFiles = Get-ChildItem -Path $HelpFolder
         foreach ($file in $MarkdownFiles)
@@ -104,7 +104,7 @@ function Validate-MarkdownHelp
             $content = Get-Content $file.FullName
             for ($idx = 0; $idx -lt $content.Length; $idx++)
             {
-                switch -Wildcard ($content[$idx])
+                switch -Regex ($content[$idx])
                 {
                     "## SYNOPSIS"
                     {
@@ -188,32 +188,37 @@ function Validate-MarkdownHelp
                         }
 
                         # Check for the platyPS example template
-                        # 
+                        #
                         # ```
                         # PS C:\> {{ Add example code here }}
                         # ```
-                        # 
+                        #
                         if ($content[$idx+1] -contains "PS C:\> {{ Add example code here }}")
                         {
                             $fileErrors += "No examples found"
                         }
 
                         # Check for other missing example formats (such as empty)
-                        # 
+                        #
                         # ```
-                        # 
+                        #
                         # ```
-                        # 
+                        #
                         if ([string]::IsNullOrWhiteSpace("$($content[$idx+1])"))
                         {
                             $fileErrors += "No examples found"
                         }
                     }
-                    "*@{Text=}*"
+                    "@{Text=}"
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)
                         $fileErrors += "No description found for parameter $parameter"
+                    }
+                    ".``````yaml"
+                    {
+                        $parameter = $content[$idx-1].Substring(5)
+                        $fileErrors += "Trailing yaml string found in description for parameter $parameter"
                     }
                     default
                     {
@@ -221,21 +226,21 @@ function Validate-MarkdownHelp
                     }
                 }
             }
-            
+
             # If the markdown file had any missing help, add them to the list to be printed later
             if ($fileErrors.Count -gt 0)
             {
-                $fileExceptions = $Exceptions | where { $_.Target -eq "$file" }                
+                $fileExceptions = $Exceptions | where { $_.Target -eq "$file" }
                 $fileErrors | foreach {
                     $error = $_
 
                     if (($fileExceptions | where { $_.Description -eq "$error" }) -ne $null)
                     {
-                        # "Caught error - $($HelpFolder.Parent.Name),$file,$error"                        
+                        # "Caught error - $file,$error"
                     }
                     else
                     {
-                        $errors += "$($HelpFolder.Parent.Name),$file,$error"
+                        $errors += "$file,$error"
                     }
                 }
             }
@@ -262,12 +267,12 @@ function Generate-MamlHelp
     $MarkdownFiles = Get-ChildItem $HelpFolderPath
 
     # Generate the MAML help from the markdown files
-    New-ExternalHelp -Path $HelpFolderPath -OutputPath $HelpFolder.Parent.FullName -Force    
+    New-ExternalHelp -Path $HelpFolderPath -OutputPath $HelpFolder.Parent.FullName -Force
     $dir = Get-ChildItem $HelpFolder.Parent.FullName
     $MAML = $dir | Where { $_.FullName -like "*.dll-Help.xml*" }
-    
+
     # Modify the MAML (add spaces between examples)
-    $MAML | foreach { Modify-MamlHelp $HelpFolder $_ } 
+    $MAML | foreach { Modify-MamlHelp $HelpFolder $_ }
 }
 
 function Modify-MamlHelp

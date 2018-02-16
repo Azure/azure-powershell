@@ -23,10 +23,12 @@ The **Register-AzureRmResourceProvider** cmdlet registers an Azure resource prov
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a provider
+```
+PS C:\>Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-```
+This registers the Microsoft.Network provider for your account.
 
 ## PARAMETERS
 
