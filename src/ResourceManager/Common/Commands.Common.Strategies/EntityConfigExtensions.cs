@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => "/" + string.Join("/", id);
 
         public static string DefaultIdStr(this IEntityConfig config)
-            => config.GetIdStr(string.Empty);
+            => config.GetIdFromSubscription().IdToString();
 
         public static string GetResourceGroupName(this IEntityConfig config)
             => config.ResourceGroup?.Name ?? config.Name;
@@ -35,11 +35,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 ? resourceGroupId
                 : resourceGroupId.Concat(config.GetProvidersId());
         }
-
-        public static string GetIdStr(this IEntityConfig config, string subscription =null)
-            => new [] { "subscriptions", subscription }
-                .Concat(config.GetIdFromSubscription())
-                .IdToString();
 
         internal static IEnumerable<string> GetProvidersId(this IEntityConfig config)
             => new[] { "providers" }.Concat(config.GetIdFromResourceGroup());
