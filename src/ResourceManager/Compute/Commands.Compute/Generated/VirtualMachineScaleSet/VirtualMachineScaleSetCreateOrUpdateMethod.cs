@@ -177,8 +177,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                 name: LoadBalancerName,
-                froontendPoolName: FrontendPoolName,
-                backendPoolName: BackendPoolName,
+                // froontendPoolName: FrontendPoolName,
+                // backendPoolName: BackendPoolName,
                 zones: Zone,
                 publicIPAddress: publicIpAddress,
                 subnet: subnet);
