@@ -35,6 +35,7 @@
 * Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
 * Added EnableHttp2 flag to Application Gateway
     - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
 
 ## Version 5.1.1
 * Fix overwrite message 'Are you sure you want to overwriteresource'
