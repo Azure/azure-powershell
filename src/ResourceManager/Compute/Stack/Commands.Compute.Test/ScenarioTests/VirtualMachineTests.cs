@@ -122,20 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
         }
 
-        [Fact(Skip = "Not suported in Azure stack")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePlan()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan");
-        }
-
-        [Fact(Skip = "Not suported in Azure stack")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePlan2()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineTags()
