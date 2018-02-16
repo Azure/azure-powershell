@@ -308,6 +308,39 @@ function Test-RaByUpn
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
+<#
+.SYNOPSIS
+Tests verifies creation and deletion of a RoleAssignments for User Principal Name with expand principal groups
+#>
+function Test-RaGetByUPNWithExpandPrincipalGroups
+{
+    # Setup
+    $definitionName = 'Contributor'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("355f2d24-c0e6-43d2-89a7-027e51161d0b")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -SignInName $users[0].UserPrincipalName `
+                        -RoleDefinitionName $definitionName `
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
+    
+    $assignments = Get-AzureRmRoleAssignment -SignInName $users[0].UserPrincipalName -ExpandPrincipalGroups
+
+    Assert-NotNull $assignments
+    foreach ($assignment in $assignments){
+        Assert-NotNull $assignment
+        Assert-AreEqual $assignment.SignInName $users[0].UserPrincipalName
+    }
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+    
+    VerifyRoleAssignmentDeleted $newAssignment
+}
+
 <# .SYNOPSIS Tests validate correctness of returned permissions when logged in as the assigned user  #> 
 function Test-RaUserPermissions 
 { 
