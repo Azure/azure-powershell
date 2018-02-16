@@ -49,5 +49,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithVolumeMount");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithDnsNameLabel()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithDnsNameLabel");
+        }
     }
 }

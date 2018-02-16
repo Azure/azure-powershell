@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public string IpAddressType { get; set; }
 
         /// <summary>
+        /// Gets or sets the DNS name label.
+        /// </summary>
+        public string DnsNameLabel { get; set; }
+
+        /// <summary>
         /// Gets or sets the ports.
         /// </summary>
         public int[] Ports { get; set; }

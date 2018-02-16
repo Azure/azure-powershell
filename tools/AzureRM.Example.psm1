@@ -38,6 +38,10 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
         Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock $sb
     }
 }
+else
+{
+    %PSVersionDeprecationMessage%
+}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 

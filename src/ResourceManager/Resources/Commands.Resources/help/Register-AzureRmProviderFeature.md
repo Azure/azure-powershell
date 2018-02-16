@@ -23,10 +23,12 @@ The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider featu
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a feature
+```
+PS C:\>Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
-```
+This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
 
 ## PARAMETERS
 
