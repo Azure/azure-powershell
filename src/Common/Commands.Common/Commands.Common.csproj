@@ -111,6 +111,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAttributes\BreakingChangeBaseAttribute.cs" />
+    <Compile Include="CustomAttributes\BreakingChangeAttributeHelper.cs" />
+    <Compile Include="CustomAttributes\CmdLetDeprecationMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletMetadataChangeMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdLetOutputDeprecationMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdLetOutputPropertiesChangeMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdLetParameterDeprecationMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletParameterMandatoryStatusChangeAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletParameterMetadataChangeMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdLetParameterOrderChangeAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletParameterTypeChangeMarkerAttribute.cs" />
     <Compile Include="LongRunningJobCancelledException.cs" />
     <Compile Include="ShouldMethodInvoker.cs" />
     <Compile Include="AzureLongRunningJob.cs" />
