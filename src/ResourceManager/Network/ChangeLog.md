@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,7 +19,6 @@
 --->
 
 ## Current Release
-* Fix overwrite message 'Are you sure you want to overwriteresource'
 * Added cmdlet to create a new connection monitor
     - New-AzureRmNetworkWatcherConnectionMonitor
 * Added cmdlet to update a connection monitor
@@ -40,6 +39,10 @@
 * Add IpTags to PublicIpAddress
     - Updated New-AzureRmPublicIpAddress: Added IpTags
     - New-AzureRmPublicIpTag to add Iptag
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
+
+## Version 5.1.1
+* Fix overwrite message 'Are you sure you want to overwriteresource'
 
 ## Version 5.1.0
 * Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
