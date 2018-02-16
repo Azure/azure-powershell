@@ -63,6 +63,13 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressCRUDIpTag()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-IpTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicIpAddressIpVersion()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressIpVersion");
