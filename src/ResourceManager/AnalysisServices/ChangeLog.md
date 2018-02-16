@@ -19,7 +19,9 @@
 -->
 ## Current Release
 * Fixed issue with importing aliases
-* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+
+## Version 0.6.3
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 
 ## Version 0.6.2
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

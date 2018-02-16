@@ -92,8 +92,9 @@ function Convert-NupkgToZip (
         $null = New-Item -ItemType directory -Path $outputPath -ErrorAction Stop
     }
 
-    $modulePathFilters = $moduleList | ForEach-Object { 
-        $nupkgPath = Join-Path $path "${_}*.nupkg" 
+    $modulePathFilters = $moduleList | ForEach-Object {
+        # https://msdn.microsoft.com/en-us/library/aa717088(v=vs.85).aspx
+        $nupkgPath = Join-Path $path "${_}.[0-9]*.nupkg"
         @{Name = $_; Path = $nupkgPath; Exists = Test-Path $nupkgPath}
     }
     # https://stackoverflow.com/a/26559478/294804
