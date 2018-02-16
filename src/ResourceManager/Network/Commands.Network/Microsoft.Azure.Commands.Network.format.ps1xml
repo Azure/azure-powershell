@@ -2726,7 +2726,7 @@
                 <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TargetUrls</Label>
+                <Label>TargetFqdn</Label>
                 <PropertyName>TargetUrlsText</PropertyName>
               </ListItem>
               <ListItem>

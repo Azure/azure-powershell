@@ -410,7 +410,6 @@
     <Compile Include="RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
     <Compile Include="RouteTable\SetAzureRMRouteTableCommand.cs" />
     <Compile Include="SecureGateway\ApplicationRuleCollection\NewAzureSecureGatewayApplicationRuleCollectionCommand.cs" />
-    <Compile Include="SecureGateway\ApplicationRuleProtocol\NewAzureSecureGatewayApplicationRuleProtocolCommand.cs" />
     <Compile Include="SecureGateway\ApplicationRule\NewAzureSecureGatewayApplicationRuleCommand.cs" />
     <Compile Include="SecureGateway\GetAzureSecureGatewayCommand.cs" />
     <Compile Include="SecureGateway\NetworkRuleAction\NewAzureSecureGatewayNetworkRuleActionCommand.cs" />
@@ -418,7 +417,6 @@
     <Compile Include="SecureGateway\NetworkRule\NewAzureSecureGatewayNetworkRuleCommand.cs" />
     <Compile Include="SecureGateway\NewAzureSecureGatewayCommand.cs" />
     <Compile Include="SecureGateway\RemoveAzureSecureGatewayCommand.cs" />
-    <Compile Include="SecureGateway\ApplicationRuleAction\NewAzureSecureGatewayApplicationRuleActionCommand.cs" />
     <Compile Include="SecureGateway\SecureGatewayBaseCmdlet.cs" />
     <Compile Include="SecureGateway\SetAzureSecureGatewayCommand.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
