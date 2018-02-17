@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.OsType,
