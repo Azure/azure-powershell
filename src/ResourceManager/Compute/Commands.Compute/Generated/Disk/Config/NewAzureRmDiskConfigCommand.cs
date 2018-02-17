@@ -209,7 +209,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
-
             var vDisk = new PSDisk
             {
                 Zones = this.Zone,

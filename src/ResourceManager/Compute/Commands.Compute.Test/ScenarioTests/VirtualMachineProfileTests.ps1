@@ -18,6 +18,8 @@ Test Virtual Machine Profile
 #>
 function Test-VirtualMachineProfile
 {
+    Get-AzureRmVmss -ResourceGroupName "fakeresource" -VMScaleSetName "fakevmss" -ErrorAction SilentlyContinue
+
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
