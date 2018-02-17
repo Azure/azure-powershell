@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
             HelpMessage = Constants.HelpMessages.DisplayName)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName, ValueFromPipeline = false)]
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; } = null;

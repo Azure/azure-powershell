@@ -88,7 +88,7 @@ With the `Expand` flag, one can navigate through the `Children` array and get de
 
 ### Example 4: Get specific Management Group and all levels of hiearchy
 ```
-PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand
+PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent

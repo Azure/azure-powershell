@@ -24,7 +24,7 @@ The **New-AzureRMManagementGroupSubscription** cmdlet adds a Subscription to a M
 
 ### Example 1: Add Subscription to a Management Group
 ```
-PS C:\> Add-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
+PS C:\> New-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 ```
 
 ## PARAMETERS
