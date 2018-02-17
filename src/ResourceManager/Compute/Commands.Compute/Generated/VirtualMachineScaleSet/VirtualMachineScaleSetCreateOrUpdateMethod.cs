@@ -20,19 +20,15 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using Microsoft.Azure.Commands.Compute.Strategies.Network;
+using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
@@ -160,56 +156,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
             PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            DomainNameLabel = DomainNameLabel ?? (VMScaleSetName + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
             LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
-            // get image
-            bool isWindows;
-            Commands.Common.Strategies.Compute.Image image;
-            if (ImageName.Contains(':'))
-            {
-                var imageArray = ImageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new Exception("Invalid ImageName");
-                }
-                image = new Commands.Common.Strategies.Compute.Image
-                {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
-                };
-                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
-            }
-            else
-            {
-                // get image
-                var osTypeAndImage = Images
-                    .Instance
-                    .SelectMany(osAndMap => osAndMap
-                        .Value
-                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                        .Select(nameAndImage => new
-                        {
-                            OsType = osAndMap.Key,
-                            Image = nameAndImage.Value
-                        }))
-                    .FirstOrDefault();
-                image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
-            }
-
-            BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
             
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -239,27 +197,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 subnet: subnet,
                 frontendIpConfigurations: new[] { frontendIpConfiguration },
                 backendAdressPool: backendAddressPool,
-                isWindows: isWindows,
+                getImageAndOsType: () => imageAndOsType,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
-                upgradeMode: (MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode") == true ) ? UpgradePolicyMode : (UpgradeMode?) null);
+                upgradeMode: MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode")
+                    ? UpgradePolicyMode 
+                    : (UpgradeMode?) null);
 
             var client = new Client(DefaultProfile.DefaultContext);
 
             // get current Azure state
             var current = await virtualMachineScaleSet.GetStateAsync(client, new CancellationToken());
 
-            if (Location == null)
-            {
-                Location = current.GetLocation(virtualMachineScaleSet);
-                if (Location == null)
-                {
-                    Location = "eastus";
-                }
-            }
+            Location = current.UpdateLocation(Location, virtualMachineScaleSet);
+
+            imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
+
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: VMScaleSetName,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
             var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
 
@@ -269,7 +232,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                    target,
                    new CancellationToken(),
                    new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
+                   asyncCmdlet.ReportTaskProgress);
 
             var result = newState.Get(virtualMachineScaleSet);
             if(result == null)
@@ -280,7 +243,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (result != null)
             {
                 var psObject = new PSVirtualMachineScaleSet();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
+                psObject.FullyQualifiedDomainName = fqdn;
                 asyncCmdlet.WriteObject(psObject);
             }
         }

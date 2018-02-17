@@ -16,18 +16,22 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using Microsoft.Azure.Commands.Compute.Strategies.Network;
+using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
@@ -41,7 +45,6 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
-using SM = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -201,6 +204,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string AvailabilitySetName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -226,51 +233,9 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            bool isWindows;
-            Commands.Common.Strategies.Compute.Image image = null;
-            if (ImageName.Contains(':'))
-            {
-                var imageArray = ImageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new Exception("Invalid ImageName");
-                }
-                image = new Commands.Common.Strategies.Compute.Image
-                {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
-                };
-                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
-            }
-            else if (!string.IsNullOrEmpty(DiskFile))
-            {
-                // disk file parameter set requires the OS type input
-                isWindows = !Linux;
-            }
-            else
-            {
-                // get image
-                var osTypeAndImage = Images
-                    .Instance
-                    .SelectMany(osAndMap => osAndMap
-                        .Value
-                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                        .Select(nameAndImage => new
-                        {
-                            OsType = osAndMap.Key,
-                            Image = nameAndImage.Value
-                        }))
-                    .FirstOrDefault();
-                image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
-            }
-            
-            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -278,37 +243,59 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
-                openPorts: OpenPorts);
+                openPorts: OpenPorts,
+                getOsType: () => imageAndOsType.OsType);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
-            ResourceConfig<VirtualMachine> virtualMachine = null;
 
-            if (image != null)
+            var availabilitySet = AvailabilitySetName == null 
+                ? null
+                : resourceGroup.CreateAvailabilitySetConfig(name: AvailabilitySetName);
+
+            ResourceConfig<VirtualMachine> virtualMachine = null;
+            if (DiskFile == null)
             {
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: networkInterface,
-                    isWindows: isWindows,
+                    getImageAndOsType: () => imageAndOsType,
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                    image: image,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
             else
             {
+                var resourceClient =
+                        AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+                if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
+                {
+                    var st0 = resourceClient.ResourceGroups.CreateOrUpdate(ResourceGroupName, new ResourceGroup
+                    {
+                        Location = Location,
+                        Name = ResourceGroupName
+                    });
+                }
+                imageAndOsType = new ImageAndOsType(
+                    Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
+                    null);
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
-                var st1 = storageClient.StorageAccounts.Create(ResourceGroupName, Name, new StorageAccountCreateParameters
+                var st1 = storageClient.StorageAccounts.Create(
+                    ResourceGroupName,
+                    Name,
+                    new StorageAccountCreateParameters
                 {
 #if !NETSTANDARD
                     AccountType = AccountType.PremiumLRS,
 #else
-                    Sku = new SM.Sku
+                    Sku = new Microsoft.Azure.Management.Storage.Models.Sku
                     {
                         Name = SkuName.PremiumLRS
                     },
@@ -325,24 +312,35 @@ namespace Microsoft.Azure.Commands.Compute
                         Math.DivRem(filePath.Length, divisor, out rem);
                         if (rem != 0)
                         {
-                            throw new ArgumentOutOfRangeException("filePath", string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
+                            throw new ArgumentOutOfRangeException(
+                                "filePath",
+                                string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
                         }
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
                 BlobUri destinationUri = null;
-                BlobUri.TryParseUri(new Uri(string.Format("{0}{1}/{2}{3}", storageAccount.PrimaryEndpoints.Blob, Name.ToLower(), Name.ToLower(), ".vhd")), out destinationUri);
+                BlobUri.TryParseUri(
+                    new Uri(string.Format(
+                        "{0}{1}/{2}{3}",
+                        storageAccount.PrimaryEndpoints.Blob,
+                        ResourceGroupName.ToLower(),
+                        Name.ToLower(),
+                        ".vhd")),
+                    out destinationUri);
                 if (destinationUri == null || destinationUri.Uri == null)
                 {
                     throw new ArgumentNullException("destinationUri");
                 }
-                var storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
+                var storageCredentialsFactory = new StorageCredentialsFactory(
+                    this.ResourceGroupName, storageClient, DefaultContext.Subscription);
                 var parameters = new UploadParameters(destinationUri, null, filePath, true, 2)
                 {
                     Cmdlet = this,
                     BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
                 };
-                if (!string.Equals(Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(
+                    Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
                 {
                     var st2 = VhdUploaderModel.Upload(parameters);
                 }
@@ -353,9 +351,10 @@ namespace Microsoft.Azure.Commands.Compute
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: networkInterface,
-                    isWindows: isWindows,
+                    osType: imageAndOsType.OsType,
                     disk: disk,
-                    size: Size);
+                    size: Size,
+                    availabilitySet: availabilitySet);
             }
 
             var client = new Client(DefaultProfile.DefaultContext);
@@ -363,19 +362,29 @@ namespace Microsoft.Azure.Commands.Compute
             // get current Azure state
             var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
 
-            if (Location == null)
+            Location = current.UpdateLocation(Location, virtualMachine);
+
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: Name,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+
+            if (DiskFile == null)
             {
-                Location = current.GetLocation(virtualMachine);
-                if (Location == null)
-                {
-                    Location = "eastus";
-                }
+                imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
             }
 
-            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
-
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);          
+            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
+
+            if (target.Get(availabilitySet) != null)
+            {
+                throw new InvalidOperationException("Availability set doesn't exist.");
+            }
 
             // apply target state
             var newState = await virtualMachine
@@ -395,7 +404,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(isWindows
+                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
                     ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
                     : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
                 asyncCmdlet.WriteObject(psResult);
@@ -452,7 +461,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
-
                         var currentBginfoVersion = GetBginfoExtension();
 
                         if (!string.IsNullOrEmpty(currentBginfoVersion))

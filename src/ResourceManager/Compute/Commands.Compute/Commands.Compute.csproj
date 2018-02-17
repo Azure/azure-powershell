@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.0.1\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -272,16 +272,19 @@
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Strategies\AsyncCmdletExtensions.cs" />
     <Compile Include="Strategies\Client.cs" />
-    <Compile Include="Strategies\Compute\ComputeStrategy.cs" />
-    <Compile Include="Strategies\Compute\Image.cs" />
-    <Compile Include="Strategies\Compute\Images.cs" />
-    <Compile Include="Strategies\Compute\VirtualMachineScaleSetStrategy.cs" />
-    <Compile Include="Strategies\Compute\VirtualMachineStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
+    <Compile Include="Strategies\ComputeRp\Images.cs" />
+    <Compile Include="Strategies\ComputeRp\VirtualMachineScaleSetStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
     <Compile Include="Strategies\Network\LoadBalancerStrategy.cs" />
-    <Compile Include="Strategies\Compute\ManagedDiskStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\ManagedDiskStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
     <Compile Include="Strategies\Network\NetworkStrategy.cs" />
@@ -399,7 +402,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
