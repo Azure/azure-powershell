@@ -14,10 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface INestedResourceConfig : IEntityConfig
+    public interface INestedResourceStrategy : IEntityStrategy
     {
-        new INestedResourceStrategy Strategy { get; }
-
-        IEntityConfig Parent { get; }
     }
 }
