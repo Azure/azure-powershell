@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
             createModel(engine);
             // create config.
             return strategy.CreateConfig(
-                resourceGroup.Name,
+                resourceGroup,
                 name,
                 createModel,
                 engine

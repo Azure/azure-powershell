@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public ResourceStrategy<TModel> Strategy { get; }
 
+        // It has to be ResourceConfig<ResourceGroup>.
         public IResourceConfig ResourceGroup { get; }
 
         public string Name { get; }
