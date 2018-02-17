@@ -20,6 +20,9 @@
 -->
 ## Current Release
 
+## Version 0.6.1
+* Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
+
 ## Version 0.6.0
 * Added below new commandlets for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
