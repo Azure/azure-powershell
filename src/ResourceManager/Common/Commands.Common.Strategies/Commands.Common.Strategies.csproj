@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="DependencyEngine.cs" />
+    <Compile Include="INestedResourceConfig.cs" />
     <Compile Include="SdkEngine.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="IResourceConfig.cs" />
