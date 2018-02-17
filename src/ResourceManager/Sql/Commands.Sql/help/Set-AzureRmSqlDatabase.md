@@ -163,13 +163,12 @@ The acceptable values for this parameter are:
 - Basic
 - Standard
 - DataWarehouse
-- Free
 
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: Update
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
 
 Required: False
 Position: Named
