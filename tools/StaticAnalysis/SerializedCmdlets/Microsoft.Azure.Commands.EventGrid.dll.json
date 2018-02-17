@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -37,7 +37,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -154,7 +154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -576,7 +576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -684,7 +684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -727,7 +727,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -1183,7 +1183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -2001,7 +2001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -2223,7 +2223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -2625,7 +2625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -2668,7 +2668,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
               "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -3087,7 +3087,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
                     "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -3785,7 +3785,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3800,7 +3800,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EventTypes": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]",
               "SupportedLocations": "System.Collections.Generic.IEnumerable`1[System.String]",
@@ -3975,7 +3975,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -3997,7 +3997,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4395,7 +4395,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -4549,7 +4549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -4714,7 +4714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5077,7 +5077,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5273,7 +5273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -5529,7 +5529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -5784,7 +5784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -5936,7 +5936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -6014,7 +6014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
             "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -6269,7 +6269,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
                   "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopic, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -6543,7 +6543,7 @@
     "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance": {
       "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
       "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Destination": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionDestination",
         "Filter": "Microsoft.Azure.Management.EventGrid.Models.EventSubscriptionFilter",
@@ -6702,7 +6702,7 @@
     "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance": {
       "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
       "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EventTypes": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Management.EventGrid.Models.EventType]",
         "SupportedLocations": "System.Collections.Generic.IEnumerable`1[System.String]",
@@ -6755,7 +6755,7 @@
     "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance": {
       "Namespace": "Microsoft.Azure.Commands.EventGrid.Models",
       "Name": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "ResourceGroupName": "System.String",
