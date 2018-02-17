@@ -90,6 +90,8 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\PSLinkedIntegrationRuntime.cs" />
+    <Compile Include="Models\PSLinkedIntegrationRuntimeStatus.cs" />
     <Compile Include="Models\UpdatePSDataFactoryParameters.cs" />
     <Compile Include="Models\PSManagedIntegrationRuntimeNode.cs" />
     <Compile Include="Models\PSSelfHostedIntegrationRuntimeNode.cs" />

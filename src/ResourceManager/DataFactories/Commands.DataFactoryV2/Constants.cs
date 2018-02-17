@@ -120,6 +120,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
 
+        public const string HelpIntegrationRuntimeAuthKey = "The authentication key of the self-hosted integration runtime.";
+
         public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
 
         public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
@@ -168,9 +170,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
 
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
         public const string IntegrationRuntimeAutoUpdateEnabled = "On";
 
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
+
+        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
+
+        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
 
         public const string TriggerName = "TriggerName";
 

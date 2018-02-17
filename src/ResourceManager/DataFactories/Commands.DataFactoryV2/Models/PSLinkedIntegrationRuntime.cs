@@ -12,30 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
-    public class PSSelfHostedIntegrationRuntime : PSIntegrationRuntime
+    public class PSLinkedIntegrationRuntime : PSSelfHostedIntegrationRuntime
     {
-        public PSSelfHostedIntegrationRuntime(
+        public PSLinkedIntegrationRuntime(
             IntegrationRuntimeResource integrationRuntime,
             string resourceGroupName,
             string factoryName)
             : base(integrationRuntime, resourceGroupName, factoryName)
         {
-            if (IntegrationRuntime.Properties == null)
-            {
-                IntegrationRuntime.Properties = new SelfHostedIntegrationRuntime();
-            }
-
-            if (SelfHostedIntegrationRuntime == null)
-            {
-                throw new PSArgumentException("The resource is not a valid self-hosted integration runtime.");
-            }
         }
 
-        protected SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
+        public string AuthorizationType { get; set; }
     }
 }
