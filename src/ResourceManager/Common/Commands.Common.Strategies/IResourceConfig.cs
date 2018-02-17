@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IEnumerable<IEntityConfig> Dependencies { get; }
 
+        IList<INestedResourceConfig> NestedResources { get; }
+
         TResult Accept<TContext, TResult>(
             IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
     }

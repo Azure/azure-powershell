@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// <typeparam name="TModel"></typeparam>
     /// <typeparam name="TParenModel"></typeparam>
     public sealed class NestedResourceConfig<TModel, TParenModel> : 
-        INestedResourceConfig<TParenModel>,
+        INestedResourceConfig,
         IEntityConfig<TModel>
         where TModel : class
         where TParenModel : class
@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
+        IEntityConfig INestedResourceConfig.Parent => Parent;
+
         public NestedResourceConfig(
             NestedResourceStrategy<TModel, TParenModel> strategy,            
             IEntityConfig<TParenModel> parent,
@@ -54,6 +56,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Name = name;
             Parent = parent;
             CreateModel = createModel;
+
+            // register itself in the resource.
+            Parent.Resource.NestedResources.Add(this);
         }
 
         public IEnumerable<string> GetId(string subscription)

@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public interface INestedResourceConfig<TParentModel> : IEntityConfig
-        where TParentModel : class
+    public interface INestedResourceConfig : IEntityConfig
     {
-        IEntityConfig<TParentModel> Parent { get; }
+        IEntityConfig Parent { get; }
     }
 }
