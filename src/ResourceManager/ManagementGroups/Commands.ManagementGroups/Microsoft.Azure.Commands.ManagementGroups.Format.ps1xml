@@ -49,7 +49,7 @@
               <ListItem>
                 <Label>Children</Label>
                 <ItemSelectionCondition><ScriptBlock>$_.Children -ne $null</ScriptBlock></ItemSelectionCondition>
-                <ScriptBlock>$_.Children</ScriptBlock>
+                <ScriptBlock>$displayNames=@(); foreach ($child in $_.Children){$displayNames+=$child.DisplayName}; $displayNames</ScriptBlock>
               </ListItem> 
             </ListItems>
           </ListEntry>
@@ -79,7 +79,10 @@
               </ListItem>
               <ListItem>
                 <Label>Children</Label>
-                <PropertyName>Children</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Children -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$displayNames=@(); foreach ($child in $_.Children){$displayNames+=$child.DisplayName}; $displayNames</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

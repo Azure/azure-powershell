@@ -43,7 +43,7 @@ The **Update-AzureRMManagementGroup** cmdlet updates the **ParentId** or **Displ
 
 ## EXAMPLES
 
-### Example 1: Update Management Group DisplayName
+### Example 1: Update a Management Group's Display Name
 ```
 PS C:\> Update-AzureRMManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
 
@@ -58,7 +58,7 @@ ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ```
 
-### Example 2: Update Management Group ParentId
+### Example 2: Update a Management Group's Parent
 ```
 PS C:\> Update-AzureRMManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
@@ -69,6 +69,37 @@ TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
+ParentDisplayName : TestGroupParent
+```
+
+### Example 3: Update a Management Group by piping PSManagementGroup Object
+```
+PS C:\> Get-AzureRmManagementGroup -GroupName "TestGroup" | Update-AzureRMManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
+
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup
+Type              : /providers/Microsoft.Management/managementGroups
+Name              : TestGroup
+TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+DisplayName       : TestDisplayName
+UpdatedTime       : 2/1/2018 12:03:37 PM
+UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
+ParentDisplayName : TestGroupParent
+```
+
+### Example 4: Update a Management Group's parent using the ParentObject
+```
+PS C:\> $parentObject = Get-AzureRmManagementGroup -GroupName "TestGroupParent"
+PS C:\> Update-AzureRmManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
+
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup
+Type              : /providers/Microsoft.Management/managementGroups
+Name              : TestGroup
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+DisplayName       : TestGroupDisplayName
+UpdatedTime       : 2/1/2018 11:16:12 AM
+UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentDisplayName : TestGroupParent
 ```

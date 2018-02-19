@@ -13,11 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.ManagementGroups;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ManagementGroups.Common
 {
@@ -45,6 +50,97 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
             }
             set { _managementGroupsApiClient = value; }
 
+        }
+
+        public void PreregisterSubscription(string subscriptionId)
+        {
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Subscription != null)
+            {
+                if (subscriptionId == context.Subscription.Id)
+                {
+                    return;
+                }
+
+                short RetryCount = 10;
+                string providerName = "Microsoft.Management";
+                try
+                {
+                    var rmclient = new ResourceManagementClient(
+                        context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                        AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager))
+                    {
+                        SubscriptionId = subscriptionId
+                    };
+                    var provider = rmclient.Providers.Get(providerName);
+                    if (provider.RegistrationState != RegistrationState.Registered)
+                    {
+                        short retryCount = 0;
+                        do
+                        {
+                            if (retryCount++ > RetryCount)
+                            {
+                                throw new TimeoutException();
+                            }
+                            provider = rmclient.Providers.Register(providerName);
+                            TestMockSupport.Delay(2000);
+                        } while (provider.RegistrationState != RegistrationState.Registered);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e.Message?.IndexOf("does not have authorization") >= 0 && e.Message?.IndexOf("register/action",
+                            StringComparison.InvariantCultureIgnoreCase) >= 0)
+                    {
+                        throw new CloudException(e.Message);
+                    }
+                }
+            }
+        }
+
+        public void PreregisterSubscription()
+        {
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Subscription != null)
+            {
+                short RetryCount = 10;
+                string providerName = "Microsoft.Management";
+                try
+                {
+                    var rmclient = new ResourceManagementClient(
+                        context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                        AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager))
+                    {
+                        SubscriptionId = context.Subscription.Id
+                    };
+                    var provider = rmclient.Providers.Get(providerName);
+                    if (provider.RegistrationState != RegistrationState.Registered)
+                    {
+                        short retryCount = 0;
+                        do
+                        {
+                            if (retryCount++ > RetryCount)
+                            {
+                                throw new TimeoutException();
+                            }
+                            provider = rmclient.Providers.Register(providerName);
+                            TestMockSupport.Delay(2000);
+                        } while (provider.RegistrationState != RegistrationState.Registered);
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e.Message?.IndexOf("does not have authorization") >= 0 && e.Message?.IndexOf("register/action",
+                            StringComparison.InvariantCultureIgnoreCase) >= 0)
+                    {
+                        throw new CloudException(e.Message);
+                    }
+                }
+            }
         }
     }
 }

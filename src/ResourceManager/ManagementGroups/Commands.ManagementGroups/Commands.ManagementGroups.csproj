@@ -53,10 +53,7 @@
     <Compile Include="Cmdlets\GetAzureRmManagementGroup.cs" />
     <Compile Include="Cmdlets\RemoveAzureRmManagementGroupSubscription.cs" />
     <Compile Include="Cmdlets\UpdateAzureRmManagementGroup.cs" />
-    <Compile Include="Common\AzureManagementGroupAutoRegisterCmdletBase.cs" />
-    <Compile Include="Common\AzurePrecheckRegistrationAndAutoRegisterDelegatingHandler.cs" />
     <Compile Include="Common\AzureManagementGroupsCmdletBase.cs" />
-    <Compile Include="Common\AzurePrecheckRegistrationAndAutoRegisterCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utility.cs" />
     <Compile Include="Models\PSManagementGroup.cs" />

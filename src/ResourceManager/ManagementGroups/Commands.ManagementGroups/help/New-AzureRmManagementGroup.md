@@ -37,29 +37,29 @@ PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
-UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          :
-ParentDisplayName :
+UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ```
 
 Creation of a new group with `DisplayName` and `ParentId` set to `null`. The `DisplayName` will be same as the `GroupName` and the parent of the group will be the tenant.  
 
-### Example 2: Create a Management Group with a parent
+### Example 2: Create a Management Group with a display name
 ```
 PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
-UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          :
-ParentDisplayName :
+UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ```
 
 In this case, the parent of the group will be the tenant and the `DisplayName` will be set to the value given.
@@ -71,10 +71,26 @@ PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -DisplayName "TestGrou
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
+UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
+ParentDisplayName : TestGroupParent
+```
+
+### Example 4: Create a Management Group with a parent (using a parent object)
+```
+PS C:\> $parentObject = Get-AzureRmManagementGroup -GroupName "TestGroupParent"
+PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
+
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup
+Type              : /providers/Microsoft.Management/managementGroups
+Name              : TestGroup
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+DisplayName       : TestGroupDisplayName
+UpdatedTime       : 2/1/2018 11:16:12 AM
+UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentDisplayName : TestGroupParent
 ```

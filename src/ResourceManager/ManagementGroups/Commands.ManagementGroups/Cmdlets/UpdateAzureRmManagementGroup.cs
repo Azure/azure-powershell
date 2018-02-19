@@ -82,6 +82,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.UpdateManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.UpdateManagementGroupShouldProcessAction, GroupName)))
                 {
+                    PreregisterSubscription();
+
                     CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
                     var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, createGroupRequest);
                     WriteObject(new PSManagementGroup(response));

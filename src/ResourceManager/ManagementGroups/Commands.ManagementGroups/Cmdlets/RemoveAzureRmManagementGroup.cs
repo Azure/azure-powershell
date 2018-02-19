@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.RemoveManagementGroupShouldProcessTarget, GroupName),
                         string.Format(Resource.RemoveManagementGroupShouldProcessAction, GroupName)))
                 {
+                    PreregisterSubscription();
+
                     ManagementGroupsApiClient.ManagementGroups.Delete(GroupName);
 
                     if (PassThru.IsPresent)

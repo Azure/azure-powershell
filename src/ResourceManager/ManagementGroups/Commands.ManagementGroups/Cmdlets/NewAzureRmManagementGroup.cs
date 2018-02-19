@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
 using Microsoft.Azure.Management.ManagementGroups;
@@ -61,6 +62,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
                         string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName), 
                         string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
+                    PreregisterSubscription();
+
                     CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
                     var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
                     WriteObject(new PSManagementGroup(response));

@@ -34,6 +34,11 @@ The **Remove-AzureRmManagementGroup** cmdlet deletes a Management Group.
 PS C:\> Remove-AzureRmManagementGroup -GroupName "TestGroup"
 ```
 
+### Example 2 - Remove a Management Group by piping PSManagementGroup Object
+```
+PS C:\> Get-Remove-AzureRmManagementGroup -GroupName "TestGroup" | Remove-AzureRmManagementGroup
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile

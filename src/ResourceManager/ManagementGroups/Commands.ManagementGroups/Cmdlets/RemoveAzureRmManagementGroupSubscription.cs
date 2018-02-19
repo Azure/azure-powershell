@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupAutoRegisterCmdletBase
+    public class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
@@ -47,20 +47,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
-                IAzureContext context;
-                if (TryGetDefaultContext(out context)
-                    && context.Account != null
-                    && context.Subscription != null)
-                {
-                    if (context.Subscription.Id != SubscriptionId.ToString())
-                    {
-                        Utility.AzureManagementGroupAutoRegisterSubscription(SubscriptionId.ToString(), context);
-                    }
-                }
                 if (ShouldProcess(
                         string.Format(Resource.RemoveManagementGroupSubShouldProcessTarget, SubscriptionId,GroupName),
                         string.Format(Resource.RemoveManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
+                    PreregisterSubscription();
+                    PreregisterSubscription(SubscriptionId.ToString());
+
                     ManagementGroupsApiClient.ManagementGroupSubscriptions.Delete(GroupName, SubscriptionId.ToString());
 
                     if (PassThru.IsPresent)

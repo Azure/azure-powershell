@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ManagementGroups.Common;
 using Microsoft.Azure.Commands.ManagementGroups.Models;
 using Microsoft.Azure.Management.ManagementGroups;
@@ -46,6 +47,8 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
+                PreregisterSubscription();
+
                 if (!string.IsNullOrEmpty(GroupName))
                 {
                     var response = ManagementGroupsApiClient.ManagementGroups.Get(GroupName, Expand.IsPresent?"children":null, Recurse.IsPresent);

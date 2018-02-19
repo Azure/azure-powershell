@@ -65,42 +65,5 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Common
                 throw ex;
             }
         }
-
-        public static void AzureManagementGroupAutoRegisterSubscription(string subcriptionId, IAzureContext context)
-        {
-            short RetryCount = 10;
-            string providerName = "Microsoft.Management";
-            try
-            {
-                var rmclient = new ResourceManagementClient(
-                            context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager))
-                {
-                    SubscriptionId = subcriptionId
-                };
-                var provider = rmclient.Providers.Get(providerName);
-                if (provider.RegistrationState != RegistrationState.Registered)
-                {
-                    short retryCount = 0;
-                    do
-                    {
-                        if (retryCount++ > RetryCount)
-                        {
-                            throw new TimeoutException();
-                        }
-                        provider = rmclient.Providers.Register(providerName);
-                        TestMockSupport.Delay(2000);
-                    } while (provider.RegistrationState != RegistrationState.Registered);
-                }
-            }
-            catch (Exception e)
-            {
-                if (e.Message?.IndexOf("does not have authorization") >= 0 && e.Message?.IndexOf("register/action",
-                        StringComparison.InvariantCultureIgnoreCase) >= 0)
-                {
-                    throw new CloudException(e.Message);
-                }
-            }
-        }
     }
 }

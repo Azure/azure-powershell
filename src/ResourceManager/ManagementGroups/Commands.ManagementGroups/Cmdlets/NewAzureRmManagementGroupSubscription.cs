@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
     [Cmdlet(VerbsCommon.New, "AzureRmManagementGroupSubscription",
          DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
          SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class NewAzureRmManagementGroupSubscription : AzureManagementGroupAutoRegisterCmdletBase
+    public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
@@ -46,20 +46,13 @@ namespace Microsoft.Azure.Commands.ManagementGroups.Cmdlets
         {
             try
             {
-                IAzureContext context;
-                if (TryGetDefaultContext(out context)
-                    && context.Account != null
-                    && context.Subscription != null)
-                {
-                    if (context.Subscription.Id != SubscriptionId.ToString())
-                    {
-                        Utility.AzureManagementGroupAutoRegisterSubscription(SubscriptionId.ToString(), context);
-                    }
-                }
                 if (ShouldProcess(
                     string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
                     string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
+                    PreregisterSubscription();
+                    PreregisterSubscription(SubscriptionId.ToString());
+                    
                     ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
 
                     if (PassThru.IsPresent)
