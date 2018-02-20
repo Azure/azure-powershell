@@ -384,11 +384,11 @@ function Assert-AreNotEqual
 
 ###################
 #
-# Verify that the actual string starts with the expected prefi
+# Verify that the actual string starts with the expected prefix
 #
 #    param [object] $expectedPrefix : The expected prefix
 #    param [object] $actual         : The actual string
-#    param [string] $message        : The message to return if the given objects are equal
+#    param [string] $message        : The message to return if the actual string does not begin with the prefix
 ####################
 function Assert-StartsWith
 {
