@@ -326,6 +326,7 @@
           <TableColumnHeader>
             <Label>Name</Label>
             <Alignment>Left</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublicAccess</Label>

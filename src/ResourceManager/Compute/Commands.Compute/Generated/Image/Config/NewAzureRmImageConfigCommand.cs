@@ -106,7 +106,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vStorageProfile.DataDisks = this.DataDisk;
             }
 
-
             var vImage = new PSImage
             {
                 Location = this.Location,

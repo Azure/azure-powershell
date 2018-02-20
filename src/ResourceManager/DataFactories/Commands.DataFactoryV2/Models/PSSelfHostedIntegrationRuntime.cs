@@ -36,6 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
-        private SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
+        protected SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
     }
 }
