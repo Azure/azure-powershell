@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public IEnumerable<IEntityConfig> Dependencies { get; }
 
-        IList<INestedResourceConfig> IResourceConfig.NestedResources { get; }
+        public IList<INestedResourceConfig> NestedResources { get; }
             = new List<INestedResourceConfig>();
 
         IEntityStrategy IEntityConfig.Strategy => Strategy;
