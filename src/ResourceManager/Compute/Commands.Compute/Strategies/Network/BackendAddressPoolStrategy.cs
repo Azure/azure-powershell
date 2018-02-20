@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static NestedResourceConfig<BackendAddressPool, LoadBalancer> CreateBackendAddressPool(
             this ResourceConfig<LoadBalancer> loadBalancer,
             string name)
-                => Strategy.CreateConfig(
-                    parent: loadBalancer,
-                    name: name);
+            => loadBalancer.CreateNested(
+                strategy: Strategy,
+                name: name);
     }
 }

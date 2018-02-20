@@ -82,7 +82,6 @@
     <Compile Include="IEntityConfigVisitor.cs" />
     <Compile Include="IEntityStrategy.cs" />
     <Compile Include="IState.cs" />
-    <Compile Include="NestedResourceConfigExtensions.cs" />
     <Compile Include="ResourceConfigExtensions.cs" />
     <Compile Include="StateExtensions.cs" />
     <Compile Include="NestedResourceConfig.cs" />

@@ -38,5 +38,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         TResult Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context);
+
+        void AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)
+            where TNestedModel : class;
     }
 }
