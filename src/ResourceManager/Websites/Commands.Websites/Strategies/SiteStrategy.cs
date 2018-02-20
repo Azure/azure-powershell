@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
     {
         public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
             type: "Site",
-            provider: "AppService",
+            provider: "sites",
             getOperations: client => client.Sites,
             getAsync: (o, p) => o.GetSiteAsync(p.ResourceGroupName, p.Name, null, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateSiteAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: c => c.LastModifiedTimeUtc != null ? 240 : 120);
+            createTime: _ => 120);
 
-        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => Strategy.CreateConfig(plan.ResourceGroupName, siteName,
+        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => Strategy.CreateConfig(resourceGroup.ResourceGroupName, siteName,
             createModel: subscription =>
-            new Site {SiteName = siteName, Name = siteName, ServerFarmId = plan.GetId(subscription).IdToString()},
-            dependencies: new List<IEntityConfig> { plan, resourceGroup });
+                new Site {SiteName = siteName, Name = siteName, ServerFarmId = plan.GetId(subscription).IdToString()},
+            dependencies: new IEntityConfig[] { plan, resourceGroup });
     }
 }

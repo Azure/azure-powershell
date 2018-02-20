@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Func<TModel, int> createTime) where TModel : Resource
             => ResourceStrategy.Create(
                 type: type,
-                providers: new[] {"Microsoft.AppService", provider},
+                providers: new[] {"Microsoft.Web", provider},
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,

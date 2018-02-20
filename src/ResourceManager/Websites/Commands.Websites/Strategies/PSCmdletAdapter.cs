@@ -70,23 +70,31 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         ConcurrentQueue<ProgressRecord> _progress = new ConcurrentQueue<ProgressRecord>();
 
+        ConcurrentDictionary<string, double> _activity = new ConcurrentDictionary<string, double>();
+
         object _lock = new object();
 
-        int _complete = 0, _hasMessages = 0;
+        int _hasMessages = 0;
 
         protected int Retries { get; set; }
 
         public TimeSpan RetryInterval { get; set; }
 
+        public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
+
         public Task<bool> ShouldChangeAsync(string target, string action)
         {
             var process = new ShouldProcessPrompt { Target = target, Message = action, Completer = new TaskCompletionSource<bool>() };
+            _process.Enqueue(process);
+            _hasMessages = 1;
             return process.Completer.Task;
         }
 
         public Task<bool> ShouldContinueChangeAsync(string query, string caption)
         {
             var process = new ShouldContinuePrompt { Query = query, Caption = caption, Completer = new TaskCompletionSource<bool>() };
+            _continue.Enqueue(process);
+            _hasMessages = 1;
             return process.Completer.Task;
         }
 
@@ -94,6 +102,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             var error = new ErrorRecord(exception, "ExecutionException", ErrorCategory.InvalidOperation, exception.TargetSite);
             _error.Enqueue(error);
+            _hasMessages = 1;
         }
 
         public void WriteVerboseAsync(string verboseMessage)
@@ -123,10 +132,15 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         public void ReportTaskProgress(ITaskProgress taskProgress)
         {
             var progress = 0.0;
-            if (!taskProgress.IsDone)
+            var config = taskProgress.Config;
+            string key = config.Name + " " + config.Strategy.Type;
+            if (_activity.ContainsKey(key))
             {
+                progress = _activity[key];
             }
+
             progress += taskProgress.GetProgress();
+            _activity[key] = progress;
             var percent = (int)(progress * 100.0);
             var r = new[] { "|", "/", "-", "\\" };
             var x = r[DateTime.Now.Second % 4];
@@ -145,76 +159,64 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         public void Complete()
         {
-            _complete = 1;
+        }
+
+        void PollForResults(bool drainQueues = false)
+        {
+            if (drainQueues || Interlocked.Exchange(ref _hasMessages, 0) == 1)
+            {
+                ShouldProcessPrompt process;
+                while (_process.TryDequeue(out process))
+                {
+                    process.Completer.TrySetResult(CommandRuntime.ShouldProcess(process.Target, process.Message));
+                }
+
+                ShouldContinuePrompt shouldContinue;
+                while (_continue.TryDequeue(out shouldContinue))
+                {
+                    shouldContinue.Completer.TrySetResult(CommandRuntime.ShouldContinue(shouldContinue.Query, shouldContinue.Caption));
+                }
+
+                ErrorRecord exception;
+                while (_error.TryDequeue(out exception))
+                {
+                    CommandRuntime.WriteError(exception);
+                }
+
+                CmdletOutput output;
+                while (_output.TryDequeue(out output))
+                {
+                    CommandRuntime.WriteObject(output.Output, output.Enumerate);
+                }
+
+                string logMessage;
+                while (_warning.TryDequeue(out logMessage))
+                {
+                    CommandRuntime.WriteWarning(logMessage);
+                }
+
+                while (_verbose.TryDequeue(out logMessage))
+                {
+                    CommandRuntime.WriteVerbose(logMessage);
+                }
+
+                while (_debug.TryDequeue(out logMessage))
+                {
+                    CommandRuntime.WriteDebug(logMessage);
+                }
+
+                ProgressRecord progress;
+                while (_progress.TryDequeue(out progress))
+                {
+                    CommandRuntime.WriteProgress(progress);
+                }
+            }
         }
 
         public void WaitForCompletion(Func<ICmdletAdapter, Task> taskFactory)
         {
-            var task  = taskFactory(this);
-            if (task.Status == TaskStatus.Created)
-            {
-                task.Start();
-            }
-
-            while (Interlocked.Exchange(ref _complete, 0) != 1 && !task.IsCompleted)
-            {
-                if (Interlocked.Exchange(ref _hasMessages, 0) == 1)
-                {
-                    ShouldProcessPrompt process;
-                    while (_process.TryDequeue(out process))
-                    {
-                        process.Completer.TrySetResult(CommandRuntime.ShouldProcess(process.Target, process.Message));
-                    }
-
-                    ShouldContinuePrompt shouldContinue;
-                    while (_continue.TryDequeue(out shouldContinue))
-                    {
-                        shouldContinue.Completer.TrySetResult(CommandRuntime.ShouldContinue(shouldContinue.Query, shouldContinue.Caption));
-                    }
-
-                    ErrorRecord exception;
-                    while (_error.TryDequeue(out exception))
-                    {
-                        CommandRuntime.WriteError(exception);
-                    }
-
-                    CmdletOutput output;
-                    while (_output.TryDequeue(out output))
-                    {
-                        CommandRuntime.WriteObject(output.Output, output.Enumerate);
-                    }
-
-                    string logMessage;
-                    while (_warning.TryDequeue(out logMessage))
-                    {
-                        CommandRuntime.WriteWarning(logMessage);
-                    }
-
-                    while (_verbose.TryDequeue(out logMessage))
-                    {
-                        CommandRuntime.WriteVerbose(logMessage);
-                    }
-
-                    while (_debug.TryDequeue(out logMessage))
-                    {
-                        CommandRuntime.WriteDebug(logMessage);
-                    }
-
-                    ProgressRecord progress;
-                    while (_progress.TryDequeue(out progress))
-                    {
-                        CommandRuntime.WriteProgress(progress);
-                    }
-
-                }
-
-                Thread.Yield();
-            }
-
-            if (task.IsFaulted)
-            {
-                throw task.Exception.GetBaseException();
-            }
+            Scheduler.Wait(taskFactory(this), () => PollForResults());
+            PollForResults(true);
         }
 
         public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model) where TModel : class
@@ -224,12 +226,14 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         public void WriteObjectAsync(object output)
         {
-            WriteObjectAsync(false);
+            WriteObjectAsync(output, false);
         }
 
         public void WriteObjectAsync(object output, bool enumerateCollection)
         {
             _output.Enqueue(new CmdletOutput { Output = output, Enumerate = enumerateCollection });
+            _hasMessages = 1;
+
         }
 
         protected ICommandRuntime CommandRuntime { get; set; }
