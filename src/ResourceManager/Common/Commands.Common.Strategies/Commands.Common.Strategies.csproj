@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="DependencyEngine.cs" />
+    <Compile Include="INestedResourceConfig.cs" />
+    <Compile Include="INestedResourceStrategy.cs" />
     <Compile Include="SdkEngine.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="IResourceConfig.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="IEntityConfigVisitor.cs" />
     <Compile Include="IEntityStrategy.cs" />
     <Compile Include="IState.cs" />
-    <Compile Include="NestedResourceConfigExtensions.cs" />
     <Compile Include="ResourceConfigExtensions.cs" />
     <Compile Include="StateExtensions.cs" />
     <Compile Include="NestedResourceConfig.cs" />

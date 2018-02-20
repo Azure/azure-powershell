@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class NestedResourceStrategy<TModel, TParentModel> : IEntityStrategy
+    public sealed class NestedResourceStrategy<TModel, TParentModel> : INestedResourceStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 

@@ -16,8 +16,30 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+--->
+
 ## Current Release
+* Added cmdlet to create a new connection monitor
+    - New-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to update a connection monitor
+    - Set-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to get connection monitor or connection monitor list
+    - Get-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to query connection monitor
+    - Get-AzureRmNetworkWatcherConnectionMonitorReport
+* Added cmdlet to start connection monitor
+    - Start-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to stop connection monitor
+    - Stop-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to remove connection monitor
+    - Remove-AzureRmNetworkWatcherConnectionMonitor
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add IpTags to PublicIpAddress
+    - Updated New-AzureRmPublicIpAddress: Added IpTags
+    - New-AzureRmPublicIpTag to add Iptag
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
 
 ## Version 5.1.1
 * Fix overwrite message 'Are you sure you want to overwriteresource'

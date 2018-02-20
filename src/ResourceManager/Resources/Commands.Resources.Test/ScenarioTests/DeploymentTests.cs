@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedErrorsDisplayed()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NestedErrorsDisplayed");
@@ -76,18 +78,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithParameterObject()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithParameterObject");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithDynamicParameters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithDynamicParameters");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithInvalidParameters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithInvalidParameters");

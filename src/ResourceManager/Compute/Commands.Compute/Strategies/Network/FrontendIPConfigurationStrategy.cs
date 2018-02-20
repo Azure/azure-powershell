@@ -29,13 +29,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
-            this ResourceConfig<LoadBalancer> loadBalancer, 
+            this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
             IList<string> zones,
             ResourceConfig<PublicIPAddress> publicIPAddress,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet)
-                => Strategy.CreateConfig(
-                    parent: loadBalancer,
+                => loadBalancer.CreateNested(
+                    strategy: Strategy,
                     name: name,
                     createModel: engine => CreateFrontendIpConfig(
                         froontendPoolName: name,

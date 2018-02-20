@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IResourceConfig IEntityConfig.Resource => this;
 
+        IList<INestedResourceConfig<TModel>> _NestedResources { get; }
+            = new List<INestedResourceConfig<TModel>>();
+
         public ResourceConfig(
             ResourceStrategy<TModel> strategy,
             IResourceConfig resourceGroup,
@@ -62,6 +65,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 ? Enumerable.Empty<string>()
                 : new[] { Strategy.Type.Namespace, Strategy.Type.Provider, Name };
 
+        public NestedResourceConfig<TNestedModel, TModel> CreateNested<TNestedModel>(
+            NestedResourceStrategy<TNestedModel, TModel> strategy,
+            string name,
+            Func<IEngine, TNestedModel> createModel = null)
+            where TNestedModel : class, new()
+            => new NestedResourceConfig<TNestedModel, TModel>(
+                this, strategy, name, createModel ?? (_ => new TNestedModel()));
+
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
@@ -73,5 +84,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         TResult IResourceConfig.Accept<TContext, TResult>(
             IResourceConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
+
+        void IEntityConfig<TModel>.AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)
+            => _NestedResources.Add(config);
     }
 }
