@@ -137,8 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false)]
+            Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
         [Parameter(
