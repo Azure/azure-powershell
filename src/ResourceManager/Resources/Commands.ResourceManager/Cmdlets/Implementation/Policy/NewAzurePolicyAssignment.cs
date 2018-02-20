@@ -128,6 +128,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy assignment. This can either be a path to a file name containing the metadata, or the metadata as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -197,7 +204,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
-                    Parameters = this.GetParameters()
+                    Parameters = this.GetParameters(),
+                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
                 }
             };
 
