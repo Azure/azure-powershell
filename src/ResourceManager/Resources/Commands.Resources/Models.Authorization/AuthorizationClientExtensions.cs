@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -117,7 +118,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()));
-            List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            List<PSADObject> adObjects = null;
+            try
+            {
+                adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            }
+            catch (CloudException ce) {
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized && ce.Error.Code.Equals("Authorization_RequestDenied",StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
+                }
+
+                throw;
+            }
 
             foreach (RoleAssignment assignment in assignments)
             {
