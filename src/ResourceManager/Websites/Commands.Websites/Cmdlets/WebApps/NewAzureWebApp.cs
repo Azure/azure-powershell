@@ -35,6 +35,9 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml;
 using Microsoft.Azure.Commands.WebApps.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -188,16 +191,72 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
         }
 
+        private async Task<ServerFarmWithRichSku> GetDefaultServerFarm()
+        {
+            var farms = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
+            var defaultFarm = farms.FirstOrDefault(sf => string.Equals(sf.Sku.Tier, "Free", StringComparison.OrdinalIgnoreCase)) ?? farms.FirstOrDefault();
+            ServerFarmWithRichSku result = null;
+            if (defaultFarm != null)
+            {
+                string defaultResourceGroup, defaultName;
+                if (TryGetServerFarmFromResourceId(defaultFarm.Id, out defaultResourceGroup, out defaultName))
+                {
+                    result = new ServerFarmWithRichSku(location: defaultFarm.Location, resourceGroup: defaultResourceGroup, name: defaultName, serverFarmWithRichSkuName: defaultName);
+                }
+            }
+
+            return result;
+        }
+
+        bool TryGetServerFarmFromResourceId(string serverFarm, out string resourceGroup, out string serverFarmName)
+        {
+            bool result = false;
+            resourceGroup = null;
+            serverFarmName = null;
+            if (!string.IsNullOrEmpty(serverFarm) && serverFarm.ToLower().Contains("microsoft.web/serverfarms"))
+            {
+                var parts = serverFarm.Split( new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length > 7)
+                {
+                    resourceGroup = parts[3];
+                    serverFarmName = parts[7];
+                    result = !string.IsNullOrWhiteSpace(resourceGroup) && !string.IsNullOrWhiteSpace(serverFarmName);
+                }
+            }
+
+            return result;
+        }
+
         public async Task CreateWithSimpleParameters(ICmdletAdapter adapter)
         {
             string trafficManagerProfielId = IsResource(TrafficManagerProfile) ? TrafficManagerProfile : null;
             string trafficManagerProfileName = IsResource(TrafficManagerProfile) ? null : TrafficManagerProfile;
             ResourceGroupName = ResourceGroupName ?? Name;
             AppServicePlan = AppServicePlan ?? Name;
+            string planResourceGroup = ResourceGroupName;
+            string planName = AppServicePlan;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
+            {
+                if (!TryGetServerFarmFromResourceId(AppServicePlan, out planResourceGroup, out planName))
+                {
+                    planResourceGroup = ResourceGroupName;
+                    planName = AppServicePlan;
+                }
+            }
+            else
+            {
+                var farm = await GetDefaultServerFarm();
+                if (farm != null)
+                {
+                    planResourceGroup = farm.ResourceGroup;
+                    planName = farm.ServerFarmWithRichSkuName;
+                }
+            }
+
 
             var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            var farmStrategy = ServerFarmStreategy.CreateServerFarmConfig(rgStrategy, AppServicePlan);
-            var siteStrategy = SiteStrategy.CreateSiteConfig(rgStrategy, farmStrategy, Name);
+            var farmStrategy = rgStrategy.CreateServerFarmConfig(planResourceGroup, planName);
+            var siteStrategy = rgStrategy.CreateSiteConfig(farmStrategy, Name);
             var client = new WebClient(DefaultContext);
 
             var current = await siteStrategy.GetStateAsync(client, default(CancellationToken));
@@ -209,23 +268,41 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             var target = siteStrategy.GetTargetState(current, DefaultContext.Subscription.Id, Location);
             var endState = await siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), adapter, adapter.ReportTaskProgress);
             var output = endState.Get(siteStrategy) ?? current.Get(siteStrategy);
-            var git = new GitCommand();
-            var repository = await git.VerifyGitRepository(GitRepositoryPath);
-            if (repository != null)
+            try
             {
-                if (!await git.CheckExistence())
+                var git = new GitCommand(this.SessionState.Path);
+                var repository = await git.VerifyGitRepository(GitRepositoryPath);
+                if (repository != null)
                 {
-                    adapter.WriteWarningAsync(git.InstallationInstructions);
+                    if (!await git.CheckExistence())
+                    {
+                        adapter.WriteWarningAsync(git.InstallationInstructions);
+                    }
+                    else
+                    {
+                        var scmHostName = output.EnabledHostNames.FirstOrDefault(s => s.Contains(".scm."));
+                        if (!string.IsNullOrWhiteSpace(scmHostName))
+                        {
+                            var profile = await WebsitesClient.WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlAsync(output.ResourceGroup, output.SiteName, new CsmPublishingProfileOptions { Format = "WebDeploy" });
+                            var doc = new XmlDocument();
+                            doc.Load(profile);
+                            var userName = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userName").Value;
+                            var password = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userPWD").Value;
+                            if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
+                            {
+                                await git.AddRemoteRepository("azure", $"http://{userName}:{password}@{scmHostName}");
+                                var newOutput = new PSSite(output);
+                                newOutput.LocalGitRepo = "Use 'git push azure master' to push local changes to this website.";
+                                output = newOutput;
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    var profile = await WebsitesClient.WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlAsync(output.ResourceGroup, output.SiteName, new CsmPublishingProfileOptions { Format = "WebDeploy" });
-                    var doc = new XmlDocument();
-                    doc.Load(profile);
-                    var userName = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userName").Value;
-                    var password = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userPWD").Value;
-                    await git.AddRemoteRepository("azure", $"http://{userName}:{password}@{output.EnabledHostNames.First()}");
-                }
+            }
+            catch (Exception exception)
+            {
+                // do not write errors for problems with adding git repository
+                adapter.WriteWarningAsync(exception.Message);
             }
 
             adapter.WriteObjectAsync(output);
@@ -257,6 +334,48 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             var result = ResourcesClient.ProvisionDeploymentStatus(ResourceGroupName, deploymentName, deployment);
             WriteObject(result.ToPSResourceGroupDeployment(ResourceGroupName));
         }
+    }
+
+    public class PSSite: Site
+    {
+        public PSSite(Site other) 
+            : base(
+                  location: other.Location,
+                  id: other.Id,
+                  name: other.Name,
+                  type: other.Type,
+                  tags:other.Tags,
+                  siteName: other.SiteName,
+                  state: other.State,
+                  hostNames: other.HostNames,
+                  repositorySiteName: other.RepositorySiteName,
+                  usageState: other.UsageState, 
+                  enabled: other.Enabled,
+                  enabledHostNames: other.EnabledHostNames,
+                  availabilityState: other.AvailabilityState,
+                  hostNameSslStates: other.HostNameSslStates, serverFarmId: other.ServerFarmId,
+                  lastModifiedTimeUtc: other.LastModifiedTimeUtc,
+                  siteConfig: other.SiteConfig,
+                  trafficManagerHostNames: other.TrafficManagerHostNames,
+                  premiumAppDeployed: other.PremiumAppDeployed, scmSiteAlsoStopped: other.ScmSiteAlsoStopped,
+                  targetSwapSlot: other.TargetSwapSlot,
+                  hostingEnvironmentProfile: other.HostingEnvironmentProfile,
+                  microService: other.MicroService,
+                  gatewaySiteName: other.GatewaySiteName,
+                  clientAffinityEnabled: other.ClientAffinityEnabled,
+                  clientCertEnabled: other.ClientCertEnabled,
+                  hostNamesDisabled: other.HostNamesDisabled,
+                  outboundIpAddresses: other.OutboundIpAddresses,
+                  containerSize: other.ContainerSize,
+                  maxNumberOfWorkers: other.MaxNumberOfWorkers,
+                  cloningInfo: other.CloningInfo,
+                  resourceGroup: other.ResourceGroup,
+                  isDefaultContainer: other.IsDefaultContainer,
+                  defaultHostName: other.DefaultHostName)
+        {
+        }
+
+        public string LocalGitRepo { get; set; }
     }
 }
 

@@ -18,20 +18,21 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
-    static class ServerFarmStreategy
+    static class ServerFarmStrategy
     {
-        public static ResourceStrategy<ServerFarmWithRichSku> Strategy { get; } = AppServicePolicy.Create<ServerFarmWithRichSku, IServerFarmsOperations>(
+        public static ResourceStrategy<ServerFarmWithRichSku> Strategy { get; } = AppServicePolicy.Create(
             type: "ServerFarm",
-            provider: "AppService",
+            provider: "serverFarms",
             getOperations: client => client.ServerFarms,
             getAsync: (o, p) => o.GetServerFarmAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateServerFarmAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: c => 120);
+            createTime: _ => 120);
 
         public static ResourceConfig<ServerFarmWithRichSku> CreateServerFarmConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
+            string resourceGroupName,
             string name) => Strategy.CreateConfig(
-                resourceGroup.Name,
+                resourceGroupName,
                 name,
                 createModel: subscription => 
                     new ServerFarmWithRichSku
@@ -39,6 +40,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                         Name = name,
                         Sku = new SkuDescription {Tier = "Free", Capacity = 1, Name = CmdletHelpers.GetSkuName("Free", 1) }
                     },
-                dependencies: new[] { resourceGroup });
+                dependencies: new IEntityConfig[] { resourceGroup });
     }
 }

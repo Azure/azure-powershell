@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public class GitCommand : ExternalCommand
     {
-        public GitCommand() : base("git.exe")
+        public GitCommand(PathIntrinsics currentPath) : base(currentPath, "git.exe")
         {
         }
 
@@ -40,9 +40,8 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public Task<string> VerifyGitRepository(string path = null)
         {
-            var session = new SessionState();
-            var basePath = session.Path.CurrentFileSystemLocation.Path;
-            var searchPath = path == null ? basePath : session.Path.NormalizeRelativePath(path, basePath);
+            var basePath = Path.CurrentFileSystemLocation.Path;
+            var searchPath = path == null ? basePath : Path.NormalizeRelativePath(path, basePath);
             var dirPath = Path.Combine(searchPath, ".git");
             return Task.FromResult(Directory.Exists(dirPath) ? dirPath : null);
         }
@@ -98,6 +97,10 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             return tree.Split('\n');
         }
 
+        public override Task<bool> CheckExistence(string command = null)
+        {
+            return base.CheckExistence("--version");
+        }
 
     }
 }

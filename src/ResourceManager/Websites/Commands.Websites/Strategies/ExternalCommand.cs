@@ -24,15 +24,17 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
     public abstract class ExternalCommand
     {
 
-        public ExternalCommand(string commandName)
+        public ExternalCommand(PathIntrinsics path, string commandName)
         {
+            Path = path;
             Name = commandName;
         }
         public string Name { get; protected set; }
 
+        protected PathIntrinsics Path { get; set; }
+
         protected virtual ProcessStartInfo GetStartInfo(string arguments)
         {
-            var session = new SessionState();
             return new ProcessStartInfo
             {
                 FileName = Name,
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
                 CreateNoWindow = true,
-                WorkingDirectory = session.Path.CurrentFileSystemLocation.Path,
+                WorkingDirectory = Path.CurrentFileSystemLocation.Path,
                 Arguments = arguments
             };
         }
@@ -53,9 +55,9 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             return process;
         }
 
-        public Task<bool> CheckExistence()
+        public virtual Task<bool> CheckExistence(string command = null)
         {
-            var check = GetProcess(null);
+            var check = GetProcess(command);
             var completer= new TaskCompletionSource<bool>();
             check.Exited += (state, sender) => completer.TrySetResult(check.ExitCode == 0);
             check.Start();
