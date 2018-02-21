@@ -288,13 +288,14 @@ function Test-RaByServicePrincipal
 
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0272ecd2-580e-4560-a59e-fd9ed330ee31")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment1 = New-AzureRmRoleAssignment `
                         -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
 
+    $definitionName = 'Contributor'
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("d953d793-bc25-49e9-818b-5ce68f3ff5ed")
     $newAssignment2 = New-AzureRmRoleAssignment `
                         -ApplicationId $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
@@ -305,7 +306,7 @@ function Test-RaByServicePrincipal
 
     # cleanup 
     DeleteRoleAssignment $newAssignment1
-    
+
     # cleanup 
     DeleteRoleAssignment $newAssignment2
 
