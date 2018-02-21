@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSSecureGateway : PSTopLevelResource
     {
+        private const string SecureGatewaySubnetName = "SecureGatewaySubnet";
+        private const int SecureGatewaySubnetMinSize = 25;
+        private const string SecureGatewayIpConfigurationName = "SecureGatewayIpConfiguration";
+
         public List<PSSecureGatewayIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSSecureGatewayApplicationRuleCollection> ApplicationRuleCollections { get; set; }
@@ -38,6 +42,39 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ApplicationRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
+        }
+
+        public void AddVirtualNetwork(PSVirtualNetwork virtualNetwork)
+        {
+            if (virtualNetwork == null)
+            {
+                throw new ArgumentNullException(nameof(virtualNetwork), $"Virtual Network cannot be null!");
+            }
+
+            PSSubnet secGwSubnet = null;
+            try
+            {
+                secGwSubnet = virtualNetwork.Subnets.Single(subnet => SecureGatewaySubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named SecureGatewaySubnet");
+            }
+
+            var subnetSize = int.Parse(secGwSubnet.AddressPrefix.Split(new[] { '/' })[1]);
+            if (subnetSize > SecureGatewaySubnetMinSize)
+            {
+                throw new ArgumentException($"The AddressPrefix ({secGwSubnet.AddressPrefix}) of the SecureGatewaySubnet os the referenced Virtual Network must be at least /{SecureGatewaySubnetMinSize}");
+            }
+
+            this.IpConfigurations = new List<PSSecureGatewayIpConfiguration>
+                {
+                    new PSSecureGatewayIpConfiguration
+                    {
+                        Name = SecureGatewayIpConfigurationName,
+                        Subnet = new PSResourceId { Id = secGwSubnet.Id }
+                    }
+                };
         }
 
         public void AddApplicationRuleCollection(PSSecureGatewayApplicationRuleCollection ruleCollection)
