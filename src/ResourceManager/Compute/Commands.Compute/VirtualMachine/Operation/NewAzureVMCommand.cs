@@ -242,7 +242,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
-            var passwordValue = new NetworkCredential(string.Empty, Credential.Password).Password;
+            var passwordValue = Credential != null 
+                ? new NetworkCredential(string.Empty, Credential.Password).Password
+                : null;
 
             var password = AsArmTemplate ? "[parameters('password')]" : passwordValue;
 
