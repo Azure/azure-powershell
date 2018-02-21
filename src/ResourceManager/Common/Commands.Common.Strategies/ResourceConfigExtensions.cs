@@ -74,5 +74,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static IEnumerable<IResourceConfig> GetResourceDependencies(
             this IResourceConfig config)
             => config.Dependencies.Select(d => d.Resource);
+
+        public static string GetFullName(this IResourceConfig config)
+            => config.Strategy.Type.Provider + "/" + config.Name; 
     }
 }
