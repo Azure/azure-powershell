@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
                                 name = config.Name,
                                 type = config.Strategy.GetResourceType(),
                                 apiVersion = config.Strategy.GetApiVersion(Client),
-                                location = config.Strategy.GetLocation(model),
+                                location = config.Strategy.Location.Get(model),
                                 properties = jsonModel["properties"] as JObject,
                                 dependsOn = dependencies
                                     .Where(d => d.ResourceGroup != null)
