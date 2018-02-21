@@ -96,17 +96,13 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Compute\Commands.Compute\Commands.Compute.csproj">
-      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
-      <Name>Commands.Compute</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.Compute.ManagedService.psd1">
       <Link>AzureRM.Compute.ManagedService.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ConvertTo-AzureRmVhd.psm1">
+    <None Include="AzureRM.Compute.ManagedService.psm1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Tools\ConvertTo-AzureRmVhd.ps1">

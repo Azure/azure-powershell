@@ -163,7 +163,6 @@ Specifies the edition to assign to the database. The acceptable values for this 
 - Basic
 - Standard
 - DataWarehouse
-- Free
 
 ```yaml
 Type: DatabaseEdition

@@ -37,6 +37,12 @@ function Create-ModulePsm1
      $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
      $file = Get-Item $manifestPath
      Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+     if ($ModuleMetadata.RootModule)
+     {
+         # Do not create a psm1 file if the RootModule dependency already has one.
+         return
+     }
+     
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
      [string]$importedModules
      if ($ModuleMetadata.RequiredModules -ne $null)
@@ -66,6 +72,24 @@ function Create-ModulePsm1
      $template = $template -replace "%MODULE-NAME%", $file.BaseName
      $template = $template -replace "%DATE%", [string](Get-Date)
      $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
+
+     if ($ModulePath -like "*Profile*")
+     {
+        $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
+        $template = $template -replace "%PSVersionDeprecationMessage%", 
+            "`$SpecialFolderPath = Join-Path -Path ([Environment]::GetFolderPath('ApplicationData')) -ChildPath 'Windows Azure Powershell' `
+            `$DeprecationFile = Join-Path -Path `$SpecialFolderPath -ChildPath 'PSDeprecationWarning.txt' `
+            if (!(Test-Path `$DeprecationFile)) { `
+                Write-Warning $WarningMessage `
+                try { `
+                $WarningMessage | Out-File -FilePath `$DeprecationFile `
+                } catch {} `
+            }"
+     }
+     else
+     {
+         $template = $template -replace "%PSVersionDeprecationMessage%", ""
+     }
 
      $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
      $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
