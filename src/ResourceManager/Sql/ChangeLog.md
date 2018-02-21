@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
 
 ## Version 4.2.0
 * Update the Auditing commands parameters description
