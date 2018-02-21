@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 
         public static ResourceStrategy<LoadBalancer> Strategy { get; }
             = NetworkStrategy.Create(
-                "load balancer",
                 "loadBalancers",
                 client => client.LoadBalancers,
                 (o, p) => o.GetAsync(

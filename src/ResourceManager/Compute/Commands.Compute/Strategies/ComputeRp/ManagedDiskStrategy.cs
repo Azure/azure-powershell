@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<Disk> Strategy { get; }
             = ComputePolicy.Create(
-                type: "disk",
                 provider: "disks",
                 getOperations: client => client.Disks,
                 getAsync: (o, p) => o.GetAsync(

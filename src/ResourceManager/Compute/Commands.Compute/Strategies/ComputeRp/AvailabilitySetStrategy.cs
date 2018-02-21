@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<AvailabilitySet> Strategy { get; }
             = ComputePolicy.Create(
-                type: "availability set",
                 provider: "availabilitySets",
                 getOperations: client => client.AvailabilitySets,
                 getAsync: (o, p) => o.GetAsync(

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine",
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachines,
                 getAsync: (o, p) => o.GetAsync(

@@ -46,6 +46,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         void AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)
             where TNestedModel : class;
 
-        IEnumerable<INestedResourceConfig<TModel>> NestedResources { get; }
+        new IEnumerable<INestedResourceConfig<TModel>> NestedResources { get; }
     }
 }
