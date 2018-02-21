@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -37,6 +38,30 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ApplicationRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
+        }
+
+        public void AddApplicationRuleCollection(PSSecureGatewayApplicationRuleCollection ruleCollection)
+        {
+            // Validate
+            if (this.ApplicationRuleCollections != null)
+            {
+                if (this.ApplicationRuleCollections.Any(rc => rc.Name.Equals(ruleCollection.Name)))
+                {
+                    throw new ArgumentException($"Application Rule Collection names must be unique. {ruleCollection.Name} name is already used.");
+                }
+
+                var samePriorityRuleCollections = this.ApplicationRuleCollections.Where(rc => rc.Priority == ruleCollection.Priority);
+                if (samePriorityRuleCollections.Any())
+                {
+                    throw new ArgumentException($"Application Rule Collection priorities must be unique. Priority {ruleCollection.Priority} is already used by Rule Collection {samePriorityRuleCollections.First().Name}.");
+                }
+            }
+            else
+            {
+                this.ApplicationRuleCollections = new List<PSSecureGatewayApplicationRuleCollection>();
+            }
+
+            this.ApplicationRuleCollections.Add(ruleCollection);
         }
 
         public PSSecureGatewayApplicationRuleCollection GetApplicationRuleCollectionByName(string ruleCollectionName)
