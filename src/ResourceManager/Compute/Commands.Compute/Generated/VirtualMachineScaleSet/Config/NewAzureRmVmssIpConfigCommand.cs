@@ -70,8 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false)]
         public SwitchParameter Primary { get; set; }
 
         [Parameter(
