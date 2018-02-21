@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> CreateOrUpdateAsync
         { get; }
 
-        public Func<TModel, string> GetLocation { get; }
-
-        public Action<TModel, string> SetLocation { get; }
+        public Property<TModel, string> Location { get; }
 
         public Func<TModel, int> CreateTime { get; }
 
@@ -42,8 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, string> getApiVersion,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation,
+            Property<TModel, string> location,
             Func<TModel, int> createTime,
             bool compulsoryLocation)
         {
@@ -51,8 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             GetApiVersion = getApiVersion;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
-            GetLocation = getLocation;
-            SetLocation = setLocation;
+            Location = location;
             CreateTime = createTime;
             CompulsoryLocation = compulsoryLocation;
         }
@@ -70,6 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Action<TModel, string> setLocation,
             Func<TModel, int> createTime,
             bool compulsoryLocation)
+            where TModel : class
             where TClient : ServiceClient<TClient>
         {
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
@@ -78,8 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 client => getApiVersion(client.GetClient<TClient>()),
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
-                getLocation,
-                setLocation,
+                Property.Create(getLocation, setLocation),
                 createTime,
                 compulsoryLocation);
         }
