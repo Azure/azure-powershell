@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             {
                 return await config.Strategy.GetAsync(
                     client,
-                    new GetAsyncParams(config.ResourceGroup.Name, config.Name, cancellationToken));
+                    new GetAsyncParams(config.GetResourceGroupName(), config.Name, cancellationToken));
             }
             catch (CloudException e)
                 when (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => config.Strategy.CreateOrUpdateAsync(
                 client,
                 CreateOrUpdateAsyncParams.Create(
-                    config.ResourceGroup.Name,
+                    config.GetResourceGroupName(),
                     config.Name,
                     model,
                     cancellationToken));
