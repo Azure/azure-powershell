@@ -58,6 +58,7 @@
     <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="DependencyEngine.cs" />
     <Compile Include="INestedResourceConfig.cs" />
+    <Compile Include="INestedResourceConfigVisitor.cs" />
     <Compile Include="INestedResourceStrategy.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="ResourceType.cs" />

@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IResourceConfig ResourceGroup 
             => Resource.ResourceGroup;
 
+        public IEnumerable<INestedResourceConfig<TModel>> NestedResources
+            => _NestedResources;
+
+        IEnumerable<INestedResourceConfig> IEntityConfig.NestedResources
+            => _NestedResources;
+
         public NestedResourceConfig(
             IEntityConfig<TParenModel> parent,
             NestedResourceStrategy<TModel, TParenModel> strategy,
@@ -77,6 +83,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         TResult IEntityConfig<TModel>.Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context)
+            => visitor.Visit(this, context);
+
+        TResult INestedResourceConfig<TParenModel>.Accept<TContext, TResult>(
+            INestedResourceConfigVisitor<TParenModel, TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
 
         void IEntityConfig<TModel>.AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)

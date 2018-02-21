@@ -25,5 +25,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         where TParentModel : class
     {
         new IEntityConfig<TParentModel> Parent { get; }
+
+        TResult Accept<TContext, TResult>(
+            INestedResourceConfigVisitor<TParentModel, TContext, TResult> visitor, TContext context);
     }
 }
