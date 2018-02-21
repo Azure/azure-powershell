@@ -3,6 +3,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
 using Xunit;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 m => 0,
                 false);
 
-            var rgConfig = rgStrategy.CreateConfig(null, "rg");
+            var rgConfig = rgStrategy.CreateConfig(null, "rgname");
 
             var nestedStrategy = NestedResourceStrategy.Create<NestedModel, Model>(
                 "nested",
@@ -50,10 +51,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 nm => nm.Name,
                 (nm, name) => nm.Name = name);
 
-            var nestedConfig = rgConfig.CreateNested(nestedStrategy, "nested");
+            var nestedConfig = rgConfig.CreateNested(nestedStrategy, "nestedname");
 
             var engine = new SdkEngine("s");
 
+            // empty state.
             var current = new StateOperationContext(new Client(), new CancellationToken())
                 .Result;
 
@@ -61,6 +63,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var model = state.Get(rgConfig);
 
             Assert.Equal("eastus", model.Location);
+
+            var nestedModel = model.Nested.First() as NestedModel;
+            Assert.Equal("nestedname", nestedModel.Name);
         }
     }
 }

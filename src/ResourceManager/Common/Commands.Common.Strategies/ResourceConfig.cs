@@ -46,6 +46,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         IList<INestedResourceConfig<TModel>> _NestedResources { get; }
             = new List<INestedResourceConfig<TModel>>();
 
+        public IEnumerable<INestedResourceConfig<TModel>> NestedResources
+            => _NestedResources;
+
+        IEnumerable<INestedResourceConfig> IEntityConfig.NestedResources
+            => _NestedResources;
+
         public ResourceConfig(
             ResourceStrategy<TModel> strategy,
             IResourceConfig resourceGroup,
