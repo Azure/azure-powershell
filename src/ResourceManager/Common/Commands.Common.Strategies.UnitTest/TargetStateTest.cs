@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         {
             var strategy = ResourceStrategy.Create<Model, Client, Client>(
                 new ResourceType("ns", "p"),
-                new[] { "ns", "x" },
                 c => c,
                 async (c, m) => new Model(),
                 async (c, m) => new Model(),

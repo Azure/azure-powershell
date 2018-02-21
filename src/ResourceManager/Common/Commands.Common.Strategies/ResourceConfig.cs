@@ -60,18 +60,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Dependencies = dependencies;
         }
 
-        public IEnumerable<string> GetId(string subscription)
-            => new[]
-                {
-                    "subscriptions",
-                    subscription,
-                    "resourceGroups",
-                    ResourceGroup.Name
-                }
-                .Concat(Strategy.GetId(Name));
-
         public IEnumerable<string> GetIdFromResourceGroup()
-            => ResourceGroup == null  
+            => ResourceGroup == null
                 ? Enumerable.Empty<string>() 
                 : new string[] { Strategy.Type.Namespace, Strategy.Type.Provider, Name };
 

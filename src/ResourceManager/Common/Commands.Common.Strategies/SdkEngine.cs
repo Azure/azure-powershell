@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     /// <summary>
@@ -27,6 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public string GetId(IEntityConfig config)
-            => config.GetId(_SubscriptionId).IdToString();
+            => new[] { "subscriptions", _SubscriptionId } 
+                .Concat(config.GetIdFromSubscription()) 
+                .IdToString();
     }
 }

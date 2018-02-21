@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         IEntityStrategy Strategy { get; }
 
+        IResourceConfig ResourceGroup { get; }
+
         string Name { get; }
 
         IResourceConfig Resource { get; }
 
         TResult Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context);
-
-        IEnumerable<string> GetId(string subscription);
 
         IEnumerable<string> GetIdFromResourceGroup();
     }

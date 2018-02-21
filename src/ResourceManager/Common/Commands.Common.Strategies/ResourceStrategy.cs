@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public ResourceType Type { get; }
 
-        public Func<string, IEnumerable<string>> GetId { get; }
-
         public Func<IClient, GetAsyncParams, Task<TModel>> GetAsync { get; }
 
         public Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> CreateOrUpdateAsync
@@ -41,7 +39,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public ResourceStrategy(
             ResourceType type,
-            Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
@@ -50,7 +47,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             bool compulsoryLocation)
         {
             Type = type;
-            GetId = getId;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
             GetLocation = getLocation;
@@ -64,7 +60,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
             ResourceType type,
-            Func<string, IEnumerable<string>> getId,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
             return new ResourceStrategy<TModel>(
                 type,
-                getId,
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 getLocation,
@@ -85,27 +79,5 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 createTime,
                 compulsoryLocation);
         }
-
-        public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
-            ResourceType type,
-            IEnumerable<string> providers,
-            Func<TClient, TOperation> getOperations,
-            Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
-            Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, string> getLocation,
-            Action<TModel, string> setLocation,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation)
-            where TClient : ServiceClient<TClient>
-            => Create(
-                type,
-                name => new[] { "providers" }.Concat(providers).Concat(new[] { name }),
-                getOperations,
-                getAsync,
-                createOrUpdateAsync,
-                getLocation,
-                setLocation,
-                createTime,
-                compulsoryLocation);
     }
 }

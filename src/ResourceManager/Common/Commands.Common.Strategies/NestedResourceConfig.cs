@@ -51,6 +51,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         IList<INestedResourceConfig<TModel>> _NestedResources { get; }
             = new List<INestedResourceConfig<TModel>>();
 
+        public IResourceConfig ResourceGroup 
+            => Resource.ResourceGroup;
+
         public NestedResourceConfig(
             IEntityConfig<TParenModel> parent,
             NestedResourceStrategy<TModel, TParenModel> strategy,
@@ -64,9 +67,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             parent.AddNested(this);
         }
-
-        public IEnumerable<string> GetId(string subscription)
-            => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
 
         public IEnumerable<string> GetIdFromResourceGroup()
             => Parent.GetIdFromResourceGroup().Concat(Strategy.GetId(Name)); 

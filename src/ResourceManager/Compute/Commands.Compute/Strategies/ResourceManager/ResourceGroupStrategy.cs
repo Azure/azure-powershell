@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(
                 type: new ResourceType(null, "resourceGroups"),
-                providers: Enumerable.Empty<string>(),
                 getOperations: (ResourceManagementClient client) => client.ResourceGroups,
                 getAsync: (o, p) => o.GetAsync(p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) 
