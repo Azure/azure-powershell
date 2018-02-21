@@ -20,6 +20,7 @@
 ## Current Release
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
+* Fix Roleassignment get calls to be used with roledefinition ID.
 
 ## Version 5.3.0
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
