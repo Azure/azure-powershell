@@ -719,6 +719,7 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaGetByUPNWithExpandPrincipalGroups.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
