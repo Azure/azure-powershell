@@ -250,31 +250,35 @@ function Test-RaByServicePrincipal
 
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment1 = New-AzureRmRoleAssignment `
                         -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
-                        
+                            
     # cleanup 
-    DeleteRoleAssignment $newAssignment
-    
+    DeleteRoleAssignment $newAssignment1
+
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment2 = New-AzureRmRoleAssignment `
                         -ApplicationId $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
-                        
+    
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $newAssignment2.ObjectId
+    Assert-NotNull $assignments
+
     # cleanup 
-    DeleteRoleAssignment $newAssignment
+    DeleteRoleAssignment $newAssignment2
 
     # Assert
-    Assert-NotNull $newAssignment
-    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual $scope $newAssignment.Scope 
-    Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment.DisplayName
-    
-    VerifyRoleAssignmentDeleted $newAssignment
+    Assert-NotNull $newAssignment2
+    Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment2.Scope 
+    Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
+
+    VerifyRoleAssignmentDeleted $newAssignment1    
+    VerifyRoleAssignmentDeleted $newAssignment2
 }
 
 <#
