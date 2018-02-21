@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
         }
 
-        internal KeyIdentityItem(KeyBundle keyBundle)
+        internal KeyIdentityItem(PSKeyBundle keyBundle)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");

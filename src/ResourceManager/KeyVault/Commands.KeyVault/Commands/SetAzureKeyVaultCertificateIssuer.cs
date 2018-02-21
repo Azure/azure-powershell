@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ExpandedParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names

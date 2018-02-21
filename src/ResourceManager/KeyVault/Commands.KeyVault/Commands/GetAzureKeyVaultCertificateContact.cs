@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyVaultCertificateContact>))]
+    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class GetAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            var contactsModel = new List<KeyVaultCertificateContact>();
+            var contactsModel = new List<PSKeyVaultCertificateContact>();
 
             foreach (var contact in contacts.ContactList)
             {
-                contactsModel.Add(KeyVaultCertificateContact.FromKVCertificateContact(contact));
+                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact));
             }
 
             this.WriteObject(contactsModel);

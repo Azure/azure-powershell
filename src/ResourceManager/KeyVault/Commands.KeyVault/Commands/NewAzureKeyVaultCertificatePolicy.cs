@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ValidateBothPercentageAndNumberOfDaysAreNotPresent();
                 ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent();
 
-                var policy = new KeyVaultCertificatePolicy
+                var policy = new PSKeyVaultCertificatePolicy
                 {
                     DnsNames = DnsNames,
                     KeyUsage = KeyUsage,

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,        
         DefaultParameterSetName = ByVaultAndCertNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (certificatePolicy != null)
             {
-                this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
+                this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
             }
         }
     }

@@ -105,11 +105,11 @@
     <Compile Include="Models\DeletedSecretIdentityItem.cs" />
     <Compile Include="Models\KeyVaultCertificate.cs" />
     <Compile Include="Models\KeyVaultCertificateAdministratorDetails.cs" />
-    <Compile Include="Models\KeyVaultCertificateContact.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateContact.cs" />
     <Compile Include="Models\KeyVaultCertificateIssuer.cs" />
-    <Compile Include="Models\KeyVaultCertificateOperation.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateOperation.cs" />
     <Compile Include="Models\KeyVaultCertificateOrganizationDetails.cs" />
-    <Compile Include="Models\KeyVaultCertificatePolicy.cs" />
+    <Compile Include="Models\PSKeyVaultCertificatePolicy.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccount.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountAttributes.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountListItem.cs" />
@@ -229,13 +229,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
-    <ItemGroup>  
-        <OutFiles Include="$(OutDir)\**\*.*"/>  
-    </ItemGroup>  
-    <Copy  
-            SourceFiles="@(OutFiles)"  
-            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\%(RecursiveDir)%(Filename)%(Extension)')"  
-     />  
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

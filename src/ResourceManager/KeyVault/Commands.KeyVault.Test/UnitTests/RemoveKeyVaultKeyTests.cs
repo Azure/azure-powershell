@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Should process but without force
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
 
-            KeyBundle expected = null;
+            PSKeyBundle expected = null;
 
             cmdlet.Name = KeyName;
             cmdlet.PassThru = true;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             catch { }
 
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<KeyBundle>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSKeyBundle>()), Times.Never());
         }
     }
 }

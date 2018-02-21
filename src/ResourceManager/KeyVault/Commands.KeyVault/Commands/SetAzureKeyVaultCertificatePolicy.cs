@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ExpandedParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             HelpMessage = "Specifies the certificate policy.")]
         [ValidateNotNull]
-        public KeyVaultCertificatePolicy CertificatePolicy { get; set; }
+        public PSKeyVaultCertificatePolicy CertificatePolicy { get; set; }
 
         /// <summary>
         /// PassThru parameter
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.SetCertificatePolicy))
             {
-                KeyVaultCertificatePolicy policy;
+                PSKeyVaultCertificatePolicy policy;
 
                 switch (ParameterSetName)
                 {
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         // Validate combinations of parameters
                         ValidateBothPercentageAndNumberOfDaysAreNotPresent();
 
-                        policy = new KeyVaultCertificatePolicy
+                        policy = new PSKeyVaultCertificatePolicy
                         {
                             DnsNames = DnsNames,
                             KeyUsage = KeyUsage,
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
+                    this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
                 }
             }
         }

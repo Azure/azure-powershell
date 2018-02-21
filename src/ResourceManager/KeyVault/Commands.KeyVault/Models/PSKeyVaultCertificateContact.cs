@@ -17,21 +17,21 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificateContact
+    public class PSKeyVaultCertificateContact
     {
         public string Email { get; set; }
 
-        internal static KeyVaultCertificateContact FromKVCertificateContact(Contact contact)
+        internal static PSKeyVaultCertificateContact FromKVCertificateContact(Contact contact)
         {
-            return new KeyVaultCertificateContact
+            return new PSKeyVaultCertificateContact
             {
                 Email = contact.EmailAddress,
             };
         }
 
-        internal static List<KeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts)
+        internal static List<PSKeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts)
         {
-            var result = new List<KeyVaultCertificateContact>();
+            var result = new List<PSKeyVaultCertificateContact>();
 
             if (contacts != null && contacts.ContactList != null)
             {

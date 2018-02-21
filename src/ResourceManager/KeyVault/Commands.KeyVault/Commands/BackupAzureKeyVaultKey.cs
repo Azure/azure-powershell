@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ValueFromPipelineByPropertyName = true,
                     ParameterSetName = ByKeyObjectParameterSet,
                     HelpMessage = "Key bundle to back up, pipelined in from the output of a retrieval call." )]
-        public KeyBundle Key { get; set; }
+        public PSKeyBundle Key { get; set; }
 
         /// <summary>
         /// Key name
