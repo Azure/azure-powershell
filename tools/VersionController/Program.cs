@@ -160,6 +160,7 @@ namespace VersionController
                 if (!string.IsNullOrWhiteSpace(file[idx]))
                 {
                     found = true;
+                    break;
                 }
             }
 
