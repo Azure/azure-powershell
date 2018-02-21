@@ -105,6 +105,9 @@
     ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
   ],
   "src/ResourceManager/Media/": [],
+  "src/ResourceManager/ManagementGroups/": [
+    ".\\src\\ResourceManager\\ManagementGroups\\Commands.ManagementGroups.Test\\bin\\Debug\\Microsoft.Azure.Commands.ManagementGroups.Test.dll"
+  ],
   "src/ResourceManager/Network/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll",

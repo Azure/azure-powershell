@@ -128,6 +128,8 @@
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
+    { "regex": "ManagementGroups", "alias": "Management Groups"},
+
     { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
     { "regex": "Kubernetes", "group": "Kubernetes", "alias": "Kubernetes" }
 ]
