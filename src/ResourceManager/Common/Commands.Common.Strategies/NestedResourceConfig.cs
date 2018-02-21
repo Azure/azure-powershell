@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public IResourceConfig Resource => Parent.Resource;
 
-        public IResourceConfig ResourceGroup => Parent.ResourceGroup;
-
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
         IEntityConfig INestedResourceConfig.Parent => Parent;
