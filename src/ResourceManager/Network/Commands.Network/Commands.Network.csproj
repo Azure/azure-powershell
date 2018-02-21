@@ -303,6 +303,7 @@
     <Compile Include="Models\PSPacketCaptureStatus.cs" />
     <Compile Include="Models\PSPublicIpAddress.cs" />
     <Compile Include="Models\PSPublicIpAddressDnsSettings.cs" />
+    <Compile Include="Models\PSPublicIpTag.cs" />
     <Compile Include="Models\PSResourceId.cs" />
     <Compile Include="Models\PSResourceNavigationLink.cs" />
     <Compile Include="Models\PSApplicationGatewayRedirectConfiguration.cs" />
@@ -443,6 +444,7 @@
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
+    <Compile Include="PublicIpAddress\NewAzurePublicIpTagCommand.cs" />
     <Compile Include="PublicIpAddress\PublicIpAddressBaseCmdlet.cs" />
     <Compile Include="PublicIpAddress\RemoveAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\SetAzurePublicIpAddressCommand.cs" />

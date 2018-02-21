@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
                 Name,
                 () =>
                 {
-                    Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                    Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
 
                     if (PassThru)
                     {

@@ -37,5 +37,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 return m.Success ? m.Groups["rgname"].Value : null;
             }
         }
+
+        // Gets or sets the FQDN.
+        public string FullyQualifiedDomainName { get; set; }
     }
 }
