@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         public void Test()
         {
             var strategy = ResourceStrategy.Create<Model, Client, Client>(
-                "x",
-                new[] { "x" },
+                new ResourceType("ns", "p"),
+                new[] { "ns", "x" },
                 c => c,
                 async (c, m) => new Model(),
                 async (c, m) => new Model(),
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 (m, location) => { },
                 m => 0,
                 false);
-            var config = strategy.CreateConfig("rg", "n");
+            var config = strategy.CreateConfig(null, "n");
             var engine = new SdkEngine("s");
             var current = new StateOperationContext(new Client(), new CancellationToken())
                 .Result;

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type,
+                new ResourceType("Microsoft.Network", provider),
                 new [] { "Microsoft.Network", provider },
                 getOperations,
                 getAsync,

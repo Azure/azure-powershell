@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context);
 
         IEnumerable<string> GetId(string subscription);
+
+        IEnumerable<string> GetIdFromResourceGroup();
     }
 
     public interface IEntityConfig<TModel> : IEntityConfig

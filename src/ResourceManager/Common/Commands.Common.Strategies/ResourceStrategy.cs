@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public sealed class ResourceStrategy<TModel> : IResourceStrategy
     {
-        public string Type { get; }
+        public ResourceType Type { get; }
 
         public Func<string, IEnumerable<string>> GetId { get; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public bool CompulsoryLocation { get; }
 
         public ResourceStrategy(
-            string type,
+            ResourceType type,
             Func<string, IEnumerable<string>> getId,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public static class ResourceStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
-            string type,
+            ResourceType type,
             Func<string, IEnumerable<string>> getId,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
-            string type,
+            ResourceType type,
             IEnumerable<string> providers,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         new IResourceStrategy Strategy { get; }
 
-        string ResourceGroupName { get; }
+        IResourceConfig ResourceGroup { get; }
 
         IEnumerable<IEntityConfig> Dependencies { get; }
 

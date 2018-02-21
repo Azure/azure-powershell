@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public ResourceStrategy<TModel> Strategy { get; }
 
-        public string ResourceGroupName { get; }
+        // It has to be ResourceConfig<ResourceGroup>. 
+        public IResourceConfig ResourceGroup { get; }
 
         public string Name { get; }
 
@@ -47,13 +48,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public ResourceConfig(
             ResourceStrategy<TModel> strategy,
-            string resourceGroupName,
+            IResourceConfig resourceGroup,
             string name,
             Func<IEngine, TModel> createModel,
             IEnumerable<IEntityConfig> dependencies)
         {
             Strategy = strategy;
-            ResourceGroupName = resourceGroupName;
+            ResourceGroup = resourceGroup;
             Name = name;
             CreateModel = createModel;
             Dependencies = dependencies;
@@ -65,9 +66,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     "subscriptions",
                     subscription,
                     "resourceGroups",
-                    ResourceGroupName
+                    ResourceGroup.Name
                 }
                 .Concat(Strategy.GetId(Name));
+
+        public IEnumerable<string> GetIdFromResourceGroup()
+            => ResourceGroup == null  
+                ? Enumerable.Empty<string>() 
+                : new string[] { Strategy.Type.Namespace, Strategy.Type.Provider, Name };
 
         public NestedResourceConfig<TNestedModel, TModel> CreateNested<TNestedModel>(
             NestedResourceStrategy<TNestedModel, TModel> strategy,
