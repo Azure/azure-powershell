@@ -168,7 +168,7 @@ Specifies the edition to assign to the database. The acceptable values for this 
 Type: DatabaseEdition
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
