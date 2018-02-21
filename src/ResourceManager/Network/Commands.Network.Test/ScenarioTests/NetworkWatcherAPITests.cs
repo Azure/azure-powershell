@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
 
-        [Fact]
+        [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectivityCheck()
         {
@@ -89,7 +89,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ReachabilityReport");
         }
 
-        [Fact]
+        [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProvidersList()
         {
