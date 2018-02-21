@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
 
+## Version 0.6.0
 * Added below new commands for Geo Disaster Recovery operations. 
 	-Creating a new Alias(Disaster Recovery configuration): 
 		- New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]

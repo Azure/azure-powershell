@@ -163,7 +163,6 @@ The acceptable values for this parameter are:
 - Basic
 - Standard
 - DataWarehouse
-- Free
 
 ```yaml
 Type: DatabaseEdition

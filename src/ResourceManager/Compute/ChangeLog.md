@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix ErrorAction issue for some of Get cmdlets.
+
+## Version 4.3.1
+* `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
+
+## Version 4.3.0
+* Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
 * Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
 * User assigned identity support for VM and VM scale set
@@ -32,6 +39,7 @@
 * Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
 * Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+* Fixed a non-existing resource group creation problem for New-AzureRmVM
 
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
