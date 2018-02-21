@@ -2,7 +2,6 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
 using Xunit;
-using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         {
             var strategy = ResourceStrategy.Create<Model, Client, Client>(
                 new ResourceType("ns", "p"),
-                new[] { "ns", "x" },
+                c => "1.0",
                 c => c,
                 async (c, m) => new Model(),
                 async (c, m) => new Model(),
