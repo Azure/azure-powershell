@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         new IResourceStrategy Strategy { get; }
 
-        IResourceConfig ResourceGroup { get; }
-
         IEnumerable<IEntityConfig> Dependencies { get; }
 
         TResult Accept<TContext, TResult>(
