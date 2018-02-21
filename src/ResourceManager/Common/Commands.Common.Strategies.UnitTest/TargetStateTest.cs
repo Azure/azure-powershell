@@ -2,7 +2,6 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
 using Xunit;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var rgStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 ResourceType.ResourceGroup,
                 c => c,
-                async (c, m) => new Model(),
+                async (c, m) => null,
                 async (c, m) => new Model(),
                 m => m.Location,
                 (m, location) => m.Location = location,
