@@ -357,7 +357,7 @@ function Test-CloneWebAppSlot
 		Assert-AreEqual $serverFarm2.Id $webapp2.ServerFarmId
 
 		# Clone web app to slot
-		$slot2 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -AppServicePlan $planName -SourceWebApp $slot1
+		$slot2 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -AppServicePlan $destPlanName -SourceWebApp $slot1
 		$appWithSlotName2 = "$destAppName/$slotname"
 
 		# Assert
@@ -452,7 +452,7 @@ function Test-CreateNewWebAppSlotOnAse
 	try
 	{
 		#Setup
-		$serverFarm = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName
+		$serverFarm = Get-AzureRmAppServicePlan | select -First 1
 		
 		# Create new web app
 		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName -AseName $aseName
