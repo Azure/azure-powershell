@@ -20,6 +20,8 @@
 ## Current Release
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
+* Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.
+
 
 ## Version 5.3.0
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
