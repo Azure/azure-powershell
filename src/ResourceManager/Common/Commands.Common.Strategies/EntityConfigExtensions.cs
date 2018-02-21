@@ -30,7 +30,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public static IEnumerable<string> GetIdFromSubscription(this IEntityConfig config)
         {
-            var resourceGroupId = new[] { "resourceGroups", config.GetResourceGroupName() };
+            var resourceGroupId = new[] 
+            {
+                ResourceType.ResourceGroups, config.GetResourceGroupName()
+            };
             return config.ResourceGroup == null
                 ? resourceGroupId
                 : resourceGroupId.Concat(config.GetProvidersId());
