@@ -257,6 +257,7 @@
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 &quot;" />
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>
   
