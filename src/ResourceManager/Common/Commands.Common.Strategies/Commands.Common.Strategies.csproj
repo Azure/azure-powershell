@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />

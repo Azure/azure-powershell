@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             DataFactoryName = factoryName;
         }
 
-        public string Id => IntegrationRuntime.Id;
+        public string Name => IntegrationRuntime.Name;
 
         public string Type
         {
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string DataFactoryName { get; private set; }
 
-        public string Name => IntegrationRuntime.Name;
-
         public string Description
         {
             get { return IntegrationRuntime.Properties.Description; }
             set { IntegrationRuntime.Properties.Description = value; }
         }
+
+        public string Id => IntegrationRuntime.Id;
     }
 }
