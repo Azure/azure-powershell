@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IEnumerable<string> GetIdFromResourceGroup()
             => Parent.GetIdFromResourceGroup().Concat(Strategy.GetId(Name));
 
+        public IEnumerable<string> GetIdFromResourceGroup()
+            => Parent.GetIdFromResourceGroup().Concat(Strategy.GetId(Name)); 
+
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
