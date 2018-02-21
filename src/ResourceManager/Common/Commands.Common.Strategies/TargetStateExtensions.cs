@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                             AddIfRequired(dependency);
                         }
                         var model = config.CreateModel(Engine);
-                        config.Strategy.SetLocation(model, Location);
+                        config.Strategy.Location.Set(model, Location);
                         return model;
                     });
 

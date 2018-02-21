@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 new ResourceType("Microsoft.Network", provider),
                 getOperations,
                 getAsync,
-                createOrUpdateAsync, 
+                createOrUpdateAsync,
                 model => model.Location, 
                 (model, location) => model.Location = location,
                 createTime,
