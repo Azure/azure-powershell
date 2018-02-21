@@ -2,6 +2,7 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
 using Xunit;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
