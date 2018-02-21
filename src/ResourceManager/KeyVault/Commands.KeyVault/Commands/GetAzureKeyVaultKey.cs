@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle), typeof(List<DeletedKeyIdentityItem>), typeof(DeletedKeyBundle))]
+    [OutputType(typeof(List<KeyIdentityItem>), typeof(PSKeyBundle), typeof(List<DeletedKeyIdentityItem>), typeof(DeletedKeyBundle))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            KeyBundle keyBundle;
+            PSKeyBundle keyBundle;
             switch (ParameterSetName)
             {
                 case ByKeyNameParameterSet:                    

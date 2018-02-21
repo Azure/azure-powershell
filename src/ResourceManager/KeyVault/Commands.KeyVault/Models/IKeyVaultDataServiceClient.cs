@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
+        PSKeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
 
-        KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+        PSKeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
-        KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes);
+        PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes);
 
-        KeyBundle GetKey(string vaultName, string keyName, string keyVersion);
+        PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
         DeletedKeyBundle GetDeletedKey(string vaultName, string name);
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         void PurgeKey(string vaultName, string name);
 
-        KeyBundle RecoverKey(string vaultName, string keyName);
+        PSKeyBundle RecoverKey(string vaultName, string keyName);
 
         Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
-        KeyBundle RestoreKey(string vaultName, string inputBlobPath);
+        PSKeyBundle RestoreKey(string vaultName, string inputBlobPath);
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 

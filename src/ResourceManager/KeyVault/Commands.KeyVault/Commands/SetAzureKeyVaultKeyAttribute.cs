@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
         SupportsShouldProcess = true, 
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyBundle))]
+    [OutputType(typeof(PSKeyBundle))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions

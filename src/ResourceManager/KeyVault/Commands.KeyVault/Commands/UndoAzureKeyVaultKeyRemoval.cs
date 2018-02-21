@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultKeyRemoval",
     SupportsShouldProcess = true,
     HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyBundle))]
+    [OutputType(typeof(PSKeyBundle))]
     public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.RecoverKey))
             {
-                KeyBundle recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
+                PSKeyBundle recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
 
                 WriteObject(recoveredKey);
             }

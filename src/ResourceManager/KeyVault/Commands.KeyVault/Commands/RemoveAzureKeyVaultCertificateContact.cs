@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyVaultCertificateContact>))]
+    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
                 }
             }
         }

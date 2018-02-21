@@ -19,7 +19,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificatePolicy
+    public class PSKeyVaultCertificatePolicy
     {
         public string SecretContentType { get; set; }
         public string Kty { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; internal set; }
         public DateTime? Updated { get; internal set; }
 
-        public KeyVaultCertificatePolicy()
+        public PSKeyVaultCertificatePolicy()
         {
             // At this time, KV Certificate only support these options
             // and the service requires these values to be passed when
@@ -205,9 +205,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certificatePolicy;
         }
 
-        internal static KeyVaultCertificatePolicy FromCertificatePolicy(CertificatePolicy certificatePolicy)
+        internal static PSKeyVaultCertificatePolicy FromCertificatePolicy(CertificatePolicy certificatePolicy)
         {
-            return new KeyVaultCertificatePolicy
+            return new PSKeyVaultCertificatePolicy
             {
                 SecretContentType = certificatePolicy.SecretProperties == null ? null : certificatePolicy.SecretProperties.ContentType,
                 Kty = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.KeyType,

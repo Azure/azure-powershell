@@ -19,12 +19,12 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyBundle : ObjectIdentifier
+    public class PSKeyBundle : ObjectIdentifier
     {
-        public KeyBundle()
+        public PSKeyBundle()
         { }
 
-        internal KeyBundle(Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
+        internal PSKeyBundle(Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");

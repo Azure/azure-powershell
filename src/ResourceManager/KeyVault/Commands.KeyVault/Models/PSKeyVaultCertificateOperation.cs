@@ -17,7 +17,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificateOperation
+    public class PSKeyVaultCertificateOperation
     {
         public string Id { get; private set; }
         public string Status { get; private set; }
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string ErrorCode { get; private set; }
         public string ErrorMessage { get; private set; }
 
-        internal static KeyVaultCertificateOperation FromCertificateOperation(CertificateOperation certificateOperation)
+        internal static PSKeyVaultCertificateOperation FromCertificateOperation(CertificateOperation certificateOperation)
         {
             if (certificateOperation == null)
             {
                 return null;
             }
 
-            var kvCertificateOperation = new KeyVaultCertificateOperation
+            var kvCertificateOperation = new PSKeyVaultCertificateOperation
             {
                 Id = certificateOperation.Id,
                 Status = certificateOperation.Status,

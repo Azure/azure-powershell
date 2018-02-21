@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class DeletedKeyBundle : KeyBundle
+    public class DeletedKeyBundle : PSKeyBundle
     {
         public DeletedKeyBundle()
         { }

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
+        public PSKeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }        
 
         public CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certBundle;
         }
 
-        public KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
+        public PSKeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }
 
-        public KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes)
+        public PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }
 
         public Contacts GetCertificateContacts(string vaultName)
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certBundle;
         }
 
-        public KeyBundle GetKey(string vaultName, string keyName, string keyVersion)
+        public PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }
 
         public IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputBlobPath;
         }
 
-        public KeyBundle RestoreKey(string vaultName, string inputBlobPath)
+        public PSKeyBundle RestoreKey(string vaultName, string inputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }
 
         public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public KeyBundle RecoverKey(string vaultName, string keyName)
+        public PSKeyBundle RecoverKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(recoveredKey, this.vaultUriHelper);
+            return new PSKeyBundle(recoveredKey, this.vaultUriHelper);
         }
 
         public Secret RecoverSecret(string vaultName, string secretName)

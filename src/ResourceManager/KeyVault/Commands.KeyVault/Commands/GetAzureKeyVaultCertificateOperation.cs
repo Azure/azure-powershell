@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateOperation,        
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class GetAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected override void ProcessRecord()
         {
             var certificateOperation = this.DataServiceClient.GetCertificateOperation(VaultName, Name);
-            var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+            var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
             this.WriteObject(kvCertificateOperation);
         }
     }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (PassThru.IsPresent)
             {
-                var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+                var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
                 this.WriteObject(kvCertificateOperation);
             }
         }

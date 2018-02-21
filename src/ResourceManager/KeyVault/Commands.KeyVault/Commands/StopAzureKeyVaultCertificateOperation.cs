@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 () =>
                 {
                     certificateOperation = this.DataServiceClient.CancelCertificateOperation(VaultName, Name);
-                    var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+                    var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
                     this.WriteObject(kvCertificateOperation);
                 });
         }
