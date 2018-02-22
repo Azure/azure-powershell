@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the organization details to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
-        public KeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
+        public PSKeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
 
         #endregion
 

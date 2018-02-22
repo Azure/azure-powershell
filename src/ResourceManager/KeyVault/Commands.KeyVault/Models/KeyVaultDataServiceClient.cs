@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             string issuerProvider,
             string accountId,
             SecureString apiKey,
-            KeyVaultCertificateOrganizationDetails organizationDetails)
+            PSKeyVaultCertificateOrganizationDetails organizationDetails)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));

@@ -104,11 +104,11 @@
     <Compile Include="Models\PSDeletedSecret.cs" />
     <Compile Include="Models\PSDeletedSecretIdentityItem.cs" />
     <Compile Include="Models\PSKeyVaultCertificate.cs" />
-    <Compile Include="Models\KeyVaultCertificateAdministratorDetails.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateAdministratorDetails.cs" />
     <Compile Include="Models\PSKeyVaultCertificateContact.cs" />
     <Compile Include="Models\PSKeyVaultCertificateIssuer.cs" />
     <Compile Include="Models\PSKeyVaultCertificateOperation.cs" />
-    <Compile Include="Models\KeyVaultCertificateOrganizationDetails.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateOrganizationDetails.cs" />
     <Compile Include="Models\PSKeyVaultCertificatePolicy.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccount.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountAttributes.cs" />

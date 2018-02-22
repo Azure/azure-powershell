@@ -13,14 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
 using System.Security;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -241,7 +240,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.KeyFileNotFound, this.KeyFilePath));
+                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();

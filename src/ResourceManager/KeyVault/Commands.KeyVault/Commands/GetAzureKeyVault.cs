@@ -18,7 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 default:
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
+                    throw new ArgumentException(Resources.BadParameterSetName);
             }
         }
     }
