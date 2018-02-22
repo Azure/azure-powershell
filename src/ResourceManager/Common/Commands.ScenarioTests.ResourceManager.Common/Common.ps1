@@ -364,7 +364,7 @@ function getRandomItemName {
         $prefix = "ps";
     }
 
-    $str = $prefix + ((Get-Random) % 10000);
+    $str = $prefix + (([guid]::NewGuid().ToString() -replace '-','')[0..9] -join '');
     return $str;
 }
 
