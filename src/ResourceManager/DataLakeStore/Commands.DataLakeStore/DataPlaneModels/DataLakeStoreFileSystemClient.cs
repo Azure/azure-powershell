@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         static DataLakeStoreFileSystemClient()
         {
-            // ConfigurationItemFactory.Default.Targets.RegisterDefinition("AdlsLogger", typeof(AdlsLoggerTarget));
-            Target.Register<Microsoft.Azure.Commands.DataLakeStore.Models.AdlsLoggerTarget>("AdlsLogger"); //generic
+            // Registering the custom target class
+            Target.Register<AdlsLoggerTarget>("AdlsLogger"); //generic
             LogManager.ReconfigExistingLoggers();
         }
 
@@ -79,17 +79,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public DataLakeStoreFileSystemClient(IAzureContext context, DataLakeStoreFileSystemCmdletBase cmdlet) : this(context)
         {
-            
             _adlsLoggerConfig = new LoggingConfiguration();
             
+            // Custom target that logs the debug messages from the SDK to the powershell framework's debug message queue
             var adlsTarget = new AdlsLoggerTarget{ 
                 DebugMessageQueue = cmdlet.DebugMessages
             };
+
+            // Add the target to the configuration
             _adlsLoggerConfig.AddTarget("logger", adlsTarget);
 
-            var rule2 = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
-            _adlsLoggerConfig.LoggingRules.Add(rule2);
+            //Logs all patterns of debug messages
+            var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
+            _adlsLoggerConfig.LoggingRules.Add(rule);
             
+            // Enable the NLog configuration to use this
             LogManager.Configuration = _adlsLoggerConfig;
         }
 
@@ -520,7 +524,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
         }
         /// <summary>
-        /// Setsup Nlog logging
+        /// Setsup Nlog logging to a file
         /// </summary>
         /// <param name="level">Logging level- debug or error</param>
         /// <param name="fileName">Path of file where logging will be done</param>
@@ -531,8 +535,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             fileTarget.FileName = fileName;
             
-            var rule2 = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, fileTarget);
-            _adlsLoggerConfig.LoggingRules.Add(rule2);
+            var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, fileTarget);
+            _adlsLoggerConfig.LoggingRules.Add(rule);
 
             //Re-enable the configuration
             LogManager.Configuration = _adlsLoggerConfig;
