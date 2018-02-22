@@ -302,6 +302,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
                     EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
+                    existingVault.NetworkAcls,
                     ActiveDirectoryClient);
 
                 if (PassThru.IsPresent)

@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
+            NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
         }
         public string VaultUri { get; private set; }
@@ -71,8 +73,52 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string AccessPoliciesText { get { return ModelExtensions.ConstructAccessPoliciesList(AccessPolicies); } }
 
+        public PSVaultNetworkRuleSet NetworkAcls { get; private set; }
+
+        public string NetworkAclsText { get { return ModelExtensions.ConstructNetworkRuleSet(NetworkAcls); } }
+
         //If we got this vault from the server, save the over-the-wire version, to 
         //allow easy updates
         public Vault OriginalVault { get; private set; }
+
+        static private PSVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
+        {
+            PSVaultNetworkRuleSet networkRuleSet = null;
+            if (properties == null)
+                return networkRuleSet;
+
+            NetworkRuleSet networkAcls = properties.NetworkAcls;
+            // The service will return NULL when NetworkAcls is never set before or set with default property values
+            if (networkAcls == null)
+            {   // The default constructor will set default property values in SDK's NetworkRuleSet class
+                networkAcls = new NetworkRuleSet();
+            }
+
+            PSNetWorkRuleDefaultActionEnum defaultAct;
+            if (!Enum.TryParse<PSNetWorkRuleDefaultActionEnum>(networkAcls.DefaultAction, true, out defaultAct))
+            {
+                defaultAct = PSNetWorkRuleDefaultActionEnum.Allow;
+            }
+
+            PSNetWorkRuleBypassEnum bypass;
+            if (!Enum.TryParse<PSNetWorkRuleBypassEnum>(networkAcls.Bypass, true, out bypass))
+            {
+                bypass = PSNetWorkRuleBypassEnum.AzureServices;
+            }
+
+            IList <string> allowedIpAddresses = null;
+            if (networkAcls.IpRules != null && networkAcls.IpRules.Count > 0)
+            {
+                allowedIpAddresses = networkAcls.IpRules.Select(item => { return item.Value; }).ToList();
+            }
+
+            IList<string> allowedVirtualNetworkResourceIds = null;
+            if (networkAcls.VirtualNetworkRules != null && networkAcls.VirtualNetworkRules.Count > 0)
+            {
+                allowedVirtualNetworkResourceIds = networkAcls.VirtualNetworkRules.Select(item => { return item.Id; }).ToList();
+            }
+
+            return new PSVaultNetworkRuleSet(defaultAct, bypass, allowedIpAddresses, allowedVirtualNetworkResourceIds);
+        }
     }
 }

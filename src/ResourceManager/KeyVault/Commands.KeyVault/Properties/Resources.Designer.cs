@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add vault network rule.
+        /// </summary>
+        internal static string AddNetworkRule {
+            get {
+                return ResourceManager.GetString("AddNetworkRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzureRmContext&apos; is the current subscription&apos;s Azure Active Directory..
         /// </summary>
         internal static string ADObjectAmbiguous {
@@ -847,6 +856,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove vault network rule.
+        /// </summary>
+        internal static string RemoveNetworkRule {
+            get {
+                return ResourceManager.GetString("RemoveNetworkRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveSecretWarning {
@@ -1032,6 +1050,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string UnsupportedFileFormat {
             get {
                 return ResourceManager.GetString("UnsupportedFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update vault network rule.
+        /// </summary>
+        internal static string UpdateNetworkRule {
+            get {
+                return ResourceManager.GetString("UpdateNetworkRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The network rule set of this vault is turned off now!.
+        /// </summary>
+        internal static string UpdateNetworkRuleWarning {
+            get {
+                return ResourceManager.GetString("UpdateNetworkRuleWarning", resourceCulture);
             }
         }
         

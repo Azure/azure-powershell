@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
                 properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
+                properties.NetworkAcls = parameters.NetworkAcls;
             }
             else
             {
@@ -144,10 +145,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="updatedEnabledForDeployment">enabled for deployment</param>
         /// <param name="updatedEnabledForTemplateDeployment">enabled for template deployment</param>
         /// <param name="updatedEnabledForDiskEncryption">enabled for disk encryption</param>
+        /// <param name="updatedNetworkAcls">updated network rule set</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the updated vault</returns>
         public PSKeyVault UpdateVault(PSKeyVault existingVault, PSKeyVaultAccessPolicy[] updatedPolicies, bool? updatedEnabledForDeployment,
-            bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, ActiveDirectoryClient adClient = null)
+            bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, 
+            PSVaultNetworkRuleSet updatedNetworkAcls,
+            ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
                 throw new ArgumentNullException("existingVault");
@@ -175,6 +179,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                                 Storage = a.PermissionsToStorage.ToArray(),
                             }
                         }).ToList();
+
+            UpdateVaultNetworkRuleSetProperties(properties, updatedNetworkAcls);
 
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: existingVault.ResourceGroupName,
@@ -294,5 +300,42 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
+
+
+        #region HELP_METHODS
+        /// <summary>
+        /// Update vault network rule set
+        /// </summary>
+        /// <param name="vaultProperties">Vault property</param>
+        /// <param name="psRuleSet">Network rule set input</param>
+        static private void UpdateVaultNetworkRuleSetProperties(VaultProperties vaultProperties, PSVaultNetworkRuleSet psRuleSet)
+        {
+            if (vaultProperties == null)
+                return;
+
+            NetworkRuleSet updatedRuleSet = new NetworkRuleSet();       // It contains default settings
+            if (psRuleSet != null)
+            {
+                updatedRuleSet.DefaultAction = psRuleSet.DefaultAction.ToString();
+                updatedRuleSet.Bypass = psRuleSet.Bypass.ToString();
+
+                if (psRuleSet.IpAddressRanges != null && psRuleSet.IpAddressRanges.Count > 0)
+                {
+                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress => {
+                        return new IPRule() { Value = ipAddress };
+                    }).ToList<IPRule>();
+                }
+
+                if (psRuleSet.VirtualNetworkResourceIds != null && psRuleSet.VirtualNetworkResourceIds.Count > 0)
+                {
+                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId => {
+                        return new VirtualNetworkRule() { Id = resourceId };
+                    }).ToList<VirtualNetworkRule>();
+                }
+            }
+
+            vaultProperties.NetworkAcls = updatedRuleSet;
+        }
+        #endregion
     }
 }
