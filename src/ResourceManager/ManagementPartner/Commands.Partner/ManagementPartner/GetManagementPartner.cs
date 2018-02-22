@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ManagementPartner.Properties;
 using Microsoft.Azure.Management.ManagementPartner;
 
 namespace Microsoft.Azure.Commands.ManagementPartner
@@ -28,23 +27,15 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         public override void ExecuteCmdlet()
         {
             PartnerId = PartnerId ?? string.Empty;
+
             try
             {
-                var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner.GetAsync(PartnerId).Result);
+                var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner.Get(PartnerId));
                 WriteObject(response);
             }
-            catch (AggregateException ex)
+            catch (Exception e)
             {
-                foreach (var innerEx in ex.InnerExceptions)
-                {
-                    if (innerEx.Message.Contains("invalid status code \'NotFound\'"))
-                    {
-                        WriteObject(Resources.NotFoundManagementParnterMessage);
-                        return;
-                    }
-                }
-
-                LogException(ex);
+                LogException(e);
             }
         }
     }

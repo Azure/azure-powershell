@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.ManagementPartner
             {
                 try
                 {
-                    AceProvisioningManagementPartnerApiClient.Partner.DeleteAsync(PartnerId).Wait();
+                    AceProvisioningManagementPartnerApiClient.Partner.Delete(PartnerId);
 
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }
                 }
-                catch (AggregateException ex)
+                catch (Exception ex)
                 {
                     LogException(ex);
                 }

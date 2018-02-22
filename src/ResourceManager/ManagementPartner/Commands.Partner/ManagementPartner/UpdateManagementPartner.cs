@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.ManagementPartner
                 try
                 {
                     var response = new PSManagementPartner(AceProvisioningManagementPartnerApiClient.Partner
-                        .UpdateAsync(PartnerId).Result);
+                        .Update(PartnerId));
                     WriteObject(response);
                 }
-                catch (AggregateException ex)
+                catch (Exception ex)
                 {
                     LogException(ex);
                 }
