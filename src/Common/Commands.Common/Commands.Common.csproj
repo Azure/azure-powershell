@@ -113,7 +113,7 @@
   <ItemGroup>
     <Compile Include="CustomAttributes\BreakingChangeBaseAttribute.cs" />
     <Compile Include="CustomAttributes\BreakingChangeAttributeHelper.cs" />
-    <Compile Include="CustomAttributes\CmdLetDeprecationMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletDeprecationMarkerAttribute.cs" />
     <Compile Include="CustomAttributes\CmdletMetadataChangeMarkerAttribute.cs" />
     <Compile Include="CustomAttributes\CmdLetOutputDeprecationMarkerAttribute.cs" />
     <Compile Include="CustomAttributes\CmdLetOutputPropertiesChangeMarkerAttribute.cs" />
