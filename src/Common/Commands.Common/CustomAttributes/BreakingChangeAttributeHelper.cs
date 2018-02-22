@@ -150,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             Console.WriteLine("Deprecation message : \n" + attribute.Message);
             if (attribute.DeprecateByVersionSet)
             {
-                Console.WriteLine("The change will take effect in version : " + attribute.DeprecateByVersion);
+                Console.WriteLine("The change is expected to take effect from the version : " + attribute.DeprecateByVersion);
             }
 
             if (attribute.OldWay != null && attribute.NewWay != null)

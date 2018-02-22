@@ -21,8 +21,7 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     [AttributeUsage(
-AttributeTargets.Property |
-AttributeTargets.Field,
+AttributeTargets.Class,
 AllowMultiple = true)]
     public class CmdletMetadataChangeMarkerAttribute : BreakingChangeBaseAttribute
     {

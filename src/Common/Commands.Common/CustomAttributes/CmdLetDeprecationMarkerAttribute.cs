@@ -23,27 +23,27 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     [AttributeUsage(
 AttributeTargets.Class,
 AllowMultiple = true)]
-    public class CmdLetDeprecationMarkerAttribute : BreakingChangeBaseAttribute
+    public class CmdletDeprecationMarkerAttribute : BreakingChangeBaseAttribute
     {
         public String DeprecatedCmdLetName { get; }
 
         public String ReplacementCmdletName { get; }
 
-        public CmdLetDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName) :
+        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName) :
             base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'")
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = replacementCmdletName;
         }
 
-        public CmdLetDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersione) :
+        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersione) :
              base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'", deprecateByVersione)
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = replacementCmdletName;
         }
 
-        public CmdLetDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersion, String changeInEfectByDate) :
+        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersion, String changeInEfectByDate) :
              base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'", deprecateByVersion, changeInEfectByDate)
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
