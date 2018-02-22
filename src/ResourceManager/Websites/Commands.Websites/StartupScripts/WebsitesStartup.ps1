@@ -14,4 +14,4 @@
 
 @{
     "Swap-AzureRmWebAppSlot" = "Switch-AzureRmWebAppSlot";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | % { if (!(Get-Alias -Name $_.Name -ErrorAction SilentlyContinue)) { $_ | Set-Alias -Description "AzureAlias" } }
