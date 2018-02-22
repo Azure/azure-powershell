@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IEnumerable<PSCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
-        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, KeyVaultCertificateOrganizationDetails organizationDetails);  
+        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
               
         IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
         

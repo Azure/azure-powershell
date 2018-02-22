@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string IssuerProvider { get; set; }
         public string AccountId { get; set; }
         public SecureString ApiKey { get; set; }
-        public KeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
+        public PSKeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
 
         internal static PSKeyVaultCertificateIssuer FromIssuer(IssuerBundle issuer)
         {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 Name = issuer.IssuerIdentifier.Name,
                 IssuerProvider = issuer.Provider,
-                OrganizationDetails = KeyVaultCertificateOrganizationDetails.FromOrganizationalDetails(issuer.OrganizationDetails),
+                OrganizationDetails = PSKeyVaultCertificateOrganizationDetails.FromOrganizationalDetails(issuer.OrganizationDetails),
             };
 
             if (issuer.Credentials != null)

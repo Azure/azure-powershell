@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // deny request if the file exists and overwrite is not authorized
                 if ( !AzureSession.Instance.DataStore.FileExists( filePath )
                     || Force.IsPresent
-                    || ShouldContinue( string.Format( KeyVaultProperties.Resources.FileOverwriteMessage, filePath ), KeyVaultProperties.Resources.FileOverwriteCaption ) )
+                    || ShouldContinue( string.Format(Resources.FileOverwriteMessage, filePath ), Resources.FileOverwriteCaption ) )
                 {
                     var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
                     this.WriteObject( backupBlobPath );
