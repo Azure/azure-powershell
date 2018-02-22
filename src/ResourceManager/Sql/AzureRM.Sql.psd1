@@ -56,10 +56,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.0'; }
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
                '.\Microsoft.Azure.Management.Sql.Legacy.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
-               '.\Microsoft.Data.Services.Client.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll'
+               '.\Microsoft.Azure.Management.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
