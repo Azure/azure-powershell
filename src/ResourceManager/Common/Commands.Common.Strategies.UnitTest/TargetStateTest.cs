@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 m => 0,
                 false);
 
+            var resource = resourceStrategy.CreateResourceConfig(rgConfig, "res");
+
             // nested resource
             var nestedStrategy = NestedResourceStrategy.Create<NestedModel, Model>(
                 "nested",
@@ -72,12 +74,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var current = new StateOperationContext(new Client(), new CancellationToken())
                 .Result;
 
-            var state = rgConfig.GetTargetState(current, engine, "eastus");
-            var model = state.Get(rgConfig);
+            var state = resource.GetTargetState(current, engine, "eastus");
+            var rgModel = state.Get(rgConfig);
 
-            Assert.Equal("eastus", model.Location);
+            Assert.Equal("eastus", rgModel.Location);
 
-            var nestedModel = model.Nested.First() as NestedModel;
+            var nestedModel = rgModel.Nested.First() as NestedModel;
             Assert.Equal("nestedname", nestedModel.Name);
         }
     }
