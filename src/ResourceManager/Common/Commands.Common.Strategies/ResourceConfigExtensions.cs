@@ -24,19 +24,29 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class ResourceConfigExtensions
     {
-        public static ResourceConfig<TModel> CreateConfig<TModel>(
+        public static ResourceConfig<TModel> CreateResourceConfig<TModel>(
             this ResourceStrategy<TModel> strategy,
             IResourceConfig resourceGroup,
             string name,
-            Func<IEngine, TModel> createModel = null,
-            IEnumerable<IEntityConfig> dependencies = null)
+            Func<IEngine, TModel> createModel = null)
             where TModel : class, new()
-            => new ResourceConfig<TModel>(
+        {
+            // update dependencies
+            createModel = createModel ?? (_ => new TModel());
+            var engine = new DependencyEngine();
+            createModel(engine);
+            //
+            return new ResourceConfig<TModel>(
                 strategy,
                 resourceGroup,
                 name,
-                createModel ?? (_ => new TModel()),
-                dependencies.EmptyIfNull());
+                createModel,
+                engine
+                    .Dependencies
+                    .Values
+                    .Concat(new[] { resourceGroup })
+                    .Where(v => v != null));
+        }
 
         public static async Task<TModel> GetAsync<TModel>(
             this ResourceConfig<TModel> config,

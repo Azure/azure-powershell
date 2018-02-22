@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public partial class NewAzureRmVmssConfigCommand : ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,

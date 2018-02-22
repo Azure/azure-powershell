@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test()
         {
+            // resource group
             var rgStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 ResourceType.ResourceGroup,
                 c => c,
@@ -41,8 +42,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 m => 0,
                 false);
 
-            var rgConfig = rgStrategy.CreateConfig(null, "rgname");
+            var rgConfig = rgStrategy.CreateResourceConfig(null, "rgname");
 
+            // resource
+            var resourceStrategy = ResourceStrategy.Create<Model, Client, Client>(
+                new ResourceType("Company.Namespace", "resourceProvider"),
+                c => c,
+                async (c, m) => null,
+                async (c, m) => new Model(),
+                m => m.Location,
+                (m, location) => m.Location = location,
+                m => 0,
+                false);
+
+            // nested resource
             var nestedStrategy = NestedResourceStrategy.Create<NestedModel, Model>(
                 "nested",
                 m => m.Nested,
@@ -52,6 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             var nestedConfig = rgConfig.CreateNested(nestedStrategy, "nestedname");
 
+            //
             var engine = new SdkEngine("s");
 
             // empty state.
