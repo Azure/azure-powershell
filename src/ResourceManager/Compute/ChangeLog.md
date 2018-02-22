@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.3.2
 * Fix ErrorAction issue for some of Get cmdlets.
 
 ## Version 4.3.1

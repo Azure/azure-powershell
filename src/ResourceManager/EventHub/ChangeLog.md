@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.1
 * Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
 
 ## Version 0.6.0
