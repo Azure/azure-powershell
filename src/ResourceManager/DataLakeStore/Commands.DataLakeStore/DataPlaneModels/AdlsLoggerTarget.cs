@@ -6,7 +6,11 @@ using NLog.Targets;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
-    public delegate void WriteMessageDelegate(string message);
+    /// <summary>
+    /// NLog is used by the ADLS dataplane sdk to log debug messages. We can create a custom target
+    /// which basically queues the debug data to the ConcurrentQueue for debug messages.
+    /// https://github.com/NLog/NLog/wiki/How-to-write-a-custom-target
+    /// </summary>
     [Target("AdlsLogger")]
     public sealed class AdlsLoggerTarget : TargetWithLayout
     {
