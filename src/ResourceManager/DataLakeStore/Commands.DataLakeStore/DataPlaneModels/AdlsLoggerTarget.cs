@@ -1,7 +1,5 @@
 ﻿using System.Collections.Concurrent;
-using System.IO;
 using NLog;
-using NLog.Config;
 using NLog.Targets;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
@@ -12,12 +10,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     /// https://github.com/NLog/NLog/wiki/How-to-write-a-custom-target
     /// </summary>
     [Target("AdlsLogger")]
-    public sealed class AdlsLoggerTarget : TargetWithLayout
+    internal sealed class AdlsLoggerTarget : TargetWithLayout
     {
-        internal ConcurrentQueue<string> DebugMessageQueue;  
-        public AdlsLoggerTarget()
-        {
-        }
+        internal ConcurrentQueue<string> DebugMessageQueue;
         protected override void Write(LogEventInfo logEvent)
         {
             string logMessage = Layout.Render(logEvent);
