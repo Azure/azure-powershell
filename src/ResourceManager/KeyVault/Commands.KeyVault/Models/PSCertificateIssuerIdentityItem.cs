@@ -18,9 +18,9 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class CertificateIssuerIdentityItem
+    public class PSCertificateIssuerIdentityItem
     {
-        internal CertificateIssuerIdentityItem(CertificateIssuerItem issuerItem, VaultUriHelper vaultUriHelper)
+        internal PSCertificateIssuerIdentityItem(CertificateIssuerItem issuerItem, VaultUriHelper vaultUriHelper)
         {
             if (issuerItem == null)
                 throw new ArgumentNullException("issuerItem");
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             IssuerProvider = issuerItem.Provider;
         }
 
-        internal CertificateIssuerIdentityItem(IssuerBundle issuer)
+        internal PSCertificateIssuerIdentityItem(IssuerBundle issuer)
         {
             if (issuer == null)
                 throw new ArgumentNullException("issuer");

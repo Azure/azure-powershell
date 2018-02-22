@@ -13,35 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public sealed class DeletedKeyVaultCertificate : KeyVaultCertificate
+    public class PSDeletedSecret : PSSecret
     {
-        public DeletedKeyVaultCertificate( Azure.KeyVault.Models.DeletedCertificateBundle deletedCertificateBundle )
-            :base( deletedCertificateBundle )
+        public PSDeletedSecret()
+        { }
+
+        /// <summary>
+        /// Internal constructor used by KeyVaultDataServiceClient
+        /// </summary>
+        /// <param name="deletedSecret">secret returned from service</param>
+        /// <param name="vaultUriHelper">helper class</param>
+        internal PSDeletedSecret(Azure.KeyVault.Models.DeletedSecretBundle deletedSecret, VaultUriHelper vaultUriHelper) : base(deletedSecret, vaultUriHelper)
         {
-            if ( deletedCertificateBundle == null )
-            {
-                throw new ArgumentNullException( nameof( deletedCertificateBundle ) );
-            }
-
-            ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;
-            DeletedDate = deletedCertificateBundle.DeletedDate;
-        }
-
-        internal static DeletedKeyVaultCertificate FromDeletedCertificateBundle( Azure.KeyVault.Models.DeletedCertificateBundle deletedCertificateBundle ) 
-        {
-            if ( deletedCertificateBundle == null )
-            {
-                return null;
-            }
-
-            return new DeletedKeyVaultCertificate( deletedCertificateBundle );
+            ScheduledPurgeDate = deletedSecret.ScheduledPurgeDate;
+            DeletedDate = deletedSecret.DeletedDate;
         }
 
         public DateTime? ScheduledPurgeDate { get; set; }
 
         public DateTime? DeletedDate { get; set; }
+
     }
 }

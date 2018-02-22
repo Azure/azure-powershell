@@ -16,18 +16,15 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class DeletedSecretIdentityItem : SecretIdentityItem
+    public class PSDeletedKeyBundle : PSKeyBundle
     {
-        internal DeletedSecretIdentityItem(Azure.KeyVault.Models.DeletedSecretItem secretItem, VaultUriHelper vaultUriHelper) : base(secretItem, vaultUriHelper)
-        {
-            ScheduledPurgeDate = secretItem.ScheduledPurgeDate;
-            DeletedDate = secretItem.DeletedDate;
-        }
+        public PSDeletedKeyBundle()
+        { }
 
-        internal DeletedSecretIdentityItem(DeletedSecret secret) : base(secret)
+        internal PSDeletedKeyBundle(Azure.KeyVault.Models.DeletedKeyBundle deletedKeyBundle, VaultUriHelper vaultUriHelper) : base(deletedKeyBundle, vaultUriHelper)
         {
-            ScheduledPurgeDate = secret.ScheduledPurgeDate;
-            DeletedDate = secret.DeletedDate;
+            ScheduledPurgeDate = deletedKeyBundle.ScheduledPurgeDate;
+            DeletedDate = deletedKeyBundle.DeletedDate;
         }
 
         public DateTime? ScheduledPurgeDate { get; set; }

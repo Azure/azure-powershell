@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the certificate issuer to set.")]
         [ValidateNotNullOrEmpty]
-        public KeyVaultCertificateIssuer Issuer { get; set; }
+        public PSKeyVaultCertificateIssuer Issuer { get; set; }
 
         #endregion
 
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.SetCertificateIssuer))
             {
-                KeyVaultCertificateIssuer issuerToUse;
+                PSKeyVaultCertificateIssuer issuerToUse;
 
                 switch (ParameterSetName)
                 {
                     case ExpandedParameterSet:
 
-                        issuerToUse = new KeyVaultCertificateIssuer
+                        issuerToUse = new PSKeyVaultCertificateIssuer
                         {
                             Name = Name,
                             IssuerProvider = IssuerProvider,
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
+                    this.WriteObject(PSKeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
                 }
             }
         }

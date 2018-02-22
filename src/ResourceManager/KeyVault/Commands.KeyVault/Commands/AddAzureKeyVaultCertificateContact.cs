@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "KeyVault object.")]
         [ValidateNotNullOrEmpty]
-        [Alias("VaultObject")]
         public PSVault InputObject { get; set; }
 
         /// <summary>

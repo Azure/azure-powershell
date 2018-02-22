@@ -32,39 +32,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
-        DeletedKeyBundle GetDeletedKey(string vaultName, string name);
+        PSDeletedKeyBundle GetDeletedKey(string vaultName, string name);
 
-        IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
-        DeletedKeyBundle DeleteKey(string vaultName, string keyName);
+        PSDeletedKeyBundle DeleteKey(string vaultName, string keyName);
 
         void PurgeKey(string vaultName, string name);
 
         PSKeyBundle RecoverKey(string vaultName, string keyName);
 
-        Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
+        PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
 
-        Secret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes);
+        PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes);
 
-        Secret GetSecret(string vaultName, string secretName, string secretVersion);
+        PSSecret GetSecret(string vaultName, string secretName, string secretVersion);
 
-        DeletedSecret GetDeletedSecret(string vaultName, string name);
+        PSDeletedSecret GetDeletedSecret(string vaultName, string name);
 
-        IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
 
-        DeletedSecret DeleteSecret(string vaultName, string secretName);
+        PSDeletedSecret DeleteSecret(string vaultName, string secretName);
 
         void PurgeSecret(string vaultName, string secretName);
 
-        Secret RecoverSecret(string vaultName, string secretName);
+        PSSecret RecoverSecret(string vaultName, string secretName);
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 
-        Secret RestoreSecret(string vaultName, string inputBlobPath);
+        PSSecret RestoreSecret(string vaultName, string inputBlobPath);
 
         #region Certificate actions
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
 
-        IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSDeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
 
-        IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
         CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IssuerBundle GetCertificateIssuer(string vaultName, string issuerName);
 
-        IEnumerable<CertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
         IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, KeyVaultCertificateOrganizationDetails organizationDetails);  
               

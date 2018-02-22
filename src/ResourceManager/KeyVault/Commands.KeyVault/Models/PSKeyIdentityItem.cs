@@ -18,9 +18,9 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyIdentityItem : ObjectIdentifier
+    public class PSKeyIdentityItem : ObjectIdentifier
     {
-        internal KeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper)
+        internal PSKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
         }
 
-        internal KeyIdentityItem(PSKeyBundle keyBundle)
+        internal PSKeyIdentityItem(PSKeyBundle keyBundle)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");

@@ -16,23 +16,32 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class DeletedKeyIdentityItem : KeyIdentityItem
+    public sealed class PSDeletedKeyVaultCertificate : PSKeyVaultCertificate
     {
-        internal DeletedKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper) : base(keyItem, vaultUriHelper)
+        public PSDeletedKeyVaultCertificate( Azure.KeyVault.Models.DeletedCertificateBundle deletedCertificateBundle )
+            :base( deletedCertificateBundle )
         {
-            ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
-            DeletedDate = keyItem.DeletedDate;
+            if ( deletedCertificateBundle == null )
+            {
+                throw new ArgumentNullException( nameof( deletedCertificateBundle ) );
+            }
+
+            ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;
+            DeletedDate = deletedCertificateBundle.DeletedDate;
         }
 
-        internal DeletedKeyIdentityItem(DeletedKeyBundle keyBundle) : base(keyBundle)
+        internal static PSDeletedKeyVaultCertificate FromDeletedCertificateBundle( Azure.KeyVault.Models.DeletedCertificateBundle deletedCertificateBundle ) 
         {
-            ScheduledPurgeDate = keyBundle.ScheduledPurgeDate;
-            DeletedDate = keyBundle.DeletedDate;
+            if ( deletedCertificateBundle == null )
+            {
+                return null;
+            }
+
+            return new PSDeletedKeyVaultCertificate( deletedCertificateBundle );
         }
 
         public DateTime? ScheduledPurgeDate { get; set; }
 
         public DateTime? DeletedDate { get; set; }
-
     }
 }

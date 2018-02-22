@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
          ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(DeletedKeyBundle))]
+    [OutputType(typeof(PSDeletedKeyBundle))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            DeletedKeyBundle deletedKeyBundle = null;
+            PSDeletedKeyBundle deletedKeyBundle = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(

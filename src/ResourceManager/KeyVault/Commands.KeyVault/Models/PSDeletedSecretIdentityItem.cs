@@ -13,29 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class DeletedSecret : Secret
+    public class PSDeletedSecretIdentityItem : PSSecretIdentityItem
     {
-        public DeletedSecret()
-        { }
-
-        /// <summary>
-        /// Internal constructor used by KeyVaultDataServiceClient
-        /// </summary>
-        /// <param name="deletedSecret">secret returned from service</param>
-        /// <param name="vaultUriHelper">helper class</param>
-        internal DeletedSecret(Azure.KeyVault.Models.DeletedSecretBundle deletedSecret, VaultUriHelper vaultUriHelper) : base(deletedSecret, vaultUriHelper)
+        internal PSDeletedSecretIdentityItem(Azure.KeyVault.Models.DeletedSecretItem secretItem, VaultUriHelper vaultUriHelper) : base(secretItem, vaultUriHelper)
         {
-            ScheduledPurgeDate = deletedSecret.ScheduledPurgeDate;
-            DeletedDate = deletedSecret.DeletedDate;
+            ScheduledPurgeDate = secretItem.ScheduledPurgeDate;
+            DeletedDate = secretItem.DeletedDate;
+        }
+
+        internal PSDeletedSecretIdentityItem(PSDeletedSecret secret) : base(secret)
+        {
+            ScheduledPurgeDate = secret.ScheduledPurgeDate;
+            DeletedDate = secret.DeletedDate;
         }
 
         public DateTime? ScheduledPurgeDate { get; set; }
 
         public DateTime? DeletedDate { get; set; }
-
     }
 }

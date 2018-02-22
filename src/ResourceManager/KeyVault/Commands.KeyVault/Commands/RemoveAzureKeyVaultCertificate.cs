@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(DeletedKeyVaultCertificate))]
+    [OutputType(typeof(PSDeletedKeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            DeletedKeyVaultCertificate certBundle = null;
+            PSDeletedKeyVaultCertificate certBundle = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     KeyVaultProperties.Resources.RemoveCertWhatIfMessage,
                     Name),
                 Name,
-                () => { certBundle = DeletedKeyVaultCertificate.FromDeletedCertificateBundle( this.DataServiceClient.DeleteCertificate(VaultName, Name) ); });
+                () => { certBundle = PSDeletedKeyVaultCertificate.FromDeletedCertificateBundle( this.DataServiceClient.DeleteCertificate(VaultName, Name) ); });
 
             if (PassThru.IsPresent)
             {
