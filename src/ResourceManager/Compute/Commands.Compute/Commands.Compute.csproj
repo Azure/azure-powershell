@@ -285,6 +285,7 @@
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
     <Compile Include="Strategies\Network\LoadBalancerStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ManagedDiskStrategy.cs" />
+    <Compile Include="Strategies\Network\LoadBalancingRuleStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
     <Compile Include="Strategies\Network\NetworkStrategy.cs" />

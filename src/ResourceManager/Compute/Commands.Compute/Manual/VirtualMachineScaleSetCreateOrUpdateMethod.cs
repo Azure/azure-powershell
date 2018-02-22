@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
+            var LoadBalancingRuleName = LoadBalancerName;
 
             var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
@@ -141,8 +142,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                 name: LoadBalancerName,
-                // froontendPoolName: FrontendPoolName,
-                // backendPoolName: BackendPoolName,
                 zones: Zone,
                 publicIPAddress: publicIpAddress,
                 subnet: subnet);
@@ -155,6 +154,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var backendAddressPool = loadBalancer.CreateBackendAddressPool(
                 name: BackendPoolName);
+
+            var loadBalancingRule = loadBalancer.CreateLoadBalancingRule(
+                name: LoadBalancingRuleName,
+                fronendIpConfiguration: frontendIpConfiguration,
+                backendAddressPool: backendAddressPool,
+                frontendPort: 80,
+                backendPort: 80);
 
             var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
                 name: VMScaleSetName,
