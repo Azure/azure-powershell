@@ -124,13 +124,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
             }
-            catch (CloudException ce) {
-                if (IsAuthorizationDeniedException(ce)) 
-                {
-                    throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
-                }
-
-                throw;
+            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            {
+                throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
             }
 
             foreach (RoleAssignment assignment in assignments)
