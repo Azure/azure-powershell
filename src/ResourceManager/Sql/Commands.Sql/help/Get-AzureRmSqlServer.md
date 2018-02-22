@@ -30,17 +30,22 @@ PS C:\>Get-AzureRmSqlServer -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
-SqlAdministratorLogin    : adminLoginSqlAdministratorPassword : 
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 
 ResourceGroupName        : resourcegroup01
 ServerName               : server02
 Location                 : West US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server02.database.windows.net
 ```
 
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01.
@@ -52,9 +57,11 @@ ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 ```
 
 This command gets information about the Azure SQL Database server named Server01.
@@ -66,25 +73,31 @@ ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 
 ResourceGroupName        : resourcegroup01
 ServerName               : server02
 Location                 : West US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server02.database.windows.net
 
 ResourceGroupName        : resourcegroup02
 ServerName               : server03
 Location                 : East US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server03.database.windows.net
 ```
 
 This command gets information about all the Azure SQL Database servers in the current subscription.

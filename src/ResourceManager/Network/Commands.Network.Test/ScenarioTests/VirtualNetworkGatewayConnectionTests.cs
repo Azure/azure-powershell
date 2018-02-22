@@ -12,13 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
     public class VirtualNetworkGatewayConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public VirtualNetworkGatewayConnectionTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
