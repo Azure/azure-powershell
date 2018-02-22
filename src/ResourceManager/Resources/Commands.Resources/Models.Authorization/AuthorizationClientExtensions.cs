@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     internal static class AuthorizationClientExtensions
     {
         public const string CustomRole = "CustomRole";
+        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
             }
             catch (CloudException ce) {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized && ce.Error.Code.Equals("Authorization_RequestDenied",StringComparison.OrdinalIgnoreCase))
+                if (IsAuthorizationDeniedException(ce)) 
                 {
                     throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
                 }
@@ -218,6 +219,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         private static string GuidFromFullyQualifiedId(this string Id)
         {
             return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
+        }
+
+        private static bool IsAuthorizationDeniedException(CloudException ce)
+        {
+            if (ce.Response != null && ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
+                ce.Error != null && ce.Error.Code != null && string.Equals(ce.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
