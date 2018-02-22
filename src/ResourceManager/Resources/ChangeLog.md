@@ -21,6 +21,7 @@
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
 * Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.
+* Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
 * Fix Roleassignment get calls to be used with roledefinition ID.
 
 ## Version 5.3.0
