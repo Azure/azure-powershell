@@ -191,7 +191,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription)
         {
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
-            string assignedToPrincipalId = null;
             string principalId = null;
 
             PSADObject adObject = null;
@@ -215,7 +214,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
                     }
 
-                    assignedToPrincipalId = adObject.Id.ToString();
+                    principalId = adObject.Id.ToString();
                 }
                 else
                 {
