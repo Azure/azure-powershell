@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -28,15 +29,18 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<CertificateIdentityItem>), typeof(KeyVaultCertificate), typeof(DeletedKeyVaultCertificate), typeof(List<DeletedCertificateIdentityItem>))]
+    [OutputType(typeof(List<PSCertificateIdentityItem>), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(List<PSDeletedCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string ByCertificateNameParameterSet = "ByCertificateName";
-        private const string ByVaultNameParameterSet = "ByVaultName";
-        private const string ByCertificateVersionsParameterSet = "ByCertificateVersions";
-        private const string ByDeletedCertificateParameterSet = "ByDeletedCertificates";
+        private const string ByVaultNameParameterSet = "ByName";
+        private const string ByCertificateNameandVersionParameterSet = "ByCertificateNameAndVersion";
+        private const string ByCertificateVersionsParameterSet = "ByCertificateAllVersions";
+
+        private const string InputObjectByVaultNameParameterSet = "ByNameInputObject";
+        private const string InputObjectByCertificateNameandVersionParameterSet = "ByCertificateNameAndVersionInputObject";
+        private const string InputObjectByCertificateVersionsParameterSet = "ByCertificateAllVersionsInputObject";
 
         #endregion
 
@@ -46,30 +50,74 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// VaultName
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByVaultNameParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByCertificateNameandVersionParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByCertificateVersionsParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        [Parameter(Mandatory = true,
+                   ParameterSetName = InputObjectByVaultNameParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = InputObjectByCertificateVersionsParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSVault InputObject { get; set; }
+
         /// <summary>
         /// Name
         /// </summary>       
+        [Parameter(Mandatory = false,
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByVaultNameParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter(Mandatory = false,
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = InputObjectByVaultNameParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   ParameterSetName = ByCertificateNameParameterSet,
+                   ParameterSetName = ByCertificateNameandVersionParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter(Mandatory = true,
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByCertificateVersionsParameterSet,
-                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
-        [Parameter( Mandatory = false,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
+        [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   ParameterSetName = ByDeletedCertificateParameterSet,
-                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
+                   ParameterSetName = InputObjectByCertificateVersionsParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
@@ -77,8 +125,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Certificate version.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByCertificateNameParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByCertificateNameandVersionParameterSet,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the version of the certificate in key vault.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the version of the certificate in key vault.")]
@@ -88,56 +141,71 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByCertificateVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectByCertificateVersionsParameterSet,
+            HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
         /// <summary>
         /// Switch specifying whether to apply the command to certificates in a deleted state.
         /// </summary>
-        [Parameter( Mandatory = true,
-                    ParameterSetName = ByDeletedCertificateParameterSet,
-                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output." )]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to show the previously deleted certificates in the output." )]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = InputObjectByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
         public SwitchParameter InRemovedState { get; set; }
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CertificateBundle certBundle;
 
-            switch (ParameterSetName)
+            if (InputObject != null)
             {
-                case ByCertificateNameParameterSet:
-                    certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, Version ?? string.Empty);
-                    var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
-                    this.WriteObject(certificate);
-                    break;
+                VaultName = InputObject.VaultName.ToString();
+            }
 
-                case ByCertificateVersionsParameterSet:
-                    certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
-                    if (certBundle != null)
-                    {
-                        WriteObject(new CertificateIdentityItem(certBundle));
-                        GetAndWriteCertificatesVersions(VaultName, Name, certBundle.CertificateIdentifier.Version);
-                    }
-                    break;
-
-                case ByVaultNameParameterSet:
+            if (!string.IsNullOrEmpty(Version))
+            {
+                certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, Version);
+                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
+                this.WriteObject(certificate);
+            }
+            else if (IncludeVersions)
+            {
+                certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
+                if (certBundle != null)
+                {
+                    WriteObject(new PSCertificateIdentityItem(certBundle));
+                    GetAndWriteCertificatesVersions(VaultName, Name, certBundle.CertificateIdentifier.Version);
+                }
+            }
+            else if (InRemovedState)
+            {
+                if (Name == null)
+                {
+                    GetAndWriteDeletedCertificates(VaultName);
+                }
+                else
+                {
+                    PSDeletedKeyVaultCertificate deletedCert = PSDeletedKeyVaultCertificate.FromDeletedCertificateBundle(DataServiceClient.GetDeletedCertificate(VaultName, Name));
+                    WriteObject(deletedCert);
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Name))
+                {
                     GetAndWriteCertificates(VaultName);
-                    break;
-
-                case ByDeletedCertificateParameterSet:
-                    if ( Name == null )
-                    {
-                        GetAndWriteDeletedCertificates( VaultName );
-                        break;
-                    }
-
-                    DeletedKeyVaultCertificate deletedCert = DeletedKeyVaultCertificate.FromDeletedCertificateBundle( DataServiceClient.GetDeletedCertificate(VaultName, Name) );
-                    WriteObject( deletedCert );
-
-                    break;
-
-                default:
-                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
+                }
+                else
+                {
+                    certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
+                    var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
+                    this.WriteObject(certificate);
+                }
             }
         }
 

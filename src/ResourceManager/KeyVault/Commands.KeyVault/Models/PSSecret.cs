@@ -17,9 +17,9 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class Secret : ObjectIdentifier
+    public class PSSecret : ObjectIdentifier
     {
-        public Secret()
+        public PSSecret()
         { }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="secret">secret returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal Secret(Azure.KeyVault.Models.SecretBundle secret, VaultUriHelper vaultUriHelper)
+        internal PSSecret(Azure.KeyVault.Models.SecretBundle secret, VaultUriHelper vaultUriHelper)
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");

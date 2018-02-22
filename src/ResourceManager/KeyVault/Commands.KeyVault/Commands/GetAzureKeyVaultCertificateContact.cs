@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -31,6 +32,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Parameter Set Names
 
         private const string ByVaultNameParameterSet = "VaultName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -47,11 +50,43 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        /// <summary>
+        /// InputObject
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSVault InputObject { get; set; }
+
+        /// <summary>
+        /// ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Contacts contacts;
+
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName.ToString();
+            }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
+            }
 
             try
             {

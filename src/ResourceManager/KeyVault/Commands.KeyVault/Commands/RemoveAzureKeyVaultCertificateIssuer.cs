@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         ConfirmImpact = ConfirmImpact.High,
         DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateIssuer))]
+    [OutputType(typeof(PSKeyVaultCertificateIssuer))]
     public class RemoveAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         protected override void ProcessRecord()
         {
-            KeyVaultCertificateIssuer issuer = null;
+            PSKeyVaultCertificateIssuer issuer = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     "Remove certificate issuer '{0}'",
                     Name),
                 Name,
-                () => { issuer = KeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
+                () => { issuer = PSKeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
 
             if (PassThru)
             {

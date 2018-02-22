@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ImportCertificateFromFileParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificate))]
+    [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
                 }
 
-                var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
+                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
                 this.WriteObject(certificate);
             }
         }

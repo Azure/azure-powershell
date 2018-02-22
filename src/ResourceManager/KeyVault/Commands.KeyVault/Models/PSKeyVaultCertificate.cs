@@ -19,7 +19,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificate 
+    public class PSKeyVaultCertificate 
     {
         public string Name { get; set; }
         public string VaultName { get; set; }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string RecoveryLevel { get; private set; }
 
-        public KeyVaultCertificate( CertificateBundle certificateBundle )
+        public PSKeyVaultCertificate( CertificateBundle certificateBundle )
         {
             if ( certificateBundle == null )
             {
@@ -85,24 +85,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        internal static KeyVaultCertificate FromCertificateBundle(CertificateBundle certificateBundle)
+        internal static PSKeyVaultCertificate FromCertificateBundle(CertificateBundle certificateBundle)
         {
             if ( certificateBundle == null )
             {
                 return null;
             }
 
-            return new KeyVaultCertificate( certificateBundle );
+            return new PSKeyVaultCertificate( certificateBundle );
         }
 
-        internal static List<KeyVaultCertificate> FromCertificateBundles(IEnumerable<CertificateBundle> certificateBundles)
+        internal static List<PSKeyVaultCertificate> FromCertificateBundles(IEnumerable<CertificateBundle> certificateBundles)
         {
             if (certificateBundles == null || certificateBundles.Count() == 0)
             {
                 return null;
             }
 
-            return certificateBundles.Select(certificateBundle => KeyVaultCertificate.FromCertificateBundle(certificateBundle)).ToList();
+            return certificateBundles.Select(certificateBundle => PSKeyVaultCertificate.FromCertificateBundle(certificateBundle)).ToList();
         }
     }
 }

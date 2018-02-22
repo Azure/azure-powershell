@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(Secret))]
+    [OutputType(typeof(PSSecret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions

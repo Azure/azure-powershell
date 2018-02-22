@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultSecretRemoval",
     SupportsShouldProcess = true,
     HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(Secret))]
+    [OutputType(typeof(PSSecret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.RecoverSecret))
             {
-                Secret secret = DataServiceClient.RecoverSecret(VaultName, Name);
+                PSSecret secret = DataServiceClient.RecoverSecret(VaultName, Name);
 
                 WriteObject(secret);
             }

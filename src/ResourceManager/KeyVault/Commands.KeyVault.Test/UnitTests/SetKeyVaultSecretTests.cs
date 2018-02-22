@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         private SetAzureKeyVaultSecret cmdlet;
         private SecretAttributes secretAttributes;
         private SecureString secureSecretValue;
-        private Secret secret;
+        private PSSecret secret;
 
         public SetKeyVaultSecretTests()
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             secretAttributes = new SecretAttributes(true, null, null, null, null);
             secureSecretValue = SecretValue.ConvertToSecureString();
-            secret = new Secret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
+            secret = new PSSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
 
             cmdlet = new SetAzureKeyVaultSecret()
             {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetSecretTest()
         {
-            Secret expected = secret;
+            PSSecret expected = secret;
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
                 It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             catch { }
 
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Secret>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSSecret>()), Times.Never());
         }
     }
 }

@@ -17,15 +17,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",        
+    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",
+        DefaultParameterSetName = ListVaultsBySubParameterSet,   
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>),
-        typeof(PSKeyVaultModels.PSDeletedVault), typeof(List<PSKeyVaultModels.PSDeletedVault>))]
+    [OutputType(typeof(PSVault), typeof(List<PSVaultIdentityItem>),
+        typeof(PSDeletedVault), typeof(List<PSDeletedVault>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault being queried.")]
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 0,
             ParameterSetName = ListVaultsByRGParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
+            Position = 1,
             ParameterSetName = GetDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVaultModels.PSVault vault = null;
+                    PSVault vault = null;
 
                     if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(

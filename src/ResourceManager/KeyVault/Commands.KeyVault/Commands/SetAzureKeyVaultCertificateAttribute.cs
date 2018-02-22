@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificate))]
+    [OutputType(typeof(PSKeyVaultCertificate))]
     public class SetAzureKeyVaultCertificateAttribute : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru)
                 {
-                    var certificate = KeyVaultCertificate.FromCertificateBundle(certificateBundle);
+                    var certificate = PSKeyVaultCertificate.FromCertificateBundle(certificateBundle);
                     this.WriteObject(certificate);
                 }
             }
