@@ -178,6 +178,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),
                     AccessPolicy = accessPolicy,
+                    NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                     Tags = this.Tag
                 },
                 ActiveDirectoryClient

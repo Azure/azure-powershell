@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; set; }
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }
+        public NetworkRuleSet NetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
     }
 }

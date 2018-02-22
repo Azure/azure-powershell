@@ -456,4 +456,16 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RestoreManagedStorageAccount" xml:space="preserve">
     <value>Restore managed storage account</value>
   </data>
+  <data name="AddNetworkRule" xml:space="preserve">
+    <value>Add vault network rule</value>
+  </data>
+  <data name="RemoveNetworkRule" xml:space="preserve">
+    <value>Remove vault network rule</value>
+  </data>
+  <data name="UpdateNetworkRule" xml:space="preserve">
+    <value>Update vault network rule</value>
+  </data>
+  <data name="UpdateNetworkRuleWarning" xml:space="preserve">
+    <value>The network rule set of this vault is turned off now!</value>
+  </data>
 </root>
