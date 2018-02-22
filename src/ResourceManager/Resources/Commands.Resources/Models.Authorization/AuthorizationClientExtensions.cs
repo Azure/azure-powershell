@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()));
+            objectIds = objectIds.Distinct().ToList();
             List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
 
             foreach (RoleAssignment assignment in assignments)
