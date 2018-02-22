@@ -14,7 +14,7 @@ Gets the operations for an Azure resource provider that are securable using Azur
 ## SYNTAX
 
 ```
-Get-AzureRmProviderOperation [-OperationSearchString] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmProviderOperation [[-OperationSearchString] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -67,11 +67,11 @@ The operation search string (with possible wildcard (*) characters)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
-Required: True
+Required: False
 Position: 0
-Default value: None
+Default value: "*"
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
