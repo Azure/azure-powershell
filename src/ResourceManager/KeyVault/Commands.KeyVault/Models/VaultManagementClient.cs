@@ -321,16 +321,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (psRuleSet.IpAddressRanges != null && psRuleSet.IpAddressRanges.Count > 0)
                 {
-                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress => {
+                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress =>
+                    {
                         return new IPRule() { Value = ipAddress };
                     }).ToList<IPRule>();
+                }
+                else
+                {   // Send empty array [] to server to override default
+                    updatedRuleSet.IpRules = new List<IPRule>();
                 }
 
                 if (psRuleSet.VirtualNetworkResourceIds != null && psRuleSet.VirtualNetworkResourceIds.Count > 0)
                 {
-                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId => {
+                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId =>
+                    {
                         return new VirtualNetworkRule() { Id = resourceId };
                     }).ToList<VirtualNetworkRule>();
+                }
+                else
+                {   // Send empty array [] to server to override default
+                    updatedRuleSet.VirtualNetworkRules = new List<VirtualNetworkRule>();
                 }
             }
 
