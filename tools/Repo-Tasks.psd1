@@ -51,8 +51,7 @@ Copyright = '(c) 2016 Azure SDK-PS. All rights reserved.'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('.\Modules\TestFx-Tasks.psd1', 
-               '.\Modules\Build-Tasks.psd1')
+# RequiredModules = ''
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

@@ -36,6 +36,8 @@ SqlAdministratorLogin    : adminLogin
 SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 ```
 
 This command resets the administrator password on the AzureSQL Server named server01.

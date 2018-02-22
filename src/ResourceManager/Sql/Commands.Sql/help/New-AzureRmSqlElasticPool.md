@@ -155,8 +155,6 @@ The acceptable values for this parameter are:
 - Standard
 - DataWarehouse
 - Stretch
-- Free
-- PremiumRS
 
 ```yaml
 Type: DatabaseEdition

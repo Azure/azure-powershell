@@ -18,14 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
-* Add ManagementPartner cmdlets
-    - New-AzureRmManagementPartner cmdlet to create a management partner
-    - Get-AzureRmManagementPartner cmdlet to list the management partner for the current user
-    - Remove-AzureRmManagementPartner cmdlet to delete a management partner
-    - Update-AzureRmManagementPartner cmdlet to update an existing management partner
+* Fix Roleassignment get calls to be used with roledefinition ID.
+
+## Version 5.3.0
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
 
 ## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

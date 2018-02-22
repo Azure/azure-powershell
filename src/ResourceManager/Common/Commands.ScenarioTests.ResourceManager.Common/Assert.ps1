@@ -381,3 +381,30 @@ function Assert-AreNotEqual
   
   return $true
 }
+
+###################
+#
+# Verify that the actual string starts with the expected prefix
+#
+#    param [object] $expectedPrefix : The expected prefix
+#    param [object] $actual         : The actual string
+#    param [string] $message        : The message to return if the actual string does not begin with the prefix
+####################
+function Assert-StartsWith
+{
+    param([string] $expectedPrefix, [string] $actual, [string] $message)
+
+  Assert-NotNull $actual
+
+  if (!$message)
+  {
+      $message = "Assertion failed because actual '$actual' does start with '$expectedPrefix'"
+  }
+  
+  if (-not $actual.StartsWith($expectedPrefix))
+  {
+      throw $message
+  }
+  
+  return $true
+}
