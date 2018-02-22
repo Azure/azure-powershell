@@ -20,6 +20,7 @@
 ## Current Release
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
+* Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
 * Fix Roleassignment get calls to be used with roledefinition ID.
 
 ## Version 5.3.0
