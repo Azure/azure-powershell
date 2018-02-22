@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.ManagementPartner;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.ManagementPartner.Models;
 
 namespace Microsoft.Azure.Commands.ManagementPartner
 {
@@ -36,13 +37,16 @@ namespace Microsoft.Azure.Commands.ManagementPartner
             set { aceProvisioningManagementPartnerApiClient = value; }
         }
 
-        protected void LogException(AggregateException ex)
+        protected void LogException(Exception ex)
         {
-            WriteObject(ex.Message);
-            foreach (var innerEx in ex.InnerExceptions)
+            if (ex is ErrorException)
             {
-                WriteObject(innerEx.Message);
+                ErrorException errorEx = ex as ErrorException;
+                throw new ErrorException(
+                    $"Operation failed with message '{errorEx.Body.ErrorProperty.Message}'");
             }
+
+            throw ex;
         }
     }
 }
