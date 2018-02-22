@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             if (!string.IsNullOrEmpty(roleId))
             {
-                return assignments.Where(a => a.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId);
+                return assignments.Where(a => a.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId.GuidFromFullyQualifiedId());
             }
 
             return assignments;
