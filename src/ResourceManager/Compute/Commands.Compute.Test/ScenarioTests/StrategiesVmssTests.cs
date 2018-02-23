@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -44,7 +45,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVmssWithoutDomainName()
         {
             StrategiesVirtualMachineTests.TestDomainName(
-                "Test-SimpleNewVmssWithoutDomainName", () => "195cb3");
+                "Test-SimpleNewVmssWithoutDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
         }
     }
 }
