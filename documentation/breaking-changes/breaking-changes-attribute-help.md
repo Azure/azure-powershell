@@ -46,8 +46,7 @@ With "deprecatedByVersion" and "changeInEfectByDate"
 
 With OldWay/NewWay
 ```cs
-    // This deprecation marker should print the deprevated by version only in the message
-    [AttributeName(param1, param2, "5.0.0.0")]
+    [AttributeName(param1, param2, OldWay = "Get-SomeObjectD -Param1=\"blah\"", NewWay = "Get-SomeObjectE -Param1=\"blah\" -Param2=\"Yo Yo\"")]
     class AzureRMTestCmdletWithMetadataChangeAttribute : AzureRMCmdlet
     {
 
@@ -62,7 +61,7 @@ This attribute marks a cmdlet for deprecation
 
 When there is a replacement cmdlet for the one that is being deprecated :
 ```cs
-[CmdletDeprecationMarker("Get-SomeObjectA", "GEt-SomeObjectC")]
+[CmdletDeprecationMarker("Get-SomeObjectA", "Get-SomeObjectC")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
 public class GetSomeObject : Cmdlet
 {
