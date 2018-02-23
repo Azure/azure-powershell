@@ -1,4 +1,8 @@
-﻿## 5.4.0 - February 2018
+﻿## 5.4.1 - February 2018
+#### AzureRM.Profile
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
+## 5.4.0 - February 2018
 #### AzureRM.Automation
 * Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
 
