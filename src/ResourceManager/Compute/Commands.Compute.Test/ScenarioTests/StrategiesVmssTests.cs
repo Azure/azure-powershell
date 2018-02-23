@@ -34,6 +34,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssImageName()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmssImageName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithoutDomainName()
         {
             StrategiesVirtualMachineTests.TestDomainName(

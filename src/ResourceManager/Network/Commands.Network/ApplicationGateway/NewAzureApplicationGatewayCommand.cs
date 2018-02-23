@@ -146,6 +146,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = " Whether HTTP2 is enabled.")]
+        public SwitchParameter EnableHttp2 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -254,6 +259,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.WebApplicationFirewallConfiguration != null)
             {
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
+            }
+
+            if (this.EnableHttp2.IsPresent)
+            {
+                applicationGateway.EnableHttp2 = true;
             }
 
             // Normalize the IDs

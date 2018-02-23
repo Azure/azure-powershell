@@ -203,6 +203,13 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Test-AzureRmNetworkWatcherConnectivity', 
                'Get-AzureRmNetworkWatcherReachabilityReport', 
                'Get-AzureRmNetworkWatcherReachabilityProvidersList', 
+               'New-AzureRmNetworkWatcherConnectionMonitor', 
+               'Set-AzureRmNetworkWatcherConnectionMonitor',
+               'Start-AzureRmNetworkWatcherConnectionMonitor',
+               'Stop-AzureRmNetworkWatcherConnectionMonitor',
+               'Remove-AzureRmNetworkWatcherConnectionMonitor',
+               'Get-AzureRmNetworkWatcherConnectionMonitor',
+               'Get-AzureRmNetworkWatcherConnectionMonitorReport',
                'Get-AzureRmExpressRouteServiceProvider', 
                'Test-AzureRmPrivateIPAddressAvailability', 
                'Get-AzureRmPublicIpAddress', 'New-AzureRmPublicIpAddress', 
@@ -308,7 +315,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript', 
                'New-AzureRmApplicationSecurityGroup', 
                'Remove-AzureRmApplicationSecurityGroup', 
-               'Get-AzureRmApplicationSecurityGroup'
+               'Get-AzureRmApplicationSecurityGroup',
+               'New-AzureRmPublicIpTag'
 
 # Variables to export from this module
 # VariablesToExport = @()

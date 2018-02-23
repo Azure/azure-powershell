@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 
 ## Version 4.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
