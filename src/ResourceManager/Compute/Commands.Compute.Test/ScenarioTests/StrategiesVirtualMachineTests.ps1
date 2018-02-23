@@ -106,7 +106,11 @@ function Test-SimpleNewVmWithDefaultDomainName
 
 		Assert-AreEqual $vmname $x.Name
 		$fqdn = $x.FullyQualifiedDomainName
-		Assert-AreEqual "ps9301-a469f1.eastus.cloudapp.azure.com" $fqdn
+		$split = $fqdn.Split(".")
+		Assert-AreEqual "eastus" $split[1] 
+		Assert-AreEqual "cloudapp" $split[2]
+		Assert-AreEqual "azure" $split[3]
+		Assert-AreEqual "com" $split[4]
     }
     finally
     {
@@ -123,42 +127,34 @@ function Test-SimpleNewVmWithDefaultDomainName2
 {
     # Setup
     $rgname = Get-ResourceName
+	$rgname2 = Get-ResourceName
 
     try
     {
 		$username = "admin01"
 		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string] $vmname = "vm1"
+		[string] $vmname = "vm"
 
         # Common
 		$x = New-AzureRmVM `
 			-ResourceGroupName $rgname `
 			-Name $vmname `
 			-Credential $cred `
-			-DomainNameLabel "vm2-012346" `
 			-ImageName "ubuntults"
-
-		Assert-AreEqual $vmname $x.Name
-		$fqdn = $x.FullyQualifiedDomainName
-		Assert-AreEqual "vm2-012346.eastus.cloudapp.azure.com" $fqdn
 
 		# second VM
-		[string] $vmname2 = "vm2"
 		$x2 = New-AzureRmVM `
-			-ResourceGroupName $rgname `
-			-Name $vmname2 `
+			-ResourceGroupName $rgname2 `
+			-Name $vmname `
 			-Credential $cred `
 			-ImageName "ubuntults"
-
-		Assert-AreEqual $vmname2 $x2.Name
-		$fqdn2 = $x2.FullyQualifiedDomainName
-		Assert-AreEqual "vm2-543210.eastus.cloudapp.azure.com" $fqdn2
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $vmname
+        Clean-ResourceGroup $rgname
+		Clean-ResourceGroup $rgname2
     }
 }
 
