@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             try
             {
                 inputSchedule = DataServiceClient.Schedules.Get(
-                                ResourceGroupName,
                                 LabName,
                                 PolicyName);
             }

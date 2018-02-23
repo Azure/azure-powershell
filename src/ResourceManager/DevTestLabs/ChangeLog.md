@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.2
+* Fixed all of the GET cmdlets which previously weren't working.
+
 ## Version 4.0.1
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 

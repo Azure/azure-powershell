@@ -19,12 +19,13 @@
 -->
 ## Current Release
 
+## Version 4.3.2
+* Fix ErrorAction issue for some of Get cmdlets.
+
 ## Version 4.3.1
 * `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
 
 ## Version 4.3.0
-* Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
-* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 * Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
 * Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
 * Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
