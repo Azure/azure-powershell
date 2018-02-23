@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
         }
 
-        public void AddVirtualNetwork(PSVirtualNetwork virtualNetwork)
+        public void AttachToVirtualNetwork(PSVirtualNetwork virtualNetwork)
         {
             if (virtualNetwork == null)
             {
@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Commands.Network.Models
                         Subnet = new PSResourceId { Id = secGwSubnet.Id }
                     }
                 };
+        }
+
+        public void DetachFromVirtualNetwork()
+        {
+            this.IpConfigurations = null;
         }
 
         public void AddApplicationRuleCollection(PSSecureGatewayApplicationRuleCollection ruleCollection)

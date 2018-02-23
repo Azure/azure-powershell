@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.virtualNetwork != null)
             {
-                secureGw.AddVirtualNetwork(this.virtualNetwork);
+                secureGw.AttachToVirtualNetwork(this.virtualNetwork);
             }
 
             // Map to the sdk object
