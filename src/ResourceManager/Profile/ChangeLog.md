@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
 
 ## Version 4.3.0
 * Added deprecation warning for PowerShell 3 and 4
