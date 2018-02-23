@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
-                upgradeMode: MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode")
+                upgradeMode: MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                     ? UpgradePolicyMode
                     : (UpgradeMode?)null);
 
