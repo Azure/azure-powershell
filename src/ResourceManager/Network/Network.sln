@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Graph.RBAC"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Strategies", "..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj", "{EEA69772-D41B-482A-9252-2B4595C59E53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
