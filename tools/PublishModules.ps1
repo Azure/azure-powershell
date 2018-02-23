@@ -160,6 +160,16 @@ function Update-NugetPackage
     }
 }
 
+<#
+.DESCRIPTION
+Creates a module Nuget Package with correct Nuget metadata and module manifest metadata in two parts.
+Part 1: Uses Publish-Module to create a .nupkg file with the correct metadata for module installation, 
+Part 2: Updates the package contents to make module suitable for Import inside PowerShell.
+In part 1, psd1 dependencies are used to determine the dependencies in the Nuget package
+In part 2, Alters psd1 settings to allow fine-grained control of assembly loading when module is imported 
+through a generated psm1 file. If a module manifest already has a psm1 module definition in its RootModule property
+then the Part 2 processing is skipped.
+#>
 function Change-RMModule 
 {
     [CmdletBinding()]
@@ -179,6 +189,11 @@ function Change-RMModule
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
+        # Create a psm1 and alter psd1 dependencies to allow fine-grained control over assembly loading.  Opt out by definitng a RootModule.
+        if ($ModuleMetadata.RootModule)
+        {
+            return
+        }
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
         if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
@@ -189,25 +204,25 @@ function Change-RMModule
         pushd $TempRepoPath
         try
         {
-          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
-          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".zip")
-          $dirPath = Join-Path -Path . -ChildPath $moduleName
-          $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
+            $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+            $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".zip")
+            $dirPath = Join-Path -Path . -ChildPath $moduleName
+            $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
-          if (!(Test-Path -Path $nupkgPath))
-          {
-              throw "Module at $nupkgPath in $TempRepoPath does not exist"
-          }
-          Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
-          ren $nupkgPath $zipPath
-          Write-Output "Expanding $zipPath"
-          Expand-Archive $zipPath -DestinationPath $dirPath
-          Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Write-Output "Removing module manifest dependencies for $unzippedManifest"
-          Remove-ModuleDependencies -Path $unzippedManifest
-          Remove-Item -Path $zipPath -Force
-          Write-Output "Repackaging $dirPath"
-          Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
+            if (!(Test-Path -Path $nupkgPath))
+            {
+                throw "Module at $nupkgPath in $TempRepoPath does not exist"
+            }
+            Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
+            ren $nupkgPath $zipPath
+            Write-Output "Expanding $zipPath"
+            Expand-Archive $zipPath -DestinationPath $dirPath
+            Write-Output "Adding PSM1 dependency to $unzippedManifest"
+            Write-Output "Removing module manifest dependencies for $unzippedManifest"
+            Remove-ModuleDependencies -Path $unzippedManifest
+            Remove-Item -Path $zipPath -Force
+            Write-Output "Repackaging $dirPath"
+            Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
         }
         finally 
         {
