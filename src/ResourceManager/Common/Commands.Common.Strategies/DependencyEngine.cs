@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    /// <summary>
-    /// Base interface for ResourceConfig[].
-    /// </summary>
-    public interface IResourceConfig : IEntityConfig
+    public sealed class DependencyEngine : IEngine
     {
-        new IResourceStrategy Strategy { get; }
+        public ConcurrentDictionary<string, IEntityConfig> Dependencies { get; }
+            = new ConcurrentDictionary<string, IEntityConfig>();
 
-        IEnumerable<IEntityConfig> Dependencies { get; }
-
-        TResult Accept<TContext, TResult>(
-            IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
+        public string GetId(IEntityConfig config)
+        {
+            var id = config.DefaultIdStr();
+            Dependencies.GetOrAdd(id, config);
+            return id;
+        }
     }
 }

@@ -12,20 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     /// <summary>
-    /// Base interface for ResourceConfig[].
+    /// Engine for REST API calls using Azure SDK.
     /// </summary>
-    public interface IResourceConfig : IEntityConfig
+    public sealed class SdkEngine : IEngine
     {
-        new IResourceStrategy Strategy { get; }
+        string _SubscriptionId { get; }
 
-        IEnumerable<IEntityConfig> Dependencies { get; }
+        public SdkEngine(string subscriptionId)
+        {
+            _SubscriptionId = subscriptionId;
+        }
 
-        TResult Accept<TContext, TResult>(
-            IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
+        public string GetId(IEntityConfig config)
+            => new[] { "subscriptions", _SubscriptionId } 
+                .Concat(config.GetIdFromSubscription()) 
+                .IdToString();
     }
 }
