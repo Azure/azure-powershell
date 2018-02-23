@@ -29,25 +29,44 @@ AllowMultiple = true)]
 
         public String ReplacementCmdletName { get; }
 
+        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName) :
+            base(getMessage(deprecatedCmdletName, null))
+        {
+            this.DeprecatedCmdLetName = deprecatedCmdletName;
+            this.ReplacementCmdletName = null;
+        }
+
         public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName) :
-            base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'")
+            base(getMessage(deprecatedCmdletName, replacementCmdletName))
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = replacementCmdletName;
         }
 
         public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersione) :
-             base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'", deprecateByVersione)
+             base(getMessage(deprecatedCmdletName, replacementCmdletName), deprecateByVersione)
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = replacementCmdletName;
         }
 
         public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersion, String changeInEfectByDate) :
-             base("The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'", deprecateByVersion, changeInEfectByDate)
+             base(getMessage(deprecatedCmdletName, replacementCmdletName), deprecateByVersion, changeInEfectByDate)
         {
             this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = replacementCmdletName;
+        }
+
+        private static String getMessage(String deprecatedCmdletName, String replacementCmdletName)
+        {
+            if (String.IsNullOrWhiteSpace(replacementCmdletName))
+            {
+                return "The cmdlet '" + deprecatedCmdletName + "' is being deprecated. There will be no replacement for it.";
+            }
+            else
+            {
+                return "The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'";
+            }
         }
     }
 }
