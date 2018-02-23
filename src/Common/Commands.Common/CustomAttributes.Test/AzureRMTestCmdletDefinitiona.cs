@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
     {
     }
 
+    [CmdletDeprecationMarker("Get-AzureRMTestCmdlet2")]
+    class AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement : AzureRMCmdlet
+    {
+    }
+
     [OutputType(typeof(List<String>))]
     [CmdLetOutputDeprecationMarker("Get-AzureRMTestCmdlet2", "String", "List<String>")]
     class AzureRMTestCmdletWithCmdletWithOutputTypeChange : AzureRMCmdlet

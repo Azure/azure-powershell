@@ -48,6 +48,26 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletDeprecationAttributeNoReplacement()
+        {
+            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement));
+
+            Assert.Equal(1, attribs.Count);
+            Assert.False(attribs[0].ChangeInEfectByDateSet);
+            Assert.False(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The cmdlet ')(.*)(' is being deprecated. There will be no replacement for it.)";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement));
+            Assert.Equal(1, messages.Count);
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testForCmdletOutputTypeDeprecation()
         {
             List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange));
