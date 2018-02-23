@@ -12,20 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    /// <summary>
-    /// Base interface for ResourceConfig[].
-    /// </summary>
-    public interface IResourceConfig : IEntityConfig
+    public interface INestedResourceStrategy : IEntityStrategy
     {
-        new IResourceStrategy Strategy { get; }
-
-        IEnumerable<IEntityConfig> Dependencies { get; }
-
-        TResult Accept<TContext, TResult>(
-            IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
     }
 }

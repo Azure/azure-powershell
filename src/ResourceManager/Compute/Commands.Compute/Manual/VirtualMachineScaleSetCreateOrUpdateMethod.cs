@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                 name: LoadBalancerName,
-                froontendPoolName: FrontendPoolName,
-                backendPoolName: BackendPoolName,
+                // froontendPoolName: FrontendPoolName,
+                // backendPoolName: BackendPoolName,
                 zones: Zone,
                 publicIPAddress: publicIpAddress,
                 subnet: subnet);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
-                upgradeMode: MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode")
+                upgradeMode: MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                     ? UpgradePolicyMode
                     : (UpgradeMode?)null);
 
@@ -188,7 +188,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
-            var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = virtualMachineScaleSet.GetTargetState(current, engine, Location);
 
             var newState = await virtualMachineScaleSet
                .UpdateStateAsync(
