@@ -423,10 +423,6 @@ function Test-VirtualMachineCustomScriptExtension
         $fileToExecute = 'a.ps1';
         $containerName = 'cont' + $rgname;
 
-		#upload file to storage container
-		#Uncomment this before recording
-		#Upload-FileToStorageContainer -stoname $stoname -stokey $stokey -containerName $containerName -fileName ".\uploadfiles\a.ps1";
-
 		# Set custom script extension
         Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containerName -StorageEndpointSuffix $env:STORAGEENDPOINTSUFFIX;
         # Get VM Extension
@@ -593,10 +589,6 @@ function Test-VirtualMachineCustomScriptExtensionSecureExecution
         $fileToExecute = 'a.ps1';
         $containerName = 'cont' + $rgname;
 
-		#upload file to storage container
-		#Uncomment this before recording
-		#Upload-FileToStorageContainer -stoname $stoname -stokey $stokey -containerName $containerName -fileName ".\uploadfiles\a.ps1";
-
         # Set custom script extension
         Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname `
             -Name $extname -TypeHandlerVersion $extver `
@@ -722,10 +714,6 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         $exttype = 'CustomScriptExtension';
         $fileToExecute = 'a.ps1';
         $containerName = 'cont' + $rgname;
-
-		#upload file to storage container
-		#Uncomment this before recording
-		#Upload-FileToStorageContainer -stoname $stoname -stokey $stokey -containerName $containerName -fileName ".\uploadfiles\a.ps1";
 
 		$duration = New-Object -TypeName TimeSpan(2,0,0);
         $type = [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::Read;
