@@ -13,22 +13,31 @@
 
 namespace RepoTasks.Cmdlets.Tests
 {
+    using CmdletsForTest;
     using System;
     using System.Collections.Generic;
     using RemoteWorker;
     using Xunit;
+    using System.IO;
 
     public class AppDomainWorkerShould : IDisposable
     {
         private readonly AppDomain _domain;
         private readonly IReflectionWorker _reflectionWorker;
+        private const string ExpectedAssemblyName = "RepoTasks.CmdletsForTest";
 
         // Setup
         public AppDomainWorkerShould()
         {
-            _domain = AppDomain.CreateDomain("AppDomainIsolation: " + Guid.NewGuid());
+            var setup = new AppDomainSetup
+            {
+                ApplicationBase = AppDomain.CurrentDomain.BaseDirectory,
+            };
+
+            _domain = AppDomain.CreateDomain("AppDomainIsolation: " + Guid.NewGuid(), null, setup);
             var type = typeof(AppDomainWorker);
             Assert.NotNull(type.FullName);
+
             _reflectionWorker = (IReflectionWorker)_domain.CreateInstanceFromAndUnwrap(type.Assembly.Location, type.FullName);
         }
 
@@ -67,7 +76,7 @@ namespace RepoTasks.Cmdlets.Tests
             Assert.Equal(4, conf.ViewDefinitions.Views.Length);
 
             var view0 = conf.ViewDefinitions.Views[0];
-            Assert.Equal("RepoTasks.Cmdlets.Models.PsDummyOutput1", view0?.ViewSelectedBy?.TypeName);
+            Assert.Equal($"{ExpectedAssemblyName}.Models.PsDummyOutput1", view0?.ViewSelectedBy?.TypeName);
 
             var expecterProps1 = new[] { "RequestId", "StatusCode", "Id", "Name", "Type" };
             var columnItems = view0?.TableControl?.TableRowEntries[0]?.TableColumnItems;
@@ -82,11 +91,12 @@ namespace RepoTasks.Cmdlets.Tests
         [Fact]
         public void DoWorkRemotelyAndReturnFilname()
         {
-            var assemblyPath = typeof(TestDummyCommand).Assembly.Location;
+            var assemblyFileName = Path.GetFileName(typeof(TestDummyCommand).Assembly.Location);
+            var assemblyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, assemblyFileName);
             var cmdlets = new[] { "Test-Dummy" };
-            var filename =_reflectionWorker.BuildFormatPs1Xml(assemblyPath, cmdlets);
+            var filename =_reflectionWorker.BuildFormatPs1Xml(assemblyPath, cmdlets, false);
             Assert.NotNull(filename);
-            Assert.Equal("RepoTasks.Cmdlets.generated.format.ps1xml", filename);
+            Assert.Equal($"{ExpectedAssemblyName}.generated.format.ps1xml", filename);
         }
 
         private static IList<Type> ReturnCmdletTypesAndAssemblyName(string[] cmdlets)
@@ -94,12 +104,12 @@ namespace RepoTasks.Cmdlets.Tests
             var assemblyPath = typeof(TestDummyCommand).Assembly.Location;
             string assembyName;
             var types = AppDomainWorker.GetCmdletTypes(assemblyPath, cmdlets, out assembyName);
-            Assert.Equal("RepoTasks.Cmdlets", assembyName);
+            Assert.Equal($"{ExpectedAssemblyName}", assembyName);
             Assert.True(types.Count >= 1);
-            Assert.Contains(types, t => t.FullName == "RepoTasks.Cmdlets.TestDummyCommand");
+            Assert.Contains(types, t => t.FullName == $"{ExpectedAssemblyName}.TestDummyCommand");
             if (cmdlets != null && cmdlets?.Length == 1)
             {
-                Assert.DoesNotContain(types, t => t.FullName == "RepoTasks.Cmdlets.TestDummyTwoCommand");
+                Assert.DoesNotContain(types, t => t.FullName == $"{ExpectedAssemblyName}.TestDummyTwoCommand");
             }
 
             return types;

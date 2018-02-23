@@ -11,11 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.RemoteWorker
+namespace RepoTasks.CmdletsForTest.Models
 {
-    public interface IReflectionWorker
+    public class PsDummyOutputTwo
     {
-        string BuildFormatPs1Xml(string assemblyPath, string[] cmdlet, bool onlyMarkedProperties);
-        void Serialize(string filepath);
+        public string Location { get; set; }
+        public string LicenseType { get; set; }
     }
 }

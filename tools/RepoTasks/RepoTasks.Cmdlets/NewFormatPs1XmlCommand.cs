@@ -35,6 +35,9 @@ namespace RepoTasks.Cmdlets
         [Parameter]
         public SwitchParameter Force { get; set; }
 
+        [Parameter]
+        public SwitchParameter OnlyMarkedProperties { get; set; }
+
         protected override void ProcessRecord()
         {
             try
@@ -98,11 +101,16 @@ namespace RepoTasks.Cmdlets
             AppDomain domain = null;
             try
             {
-                domain = AppDomain.CreateDomain("AppDomainIsolation: " + Guid.NewGuid());
+                var setup = new AppDomainSetup
+                {
+                    ApplicationBase = Path.GetDirectoryName(assemblyPath),
+                };
+
+                domain = AppDomain.CreateDomain("AppDomainIsolation: " + Guid.NewGuid(), null, setup);
                 var type = typeof(T);
                 if (type.FullName == null) throw new Exception("type fullname is null");
                 var worker = (T)domain.CreateInstanceFromAndUnwrap(type.Assembly.Location, type.FullName);
-                var outFilename = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet);
+                var outFilename = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
                 if (string.IsNullOrEmpty(outFilename))
                 {
                     WriteWarning("No output types found.");

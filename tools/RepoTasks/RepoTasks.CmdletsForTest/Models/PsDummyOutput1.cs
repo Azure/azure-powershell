@@ -11,12 +11,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets.Models
+namespace RepoTasks.CmdletsForTest.Models
 {
+    using RepoTasks.Attributes;
+
     public class PsDummyOutput1 : PsOperation
     {
+        [Ps1Xml(Target = ViewControl.List)]
         public string Id { get; set; }
+
+        [Ps1Xml(Target = ViewControl.All)]
         public string Name { get; set; }
+
+        [Ps1Xml(Label = "PsDummyOutput1 Type", Target = ViewControl.Table)]
         public string Type { get; set; }
     }
 }

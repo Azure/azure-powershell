@@ -20,16 +20,19 @@ namespace RepoTasks.RemoteWorker
     using System.Management.Automation;
     using System.Reflection;
     using System.Xml.Serialization;
+    using Attributes;
 
     public class AppDomainWorker : MarshalByRefObject, IReflectionWorker
     {
         private Configuration _configuration;
+        private bool _onlyMarkedProperties;
 
-        public string BuildFormatPs1Xml(string assemblyPath, string[] cmdlets)
+        public string BuildFormatPs1Xml(string assemblyPath, string[] cmdlets, bool onlyMarkedProperties)
         {
+            _onlyMarkedProperties = onlyMarkedProperties;
             string assemblyName;
             var cmdletTypes = GetCmdletTypes(assemblyPath, cmdlets, out assemblyName);
-            Console.WriteLine($"assembly: {assemblyName}");
+            Console.WriteLine($@"assembly: {assemblyName}");
             if (cmdletTypes.Count == 0) return null;
             _configuration = BuildXmlConfiguration(cmdletTypes);
             var filename = assemblyName + ".generated.format.ps1xml";
@@ -44,7 +47,7 @@ namespace RepoTasks.RemoteWorker
         internal static IList<Type> GetCmdletTypes(string assemblyPath, string[] cmdlets, out string assemblyName)
         {
             if (string.IsNullOrEmpty(assemblyPath)) throw new ArgumentNullException(nameof(assemblyPath));
-            Console.WriteLine("Child domain: " + AppDomain.CurrentDomain.FriendlyName);
+            Console.WriteLine(@"Child domain: " + AppDomain.CurrentDomain.FriendlyName);
             var assembly = Assembly.LoadFrom(assemblyPath);
 
             assemblyName = assembly.GetName().Name;
@@ -77,108 +80,83 @@ namespace RepoTasks.RemoteWorker
 
             foreach (var cmdletType in cmdletTypList)
             {
+                Console.WriteLine($@"	cmdlet: {cmdletType.Name}");
+
                 var attributes = cmdletType.GetCustomAttributes(
                     typeof(OutputTypeAttribute),
                     false);
 
                 if (attributes.Length == 0)
                 {
-                    //WriteWarning($"command {cmdletType} doesn't have OutputTypeAttribute");
+                    Console.WriteLine($@"		no OutputTypeAttribute in cmdletType {cmdletType.Name}");
                     continue;
                 }
-
-                Console.WriteLine($"\tcmdlet: {cmdletType.Name}");
 
                 foreach (var attribute in attributes)
                 {
                     var outputTypeAttrubute = (OutputTypeAttribute)attribute;
                     var psTypeNames = outputTypeAttrubute.Type;
+
                     foreach (var psTypeName in psTypeNames)
                     {
+                        Console.WriteLine($@"		outputType: {psTypeName.Name}");
+
                         if (_usedTypes.Contains(psTypeName.Name)) continue;
-                        Console.WriteLine($"\t\toutputType: {psTypeName.Name}");
                         _usedTypes.Add(psTypeName.Name);
+
+                        var psType = psTypeName.Type;
 
                         var tableHeaders = new List<TableColumnHeader>();
                         var tableColumnItems = new List<TableColumnItem>();
                         var listItems = new List<ListItem>();
 
-                        var psType = psTypeName.Type;
+                        HandleMemberInfo(psType.GetProperties(), tableHeaders, tableColumnItems, listItems);
+                        HandleMemberInfo(psType.GetFields(), tableHeaders, tableColumnItems, listItems);
 
-                        foreach (var propertyInfo in psType.GetProperties().OrderBy(p => p.Name))
+                        if (tableHeaders.Count != 0)
                         {
-                            Console.WriteLine($"\t\t\tproperty: {propertyInfo.Name}");
-                            tableHeaders.Add(new TableColumnHeader
-                            {
-                                Label = propertyInfo.Name
-                            });
-
-                            tableColumnItems.Add(new TableColumnItem
-                            {
-                                Alignment = Alignment.Left,
-                                PropertyName = propertyInfo.Name
-                            });
-
-                            listItems.Add(new ListItem
-                            {
-                                PropertyName = propertyInfo.Name
-                            });
-                        }
-
-                        viewList.Add(new View
-                        {
-                            Name = psTypeName.Name,
-                            ViewSelectedBy = new ViewSelectedBy
-                            {
-                                TypeName = psTypeName.Name
-                            },
-                            TableControl = new TableControl
-                            {
-                                TableHeaders = tableHeaders.ToArray(),
-                                TableRowEntries = new[] {
-                                    new TableRowEntry {
-                                        TableColumnItems = tableColumnItems.ToArray()
+                            viewList.Add(
+                                new View
+                                {
+                                    Name = psTypeName.Name,
+                                    ViewSelectedBy = new ViewSelectedBy
+                                    {
+                                        TypeName = psTypeName.Name
+                                    },
+                                    TableControl = new TableControl
+                                    {
+                                        TableHeaders = tableHeaders.ToArray(),
+                                        TableRowEntries = new[] {
+                                            new TableRowEntry {
+                                                TableColumnItems = tableColumnItems.ToArray()
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        });
-
-                        foreach (var fieldInfo in psType.GetFields().OrderBy(p => p.Name))
-                        {
-                            Console.WriteLine($"\t\t\tfield: {fieldInfo.Name}");
-                            tableHeaders.Add(new TableColumnHeader
-                            {
-                                Label = fieldInfo.Name
-                            });
-
-                            tableColumnItems.Add(new TableColumnItem
-                            {
-                                Alignment = Alignment.Left,
-                                PropertyName = fieldInfo.Name
-                            });
-
-                            listItems.Add(new ListItem
-                            {
-                                PropertyName = fieldInfo.Name
-                            });
+                            );
                         }
 
-                        viewList.Add(new View
+                        if (listItems.Count != 0)
                         {
-                            Name = psTypeName.Name,
-                            ViewSelectedBy = new ViewSelectedBy
-                            {
-                                TypeName = psTypeName.Name
-                            },
-                            ListControl = new ListControl
-                            {
-                                ListEntries = new[] {
-                                    new ListEntry {
-                                        ListItems = listItems.ToArray()
+                            viewList.Add(
+                                new View
+                                {
+                                    Name = psTypeName.Name,
+                                    ViewSelectedBy = new ViewSelectedBy
+                                    {
+                                        TypeName = psTypeName.Name
+                                    },
+                                    ListControl = new ListControl
+                                    {
+                                        ListEntries = new[] {
+                                            new ListEntry {
+                                                ListItems = listItems.ToArray()
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        });
+                            );
+                        }
                     }
                 }
             }
@@ -192,6 +170,71 @@ namespace RepoTasks.RemoteWorker
             };
 
             return configuration;
+        }
+
+        internal void HandleMemberInfo<T>(
+            IEnumerable<T> memberInfoList,
+            IList<TableColumnHeader> tableHeaders, 
+            IList<TableColumnItem> tableColumnItems, 
+            IList<ListItem> listItems) 
+            where T: MemberInfo
+        {
+
+            var memeber = typeof(T) == typeof(PropertyInfo)
+                ? "property"
+                : "field";
+
+            //var memeber = "memeber";
+
+            var memberInfoListFiltered = memberInfoList
+                .Where(p => {
+                    if (!_onlyMarkedProperties) return true;
+                    var ps1XmlAttribute = (Ps1XmlAttribute)Attribute.GetCustomAttribute(p, typeof(Ps1XmlAttribute));
+                    return ps1XmlAttribute != null;
+                })
+                .OrderBy(p => p.Name)
+                .ToList();
+
+            if (memberInfoListFiltered.Count == 0)
+            {
+                Console.WriteLine($@"			no marked {memeber}");
+                return;
+            }
+
+            foreach (var memberInfo in memberInfoListFiltered)
+            {
+                var ps1XmlAttribute = _onlyMarkedProperties
+                    ? (Ps1XmlAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(Ps1XmlAttribute))
+                    : null;
+
+                if (_onlyMarkedProperties && ps1XmlAttribute == null) throw new InvalidCastException("Ps1XmlAttribute");
+
+                Console.WriteLine($@"			{memeber}: {memberInfo.Name}");
+
+                if (ps1XmlAttribute == null ||
+                    (ps1XmlAttribute.Target & ViewControl.Table) != ViewControl.None)
+                {
+                    tableHeaders.Add(new TableColumnHeader
+                    {
+                        Label = ps1XmlAttribute?.Label ?? memberInfo.Name
+                    });
+
+                    tableColumnItems.Add(new TableColumnItem
+                    {
+                        Alignment = Alignment.Left,
+                        PropertyName = memberInfo.Name
+                    });
+                }
+
+                if (ps1XmlAttribute == null ||
+                    (ps1XmlAttribute.Target & ViewControl.List) != ViewControl.None)
+                {
+                    listItems.Add(new ListItem
+                    {
+                        PropertyName = memberInfo.Name
+                    });
+                }
+            }
         }
 
         internal static void Serialize(Configuration configuration, string filePath)

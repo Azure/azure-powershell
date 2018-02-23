@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoTasks.Cmdlets", "RepoTa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoTasks.Cmdlets.Tests", "RepoTasks.Cmdlets.Tests\RepoTasks.Cmdlets.Tests.csproj", "{0790E0DC-4D3D-4EEB-951C-42B1FD0CAA03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoTasks.Attributes", "RepoTasks.Attributes\RepoTasks.Attributes.csproj", "{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoTasks.CmdletsForTest", "RepoTasks.CmdletsForTest\RepoTasks.CmdletsForTest.csproj", "{DEC34B9F-12C8-4128-927A-B40E38E3F3DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0790E0DC-4D3D-4EEB-951C-42B1FD0CAA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0790E0DC-4D3D-4EEB-951C-42B1FD0CAA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0790E0DC-4D3D-4EEB-951C-42B1FD0CAA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC34B9F-12C8-4128-927A-B40E38E3F3DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC34B9F-12C8-4128-927A-B40E38E3F3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC34B9F-12C8-4128-927A-B40E38E3F3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC34B9F-12C8-4128-927A-B40E38E3F3DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,11 +11,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets.Models
+namespace RepoTasks.CmdletsForTest.Models
 {
+    using Attributes;
+
     public class PsDummyOutput2
     {
+        [Ps1Xml]
         public string Location { get; set; }
+
         public string LicenseType { get; set; }
     }
 }

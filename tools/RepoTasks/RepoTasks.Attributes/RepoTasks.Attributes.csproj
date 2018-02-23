@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9DC28189-4D6D-4FB9-945B-BF4F38E26ED9}</ProjectGuid>
+    <ProjectGuid>{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RepoTasks.Cmdlets</RootNamespace>
-    <AssemblyName>RepoTasks.Cmdlets</AssemblyName>
+    <RootNamespace>RepoTasks.Attributes</RootNamespace>
+    <AssemblyName>RepoTasks.Attributes</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,25 +32,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Management.Automation.6.1.7601.17515\lib\net45\System.Management.Automation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewFormatPs1XmlCommand.cs" />
+    <Compile Include="Ps1XmlAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RepoTasks.RemoteWorker\RepoTasks.RemoteWorker.csproj">
-      <Project>{701392f8-76dc-493c-85a8-65d917b64a84}</Project>
-      <Name>RepoTasks.RemoteWorker</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

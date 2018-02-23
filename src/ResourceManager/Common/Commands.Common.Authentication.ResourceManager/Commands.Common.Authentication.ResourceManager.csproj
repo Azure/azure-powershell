@@ -109,6 +109,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\tools\RepoTasks\RepoTasks.Attributes\RepoTasks.Attributes.csproj">
+      <Project>{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}</Project>
+      <Name>RepoTasks.Attributes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>

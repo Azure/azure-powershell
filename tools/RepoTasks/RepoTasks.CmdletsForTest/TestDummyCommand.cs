@@ -11,11 +11,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets.Models
+
+namespace RepoTasks.CmdletsForTest
 {
-    public class PsDummyOutputTwo
+    using Models;
+    using System;
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "Dummy", SupportsShouldProcess = true)]
+    [OutputType(new Type[] { typeof(PsDummyOutput1), typeof(PsDummyOutput2) })]
+    public class TestDummyCommand : PSCmdlet
     {
-        public string Location { get; set; }
-        public string LicenseType { get; set; }
+        // empty
     }
 }

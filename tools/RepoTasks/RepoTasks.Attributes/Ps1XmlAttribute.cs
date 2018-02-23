@@ -1,5 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-// Copyright Microsoft Corporation
+﻿// Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -11,15 +10,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Cmdlets
+namespace RepoTasks.Attributes
 {
-    using System.Management.Automation;
-    using Models;
+    using System;
 
-    [Cmdlet(VerbsDiagnostic.Test, "DummyTwo", SupportsShouldProcess = true)]
-    [OutputType(typeof(PsDummyOutputTwo))]
-    public class TestDummyTwoCommand : PSCmdlet
+    [Flags]
+    public enum ViewControl
     {
-        // empty
+        None = 0,
+        Table = 1,
+        List = 2,
+        All = Table | List,
+    }
+
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    public sealed class Ps1XmlAttribute : Attribute
+    {
+        public string Label { get; set; }
+
+        public ViewControl Target { get; set; } = ViewControl.Table;
     }
 }
