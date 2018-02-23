@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -53,36 +54,29 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public static void TestDomainName(string psTest, Func<string> getUniqueId)
         {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
             var oldCreate = create.GetValue(null);
-            try
-            {
-                // mock UniqueId.Create()
-                create.SetValue(null, getUniqueId);
 
-                var callingClassType = TestUtilities.GetCallingClass(2);
-                var mockName = TestUtilities.GetCurrentMethodName(2);
-
-                ComputeTestController.NewInstance.RunPsTestWorkflow(
-                    () => new[] { psTest },
-                    // no custom initializer
-                    null,
-                    // no custom cleanup 
-                    null,
-                    callingClassType,
-                    mockName);
-            }
-            finally
-            {
-                create.SetValue(null, oldCreate);
-            }
+            ComputeTestController.NewInstance.RunPsTestWorkflow(
+                () => new[] { psTest },
+                // initializer
+                _ => create.SetValue(null, getUniqueId),
+                // cleanup 
+                () => create.SetValue(null, oldCreate),
+                callingClassType,
+                mockName);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName()
         {
-            TestDomainName("Test-SimpleNewVmWithDefaultDomainName", () => "a469f1");
+            TestDomainName(
+                "Test-SimpleNewVmWithDefaultDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
         }
 
         [Fact]
@@ -90,11 +84,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
             var i = 0;
+            var result = new Guid();
             TestDomainName("Test-SimpleNewVmWithDefaultDomainName2", () =>
-            {
-                var result = new[] { "012346", "012346", "012346", "543210" }[i];
+            { 
+                switch (i)
+                {
+                    case 1:
+                        break;
+                    default:
+                        result = HttpMockServer.GetAssetGuid("domainName");
+                        break;
+                }
                 ++i;
-                return result;
+                return result.ToString();
             });
         }
     }
