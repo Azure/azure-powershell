@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public override string GetMatchingKey(RecordEntry recordEntry)
         {
-            if(recordEntry.ResponseHeaders != null)
             if (recordEntry.ResponseHeaders.ContainsKey(RetryAfterHeader))
             {
                 recordEntry.ResponseHeaders.Remove(RetryAfterHeader);
