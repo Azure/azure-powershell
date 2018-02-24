@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -47,16 +46,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             NestedResourceConfig<Subnet, VirtualNetwork> subnet)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
-                name: name,
-                createModel: engine =>
-                {
-                    // workaround to add dependencies to the resource because 
-                    // nested recources (such as FrontendIPConfiguration) 
-                    // do not support dependencies.
-                    engine.GetId(publicIPAddress);
-                    engine.GetId(subnet);
-                    // empty configuration.
-                    return new LoadBalancer();
-                });
+                name: name);
     }
 }

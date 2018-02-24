@@ -60,27 +60,27 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where TParentModel : class
             => Create<TModel, TParentModel>(
                 provider,
-                (parentModel, nameValue) => getList(parentModel)
-                    ?.FirstOrDefault(model => getName(model) == nameValue),
-                (parentModel, nameValue, model) =>
+                (parentModel, name) => getList(parentModel)
+                    ?.FirstOrDefault(model => getName(model) == name),
+                (parentModel, name, model) =>
                 {
-                    setName(model, nameValue);
-                    var listValue = getList(parentModel);
-                    if (listValue == null)
+                    setName(model, name);
+                    var list = getList(parentModel);
+                    if (list == null)
                     {
-                        listValue = new List<TModel> { model };
-                        setList(parentModel, listValue);
+                        list = new List<TModel> { model };
+                        setList(parentModel, list);
                         return;
                     }
-                    var modelAndIndex = listValue
+                    var modelAndIndex = list
                         .Select((m, i) => new { m, i })
-                        .FirstOrDefault(mi => getName(mi.m) == nameValue);
+                        .FirstOrDefault(mi => getName(mi.m) == name);
                     if (modelAndIndex != null)
                     {
-                        listValue[modelAndIndex.i] = model;
+                        list[modelAndIndex.i] = model;
                         return;
                     }
-                    listValue.Add(model);
+                    list.Add(model);
                 });
     }
 }

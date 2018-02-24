@@ -34,6 +34,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
                 compulsoryLocation: false);
 
         public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
-            => Strategy.CreateConfig(null, name);
+            => Strategy.CreateResourceConfig(null, name);
     }
 }

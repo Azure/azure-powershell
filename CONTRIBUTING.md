@@ -103,7 +103,7 @@ If you find yourself creating a pull request and are unable to see all the chang
 
 If splitting up the pull request is not an option, we recommend **creating individual commits for different parts of the pull request, which can be reviewed individually on GitHub**.
 
-For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/cleaning-up-commits.md).
+For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/development-docs/cleaning-up-commits.md).
 
 #### Updating the change log
 
