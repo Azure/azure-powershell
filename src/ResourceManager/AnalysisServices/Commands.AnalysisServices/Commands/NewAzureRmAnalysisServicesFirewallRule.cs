@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallRule", SupportsShouldProcess = false), OutputType(typeof(AzureAnalysisServicesFirewallRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallRule", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesFirewallRule))]
     [Alias("New-AzureAsFWRule")]
     public class NewAzureRmAnalysisServicesFirewallRule : AnalysisServicesCmdletBase
     {
