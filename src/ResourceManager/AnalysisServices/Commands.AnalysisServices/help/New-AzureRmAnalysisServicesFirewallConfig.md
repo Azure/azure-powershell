@@ -14,6 +14,7 @@ Creates a new Analysis Services firewall config
 
 ```
 New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService] <Boolean> [-FirewallRules] <list of firewall rule> 
+```
 
 ## DESCRIPTION
 The New-AzureRmAnalysisServicesFirewallConfig creates a new firewall config object

@@ -14,6 +14,7 @@ Creates a new Analysis Services firewall rule
 
 ```
 New-AzureRmAnalysisServicesFirewallRule [-FirewallRuleName] <String> [-RangeStart] <String> [-RangeEnd] <String>
+```
 
 ## DESCRIPTION
 The New-AzureRmAnalysisServicesFirewallRule creates a new firewall rule object.
