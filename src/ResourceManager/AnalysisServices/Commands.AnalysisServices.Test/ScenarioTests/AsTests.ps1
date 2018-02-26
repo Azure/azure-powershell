@@ -179,6 +179,129 @@ function Test-AnalysisServicesServerScaleUpDown
 
 <#
 .SYNOPSIS
+Tests firewall feature of Analysis Services server
+#>
+function Test-AnalysisServicesServerFirewall
+{
+	try
+	{  
+		# Creating server
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		$rule1 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName abc1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
+        $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName abc2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
+        $arr = @()
+        $arr+=$rule1
+        $arr+=$rule2
+        $config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService $FALSE -FirewallRules $arr
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -FirewallConfig $config
+		Assert-AreEqual $serverName $serverCreated.Name
+		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual B1 $serverCreated.Sku.Name
+		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
+	    Assert-AreEqual $FALSE $serverCreated.FirewallConfig.EnablePowerBIService
+		Assert-AreEqual 2 $serverCreated.FirewallConfig.FirewallRules.Count
+
+		# Check server was created successfully
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
+		
+		Assert-AreEqual $serverName $serverGetItem.Name
+		Assert-AreEqual $location $serverGetItem.Location
+		Assert-AreEqual B1 $serverGetItem.Sku.Name
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}	
+	    Assert-AreEqual $FALSE $serverGetItem.FirewallConfig.EnablePowerBIService
+		Assert-AreEqual 2 $serverGetItem.FirewallConfig.FirewallRules.Count
+		
+		$arr = @()
+		$config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService $TRUE -FirewallRules $arr
+		Set-AzureRmAnalysisServicesServer -Name $serverName -FirewallConfig $config
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+	    Assert-AreEqual $TRUE $serverGetItem.FirewallConfig.EnablePowerBIService
+		Assert-AreEqual 0 $serverGetItem.FirewallConfig.FirewallRules.Count
+
+		# Delete Analysis Servicesserver
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
+Tests scale out and in of Analysis Services server (1 -> 2 -> 1).
+#>
+function Test-AnalysisServicesServerScaleOutIn
+{
+	try
+	{  
+		# Creating server
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -ReadonlyReplicaCount 1 -DefaultConnectionMode 'Readonly' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		Assert-AreEqual $serverName $serverCreated.Name
+		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual S1 $serverCreated.Sku.Name
+		Assert-AreEqual 2 $serverCreated.Sku.Capacity
+		Assert-AreEqual "Readonly" $serverCreated.DefaultConnectionMode		
+		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
+	
+		# Check server was created successfully
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
+		
+		Assert-AreEqual $serverName $serverGetItem.Name
+		Assert-AreEqual $location $serverGetItem.Location
+		Assert-AreEqual S1 $serverGetItem.Sku.Name
+		Assert-AreEqual 2 $serverCreated.Sku.Capacity
+		Assert-AreEqual "Readonly" $serverCreated.DefaultConnectionMode	
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
+		
+		Write-Host $serverCreated.Sku.Capacity
+		Write-Host $serverCreated.DefaultConnectionMode
+
+		#Scale in Capacity 2 -> 1
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -ReadonlyReplicaCount 0 -PassThru
+		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+		Write-Host $serverUpdated.Sku.Capacity
+		Write-Host $serverUpdated.DefaultConnectionMode
+		Assert-AreEqual S1 $serverUpdated.Sku.Name
+		
+		# Delete Analysis Servicesserver
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests disable backup blob container
 In order to run this test successfully, Following environment variables need to be set.
 AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest?<serviceSasToken1>'
