@@ -221,6 +221,7 @@
     <Compile Include="ScenarioTests\ResourceGroupTests.cs" />
     <Compile Include="ScenarioTests\PolicyTests.cs" />
     <Compile Include="ScenarioTests\ResourceLockTests.cs" />
+    <Compile Include="ScenarioTests\ResourcesRecordMatcher.cs" />
     <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\RoleAssignmentTests.cs" />
     <Compile Include="ScenarioTests\RoleDefinitionTests.cs" />
