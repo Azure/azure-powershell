@@ -12,8 +12,21 @@ Removes a User Assigned Identity.
 
 ## SYNTAX
 
+### ResourceGroupAndNameParameterSet
 ```
 Remove-AzureRmUserAssignedIdentity [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzureRmUserAssignedIdentity -Identity <PsUserAssignedIdentity> [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzureRmUserAssignedIdentity -ResourceId <String> [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,12 +91,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Identity
+The Identity object.```yaml
+Type: PsUserAssignedIdentity
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The Identity name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupAndNameParameterSet
 Aliases:
 
 Required: True
@@ -98,11 +124,24 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupAndNameParameterSet
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Identity's resource id.```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

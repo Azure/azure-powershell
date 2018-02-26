@@ -6,33 +6,24 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmUserAssignedIdentity", DefaultParameterSetName = SubscriptionParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmUserAssignedIdentity", DefaultParameterSetName = Constants.SubscriptionParameterSet)]
     [OutputType(typeof (PsUserAssignedIdentity))]
     public class GetAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
-        private const string SubscriptionParameterSet = "SubscriptionParameterSet";
-        private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        private const string IdentityParameterSet = "IdentityParameterSet";
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = ResourceGroupParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = IdentityParameterSet)]
+            ParameterSetName = Constants.ResourceGroupParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Identity name.",
-            ParameterSetName = IdentityParameterSet)]
+            ParameterSetName = Constants.ResourceGroupParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -42,7 +33,7 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 
             ExecuteClientAction(() =>
             {
-                if(ParameterSetName.Equals(SubscriptionParameterSet))
+                if(ParameterSetName.Equals(Constants.SubscriptionParameterSet))
                 {
                     var result =
                         this.MsiClient.UserAssignedIdentities
@@ -60,30 +51,33 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 
                     WriteIdentityList(resultList);
                 }
-                else if (ParameterSetName.Equals(ResourceGroupParameterSet))
+                else if (ParameterSetName.Equals(Constants.ResourceGroupParameterSet))
                 {
-                    var result =
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        var result =
                         this.MsiClient.UserAssignedIdentities
                             .ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
-                    var resultList = result.Body.ToList();
-                    var nextPageLink = result.Body.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
-                    {
-                        var pageResult = this.MsiClient.UserAssignedIdentities
-                            .ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink).GetAwaiter().GetResult();
-                        resultList.AddRange(pageResult.Body.ToList());
-                        nextPageLink = pageResult.Body.NextPageLink;
-                    }
+                        var resultList = result.Body.ToList();
+                        var nextPageLink = result.Body.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = this.MsiClient.UserAssignedIdentities
+                                .ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink).GetAwaiter().GetResult();
+                            resultList.AddRange(pageResult.Body.ToList());
+                            nextPageLink = pageResult.Body.NextPageLink;
+                        }
 
-                    WriteIdentityList(resultList);
-                }
-                else if(ParameterSetName.Equals(IdentityParameterSet))
-                {
-                    var result =
+                        WriteIdentityList(resultList);
+                    }
+                    else
+                    {
+                        var result =
                         this.MsiClient.UserAssignedIdentities.GetWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
-                    WriteIdentity(result.Body);
+                        WriteIdentity(result.Body);
+                    }
                 }
             });
         }
