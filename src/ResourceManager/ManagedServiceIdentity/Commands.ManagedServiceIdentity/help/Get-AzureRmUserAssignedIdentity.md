@@ -12,20 +12,14 @@ Gets User Assigned Identity/identities.
 
 ## SYNTAX
 
-### SubscriptionParameterSet (Default)
+### SuscriptionParameterSet (Default)
 ```
 Get-AzureRmUserAssignedIdentity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmUserAssignedIdentity -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### IdentityParameterSet
-```
-Get-AzureRmUserAssignedIdentity -ResourceGroupName <String> -Name <String>
+Get-AzureRmUserAssignedIdentity -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -188,10 +182,10 @@ The Identity name.
 
 ```yaml
 Type: String
-Parameter Sets: IdentityParameterSet
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -203,7 +197,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupParameterSet, IdentityParameterSet
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True

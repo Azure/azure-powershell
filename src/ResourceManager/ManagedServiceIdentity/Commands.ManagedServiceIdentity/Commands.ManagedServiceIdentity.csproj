@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\MsiBaseCmdlet.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Models\PSUserAssignedIdentity.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

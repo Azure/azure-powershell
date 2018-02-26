@@ -4,13 +4,16 @@ Tests Managed Service Identity UserAssignedIdentities CRUD.
 #>
 function Test-CrudUserAssignedIdentity
 {
+    $MSINamespace = "Microsoft.ManagedIdentity";
+    $MSIResourceType = "userAssignedIdentities";
+    $MSIPreferredLocation = "westus";
     $rgName1 = getAssetName;
     $rgName2 = getAssetName;
     $identityName1 = getAssetName;
     $identityName2 = getAssetName;
     $identityName3 = getAssetName;
-    $location = Get-Location;
-    $identityType = "Microsoft.ManagedIdentity/userAssignedIdentities";
+    $location = Get-Location -ProviderNamespace $MSINamespace -ResourceType $MSIResourceType -PreferredLocation $MSIPreferredLocation;
+    $identityType = "$MSINamespace/$MSIResourceType";
 
     try
     {

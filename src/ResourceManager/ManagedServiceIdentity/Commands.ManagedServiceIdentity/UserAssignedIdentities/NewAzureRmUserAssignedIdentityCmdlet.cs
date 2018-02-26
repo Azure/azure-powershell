@@ -27,20 +27,23 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         [Parameter(
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Identity name.")]
+            HelpMessage = "The Identity name.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Azure region name where the Identity should be created.")]
+            HelpMessage = "The Azure region name where the Identity should be created.",
+            ValueFromPipelineByPropertyName = true)]
         [LocationCompleter()]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Azure Resource Manager tags associated with the identity.")]
+            HelpMessage = "The Azure Resource Manager tags associated with the identity.",
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag;
 
         [Parameter(
