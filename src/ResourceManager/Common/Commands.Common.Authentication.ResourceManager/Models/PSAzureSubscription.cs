@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using RepoTasks.Attributes;
+using Microsoft.WindowsAzure.Commands.Common.Attrubutes;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {

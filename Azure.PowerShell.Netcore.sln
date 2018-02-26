@@ -53,8 +53,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Tests", "src\Common\Commands.Common.Tests\Commands.Common.Tests.csproj", "{B0EF35E9-2D7A-4AAE-8A1A-728B6CC8524B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoTasks.Attributes", "tools\RepoTasks\RepoTasks.Attributes\RepoTasks.Attributes.csproj", "{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -47,12 +47,9 @@
     <Compile Include="TestDummyCommand1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RepoTasks.Attributes\RepoTasks.Attributes.csproj">
-      <Project>{8FA4A3FF-CB2C-48D9-9B44-A6E01C75FC2A}</Project>
-      <Name>RepoTasks.Attributes</Name>
+    <ProjectReference Include="..\..\..\src\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5EE72C53-1720-4309-B54B-5FB79703195F}</Project>
+      <Name>Commands.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

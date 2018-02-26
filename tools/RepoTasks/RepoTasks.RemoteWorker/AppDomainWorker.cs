@@ -17,10 +17,10 @@ namespace RepoTasks.RemoteWorker
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Management.Automation;
     using System.Reflection;
     using System.Xml.Serialization;
-    using Attributes;
+    using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.Attrubutes;
 
     public class AppDomainWorker : MarshalByRefObject, IReflectionWorker
     {
@@ -32,7 +32,6 @@ namespace RepoTasks.RemoteWorker
             _onlyMarkedProperties = onlyMarkedProperties;
             string assemblyName;
             var cmdletTypes = GetCmdletTypes(assemblyPath, cmdlets, out assemblyName);
-            Console.WriteLine($@"assembly: {assemblyName}");
             if (cmdletTypes.Count == 0) return null;
             _configuration = BuildXmlConfiguration(cmdletTypes);
             var filename = assemblyName + ".generated.format.ps1xml";
@@ -47,7 +46,6 @@ namespace RepoTasks.RemoteWorker
         internal static IList<Type> GetCmdletTypes(string assemblyPath, string[] cmdlets, out string assemblyName)
         {
             if (string.IsNullOrEmpty(assemblyPath)) throw new ArgumentNullException(nameof(assemblyPath));
-            Console.WriteLine(@"Child domain: " + AppDomain.CurrentDomain.FriendlyName);
             var assembly = Assembly.LoadFrom(assemblyPath);
 
             assemblyName = assembly.GetName().Name;
@@ -64,7 +62,6 @@ namespace RepoTasks.RemoteWorker
                         if (cmdletAttribute == null) return false;
                         if (!(cmdlets?.Length > 0)) return true;
                         var attrCmdlet = $"{cmdletAttribute.VerbName}-{cmdletAttribute.NounName}";
-                        //Console.WriteLine("=== attrCmdlet: " + attrCmdlet);
                         return cmdlets.Any(cmdlet => string.Equals(cmdlet, attrCmdlet, StringComparison.OrdinalIgnoreCase));
                     })
                 .ToList();
@@ -80,17 +77,11 @@ namespace RepoTasks.RemoteWorker
 
             foreach (var cmdletType in cmdletTypList)
             {
-                Console.WriteLine($@"	cmdlet: {cmdletType.Name}");
-
                 var attributes = cmdletType.GetCustomAttributes(
                     typeof(OutputTypeAttribute),
                     false);
 
-                if (attributes.Length == 0)
-                {
-                    Console.WriteLine($@"		no OutputTypeAttribute in cmdletType {cmdletType.Name}");
-                    continue;
-                }
+                if (attributes.Length == 0) continue;
 
                 foreach (var attribute in attributes)
                 {
@@ -99,8 +90,6 @@ namespace RepoTasks.RemoteWorker
 
                     foreach (var psTypeName in psTypeNames)
                     {
-                        Console.WriteLine($@"		outputType: {psTypeName.Name}");
-
                         if (_usedTypes.Contains(psTypeName.Name)) continue;
                         _usedTypes.Add(psTypeName.Name);
 
@@ -184,8 +173,6 @@ namespace RepoTasks.RemoteWorker
                 ? "property"
                 : "field";
 
-            //var memeber = "memeber";
-
             var memberInfoListFiltered = memberInfoList
                 .Where(p => {
                     if (!_onlyMarkedProperties) return true;
@@ -195,11 +182,7 @@ namespace RepoTasks.RemoteWorker
                 .OrderBy(p => p.Name)
                 .ToList();
 
-            if (memberInfoListFiltered.Count == 0)
-            {
-                Console.WriteLine($@"			no marked {memeber}");
-                return;
-            }
+            if (memberInfoListFiltered.Count == 0) return;
 
             foreach (var memberInfo in memberInfoListFiltered)
             {
@@ -208,8 +191,6 @@ namespace RepoTasks.RemoteWorker
                     : null;
 
                 if (_onlyMarkedProperties && ps1XmlAttribute == null) throw new InvalidCastException("Ps1XmlAttribute");
-
-                Console.WriteLine($@"			{memeber}: {memberInfo.Name}");
 
                 if (ps1XmlAttribute == null ||
                     (ps1XmlAttribute.Target & ViewControl.Table) != ViewControl.None)

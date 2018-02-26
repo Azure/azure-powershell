@@ -11,9 +11,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 namespace RepoTasks.CmdletsForTest.Models
 {
-    using Attributes;
+    using Microsoft.WindowsAzure.Commands.Common.Attrubutes;
 
     public class PsDummyOutput2
     {

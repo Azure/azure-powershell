@@ -42,9 +42,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\RepoTasks.RemoteWorker\RepoTasks.RemoteWorker.csproj">
       <Project>{701392f8-76dc-493c-85a8-65d917b64a84}</Project>
       <Name>RepoTasks.RemoteWorker</Name>

@@ -10,16 +10,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace RepoTasks.Attributes
-{
-    using System;
+using System;
 
+namespace Microsoft.WindowsAzure.Commands.Common.Attrubutes
+{
     [Flags]
     public enum ViewControl
     {
         None = 0,
-        Table = 1,
-        List = 2,
+        Table,
+        List,
         All = Table | List,
     }
 
