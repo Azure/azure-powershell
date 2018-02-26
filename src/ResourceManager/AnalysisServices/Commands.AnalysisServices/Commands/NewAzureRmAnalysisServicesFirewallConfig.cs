@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
             HelpMessage = "Firewall rules")]
-        public List<AzureAnalysisServicesFirewallRule> FirewallRules
+        public List<AzureAnalysisServicesFirewallRule> FirewallRule
         {
             get { return _config.FirewallRules; }
             set { _config.FirewallRules = value; }
