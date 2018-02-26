@@ -20,51 +20,42 @@ using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallRule"), OutputType(typeof(AzureAnalysisServicesFirewallRule))]
-    [Alias("New-AzureAsFWRule")]
-    public class NewAnalysisServicesFirewallRule : AnalysisServicesCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(AzureAnalysisServicesFirewallConfig))]
+    [Alias("New-AzureAsFWConfig")]
+    public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {
-        private readonly AzureAnalysisServicesFirewallRule _rule;
+        private readonly AzureAnalysisServicesFirewallConfig _config;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "Name of firewall rule")]
+            HelpMessage = "Option to enable PowerBI service")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string FirewallRuleName
+        public bool EnablePowerBIService
         {
-            get { return _rule.FirewallRuleName; }
-            set { _rule.FirewallRuleName = value; }
+            get { return _config.EnablePowerBIService; }
+            set { _config.EnablePowerBIService = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            HelpMessage = "IP range start")]
-        [ValidateNotNullOrEmpty]
-        public string RangeStart
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            HelpMessage = "Firewall rules")]
+        public List<AzureAnalysisServicesFirewallRule> FirewallRules
         {
-            get { return _rule.RangeStart; }
-            set { _rule.RangeStart = value; }
-        }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "IP range end")]
-        [ValidateNotNullOrEmpty]
-        public string RangeEnd
-        {
-            get { return _rule.RangeEnd; }
-            set { _rule.RangeEnd = value; }
-        }
-
-        public NewAnalysisServicesFirewallRule ()
-        {
-            _rule = new AzureAnalysisServicesFirewallRule();
+            get { return _config.FirewallRules; }
+            set { _config.FirewallRules = value; }
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(_rule);
+            WriteObject(_config);
+        }
+
+        public NewAzureRmAnalysisServicesFirewallConfig()
+        {
+            _config = new AzureAnalysisServicesFirewallConfig();
         }
     }
 }
