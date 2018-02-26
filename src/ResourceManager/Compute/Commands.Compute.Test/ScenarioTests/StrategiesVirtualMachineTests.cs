@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -26,10 +25,31 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVm()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVm");
+        }
+
+        [Fact] 
+        [Trait(Category.AcceptanceType, Category.CheckIn)] 
+        public void TestSimpleNewVmWithAvailabilitySet2()
+        { 
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2"); 
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmImageName()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmImageNameMicrosoftSqlUbuntu()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");
         }
     }
 }

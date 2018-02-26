@@ -65,9 +65,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetIPConfiguration[] IpConfiguration { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false)]
         public SwitchParameter EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public SwitchParameter EnableIPForwarding { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,6 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vNetworkInterfaceConfigurations.Name = this.Name;
             vNetworkInterfaceConfigurations.Primary = this.Primary;
             vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking;
+            vNetworkInterfaceConfigurations.EnableIPForwarding = this.EnableIPForwarding;
             vNetworkInterfaceConfigurations.Id = this.Id;
             if (this.NetworkSecurityGroupId != null)
             {

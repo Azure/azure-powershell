@@ -376,7 +376,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience",
                 BatchEndpointResourceId = "BatchResourceId",
-                DataLakeAudience = "DataLakeAudience"
+                DataLakeAudience = "DataLakeAudience",
+                AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId",
+                AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
             };
 
             var dict = new Dictionary<string, object>();
@@ -398,6 +400,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dict["GraphAudience"] = "GaraphAudience";
             dict["BatchEndpointResourceId"] = "BatchResourceId";
             dict["DataLakeAudience"] = "DataLakeAudience";
+            dict["AzureOperationalInsightsEndpointResourceId"] = "AzureOperationalInsightsEndpointResourceId";
+            dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -423,6 +427,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
             Assert.Equal(cmdlet.BatchEndpointResourceId, actual.BatchEndpointResourceId);
             Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);

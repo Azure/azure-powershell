@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this IDictionary<TKey, TValue> dictionary, TKey key)
             where TValue : class
         {
+            if (key == null)
+            {
+                return null;
+            }
             TValue result;
             dictionary.TryGetValue(key, out result);
             return result;

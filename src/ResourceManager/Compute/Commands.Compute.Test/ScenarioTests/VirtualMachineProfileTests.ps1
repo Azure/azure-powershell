@@ -18,6 +18,8 @@ Test Virtual Machine Profile
 #>
 function Test-VirtualMachineProfile
 {
+    Get-AzureRmVmss -ResourceGroupName "fakeresource" -VMScaleSetName "fakevmss" -ErrorAction SilentlyContinue
+
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
@@ -105,6 +107,23 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+
+    $managedOsDiskId_0 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/osDisk0";
+    $managedOsDiskId_1 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/osDisk1";
+
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_0 -StorageAccountType StandardLRS;
+    Assert-AreEqual $osDiskCaching $p.StorageProfile.OSDisk.Caching;
+    Assert-AreEqual $osDiskName $p.StorageProfile.OSDisk.Name;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+    Assert-AreEqual $managedOsDiskId_0 $p.StorageProfile.OSDisk.ManagedDisk.Id;
+    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+    Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
+    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
 
     # Windows OS
     $user = "Foo12";
