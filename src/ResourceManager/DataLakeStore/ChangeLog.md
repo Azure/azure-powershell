@@ -17,6 +17,14 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+## Current Release
+
+* Update the version of the ADLS dataplane SDK to 1.1.2 
+
+## Version 5.1.1
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
+
 ## Version 5.2.0-preview
 
 * Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
@@ -25,9 +33,6 @@
 * Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
 * Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
 
-## Version 5.1.1
-* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
-* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
 
 ## Version 5.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
