@@ -288,31 +288,36 @@ function Test-RaByServicePrincipal
 
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0272ecd2-580e-4560-a59e-fd9ed330ee31")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment1 = New-AzureRmRoleAssignment `
                         -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
-                        
-    # cleanup 
-    DeleteRoleAssignment $newAssignment
-    
+
+    $definitionName = 'Contributor'
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
-    $newAssignment = New-AzureRmRoleAssignment `
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("d953d793-bc25-49e9-818b-5ce68f3ff5ed")
+    $newAssignment2 = New-AzureRmRoleAssignment `
                         -ApplicationId $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope 
-                        
+    
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $newAssignment2.ObjectId
+    Assert-NotNull $assignments
+
     # cleanup 
-    DeleteRoleAssignment $newAssignment
+    DeleteRoleAssignment $newAssignment1
+
+    # cleanup 
+    DeleteRoleAssignment $newAssignment2
 
     # Assert
-    Assert-NotNull $newAssignment
-    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
-    Assert-AreEqual $scope $newAssignment.Scope 
-    Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment.DisplayName
-    
-    VerifyRoleAssignmentDeleted $newAssignment
+    Assert-NotNull $newAssignment2
+    Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment2.Scope 
+    Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
+
+    VerifyRoleAssignmentDeleted $newAssignment1    
+    VerifyRoleAssignmentDeleted $newAssignment2
 }
 
 <#
@@ -343,6 +348,39 @@ function Test-RaByUpn
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
+    VerifyRoleAssignmentDeleted $newAssignment
+}
+
+<#
+.SYNOPSIS
+Tests verifies creation and deletion of a RoleAssignments for User Principal Name with expand principal groups
+#>
+function Test-RaGetByUPNWithExpandPrincipalGroups
+{
+    # Setup
+    $definitionName = 'Contributor'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("355f2d24-c0e6-43d2-89a7-027e51161d0b")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -SignInName $users[0].UserPrincipalName `
+                        -RoleDefinitionName $definitionName `
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
+    
+    $assignments = Get-AzureRmRoleAssignment -SignInName $users[0].UserPrincipalName -ExpandPrincipalGroups
+
+    Assert-NotNull $assignments
+    foreach ($assignment in $assignments){
+        Assert-NotNull $assignment
+        Assert-AreEqual $assignment.SignInName $users[0].UserPrincipalName
+    }
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+    
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
