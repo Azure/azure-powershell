@@ -1182,6 +1182,21 @@
                         <Component Id="cmp3A5E7F3EA44ACFDD84B8CE1D36DA80C7" Guid="*">
                             <File Id="fil9B815D18A217668B9C3F30A088551FEE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Azure.Management.Redis.dll" />
                         </Component>
+                        <Component Id="cmpB1AB5620182396F5055594CB5B71DFF5" Guid="*">
+                            <File Id="fil927418DCA437A44F331156F1B181B0CB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Data.Edm.dll" />
+                        </Component>
+                        <Component Id="cmpF3A6E2A588E2828B1141B2B4F2DEE2CA" Guid="*">
+                            <File Id="fil6885A1C5198BBE4BE218B29F4AF8CD4F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Data.OData.dll" />
+                        </Component>
+                        <Component Id="cmpDFF1A711321C50653141E2AE4BB76806" Guid="*">
+                            <File Id="filF25C5E7B600CD1857B7B71EF4B86B617" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Data.Services.Client.dll" />
+                        </Component>
+                        <Component Id="cmp5D9B9CA7570E8D2EB671AA2197A22A52" Guid="*">
+                            <File Id="fil315EBA6955167FF42135413C69608424" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.WindowsAzure.Storage.dll" />
+                        </Component>
+                        <Component Id="cmp52C57B0899D353B0A0560BB9EE958B68" Guid="*">
+                            <File Id="fil593DDDA285E20B8837098A7387A09B84" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\System.Spatial.dll" />
+                        </Component>
                     </Directory>
                     <Directory Id="dirB8C59748A9CAA34AC5178B0870A85D46" Name="AzureRM.Relay">
                         <Component Id="cmp872D591FD35F7F98FB3D3950FC2E6EB5" Guid="*">
@@ -3491,6 +3506,11 @@
             <ComponentRef Id="cmp763AEEF23062A4949090DC62E1A8A525" />
             <ComponentRef Id="cmpE542A66FF253AB7ECF153BC7F8617497" />
             <ComponentRef Id="cmp3A5E7F3EA44ACFDD84B8CE1D36DA80C7" />
+            <ComponentRef Id="cmpB1AB5620182396F5055594CB5B71DFF5" />
+            <ComponentRef Id="cmpF3A6E2A588E2828B1141B2B4F2DEE2CA" />
+            <ComponentRef Id="cmpDFF1A711321C50653141E2AE4BB76806" />
+            <ComponentRef Id="cmp5D9B9CA7570E8D2EB671AA2197A22A52" />
+            <ComponentRef Id="cmp52C57B0899D353B0A0560BB9EE958B68" />
             <ComponentRef Id="cmp872D591FD35F7F98FB3D3950FC2E6EB5" />
             <ComponentRef Id="cmp1F9962082F3309C636554C8EDBE99FDD" />
             <ComponentRef Id="cmp0B1DAE7F253E744037B651E0433683D2" />
