@@ -17,9 +17,10 @@ Updates an integration runtime.
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-Name] <String>
- [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
+ [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -27,7 +28,8 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-ResourceId] <String>
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +38,8 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-Force] [-InputObject] <PSIntegrationRuntime>
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,13 +64,28 @@ The cmdlet updates the description of integration runtime named 'test-selfhost-i
 
 ## PARAMETERS
 
+### -AuthKey
+The authentication key of the self-hosted integration runtime.
+
+```yaml
+Type: SecureString
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CatalogAdminCredential
 The catalog database administrator credential of the integration runtime.
 
 ```yaml
 Type: PSCredential
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,7 +100,7 @@ The catalog database pricing tier of the integration runtime.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -97,7 +115,7 @@ The catalog database server endpoint of the integration runtime.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,7 +130,7 @@ The data factory name.
 ```yaml
 Type: String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -142,7 +160,23 @@ The integration runtime description.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Edition
+The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Standard, Enterprise
 
 Required: False
 Position: Named
@@ -157,7 +191,7 @@ Runs the cmdlet without prompting for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -172,7 +206,7 @@ The integration runtime object.
 ```yaml
 Type: PSIntegrationRuntime
 Parameter Sets: ByIntegrationRuntimeObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -187,7 +221,7 @@ The license type that you want to select for the SSIS IR. There are two types: L
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: LicenseIncluded, BasePrice
 
 Required: False
@@ -203,7 +237,7 @@ The integration runtime location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -218,7 +252,7 @@ Maximum parallel execution count per node for a managed dedicated integration ru
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -248,7 +282,7 @@ Target nodes count of the integration runtime.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -263,7 +297,7 @@ The integration runtime node size.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -278,7 +312,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -299,6 +333,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SetupScriptContainerSasUri
+The SAS URI of the Azure blob container that contains the custom setup script.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -323,7 +372,7 @@ The integration runtime type.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Managed, SelfHosted
 
 Required: False
@@ -339,7 +388,7 @@ The ID of the VNet that the integration runtime joins.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

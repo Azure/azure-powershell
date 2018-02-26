@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Register-AzureRmProviderFeature: Added missing example in the docs
+* Register-AzureRmResourceProvider: Added missing example in the docs
+* Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.
+* Fix roleassignment get calls when there are duplicate objectIds.
+* Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
+* Fix Roleassignment get calls to be used with roledefinition ID.
+
+## Version 5.3.0
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+
+## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.

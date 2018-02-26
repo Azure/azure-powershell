@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -29,7 +29,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LastSubmitTime": "System.Nullable`1[System.DateTimeOffset]",
               "AuHoursFailed": "System.Nullable`1[System.Double]",
@@ -440,7 +440,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -455,7 +455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Runs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobPipelineRunInformation]",
               "Recurrences": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
@@ -1120,7 +1120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -1139,7 +1139,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1354,7 +1354,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -1424,8 +1424,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "MaxDegreeOfParallelismPerJob",
-          "AliasList": [],
+          "Name": "MaxAnalyticsUnitsPerJob",
+          "AliasList": [
+            "MaxDegreeOfParallelismPerJob"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
@@ -1560,8 +1562,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxDegreeOfParallelismPerJob",
-                "AliasList": [],
+                "Name": "MaxAnalyticsUnitsPerJob",
+                "AliasList": [
+                  "MaxDegreeOfParallelismPerJob"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
@@ -1657,7 +1661,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -1763,8 +1767,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "MaxDegreeOfParallelismPerJob",
-          "AliasList": [],
+          "Name": "MaxAnalyticsUnitsPerJob",
+          "AliasList": [
+            "MaxDegreeOfParallelismPerJob"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
@@ -1947,8 +1953,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxDegreeOfParallelismPerJob",
-                "AliasList": [],
+                "Name": "MaxAnalyticsUnitsPerJob",
+                "AliasList": [
+                  "MaxDegreeOfParallelismPerJob"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
@@ -2291,7 +2299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -2580,7 +2588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -2597,7 +2605,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2808,7 +2816,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -3097,9 +3105,8 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfoProperties",
               "AccessKey": "System.String",
               "Suffix": "System.String",
               "Id": "System.String",
@@ -3117,9 +3124,8 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfoProperties",
               "Suffix": "System.String",
               "Id": "System.String",
               "Name": "System.String",
@@ -3136,7 +3142,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6323,7 +6329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6339,7 +6345,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -6415,7 +6421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6437,7 +6443,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -6562,7 +6568,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6578,7 +6584,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -6654,7 +6660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6676,7 +6682,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -6995,15 +7001,15 @@
               "LogFilePatterns": "System.Collections.Generic.IList`1[System.String]",
               "Result": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobState]",
-              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
-              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
               "SubmitTime": "System.Nullable`1[System.DateTimeOffset]",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
               "JobId": "System.Nullable`1[System.Guid]",
-              "Priority": "System.Nullable`1[System.Int32]",
               "DegreeOfParallelism": "System.Nullable`1[System.Int32]",
-              "LogFolder": "System.String",
+              "Priority": "System.Nullable`1[System.Int32]",
+              "Name": "System.String",
               "Submitter": "System.String",
-              "Name": "System.String"
+              "LogFolder": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8541,12 +8547,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation"
+              "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic"
             ]
           },
           "ParameterSets": [
@@ -8567,15 +8573,15 @@
               "LogFilePatterns": "System.Collections.Generic.IList`1[System.String]",
               "Result": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobState]",
-              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
-              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
               "SubmitTime": "System.Nullable`1[System.DateTimeOffset]",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
               "JobId": "System.Nullable`1[System.Guid]",
-              "Priority": "System.Nullable`1[System.Int32]",
               "DegreeOfParallelism": "System.Nullable`1[System.Int32]",
-              "LogFolder": "System.String",
+              "Priority": "System.Nullable`1[System.Int32]",
+              "Name": "System.String",
               "Submitter": "System.String",
-              "Name": "System.String"
+              "LogFolder": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8626,7 +8632,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9139,7 +9145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9239,12 +9245,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount"
+              "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic"
             ]
           },
           "ParameterSets": [
@@ -9255,35 +9261,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
+              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
               "ComputePolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.ComputePolicyAccountCreateParameters]",
-              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallRule]",
-              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.StorageAccountInfo]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountStatus]",
               "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallAllowAzureIpsState]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallState]",
-              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "NewTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
+              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "LastModifiedTime": "System.Nullable`1[System.DateTime]",
               "CreationTime": "System.Nullable`1[System.DateTime]",
+              "AccountId": "System.Nullable`1[System.Guid]",
               "SystemMaxJobCount": "System.Nullable`1[System.Int32]",
-              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxJobCount": "System.Nullable`1[System.Int32]",
               "QueryStoreRetention": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
               "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
+              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "Location": "System.String",
+              "Endpoint": "System.String",
               "DefaultDataLakeStoreAccount": "System.String",
               "Id": "System.String",
               "Name": "System.String",
-              "Type": "System.String",
-              "Endpoint": "System.String"
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9556,15 +9562,15 @@
               "LogFilePatterns": "System.Collections.Generic.IList`1[System.String]",
               "Result": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobState]",
-              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
-              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
               "SubmitTime": "System.Nullable`1[System.DateTimeOffset]",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
               "JobId": "System.Nullable`1[System.Guid]",
-              "Priority": "System.Nullable`1[System.Int32]",
               "DegreeOfParallelism": "System.Nullable`1[System.Int32]",
-              "LogFolder": "System.String",
+              "Priority": "System.Nullable`1[System.Int32]",
+              "Name": "System.String",
               "Submitter": "System.String",
-              "Name": "System.String"
+              "LogFolder": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9694,8 +9700,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "DegreeOfParallelism",
-          "AliasList": [],
+          "Name": "AnalyticsUnits",
+          "AliasList": [
+            "DegreeOfParallelism"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.Int32",
@@ -9724,6 +9732,22 @@
           "ValidateRangeMin": 0,
           "ValidateRangeMax": 2147483647,
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ScriptParameter",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.IDictionary",
+            "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "RecurrenceId",
@@ -9992,8 +10016,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -10031,6 +10057,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -10209,8 +10257,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -10248,6 +10298,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -10426,8 +10498,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -10465,6 +10539,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -10687,8 +10783,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -10726,6 +10824,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -10948,8 +11068,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -10987,6 +11109,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -11299,8 +11443,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "DegreeOfParallelism",
-                "AliasList": [],
+                "Name": "AnalyticsUnits",
+                "AliasList": [
+                  "DegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32",
@@ -11338,6 +11484,28 @@
               },
               "Mandatory": false,
               "Position": 7,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScriptParameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.IDictionary",
+                  "AssemblyQualifiedName": "System.Collections.IDictionary, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -11561,35 +11729,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
+              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
               "ComputePolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.ComputePolicyAccountCreateParameters]",
-              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallRule]",
-              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.StorageAccountInfo]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountStatus]",
               "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallAllowAzureIpsState]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallState]",
-              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "NewTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
+              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "LastModifiedTime": "System.Nullable`1[System.DateTime]",
               "CreationTime": "System.Nullable`1[System.DateTime]",
+              "AccountId": "System.Nullable`1[System.Guid]",
               "SystemMaxJobCount": "System.Nullable`1[System.Int32]",
-              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxJobCount": "System.Nullable`1[System.Int32]",
               "QueryStoreRetention": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
               "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
+              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "Location": "System.String",
+              "Endpoint": "System.String",
               "DefaultDataLakeStoreAccount": "System.String",
               "Id": "System.String",
               "Name": "System.String",
-              "Type": "System.String",
-              "Endpoint": "System.String"
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11665,8 +11833,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Tags",
-          "AliasList": [],
+          "Name": "Tag",
+          "AliasList": [
+            "Tags"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -11681,8 +11851,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "MaxDegreeOfParallelism",
-          "AliasList": [],
+          "Name": "MaxAnalyticsUnits",
+          "AliasList": [
+            "MaxDegreeOfParallelism"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
@@ -11871,8 +12043,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Tags",
-                "AliasList": [],
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -11893,8 +12067,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxDegreeOfParallelism",
-                "AliasList": [],
+                "Name": "MaxAnalyticsUnits",
+                "AliasList": [
+                  "MaxDegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
@@ -12281,35 +12457,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
+              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
               "ComputePolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.ComputePolicyAccountCreateParameters]",
-              "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallRule]",
-              "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.StorageAccountInfo]",
               "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountStatus]",
               "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallAllowAzureIpsState]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallState]",
-              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "NewTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
+              "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
               "LastModifiedTime": "System.Nullable`1[System.DateTime]",
               "CreationTime": "System.Nullable`1[System.DateTime]",
+              "AccountId": "System.Nullable`1[System.Guid]",
               "SystemMaxJobCount": "System.Nullable`1[System.Int32]",
-              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxJobCount": "System.Nullable`1[System.Int32]",
               "QueryStoreRetention": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
               "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
+              "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
               "Location": "System.String",
+              "Endpoint": "System.String",
               "DefaultDataLakeStoreAccount": "System.String",
               "Id": "System.String",
               "Name": "System.String",
-              "Type": "System.String",
-              "Endpoint": "System.String"
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -12337,8 +12513,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Tags",
-          "AliasList": [],
+          "Name": "Tag",
+          "AliasList": [
+            "Tags"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -12369,8 +12547,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "MaxDegreeOfParallelism",
-          "AliasList": [],
+          "Name": "MaxAnalyticsUnits",
+          "AliasList": [
+            "MaxDegreeOfParallelism"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
@@ -12529,8 +12709,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Tags",
-                "AliasList": [],
+                "Name": "Tag",
+                "AliasList": [
+                  "Tags"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -12573,8 +12755,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxDegreeOfParallelism",
-                "AliasList": [],
+                "Name": "MaxAnalyticsUnits",
+                "AliasList": [
+                  "MaxDegreeOfParallelism"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
@@ -12869,7 +13053,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "LastSubmitTime": "System.Nullable`1[System.DateTimeOffset]",
         "AuHoursFailed": "System.Nullable`1[System.Double]",
@@ -12988,6 +13172,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -13093,7 +13278,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Runs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobPipelineRunInformation]",
         "Recurrences": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
@@ -13145,7 +13330,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ObjectId": "System.Nullable`1[System.Guid]",
         "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -13159,7 +13344,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "StartIpAddress": "System.String",
@@ -13168,31 +13353,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfoProperties": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfoProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfoProperties, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AccessKey": "System.String",
-        "Suffix": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfoProperties": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfoProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfoProperties, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Suffix": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType",
         "IsDefault": "System.Boolean",
@@ -13204,7 +13368,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13292,6 +13456,7 @@
       "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInnerError",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInnerError, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
+        "InnerError": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInnerError",
         "Severity": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.SeverityTypes]",
         "DiagnosticCode": "System.Nullable`1[System.Int32]",
         "Details": "System.String",
@@ -13384,10 +13549,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation": {
-      "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
-      "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic": {
+      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Properties": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobProperties",
         "Related": "Microsoft.Azure.Management.DataLake.Analytics.Models.JobRelationshipProperties",
@@ -13397,27 +13562,27 @@
         "LogFilePatterns": "System.Collections.Generic.IList`1[System.String]",
         "Result": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult]",
         "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobState]",
-        "EndTime": "System.Nullable`1[System.DateTimeOffset]",
-        "StartTime": "System.Nullable`1[System.DateTimeOffset]",
         "SubmitTime": "System.Nullable`1[System.DateTimeOffset]",
+        "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+        "EndTime": "System.Nullable`1[System.DateTimeOffset]",
         "JobId": "System.Nullable`1[System.Guid]",
-        "Priority": "System.Nullable`1[System.Int32]",
         "DegreeOfParallelism": "System.Nullable`1[System.Int32]",
-        "LogFolder": "System.String",
+        "Priority": "System.Nullable`1[System.Int32]",
+        "Name": "System.String",
         "Submitter": "System.String",
-        "Name": "System.String"
+        "LogFolder": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount": {
-      "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
-      "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccount, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic": {
+      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
         "ComputePolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.ComputePolicyAccountCreateParameters]",
-        "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
         "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallRule]",
         "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.StorageAccountInfo]",
         "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
@@ -13426,21 +13591,45 @@
         "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.FirewallState]",
         "NewTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
         "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.TierType]",
-        "CreationTime": "System.Nullable`1[System.DateTime]",
         "LastModifiedTime": "System.Nullable`1[System.DateTime]",
-        "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
+        "CreationTime": "System.Nullable`1[System.DateTime]",
+        "AccountId": "System.Nullable`1[System.Guid]",
         "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
-        "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
         "SystemMaxJobCount": "System.Nullable`1[System.Int32]",
-        "QueryStoreRetention": "System.Nullable`1[System.Int32]",
-        "MaxJobCount": "System.Nullable`1[System.Int32]",
         "SystemMaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
+        "MaxJobCount": "System.Nullable`1[System.Int32]",
+        "QueryStoreRetention": "System.Nullable`1[System.Int32]",
+        "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
+        "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
         "Location": "System.String",
-        "DefaultDataLakeStoreAccount": "System.String",
+        "Endpoint": "System.String",
         "Id": "System.String",
         "Name": "System.String",
         "Type": "System.String",
-        "Endpoint": "System.String"
+        "DefaultDataLakeStoreAccount": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo"
+      ]
+    },
+    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo": {
+      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Suffix": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13465,29 +13654,6 @@
         "MinPriorityPerJob": "System.Nullable`1[System.Int32]",
         "Name": "System.String",
         "ObjectType": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo"
-      ]
-    },
-    "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo": {
-      "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
-      "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Suffix": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13648,53 +13814,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountProperties, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
-        "StorageAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
-        "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
-        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountStatus]",
-        "CreationTime": "System.Nullable`1[System.DateTime]",
-        "LastModifiedTime": "System.Nullable`1[System.DateTime]",
-        "MaxDegreeOfParallelism": "System.Nullable`1[System.Int32]",
-        "MaxJobCount": "System.Nullable`1[System.Int32]",
-        "DefaultDataLakeStoreAccount": "System.String",
-        "Endpoint": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo"
-      ]
-    },
-    "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfoProperties",
-        "Suffix": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13704,10 +13827,32 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Properties": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfoProperties",
         "AccessKey": "System.String",
+        "Suffix": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo"
+      ]
+    },
+    "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo": {
+      "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
+      "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeStoreAccountInfo, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
         "Suffix": "System.String",
         "Id": "System.String",
         "Name": "System.String",

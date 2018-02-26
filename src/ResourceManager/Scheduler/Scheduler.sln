@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authorizati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Graph.RBAC", "..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj", "{269ACF73-0A34-42DC-AB9C-4B15931A489D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -287,6 +291,38 @@ Global
 		{269ACF73-0A34-42DC-AB9C-4B15931A489D}.Portable-Release|Any CPU.Build.0 = Release|Any CPU
 		{269ACF73-0A34-42DC-AB9C-4B15931A489D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{269ACF73-0A34-42DC-AB9C-4B15931A489D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net40-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net40-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net40-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net40-Release|Any CPU.Build.0 = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net45-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net45-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net45-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Net45-Release|Any CPU.Build.0 = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Portable-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Portable-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Portable-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Portable-Release|Any CPU.Build.0 = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1338F7AE-7111-4ED3-8916-2D0FECC876F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net40-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net40-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net40-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net40-Release|Any CPU.Build.0 = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net45-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net45-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net45-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Net45-Release|Any CPU.Build.0 = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Portable-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Portable-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Portable-Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Portable-Release|Any CPU.Build.0 = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

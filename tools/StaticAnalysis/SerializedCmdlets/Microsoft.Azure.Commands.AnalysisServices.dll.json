@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -231,7 +231,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -448,7 +448,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -617,7 +617,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -834,7 +834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1742,7 +1742,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1808,23 +1808,7 @@
             "ElementType": null,
             "GenericTypeArguments": []
           },
-          "ValidateSet": [
-            "North Central US",
-            "South Central US",
-            "Central US",
-            "West Europe",
-            "North Europe",
-            "West US",
-            "East US",
-            "East US 2",
-            "Japan East",
-            "Japan West",
-            "Brazil South",
-            "Southeast Asia",
-            "East Asia",
-            "Australia East",
-            "Australia Southeast"
-          ],
+          "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
@@ -1978,23 +1962,7 @@
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
-                "ValidateSet": [
-                  "North Central US",
-                  "South Central US",
-                  "Central US",
-                  "West Europe",
-                  "North Europe",
-                  "West US",
-                  "East US",
-                  "East US 2",
-                  "Japan East",
-                  "Japan West",
-                  "Brazil South",
-                  "Southeast Asia",
-                  "East Asia",
-                  "Australia East",
-                  "Australia Southeast"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -2246,7 +2214,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -2312,6 +2280,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -2417,7 +2386,7 @@
     "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.4.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
         "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
