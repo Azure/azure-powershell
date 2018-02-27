@@ -140,12 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
 
             var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                name: LoadBalancerName,
-                // froontendPoolName: FrontendPoolName,
-                // backendPoolName: BackendPoolName,
-                zones: Zone,
-                publicIPAddress: publicIpAddress,
-                subnet: subnet);
+                name: LoadBalancerName);
 
             var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                 name: FrontendPoolName,
