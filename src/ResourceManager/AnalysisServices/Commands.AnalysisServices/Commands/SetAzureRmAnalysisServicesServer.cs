@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public string DefaultConnectionMode { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "A json string to indicate the firewall setting")]
+            HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
         private int _readOnlyReplicaCount = -1;
