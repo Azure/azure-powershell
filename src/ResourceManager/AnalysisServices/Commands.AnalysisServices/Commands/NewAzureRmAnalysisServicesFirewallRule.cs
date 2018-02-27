@@ -32,18 +32,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public string FirewallRuleName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            HelpMessage = "IP range start")]
+            HelpMessage = "IP range start, for example, 0.0.0.0")]
         [ValidateNotNullOrEmpty]
         public string RangeStart { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "IP range end")]
+            HelpMessage = "IP range end, for example, 255.255.255.255")]
         [ValidateNotNullOrEmpty]
         public string RangeEnd { get; set; }
-
-        public NewAzureRmAnalysisServicesFirewallRule()
-        {
-        }
 
         public override void ExecuteCmdlet()
         {

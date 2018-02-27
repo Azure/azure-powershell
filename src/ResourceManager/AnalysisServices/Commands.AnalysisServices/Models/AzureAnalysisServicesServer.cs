@@ -58,16 +58,23 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
             if (server.IpV4FirewallSettings != null)
             {
-                config = new PsAzureAnalysisServicesFirewallConfig();
-                config.EnablePowerBIService = Convert.ToBoolean(server.IpV4FirewallSettings.EnablePowerBIService);
-
+                List<PsAzureAnalysisServicesFirewallRule> rules = null;
+                bool enablePowerBIService = false;
                 if (server.IpV4FirewallSettings.FirewallRules != null)
                 {
+                    rules = new List<PsAzureAnalysisServicesFirewallRule>();
                     foreach (var rule in server.IpV4FirewallSettings.FirewallRules)
                     {
-                        config.FirewallRules.Add(new PsAzureAnalysisServicesFirewallRule(rule.FirewallRuleName, rule.RangeStart, rule.RangeEnd));
+                        rules.Add(new PsAzureAnalysisServicesFirewallRule(rule.FirewallRuleName, rule.RangeStart, rule.RangeEnd));
                     }
                 }
+               
+                if (server.IpV4FirewallSettings.EnablePowerBIService != null)
+                {
+                    enablePowerBIService = Convert.ToBoolean(server.IpV4FirewallSettings.EnablePowerBIService);
+                }
+
+                config = new PsAzureAnalysisServicesFirewallConfig(enablePowerBIService, rules);
             }
 
             return new AzureAnalysisServicesServerDetail()
