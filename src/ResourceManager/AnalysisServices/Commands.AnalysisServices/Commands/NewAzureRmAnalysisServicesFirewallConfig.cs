@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Option to enable PowerBI service")]
         [ValidateNotNullOrEmpty]
-        public bool EnablePowerBIService { get; set; }
+        public SwitchParameter EnablePowerBIService { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
             HelpMessage = "Firewall rules")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
-            PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig(EnablePowerBIService, FirewallRule);
+            PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig((EnablePowerBIService) ? true : false, FirewallRule);
             WriteObject(config);
         }
 
