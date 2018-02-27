@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     config,
                     () =>
                     {
-                        foreach (var dependency in config.Dependencies)
+                        foreach (var dependency in config.GetResourceDependencies())
                         {
-                            AddIfRequired(dependency.Resource);
+                            AddIfRequired(dependency);
                         }
                         var model = config.CreateModel(Engine);
                         config.Strategy.Location.Set(model, Location);
