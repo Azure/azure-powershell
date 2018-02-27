@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public int ReadonlyReplicaCount
         {
             get { return _readOnlyReplicaCount; }
-            set { _readOnlyReplicaCount = value;  }
+            set { _readOnlyReplicaCount = value; }
         }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
