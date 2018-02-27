@@ -25,7 +25,7 @@ The New-AzureRmAnalysisServicesFirewallConfig creates a new firewall config obje
 ```
 PS C:\> $rule1 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
 PS C:\> $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
-PS C:\> New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService $False -FirewallRules $rule1,$rule2
+PS C:\> New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRules $rule1,$rule2
 ```
 
 Creates a firewall rule config without enabling power bi service.
