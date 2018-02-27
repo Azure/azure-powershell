@@ -7,14 +7,13 @@ using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmUserAssignedIdentity", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmUserAssignedIdentity", DefaultParameterSetName = Constants.ResourceGroupAndNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ResourceGroupAndNameParameterSet,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter()]
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         [Parameter(
             Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ResourceGroupAndNameParameterSet,
             HelpMessage = "The Identity name.")]
         [ValidateNotNullOrEmpty]
@@ -36,7 +34,8 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
             ValueFromPipeline = true,
             HelpMessage = "The Identity object.")]
         [ValidateNotNullOrEmpty]
-        public PsUserAssignedIdentity Identity { get; set; }
+        [Alias("Identity")]
+        public PsUserAssignedIdentity InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -67,10 +66,10 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
                 this.Name = identifier.ResourceName;
             }
 
-            if (this.Identity != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.Identity.ResourceGroupName;
-                this.Name = this.Identity.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
 
             ConfirmAction(

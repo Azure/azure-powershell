@@ -29,11 +29,10 @@ The **Get-AzureRmUserAssignedIdentity** gets existing user assigned identities.
 ## EXAMPLES
 
 ### Example 1
+This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
+
 ```powershell
 PS C:\> Get-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
-```
-
-This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -52,13 +51,13 @@ ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
 ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-### Example 2
-```powershell
-PS C:\> Get-AzureRmUserAssignedIdentity -ResourceGroupName PSRG
 ```
 
+### Example 2
 This example cmdlet gets all the User Assigned Identities under the resource group **PSRG**
+
+```powershell
+PS C:\> Get-AzureRmUserAssignedIdentity -ResourceGroupName PSRG
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -96,13 +95,13 @@ ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
 ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-### Example 3
-```powershell
-PS C:\> Get-AzureRmUserAssignedIdentity
 ```
 
+### Example 3
 This example cmdlet gets all the User Assigned Identities under the subscription.
+
+```powershell
+PS C:\> Get-AzureRmUserAssignedIdentity
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -159,6 +158,7 @@ ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
 ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
+```
 
 ## PARAMETERS
 
