@@ -12,7 +12,7 @@ using Identity = Microsoft.Azure.Management.ManagedServiceIdentity.Models.Identi
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
     [Cmdlet(VerbsCommon.New, "AzureRmUserAssignedIdentity", SupportsShouldProcess = true)]
-    [OutputType(typeof(PsUserAssignedIdentity))]
+    [OutputType(typeof (PsUserAssignedIdentity))]
     public class NewAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         [Parameter(
             Mandatory = false,
             HelpMessage = "The Azure Resource Manager tags associated with the identity.",
-            ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag;
+            ValueFromPipelineByPropertyName = true)] public Hashtable Tag;
 
         [Parameter(
             Mandatory = false,
@@ -55,24 +54,25 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (this.ShouldProcess(Name,
+                string.Format(CultureInfo.CurrentCulture,
+                    Properties.Resources.NewUserAssignedIdentity_ProcessMessage,
+                    this.ResourceGroupName,
+                    this.Name)))
             {
-                if (this.ShouldProcess(Name, string.Format(CultureInfo.CurrentCulture, Properties.Resources.NewUserAssignedIdentity_ProcessMessage, this.ResourceGroupName, this.Name)))
-                {
-                    var tagsDictionary = this.Tag?.Cast<DictionaryEntry>()
-                        .ToDictionary(ht => (string) ht.Key, ht => (string) ht.Value);
-                    var location = GetLocation();
-                    Identity identityProperties = new Identity(location: location, tags: tagsDictionary);
-                    var result =
-                        this.MsiClient.UserAssignedIdentities
-                            .CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.Name,
-                                identityProperties).GetAwaiter().GetResult();
+                var tagsDictionary = this.Tag?.Cast<DictionaryEntry>()
+                    .ToDictionary(ht => (string) ht.Key, ht => (string) ht.Value);
+                var location = GetLocation();
+                Identity identityProperties = new Identity(location: location, tags: tagsDictionary);
+                var result =
+                    this.MsiClient.UserAssignedIdentities
+                        .CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name,
+                            identityProperties).GetAwaiter().GetResult();
 
-                    WriteIdentity(result.Body);
-                }
-            });
+                WriteIdentity(result.Body);
+            }
         }
 
         private string GetLocation()

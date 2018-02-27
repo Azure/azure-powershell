@@ -47,27 +47,6 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Common
             }
         }
 
-        protected void ExecuteClientAction(Action action)
-        {
-            try
-            {
-                action();
-            }
-            catch (Rest.Azure.CloudException)
-            {
-                try
-                {
-                    base.EndProcessing();
-                }
-                catch
-                {
-                    // Ignore exceptions during end processing
-                }
-
-                throw;
-            }
-        }
-
         protected void WriteIdentity(Identity identity)
         {
             WriteObject(new PsUserAssignedIdentity(identity));

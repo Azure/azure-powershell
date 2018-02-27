@@ -24,11 +24,10 @@ To add Azure Resource Manager tags to the identity, please use the Set-AzureRmRe
 ## EXAMPLES
 
 ### Example 1
+This example cmdlet creates a new User Assigned Identity with name **ID1** under resource group **PSRG** in the location of the ResourceGroup.
+
 ```powershell
 PS C:\> New-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
-```
-
-This example cmdlet creates a new User Assigned Identity with name **ID1** under resource group **PSRG** in the location of the ResourceGroup.
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -47,13 +46,13 @@ ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
 ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-### Example 2
-```powershell
-PS C:\> New-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1 -Location westus
 ```
 
+### Example 2
 This example cmdlet creates a new User Assigned Identity with name **ID1** under the resource group **PSRG** in the westus region.
+
+```powershell
+PS C:\> New-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1 -Location westus
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -72,6 +71,7 @@ ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
 ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
+```
 
 ## PARAMETERS
 
