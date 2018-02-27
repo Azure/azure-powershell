@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagedServiceIdentity.dll-Help.xml
 Module Name: AzureRM.ManagedServiceIdentity
-online version: 1.0.0
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity
 schema: 2.0.0
 ---
 
