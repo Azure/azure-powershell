@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 9, Mandatory = false,
             HelpMessage = "Firewall configiguration")]
-        public AzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+        public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
         private int _readOnlyReplicaCount = 0;
 

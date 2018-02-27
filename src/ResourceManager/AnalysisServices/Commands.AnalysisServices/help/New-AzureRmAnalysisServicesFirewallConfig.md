@@ -13,7 +13,7 @@ Creates a new Analysis Services firewall config
 ## SYNTAX
 
 ```
-New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService] <Boolean> [-FirewallRules] <list of firewall rule> 
+New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService] <Boolean> [-FirewallRules] List<Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallRule> 
 ```
 
 ## DESCRIPTION

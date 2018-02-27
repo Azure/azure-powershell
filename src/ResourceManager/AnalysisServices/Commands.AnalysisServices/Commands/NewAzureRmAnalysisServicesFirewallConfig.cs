@@ -24,38 +24,26 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesFirewallConfig))]
-    [Alias("New-AzureAsFWConfig")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
     public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
-    {
-        private readonly AzureAnalysisServicesFirewallConfig _config;
-
+    {       
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Option to enable PowerBI service")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public bool EnablePowerBIService
-        {
-            get { return _config.EnablePowerBIService; }
-            set { _config.EnablePowerBIService = value; }
-        }
+        public bool EnablePowerBIService { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
             HelpMessage = "Firewall rules")]
-        public List<AzureAnalysisServicesFirewallRule> FirewallRule
-        {
-            get { return _config.FirewallRules; }
-            set { _config.FirewallRules = value; }
-        }
+        public List<PsAzureAnalysisServicesFirewallRule> FirewallRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(_config);
+            PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig(EnablePowerBIService, FirewallRule);
+            WriteObject(config);
         }
 
         public NewAzureRmAnalysisServicesFirewallConfig()
         {
-            _config = new AzureAnalysisServicesFirewallConfig();
         }
     }
 }

@@ -19,12 +19,19 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
-    public class AzureAnalysisServicesFirewallRule
+    public class PsAzureAnalysisServicesFirewallRule
     {
         public string FirewallRuleName { get; set; }
 
         public string RangeStart { get; set; }
 
         public string RangeEnd { get; set; }
+
+        public PsAzureAnalysisServicesFirewallRule(string firewallRuleName, string rangeStart, string rangeEnd)
+        {
+            FirewallRuleName = firewallRuleName;
+            RangeStart = rangeStart;
+            RangeEnd = rangeEnd;
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string DefaultConnectionMode { get; set; }
 
-        public AzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+        public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
         internal static AzureAnalysisServicesServerDetail FromAnalysisServicesServer(AnalysisServicesServer server)
         {
@@ -54,23 +54,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 return null;
             }
 
-            AzureAnalysisServicesFirewallConfig config = null;
+            PsAzureAnalysisServicesFirewallConfig config = null;
 
             if (server.IpV4FirewallSettings != null)
             {
-                config = new AzureAnalysisServicesFirewallConfig();
+                config = new PsAzureAnalysisServicesFirewallConfig();
                 config.EnablePowerBIService = Convert.ToBoolean(server.IpV4FirewallSettings.EnablePowerBIService);
 
                 if (server.IpV4FirewallSettings.FirewallRules != null)
                 {
                     foreach (var rule in server.IpV4FirewallSettings.FirewallRules)
                     {
-                        config.FirewallRules.Add(new AzureAnalysisServicesFirewallRule()
-                        {
-                            FirewallRuleName = rule.FirewallRuleName,
-                            RangeStart = rule.RangeStart,
-                            RangeEnd = rule.RangeEnd
-                        });
+                        config.FirewallRules.Add(new PsAzureAnalysisServicesFirewallRule(rule.FirewallRuleName, rule.RangeStart, rule.RangeEnd));
                     }
                 }
             }
