@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public SwitchParameter DisableBackup { get; set; }
 
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The replica count of readonly pool")]
         [ValidateRange(0, 7)]
         public int ReadonlyReplicaCount
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             set { _readOnlyReplicaCount = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The default connection mode to query server")]
         [ValidateSet("All", "Readonly", IgnoreCase = true)]
         public string DefaultConnectionMode { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "A json string to indicate the firewall setting")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
