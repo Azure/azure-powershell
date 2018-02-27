@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => config
                 .Dependencies
                 .Select(d => d.Resource)
+                .Where(r => r != config)
                 .Concat(config.NestedResources.SelectMany(GetResourceDependencies));
 
         public static string GetFullName(this IResourceConfig config)
