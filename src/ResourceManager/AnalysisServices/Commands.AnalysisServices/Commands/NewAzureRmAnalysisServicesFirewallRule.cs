@@ -23,48 +23,32 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallRule", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesFirewallRule))]
-    [Alias("New-AzureAsFWRule")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallRule"), OutputType(typeof(PsAzureAnalysisServicesFirewallRule))]
     public class NewAzureRmAnalysisServicesFirewallRule : AnalysisServicesCmdletBase
     {
-        private readonly AzureAnalysisServicesFirewallRule _rule;
-
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of firewall rule")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string FirewallRuleName
-        {
-            get { return _rule.FirewallRuleName; }
-            set { _rule.FirewallRuleName = value; }
-        }
+        public string FirewallRuleName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             HelpMessage = "IP range start")]
         [ValidateNotNullOrEmpty]
-        public string RangeStart
-        {
-            get { return _rule.RangeStart; }
-            set { _rule.RangeStart = value; }
-        }
+        public string RangeStart { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "IP range end")]
         [ValidateNotNullOrEmpty]
-        public string RangeEnd
-        {
-            get { return _rule.RangeEnd; }
-            set { _rule.RangeEnd = value; }
-        }
+        public string RangeEnd { get; set; }
 
         public NewAzureRmAnalysisServicesFirewallRule()
         {
-            _rule = new AzureAnalysisServicesFirewallRule();
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(_rule);
+            PsAzureAnalysisServicesFirewallRule rule = new PsAzureAnalysisServicesFirewallRule(FirewallRuleName, RangeStart, RangeEnd);
+            WriteObject(rule);
         }
     }
 }

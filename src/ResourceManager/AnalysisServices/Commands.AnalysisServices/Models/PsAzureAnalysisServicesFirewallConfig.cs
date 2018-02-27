@@ -19,16 +19,22 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
-    public class AzureAnalysisServicesFirewallConfig
+    public class PsAzureAnalysisServicesFirewallConfig
     {
         public bool EnablePowerBIService { get; set; }
 
-        public List<AzureAnalysisServicesFirewallRule> FirewallRules { get; set; }
+        public List<PsAzureAnalysisServicesFirewallRule> FirewallRules { get; set; }
 
-        public AzureAnalysisServicesFirewallConfig()
+        public PsAzureAnalysisServicesFirewallConfig()
         {
             EnablePowerBIService = false;
-            FirewallRules = new List<AzureAnalysisServicesFirewallRule>();
+            FirewallRules = new List<PsAzureAnalysisServicesFirewallRule>();
+        }
+
+        public PsAzureAnalysisServicesFirewallConfig(bool enablePowerBIService, List<PsAzureAnalysisServicesFirewallRule> firewallRules)
+        {
+            EnablePowerBIService = enablePowerBIService;
+            FirewallRules = firewallRules;
         }
     }
 }
