@@ -36,11 +36,11 @@ Creates a firewall rule config without enabling power bi service.
 A flag to indicate if enable PowerBI service
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
