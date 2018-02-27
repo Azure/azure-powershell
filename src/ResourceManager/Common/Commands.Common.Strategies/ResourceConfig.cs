@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<IEngine, TModel> CreateModel { get; }
 
-        public IEnumerable<IEntityConfig> Dependencies { get; }
+        IEnumerable<IEntityConfig> IEntityConfig.Dependencies => _Dependencies;
+
+        readonly IEnumerable<IEntityConfig> _Dependencies;
 
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         IResourceConfig IEntityConfig.Resource => this;
 
-        IList<INestedResourceConfig<TModel>> _NestedResources { get; }
+        readonly IList<INestedResourceConfig<TModel>> _NestedResources
             = new List<INestedResourceConfig<TModel>>();
 
         public IEnumerable<INestedResourceConfig<TModel>> NestedResources
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             ResourceGroup = resourceGroup;
             Name = name;
             CreateModel = createModel;
-            Dependencies = dependencies;
+            _Dependencies = dependencies;
         }
 
         public IEnumerable<string> GetIdFromResourceGroup()
@@ -76,8 +78,19 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             string name,
             Func<IEngine, TNestedModel> createModel = null)
             where TNestedModel : class, new()
-            => new NestedResourceConfig<TNestedModel, TModel>(
-                this, strategy, name, createModel ?? (_ => new TNestedModel()));
+        {
+            // update dependencies
+            createModel = createModel ?? (_ => new TNestedModel());
+            var engine = new DependencyEngine();
+            createModel(engine);
+            //
+            return new NestedResourceConfig<TNestedModel, TModel>(
+                this,
+                strategy,
+                name,
+                createModel,
+                engine.Dependencies.Values);
+        }
 
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)

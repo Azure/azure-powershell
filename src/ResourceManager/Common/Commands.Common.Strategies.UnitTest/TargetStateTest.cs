@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         class NestedModel
         {
             public string Name { get; set; }
+
+            public string Id { get; set; }
         }
 
         class Model
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 false);
 
             var rgConfig = rgStrategy.CreateResourceConfig(null, "rgname");
+            var rgConfig2 = rgStrategy.CreateResourceConfig(null, "rgname2");
 
             // resource
             var resourceStrategy = ResourceStrategy.Create<Model, Client, Client>(
@@ -58,6 +61,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var resource = resourceStrategy.CreateResourceConfig(rgConfig, "res");
 
             // nested resource
+            var rgNestedStrategy = NestedResourceStrategy.Create<NestedModel, Model>(
+                "rgnested",
+                m => m.Nested,
+                (m, list) => m.Nested = list,
+                nm => nm.Name,
+                (nm, name) => nm.Name = name);
+
+            // add the nested resource to the resource group.
+            var rgNestedConfig = rgConfig.CreateNested(rgNestedStrategy, "rgnestedname");
+
+            // nested resource
             var nestedStrategy = NestedResourceStrategy.Create<NestedModel, Model>(
                 "nested",
                 m => m.Nested,
@@ -65,7 +79,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 nm => nm.Name,
                 (nm, name) => nm.Name = name);
 
-            var nestedConfig = rgConfig.CreateNested(nestedStrategy, "nestedname");
+            // add the nested resource to a resource.
+            var nestedConfig = resource.CreateNested(
+                nestedStrategy,
+                "nestedname",
+                e => new NestedModel
+                {
+                    Id = e.GetId(rgConfig2)
+                });
 
             //
             var engine = new SdkEngine("s");
@@ -79,8 +100,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal("eastus", rgModel.Location);
 
-            var nestedModel = rgModel.Nested.First() as NestedModel;
-            Assert.Equal("nestedname", nestedModel.Name);
+            var rgNestedModel = rgModel.Nested.First() as NestedModel;
+            Assert.Equal("rgnestedname", rgNestedModel.Name);
+
+            var rgModel2 = state.Get(rgConfig2);
+            Assert.NotNull(rgModel2);
         }
     }
 }

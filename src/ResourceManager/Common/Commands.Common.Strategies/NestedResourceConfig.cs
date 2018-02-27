@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public IEnumerable<INestedResourceConfig<TModel>> NestedResources
             => _NestedResources;
 
+        IEnumerable<IEntityConfig> IEntityConfig.Dependencies => _Dependencies;
+
+        readonly IEnumerable<IEntityConfig> _Dependencies;
+
         IEnumerable<INestedResourceConfig> IEntityConfig.NestedResources
             => _NestedResources;
 
@@ -64,12 +68,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             IEntityConfig<TParenModel> parent,
             NestedResourceStrategy<TModel, TParenModel> strategy,
             string name,
-            Func<IEngine, TModel> createModel)
+            Func<IEngine, TModel> createModel,
+            IEnumerable<IEntityConfig> dependencies)
         {
             Parent = parent;
             Strategy = strategy;
             Name = name;
             CreateModel = createModel;
+            _Dependencies = dependencies;
 
             parent.AddNested(this);
         }
