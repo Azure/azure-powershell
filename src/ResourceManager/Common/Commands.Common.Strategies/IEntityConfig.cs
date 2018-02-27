@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         IEnumerable<string> GetIdFromResourceGroup();
 
         IEnumerable<INestedResourceConfig> NestedResources { get; }
+
+        IEnumerable<IEntityConfig> Dependencies { get; }
     }
 
     public interface IEntityConfig<TModel> : IEntityConfig
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         TResult Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context);
 
-        void AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)
+        void AddNested<TNestedModel>(
+            NestedResourceConfig<TNestedModel, TModel> config)
             where TNestedModel : class;
 
         new IEnumerable<INestedResourceConfig<TModel>> NestedResources { get; }
