@@ -190,7 +190,7 @@ function Test-AnalysisServicesServerFirewall
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices
+		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -256,7 +256,7 @@ function Test-AnalysisServicesServerScaleOutIn
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices
+		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -286,14 +286,13 @@ function Test-AnalysisServicesServerScaleOutIn
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 		
-		Write-Host $serverCreated.Sku.Capacity
-		Write-Host $serverCreated.DefaultConnectionMode
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -PassThru
+		Assert-AreEqual 2 $serverUpdated.Sku.Capacity
 
 		#Scale in Capacity 2 -> 1
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -ReadonlyReplicaCount 0 -PassThru
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
-		Write-Host $serverUpdated.Sku.Capacity
-		Write-Host $serverUpdated.DefaultConnectionMode
 		Assert-AreEqual S1 $serverUpdated.Sku.Name
 		
 		# Delete Analysis Servicesserver

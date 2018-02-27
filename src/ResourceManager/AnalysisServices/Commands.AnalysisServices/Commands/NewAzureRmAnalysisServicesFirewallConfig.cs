@@ -27,12 +27,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
     public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {       
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = "Option to enable PowerBI service")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter EnablePowerBIService { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Firewall rules")]
         public List<PsAzureAnalysisServicesFirewallRule> FirewallRule { get; set; }
 
@@ -40,10 +39,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         {
             PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig((EnablePowerBIService) ? true : false, FirewallRule);
             WriteObject(config);
-        }
-
-        public NewAzureRmAnalysisServicesFirewallConfig()
-        {
         }
     }
 }

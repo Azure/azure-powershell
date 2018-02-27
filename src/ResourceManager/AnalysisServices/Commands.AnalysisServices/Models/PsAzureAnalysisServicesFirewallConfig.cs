@@ -25,12 +25,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public List<PsAzureAnalysisServicesFirewallRule> FirewallRules { get; set; }
 
-        public PsAzureAnalysisServicesFirewallConfig()
-        {
-            EnablePowerBIService = false;
-            FirewallRules = new List<PsAzureAnalysisServicesFirewallRule>();
-        }
-
         public PsAzureAnalysisServicesFirewallConfig(bool enablePowerBIService, List<PsAzureAnalysisServicesFirewallRule> firewallRules)
         {
             EnablePowerBIService = enablePowerBIService;
