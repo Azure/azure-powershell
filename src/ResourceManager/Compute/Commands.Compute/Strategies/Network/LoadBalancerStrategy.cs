@@ -38,12 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
-            string name,
-            // string froontendPoolName,
-            // string backendPoolName,
-            IList<string> zones,
-            ResourceConfig<PublicIPAddress> publicIPAddress,
-            NestedResourceConfig<Subnet, VirtualNetwork> subnet)
+            string name)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name);
