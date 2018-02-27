@@ -78,7 +78,9 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
                'Remove-AzureRmAnalysisServicesServer', 
                'Set-AzureRmAnalysisServicesServer', 
                'Test-AzureRmAnalysisServicesServer', 
-               'New-AzureRmAnalysisServicesServer'
+               'New-AzureRmAnalysisServicesServer',
+               'New-AzureRmAnalysisServicesFirewallRule',
+               'New-AzureRmAnalysisServicesFirewallConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
