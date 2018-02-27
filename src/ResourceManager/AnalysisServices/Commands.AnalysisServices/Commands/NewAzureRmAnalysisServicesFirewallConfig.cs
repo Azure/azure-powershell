@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
     public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {       
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = false,
             HelpMessage = "Option to enable PowerBI service")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter EnablePowerBIService { get; set; }

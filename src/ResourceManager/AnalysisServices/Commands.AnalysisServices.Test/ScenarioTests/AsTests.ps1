@@ -192,7 +192,7 @@ function Test-AnalysisServicesServerFirewall
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		$rule1 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName abc1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
         $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName abc2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
-        $config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService $FALSE -FirewallRule $rule1, $rule2
+        $config = New-AzureRmAnalysisServicesFirewallConfig -FirewallRule $rule1, $rule2
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -FirewallConfig $config
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -223,7 +223,7 @@ function Test-AnalysisServicesServerFirewall
 		Assert-AreEqual 2 $serverGetItem.FirewallConfig.FirewallRules.Count
 		
 		$emptyConfig = @()
-		$config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService $TRUE -FirewallRule $emptyConfig
+		$config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRule $emptyConfig
 		Set-AzureRmAnalysisServicesServer -Name $serverName -FirewallConfig $config
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
