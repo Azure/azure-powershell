@@ -71,11 +71,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The replica count of readonly pool")]
         [ValidateRange(0, 7)]
-        public int ReadonlyReplicaCount
-        {
-            get { return _readOnlyReplicaCount; }
-            set { _readOnlyReplicaCount = value; }
-        }
+        public int ReadonlyReplicaCount { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The default connection mode to query server")]
@@ -85,8 +81,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
-
-        private int _readOnlyReplicaCount = 0;
 
         public override void ExecuteCmdlet()
         {
@@ -143,6 +137,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                             });
                         }
                     }
+                }
+
+                if (!MyInvocation.BoundParameters.ContainsKey("ReadonlyReplicaCount"))
+                {
+                    ReadonlyReplicaCount = 0;
                 }
 
                 var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting);

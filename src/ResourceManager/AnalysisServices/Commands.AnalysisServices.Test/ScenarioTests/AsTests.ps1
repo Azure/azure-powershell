@@ -22,7 +22,8 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual 2 $serverCreated.AsAdministrators.Count
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
-	
+	    Assert-AreEqual 1 $serverCreated.Sku.Capacity
+
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
 
@@ -144,7 +145,8 @@ function Test-AnalysisServicesServerScaleUpDown
 		Assert-AreEqual B1 $serverCreated.Sku.Name
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
-	
+	    Assert-AreEqual 1 $serverCreated.Sku.Capacity
+
 		# Check server was created successfully
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
