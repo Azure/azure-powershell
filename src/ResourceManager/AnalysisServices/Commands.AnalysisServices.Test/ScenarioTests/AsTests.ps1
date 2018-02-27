@@ -46,10 +46,12 @@ function Test-AnalysisServicesServer
 		Assert-NotNull $serverUpdated.Tag "Tag do not exists"
 		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
+		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
+		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
 
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
@@ -196,6 +198,7 @@ function Test-AnalysisServicesServerFirewall
         $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName abc2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
         $config = New-AzureRmAnalysisServicesFirewallConfig -FirewallRule $rule1, $rule2
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -FirewallConfig $config
+		Assert-AreEqual 1 $serverCreated.Sku.Capacity
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -231,6 +234,7 @@ function Test-AnalysisServicesServerFirewall
 		$serverGetItem = $serverGet[0]
 	    Assert-AreEqual $TRUE $serverGetItem.FirewallConfig.EnablePowerBIService
 		Assert-AreEqual 0 $serverGetItem.FirewallConfig.FirewallRules.Count
+		Assert-AreEqual 1 $serverGetItem.Sku.Capacity
 
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
