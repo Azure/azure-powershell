@@ -73,9 +73,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The actions of the rule")]
+            HelpMessage = "The type of the rule action")]
         [ValidateNotNullOrEmpty]
-        public List<PSSecureGatewayNetworkRuleAction> Action { get; set; }
+        [ValidateSet(
+            MNM.SecureGatewayNetworkRuleActionType.Allow,
+            MNM.SecureGatewayNetworkRuleActionType.Deny,
+            IgnoreCase = false)]
+        public string ActionType { get; set; }
 
         public override void Execute()
         {
@@ -101,10 +105,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("At least one network rule destination port should be specified!");
             }
-            if (this.Action == null || this.Action.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule action should be specified!");
-            }
 
             var networkRule = new PSSecureGatewayNetworkRule
             {
@@ -117,7 +117,13 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationIps = this.DestinationIp,
                 SourcePorts = this.SourcePort,
                 DestinationPorts = this.DestinationPort,
-                Actions = this.Action
+                Actions = new List<PSSecureGatewayNetworkRuleAction>
+                {
+                    new PSSecureGatewayNetworkRuleAction
+                    {
+                        Type = this.ActionType
+                    }
+                }
             };
             WriteObject(networkRule);
         }
