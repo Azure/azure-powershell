@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -26,7 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine",
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachines,
                 getAsync: (o, p) => o.GetAsync(
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription =>
+                createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
                     return new VirtualMachine
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 new NetworkInterfaceReference
                                 {
-                                    Id = networkInterface.GetId(subscription).IdToString()
+                                    Id = engine.GetId(networkInterface)
                                 }
                             }
                         },
@@ -89,11 +87,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ? null
                             : new Azure.Management.Compute.Models.SubResource
                             {
-                                Id = availabilitySet.GetId(subscription).IdToString()
+                                Id = engine.GetId(availabilitySet)
                             }
                     };
-                },
-                dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
+                });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new VirtualMachine
+                createModel: engine => new VirtualMachine
                 {
                     OsProfile = null,
                     NetworkProfile = new NetworkProfile
@@ -115,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             new NetworkInterfaceReference
                             {
-                                Id = networkInterface.GetId(subscription).IdToString()
+                                Id = engine.GetId(networkInterface)
                             }
                         }
                     },
@@ -133,7 +130,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ManagedDisk = new ManagedDiskParameters
                             {
                                 StorageAccountType = StorageAccountTypes.PremiumLRS,
-                                Id = disk.GetId(subscription).IdToString()
+                                Id = engine.GetId(disk)
                             }
                         }
                     },
@@ -141,9 +138,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ? null
                         : new Azure.Management.Compute.Models.SubResource
                         {
-                            Id = availabilitySet.GetId(subscription).IdToString()
+                            Id = engine.GetId(availabilitySet)
                         }
-                },
-                dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
+                });
     }
 }
