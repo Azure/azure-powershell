@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADUser>))]
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -59,13 +59,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Mail = Mail
             };
 
+            ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+            ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
             ExecutionBlock(() =>
             {
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.FilterUsers(options), true);
-
-                } while (!string.IsNullOrEmpty(options.NextLink));
+                WriteObject(ActiveDirectoryClient.FilterUsers(options, first, skip), true);
             });
         }
     }

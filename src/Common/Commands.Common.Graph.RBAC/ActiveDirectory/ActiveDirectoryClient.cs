@@ -80,75 +80,44 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return string.IsNullOrEmpty(s) ? null : s;
         }
 
-        public List<PSADServicePrincipal> FilterServicePrincipals(ADObjectFilterOptions options)
+        public IEnumerable<PSADServicePrincipal> FilterServicePrincipals(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            List<PSADServicePrincipal> servicePrincipals = new List<PSADServicePrincipal>();
-            IPage<ServicePrincipal> result = null;
-            ServicePrincipal servicePrincipal = null;
-
-            if (!string.IsNullOrEmpty(options.Id))
+            if (!string.IsNullOrEmpty(options.Id) || !string.IsNullOrEmpty(options.SPN))
             {
+                ServicePrincipal servicePrincipal = null;
                 try
                 {
-                    servicePrincipal = GraphClient.ServicePrincipals.Get(options.Id);
+                    if (!string.IsNullOrEmpty(options.Id))
+                    {
+                        servicePrincipal = GraphClient.ServicePrincipals.Get(options.Id);
+                    }
+                    else
+                    {
+                        var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(options.SPN));
+                        servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault();
+                    }
                 }
-                catch {  /* The user does not exist, ignore the exception. */ }
+                catch { /* The user does not exist, ignore the exception. */}
 
                 if (servicePrincipal != null)
                 {
-                    servicePrincipals.Add(servicePrincipal.ToPSADServicePrincipal());
-                }
-            }
-            else if (!string.IsNullOrEmpty(options.SPN))
-            {
-                try
-                {
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(options.SPN));
-                    servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault();
-                }
-                catch {  /* The user does not exist, ignore the exception. */ }
-
-                if (servicePrincipal != null)
-                {
-                    servicePrincipals.Add(servicePrincipal.ToPSADServicePrincipal());
+                    return new List<PSADServicePrincipal> { servicePrincipal.ToPSADServicePrincipal() };
                 }
             }
             else
             {
-
-                if (options.Paging)
-                {
-                    if (string.IsNullOrEmpty(options.NextLink))
+                var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
+                return new PageEnumerable<ServicePrincipal>(
+                    delegate()
                     {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
-                        result = GraphClient.ServicePrincipals.List(odataQuery);
-                    }
-                    else
-                    {
-                        result = GraphClient.ServicePrincipals.ListNext(options.NextLink);
-                    }
-
-                    servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-                    options.NextLink = result.NextPageLink;
-                }
-                else
-                {
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
-                    result = GraphClient.ServicePrincipals.List(odataQuery.ToString());
-                    servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.ServicePrincipals.ListNext(result.NextPageLink);
-                        servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-                    }
-                }
+                        return GraphClient.ServicePrincipals.List(odataQuery);
+                    }, GraphClient.ServicePrincipals.ListNext, first, skip).Select(s => s.ToPSADServicePrincipal());
             }
 
-            return servicePrincipals;
+            return new List<PSADServicePrincipal>();
         }
 
-        public List<PSADServicePrincipal> FilterServices()
+        public IEnumerable<PSADServicePrincipal> FilterServices()
         {
             return FilterServicePrincipals(new ADObjectFilterOptions());
         }
@@ -169,14 +138,11 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             GraphClient.Users.Delete(upnOrObjectId);
         }
 
-        public List<PSADUser> FilterUsers(ADObjectFilterOptions options)
+        public IEnumerable<PSADUser> FilterUsers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            List<PSADUser> users = new List<PSADUser>();
-            IPage<User> result = null;
-            User user = null;
-
             if (!string.IsNullOrEmpty(options.Id))
             {
+                User user = null;
                 try
                 {
                     user = GraphClient.Users.Get(Normalize(options.Id));
@@ -185,11 +151,12 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
                 if (user != null)
                 {
-                    users.Add(user.ToPSADUser());
+                    return new List<PSADUser> { user.ToPSADUser() };
                 }
             }
             else if (!string.IsNullOrEmpty(options.UPN) || !string.IsNullOrEmpty(options.Mail))
             {
+                IPage<User> result = null;
                 try
                 {
                     string upnOrMail = Normalize(options.UPN) ?? Normalize(options.Mail);
@@ -200,45 +167,23 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
                 if (result != null)
                 {
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
+                    return result.Select(u => u.ToPSADUser());
                 }
             }
             else
             {
-                if (options.Paging)
-                {
-                    if (string.IsNullOrEmpty(options.NextLink))
+                var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
+                return new PageEnumerable<User>(
+                    delegate ()
                     {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
-                        result = GraphClient.Users.List(odataQuery.ToString());
-                    }
-                    else
-                    {
-                        result = GraphClient.Users.ListNext(options.NextLink);
-                    }
-
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
-                    options.NextLink = result.NextPageLink;
-                }
-                else
-                {
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
-                    result = GraphClient.Users.List(odataQuery.ToString());
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.Users.ListNext(result.NextPageLink);
-                        users.AddRange(result.Select(u => u.ToPSADUser()));
-                    }
-                }
-
+                        return GraphClient.Users.List(odataQuery.ToString());
+                    }, GraphClient.Users.ListNext, first, skip).Select(u => u.ToPSADUser());
             }
 
-            return users;
+            return new List<PSADUser>();
         }
 
-        public List<PSADUser> FilterUsers()
+        public IEnumerable<PSADUser> FilterUsers()
         {
             return FilterUsers(new ADObjectFilterOptions());
         }
@@ -278,10 +223,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return result;
         }
 
-        public List<PSADGroup> FilterGroups(ADObjectFilterOptions options)
+        public IEnumerable<PSADGroup> FilterGroups(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            List<PSADGroup> groups = new List<PSADGroup>();
-
             if (!string.IsNullOrEmpty(options.Id))
             {
                 try
@@ -290,102 +233,45 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                     PSADGroup group = this.GetObjectsByObjectId(new List<string> { options.Id }).FirstOrDefault() as PSADGroup;
                     if (group != null)
                     {
-                        groups.Add(group);
+                        return new List<PSADGroup> { group };
                     }
                 }
                 catch {  /* The group does not exist, ignore the exception */ }
             }
             else
             {
-                IPage<ADGroup> result = null;
                 Rest.Azure.OData.ODataQuery<ADGroup> odataQuery = null;
-
-                if (options.Paging)
+                if (options.Mail != null)
                 {
-                    if (string.IsNullOrEmpty(options.NextLink))
-                    {
-                        if (options.Mail != null)
-                        {
-                            odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
-                        }
-                        else
-                        {
-                            odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
-                        }
-
-                        result = GraphClient.Groups.List(odataQuery);
-                    }
-                    else
-                    {
-                        result = GraphClient.Groups.ListNext(options.NextLink);
-                    }
-
-                    groups.AddRange(result.Select(g => g.ToPSADGroup()));
-                    options.NextLink = result.NextPageLink;
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
                 }
                 else
                 {
-
-                    if (options.Mail != null)
-                    {
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
-                    }
-                    else
-                    {
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
-                    }
-
-                    result = GraphClient.Groups.List(odataQuery.ToString());
-                    groups.AddRange(result.Select(g => g.ToPSADGroup()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.Groups.ListNext(result.NextPageLink);
-                        groups.AddRange(result.Select(g => g.ToPSADGroup()));
-                    }
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
                 }
+
+                return new PageEnumerable<ADGroup>(
+                    delegate ()
+                    {
+                        return GraphClient.Groups.List(odataQuery);
+                    }, GraphClient.Groups.ListNext, first, skip).Select(g => g.ToPSADGroup());
             }
 
-            return groups;
+            return new List<PSADGroup>();
         }
 
-        public List<PSADGroup> FilterGroups()
+        public IEnumerable<PSADGroup> FilterGroups()
         {
             return FilterGroups(new ADObjectFilterOptions());
         }
 
-        public List<PSADObject> GetGroupMembers(ADObjectFilterOptions options)
+        public IEnumerable<PSADObject> GetGroupMembers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            List<PSADObject> members = new List<PSADObject>();
-            IPage<AADObject> result = null;
-
-            if (options.Paging)
-            {
-                if (string.IsNullOrEmpty(options.NextLink))
+            return new PageEnumerable<AADObject>(
+                delegate ()
                 {
-                    result = GraphClient.Groups.GetGroupMembers(options.Id);
-                }
-                else
-                {
-                    result = GraphClient.Groups.GetGroupMembersNext(options.NextLink);
-                }
-
-                members.AddRange(result.Select(u => u.ToPSADObject()));
-                options.NextLink = result.NextPageLink;
-            }
-            else
-            {
-                result = GraphClient.Groups.GetGroupMembers(options.Id);
-                members.AddRange(result.Select(u => u.ToPSADObject()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = GraphClient.Groups.GetGroupMembersNext(result.NextPageLink);
-                    members.AddRange(result.Select(u => u.ToPSADObject()));
-                }
-            }
-
-            return members;
+                    return GraphClient.Groups.GetGroupMembers(options.Id);
+                }, GraphClient.Groups.GetGroupMembersNext, first, skip).Select(m => m.ToPSADObject());
         }
 
         public Guid GetObjectId(ADObjectFilterOptions options)

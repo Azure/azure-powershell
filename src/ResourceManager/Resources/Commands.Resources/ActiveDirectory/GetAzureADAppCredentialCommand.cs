@@ -31,10 +31,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "ApplicationObject", HelpMessage = "The application object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADApplication ApplicationObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("ApplicationObject"))
+                {
+                    ObjectId = ApplicationObject.ObjectId.ToString();
+                }
+
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);

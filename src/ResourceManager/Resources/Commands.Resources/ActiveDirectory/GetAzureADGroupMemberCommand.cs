@@ -24,17 +24,27 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups members.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADObject>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADObject>))]
     public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id")]
         public Guid GroupObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "GroupObject", HelpMessage = "The group object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADGroup GroupObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("GroupObject"))
+                {
+                    GroupObjectId = GroupObject.Id;
+                }
+
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
                     Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
@@ -47,10 +57,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
                 }
 
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
-                } while (!string.IsNullOrEmpty(options.NextLink));
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                WriteObject(ActiveDirectoryClient.GetGroupMembers(options, first, skip), true);
             });
         }
     }

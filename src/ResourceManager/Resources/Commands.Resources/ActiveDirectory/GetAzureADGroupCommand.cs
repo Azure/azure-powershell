@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroup", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADGroup", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADGroup>))]
     public class GetAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -48,11 +48,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Paging = true
                 };
 
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.FilterGroups(options), true);
-                } while (!string.IsNullOrEmpty(options.NextLink));
-
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                WriteObject(ActiveDirectoryClient.FilterGroups(options, first, skip), true);
             });
         }
     }

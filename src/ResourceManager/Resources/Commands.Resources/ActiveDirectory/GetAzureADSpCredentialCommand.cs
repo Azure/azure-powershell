@@ -25,16 +25,26 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id")]
         public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN, HelpMessage = "The servicePrincipal name.")]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "ServicePrincipalObject", HelpMessage = "The service principal object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADServicePrincipal ServicePrincipalObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("ServicePrincipalObject"))
+                {
+                    ObjectId = ServicePrincipalObject.Id.ToString();
+                }
+
                 if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);

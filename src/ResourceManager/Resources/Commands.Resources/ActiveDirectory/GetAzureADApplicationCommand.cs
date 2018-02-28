@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                     ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
                     ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
-
                     WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter, first, skip), enumerateCollection: true);
                 }
             });
