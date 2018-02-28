@@ -30,6 +30,7 @@ function Test-VirtualMachine
             $loc = Get-ComputeVMLocation;
         }
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -67,10 +68,10 @@ function Test-VirtualMachine
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -98,7 +99,7 @@ function Test-VirtualMachine
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
@@ -214,7 +215,7 @@ function Test-VirtualMachine
         $p2.StorageProfile = $p.StorageProfile;
 
         $p2.StorageProfile.DataDisks = $null;
-        $p2.StorageProfile.OsDisk.Vhd.Uri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os2.vhd";
+        $p2.StorageProfile.OsDisk.Vhd.Uri = "https://$stoname.blob.$storageEndpointSuffix/test/os2.vhd";
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p2;
 
         $vm2 = Get-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname;
@@ -246,6 +247,7 @@ function Test-VirtualMachinePiping
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -271,10 +273,10 @@ function Test-VirtualMachinePiping
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         # OS & Image
         $user = "Foo12";
@@ -282,7 +284,7 @@ function Test-VirtualMachinePiping
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize `
              | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
@@ -549,6 +551,7 @@ function Test-VirtualMachineSizeAndUsage
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # Availability Set
         $asetName = 'aset' + $rgname;
@@ -585,9 +588,9 @@ function Test-VirtualMachineSizeAndUsage
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -613,7 +616,7 @@ function Test-VirtualMachineSizeAndUsage
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
@@ -724,7 +727,8 @@ function Test-VirtualMachinePIRv2
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -755,10 +759,10 @@ function Test-VirtualMachinePIRv2
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -786,7 +790,7 @@ function Test-VirtualMachinePIRv2
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
@@ -833,7 +837,8 @@ function Test-VirtualMachineCapture
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -864,10 +869,10 @@ function Test-VirtualMachineCapture
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -895,7 +900,7 @@ function Test-VirtualMachineCapture
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
@@ -947,6 +952,7 @@ function Test-VirtualMachineDataDisk
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -984,10 +990,10 @@ function Test-VirtualMachineDataDisk
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
         $dataDiskName1 = 'testDataDisk1';
         $dataDiskName2 = 'testDataDisk2';
         $dataDiskName3 = 'testDataDisk3';
@@ -1027,7 +1033,7 @@ function Test-VirtualMachineDataDisk
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
@@ -1150,7 +1156,8 @@ function Test-VirtualMachineDataDiskNegative
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1177,10 +1184,10 @@ function Test-VirtualMachineDataDiskNegative
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -1195,7 +1202,7 @@ function Test-VirtualMachineDataDiskNegative
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
@@ -1229,7 +1236,8 @@ function Test-VirtualMachinePlan
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1256,10 +1264,10 @@ function Test-VirtualMachinePlan
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -1269,7 +1277,7 @@ function Test-VirtualMachinePlan
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
@@ -1309,7 +1317,8 @@ function Test-VirtualMachinePlan2
         $loc = Get-ComputeVMLocation;
         
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = Get-DefaultVMSize;
         $vmname = 'vm' + $rgname;
@@ -1336,7 +1345,7 @@ function Test-VirtualMachinePlan2
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -1346,7 +1355,7 @@ function Test-VirtualMachinePlan2
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
@@ -1384,7 +1393,8 @@ function Test-VirtualMachineTags
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1411,7 +1421,7 @@ function Test-VirtualMachineTags
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -1467,6 +1477,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -1498,7 +1509,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
@@ -1511,7 +1522,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $imgRef = Get-DefaultCRPWindowsImageOffline;
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
@@ -1571,6 +1582,7 @@ function Test-LinuxVirtualMachine
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -1602,7 +1614,7 @@ function Test-LinuxVirtualMachine
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
@@ -1615,7 +1627,7 @@ function Test-LinuxVirtualMachine
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         $imgRef = Get-DefaultCRPLinuxImageOffline;
 
@@ -1798,6 +1810,7 @@ function Test-VirtualMachineWithDifferentStorageResource
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         New-AzureRmResourceGroup -Name $rgname_storage  -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -1835,10 +1848,10 @@ function Test-VirtualMachineWithDifferentStorageResource
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -1866,7 +1879,7 @@ function Test-VirtualMachineWithDifferentStorageResource
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
@@ -1927,6 +1940,7 @@ function Test-VirtualMachineWithEmptyAuc
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -1964,8 +1978,8 @@ function Test-VirtualMachineWithEmptyAuc
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;        
@@ -1985,7 +1999,7 @@ function Test-VirtualMachineWithEmptyAuc
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
@@ -2083,6 +2097,7 @@ function Test-VirtualMachineWithBYOL
         # Common
         $loc = "local";
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -2116,10 +2131,10 @@ function Test-VirtualMachineWithBYOL
         $stoname = "mybyolosimage";
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-        $userImageUrl = "https://mybyolosimage.blob.$env:STORAGEENDPOINTSUFFIX/vhdsrc2/win2012-tag0.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+        $userImageUrl = "https://mybyolosimage.blob.$storageEndpointSuffix/vhdsrc2/win2012-tag0.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Windows -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -SourceImage $userImageUrl -CreateOption FromImage;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
@@ -2139,7 +2154,7 @@ function Test-VirtualMachineWithBYOL
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $licenseType = "Windows_Server";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
@@ -2209,6 +2224,7 @@ function Test-VirtualMachineRedeploy
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -2240,9 +2256,9 @@ function Test-VirtualMachineRedeploy
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
@@ -2267,7 +2283,7 @@ function Test-VirtualMachineRedeploy
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;

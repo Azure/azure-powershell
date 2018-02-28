@@ -88,6 +88,24 @@ function Get-ComputeTestMode
     return $testMode;
 }
 
+# Get Storage Endpoint Suffix
+function Get-StorageEndpointSuffix
+{
+    return $env:STORAGEENDPOINTSUFFIX;
+}
+
+# Get Default Storage Endpoint Suffix
+function Get-DefaultStorageEndpointSuffix
+{
+    $storageEndpointSuffix =  Get-StorageEndpointSuffix;
+    if ($storageEndpointSuffix -eq '' -or $storageEndpointSuffix -eq $null)
+    {
+        $storageEndpointSuffix = 'local.azurestack.external';
+    }
+
+    return $storageEndpointSuffix;
+}
+
 # Get Compute Test Location
 function Get-ComputeTestLocation
 {
@@ -113,6 +131,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
     $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
+	$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
     # Common
     New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
@@ -147,10 +166,10 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
     $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -178,7 +197,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+    $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
     $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
@@ -482,8 +501,9 @@ function Assert-OutputContains
 function Get-SasUri
 {
     param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+	$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
-    $uri = [string]::Format("https://{0}.blob.$env:STORAGEENDPOINTSUFFIX/{1}/{2}", $storageAccount, $container, $file);
+    $uri = [string]::Format("https://{0}.blob.$storageEndpointSuffix/{1}/{2}", $storageAccount, $container, $file);
 
     $destUri = New-Object -TypeName System.Uri($uri);
     $cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
