@@ -146,8 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                 name: FrontendPoolName,
                 zones: Zone,
-                publicIPAddress: publicIpAddress,
-                subnet: subnet);
+                publicIpAddress: publicIpAddress);
 
             var backendAddressPool = loadBalancer.CreateBackendAddressPool(
                 name: BackendPoolName);
