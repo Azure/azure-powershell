@@ -158,6 +158,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 frontendPort: 80,
                 backendPort: 80);
 
+            var inboundNutRuleName = VMScaleSetName;
+
+            var inboundNutRule = loadBalancer.CreateInboundNatPool(
+                name: inboundNutRuleName,
+                frontendIpConfiguration: frontendIpConfiguration,
+                protocol: "TCP",
+                frontendPortRangeStart: 5000,
+                frontendPortRangeEnd: 5004,
+                backendPort: 22);
+
             var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
                 name: VMScaleSetName,
                 subnet: subnet,

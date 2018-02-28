@@ -17,33 +17,33 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
-    static class LoadBalancingRuleStrategy
+    static class InboundNetPoolStrategy
     {
-        public static NestedResourceStrategy<LoadBalancingRule, LoadBalancer> Strategy { get; }
-            = NestedResourceStrategy.Create<LoadBalancingRule, LoadBalancer>(
-                provider: "loadBalancingRules",
-                getList: parentModel => parentModel.LoadBalancingRules,
-                setList: (parentModel, list) => parentModel.LoadBalancingRules = list,
-                getName: model => model.Name,
-                setName: (model, name) => model.Name = name);
+        public static NestedResourceStrategy<InboundNatPool, LoadBalancer> Strategy { get; }
+            = NestedResourceStrategy.Create<InboundNatPool, LoadBalancer>(
+                provider: "inboundNatPools",
+                getList: b => b.InboundNatPools,
+                setList: (b, list) => b.InboundNatPools = list,
+                getName: p => p.Name,
+                setName: (p, name) => p.Name = name);
 
-        public static NestedResourceConfig<LoadBalancingRule, LoadBalancer> CreateLoadBalancingRule(
+        public static NestedResourceConfig<InboundNatPool, LoadBalancer> CreateInboundNatPool(
             this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
-            NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> fronendIpConfiguration,
-            NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAddressPool,
-            int frontendPort,
+            NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> frontendIpConfiguration,
+            string protocol,
+            int frontendPortRangeStart,
+            int frontendPortRangeEnd,
             int backendPort)
             => loadBalancer.CreateNested(
                 Strategy,
                 name,
-                engine => new LoadBalancingRule
+                engine => new InboundNatPool
                 {
-                    FrontendIPConfiguration = engine.GetReference(fronendIpConfiguration),
-                    BackendAddressPool = engine.GetReference(backendAddressPool),
-                    Protocol = "Tcp",
-                    FrontendPort = frontendPort,
-                    BackendPort = backendPort,
+                    FrontendIPConfiguration = engine.GetReference(frontendIpConfiguration),
+                    Protocol = protocol,
+                    FrontendPortRangeStart = frontendPortRangeStart,
+                    FrontendPortRangeEnd = frontendPortRangeEnd
                 });
     }
 }

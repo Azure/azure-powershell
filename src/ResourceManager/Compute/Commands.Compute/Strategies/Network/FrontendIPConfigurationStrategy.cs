@@ -39,10 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     createModel: engine => new FrontendIPConfiguration
                     {
                         Zones = zones,
-                        PublicIPAddress = new PublicIPAddress
-                        {
-                            Id = engine.GetId(publicIpAddress)
-                        }
+                        PublicIPAddress = engine.GetReference(publicIpAddress)
                     });
     }
 }

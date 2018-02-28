@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             .Where(z => z != null)
                             .ToList(),
 
-                        UpgradePolicy =new UpgradePolicy
+                        UpgradePolicy = new UpgradePolicy
                         {
                             Mode = upgradeMode ?? UpgradeMode.Manual
                         },
@@ -98,14 +98,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Name = name,
                         LoadBalancerBackendAddressPools = new[] 
                         {
-                            new Azure.Management.Compute.Models.SubResource
-                            {
-                                Id = engine.GetId(backendAdressPool)
-                            }
+                            engine.GetReference(backendAdressPool)
                         },
-                        Subnet = new ApiEntityReference { Id = engine.GetId(subnet) }
+                        Subnet = engine.GetReference(subnet)
                     };
-
 
                     vmss.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                     {
@@ -119,7 +115,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         }
                     };
-
 
                     return vmss;
                 });

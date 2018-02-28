@@ -69,10 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             NetworkInterfaces = new[]
                             {
-                                new NetworkInterfaceReference
-                                {
-                                    Id = engine.GetId(networkInterface)
-                                }
+                                engine.GetReference(networkInterface)
                             }
                         },
                         HardwareProfile = new HardwareProfile
@@ -85,10 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         AvailabilitySet = availabilitySet == null
                             ? null
-                            : new Azure.Management.Compute.Models.SubResource
-                            {
-                                Id = engine.GetId(availabilitySet)
-                            }
+                            : engine.GetReference(availabilitySet)
                     };
                 });
 
@@ -110,10 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         NetworkInterfaces = new[]
                         {
-                            new NetworkInterfaceReference
-                            {
-                                Id = engine.GetId(networkInterface)
-                            }
+                            engine.GetReference(networkInterface)
                         }
                     },
                     HardwareProfile = new HardwareProfile
@@ -127,19 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = new ManagedDiskParameters
-                            {
-                                StorageAccountType = StorageAccountTypes.PremiumLRS,
-                                Id = engine.GetId(disk)
-                            }
+                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
                         }
                     },
                     AvailabilitySet = availabilitySet == null
                         ? null
-                        : new Azure.Management.Compute.Models.SubResource
-                        {
-                            Id = engine.GetId(availabilitySet)
-                        }
+                        : engine.GetReference(availabilitySet)
                 });
     }
 }
