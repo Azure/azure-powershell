@@ -413,7 +413,6 @@
     <Compile Include="SecureGateway\ApplicationRuleCollection\NewAzureSecureGatewayApplicationRuleCollectionCommand.cs" />
     <Compile Include="SecureGateway\ApplicationRule\NewAzureSecureGatewayApplicationRuleCommand.cs" />
     <Compile Include="SecureGateway\GetAzureSecureGatewayCommand.cs" />
-    <Compile Include="SecureGateway\NetworkRuleAction\NewAzureSecureGatewayNetworkRuleActionCommand.cs" />
     <Compile Include="SecureGateway\NetworkRuleCollection\NewAzureSecureGatewayApplicationRuleCollectionCommand.cs" />
     <Compile Include="SecureGateway\NetworkRule\NewAzureSecureGatewayNetworkRuleCommand.cs" />
     <Compile Include="SecureGateway\NewAzureSecureGatewayCommand.cs" />
