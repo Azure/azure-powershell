@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {
-                    domainNameLabel = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6))
-                        .ToLower();
+                    domainNameLabel = (name + '-' + UniqueId.Create().Substring(0, 6)).ToLower();
                 } while ((await networkClient.CheckDnsNameAvailabilityAsync(
                             location,
                             domainNameLabel))
