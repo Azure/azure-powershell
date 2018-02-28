@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVault",
         SupportsShouldProcess = true,
+        DefaultParameterSetName = RemoveVaultParameterSet,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
     public class RemoveAzureKeyVault : KeyVaultManagementCmdletBase
@@ -30,6 +32,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string RemoveVaultParameterSet = "ByAvailableVault";
         private const string RemoveDeletedVaultParameterSet = "ByDeletedVault";
+
+        private const string InputObjectRemoveVaultParameterSet = "InputObjectByAvailableVault";
+        private const string InputObjectRemoveDeletedVaultParameterSet = "InputObjectByDeletedVault";
 
         #endregion
 
@@ -40,10 +45,32 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = RemoveVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the name of the key vault to remove.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = RemoveDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault to remove.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
+
+        /// <summary>
+        /// Vault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = InputObjectRemoveVaultParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Key Vault object to be deleted.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Key Vault object to be deleted.")]
+        [ValidateNotNullOrEmpty]
+        public PSVault InputObject { get; set; }
 
         /// <summary>
         /// Resource group to which the vault belongs.
@@ -62,14 +89,35 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = RemoveVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
+        [Parameter(Mandatory = false,
+            Position = 1,
+            ParameterSetName = InputObjectRemoveVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
-            Position = 2,
+            Position = 1,
             ParameterSetName = RemoveDeletedVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location of the deleted vault.")]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
+
+        /// <summary>
+        /// If present, operate on the deleted vault entity.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = RemoveDeletedVaultParameterSet,
+            HelpMessage = "Remove the previously deleted vault permanently.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
+            HelpMessage = "Remove the previously deleted vault permanently.")]
+        public SwitchParameter InRemovedState { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -78,14 +126,6 @@ namespace Microsoft.Azure.Commands.KeyVault
            HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the key vault.")]
         public SwitchParameter Force { get; set; }
 
-        /// <summary>
-        /// If present, operate on the deleted vault entity.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = RemoveDeletedVaultParameterSet,
-            HelpMessage = "Remove the previously deleted vault permanently.")]
-        public SwitchParameter InRemovedState { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -93,40 +133,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
+            if (InputObject != null)
             {
-                case RemoveVaultParameterSet:
-                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
-                        throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
-                    ConfirmAction(
+                VaultName = InputObject.VaultName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+
+            if (InRemovedState)
+            {
+                ConfirmAction(
                         Force.IsPresent,
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            PSKeyVaultProperties.Resources.RemoveVaultWarning,
+                            Resources.PurgeVaultWarning,
                             VaultName),
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            PSKeyVaultProperties.Resources.RemoveVaultWhatIfMessage,
-                            VaultName),
-                        VaultName,
-                        () =>
-                        {
-                            KeyVaultManagementClient.DeleteVault(
-                        vaultName: VaultName,
-                        resourceGroupName: this.ResourceGroupName);
-                        });
-                    break;
-                case RemoveDeletedVaultParameterSet:
-                    ConfirmAction(
-                        Force.IsPresent,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            PSKeyVaultProperties.Resources.PurgeVaultWarning,
-                            VaultName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            PSKeyVaultProperties.Resources.PurgeVaultWhatIfMessage,
+                            Resources.PurgeVaultWhatIfMessage,
                             VaultName),
                         VaultName,
                         () =>
@@ -135,9 +158,29 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 vaultName: VaultName,
                                 location: Location);
                         });
-                    break;
-                default:
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
+            }
+            else
+            {
+                ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                    throw new ArgumentException(string.Format(Resources.VaultNotFound, VaultName, ResourceGroupName));
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveVaultWarning,
+                        VaultName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveVaultWhatIfMessage,
+                        VaultName),
+                    VaultName,
+                    () =>
+                    {
+                        KeyVaultManagementClient.DeleteVault(
+                    vaultName: VaultName,
+                    resourceGroupName: this.ResourceGroupName);
+                    });
             }
         }
     }

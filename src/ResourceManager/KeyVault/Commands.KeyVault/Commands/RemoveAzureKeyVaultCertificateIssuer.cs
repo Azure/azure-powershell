@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
 
         #endregion
 
@@ -49,11 +50,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Certificate Issuer Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 1,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Certificate Issuer Object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIssuer InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -70,8 +83,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter PassThru { get; set; }
 
         #endregion
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                Name = InputObject.Name;
+            }
+
             PSKeyVaultCertificateIssuer issuer = null;
 
             ConfirmAction(

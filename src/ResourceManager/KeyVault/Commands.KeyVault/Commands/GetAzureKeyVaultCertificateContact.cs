@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact));
             }
 
-            this.WriteObject(contactsModel);
+            this.WriteObject(contactsModel, true);
         }
     }
 }

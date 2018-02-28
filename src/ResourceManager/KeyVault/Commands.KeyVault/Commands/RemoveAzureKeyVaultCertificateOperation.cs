@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CertificateOperation certificateOperation = null;
 
