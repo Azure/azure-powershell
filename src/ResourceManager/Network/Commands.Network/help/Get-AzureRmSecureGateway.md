@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 91D58F60-F22A-454A-B04C-E5AEF33E9D06
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermsecuregateway
 schema: 2.0.0
 ---
 
