@@ -75,6 +75,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $loc = Get-ComputeVMLocation;
 
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # SRP
         $stoname = 'sto' + $rgname;
@@ -96,7 +97,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $adminPassword = $PLACEHOLDER;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.$env:STORAGEENDPOINTSUFFIX/" + $vmssName;
+        $vhdContainer = "https://" + $stoname + ".blob.$storageEndpointSuffix/" + $vmssName;
 
         $extname = 'csetest';
         $publisher = 'Microsoft.Compute';
@@ -275,6 +276,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $loc = Get-ComputeVMLocation;
 
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+		$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
         # SRP
         $stoname = 'sto' + $rgname;
@@ -296,7 +298,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $adminPassword = $PLACEHOLDER;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $vhdContainer = "https://" + $stoname + ".blob.$env:STORAGEENDPOINTSUFFIX/" + $vmssName;
+        $vhdContainer = "https://" + $stoname + ".blob.$storageEndpointSuffix/" + $vmssName;
 
         $aucComponentName="Microsoft-Windows-Shell-Setup";
         $aucComponentName="MicrosoftWindowsShellSetup";

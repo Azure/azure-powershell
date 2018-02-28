@@ -18,6 +18,8 @@ Test Virtual Machine Profile
 #>
 function Test-VirtualMachineProfile
 {
+	$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
@@ -54,10 +56,10 @@ function Test-VirtualMachineProfile
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
     $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
 
@@ -103,7 +105,7 @@ function Test-VirtualMachineProfile
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+    $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
     $winRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";
     $timeZone = "Pacific Standard Time";
@@ -240,7 +242,9 @@ Test Virtual Machine Profile without AdditionalUnattendContent
 #>
 function Test-VirtualMachineProfileWithoutAUC
 {
-    # VM Profile & Hardware
+    $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+	
+	# VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
@@ -263,10 +267,10 @@ function Test-VirtualMachineProfileWithoutAUC
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
     $dekUri = "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
     $dekId =  "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
@@ -303,7 +307,7 @@ function Test-VirtualMachineProfileWithoutAUC
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.$env:STORAGEENDPOINTSUFFIX/test";
+    $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
     $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
     $winRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";
