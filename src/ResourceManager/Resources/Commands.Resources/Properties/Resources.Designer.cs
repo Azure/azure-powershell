@@ -241,6 +241,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient AAD graph permissions to perform the operation..
+        /// </summary>
+        internal static string InSufficientGraphPermission {
+            get {
+                return ResourceManager.GetString("InSufficientGraphPermission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid value for Actions.
         /// </summary>
         internal static string InvalidActions {

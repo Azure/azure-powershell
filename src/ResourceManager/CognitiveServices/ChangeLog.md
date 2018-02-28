@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update notice.txt and notice message.
 
 ## Version 0.9.1
 * Integrate with Cognitive Services Management SDK version 3.0.0.
