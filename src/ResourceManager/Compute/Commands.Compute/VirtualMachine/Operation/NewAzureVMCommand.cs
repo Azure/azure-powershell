@@ -31,13 +31,14 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -45,6 +46,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Templates;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
         DefaultParameterSetName = "SimpleParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine), typeof(string))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -211,6 +213,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter AsArmTemplate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -236,6 +241,12 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
+
+            var passwordValue = Credential != null 
+                ? new NetworkCredential(string.Empty, Credential.Password).Password
+                : null;
+
+            var password = AsArmTemplate ? "[parameters('password')]" : passwordValue;
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -264,7 +275,7 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface: networkInterface,
                     getImageAndOsType: () => imageAndOsType,
                     adminUsername: Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                    adminPassword: password,
                     size: Size,
                     availabilitySet: availabilitySet);
             }
@@ -378,36 +389,115 @@ namespace Microsoft.Azure.Commands.Compute
                 imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
             }
 
-            // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
-
-            if (target.Get(availabilitySet) != null)
+            // template
+            if (AsArmTemplate)
             {
-                throw new InvalidOperationException("Availability set doesn't exist.");
+                // create target state
+                var target = virtualMachine.GetTargetState(current, TemplateEngine.Instance, Location);
+
+                if (target.Get(availabilitySet) != null)
+                {
+                    throw new InvalidOperationException("Availability set doesn't exist.");
+                }
+
+                var template = virtualMachine.CreateTemplate(client, target, client.SubscriptionId);
+                template.parameters = new Dictionary<string, Parameter>
+                {
+                    { "password", new Parameter { type = "secureString" } }
+                };
+                template.outputs = new Dictionary<string, Output>
+                {
+                    {
+                        "virtualMachine",
+                        new Output
+                        {
+                            type = "object",
+                            value =
+                                "[reference('" +
+                                virtualMachine.GetIdFromResourceGroup().IdToString() +
+                                "', '" +
+                                virtualMachine.Strategy.GetApiVersion(client) +
+                                "')]"
+                        }
+                    }
+                };
+                var templateResult = JsonConvert.SerializeObject(template);
+                asyncCmdlet.WriteObject(templateResult);
+
+                // apply target state
+                /*
+                var newState = await resourceGroup
+                    .UpdateStateAsync(
+                        client,
+                        target,
+                        new CancellationToken(),
+                        new ShouldProcess(asyncCmdlet),
+                        asyncCmdlet.ReportTaskProgress);
+
+                var rmClient = client.GetClient<ResourceManagementClient>();
+                var deployment = new Deployment
+                {
+                    Properties = new DeploymentProperties
+                    {
+                        Template = template,
+                        Parameters = new Dictionary<string, DeploymentParameter>
+                        {
+                            { "password", new DeploymentParameter { value = passwordValue } }
+                        }
+                    }
+                };
+
+                var validation = await rmClient.Deployments.ValidateAsync(
+                    resourceGroup.Name, Name, deployment);
+                var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
+                    resourceGroup.Name, Name, deployment);
+
+                var output = ((tResult.Properties.Outputs as JObject)["virtualMachine"] as JObject)
+                    .ToObject<Output>();
+
+                var result = output.GetModel<VirtualMachine>();
+
+                if (result != null)
+                {
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                    asyncCmdlet.WriteObject(psResult);
+                }
+                */
             }
-
-            // apply target state
-            var newState = await virtualMachine
-                .UpdateStateAsync(
-                    client,
-                    target,
-                    new CancellationToken(),
-                    new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
-
-            var result = newState.Get(virtualMachine);
-            if (result == null)
+            else
             {
-                result = current.Get(virtualMachine);
-            }
-            if (result != null)
-            {
-                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
-                    ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
-                    : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
-                asyncCmdlet.WriteObject(psResult);
+                // create target state
+                var engine = new SdkEngine(client.SubscriptionId);
+                var target = virtualMachine.GetTargetState(current, engine, Location);
+
+                if (target.Get(availabilitySet) != null)
+                {
+                    throw new InvalidOperationException("Availability set doesn't exist.");
+                }
+
+                // apply target state
+                var newState = await virtualMachine
+                    .UpdateStateAsync(
+                        client,
+                        target,
+                        new CancellationToken(),
+                        new ShouldProcess(asyncCmdlet),
+                        asyncCmdlet.ReportTaskProgress);
+
+                var result = newState.Get(virtualMachine);
+                if (result == null)
+                {
+                    result = current.Get(virtualMachine);
+                }
+                if (result != null)
+                {
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                    psResult.FullyQualifiedDomainName = fqdn;
+                    asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
+                        ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
+                        : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+                    asyncCmdlet.WriteObject(psResult);
+                }
             }
         }
 

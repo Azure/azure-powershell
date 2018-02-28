@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<VirtualMachineScaleSet> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine scale set",
-                provider: "virtualMachines",
+                provider: "virtualMachineScaleSets",
                 getOperations: client => client.VirtualMachineScaleSets,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, p.CancellationToken),
@@ -52,13 +50,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscriptionId =>
+                createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
                     var vmss = new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
-                            ?.Select(f => f.CreateModel(subscriptionId))
+                            ?.Select(f => f.CreateModel(engine))
                             ?.Where(z => z?.Zones != null)
                             .SelectMany(z => z.Zones)
                             .Where(z => z != null)
@@ -98,12 +96,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     var ipConfig = new VirtualMachineScaleSetIPConfiguration
                     {
                         Name = name,
-                        LoadBalancerBackendAddressPools = new[] 
+                        LoadBalancerBackendAddressPools = new []
                         {
-                            new Azure.Management.Compute.Models.SubResource(
-                                id: backendAdressPool.GetId(subscriptionId).IdToString())
+                            new Azure.Management.Compute.Models.SubResource
+                            {
+                                Id = engine.GetId(backendAdressPool)
+                            }
                         },
-                        Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
+                        Subnet = new ApiEntityReference { Id = engine.GetId(subnet) }
                     };
 
 
@@ -122,8 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
 
                     return vmss;
-                },
-                dependencies: new IEntityConfig[] { subnet, backendAdressPool }
-                    .Concat(frontendIpConfigurations));
+                });
     }
 }

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Strategies</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.3</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -56,16 +56,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compute\ImageVersion.cs" />
+    <Compile Include="DependencyEngine.cs" />
+    <Compile Include="INestedResourceConfig.cs" />
+    <Compile Include="INestedResourceConfigVisitor.cs" />
+    <Compile Include="INestedResourceStrategy.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="ResourceType.cs" />
+    <Compile Include="SdkEngine.cs" />
+    <Compile Include="IEngine.cs" />
     <Compile Include="IResourceConfig.cs" />
     <Compile Include="IResourceConfigVisitor.cs" />
     <Compile Include="IResourceStrategy.cs" />
     <Compile Include="IShouldProcess.cs" />
     <Compile Include="ITaskProgress.cs" />
-    <Compile Include="ProgressMap.cs" />
-    <Compile Include="TimeSlot.cs" />
+    <Compile Include="Json\DictionaryConverter.cs" />
+    <Compile Include="Json\Extensions.cs" />
+    <Compile Include="Json\GenericTypeConverter.cs" />
+    <Compile Include="Json\EnumerableConverter.cs" />
+    <Compile Include="Json\JTokenConverter.cs" />
+    <Compile Include="Json\NullableConverter.cs" />
+    <Compile Include="Json\ObjectConverter.cs" />
+    <Compile Include="Json\TypedObjectConverter.cs" />
+    <Compile Include="Json\PrimitiveConverter.cs" />
+    <Compile Include="Json\IConverter.cs" />
+    <Compile Include="Json\Converters.cs" />
+    <Compile Include="Progress\ProgressMap.cs" />
+    <Compile Include="Templates\DeploymentParameter.cs" />
+    <Compile Include="Templates\Output.cs" />
+    <Compile Include="Templates\OutputExtension.cs" />
+    <Compile Include="Templates\Parameter.cs" />
+    <Compile Include="Templates\Resource.cs" />
+    <Compile Include="Templates\Template.cs" />
+    <Compile Include="Templates\TemplateEngine.cs" />
+    <Compile Include="Templates\TemplateExtensions.cs" />
+    <Compile Include="Progress\TimeSlot.cs" />
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="SyncTaskScheduler.cs" />
-    <Compile Include="TimeSlotExtensions.cs" />
+    <Compile Include="Progress\TimeSlotExtensions.cs" />
     <Compile Include="UpdateStateExtensions.cs" />
     <Compile Include="CreateOrUpdateAsyncParams.cs" />
     <Compile Include="EntityConfigExtensions.cs" />
@@ -77,7 +104,6 @@
     <Compile Include="IEntityConfigVisitor.cs" />
     <Compile Include="IEntityStrategy.cs" />
     <Compile Include="IState.cs" />
-    <Compile Include="NestedResourceConfigExtensions.cs" />
     <Compile Include="ResourceConfigExtensions.cs" />
     <Compile Include="StateExtensions.cs" />
     <Compile Include="NestedResourceConfig.cs" />
@@ -93,7 +119,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="readme.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
