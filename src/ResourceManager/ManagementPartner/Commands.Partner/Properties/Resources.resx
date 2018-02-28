@@ -123,9 +123,6 @@
   <data name="NewManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to add management partner with id '{0}'.</value>
   </data>
-  <data name="RemovedManagementPartner" xml:space="preserve">
-    <value>Removed management partner with id '{0}'</value>
-  </data>
   <data name="RemoveManagementParnterAction" xml:space="preserve">
     <value>Removing management partner with id '{0}'.</value>
   </data>
@@ -137,8 +134,5 @@
   </data>
   <data name="UpdateManagementParnterTarget" xml:space="preserve">
     <value>Are you sure you want to change the management partner to '{0}'.</value>
-  </data>
-  <data name="NotFoundManagementParnterMessage" xml:space="preserve">
-    <value>Doesn't find a management partner</value>
   </data>
 </root>

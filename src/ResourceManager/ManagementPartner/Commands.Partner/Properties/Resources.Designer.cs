@@ -79,24 +79,6 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doesn&apos;t find a management partner.
-        /// </summary>
-        internal static string NotFoundManagementParnterMessage {
-            get {
-                return ResourceManager.GetString("NotFoundManagementParnterMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removed management partner with id &apos;{0}&apos;.
-        /// </summary>
-        internal static string RemovedManagementPartner {
-            get {
-                return ResourceManager.GetString("RemovedManagementPartner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Removing management partner with id &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveManagementParnterAction {
