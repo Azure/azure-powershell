@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest;
@@ -711,9 +712,13 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return GraphClient.Applications.Get(applicationObjectId.ToString()).ToPSADApplication();
         }
 
-        public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter)
+        public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            return GraphClient.Applications.List(odataQueryFilter.ToString()).Select(a => a.ToPSADApplication());
+            return new PageEnumerable<Application>(
+                delegate ()
+                {
+                    return GraphClient.Applications.List(odataQueryFilter);
+                }, GraphClient.Applications.ListNext, first, skip).Select(a => a.ToPSADApplication());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
