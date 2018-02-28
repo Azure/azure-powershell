@@ -16,7 +16,7 @@ using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class DependencyEngine : IEngine
+    internal sealed class DependencyEngine : IEngine
     {
         public ConcurrentDictionary<string, IEntityConfig> Dependencies { get; }
             = new ConcurrentDictionary<string, IEntityConfig>();

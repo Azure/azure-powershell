@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Test()
+        public void TestDependencyGraph()
         {
             // resource group
             var rgStrategy = ResourceStrategy.Create<Model, Client, Client>(
