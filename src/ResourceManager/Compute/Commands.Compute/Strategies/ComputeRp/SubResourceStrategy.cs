@@ -32,5 +32,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this IEngine engine,
             NestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
             => engine.GetSuResourceReference(backendAddressPool);
+
+        public static SubResource GetReference(
+            this IEngine engine,
+            NestedResourceConfig<N.InboundNatPool, N.LoadBalancer> inboundNatPool)
+            => engine.GetSuResourceReference(inboundNatPool);
     }
 }

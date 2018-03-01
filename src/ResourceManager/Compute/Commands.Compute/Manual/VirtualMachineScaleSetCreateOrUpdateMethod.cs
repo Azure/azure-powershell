@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
@@ -160,11 +161,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            var inboundNatPools = new List<NestedResourceConfig<InboundNatPool, LoadBalancer>>();
+
             var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
                 name: VMScaleSetName,
                 subnet: subnet,
                 frontendIpConfigurations: new[] { frontendIpConfiguration },
                 backendAdressPool: backendAddressPool,
+                inboundNatPools: inboundNatPools,
                 getImageAndOsType: () => imageAndOsType,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
@@ -185,16 +189,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             NatBackendPort = imageAndOsType.OsType.UpdatePorts(NatBackendPort);
 
-            var inboundNutRuleName = VMScaleSetName;
+            var inboundNatPoolName = VMScaleSetName;
             var portRangeStart = 50000;
             foreach (var natBackendPort in NatBackendPort)
             {                
-                var inboundNutRule = loadBalancer.CreateInboundNatPool(
-                    name: inboundNutRuleName + natBackendPort.ToString(),
-                    frontendIpConfiguration: frontendIpConfiguration,
-                    frontendPortRangeStart: portRangeStart,
-                    frontendPortRangeEnd: portRangeStart + InstanceCount,
-                    backendPort: natBackendPort);
+                inboundNatPools.Add(
+                    loadBalancer.CreateInboundNatPool(
+                        name: inboundNatPoolName + natBackendPort.ToString(),
+                        frontendIpConfiguration: frontendIpConfiguration,
+                        frontendPortRangeStart: portRangeStart,
+                        frontendPortRangeEnd: portRangeStart + InstanceCount * 2,
+                        backendPort: natBackendPort));
                 portRangeStart += 1000;
             }
 
