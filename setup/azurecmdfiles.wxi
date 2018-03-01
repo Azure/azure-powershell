@@ -1040,6 +1040,11 @@
                         <Component Id="cmp103ACA9079CDD574094214F46E76D71B" Guid="*">
                             <File Id="fil45E326DA0D2C1D13454049F145FE496E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\System.Net.Http.Primitives.dll" />
                         </Component>
+                        <Directory Id="dir53ED56BB91C2D7A278B9507EEBCF53AC" Name="NewAssemblies">
+                            <Component Id="cmpBCB3F9138DF4705BEF88A96C1B76EFAE" Guid="*">
+                                <File Id="fil7EEADC3B5E39AC38F9352B45FF8802D6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\NewAssemblies\Newtonsoft.Json.dll" />
+                            </Component>
+                        </Directory>
                         <Directory Id="dirADE497B7123A8BD2518F2F05F71FFC2C" Name="StartupScripts">
                             <Component Id="cmp99DA93517DEB40063701810CFEF410FB" Guid="*">
                                 <File Id="fil05708E17439E3A7019C12B693F148D64" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\StartupScripts\AzureRmProfileStartup.ps1" />
@@ -1269,6 +1274,11 @@
                         <Component Id="cmpF4C5AB0BA43DC11E22F9BA4B39EEB532" Guid="*">
                             <File Id="filFBCFA6A78D2871F4657A269FF2DFE1E5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Management.ResourceManager.dll" />
                         </Component>
+                        <Directory Id="dirC92FD9E295852F9742ACFEABB82051BE" Name="StartupScripts">
+                            <Component Id="cmp60EB4A32D99FB19809A465AC2C849FF3" Guid="*">
+                                <File Id="filA9E07AA865C95021011F6698992DE2C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\StartupScripts\AzureRmResourcesStartup.ps1" />
+                            </Component>
+                        </Directory>
                         <Directory Id="dirC92FD9E295852F9742ACFEABB82051BE" Name="StartupScripts">
                             <Component Id="cmp60EB4A32D99FB19809A465AC2C849FF3" Guid="*">
                                 <File Id="filA9E07AA865C95021011F6698992DE2C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\StartupScripts\AzureRmResourcesStartup.ps1" />
@@ -3464,6 +3474,7 @@
             <ComponentRef Id="cmpEBB62AC41F55737CBA5B67CD38320203" />
             <ComponentRef Id="cmpAB89DA9A645E197D78DE69AEF963C260" />
             <ComponentRef Id="cmp103ACA9079CDD574094214F46E76D71B" />
+            <ComponentRef Id="cmpBCB3F9138DF4705BEF88A96C1B76EFAE" />
             <ComponentRef Id="cmp99DA93517DEB40063701810CFEF410FB" />
             <ComponentRef Id="cmpC96DAF4A31F86D19246E39394F496F83" />
             <ComponentRef Id="cmpFC2D2FD1A5405DC880D09C7965DDB9F9" />
@@ -3533,6 +3544,7 @@
             <ComponentRef Id="cmpEDD37ABAAA61D07995A186AEF9E62727" />
             <ComponentRef Id="cmpEE349C51ED897F3FA2EB83EC1B30FE67" />
             <ComponentRef Id="cmpF4C5AB0BA43DC11E22F9BA4B39EEB532" />
+            <ComponentRef Id="cmp60EB4A32D99FB19809A465AC2C849FF3" />
             <ComponentRef Id="cmp60EB4A32D99FB19809A465AC2C849FF3" />
             <ComponentRef Id="cmp890B1E2923E26CE2A15A652293EA92BE" />
             <ComponentRef Id="cmp40EE6708968532EB5D44F6D0AFCB1095" />
