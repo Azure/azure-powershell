@@ -88,18 +88,6 @@
       <Project>{24508e26-154d-47f1-80ee-439bf0710996}</Project>
       <Name>Commands.Common.Authorization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
-      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
-      <Name>Commands.Common.Graph.RBAC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
-      <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
-      <Name>Commands.Common.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
-      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -115,18 +103,6 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
-      <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
-      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
-      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
-      <Name>Commands.Profile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
