@@ -20,22 +20,22 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class SubResourceStrategy
     {
-        static SubResource GetSuResourceReference(
+        static SubResource GetSubResourceReference(
             this IEngine engine, IEntityConfig config)
             => config == null ? null : new SubResource { Id = engine.GetId(config) };
 
         public static SubResource GetReference(
             this IEngine engine, ResourceConfig<AvailabilitySet> availabilitySet)
-            => engine.GetSuResourceReference(availabilitySet);
+            => engine.GetSubResourceReference(availabilitySet);
 
         public static SubResource GetReference(
             this IEngine engine,
             NestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
-            => engine.GetSuResourceReference(backendAddressPool);
+            => engine.GetSubResourceReference(backendAddressPool);
 
         public static SubResource GetReference(
             this IEngine engine,
             NestedResourceConfig<N.InboundNatPool, N.LoadBalancer> inboundNatPool)
-            => engine.GetSuResourceReference(inboundNatPool);
+            => engine.GetSubResourceReference(inboundNatPool);
     }
 }
