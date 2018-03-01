@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
-                    var vmss = new VirtualMachineScaleSet()
+                    return new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
                             ?.Select(f => f.CreateModel(engine))
@@ -72,51 +72,45 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Capacity = instanceCount,
                             Name = vmSize,
                         },
-                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile()
-                    };
-
-                    vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
-                    {
-                        ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows 
-                            ? new WindowsConfiguration()
-                            : null,
-                        LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
-                            ? new LinuxConfiguration()
-                            : null,
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
-                    };
-
-                    vmss.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile
-                    {
-                        ImageReference = imageAndOsType.Image
-                    };
-
-                    var ipConfig = new VirtualMachineScaleSetIPConfiguration
-                    {
-                        Name = name,
-                        LoadBalancerBackendAddressPools = new[] 
+                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            engine.GetReference(backendAdressPool)
-                        },
-                        Subnet = engine.GetReference(subnet)
-                    };
-
-                    vmss.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile
-                    {
-                        NetworkInterfaceConfigurations = new[]
-                        {
-                            new VirtualMachineScaleSetNetworkConfiguration
+                            OsProfile = new VirtualMachineScaleSetOSProfile
                             {
-                                Name = name,
-                                IpConfigurations = new [] { ipConfig },
-                                Primary = true
+                                ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
+                                WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                                LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                                AdminUsername = adminUsername,
+                                AdminPassword = adminPassword,
+                            },
+                            StorageProfile = new VirtualMachineScaleSetStorageProfile
+                            {
+                                ImageReference = imageAndOsType.Image
+                            },
+                            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
+                            {
+                                NetworkInterfaceConfigurations = new[]
+                                {
+                                    new VirtualMachineScaleSetNetworkConfiguration
+                                    {
+                                        Name = name,
+                                        IpConfigurations = new []
+                                        {
+                                            new VirtualMachineScaleSetIPConfiguration
+                                            {
+                                                Name = name,
+                                                LoadBalancerBackendAddressPools = new[]
+                                                {
+                                                    engine.GetReference(backendAdressPool)
+                                                },
+                                                Subnet = engine.GetReference(subnet)
+                                            }
+                                        },
+                                        Primary = true
+                                    }
+                                }
                             }
                         }
                     };
-
-                    return vmss;
                 });
     }
 }

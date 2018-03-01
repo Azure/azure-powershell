@@ -12,25 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
-using N = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class SubResourceStrategy
+    static class LinuxConfigurationStrategy
     {
-        static SubResource GetSuResourceReference(
-            this IEngine engine, IEntityConfig config)
-            => config == null ? null : new SubResource { Id = engine.GetId(config) };
-
-        public static SubResource GetReference(
-            this IEngine engine, ResourceConfig<AvailabilitySet> availabilitySet)
-            => engine.GetSuResourceReference(availabilitySet);
-
-        public static SubResource GetReference(
-            this IEngine engine,
-            NestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
-            => engine.GetSuResourceReference(backendAddressPool);
+        public static LinuxConfiguration CreateLinuxConfiguration(this ImageAndOsType imageAndOsType)
+            => imageAndOsType.OsType == OperatingSystemTypes.Linux
+                ? new LinuxConfiguration()
+                : null;
     }
 }

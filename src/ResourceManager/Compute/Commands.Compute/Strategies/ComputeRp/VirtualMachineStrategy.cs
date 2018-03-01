@@ -56,12 +56,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows
-                                ? new WindowsConfiguration()
-                                : null,
-                            LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
-                                ? new LinuxConfiguration()
-                                : null,
+                            WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                            LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
                             AdminUsername = adminUsername,
                             AdminPassword = adminPassword,
                         },
@@ -80,9 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             ImageReference = imageAndOsType.Image
                         },
-                        AvailabilitySet = availabilitySet == null
-                            ? null
-                            : engine.GetReference(availabilitySet)
+                        AvailabilitySet = engine.GetReference(availabilitySet)
                     };
                 });
 
@@ -99,7 +93,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 name: name,
                 createModel: engine => new VirtualMachine
                 {
-                    OsProfile = null,
                     NetworkProfile = new NetworkProfile
                     {
                         NetworkInterfaces = new[]
@@ -121,9 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
                         }
                     },
-                    AvailabilitySet = availabilitySet == null
-                        ? null
-                        : engine.GetReference(availabilitySet)
+                    AvailabilitySet = engine.GetReference(availabilitySet)
                 });
     }
 }
