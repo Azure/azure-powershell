@@ -31,6 +31,8 @@ function Test-RoleDefinitionCreateTests
 	Assert-AreEqual "Microsoft.Authorization/*/read" $rd.Actions[0]
 	Assert-AreEqual "Microsoft.Support/*" $rd.Actions[1]
 	Assert-NotNull $rd.AssignableScopes
+    Assert-Null $rd.DataActions
+    Assert-Null $rd.NotDataActions
 	
 	# Basic positive case - read from object
 	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
@@ -191,6 +193,7 @@ function Test-RDRemove
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
     Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
 
+    return
     # try to delete the role definition without specifying scope (default to subscription scope) - should fail
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
     Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
@@ -268,6 +271,112 @@ function Test-RDGet
     # delete roles
     $deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Force -PassThru
     Assert-AreEqual $roleDefResourceScope.Name $deletedRd.Name
+}
+
+<#
+.SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
+function Test-RoleDefinitionDataActionsCreateTests
+{
+    # Setup
+    # Basic positive case - read from file
+    $rdName = 'CustomRole Tests Role New'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("e3efe8c9-d9ae-4f0e-838d-57ce43068a13")
+    New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+    
+    $rd = Get-AzureRmRoleDefinition -Name $rdName
+    Assert-AreEqual "Test role" $rd.Description 
+    Assert-AreEqual $true $rd.IsCustom
+    Assert-NotNull $rd.DataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*" $rd.DataActions[0]
+    Assert-NotNull $rd.NotDataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write" $rd.NotDataActions[0]
+    Assert-NotNull $rd.AssignableScopes
+    Assert-Null $rd.Actions
+    Assert-Null $rd.NotActions
+    
+    # Basic positive case - read from object
+    $roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef.Id = $null
+    $roleDef.Name = "New Custom Reader"
+    $roleDef.DataActions.Add("Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write")
+    $roleDef.Description = "Read, monitor and restart virtual machines"
+    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("3be51641-acdb-4f4a-801f-a93da8c5762d")
+    New-AzureRmRoleDefinition -Role $roleDef
+    $addedRoleDef = Get-AzureRmRoleDefinition -Name "New Custom Reader"
+
+    Assert-NotNull $addedRoleDef.Actions
+    Assert-AreEqual $roleDef.Description $addedRoleDef.Description
+    Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
+    Assert-AreEqual $true $addedRoleDef.IsCustom
+
+    Remove-AzureRmRoleDefinition -Id $addedRoleDef.Id -Force
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
+}
+
+<#
+.SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
+function Test-RDGetCustomRoles
+{
+    # Setup
+    # Basic positive case - read from file
+    $rdName = 'CustomRole Tests Role New'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("9020c682-9677-471d-acc3-d409c6737b13")
+    $createdRole = New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+    
+    $rd = $null
+    $roles = Get-AzureRmRoleDefinition -Custom
+    Assert-NotNull $roles
+    foreach($roleDefinition in $roles){
+        if($roleDefinition.Id -eq $createdRole.Id){
+            $rd = $roleDefinition
+            break
+        }
+    }
+    Assert-AreEqual "Test role" $rd.Description 
+    Assert-AreEqual $true $rd.IsCustom
+    Assert-NotNull $rd.DataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*" $rd.DataActions[0]
+    Assert-NotNull $rd.NotDataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write" $rd.NotDataActions[0]
+    Assert-NotNull $rd.AssignableScopes
+    Assert-Null $rd.Actions
+    Assert-Null $rd.NotActions
+    
+    # Basic positive case - read from object
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
+}
+
+<#
+.SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
+function Test-RDGetAtScopeFilterRoles
+{
+    # Setup
+    # Basic positive case - read from file
+    $rdName = 'CustomRole Tests Role New'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("17643b76-fff5-4c48-b1a7-f4da3297a8cb")
+    New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+    
+    $rd = Get-AzureRmRoleDefinition -Name $rdName -AtScopeAndBelow
+    Assert-AreEqual "Test role" $rd.Description 
+    Assert-AreEqual $true $rd.IsCustom
+    Assert-NotNull $rd.DataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*" $rd.DataActions[0]
+    Assert-NotNull $rd.NotDataActions
+    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write" $rd.NotDataActions[0]
+    Assert-NotNull $rd.AssignableScopes
+    Assert-Null $rd.Actions
+    Assert-Null $rd.NotActions
+    
+    # Basic positive case - read from object
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
 }
 
 <#
