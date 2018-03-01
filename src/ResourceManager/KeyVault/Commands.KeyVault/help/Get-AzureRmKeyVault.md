@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
@@ -12,6 +12,11 @@ schema: 2.0.0
 Gets key vaults.
 
 ## SYNTAX
+
+### ListAllVaultsInSubscription (Default)
+```
+Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ### GetVaultByName
 ```
@@ -34,11 +39,6 @@ Get-AzureRmKeyVault [-ResourceGroupName] <String> [-DefaultProfile <IAzureContex
 ### ListAllDeletedVaultsInSubscription
 ```
 Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListAllVaultsInSubscription
-```
-Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Specifies whether to show the previously deleted vaults in the output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,10 +127,10 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -142,7 +142,7 @@ Specifies the name of the resource group associated with the key vault or key va
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ListVaultsByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -171,7 +171,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: ListAllVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

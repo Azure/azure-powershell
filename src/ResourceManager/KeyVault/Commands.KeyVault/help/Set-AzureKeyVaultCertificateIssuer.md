@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 4C2C77F7-ECE4-4106-8AF1-256A496A977B
@@ -16,14 +16,30 @@ Sets a certificate issuer in a key vault.
 ### Expanded (Default)
 ```
 Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-IssuerProvider <String>]
- [-AccountId <String>] [-ApiKey <SecureString>] [-OrganizationDetails <KeyVaultCertificateOrganizationDetails>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AccountId <String>] [-ApiKey <SecureString>]
+ [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByValue
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -Issuer <KeyVaultCertificateIssuer>
+Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -Issuer <PSKeyVaultCertificateIssuer>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectExpanded
+```
+Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [-Name] <String> [-IssuerProvider <String>]
+ [-AccountId <String>] [-ApiKey <SecureString>]
+ [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByValue
+```
+Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [-Name] <String>
+ -Issuer <PSKeyVaultCertificateIssuer> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +61,8 @@ Specifies the account ID for the certificate issuer.
 
 ```yaml
 Type: String
-Parameter Sets: Expanded
-Aliases: 
+Parameter Sets: Expanded, InputObjectExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -60,8 +76,8 @@ Specifies the API key for the certificate issuer.
 
 ```yaml
 Type: SecureString
-Parameter Sets: Expanded
-Aliases: 
+Parameter Sets: Expanded, InputObjectExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -85,18 +101,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Key Vault Object
+
+```yaml
+Type: PSVault
+Parameter Sets: InputObjectExpanded, InputObjectByValue
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Issuer
 Specifies the certificate issuer to update.
 
 ```yaml
-Type: KeyVaultCertificateIssuer
-Parameter Sets: ByValue
-Aliases: 
+Type: PSKeyVaultCertificateIssuer
+Parameter Sets: ByValue, InputObjectByValue
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -105,8 +136,8 @@ Specifies the type of certificate issuer.
 
 ```yaml
 Type: String
-Parameter Sets: Expanded
-Aliases: 
+Parameter Sets: Expanded, InputObjectExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -134,9 +165,9 @@ Accept wildcard characters: False
 Organization details to be used with the issuer.
 
 ```yaml
-Type: KeyVaultCertificateOrganizationDetails
-Parameter Sets: Expanded
-Aliases: 
+Type: PSKeyVaultCertificateOrganizationDetails
+Parameter Sets: Expanded, InputObjectExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +183,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,8 +197,8 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Expanded, ByValue
+Aliases:
 
 Required: True
 Position: 0
@@ -214,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
 
 ## NOTES
 

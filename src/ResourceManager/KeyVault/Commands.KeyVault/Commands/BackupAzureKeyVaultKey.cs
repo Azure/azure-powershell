@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ParameterSetName = ByKeyObjectParameterSet,
                     HelpMessage = "Key bundle to back up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Key")]
         public PSKeyBundle InputObject { get; set; }
 
         /// <summary>

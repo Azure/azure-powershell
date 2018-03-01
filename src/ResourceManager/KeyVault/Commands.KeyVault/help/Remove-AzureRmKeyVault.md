@@ -13,7 +13,7 @@ Deletes a key vault.
 
 ## SYNTAX
 
-### ByAvailableVault
+### ByAvailableVault (Default)
 ```
 Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -21,7 +21,19 @@ Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-
 
 ### ByDeletedVault
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-Force] [-InRemovedState] [-AsJob]
+Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByAvailableVault
+```
+Remove-AzureRmKeyVault [-InputObject] <PSVault> [[-Location] <String>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByDeletedVault
+```
+Remove-AzureRmKeyVault [-InputObject] <PSVault> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -96,15 +108,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Key Vault object to be deleted.
+
+```yaml
+Type: PSVault
+Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InRemovedState
 Remove the previously deleted vault permanently.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByDeletedVault
+Parameter Sets: ByDeletedVault, InputObjectByDeletedVault
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +143,7 @@ The location of the deleted vault.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableVault
+Parameter Sets: ByAvailableVault, InputObjectByAvailableVault
 Aliases:
 
 Required: False
@@ -128,7 +155,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedVault
+Parameter Sets: ByDeletedVault, InputObjectByDeletedVault
 Aliases:
 
 Required: True
@@ -158,7 +185,7 @@ Specifies the name of the key vault to remove.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByAvailableVault, ByDeletedVault
 Aliases:
 
 Required: True

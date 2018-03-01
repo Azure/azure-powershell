@@ -74,7 +74,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// File Path
         /// </summary>
         [Parameter(Mandatory = true,
-                   Position = 2,
                    ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the path to the file that contains the certificate to add to key vault.")]
         public string FilePath { get; set; }
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Certificate as a string
         /// </summary>
         [Parameter(Mandatory = true,
-                   Position = 2,
                    ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
                    HelpMessage = "The certificate and private key to add to key vault as a string.")]
         public string CertificateString { get; set; }
