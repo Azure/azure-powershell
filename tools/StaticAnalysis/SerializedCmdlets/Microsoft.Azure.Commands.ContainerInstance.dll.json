@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -22,16 +22,18 @@
               "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
               "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
               "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Type": "System.String",
-              "Location": "System.String",
               "ProvisioningState": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
               "RestartPolicy": "System.String",
               "IpAddress": "System.String",
+              "DnsNameLabel": "System.String",
+              "Fqdn": "System.String",
+              "Id": "System.String",
               "OsType": "System.String",
-              "State": "System.String"
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -410,7 +412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -418,16 +420,18 @@
               "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
               "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
               "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Type": "System.String",
-              "Location": "System.String",
               "ProvisioningState": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
               "RestartPolicy": "System.String",
               "IpAddress": "System.String",
+              "DnsNameLabel": "System.String",
+              "Fqdn": "System.String",
+              "Id": "System.String",
               "OsType": "System.String",
-              "State": "System.String"
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -648,7 +652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -656,16 +660,18 @@
                     "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
                     "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
                     "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Type": "System.String",
-                    "Location": "System.String",
                     "ProvisioningState": "System.String",
+                    "Name": "System.String",
+                    "State": "System.String",
                     "RestartPolicy": "System.String",
                     "IpAddress": "System.String",
+                    "DnsNameLabel": "System.String",
+                    "Fqdn": "System.String",
+                    "Id": "System.String",
                     "OsType": "System.String",
-                    "State": "System.String"
+                    "Location": "System.String",
+                    "ResourceGroupName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -959,7 +965,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -967,16 +973,18 @@
               "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
               "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
               "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Type": "System.String",
-              "Location": "System.String",
               "ProvisioningState": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
               "RestartPolicy": "System.String",
               "IpAddress": "System.String",
+              "DnsNameLabel": "System.String",
+              "Fqdn": "System.String",
+              "Id": "System.String",
               "OsType": "System.String",
-              "State": "System.String"
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1206,6 +1214,22 @@
           "ValidateSet": [
             "Public"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DnsNameLabel",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
@@ -1525,6 +1549,28 @@
                 "ValidateSet": [
                   "Public"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DnsNameLabel",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -1907,6 +1953,28 @@
                 "ValidateSet": [
                   "Public"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DnsNameLabel",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -2320,6 +2388,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DnsNameLabel",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Port",
                 "AliasList": [],
                 "Type": {
@@ -2459,7 +2549,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -2467,16 +2557,18 @@
               "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
               "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
               "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Type": "System.String",
-              "Location": "System.String",
               "ProvisioningState": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
               "RestartPolicy": "System.String",
               "IpAddress": "System.String",
+              "DnsNameLabel": "System.String",
+              "Fqdn": "System.String",
+              "Id": "System.String",
               "OsType": "System.String",
-              "State": "System.String"
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2525,7 +2617,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -2533,16 +2625,18 @@
               "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
               "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
               "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-              "ResourceGroupName": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
               "Type": "System.String",
-              "Location": "System.String",
               "ProvisioningState": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
               "RestartPolicy": "System.String",
               "IpAddress": "System.String",
+              "DnsNameLabel": "System.String",
+              "Fqdn": "System.String",
+              "Id": "System.String",
               "OsType": "System.String",
-              "State": "System.String"
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2721,7 +2815,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Containers": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
@@ -2729,16 +2823,18 @@
                     "Ports": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
                     "ImageRegistryCredentials": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
                     "Volumes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-                    "ResourceGroupName": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
                     "Type": "System.String",
-                    "Location": "System.String",
                     "ProvisioningState": "System.String",
+                    "Name": "System.String",
+                    "State": "System.String",
                     "RestartPolicy": "System.String",
                     "IpAddress": "System.String",
+                    "DnsNameLabel": "System.String",
+                    "Fqdn": "System.String",
+                    "Id": "System.String",
                     "OsType": "System.String",
-                    "State": "System.String"
+                    "Location": "System.String",
+                    "ResourceGroupName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3074,7 +3170,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3084,7 +3180,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CurrentState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
         "PreviousState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
@@ -3107,7 +3203,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartTime": "System.Nullable`1[System.DateTime]",
         "FinishTime": "System.Nullable`1[System.DateTime]",
@@ -3149,7 +3245,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3159,7 +3255,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "FirstTimestamp": "System.Nullable`1[System.DateTime]",
         "LastTimestamp": "System.Nullable`1[System.DateTime]",
@@ -3236,7 +3332,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3246,7 +3342,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.Commands.ContainerInstance, Version=0.2.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PortProperty": "System.Int32",
         "Protocol": "System.String"
@@ -3292,6 +3388,8 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerInstance.Models.Volume, Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AzureFile": "Microsoft.Azure.Management.ContainerInstance.Models.AzureFileVolume",
+        "GitRepo": "Microsoft.Azure.Management.ContainerInstance.Models.GitRepoVolume",
+        "Secret": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "EmptyDir": "System.Object",
         "Name": "System.String"
       },
@@ -3307,6 +3405,18 @@
         "ShareName": "System.String",
         "StorageAccountName": "System.String",
         "StorageAccountKey": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.ContainerInstance.Models.GitRepoVolume": {
+      "Namespace": "Microsoft.Azure.Management.ContainerInstance.Models",
+      "Name": "Microsoft.Azure.Management.ContainerInstance.Models.GitRepoVolume",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerInstance.Models.GitRepoVolume, Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Directory": "System.String",
+        "Repository": "System.String",
+        "Revision": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
