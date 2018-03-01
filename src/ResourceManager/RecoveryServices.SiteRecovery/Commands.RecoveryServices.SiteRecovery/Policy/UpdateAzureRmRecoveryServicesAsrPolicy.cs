@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzure,
-            Position = 0,
             Mandatory = true)]
         public SwitchParameter AzureToAzure { get; set; }
 

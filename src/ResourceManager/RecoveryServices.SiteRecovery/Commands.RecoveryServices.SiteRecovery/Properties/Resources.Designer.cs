@@ -333,6 +333,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RecoveryAzureStorageAccountId passed is null or empty..
+        /// </summary>
+        internal static string InvalidRecoveryAzureStorageAccountId {
+            get {
+                return ResourceManager.GetString("InvalidRecoveryAzureStorageAccountId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please pass a valid RecoveryAzureStorageAccountId as input for disk URI &quot;{0}&quot;..
         /// </summary>
         internal static string InvalidRecoveryAzureStorageAccountIdDiskInput {

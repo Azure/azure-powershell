@@ -33,6 +33,10 @@ The **Get-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet gets information abo
 ```
 PS C:\> $Networkmappings = Get-AzureRmRecoveryServicesAsrNetworkMapping -Network $Network
 ```
+### Example 2
+```
+PS C:\> $Networkmappings = Get-AzureRmRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
+```
 
 Gets all networks mappings for the passed Network.
 

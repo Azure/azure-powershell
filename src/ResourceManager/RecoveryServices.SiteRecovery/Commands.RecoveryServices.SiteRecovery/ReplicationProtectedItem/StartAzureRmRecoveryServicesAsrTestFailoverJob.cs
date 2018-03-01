@@ -319,9 +319,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForTestFailover,
                         this.ReplicationProtectedItem.ReplicationProvider));
-            }else if (0 == string.Compare(
-               this.ReplicationProtectedItem.ReplicationProvider,
-               Constants.A2A,
+            }else if (Constants.A2A.Equals(
+              this.ReplicationProtectedItem.ReplicationProvider,
                StringComparison.OrdinalIgnoreCase))
             {
                 var failoverInput = new A2AFailoverProviderInput()

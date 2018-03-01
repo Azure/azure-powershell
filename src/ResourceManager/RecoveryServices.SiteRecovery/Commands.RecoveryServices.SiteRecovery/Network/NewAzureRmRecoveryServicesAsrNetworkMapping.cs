@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Switch parameter specifying that the network mapping being created will be used 
         ///    to replicated Azure virtual machines between two Azure regions.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Position = 0, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>

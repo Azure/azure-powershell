@@ -43,6 +43,12 @@ The **New-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet starts the operation
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMapName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
 ```
 
+### Example 2
+```
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "mappingName" -PrimaryFabric $AzureFabric
+ -PrimaryAzureNetworkId $AzureNetworkId -RecoveryFabric $RecoveryAzureFabric -RecoveryAzureNetworkId $RecoveryNetworkId
+```
+
 Starts the network mapping creation operation using the specified name, primary and recovery networks, and returns an ASR job to track the operation.
 
 ## PARAMETERS

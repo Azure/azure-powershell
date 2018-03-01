@@ -112,6 +112,12 @@ Tasks            : {}
 Errors           : {}
 ```
 
+### Example 4
+```
+PS C:\>  $Job = New-AzureRmRecoveryServicesAsrPolicy -Name $TestPolicy1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5 
+PS C:\>  Get-AsrJob -name $Job.id
+```
+
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS

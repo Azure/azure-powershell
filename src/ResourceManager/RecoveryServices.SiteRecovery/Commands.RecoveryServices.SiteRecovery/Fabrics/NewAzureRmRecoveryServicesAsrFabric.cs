@@ -34,20 +34,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///    Switch parameter indicates creation of azure fabric.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Azure, Position = 0, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Azure, Mandatory = true)]
         public SwitchParameter Azure { get; set; }
 
         /// <summary>
         ///     Gets or sets the name of the Azure Site Recovery Fabric.
         /// </summary>
         [Parameter(
-            ParameterSetName = ASRParameterSets.Default,
             Mandatory = true,
             HelpMessage = "Name of the fabric to be created")]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.Azure,
-            Mandatory = true,
-            HelpMessage = "Name of the azure fabric to be created")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

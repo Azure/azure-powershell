@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fbbddb3f-3bf1-482d-92d8-d9a0ae616dc3"
+          "1c74a477-e2ea-4645-b18a-c8c041eadb8c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.0.0"
@@ -37,28 +37,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "151f9f9b-2394-4fe7-8dcb-6bff4dc18fd4"
+          "98465f6d-20e8-46fc-9504-b089060f33e3"
         ],
         "x-ms-client-request-id": [
-          "fbbddb3f-3bf1-482d-92d8-d9a0ae616dc3"
+          "1c74a477-e2ea-4645-b18a-c8c041eadb8c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14397"
+          "14776"
         ],
         "x-ms-correlation-request-id": [
-          "151f9f9b-2394-4fe7-8dcb-6bff4dc18fd4"
+          "98465f6d-20e8-46fc-9504-b089060f33e3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074418Z:151f9f9b-2394-4fe7-8dcb-6bff4dc18fd4"
+          "SOUTHINDIA:20180222T181321Z:98465f6d-20e8-46fc-9504-b089060f33e3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:17 GMT"
+          "Thu, 22 Feb 2018 18:13:21 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -73,25 +73,25 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6e77b488-acf0-42e1-954f-6864d22dc254-2018-02-14 07:44:18Z-Ps"
+          "838f88f5-ff84-44a9-8bad-3b84235ab74d-2018-02-22 18:13:22Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590658560)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195458560)\\/\",\"ClientRequestId\":\"6e77b488-acf0-42e1-954f-6864d22dc254-2018-02-14 07:44:18Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"2Wc61jFwrQBdZWy+TDAwJPKcta7YRljVUvhTJbdWoYg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319602113)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924402113)\\/\",\"ClientRequestId\":\"838f88f5-ff84-44a9-8bad-3b84235ab74d-2018-02-22 18:13:22Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"IyRdgqQKFvF7cRuH5mreZMx1SG8qC1xmLtpPX5r7+Y4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy1\",\r\n      \"name\": \"policy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy1\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy2\",\r\n      \"name\": \"policy2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy2\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy\",\r\n      \"name\": \"TestPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"TestPolicy\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/wesUsToeastUs\",\r\n      \"name\": \"wesUsToeastUs\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"wesUsToeastUs\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy1\",\r\n      \"name\": \"policy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy1\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy2\",\r\n      \"name\": \"TestPCMPolicy2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"TestPCMPolicy2\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy2\",\r\n      \"name\": \"policy2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy2\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy1\",\r\n      \"name\": \"TestPCMPolicy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"TestPCMPolicy1\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/eastUsToWestUs\",\r\n      \"name\": \"eastUsToWestUs\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"eastUsToWestUs\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1608"
+          "3252"
         ],
         "Content-Type": [
           "application/json"
@@ -103,7 +103,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6e77b488-acf0-42e1-954f-6864d22dc254-2018-02-14 07:44:18Z-Ps 2/14/2018 7:44:18 AM"
+          "838f88f5-ff84-44a9-8bad-3b84235ab74d-2018-02-22 18:13:22Z-Ps 2/22/2018 6:13:22 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -125,19 +125,246 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "6e77b488-acf0-42e1-954f-6864d22dc254-2018-02-14 07:44:18Z-Ps"
+          "838f88f5-ff84-44a9-8bad-3b84235ab74d-2018-02-22 18:13:22Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14175"
+          "14747"
         ],
         "x-ms-correlation-request-id": [
-          "a1018490-6d44-461d-89ef-8e28ec5e444b"
+          "86acc87a-261e-4fba-adfe-33bf0382a98b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074418Z:a1018490-6d44-461d-89ef-8e28ec5e444b"
+          "SOUTHINDIA:20180222T181322Z:86acc87a-261e-4fba-adfe-33bf0382a98b"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:18 GMT"
+          "Thu, 22 Feb 2018 18:13:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "716f2085-0844-44d3-b833-8dec4b76a24f-2018-02-22 18:13:34Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319614955)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924414955)\\/\",\"ClientRequestId\":\"716f2085-0844-44d3-b833-8dec4b76a24f-2018-02-22 18:13:34Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"2vM3wLAItO6P1uBh57+mf+eLpluGjtLWeZA/Y+6uJYM=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/wesUsToeastUs\",\r\n      \"name\": \"wesUsToeastUs\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"wesUsToeastUs\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy1\",\r\n      \"name\": \"policy1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy1\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy2\",\r\n      \"name\": \"policy2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy2\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/eastUsToWestUs\",\r\n      \"name\": \"eastUsToWestUs\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"eastUsToWestUs\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"recoveryPointThresholdInMinutes\": 0,\r\n          \"recoveryPointHistory\": 600,\r\n          \"appConsistentFrequencyInMinutes\": 300,\r\n          \"multiVmSyncStatus\": \"Enabled\",\r\n          \"crashConsistentFrequencyInMinutes\": 5\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2162"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "716f2085-0844-44d3-b833-8dec4b76a24f-2018-02-22 18:13:34Z-Ps 2/22/2018 6:13:35 PM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "716f2085-0844-44d3-b833-8dec4b76a24f-2018-02-22 18:13:34Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14729"
+        ],
+        "x-ms-correlation-request-id": [
+          "6a04448d-9a73-4179-ac37-b8ca5756865c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181335Z:6a04448d-9a73-4179-ac37-b8ca5756865c"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/wesUsToeastUs?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL3dlc1VzVG9lYXN0VXM/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319602750)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924402750)\\/\",\"ClientRequestId\":\"e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ii+JGxfriddRSZtScZP4YT+jrB+BI1fygsU2OZGvOLk=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/9c91b3dc-6fca-466e-ab6e-9f8a16c09624?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps 2/22/2018 6:13:23 PM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "568bc3b0-76ad-4548-8bf4-becccea1081d"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181323Z:568bc3b0-76ad-4548-8bf4-becccea1081d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:22 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/wesUsToeastUs/operationresults/9c91b3dc-6fca-466e-ab6e-9f8a16c09624?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/9c91b3dc-6fca-466e-ab6e-9f8a16c09624?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvOWM5MWIzZGMtNmZjYS00NjZlLWFiNmUtOWY4YTE2YzA5NjI0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c441a4f8-f4f1-4142-9cef-d4c0ee075f2b-2018-02-22 18:13:24Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319604153)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924404153)\\/\",\"ClientRequestId\":\"c441a4f8-f4f1-4142-9cef-d4c0ee075f2b-2018-02-22 18:13:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"T+uzUMqCSqXd1HbgqbFj6RM3k73VDKudRo478fQXPPw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/9c91b3dc-6fca-466e-ab6e-9f8a16c09624\",\r\n  \"name\": \"9c91b3dc-6fca-466e-ab6e-9f8a16c09624\",\r\n  \"properties\": {\r\n    \"activityId\": \"e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps ActivityId: 568bc3b0-76ad-4548-8bf4-becccea1081d\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Failed\",\r\n    \"stateDescription\": \"Failed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:24.0868981Z\",\r\n        \"endTime\": \"2018-02-22T18:13:24.0868981Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Failed\",\r\n        \"stateDescription\": \"Failed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps ActivityId: 568bc3b0-76ad-4548-8bf4-becccea1081d\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"452a70c3-1433-4436-8f6a-e3e790760414\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2018-02-22T18:13:23.961879Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"e8b2fbce-26f9-48ef-9194-e3ace2b9bcf9-2018-02-22 18:13:22Z-Ps ActivityId: 568bc3b0-76ad-4548-8bf4-becccea1081d\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"452a70c3-1433-4436-8f6a-e3e790760414\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2018-02-22T18:13:23.961879Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2018-02-22T18:13:23.6503564Z\",\r\n    \"endTime\": \"2018-02-22T18:13:23Z\",\r\n    \"allowedActions\": [\r\n      \"Restart\"\r\n    ],\r\n    \"targetObjectId\": \"2c432247-c8a4-592a-b833-1fa5ddf8a833\",\r\n    \"targetObjectName\": \"wesUsToeastUs\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3086"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/9c91b3dc-6fca-466e-ab6e-9f8a16c09624"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "c441a4f8-f4f1-4142-9cef-d4c0ee075f2b-2018-02-22 18:13:24Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14746"
+        ],
+        "x-ms-correlation-request-id": [
+          "8026cf15-cb57-47c2-9a37-212992f4747b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181324Z:8026cf15-cb57-47c2-9a37-212992f4747b"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:23 GMT"
         ]
       },
       "StatusCode": 200
@@ -149,16 +376,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps"
+          "03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590659177)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195459177)\\/\",\"ClientRequestId\":\"11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"LCqvcIv+WMYubm1JnPHVsQO4unHPYeXnEx4dPVX761A=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319604566)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924404566)\\/\",\"ClientRequestId\":\"03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"GH7G+lQSoGl/Ym3ru/+gzMJkhY+TbwJSf1O6tCaJrS4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -179,10 +406,10 @@
           "30"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/c9314333-b671-40c2-894a-3f7e25fed8e6?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/53fab2c0-dde9-4b25-86b8-2787de92693f?api-version=2016-08-10"
         ],
         "x-ms-request-id": [
-          "11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps 2/14/2018 7:44:20 AM"
+          "03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps 2/22/2018 6:13:24 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -191,25 +418,25 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps"
+          "03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1189"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "19c9ba10-e5e2-4e60-bd7a-953692628dd8"
+          "f5611ec1-a7b3-4bd3-b86c-796c93c893cc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074420Z:19c9ba10-e5e2-4e60-bd7a-953692628dd8"
+          "SOUTHINDIA:20180222T181325Z:f5611ec1-a7b3-4bd3-b86c-796c93c893cc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:19 GMT"
+          "Thu, 22 Feb 2018 18:13:24 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy1/operationresults/c9314333-b671-40c2-894a-3f7e25fed8e6?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy1/operationresults/53fab2c0-dde9-4b25-86b8-2787de92693f?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -218,28 +445,28 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/c9314333-b671-40c2-894a-3f7e25fed8e6?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvYzkzMTQzMzMtYjY3MS00MGMyLTg5NGEtM2Y3ZTI1ZmVkOGU2P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/53fab2c0-dde9-4b25-86b8-2787de92693f?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTNmYWIyYzAtZGRlOS00YjI1LTg2YjgtMjc4N2RlOTI2OTNmP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a134bb46-9cdc-4ce1-b6e1-fa9476cb8c4e-2018-02-14 07:44:20Z-Ps"
+          "3035369e-1b02-4571-809a-df0484424ae5-2018-02-22 18:13:25Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590660598)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195460598)\\/\",\"ClientRequestId\":\"a134bb46-9cdc-4ce1-b6e1-fa9476cb8c4e-2018-02-14 07:44:20Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"HtzAiK/6IMGr+yBk8izwWzrT4GHT5z4G7p+GjJIjrwM=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319605065)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924405065)\\/\",\"ClientRequestId\":\"3035369e-1b02-4571-809a-df0484424ae5-2018-02-22 18:13:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"tFQSyYiX+68ADl75na+FKhQdHITcWz8ign18wNUfHQk=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/c9314333-b671-40c2-894a-3f7e25fed8e6\",\r\n  \"name\": \"c9314333-b671-40c2-894a-3f7e25fed8e6\",\r\n  \"properties\": {\r\n    \"activityId\": \"11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps ActivityId: 19c9ba10-e5e2-4e60-bd7a-953692628dd8\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Failed\",\r\n    \"stateDescription\": \"Failed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:20.4822368Z\",\r\n        \"endTime\": \"2018-02-14T07:44:20.4822368Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Failed\",\r\n        \"stateDescription\": \"Failed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps ActivityId: 19c9ba10-e5e2-4e60-bd7a-953692628dd8\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"b6723185-ec04-4ec1-9468-527a24522e88\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2018-02-14T07:44:20.4353741Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"11eeeb76-66dc-4d46-aeef-7acadf2ec96e-2018-02-14 07:44:19Z-Ps ActivityId: 19c9ba10-e5e2-4e60-bd7a-953692628dd8\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"b6723185-ec04-4ec1-9468-527a24522e88\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2018-02-14T07:44:20.4353741Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2018-02-14T07:44:20.0695257Z\",\r\n    \"endTime\": \"2018-02-14T07:44:20Z\",\r\n    \"allowedActions\": [\r\n      \"Restart\"\r\n    ],\r\n    \"targetObjectId\": \"31c99d65-0404-5996-a522-3405079108c3\",\r\n    \"targetObjectName\": \"policy1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/53fab2c0-dde9-4b25-86b8-2787de92693f\",\r\n  \"name\": \"53fab2c0-dde9-4b25-86b8-2787de92693f\",\r\n  \"properties\": {\r\n    \"activityId\": \"03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps ActivityId: f5611ec1-a7b3-4bd3-b86c-796c93c893cc\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Failed\",\r\n    \"stateDescription\": \"Failed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:25.1104041Z\",\r\n        \"endTime\": \"2018-02-22T18:13:25.1104041Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Failed\",\r\n        \"stateDescription\": \"Failed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps ActivityId: f5611ec1-a7b3-4bd3-b86c-796c93c893cc\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"08ae329f-9094-4733-ae96-867411207cc2\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2018-02-22T18:13:25.0322312Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"03792c76-0f3b-4c62-a0d8-f11a959e5e02-2018-02-22 18:13:24Z-Ps ActivityId: f5611ec1-a7b3-4bd3-b86c-796c93c893cc\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"08ae329f-9094-4733-ae96-867411207cc2\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2018-02-22T18:13:25.0322312Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2018-02-22T18:13:24.8472667Z\",\r\n    \"endTime\": \"2018-02-22T18:13:25Z\",\r\n    \"allowedActions\": [\r\n      \"Restart\"\r\n    ],\r\n    \"targetObjectId\": \"31c99d65-0404-5996-a522-3405079108c3\",\r\n    \"targetObjectName\": \"policy1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "3082"
@@ -254,7 +481,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/c9314333-b671-40c2-894a-3f7e25fed8e6"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/53fab2c0-dde9-4b25-86b8-2787de92693f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -276,19 +503,170 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "a134bb46-9cdc-4ce1-b6e1-fa9476cb8c4e-2018-02-14 07:44:20Z-Ps"
+          "3035369e-1b02-4571-809a-df0484424ae5-2018-02-22 18:13:25Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14174"
+          "14745"
         ],
         "x-ms-correlation-request-id": [
-          "930169ca-0679-4f51-8a2e-a8d956c2f448"
+          "a8e8d324-21b1-4caa-91a1-df4ee3eb8cfb"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074420Z:930169ca-0679-4f51-8a2e-a8d956c2f448"
+          "SOUTHINDIA:20180222T181325Z:a8e8d324-21b1-4caa-91a1-df4ee3eb8cfb"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:20 GMT"
+          "Thu, 22 Feb 2018 18:13:24 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy2?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQQ01Qb2xpY3kyP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d1519d07-6a1d-426e-aa71-d6cebb8fb2e6-2018-02-22 18:13:25Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319605441)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924405441)\\/\",\"ClientRequestId\":\"d1519d07-6a1d-426e-aa71-d6cebb8fb2e6-2018-02-22 18:13:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"RpEDSfyTxRk2Nj03DDDLMMmF5x6cagc0xcM/U0/NhRc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/2d0bfedc-f3cf-4e06-88a9-7f49d9028944?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "d1519d07-6a1d-426e-aa71-d6cebb8fb2e6-2018-02-22 18:13:25Z-Ps 2/22/2018 6:13:25 PM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "d1519d07-6a1d-426e-aa71-d6cebb8fb2e6-2018-02-22 18:13:25Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "a04bcdeb-f59c-4848-922a-dee601351408"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181325Z:a04bcdeb-f59c-4848-922a-dee601351408"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:24 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy2/operationresults/2d0bfedc-f3cf-4e06-88a9-7f49d9028944?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/2d0bfedc-f3cf-4e06-88a9-7f49d9028944?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvMmQwYmZlZGMtZjNjZi00ZTA2LTg4YTktN2Y0OWQ5MDI4OTQ0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f6a49929-a5ae-4b91-91cd-07e76a8bdc28-2018-02-22 18:13:25Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319605920)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924405920)\\/\",\"ClientRequestId\":\"f6a49929-a5ae-4b91-91cd-07e76a8bdc28-2018-02-22 18:13:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"FR7f/VXZiJ+YOCUbRO1PJgulb8CnWc/X09WFhVPgM6E=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/2d0bfedc-f3cf-4e06-88a9-7f49d9028944\",\r\n  \"name\": \"2d0bfedc-f3cf-4e06-88a9-7f49d9028944\",\r\n  \"properties\": {\r\n    \"activityId\": \"d1519d07-6a1d-426e-aa71-d6cebb8fb2e6-2018-02-22 18:13:25Z-Ps ActivityId: a04bcdeb-f59c-4848-922a-dee601351408\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:26.0682756Z\",\r\n        \"endTime\": \"2018-02-22T18:13:26.0995181Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:26.0995181Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:25.6998476Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"67ddf3bf-975b-5cc5-93ad-3d6fa999fb3e\",\r\n    \"targetObjectName\": \"TestPCMPolicy2\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1676"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/2d0bfedc-f3cf-4e06-88a9-7f49d9028944"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "f6a49929-a5ae-4b91-91cd-07e76a8bdc28-2018-02-22 18:13:25Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14744"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed02e691-aa1c-44d3-9fce-aaeb9a721e71"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181326Z:ed02e691-aa1c-44d3-9fce-aaeb9a721e71"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:25 GMT"
         ]
       },
       "StatusCode": 200
@@ -300,16 +678,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps"
+          "a9262958-e1ea-43b0-97b9-6c97560916e0-2018-02-22 18:13:26Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590661043)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195461043)\\/\",\"ClientRequestId\":\"14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"g8nVgJuDCnl9Osd//BRzN1WMUVkJ1A83pdxDqW3niDs=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319606309)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924406309)\\/\",\"ClientRequestId\":\"a9262958-e1ea-43b0-97b9-6c97560916e0-2018-02-22 18:13:26Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Hcertm7SwZVNKHvrnzhELC2LX9punRmSKg4Ad44wZxE=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -330,10 +708,10 @@
           "30"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/f3afe005-1cf2-4c6b-b121-37e454671164?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4af85a09-43e2-46bc-bb5f-6325e0f1d283?api-version=2016-08-10"
         ],
         "x-ms-request-id": [
-          "14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps 2/14/2018 7:44:21 AM"
+          "a9262958-e1ea-43b0-97b9-6c97560916e0-2018-02-22 18:13:26Z-Ps 2/22/2018 6:13:26 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -342,25 +720,25 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps"
+          "a9262958-e1ea-43b0-97b9-6c97560916e0-2018-02-22 18:13:26Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1188"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "489937b7-99ba-4181-9b48-c0b18d5e8e19"
+          "01efa262-691f-48ad-a6b1-04d665ed8f50"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074421Z:489937b7-99ba-4181-9b48-c0b18d5e8e19"
+          "SOUTHINDIA:20180222T181326Z:01efa262-691f-48ad-a6b1-04d665ed8f50"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:20 GMT"
+          "Thu, 22 Feb 2018 18:13:25 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy2/operationresults/f3afe005-1cf2-4c6b-b121-37e454671164?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/policy2/operationresults/4af85a09-43e2-46bc-bb5f-6325e0f1d283?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -369,31 +747,31 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/f3afe005-1cf2-4c6b-b121-37e454671164?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvZjNhZmUwMDUtMWNmMi00YzZiLWIxMjEtMzdlNDU0NjcxMTY0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4af85a09-43e2-46bc-bb5f-6325e0f1d283?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNGFmODVhMDktNDNlMi00NmJjLWJiNWYtNjMyNWUwZjFkMjgzP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a67a482-c895-48c3-abbe-5a8431f36a5a-2018-02-14 07:44:21Z-Ps"
+          "06ecd9fd-da7f-47f5-9e81-ed56d8fb2a65-2018-02-22 18:13:26Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590661499)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195461499)\\/\",\"ClientRequestId\":\"3a67a482-c895-48c3-abbe-5a8431f36a5a-2018-02-14 07:44:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"waUzbUDNK3R/ijmfNmQc9izQl4h5gXpx2/AnuDx74bg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319606820)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924406820)\\/\",\"ClientRequestId\":\"06ecd9fd-da7f-47f5-9e81-ed56d8fb2a65-2018-02-22 18:13:26Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"8F6lJoa9LAr500kmUf9mEU5IFLNOl3M02KFdOSHlUcE=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/f3afe005-1cf2-4c6b-b121-37e454671164\",\r\n  \"name\": \"f3afe005-1cf2-4c6b-b121-37e454671164\",\r\n  \"properties\": {\r\n    \"activityId\": \"14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps ActivityId: 489937b7-99ba-4181-9b48-c0b18d5e8e19\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Failed\",\r\n    \"stateDescription\": \"Failed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:21.5155303Z\",\r\n        \"endTime\": \"2018-02-14T07:44:21.5155303Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Failed\",\r\n        \"stateDescription\": \"Failed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps ActivityId: 489937b7-99ba-4181-9b48-c0b18d5e8e19\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"d554d52e-ef39-4e16-97dc-4eb1240a4242\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2018-02-14T07:44:21.4842657Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"14910547-e3af-48ef-9ee1-1bad8cb5e0f2-2018-02-14 07:44:21Z-Ps ActivityId: 489937b7-99ba-4181-9b48-c0b18d5e8e19\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"d554d52e-ef39-4e16-97dc-4eb1240a4242\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2018-02-14T07:44:21.4842657Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2018-02-14T07:44:21.3127192Z\",\r\n    \"endTime\": \"2018-02-14T07:44:21Z\",\r\n    \"allowedActions\": [\r\n      \"Restart\"\r\n    ],\r\n    \"targetObjectId\": \"92c94825-5d93-5fc9-a6a6-7007ea4b202b\",\r\n    \"targetObjectName\": \"policy2\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4af85a09-43e2-46bc-bb5f-6325e0f1d283\",\r\n  \"name\": \"4af85a09-43e2-46bc-bb5f-6325e0f1d283\",\r\n  \"properties\": {\r\n    \"activityId\": \"a9262958-e1ea-43b0-97b9-6c97560916e0-2018-02-22 18:13:26Z-Ps ActivityId: 01efa262-691f-48ad-a6b1-04d665ed8f50\",\r\n    \"scenarioName\": null,\r\n    \"friendlyName\": null,\r\n    \"state\": \"NotStarted\",\r\n    \"stateDescription\": \"NotStarted\",\r\n    \"tasks\": [],\r\n    \"errors\": [],\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": null,\r\n    \"targetObjectName\": null,\r\n    \"targetInstanceType\": \"ProtectionEntity\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3082"
+          "694"
         ],
         "Content-Type": [
           "application/json"
@@ -405,7 +783,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/f3afe005-1cf2-4c6b-b121-37e454671164"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4af85a09-43e2-46bc-bb5f-6325e0f1d283"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,40 +805,40 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "3a67a482-c895-48c3-abbe-5a8431f36a5a-2018-02-14 07:44:21Z-Ps"
+          "06ecd9fd-da7f-47f5-9e81-ed56d8fb2a65-2018-02-22 18:13:26Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14173"
+          "14743"
         ],
         "x-ms-correlation-request-id": [
-          "9bc4988f-7756-4605-b037-6fa209e925ed"
+          "c861d77d-8fd4-4c67-b84a-a58a978ef620"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074421Z:9bc4988f-7756-4605-b037-6fa209e925ed"
+          "SOUTHINDIA:20180222T181327Z:c861d77d-8fd4-4c67-b84a-a58a978ef620"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:21 GMT"
+          "Thu, 22 Feb 2018 18:13:27 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQb2xpY3k/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQQ01Qb2xpY3kxP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a08cfad1-6c03-49f9-bc2d-63a717ec38b1-2018-02-14 07:44:21Z-Ps"
+          "2d260d79-ffed-415a-93d7-7389c6817733-2018-02-22 18:13:27Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590661929)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195461929)\\/\",\"ClientRequestId\":\"a08cfad1-6c03-49f9-bc2d-63a717ec38b1-2018-02-14 07:44:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"1MJsoozNF8VCVhYZNt5Fh7LSGKBZP3jVLiohlCKyU4Y=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319607167)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924407167)\\/\",\"ClientRequestId\":\"2d260d79-ffed-415a-93d7-7389c6817733-2018-02-22 18:13:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"hY8E7mJH1YbwY2WmzS3+R+KnaY4Lbvn0VJHCb8bTeGw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -481,10 +859,10 @@
           "30"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/a770ff7f-6539-44d6-80af-eca47a4ac6fc?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4407579a-cd6d-4456-ba86-7c7b29c2deaa?api-version=2016-08-10"
         ],
         "x-ms-request-id": [
-          "a08cfad1-6c03-49f9-bc2d-63a717ec38b1-2018-02-14 07:44:21Z-Ps 2/14/2018 7:44:22 AM"
+          "2d260d79-ffed-415a-93d7-7389c6817733-2018-02-22 18:13:27Z-Ps 2/22/2018 6:13:27 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -493,25 +871,25 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "a08cfad1-6c03-49f9-bc2d-63a717ec38b1-2018-02-14 07:44:21Z-Ps"
+          "2d260d79-ffed-415a-93d7-7389c6817733-2018-02-22 18:13:27Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1187"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "1889f335-02d0-4266-8ec5-cac4c6b2314b"
+          "536af6c2-6b24-4bd0-9f5d-d07d510e8378"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074422Z:1889f335-02d0-4266-8ec5-cac4c6b2314b"
+          "SOUTHINDIA:20180222T181327Z:536af6c2-6b24-4bd0-9f5d-d07d510e8378"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:21 GMT"
+          "Thu, 22 Feb 2018 18:13:27 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/a770ff7f-6539-44d6-80af-eca47a4ac6fc?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPCMPolicy1/operationresults/4407579a-cd6d-4456-ba86-7c7b29c2deaa?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -520,106 +898,31 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQb2xpY3k/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "491331a7-fc81-4304-9a63-39cc915e5340-2018-02-14 07:44:27Z-Ps"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590667960)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195467960)\\/\",\"ClientRequestId\":\"491331a7-fc81-4304-9a63-39cc915e5340-2018-02-14 07:44:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"C9xC9ynXcpP2OrPizuNSEyvmpwTBeH/jS5QOSiKzJV4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2600.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "30"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/76af3459-9f97-4713-bc34-19e6bb2606d2?api-version=2016-08-10"
-        ],
-        "x-ms-request-id": [
-          "491331a7-fc81-4304-9a63-39cc915e5340-2018-02-14 07:44:27Z-Ps 2/14/2018 7:44:28 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-content-type-options": [
-          "nosniff"
-        ],
-        "x-ms-client-request-id": [
-          "491331a7-fc81-4304-9a63-39cc915e5340-2018-02-14 07:44:27Z-Ps"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1184"
-        ],
-        "x-ms-correlation-request-id": [
-          "ec040409-6c30-4e41-9d59-dd65c5c3cd3a"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074428Z:ec040409-6c30-4e41-9d59-dd65c5c3cd3a"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 14 Feb 2018 07:44:27 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/76af3459-9f97-4713-bc34-19e6bb2606d2?api-version=2016-08-10"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/a770ff7f-6539-44d6-80af-eca47a4ac6fc?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvYTc3MGZmN2YtNjUzOS00NGQ2LTgwYWYtZWNhNDdhNGFjNmZjP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4407579a-cd6d-4456-ba86-7c7b29c2deaa?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNDQwNzU3OWEtY2Q2ZC00NDU2LWJhODYtN2M3YjI5YzJkZWFhP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "968e19c2-f4ba-47bd-8dcd-e5a0dbc3f671-2018-02-14 07:44:22Z-Ps"
+          "2b90c870-785c-4781-9af4-d06f294bab46-2018-02-22 18:13:27Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590662386)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195462386)\\/\",\"ClientRequestId\":\"968e19c2-f4ba-47bd-8dcd-e5a0dbc3f671-2018-02-14 07:44:22Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"539YnNENcCZ1lh6PA/m/XazQ2YMiqbm87FgAWO7956w=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319607633)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924407633)\\/\",\"ClientRequestId\":\"2b90c870-785c-4781-9af4-d06f294bab46-2018-02-22 18:13:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"+t4v015e+lYW2uhBPmIHdNHDSg4ZQ2rHEx6y5IfsDF4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/a770ff7f-6539-44d6-80af-eca47a4ac6fc\",\r\n  \"name\": \"a770ff7f-6539-44d6-80af-eca47a4ac6fc\",\r\n  \"properties\": {\r\n    \"activityId\": \"a08cfad1-6c03-49f9-bc2d-63a717ec38b1-2018-02-14 07:44:21Z-Ps ActivityId: 1889f335-02d0-4266-8ec5-cac4c6b2314b\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:22.4593031Z\",\r\n        \"endTime\": \"2018-02-14T07:44:22.5061995Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:22.5061995Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:22.1878352Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4407579a-cd6d-4456-ba86-7c7b29c2deaa\",\r\n  \"name\": \"4407579a-cd6d-4456-ba86-7c7b29c2deaa\",\r\n  \"properties\": {\r\n    \"activityId\": \"2d260d79-ffed-415a-93d7-7389c6817733-2018-02-22 18:13:27Z-Ps ActivityId: 536af6c2-6b24-4bd0-9f5d-d07d510e8378\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:27.7051626Z\",\r\n        \"endTime\": \"2018-02-22T18:13:27.7364603Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:27.7364603Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:27.4299802Z\",\r\n    \"endTime\": \"2018-02-22T18:13:27Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"95a7cf60-81d3-5c3f-91a2-0d1c9c9e2910\",\r\n    \"targetObjectName\": \"TestPCMPolicy1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1672"
+          "1699"
         ],
         "Content-Type": [
           "application/json"
@@ -631,7 +934,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/a770ff7f-6539-44d6-80af-eca47a4ac6fc"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/4407579a-cd6d-4456-ba86-7c7b29c2deaa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -653,19 +956,170 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "968e19c2-f4ba-47bd-8dcd-e5a0dbc3f671-2018-02-14 07:44:22Z-Ps"
+          "2b90c870-785c-4781-9af4-d06f294bab46-2018-02-22 18:13:27Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14172"
+          "14742"
         ],
         "x-ms-correlation-request-id": [
-          "4d549c24-56da-4011-b43e-2bc0a124d9ba"
+          "9ad864f5-7dec-4f11-bcf9-4aa3773714d8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074422Z:4d549c24-56da-4011-b43e-2bc0a124d9ba"
+          "SOUTHINDIA:20180222T181328Z:9ad864f5-7dec-4f11-bcf9-4aa3773714d8"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:22 GMT"
+          "Thu, 22 Feb 2018 18:13:28 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/eastUsToWestUs?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL2Vhc3RVc1RvV2VzdFVzP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319608042)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924408042)\\/\",\"ClientRequestId\":\"068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"gkynDExVxG45H6BpCqjtU4e2ESJiikXjwgO6IkLdJnI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/eff3ad04-149e-4240-8239-b40edbfcf6d7?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps 2/22/2018 6:13:28 PM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "x-ms-correlation-request-id": [
+          "af31fe85-2fbb-4ccb-92c0-3ca0708bd4bc"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181328Z:af31fe85-2fbb-4ccb-92c0-3ca0708bd4bc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:28 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/eastUsToWestUs/operationresults/eff3ad04-149e-4240-8239-b40edbfcf6d7?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/eff3ad04-149e-4240-8239-b40edbfcf6d7?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvZWZmM2FkMDQtMTQ5ZS00MjQwLTgyMzktYjQwZWRiZmNmNmQ3P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bb1dec61-321a-491d-939c-ff8910a82a8e-2018-02-22 18:13:28Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319608632)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924408632)\\/\",\"ClientRequestId\":\"bb1dec61-321a-491d-939c-ff8910a82a8e-2018-02-22 18:13:28Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"7Hw5vyhw7ZKQt2gKDuUj8TvGx84dCLuE8f6SPwIlMn4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/eff3ad04-149e-4240-8239-b40edbfcf6d7\",\r\n  \"name\": \"eff3ad04-149e-4240-8239-b40edbfcf6d7\",\r\n  \"properties\": {\r\n    \"activityId\": \"068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps ActivityId: af31fe85-2fbb-4ccb-92c0-3ca0708bd4bc\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:28.7354165Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": [\r\n          {\r\n            \"serviceErrorDetails\": {\r\n              \"code\": \"15023\",\r\n              \"message\": \"The protection group could not be  deleted.\",\r\n              \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n              \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n              \"activityId\": \"068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps ActivityId: af31fe85-2fbb-4ccb-92c0-3ca0708bd4bc\"\r\n            },\r\n            \"providerErrorDetails\": {\r\n              \"errorCode\": 0,\r\n              \"errorMessage\": null,\r\n              \"errorId\": \"2e16e279-2b09-4398-8256-beca708e09b8\",\r\n              \"possibleCauses\": \"\",\r\n              \"recommendedAction\": \"\"\r\n            },\r\n            \"errorLevel\": \"Error\",\r\n            \"creationTime\": \"2018-02-22T18:13:28.7547247Z\",\r\n            \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [\r\n      {\r\n        \"serviceErrorDetails\": {\r\n          \"code\": \"15023\",\r\n          \"message\": \"The protection group could not be  deleted.\",\r\n          \"possibleCauses\": \"There are protection units configured for protection using this profile.\",\r\n          \"recommendedAction\": \"Remove the protection unit configurations which are using this profile, then retry the operation.\",\r\n          \"activityId\": \"068c6cb2-4409-442f-bc5b-df2d3c515e15-2018-02-22 18:13:28Z-Ps ActivityId: af31fe85-2fbb-4ccb-92c0-3ca0708bd4bc\"\r\n        },\r\n        \"providerErrorDetails\": {\r\n          \"errorCode\": 0,\r\n          \"errorMessage\": null,\r\n          \"errorId\": \"2e16e279-2b09-4398-8256-beca708e09b8\",\r\n          \"possibleCauses\": \"\",\r\n          \"recommendedAction\": \"\"\r\n        },\r\n        \"errorLevel\": \"Error\",\r\n        \"creationTime\": \"2018-02-22T18:13:28.7547247Z\",\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\"\r\n      }\r\n    ],\r\n    \"startTime\": \"2018-02-22T18:13:28.339266Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"f38a654f-3974-5e7e-b4c6-a8d2ab6719b6\",\r\n    \"targetObjectName\": \"eastUsToWestUs\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3069"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/eff3ad04-149e-4240-8239-b40edbfcf6d7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "bb1dec61-321a-491d-939c-ff8910a82a8e-2018-02-22 18:13:28Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14741"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea8fcf00-87ca-44b7-90a6-0563b2bf3c8c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181329Z:ea8fcf00-87ca-44b7-90a6-0563b2bf3c8c"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:28 GMT"
         ]
       },
       "StatusCode": 200
@@ -683,16 +1137,16 @@
           "264"
         ],
         "x-ms-client-request-id": [
-          "5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps"
+          "43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590662833)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195462833)\\/\",\"ClientRequestId\":\"5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"/jmOjGS5Tem6X4jtFyl2gDIVKeOm4bnegVLeDE6u2UU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319609047)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924409047)\\/\",\"ClientRequestId\":\"43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cpAKstBkD4Zlj9KiL63lnCAxGlWdjBPpPCZtL9EE1MY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -713,10 +1167,10 @@
           "30"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a?api-version=2016-08-10"
         ],
         "x-ms-request-id": [
-          "5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps 2/14/2018 7:44:23 AM"
+          "43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps 2/22/2018 6:13:29 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -725,25 +1179,25 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps"
+          "43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1186"
+          "1191"
         ],
         "x-ms-correlation-request-id": [
-          "9a668ae0-d97c-4313-9d75-f8cb8cf16751"
+          "25048a75-7d14-485d-8318-8dfdb145632c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074423Z:9a668ae0-d97c-4313-9d75-f8cb8cf16751"
+          "SOUTHINDIA:20180222T181330Z:25048a75-7d14-485d-8318-8dfdb145632c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:23 GMT"
+          "Thu, 22 Feb 2018 18:13:29 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/65020ecd-b4d0-4086-8c8c-e5ce776c764a?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -752,31 +1206,31 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTlmNzNkMWQtM2M4ZC00ZTE5LWI4MzQtYjlmMTY0MWViY2JkP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNjUwMjBlY2QtYjRkMC00MDg2LThjOGMtZTVjZTc3NmM3NjRhP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ebf90643-75d3-4a84-8180-258afaab57de-2018-02-14 07:44:23Z-Ps"
+          "c9eaf4a8-6d0d-4456-84e3-e3b473d021fb-2018-02-22 18:13:30Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590663823)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195463823)\\/\",\"ClientRequestId\":\"ebf90643-75d3-4a84-8180-258afaab57de-2018-02-14 07:44:23Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"0iKdJPf4+iC9+7iXihoLRRetL4GBmvNcuYM+/SWGpTo=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319610028)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924410028)\\/\",\"ClientRequestId\":\"c9eaf4a8-6d0d-4456-84e3-e3b473d021fb-2018-02-22 18:13:30Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"skJY7BALE/A0W6iPziX1NEpfkZazZBO/zzb8qRWjUR4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd\",\r\n  \"name\": \"59f73d1d-3c8d-4e19-b834-b9f1641ebcbd\",\r\n  \"properties\": {\r\n    \"activityId\": \"5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps ActivityId: 9a668ae0-d97c-4313-9d75-f8cb8cf16751\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:23.8878296Z\",\r\n        \"endTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"endTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:23.578809Z\",\r\n    \"endTime\": \"2018-02-14T07:44:23Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a\",\r\n  \"name\": \"65020ecd-b4d0-4086-8c8c-e5ce776c764a\",\r\n  \"properties\": {\r\n    \"activityId\": \"43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps ActivityId: 25048a75-7d14-485d-8318-8dfdb145632c\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:30.1572434Z\",\r\n        \"endTime\": \"2018-02-22T18:13:30.1884929Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:30.1884929Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:29.8277186Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1684"
+          "1655"
         ],
         "Content-Type": [
           "application/json"
@@ -788,7 +1242,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -810,49 +1264,49 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "ebf90643-75d3-4a84-8180-258afaab57de-2018-02-14 07:44:23Z-Ps"
+          "c9eaf4a8-6d0d-4456-84e3-e3b473d021fb-2018-02-22 18:13:30Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14171"
+          "14740"
         ],
         "x-ms-correlation-request-id": [
-          "0f3c465d-860c-4147-a652-fa52e39fdff1"
+          "0657a02e-e6c5-4ad6-b1e4-bb3b56739b30"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074424Z:0f3c465d-860c-4147-a652-fa52e39fdff1"
+          "SOUTHINDIA:20180222T181330Z:0657a02e-e6c5-4ad6-b1e4-bb3b56739b30"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:23 GMT"
+          "Thu, 22 Feb 2018 18:13:30 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTlmNzNkMWQtM2M4ZC00ZTE5LWI4MzQtYjlmMTY0MWViY2JkP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNjUwMjBlY2QtYjRkMC00MDg2LThjOGMtZTVjZTc3NmM3NjRhP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b36986a7-09f5-411d-8215-cff7b43cb19e-2018-02-14 07:44:24Z-Ps"
+          "f88beeb5-e257-4be5-b293-4cc462573ecd-2018-02-22 18:13:30Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590664307)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195464307)\\/\",\"ClientRequestId\":\"b36986a7-09f5-411d-8215-cff7b43cb19e-2018-02-14 07:44:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"F/aLyJCEhqmpTaxodvV33hEofpTcG8XQXUrmOi4n9jw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319610413)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924410413)\\/\",\"ClientRequestId\":\"f88beeb5-e257-4be5-b293-4cc462573ecd-2018-02-22 18:13:30Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"z2x/plSnFp6WlBlrrxS7pHWyCkaf3IMrxCMigIif3p8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd\",\r\n  \"name\": \"59f73d1d-3c8d-4e19-b834-b9f1641ebcbd\",\r\n  \"properties\": {\r\n    \"activityId\": \"5f303948-1aa7-4b64-bbef-c388af3479c5-2018-02-14 07:44:22Z-Ps ActivityId: 9a668ae0-d97c-4313-9d75-f8cb8cf16751\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:23.8878296Z\",\r\n        \"endTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"endTime\": \"2018-02-14T07:44:23.9656834Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:23.578809Z\",\r\n    \"endTime\": \"2018-02-14T07:44:23Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a\",\r\n  \"name\": \"65020ecd-b4d0-4086-8c8c-e5ce776c764a\",\r\n  \"properties\": {\r\n    \"activityId\": \"43b8a8d4-da82-4a95-8893-846d3c7ddf7d-2018-02-22 18:13:29Z-Ps ActivityId: 25048a75-7d14-485d-8318-8dfdb145632c\",\r\n    \"scenarioName\": \"AddProtectionProfile\",\r\n    \"friendlyName\": \"Create replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"AddProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:30.1572434Z\",\r\n        \"endTime\": \"2018-02-22T18:13:30.2509698Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"AddProtectionProfileTask\",\r\n        \"name\": \"AddProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:30.2509698Z\",\r\n        \"endTime\": \"2018-02-22T18:13:30.2509698Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Creating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:29.8277186Z\",\r\n    \"endTime\": \"2018-02-22T18:13:30Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1684"
+          "1685"
         ],
         "Content-Type": [
           "application/json"
@@ -864,7 +1318,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/59f73d1d-3c8d-4e19-b834-b9f1641ebcbd"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/65020ecd-b4d0-4086-8c8c-e5ce776c764a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -886,19 +1340,19 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "b36986a7-09f5-411d-8215-cff7b43cb19e-2018-02-14 07:44:24Z-Ps"
+          "f88beeb5-e257-4be5-b293-4cc462573ecd-2018-02-22 18:13:30Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14170"
+          "14739"
         ],
         "x-ms-correlation-request-id": [
-          "ff4bc61b-1efd-4fa9-b4a7-f86722f3ed5d"
+          "97b3b0a5-5335-4de6-9752-24415498ff6b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074424Z:ff4bc61b-1efd-4fa9-b4a7-f86722f3ed5d"
+          "SOUTHINDIA:20180222T181330Z:97b3b0a5-5335-4de6-9752-24415498ff6b"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:23 GMT"
+          "Thu, 22 Feb 2018 18:13:30 GMT"
         ]
       },
       "StatusCode": 200
@@ -910,16 +1364,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1f3a2091-dc28-4f76-928a-fcf9d4b197f7-2018-02-14 07:44:24Z-Ps"
+          "011cd108-4c9f-4eaf-9d64-4497c19c2bdc-2018-02-22 18:13:30Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590664702)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195464702)\\/\",\"ClientRequestId\":\"1f3a2091-dc28-4f76-928a-fcf9d4b197f7-2018-02-14 07:44:24Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"z2Ep6xIlM7//EyfSJhhHxpUTAl6p1d2LmOBiIGtxz3I=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319610787)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924410787)\\/\",\"ClientRequestId\":\"011cd108-4c9f-4eaf-9d64-4497c19c2bdc-2018-02-22 18:13:30Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"CqJjOXYwuwEYDl0qGJ1r16gCntZlsutIK5E8Idqmy9o=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -940,7 +1394,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1f3a2091-dc28-4f76-928a-fcf9d4b197f7-2018-02-14 07:44:24Z-Ps 2/14/2018 7:44:24 AM"
+          "011cd108-4c9f-4eaf-9d64-4497c19c2bdc-2018-02-22 18:13:30Z-Ps 2/22/2018 6:13:30 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -962,19 +1416,19 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "1f3a2091-dc28-4f76-928a-fcf9d4b197f7-2018-02-14 07:44:24Z-Ps"
+          "011cd108-4c9f-4eaf-9d64-4497c19c2bdc-2018-02-22 18:13:30Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14169"
+          "14738"
         ],
         "x-ms-correlation-request-id": [
-          "3b51a257-4a0d-47ee-b7c7-da53507742c0"
+          "c15f5ec1-3d0e-4bec-9fb7-06320265d674"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074424Z:3b51a257-4a0d-47ee-b7c7-da53507742c0"
+          "SOUTHINDIA:20180222T181331Z:c15f5ec1-3d0e-4bec-9fb7-06320265d674"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:24 GMT"
+          "Thu, 22 Feb 2018 18:13:31 GMT"
         ]
       },
       "StatusCode": 200
@@ -986,16 +1440,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "286a7bd4-3894-46f4-9b56-712ceed25100-2018-02-14 07:44:25Z-Ps"
+          "3fed928a-0322-411c-99aa-bb37d754f784-2018-02-22 18:13:31Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590665085)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195465085)\\/\",\"ClientRequestId\":\"286a7bd4-3894-46f4-9b56-712ceed25100-2018-02-14 07:44:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"djLvJiWL+qr+cicH6Oo+fqlhDIVw7gkx1I4ks68c5xM=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319611180)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924411180)\\/\",\"ClientRequestId\":\"3fed928a-0322-411c-99aa-bb37d754f784-2018-02-22 18:13:31Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Ey4aY113sGKbUzozSjLlMIGb0bi10SuroDzNJde1bwI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -1016,7 +1470,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "286a7bd4-3894-46f4-9b56-712ceed25100-2018-02-14 07:44:25Z-Ps 2/14/2018 7:44:25 AM"
+          "3fed928a-0322-411c-99aa-bb37d754f784-2018-02-22 18:13:31Z-Ps 2/22/2018 6:13:31 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1038,19 +1492,95 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "286a7bd4-3894-46f4-9b56-712ceed25100-2018-02-14 07:44:25Z-Ps"
+          "3fed928a-0322-411c-99aa-bb37d754f784-2018-02-22 18:13:31Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14168"
+          "14737"
         ],
         "x-ms-correlation-request-id": [
-          "2a1a0c6e-6d84-4b6c-8c47-3426639d216c"
+          "19d3b1c7-ec72-4f17-b181-4c3db1325424"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074425Z:2a1a0c6e-6d84-4b6c-8c47-3426639d216c"
+          "SOUTHINDIA:20180222T181331Z:19d3b1c7-ec72-4f17-b181-4c3db1325424"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:24 GMT"
+          "Thu, 22 Feb 2018 18:13:31 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQb2xpY3k/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c41fa6bf-a453-4746-abaa-5dd2a7382f09-2018-02-22 18:13:33Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319613319)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924413319)\\/\",\"ClientRequestId\":\"c41fa6bf-a453-4746-abaa-5dd2a7382f09-2018-02-22 18:13:33Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Yb9pHYXHB27y3NViiQk3vdGZtRHbHsg+4VINJbVCJJ8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy\",\r\n  \"name\": \"TestPolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"TestPolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"recoveryPointThresholdInMinutes\": 0,\r\n      \"recoveryPointHistory\": 900,\r\n      \"appConsistentFrequencyInMinutes\": 300,\r\n      \"multiVmSyncStatus\": \"Enabled\",\r\n      \"crashConsistentFrequencyInMinutes\": 5\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "532"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c41fa6bf-a453-4746-abaa-5dd2a7382f09-2018-02-22 18:13:33Z-Ps 2/22/2018 6:13:33 PM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "c41fa6bf-a453-4746-abaa-5dd2a7382f09-2018-02-22 18:13:33Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14732"
+        ],
+        "x-ms-correlation-request-id": [
+          "610eb886-c7f4-4315-a20e-4e68c1387ca3"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181333Z:610eb886-c7f4-4315-a20e-4e68c1387ca3"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:33 GMT"
         ]
       },
       "StatusCode": 200
@@ -1068,16 +1598,16 @@
           "270"
         ],
         "x-ms-client-request-id": [
-          "6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps"
+          "d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590665438)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195465438)\\/\",\"ClientRequestId\":\"6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TWD8Yx+j5e7/zp2vs0diGSmlE2/ED0mR/2iX4CML4lM=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319611536)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924411536)\\/\",\"ClientRequestId\":\"d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"z+iqGRu5AxyZWY0JlaWspdHXJCQAVxJk8j9570nCzuA=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
@@ -1098,11 +1628,11 @@
           "30"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f",
-          "6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps 2/14/2018 7:44:26 AM"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73",
+          "d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps 2/22/2018 6:13:32 PM"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73?api-version=2016-08-10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1111,25 +1641,25 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps"
+          "d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1185"
+          "1190"
         ],
         "x-ms-correlation-request-id": [
-          "e213f7c4-992c-4019-8f31-466339f57e48"
+          "5aec19b0-f734-49f5-a939-434eb0698275"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074426Z:e213f7c4-992c-4019-8f31-466339f57e48"
+          "SOUTHINDIA:20180222T181332Z:5aec19b0-f734-49f5-a939-434eb0698275"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:25 GMT"
+          "Thu, 22 Feb 2018 18:13:32 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/5260e401-9454-43a9-8145-a965b995a11f?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/5a606132-c322-48fc-8bce-62ad714d4f73?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -1138,31 +1668,31 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTI2MGU0MDEtOTQ1NC00M2E5LTgxNDUtYTk2NWI5OTVhMTFmP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNWE2MDYxMzItYzMyMi00OGZjLThiY2UtNjJhZDcxNGQ0ZjczP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4baa47d9-7f4b-4d6b-bd06-99277afa6f52-2018-02-14 07:44:26Z-Ps"
+          "a6b4ddfc-03ee-4929-a157-ad10ad551a3e-2018-02-22 18:13:32Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590666728)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195466728)\\/\",\"ClientRequestId\":\"4baa47d9-7f4b-4d6b-bd06-99277afa6f52-2018-02-14 07:44:26Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"VxKa31cVcmdw05TUk9yfhVwtoNzuQSrSl9EMmcTOqew=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319612569)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924412569)\\/\",\"ClientRequestId\":\"a6b4ddfc-03ee-4929-a157-ad10ad551a3e-2018-02-22 18:13:32Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"GlIUqDBQGULyeHjmjaOEc01uBgGwznn3FxDZKZ5r3eE=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"name\": \"5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"properties\": {\r\n    \"activityId\": \"6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps ActivityId: e213f7c4-992c-4019-8f31-466339f57e48\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6065515Z\",\r\n        \"endTime\": \"2018-02-14T07:44:26.6377731Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6377731Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:26.4781635Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73\",\r\n  \"name\": \"5a606132-c322-48fc-8bce-62ad714d4f73\",\r\n  \"properties\": {\r\n    \"activityId\": \"d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps ActivityId: 5aec19b0-f734-49f5-a939-434eb0698275\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:32.354523Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2112"
+          "2086"
         ],
         "Content-Type": [
           "application/json"
@@ -1174,7 +1704,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1196,49 +1726,49 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "4baa47d9-7f4b-4d6b-bd06-99277afa6f52-2018-02-14 07:44:26Z-Ps"
+          "a6b4ddfc-03ee-4929-a157-ad10ad551a3e-2018-02-22 18:13:32Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14167"
+          "14735"
         ],
         "x-ms-correlation-request-id": [
-          "d91031cf-cd59-4711-86a2-ddd4a4a6994d"
+          "8e4e5723-7499-44b8-8220-b3cdfae716bd"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074426Z:d91031cf-cd59-4711-86a2-ddd4a4a6994d"
+          "SOUTHINDIA:20180222T181332Z:8e4e5723-7499-44b8-8220-b3cdfae716bd"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:26 GMT"
+          "Thu, 22 Feb 2018 18:13:32 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTI2MGU0MDEtOTQ1NC00M2E5LTgxNDUtYTk2NWI5OTVhMTFmP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNWE2MDYxMzItYzMyMi00OGZjLThiY2UtNjJhZDcxNGQ0ZjczP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1dadca40-0b10-460d-880e-7a5ff3cdb069-2018-02-14 07:44:27Z-Ps"
+          "93fdbdbd-3b7a-4fcc-9f9f-2b3ccfe40af6-2018-02-22 18:13:32Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590667120)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195467120)\\/\",\"ClientRequestId\":\"1dadca40-0b10-460d-880e-7a5ff3cdb069-2018-02-14 07:44:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"vhUXkJDCMPNM6AYBzSi8uMLWiyDjcdyQqZo5keuKLRU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319612930)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924412930)\\/\",\"ClientRequestId\":\"93fdbdbd-3b7a-4fcc-9f9f-2b3ccfe40af6-2018-02-22 18:13:32Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"WRXukS4+B74I50HPR6YoXjbPdcF0zzm3ZXVWlTN4kkQ=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"name\": \"5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"properties\": {\r\n    \"activityId\": \"6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps ActivityId: e213f7c4-992c-4019-8f31-466339f57e48\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6065515Z\",\r\n        \"endTime\": \"2018-02-14T07:44:26.6377731Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6377731Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:26.4781635Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73\",\r\n  \"name\": \"5a606132-c322-48fc-8bce-62ad714d4f73\",\r\n  \"properties\": {\r\n    \"activityId\": \"d45e28ca-3fae-4bf7-974e-6eaf365fd048-2018-02-22 18:13:31Z-Ps ActivityId: 5aec19b0-f734-49f5-a939-434eb0698275\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2018-02-22T18:13:32.8088621Z\",\r\n        \"endTime\": \"2018-02-22T18:13:32.8713406Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:32.8713406Z\",\r\n        \"endTime\": \"2018-02-22T18:13:32.8713406Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:32.354523Z\",\r\n    \"endTime\": \"2018-02-22T18:13:32Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2112"
+          "2133"
         ],
         "Content-Type": [
           "application/json"
@@ -1250,7 +1780,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5a606132-c322-48fc-8bce-62ad714d4f73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1272,52 +1802,49 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "1dadca40-0b10-460d-880e-7a5ff3cdb069-2018-02-14 07:44:27Z-Ps"
+          "93fdbdbd-3b7a-4fcc-9f9f-2b3ccfe40af6-2018-02-22 18:13:32Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14166"
+          "14734"
         ],
         "x-ms-correlation-request-id": [
-          "03138499-2b00-45b9-a6a7-e338133dee4e"
+          "53f70a38-fd4a-4301-8883-5c0f867bd83f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074427Z:03138499-2b00-45b9-a6a7-e338133dee4e"
+          "SOUTHINDIA:20180222T181333Z:53f70a38-fd4a-4301-8883-5c0f867bd83f"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:26 GMT"
+          "Thu, 22 Feb 2018 18:13:33 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNTI2MGU0MDEtOTQ1NC00M2E5LTgxNDUtYTk2NWI5OTVhMTFmP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
-      "RequestMethod": "GET",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL1Rlc3RQb2xpY3k/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a5d4e2de-c78a-4e81-9bc6-1042efc270f7-2018-02-14 07:44:27Z-Ps"
+          "a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590667515)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195467515)\\/\",\"ClientRequestId\":\"a5d4e2de-c78a-4e81-9bc6-1042efc270f7-2018-02-14 07:44:27Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"j/AzSPocgUmVRcbhmF+X5TrZGucP/Mzmvt0+rmQHYl4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319613682)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924413682)\\/\",\"ClientRequestId\":\"a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"g4lmEot0q3WS7DbB2b9XaUBAU9u3UWa2E281XF90W1o=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"name\": \"5260e401-9454-43a9-8145-a965b995a11f\",\r\n  \"properties\": {\r\n    \"activityId\": \"6009ab66-6e11-4150-8e04-f35e026ca0cf-2018-02-14 07:44:25Z-Ps ActivityId: e213f7c4-992c-4019-8f31-466339f57e48\",\r\n    \"scenarioName\": \"ModifyProtectionProfile\",\r\n    \"friendlyName\": \"Modify settings of the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"name\": \"ModifyProtectionProfilePreflightChecksTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6065515Z\",\r\n        \"endTime\": \"2018-02-14T07:44:26.6690226Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for updating the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"name\": \"ModifyProtectionProfileAssociationParentTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating replication configuration\",\r\n        \"state\": \"Other\",\r\n        \"stateDescription\": \"Skipped\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ModifyProtectionProfileTask\",\r\n        \"name\": \"ModifyProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:26.6690226Z\",\r\n        \"endTime\": \"2018-02-14T07:44:26.6690226Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Updating the replication policy settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:26.4781635Z\",\r\n    \"endTime\": \"2018-02-14T07:44:26Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "",
       "ResponseHeaders": {
         "Content-Length": [
-          "2134"
-        ],
-        "Content-Type": [
-          "application/json"
+          "0"
         ],
         "Expires": [
           "-1"
@@ -1325,69 +1852,71 @@
         "Pragma": [
           "no-cache"
         ],
+        "Retry-After": [
+          "30"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34?api-version=2016-08-10"
+        ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/5260e401-9454-43a9-8145-a965b995a11f"
+          "a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps 2/22/2018 6:13:34 PM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
         ],
         "x-content-type-options": [
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "a5d4e2de-c78a-4e81-9bc6-1042efc270f7-2018-02-14 07:44:27Z-Ps"
+          "a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14165"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
         ],
         "x-ms-correlation-request-id": [
-          "77a8bced-607c-47b0-906f-efd167e3e071"
+          "28f7b80c-9f21-4b6d-9b2a-b103956ad482"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074427Z:77a8bced-607c-47b0-906f-efd167e3e071"
+          "SOUTHINDIA:20180222T181334Z:28f7b80c-9f21-4b6d-9b2a-b103956ad482"
+        ],
+        "Cache-Control": [
+          "no-cache"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:27 GMT"
+          "Thu, 22 Feb 2018 18:13:34 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationPolicies/TestPolicy/operationresults/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34?api-version=2016-08-10"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/76af3459-9f97-4713-bc34-19e6bb2606d2?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvNzZhZjM0NTktOWY5Ny00NzEzLWJjMzQtMTllNmJiMjYwNmQyP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvM2FhMGNjZjYtNjdkOS00OGNjLTliMjYtNGRmZjVkYzhmYjM0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1beaee9-03da-43ac-9131-d66990f2448e-2018-02-14 07:44:28Z-Ps"
+          "98965f48-b84b-4420-a325-4d84d3f236f8-2018-02-22 18:13:34Z-Ps"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1518590668438)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519195468438)\\/\",\"ClientRequestId\":\"d1beaee9-03da-43ac-9131-d66990f2448e-2018-02-14 07:44:28Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"gUySDx3xFrhu5bCW8+s57IbxgZS3Jj+tlcQfUUVqD5M=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319614175)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924414175)\\/\",\"ClientRequestId\":\"98965f48-b84b-4420-a325-4d84d3f236f8-2018-02-22 18:13:34Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ZlodGT6kjUUPjJ4wUYXYDhCMy4/djEcnNwOCJIMu/KU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/76af3459-9f97-4713-bc34-19e6bb2606d2\",\r\n  \"name\": \"76af3459-9f97-4713-bc34-19e6bb2606d2\",\r\n  \"properties\": {\r\n    \"activityId\": \"491331a7-fc81-4304-9a63-39cc915e5340-2018-02-14 07:44:27Z-Ps ActivityId: ec040409-6c30-4e41-9d59-dd65c5c3cd3a\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-14T07:44:28.5959177Z\",\r\n        \"endTime\": \"2018-02-14T07:44:28.6271578Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-14T07:44:28.6271578Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-14T07:44:28.2182589Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34\",\r\n  \"name\": \"3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34\",\r\n  \"properties\": {\r\n    \"activityId\": \"a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps ActivityId: 28f7b80c-9f21-4b6d-9b2a-b103956ad482\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:34.2498432Z\",\r\n        \"endTime\": \"2018-02-22T18:13:34.2811185Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:34.2811185Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:33.9639722Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1672"
@@ -1402,7 +1931,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/76af3459-9f97-4713-bc34-19e6bb2606d2"
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1424,19 +1953,95 @@
           "nosniff"
         ],
         "x-ms-client-request-id": [
-          "d1beaee9-03da-43ac-9131-d66990f2448e-2018-02-14 07:44:28Z-Ps"
+          "98965f48-b84b-4420-a325-4d84d3f236f8-2018-02-22 18:13:34Z-Ps"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14164"
+          "14731"
         ],
         "x-ms-correlation-request-id": [
-          "67ecb7e0-d989-4381-8931-272a77ca0941"
+          "f724b374-8705-432f-8d20-ae5ee70d321d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20180214T074428Z:67ecb7e0-d989-4381-8931-272a77ca0941"
+          "SOUTHINDIA:20180222T181334Z:f724b374-8705-432f-8d20-ae5ee70d321d"
         ],
         "Date": [
-          "Wed, 14 Feb 2018 07:44:28 GMT"
+          "Thu, 22 Feb 2018 18:13:34 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9BMkFQb3dlcnNoZWxsVGVzdC9yZXBsaWNhdGlvbkpvYnMvM2FhMGNjZjYtNjdkOS00OGNjLTliMjYtNGRmZjVkYzhmYjM0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2edd0984-31f4-4dc5-906a-0ee7e199db24-2018-02-22 18:13:34Z-Ps"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1519319614566)\\/\",\"NotAfterTimestamp\":\"\\/Date(1519924414566)\\/\",\"ClientRequestId\":\"2edd0984-31f4-4dc5-906a-0ee7e199db24-2018-02-22 18:13:34Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"wcMIycuLzfC1vjBsyJxhlf7/2+r4f+9PkzAe04Gd+Xc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.3.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34\",\r\n  \"name\": \"3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34\",\r\n  \"properties\": {\r\n    \"activityId\": \"a56286e1-0a9a-437e-a5a6-e30e96b75989-2018-02-22 18:13:33Z-Ps ActivityId: 28f7b80c-9f21-4b6d-9b2a-b103956ad482\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2018-02-22T18:13:34.2498432Z\",\r\n        \"endTime\": \"2018-02-22T18:13:34.3435883Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2018-02-22T18:13:34.3435883Z\",\r\n        \"endTime\": \"2018-02-22T18:13:34.3435883Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2018-02-22T18:13:33.9639722Z\",\r\n    \"endTime\": \"2018-02-22T18:13:34Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"9ba0ac1f-63e7-5c43-b1d6-9550cc9ae833\",\r\n    \"targetObjectName\": \"TestPolicy\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1702"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest/replicationJobs/3aa0ccf6-67d9-48cc-9b26-4dff5dc8fb34"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "2edd0984-31f4-4dc5-906a-0ee7e199db24-2018-02-22 18:13:34Z-Ps"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14730"
+        ],
+        "x-ms-correlation-request-id": [
+          "b3de4f1c-ff95-47f0-b1a3-a06dd3d0ed6b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20180222T181334Z:b3de4f1c-ff95-47f0-b1a3-a06dd3d0ed6b"
+        ],
+        "Date": [
+          "Thu, 22 Feb 2018 18:13:34 GMT"
         ]
       },
       "StatusCode": 200

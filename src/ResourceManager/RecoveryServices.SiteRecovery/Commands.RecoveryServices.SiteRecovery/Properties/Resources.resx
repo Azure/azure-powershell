@@ -453,6 +453,9 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="NullorEmptyPrimaryStagingAzureStorageAccountId" xml:space="preserve">
     <value>PrimaryStagingAzureStorageAccountId passed is null or empty.</value>
   </data>
+  <data name="InvalidRecoveryAzureStorageAccountId" xml:space="preserve">
+    <value>RecoveryAzureStorageAccountId passed is null or empty.</value>
+  </data>
   <data name="ProtectionContainerFabricTypeIncorrect" xml:space="preserve">
     <value>Protection container fabric type : {0} expected: {1}.</value>
   </data>

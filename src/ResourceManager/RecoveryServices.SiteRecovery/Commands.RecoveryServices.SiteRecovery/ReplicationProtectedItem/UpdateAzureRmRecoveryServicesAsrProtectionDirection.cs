@@ -75,10 +75,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Azure virtual machines between two Azure regions.
         /// </summary>
         [Parameter(
-            Position = 0,
             ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = true)]
-        [Parameter(Position = 0,
+        [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
             Mandatory = true)]
         public SwitchParameter AzureToAzure { get; set; }
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public List<ASRAzuretoAzureDiskReplicationConfig> AzureToAzureDiskReplicationConfiguration { get; set; }
+        public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
         /// <summary>
         ///     Gets or sets recovery plan object.
@@ -475,21 +474,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             foreach (var replicationProvider in rp.Properties.ReplicationProviders)
             {
-                if (string.Compare(
-                        replicationProvider,
-                        Constants.InMageAzureV2,
-                        StringComparison.OrdinalIgnoreCase) ==
-                    0 ||
-                    string.Compare(
-                        replicationProvider,
-                        Constants.InMage,
-                        StringComparison.OrdinalIgnoreCase) ==
-                    0 ||
-                    string.Compare(
-                        replicationProvider,
-                        Constants.A2A,
-                        StringComparison.OrdinalIgnoreCase) ==
-                    0)
+                if (Constants.InMageAzureV2.Equals(replicationProvider,StringComparison.OrdinalIgnoreCase) ||
+                    Constants.InMage.Equals(replicationProvider, StringComparison.OrdinalIgnoreCase) ||
+                    Constants.A2A.Equals(replicationProvider, StringComparison.OrdinalIgnoreCase))
                 {
                     throw new InvalidOperationException(
                         string.Format(
@@ -559,7 +546,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // At a time only Disk or managedDisk details will be present.
                 // Will check with retieved protectedItem weather correct disk mapping is passed and then create the relevant object 
                 // and pass as input to service.
-                if (this.AzureToAzureDiskReplicationConfiguration == null || this.AzureToAzureDiskReplicationConfiguration.Count == 0)
+                if (this.AzureToAzureDiskReplicationConfiguration == null || this.AzureToAzureDiskReplicationConfiguration.Length == 0)
                 {
                     if (string.IsNullOrEmpty(this.LogStorageAccountId))
                     {
@@ -570,8 +557,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.ProtectionContainerMapping.TargetFabricFriendlyName &&
                         RecoveryAzureStorageAccountId == null)
                     {
-                        throw new ArgumentException();
-                        // TODO :: Properties.Resources.InvalidRecoveryAzureStorageAccountId);
+                        throw new ArgumentException(Resources.InvalidRecoveryAzureStorageAccountId);
                     }
 
                     foreach (var disk in ((A2AReplicationDetails)replicationProtectedItemResponse

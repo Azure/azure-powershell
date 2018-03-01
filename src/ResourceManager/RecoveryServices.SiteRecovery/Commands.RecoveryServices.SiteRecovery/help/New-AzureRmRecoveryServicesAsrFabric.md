@@ -34,6 +34,12 @@ The **New-AzureRmRecoveryServicesAsrFabric** cmdlet creates an Azure Site Recove
 PS C:\>  $currentJob = New-AzureRmRecoveryServicesAsrFabric -Name $FabricName
 ```
 
+### Example 2
+```
+PS C:\>  $currentJob = New-AzureRmRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
+PS C:\>  Get-ASRJob -name $job.id
+```
+
 Starts the fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
 
 ## PARAMETERS
