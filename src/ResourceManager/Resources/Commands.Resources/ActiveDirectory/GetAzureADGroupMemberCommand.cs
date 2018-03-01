@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADObject>))]
     public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Object Id of the group.")]
         [ValidateNotNullOrEmpty]
         [Alias("Id")]
         public Guid GroupObjectId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "GroupObject", HelpMessage = "The group object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.GroupObject, HelpMessage = "The group object.")]
         [ValidateNotNullOrEmpty]
         public PSADGroup GroupObject { get; set; }
 

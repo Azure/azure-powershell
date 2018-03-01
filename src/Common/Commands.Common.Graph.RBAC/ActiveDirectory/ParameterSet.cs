@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string UPN = "UPNParameterSet";
 
+        public const string UPNOrObjectId = "UPNOrObjectIdParameterSet";
+
         public const string SPN = "SPNParameterSet";
 
         public const string SignInName = "SignInNameParameterSet";
@@ -27,6 +29,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string SearchString = "SearchStringParameterSet";
 
         public const string ObjectId = "ObjectIdParameterSet";
+
+        public const string GroupObject = "GroupObjectParameterSet";
+
+        public const string ServicePrincipalObject = "ServicePrincipalObjectParameterSet";
 
         public const string Scope = "ScopeParameterSet";
 
@@ -74,6 +80,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string InputFile = "InputFileParameterSet";
 
+        public const string InputObject = "InputObjectParameterSet";
+
         public const string RoleDefinition = "RoleDefinitionParameterSet";
 
         public const string RoleDefinitionName = "RoleDefinitionNameParameterSet";
@@ -85,6 +93,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string RoleDefinitionCustom = "RoleDefinitionCustomParameterSet";
 
         public const string ApplicationObjectId = "ApplicationObjectIdParameterSet";
+
+        public const string ApplicationObject = "ApplicationObjectParameterSet";
+
+        public const string ApplicationObjectWithKeyId = "ApplicationObjectWithKeyIdParameterSet";
 
         public const string ApplicationId = "ApplicationIdParameterSet";
 
@@ -115,6 +127,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string SPNWithKeyId = "SPNWithKeyIdParameterSet";
 
         public const string SPNWithAll = "SPNWithAllParameterSet";
+
+        public const string SPNObject = "SPNObjectParameterSet";
 
         public const string ApplicationObjectIdWithUpdateParams = "ApplicationObjectIdWithUpdateParamsParameterSet";
 

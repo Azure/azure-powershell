@@ -50,19 +50,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
-            {
-                SearchString = SearchString,
-                UPN = UserPrincipalName,
-                Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
-                Paging = true,
-                Mail = Mail
-            };
-
-            ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
-            ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
             ExecutionBlock(() =>
             {
+                ADObjectFilterOptions options = new ADObjectFilterOptions
+                {
+                    SearchString = SearchString,
+                    UPN = UserPrincipalName,
+                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Paging = true,
+                    Mail = Mail
+                };
+
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
                 WriteObject(ActiveDirectoryClient.FilterUsers(options, first, skip), true);
             });
         }

@@ -22,11 +22,20 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes the AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ObjectId, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application object id.")]
-        public Guid ObjectId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The application object id.")]
+        public string ObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
+        public string ApplicationId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The application object.")]
+        public PSADApplication InputObject { get; set;}
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
@@ -35,12 +44,27 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                {
+                    ObjectId = InputObject.ObjectId.ToString();
+                }
+
+                if (!string.IsNullOrEmpty(ApplicationId))
+                {
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                }
+
                 ConfirmAction(
-               Force.IsPresent,
-               string.Format(ProjectResources.RemovingApplication, ObjectId.ToString()),
-               ProjectResources.RemoveApplication,
-               ObjectId.ToString(),
-               () => ActiveDirectoryClient.RemoveApplication(ObjectId.ToString()));
+                    Force.IsPresent,
+                    string.Format(ProjectResources.RemovingApplication, ObjectId),
+                    ProjectResources.RemoveApplication,
+                    ObjectId,
+                    () => ActiveDirectoryClient.RemoveApplication(ObjectId));
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             });
         }
     }

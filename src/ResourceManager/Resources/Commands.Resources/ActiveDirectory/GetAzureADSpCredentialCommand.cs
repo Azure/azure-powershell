@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "ServicePrincipalObject", HelpMessage = "The service principal object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.SPNObject, HelpMessage = "The service principal object.")]
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal ServicePrincipalObject { get; set; }
 

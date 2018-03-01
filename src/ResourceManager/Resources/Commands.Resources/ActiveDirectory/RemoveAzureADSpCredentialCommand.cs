@@ -23,27 +23,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes AD SP credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The servicePrincipal object id.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithAll, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithKeyId, HelpMessage = "The servicePrincipal name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithAll, HelpMessage = "The servicePrincipal name.")]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The keyCredential Id.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithKeyId, HelpMessage = "The keyCredential Id.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ServicePrincipalObject, HelpMessage = "The service principal object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADServicePrincipal ServicePrincipalObject { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The keyCredential Id.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithKeyId, HelpMessage = "The keyCredential Id.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ServicePrincipalObject, HelpMessage = "The keyCredential Id.")]
         [ValidateGuidNotEmpty]
         public Guid KeyId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithAll, HelpMessage = "Switch to remove all credentials.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithAll, HelpMessage = "Switch to remove all credentials.")]
-        public SwitchParameter All { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
@@ -52,34 +54,38 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("ServicePrincipalObject"))
+                {
+                    ObjectId = ServicePrincipalObject.Id.ToString();
+                }
+
                 if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }
 
-                bool deleteAllCredentials = false;
-                if (All.IsPresent)
-                {
-                    deleteAllCredentials = true;
-                }
-
                 if (KeyId != Guid.Empty)
                 {
                     ConfirmAction(
-                  Force.IsPresent,
-                  string.Format(ProjectResources.RemovingSpCredentialWithId, KeyId, ObjectId),
-                  ProjectResources.RemoveCredential,
-                  ObjectId,
-                  () => ActiveDirectoryClient.RemoveSpCredentialByKeyId(ObjectId, KeyId));
+                        Force.IsPresent,
+                        string.Format(ProjectResources.RemovingSpCredentialWithId, KeyId, ObjectId),
+                        ProjectResources.RemoveCredential,
+                        ObjectId,
+                        () => ActiveDirectoryClient.RemoveSpCredentialByKeyId(ObjectId, KeyId));
                 }
-                else if (deleteAllCredentials)
+                else
                 {
                     ConfirmAction(
-                  Force.IsPresent,
-                  string.Format(ProjectResources.RemovingAllSpCredentials, ObjectId),
-                  ProjectResources.RemoveCredential,
-                  ObjectId,
-                  () => ActiveDirectoryClient.RemoveAllSpCredentials(ObjectId));
+                        Force.IsPresent,
+                        string.Format(ProjectResources.RemovingAllSpCredentials, ObjectId),
+                        ProjectResources.RemoveCredential,
+                        ObjectId,
+                        () => ActiveDirectoryClient.RemoveAllSpCredentials(ObjectId));
+                }
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
                 }
             });
         }

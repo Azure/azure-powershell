@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "ApplicationObject", HelpMessage = "The application object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObject, HelpMessage = "The application object.")]
         [ValidateNotNullOrEmpty]
         public PSADApplication ApplicationObject { get; set; }
 
