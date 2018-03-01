@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\A2A\AsrA2ATests.cs" />
     <Compile Include="ScenarioTests\B2A\AsrB2ATests.cs" />
     <Compile Include="ScenarioTests\Common\AsrTests.cs" />
     <Compile Include="ScenarioTests\Constants.cs" />
@@ -153,12 +152,6 @@
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="ScenarioTests\A2A\AsrA2ATests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\A2A\AsrA2A.VaultCredentials">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\B2A\AsrB2ATests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -190,9 +183,6 @@
     <None Include="ScenarioTests\E2E\E2E.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrB2ATests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -202,7 +192,6 @@
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\FabricTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\TestSetVault.json" />
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\V2AEvent.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -309,6 +298,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ScenarioTests\A2A\" />
+    <Folder Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
