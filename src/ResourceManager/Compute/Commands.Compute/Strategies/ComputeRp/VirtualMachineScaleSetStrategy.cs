@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
+            IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
@@ -98,11 +99,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                             new VirtualMachineScaleSetIPConfiguration
                                             {
                                                 Name = name,
-                                                LoadBalancerBackendAddressPools = new[]
+                                                LoadBalancerBackendAddressPools = new [] 
                                                 {
                                                     engine.GetReference(backendAdressPool)
                                                 },
-                                                Subnet = engine.GetReference(subnet)
+                                                Subnet = engine.GetReference(subnet),
+                                                LoadBalancerInboundNatPools = inboundNatPools
+                                                    .Select(engine.GetReference)
+                                                    .ToList()
                                             }
                                         },
                                         Primary = true
