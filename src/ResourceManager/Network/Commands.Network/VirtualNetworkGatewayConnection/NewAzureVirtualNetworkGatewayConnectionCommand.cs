@@ -145,6 +145,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "A list of IPSec policies.")]
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();

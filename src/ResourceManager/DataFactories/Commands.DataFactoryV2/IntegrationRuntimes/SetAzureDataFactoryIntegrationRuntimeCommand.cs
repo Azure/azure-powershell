@@ -99,8 +99,40 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
+        [ValidateNotNullOrEmpty]
+        public string SetupScriptContainerSasUri { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            IntegrationRuntimeEdition.Standard,
+            IntegrationRuntimeEdition.Enterprise,
+            IgnoreCase = true)]
+        public string Edition { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
         public int? MaxParallelExecutionsPerNode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLicenseType)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.IntegrationRuntimeLicenseIncluded,
+            Constants.IntegrationRuntimeBasePrice,
+            IgnoreCase = true)]
+        public string LicenseType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
+        [ValidateNotNull]
+        public System.Security.SecureString AuthKey { get; set; }
 
         [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
@@ -153,7 +185,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     }
                     else
                     {
-                        resource.Properties = new SelfHostedIntegrationRuntime();
+                        var selfHosted = new SelfHostedIntegrationRuntime();
+                        if (AuthKey != null)
+                        {
+                            var authKey = ConvertToUnsecureString(AuthKey);
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
+                        }
+
+                        resource.Properties = selfHosted;
                     }
                 }
                 else
@@ -336,6 +375,42 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Resources.IntegrationRuntimeInvalidVnet),
                         "Type");
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(LicenseType))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+
+                integrationRuntime.SsisProperties.LicenseType = LicenseType;
+            }
+
+            if (!string.IsNullOrEmpty(SetupScriptContainerSasUri))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+
+                int index = SetupScriptContainerSasUri.IndexOf('?');
+
+                integrationRuntime.SsisProperties.CustomSetupScriptProperties = new IntegrationRuntimeCustomSetupScriptProperties()
+                {
+                    BlobContainerUri = index >= 0 ? SetupScriptContainerSasUri.Substring(0, index) : SetupScriptContainerSasUri,
+                    SasToken = index >= 0 ? new SecureString(SetupScriptContainerSasUri.Substring(index)) : null
+                };
+            }
+
+            if (!string.IsNullOrEmpty(Edition))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+
+                integrationRuntime.SsisProperties.Edition = Edition;
             }
 
             integrationRuntime.Validate();

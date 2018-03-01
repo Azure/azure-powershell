@@ -62,7 +62,7 @@ If you want to allow Azure IPs to access the server, this parameter should be us
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureIpRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,7 +92,7 @@ Specifies the end value of the IP address range for this rule.
 ```yaml
 Type: String
 Parameter Sets: UserSpecifiedRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -122,7 +122,7 @@ Specifies the name of a resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -138,7 +138,7 @@ Specify the server name, not the fully qualified DNS name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -153,7 +153,7 @@ Specifies the start value of the IP address range for the firewall rule.
 ```yaml
 Type: String
 Parameter Sets: UserSpecifiedRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

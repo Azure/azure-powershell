@@ -36,6 +36,8 @@ SqlAdministratorLogin    : adminLogin
 SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 ```
 
 This command resets the administrator password on the AzureSQL Server named server01.
@@ -48,7 +50,7 @@ Generate and assign an Azure Active Directory Identity for this server for use w
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +80,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,7 +95,7 @@ Specifies the name of the resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +126,7 @@ parameter are: 2.0 and 12.0.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +143,7 @@ ConvertTo-SecureString`.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

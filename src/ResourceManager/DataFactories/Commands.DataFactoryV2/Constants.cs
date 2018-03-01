@@ -106,13 +106,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
 
+        public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
+
+        public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
+
+        public const string HelpIntegrationRuntimeLicenseType = "The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.";
 
         public const string HelpIntegrationRuntimeAutoUpdate = "Enable or disable the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeAutoUpdateTime = "The time of the day for the self-hosted integration runtime auto-update.";
 
         public const string HelpIntegrationRuntimeKeyName = "The authentication key name of the self-hosted integration runtime.";
+
+        public const string HelpIntegrationRuntimeAuthKey = "The authentication key of the self-hosted integration runtime.";
 
         public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
 
@@ -162,10 +170,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
 
+        public const string IntegrationRuntimeSelfhostedLinked = "SelfHosted(Linked)";
+
         public const string IntegrationRuntimeAutoUpdateEnabled = "On";
 
         public const string IntegrationRuntimeAutoUpdateDisabled = "Off";
 
+        public const string LinkedIntegrationRuntimeKeyAuth = "Key";
+
+        public const string LinkedIntegrationRuntimeRbacAuth = "RBAC";
+
         public const string TriggerName = "TriggerName";
+
+        public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
+
+        public const string IntegrationRuntimeBasePrice = "BasePrice";
     }
 }

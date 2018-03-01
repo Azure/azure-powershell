@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Network
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
@@ -239,11 +239,11 @@ Lists network usages for a subscription
 ### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
 Gets the properties of a Network Watcher
 
-### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
-Lists all available internet service providers for a specified Azure region
+### [Get-AzureRmNetworkWatcherConnectionMonitor](Get-AzureRmNetworkWatcherConnectionMonitor.md)
+Gets a connection monitor
 
-### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
-Gets the relative latency score for internet service providers from a specified location to Azure regions
+### [Get-AzureRmNetworkWatcherConnectionMonitorReport](Get-AzureRmNetworkWatcherConnectionMonitorReport.md)
+Gets a snapshot of the most recent connection states
 
 ### [Get-AzureRmNetworkWatcherFlowLogStatus](Get-AzureRmNetworkWatcherFlowLogStatus.md)
 Gets the status of flow logging on a resource.
@@ -253,6 +253,12 @@ Gets the next hop from a VM.
 
 ### [Get-AzureRmNetworkWatcherPacketCapture](Get-AzureRmNetworkWatcherPacketCapture.md)
 Gets information and properties and status of a packet capture resource.
+
+### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
+Lists all available internet service providers for a specified Azure region.
+
+### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
+Gets the relative latency score for internet service providers from a specified location to Azure regions.
 
 ### [Get-AzureRmNetworkWatcherSecurityGroupView](Get-AzureRmNetworkWatcherSecurityGroupView.md)
 View the configured and effective network security group rules applied on a VM.
@@ -445,6 +451,9 @@ Creates a network security rule configuration.
 
 ### [New-AzureRmNetworkWatcher](New-AzureRmNetworkWatcher.md)
 Creates a new Network Watcher resource.
+
+### [New-AzureRmNetworkWatcherConnectionMonitor](New-AzureRmNetworkWatcherConnectionMonitor.md)
+Creates a new connection monitor resource.
 
 ### [New-AzureRmNetworkWatcherPacketCapture](New-AzureRmNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
@@ -731,6 +740,9 @@ Sets the goal state for a network security group.
 ### [Set-AzureRmNetworkSecurityRuleConfig](Set-AzureRmNetworkSecurityRuleConfig.md)
 Sets the goal state for a network security rule configuration.
 
+### [Set-AzureRmNetworkWatcherConnectionMonitor](Set-AzureRmNetworkWatcherConnectionMonitor.md)
+Modifies a connection monitor.
+
 ### [Set-AzureRmNetworkWatcherConfigFlowLog](Set-AzureRmNetworkWatcherConfigFlowLog.md)
 Configures flow logging for a target resource.
 
@@ -776,11 +788,17 @@ Configures the goal state for a subnet configuration in a virtual network.
 ### [Start-AzureRmApplicationGateway](Start-AzureRmApplicationGateway.md)
 Starts an application gateway.
 
+### [Start-AzureRmNetworkWatcherConnectionMonitor](Start-AzureRmNetworkWatcherConnectionMonitor.md)
+Starts a connection monitor.
+
 ### [Start-AzureRmNetworkWatcherResourceTroubleshooting](Start-AzureRmNetworkWatcherResourceTroubleshooting.md)
 Starts troubleshooting on a Networking resource in Azure.
 
 ### [Stop-AzureRmApplicationGateway](Stop-AzureRmApplicationGateway.md)
 Stops an application gateway
+
+### [Stop-AzureRmNetworkWatcherConnectionMonitor](Stop-AzureRmNetworkWatcherConnectionMonitor.md)
+Stops a running connection monitor
 
 ### [Stop-AzureRmNetworkWatcherPacketCapture](Stop-AzureRmNetworkWatcherPacketCapture.md)
 Stops a running packet capture session

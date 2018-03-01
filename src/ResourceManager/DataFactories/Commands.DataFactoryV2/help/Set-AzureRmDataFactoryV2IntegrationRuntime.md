@@ -17,7 +17,8 @@ Updates an integration runtime.
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,7 +28,8 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-ResourceId] <String>
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +38,8 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
 Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-Force] [-InputObject] <PSIntegrationRuntime>
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,6 +63,21 @@ PS C:\> Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-d
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
 
 ## PARAMETERS
+
+### -AuthKey
+The authentication key of the self-hosted integration runtime.
+
+```yaml
+Type: SecureString
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CatalogAdminCredential
 The catalog database administrator credential of the integration runtime.
@@ -151,6 +169,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Edition
+The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Standard, Enterprise
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Runs the cmdlet without prompting for confirmation.
 
@@ -178,6 +212,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,6 +333,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SetupScriptContainerSasUri
+The SAS URI of the Azure blob container that contains the custom setup script.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

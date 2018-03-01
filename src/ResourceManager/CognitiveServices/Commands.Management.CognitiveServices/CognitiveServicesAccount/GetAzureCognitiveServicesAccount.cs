@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
                 else
                 {
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(
                         this.ResourceGroupName,
                         this.Name);
 

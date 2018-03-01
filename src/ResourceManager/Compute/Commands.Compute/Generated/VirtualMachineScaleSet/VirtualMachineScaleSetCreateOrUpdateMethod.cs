@@ -20,13 +20,10 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -116,27 +113,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        public const string SimpleParameterSet = "SimpleParameterSet";
+
         public override void ExecuteCmdlet()
         {
-            ExecuteClientAction(() =>
+            switch (ParameterSetName)
             {
-                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
-                {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string vmScaleSetName = this.VMScaleSetName;
-                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+                case SimpleParameterSet:
+                    this.StartAndWait(SimpleParameterSetExecuteCmdlet);
+                    break;
+                default:
+                    ExecuteClientAction(() =>
+                    {
+                        if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
+                        {
+                            string resourceGroupName = this.ResourceGroupName;
+                            string vmScaleSetName = this.VMScaleSetName;
+                            VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
-                    var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                    var psObject = new PSVirtualMachineScaleSet();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                    WriteObject(psObject);
-                }
-            });
+                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            var psObject = new PSVirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                            WriteObject(psObject);
+                        }
+                    });
+                    break;
+            }
         }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
@@ -144,6 +148,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
         [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
@@ -154,6 +161,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = true)]
         [Alias("Name")]
         [AllowNull]
         public string VMScaleSetName { get; set; }
@@ -166,5 +176,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

@@ -79,6 +79,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ApiVersion",
           "AliasList": [],
           "Type": {
@@ -166,6 +182,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -313,6 +351,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -393,6 +453,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -505,7 +587,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -802,7 +884,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -969,7 +1051,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4979,7 +5061,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5251,7 +5333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5584,7 +5666,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5830,7 +5912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8482,7 +8564,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -8969,7 +9051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -9178,7 +9260,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9383,7 +9465,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9832,7 +9914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -9930,6 +10012,22 @@
         },
         {
           "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -10204,6 +10302,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -10423,6 +10543,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -10684,6 +10826,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -10903,6 +11067,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -11164,6 +11350,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -11383,6 +11591,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -11644,6 +11874,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -11862,6 +12114,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -12059,6 +12333,28 @@
             {
               "ParameterMetadata": {
                 "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -13065,7 +13361,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -14680,7 +14976,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -15186,7 +15482,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -15513,7 +15809,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -21220,7 +21516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21480,7 +21776,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21720,7 +22016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21916,7 +22212,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22090,7 +22386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22308,7 +22604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22548,7 +22844,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22697,7 +22993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22871,7 +23167,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -25928,7 +26224,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -26140,7 +26436,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -28738,6 +29034,22 @@
       ],
       "Parameters": [
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceId",
           "AliasList": [
             "Id"
@@ -28944,6 +29256,151 @@
       ],
       "ParameterSets": [
         {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ODataQuery",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
           "Name": "ByResourceId",
           "Parameters": [
             {
@@ -28969,6 +29426,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -29207,6 +29686,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -29442,29 +29943,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ODataQuery",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Force",
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -29484,85 +29963,6 @@
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
-            {
-              "ParameterMetadata": {
-                "Name": "ApiVersion",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Pre",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
             {
               "ParameterMetadata": {
                 "Name": "ODataQuery",
@@ -31239,6 +31639,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceId",
           "AliasList": [
             "Id"
@@ -31589,6 +32005,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -31855,6 +32293,28 @@
             {
               "ParameterMetadata": {
                 "Name": "UsePatchSemantics",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -32251,6 +32711,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -32605,6 +33087,28 @@
             {
               "ParameterMetadata": {
                 "Name": "UsePatchSemantics",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -32893,6 +33397,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceId",
           "AliasList": [
             "Id"
@@ -33265,6 +33785,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -33574,6 +34116,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -33950,6 +34514,28 @@
             {
               "ParameterMetadata": {
                 "Name": "IsFullObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -34368,6 +34954,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ODataQuery",
                 "AliasList": [],
                 "Type": {
@@ -34541,7 +35149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -34801,7 +35409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35041,7 +35649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35237,7 +35845,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35411,7 +36019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35629,7 +36237,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -35869,7 +36477,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -36018,7 +36626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -36192,7 +36800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -38490,6 +39098,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -38595,7 +39204,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "FeatureName": "System.String",
         "ProviderName": "System.String",
@@ -38607,7 +39216,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Providers": "System.Collections.Generic.List`1[System.String]",
         "DisplayName": "System.String",
@@ -38629,7 +39238,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
       "GenericTypeArguments": []
@@ -38637,7 +39246,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ZoneMappings": "System.Collections.Hashtable",
         "ResourceTypeName": "System.String",
@@ -38666,7 +39275,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
         "ZoneMappings": "System.Collections.Hashtable",
@@ -38680,7 +39289,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
         "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -38721,7 +39330,7 @@
     "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -38732,7 +39341,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Value": "System.Object",
         "Type": "System.String"
@@ -38759,7 +39368,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
         "Code": "System.String",
@@ -38772,7 +39381,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -38782,7 +39391,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Hashtable",
         "ResourceGroupName": "System.String",
@@ -38805,7 +39414,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

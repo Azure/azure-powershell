@@ -64,7 +64,9 @@ function Test-RestoreGeoBackup
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_georestored"
 
-	Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName
+	$geobackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName 
+	$job = $geobackup | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -AsJob
+	$job | Wait-Job
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -77,7 +79,9 @@ function Test-RestoreDeletedDatabaseBackup
 	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
 
-	Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+	$deletedDb = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName `
+		-DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" 
+	$deletedDb | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
 }
 
 function Test-RestorePointInTimeBackup
@@ -90,7 +94,8 @@ function Test-RestorePointInTimeBackup
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored"
 
-	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
+	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | 
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
 }
 
 function Test-ServerBackupLongTermRetentionVault
@@ -119,7 +124,8 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 	$policyResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy"
 
 	# set
-	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State "Enabled" -ResourceId $policyResourceId
+	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-DatabaseName $db.DatabaseName -State "Enabled" -ResourceId $policyResourceId
 	# get
 	$result = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
 	#verify
@@ -135,7 +141,8 @@ function Test-RestoreLongTermRetentionBackup
 	$restoredDbName = "powershell_db_restored_ltr"
 	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
 
-    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName `
+		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 
 function Test-DatabaseGeoBackupPolicy

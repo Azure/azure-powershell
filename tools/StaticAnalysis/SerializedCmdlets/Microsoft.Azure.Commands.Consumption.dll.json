@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.2.7.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -667,6 +667,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "Subscription",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -788,7 +792,7 @@
     "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail": {
       "Namespace": "Microsoft.Azure.Commands.Consumption.Models",
       "Name": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.2.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MeterDetails": "Microsoft.Azure.Management.Consumption.Models.MeterDetails",
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -915,6 +919,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",

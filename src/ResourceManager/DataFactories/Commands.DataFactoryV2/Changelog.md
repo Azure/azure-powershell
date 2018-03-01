@@ -19,8 +19,16 @@
 -->
 
 ## Current Release
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
+* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Enable integration runtime to be shared across data factory
+
+## Version 0.5.0
+* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add parameter "LicenseType" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable AHUB functionality
 
 ## Version 0.4.1
 * Added two new cmdlets: Update-AzureRmDataFactoryV2 and Stop-AzureRmDataFactoryV2PipelineRun

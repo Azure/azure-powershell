@@ -17,7 +17,7 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>]
  [-UseSubDomain <Boolean>] [-EnableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,21 +33,19 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 This command creates a Storage account for the resource group name MyResourceGroup.
 
-### Example 2: Create a Blob Storage account that uses Storage Service Encryption
+### Example 2: Create a Blob Storage account with BlobStorage Kind and hot AccessTier
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService Blob -Kind "BlobStorage" -AccessTier Hot
-```
-
-This command creates a Blob Storage account that uses the hot access type.
-The account has enabled Storage Service encryption on Blob Service.
-
-### Example 3: Create a Storage account with Kind StorageV2 that Enables Storage Service Encryption on Blob and File Services, and Generate and Assign an Identity for Azure KeyVault.
-```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2 -EnableEncryptionService "Blob,File" -AssignIdentity
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -Kind "BlobStorage" -AccessTier Hot
 ```
 
-This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage
-account keys through Azure KeyVault.
+This command creates a Blob Storage account that with BlobStorage Kind and hot AccessTier
+
+### Example 3: Create a Storage account with Kind StorageV2, and Generate and Assign an Identity for Azure KeyVault.
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2 -AssignIdentity
+```
+
+This command creates a Storage account with Kind StorageV2.  It also generates and assigns an identity that can be used to manage account keys through Azure KeyVault.
 
 ### Example 4: Create a Storage account with NetworkRuleSet from JSON
 ```
@@ -74,8 +72,23 @@ the *AccessTier* parameter.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Hot, Cool
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -90,7 +103,7 @@ Generate and assign a new Storage account Identity for this Storage account for 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -106,7 +119,7 @@ The default value is Storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -137,7 +150,7 @@ Azure Blob storage and Azure Files are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: None, Blob, File
 
 Required: False
@@ -153,7 +166,7 @@ Indicates whether or not the Storage account only enables HTTPS traffic.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -175,8 +188,8 @@ The default value is Storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: Storage, StorageV2, BlobStorage
+Aliases: 
+Accepted values: Storage, BlobStorage
 
 Required: False
 Position: Named
@@ -191,7 +204,7 @@ Specifies the location of the Storage account to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -221,7 +234,7 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 ```yaml
 Type: PSNetworkRuleSet
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -236,7 +249,7 @@ Specifies the name of the resource group in which to add the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -291,7 +304,7 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvm
 schema: 2.0.0
@@ -14,16 +15,27 @@ Updates the state of an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-AssignIdentity] [-ResourceGroupName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AssignIdentityParameterSet
+```
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AssignIdentity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
+ -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Update-AzureRmVM -VM <PSVirtualMachine> [-Tags <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-AssignIdentity] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,10 +74,10 @@ Specify the system assigned identity for the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AssignIdentityParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,16 +114,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IdentityId
+Specifies the list of user identities associated with the virtual machine scale set.
+The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: String[]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 The type of identity used for the virtual machine. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 
 ```yaml
 Type: ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
 Accepted values: SystemAssigned
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,7 +151,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSetName
+Parameter Sets: ResourceGroupNameParameterSetName, AssignIdentityParameterSet, ExplicitIdentityParameterSet
 Aliases: 
 
 Required: True
@@ -133,7 +161,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specifies the resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
 Each resource or resource group can have a maximum of 15 tags.
@@ -141,7 +169,7 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named

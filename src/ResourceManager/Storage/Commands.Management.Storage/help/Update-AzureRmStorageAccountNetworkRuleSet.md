@@ -15,8 +15,8 @@ Update the NetworkRule property of a Storage account
 ```
 Update-AzureRmStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-Bypass <PSNetWorkRuleBypassEnum>] [-DefaultAction <PSNetWorkRuleDefaultActionEnum>] [-IPRule <PSIpRule[]>]
- [-VirtualNetworkRule <PSVirtualNetworkRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VirtualNetworkRule <PSVirtualNetworkRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +49,21 @@ This command clean up rules of NetworkRule of a Storage account (other propertie
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Bypass
 The Bypass value to update to the NetworkRule property of a Storage account.
 The allowed value are none or any combination of:
@@ -59,7 +74,7 @@ The allowed value are none or any combination of:
 ```yaml
 Type: PSNetWorkRuleBypassEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: None, Logging, Metrics, AzureServices
 
 Required: False
@@ -78,7 +93,7 @@ The allowed Options:
 ```yaml
 Type: PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Deny, Allow
 
 Required: False
@@ -109,7 +124,7 @@ The Array of IpRule objects to update to the NetworkRule Property of a Storage a
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -139,7 +154,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -154,7 +169,7 @@ The Array of VirtualNetworkRule objects to update to the NetworkRule Property of
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -210,3 +225,4 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 ## NOTES
 
 ## RELATED LINKS
+

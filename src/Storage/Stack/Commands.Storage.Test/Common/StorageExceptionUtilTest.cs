@@ -14,36 +14,39 @@
 
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for StorageExceptionUtil
     /// </summary>
-    [TestClass]
     public class StorageExceptionUtilTest : StorageTestBase
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsNotFoundExceptionWithoutStatusTest()
         {
             RequestResult result = new RequestResult();
             string message = string.Empty;
             ResourceAlreadyExistException innerException = new ResourceAlreadyExistException(message);
             StorageException exception = new StorageException(result, message, innerException);
-            Assert.IsFalse(exception.IsNotFoundException());
+            Assert.False(exception.IsNotFoundException());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsNotFoundExceptionWithoutInfoTest()
         {
             StorageException exception = new StorageException(null, string.Empty, null);
-            Assert.IsFalse(exception.IsNotFoundException());
+            Assert.False(exception.IsNotFoundException());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsNotFoundExceptionTest()
         {
             RequestResult result = new RequestResult()
@@ -53,24 +56,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             string message = string.Empty;
             ResourceAlreadyExistException innerException = new ResourceAlreadyExistException(message);
             StorageException exception = new StorageException(result, message, innerException);
-            Assert.IsFalse(exception.IsNotFoundException());
+            Assert.False(exception.IsNotFoundException());
 
             result = new RequestResult()
             {
                 HttpStatusCode = 404
             };
             exception = new StorageException(result, message, innerException);
-            Assert.IsTrue(exception.IsNotFoundException());
+            Assert.True(exception.IsNotFoundException());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RepackStorageExceptionWithoutInfoTest()
         {
             StorageException exception = new StorageException(null, string.Empty, null);
-            Assert.IsNotNull(exception.RepackStorageException());
+            Assert.NotNull(exception.RepackStorageException());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RepackStorageExceptionWithoutStatusMessageTest()
         {
             RequestResult result = new RequestResult()
@@ -80,10 +85,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             string message = string.Empty;
             ResourceAlreadyExistException innerException = new ResourceAlreadyExistException(message);
             StorageException exception = new StorageException(result, message, innerException);
-            Assert.IsNotNull(exception.RepackStorageException());
+            Assert.NotNull(exception.RepackStorageException());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RepackStorageExceptionTest()
         {
             string status = String.Empty;
@@ -95,7 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             ResourceAlreadyExistException innerException = new ResourceAlreadyExistException(message);
             StorageException exception = new StorageException(result, message, innerException);
             exception = exception.RepackStorageException();
-            Assert.IsNotNull(exception);
+            Assert.NotNull(exception);
         }
     }
 }

@@ -60,5 +60,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
         public string State => ManagedIntegrationRuntime.State;
+
+        public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;
+
+        public string SetupScriptContainerSasUri => ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.BlobContainerUri + ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.SasToken?.Value;
+
+        public string Edition => ManagedIntegrationRuntime.SsisProperties?.Edition;
     }
 }

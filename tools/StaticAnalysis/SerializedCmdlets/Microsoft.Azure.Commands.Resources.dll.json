@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Operation": "System.String",
               "OperationName": "System.String",
@@ -33,7 +33,9 @@
       "Parameters": [
         {
           "Name": "OperationSearchString",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -79,7 +81,9 @@
             {
               "ParameterMetadata": {
                 "Name": "OperationSearchString",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -93,7 +97,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": 0,
               "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
@@ -131,7 +135,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Get-AzureRmResourceProviderAction"
+      ]
     },
     {
       "VerbName": "Remove",
@@ -147,7 +153,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -350,8 +356,9 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
               "RoleAssignmentId": "System.String",
               "Scope": "System.String",
@@ -2043,8 +2050,9 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "CanDelegate": "System.Boolean",
                     "ObjectId": "System.Guid",
                     "RoleAssignmentId": "System.String",
                     "Scope": "System.String",
@@ -2138,7 +2146,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4665,8 +4673,9 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
               "RoleAssignmentId": "System.String",
               "Scope": "System.String",
@@ -4724,9 +4733,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "ServicePrincipalName",
+          "Name": "ApplicationId",
           "AliasList": [
-            "SPN"
+            "SPN",
+            "ServicePrincipalName"
           ],
           "Type": {
             "Namespace": "System",
@@ -4854,6 +4864,22 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AllowDelegation",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -4950,6 +4976,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -5123,6 +5171,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5224,6 +5294,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -5331,6 +5423,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5435,6 +5549,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5536,6 +5672,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -5709,6 +5867,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5813,6 +5993,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5848,9 +6050,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ServicePrincipalName",
+                "Name": "ApplicationId",
                 "AliasList": [
-                  "SPN"
+                  "SPN",
+                  "ServicePrincipalName"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -5916,6 +6119,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -5951,9 +6176,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ServicePrincipalName",
+                "Name": "ApplicationId",
                 "AliasList": [
-                  "SPN"
+                  "SPN",
+                  "ServicePrincipalName"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -6085,6 +6311,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -6120,9 +6368,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ServicePrincipalName",
+                "Name": "ApplicationId",
                 "AliasList": [
-                  "SPN"
+                  "SPN",
+                  "ServicePrincipalName"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -6188,6 +6437,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -6221,6 +6492,28 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "AllowDelegation",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
             {
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
@@ -6270,7 +6563,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6722,7 +7015,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -6763,7 +7056,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -6874,7 +7167,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -6981,7 +7274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -7022,7 +7315,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -7133,7 +7426,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8957,65 +9250,6 @@
           ]
         },
         {
-          "Name": "EmptyParameterSet",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "ServicePrincipalName",
-                "AliasList": [
-                  "SPN"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
           "Name": "SPNParameterSet",
           "Parameters": [
             {
@@ -9108,6 +9342,10 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "EmptyParameterSet",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -9864,9 +10102,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10103,9 +10341,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10349,9 +10587,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10594,9 +10832,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10837,9 +11075,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -11087,9 +11325,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -11328,9 +11566,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11450,9 +11688,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -12429,9 +12667,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -12778,9 +13016,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13845,9 +14083,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14018,9 +14256,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -14479,9 +14717,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16541,9 +16779,9 @@
           "Name": "Password",
           "AliasList": [],
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -16671,9 +16909,9 @@
                 "Name": "Password",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16907,6 +17145,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -17012,8 +17251,9 @@
     "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
       "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "CanDelegate": "System.Boolean",
         "ObjectId": "System.Guid",
         "RoleAssignmentId": "System.String",
         "Scope": "System.String",
@@ -17037,7 +17277,7 @@
     "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
       "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsCustom": "System.Boolean",
         "Actions": "System.Collections.Generic.List`1[System.String]",
