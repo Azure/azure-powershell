@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ManagedServiceIdentity", "Commands.ManagedServiceIdentity\Commands.ManagedServiceIdentity.csproj", "{228EB071-FA04-43B3-95F9-7D76DBF0B850}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E1F5201D-6067-430E-B303-4E367652991B} = {E1F5201D-6067-430E-B303-4E367652991B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
