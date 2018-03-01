@@ -248,7 +248,7 @@
   </data>
   <data name="ScopeShouldBeginWithSubscriptionsOrProviders" xml:space="preserve">
     <value>Scope '{0}' should begin with '/subscriptions' or '/providers'.</value>
-  </data>  
+  </data>
   <data name="ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders" xml:space="preserve">
     <value>Scope '{0}' should begin with '/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers'.</value>
   </data>
@@ -404,5 +404,8 @@
   </data>
   <data name="ServicePrincipalWithSPNDoesntExist" xml:space="preserve">
     <value>Service principal with SPN '{0}' does not exist.</value>
+  </data>
+  <data name="InSufficientGraphPermission" xml:space="preserve">
+    <value>The User/Application doesn't have sufficient AAD graph permissions to perform the operation.</value>
   </data>
 </root>
