@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public List<string> Zone { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int[] NatBackendPort { get; set; } = null;
+        public int[] NatBackendPort { get; set; }
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
