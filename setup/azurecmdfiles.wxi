@@ -282,8 +282,8 @@
                         <Component Id="cmp4677B0CE124023330EDD7AA4FECFF45E" Guid="*">
                             <File Id="fil58F144170E43C2EFEC66E5F3DE2FA977" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psm1" />
                         </Component>
-                        <Component Id="cmp32CF42EA1F0A7DA716459A5A6A21C24D" Guid="*">
-                            <File Id="fil5AE28BCCEED67270ECF02C93C9688AD5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Commands.Common.Strategies.dll" />
+                        <Component Id="cmp561E55C40D05D507C193CFCE5CA35C18" Guid="*">
+                            <File Id="fil2F8613299D44A39AB296BD6F8806CBF7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Commands.Common.Strategies.3.dll" />
                         </Component>
                         <Component Id="cmpFBB75A5451448B356C97E62D2C6C10A0" Guid="*">
                             <File Id="fil24BE7D514EE83ED7D31C68CBFFA8FBB8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Azure.Commands.Compute.dll" />
@@ -3232,7 +3232,7 @@
             <ComponentRef Id="cmpD2516E302D41812368A84BD6010FB066" />
             <ComponentRef Id="cmp594709EB2E69BD7173BC8833BE2061B4" />
             <ComponentRef Id="cmp4677B0CE124023330EDD7AA4FECFF45E" />
-            <ComponentRef Id="cmp32CF42EA1F0A7DA716459A5A6A21C24D" />
+            <ComponentRef Id="cmp561E55C40D05D507C193CFCE5CA35C18" />
             <ComponentRef Id="cmpFBB75A5451448B356C97E62D2C6C10A0" />
             <ComponentRef Id="cmp1CB1E6D6A2D939FB32D9ACD70681644D" />
             <ComponentRef Id="cmpAA00FCFEE63D9A20C2618B36B1848D7C" />
