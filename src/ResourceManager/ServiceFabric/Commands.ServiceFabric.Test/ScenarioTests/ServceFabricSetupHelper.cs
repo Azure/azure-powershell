@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
     public class ServceFabricSetupHelper : EnvironmentSetupHelper
     {
