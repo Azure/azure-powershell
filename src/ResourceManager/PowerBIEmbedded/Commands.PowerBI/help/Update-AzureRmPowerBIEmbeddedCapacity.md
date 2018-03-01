@@ -1,10 +1,8 @@
----
-Download Help Link: None_Azure
+﻿---
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
-Help Version: 0.0.1.0
-Locale: en-US
-Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
 Module Name: AzureRM.PowerBIEmbedded
+ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/update-azurermpowerbiembeddedcapacity
 schema: 2.0.0
 ---
 
@@ -198,6 +196,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
