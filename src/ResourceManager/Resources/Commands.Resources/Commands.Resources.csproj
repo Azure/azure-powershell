@@ -78,8 +78,8 @@
     <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
     <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADUserCommand.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Gallery\Artifact.cs" />
     <Compile Include="Gallery\DefinitionTemplates.cs" />

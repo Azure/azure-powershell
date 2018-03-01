@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmADApplication", SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
+    [Cmdlet(VerbsData.Update, "AzureRmADApplication", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams), OutputType(typeof(PSADApplication))]
     [Alias("Set-AzureRmADApplication")]
     public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (ShouldProcess(target: ObjectId, action: string.Format("Updating an application with object id '{0}'", ObjectId)))
                 {
                     ActiveDirectoryClient.UpdateApplication(ObjectId, parameters);
+                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId));
                 }
             });
         }

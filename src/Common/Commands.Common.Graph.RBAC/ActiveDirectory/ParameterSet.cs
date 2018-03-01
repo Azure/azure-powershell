@@ -148,6 +148,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string SpObjectIdWithDisplayName = "SpObjectIdWithDisplayNameParameterSet";
 
+        public const string InputObjectWithDisplayName = "InputObjectWithDisplayNameParameterSet";
+
         public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
 
 		public const string RoleAssignment = "RoleAssignmentParameterSet";

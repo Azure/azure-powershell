@@ -24,9 +24,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an exisitng service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
+    [Alias("Set-AzureRmADServicePrincipal")]
 
-    public class SetAzureADServicePrincipalCommand: ActiveDirectoryBaseCmdlet
+    public class UpdateAzureADServicePrincipalCommand: ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
@@ -38,27 +39,42 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The service principal object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADServicePrincipal InputObject { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The display name for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the application")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
-            {
-                SPN = ServicePrincipalName,
-                Id = ObjectId
-            };
-
             ExecutionBlock(() =>
             {
-                // At max 1 SP can be returned with SPN and Id options
-                var sp = ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault();
+                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                {
+                    ServicePrincipalName = InputObject.ServicePrincipalNames?.FirstOrDefault();
+                    ObjectId = InputObject.Id.ToString();
+                }
 
+                ADObjectFilterOptions options = new ADObjectFilterOptions
+                {
+                    SPN = ServicePrincipalName,
+                    Id = ObjectId
+                };
+
+                var sp = InputObject;
                 if (sp == null)
                 {
-                    throw new InvalidOperationException("ServicePrincipal does not exist.");
+                    // At max 1 SP can be returned with SPN and Id options
+                    sp = ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault();
+
+                    if (sp == null)
+                    {
+                        throw new InvalidOperationException("ServicePrincipal does not exist.");
+                    }
                 }
 
                 // Get AppObjectId
@@ -74,6 +90,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                     {
                         ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
+                        WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault());
                     }
                 }
             });

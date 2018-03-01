@@ -89,7 +89,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
                'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
                'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
-               'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
+               'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
                'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
                'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
                'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
@@ -126,7 +126,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmResourceProviderAction', 'Set-AzureRmADApplication'
+AliasesToExport = 'Get-AzureRmResourceProviderAction', 'Set-AzureRmADApplication', 'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
