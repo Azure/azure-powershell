@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     break;
 
                 case ASRParameterSets.ByFabricObject:
-                    this.GetNetworkMapiingByFabric();
+                    this.GetNetworkMappingByFabric();
                     break;
             }
         }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (this.Network.FabricType.Equals(Constants.Azure))
             {
                 this.PrimaryFabric = new ASRFabric(this.RecoveryServicesClient.GetAzureSiteRecoveryFabric(tokens[0]));
-                this.GetNetworkMapiingByFabric();
+                this.GetNetworkMappingByFabric();
             }
             else
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Get Azure to Azure Network mapping.
         /// </summary>
-        private void GetNetworkMapiingByFabric()
+        private void GetNetworkMappingByFabric()
         {
             if (string.Equals(
                 this.PrimaryFabric.FabricType,

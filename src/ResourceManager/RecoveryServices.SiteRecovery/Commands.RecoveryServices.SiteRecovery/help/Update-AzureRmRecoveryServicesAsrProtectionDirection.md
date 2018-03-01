@@ -64,7 +64,7 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
 ```
 Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping>
- -AzureToAzureDiskReplicationConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig]>
+ -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
  -ReplicationProtectedItem <ASRReplicationProtectedItem> [-RecoveryResourceGroupId <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -90,6 +90,18 @@ The **Update-AzureRmRecoveryServicesAsrProtectionDirection** cmdlet updates the 
 ### Example 1
 ```
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrProtectionDirection -RecoveryPlan $RP -Direction PrimaryToRecovery
+```
+
+### Example 2
+```
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping -LogStorageAccountId $cachceStorageId
+ -ReplicationProtectedItem $rpi
+```
+
+### Example 3
+```
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping
+ -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -ReplicationProtectedItem  $rpi
 ```
 
 Start the update direction operation for the specified recoveyr plan and returns the ASR job object used to track the operation.
@@ -142,7 +154,7 @@ Accept wildcard characters: False
 Specifies the list of virtual machine disks to replicated and the cache storage account and recovery storage account to be used to replicate the disk.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig]
+Type: ASRAzuretoAzureDiskReplicationConfig[]
 Parameter Sets: AzureToAzureWithMultipleStorageAccount
 Aliases:
 

@@ -39,6 +39,7 @@
     "Get-ASRVaultSettings" = "Get-AzureRmRecoveryServicesAsrVaultContext";
     "Get-AzureRmRecoveryServicesAsrNotificationSetting" = "Get-AzureRmRecoveryServicesAsrAlertSetting";
     "Get-AzureRmRecoveryServicesAsrVaultSettings" = "Get-AzureRmRecoveryServicesAsrVaultContext";
+    "New-ASRAzureToAzureDiskReplicationConfig" = "New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig"
     "New-ASRFabric" = "New-AzureRmRecoveryServicesAsrFabric";
     "New-ASRNetworkMapping" = "New-AzureRmRecoveryServicesAsrNetworkMapping";
     "New-ASRPolicy" = "New-AzureRmRecoveryServicesAsrPolicy";

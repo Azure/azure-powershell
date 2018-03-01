@@ -156,11 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
                         this.ReplicationProtectedItem.ReplicationProvider));
             }
-            else if (string.Compare(
-                    this.ReplicationProtectedItem.ReplicationProvider,
-                    Constants.A2A,
-                    StringComparison.OrdinalIgnoreCase) ==
-                0)
+            else if (Constants.A2A.Equals(this.ReplicationProtectedItem.ReplicationProvider,StringComparison.OrdinalIgnoreCase))
             {
                 input.Properties.ProviderSpecificDetails = new A2AApplyRecoveryPointInput();
             }

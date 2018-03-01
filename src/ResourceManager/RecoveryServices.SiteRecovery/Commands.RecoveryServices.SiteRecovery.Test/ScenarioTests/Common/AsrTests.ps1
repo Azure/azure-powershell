@@ -278,14 +278,18 @@ function Test-NotificationSettings
 function Test-vaultSet
 {
     param([string] $vaultSettingsFilePath)
-
+    
     # Import Azure RecoveryServices Vault Settings File
     Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
     
-    $vaultName ='testNewVaultPs' 
+    $vaultName ='testNewVaultPs2' 
     $resourceGroup = 'testtest'
+    New-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroup -Name $vaultName -location "eastasia"
+    [Microsoft.Azure.Test.TestUtilities]::Wait(10 * 1000)
     $vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $resourceGroup -Name $vaultName
-    set-asrVaultContext -Vault  $vault
-
+    Set-AsrVaultContext -Vault  $vault
+    $currentVault = Get-AsrVaultContext 
+    Assert-true{$currentVault.ResourceName -eq $vault.name}
+    Assert-true{$currentVault.ResourceGroupName -eq $vault.ResourceGroupName}
 }
 

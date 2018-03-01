@@ -71,6 +71,9 @@ Gets details of the vCenter servers registered for discovery on the Configuratio
 ### [Import-AzureRmRecoveryServicesAsrVaultSettingsFile](Import-AzureRmRecoveryServicesAsrVaultSettingsFile.md)
 Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
 
+### [New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
+Creates a disk mapping object for Azure virtual machine disks to be replicated.
+
 ### [New-AzureRmRecoveryServicesAsrFabric](New-AzureRmRecoveryServicesAsrFabric.md)
 Creates an Azure Site Recovery Fabric.
 
@@ -100,9 +103,6 @@ Creates an ASR storage classification mapping in the Recovery Services vault.
 
 ### [New-AzureRmRecoveryServicesAsrvCenter](New-AzureRmRecoveryServicesAsrvCenter.md)
 Adds a vCenter server to discover protectable items from.
-
-### [New-AzureToAzureDiskReplicationConfiguration](New-AzureToAzureDiskReplicationConfiguration.md)
-Creates a disk mapping object for Azure virtual machine disks to be replicated.
 
 ### [Remove-AzureRmRecoveryServicesAsrFabric](Remove-AzureRmRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.

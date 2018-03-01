@@ -38,18 +38,18 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewA2ADiskReplicationConfig1()
+        public void TestNewA2ADiskReplicationConfig()
         {
             this.RunPowerShellTest(Constants.NewModel, "Test-NewA2ADiskReplicationConfiguration ");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAsrNetworkMapping()
+        public void TestAsrA2ANetworkMapping()
         {
             this.RunPowerShellTest(
                 Constants.NewModel,
-                "Test-NewAsrNetworkMapping -vaultSettingsFilePath \"" +
+                "Test-AsrA2ANetworkMapping -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
                 "\"");
         }
@@ -60,7 +60,7 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(
                 Constants.NewModel,
-                "Test-GetAsrNetworkMapping -vaultSettingsFilePath \"" +
+                "Test-AsrA2ANetworkMapping -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
                 "\"");
         }
@@ -115,5 +115,19 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.vaultSettingsFilePath +
                 "\"");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestA2AV2VmEndToEnd()
+        {
+            this.RunPowerShellTest(
+                Constants.NewModel,
+                "Test-A2AV2VmEndToEnd -vaultSettingsFilePath \"" +
+                this.vaultSettingsFilePath +
+                "\"");
+        }
+
     }
 }
+
+

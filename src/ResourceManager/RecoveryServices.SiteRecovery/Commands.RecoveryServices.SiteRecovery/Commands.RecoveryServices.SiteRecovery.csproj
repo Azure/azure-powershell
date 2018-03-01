@@ -73,7 +73,7 @@
     <Compile Include="Common\PSAsrStorageClassificationClient.cs" />
     <Compile Include="Common\AsrCmdletBase.cs" />
     <Compile Include="Common\PSAsrVCenterClient.cs" />
-    <Compile Include="DiskReplicationConfiguration\AzureToAzureDiskReplicationConfiguration.cs" />
+    <Compile Include="DiskReplicationConfiguration\AzureRmAsrAzureToAzureDiskReplicationConfig.cs" />
     <Compile Include="Event\GetAzureRmRecoveryServicesAsrEvent.cs" />
     <Compile Include="Fabrics\GetAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\NewAzureRmRecoveryServicesAsrFabric.cs" />

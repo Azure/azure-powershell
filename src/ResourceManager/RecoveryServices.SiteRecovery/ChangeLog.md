@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Changes for ASR Azure to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure,VMware to Azure)
+    - New-AzureRmRecoveryServicesAsrProtectionContainer
+    - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
+    - Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    - Update-AzureRmRecoveryServicesAsrProtectionDirection
 
 ## Version 0.2.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

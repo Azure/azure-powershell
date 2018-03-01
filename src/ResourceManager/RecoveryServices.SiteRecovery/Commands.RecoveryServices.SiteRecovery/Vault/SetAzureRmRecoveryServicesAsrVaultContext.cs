@@ -58,14 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Vault.Name,
                 VerbsCommon.Set))
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ARSVault:
-                        this.SetARSVaultContext(this.Vault);
-                        break;
-                    default:
-                        throw new PSInvalidOperationException(Resources.InvalidParameterSet);
-                }
+                  this.SetARSVaultContext(this.Vault);
             }
         }
 

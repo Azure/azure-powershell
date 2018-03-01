@@ -190,31 +190,7 @@
     <None Include="ScenarioTests\E2E\E2E.VaultCredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AEnableDR.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2APolicy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AProtectionContainer.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestA2AProtectionContainerMapping.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestCreateFabric.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestGetAsrNetworkMapping.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewA2ADiskReplicationConfig1.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewAsrFabric.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\TestNewAsrNetworkMapping.json">
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrB2ATests\*.json">
@@ -226,6 +202,7 @@
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\FabricTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\TestSetVault.json" />
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrCommonTests\V2AEvent.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -293,6 +270,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AVCenterTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AUpdatePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

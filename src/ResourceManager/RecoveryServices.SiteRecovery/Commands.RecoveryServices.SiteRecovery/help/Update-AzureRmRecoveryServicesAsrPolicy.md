@@ -74,7 +74,19 @@ The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the specified Azu
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -Policy $Policy -ReplicationFrequencyInSeconds 900
 ```
 
+### Example 2
+```
+PS C:\> Update-AzureRmRecoveryServicesAsrPolicy -AzureToAzur] -InputObject $Policy -ReplicationFrequencyInSeconds 900
+```
+
 Starts the update replication policy operation using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 2
+```
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
+```
+
+Starts the update azure to azure replication policy using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 

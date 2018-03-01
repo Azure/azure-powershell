@@ -46,8 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets fabric in which protection container to be created.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true, ValueFromPipeline = true)]
+        [Alias("Fabric")]
         [ValidateNotNullOrEmpty]
-        public ASRFabric Fabric { get; set; }
+        public ASRFabric InputObject { get; set; }
 
         #endregion Parameters
 
@@ -61,13 +62,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Name,
                 VerbsCommon.New))
             {
-                if (!Fabric.FabricType.Equals(Constants.Azure))
+                if (!this.InputObject.FabricType.Equals(Constants.Azure))
                 {
                     throw new Exception(
                         string.Format(
                             Resources.IncorrectFabricType,
                             Constants.Azure,
-                            this.Fabric.FabricType));
+                            this.InputObject.FabricType));
                 }
 
                 var input = new CreateProtectionContainerInput()
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 var response =
                     RecoveryServicesClient.CreateProtectionContainer(
-                        this.Fabric.Name,
+                        this.InputObject.Name,
                         this.Name,
                         input);
 

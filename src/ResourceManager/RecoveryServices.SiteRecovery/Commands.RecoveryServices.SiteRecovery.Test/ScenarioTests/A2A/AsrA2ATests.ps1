@@ -1,3 +1,4 @@
+# encoding: utf-8
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -156,7 +157,7 @@ function Test-NewA2ADiskReplicationConfiguration
     $logStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ltrgp1705152333/providers/Microsoft.Storage/storageAccounts/stagingsa2name1705152333"
     $vhdUri = "https://powershelltestdiag414.blob.core.windows.net/vhds/pslinV2-520180112143232.vhd"
 
-    $v = New-AzureToAzureDiskReplicationConfiguration -VhdUri  $vhdUri `
+    $v = New-ASRAzureToAzureDiskReplicationConfig -VhdUri  $vhdUri `
         -RecoveryAzureStorageAccountId $recoveryStorageAccountId `
         -LogStorageAccountId   $logStorageAccountId
 
@@ -168,43 +169,32 @@ function Test-NewA2ADiskReplicationConfiguration
 
 <#
 .SYNOPSIS 
-    Test NewAsrNetworkMapping parametersets
-#>
-function Test-NewAsrNetworkMapping{
-    param([string] $vaultSettingsFilePath)
-        $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-        Set-ASRVaultContext -Vault $Vault
-     
-        $pf = Get-ASRFabric -Name $primaryFabricName
-        $rf = Get-ASRFabric -Name $recoveryFabricName
-        get-asrNetworkMapping -primaryFabric $pf | Remove-AzureRmRecoveryServicesAsrNetworkMapping        ### AzureToAzure -new paramset        $job = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "testnetworkMapping1" `        -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf `        -RecoveryAzureNetworkId $RecoveryAzureNetworkId         WaitForJobCompletion -JobId $job.Name        get-asrNetworkMapping -Name "testnetworkMapping1" -primaryFabric $pf | Remove-AzureRmRecoveryServicesAsrNetworkMapping}
-
-<#
-.SYNOPSIS 
     Test GetAsrNetworkMapping parametersets
 #>
-function Test-GetAsrNetworkMapping
+function Test-AsrA2ANetworkMapping
 {
      param([string] $vaultSettingsFilePath)
-        $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-        Set-ASRVaultContext -Vault $Vault
+        Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     ### ByFabricObject
-        get-asrFabric|get-asrNetworkMapping
         $pf = Get-ASRFabric -Name $primaryFabricName
         $rf = Get-ASRFabric -Name $recoveryFabricName
-        $job = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "testnetworkMapping1" `        -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf `        -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+        $job = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "testnetworkMapping1" `
+        -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf `
+        -RecoveryAzureNetworkId $RecoveryAzureNetworkId
         WaitForJobCompletion -JobId $job.Name
 
         $networkMapping = Get-AzureRmRecoveryServicesAsrNetworkMapping -PrimaryFabric $pf
         Assert-notNull { $networkMapping }
-        Get-AzureRmRecoveryServicesAsrNetworkMapping -PrimaryFabric $pf -Name $networkMapping[0].Name
+        $networkMapping= Get-AzureRmRecoveryServicesAsrNetworkMapping -PrimaryFabric $pf -Name "testnetworkMapping1" 
         Assert-notNull { $networkMapping }
-
+        Assert-true { $networkMapping.name -eq "testnetworkMapping1"}
+        Assert-true { $networkMapping.PrimaryNetworkId -eq $PrimaryAzureNetworkId}
+        Assert-true { $networkMapping.RecoveryNetworkId -eq $RecoveryAzureNetworkId}
+       
      ### ByObject (Default)
-        $networkMapping = get-asrFabric|get-asrNetwork|get-asrNetworkMapping
+        $networkMapping = Get-ASRFabric|Get-ASRNetwork|Get-ASRNetworkMapping
         Assert-notNull { $networkMapping }
-        $network = get-asrFabric|get-asrNetwork
 }
 
 <#
@@ -215,7 +205,12 @@ function Test-NewAsrFabric {
     param([string] $vaultSettingsFilePath)
         $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
         Set-ASRVaultContext -Vault $Vault
-    ### AzureToAzure – new paramset         $fabricName = "TestFabric"        $fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "northeurope"        WaitForJobCompletion -JobId $fabJob.Name        $fab = Get-AzureRmRecoveryServicesAsrFabric -Name $fabricName        Assert-true { $fab.name -eq $fabricName }
+    ### AzureToAzure New paramset 
+        $fabricName = "TestFabricukwest"
+        $fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "ukwest"
+        WaitForJobCompletion -JobId $fabJob.Name
+        $fab = Get-AzureRmRecoveryServicesAsrFabric -Name $fabricName
+        Assert-true { $fab.name -eq $fabricName }
 }
 
 <#
@@ -237,8 +232,16 @@ function Test-A2ARecoveryPolicy
     Assert-NotNull($Policy1)
     $Job = Update-AzureRmRecoveryServicesAsrPolicy  -AzureToAzure -RecoveryPointRetentionInHours 15 -InputObject $Policy1
     WaitForJobCompletion -JobId $Job.Name
+
+    $Policy1 = Get-AzureRmRecoveryServicesAsrPolicy -Name $TestPolicy1
+    # policy time updated to 15*60 = 900
+    Assert-true{$policy1.ReplicationProviderSettings.RecoveryPointHistory -eq 900 }
+
     $RemoveJob = Remove-ASRPolicy -InputObject $Policy1
-   
+    WaitForJobCompletion -JobId $RemoveJob.Name
+
+    $policy1 = Get-ASRPolicy| where {$_.name -eq  $TestPolicy1}
+    Assert-null($policy1)
 }
 
 <#
@@ -256,10 +259,16 @@ function Test-NewRemoveA2AProtectionContainer
     ### AzureToAzure (Default)
     $job = New-AzureRmRecoveryServicesAsrProtectionContainer -Name "azurepc1" -Fabric $pf
     WaitForJobCompletion -JobId $Job.Name
-  
+    $pc = Get-asrProtectionContainer -name "azurepc1" -Fabric $pf
+    Assert-NotNull($pc)
+    Assert-true{$pc.name -eq "azurepc1"}
     #Remove-AzureRmRecoveryServices
     ### ByObject (Default)
-    Get-asrProtectionContainer -name "azurepc1" -Fabric $pf | Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    $job = $pc | Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    WaitForJobCompletion -JobId $Job.Name
+    $pc = Get-asrProtectionContainer -Fabric $pf | where {$_.name -eq "azurepc1" }
+     
+    Assert-Null($pc)
 }
 
 <#
@@ -278,13 +287,13 @@ function Test-A2AProtectionContainerMapping
     $PrimaryProtectionContainerMapping ="pcmName"
 
     $job = new-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric  $fabric
-    #waitForJobCompletion -JobId $job.name
+    waitForJobCompletion -JobId $job.name
     $pc =  Get-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $fabric
 
     $rf =  Get-AsrFabric -Name $recoveryFabricName
     
     $job = new-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric  $rf
-    #waitForJobCompletion -JobId $job.name
+    waitForJobCompletion -JobId $job.name
     $rpc =  Get-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
     
     $Job1 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
@@ -301,147 +310,22 @@ function Test-A2AProtectionContainerMapping
 
     $pcm = Get-ASRProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -ProtectionContainer $pc
     Assert-NotNull($pcm)
+    Assert-true { $pcm.name -eq  $PrimaryProtectionContainerMapping}
+    Assert-true { $pcm.PolicyId.ToLower()  -eq  $Policy1.Id.ToLower()}
+    Assert-true { $pcm.TargetProtectionContainerId.ToLower() -eq $rpc.ID.ToLower()}
+    Assert-true { $pcm.SourceProtectionContainerFriendlyName.ToLower() -eq $pc.friendlyname.ToLower()}
+       
     # remove Mapping
     $Removepcm = Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping  -InputObject $pcm 
     WaitForJobCompletion -JobId $Removepcm.Name
-}
-
-<#
-.SYNOPSIS
-Azure to Azure replication of V1 Vm end to end 540 degree.
-#>
-function Test-A2AV1VmEndToEnd
-{
-    param([string] $vaultSettingsFilePath)
-
-        $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-        Set-AzureRmRecoveryServicesAsrVaultContext -Vault $Vault
-        
-        $vmId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.ClassicCompute/virtualMachines/PSTestV1-1"
-        $rpiName = "PSTestV1-1-RPI"
-        $recoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/eastus-asr"
-        $logStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.ClassicStorage/storageAccounts/eastus8660cacheasr"
-        $recoveryAzureStorageAccountId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.ClassicStorage/storageAccounts/eastus8660asr"
-        $recoveryCloudServiceId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.ClassicCompute/domainNames/PSTestV1-17573-asr"
-        $diskUri1 ="https://eastus8660.blob.core.windows.net/vhds/PSTestV1-1-os-3320.vhd"
-        $diskUri2 = "https://eastus8660.blob.core.windows.net/vhds/PSTestV1-1-20180214-134107.vhd"
-        $testNetwork = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/test123/providers/Microsoft.ClassicNetwork/virtualNetworks/test123"
-        
-        $logStorageAccountIdYtoX = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/test123/providers/Microsoft.ClassicStorage/storageAccounts/test1235311"
-        $recoveryAzureStorageAccountIdYtoX ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.ClassicStorage/storageAccounts/eastus8660"
-        $recoveryResourceGroupIdYtoX ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus"
-        $recoveryCloudServiceIdYtoX ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.ClassicCompute/domainNames/PSTestV1-17573"
-
-        
-    $primaryFabricName = "vkvfab2"
-    $recoveryFabricName = "vkvfab1"
-    $primaryProtectionContainerName = "pcEastUs"
-    $recoveryProtectionContainerName = "pcWestUs"
-    $policyName1 = "eastUsToWestUs"
-    $policyName2 = "wesUsToeastUs"
-    $PrimaryProtectionContainerMapping = "pcmEastUs"
-    $recoveryProtectionContainerMapping = "pcmWestUs"
-
-        #$fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location "eastus"        #WaitForJobCompletion -JobId $fabJob.Name
-
-        #$fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location "westus"        #WaitForJobCompletion -JobId $fabJob.Name
-
-        $pf = get-AsrFabric -Name $primaryFabricName
-        $rf =  Get-AsrFabric -Name $recoveryFabricName
-        $fabric =  Get-AsrFabric -Name $primaryFabricName
-    
-        #$job = new-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
-        #waitForJobCompletion -JobId $job.name
-        #$job = new-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
-        #waitForJobCompletion -JobId $job.name
-        
-        $pc =  Get-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
-        $rc =  Get-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
-
-        #$Job1 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
-        #$Job2 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName2 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
-        #waitForJobCompletion -JobId $job1.name
-        #waitForJobCompletion -JobId $job2.name
-
-        $policyXtoY = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName1
-        $policyYtoX = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName2
-
-        #Create Mapping
-        $pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $policyXtoY -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
-        WaitForJobCompletion -JobId $pcmjob.Name 
-        $pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $recoveryProtectionContainerMapping -policy $policyYtoX -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
-        WaitForJobCompletion -JobId $pcmjob.Name
-
-        $pcm = Get-ASRProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -ProtectionContainer $pc
-        $pcmYtoX  = Get-ASRProtectionContainerMapping -Name $recoveryProtectionContainerMapping -ProtectionContainer $rc
-        $disk1 = new-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri1 `
-            -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
-            -LogStorageAccountId $logStorageAccountId  
-
-        $disk2 = new-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri2 `
-            -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
-            -LogStorageAccountId $logStorageAccountId  
-
-       $enableDRjob = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vmId -Name $rpiName `
-            -RecoveryCloudServiceId  $recoveryCloudServiceId -ProtectionContainerMapping $pcm `
-            -RecoveryResourceGroupId  $RecoveryResourceGroupId -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 
-
-        WaitForJobCompletion -JobId $enableDRjob.Name
-        $job = get-AsrJob -Name $enableDRjob.Name
-        WaitForIRCompletion -affectedObjectId $job.TargetObjectId
-
-        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $rpiName
-        do{
-            [Microsoft.Azure.Test.TestUtilities]::Wait(10* 1000)
-            $rPoints = Get-ASRRecoveryPoint -ReplicationProtectedItem $rpi
-        }while ($rpoints.count -eq 0)
-
-        $tfoJob = Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery -RecoveryPoint $rpoints[0] `
-            -CloudServiceCreationOption "UseRecoveryCloudService" -AzureVMNetworkId $testNetwork
-        WaitForJobCompletion -JobId $tfoJob.Name
-        $cleanupJob = Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "testing done"
-        WaitForJobCompletion -JobId $cleanupJob.Name
-
-        $foJob = Start-AzureRmRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
-        WaitForJobCompletion -JobId $foJob.Name
-        $commitJob = Start-AzureRmRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $rpi 
-        WaitForJobCompletion -JobId $commitJob.Name
-
-        $job = Update-AzureRmRecoveryServicesAsrProtectionDirection `
-                -AzureToAzure `
-                -LogStorageAccountId $logStorageAccountIdYtoX `
-                -ProtectionContainerMapping $pcmYtoX  `
-                -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountIdYtoX `
-                -RecoveryResourceGroupId $recoveryResourceGroupIdYtoX `
-                -ReplicationProtectedItem $rpi `
-                -RecoveryCloudServiceId  $recoveryCloudServiceIdYtoX
-    
-        WaitForJobCompletion -JobId $job.Name
-        $job = get-AsrJob -Name $job.Name
-        WaitForIRCompletion -affectedObjectId $job.TargetObjectId
-        
-        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $rc -Name $rpiName
-        
-        $foJob = Start-AzureRmRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
-        WaitForJobCompletion -JobId $foJob.Name
-        $commitJob = Start-AzureRmRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $rpi 
-        WaitForJobCompletion -JobId $commitJob.Name
-        $job = Update-AzureRmRecoveryServicesAsrProtectionDirection `
-                -AzureToAzure `
-                -LogStorageAccountId $logStorageAccountId `
-                -ProtectionContainerMapping $pcmYtoX  `
-                -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
-                -RecoveryResourceGroupId $recoveryResourceGroupId `
-                -ReplicationProtectedItem $rpi `
-                -RecoveryCloudServiceId  $recoveryCloudServiceId
-
-        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $rpiName
-        Remove-ASRReplicationProtectedItem -InputObject $rpi
+    $pcm = Get-ASRProtectionContainerMapping -ProtectionContainer $pc | where { $_.Name -eq $PrimaryProtectionContainerMapping}
+    Assert-Null($pcm)
 }
 
 <#
 .SYNOPSIS
 Azure to Azure replication of V2 Vm end to end 540 degree.
+Without Assert if something goes wrong entity will not be found in next step.
 #>
 function Test-A2AV2VmEndToEnd
 {
@@ -459,11 +343,13 @@ function Test-A2AV2VmEndToEnd
         $diskUri2 = "https://eastusdisks566.blob.core.windows.net/vhds/PSTestV2-2-20180214-144548.vhd"
         $recoveryAVSetId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.Compute/availabilitySets/AVSET-asr"
         $testNetwork = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.Network/virtualNetworks/eastus-vnet-asr"
-        $logStorageAccountIdYtoX = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/krishnr/providers/Microsoft.Storage/storageAccounts/krishnrdiag562"
+        $logStorageAccountIdYtoX = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/asrtesting-asr/providers/Microsoft.Storage/storageAccounts/filippostorageasr"
         $recoveryAzureStorageAccountIdYtoX ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.Storage/storageAccounts/eastusdisks566"
         $recoveryResourceGroupIdYtoX ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus"
         $recoveryAVSetIdYtoX = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.Compute/availabilitySets/AVSET"
         
+        $PrimaryAzureNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus/providers/Microsoft.Network/virtualNetworks/eastus-vnet"
+        $RecoveryAzureNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/eastus-asr/providers/Microsoft.Network/virtualNetworks/eastus-vnet-asr"
     $primaryFabricName = "vkvfab2"
     $recoveryFabricName = "vkvfab1"
     $primaryProtectionContainerName = "pcEastUs"
@@ -473,39 +359,52 @@ function Test-A2AV2VmEndToEnd
     $PrimaryProtectionContainerMapping = "pcmEastUs"
     $recoveryProtectionContainerMapping = "pcmWestUs"
 
-        $pf = get-AsrFabric -Name $primaryFabricName
+        $pf = Get-AsrFabric -Name $primaryFabricName
         $rf =  Get-AsrFabric -Name $recoveryFabricName
         $fabric =  Get-AsrFabric -Name $primaryFabricName
     
-        #$job = new-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
-        #waitForJobCompletion -JobId $job.name
-        #$job = new-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
-        #waitForJobCompletion -JobId $job.name
+        $job = new-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
+        waitForJobCompletion -JobId $job.name
+        $job = new-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
+        waitForJobCompletion -JobId $job.name
         
         $pc =  Get-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
         $rc =  Get-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
 
-        #$Job1 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
-        #$Job2 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName2 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
-       # waitForJobCompletion -JobId $job1.name
-        #waitForJobCompletion -JobId $job2.name
+        $Job1 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
+        $Job2 = New-AzureRmRecoveryServicesAsrPolicy -Name $policyName2 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5
+        waitForJobCompletion -JobId $job1.name
+        waitForJobCompletion -JobId $job2.name
 
         $policyXtoY = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName1
         $policyYtoX = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName2
 
         # Create Mapping
-        #$pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $policyXtoY -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
-        #WaitForJobCompletion -JobId $pcmjob.Name 
-        #$pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $recoveryProtectionContainerMapping -policy $policyYtoX -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
-        #WaitForJobCompletion -JobId $pcmjob.Name
+        $pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $policyXtoY -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
+        WaitForJobCompletion -JobId $pcmjob.Name 
+        $pcmjob =  New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $recoveryProtectionContainerMapping -policy $policyYtoX -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
+        WaitForJobCompletion -JobId $pcmjob.Name
 
         $pcm = Get-ASRProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -ProtectionContainer $pc
         
-        $disk1 = new-AzureToAzureDiskReplicationConfiguration -VhdUri  $diskUri1 `
+     # Create NetworkMapping 
+        $job = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "testnetworkMapping1" `
+        -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf `
+        -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+        WaitForJobCompletion -JobId $job.Name
+        
+     # Create Reverse NetworkMapping 
+        $job = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "testnetworkMapping1rec" `
+        -PrimaryFabric $rf -PrimaryAzureNetworkId  $RecoveryAzureNetworkId -RecoveryFabric $pf `
+        -RecoveryAzureNetworkId $PrimaryAzureNetworkId
+
+        WaitForJobCompletion -JobId $job.Name
+
+        $disk1 = New-AsrAzureToAzureDiskReplicationConfig -VhdUri  $diskUri1 `
             -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
             -LogStorageAccountId $logStorageAccountId  
 
-        $disk2 = new-AzureToAzureDiskReplicationConfiguration -VhdUri  $diskUri2 `
+        $disk2 = New-AsrAzureToAzureDiskReplicationConfig -VhdUri  $diskUri2 `
             -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
             -LogStorageAccountId $logStorageAccountId  
 
@@ -513,9 +412,15 @@ function Test-A2AV2VmEndToEnd
             -ProtectionContainerMapping $pcm `
             -RecoveryResourceGroupId  $RecoveryResourceGroupId -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
         WaitForJobCompletion -JobId $enableDRjob.Name
+
         $job = get-AsrJob -Name $enableDRjob.Name
         WaitForIRCompletion -affectedObjectId $job.TargetObjectId
      
+        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $rpiName
+        
+        $setJob = Set-ASRReplicationProtectedItem -InputObject $RPI -RecoveryAvailabilitySet $recoveryAVSetId
+        WaitForJobCompletion -JobId $setJob.Name
+
         $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $rpiName
         do{
             [Microsoft.Azure.Test.TestUtilities]::Wait(10* 1000)
@@ -540,134 +445,5 @@ function Test-A2AV2VmEndToEnd
                 -ProtectionContainerMapping $pcmYtoX  `
                 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountIdYtoX `
                 -RecoveryResourceGroupId $recoveryResourceGroupIdYtoX `
-                -ReplicationProtectedItem $rpi 
-    
-        WaitForJobCompletion -JobId $job.Name
-        $job = get-AsrJob -Name $job.Name
-        WaitForIRCompletion -affectedObjectId $job.TargetObjectId
-        
-        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $rc -Name $rpiName
-        
-        $foJob = Start-AzureRmRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
-        WaitForJobCompletion -JobId $foJob.Name
-        $commitJob = Start-AzureRmRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $rpi 
-        WaitForJobCompletion -JobId $commitJob.Name
-        $job = Update-AzureRmRecoveryServicesAsrProtectionDirection `
-                -AzureToAzure `
-                -LogStorageAccountId $logStorageAccountId `
-                -ProtectionContainerMapping $pcmYtoX  `
-                -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
-                -RecoveryResourceGroupId $recoveryResourceGroupId `
-                -ReplicationProtectedItem $rpi 
-
-        $rpi = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $rpiName
-        Remove-ASRReplicationProtectedItem -InputObject $rpi
-}
-
-
-<#
-.SYNOPSIS
-Site Recovery Create Recovery Plan Test
-#>
-function Test-A2AV2RecoveryPlanEndToEnd
-{
-    $rpiName1 = "PSLinV2-4"
-    $rpiName2 = "psLinV2-2"
-    $rpName = "a2aRPV2-2"
-
-    $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-    Set-AzureRmRecoveryServicesAsrVaultContext -Vault $Vault
-
-    $pf = get-AsrFabric -Name $primaryFabricName
-    $rf =  Get-AsrFabric -Name $recoveryFabricName
-    
-    $pc =  Get-ASRProtectionContainer -Name $primaryProtectionContainerName -Fabric $pf
-    $rc =  Get-ASRProtectionContainer -Name $recoveryProtectionContainerName -Fabric $rf
-
-    $rpi1 = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -friendlyName $rpiName1
-    $rpi2 = get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -friendlyName $rpiName2
-
-    $Job = New-AzureRmRecoveryServicesAsrRecoveryPlan -Name $rpName -PrimaryFabric $pf -RecoveryFabric $rf -ReplicationProtectedItem $rpi1
-    WaitForJobCompletion -JobId $Job.Name
-    $recoveryPlan = Get-AsrRecoveryPlan -Name $rpName
-    $recoveryPlan = Edit-ASRRecoveryPlan -RecoveryPlan $recoveryPlan -AppendGroup
-    $recoveryPlan = Edit-ASRRecoveryPlan -RecoveryPlan $recoveryPlan -Group $recoveryPlan.Groups[3] -AddProtectedItems $rpi2
-    $currentJob = Update-ASRRecoveryPlan -RecoveryPlan $recoveryPlan
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Start-ASRTestFailoverJob -RecoveryPlan $recoveryPlan -Direction PrimaryToRecovery -AzureVMNetworkId $testNetwork
-    WaitForJobCompletion -JobId $currentJob.Name
-    $currentJob = Start-ASRTestFailoverCleanupJob -RecoveryPlan $recoveryPlan -Comment "d"
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Start-ASRUnPlannedFailoverJob -RecoveryPlan $recoveryPlan -Direction PrimaryToRecovery
-    WaitForJobCompletion -JobId $currentJob.Name 
-
-    $currentJob = Start-AsrCommitFailoverJob -RecoveryPlan $recoveryPlan
-    $currentJob
-    WaitForJobCompletion -JobId $currentJob.Name
-}
-
-<#
-.SYNOPSIS
-Site Recovery Remove Recovery Plan Test
-#>
-function Test-RecoveryPlanJob
-{
-    param([string] $vaultSettingsFilePath)
-
-    # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-
-    $RP = Get-AsrRecoveryPlan -Name $RecoveryPlanName
-    $RecoveryFabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName
-
-    $RecoveryNetwork = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
-
-    $currentJob = Start-ASRTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $RecoveryNetwork
-    WaitForJobCompletion -JobId $currentJob.Name
-    $currentJob = Start-ASRTestFailoverCleanupJob -RecoveryPlan $RP
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Start-ASRTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
-    WaitForJobCompletion -JobId $currentJob.Name
-    $currentJob = Start-ASRTestFailoverCleanupJob -RecoveryPlan $RP
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Start-ASRPlannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
-    WaitForJobCompletion -JobId $currentJob.Name 
-
-    $currentJob = Start-AsrCommitFailoverJob -RecoveryPlan $RP
-    $currentJob
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Update-AsrProtectionDirection -RecoveryPlan $RP -Direction RecoveryToPrimary 
-    $currentJob
-    WaitForJobCompletion -JobId $currentJob.Name
-    
-    #timeout 1200
-
-    $currentJob = Start-AsrUnPlannedFailoverJob -RecoveryPlan $RP -Direction RecoveryToPrimary
-    $currentJob
-    WaitForJobCompletion -JobId $currentJob.Name
-
-    $currentJob = Start-AsrCommitFailoverJob -RecoveryPlan $RP
-    $currentJob
-    WaitForJobCompletion -JobId $currentJob.Name 
-    #WaitForJobCompletion -JobId $Job.Name
-}
-<#
-.SYNOPSIS
-Site Recovery Remove Recovery Plan Test
-#>
-function Test-SiteRecoveryRemoveRecoveryPlan
-{
-    param([string] $vaultSettingsFilePath)
-
-    # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-
-    $RP = Get-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName
-    $Job = Remove-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
-    #WaitForJobCompletion -JobId $Job.Name
+                -ReplicationProtectedItem $rpi -RecoveryAvailabilitySetId $recoveryAVSetIdYtoX
 }
