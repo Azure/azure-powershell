@@ -77,7 +77,7 @@
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />

@@ -88,7 +88,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
                'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
                'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-               'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
+               'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
                'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
                'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
                'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
@@ -126,7 +126,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmResourceProviderAction'
+AliasesToExport = 'Get-AzureRmResourceProviderAction', 'Set-AzureRmADApplication'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -167,7 +167,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

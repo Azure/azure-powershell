@@ -82,6 +82,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string InputObject = "InputObjectParameterSet";
 
+        public const string InputObjectWithUpdateParams = "InputObjectWithUpdateParamsParameterSet";
+
         public const string RoleDefinition = "RoleDefinitionParameterSet";
 
         public const string RoleDefinitionName = "RoleDefinitionNameParameterSet";

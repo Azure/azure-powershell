@@ -21,8 +21,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADApplication", SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
-    public class SetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsData.Update, "AzureRmADApplication", SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
+    [Alias("Set-AzureRmADApplication")]
+    public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
@@ -32,23 +33,33 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObjectWithUpdateParams, HelpMessage = "The application object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADApplication InputObject { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
+            HelpMessage = "The display name for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "The display name for the application.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
-            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+            HelpMessage = "The URL to the application's homepage.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
-            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+            HelpMessage = "The URL to the application's homepage.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
+            HelpMessage = "The URL to the application's homepage.")]
         [ValidateNotNullOrEmpty]
         public string HomePage { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "The URIs that identify the application.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
+            HelpMessage = "The URIs that identify the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "The URIs that identify the application.")]
         [ValidateNotNullOrEmpty]
         public string[] IdentifierUris { get; set; }
@@ -57,11 +68,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
         public string[] ReplyUrls { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
         public bool AvailableToOtherTenants { get; set; }
 
@@ -69,6 +84,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                {
+                    ObjectId = InputObject.ObjectId.ToString();
+                }
+
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
