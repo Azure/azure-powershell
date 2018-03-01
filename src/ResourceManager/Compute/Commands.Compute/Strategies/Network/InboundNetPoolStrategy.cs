@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
             NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> frontendIpConfiguration,
-            string protocol,
             int frontendPortRangeStart,
             int frontendPortRangeEnd,
             int backendPort)
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 engine => new InboundNatPool
                 {
                     FrontendIPConfiguration = engine.GetReference(frontendIpConfiguration),
-                    Protocol = protocol,
+                    Protocol = NetworkStrategy.Tcp,
                     FrontendPortRangeStart = frontendPortRangeStart,
                     FrontendPortRangeEnd = frontendPortRangeEnd,
                     BackendPort = backendPort

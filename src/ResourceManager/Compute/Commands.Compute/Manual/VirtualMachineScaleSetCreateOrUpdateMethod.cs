@@ -192,7 +192,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var inboundNutRule = loadBalancer.CreateInboundNatPool(
                     name: inboundNutRuleName + natBackendPort.ToString(),
                     frontendIpConfiguration: frontendIpConfiguration,
-                    protocol: "TCP",
                     frontendPortRangeStart: portRangeStart,
                     frontendPortRangeEnd: portRangeStart + InstanceCount,
                     backendPort: natBackendPort);
