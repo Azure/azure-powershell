@@ -3,7 +3,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ManagedServiceIdentity.Common;
 using Microsoft.Azure.Commands.ManagedServiceIdentity.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
