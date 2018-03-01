@@ -18,8 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix credential encryption issue that caused no meaningful error for some encryption operations
+* Enable integration runtime to be shared across data factory
+
+## Version 4.1.0
+* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataFactory
 
 ## Version 4.0.3
 * Credential encryption functionality now works with both "Remote Access" enabled (Over Network) and "Remote Access" disabled (Local Machine).

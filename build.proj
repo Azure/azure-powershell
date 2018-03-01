@@ -302,7 +302,7 @@
     <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) AzureRM.Netcore -Profile Latest &quot; " Condition="'$(Latest)' == 'true' and '$(CodeSign)' == 'false'"/>
 
     <!-- Generate the help. -->
-    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="true" Condition=" '$(SkipHelp)' == 'false' and '$(Latest)' == 'true'"/>
+    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="true" Condition=" '$(SkipHelp)' == 'false' and '$(Latest)' == 'true'"/>
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
@@ -426,6 +426,11 @@
     <Message Importance="high" Text="Running Dependency Analysis..." />
     <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp)" Condition="'$(Latest)' == 'true'"/>
     <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Stack\$(Configuration) $(MSBuildProjectDirectory)\src\Stack" Condition="'$(Stack)' == 'true'" ContinueOnError="True"/>
+    <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
+  </Target>
+
+  <Target Name="StaticAnalysisErrorMessage">
+    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
   </Target>
 
   <!-- Publish all packages -->

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -79,6 +79,57 @@ The command stores that object in the $Policy variable.
 The final command assigns the policy in $Policy at the level of a resource group.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
+### Example 2: Policy assignment at resource group level with policy parameter object
+```
+PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
+PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
+PS C:\> $Locations = Get-AzureRmLocation | where displayname -like "*east*"
+PS C:\> $AllowedLocations = @{"listOfAllowedLocations"=($Locations.location)}
+PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
+```
+
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+
+The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
+The command stores that object in the $Policy variable.
+
+The third and fourth commands create an object containing all Azure regions with "east" in the name.
+The commands store that object in the $AllowedLocations variable.
+
+The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+
+### Example 3: Policy assignment at resource group level with policy parameter file
+Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+```
+{
+    "listOfAllowedLocations":  {
+      "value": [
+        "westus",
+        "westeurope",
+        "japanwest"
+      ]
+    }
+}
+```
+
+```
+PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
+PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
+PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
+```
+
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+
+The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
+The command stores that object in the $Policy variable.
+
+The final command assigns the policy in $Policy at the level of a resource group using the policy parameter file AllowedLocations.json from the local working directory.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -88,7 +139,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +169,7 @@ The description for policy assignment
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,7 +184,7 @@ Specifies a display name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,7 +238,7 @@ Specifies a name for the policy assignment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -202,7 +253,7 @@ The not scopes for policy assignment.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,7 +268,7 @@ Specifies a policy, as a **PSObject** object that contains the policy rule.
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithoutParameters, CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -229,7 +280,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicyParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -244,7 +295,7 @@ The policy parameter file path or policy parameter string.
 ```yaml
 Type: String
 Parameter Sets: CreateWithPolicyParameterString, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -259,7 +310,7 @@ The policy parameter object.
 ```yaml
 Type: Hashtable
 Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicySetParameterObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,7 +325,7 @@ The policy set definition object.
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithoutParameters, CreateWithPolicyParameterObject, CreateWithPolicyParameterString
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -286,7 +337,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSObject
 Parameter Sets: CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -301,7 +352,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -319,7 +370,7 @@ For instance, to assign a policy to a resource group, specify the following:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

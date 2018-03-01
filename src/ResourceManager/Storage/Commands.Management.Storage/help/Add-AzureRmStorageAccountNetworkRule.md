@@ -15,27 +15,27 @@ schema: 2.0.0
 ### NetWorkRuleString (Default)
 ```
 Add-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -VirtualNetworkResourceId <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -VirtualNetworkResourceId <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### IpRuleObject
 ```
 Add-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NetworkRuleObject
 ```
 Add-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -VirtualNetworkRule <PSVirtualNetworkRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -VirtualNetworkRule <PSVirtualNetworkRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleString
 ```
 Add-AzureRmStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- -IPAddressOrRange <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -IPAddressOrRange <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -76,6 +76,21 @@ This command add several IpRule with IpRule objects, input with JSON.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -97,7 +112,7 @@ The Array of IpAddressOrRange, add IpRules with the input IpAddressOrRange and d
 ```yaml
 Type: String[]
 Parameter Sets: IpRuleString
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -112,7 +127,7 @@ The Array of IpRule objects to add to the NetworkRule Property.
 ```yaml
 Type: PSIpRule[]
 Parameter Sets: IpRuleObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -142,7 +157,7 @@ Specifies the name of the resource group contains the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -172,7 +187,7 @@ The Array of VirtualNetworkRule objects to add to the NetworkRule Property.
 ```yaml
 Type: PSVirtualNetworkRule[]
 Parameter Sets: NetworkRuleObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -229,3 +244,4 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,22 +14,21 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {
-    [TestClass]
     public class NewAzureStorageContainerTest : StorageBlobTestBase
     {
         public NewAzureStorageContainerCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public NewAzureStorageContainerTest()
         {            
             command = new NewAzureStorageContainerCommand(BlobMock)
             {
@@ -38,13 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             CurrentBlobCmd = command;
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateContainerWithInvalidContainerNameTest()
         {
             string name = String.Empty;
@@ -62,7 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
                 String.Format(Resources.InvalidContainerName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateContainerForAlreadyExistsContainerTest()
         {
             AddTestContainers();
@@ -73,7 +68,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
                 String.Format(Resources.ContainerAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateContainerSuccessfullyTest()
         {
             string name = String.Empty;
@@ -84,21 +80,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             command.Name = name;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             AzureStorageContainer container = (AzureStorageContainer)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.AreEqual("test", container.Name);
+            Assert.Equal("test", container.Name);
 
             MockCmdRunTime.ResetPipelines();
             AssertThrowsAsync<ResourceAlreadyExistException>(() => command.CreateAzureContainer(InitTaskId, BlobMock, name, accesslevel),
                 String.Format(Resources.ContainerAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExcuteCommandNewContainerTest()
         {
             string name = "containername";
             command.Name = name;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             AzureStorageContainer container = (AzureStorageContainer)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.AreEqual(name, container.Name);
+            Assert.Equal(name, container.Name);
         }
     }
 }

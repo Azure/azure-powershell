@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 0143CE35-3B1D-4829-B880-A5CA25B83883
@@ -86,7 +86,7 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +120,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DeploymentMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,7 +135,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -150,7 +150,7 @@ Specifies the name of the resource group to test.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,7 +165,7 @@ Specifies the full path of a JSON template file.
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -180,7 +180,7 @@ Specifies the full path of a JSON file that contains the names and values of the
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -195,7 +195,7 @@ Specifies a hash table of template parameter names and values.
 ```yaml
 Type: Hashtable
 Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -210,7 +210,7 @@ Specifies the URI of a template parameters file.
 ```yaml
 Type: String
 Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -225,7 +225,7 @@ Specifies the URI of a JSON template file.
 ```yaml
 Type: String
 Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

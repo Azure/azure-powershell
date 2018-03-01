@@ -2,285 +2,6 @@
   "Cmdlets": [
     {
       "VerbName": "Get",
-      "NounName": "AzureRmUsage",
-      "Name": "Get-AzureRmUsage",
-      "ClassName": "Microsoft.Azure.Commands.Insights.UsageMetrics.GetAzureRmUsageCommand",
-      "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-            "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric[], Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric",
-            "GenericTypeArguments": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "ResourceId",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "ApiVersion",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "StartTime",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.DateTime",
-            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "EndTime",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.DateTime",
-            "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "MetricNames",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String[]",
-            "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": "System.String",
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRmContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceId",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ApiVersion",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "StartTime",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.DateTime",
-                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EndTime",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.DateTime",
-                  "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "MetricNames",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": "System.String",
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ],
-      "AliasList": []
-    },
-    {
-      "VerbName": "Get",
       "NounName": "AzureRmMetricDefinition",
       "Name": "Get-AzureRmMetricDefinition",
       "ClassName": "Microsoft.Azure.Commands.Insights.Metrics.GetAzureRmMetricDefinitionCommand",
@@ -293,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[], Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[], Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
             "GenericTypeArguments": []
@@ -321,8 +42,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "MetricNames",
-          "AliasList": [],
+          "Name": "MetricName",
+          "AliasList": [
+            "MetricNames"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
@@ -405,8 +128,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MetricNames",
-                "AliasList": [],
+                "Name": "MetricName",
+                "AliasList": [
+                  "MetricNames"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
@@ -496,7 +221,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[], Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[], Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
             "GenericTypeArguments": []
@@ -590,8 +315,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "MetricNames",
-          "AliasList": [],
+          "Name": "MetricName",
+          "AliasList": [
+            "MetricNames"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
@@ -674,8 +401,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MetricNames",
-                "AliasList": [],
+                "Name": "MetricName",
+                "AliasList": [
+                  "MetricNames"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
@@ -865,8 +594,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MetricNames",
-                "AliasList": [],
+                "Name": "MetricName",
+                "AliasList": [
+                  "MetricNames"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
@@ -1004,17 +735,20 @@
       "NounName": "AzureRmLogProfile",
       "Name": "Remove-AzureRmLogProfile",
       "ClassName": "Microsoft.Azure.Commands.Insights.LogProfiles.RemoveAzureRmLogProfileCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Boolean",
-            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure",
+            "Name": "Microsoft.Azure.AzureOperationResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": []
           },
@@ -1178,7 +912,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Item": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
               "Count": "System.Int32",
@@ -1300,7 +1034,7 @@
       "NounName": "AzureRmLogProfile",
       "Name": "Add-AzureRmLogProfile",
       "ClassName": "Microsoft.Azure.Commands.Insights.LogProfiles.AddAzureRmLogProfileCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -1309,7 +1043,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1398,8 +1132,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Locations",
-          "AliasList": [],
+          "Name": "Location",
+          "AliasList": [
+            "Locations"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.String]",
@@ -1416,8 +1152,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Categories",
-          "AliasList": [],
+          "Name": "Category",
+          "AliasList": [
+            "Categories"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.String]",
@@ -1554,8 +1292,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Locations",
-                "AliasList": [],
+                "Name": "Location",
+                "AliasList": [
+                  "Locations"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.String]",
@@ -1578,8 +1318,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Categories",
-                "AliasList": [],
+                "Name": "Category",
+                "AliasList": [
+                  "Categories"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.String]",
@@ -1648,12 +1390,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData"
+              "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData"
             ]
           },
           "ParameterSets": [
@@ -1763,8 +1505,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -1811,9 +1555,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "MaxEvents",
+          "Name": "MaxRecord",
           "AliasList": [
-            "MaxRecords"
+            "MaxRecords",
+            "MaxEvents"
           ],
           "Type": {
             "Namespace": "System",
@@ -1995,9 +1740,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2190,9 +1936,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2273,8 +2020,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2385,9 +2134,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2580,9 +2330,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2753,9 +2504,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2902,9 +2654,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "MaxEvents",
+                "Name": "MaxRecord",
                 "AliasList": [
-                  "MaxRecords"
+                  "MaxRecords",
+                  "MaxEvents"
                 ],
                 "Type": {
                   "Namespace": "System",
@@ -2964,7 +2717,7 @@
       "NounName": "AzureRmDiagnosticSetting",
       "Name": "Set-AzureRmDiagnosticSetting",
       "ClassName": "Microsoft.Azure.Commands.Insights.Diagnostics.SetAzureRmDiagnosticSettingCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -2973,7 +2726,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
@@ -3470,7 +3223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
@@ -3625,8 +3378,10 @@
       ],
       "Parameters": [
         {
-          "Name": "Webhooks",
-          "AliasList": [],
+          "Name": "Webhook",
+          "AliasList": [
+            "Webhooks"
+          ],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]",
@@ -3641,8 +3396,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "CustomEmails",
-          "AliasList": [],
+          "Name": "CustomEmail",
+          "AliasList": [
+            "CustomEmails"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
@@ -3673,8 +3430,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "SendEmailToSubscriptionCoAdministrators",
-          "AliasList": [],
+          "Name": "SendEmailToSubscriptionCoAdministrator",
+          "AliasList": [
+            "SendEmailToSubscriptionCoAdministrators"
+          ],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
@@ -3719,8 +3478,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Webhooks",
-                "AliasList": [],
+                "Name": "Webhook",
+                "AliasList": [
+                  "Webhooks"
+                ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
                   "Name": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]",
@@ -3741,8 +3502,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "CustomEmails",
-                "AliasList": [],
+                "Name": "CustomEmail",
+                "AliasList": [
+                  "CustomEmails"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
@@ -3785,8 +3548,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "SendEmailToSubscriptionCoAdministrators",
-                "AliasList": [],
+                "Name": "SendEmailToSubscriptionCoAdministrator",
+                "AliasList": [
+                  "SendEmailToSubscriptionCoAdministrators"
+                ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
@@ -4000,8 +3765,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "ScheduleDays",
-          "AliasList": [],
+          "Name": "ScheduleDay",
+          "AliasList": [
+            "ScheduleDays"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.String]",
@@ -4018,8 +3785,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "ScheduleHours",
-          "AliasList": [],
+          "Name": "ScheduleHour",
+          "AliasList": [
+            "ScheduleHours"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]",
@@ -4036,8 +3805,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "ScheduleMinutes",
-          "AliasList": [],
+          "Name": "ScheduleMinute",
+          "AliasList": [
+            "ScheduleMinutes"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]",
@@ -4070,8 +3841,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Rules",
-          "AliasList": [],
+          "Name": "Rule",
+          "AliasList": [
+            "Rules"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
@@ -4206,8 +3979,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Rules",
-                "AliasList": [],
+                "Name": "Rule",
+                "AliasList": [
+                  "Rules"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
@@ -4419,8 +4194,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Rules",
-                "AliasList": [],
+                "Name": "Rule",
+                "AliasList": [
+                  "Rules"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
@@ -4588,8 +4365,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ScheduleDays",
-                "AliasList": [],
+                "Name": "ScheduleDay",
+                "AliasList": [
+                  "ScheduleDays"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.String]",
@@ -4612,8 +4391,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ScheduleHours",
-                "AliasList": [],
+                "Name": "ScheduleHour",
+                "AliasList": [
+                  "ScheduleHours"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]",
@@ -4636,8 +4417,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ScheduleMinutes",
-                "AliasList": [],
+                "Name": "ScheduleMinute",
+                "AliasList": [
+                  "ScheduleMinutes"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]",
@@ -4682,8 +4465,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Rules",
-                "AliasList": [],
+                "Name": "Rule",
+                "AliasList": [
+                  "Rules"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
@@ -5327,7 +5112,7 @@
       "NounName": "AzureRmAutoscaleSetting",
       "Name": "Add-AzureRmAutoscaleSetting",
       "ClassName": "Microsoft.Azure.Commands.Insights.Autoscale.AddAzureRmAutoscaleSettingCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -5336,7 +5121,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SettingSpec": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -5352,18 +5137,19 @@
       ],
       "Parameters": [
         {
-          "Name": "SettingSpec",
-          "AliasList": [],
+          "Name": "InputObject",
+          "AliasList": [
+            "SettingSpec"
+          ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-              "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+              "Profiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
               "Enabled": "System.Nullable`1[System.Boolean]",
-              "AutoscaleSettingResourceName": "System.String",
               "TargetResourceUri": "System.String",
               "Id": "System.String",
               "Name": "System.String",
@@ -5411,8 +5197,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -5443,8 +5231,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "AutoscaleProfiles",
-          "AliasList": [],
+          "Name": "AutoscaleProfile",
+          "AliasList": [
+            "AutoscaleProfiles"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
@@ -5477,8 +5267,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Notifications",
-          "AliasList": [],
+          "Name": "Notification",
+          "AliasList": [
+            "Notifications"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
@@ -5525,18 +5317,19 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "SettingSpec",
-                "AliasList": [],
+                "Name": "InputObject",
+                "AliasList": [
+                  "SettingSpec"
+                ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-                    "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+                    "Profiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
                     "Enabled": "System.Nullable`1[System.Boolean]",
-                    "AutoscaleSettingResourceName": "System.String",
                     "TargetResourceUri": "System.String",
                     "Id": "System.String",
                     "Name": "System.String",
@@ -5558,8 +5351,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -5602,8 +5397,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AutoscaleProfiles",
-                "AliasList": [],
+                "Name": "AutoscaleProfile",
+                "AliasList": [
+                  "AutoscaleProfiles"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
@@ -5626,8 +5423,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Notifications",
-                "AliasList": [],
+                "Name": "Notification",
+                "AliasList": [
+                  "Notifications"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
@@ -5729,8 +5528,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -5773,8 +5574,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AutoscaleProfiles",
-                "AliasList": [],
+                "Name": "AutoscaleProfile",
+                "AliasList": [
+                  "AutoscaleProfiles"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
@@ -5819,8 +5622,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Notifications",
-                "AliasList": [],
+                "Name": "Notification",
+                "AliasList": [
+                  "Notifications"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
@@ -5924,12 +5729,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData"
+              "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData"
             ]
           },
           "ParameterSets": [
@@ -6251,12 +6056,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource"
+              "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting"
             ]
           },
           "ParameterSets": [
@@ -6266,8 +6071,10 @@
       ],
       "Parameters": [
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6344,8 +6151,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6523,8 +6332,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Properties",
-          "AliasList": [],
+          "Name": "Property",
+          "AliasList": [
+            "Properties"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -6591,8 +6402,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Properties",
-                "AliasList": [],
+                "Name": "Property",
+                "AliasList": [
+                  "Properties"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -6651,7 +6464,7 @@
       "NounName": "AzureRmAutoscaleSetting",
       "Name": "Remove-AzureRmAutoscaleSetting",
       "ClassName": "Microsoft.Azure.Commands.Insights.Autoscale.RemoveAzureRmAutoscaleSettingCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -6675,8 +6488,10 @@
       ],
       "Parameters": [
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6737,8 +6552,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6854,7 +6671,7 @@
       "NounName": "AzureRmMetricAlertRule",
       "Name": "Add-AzureRmMetricAlertRule",
       "ClassName": "Microsoft.Azure.Commands.Insights.Alerts.AddAzureRmMetricAlertRuleCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -6863,7 +6680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -7025,8 +6842,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -7057,8 +6876,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Actions",
-          "AliasList": [],
+          "Name": "Action",
+          "AliasList": [
+            "Actions"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
@@ -7305,600 +7126,11 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Actions",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Collections.Generic",
-                  "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [
-                    "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
-                  ]
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
+                "Name": "ResourceGroupName",
                 "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
+                  "ResourceGroup"
                 ],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ],
-      "AliasList": []
-    },
-    {
-      "VerbName": "Add",
-      "NounName": "AzureRmLogAlertRule",
-      "Name": "Add-AzureRmLogAlertRule",
-      "ClassName": "Microsoft.Azure.Commands.Insights.Alerts.AddAzureRmLogAlertRuleCommand",
-      "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-            "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
-              "StatusCode": "System.Net.HttpStatusCode",
-              "RequestId": "System.String"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "TargetResourceGroup",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "TargetResourceId",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Level",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "OperationName",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "TargetResourceProvider",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Status",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SubStatus",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Location",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Description",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DisableRule",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ResourceGroup",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Name",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Actions",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
-            ]
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRmContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "TargetResourceGroup",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "TargetResourceId",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Level",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "OperationName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "TargetResourceProvider",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Status",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubStatus",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Location",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Description",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DisableRule",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
-                "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -7940,8 +7172,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Actions",
-                "AliasList": [],
+                "Name": "Action",
+                "AliasList": [
+                  "Actions"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
@@ -8002,7 +7236,7 @@
       "NounName": "AzureRmWebtestAlertRule",
       "Name": "Add-AzureRmWebtestAlertRule",
       "ClassName": "Microsoft.Azure.Commands.Insights.Alerts.AddAzureRmWebtestAlertRuleCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -8011,7 +7245,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -8155,8 +7389,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -8187,8 +7423,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Actions",
-          "AliasList": [],
+          "Name": "Action",
+          "AliasList": [
+            "Actions"
+          ],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
@@ -8411,8 +7649,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8455,8 +7695,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Actions",
-                "AliasList": [],
+                "Name": "Action",
+                "AliasList": [
+                  "Actions"
+                ],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
@@ -8525,12 +7767,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData"
+              "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData"
             ]
           },
           "ParameterSets": [
@@ -8852,12 +8094,12 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor"
+              "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule"
             ]
           },
           "ParameterSets": [
@@ -8867,8 +8109,10 @@
       ],
       "Parameters": [
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -8961,8 +8205,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -9040,8 +8286,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -9141,8 +8389,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -9304,8 +8554,10 @@
       ],
       "Parameters": [
         {
-          "Name": "CustomEmails",
-          "AliasList": [],
+          "Name": "CustomEmail",
+          "AliasList": [
+            "CustomEmails"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
@@ -9320,8 +8572,10 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "SendToServiceOwners",
-          "AliasList": [],
+          "Name": "SendToServiceOwner",
+          "AliasList": [
+            "SendToServiceOwners"
+          ],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
@@ -9366,8 +8620,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "CustomEmails",
-                "AliasList": [],
+                "Name": "CustomEmail",
+                "AliasList": [
+                  "CustomEmails"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
@@ -9388,8 +8644,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "SendToServiceOwners",
-                "AliasList": [],
+                "Name": "SendToServiceOwner",
+                "AliasList": [
+                  "SendToServiceOwners"
+                ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
@@ -9488,8 +8746,10 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "Properties",
-          "AliasList": [],
+          "Name": "Property",
+          "AliasList": [
+            "Properties"
+          ],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -9556,8 +8816,10 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Properties",
-                "AliasList": [],
+                "Name": "Property",
+                "AliasList": [
+                  "Properties"
+                ],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -9616,21 +8878,22 @@
       "NounName": "AzureRmAlertRule",
       "Name": "Remove-AzureRmAlertRule",
       "ClassName": "Microsoft.Azure.Commands.Insights.Alerts.RemoveAzureRmAlertRuleCommand",
-      "SupportsShouldProcess": false,
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.AzureOperationResponse]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure",
+            "Name": "Microsoft.Azure.AzureOperationResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.AzureOperationResponse"
-            ]
+            "GenericTypeArguments": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9639,8 +8902,10 @@
       ],
       "Parameters": [
         {
-          "Name": "ResourceGroup",
-          "AliasList": [],
+          "Name": "ResourceGroupName",
+          "AliasList": [
+            "ResourceGroup"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -9701,8 +8966,10 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroup",
-                "AliasList": [],
+                "Name": "ResourceGroupName",
+                "AliasList": [
+                  "ResourceGroup"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -9827,7 +9094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9904,7 +9171,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -9973,7 +9240,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10097,7 +9364,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -10225,7 +9492,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -10422,7 +9689,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Enabled": "System.Boolean",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10533,7 +9800,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String"
             },
@@ -11167,7 +10434,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11361,7 +10628,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Enabled": "System.Boolean",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11472,7 +10739,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11741,7 +11008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -11801,7 +11068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -11953,7 +11220,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
                     "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -12120,7 +11387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -12301,7 +11568,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -12955,7 +12222,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
                     "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -13065,7 +12332,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -13718,7 +12985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -13870,7 +13137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
                     "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -14037,7 +13304,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -14097,7 +13364,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -14249,7 +13516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
                     "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",
@@ -14516,18 +13783,17 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric": {
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
-        "NextResetTime": "System.Nullable`1[System.DateTime]",
-        "CurrentValue": "System.Nullable`1[System.Double]",
-        "Limit": "System.Nullable`1[System.Double]",
-        "QuotaPeriod": "System.Nullable`1[System.TimeSpan]",
-        "Id": "System.String",
-        "Unit": "System.String"
+        "MetricAvailabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
+        "PrimaryAggregationType": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
+        "Unit": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
+        "ResourceId": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -14543,33 +13809,26 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Monitor.Models.MetricAvailability, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.DateTime"
+        "Microsoft.Azure.Management.Monitor.Models.MetricAvailability"
       ]
     },
-    "System.DateTime": {
-      "Namespace": "System",
-      "Name": "System.DateTime",
-      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
+    "Microsoft.Azure.Management.Monitor.Models.MetricAvailability": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "TimeGrain": "System.Nullable`1[System.TimeSpan]",
+        "Retention": "System.Nullable`1[System.TimeSpan]"
+      },
       "ElementType": null,
       "GenericTypeArguments": []
-    },
-    "System.Nullable`1[System.Double]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Double]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Double"
-      ]
     },
     "System.Nullable`1[System.TimeSpan]": {
       "Namespace": "System",
@@ -14585,6 +13844,42 @@
       "Namespace": "System",
       "Name": "System.TimeSpan",
       "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Monitor.Models.AggregationType"
+      ]
+    },
+    "Microsoft.Azure.Management.Monitor.Models.AggregationType": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.AggregationType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.Unit, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Monitor.Models.Unit"
+      ]
+    },
+    "Microsoft.Azure.Management.Monitor.Models.Unit": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.Unit",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.Unit, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -14637,6 +13932,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
         "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
@@ -14739,82 +14035,10 @@
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
       ]
     },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition": {
-      "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
-        "MetricAvailabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
-        "PrimaryAggregationType": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
-        "Unit": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
-        "ResourceId": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Monitor.Models.MetricAvailability, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Monitor.Models.MetricAvailability"
-      ]
-    },
-    "Microsoft.Azure.Management.Monitor.Models.MetricAvailability": {
-      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
-      "Name": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "TimeGrain": "System.Nullable`1[System.TimeSpan]",
-        "Retention": "System.Nullable`1[System.TimeSpan]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Monitor.Models.AggregationType"
-      ]
-    },
-    "Microsoft.Azure.Management.Monitor.Models.AggregationType": {
-      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
-      "Name": "Microsoft.Azure.Management.Monitor.Models.AggregationType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.Unit, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Monitor.Models.Unit"
-      ]
-    },
-    "Microsoft.Azure.Management.Monitor.Models.Unit": {
-      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
-      "Name": "Microsoft.Azure.Management.Monitor.Models.Unit",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.Unit, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
         "Unit": "Microsoft.Azure.Management.Monitor.Models.Unit",
@@ -14850,6 +14074,24 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Double]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Double]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Double"
+      ]
+    },
     "System.Nullable`1[System.Int64]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Int64]",
@@ -14860,10 +14102,18 @@
         "System.Int64"
       ]
     },
+    "System.Net.HttpStatusCode": {
+      "Namespace": "System.Net",
+      "Name": "System.Net.HttpStatusCode",
+      "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14890,11 +14140,105 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData": {
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Claims": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+        "Properties": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+        "Authorization": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization",
+        "HttpRequest": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest",
+        "Level": "Microsoft.Azure.Management.Monitor.Models.EventLevel",
+        "ResourceProviderName": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "SubStatus": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "Status": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "EventName": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "Category": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "OperationName": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "ResourceType": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "SubmissionTimestamp": "System.DateTime",
+        "EventTimestamp": "System.DateTime",
+        "OperationId": "System.String",
+        "Caller": "System.String",
+        "ResourceGroupName": "System.String",
+        "SubscriptionId": "System.String",
+        "CorrelationId": "System.String",
+        "EventDataId": "System.String",
+        "Id": "System.String",
+        "Description": "System.String",
+        "ResourceId": "System.String",
+        "TenantId": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": {
+      "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Content": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization": {
+      "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Scope": "System.String",
+        "Action": "System.String",
+        "Role": "System.String",
+        "Condition": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest": {
+      "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ClientId": "System.String",
+        "Method": "System.String",
+        "Url": "System.String",
+        "ClientIpAddress": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Monitor.Models.EventLevel": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.EventLevel",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.EventLevel, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Monitor.Models.HttpRequestInfo": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.HttpRequestInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.HttpRequestInfo, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "ClientRequestId": "System.String",
+        "ClientIpAddress": "System.String",
+        "Method": "System.String",
+        "Uri": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Monitor.Models.SenderAuthorization": {
+      "Namespace": "Microsoft.Azure.Management.Monitor.Models",
+      "Name": "Microsoft.Azure.Management.Monitor.Models.SenderAuthorization",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.SenderAuthorization, Microsoft.Azure.Management.Monitor, Version=0.16.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Action": "System.String",
+        "Role": "System.String",
+        "Scope": "System.String"
+      },
       "ElementType": null,
       "GenericTypeArguments": []
     },
@@ -15217,32 +14561,20 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Net.HttpStatusCode": {
-      "Namespace": "System.Net",
-      "Name": "System.Net.HttpStatusCode",
-      "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList": {
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Item": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
-        "Count": "System.Int32",
-        "Capacity": "System.Int32"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": {
-      "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Content": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+        "Profiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "TargetResourceUri": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -15305,6 +14637,16 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
     "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator",
@@ -15313,25 +14655,22 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor": {
+    "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
-      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
+        "IsEnabled": "System.Boolean",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Actions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
+        "LastUpdatedTime": "System.Nullable`1[System.DateTime]",
+        "AlertRuleResourceName": "System.String",
+        "Description": "System.String",
         "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.AzureOperationResponse": {
-      "Namespace": "Microsoft.Azure",
-      "Name": "Microsoft.Azure.AzureOperationResponse",
-      "AssemblyQualifiedName": "Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "StatusCode": "System.Net.HttpStatusCode",
-        "RequestId": "System.String"
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -15339,7 +14678,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15349,7 +14688,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEmailReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Status": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Management.Models.ReceiverStatus]",
         "EmailAddress": "System.String",
@@ -15379,7 +14718,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15389,7 +14728,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSSmsReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Status": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Management.Models.ReceiverStatus]",
         "CountryCode": "System.String",
@@ -15402,7 +14741,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15412,7 +14751,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSWebhookReceiver, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ServiceUri": "System.String",
         "Name": "System.String"
@@ -15423,7 +14762,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String"
       },
@@ -15495,7 +14834,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=3.4.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource, Microsoft.Azure.Commands.Insights, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionList",
         "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertAllOfCondition",

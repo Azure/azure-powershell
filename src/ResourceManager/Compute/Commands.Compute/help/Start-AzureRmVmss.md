@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 7F7D1F05-617C-4EC5-8FF5-D816E9148841
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/start-azurermvmss
 schema: 2.0.0
@@ -13,7 +14,7 @@ Starts the VMSS or a set of virtual machines within the VMSS.
 ## SYNTAX
 
 ```
-Start-AzureRmVmss [-AsJob] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+Start-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

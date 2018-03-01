@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     [Cmdlet(VerbsCommon.Reset, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResetAzureRedisCache : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -50,19 +50,14 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
+            ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
+
+            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RebootingRedisCache, Name, RebootType),
                 string.Format(Resources.RebootRedisCache, Name),
                 Name,
                 () => CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId));
-            }
-            else
-            {
-                CacheClient.RebootCache(ResourceGroupName, Name, RebootType, ShardId);
-            }
 
             if (PassThru)
             {

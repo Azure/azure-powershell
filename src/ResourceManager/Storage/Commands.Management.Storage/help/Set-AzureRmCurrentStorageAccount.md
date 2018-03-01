@@ -47,7 +47,7 @@ To obtain a storage context object, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: UsingStorageContext
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -92,7 +92,7 @@ Specifies the resource group that contains the Storage account to modify.
 ```yaml
 Type: String
 Parameter Sets: UsingResourceGroupAndNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

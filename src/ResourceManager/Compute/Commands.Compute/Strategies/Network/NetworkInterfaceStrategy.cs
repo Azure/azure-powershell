@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkInterfaceStrategy
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "network interface",
                 provider: "networkInterfaces",
                 getOperations: client => client.NetworkInterfaces,
                 getAsync: (o, p) => o.GetAsync(
@@ -41,17 +40,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new NetworkInterface
+                createModel: engine => new NetworkInterface
                 {
                     IpConfigurations = new []
                     {
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = new Subnet { Id = subnet.GetId(subscription).IdToString() },
+                            Subnet = new Subnet { Id = engine.GetId(subnet) },
                             PublicIPAddress = new PublicIPAddress
                             {
-                                Id = publicIPAddress.GetId(subscription).IdToString()
+                                Id = engine.GetId(publicIPAddress)
                             }
                         }
                     },
@@ -59,14 +58,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         ? null 
                         : new NetworkSecurityGroup
                         {
-                            Id = networkSecurityGroup.GetId(subscription).IdToString()
+                            Id = engine.GetId(networkSecurityGroup)
                         }
-                },
-                dependencies: new IEntityConfig[] 
-                {
-                    subnet,
-                    publicIPAddress,
-                    networkSecurityGroup
                 });
     }
 }

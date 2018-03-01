@@ -45,7 +45,7 @@ Before cloning this repository, please make sure you have started in our [docume
 
 #### GitHub Workflow
 
-If you don't have experience with Git and GitHub, some of the terminology and process can be confusing. [Here is a guide to understanding the GitHub flow](https://guides.github.com/introduction/flow/) and [here is a guide to understanding the basic Git commands](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf).
+If you don't have experience with Git and GitHub, some of the terminology and process can be confusing. [Here is a guide to understanding the GitHub flow](https://guides.github.com/introduction/flow/) and [here is a guide to understanding the basic Git commands](https://education.github.com/git-cheat-sheet-education.pdf).
 
 #### Forking the Azure/azure-powershell repository
 
@@ -65,7 +65,7 @@ To suggest a new feature or changes that could be made to Azure PowerShell, file
 
 You can find the code complete and release dates of the next three Azure PowerShell releases in the [Milestones](https://github.com/Azure/azure-powershell/milestones) section of the Issue page. Each milestone will display the issues that are being worked on for the corresponding release. 
 
-## Making Changes
+## Submitting Changes
 
 ### Pull Requests
 
@@ -83,15 +83,15 @@ To open your own pull request, click [here](https://github.com/Azure/azure-power
 
 ### SDK for .NET
 
-Before making any changes to the Azure PowerShell repository, the corresponding NuGet packages must have been published from the [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net) repository.
+If your changes require a new version of an Azure management library, please ensure that the corresponding NuGet package has been published from the [Azure SDK for .NET repository](https://github.com/Azure/azure-sdk-for-net).
 
-For more information on how to make changes to the SDK for .NET repository and publish the corresponding packages to NuGet, click [here](https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/README.md).
+For more information on how to make changes to the SDK for .NET repository and publish packages to NuGet, please see the [`README.md`](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/README.md) in the Azure SDK for .NET repository.
 
 ### Pull Request Guidelines
 
 A pull request template will automatically be included as a part of your PR. Please fill out the checklist as specified. Pull requests **will not be reviewed** unless they include a properly completed checklist.
 
-The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of PowerShell cmdlet best practices [here](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx).
+The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of Azure PowerShell design guidelines [here](./documentation/development-docs/azure-powershell-design-guidelines.md).
 
 #### Cleaning up Commits
 
@@ -103,17 +103,17 @@ If you find yourself creating a pull request and are unable to see all the chang
 
 If splitting up the pull request is not an option, we recommend **creating individual commits for different parts of the pull request, which can be reviewed individually on GitHub**.
 
-For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/cleaning-up-commits.md).
+For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/development-docs/cleaning-up-commits.md).
 
 #### Updating the change log
 
-Any public API changes that are made to a service must be reflected in the respecitve change log. This change log will allow customers to easily track what has been changed between releases of a service.
+Any changes that are made must be reflected in the respecitve service's change log. This change log will allow customers to easily track what has been changed between releases of a service.
 
-For ResourceManager services, the change log is located at `src\ResourceManager\SERVICE\ChangeLog.md`.
+For ARM service projects, the change log is located at `src\ResourceManager\{{service}}\ChangeLog.md`.
 
-For ServiceManagement services, the change log is located at `src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md`.
+For RDFE service projects, the change log is located at `src\ServiceManagement\ChangeLog.md`.
 
-For Storage, this change log is located at `src\Storage\ChangeLog.md`.
+For the Storage data plane project, this change log is located at `src\Storage\ChangeLog.md`.
 
 #### Breaking Changes
 
@@ -152,9 +152,9 @@ The following guidelines must be followed in pull requests that add, edit, or re
     - Note that you can see a list of all approved PowerShell verbs by running `Get-Verb` in PowerShell
     - When a verb you would like to use is not in the list of approved verbs, or to get ideas on how to use verbs, consult the [Approved Verbs for Windows PowerShell Commands](https://msdn.microsoft.com/en-us/library/ms714428\(v=vs.85\).aspx) documentation where you will find descriptions of approved verbs as well as related verbs in the comments so that you can find one appropriate for your command
 - Cmdlet noun name uses the AzureRm prefix for management cmdlets, and the Azure prefix for data plane cmdlets
-- Cmdlet specifies the `OutputType` attribute if any output is produced; if the cmdlet produces no output, it should implement a `PassThrough` parameter
+- Cmdlet specifies the `OutputType` attribute; if the cmdlet produces no output, it should have an `OutputType` of `bool` and implement a `PassThrough` parameter
 - If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportsShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](https://gist.github.com/markcowl/338e16fe5c8bbf195aff9f8af0db585d#what-is-the-change).
-- Cmdlets should derive from AzureRmCmdlet for management cmdlets, and AzureDataCmdlet for data cmdlets
+- Cmdlets should derive from [`AzureRmCmdlet`](src/ResourceManager/Common/Commands.ResourceManager.Common/AzureRMCmdlet.cs) class for management cmdlets, and [`AzureDataCmdlet`](src/Common/Commands.Common/AzureDataCmdlet.cs) for data cmdlets
 - If multiple parameter sets are implemented, the cmdlet should specify a `DefaultParameterSetName` in its cmdlet attribute
 
 #### Cmdlet parameter guidelines

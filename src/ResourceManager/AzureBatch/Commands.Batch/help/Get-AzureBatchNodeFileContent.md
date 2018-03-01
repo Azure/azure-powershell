@@ -258,7 +258,9 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path of the node file to download.```yaml
+The path of the node file to download.
+
+```yaml
 Type: String
 Parameter Sets: Task_Id_Path, Task_Id_Stream, ComputeNode_Id_Path, ComputeNode_Id_Stream
 Aliases: Name

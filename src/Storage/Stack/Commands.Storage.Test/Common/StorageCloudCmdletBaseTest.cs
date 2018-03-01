@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +14,19 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for StorageCloudCmdletBase
     /// </summary>
-    [TestClass]
     public class StorageCloudCmdletBaseTest : StorageTestBase
     {
         /// <summary>
@@ -34,8 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         /// </summary>
         public StorageCloudCmdletBase<IStorageManagement> command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public StorageCloudCmdletBaseTest()
         {
             MockCmdRunTime = new MockCommandRuntime();
             command = new StorageCloudCmdletBase<IStorageManagement>
@@ -44,32 +43,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetCloudStorageAccountFromContextTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
             command.Context = new AzureStorageContext(account);
-            Assert.AreEqual(command.Context, command.GetCmdletStorageContext());
+            Assert.Equal(command.Context, command.GetCmdletStorageContext());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteObjectWithStorageContextWithNullContextTest()
         {
             AzureStorageBase item = new AzureStorageBase();
             command.WriteObjectWithStorageContext(item);
 
             AzureStorageBase contextItem = (AzureStorageBase)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.IsNotNull(contextItem);
-            Assert.IsNull(contextItem.Context);
+            Assert.NotNull(contextItem);
+            Assert.Null(contextItem.Context);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteObjectWithStorageContextWithContextTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
@@ -79,35 +75,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             command.WriteObjectWithStorageContext(item);
 
             AzureStorageBase contextItem = (AzureStorageBase)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.IsNotNull(contextItem);
-            Assert.AreEqual(command.Context, contextItem.Context);
+            Assert.NotNull(contextItem);
+            Assert.Equal(command.Context, contextItem.Context);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteObjectWithStorageContextWihtNullIEnumerableList()
         {
             IEnumerable<AzureStorageBase> itemList = null;
             command.WriteObjectWithStorageContext(itemList);
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteObjectWithStorageContextWihtEnumerableList()
         {
             List<AzureStorageBase> itemList = new List<AzureStorageBase>();
             itemList.Add(new AzureStorageBase());
             itemList.Add(new AzureStorageBase());
             command.WriteObjectWithStorageContext(itemList);
-            Assert.AreEqual(2, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(2, MockCmdRunTime.OutputPipeline.Count);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShouldInitServiceChannelTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
             command.Context = new AzureStorageContext(account);
             string toss;
-            Assert.IsFalse(command.TryGetStorageAccount(command.SMProfile, out toss));
+            Assert.False(command.TryGetStorageAccount(command.RMProfile, out toss));
         }
     }
 }
