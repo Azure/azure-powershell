@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string version = "foo";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestUploadApplicationPackage()
         {
             string id = "newApplicationPackage";
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestUpdateApplicationPackage()
         {
             string id = "updateApplicationPackage";
@@ -84,6 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCreatePoolWithApplicationPackage()
         {
             string id = "createPoolWithApplicationPackage";
@@ -112,6 +115,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestUpdatePoolWithApplicationPackage()
         {
             string id = "updatePoolWithApplicationPackage";

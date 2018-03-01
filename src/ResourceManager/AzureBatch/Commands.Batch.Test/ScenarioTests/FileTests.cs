@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
@@ -75,6 +77,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetRemoteDesktopProtocolFile()
         {
             BatchController controller = BatchController.NewInstance;
@@ -93,6 +96,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -119,6 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
