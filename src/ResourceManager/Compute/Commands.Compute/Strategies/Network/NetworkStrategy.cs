@@ -38,5 +38,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 (model, location) => model.Location = location,
                 createTime,
                 true);
+
+        public static TModel GetReference<TModel, TParentModel>(
+            this IEngine engine, NestedResourceConfig<TModel, TParentModel> config)
+            where TModel : SubResource, new()
+            where TParentModel : Resource
+            => new TModel { Id = engine.GetId(config) };
+
+        public static TModel GetReference<TModel>(this IEngine engine, ResourceConfig<TModel> config)
+            where TModel : Resource, new()
+            => new TModel { Id = engine.GetId(config) };
     }
 }
