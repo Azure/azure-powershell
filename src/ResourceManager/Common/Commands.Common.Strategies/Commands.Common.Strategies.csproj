@@ -74,6 +74,7 @@
     <Compile Include="StateOperationContext.cs" />
     <Compile Include="SyncTaskScheduler.cs" />
     <Compile Include="TimeSlotExtensions.cs" />
+    <Compile Include="UniqueId.cs" />
     <Compile Include="UpdateStateExtensions.cs" />
     <Compile Include="CreateOrUpdateAsyncParams.cs" />
     <Compile Include="EntityConfigExtensions.cs" />
