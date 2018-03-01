@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, keyBundle.KeyIdentifier);
 
             Key = keyBundle.Key;
-            Attributes = new KeyAttributes(
+            Attributes = new PSKeyAttributes(
                 keyBundle.Attributes.Enabled,
                 keyBundle.Attributes.Expires, 
                 keyBundle.Attributes.NotBefore, 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 keyBundle.Tags);
         }
 
-        public KeyAttributes Attributes { get; set; }
+        public PSKeyAttributes Attributes { get; set; }
 
         public JsonWebKey Key { get; set; }
 

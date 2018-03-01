@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Certificate Issuer Object
         /// </summary>
         [Parameter(Mandatory = true,
-                   Position = 1,
+                   Position = 0,
                    ParameterSetName = InputObjectParameterSet,
                    ValueFromPipeline = true,
                    HelpMessage = "Certificate Issuer Object")]
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (InputObject != null)
             {
+                VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
 

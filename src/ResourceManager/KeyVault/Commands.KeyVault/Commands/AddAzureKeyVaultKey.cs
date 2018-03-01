@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        internal KeyAttributes CreateKeyAttributes()
+        internal PSKeyAttributes CreateKeyAttributes()
         {
             string keyType = string.Empty;
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
             }
 
-            return new Models.KeyAttributes(
+            return new Models.PSKeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,

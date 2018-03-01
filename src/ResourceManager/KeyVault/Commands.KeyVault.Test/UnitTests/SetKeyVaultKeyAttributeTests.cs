@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class SetKeyVaultKeyAttributeTests : KeyVaultUnitTestBase
     {
         private SetAzureKeyVaultKeyAttribute cmdlet;
-        private KeyAttributes keyAttributes;
+        private PSKeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
         private PSKeyBundle keyBundle;
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         {
             base.SetupTest();
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, null, null, null);
+            keyAttributes = new PSKeyAttributes(true, DateTime.Now, DateTime.Now, null, null, null);
             webKey = new WebKey.JsonWebKey();
             keyBundle = new PSKeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             PSKeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
-                It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
+                It.Is<PSKeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
                         && kt.KeyType == keyAttributes.KeyType
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             PSKeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
-                It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
+                It.Is<PSKeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
                         && kt.KeyType == keyAttributes.KeyType

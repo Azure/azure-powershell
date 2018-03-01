@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class SetKeyVaultSecretTests : KeyVaultUnitTestBase
     {
         private SetAzureKeyVaultSecret cmdlet;
-        private SecretAttributes secretAttributes;
+        private PSSecretAttributes secretAttributes;
         private SecureString secureSecretValue;
         private PSSecret secret;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         {
             base.SetupTest();
 
-            secretAttributes = new SecretAttributes(true, null, null, null, null);
+            secretAttributes = new PSSecretAttributes(true, null, null, null, null);
             secureSecretValue = SecretValue.ConvertToSecureString();
             secret = new PSSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         {
             PSSecret expected = secret;
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
-                It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
+                It.Is<PSSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
                         && st.NotBefore == secretAttributes.NotBefore
                         && st.ContentType == secretAttributes.ContentType
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
 
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
-                It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
+                It.Is<PSSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
                         && st.NotBefore == secretAttributes.NotBefore
                         && st.ContentType == secretAttributes.ContentType

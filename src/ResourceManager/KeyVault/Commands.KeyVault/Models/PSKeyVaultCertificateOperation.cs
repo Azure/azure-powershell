@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string ErrorCode { get; private set; }
         public string ErrorMessage { get; private set; }
 
+        public string Name { get; set; }
+        public string VaultName { get; set; }
+
         internal static PSKeyVaultCertificateOperation FromCertificateOperation(CertificateOperation certificateOperation)
         {
             if (certificateOperation == null)

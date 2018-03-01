@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
+        public PSKeyBundle CreateKey(string vaultName, string keyName, PSKeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certBundle;
         }
 
-        public PSKeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
+        public PSKeyBundle ImportKey(string vaultName, string keyName, PSKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyBundle(keyBundle, this.vaultUriHelper);
         }
 
-        public PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes)
+        public PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputContacts;
         }
 
-        public PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes)
+        public PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSSecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSSecret(secret, this.vaultUriHelper);
         }
 
-        public PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes)
+        public PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSSecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));

@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        PSKeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
+        PSKeyBundle CreateKey(string vaultName, string keyName, PSKeyAttributes keyAttributes);
 
-        PSKeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+        PSKeyBundle ImportKey(string vaultName, string keyName, PSKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
-        PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes);
+        PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyAttributes keyAttributes);
 
         PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyBundle RecoverKey(string vaultName, string keyName);
 
-        PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
+        PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSSecretAttributes secretAttributes);
 
-        PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes);
+        PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSSecretAttributes secretAttributes);
 
         PSSecret GetSecret(string vaultName, string secretName, string secretVersion);
 

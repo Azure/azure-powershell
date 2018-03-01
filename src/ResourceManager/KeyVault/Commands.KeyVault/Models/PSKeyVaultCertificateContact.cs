@@ -21,15 +21,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public string Email { get; set; }
 
-        internal static PSKeyVaultCertificateContact FromKVCertificateContact(Contact contact)
+        public string VaultName { get; set; }
+
+        internal static PSKeyVaultCertificateContact FromKVCertificateContact(Contact contact, string vaultName)
         {
             return new PSKeyVaultCertificateContact
             {
+                VaultName = vaultName,
                 Email = contact.EmailAddress,
             };
         }
 
-        internal static List<PSKeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts)
+        internal static List<PSKeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts, string vaultName)
         {
             var result = new List<PSKeyVaultCertificateContact>();
 
@@ -37,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 foreach (var contact in contacts.ContactList)
                 {
-                    result.Add(FromKVCertificateContact(contact));
+                    result.Add(FromKVCertificateContact(contact, vaultName));
                 }
             }
 

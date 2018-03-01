@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (secret.Value != null)
                 SecretValue = secret.Value.ConvertToSecureString();
 
-            Attributes = new SecretAttributes(
+            Attributes = new PSSecretAttributes(
                 secret.Attributes.Enabled,
                 secret.Attributes.Expires,
                 secret.Attributes.NotBefore,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 return text;
             }
         }
-        public SecretAttributes Attributes { get; set; }
+        public PSSecretAttributes Attributes { get; set; }
 
     }
 }
