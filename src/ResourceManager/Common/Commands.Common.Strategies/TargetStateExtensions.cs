@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,11 +27,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static IState GetTargetState<TModel>(
             this ResourceConfig<TModel> config,
             IState current,
-            string subscription,
+            IEngine engine,
             string location)
             where TModel : class
         {
-            var context = new Context(current, subscription, location);
+            var context = new Context(current, engine, location);
             context.AddIfRequired(config);
             return context.Target;
         }
@@ -41,22 +42,37 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public IState Current { get; }
 
-            public string Subscription { get; }
+            public IEngine Engine { get; }
 
             public string Location { get; }
 
-            public Context(IState current, string subscriptionId, string location)
+            public Context(IState current, IEngine engine, string location)
             {
                 Current = current;
-                Subscription = subscriptionId;
+                Engine = engine;
                 Location = location;
             }
 
-            public void AddIfRequired(IEntityConfig config)
+            public bool CurrentMatch(IEntityConfig config)
+                => Current.ContainsDispatch(config) &&
+                    config.NestedResources.All(CurrentMatch);
+
+            public void AddIfRequired(IResourceConfig config)
             {
-                if (!Current.ContainsDispatch(config))
+                if (!CurrentMatch(config))
                 {
                     config.Accept(new AddVisitor(), this);
+                }
+            }
+
+            public void UpdateNested<TModel>(IEntityConfig<TModel> config, TModel model)
+                where TModel : class
+            {
+                var nestedResourceContext = new NestedResourceContext<TModel>(this, model);
+                foreach (var nestedConfig in config.NestedResources)
+                {
+                    nestedConfig.Accept(
+                        new SetNestedModelVisitor<TModel>(), nestedResourceContext);
                 }
             }
 
@@ -66,32 +82,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                     config,
                     () =>
                     {
-                        foreach (var dependency in config.Dependencies)
+                        foreach (var dependency in config.GetResourceDependencies())
                         {
                             AddIfRequired(dependency);
                         }
-                        var model = config.CreateModel(Subscription);
-                        config.Strategy.SetLocation(model, Location);
+                        var model = config.CreateModel(Engine);
+                        config.Strategy.Location.Set(model, Location);
+                        UpdateNested(config, model);
                         return model;
                     });
-
-            public TModel GetOrAdd<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config)
-                where TModel : class
-                where TParentModel : class
-            {
-                var parentModel = config.Parent.Accept(new GetOrAddVisitor<TParentModel>(), this);
-                var model = config.Strategy.Get(parentModel, config.Name);
-                if (model == null)
-                {
-                    model = config.CreateModel(Subscription);
-                    config.Strategy.CreateOrUpdate(parentModel, config.Name, model);
-                }
-                return model;
-            }
         }
 
-        sealed class AddVisitor : IEntityConfigVisitor<Context, Void>
+        sealed class AddVisitor : IResourceConfigVisitor<Context, Void>
         {
             public Void Visit<TModel>(ResourceConfig<TModel> config, Context context)
                 where TModel : class
@@ -99,27 +101,42 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 context.GetOrAdd(config);
                 return new Void();
             }
+        }
 
-            public Void Visit<TModel, TParentModel>(
-                NestedResourceConfig<TModel, TParentModel> config, Context context)
-                where TModel : class
-                where TParentModel : class
+        sealed class NestedResourceContext<TParentModel>
+            where TParentModel : class
+        {
+            public Context Context { get; }
+
+            public TParentModel ParentModel { get; }
+
+            public NestedResourceContext(Context context, TParentModel parentModel)
             {
-                context.GetOrAdd(config);
-                return new Void();
+                Context = context;
+                ParentModel = parentModel;
+            }
+
+            public void SetNestedModel<TModel>(
+                NestedResourceConfig<TModel, TParentModel> config)
+                where TModel : class
+            {
+                var model = config.CreateModel(Context.Engine);
+                config.Strategy.CreateOrUpdate(ParentModel, config.Name, model);
             }
         }
 
-        sealed class GetOrAddVisitor<TModel> : IEntityConfigVisitor<TModel, Context, TModel>
-            where TModel : class
+        sealed class SetNestedModelVisitor<TParentModel> :
+            INestedResourceConfigVisitor<TParentModel, NestedResourceContext<TParentModel>, Void>
+            where TParentModel : class
         {
-            public TModel Visit(ResourceConfig<TModel> config, Context context)
-                => context.GetOrAdd(config);
-
-            public TModel Visit<TParenModel>(
-                NestedResourceConfig<TModel, TParenModel> config, Context context)
-                where TParenModel : class
-                => context.GetOrAdd(config);
+            public Void Visit<TModel>(
+                NestedResourceConfig<TModel, TParentModel> config,
+                NestedResourceContext<TParentModel> context)
+                where TModel : class
+            {
+                context.SetNestedModel(config);
+                return new Void();
+            }
         }
     }
 }
