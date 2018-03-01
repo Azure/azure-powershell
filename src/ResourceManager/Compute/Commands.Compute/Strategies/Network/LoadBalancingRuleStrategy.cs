@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 {
                     FrontendIPConfiguration = engine.GetReference(fronendIpConfiguration),
                     BackendAddressPool = engine.GetReference(backendAddressPool),
-                    Protocol = "Tcp",
+                    Protocol = NetworkStrategy.Tcp,
                     FrontendPort = frontendPort,
                     BackendPort = backendPort,
                 });

@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static TModel GetReference<TModel>(this IEngine engine, ResourceConfig<TModel> config)
             where TModel : Resource, new()
             => new TModel { Id = engine.GetId(config) };
+
+        public const string Tcp = "Tcp";
     }
 }
