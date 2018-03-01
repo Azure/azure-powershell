@@ -101,11 +101,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// 2. pfx
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = InteractiveImportParameterSet,
             HelpMessage = "Path to the local file containing the key material to be imported.")]
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Path to the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
@@ -128,11 +126,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Destination of the key
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = InteractiveCreateParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = InputObjectCreateParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = false,

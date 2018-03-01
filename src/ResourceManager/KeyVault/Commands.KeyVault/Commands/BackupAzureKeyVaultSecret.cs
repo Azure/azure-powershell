@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ParameterSetName = BySecretObjectParameterSet,
                     HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Secret")]
         public PSSecret InputObject { get; set; }
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 70DB088D-4AF5-406B-8D66-118A0F766041
@@ -13,8 +13,15 @@ Creates a secret in a key vault from a backed-up secret.
 
 ## SYNTAX
 
+### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String>
+Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Restore-AzureKeyVaultSecret [-InputObject] <PSVault> [-InputFile] <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,9 +65,9 @@ Accept wildcard characters: False
 Specifies the input file that contains the backup of the secret to restore.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,13 +76,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+KeyVault object`
+
+``yaml
+Type: PSVault
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VaultName
 Specifies the name of the key vault into which to restore the secret.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultName
+Aliases:
 
 Required: True
 Position: 0
@@ -122,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.Secret
+### Microsoft.Azure.Commands.KeyVault.Models.PSSecret
 
 ## NOTES
 
