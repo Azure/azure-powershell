@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class RemoveKeyVaultKeyTests : KeyVaultUnitTestBase
     {
         private RemoveAzureKeyVaultKey cmdlet;
-        private KeyAttributes keyAttributes;
+        private PSKeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
         private PSDeletedKeyBundle keyBundle;
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 VaultName = VaultName
             };
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
+            keyAttributes = new PSKeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
             webKey = new WebKey.JsonWebKey();
             keyBundle = new PSDeletedKeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }

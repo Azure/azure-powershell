@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public SecureString ApiKey { get; set; }
         public PSKeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
 
+        public string VaultName { get; set; }
+
         internal static PSKeyVaultCertificateIssuer FromIssuer(IssuerBundle issuer)
         {
             if (issuer == null)

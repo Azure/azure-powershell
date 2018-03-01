@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             foreach (var contact in contacts.ContactList)
             {
-                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact));
+                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact, VaultName));
             }
 
             this.WriteObject(contactsModel, true);

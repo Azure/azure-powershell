@@ -41,5 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string Name { get; set; }
 
         public string IssuerProvider { get; private set; }
+
+        public string VaultName { get; set; }
     }
 }
