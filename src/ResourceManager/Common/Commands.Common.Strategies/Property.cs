@@ -12,18 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    /// <summary>
-    /// Base interface for ResourceConfig[].
-    /// </summary>
-    public interface IResourceConfig : IEntityConfig
+    public static class Property
     {
-        new IResourceStrategy Strategy { get; }
+        public static Property<TParent, TValue> Create<TParent, TValue>(
+            Func<TParent, TValue> get, Action<TParent, TValue> set)
+            where TParent : class
+            => new Property<TParent, TValue>(get, set);
+    }
 
-        TResult Accept<TContext, TResult>(
-            IResourceConfigVisitor<TContext, TResult> visitor, TContext context);
+    public sealed class Property<TParent, TValue>
+    {
+        public Func<TParent, TValue> Get { get; }
+
+        public Action<TParent, TValue> Set { get; }
+
+        public Property(Func<TParent, TValue> get, Action<TParent, TValue> set)
+        {
+            Get = get;
+            Set = set;
+        }
     }
 }
