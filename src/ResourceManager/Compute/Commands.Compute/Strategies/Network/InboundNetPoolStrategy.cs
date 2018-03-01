@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     FrontendIPConfiguration = engine.GetReference(frontendIpConfiguration),
                     Protocol = protocol,
                     FrontendPortRangeStart = frontendPortRangeStart,
-                    FrontendPortRangeEnd = frontendPortRangeEnd
+                    FrontendPortRangeEnd = frontendPortRangeEnd,
+                    BackendPort = backendPort
                 });
     }
 }
