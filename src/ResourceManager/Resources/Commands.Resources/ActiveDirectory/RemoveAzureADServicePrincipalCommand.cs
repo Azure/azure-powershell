@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -50,12 +51,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             ExecutionBlock(() =>
             {
                 PSADServicePrincipal servicePrincipal = null;
-                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                if (this.IsParameterBound(c => c.InputObject))
                 {
                     ObjectId = InputObject.Id.ToString();
                 }
 
-                if (MyInvocation.BoundParameters.ContainsKey("ServicePrincipalName"))
+                if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
                     ADObjectFilterOptions options = new ADObjectFilterOptions
                     {

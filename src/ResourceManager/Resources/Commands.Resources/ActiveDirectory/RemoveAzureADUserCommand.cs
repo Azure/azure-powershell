@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -53,17 +54,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                if (this.IsParameterBound(c => c.InputObject))
                 {
                     UPNOrObjectId = !string.IsNullOrEmpty(InputObject.UserPrincipalName) ?
                                         InputObject.UserPrincipalName :
                                         InputObject.Id.ToString();
                 }
-                else if (MyInvocation.BoundParameters.ContainsKey("UserPrincipalName"))
+                else if (this.IsParameterBound(c => c.UserPrincipalName))
                 {
                     UPNOrObjectId = UserPrincipalName;
                 }
-                else if (MyInvocation.BoundParameters.ContainsKey("ObjectId"))
+                else if (this.IsParameterBound(c => c.ObjectId))
                 {
                     UPNOrObjectId = ObjectId.ToString();
                 }

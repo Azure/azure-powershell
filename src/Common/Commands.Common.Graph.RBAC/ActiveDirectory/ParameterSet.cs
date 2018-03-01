@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string ApplicationObjectIdWithCertValue = "ApplicationObjectIdWithCertValueParameterSet";
 
+        public const string ApplicationObjectWithPassword = "ApplicationObjectWithPasswordParameterSet";
+
+        public const string ApplicationObjectWithCertValue = "ApplicationObjectWithCertValueParameterSet";
+
         public const string ApplicationIdWithPassword = "ApplicationIdWithPasswordParameterSet";
 
         public const string ApplicationIdWithCertValue = "ApplicationIdWithCertValueParameterSet";
@@ -121,6 +125,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string SPNWithCertValue = "SPNWithCertValueParameterSet";
 
         public const string SPNWithPassword = "SPNWithPasswordParameterSet";
+
+        public const string SPNObjectWithCertValue = "SPNObjectWithCertValueParameterSet";
+
+        public const string SPNObjectWithPassword = "SPNObjectWithPasswordParameterSet";
 
         public const string ObjectIdWithKeyId = "ObjectIdWithKeyIdParameterSet";
 

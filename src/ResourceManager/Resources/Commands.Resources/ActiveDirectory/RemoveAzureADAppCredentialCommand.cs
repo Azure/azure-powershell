@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The keyCredential Id.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The keyCredential Id.")]
@@ -53,17 +54,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("ApplicationObject"))
+                if (this.IsParameterBound(c => c.ApplicationObject))
                 {
                     ObjectId = ApplicationObject.ObjectId.ToString();
                 }
 
-                if (!string.IsNullOrEmpty(ApplicationId))
+                if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId.ToString());
                 }
 
-                if (MyInvocation.BoundParameters.ContainsKey("KeyId"))
+                if (this.IsParameterBound(c => c.KeyId))
                 {
                     ConfirmAction(
                         Force.IsPresent,

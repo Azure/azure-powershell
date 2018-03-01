@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -54,17 +55,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("ServicePrincipalObject"))
+                if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
                     ObjectId = ServicePrincipalObject.Id.ToString();
                 }
 
-                if (!string.IsNullOrEmpty(ServicePrincipalName))
+                if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }
 
-                if (KeyId != Guid.Empty)
+                if (this.IsParameterBound(c => c.KeyId))
                 {
                     ConfirmAction(
                         Force.IsPresent,

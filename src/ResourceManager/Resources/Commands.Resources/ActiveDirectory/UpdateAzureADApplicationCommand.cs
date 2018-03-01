@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -84,12 +85,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                if (this.IsParameterBound(c => c.InputObject))
                 {
                     ObjectId = InputObject.ObjectId.ToString();
                 }
 
-                if (!string.IsNullOrEmpty(ApplicationId))
+                if (this.IsParameterBound(c => c.ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }

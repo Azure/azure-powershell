@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObject, HelpMessage = "The application object.")]
         [ValidateNotNullOrEmpty]
@@ -39,14 +41,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("ApplicationObject"))
+                if (this.IsParameterBound(c => c.ApplicationObject))
                 {
                     ObjectId = ApplicationObject.ObjectId.ToString();
                 }
 
-                if (!string.IsNullOrEmpty(ApplicationId))
+                if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId.ToString());
                 }
 
                 WriteObject(ActiveDirectoryClient.GetAppCredentials(ObjectId), enumerateCollection: true);

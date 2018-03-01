@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the application")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the application")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                if (this.IsParameterBound(c => c.InputObject))
                 {
                     ServicePrincipalName = InputObject.ServicePrincipalNames?.FirstOrDefault();
                     ObjectId = InputObject.Id.ToString();
@@ -79,19 +80,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 // Get AppObjectId
                 string applicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(sp.ApplicationId.ToString());
-
-                if (!string.IsNullOrEmpty(DisplayName))
+                ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                 {
-                    ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
-                    {
-                        DisplayName = DisplayName
-                    };
+                    DisplayName = DisplayName
+                };
 
-                    if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
-                    {
-                        ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
-                        WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault());
-                    }
+                if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
+                {
+                    ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
+                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault());
                 }
             });
         }

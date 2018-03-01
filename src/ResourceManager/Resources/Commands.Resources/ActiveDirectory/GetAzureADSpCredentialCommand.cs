@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -40,12 +41,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (MyInvocation.BoundParameters.ContainsKey("ServicePrincipalObject"))
+                if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
                     ObjectId = ServicePrincipalObject.Id.ToString();
                 }
 
-                if (!string.IsNullOrEmpty(ServicePrincipalName))
+                if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }
