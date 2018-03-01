@@ -2752,7 +2752,7 @@
                 <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TargetFqdns</Label>
+                <Label>TargetUrls</Label>
                 <PropertyName>TargetUrlsText</PropertyName>
               </ListItem>
               <ListItem>
