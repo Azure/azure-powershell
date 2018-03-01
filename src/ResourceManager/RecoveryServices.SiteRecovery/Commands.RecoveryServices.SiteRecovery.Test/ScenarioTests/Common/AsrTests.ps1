@@ -268,28 +268,3 @@ function Test-NotificationSettings
     Assert-NotNull($NotificationSettings.Locale)
     Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableNotification
 }
-
-<#
-.SYNOPSIS
-    Test to set-asrVaultContext on newly created vault.
-    Bug 1968348
-    To Handle the case when cert is not uploaded to RecoveryServices and usage api is returning null. Upload Cert by calling get-AzureRmRecoveryServicesVaultSettingsFile.
-#>
-function Test-vaultSet
-{
-    param([string] $vaultSettingsFilePath)
-    
-    # Import Azure RecoveryServices Vault Settings File
-    Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-    
-    $vaultName ='testNewVaultPs2' 
-    $resourceGroup = 'testtest'
-    New-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroup -Name $vaultName -location "eastasia"
-    [Microsoft.Azure.Test.TestUtilities]::Wait(10 * 1000)
-    $vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $resourceGroup -Name $vaultName
-    Set-AsrVaultContext -Vault  $vault
-    $currentVault = Get-AsrVaultContext 
-    Assert-true{$currentVault.ResourceName -eq $vault.name}
-    Assert-true{$currentVault.ResourceGroupName -eq $vault.ResourceGroupName}
-}
-

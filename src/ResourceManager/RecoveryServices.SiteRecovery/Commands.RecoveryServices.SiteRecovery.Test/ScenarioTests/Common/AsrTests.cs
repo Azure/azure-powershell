@@ -80,17 +80,5 @@ namespace RecoveryServices.SiteRecovery.Test
              Constants.NewModel,
              "Test-NotificationSettings -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
-
-        [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
-        public void TestSetVault()
-        {
-            this.RunPowerShellTest(
-             Constants.NewModel,
-             "Test-vaultSet -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
-        }
-
     }
 }
