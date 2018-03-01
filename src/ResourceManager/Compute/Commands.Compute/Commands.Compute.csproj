@@ -287,7 +287,6 @@
     <Compile Include="Strategies\Network\PublicIPAddressStrategy.cs" />
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
-    <Compile Include="Strategies\ResourceManager\ResourceConfigExtensions.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />

@@ -39,6 +39,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerScaleOutIn()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleOutIn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerFirewall()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerFirewall");
+        }
+
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerDisableBackup()
         {
