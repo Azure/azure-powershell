@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                AzureEnvironment.Endpoint.ResourceManager));
         }
 
-        protected bool CheckNodeTypeExistence()
+        protected bool VmssExists()
         {
             var vmss = SafeGetResource(
                 () =>
@@ -71,21 +71,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             return vmss != null;
         }
-
-        protected PSCluster RemoveNodeTypeFromSfrp()
-        {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-            cluster.NodeTypes.Remove(
-                cluster.NodeTypes.SingleOrDefault(
-                    c => string.Equals(
-                        c.Name,
-                        this.NodeType,
-                        StringComparison.InvariantCultureIgnoreCase)));
-
-            return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
-            {
-                NodeTypes = cluster.NodeTypes
-            });
-        }  
     }
 }

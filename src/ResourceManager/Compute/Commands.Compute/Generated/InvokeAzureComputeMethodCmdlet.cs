@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineScaleSetDeallocate",
             "VirtualMachineScaleSetDelete",
             "VirtualMachineScaleSetDeleteInstances",
+            "VirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalk",
             "VirtualMachineScaleSetGet",
             "VirtualMachineScaleSetGetInstanceView",
             "VirtualMachineScaleSetList",
@@ -123,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineScaleSetVMReimageAll",
             "VirtualMachineScaleSetVMRestart",
             "VirtualMachineScaleSetVMStart",
+            "VirtualMachineScaleSetVMUpdate",
             "VirtualMachineCapture",
             "VirtualMachineConvertToManagedDisks",
             "VirtualMachineCreateOrUpdate",
@@ -326,6 +328,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "VirtualMachineScaleSetDeleteInstances":
                         ExecuteVirtualMachineScaleSetDeleteInstancesMethod(argumentList);
                         break;
+                    case "VirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalk":
+                        ExecuteVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkMethod(argumentList);
+                        break;
                     case "VirtualMachineScaleSetGet":
                         ExecuteVirtualMachineScaleSetGetMethod(argumentList);
                         break;
@@ -403,6 +408,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineScaleSetVMStart":
                         ExecuteVirtualMachineScaleSetVMStartMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetVMUpdate":
+                        ExecuteVirtualMachineScaleSetVMUpdateMethod(argumentList);
                         break;
                     case "VirtualMachineCapture":
                         ExecuteVirtualMachineCaptureMethod(argumentList);
@@ -522,6 +530,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineScaleSetDeallocate": return CreateVirtualMachineScaleSetDeallocateDynamicParameters();
                 case "VirtualMachineScaleSetDelete": return CreateVirtualMachineScaleSetDeleteDynamicParameters();
                 case "VirtualMachineScaleSetDeleteInstances": return CreateVirtualMachineScaleSetDeleteInstancesDynamicParameters();
+                case "VirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalk": return CreateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkDynamicParameters();
                 case "VirtualMachineScaleSetGet": return CreateVirtualMachineScaleSetGetDynamicParameters();
                 case "VirtualMachineScaleSetGetInstanceView": return CreateVirtualMachineScaleSetGetInstanceViewDynamicParameters();
                 case "VirtualMachineScaleSetList": return CreateVirtualMachineScaleSetListDynamicParameters();
@@ -548,6 +557,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineScaleSetVMReimageAll": return CreateVirtualMachineScaleSetVMReimageAllDynamicParameters();
                 case "VirtualMachineScaleSetVMRestart": return CreateVirtualMachineScaleSetVMRestartDynamicParameters();
                 case "VirtualMachineScaleSetVMStart": return CreateVirtualMachineScaleSetVMStartDynamicParameters();
+                case "VirtualMachineScaleSetVMUpdate": return CreateVirtualMachineScaleSetVMUpdateDynamicParameters();
                 case "VirtualMachineCapture": return CreateVirtualMachineCaptureDynamicParameters();
                 case "VirtualMachineConvertToManagedDisks": return CreateVirtualMachineConvertToManagedDisksDynamicParameters();
                 case "VirtualMachineCreateOrUpdate": return CreateVirtualMachineCreateOrUpdateDynamicParameters();
