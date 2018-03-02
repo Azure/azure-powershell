@@ -19,5 +19,5 @@
     "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";
     "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | `
-ForEach-Object {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global} | Out-Null
+ForEach-Object {if (!(Get-Alias -Name $_.Name -ErrorAction SilentlyContinue)) {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global}} | Out-Null
 
