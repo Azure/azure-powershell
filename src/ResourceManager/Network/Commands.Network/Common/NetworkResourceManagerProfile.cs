@@ -120,11 +120,13 @@ namespace Microsoft.Azure.Commands.Network
                 // PublicIpAddress
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSPublicIpAddress, MNM.PublicIPAddress>();
+                cfg.CreateMap<CNM.PSPublicIpTag, MNM.IpTag>();
                 cfg.CreateMap<CNM.PSPublicIpAddressSku, MNM.PublicIPAddressSku>();
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+                cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
 

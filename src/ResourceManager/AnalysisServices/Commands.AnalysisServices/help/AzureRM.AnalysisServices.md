@@ -32,3 +32,9 @@ Suspends an instance of Analysis Services server
 ### [Test-AzureRmAnalysisServicesServer](Test-AzureRmAnalysisServicesServer.md)
 Tests the existence of an instance of Analysis Services server
 
+### [New-AzureRmAnalysisServicesFirewallConfig](New-AzureRmAnalysisServicesFirewallConfig.md)
+Creates a new firewall config for Analysis Services server
+
+### [New-AzureRmAnalysisServicesFirewallRule](New-AzureRmAnalysisServicesFirewallRule.md)
+Creates a new firewall rule for Analysis Services server
+

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: D2DB7821-A7D2-4017-8522-78793DDE040E
@@ -168,7 +168,7 @@ Specifies the edition to assign to the database. The acceptable values for this 
 Type: DatabaseEdition
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -352,6 +352,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -37,6 +37,12 @@ function Create-ModulePsm1
      $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
      $file = Get-Item $manifestPath
      Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+     if ($ModuleMetadata.RootModule)
+     {
+         # Do not create a psm1 file if the RootModule dependency already has one.
+         return
+     }
+     
      $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
      [string]$importedModules
      if ($ModuleMetadata.RequiredModules -ne $null)

@@ -8,7 +8,7 @@ environment:
     secure: VMFbecLLHzDq/09YDPbcM0VDDSwwgY57vr5GXK6cZZ4Ti/Xs5RZoylzV8MMr1350
 
 before_build:
-  - ps: Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module -Verbose
+  - ps: Get-ChildItem -Path ("$env:programfiles" + "\WindowsPowerShell\Modules") | Where-Object { $_.FullName -match 'azure' } | foreach { Remove-Item $_.FullName -Recurse -Force }
   - ps: Install-Module -Name PowerShellGet -Force
   - ps: Install-Module -Name SplitPipeline -Force
   - ps: Install-Module -Name platyPS -Force
