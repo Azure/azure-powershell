@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Func<WebSiteManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, int> createTime) where TModel : Resource
+            Func<TModel, int> createTime,
+            bool compulsoryLocation = false) where TModel : Resource
             => ResourceStrategy.Create(
                 type: type,
                 providers: new[] {"Microsoft.Web", provider},
@@ -37,6 +38,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
                 createTime: createTime,
-                compulsoryLocation: false);
+                compulsoryLocation: compulsoryLocation);
     }
 }

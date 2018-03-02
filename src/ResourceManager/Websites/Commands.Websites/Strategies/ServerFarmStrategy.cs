@@ -21,12 +21,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
     static class ServerFarmStrategy
     {
         public static ResourceStrategy<ServerFarmWithRichSku> Strategy { get; } = AppServicePolicy.Create(
-            type: "ServerFarm",
+            type: "App Service Plan",
             provider: "serverFarms",
             getOperations: client => client.ServerFarms,
             getAsync: (o, p) => o.GetServerFarmAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateServerFarmAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 120);
+            createTime: _ => 5,
+            compulsoryLocation: true);
 
         public static ResourceConfig<ServerFarmWithRichSku> CreateServerFarmConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
