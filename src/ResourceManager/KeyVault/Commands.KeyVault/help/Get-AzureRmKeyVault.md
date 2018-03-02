@@ -20,7 +20,7 @@ Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>
 
 ### GetVaultByName
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>]
+Get-AzureRmKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,12 +28,6 @@ Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>]
 ```
 Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListVaultsByResourceGroup
-```
-Get-AzureRmKeyVault [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
@@ -151,18 +145,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: String
-Parameter Sets: ListVaultsByResourceGroup
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
 
@@ -185,7 +167,19 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: GetVaultByName, ByDeletedVault
+Parameter Sets: GetVaultByName
+Aliases: Name
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedVault
 Aliases: Name
 
 Required: True

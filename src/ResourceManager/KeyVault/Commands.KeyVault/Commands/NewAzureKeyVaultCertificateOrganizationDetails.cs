@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// </summary>
         [Parameter(Mandatory = false, 
                    ValueFromPipeline = true,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the details of the administrators for the organization.")]
         public List<PSKeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
 
