@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.3
 * Apply Azure Container Instance SDK 2018-02-01
     - Support DNS name label
 

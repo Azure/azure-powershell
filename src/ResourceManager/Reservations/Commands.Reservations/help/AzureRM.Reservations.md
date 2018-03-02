@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Reservations
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: 
