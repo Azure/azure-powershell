@@ -58,7 +58,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dead Lettering On Message Expiration")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnMessageExpiration { get; set; }        
+        public bool? DeadLetteringOnMessageExpiration { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
@@ -89,40 +94,38 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         {
             
             PSSubscriptionAttributes subAttributes = new PSSubscriptionAttributes();
-
-            PSNamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
-            
+                        
             subAttributes.Name = Name;
             
             if (AutoDeleteOnIdle != null)
-                subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
+            { subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle; }
 
             if (DefaultMessageTimeToLive != null)
-                subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+            { subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive; }
 
             if (LockDuration != null)
-                subAttributes.LockDuration = LockDuration;
+            { subAttributes.LockDuration = LockDuration; }
 
             if (DeadLetteringOnMessageExpiration != null)
-                subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
+            { subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration; }
+
+            if (DeadLetteringOnFilterEvaluationExceptions != null)
+            { subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions; }
 
             if (EnableBatchedOperations != null)
-                subAttributes.EnableBatchedOperations = EnableBatchedOperations;
-
-            if (DeadLetteringOnMessageExpiration != null)
-                subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
+            { subAttributes.EnableBatchedOperations = EnableBatchedOperations; }
 
             if (MaxDeliveryCount != null)
-                subAttributes.MaxDeliveryCount = MaxDeliveryCount;
+            { subAttributes.MaxDeliveryCount = MaxDeliveryCount; }
 
             if (RequiresSession != null)
-                subAttributes.RequiresSession = RequiresSession;
+            { subAttributes.RequiresSession = RequiresSession; }
 
             if (ForwardTo != null)
-                subAttributes.ForwardTo = ForwardTo;
+            { subAttributes.ForwardTo = ForwardTo; }
 
             if (ForwardDeadLetteredMessagesTo != null)
-                subAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo;
+            { subAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo; }
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {
