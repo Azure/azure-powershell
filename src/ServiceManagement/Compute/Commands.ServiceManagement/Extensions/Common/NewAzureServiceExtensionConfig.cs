@@ -81,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PublicConfigurationHelpMessage)]
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PublicConfigurationHelpMessage)]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PublicConfigurationHelpMessage)]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PublicConfigurationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override string PublicConfiguration
         {
@@ -91,8 +91,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         }
 
 
-        [Parameter(Position = 6, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PrivateConfigurationHelpMessage)]
-        [Parameter(Position = 6, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PrivateConfigurationHelpMessage)]
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PrivateConfigurationHelpMessage)]
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.PrivateConfigurationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override string PrivateConfiguration
         {
@@ -100,8 +100,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 7, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.VersionHelpMessage)]
-        [Parameter(Position = 7, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.VersionHelpMessage)]
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.VersionHelpMessage)]
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.VersionHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override string Version
         {
