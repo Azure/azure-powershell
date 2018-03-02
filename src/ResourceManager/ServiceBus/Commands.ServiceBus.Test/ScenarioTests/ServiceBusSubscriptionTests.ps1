@@ -60,11 +60,11 @@ function ServiceBusSubscriptionTests
 	#Create Topic
 	Write-Debug "Create new SB Topic-Subscription"
     Write-Debug "SB Topic-Subscription Name : $subName"
-	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName
+	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName -DeadLetteringOnFilterEvaluationExceptions
 	Assert-AreEqual $resltNewSub.Name $subName "Subscription created earlier is not found"
 
 	# Get Created Subscritpiton Name 
-	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName		
+	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName
     Assert-AreEqual $resultGetSub.Name $subName "Get-Subscription: Subscription created earlier is not found"
 	Assert-True {$resultGetSub.DeadLetteringOnFilterEvaluationExceptions} "New-subscription: DeadLetteringOnFilterEvaluationExceptions not updated "
 	
