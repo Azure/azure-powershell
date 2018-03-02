@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string GetVaultParameterSet = "GetVaultByName";
         private const string GetDeletedVaultParameterSet = "ByDeletedVault";
-        private const string ListVaultsByRGParameterSet = "ListVaultsByResourceGroup";
         private const string ListVaultsBySubParameterSet = "ListAllVaultsInSubscription";
         private const string ListDeletedVaultsParameterSet = "ListAllDeletedVaultsInSubscription";
 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = GetVaultParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
@@ -66,11 +65,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = GetVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault being queried.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = ListVaultsByRGParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
@@ -111,6 +105,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
                     PSKeyVault vault = null;
 
+                    if (string.IsNullOrEmpty(VaultName))
+                    {
+                        WriteObject(ListVaults(ResourceGroupName, Tag), true);
+                        break;
+                    }
+
                     if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(
                                                     VaultName,
@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(vault);
                     break;
 
-                case ListVaultsByRGParameterSet:
                 case ListVaultsBySubParameterSet:
                     WriteObject(ListVaults(ResourceGroupName, Tag), true);
                     break;
