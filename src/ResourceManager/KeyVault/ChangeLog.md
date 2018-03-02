@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated cmdlets to include piping scenarios
+* Fixed example for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 4.1.1
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
