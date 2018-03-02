@@ -1279,11 +1279,6 @@
                                 <File Id="filA9E07AA865C95021011F6698992DE2C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\StartupScripts\AzureRmResourcesStartup.ps1" />
                             </Component>
                         </Directory>
-                        <Directory Id="dirC92FD9E295852F9742ACFEABB82051BE" Name="StartupScripts">
-                            <Component Id="cmp60EB4A32D99FB19809A465AC2C849FF3" Guid="*">
-                                <File Id="filA9E07AA865C95021011F6698992DE2C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\StartupScripts\AzureRmResourcesStartup.ps1" />
-                            </Component>
-                        </Directory>
                     </Directory>
                     <Directory Id="dirA80C2E0B6C83F58BD8B627AF03F627A8" Name="AzureRM.Scheduler">
                         <Component Id="cmp890B1E2923E26CE2A15A652293EA92BE" Guid="*">
