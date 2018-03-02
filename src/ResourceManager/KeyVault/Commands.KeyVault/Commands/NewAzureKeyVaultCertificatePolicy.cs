@@ -26,17 +26,15 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = SubjectNameRenewNumberParameterSet,
+        DefaultParameterSetName = SubjectNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string SubjectNameRenewNumberParameterSet = "SubjectNameWithRenewDays";
-        private const string DNSNamesRenewNumberParameterSet = "DNSNamesWithRenewDays";
-        private const string SubjectNameRenewPercentParameterSet = "SubjectNameWithRenewPercent";
-        private const string DNSNamesRenewPercentParameterSet = "DNSNamesWithRenewPercent";
+        private const string SubjectNameParameterSet = "SubjectName";
+        private const string DNSNamesParameterSet = "DNSNames";
 
         #endregion
 
@@ -56,20 +54,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ParameterSetName = SubjectNameRenewNumberParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the subject name of the certificate.")]
-        [Parameter(Mandatory = true,
-                   Position = 1,
-                   ParameterSetName = SubjectNameRenewPercentParameterSet,
+                   ParameterSetName = SubjectNameParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the subject name of the certificate.")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = DNSNamesRenewNumberParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the subject name of the certificate.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = DNSNamesRenewPercentParameterSet,
+                   ParameterSetName = DNSNamesParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the subject name of the certificate.")]
         public string SubjectName { get; set; }
@@ -79,12 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ParameterSetName = DNSNamesRenewNumberParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the DNS names in the certificate.")]
-        [Parameter(Mandatory = true,
-                   Position = 1,
-                   ParameterSetName = DNSNamesRenewPercentParameterSet,
+                   ParameterSetName = DNSNamesParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the DNS names in the certificate.")]
         public List<string> DnsNames { get; set; }
@@ -93,11 +77,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// RenewAtNumberOfDaysBeforeExpiry
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = DNSNamesRenewNumberParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies how many days before expiry the automatic certificate renewal process begins.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = SubjectNameRenewNumberParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies how many days before expiry the automatic certificate renewal process begins.")]
         [ValidateRange(1, int.MaxValue)]
@@ -106,12 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// RenewAtPercentageLifetime
         /// </summary>
-        [Parameter(Mandatory = true,
-                   ParameterSetName = DNSNamesRenewPercentParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
-        [Parameter(Mandatory = true,
-                   ParameterSetName = SubjectNameRenewPercentParameterSet,
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
         [ValidateRange(0, 99)]
@@ -218,6 +192,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ValidateDnsNames();
                 ValidateKeyUsage();
                 ValidateEkus();
+                ValidateBothPercentageAndNumberOfDaysAreNotPresent();
 
                 var policy = new PSKeyVaultCertificatePolicy
                 {
@@ -240,6 +215,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                 };
 
                 this.WriteObject(policy);
+            }
+        }
+
+        private void ValidateBothPercentageAndNumberOfDaysAreNotPresent()
+        {
+            if (RenewAtNumberOfDaysBeforeExpiry != null &&
+                RenewAtPercentageLifetime != null)
+            {
+                throw new ArgumentException("Both RenewAtNumberOfDaysBeforeExpiry and RenewAtPercentageLifetime cannot be specified.");
             }
         }
 
