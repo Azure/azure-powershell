@@ -174,7 +174,9 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Set-AzureRmVmssRollingUpgradePolicy',
                'Set-AzureRmVmssDiskEncryptionExtension',
                'Disable-AzureRmVmssDiskEncryption',
-               'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption'
+               'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption',
+               'Export-AzureRmLogAnalyticRequestRateByInterval',
+               'Export-AzureRmLogAnalyticThrottledRequests'
 
 # Variables to export from this module
 # VariablesToExport = @()

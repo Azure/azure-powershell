@@ -18,12 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Log analytic feature
+    - Added Export-AzureRmLogAnalyticRequestRateByInterval cmdlet
+    - Added Export-AzureRmLogAnalyticThrottledRequests cmdlet
+
 * WriteAccelerator feature
     - Added WriteAccelerator switch parameter to the following cmdlets:
-	  Set-AzureRmVMOSDisk
-	  Set-AzureRmVMDataDisk
-	  Add-AzureRmVMDataDisk
-	  Add-AzureRmVmssDataDisk
+          Set-AzureRmVMOSDisk
+          Set-AzureRmVMDataDisk
+          Add-AzureRmVMDataDisk
+          Add-AzureRmVmssDataDisk
     - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
           Set-AzureRmVmssStorageProfile.
     - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:

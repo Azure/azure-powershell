@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        ///   Looks up a localized string similar to Since the VM is created using premium storage or managed disk, existing standard storage account, {0}, is used for boot diagnostics..
         /// </summary>
         internal static string UsingExistingStorageAccountForBootDiagnostics {
             get {
