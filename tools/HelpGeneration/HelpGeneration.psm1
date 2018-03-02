@@ -92,13 +92,16 @@ function Validate-MarkdownHelp
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
         $MarkdownFiles = Get-ChildItem -Path $HelpFolder
+        $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {
             # Ignore the module page
-            if (!($file.Name -like "*-*"))
+            if ($file.Name -notlike "*-*")
             {
                 continue
             }
+
+            $CmdletName = $file.Name -replace ".md",""
 
             $fileErrors = @()
             $content = Get-Content $file.FullName
@@ -218,7 +221,15 @@ function Validate-MarkdownHelp
                     ".``````yaml"
                     {
                         $parameter = $content[$idx-1].Substring(5)
-                        $fileErrors += "Trailing yaml string found in description for parameter $parameter"
+                        $fileErrors += "Trailing yaml string found in description for parameter $parameter. Please move the trailing yaml string to a line by itself."
+                    }
+                    "online version:"
+                    {
+                        $split = $content[$idx] -split ':'
+                        if ([string]::IsNullOrWhiteSpace($split[1]))
+                        {
+                            $fileErrors += "No entry was found for the online version field in the header. The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+                        }
                     }
                     default
                     {

@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 5.2.0
 * Added cmdlet to create a new connection monitor
     - New-AzureRmNetworkWatcherConnectionMonitor
 * Added cmdlet to update a connection monitor
