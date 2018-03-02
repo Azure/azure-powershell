@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     public class BreakingChangeAttributeHelper
     {
-        public const String SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressDepricationMarkerWarning";
+        public const String SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         public const String BREAKING_CHANGE_DOCUMENTATION_HEADER = @"<!--
     Please leave this section at the top of the breaking change documentation.
