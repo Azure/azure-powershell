@@ -19,8 +19,14 @@
 -->
 ## Current Release
 * Fixed issue with importing aliases
+
+## Version 5.4.0
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
+* Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.
+* Fix roleassignment get calls when there are duplicate objectIds.
+* Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
+* Fix Roleassignment get calls to be used with roledefinition ID.
 
 ## Version 5.3.0
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set

@@ -122,34 +122,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
                 AdTenant = "Common"
             };
-            return new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                { EnvironmentName.AzureCloud, azureCloud },           
-                { EnvironmentName.AzureChinaCloud, azureChina },
-                { EnvironmentName.AzureUSGovernment, azureUSGovernment },
-                { EnvironmentName.AzureGermanCloud, azureGermany }
-                 
-            };
+            var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+
+            result[EnvironmentName.AzureCloud] = azureCloud;
+            result[EnvironmentName.AzureChinaCloud] = azureChina;
+            result[EnvironmentName.AzureUSGovernment] = azureUSGovernment;
+            result[EnvironmentName.AzureGermanCloud] = azureGermany;
+
+            return result;
         }
 
-        static int _initialized = 0;
-        static IDictionary<string, AzureEnvironment> _builtInEnvironments;
         /// <summary>
         /// Predefined Microsoft Azure environments
         /// </summary>
-        public static IDictionary<string, AzureEnvironment> PublicEnvironments
-        {
-            get
-            {
-                if (Interlocked.Exchange(ref _initialized, 1) == 0)
-                {
-                    _builtInEnvironments = InitializeBuiltInEnvironments();
-                }
-
-                return _builtInEnvironments;
-            }
-        }
-
+        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } = InitializeBuiltInEnvironments();
 
         public AzureEnvironment()
         {
