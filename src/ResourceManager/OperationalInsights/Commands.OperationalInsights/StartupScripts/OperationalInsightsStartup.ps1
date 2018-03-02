@@ -14,5 +14,4 @@
 
 @{
     "New-AzureRmOperationalInsightsAzureAuditDataSource" = "New-AzureRmOperationalInsightsAzureActivityLogDataSource";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | `
-ForEach-Object {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global} | Out-Null
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global | Out-Null
