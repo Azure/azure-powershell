@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }
+        public SwitchParameter EnableBatchedOperations { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EnableExpress - a value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
@@ -137,8 +137,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             if (DeadLetteringOnMessageExpiration != null)
             { queueAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration; }
 
-            if (EnableBatchedOperations != null)
-            { queueAttributes.EnableBatchedOperations = EnableBatchedOperations; }
+            queueAttributes.EnableBatchedOperations = EnableBatchedOperations.IsPresent;
 
             if (EnableExpress != null)
             { queueAttributes.EnableExpress = EnableExpress; }

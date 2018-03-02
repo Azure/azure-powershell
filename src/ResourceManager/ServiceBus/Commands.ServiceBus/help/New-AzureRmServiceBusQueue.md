@@ -15,7 +15,7 @@ Creates a Service Bus queue in the specified Service Bus namespace.
 ```
 New-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  [-EnablePartitioning <Boolean>] [-LockDuration <String>] [-AutoDeleteOnIdle <String>]
- [-DefaultMessageTimeToLive <String>] [-DuplicateDetectionHistoryTimeWindow <String>]
+ [-DefaultMessageTimeToLive <String>] [-DuplicateDetectionHistoryTimeWindow <String>][-EnableBatchedOperations]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableExpress <Boolean>] [-MaxDeliveryCount <Int32>]
  [-MaxSizeInMegabytes <Int64>] [-MessageCount <Int64>] [-RequiresDuplicateDetection <Boolean>]
  [-RequiresSession <Boolean>] [-SizeInBytes <Int64>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -123,6 +123,22 @@ Specifies the duplicate detection history time window, a [TimeSpan](https://msdn
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableBatchedOperations
+Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named

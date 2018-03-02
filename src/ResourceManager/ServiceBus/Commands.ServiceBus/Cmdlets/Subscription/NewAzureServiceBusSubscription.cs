@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
+        public SwitchParameter DeadLetteringOnFilterEvaluationExceptions { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
@@ -109,8 +109,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             if (DeadLetteringOnMessageExpiration != null)
             { subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration; }
 
-            if (DeadLetteringOnFilterEvaluationExceptions != null)
-            { subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions; }
+            subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions.IsPresent;
 
             if (EnableBatchedOperations != null)
             { subAttributes.EnableBatchedOperations = EnableBatchedOperations; }
