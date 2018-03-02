@@ -93,32 +93,32 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// Resource group name
         /// </summary>
         /// 
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ExistingKeyVault, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingKeyVault,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultName,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingPfxAndVaultName,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                    HelpMessage = "The path to the template file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                    HelpMessage = "The path to the template file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ExistingKeyVault, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
                    HelpMessage = "The path to the template file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ExistingKeyVault, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
                    HelpMessage = "The path to the template parameter file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                    HelpMessage = "The path to the template parameter file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                    HelpMessage = "The path to the template parameter file.")]
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
@@ -160,31 +160,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public virtual SecureString SecondaryCertificatePassword { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
+              HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
+              HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
+              HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultResouceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
+                HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
+                HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
+                HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultName { get; set; }
 
         #region ByDefaultArmTemplate
 
-        [Parameter(Mandatory = true, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true,ParameterSetName = ByDefaultArmTemplate, 
                    HelpMessage = "The resource group location")]
         [LocationCompleter("Microsoft.ServiceFabric/clusters")]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
+        [Parameter(Mandatory = false, ValueFromPipeline = true,ParameterSetName = ByDefaultArmTemplate, 
                    HelpMessage = "Specify the name of the cluster, if not given it will be same as resource group name")]
         [ValidateNotNullOrEmpty()]
         [ValidatePattern("^[a-z][a-z0-9-]{4,23}[a-z0-9]$")]
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string VmUserName { get; set; }
 
         private int clusterSize = 5;
-        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
+        [Parameter(Mandatory = false, ValueFromPipeline = true,ParameterSetName = ByDefaultArmTemplate, 
                    HelpMessage = "The number of nodes in the cluster. Default are 5 nodes")]
         [ValidateRange(1, 99)]
         public int ClusterSize
@@ -231,13 +231,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingKeyVault,
+                   HelpMessage = "The password of the Vm.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultName,
+                   HelpMessage = "The password of the Vm.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingPfxAndVaultName,
+                   HelpMessage = "The password of the Vm.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
-                   HelpMessage = "The password of the Vm")]
+                   HelpMessage = "The password of the Vm.")]
         [ValidateNotNullOrEmpty]
         public SecureString VmPassword { get; set; }
 
         private OperatingSystem os = OperatingSystem.WindowsServer2016Datacenter;
-        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
                    HelpMessage = "The Operating System of the VMs that make up the cluster.")]
         [Alias("VmImage")]
         public OperatingSystem OS
@@ -246,7 +252,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { this.os = value; }
         }
 
-        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
                    HelpMessage = "The Vm Sku")]
         [Alias("Sku")]
         public string VmSku { get; set; }
@@ -257,7 +263,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             base.ExecuteCmdlet();
 
-            if (ShouldProcess(target:  this.ResourceGroupName, action: string.Format("Create an new cluster {0} ", this.Name ??this.ResourceGroupName)))
+            if (ShouldProcess(target:  this.ResourceGroupName, action: string.Format("Create new cluster {0}", this.Name ?? this.ResourceGroupName)))
             {
                 switch (ParameterSetName)
                 {
@@ -296,18 +302,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             throw new PSArgumentException("pfxFilePath");
         }
-         
+
         protected override void Validate()
         {
             base.Validate();
 
-            if (ParameterSetName.Equals(ByDefaultArmTemplate))
+            if (ParameterSetName.Equals(ByDefaultArmTemplate) &&
+                this.VmPassword == null)
             {
-                if (this.VmPassword == null)
-                {
-                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidPassword);
-                }
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidPassword);
+            }
 
+            if (this.VmPassword != null)
+            {
                 var plainPassword = this.VmPassword.ConvertToString();
                 if (plainPassword.Length < 12 || plainPassword.Length > 123)
                 {
@@ -331,7 +338,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     ++requirements;
                 }
 
-                if (plainPassword.Any(char.IsLetterOrDigit))
+                if (plainPassword.Any(c => !char.IsLetterOrDigit(c)))
                 {
                     ++requirements;
                 }
@@ -349,7 +356,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             ParseTemplate(true);
             TranslateParameters(true);
-            ExtractParametersWithoutDefaultTemplate((JObject)deployment.Properties.Parameters);
+            var parameters = (JObject)deployment.Properties.Parameters;
+            ExtractParametersWithoutDefaultTemplate(parameters);
+
+            if (this.VmPassword != null)
+            {
+                SetParameter(ref parameters, this.adminPasswordParameter, this.VmPassword.ConvertToString());
+            }
 
             ResourceManagerClient.ResourceGroups.CreateOrUpdate(
                 this.ResourceGroupName,
@@ -363,16 +376,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             SetCertSubjectNameIfApplicable(resourceGroup.Location);
 
             List<CertificateInformation> certificateInformations;
-            deployment.Properties.Parameters =
-                FillCertificateInformationInParameters((JObject) deployment.Properties.Parameters, out certificateInformations);
+            parameters = FillCertificateInformationInParameters(parameters, out certificateInformations);
+
+            deployment.Properties.Parameters = parameters;
 
             WriteVerboseWithTimestamp("Begin to validate deployment");
 
             var validateResult = this.ResourceManagerClient.Deployments.Validate(
-              ResourceGroupName,
-              GenerateDeploymentName(),
-              deployment
-              );
+                ResourceGroupName,
+                GenerateDeploymentName(),
+                deployment);
 
             CheckValidationResult(validateResult);
 
@@ -384,8 +397,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private void DeployWithDefaultTemplate()
         {
             this.Name = this.Name ?? this.ResourceGroupName;
-            var existingCluster = SafeGetResource(() => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
-
+            var existingCluster = SafeGetResource(GetCurrentCluster, true);
             if (existingCluster != null)
             {
                 if (!existingCluster.ClusterState.Equals("WaitingForNodes", StringComparison.OrdinalIgnoreCase))
@@ -395,26 +407,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             ServiceFabricProperties.Resources.NewExistingCluster,
                             this.ResourceGroupName));
                 }
-                else
-                {
-                    WriteVerboseWithTimestamp(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
-                }
+
+                WriteVerboseWithTimestamp($"Found existing cluster {this.Name} with status: WaitingForNodes");
             }
 
             SetReliabilityLevel();
 
             var assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (RunningTest)
+            {
+                assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
+            }
+
             var templateFilePath = string.Empty;
             var parameterFilePath = string.Empty;
-            if (this.OS != OperatingSystem.UbuntuServer1604)
+            // Future change: Use GitHub templates when possible
+            if (string.IsNullOrWhiteSpace(templateFilePath) || string.IsNullOrWhiteSpace(parameterFilePath))
             {
-                templateFilePath = Path.Combine(assemblyFolder, WindowsTemplateRelativePath, TemplateFileName);
-                parameterFilePath = Path.Combine(assemblyFolder, WindowsTemplateRelativePath, ParameterFileName);
-            }
-            else
-            {
-                templateFilePath = Path.Combine(assemblyFolder, LinuxTemplateRelativePath, TemplateFileName);
-                parameterFilePath = Path.Combine(assemblyFolder, LinuxTemplateRelativePath, ParameterFileName);
+                string templateDirectory = 
+                    Path.Combine(
+                        assemblyFolder,
+                        this.OS != OperatingSystem.UbuntuServer1604
+                            ? WindowsTemplateRelativePath
+                            : LinuxTemplateRelativePath);
+                templateFilePath = Path.Combine(templateDirectory, TemplateFileName);
+                parameterFilePath = Path.Combine(templateDirectory, ParameterFileName);
             }
 
             if (!File.Exists(templateFilePath) || !File.Exists(parameterFilePath))
@@ -437,18 +454,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             ParseTemplate(false);
             TranslateParameters(false);
+
             var parameters = (JObject)deployment.Properties.Parameters;
-
-            SetParameter(ref parameters, this.clusterNameParameter, this.Name);
-
-            ExtractParametersWithDefaultTemplate((JObject)deployment.Properties.Parameters);
+            ExtractParametersWithDefaultTemplate(parameters);
 
             var resourceGroup = this.ResourceManagerClient.ResourceGroups.Get(this.ResourceGroupName);
             SetCertSubjectNameIfApplicable(resourceGroup.Location);
             var certInformation = GetOrCreateCertificateInformation()[0];
 
             deployment.Properties.Parameters = SetParameters(
-               (JObject)deployment.Properties.Parameters,
+               parameters,
                certInformation.KeyVault.Id,
                certInformation.SecretUrl,
                certInformation.CertificateThumbprint,
@@ -556,7 +571,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     WriteVerboseWithTimestamp(ServiceFabricProperties.Resources.DeploymentVerbose);
 
-                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
+                    var c = SafeGetResource(() => this.GetCurrentCluster(), true);
                     if (c != null)
                     {
                         WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose,
@@ -569,7 +584,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             PrintDetailIfThrow(() => deploymentTask.Wait());
 
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+            var cluster = GetCurrentCluster();
 
             WriteObject(
                 new PSDeploymentResult(
@@ -794,7 +809,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 if (resource["type"] == null)
                 {
-                    throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
                 }
 
                 var resourceType = resource["type"];
@@ -849,7 +864,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 extSetting["certificate"] == null ||
                                 extSetting["certificate"]["thumbprint"] == null)
                             {
-                                throw new InvalidOperationException(
+                                throw new PSArgumentException(
                                     ServiceFabricProperties.Resources.InvalidTemplateFile);
                             }
 
@@ -888,13 +903,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private void TranslateParameters(bool customize)
         {
             this.adminUserParameter = TranslateToParameterName(this.adminUserParameter);
+            this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
             this.locationParameter = TranslateToParameterName(this.locationParameter);
             this.clusterNameParameter = TranslateToParameterName(this.clusterNameParameter);
             this.domainNameLabelParameter = TranslateToParameterName(this.domainNameLabelParameter);
 
             if (!customize)
             {
-                this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
                 this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter);
                 this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter);
                 this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter);
