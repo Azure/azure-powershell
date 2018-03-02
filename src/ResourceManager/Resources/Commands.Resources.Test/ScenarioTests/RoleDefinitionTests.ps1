@@ -343,3 +343,23 @@ function Test-RdValidateInputParameters2 ($cmdName)
     $roleDef.AssignableScopes[0] = $scope;
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 }
+
+<#
+.SYNOPSIS
+Verify positive and negative scenarios for RoleDefinition Get with filters.
+#>
+function Test-RDFilter
+{
+    # Setup 
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("5282481f-37e6-40d3-bec0-b797e0496d3c")
+    $readerRole = Get-AzureRmRoleDefinition -Name "Reader"
+    Assert-NotNull $readerRole
+    Assert-AreEqual $readerRole.Name "Reader"
+
+    $customRoles = Get-AzureRmRoleDefinition -Custom
+    Assert-NotNull $customRoles
+    foreach($role in $customRoles){
+        Assert-NotNull $role
+        Assert-AreEqual $role.IsCustom $true
+    }
+}

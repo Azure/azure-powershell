@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 			ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
 		}
 
+		[Fact]
+		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void RDFilter()
+		{
+			ResourcesController.NewInstance.RunPsTest("Test-RDFilter");
+		}
+
 		[Fact(Skip = "Unskip after service side change")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDRemoveScenario()
