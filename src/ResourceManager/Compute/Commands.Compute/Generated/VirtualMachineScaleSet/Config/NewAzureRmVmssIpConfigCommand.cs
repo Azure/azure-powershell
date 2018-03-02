@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 
             vIpConfigurations.Name = this.Name;
-            vIpConfigurations.Primary = this.Primary;
+            vIpConfigurations.Primary = this.Primary.IsPresent;
             vIpConfigurations.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
             vIpConfigurations.Id = this.Id;
 

@@ -182,11 +182,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ImageReferenceSku { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableAutomaticUpdate { get; set; }
-
-        [Parameter(
             ParameterSetName = "ExplicitIdentityParameterSet",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
@@ -194,8 +189,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? ManagedDiskStorageAccountType { get; set; }
+        public StorageAccountTypes ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -204,23 +198,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? ProvisionVMAgent { get; set; }
+        public bool ProvisionVMAgent { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? BootDiagnosticsEnabled { get; set; }
+        public bool BootDiagnosticsEnabled { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? Overprovision { get; set; }
+        public bool Overprovision { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public int? MaxBatchInstancePercent { get; set; }
+        public int MaxBatchInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -234,13 +224,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? AutomaticOSUpgrade { get; set; }
+        public bool AutomaticOSUpgrade { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? SinglePlacementGroup { get; set; }
+        public bool SinglePlacementGroup { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -249,8 +237,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public UpgradeMode? UpgradePolicyMode { get; set; }
+        public UpgradeMode UpgradePolicyMode { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -259,8 +246,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public bool? DisablePasswordAuthentication { get; set; }
+        public bool DisablePasswordAuthentication { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -274,8 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public int? MaxUnhealthyUpgradedInstancePercent { get; set; }
+        public int MaxUnhealthyUpgradedInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -290,6 +275,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
+        public string[] VhdContainer { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         public string ImageUri { get; set; }
 
         [Parameter(
@@ -299,8 +289,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public string[] VhdContainer { get; set; }
+        public bool EnableAutomaticUpdate { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -325,13 +314,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public int? MaxUnhealthyInstancePercent { get; set; }
+        public int MaxUnhealthyInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public int? SkuCapacity { get; set; }
+        public int SkuCapacity { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public bool OsDiskWriteAccelerator { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -345,8 +336,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public CachingTypes? OsDiskCaching { get; set; }
+        public CachingTypes OsDiskCaching { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -358,7 +348,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void BuildPatchObject()
         {
-            if (this.ImageReferenceSku != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceSku"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -379,28 +369,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.ImageReference.Sku = this.ImageReferenceSku;
             }
 
-            if (this.EnableAutomaticUpdate != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateOSProfile();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
-                }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
-            }
-
-            if (this.IdentityId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -413,7 +382,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Identity.IdentityIds = this.IdentityId;
             }
 
-            if (this.ManagedDiskStorageAccountType != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -438,7 +407,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.ManagedDiskStorageAccountType;
             }
 
-            if (this.PlanPublisher != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanPublisher"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -451,7 +420,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Plan.Publisher = this.PlanPublisher;
             }
 
-            if (this.ProvisionVMAgent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ProvisionVMAgent"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -472,7 +441,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent;
             }
 
-            if (this.BootDiagnosticsEnabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("BootDiagnosticsEnabled"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -493,7 +462,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = this.BootDiagnosticsEnabled;
             }
 
-            if (this.Overprovision != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Overprovision"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -502,7 +471,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Overprovision = this.Overprovision;
             }
 
-            if (this.MaxBatchInstancePercent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxBatchInstancePercent"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -519,7 +488,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = this.MaxBatchInstancePercent;
             }
 
-            if (this.TimeZone != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("TimeZone"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -540,7 +509,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.TimeZone = this.TimeZone;
             }
 
-            if (this.BootDiagnosticsStorageUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("BootDiagnosticsStorageUri"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -561,7 +530,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
             }
 
-            if (this.AutomaticOSUpgrade != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AutomaticOSUpgrade"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -574,7 +543,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
-            if (this.SinglePlacementGroup != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -583,7 +552,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.SinglePlacementGroup = this.SinglePlacementGroup;
             }
 
-            if (this.CustomData != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("CustomData"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -600,7 +569,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.CustomData = this.CustomData;
             }
 
-            if (this.UpgradePolicyMode != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -613,7 +582,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.Mode = this.UpgradePolicyMode;
             }
 
-            if (this.ImageReferenceId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceId"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -634,7 +603,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
-            if (this.DisablePasswordAuthentication != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DisablePasswordAuthentication"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -655,7 +624,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.DisablePasswordAuthentication;
             }
 
-            if (this.Tag != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -664,7 +633,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
 
-            if (this.PlanName != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanName"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -677,7 +646,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Plan.Name = this.PlanName;
             }
 
-            if (this.MaxUnhealthyUpgradedInstancePercent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyUpgradedInstancePercent"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -694,7 +663,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = this.MaxUnhealthyUpgradedInstancePercent;
             }
 
-            if (this.ImageReferencePublisher != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferencePublisher"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -715,7 +684,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.ImageReference.Publisher = this.ImageReferencePublisher;
             }
 
-            if (this.PlanProduct != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanProduct"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -728,7 +697,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Plan.Product = this.PlanProduct;
             }
 
-            if (this.ImageUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("VhdContainer"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateStorageProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateOSDisk();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageUri"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -753,7 +743,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.Image.Uri = this.ImageUri;
             }
 
-            if (this.SkuTier != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuTier"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -766,7 +756,110 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.Sku.Tier = this.SkuTier;
             }
 
-            if (this.VhdContainer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("EnableAutomaticUpdate"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateOSProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("LicenseType"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.LicenseType = this.LicenseType;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Identity == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSetUpdate.Identity.Type = this.IdentityType;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Sku == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                this.VirtualMachineScaleSetUpdate.Sku.Name = this.SkuName;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanPromotionCode"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Plan == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Plan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                this.VirtualMachineScaleSetUpdate.Plan.PromotionCode = this.PlanPromotionCode;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyInstancePercent"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuCapacity"))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Sku == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                this.VirtualMachineScaleSetUpdate.Sku.Capacity = this.SkuCapacity;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -784,92 +877,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateOSDisk();
                 }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
             }
 
-            if (this.LicenseType != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile();
-                }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.LicenseType = this.LicenseType;
-            }
-
-            if (this.IdentityType != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Identity == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
-                }
-                this.VirtualMachineScaleSetUpdate.Identity.Type = this.IdentityType;
-            }
-
-            if (this.SkuName != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Sku == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
-                }
-                this.VirtualMachineScaleSetUpdate.Sku.Name = this.SkuName;
-            }
-
-            if (this.PlanPromotionCode != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Plan == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Plan = new Microsoft.Azure.Management.Compute.Models.Plan();
-                }
-                this.VirtualMachineScaleSetUpdate.Plan.PromotionCode = this.PlanPromotionCode;
-            }
-
-            if (this.MaxUnhealthyInstancePercent != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
-                }
-                if (this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
-                }
-                this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
-            }
-
-            if (this.SkuCapacity != null)
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Sku == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
-                }
-                this.VirtualMachineScaleSetUpdate.Sku.Capacity = this.SkuCapacity;
-            }
-
-            if (this.ImageReferenceOffer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceOffer"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -890,7 +901,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.ImageReference.Offer = this.ImageReferenceOffer;
             }
 
-            if (this.PauseTimeBetweenBatches != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PauseTimeBetweenBatches"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -907,7 +918,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = this.PauseTimeBetweenBatches;
             }
 
-            if (this.OsDiskCaching != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskCaching"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -928,7 +939,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.Caching = this.OsDiskCaching;
             }
 
-            if (this.ImageReferenceVersion != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceVersion"))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
                 {
@@ -961,7 +972,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void BuildPutObject()
         {
-            if (this.ImageReferenceSku != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceSku"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -978,24 +989,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Sku = this.ImageReferenceSku;
             }
 
-            if (this.EnableAutomaticUpdate != null)
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
-            }
-
-            if (this.IdentityId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
             {
                 if (this.VirtualMachineScaleSet.Identity == null)
                 {
@@ -1004,7 +998,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.Identity.IdentityIds = this.IdentityId;
             }
 
-            if (this.ManagedDiskStorageAccountType != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1025,7 +1019,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.ManagedDiskStorageAccountType;
             }
 
-            if (this.PlanPublisher != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanPublisher"))
             {
                 if (this.VirtualMachineScaleSet.Plan == null)
                 {
@@ -1034,7 +1028,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.Plan.Publisher = this.PlanPublisher;
             }
 
-            if (this.ProvisionVMAgent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ProvisionVMAgent"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1051,7 +1045,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent;
             }
 
-            if (this.BootDiagnosticsEnabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("BootDiagnosticsEnabled"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1068,12 +1062,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = this.BootDiagnosticsEnabled;
             }
 
-            if (this.Overprovision != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Overprovision"))
             {
                 this.VirtualMachineScaleSet.Overprovision = this.Overprovision;
             }
 
-            if (this.MaxBatchInstancePercent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxBatchInstancePercent"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
@@ -1086,7 +1080,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = this.MaxBatchInstancePercent;
             }
 
-            if (this.TimeZone != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("TimeZone"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1103,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.TimeZone = this.TimeZone;
             }
 
-            if (this.BootDiagnosticsStorageUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("BootDiagnosticsStorageUri"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1120,7 +1114,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
             }
 
-            if (this.AutomaticOSUpgrade != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AutomaticOSUpgrade"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
@@ -1129,12 +1123,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
-            if (this.SinglePlacementGroup != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup"))
             {
                 this.VirtualMachineScaleSet.SinglePlacementGroup = this.SinglePlacementGroup;
             }
 
-            if (this.CustomData != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("CustomData"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1147,7 +1141,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.CustomData = this.CustomData;
             }
 
-            if (this.UpgradePolicyMode != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
@@ -1156,7 +1150,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.Mode = this.UpgradePolicyMode;
             }
 
-            if (this.ImageReferenceId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceId"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1173,7 +1167,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
-            if (this.DisablePasswordAuthentication != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DisablePasswordAuthentication"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1190,12 +1184,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.DisablePasswordAuthentication;
             }
 
-            if (this.Tag != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
             {
                 this.VirtualMachineScaleSet.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
 
-            if (this.PlanName != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanName"))
             {
                 if (this.VirtualMachineScaleSet.Plan == null)
                 {
@@ -1204,7 +1198,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.Plan.Name = this.PlanName;
             }
 
-            if (this.MaxUnhealthyUpgradedInstancePercent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyUpgradedInstancePercent"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
@@ -1217,7 +1211,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = this.MaxUnhealthyUpgradedInstancePercent;
             }
 
-            if (this.ImageReferencePublisher != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferencePublisher"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1234,7 +1228,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Publisher = this.ImageReferencePublisher;
             }
 
-            if (this.PlanProduct != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanProduct"))
             {
                 if (this.VirtualMachineScaleSet.Plan == null)
                 {
@@ -1243,7 +1237,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.Plan.Product = this.PlanProduct;
             }
 
-            if (this.ImageUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("VhdContainer"))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSDisk();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageUri"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1264,7 +1275,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Image.Uri = this.ImageUri;
             }
 
-            if (this.SkuTier != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuTier"))
             {
                 if (this.VirtualMachineScaleSet.Sku == null)
                 {
@@ -1273,7 +1284,82 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.Sku.Tier = this.SkuTier;
             }
 
-            if (this.VhdContainer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("EnableAutomaticUpdate"))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new Microsoft.Azure.Management.Compute.Models.WindowsConfiguration();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("LicenseType"))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.LicenseType = this.LicenseType;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            {
+                if (this.VirtualMachineScaleSet.Identity == null)
+                {
+                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                this.VirtualMachineScaleSet.Identity.Type = this.IdentityType;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
+            {
+                if (this.VirtualMachineScaleSet.Sku == null)
+                {
+                    this.VirtualMachineScaleSet.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                this.VirtualMachineScaleSet.Sku.Name = this.SkuName;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("PlanPromotionCode"))
+            {
+                if (this.VirtualMachineScaleSet.Plan == null)
+                {
+                    this.VirtualMachineScaleSet.Plan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                this.VirtualMachineScaleSet.Plan.PromotionCode = this.PlanPromotionCode;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyInstancePercent"))
+            {
+                if (this.VirtualMachineScaleSet.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
+                }
+                this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuCapacity"))
+            {
+                if (this.VirtualMachineScaleSet.Sku == null)
+                {
+                    this.VirtualMachineScaleSet.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                this.VirtualMachineScaleSet.Sku.Capacity = this.SkuCapacity;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1287,68 +1373,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSDisk();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
             }
 
-            if (this.LicenseType != null)
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.LicenseType = this.LicenseType;
-            }
-
-            if (this.IdentityType != null)
-            {
-                if (this.VirtualMachineScaleSet.Identity == null)
-                {
-                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
-                }
-                this.VirtualMachineScaleSet.Identity.Type = this.IdentityType;
-            }
-
-            if (this.SkuName != null)
-            {
-                if (this.VirtualMachineScaleSet.Sku == null)
-                {
-                    this.VirtualMachineScaleSet.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
-                }
-                this.VirtualMachineScaleSet.Sku.Name = this.SkuName;
-            }
-
-            if (this.PlanPromotionCode != null)
-            {
-                if (this.VirtualMachineScaleSet.Plan == null)
-                {
-                    this.VirtualMachineScaleSet.Plan = new Microsoft.Azure.Management.Compute.Models.Plan();
-                }
-                this.VirtualMachineScaleSet.Plan.PromotionCode = this.PlanPromotionCode;
-            }
-
-            if (this.MaxUnhealthyInstancePercent != null)
-            {
-                if (this.VirtualMachineScaleSet.UpgradePolicy == null)
-                {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
-                }
-                if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
-                {
-                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy();
-                }
-                this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
-            }
-
-            if (this.SkuCapacity != null)
-            {
-                if (this.VirtualMachineScaleSet.Sku == null)
-                {
-                    this.VirtualMachineScaleSet.Sku = new Microsoft.Azure.Management.Compute.Models.Sku();
-                }
-                this.VirtualMachineScaleSet.Sku.Capacity = this.SkuCapacity;
-            }
-
-            if (this.ImageReferenceOffer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceOffer"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1365,7 +1393,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer = this.ImageReferenceOffer;
             }
 
-            if (this.PauseTimeBetweenBatches != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PauseTimeBetweenBatches"))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
@@ -1378,7 +1406,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = this.PauseTimeBetweenBatches;
             }
 
-            if (this.OsDiskCaching != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskCaching"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -1395,7 +1423,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Caching = this.OsDiskCaching;
             }
 
-            if (this.ImageReferenceVersion != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceVersion"))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
