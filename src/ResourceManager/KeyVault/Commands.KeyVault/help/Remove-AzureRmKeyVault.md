@@ -16,25 +16,25 @@ Deletes a key vault.
 ### ByAvailableVault (Default)
 ```
 Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
 Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByAvailableVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSVault> [[-Location] <String>] [-Force] [-AsJob]
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByDeletedVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSVault> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Key Vault object to be deleted.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
 Aliases:
 
@@ -162,6 +162,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -233,6 +248,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

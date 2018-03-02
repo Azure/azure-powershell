@@ -12,18 +12,118 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
 using System;
+using System.Collections;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public sealed class PSDeletedKeyVaultCertificate : PSKeyVaultCertificate
+    public sealed class PSDeletedKeyVaultCertificate : PSDeletedKeyVaultCertificateIdentityItem
     {
-        public PSDeletedKeyVaultCertificate( Azure.KeyVault.Models.DeletedCertificateBundle deletedCertificateBundle )
-            :base( deletedCertificateBundle )
+        internal PSDeletedKeyVaultCertificate(DeletedCertificateBundle deletedCertificateBundle, VaultUriHelper vaultUriHelper)
         {
-            if ( deletedCertificateBundle == null )
+            if (deletedCertificateBundle == null)
             {
-                throw new ArgumentNullException( nameof( deletedCertificateBundle ) );
+                throw new ArgumentNullException(nameof(deletedCertificateBundle));
+            }
+
+            if (deletedCertificateBundle.CertificateIdentifier == null)
+                throw new ArgumentException(Resources.InvalidKeyIdentifier);
+
+            SetObjectIdentifier(vaultUriHelper, deletedCertificateBundle.CertificateIdentifier);
+
+            // VaultName formatted incorrect in certificateBundle
+            var vaultUri = new Uri(deletedCertificateBundle.CertificateIdentifier.Vault);
+            VaultName = vaultUri.Host.Split('.').First();
+
+            if (deletedCertificateBundle.Cer != null)
+            {
+                Certificate = new X509Certificate2(deletedCertificateBundle.Cer);
+                Thumbprint = Certificate.Thumbprint;
+            }
+
+            if (deletedCertificateBundle.KeyIdentifier != null)
+            {
+                KeyId = deletedCertificateBundle.KeyIdentifier.Identifier;
+            }
+
+            if (deletedCertificateBundle.SecretIdentifier != null)
+            {
+                SecretId = deletedCertificateBundle.SecretIdentifier.Identifier;
+            }
+
+            if (deletedCertificateBundle.Attributes != null)
+            {
+                Created = deletedCertificateBundle.Attributes.Created;
+                Expires = deletedCertificateBundle.Attributes.Expires;
+                NotBefore = deletedCertificateBundle.Attributes.NotBefore;
+                Enabled = deletedCertificateBundle.Attributes.Enabled;
+                Updated = deletedCertificateBundle.Attributes.Updated;
+                RecoveryLevel = deletedCertificateBundle.Attributes.RecoveryLevel;
+            }
+
+            if (deletedCertificateBundle.Tags != null)
+            {
+                Tags = (Hashtable) deletedCertificateBundle.Tags;
+            }
+
+            ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;
+            DeletedDate = deletedCertificateBundle.DeletedDate;
+        }
+
+        internal PSDeletedKeyVaultCertificate(DeletedCertificateBundle deletedCertificateBundle)
+        {
+            if (deletedCertificateBundle == null)
+            {
+                throw new ArgumentNullException(nameof(deletedCertificateBundle));
+            }
+
+            if (deletedCertificateBundle.CertificateIdentifier == null)
+                throw new ArgumentException(Resources.InvalidKeyIdentifier);
+
+            var vaultUri = new Uri(deletedCertificateBundle.CertificateIdentifier.Vault);
+
+            SetObjectIdentifier(new ObjectIdentifier
+            {
+                Id = deletedCertificateBundle.CertificateIdentifier.Identifier,
+                Name = deletedCertificateBundle.CertificateIdentifier.Name,
+                // VaultName formatted incorrect in certificateBundle
+                VaultName = vaultUri.Host.Split('.').First(),
+                Version = deletedCertificateBundle.CertificateIdentifier.Version
+            });
+
+            if (deletedCertificateBundle.Cer != null)
+            {
+                Certificate = new X509Certificate2(deletedCertificateBundle.Cer);
+                Thumbprint = Certificate.Thumbprint;
+            }
+
+            if (deletedCertificateBundle.KeyIdentifier != null)
+            {
+                KeyId = deletedCertificateBundle.KeyIdentifier.Identifier;
+            }
+
+            if (deletedCertificateBundle.SecretIdentifier != null)
+            {
+                SecretId = deletedCertificateBundle.SecretIdentifier.Identifier;
+            }
+
+            if (deletedCertificateBundle.Attributes != null)
+            {
+                Created = deletedCertificateBundle.Attributes.Created;
+                Expires = deletedCertificateBundle.Attributes.Expires;
+                NotBefore = deletedCertificateBundle.Attributes.NotBefore;
+                Enabled = deletedCertificateBundle.Attributes.Enabled;
+                Updated = deletedCertificateBundle.Attributes.Updated;
+                RecoveryLevel = deletedCertificateBundle.Attributes.RecoveryLevel;
+            }
+
+            if (deletedCertificateBundle.Tags != null)
+            {
+                Tags = (Hashtable) deletedCertificateBundle.Tags;
             }
 
             ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;
@@ -40,8 +140,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSDeletedKeyVaultCertificate( deletedCertificateBundle );
         }
 
-        public DateTime? ScheduledPurgeDate { get; set; }
+        public X509Certificate2 Certificate { get; set; }
+        public string KeyId { get; internal set; }
+        public string SecretId { get; internal set; }
+        public string Thumbprint { get; set; }
 
-        public DateTime? DeletedDate { get; set; }
+        public string RecoveryLevel { get; private set; }
     }
 }

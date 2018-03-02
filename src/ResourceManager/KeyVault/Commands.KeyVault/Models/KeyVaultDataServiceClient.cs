@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyBundle CreateKey(string vaultName, string keyName, PSKeyAttributes keyAttributes)
+        public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }        
 
         public CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certBundle;
         }
 
-        public PSKeyBundle ImportKey(string vaultName, string keyName, PSKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
+        public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyAttributes keyAttributes)
+        public PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
         public Contacts GetCertificateContacts(string vaultName)
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certBundle;
         }
 
-        public PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion)
+        public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -324,10 +324,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public IEnumerable<PSCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -347,8 +347,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetCertificatesNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSCertificateIdentityItem>() :
-                    result.Select((certItem) => { return new PSCertificateIdentityItem(certItem, this.vaultUriHelper); });
+                return (result == null) ? new List<PSKeyVaultCertificateIdentityItem>() :
+                    result.Select((certItem) => { return new PSKeyVaultCertificateIdentityItem(certItem, this.vaultUriHelper); });
             }
             catch (Exception ex)
             {
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IEnumerable<PSCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetCertificateVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return result.Select((certificateItem) => new PSCertificateIdentityItem(certificateItem, this.vaultUriHelper));
+                return result.Select((certificateItem) => new PSKeyVaultCertificateIdentityItem(certificateItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IEnumerable<PSKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -407,8 +407,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetKeysNextAsync(options.NextLink).GetAwaiter().GetResult();
                 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSKeyIdentityItem>() :
-                    result.Select((keyItem) => new PSKeyIdentityItem(keyItem, this.vaultUriHelper));
+                return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
+                    result.Select((keyItem) => new PSKeyVaultKeyIdentityItem(keyItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IEnumerable<PSKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetKeyVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
                
                 options.NextLink = result.NextPageLink;
-                return result.Select((keyItem) => new PSKeyIdentityItem(keyItem, this.vaultUriHelper));
+                return result.Select((keyItem) => new PSKeyVaultKeyIdentityItem(keyItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public PSDeletedKeyBundle DeleteKey(string vaultName, string keyName)
+        public PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSDeletedKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
         public Contacts SetCertificateContacts(string vaultName, Contacts contacts)
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputContacts;
         }
 
-        public PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSSecretAttributes secretAttributes)
+        public PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -518,10 +518,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSSecret(secret, this.vaultUriHelper);
+            return new PSKeyVaultSecret(secret, this.vaultUriHelper);
         }
 
-        public PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSSecretAttributes secretAttributes)
+        public PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -545,10 +545,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSSecret(secret, this.vaultUriHelper);
+            return new PSKeyVaultSecret(secret, this.vaultUriHelper);
         }
 
-        public PSSecret GetSecret(string vaultName, string secretName, string secretVersion)
+        public PSKeyVaultSecret GetSecret(string vaultName, string secretName, string secretVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -573,10 +573,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSSecret(secret, this.vaultUriHelper);
+            return new PSKeyVaultSecret(secret, this.vaultUriHelper);
         }
 
-        public IEnumerable<PSSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -595,8 +595,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetSecretsNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSSecretIdentityItem>() :
-                    result.Select((secretItem) => new PSSecretIdentityItem(secretItem, this.vaultUriHelper));            
+                return (result == null) ? new List<PSKeyVaultSecretIdentityItem>() :
+                    result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));            
             }
             catch (Exception ex)
             {
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IEnumerable<PSSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetSecretVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
                 
                 options.NextLink = result.NextPageLink;
-                return result.Select((secretItem) => new PSSecretIdentityItem(secretItem, this.vaultUriHelper));
+                return result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certificateOperation;
         }
 
-        public PSDeletedSecret DeleteSecret(string vaultName, string secretName)
+        public PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedSecret(secret, this.vaultUriHelper);
+            return new PSDeletedKeyVaultSecret(secret, this.vaultUriHelper);
         }
 
         public string BackupKey(string vaultName, string keyName, string outputBlobPath)
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputBlobPath;
         }
 
-        public PSKeyBundle RestoreKey(string vaultName, string inputBlobPath)
+        public PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(keyBundle, this.vaultUriHelper);
+            return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
         public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputBlobPath;
         }
 
-        public PSSecret RestoreSecret( string vaultName, string inputBlobPath )
+        public PSKeyVaultSecret RestoreSecret( string vaultName, string inputBlobPath )
         {
             if ( string.IsNullOrEmpty( vaultName ) )
                 throw new ArgumentNullException(nameof(vaultName));
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException( ex );
             }
 
-            return new PSSecret( secretBundle, this.vaultUriHelper );
+            return new PSKeyVaultSecret( secretBundle, this.vaultUriHelper );
         }
 
         public CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certificateIssuer;
         }
 
-        public IEnumerable<PSCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -1021,8 +1021,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetCertificateIssuersNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSCertificateIssuerIdentityItem>() :
-                    result.Select(issuerItem => new PSCertificateIssuerIdentityItem(issuerItem, this.vaultUriHelper));
+                return (result == null) ? new List<PSKeyVaultCertificateIssuerIdentityItem>() :
+                    result.Select(issuerItem => new PSKeyVaultCertificateIssuerIdentityItem(issuerItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -1391,7 +1391,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return exception;
         }
 
-        public PSDeletedKeyBundle GetDeletedKey(string vaultName, string keyName)
+        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -1417,10 +1417,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedKeyBundle(deletedKeyBundle, this.vaultUriHelper);
+            return new PSDeletedKeyVaultKey(deletedKeyBundle, this.vaultUriHelper);
         }
 
-        public IEnumerable<PSDeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException("options");
@@ -1440,8 +1440,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetDeletedKeysNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSDeletedKeyIdentityItem>() :
-                    result.Select((deletedKeyItem) => new PSDeletedKeyIdentityItem(deletedKeyItem, this.vaultUriHelper));
+                return (result == null) ? new List<PSDeletedKeyVaultKeyIdentityItem>() :
+                    result.Select((deletedKeyItem) => new PSDeletedKeyVaultKeyIdentityItem(deletedKeyItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -1449,7 +1449,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public PSDeletedSecret GetDeletedSecret(string vaultName, string secretName)
+        public PSDeletedKeyVaultSecret GetDeletedSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -1475,10 +1475,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedSecret(deletedSecret, this.vaultUriHelper);
+            return new PSDeletedKeyVaultSecret(deletedSecret, this.vaultUriHelper);
         }
 
-        public IEnumerable<PSDeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSDeletedKeyVaultSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException("options");
@@ -1497,8 +1497,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetDeletedSecretsNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return (result == null) ? new List<PSDeletedSecretIdentityItem>() :
-                    result.Select((deletedSecretItem) => new PSDeletedSecretIdentityItem(deletedSecretItem, this.vaultUriHelper));
+                return (result == null) ? new List<PSDeletedKeyVaultSecretIdentityItem>() :
+                    result.Select((deletedSecretItem) => new PSDeletedKeyVaultSecretIdentityItem(deletedSecretItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public PSKeyBundle RecoverKey(string vaultName, string keyName)
+        public PSKeyVaultKey RecoverKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -1563,10 +1563,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyBundle(recoveredKey, this.vaultUriHelper);
+            return new PSKeyVaultKey(recoveredKey, this.vaultUriHelper);
         }
 
-        public PSSecret RecoverSecret(string vaultName, string secretName)
+        public PSKeyVaultSecret RecoverSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -1585,7 +1585,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return new PSSecret(recoveredSecret, this.vaultUriHelper);
+            return new PSKeyVaultSecret(recoveredSecret, this.vaultUriHelper);
         }
 
         public DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName )
@@ -1617,7 +1617,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return deletedCertificate;
         }
 
-        public IEnumerable<PSDeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
+        public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
         {
             if ( options == null )
                 throw new ArgumentNullException( nameof( options ) );
@@ -1636,8 +1636,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetDeletedCertificatesNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
 
                 options.NextLink = result.NextPageLink;
-                return ( result == null ) ? new List<PSDeletedCertificateIdentityItem>( ) :
-                    result.Select( ( deletedItem ) => new PSDeletedCertificateIdentityItem( deletedItem, this.vaultUriHelper ) );
+                return ( result == null ) ? new List<PSDeletedKeyVaultCertificateIdentityItem>( ) :
+                    result.Select( ( deletedItem ) => new PSDeletedKeyVaultCertificateIdentityItem( deletedItem, this.vaultUriHelper ) );
             }
             catch ( Exception ex )
             {

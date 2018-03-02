@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<PSSecretIdentityItem>), typeof(PSSecret), typeof(List<PSDeletedSecretIdentityItem>), typeof(PSDeletedSecret))]
+    [OutputType(typeof(List<PSKeyVaultSecretIdentityItem>), typeof(PSKeyVaultSecret), typeof(List<PSDeletedKeyVaultSecretIdentityItem>), typeof(PSDeletedKeyVaultSecret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
            ParameterSetName = InputObjectBySecretVersionsParameterSet,
            HelpMessage = "KeyVault Object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Secret name
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            PSSecret secret;
+            PSKeyVaultSecret secret;
 
             if (InputObject != null)
             {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 secret = DataServiceClient.GetSecret(VaultName, Name, string.Empty);
                 if (secret != null)
                 {
-                    WriteObject(new PSSecretIdentityItem(secret));
+                    WriteObject(new PSKeyVaultSecretIdentityItem(secret));
                     GetAndWriteSecretVersions(VaultName, Name, secret.Version);
                 }
             }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    PSDeletedSecret deletedSecret = DataServiceClient.GetDeletedSecret(VaultName, Name);
+                    PSDeletedKeyVaultSecret deletedSecret = DataServiceClient.GetDeletedSecret(VaultName, Name);
                     WriteObject(deletedSecret);
                 }
             }

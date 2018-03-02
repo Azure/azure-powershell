@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ByUserPrincipalName,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "Key Vault object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Service principal name
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
 
                 // Get the vault to be updated
-                PSVault existingVault = null;
+                PSKeyVault existingVault = null;
 
                 if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                     existingVault = KeyVaultManagementClient.GetVault(
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(updatedVault);
             }
         }
-        private bool ShallBeRemoved(PSVaultAccessPolicy ap, string objectId, Guid? applicationId)
+        private bool ShallBeRemoved(PSKeyVaultAccessPolicy ap, string objectId, Guid? applicationId)
         {
             // If both object id and application id are specified, remove the compound identity policy only.
             // If only object id is specified, remove all policies refer to the object id including the compound identity policies.

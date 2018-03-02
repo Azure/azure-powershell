@@ -18,9 +18,12 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSSecretIdentityItem : ObjectIdentifier
+    public class PSKeyVaultSecretIdentityItem : ObjectIdentifier
     {
-        internal PSSecretIdentityItem(Azure.KeyVault.Models.SecretItem secretItem, VaultUriHelper vaultUriHelper)
+        public PSKeyVaultSecretIdentityItem()
+        { }
+
+        internal PSKeyVaultSecretIdentityItem(Azure.KeyVault.Models.SecretItem secretItem, VaultUriHelper vaultUriHelper)
         {
             if (secretItem == null)
                 throw new ArgumentNullException("secretItem");
@@ -39,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = (secretItem.Tags == null) ? null : secretItem.Tags.ConvertToHashtable();
         }
 
-        internal PSSecretIdentityItem(PSSecret secret)
+        internal PSKeyVaultSecretIdentityItem(PSKeyVaultSecret secret)
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");
@@ -61,9 +64,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? NotBefore { get; set; }
 
-        public DateTime? Created { get; private set; }
+        public DateTime? Created { get; protected set; }
 
-        public DateTime? Updated { get; private set; }
+        public DateTime? Updated { get; protected set; }
 
         public string ContentType { get; set; }
 

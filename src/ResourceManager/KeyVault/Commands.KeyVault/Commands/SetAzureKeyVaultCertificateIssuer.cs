@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "Key Vault Object")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Name
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the certificate issuer to set.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVaultCertificateIssuer Issuer { get; set; }
+        public PSKeyVaultCertificateIssuerIdentityItem Issuer { get; set; }
 
         #endregion
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (Issuer != null)
                 {
-                    issuerToUse = Issuer;
+                    issuerToUse = (PSKeyVaultCertificateIssuer) Issuer;
                 }
                 else
                 {

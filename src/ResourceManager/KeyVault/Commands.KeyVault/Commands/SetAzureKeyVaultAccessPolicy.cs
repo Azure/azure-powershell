@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = ByUserPrincipalName,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
         private readonly string[] SecretAllExpansion = {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             HelpMessage = "Key Vault Object")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Service principal name
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                PSVault vault = null;
+                PSKeyVault vault = null;
 
                 // Get the vault to be updated
                 if (!string.IsNullOrWhiteSpace(ResourceGroupName))
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 // Update vault policies
-                PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
+                PSKeyVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
                 if (!string.IsNullOrEmpty(UserPrincipalName)
                     || !string.IsNullOrEmpty(ServicePrincipalName)
                     || !string.IsNullOrWhiteSpace(this.ObjectId)
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => !MatchVaultAccessPolicyIdentity(ap, objId, this.ApplicationId)).ToArray();
                         if ( ( keys != null && keys.Length > 0 ) || ( secrets != null && secrets.Length > 0 ) || ( certificates != null && certificates.Length > 0 ) || ( managedStorage != null && managedStorage.Length > 0 ) )
                         {
-                            var policy = new PSVaultAccessPolicy( vault.TenantId, objId, this.ApplicationId, keys, secrets, certificates, managedStorage );
+                            var policy = new PSKeyVaultAccessPolicy( vault.TenantId, objId, this.ApplicationId, keys, secrets, certificates, managedStorage );
                             updatedListOfAccessPolicies = updatedListOfAccessPolicies.Concat(new[] { policy }).ToArray();
                         }
 
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(); // Allow "all" + other perms, but after the expansion, only allow distinct values. 
         }
 
-        private bool MatchVaultAccessPolicyIdentity(PSVaultAccessPolicy ap, string objectId, Guid? applicationId)
+        private bool MatchVaultAccessPolicyIdentity(PSKeyVaultAccessPolicy ap, string objectId, Guid? applicationId)
         {
             return ap.ApplicationId == applicationId && string.Equals(ap.ObjectId, objectId, StringComparison.OrdinalIgnoreCase);
         }

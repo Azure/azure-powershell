@@ -22,7 +22,7 @@ Set-AzureKeyVaultCertificateAttribute [-VaultName] <String> [-Name] <String> [[-
 
 ### ByInputObject
 ```
-Set-AzureKeyVaultCertificateAttribute [-InputObject] <PSKeyVaultCertificate> [[-Version] <String>]
+Set-AzureKeyVaultCertificateAttribute [-InputObject] <PSKeyVaultCertificateIdentityItem> [[-Version] <String>]
  [-Enable <Boolean>] [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Certificate object
 
 ```yaml
-Type: PSKeyVaultCertificate
+Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 

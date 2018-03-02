@@ -33,19 +33,19 @@ Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVer
 
 ### ByNameInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSVault> [[-Name] <String>] [-InRemovedState]
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSVault> [-Name] <String> [-Version] <String>
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateAllVersionsInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSVault> [-Name] <String> [-IncludeVersions]
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: ByNameInputObject, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject
 Aliases:
 
@@ -226,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSCertificateIdentityItem]
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem]
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 

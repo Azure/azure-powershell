@@ -20,8 +20,8 @@ Undo-AzureKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String>
 
 ### InputObject
 ```
-Undo-AzureKeyVaultSecretRemoval [-InputObject] <PSDeletedSecret> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzureKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 Deleted secret object
 
 ```yaml
-Type: PSDeletedSecret
+Type: PSDeletedKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSSecret
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 
 ## NOTES
 

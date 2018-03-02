@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = InteractiveCreateParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyBundle))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "Vault object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// key name
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
-                PSKeyBundle keyBundle;
+                PSKeyVaultKey keyBundle;
                 if (InputObject != null)
                 {
                     VaultName = InputObject.VaultName.ToString();
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        internal PSKeyAttributes CreateKeyAttributes()
+        internal PSKeyVaultKeyAttributes CreateKeyAttributes()
         {
             string keyType = string.Empty;
 
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
             }
 
-            return new Models.PSKeyAttributes(
+            return new Models.PSKeyVaultKeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,

@@ -22,7 +22,7 @@ Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <S
 
 ### InputObject
 ```
-Set-AzureKeyVaultSecret [-InputObject] <PSSecret> [-SecretValue] <SecureString> [-Disable]
+Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Secret object
 
 ```yaml
-Type: PSSecret
+Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -268,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSSecret
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 
 ## NOTES
 

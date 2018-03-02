@@ -20,8 +20,8 @@ Undo-AzureKeyVaultKeyRemoval [-VaultName] <String> [-Name] <String> [-DefaultPro
 
 ### InputObject
 ```
-Undo-AzureKeyVaultKeyRemoval [-InputObject] <PSDeletedKeyBundle> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzureKeyVaultKeyRemoval [-InputObject] <PSDeletedKeyVaultKeyIdentityItem>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 Deleted key object
 
 ```yaml
-Type: PSDeletedKeyBundle
+Type: PSDeletedKeyVaultKeyIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

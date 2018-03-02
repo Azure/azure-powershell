@@ -17,9 +17,9 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSSecret : ObjectIdentifier
+    public class PSKeyVaultSecret : PSKeyVaultSecretIdentityItem
     {
-        public PSSecret()
+        public PSKeyVaultSecret()
         { }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="secret">secret returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal PSSecret(Azure.KeyVault.Models.SecretBundle secret, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultSecret(Azure.KeyVault.Models.SecretBundle secret, VaultUriHelper vaultUriHelper)
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (secret.Value != null)
                 SecretValue = secret.Value.ConvertToSecureString();
 
-            Attributes = new PSSecretAttributes(
+            Attributes = new PSKeyVaultSecretAttributes(
                 secret.Attributes.Enabled,
                 secret.Attributes.Expires,
                 secret.Attributes.NotBefore,
@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 secret.ContentType,
                 secret.Attributes.RecoveryLevel,
                 secret.Tags);
+
+            Enabled = secret.Attributes.Enabled;
+            Expires = secret.Attributes.Expires;
+            NotBefore = secret.Attributes.NotBefore;
+            Created = secret.Attributes.Created;
+            Updated = secret.Attributes.Updated;
+            ContentType = secret.ContentType;
+            Tags = (secret.Tags == null) ? null : secret.Tags.ConvertToHashtable();
         }
 
         public SecureString SecretValue { get; set; }
@@ -59,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 return text;
             }
         }
-        public PSSecretAttributes Attributes { get; set; }
+        public PSKeyVaultSecretAttributes Attributes { get; set; }
 
     }
 }

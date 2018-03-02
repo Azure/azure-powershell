@@ -21,7 +21,7 @@ Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile]
 
 ### BySecret
 ```
-Backup-AzureKeyVaultSecret [-InputObject] <PSSecret> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Secret to be backed up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSSecret
+Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: BySecret
 Aliases: Secret
 

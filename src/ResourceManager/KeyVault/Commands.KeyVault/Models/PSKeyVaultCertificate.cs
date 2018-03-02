@@ -11,49 +11,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSKeyVaultCertificate 
+    public class PSKeyVaultCertificate : PSKeyVaultCertificateIdentityItem
     {
-        public string Name { get; set; }
-        public string VaultName { get; set; }
         public X509Certificate2 Certificate { get; set; }
-        public string Id { get; internal set; }
         public string KeyId { get; internal set; }
         public string SecretId { get; internal set; }
         public string Thumbprint { get; set; }
-        public IDictionary<string, string> Tags { get; set; }
-
-        public bool? Enabled { get; set; }
-        public DateTime? Created { get; internal set; }
-        public DateTime? Updated { get; internal set; }
 
         public string RecoveryLevel { get; private set; }
 
-        public PSKeyVaultCertificate( CertificateBundle certificateBundle )
+        internal PSKeyVaultCertificate(CertificateBundle certificateBundle, VaultUriHelper vaultUriHelper)
         {
             if ( certificateBundle == null )
             {
                 throw new ArgumentNullException( nameof( certificateBundle ) );
             }
 
-            if ( certificateBundle.Id != null )
-            {
-                Id = certificateBundle.CertificateIdentifier.Identifier;
-                Name = certificateBundle.CertificateIdentifier.Name;
+            if (certificateBundle.CertificateIdentifier == null)
+                throw new ArgumentException(Resources.InvalidKeyIdentifier);
 
-                // TODO [dragosav] Bring Certificate classes on par with keys/secrets:
-                //  - inherit from ObjectIdentifier
-                //  - constructors should accept the VaultUriHelper as a parameter
-                var vaultUri = new Uri( certificateBundle.CertificateIdentifier.Vault );
-                VaultName = vaultUri.Host.Split( '.' ).First( );
-            }
+            SetObjectIdentifier(vaultUriHelper, certificateBundle.CertificateIdentifier);
+
+            // VaultName formatted incorrect in certificateBundle
+            var vaultUri = new Uri(certificateBundle.CertificateIdentifier.Vault);
+            VaultName = vaultUri.Host.Split('.').First();
 
             if ( certificateBundle.Cer != null )
             {
@@ -74,6 +65,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if ( certificateBundle.Attributes != null )
             {
                 Created = certificateBundle.Attributes.Created;
+                Expires = certificateBundle.Attributes.Expires;
+                NotBefore = certificateBundle.Attributes.NotBefore;
                 Enabled = certificateBundle.Attributes.Enabled;
                 Updated = certificateBundle.Attributes.Updated;
                 RecoveryLevel = certificateBundle.Attributes.RecoveryLevel;
@@ -81,7 +74,60 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if ( certificateBundle.Tags != null )
             {
-                Tags = certificateBundle.Tags;
+                Tags = (Hashtable) certificateBundle.Tags;
+            }
+        }
+
+        internal PSKeyVaultCertificate(CertificateBundle certificateBundle)
+        {
+            if (certificateBundle == null)
+            {
+                throw new ArgumentNullException(nameof(certificateBundle));
+            }
+
+            if (certificateBundle.CertificateIdentifier == null)
+                throw new ArgumentException(Resources.InvalidKeyIdentifier);
+
+            var vaultUri = new Uri(certificateBundle.CertificateIdentifier.Vault);
+
+            SetObjectIdentifier(new ObjectIdentifier
+            {
+                Id = certificateBundle.CertificateIdentifier.Identifier,
+                Name = certificateBundle.CertificateIdentifier.Name,
+                // VaultName formatted incorrect in certificateBundle
+                VaultName = vaultUri.Host.Split('.').First(),
+                Version = certificateBundle.CertificateIdentifier.Version
+            });
+
+            if (certificateBundle.Cer != null)
+            {
+                Certificate = new X509Certificate2(certificateBundle.Cer);
+                Thumbprint = Certificate.Thumbprint;
+            }
+
+            if (certificateBundle.KeyIdentifier != null)
+            {
+                KeyId = certificateBundle.KeyIdentifier.Identifier;
+            }
+
+            if (certificateBundle.SecretIdentifier != null)
+            {
+                SecretId = certificateBundle.SecretIdentifier.Identifier;
+            }
+
+            if (certificateBundle.Attributes != null)
+            {
+                Created = certificateBundle.Attributes.Created;
+                Expires = certificateBundle.Attributes.Expires;
+                NotBefore = certificateBundle.Attributes.NotBefore;
+                Enabled = certificateBundle.Attributes.Enabled;
+                Updated = certificateBundle.Attributes.Updated;
+                RecoveryLevel = certificateBundle.Attributes.RecoveryLevel;
+            }
+
+            if (certificateBundle.Tags != null)
+            {
+                Tags = (Hashtable)certificateBundle.Tags;
             }
         }
 

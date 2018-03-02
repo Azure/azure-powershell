@@ -21,7 +21,7 @@ Get-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 
 ### InputObject
 ```
-Get-AzureKeyVaultCertificatePolicy [-InputObject] <PSKeyVaultCertificate>
+Get-AzureKeyVaultCertificatePolicy [-InputObject] <PSKeyVaultCertificateIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Certificate Object.
 
 ```yaml
-Type: PSKeyVaultCertificate
+Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: InputObject
 Aliases:
 

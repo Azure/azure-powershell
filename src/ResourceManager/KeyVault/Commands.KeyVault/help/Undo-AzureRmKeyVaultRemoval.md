@@ -20,7 +20,7 @@ Undo-AzureRmKeyVaultRemoval [-VaultName] <String> [-ResourceGroupName] <String> 
 
 ### InputObject
 ```
-Undo-AzureRmKeyVaultRemoval [-InputObject] <PSDeletedVault> [-ResourceGroupName] <String> [-Tag <Hashtable>]
+Undo-AzureRmKeyVaultRemoval [-InputObject] <PSDeletedKeyVault> [-ResourceGroupName] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Deleted vault object
 
 ```yaml
-Type: PSDeletedVault
+Type: PSDeletedKeyVault
 Parameter Sets: InputObject
 Aliases:
 
@@ -174,7 +174,7 @@ System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## NOTES
 

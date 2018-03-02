@@ -21,8 +21,8 @@ Remove-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-F
 
 ### InputObject
 ```
-Remove-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVaultCertificateIssuer> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVaultCertificateIssuerIdentityItem> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Certificate Issuer Object
 
 ```yaml
-Type: PSKeyVaultCertificateIssuer
+Type: PSKeyVaultCertificateIssuerIdentityItem
 Parameter Sets: InputObject
 Aliases:
 

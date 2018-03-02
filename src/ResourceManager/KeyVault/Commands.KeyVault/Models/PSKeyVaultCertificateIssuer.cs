@@ -17,15 +17,11 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSKeyVaultCertificateIssuer
+    public class PSKeyVaultCertificateIssuer : PSKeyVaultCertificateIssuerIdentityItem
     {
-        public string Name { get; set; }
-        public string IssuerProvider { get; set; }
         public string AccountId { get; set; }
         public SecureString ApiKey { get; set; }
         public PSKeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
-
-        public string VaultName { get; set; }
 
         internal static PSKeyVaultCertificateIssuer FromIssuer(IssuerBundle issuer)
         {

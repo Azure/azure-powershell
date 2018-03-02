@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         DefaultParameterSetName = ByVaultNameParameterSet,
          ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSDeletedKeyBundle))]
+    [OutputType(typeof(PSDeletedKeyVaultKey))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByInputObjectParameterSet,
             HelpMessage = "KeyBundle Object")]
         [ValidateNotNullOrEmpty]
-        public PSKeyBundle InputObject { get; set; }
+        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            PSDeletedKeyBundle deletedKeyBundle = null;
+            PSDeletedKeyVaultKey deletedKeyBundle = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(

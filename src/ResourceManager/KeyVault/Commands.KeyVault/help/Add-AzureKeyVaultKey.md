@@ -30,14 +30,14 @@ Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String
 
 ### InputObjectCreate
 ```
-Add-AzureKeyVaultKey [-InputObject] <PSVault> [-Name] <String> -Destination <String> [-Disable]
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectImport
 ```
-Add-AzureKeyVaultKey [-InputObject] <PSVault> [-Name] <String> -KeyFilePath <String>
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 Vault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: InputObjectCreate, InputObjectImport
 Aliases:
 
@@ -440,7 +440,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "Deleted Certificate object")]
         [ValidateNotNullOrEmpty]
-        public PSDeletedKeyVaultCertificate InputObject { get; set; }
+        public PSDeletedKeyVaultCertificateIdentityItem InputObject { get; set; }
 
         #endregion
 

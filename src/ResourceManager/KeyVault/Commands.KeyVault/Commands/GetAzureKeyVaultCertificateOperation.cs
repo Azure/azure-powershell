@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "Certificate Object.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVaultCertificate InputObject { get; set; }
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
 
         #endregion
 

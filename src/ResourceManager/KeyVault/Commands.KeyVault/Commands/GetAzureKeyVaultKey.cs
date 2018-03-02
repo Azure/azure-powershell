@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<PSKeyIdentityItem>), typeof(PSKeyBundle), typeof(List<PSDeletedKeyIdentityItem>), typeof(PSDeletedKeyBundle))]
+    [OutputType(typeof(List<PSKeyVaultKeyIdentityItem>), typeof(PSKeyVaultKey), typeof(List<PSDeletedKeyVaultKeyIdentityItem>), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByKeyVersionsParameterSet,
             HelpMessage = "KeyVault object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Key name.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            PSKeyBundle keyBundle;
+            PSKeyVaultKey keyBundle;
 
             if (InputObject != null)
             {
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
                 if (keyBundle != null)
                 {
-                    WriteObject(new PSKeyIdentityItem(keyBundle));
+                    WriteObject(new PSKeyVaultKeyIdentityItem(keyBundle));
                     GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
                 }
             }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    PSDeletedKeyBundle deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
+                    PSDeletedKeyVaultKey deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
                     WriteObject(deletedKeyBundle);
                 }
             }

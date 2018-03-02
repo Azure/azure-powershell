@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
         DefaultParameterSetName = ByNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<PSCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
+    [OutputType(typeof(List<PSKeyVaultCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "KeyVault object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Name.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = this.DataServiceClient.GetCertificateIssuers(options);
-                var psPageResults = new List<PSCertificateIssuerIdentityItem>();
+                var psPageResults = new List<PSKeyVaultCertificateIssuerIdentityItem>();
                 foreach (var page in pageResults)
                 {
                     page.VaultName = VaultName;

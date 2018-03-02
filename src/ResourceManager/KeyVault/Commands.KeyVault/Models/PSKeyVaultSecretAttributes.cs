@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// <summary>
     /// Secret attributes from PSH perspective
     /// </summary>
-    public class PSSecretAttributes
+    public class PSKeyVaultSecretAttributes
     {
-        public PSSecretAttributes()
+        public PSKeyVaultSecretAttributes()
         { }
 
-        internal PSSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
+        internal PSKeyVaultSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.Tags = tags;
         }
 
-        internal PSSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
+        internal PSKeyVaultSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
             DateTime? created, DateTime? updated, string contentType, string deletionRecoveryLevel, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Azure.KeyVault.Models.SecretAttributes(PSSecretAttributes attr)
+        public static explicit operator Azure.KeyVault.Models.SecretAttributes(PSKeyVaultSecretAttributes attr)
         {
             return new Azure.KeyVault.Models.SecretAttributes
             {

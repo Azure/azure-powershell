@@ -21,8 +21,8 @@ Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemov
 
 ### ByObject
 ```
-Remove-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificate> [-InRemovedState] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [-InRemovedState] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Certificate Object.
 
 ```yaml
-Type: PSKeyVaultCertificate
+Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByObject
 Aliases:
 
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSCertificateBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificate
 
 ## NOTES
 
