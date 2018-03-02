@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<Disk> Strategy { get; }
             = ComputePolicy.Create(
-                type: "disk",
                 provider: "disks",
                 getOperations: client => client.Disks,
                 getAsync: (o, p) => o.GetAsync(

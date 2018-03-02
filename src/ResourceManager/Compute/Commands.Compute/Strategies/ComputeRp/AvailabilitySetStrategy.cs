@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -25,7 +23,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<AvailabilitySet> Strategy { get; }
             = ComputePolicy.Create(
-                type: "availability set",
                 provider: "availabilitySets",
                 getOperations: client => client.AvailabilitySets,
                 getAsync: (o, p) => o.GetAsync(
