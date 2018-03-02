@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
+
 ## Version 4.3.2
 * Fix ErrorAction issue for some of Get cmdlets.
 
