@@ -14,7 +14,7 @@ Creates a subscription to the specified Service Bus topic.
 
 ```
 New-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Name] <String> [-AutoDeleteOnIdle <String>] [-DefaultMessageTimeToLive <String>]
+ [-Name] <String> [-AutoDeleteOnIdle <String>] [-DefaultMessageTimeToLive <String>][-DeadLetteringOnFilterEvaluationExceptions]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-EnableBatchedOperations <Boolean>] [-LockDuration <String>]
  [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -70,6 +70,22 @@ Indicates if a subscription has deadletter support when a message expires.
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
+Accepted values: TRUE, FALSE
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DeadLetteringOnFilterEvaluationExceptions
+Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 Accepted values: TRUE, FALSE
 
 Required: False
