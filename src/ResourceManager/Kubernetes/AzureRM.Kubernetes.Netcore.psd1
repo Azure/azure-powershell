@@ -68,7 +68,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Kubernetes.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Kubernetes.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '4.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -152,9 +152,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add cmdlets to get and set Storage service properties
-	- Get-AzureStorageServiceProperty
-	- Update-AzureStorageServiceProperty'
+        ReleaseNotes = '* Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
+	- Get-AzureStorageContainer'
 
         # Prerelease string of this module
         # Prerelease = ''

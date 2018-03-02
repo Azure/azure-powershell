@@ -16,17 +16,17 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.Compute;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using Microsoft.Azure.Commands.Compute.Strategies.Network;
+using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
@@ -45,7 +45,6 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
-using SM = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -234,51 +233,9 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualNetworkName = VirtualNetworkName ?? Name;
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName ?? Name;
-            DomainNameLabel = DomainNameLabel ?? (Name + '-' + ResourceGroupName).ToLower();
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            bool isWindows;
-            Commands.Common.Strategies.Compute.Image image = null;
-            if (ImageName.Contains(':'))
-            {
-                var imageArray = ImageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new Exception("Invalid ImageName");
-                }
-                image = new Commands.Common.Strategies.Compute.Image
-                {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
-                };
-                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
-            }
-            else if (!string.IsNullOrEmpty(DiskFile))
-            {
-                // disk file parameter set requires the OS type input
-                isWindows = !Linux;
-            }
-            else
-            {
-                // get image
-                var osTypeAndImage = Images
-                    .Instance
-                    .SelectMany(osAndMap => osAndMap
-                        .Value
-                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                        .Select(nameAndImage => new
-                        {
-                            OsType = osAndMap.Key,
-                            Image = nameAndImage.Value
-                        }))
-                    .FirstOrDefault();
-                image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
-            }
-            
-            OpenPorts = OpenPorts ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -286,28 +243,28 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
+                getDomainNameLabel: () => DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
-                openPorts: OpenPorts);
+                openPorts: OpenPorts,
+                getOsType: () => imageAndOsType.OsType);
             var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                 Name, subnet, publicIpAddress, networkSecurityGroup);
 
             var availabilitySet = AvailabilitySetName == null 
                 ? null
-                : resourceGroup.CreateAvailabilitySetConfig(name: Name);
+                : resourceGroup.CreateAvailabilitySetConfig(name: AvailabilitySetName);
 
             ResourceConfig<VirtualMachine> virtualMachine = null;
-            if (image != null)
+            if (DiskFile == null)
             {
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: networkInterface,
-                    isWindows: isWindows,
+                    getImageAndOsType: () => imageAndOsType,
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                    image: image,
                     size: Size,
                     availabilitySet: availabilitySet);
             }
@@ -324,15 +281,21 @@ namespace Microsoft.Azure.Commands.Compute
                         Name = ResourceGroupName
                     });
                 }
+                imageAndOsType = new ImageAndOsType(
+                    Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
+                    null);
                 var storageClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
-                var st1 = storageClient.StorageAccounts.Create(ResourceGroupName, Name, new StorageAccountCreateParameters
+                var st1 = storageClient.StorageAccounts.Create(
+                    ResourceGroupName,
+                    Name,
+                    new StorageAccountCreateParameters
                 {
 #if !NETSTANDARD
                     AccountType = AccountType.PremiumLRS,
 #else
-                    Sku = new SM.Sku
+                    Sku = new Microsoft.Azure.Management.Storage.Models.Sku
                     {
                         Name = SkuName.PremiumLRS
                     },
@@ -388,7 +351,7 @@ namespace Microsoft.Azure.Commands.Compute
                 virtualMachine = resourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: networkInterface,
-                    isWindows: isWindows,
+                    osType: imageAndOsType.OsType,
                     disk: disk,
                     size: Size,
                     availabilitySet: availabilitySet);
@@ -399,19 +362,25 @@ namespace Microsoft.Azure.Commands.Compute
             // get current Azure state
             var current = await virtualMachine.GetStateAsync(client, new CancellationToken());
 
-            if (Location == null)
+            Location = current.UpdateLocation(Location, virtualMachine);
+
+            // generate a domain name label if it's not specified.
+            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                domainNameLabel: DomainNameLabel,
+                name: Name,
+                location: Location,
+                client: client);
+
+            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+
+            if (DiskFile == null)
             {
-                Location = current.GetLocation(virtualMachine);
-                if (Location == null)
-                {
-                    Location = "eastus";
-                }
+                imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
             }
 
-            var fqdn = DomainNameLabel + "." + Location + ".cloudapp.azure.com";
-
             // create target state
-            var target = virtualMachine.GetTargetState(current, client.SubscriptionId, Location);
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = virtualMachine.GetTargetState(current, engine, Location);
 
             if (target.Get(availabilitySet) != null)
             {
@@ -436,7 +405,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(isWindows
+                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
                     ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
                     : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
                 asyncCmdlet.WriteObject(psResult);

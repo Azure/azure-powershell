@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Analysis;
 using Microsoft.Azure.Management.Analysis.Models;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -61,7 +62,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             Hashtable customTags = null,
             string administrators = null,
             AnalysisServicesServer existingServer = null,
-            string backupBlobContainerUri = null)
+            string backupBlobContainerUri = null,
+            int ReadonlyReplicaCount = 0,
+            string DefaultConnectionMode = null,
+            IPv4FirewallSettings setting = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -102,10 +106,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.BackupBlobContainerUri = backupBlobContainerUri;
                 }
 
+                if (ReadonlyReplicaCount != -1)
+                {
+                    updateParameters.Sku.Capacity = ReadonlyReplicaCount + 1;
+                }
+
+                if (DefaultConnectionMode != null)
+                {
+                    updateParameters.QuerypoolConnectionMode = (ConnectionMode)Enum.Parse(typeof(ConnectionMode), DefaultConnectionMode, true);
+                }
+
+                if (setting != null)
+                {
+                    updateParameters.IpV4FirewallSettings = setting;
+                }
+
                 newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
             else
             {
+                ConnectionMode? connectionMode = null;
+                if (DefaultConnectionMode != null)
+                {
+                    connectionMode = (ConnectionMode)Enum.Parse(typeof(ConnectionMode), DefaultConnectionMode, true); 
+                }
+
                 newOrUpdatedServer = _client.Servers.Create(
                     resourceGroupName, 
                     serverName, 
@@ -114,10 +139,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         AsAdministrators = new ServerAdministrators(adminList),
                         BackupBlobContainerUri = backupBlobContainerUri,
                         Location = location,
-                        Sku = GetResourceSkuFromName(skuName),
-                        Tags = tags
-                    });
-            }
+                        Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
+                        Tags = tags,
+                        QuerypoolConnectionMode = connectionMode,
+                        IpV4FirewallSettings = setting
+            });
+            }            
 
             return newOrUpdatedServer;
         }
@@ -208,12 +235,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
         }
 
-        private ResourceSku GetResourceSkuFromName(string skuName)
+        private ResourceSku GetResourceSkuFromName(string skuName, int capacity = 1)
         {
             var tier = skuName.StartsWith("D") ? SkuTier.Development
                 : skuName.StartsWith("B") ? SkuTier.Basic
                 : SkuTier.Standard;
-            return new ResourceSku(skuName, tier);
+            return new ResourceSku(skuName, tier, capacity);
         }
 
         public void SuspendServer(string resourceGroupName, string serverName)

@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSDisk))]
     public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
