@@ -32,12 +32,10 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.WebApps.Strategies;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml;
 using Microsoft.Azure.Commands.WebApps.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public Site SourceWebApp { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Resource Id of existing traffic manager profile")]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Resource Id of existing traffic manager profile", ParameterSetName =CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("TrafficManagerProfileName", "TrafficManagerProfileId")]
         public string TrafficManagerProfile { get; set; }
@@ -91,11 +89,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Application Service environment Name")]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Application Service environment Name", ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         public string AseName { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Resource group of Application Service environment", ParameterSetName =CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
@@ -191,10 +189,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
         }
 
-        private async Task<ServerFarmWithRichSku> GetDefaultServerFarm()
+        private async Task<ServerFarmWithRichSku> GetDefaultServerFarm(string location)
         {
+            var websiteLocation = string.IsNullOrWhiteSpace(location) ? new LocationConstraint() : new LocationConstraint(location);
             var farms = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
-            var defaultFarm = farms.FirstOrDefault(sf => string.Equals(sf.Sku.Tier, "Free", StringComparison.OrdinalIgnoreCase)) ?? farms.FirstOrDefault();
+            var defaultFarm = farms.FirstOrDefault(sf => string.Equals(sf.Sku.Tier, "Free", StringComparison.OrdinalIgnoreCase) && websiteLocation.Match(sf.Location)) ?? farms.FirstOrDefault(sf => websiteLocation.Match(sf.Location));
             ServerFarmWithRichSku result = null;
             if (defaultFarm != null)
             {
@@ -229,8 +228,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public async Task CreateWithSimpleParameters(ICmdletAdapter adapter)
         {
-            string trafficManagerProfielId = IsResource(TrafficManagerProfile) ? TrafficManagerProfile : null;
-            string trafficManagerProfileName = IsResource(TrafficManagerProfile) ? null : TrafficManagerProfile;
             ResourceGroupName = ResourceGroupName ?? Name;
             AppServicePlan = AppServicePlan ?? Name;
             string planResourceGroup = ResourceGroupName;
@@ -245,7 +242,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
             else
             {
-                var farm = await GetDefaultServerFarm();
+                var farm = await GetDefaultServerFarm(Location);
                 if (farm != null)
                 {
                     planResourceGroup = farm.ResourceGroup;

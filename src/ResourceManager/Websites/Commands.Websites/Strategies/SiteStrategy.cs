@@ -26,11 +26,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             getOperations: client => client.Sites,
             getAsync: (o, p) => o.GetSiteAsync(p.ResourceGroupName, p.Name, null, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateSiteAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 120);
+            createTime: _ => 5,
+            compulsoryLocation: true);
 
         public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => Strategy.CreateConfig(resourceGroup.ResourceGroupName, siteName,
             createModel: subscription =>
-                new Site {SiteName = siteName, Name = siteName, ServerFarmId = plan.GetId(subscription).IdToString()},
+                new Site
+                {
+                    SiteName = siteName,
+                    Name = siteName,
+                    ServerFarmId = plan.GetId(subscription).IdToString()
+                },
             dependencies: new IEntityConfig[] { plan, resourceGroup });
     }
 }
