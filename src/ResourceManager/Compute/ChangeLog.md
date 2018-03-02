@@ -29,6 +29,8 @@
     - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
           Update-AzureRmVM
           Update-AzureRmVmss
+
+## Version 4.3.2
 * Fix ErrorAction issue for some of Get cmdlets.
 
 ## Version 4.3.1
