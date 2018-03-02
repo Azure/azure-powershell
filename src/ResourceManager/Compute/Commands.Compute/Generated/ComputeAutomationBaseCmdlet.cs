@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -280,6 +281,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private static Tuple<string, string, int> MakeTuple(string key, string value, int depth)
         {
             return new Tuple<string, string, int>(key, value, depth);
+        }
+    }
+    public static class LocationStringExtensions
+    {
+        public static string Canonicalize(this string location)
+        {
+            if (!string.IsNullOrEmpty(location))
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (char ch in location)
+                {
+                    if (!char.IsWhiteSpace(ch))
+                    {
+                        sb.Append(ch);
+                    }
+                }
+
+                location = sb.ToString().ToLower();
+            }
+
+            return location;
         }
     }
 }
