@@ -455,7 +455,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <comment>{0} = exception</comment>
   </data>
   <data name="UsingExistingStorageAccountForBootDiagnostics" xml:space="preserve">
-    <value>Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics.</value>
+    <value>Since the VM is created using premium storage or managed disk, existing standard storage account, {0}, is used for boot diagnostics.</value>
     <comment>{0} = existing standard storage account name</comment>
   </data>
   <data name="EnableAzureDiskEncryptionCaption" xml:space="preserve">

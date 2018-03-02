@@ -1,0 +1,151 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/logAnalytics/apiAccess/getRequestRateByInterval?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9sb2dBbmFseXRpY3MvYXBpQWNjZXNzL2dldFJlcXVlc3RSYXRlQnlJbnRlcnZhbD9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"intervalLength\": \"FiveMins\",\r\n  \"blobContainerSasUri\": \"https://fakestore.blob.core.windows.net/mylogs/fakesas\",\r\n  \"fromTime\": \"2018-02-27T17:43:41.0337248Z\",\r\n  \"toTime\": \"2018-02-28T17:43:41.0357301Z\",\r\n  \"groupByThrottlePolicy\": true,\r\n  \"groupByOperationName\": true,\r\n  \"groupByResourceName\": false\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "312"
+        ],
+        "x-ms-client-request-id": [
+          "ea744f75-8cc8-4397-9603-b803cb6418c0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/17.5.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/5d6fbe7e-7f71-45b0-99d7-fd4cba350b97?api-version=2017-12-01"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetLogAnalytics3Min;9,Microsoft.Compute/GetLogAnalytics30Min;48"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131594626042284195"
+        ],
+        "x-ms-request-id": [
+          "5d6fbe7e-7f71-45b0-99d7-fd4cba350b97"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/5d6fbe7e-7f71-45b0-99d7-fd4cba350b97?monitor=true&api-version=2017-12-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "5271dcfd-15c2-40b6-b4a0-8c7db224ee2f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180302T004341Z:5271dcfd-15c2-40b6-b4a0-8c7db224ee2f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 02 Mar 2018 00:43:41 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute/locations/westcentralus/operations/5d6fbe7e-7f71-45b0-99d7-fd4cba350b97?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzVkNmZiZTdlLTdmNzEtNDViMC05OWQ3LWZkNGNiYTM1MGI5Nz9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/17.5.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2018-03-01T16:43:41.629981-08:00\",\r\n  \"endTime\": \"2018-03-01T16:44:08.6768729-08:00\",\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Could not write log analytics to the given SAS URI due to The remote name could not be resolved: 'fakestore.blob.core.windows.net'.\"\r\n  },\r\n  \"name\": \"5d6fbe7e-7f71-45b0-99d7-fd4cba350b97\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "377"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperation3Min;11999,Microsoft.Compute/GetOperation30Min;23998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "2be8e138-3223-4141-af48-5163dbafa559_131594626042284195"
+        ],
+        "x-ms-request-id": [
+          "6201da4c-9a19-4085-8be2-26265068c5c0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "a409a73e-a337-4abe-af6c-0346b36ea5b9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180302T004412Z:a409a73e-a337-4abe-af6c-0346b36ea5b9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 02 Mar 2018 00:44:11 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
+  }
+}
