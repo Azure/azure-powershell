@@ -1,0 +1,220 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123457?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU3P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a381bee-ec1b-4378-bfe1-45052ee470ac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/microsoft.managementpartner/partners/123457\",\r\n  \"type\": \"Microsoft.ManagementPartner/partners\",\r\n  \"name\": \"123457\",\r\n  \"etag\": 46,\r\n  \"properties\": {\r\n    \"partnerId\": \"123457\",\r\n    \"tenantId\": \"1b1121dd-6900-412a-af73-e8d44f81e1c1\",\r\n    \"objectId\": \"2119ba66-2042-49a1-bc31-940691d21bf4\",\r\n    \"version\": 46,\r\n    \"updatedTime\": \"2018-02-07T23:48:47.2353962Z\",\r\n    \"createdTime\": \"2018-01-20T05:36:32.6851653Z\",\r\n    \"state\": \"Active\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "391"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1198"
+        ],
+        "request-id": [
+          "aa2a5e16-b510-4433-b44d-508b0ae77ddf"
+        ],
+        "x-gsm": [
+          "8.1.0.48 (AD-CAB-Provisioning:stage.58adc3de3.180207-1952)"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "89e1b022-b000-4294-92ae-80bea1a753b5"
+        ],
+        "x-ms-correlation-request-id": [
+          "89e1b022-b000-4294-92ae-80bea1a753b5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180207T234848Z:89e1b022-b000-4294-92ae-80bea1a753b5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 07 Feb 2018 23:48:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123456?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU2P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b9cb2316-920a-4fbf-98a4-9065419d100d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/microsoft.managementpartner/partners/123456\",\r\n  \"type\": \"Microsoft.ManagementPartner/partners\",\r\n  \"name\": \"123456\",\r\n  \"etag\": 47,\r\n  \"properties\": {\r\n    \"partnerId\": \"123456\",\r\n    \"tenantId\": \"1b1121dd-6900-412a-af73-e8d44f81e1c1\",\r\n    \"objectId\": \"2119ba66-2042-49a1-bc31-940691d21bf4\",\r\n    \"version\": 47,\r\n    \"updatedTime\": \"2018-02-07T23:48:48.4542225Z\",\r\n    \"createdTime\": \"2018-01-20T05:36:32.6851653Z\",\r\n    \"state\": \"Active\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "391"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1197"
+        ],
+        "request-id": [
+          "a718af49-238e-441f-80f4-1d7dd2c7d3da"
+        ],
+        "x-gsm": [
+          "8.1.0.48 (AD-CAB-Provisioning:stage.58adc3de3.180207-1952)"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f1805bfc-2a47-4255-ae8f-2dd9dc7a590f"
+        ],
+        "x-ms-correlation-request-id": [
+          "f1805bfc-2a47-4255-ae8f-2dd9dc7a590f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180207T234848Z:f1805bfc-2a47-4255-ae8f-2dd9dc7a590f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 07 Feb 2018 23:48:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123456?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU2P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4899bed6-7255-4315-b821-648bfa026e0a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "request-id": [
+          "bde52dae-6a10-43de-b2eb-552005cfd26f"
+        ],
+        "x-gsm": [
+          "8.1.0.48 (AD-CAB-Provisioning:stage.58adc3de3.180207-1952)"
+        ],
+        "x-content-type-options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1196"
+        ],
+        "x-ms-request-id": [
+          "75931f66-cda8-4eb5-b656-1af9b9986a88"
+        ],
+        "x-ms-correlation-request-id": [
+          "75931f66-cda8-4eb5-b656-1af9b9986a88"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180207T234849Z:75931f66-cda8-4eb5-b656-1af9b9986a88"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 07 Feb 2018 23:48:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "d14e8666-b43e-4f12-aa78-06c49c4859de",
+    "TenantId": "1b1121dd-6900-412a-af73-e8d44f81e1c1",
+    "Domain": ""
+  }
+}

@@ -190,7 +190,11 @@
     <ItemGroup>
       <OutFiles Include="$(OutDir)\**\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <NewtonsoftJson Include="$(ProjectDir)..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll" />
+    </ItemGroup>
     <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFolder="$(OutputPath)\NewAssemblies\" ContinueOnError="false" />
   </Target>
 </Project>

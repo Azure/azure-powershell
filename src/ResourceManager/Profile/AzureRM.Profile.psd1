@@ -77,6 +77,7 @@ RequiredAssemblies =
                '.\Microsoft.Threading.Tasks.Extensions.dll', 
                '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll', 
                '.\Microsoft.WindowsAzure.Management.dll', '.\Newtonsoft.Json.dll', 
+               '.\NewAssemblies\Newtonsoft.Json.dll', 
                '.\System.Net.Http.Extensions.dll', 
                '.\System.Net.Http.Primitives.dll'
 
