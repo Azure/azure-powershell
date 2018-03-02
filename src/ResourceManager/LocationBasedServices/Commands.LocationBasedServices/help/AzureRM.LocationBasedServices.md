@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.LocationBasedServices
 Module Guid: bf60f35d-6c0b-42f2-be30-eb333a31279d
 Download Help Link: {{Please enter FwLink manually}}
