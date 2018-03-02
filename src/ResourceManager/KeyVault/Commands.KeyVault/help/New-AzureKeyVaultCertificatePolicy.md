@@ -13,45 +13,22 @@ Creates an in-memory certificate policy object.
 
 ## SYNTAX
 
-### SubjectNameWithRenewDays (Default)
+### SubjectName (Default)
 ```
 New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
- [-RenewAtNumberOfDaysBeforeExpiry <Int32>] [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
+ [-RenewAtNumberOfDaysBeforeExpiry <Int32>] [-RenewAtPercentageLifetime <Int32>] [-SecretContentType <String>]
+ [-ReuseKeyOnRenewal] [-Disabled] [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
  [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SubjectNameWithRenewPercent
-```
-New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
- -RenewAtPercentageLifetime <Int32> [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
- [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
- [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DNSNamesWithRenewDays
+### DNSNames
 ```
 New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
  [-DnsNames] <System.Collections.Generic.List`1[System.String]> [-RenewAtNumberOfDaysBeforeExpiry <Int32>]
- [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
- [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
- [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DNSNamesWithRenewPercent
-```
-New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
- [-DnsNames] <System.Collections.Generic.List`1[System.String]> -RenewAtPercentageLifetime <Int32>
- [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
+ [-RenewAtPercentageLifetime <Int32>] [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
  [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
@@ -123,7 +100,7 @@ Specifies the DNS names in the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: DNSNamesWithRenewDays, DNSNamesWithRenewPercent
+Parameter Sets: DNSNames
 Aliases:
 
 Required: True
@@ -248,7 +225,7 @@ Specifies the number of days before expiry after which the automatic process for
 
 ```yaml
 Type: Int32
-Parameter Sets: SubjectNameWithRenewDays, DNSNamesWithRenewDays
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,10 +240,10 @@ Specifies the percentage of the lifetime after which the automatic process for c
 
 ```yaml
 Type: Int32
-Parameter Sets: SubjectNameWithRenewPercent, DNSNamesWithRenewPercent
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -313,7 +290,7 @@ Specifies the subject name of the certificate.
 
 ```yaml
 Type: String
-Parameter Sets: SubjectNameWithRenewDays, SubjectNameWithRenewPercent
+Parameter Sets: SubjectName
 Aliases:
 
 Required: True
@@ -325,7 +302,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: DNSNamesWithRenewDays, DNSNamesWithRenewPercent
+Parameter Sets: DNSNames
 Aliases:
 
 Required: False
