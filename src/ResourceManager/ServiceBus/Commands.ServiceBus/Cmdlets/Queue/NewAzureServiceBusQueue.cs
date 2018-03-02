@@ -68,9 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public bool? DeadLetteringOnMessageExpiration { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
-        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
         public SwitchParameter EnableBatchedOperations { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EnableExpress - a value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
