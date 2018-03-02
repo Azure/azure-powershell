@@ -144,7 +144,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique.```yaml
+Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: VaultName
