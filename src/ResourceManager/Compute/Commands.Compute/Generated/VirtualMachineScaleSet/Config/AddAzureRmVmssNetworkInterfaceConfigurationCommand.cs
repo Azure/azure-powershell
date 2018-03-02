@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vNetworkInterfaceConfigurations.Name = this.Name;
             vNetworkInterfaceConfigurations.Primary = this.Primary;
-            vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking;
-            vNetworkInterfaceConfigurations.EnableIPForwarding = this.EnableIPForwarding;
+            vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
+            vNetworkInterfaceConfigurations.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             vNetworkInterfaceConfigurations.Id = this.Id;
             if (this.NetworkSecurityGroupId != null)
             {
