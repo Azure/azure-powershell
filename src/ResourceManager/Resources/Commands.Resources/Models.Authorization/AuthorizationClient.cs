@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (scopeAndBelow)
             {
-                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
+                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
             }
             else
             {
@@ -150,10 +150,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, bool scopeAndBelow)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                    scope, scopeAndBelow ? new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()) : null)
-                .Where(r => r.RoleType == AuthorizationClientExtensions.CustomRole)
-                .Select(r => r.ToPSRoleDefinition()));
+			result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+					scope, new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole))
+				.Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
@@ -293,7 +292,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Get classic administrator access assignments 
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
-                    .List("2015-06-01").ToList();
+                    .List().ToList();
                 List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
 
                 // Filter by principal if provided
