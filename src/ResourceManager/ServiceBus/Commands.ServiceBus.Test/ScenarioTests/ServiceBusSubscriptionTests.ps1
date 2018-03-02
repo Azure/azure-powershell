@@ -26,9 +26,6 @@ function ServiceBusSubscriptionTests
 	$nameTopic = getAssetName "Topic-"
 	$subName = getAssetName "Subscription-"
 
-
-	# $resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName "RGName-970" -Namespace "Namespace-786" -Topic "topic-3510" -Name "TestingSub1"
-
     Write-Debug "Create resource group"    
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
     Write-Debug "ResourceGroup name : $resourceGroupName"   

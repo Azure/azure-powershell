@@ -60,9 +60,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public bool? DeadLetteringOnMessageExpiration { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.")]
-        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.")]
         public SwitchParameter DeadLetteringOnFilterEvaluationExceptions { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
