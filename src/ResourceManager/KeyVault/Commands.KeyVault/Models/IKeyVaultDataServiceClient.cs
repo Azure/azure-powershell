@@ -24,55 +24,55 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        PSKeyBundle CreateKey(string vaultName, string keyName, PSKeyAttributes keyAttributes);
+        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes);
 
-        PSKeyBundle ImportKey(string vaultName, string keyName, PSKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+        PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
-        PSKeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyAttributes keyAttributes);
+        PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
-        PSKeyBundle GetKey(string vaultName, string keyName, string keyVersion);
+        PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
-        PSDeletedKeyBundle GetDeletedKey(string vaultName, string name);
+        PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name);
 
-        IEnumerable<PSKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSDeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
-        PSDeletedKeyBundle DeleteKey(string vaultName, string keyName);
+        PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 
         void PurgeKey(string vaultName, string name);
 
-        PSKeyBundle RecoverKey(string vaultName, string keyName);
+        PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 
-        PSSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSSecretAttributes secretAttributes);
+        PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes);
 
-        PSSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSSecretAttributes secretAttributes);
+        PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes);
 
-        PSSecret GetSecret(string vaultName, string secretName, string secretVersion);
+        PSKeyVaultSecret GetSecret(string vaultName, string secretName, string secretVersion);
 
-        PSDeletedSecret GetDeletedSecret(string vaultName, string name);
+        PSDeletedKeyVaultSecret GetDeletedSecret(string vaultName, string name);
 
-        IEnumerable<PSSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSDeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyVaultSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
 
-        PSDeletedSecret DeleteSecret(string vaultName, string secretName);
+        PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName);
 
         void PurgeSecret(string vaultName, string secretName);
 
-        PSSecret RecoverSecret(string vaultName, string secretName);
+        PSKeyVaultSecret RecoverSecret(string vaultName, string secretName);
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
-        PSKeyBundle RestoreKey(string vaultName, string inputBlobPath);
+        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 
-        PSSecret RestoreSecret(string vaultName, string inputBlobPath);
+        PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath);
 
         #region Certificate actions
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
 
-        IEnumerable<PSCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSDeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
 
-        IEnumerable<PSCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
         CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IssuerBundle GetCertificateIssuer(string vaultName, string issuerName);
 
-        IEnumerable<PSCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
         IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
               

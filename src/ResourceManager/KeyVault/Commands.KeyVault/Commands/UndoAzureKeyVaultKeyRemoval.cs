@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyBundle))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "Deleted key object")]
         [ValidateNotNullOrEmpty]
-        public PSDeletedKeyBundle InputObject { get; set; }
+        public PSDeletedKeyVaultKeyIdentityItem InputObject { get; set; }
 
         #endregion
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(Name, Properties.Resources.RecoverKey))
             {
-                PSKeyBundle recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
+                PSKeyVaultKey recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
 
                 WriteObject(recoveredKey);
             }

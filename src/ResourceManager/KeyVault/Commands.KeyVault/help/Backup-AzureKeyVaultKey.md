@@ -21,7 +21,7 @@ Backup-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <S
 
 ### ByKey
 ```
-Backup-AzureKeyVaultKey [-InputObject] <PSKeyBundle> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Key bundle to back up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyBundle
+Type: PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKey
 Aliases: Key
 

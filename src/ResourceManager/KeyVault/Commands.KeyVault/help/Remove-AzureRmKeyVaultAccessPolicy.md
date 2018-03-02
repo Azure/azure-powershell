@@ -49,33 +49,33 @@ Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <
 
 ### InputObjectByObjectId
 ```
-Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ObjectId <String> [-ApplicationId <Guid>]
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ObjectId <String> [-ApplicationId <Guid>]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByServicePrincipalName
 ```
-Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ServicePrincipalName <String> [-PassThru]
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ServicePrincipalName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByUserPrincipalName
 ```
-Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -UserPrincipalName <String> [-PassThru]
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -UserPrincipalName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByEmail
 ```
-Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -EmailAddress <String> [-PassThru]
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -EmailAddress <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectForVault
 ```
-Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> [-DisableDeployment] [-DisableTemplateDeployment]
- [-DisableDiskEncryption] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> [-DisableDeployment]
+ [-DisableTemplateDeployment] [-DisableDiskEncryption] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Key Vault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmail, InputObjectForVault
 Aliases:
 
@@ -355,7 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## NOTES
 

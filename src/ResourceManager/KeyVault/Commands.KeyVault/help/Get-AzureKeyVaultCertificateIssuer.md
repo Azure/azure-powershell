@@ -21,7 +21,7 @@ Get-AzureKeyVaultCertificateIssuer [-VaultName] <String> [[-Name] <String>]
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [[-Name] <String>]
+Get-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -111,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSCertificateIssuerIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuer
+### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuer
 
 ## NOTES
 

@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class SetKeyVaultSecretTests : KeyVaultUnitTestBase
     {
         private SetAzureKeyVaultSecret cmdlet;
-        private PSSecretAttributes secretAttributes;
+        private PSKeyVaultSecretAttributes secretAttributes;
         private SecureString secureSecretValue;
-        private PSSecret secret;
+        private PSKeyVaultSecret secret;
 
         public SetKeyVaultSecretTests()
         {
             base.SetupTest();
 
-            secretAttributes = new PSSecretAttributes(true, null, null, null, null);
+            secretAttributes = new PSKeyVaultSecretAttributes(true, null, null, null, null);
             secureSecretValue = SecretValue.ConvertToSecureString();
-            secret = new PSSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
+            secret = new PSKeyVaultSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
 
             cmdlet = new SetAzureKeyVaultSecret()
             {
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetSecretTest()
         {
-            PSSecret expected = secret;
+            PSKeyVaultSecret expected = secret;
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
-                It.Is<PSSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
+                It.Is<PSKeyVaultSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
                         && st.NotBefore == secretAttributes.NotBefore
                         && st.ContentType == secretAttributes.ContentType
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
 
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
-                It.Is<PSSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
+                It.Is<PSKeyVaultSecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
                         && st.NotBefore == secretAttributes.NotBefore
                         && st.ContentType == secretAttributes.ContentType
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             catch { }
 
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSSecret>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSKeyVaultSecret>()), Times.Never());
         }
     }
 }

@@ -21,7 +21,7 @@ Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String[]>
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultSecret [-InputObject] <PSVault> [-InputFile] <String[]>
+Restore-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,10 +77,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-KeyVault object`
+KeyVault object
 
-``yaml
-Type: PSVault
+```yaml
+Type: PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSSecret
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 
 ## NOTES
 

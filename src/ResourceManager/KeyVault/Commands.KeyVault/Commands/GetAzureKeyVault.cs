@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",
         DefaultParameterSetName = ListVaultsBySubParameterSet,   
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSVault), typeof(List<PSVaultIdentityItem>),
-        typeof(PSDeletedVault), typeof(List<PSDeletedVault>))]
+    [OutputType(typeof(PSKeyVault), typeof(List<PSKeyVaultIdentityItem>),
+        typeof(PSDeletedKeyVault), typeof(List<PSDeletedKeyVault>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSVault vault = null;
+                    PSKeyVault vault = null;
 
                     if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(

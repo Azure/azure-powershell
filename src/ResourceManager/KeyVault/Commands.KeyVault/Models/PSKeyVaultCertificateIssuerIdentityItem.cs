@@ -13,28 +13,38 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSDeletedCertificateIdentityItem : PSCertificateIdentityItem
+    public class PSKeyVaultCertificateIssuerIdentityItem
     {
-        internal PSDeletedCertificateIdentityItem( DeletedCertificateItem certItem, VaultUriHelper vaultUriHelper )
-            :base(certItem, vaultUriHelper)
+        public PSKeyVaultCertificateIssuerIdentityItem()
+        { }
+
+        internal PSKeyVaultCertificateIssuerIdentityItem(CertificateIssuerItem issuerItem, VaultUriHelper vaultUriHelper)
         {
-            ScheduledPurgeDate = certItem.ScheduledPurgeDate;
-            DeletedDate = certItem.DeletedDate;
+            if (issuerItem == null)
+                throw new ArgumentNullException("issuerItem");
+
+            Name = new CertificateIssuerIdentifier(issuerItem.Id).Name;
+            IssuerProvider = issuerItem.Provider;
         }
 
-        internal PSDeletedCertificateIdentityItem( DeletedCertificateBundle certBundle )
-            :base( certBundle )
+        internal PSKeyVaultCertificateIssuerIdentityItem(IssuerBundle issuer)
         {
-            ScheduledPurgeDate = certBundle.ScheduledPurgeDate;
-            DeletedDate = certBundle.DeletedDate;
+            if (issuer == null)
+                throw new ArgumentNullException("issuer");
+
+            Name = issuer.IssuerIdentifier.Name;
+            IssuerProvider = issuer.Provider;
         }
 
-        public DateTime? ScheduledPurgeDate { get; set; }
+        public string Name { get; set; }
 
-        public DateTime? DeletedDate { get; set; }
+        public string IssuerProvider { get; set; }
+
+        public string VaultName { get; set; }
     }
 }

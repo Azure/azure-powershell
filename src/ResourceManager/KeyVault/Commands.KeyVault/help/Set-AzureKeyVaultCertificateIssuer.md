@@ -23,13 +23,14 @@ Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-Issu
 
 ### ByValue
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -Issuer <PSKeyVaultCertificateIssuer>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
+ -Issuer <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectExpanded
 ```
-Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [-Name] <String> [-IssuerProvider <String>]
+Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [-Name] <String> [-IssuerProvider <String>]
  [-AccountId <String>] [-ApiKey <SecureString>]
  [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -37,9 +38,9 @@ Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [-Name] <String> [-I
 
 ### InputObjectByValue
 ```
-Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSVault> [-Name] <String>
- -Issuer <PSKeyVaultCertificateIssuer> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [-Name] <String>
+ -Issuer <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 Key Vault Object
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: InputObjectExpanded, InputObjectByValue
 Aliases:
 
@@ -120,7 +121,7 @@ Accept wildcard characters: False
 Specifies the certificate issuer to update.
 
 ```yaml
-Type: PSKeyVaultCertificateIssuer
+Type: PSKeyVaultCertificateIssuerIdentityItem
 Parameter Sets: ByValue, InputObjectByValue
 Aliases:
 

@@ -22,9 +22,9 @@ Set-AzureKeyVaultSecretAttribute [-VaultName] <String> [-Name] <String> [[-Versi
 
 ### InputObject
 ```
-Set-AzureKeyVaultSecretAttribute [-InputObject] <PSSecret> [[-Version] <String>] [-Enable <Boolean>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureKeyVaultSecretAttribute [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>]
+ [-Enable <Boolean>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Secret object
 
 ```yaml
-Type: PSSecret
+Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -300,7 +300,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSSecret
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
 Returns Microsoft.Azure.Commands.KeyVault.Models.Secret object if PassThru is specified. Otherwise, returns nothing.
 
 ## NOTES

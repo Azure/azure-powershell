@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// <summary>
     /// Key attributes from PSH perspective
     /// </summary>
-    public class PSKeyAttributes
+    public class PSKeyVaultKeyAttributes
     {
-        public PSKeyAttributes()
+        public PSKeyVaultKeyAttributes()
         { }
 
-        internal PSKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
+        internal PSKeyVaultKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
             string[] keyOps, Hashtable tags)
         {
             this.Enabled = enabled;
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.Tags = tags;
         }
 
-        internal PSKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
+        internal PSKeyVaultKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
             string[] keyOps, DateTime? created, DateTime? updated, string deletionRecoveryLevel, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Azure.KeyVault.Models.KeyAttributes(PSKeyAttributes attr)
+        public static explicit operator Azure.KeyVault.Models.KeyAttributes(PSKeyVaultKeyAttributes attr)
         {
             return new Azure.KeyVault.Models.KeyAttributes()
             {

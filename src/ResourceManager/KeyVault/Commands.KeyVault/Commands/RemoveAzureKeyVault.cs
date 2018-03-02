@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         DefaultParameterSetName = RemoveVaultParameterSet,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "Key Vault object to be deleted.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Resource group to which the vault belongs.
@@ -129,6 +130,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.")]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -157,6 +162,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                             KeyVaultManagementClient.PurgeVault(
                                 vaultName: VaultName,
                                 location: Location);
+
+                            if (PassThru)
+                            {
+                                WriteObject(true); 
+                            }
                         });
             }
             else
@@ -180,6 +190,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                         KeyVaultManagementClient.DeleteVault(
                     vaultName: VaultName,
                     resourceGroupName: this.ResourceGroupName);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
             }
         }

@@ -54,7 +54,7 @@ Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <Str
 
 ### InputObjectByObjectId
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ObjectId <String> [-ApplicationId <Guid>]
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ObjectId <String> [-ApplicationId <Guid>]
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-BypassObjectIdValidation] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -62,7 +62,7 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ObjectId <String> [-Ap
 
 ### InputObjectByServicePrincipalName
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ServicePrincipalName <String>
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ServicePrincipalName <String>
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -70,7 +70,7 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -ServicePrincipalName <
 
 ### InputObjectByUserPrincipalName
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -UserPrincipalName <String>
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -UserPrincipalName <String>
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -78,14 +78,15 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -UserPrincipalName <Str
 
 ### InputObjectByEmailAddress
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> -EmailAddress <String> [-PermissionsToKeys <String[]>]
- [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -EmailAddress <String>
+ [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
+ [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectForVault
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSVault> [-EnabledForDeployment]
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> [-EnabledForDeployment]
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -300,7 +301,7 @@ Accept wildcard characters: False
 Key Vault Object
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, InputObjectForVault
 Aliases:
 
@@ -557,7 +558,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## NOTES
 

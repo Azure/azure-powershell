@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<PSCertificateIdentityItem>), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(List<PSDeletedCertificateIdentityItem>))]
+    [OutputType(typeof(List<PSKeyVaultCertificateIdentityItem>), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(List<PSDeletedKeyVaultCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "KeyVault object.")]
         [ValidateNotNullOrEmpty]
-        public PSVault InputObject { get; set; }
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Name
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
                 if (certBundle != null)
                 {
-                    WriteObject(new PSCertificateIdentityItem(certBundle));
+                    WriteObject(new PSKeyVaultCertificateIdentityItem(certBundle));
                     GetAndWriteCertificatesVersions(VaultName, Name, certBundle.CertificateIdentifier.Version);
                 }
             }

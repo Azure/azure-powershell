@@ -21,7 +21,7 @@ Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassTh
 
 ### ByInputObject
 ```
-Remove-AzureKeyVaultKey [-InputObject] <PSKeyBundle> [-Force] [-PassThru] [-InRemovedState]
+Remove-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 KeyBundle Object
 
 ```yaml
-Type: PSKeyBundle
+Type: PSKeyVaultKeyIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -215,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES

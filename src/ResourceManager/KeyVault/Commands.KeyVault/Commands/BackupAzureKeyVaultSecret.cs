@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]
         [Alias("Secret")]
-        public PSSecret InputObject { get; set; }
+        public PSKeyVaultSecretIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// The output file in which the backup blob is to be stored

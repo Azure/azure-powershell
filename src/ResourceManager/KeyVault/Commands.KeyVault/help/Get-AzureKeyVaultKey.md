@@ -33,19 +33,19 @@ Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
 
 ### ByInputObjectVaultName
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSVault> [[-Name] <String>] [-InRemovedState]
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectKeyName
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSVault> [-Name] <String> [-Version] <String>
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKInputObjecteyVersions
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSVault> [-Name] <String> [-IncludeVersions]
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectKeyName, ByKInputObjecteyVersions
 Aliases:
 
@@ -233,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyBundle, List<Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyBundle
+### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey, List<Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 
 ## NOTES
 

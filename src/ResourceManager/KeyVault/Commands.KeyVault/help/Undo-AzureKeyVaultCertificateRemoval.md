@@ -20,7 +20,7 @@ Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String>
 
 ### InputObject
 ```
-Undo-AzureKeyVaultCertificateRemoval [-InputObject] <PSDeletedKeyVaultCertificate>
+Undo-AzureKeyVaultCertificateRemoval [-InputObject] <PSDeletedKeyVaultCertificateIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 Deleted Certificate object
 
 ```yaml
-Type: PSDeletedKeyVaultCertificate
+Type: PSDeletedKeyVaultCertificateIdentityItem
 Parameter Sets: InputObject
 Aliases:
 

@@ -21,7 +21,7 @@ Get-AzureKeyVaultCertificateContact [-VaultName] <String> [-DefaultProfile <IAzu
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultCertificateContact [-InputObject] <PSVault> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true, 
         DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyBundle))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipeline = true,
             HelpMessage = "Key object")]
         [ValidateNotNullOrEmpty]
-        public PSKeyBundle InputObject { get; set; }
+        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Key version.
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName,
                 Name,
                 Version ?? string.Empty,
-                new PSKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
 
                 if (PassThru)
                 {

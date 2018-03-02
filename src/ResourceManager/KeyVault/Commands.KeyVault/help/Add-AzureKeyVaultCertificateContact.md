@@ -21,7 +21,7 @@ Add-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <Strin
 
 ### ByObject
 ```
-Add-AzureKeyVaultCertificateContact [-InputObject] <PSVault> [-EmailAddress] <String[]> [-PassThru]
+Add-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSVault
+Type: PSKeyVault
 Parameter Sets: ByObject
 Aliases:
 
