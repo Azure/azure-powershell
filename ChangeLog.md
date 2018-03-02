@@ -1,4 +1,57 @@
-﻿## 5.3.0 - February 2018
+﻿## 5.4.1 - February 2018
+#### AzureRM.Profile
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
+## 5.4.0 - February 2018
+#### AzureRM.Automation
+* Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
+
+#### AzureRM.Compute
+* Fix ErrorAction issue for some of Get cmdlets.
+
+#### AzureRM.ContainerInstance
+* Apply Azure Container Instance SDK 2018-02-01
+    - Support DNS name label
+
+#### AzureRM.DevTestLabs
+* Fixed all of the GET cmdlets which previously weren't working.
+
+#### AzureRM.EventHub
+* Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
+
+#### AzureRM.Network
+* Added cmdlet to create a new connection monitor
+    - New-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to update a connection monitor
+    - Set-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to get connection monitor or connection monitor list
+    - Get-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to query connection monitor
+    - Get-AzureRmNetworkWatcherConnectionMonitorReport
+* Added cmdlet to start connection monitor
+    - Start-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to stop connection monitor
+    - Stop-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to remove connection monitor
+    - Remove-AzureRmNetworkWatcherConnectionMonitor
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add IpTags to PublicIpAddress
+    - Updated New-AzureRmPublicIpAddress: Added IpTags
+    - New-AzureRmPublicIpTag to add Iptag
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
+
+#### AzureRM.Resources
+* Register-AzureRmProviderFeature: Added missing example in the docs
+* Register-AzureRmResourceProvider: Added missing example in the docs
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+## 5.3.0 - February 2018
 #### AzureRM.Profile
 * Added deprecation warning for PowerShell 3 and 4
 * 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.
