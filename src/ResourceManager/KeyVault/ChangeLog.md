@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated cmdlets to include piping scenarios
 
 ## Version 4.1.1
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
