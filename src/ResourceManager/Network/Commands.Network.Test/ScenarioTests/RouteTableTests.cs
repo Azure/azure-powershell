@@ -60,5 +60,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteHopTypeTest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteWithDisableBgpRoutePropagation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableWithDisableBgpRoutePropagation");
+        }
     }
 }

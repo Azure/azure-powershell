@@ -204,7 +204,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
-
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.OsType,
