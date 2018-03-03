@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.Compute.Strategies.Network;
@@ -190,7 +191,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             NatBackendPort = imageAndOsType.OsType.UpdatePorts(NatBackendPort);
 
             var inboundNatPoolName = VMScaleSetName;
-            var portRangeStart = 50000;
+            const int FirstPortRangeStart = 50000;
+            var portRangeStart = FirstPortRangeStart;
+            var PortRangeSize = InstanceCount * 2;
             foreach (var natBackendPort in NatBackendPort)
             {                
                 inboundNatPools.Add(
@@ -198,9 +201,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         name: inboundNatPoolName + natBackendPort.ToString(),
                         frontendIpConfiguration: frontendIpConfiguration,
                         frontendPortRangeStart: portRangeStart,
-                        frontendPortRangeEnd: portRangeStart + InstanceCount * 2,
+                        frontendPortRangeEnd: portRangeStart + PortRangeSize,
                         backendPort: natBackendPort));
-                portRangeStart += 1000;
+                portRangeStart += 2000;
             }
 
             // generate a domain name label if it's not specified.
@@ -234,6 +237,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var psObject = new PSVirtualMachineScaleSet();
                 ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
                 psObject.FullyQualifiedDomainName = fqdn;
+
+                var port = "<port>";
+                var connectionString = imageAndOsType.GetConnectionString(
+                    fqdn,
+                    Credential.UserName,
+                    port);
+                var range =
+                    FirstPortRangeStart.ToString() +
+                    ".." +
+                    (FirstPortRangeStart + PortRangeSize).ToString();
+
+                asyncCmdlet.WriteVerbose(
+                    Resources.VmssUseConnectionString,
+                    connectionString);
+                asyncCmdlet.WriteVerbose(
+                    Resources.VmssPortRange,
+                    port, 
+                    range);
                 asyncCmdlet.WriteObject(psObject);
             }
         }
