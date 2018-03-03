@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         object _lock = new object();
 
+        ConcurrentDictionary<ITaskProgress, double> _progressTasks = new ConcurrentDictionary<ITaskProgress, double>();
+
         //int _hasMessages = 0;
 
         protected int Retries { get; set; }
@@ -131,30 +133,34 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         public void ReportTaskProgress(ITaskProgress taskProgress)
         {
-            var progress = 0.0;
+            var progress = taskProgress.GetProgress();
             var config = taskProgress.Config;
             string key = config.Name + " " + config.Strategy.Type;
-            if (_activity.ContainsKey(key))
+            bool reportProgress = true;
+            if (_progressTasks.ContainsKey(taskProgress))
             {
-                progress = _activity[key];
+                progress += _progressTasks[taskProgress];
+                reportProgress =  progress >= _progressTasks[taskProgress];
             }
 
-            progress += taskProgress.GetProgress();
-            _activity[key] = progress;
-            var percent = (int)(progress * 100.0);
-            var r = new[] { "|", "/", "-", "\\" };
-            var x = r[DateTime.Now.Second % 4];
-            WriteProgressAsync(
-                new ProgressRecord(
-                    0,
-                    "Creating Azure resources",
-                    percent + "% " + x)
-                {
-                    CurrentOperation = !taskProgress.IsDone
-                        ? $"Creating {taskProgress.Config.Name} '{taskProgress.Config.Strategy.Type}'"
-                        : null,
-                    PercentComplete = percent,
-                });
+            _progressTasks[taskProgress] = progress;
+            if (reportProgress && progress <= 1)
+            {
+                var percent = (int)(progress * 100.0);
+                var r = new[] { "|", "/", "-", "\\" };
+                var x = r[DateTime.Now.Second % 4];
+                WriteProgressAsync(
+                    new ProgressRecord(
+                        0,
+                        "Creating Azure resources",
+                        percent + "% " + x)
+                    {
+                        CurrentOperation = !taskProgress.IsDone
+                            ? $"Creating {taskProgress.Config.Name} '{taskProgress.Config.Strategy.Type}'"
+                            : null,
+                        PercentComplete = percent,
+                    });
+            }
         }
 
         public void Complete()
@@ -163,52 +169,57 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         void PollForResults(bool drainQueues = false)
         {
-                ShouldProcessPrompt process;
-                while (_process.TryDequeue(out process))
-                {
-                    process.Completer.TrySetResult(CommandRuntime.ShouldProcess(process.Target, process.Message));
-                }
+            ShouldProcessPrompt process;
+            while (_process.TryDequeue(out process))
+            {
+                process.Completer.TrySetResult(CommandRuntime.ShouldProcess(process.Target, process.Message));
+            }
 
-                ShouldContinuePrompt shouldContinue;
-                while (_continue.TryDequeue(out shouldContinue))
-                {
-                    shouldContinue.Completer.TrySetResult(CommandRuntime.ShouldContinue(shouldContinue.Query, shouldContinue.Caption));
-                }
+            ShouldContinuePrompt shouldContinue;
+            while (_continue.TryDequeue(out shouldContinue))
+            {
+                shouldContinue.Completer.TrySetResult(CommandRuntime.ShouldContinue(shouldContinue.Query, shouldContinue.Caption));
+            }
 
-                ErrorRecord exception;
-                while (_error.TryDequeue(out exception))
-                {
-                    CommandRuntime.WriteError(exception);
-                }
+            ErrorRecord exception;
+            while (_error.TryDequeue(out exception))
+            {
+                CommandRuntime.WriteError(exception);
+            }
 
-                CmdletOutput output;
-                while (_output.TryDequeue(out output))
-                {
-                    CommandRuntime.WriteObject(output.Output, output.Enumerate);
-                }
+            CmdletOutput output;
+            while (_output.TryDequeue(out output))
+            {
+                CommandRuntime.WriteObject(output.Output, output.Enumerate);
+            }
 
-                string logMessage;
-                while (_warning.TryDequeue(out logMessage))
-                {
-                    CommandRuntime.WriteWarning(logMessage);
-                }
+            string logMessage;
+            while (_warning.TryDequeue(out logMessage))
+            {
+                CommandRuntime.WriteWarning(logMessage);
+            }
 
-                while (_verbose.TryDequeue(out logMessage))
-                {
-                    CommandRuntime.WriteVerbose(logMessage);
-                }
+            while (_verbose.TryDequeue(out logMessage))
+            {
+                CommandRuntime.WriteVerbose(logMessage);
+            }
 
-                while (_debug.TryDequeue(out logMessage))
-                {
-                    CommandRuntime.WriteDebug(logMessage);
-                }
+            while (_debug.TryDequeue(out logMessage))
+            {
+                CommandRuntime.WriteDebug(logMessage);
+            }
 
-                ProgressRecord progress;
-                while (_progress.TryDequeue(out progress))
-                {
-                    CommandRuntime.WriteProgress(progress);
-                }
-            
+            ProgressRecord progress;
+            while (_progress.TryDequeue(out progress))
+            {
+                CommandRuntime.WriteProgress(progress);
+            }
+
+            foreach(var progressItem in _progressTasks.Keys)
+            {
+                ReportTaskProgress(progressItem);
+            }
+
         }
 
         public void WaitForCompletion(Func<ICmdletAdapter, Task> taskFactory)
