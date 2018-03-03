@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
@@ -64,7 +65,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Func<OperatingSystemTypes> getOsType)
             => resourceGroup.CreateNetworkSecurityGroupConfig(
                 name,
-                () => openPorts ?? 
-                    (getOsType() == OperatingSystemTypes.Windows ? new[] { 3389, 5985 } : new[] { 22 }));
+                () => getOsType().UpdatePorts(openPorts));
     }
 }

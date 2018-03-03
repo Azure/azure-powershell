@@ -47,19 +47,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = new Subnet { Id = engine.GetId(subnet) },
-                            PublicIPAddress = new PublicIPAddress
-                            {
-                                Id = engine.GetId(publicIPAddress)
-                            }
+                            Subnet = engine.GetReference(subnet) ,
+                            PublicIPAddress = engine.GetReference(publicIPAddress)
                         }
                     },
                     NetworkSecurityGroup = networkSecurityGroup == null 
                         ? null 
-                        : new NetworkSecurityGroup
-                        {
-                            Id = engine.GetId(networkSecurityGroup)
-                        }
+                        : engine.GetReference(networkSecurityGroup)
                 });
     }
 }
