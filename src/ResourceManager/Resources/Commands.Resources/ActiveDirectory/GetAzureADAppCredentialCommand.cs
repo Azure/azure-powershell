@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
@@ -43,12 +43,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.ApplicationObject))
                 {
-                    ObjectId = ApplicationObject.ObjectId.ToString();
+                    ObjectId = ApplicationObject.ObjectId;
                 }
 
                 if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId.ToString());
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
                 WriteObject(ActiveDirectoryClient.GetAppCredentials(ObjectId), enumerateCollection: true);

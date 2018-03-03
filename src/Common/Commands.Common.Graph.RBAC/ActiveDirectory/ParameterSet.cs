@@ -68,6 +68,16 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
 
+        public const string ApplicationObjectWithoutCredential = "ApplicationObjectWithoutCredentialParameterSet";
+
+        public const string ApplicationObjectWithPasswordPlain = "ApplicationObjectWithPasswordPlainParameterSet";
+
+        public const string ApplicationObjectWithPasswordCredential = "ApplicationObjectWithPasswordCredentialParameterSet";
+
+        public const string ApplicationObjectWithKeyPlain = "ApplicationObjectWithKeyPlainParameterSet";
+
+        public const string ApplicationObjectWithKeyCredential = "ApplicationObjectWithKeyCredentialParameterSet";
+
         public const string ApplicationObjectIdWithPassword = "ApplicationObjectIdWithPasswordParameterSet";
 
         public const string ApplicationObjectIdWithCertValue = "ApplicationObjectIdWithCertValueParameterSet";
@@ -155,6 +165,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string DisplayNameWithKeyCredential = "DisplayNameWithKeyCredentialParameterSet";
 
         public const string SpObjectIdWithDisplayName = "SpObjectIdWithDisplayNameParameterSet";
+
+        public const string SpApplicationIdWithDisplayName = "SpApplicationIdWithDisplayNameParameterSet";
 
         public const string InputObjectWithDisplayName = "InputObjectWithDisplayNameParameterSet";
 

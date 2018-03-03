@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServicePrincipalObjectId")]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpApplicationIdWithDisplayName, HelpMessage = "The service principal application id.")]
+        [ValidateNotNullOrEmpty]
+        public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The servicePrincipal name.")]
         [ValidateNotNullOrEmpty]
@@ -57,20 +61,30 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (this.IsParameterBound(c => c.InputObject))
                 {
                     ServicePrincipalName = InputObject.ServicePrincipalNames?.FirstOrDefault();
-                    ObjectId = InputObject.Id.ToString();
+                    ObjectId = InputObject.Id;
                 }
 
-                ADObjectFilterOptions options = new ADObjectFilterOptions
+                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
+                if (this.IsParameterBound(c => c.ObjectId))
                 {
-                    SPN = ServicePrincipalName,
-                    Id = ObjectId
-                };
+                    var objectId = ObjectId.ToString();
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectId);
+                }
+                else if (this.IsParameterBound(c => c.ApplicationId))
+                {
+                    var appId = ApplicationId.ToString();
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
+                }
+                else if (this.IsParameterBound(c => c.ServicePrincipalName))
+                {
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
+                }
 
                 var sp = InputObject;
                 if (sp == null)
                 {
                     // At max 1 SP can be returned with SPN and Id options
-                    sp = ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault();
+                    sp = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
 
                     if (sp == null)
                     {
@@ -79,7 +93,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 // Get AppObjectId
-                string applicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(sp.ApplicationId.ToString());
+                var applicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(sp.ApplicationId);
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                 {
                     DisplayName = DisplayName
@@ -88,7 +102,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                 {
                     ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
-                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault());
+                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(odataQuery).FirstOrDefault());
                 }
             });
         }

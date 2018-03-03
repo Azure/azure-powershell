@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -30,7 +31,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The service principal object id.")]
         [Alias("PrincipalId", "Id")]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The service principal application id.")]
+        [ValidateNotNullOrEmpty]
+        public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN, HelpMessage = "The service principal name.")]
         [Alias("SPN")]
@@ -53,22 +58,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 PSADServicePrincipal servicePrincipal = null;
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = InputObject.Id.ToString();
+                    ObjectId = InputObject.Id;
                 }
 
-                if (this.IsParameterBound(c => c.ServicePrincipalName))
+                if (this.IsParameterBound(c => c.ServicePrincipalName) || this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ADObjectFilterOptions options = new ADObjectFilterOptions
+                    Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
+                    if (this.IsParameterBound(c => c.ServicePrincipalName))
                     {
-                        SPN = ServicePrincipalName
-                    };
-                    var sp = ActiveDirectoryClient.FilterServicePrincipals(options);
+                        odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
+                    }
+                    else if (this.IsParameterBound(c => c.ApplicationId))
+                    {
+                        var appId = ApplicationId.ToString();
+                        odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
+                    }
+
+                    var sp = ActiveDirectoryClient.FilterServicePrincipals(odataQuery);
                     if (sp == null)
                     {
                         throw new ArgumentException(string.Format("Could not find a service principal with the name {0}.", ServicePrincipalName));
                     }
 
-                    ObjectId = sp.Select(s => s.Id).FirstOrDefault().ToString();
+                    ObjectId = sp.Select(s => s.Id).FirstOrDefault();
                 }
 
                 ConfirmAction(

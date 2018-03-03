@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.ObjectId))
                 {
-                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId.ToString()));
+                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId));
                 }
                 else
                 {

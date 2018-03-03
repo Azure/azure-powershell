@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServicePrincipalObjectId")]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithCertValue, HelpMessage = "The servicePrincipal name.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword, HelpMessage = "The servicePrincipal name.")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 EndDate = StartDate.AddYears(1);
                 if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
-                    ObjectId = ServicePrincipalObject.Id.ToString();
+                    ObjectId = ServicePrincipalObject.Id;
                 }
 
                 if (this.IsParameterBound(c => c.ServicePrincipalName))
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
                     }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Usage = "Verify"
                     };
 
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
                     }

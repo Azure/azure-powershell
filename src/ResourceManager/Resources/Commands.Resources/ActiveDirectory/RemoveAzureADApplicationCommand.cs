@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The application object id.")]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
-        public string ApplicationId { get; set; }
+        public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The application object.")]
         public PSADApplication InputObject { get; set;}
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = InputObject.ObjectId.ToString();
+                    ObjectId = InputObject.ObjectId;
                 }
 
                 if (this.IsParameterBound(c => c.ApplicationId))
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Force.IsPresent,
                     string.Format(ProjectResources.RemovingApplication, ObjectId),
                     ProjectResources.RemoveApplication,
-                    ObjectId,
+                    ObjectId.ToString(),
                     () => ActiveDirectoryClient.RemoveApplication(ObjectId));
 
                 if (PassThru.IsPresent)
