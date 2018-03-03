@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         object _lock = new object();
 
-        int _hasMessages = 0;
+        //int _hasMessages = 0;
 
         protected int Retries { get; set; }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             var process = new ShouldProcessPrompt { Target = target, Message = action, Completer = new TaskCompletionSource<bool>() };
             _process.Enqueue(process);
-            _hasMessages = 1;
+            //_hasMessages = 1;
             return process.Completer.Task;
         }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             var process = new ShouldContinuePrompt { Query = query, Caption = caption, Completer = new TaskCompletionSource<bool>() };
             _continue.Enqueue(process);
-            _hasMessages = 1;
+            //_hasMessages = 1;
             return process.Completer.Task;
         }
 
@@ -102,31 +102,31 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             var error = new ErrorRecord(exception, "ExecutionException", ErrorCategory.InvalidOperation, exception.TargetSite);
             _error.Enqueue(error);
-            _hasMessages = 1;
+            //_hasMessages = 1;
         }
 
         public void WriteVerboseAsync(string verboseMessage)
         {
             _verbose.Enqueue(verboseMessage);
-            _hasMessages = 1;
+            //_hasMessages = 1;
         }
 
         public void WriteDebugAsync(string debugMessage)
         {
             _debug.Enqueue(debugMessage);
-            _hasMessages = 1;
+            //_hasMessages = 1;
         }
 
         public void WriteWarningAsync(string warningMessage)
         {
             _warning.Enqueue(warningMessage);
-            _hasMessages = 1;
+            //_hasMessages = 1;
         }
 
         void WriteProgressAsync(ProgressRecord progress)
         {
             _progress.Enqueue(progress);
-            _hasMessages = 1;
+            //_hasMessages = 1;
         }
 
         public void ReportTaskProgress(ITaskProgress taskProgress)
@@ -163,8 +163,6 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         void PollForResults(bool drainQueues = false)
         {
-            if (drainQueues || Interlocked.Exchange(ref _hasMessages, 0) == 1)
-            {
                 ShouldProcessPrompt process;
                 while (_process.TryDequeue(out process))
                 {
@@ -210,12 +208,18 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                 {
                     CommandRuntime.WriteProgress(progress);
                 }
-            }
+            
         }
 
         public void WaitForCompletion(Func<ICmdletAdapter, Task> taskFactory)
         {
-            Scheduler.Wait(taskFactory(this), () => PollForResults());
+            var task = taskFactory(this);
+            while (!task.IsCompleted)
+            {
+                PollForResults();
+                Thread.Yield();
+            }
+
             PollForResults(true);
         }
 
@@ -232,7 +236,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         public void WriteObjectAsync(object output, bool enumerateCollection)
         {
             _output.Enqueue(new CmdletOutput { Output = output, Enumerate = enumerateCollection });
-            _hasMessages = 1;
+            //_hasMessages = 1;
 
         }
 

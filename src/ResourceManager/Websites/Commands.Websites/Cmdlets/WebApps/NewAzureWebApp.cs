@@ -36,6 +36,7 @@ using System.Xml;
 using Microsoft.Azure.Commands.WebApps.Properties;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -192,19 +193,23 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         private async Task<ServerFarmWithRichSku> GetDefaultServerFarm(string location)
         {
             var websiteLocation = string.IsNullOrWhiteSpace(location) ? new LocationConstraint() : new LocationConstraint(location);
-            var farms = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
-            var defaultFarm = farms.FirstOrDefault(sf => string.Equals(sf.Sku.Tier, "Free", StringComparison.OrdinalIgnoreCase) && websiteLocation.Match(sf.Location)) ?? farms.FirstOrDefault(sf => websiteLocation.Match(sf.Location));
-            ServerFarmWithRichSku result = null;
-            if (defaultFarm != null)
+            var farmResources = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
+            ServerFarmWithRichSku defaultFarm = null;
+            foreach (var resource in farmResources)
             {
-                string defaultResourceGroup, defaultName;
-                if (TryGetServerFarmFromResourceId(defaultFarm.Id, out defaultResourceGroup, out defaultName))
+                var id = new ResourceIdentifier(resource.Id);
+                var farm = await WebsitesClient.WrappedWebsitesClient.ServerFarms.GetServerFarmAsync(id.ResourceGroupName, id.ResourceName);
+                if (websiteLocation.Match(farm.Location))
                 {
-                    result = new ServerFarmWithRichSku(location: defaultFarm.Location, resourceGroup: defaultResourceGroup, name: defaultName, serverFarmWithRichSkuName: defaultName);
+                    defaultFarm = farm;
+                    if (string.Equals("free", farm.Sku?.Tier?.ToLower(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        break;
+                    }
                 }
             }
 
-            return result;
+            return defaultFarm;
         }
 
         bool TryGetServerFarmFromResourceId(string serverFarm, out string resourceGroup, out string serverFarmName)

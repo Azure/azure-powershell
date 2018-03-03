@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Models
                 }
             }
 
-            return _locations.Count > 0;
+            return _locations.Count == 0;
         }
     }
 }
