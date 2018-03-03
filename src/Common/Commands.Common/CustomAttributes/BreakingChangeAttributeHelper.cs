@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
             foreach (BreakingChangeBaseAttribute attribute in getAllBreakingChangeAttributesInType(type))
             {
-                printCustomAttributeInfo(attribute);
+                attribute.printCustomAttributeInfo();
             }
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
             foreach (BreakingChangeBaseAttribute attribute in getAllBreakingChangeAttributesInType(type))
             {
-                messages.Add(getBreakingChangeTextFromAttribute(attribute));
+                messages.Add(attribute.getBreakingChangeTextFromAttribute());
             }
 
             return messages;
@@ -126,38 +126,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             }
 
             return attributeList;
-        }
-
-        private static String getBreakingChangeTextFromAttribute(BreakingChangeBaseAttribute attribute)
-        {
-            String breakinChangeMessage = " - " + attribute.Message + "\n\n";
-
-            if (attribute.DeprecateByVersionSet)
-            {
-                breakinChangeMessage += "The change is expected to take effect from the version : " + attribute.DeprecateByVersion + "\n\n";
-            }
-
-            if (!String.IsNullOrWhiteSpace(attribute.OldWay) && !String.IsNullOrWhiteSpace(attribute.NewWay))
-            {
-                breakinChangeMessage += "```powershell\n# Old\n" + attribute.OldWay + "\n\n# New\n" + attribute.NewWay + "\n```\n\n";
-            }
-
-            return breakinChangeMessage;
-        }
-
-        private static void printCustomAttributeInfo(BreakingChangeBaseAttribute attribute)
-        {
-            Console.WriteLine("Deprecation message : \n" + attribute.Message);
-            if (attribute.DeprecateByVersionSet)
-            {
-                Console.WriteLine("The change is expected to take effect from the version : " + attribute.DeprecateByVersion);
-            }
-
-            if (attribute.OldWay != null && attribute.NewWay != null)
-            {
-                Console.WriteLine("Original command : " + attribute.OldWay);
-                Console.WriteLine("Workaround : " + attribute.NewWay);
-            }
         }
     }
 }

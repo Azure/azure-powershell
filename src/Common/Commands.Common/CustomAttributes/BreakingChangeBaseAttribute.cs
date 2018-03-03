@@ -72,5 +72,37 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
         {
             return this.ChangeInEfectByDate.Date;
         }
+
+        public String getBreakingChangeTextFromAttribute()
+        {
+            String breakinChangeMessage = " - " + Message + "\n\n";
+
+            if (DeprecateByVersionSet)
+            {
+                breakinChangeMessage += "The change is expected to take effect from the version : " + DeprecateByVersion + "\n\n";
+            }
+
+            if (!String.IsNullOrWhiteSpace(OldWay) && !String.IsNullOrWhiteSpace(NewWay))
+            {
+                breakinChangeMessage += "```powershell\n# Old\n" + OldWay + "\n\n# New\n" + NewWay + "\n```\n\n";
+            }
+
+            return breakinChangeMessage;
+        }
+
+        public void printCustomAttributeInfo()
+        {
+            Console.WriteLine("Deprecation message : \n" + Message);
+            if (DeprecateByVersionSet)
+            {
+                Console.WriteLine("The change is expected to take effect from the version : " + DeprecateByVersion);
+            }
+
+            if (OldWay != null && NewWay != null)
+            {
+                Console.WriteLine("Original command : " + OldWay);
+                Console.WriteLine("Workaround : " + NewWay);
+            }
+        }
     }
 }
