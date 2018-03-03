@@ -19,9 +19,9 @@
 -->
 ## Current Release
 * Log analytic feature
-    - Added Export-AzureRmLogAnalyticRequestRateByInterval cmdlet
-    - Added Export-AzureRmLogAnalyticThrottledRequests cmdlet
-
+    - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
+    - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+* `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
 * WriteAccelerator feature
     - Added WriteAccelerator switch parameter to the following cmdlets:
           Set-AzureRmVMOSDisk
