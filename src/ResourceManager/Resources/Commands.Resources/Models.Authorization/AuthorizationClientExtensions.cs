@@ -19,18 +19,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     internal static class AuthorizationClientExtensions
     {
         public const string CustomRole = "CustomRole";
+        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
             if (!string.IsNullOrEmpty(roleId))
             {
-                return assignments.Where(a => a.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId);
+                return assignments.Where(a => a.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId.GuidFromFullyQualifiedId());
             }
 
             return assignments;
@@ -117,7 +119,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()));
-            List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            objectIds = objectIds.Distinct().ToList();
+            List<PSADObject> adObjects = null;
+            try
+            {
+                adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            }
+            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            {
+                throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
+            }
 
             foreach (RoleAssignment assignment in assignments)
             {
@@ -205,6 +216,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         private static string GuidFromFullyQualifiedId(this string Id)
         {
             return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
+        }
+
+        private static bool IsAuthorizationDeniedException(CloudException ce)
+        {
+            if (ce.Response != null && ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
+                ce.Error != null && ce.Error.Code != null && string.Equals(ce.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

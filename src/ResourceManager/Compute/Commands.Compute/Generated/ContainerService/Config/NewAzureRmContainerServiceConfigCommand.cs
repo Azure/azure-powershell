@@ -261,7 +261,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
 
-
             var vContainerService = new PSContainerService
             {
                 Location = this.Location,
