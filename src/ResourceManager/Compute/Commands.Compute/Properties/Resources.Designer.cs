@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Compute.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SAS Uri for the destination blob is not supported in patch mode:{0}.
         /// </summary>
-        public static string AddAzureVhdCommandSASUriNotSupportedInPatchMode {
+        internal static string AddAzureVhdCommandSASUriNotSupportedInPatchMode {
             get {
                 return ResourceManager.GetString("AddAzureVhdCommandSASUriNotSupportedInPatchMode", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add diagnostics extension to the VM scale set.
         /// </summary>
-        public static string AddVmssDiagnosticsExtensionAction {
+        internal static string AddVmssDiagnosticsExtensionAction {
             get {
                 return ResourceManager.GetString("AddVmssDiagnosticsExtensionAction", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
-        public static string AEMExtensionNotFound {
+        internal static string AEMExtensionNotFound {
             get {
                 return ResourceManager.GetString("AEMExtensionNotFound", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
-        public static string AvailabilitySetRemovalCaption {
+        internal static string AvailabilitySetRemovalCaption {
             get {
                 return ResourceManager.GetString("AvailabilitySetRemovalCaption", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the specified availability set. Do you want to continue?.
         /// </summary>
-        public static string AvailabilitySetRemovalConfirmation {
+        internal static string AvailabilitySetRemovalConfirmation {
             get {
                 return ResourceManager.GetString("AvailabilitySetRemovalConfirmation", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Apply configuration &apos;{0}&apos;.
         /// </summary>
-        public static string AzureVMDscApplyConfigurationAction {
+        internal static string AzureVMDscApplyConfigurationAction {
             get {
                 return ResourceManager.GetString("AzureVMDscApplyConfigurationAction", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
         /// </summary>
-        public static string AzureVMDscArchiveAlreadyExists {
+        internal static string AzureVMDscArchiveAlreadyExists {
             get {
                 return ResourceManager.GetString("AzureVMDscArchiveAlreadyExists", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
         /// </summary>
-        public static string AzureVMDscCannotFindConfigurationDataFile {
+        internal static string AzureVMDscCannotFindConfigurationDataFile {
             get {
                 return ResourceManager.GetString("AzureVMDscCannotFindConfigurationDataFile", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The -ConfigurationArchive parameter must no include a path.
         /// </summary>
-        public static string AzureVMDscConfigurationDataFileShouldNotIncludePath {
+        internal static string AzureVMDscConfigurationDataFileShouldNotIncludePath {
             get {
                 return ResourceManager.GetString("AzureVMDscConfigurationDataFileShouldNotIncludePath", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Create Archive.
         /// </summary>
-        public static string AzureVMDscCreateArchiveAction {
+        internal static string AzureVMDscCreateArchiveAction {
             get {
                 return ResourceManager.GetString("AzureVMDscCreateArchiveAction", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureRmSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
-        public static string AzureVMDscDefaultStorageCredentialsNotFound {
+        internal static string AzureVMDscDefaultStorageCredentialsNotFound {
             get {
                 return ResourceManager.GetString("AzureVMDscDefaultStorageCredentialsNotFound", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid DSC Extension version. Allowed format: N.N where N = [1..9].
         /// </summary>
-        public static string AzureVMDscExtensionInvalidVersion {
+        internal static string AzureVMDscExtensionInvalidVersion {
             get {
                 return ResourceManager.GetString("AzureVMDscExtensionInvalidVersion", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The configuration data must be a .psd1 file.
         /// </summary>
-        public static string AzureVMDscInvalidConfigurationDataFile {
+        internal static string AzureVMDscInvalidConfigurationDataFile {
             get {
                 return ResourceManager.GetString("AzureVMDscInvalidConfigurationDataFile", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to If the ConfigurationArchive argument is null, then the ConfigurationName, ConfigurationArgument, and ConfigurationDataPath parameters must not be specified .
         /// </summary>
-        public static string AzureVMDscNullArchiveNoConfiguragionParameters {
+        internal static string AzureVMDscNullArchiveNoConfiguragionParameters {
             get {
                 return ResourceManager.GetString("AzureVMDscNullArchiveNoConfiguragionParameters", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to If the ConfigurationArchive argument is null, then the StorageContext, ArchiveContainerName, and ArchiveStorageEndpointSuffix parameters must not be specified.
         /// </summary>
-        public static string AzureVMDscNullArchiveNoStorageParameters {
+        internal static string AzureVMDscNullArchiveNoStorageParameters {
             get {
                 return ResourceManager.GetString("AzureVMDscNullArchiveNoStorageParameters", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Parsing configuration script: {0}.
         /// </summary>
-        public static string AzureVMDscParsingConfiguration {
+        internal static string AzureVMDscParsingConfiguration {
             get {
                 return ResourceManager.GetString("AzureVMDscParsingConfiguration", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage Blob &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
         /// </summary>
-        public static string AzureVMDscStorageBlobAlreadyExists {
+        internal static string AzureVMDscStorageBlobAlreadyExists {
             get {
                 return ResourceManager.GetString("AzureVMDscStorageBlobAlreadyExists", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The storage context must include an storage account..
         /// </summary>
-        public static string AzureVMDscStorageContextMustIncludeAccountName {
+        internal static string AzureVMDscStorageContextMustIncludeAccountName {
             get {
                 return ResourceManager.GetString("AzureVMDscStorageContextMustIncludeAccountName", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Upload &apos;{0}&apos;.
         /// </summary>
-        public static string AzureVMDscUploadToBlobStorageAction {
+        internal static string AzureVMDscUploadToBlobStorageAction {
             get {
                 return ResourceManager.GetString("AzureVMDscUploadToBlobStorageAction", resourceCulture);
             }
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Cannot deserialize settings string from DSC extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
         ///{0}.
         /// </summary>
-        public static string AzureVMDscWrongSettingsFormat {
+        internal static string AzureVMDscWrongSettingsFormat {
             get {
                 return ResourceManager.GetString("AzureVMDscWrongSettingsFormat", resourceCulture);
             }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
         ///{0}.
         /// </summary>
-        public static string AzureVMSqlServerSqlConfigurationNotFound {
+        internal static string AzureVMSqlServerSqlConfigurationNotFound {
             get {
                 return ResourceManager.GetString("AzureVMSqlServerSqlConfigurationNotFound", resourceCulture);
             }
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
         ///{0}.
         /// </summary>
-        public static string AzureVMSqlServerWrongConfigFormat {
+        internal static string AzureVMSqlServerWrongConfigFormat {
             get {
                 return ResourceManager.GetString("AzureVMSqlServerWrongConfigFormat", resourceCulture);
             }
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account name for boot diagnostics is not given..
         /// </summary>
-        public static string BootDiagnosticsNoStorageAccountError {
+        internal static string BootDiagnosticsNoStorageAccountError {
             get {
                 return ResourceManager.GetString("BootDiagnosticsNoStorageAccountError", resourceCulture);
             }
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
-        public static string BothWindowsAndLinuxConfigurationsSpecified {
+        internal static string BothWindowsAndLinuxConfigurationsSpecified {
             get {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
             }
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
-        public static string ChefExtensionNotFound {
+        internal static string ChefExtensionNotFound {
             get {
                 return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
             }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
-        public static string CreatingStorageAccountForBootDiagnostics {
+        internal static string CreatingStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics", resourceCulture);
             }
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
-        public static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {
+        internal static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {
             get {
                 return ResourceManager.GetString("CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript", resourceCulture);
             }
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it..
         /// </summary>
-        public static string DataDiskNotAssignedForVM {
+        internal static string DataDiskNotAssignedForVM {
             get {
                 return ResourceManager.GetString("DataDiskNotAssignedForVM", resourceCulture);
             }
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No DiagnosticMonitorConfiguration element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
+        internal static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined", resourceCulture);
             }
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
+        internal static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInJson", resourceCulture);
             }
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the xml configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
+        internal static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInXml", resourceCulture);
             }
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in xml or json format..
         /// </summary>
-        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+        internal static string DiagnosticsExtensionInvalidConfigFileFormat {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
             }
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The resourceId defined in the config file does not match the actual resource&apos;s id..
         /// </summary>
-        public static string DiagnosticsExtensionMetricsResourceIdNotMatch {
+        internal static string DiagnosticsExtensionMetricsResourceIdNotMatch {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionMetricsResourceIdNotMatch", resourceCulture);
             }
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account names provided in public and private configs do not match..
         /// </summary>
-        public static string DiagnosticsExtensionMismatchStorageAccountName {
+        internal static string DiagnosticsExtensionMismatchStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionMismatchStorageAccountName", resourceCulture);
             }
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No diagnostics extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
-        public static string DiagnosticsExtensionNotFound {
+        internal static string DiagnosticsExtensionNotFound {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNotFound", resourceCulture);
             }
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No matching diagnostics extension found..
         /// </summary>
-        public static string DiagnosticsExtensionNotFoundForVMSS {
+        internal static string DiagnosticsExtensionNotFoundForVMSS {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNotFoundForVMSS", resourceCulture);
             }
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountEndpoint {
+        internal static string DiagnosticsExtensionNullStorageAccountEndpoint {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountEndpoint", resourceCulture);
             }
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
         /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountKey {
+        internal static string DiagnosticsExtensionNullStorageAccountKey {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountKey", resourceCulture);
             }
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account name is not defined..
         /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountName {
+        internal static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
             }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Overwriting existing diagnostics extension..
         /// </summary>
-        public static string DiagnosticsExtensionOverwriting {
+        internal static string DiagnosticsExtensionOverwriting {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
             }
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Diagnostics extension overwritting operation .
         /// </summary>
-        public static string DiagnosticsExtensionOverwrittingCaption {
+        internal static string DiagnosticsExtensionOverwrittingCaption {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionOverwrittingCaption", resourceCulture);
             }
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will overwrite existing diagnostics extension. Do you want to continue?.
         /// </summary>
-        public static string DiagnosticsExtensionOverwrittingConfirmation {
+        internal static string DiagnosticsExtensionOverwrittingConfirmation {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionOverwrittingConfirmation", resourceCulture);
             }
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
         /// </summary>
-        public static string DisableAzureDiskEncryptionCaption {
+        internal static string DisableAzureDiskEncryptionCaption {
             get {
                 return ResourceManager.GetString("DisableAzureDiskEncryptionCaption", resourceCulture);
             }
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?.
         /// </summary>
-        public static string DisableAzureDiskEncryptionConfirmation {
+        internal static string DisableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("DisableAzureDiskEncryptionConfirmation", resourceCulture);
             }
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disable disk encryption.
         /// </summary>
-        public static string DisableDiskEncryptionAction {
+        internal static string DisableDiskEncryptionAction {
             get {
                 return ResourceManager.GetString("DisableDiskEncryptionAction", resourceCulture);
             }
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
-        public static string DscExtensionRemovalCaption {
+        internal static string DscExtensionRemovalCaption {
             get {
                 return ResourceManager.GetString("DscExtensionRemovalCaption", resourceCulture);
             }
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}.
         /// </summary>
-        public static string DscExtensionRemovalConfirmation {
+        internal static string DscExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
             }
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enable AzureDiskEncryption on the VM.
         /// </summary>
-        public static string EnableAzureDiskEncryptionCaption {
+        internal static string EnableAzureDiskEncryptionCaption {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionCaption", resourceCulture);
             }
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet prepares the VM and enables encryption which may reboot the machine and takes 10-15 minutes to finish. Please save your work on the VM before confirming. Do you want to continue?.
         /// </summary>
-        public static string EnableAzureDiskEncryptionConfirmation {
+        internal static string EnableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
             }
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enable disk encryption.
         /// </summary>
-        public static string EnableDiskEncryptionAction {
+        internal static string EnableDiskEncryptionAction {
             get {
                 return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
             }
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
-        public static string ErrorDuringChoosingStandardStorageAccount {
+        internal static string ErrorDuringChoosingStandardStorageAccount {
             get {
                 return ResourceManager.GetString("ErrorDuringChoosingStandardStorageAccount", resourceCulture);
             }
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
         /// </summary>
-        public static string ErrorDuringCreatingStorageAccountForBootDiagnostics {
+        internal static string ErrorDuringCreatingStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("ErrorDuringCreatingStorageAccountForBootDiagnostics", resourceCulture);
             }
@@ -534,16 +534,25 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occurred when getting storage account, {0}, for boot diagnostics: {1}.
         /// </summary>
-        public static string ErrorDuringGettingStorageAccountForBootDiagnostics {
+        internal static string ErrorDuringGettingStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid ImageName {0}.
+        /// </summary>
+        internal static string InvalidImageName {
+            get {
+                return ResourceManager.GetString("InvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given disk is not a managed disk..
         /// </summary>
-        public static string NotManagedDisk {
+        internal static string NotManagedDisk {
             get {
                 return ResourceManager.GetString("NotManagedDisk", resourceCulture);
             }
@@ -552,7 +561,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
         /// </summary>
-        public static string PremiumStorageAccountForBootDiagnostics {
+        internal static string PremiumStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics", resourceCulture);
             }
@@ -561,7 +570,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Calculating MD5 Hash.
         /// </summary>
-        public static string PSSyncOutputEventsCalculatingMD5Hash {
+        internal static string PSSyncOutputEventsCalculatingMD5Hash {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5Hash", resourceCulture);
             }
@@ -570,7 +579,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MD5 hash is being calculated for the file &apos;{0}&apos;..
         /// </summary>
-        public static string PSSyncOutputEventsCalculatingMD5HashForFile {
+        internal static string PSSyncOutputEventsCalculatingMD5HashForFile {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5HashForFile", resourceCulture);
             }
@@ -579,7 +588,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copying.
         /// </summary>
-        public static string PSSyncOutputEventsCopying {
+        internal static string PSSyncOutputEventsCopying {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsCopying", resourceCulture);
             }
@@ -588,7 +597,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Creating new page blob of size {0}....
         /// </summary>
-        public static string PSSyncOutputEventsCreatingNewPageBlob {
+        internal static string PSSyncOutputEventsCreatingNewPageBlob {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsCreatingNewPageBlob", resourceCulture);
             }
@@ -597,7 +606,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Detecting the empty data blocks in the local file..
         /// </summary>
-        public static string PSSyncOutputEventsDetectingActualDataBlocks {
+        internal static string PSSyncOutputEventsDetectingActualDataBlocks {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsDetectingActualDataBlocks", resourceCulture);
             }
@@ -606,7 +615,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Detecting the empty data blocks completed..
         /// </summary>
-        public static string PSSyncOutputEventsDetectingActualDataBlocksCompleted {
+        internal static string PSSyncOutputEventsDetectingActualDataBlocksCompleted {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsDetectingActualDataBlocksCompleted", resourceCulture);
             }
@@ -615,7 +624,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Downloading.
         /// </summary>
-        public static string PSSyncOutputEventsDownloading {
+        internal static string PSSyncOutputEventsDownloading {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsDownloading", resourceCulture);
             }
@@ -624,7 +633,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Elapsed time for copy: {0}.
         /// </summary>
-        public static string PSSyncOutputEventsElapsedTimeForCopy {
+        internal static string PSSyncOutputEventsElapsedTimeForCopy {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForCopy", resourceCulture);
             }
@@ -633,7 +642,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Elapsed time for download: {0}.
         /// </summary>
-        public static string PSSyncOutputEventsElapsedTimeForDownload {
+        internal static string PSSyncOutputEventsElapsedTimeForDownload {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForDownload", resourceCulture);
             }
@@ -642,7 +651,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Elapsed time for the operation: {0}.
         /// </summary>
-        public static string PSSyncOutputEventsElapsedTimeForOperation {
+        internal static string PSSyncOutputEventsElapsedTimeForOperation {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForOperation", resourceCulture);
             }
@@ -651,7 +660,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Elapsed time for upload: {0}.
         /// </summary>
-        public static string PSSyncOutputEventsElapsedTimeForUpload {
+        internal static string PSSyncOutputEventsElapsedTimeForUpload {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForUpload", resourceCulture);
             }
@@ -660,7 +669,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Empty block detected: {0}.
         /// </summary>
-        public static string PSSyncOutputEventsEmptyBlockDetected {
+        internal static string PSSyncOutputEventsEmptyBlockDetected {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetected", resourceCulture);
             }
@@ -669,7 +678,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
-        public static string PSSyncOutputEventsEmptyBlockDetectionCompleted {
+        internal static string PSSyncOutputEventsEmptyBlockDetectionCompleted {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetectionCompleted", resourceCulture);
             }
@@ -678,7 +687,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Detecting empty blocks.
         /// </summary>
-        public static string PSSyncOutputEventsEmptyBlockDetectionDetecting {
+        internal static string PSSyncOutputEventsEmptyBlockDetectionDetecting {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetectionDetecting", resourceCulture);
             }
@@ -687,7 +696,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} days {1:00}:{2:00}:{3:00}.
         /// </summary>
-        public static string PSSyncOutputEventsFormatDuration {
+        internal static string PSSyncOutputEventsFormatDuration {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsFormatDuration", resourceCulture);
             }
@@ -696,7 +705,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0:0.0}% complete; Remaining Time: {1}; Throughput: {2:0.0}Mbps.
         /// </summary>
-        public static string PSSyncOutputEventsLogProgress {
+        internal static string PSSyncOutputEventsLogProgress {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsLogProgress", resourceCulture);
             }
@@ -705,7 +714,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
-        public static string PSSyncOutputEventsLogProgressCompleteCompleted {
+        internal static string PSSyncOutputEventsLogProgressCompleteCompleted {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsLogProgressCompleteCompleted", resourceCulture);
             }
@@ -714,7 +723,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MD5 hash calculation is completed..
         /// </summary>
-        public static string PSSyncOutputEventsMD5HashCalculationFinished {
+        internal static string PSSyncOutputEventsMD5HashCalculationFinished {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsMD5HashCalculationFinished", resourceCulture);
             }
@@ -723,7 +732,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Range of the block is {0}, Length: {1}.
         /// </summary>
-        public static string PSSyncOutputEventsPrintBlockRange {
+        internal static string PSSyncOutputEventsPrintBlockRange {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsPrintBlockRange", resourceCulture);
             }
@@ -732,7 +741,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Empty Block Detection.
         /// </summary>
-        public static string PSSyncOutputEventsProgressEmptyBlockDetection {
+        internal static string PSSyncOutputEventsProgressEmptyBlockDetection {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsProgressEmptyBlockDetection", resourceCulture);
             }
@@ -741,7 +750,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Found existing page blob. Resuming upload....
         /// </summary>
-        public static string PSSyncOutputEventsResumingUpload {
+        internal static string PSSyncOutputEventsResumingUpload {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsResumingUpload", resourceCulture);
             }
@@ -750,7 +759,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Network disruption occured, retrying..
         /// </summary>
-        public static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
+        internal static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsRetryingAfterANetworkDisruption", resourceCulture);
             }
@@ -759,7 +768,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Upload failed with exceptions:.
         /// </summary>
-        public static string PSSyncOutputEventsUploadFailedWithException {
+        internal static string PSSyncOutputEventsUploadFailedWithException {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsUploadFailedWithException", resourceCulture);
             }
@@ -768,7 +777,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Uploading.
         /// </summary>
-        public static string PSSyncOutputEventsUploading {
+        internal static string PSSyncOutputEventsUploading {
             get {
                 return ResourceManager.GetString("PSSyncOutputEventsUploading", resourceCulture);
             }
@@ -777,7 +786,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+        internal static string PublishVMDscExtensionAdditionalContentPathNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
             }
@@ -786,7 +795,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
-        public static string PublishVMDscExtensionArchiveUploadedMessage {
+        internal static string PublishVMDscExtensionArchiveUploadedMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage", resourceCulture);
             }
@@ -795,7 +804,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
-        public static string PublishVMDscExtensionArchiveUploadedMessage1 {
+        internal static string PublishVMDscExtensionArchiveUploadedMessage1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage1", resourceCulture);
             }
@@ -804,7 +813,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find configuration file: {0}..
         /// </summary>
-        public static string PublishVMDscExtensionConfigFileNotFound {
+        internal static string PublishVMDscExtensionConfigFileNotFound {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionConfigFileNotFound", resourceCulture);
             }
@@ -813,7 +822,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyFileVerbose {
+        internal static string PublishVMDscExtensionCopyFileVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose", resourceCulture);
             }
@@ -822,7 +831,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyFileVerbose1 {
+        internal static string PublishVMDscExtensionCopyFileVerbose1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose1", resourceCulture);
             }
@@ -831,7 +840,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyModuleVerbose {
+        internal static string PublishVMDscExtensionCopyModuleVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose", resourceCulture);
             }
@@ -840,7 +849,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyModuleVerbose1 {
+        internal static string PublishVMDscExtensionCopyModuleVerbose1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose1", resourceCulture);
             }
@@ -850,7 +859,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1)..
         /// </summary>
-        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
+        internal static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension", resourceCulture);
             }
@@ -860,7 +869,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1)..
         /// </summary>
-        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1 {
+        internal static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1", resourceCulture);
             }
@@ -869,7 +878,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Create a zip file &apos;{0}&apos; from directory &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCreateZipVerbose {
+        internal static string PublishVMDscExtensionCreateZipVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateZipVerbose", resourceCulture);
             }
@@ -878,7 +887,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
         /// </summary>
-        public static string PublishVMDscExtensionDeletedFileMessage {
+        internal static string PublishVMDscExtensionDeletedFileMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage", resourceCulture);
             }
@@ -887,7 +896,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
         /// </summary>
-        public static string PublishVMDscExtensionDeletedFileMessage1 {
+        internal static string PublishVMDscExtensionDeletedFileMessage1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage1", resourceCulture);
             }
@@ -896,7 +905,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
         /// </summary>
-        public static string PublishVMDscExtensionDeleteErrorMessage {
+        internal static string PublishVMDscExtensionDeleteErrorMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
             }
@@ -905,7 +914,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
         /// </summary>
-        public static string PublishVMDscExtensionDeleteErrorMessage1 {
+        internal static string PublishVMDscExtensionDeleteErrorMessage1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage1", resourceCulture);
             }
@@ -914,7 +923,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionDirectoryNotExist {
+        internal static string PublishVMDscExtensionDirectoryNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
             }
@@ -927,7 +936,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///3) Move Import-DscResource inside Node block.
         ///.
         /// </summary>
-        public static string PublishVMDscExtensionGetDscResourceFailed {
+        internal static string PublishVMDscExtensionGetDscResourceFailed {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed", resourceCulture);
             }
@@ -940,7 +949,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///3) Move Import-DscResource inside Node block.
         ///.
         /// </summary>
-        public static string PublishVMDscExtensionGetDscResourceFailed1 {
+        internal static string PublishVMDscExtensionGetDscResourceFailed1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed1", resourceCulture);
             }
@@ -949,7 +958,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to List of required modules: [{0}]..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredModulesVerbose {
+        internal static string PublishVMDscExtensionRequiredModulesVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose", resourceCulture);
             }
@@ -958,7 +967,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to List of required modules: [{0}]..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredModulesVerbose1 {
+        internal static string PublishVMDscExtensionRequiredModulesVerbose1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose1", resourceCulture);
             }
@@ -967,7 +976,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredPsVersion {
+        internal static string PublishVMDscExtensionRequiredPsVersion {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion", resourceCulture);
             }
@@ -976,7 +985,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredPsVersion1 {
+        internal static string PublishVMDscExtensionRequiredPsVersion1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion1", resourceCulture);
             }
@@ -986,7 +995,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
         ///{1}.
         /// </summary>
-        public static string PublishVMDscExtensionStorageParserErrors {
+        internal static string PublishVMDscExtensionStorageParserErrors {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors", resourceCulture);
             }
@@ -996,7 +1005,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
         ///{1}.
         /// </summary>
-        public static string PublishVMDscExtensionStorageParserErrors1 {
+        internal static string PublishVMDscExtensionStorageParserErrors1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors1", resourceCulture);
             }
@@ -1005,7 +1014,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
         /// </summary>
-        public static string PublishVMDscExtensionTempFolderVerbose {
+        internal static string PublishVMDscExtensionTempFolderVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose", resourceCulture);
             }
@@ -1014,7 +1023,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
         /// </summary>
-        public static string PublishVMDscExtensionTempFolderVerbose1 {
+        internal static string PublishVMDscExtensionTempFolderVerbose1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose1", resourceCulture);
             }
@@ -1024,7 +1033,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension", resourceCulture);
             }
@@ -1034,7 +1043,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1 {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1", resourceCulture);
             }
@@ -1043,7 +1052,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
             }
@@ -1052,7 +1061,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
             }
@@ -1061,7 +1070,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove VM access extension.
         /// </summary>
-        public static string RemoveAccessExtensionAction {
+        internal static string RemoveAccessExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveAccessExtensionAction", resourceCulture);
             }
@@ -1070,7 +1079,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove disk encryption.
         /// </summary>
-        public static string RemoveDiskEncryptionAction {
+        internal static string RemoveDiskEncryptionAction {
             get {
                 return ResourceManager.GetString("RemoveDiskEncryptionAction", resourceCulture);
             }
@@ -1079,7 +1088,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove &apos;{0}&apos; extension.
         /// </summary>
-        public static string RemoveExtensionAction {
+        internal static string RemoveExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
             }
@@ -1088,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove custom script extension.
         /// </summary>
-        public static string RemoveScriptExtensionAction {
+        internal static string RemoveScriptExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
             }
@@ -1097,7 +1106,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove diagnostics extension from the VM scale set.
         /// </summary>
-        public static string RemoveVmssDiagnosticsExtensionAction {
+        internal static string RemoveVmssDiagnosticsExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
             }
@@ -1106,7 +1115,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the specified resource.  Do you want to continue?.
         /// </summary>
-        public static string ResourceRemovalConfirmation {
+        internal static string ResourceRemovalConfirmation {
             get {
                 return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
             }
@@ -1115,7 +1124,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will stop the specified resource.  Do you want to continue?.
         /// </summary>
-        public static string ResourceStoppingConfirmation {
+        internal static string ResourceStoppingConfirmation {
             get {
                 return ResourceManager.GetString("ResourceStoppingConfirmation", resourceCulture);
             }
@@ -1124,7 +1133,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
-        public static string StorageAccountNotFoundForBootDiagnostics {
+        internal static string StorageAccountNotFoundForBootDiagnostics {
             get {
                 return ResourceManager.GetString("StorageAccountNotFoundForBootDiagnostics", resourceCulture);
             }
@@ -1133,7 +1142,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
-        public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
+        internal static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
             }
@@ -1142,7 +1151,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
         /// </summary>
-        public static string UsingExistingStorageAccountForBootDiagnostics {
+        internal static string UsingExistingStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics", resourceCulture);
             }
@@ -1151,7 +1160,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Virtual machine extension removal operation.
         /// </summary>
-        public static string VirtualMachineExtensionRemovalCaption {
+        internal static string VirtualMachineExtensionRemovalCaption {
             get {
                 return ResourceManager.GetString("VirtualMachineExtensionRemovalCaption", resourceCulture);
             }
@@ -1160,7 +1169,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine extension. Do you want to continue?.
         /// </summary>
-        public static string VirtualMachineExtensionRemovalConfirmation {
+        internal static string VirtualMachineExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation", resourceCulture);
             }
@@ -1169,7 +1178,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of a public load balancer. .
         /// </summary>
-        public static string VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer {
+        internal static string VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer {
             get {
                 return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer", resourceCulture);
             }
@@ -1178,7 +1187,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer..
         /// </summary>
-        public static string VirtualMachineNotAssociatedWithPublicLoadBalancer {
+        internal static string VirtualMachineNotAssociatedWithPublicLoadBalancer {
             get {
                 return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicLoadBalancer", resourceCulture);
             }
@@ -1187,7 +1196,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer..
         /// </summary>
-        public static string VirtualMachineReferencesInternalNetworkInterface {
+        internal static string VirtualMachineReferencesInternalNetworkInterface {
             get {
                 return ResourceManager.GetString("VirtualMachineReferencesInternalNetworkInterface", resourceCulture);
             }
@@ -1196,7 +1205,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Virtual machine removal operation.
         /// </summary>
-        public static string VirtualMachineRemovalCaption {
+        internal static string VirtualMachineRemovalCaption {
             get {
                 return ResourceManager.GetString("VirtualMachineRemovalCaption", resourceCulture);
             }
@@ -1205,7 +1214,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine. Do you want to continue?.
         /// </summary>
-        public static string VirtualMachineRemovalConfirmation {
+        internal static string VirtualMachineRemovalConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineRemovalConfirmation", resourceCulture);
             }
@@ -1214,7 +1223,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Virtual machine stopping operation.
         /// </summary>
-        public static string VirtualMachineStoppingCaption {
+        internal static string VirtualMachineStoppingCaption {
             get {
                 return ResourceManager.GetString("VirtualMachineStoppingCaption", resourceCulture);
             }
@@ -1223,7 +1232,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will stop the specified virtual machine. Do you want to continue?.
         /// </summary>
-        public static string VirtualMachineStoppingConfirmation {
+        internal static string VirtualMachineStoppingConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
             }
@@ -1232,7 +1241,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
         /// </summary>
-        public static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
+        internal static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
             get {
                 return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
             }
