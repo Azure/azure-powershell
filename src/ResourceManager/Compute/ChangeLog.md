@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
 * WriteAccelerator feature
     - Added WriteAccelerator switch parameter to the following cmdlets:
 	  Set-AzureRmVMOSDisk
