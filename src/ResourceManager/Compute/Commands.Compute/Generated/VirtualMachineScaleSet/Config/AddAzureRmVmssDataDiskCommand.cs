@@ -59,6 +59,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public CachingTypes? Caching { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public SwitchParameter WriteAccelerator { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public DiskCreateOptionTypes? CreateOption { get; set; }
@@ -106,6 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.Name = this.Name;
             vDataDisks.Lun = this.Lun;
             vDataDisks.Caching = this.Caching;
+            vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
             if (this.CreateOption.HasValue)
             {
                 vDataDisks.CreateOption = this.CreateOption.Value;

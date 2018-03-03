@@ -18,6 +18,24 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+	  Set-AzureRmVMOSDisk
+	  Set-AzureRmVMDataDisk
+	  Add-AzureRmVMDataDisk
+	  Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+## Version 4.3.2
+* Fix ErrorAction issue for some of Get cmdlets.
+
+## Version 4.3.1
+* `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
 
 ## Version 4.3.0
 * Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.

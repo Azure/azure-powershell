@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Service Fabric cmdlet refresh
+  - Updated ARM templates
+  - Failed operations no longer rollback
+  - Add-AzureRmServiceFabricNodeType
+    - VMs default to managed disks
+    - Existing VMSS subnet used
+    - All operations are idempotent
+  - Remove-AzureRmServiceFabricNodeType cleans up partially created VMSS and/or cluster node types
+  - Fixed output of PSCluster object for complex property types
 
 ## Version 0.3.1
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
