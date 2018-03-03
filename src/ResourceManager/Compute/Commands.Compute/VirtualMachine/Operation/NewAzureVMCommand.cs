@@ -409,9 +409,9 @@ namespace Microsoft.Azure.Commands.Compute
                 var connectionString = imageAndOsType.GetConnectionString(
                     fqdn,
                     Credential.UserName);
-                asyncCmdlet.WriteVerbose(string.Format(
+                asyncCmdlet.WriteVerbose(
                     Resources.VirtualMachineUseConnectionString,
-                    connectionString));
+                    connectionString);
                 asyncCmdlet.WriteObject(psResult);
             }
         }
