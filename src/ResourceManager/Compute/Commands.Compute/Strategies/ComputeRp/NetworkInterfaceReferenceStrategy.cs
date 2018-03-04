@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    public static class NestedResourceConfigExtensions
+    static class NetworkInterfaceReferenceStrategy
     {
-        public static NestedResourceConfig<TModel, TParenModel> CreateConfig<TModel, TParenModel>(
-            this NestedResourceStrategy<TModel, TParenModel> strategy,
-            IEntityConfig<TParenModel> parent,
-            string name,
-            Func<string, TModel> createModel)
-            where TModel : class
-            where TParenModel : class
-            => new NestedResourceConfig<TModel, TParenModel>(strategy, parent, name, createModel);
+        public static NetworkInterfaceReference GetReference(
+            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface)
+            => new NetworkInterfaceReference { Id = engine.GetId(networkInterface) };
     }
 }
