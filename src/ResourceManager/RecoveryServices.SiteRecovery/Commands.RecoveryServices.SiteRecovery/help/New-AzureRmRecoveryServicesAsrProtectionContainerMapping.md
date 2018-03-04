@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrprotectioncontainermapping
@@ -116,7 +116,7 @@ Specifies the name of the Protection Container mapping.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -131,7 +131,7 @@ Specifies the ASR replication policy object for the replication policy to be use
 ```yaml
 Type: ASRPolicy
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -146,7 +146,7 @@ Specifies the ASR protection container object for the  primary protection contai
 ```yaml
 Type: ASRProtectionContainer
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -161,7 +161,7 @@ Specifies the ASR protection container object for the  recovery protection conta
 ```yaml
 Type: ASRProtectionContainer
 Parameter Sets: EnterpriseToEnterprise
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrrecoveryplan
@@ -88,7 +88,7 @@ Specifies the path of the recovery plan definition json file used to update the 
 ```yaml
 Type: String
 Parameter Sets: ByRPFile
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

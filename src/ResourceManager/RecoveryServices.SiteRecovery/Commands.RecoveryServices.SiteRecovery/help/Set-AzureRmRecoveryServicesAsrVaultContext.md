@@ -67,7 +67,7 @@ The Recovery Services vault object corresponding to the Recovery Services vault.
 ```yaml
 Type: ARSVault
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/edit-azurermrecoveryservicesasrrecoveryplan
@@ -73,7 +73,7 @@ Switch parameter to append a recovery plan group to the recovery plan object.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AppendGroup
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ Specifies a recovery plan group.
 ```yaml
 Type: ASRRecoveryPlanGroup
 Parameter Sets: AddReplicationProtectedItems, RemoveReplicationProtectedItems
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -147,7 +147,7 @@ Removes the specified group from the recovery plan object.
 ```yaml
 Type: ASRRecoveryPlanGroup
 Parameter Sets: RemoveGroup
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

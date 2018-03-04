@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets the location of the vault
         /// </summary>
         [Parameter(Mandatory = true)]
-        //[LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

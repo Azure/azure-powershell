@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrnetworkmapping
@@ -89,7 +89,7 @@ Specifies the recovery azure network ID for the network mapping.
 ```yaml
 Type: String
 Parameter Sets: ById
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -104,7 +104,7 @@ Specifies the recovery network object for the network mapping.
 ```yaml
 Type: ASRNetwork
 Parameter Sets: ByNetworkObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -142,3 +142,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

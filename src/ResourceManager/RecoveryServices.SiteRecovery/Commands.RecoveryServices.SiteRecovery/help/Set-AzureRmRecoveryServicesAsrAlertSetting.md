@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/set-azurermrecoveryservicesasralertsetting
@@ -86,7 +86,7 @@ Alert / Notification sent to emails.
 ```yaml
 Type: String[]
 Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -116,7 +116,7 @@ Switch parameter specifies enable notification to subscription owner.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DisableEmailToSubcriptionOwner
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -131,7 +131,7 @@ Flag to disable all notification.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Disable
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -146,7 +146,7 @@ Switch paramter specifies enable notification to subscription owner.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EmailToSubscriptionOwner
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -161,7 +161,7 @@ Email language of alert /notifcation to user(supported culture codes from micros
 ```yaml
 Type: String
 Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

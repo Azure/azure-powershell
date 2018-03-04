@@ -54,7 +54,7 @@ Switch parameter to specify that the recovery location for recovery plan is Azur
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ Specifies the failover deployment model (Classic or Resource Manager) of the rep
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToAzure
-Aliases:
+Aliases: 
 Accepted values: Classic, ResourceManager
 
 Required: True
@@ -114,7 +114,7 @@ Name of the recovery plan.
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -129,7 +129,7 @@ Specifies the path to the recovery plan definition json file. A recovery plan de
 ```yaml
 Type: String
 Parameter Sets: ByRPFile
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -144,7 +144,7 @@ Specifies the ASR fabric object for the primary ASR fabric of the replication pr
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -159,7 +159,7 @@ Specifies the ASR fabric object for the recovery ASR fabric of the replication p
 ```yaml
 Type: ASRFabric
 Parameter Sets: EnterpriseToEnterprise
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -174,7 +174,7 @@ The list of replication protected items to add to the first group of the recover
 ```yaml
 Type: ASRReplicationProtectedItem[]
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

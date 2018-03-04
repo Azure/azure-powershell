@@ -68,7 +68,7 @@ Create the virtual machine if not found while failing back to the primary region
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Yes, No
 
 Required: False
@@ -84,7 +84,7 @@ Specifies the primary certificate file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Specifies the secondary certificate file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
 
 Required: True
@@ -162,7 +162,7 @@ Synchronization starts after shutdown to complete the failover operation.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: ForDownTime, ForSynchronization
 
 Required: False
@@ -178,7 +178,7 @@ Specifies the ASR Recovery plan object corresponding to the recovery plan to be 
 ```yaml
 Type: ASRRecoveryPlan
 Parameter Sets: ByRPObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -193,7 +193,7 @@ Specifies the ASR replication protected item object corresponding to the replica
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -208,7 +208,7 @@ Identifies the host to on which to create the virtual machine while failing over
 ```yaml
 Type: ASRRecoveryServicesProvider
 Parameter Sets: ByRPIObject
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

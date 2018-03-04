@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrunplannedfailoverjob
@@ -72,7 +72,7 @@ Specifies the data encryption primary certificate file path for failover of Prot
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ Specifies the data encryption secondary certificate file path for failover of Pr
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -120,7 +120,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
 
 Required: True
@@ -151,7 +151,7 @@ Specifies an ASR recovery plan object.
 ```yaml
 Type: ASRRecoveryPlan
 Parameter Sets: ByRPObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -166,7 +166,7 @@ Specifies a custom recovery point to failover the protected machine to.
 ```yaml
 Type: ASRRecoveryPoint
 Parameter Sets: ByRPIObject
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,7 +181,7 @@ Specifies the recovery tag to failover to.
 ```yaml
 Type: String
 Parameter Sets: ByRPObject
-Aliases:
+Aliases: 
 Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: False
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ByRPIObjectWithRecoveryTag
-Aliases:
+Aliases: 
 Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: True
@@ -210,7 +210,7 @@ Specifies an azure site recovery replication protected item.
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject, ByRPIObjectWithRecoveryTag
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrfabric
@@ -50,7 +50,7 @@ Switch parameter indicates creation of azure fabric.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Azure
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -94,7 +94,7 @@ Specifies the Azure region corresponding to the Fabric object being created. The
 ```yaml
 Type: String
 Parameter Sets: Azure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -109,7 +109,7 @@ Specifies the name of the Azure Site Recovery Fabric.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -124,7 +124,7 @@ Specifies the Azure Site Recovery Fabric Type.
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 Accepted values: HyperVSite
 
 Required: False

@@ -85,7 +85,7 @@ Specifiy the license type selection to be used for Windows Server virtual machin
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: NoLicenseType, WindowsServer
 
 Required: False
@@ -101,7 +101,7 @@ Specifies the name of the recovery virtual machine that will be created on failo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ You can specify NotSelected to go back to the default values.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: NotSelected, SelectedByUser
 
 Required: False
@@ -133,7 +133,7 @@ Specifies the NIC of the virtual machine for which this cmdlet sets the recovery
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -148,7 +148,7 @@ Availability set for replication protected item after failover.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -163,7 +163,7 @@ The resource ID of the recovery cloud service to failover this virtual machine t
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -178,7 +178,7 @@ Specifies the ID of the Azure virtual network to which the protected item should
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -193,7 +193,7 @@ Specifies the static IP address that should be assigned to primary NIC on recove
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -208,7 +208,7 @@ Specifies the name of the subnet on the recovery Azure virtual network to which 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -223,7 +223,7 @@ The ID of the Azure resource group in the recovery region in which the protected
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -239,7 +239,7 @@ The value should be from the set of sizes supported by Azure virtual machines.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -254,7 +254,7 @@ Specifies if the Azure virtual machine that is created on failover should use ma
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: True, False
 
 Required: False

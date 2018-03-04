@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrnetworkmapping
@@ -59,7 +59,7 @@ Switch parameter specifying that the network mapping being created will be used 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -103,7 +103,7 @@ Name of the ASR network mapping to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -118,7 +118,7 @@ Specifies the Azure virtual network ID of the primary network for the mapping.
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -133,7 +133,7 @@ Specifes the ASR fabric where mapping should be created.
 ```yaml
 Type: ASRFabric
 Parameter Sets: AzureToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -148,7 +148,7 @@ Specifies the primary network object for the ASR network mapping.
 ```yaml
 Type: ASRNetwork
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -163,7 +163,7 @@ Specifies the recovery azure network ID for the network mapping.
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure, EnterpriseToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -178,7 +178,7 @@ The Azure Site Recovery fabric object corresponding to the recovery Azure region
 ```yaml
 Type: ASRFabric
 Parameter Sets: AzureToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -193,7 +193,7 @@ Specifies the recovery network object for the ASR network mapping.
 ```yaml
 Type: ASRNetwork
 Parameter Sets: EnterpriseToEnterprise
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

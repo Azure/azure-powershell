@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrjob
@@ -67,7 +67,7 @@ For more information, type `Get-Help Get-Date`.
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,7 +82,7 @@ Specifies the ASR job object to get updated details for.
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ Specify the ASR job by name.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ This cmdlet gets all jobs that started after the specified time.
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -138,7 +138,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: ByParam
-Aliases:
+Aliases: 
 Accepted values: NotStarted, InProgress, Succeeded, Other, Failed, Cancelled, Suspended
 
 Required: False
@@ -154,7 +154,7 @@ Specifies the ID of the object. Used to search for jobs on the specified object.
 ```yaml
 Type: String
 Parameter Sets: ByParam
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
