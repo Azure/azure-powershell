@@ -87,3 +87,34 @@ function Test-SimpleNewVmssImageName
         Clean-ResourceGroup $vmssname
     }
 }
+
+function Test-SimpleNewVmssWithoutDomainName
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        # Common
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred
+
+        Assert-AreEqual $vmssname $x.Name;
+        Assert-AreEqual $vmssname $x.ResourceGroupName;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
+        Assert-AreEqual "Standard_DS1_v2" $x.Sku.Name
+        Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
+        Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}

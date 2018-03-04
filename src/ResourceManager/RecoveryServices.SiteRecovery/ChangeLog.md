@@ -23,6 +23,7 @@
     - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
     - Remove-AzureRmRecoveryServicesAsrProtectionContainer
     - Update-AzureRmRecoveryServicesAsrProtectionDirection
+* Fixed issue with importing aliases
 
 ## Version 0.2.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

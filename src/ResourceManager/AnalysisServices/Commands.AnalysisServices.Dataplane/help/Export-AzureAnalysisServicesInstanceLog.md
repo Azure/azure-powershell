@@ -77,6 +77,9 @@ Accept wildcard characters: False
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
 ## NOTES

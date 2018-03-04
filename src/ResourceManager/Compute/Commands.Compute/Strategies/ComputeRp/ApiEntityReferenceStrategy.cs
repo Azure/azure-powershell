@@ -13,26 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
+namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class ResourceConfigExtensions
+    static class ApiEntityReferenceStrategy
     {
-        public static ResourceConfig<TModel> CreateResourceConfig<TModel>(
-            this ResourceStrategy<TModel> strategy,
-            ResourceConfig<ResourceGroup> resourceGroup,
-            string name,
-            Func<string, TModel> createModel = null,
-            IEnumerable<IEntityConfig> dependencies = null)
-            where TModel : class, new()
-            => strategy.CreateConfig(
-                resourceGroup.Name,
-                name,
-                createModel,
-                dependencies.EmptyIfNull().Where(d => d != null).Concat(new[] { resourceGroup }));
+        public static ApiEntityReference GetReference(
+            this IEngine engine, NestedResourceConfig<Subnet, VirtualNetwork> subnet)
+            => new ApiEntityReference { Id = engine.GetId(subnet) };
     }
 }

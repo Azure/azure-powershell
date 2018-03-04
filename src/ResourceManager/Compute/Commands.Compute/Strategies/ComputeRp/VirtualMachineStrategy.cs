@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -26,7 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputePolicy.Create(
-                type: "virtual machine",
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachines,
                 getAsync: (o, p) => o.GetAsync(
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription =>
+                createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
                     return new VirtualMachine
@@ -58,12 +56,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows
-                                ? new WindowsConfiguration()
-                                : null,
-                            LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
-                                ? new LinuxConfiguration()
-                                : null,
+                            WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                            LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
                             AdminUsername = adminUsername,
                             AdminPassword = adminPassword,
                         },
@@ -71,10 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             NetworkInterfaces = new[]
                             {
-                                new NetworkInterfaceReference
-                                {
-                                    Id = networkInterface.GetId(subscription).IdToString()
-                                }
+                                engine.GetReference(networkInterface)
                             }
                         },
                         HardwareProfile = new HardwareProfile
@@ -85,15 +76,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             ImageReference = imageAndOsType.Image
                         },
-                        AvailabilitySet = availabilitySet == null
-                            ? null
-                            : new Azure.Management.Compute.Models.SubResource
-                            {
-                                Id = availabilitySet.GetId(subscription).IdToString()
-                            }
+                        AvailabilitySet = engine.GetReference(availabilitySet)
                     };
-                },
-                dependencies: new IResourceConfig[] { networkInterface, availabilitySet });
+                });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -106,17 +91,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new VirtualMachine
+                createModel: engine => new VirtualMachine
                 {
-                    OsProfile = null,
                     NetworkProfile = new NetworkProfile
                     {
                         NetworkInterfaces = new[]
                         {
-                            new NetworkInterfaceReference
-                            {
-                                Id = networkInterface.GetId(subscription).IdToString()
-                            }
+                            engine.GetReference(networkInterface)
                         }
                     },
                     HardwareProfile = new HardwareProfile
@@ -130,20 +111,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = new ManagedDiskParameters
-                            {
-                                StorageAccountType = StorageAccountTypes.PremiumLRS,
-                                Id = disk.GetId(subscription).IdToString()
-                            }
+                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
                         }
                     },
-                    AvailabilitySet = availabilitySet == null
-                        ? null
-                        : new Azure.Management.Compute.Models.SubResource
-                        {
-                            Id = availabilitySet.GetId(subscription).IdToString()
-                        }
-                },
-                dependencies: new IEntityConfig[] { networkInterface, disk, availabilitySet });
+                    AvailabilitySet = engine.GetReference(availabilitySet)
+                });
     }
 }
