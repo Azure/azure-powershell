@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Fixed issue with importing aliases
 
 ## Version 5.2.0
 * Added cmdlet to create a new connection monitor
