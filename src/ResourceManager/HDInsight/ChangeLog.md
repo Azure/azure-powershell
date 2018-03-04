@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 
 ## Version 4.0.2
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
