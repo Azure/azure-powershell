@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrprotectiondirection
@@ -114,7 +114,7 @@ The run as account to be used to push install the Mobility service if needed. Mu
 ```yaml
 Type: ASRRunAsAccount
 Parameter Sets: AzureToVMware
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```yaml
 Type: ASRRunAsAccount
 Parameter Sets: VMwareToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -141,7 +141,7 @@ Switch parameter specifying that the replication direction being updated for rep
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -156,7 +156,7 @@ Specifies the list of virtual machine disks to replicated and the cache storage 
 ```yaml
 Type: ASRAzuretoAzureDiskReplicationConfig[]
 Parameter Sets: AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -171,7 +171,7 @@ Update replication direction from Azure to Vmware.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureToVMware
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -201,7 +201,7 @@ The VMware datastore to be used for the vmdisk's.
 ```yaml
 Type: ASRDataStore
 Parameter Sets: AzureToVMware
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -234,7 +234,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, ByRPObject, ByPEObject
-Aliases:
+Aliases: 
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
 
 Required: True
@@ -250,7 +250,7 @@ Reprotect a Hyper-V virtual machine after failback.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: HyperVToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -265,7 +265,7 @@ Specifies the storage account ID to store the replication log of VMs.
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, HyperVToAzure
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -292,7 +292,7 @@ Master Target Server Details.
 ```yaml
 Type: ASRMasterTargetServer
 Parameter Sets: AzureToVMware, VMwareToAzure
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -307,7 +307,7 @@ Process Server to be used for replication.
 ```yaml
 Type: ASRProcessServer
 Parameter Sets: AzureToVMware, VMwareToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -322,7 +322,7 @@ Protection containerMapping to be used for replication.
 ```yaml
 Type: ASRProtectionContainerMapping
 Parameter Sets: AzureToVMware, VMwareToAzure, AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -337,7 +337,7 @@ The availability set that the virtual machine should be created in upon failover
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -352,7 +352,7 @@ Specifies the ID of the Azure storage account to replicate to.
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, HyperVToAzure, AzureToAzure
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -367,7 +367,7 @@ The resource ID of the recovery cloud service to failover this virtual machine t
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -382,7 +382,7 @@ Specifies an ASR recovery plan object.
 ```yaml
 Type: ASRRecoveryPlan
 Parameter Sets: ByRPObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -397,7 +397,7 @@ Recovery resourceGroup id for protected Vm.
 ```yaml
 Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -412,7 +412,7 @@ Specifies an ASR replication protected item.
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -427,7 +427,7 @@ Retention Volume on the master target server to be used.
 ```yaml
 Type: ASRRetentionVolume
 Parameter Sets: AzureToVMware
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -442,7 +442,7 @@ Update replication direction from VMware to Azure.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: VMwareToAzure
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -457,7 +457,7 @@ Update replication direction for a failed over Hyper-V virtual machine that is p
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EnterpriseToEnterprise
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -496,3 +496,4 @@ Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedIt
 ## NOTES
 
 ## RELATED LINKS
+

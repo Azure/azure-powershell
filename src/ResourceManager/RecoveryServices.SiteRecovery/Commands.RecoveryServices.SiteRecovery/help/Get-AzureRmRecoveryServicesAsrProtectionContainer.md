@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrprotectioncontainer
@@ -98,7 +98,7 @@ Look for the protection container in the specified ASR fabric.
 ```yaml
 Type: ASRFabric
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ Specifies the friendly name of the ASR protection container to look for.
 ```yaml
 Type: String
 Parameter Sets: ByObjectWithFriendlyName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -128,7 +128,7 @@ Specifies the name of the ASR protection container to look for.
 ```yaml
 Type: String
 Parameter Sets: ByObjectWithName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -151,3 +151,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

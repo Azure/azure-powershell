@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrnetwork
@@ -64,7 +64,7 @@ ASR fabric object
 ```yaml
 Type: ASRFabric
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -79,7 +79,7 @@ Friendly name of network ASR object.
 ```yaml
 Type: String
 Parameter Sets: ByFriendlyName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -94,7 +94,7 @@ Name of network ASR object.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -117,3 +117,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
