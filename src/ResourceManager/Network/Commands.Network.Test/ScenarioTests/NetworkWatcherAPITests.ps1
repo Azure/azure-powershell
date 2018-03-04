@@ -577,7 +577,7 @@ function Test-ConnectivityCheck
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "eastus"
+    $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -683,7 +683,7 @@ function Test-ProvidersList
     $nwName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westus"
+    $location = "westcentralus"
     
     try 
     {
@@ -698,6 +698,7 @@ function Test-ProvidersList
         $job | Wait-Job
         $list1 = $job | Receive-Job
         $list2 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington"
+        $list3 = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
 
         Assert-AreEqual $list1.Countries.CountryName "United States"
         Assert-AreEqual $list2.Countries.CountryName "United States"
