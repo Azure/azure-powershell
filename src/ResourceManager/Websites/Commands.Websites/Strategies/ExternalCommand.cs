@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Properties;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
@@ -24,14 +27,26 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
     public abstract class ExternalCommand
     {
 
-        public ExternalCommand(PathIntrinsics path, string commandName)
+        public ExternalCommand(PathIntrinsics pathIntrinsics, string commandName, string workingDirectory = null)
         {
-            Path = path;
+            PathInfo = pathIntrinsics;
             Name = commandName;
+            WorkingDirectory = PathInfo.CurrentFileSystemLocation.Path;
+            if (workingDirectory != null)
+            {
+                WorkingDirectory = PathInfo.GetUnresolvedProviderPathFromPSPath(workingDirectory);
+                if (!Directory.Exists(WorkingDirectory))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(workingDirectory), string.Format(Resources.GitDirectoryDoesNotExist, workingDirectory));
+                }
+            }
         }
+
         public string Name { get; protected set; }
 
-        protected PathIntrinsics Path { get; set; }
+        protected PathIntrinsics PathInfo { get; set; }
+
+        protected string WorkingDirectory { get; set; }
 
         protected virtual ProcessStartInfo GetStartInfo(string arguments)
         {
@@ -42,7 +57,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
                 CreateNoWindow = true,
-                WorkingDirectory = Path.CurrentFileSystemLocation.Path,
+                WorkingDirectory = WorkingDirectory,
                 Arguments = arguments
             };
         }
