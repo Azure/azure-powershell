@@ -14,12 +14,18 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
+using System.Management.Automation;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public interface ICmdletAdapter : IShouldProcess
     {
+        /// <summary>
+        /// Path information for the current running cmdlet
+        /// </summary>
+        SessionState SessionState { get; }
+
         /// <summary>
         /// Given the target and description of a change, determine if the change should occur
         /// </summary>

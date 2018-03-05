@@ -20,12 +20,13 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.Azure.Commands.WebApps.Properties;
 
 namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public class GitCommand : ExternalCommand
     {
-        public GitCommand(PathIntrinsics currentPath) : base(currentPath, "git.exe")
+        public GitCommand(PathIntrinsics currentPath, string workingDirectory = null) : base(currentPath, "git.exe", workingDirectory)
         {
         }
 
@@ -33,16 +34,16 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             get
             {
-                return "To connect your website with a git repository, you must have the git executable installed. Please download and install git from https://git-scm.com/";
+                return Resources.GitInstallMessage;
             }
         }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public Task<string> VerifyGitRepository(string path = null)
         {
-            var basePath = Path.CurrentFileSystemLocation.Path;
-            var searchPath = path == null ? basePath : Path.NormalizeRelativePath(path, basePath);
-            var dirPath = Path.Combine(searchPath, ".git");
+            var basePath = WorkingDirectory;
+            var searchPath = path == null ? basePath : PathInfo.GetUnresolvedProviderPathFromPSPath(path);
+            var dirPath = PathInfo.Combine(searchPath, ".git");
             return Task.FromResult(Directory.Exists(dirPath) ? dirPath : null);
         }
 

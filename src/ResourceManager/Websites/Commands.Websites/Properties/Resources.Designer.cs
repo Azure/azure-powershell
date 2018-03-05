@@ -61,6 +61,42 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory &apos;{0}&apos; does not exist, please check the directory path and try again..
+        /// </summary>
+        internal static string GitDirectoryDoesNotExist {
+            get {
+                return ResourceManager.GetString("GitDirectoryDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To connect your website with a git repository, you must have the git executable installed. Please download and install git from https://git-scm.com/.
+        /// </summary>
+        internal static string GitInstallMessage {
+            get {
+                return ResourceManager.GetString("GitInstallMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add git remote to directory &apos;{0}&apos; with error &apos;{1}&apos;.
+        /// </summary>
+        internal static string GitRemoteAddFailure {
+            get {
+                return ResourceManager.GetString("GitRemoteAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;git push azure master&apos; to push local changes to this website..
+        /// </summary>
+        internal static string GitRemoteMessage {
+            get {
+                return ResourceManager.GetString("GitRemoteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing web app slot.
         /// </summary>
         internal static string RemoveWebappSlotMessage {

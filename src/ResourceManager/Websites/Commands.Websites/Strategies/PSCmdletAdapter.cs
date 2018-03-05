@@ -28,9 +28,10 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
     public class PSCmdletAdapter : ICmdletAdapter
     {
 
-        public PSCmdletAdapter(AzurePSCmdlet cmdlet)
+        public PSCmdletAdapter(AzurePSCmdlet cmdlet, SessionState state)
         {
             this.CommandRuntime = cmdlet.CommandRuntime;
+            _sessionState = state;
         }
 
         struct ShouldProcessPrompt
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             public bool Enumerate { get; set; }
         }
 
-
+        SessionState _sessionState;
         ConcurrentQueue<CmdletOutput> _output = new ConcurrentQueue<CmdletOutput>();
 
         ConcurrentQueue<string> _debug = new ConcurrentQueue<string>();
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 
         public TimeSpan RetryInterval { get; set; }
 
-        public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
+        public SessionState SessionState { get { return _sessionState; } }
 
         public Task<bool> ShouldChangeAsync(string target, string action)
         {
@@ -135,12 +136,12 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             var progress = taskProgress.GetProgress();
             var config = taskProgress.Config;
-            string key = config.Name + " " + config.Strategy.Type;
+            string key = config.Name + " " + config.Strategy.Type.Provider;
             bool reportProgress = true;
             if (_progressTasks.ContainsKey(taskProgress))
             {
                 progress += _progressTasks[taskProgress];
-                reportProgress =  progress >= _progressTasks[taskProgress];
+                reportProgress =  progress > _progressTasks[taskProgress];
             }
 
             _progressTasks[taskProgress] = progress;
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                         percent + "% " + x)
                     {
                         CurrentOperation = !taskProgress.IsDone
-                            ? $"Creating {taskProgress.Config.Name} '{taskProgress.Config.Strategy.Type}'"
+                            ? $"Creating resource '{taskProgress.Config.Name}' of type  '{taskProgress.Config?.Strategy?.Type?.Namespace}/{taskProgress.Config?.Strategy?.Type?.Provider}'"
                             : null,
                         PercentComplete = percent,
                     });

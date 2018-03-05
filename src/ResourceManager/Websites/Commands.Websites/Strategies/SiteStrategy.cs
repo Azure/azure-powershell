@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
     static class SiteStrategy
     {
         public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
-            type: "Site",
             provider: "sites",
             getOperations: client => client.Sites,
             getAsync: (o, p) => o.GetSiteAsync(p.ResourceGroupName, p.Name, null, p.CancellationToken),
@@ -29,14 +28,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             createTime: _ => 20,
             compulsoryLocation: true);
 
-        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => Strategy.CreateConfig(resourceGroup.ResourceGroupName, siteName,
-            createModel: subscription =>
+        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, 
+            ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => 
+            Strategy.CreateResourceConfig(
+                resourceGroup, 
+                siteName,
+            createModel: engine =>
                 new Site
                 {
                     SiteName = siteName,
                     Name = siteName,
-                    ServerFarmId = plan.GetId(subscription).IdToString()
-                },
-            dependencies: new IEntityConfig[] { plan, resourceGroup });
+                    ServerFarmId = engine.GetId(plan)
+                });
     }
 }

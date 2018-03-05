@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
     static class AppServicePolicy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
-            string type,
             string provider,
             Func<WebSiteManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -30,8 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Func<TModel, int> createTime,
             bool compulsoryLocation = false) where TModel : Resource
             => ResourceStrategy.Create(
-                type: type,
-                providers: new[] {"Microsoft.Web", provider},
+                type: new ResourceType("Microsoft.Web", provider),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
