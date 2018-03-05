@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The service principal application id.")]
         public Guid ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObject,
+            HelpMessage = "The object representing the application to create an service principal for.")]
+        public PSADApplication ApplicationObject { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN,
             HelpMessage = "The user SPN.")]
         [ValidateNotNullOrEmpty]
@@ -52,15 +56,20 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             ExecutionBlock(() =>
             {
                 Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
-                if (this.IsParameterBound(c => c.ObjectId))
+                if (this.IsParameterBound(c => c.ApplicationObject))
                 {
-                    var objectId = ObjectId.ToString();
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectId);
+                    ApplicationId = ApplicationObject.ApplicationId;
                 }
-                else if (this.IsParameterBound(c => c.ApplicationId))
+
+                if (ApplicationId != Guid.Empty)
                 {
                     var appId = ApplicationId.ToString();
                     odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
+                }
+                else if (this.IsParameterBound(c => c.ObjectId))
+                {
+                    var objectId = ObjectId.ToString();
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectId);
                 }
                 else if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {

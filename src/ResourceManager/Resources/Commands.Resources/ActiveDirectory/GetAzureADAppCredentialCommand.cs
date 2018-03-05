@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = ApplicationObject.ObjectId;
                 }
-
-                if (this.IsParameterBound(c => c.ApplicationId))
+                else if (this.IsParameterBound(c => c.ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
