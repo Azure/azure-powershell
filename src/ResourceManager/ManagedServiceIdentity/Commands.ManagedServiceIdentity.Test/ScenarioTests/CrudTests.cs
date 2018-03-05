@@ -6,9 +6,9 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test.ScenarioTests
 {
-    public class UserAssignedIdentityCrudTests : RMTestBase
+    public class CrudTests : RMTestBase
     {
-        public UserAssignedIdentityCrudTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CrudTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             var helper = new EnvironmentSetupHelper
             {
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUserAssignedIdentityCrud()
+        public void TestCrud()
         {
             new TestController().RunPsTest("Test-CrudUserAssignedIdentity");
         }
