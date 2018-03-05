@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class ServerFarmStrategy
     {
+#if !NETSTANDARD
         public static ResourceStrategy<ServerFarmWithRichSku> Strategy { get; } = AppServicePolicy.Create(
             provider: "serverFarms",
             getOperations: client => client.ServerFarms,
@@ -40,5 +41,28 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                         Name = name,
                         Sku = new SkuDescription {Tier = "Basic", Capacity = 1, Name = CmdletHelpers.GetSkuName("Basic", 1) }
                     });
+#else
+        public static ResourceStrategy<AppServicePlan> Strategy { get; } = AppServicePolicy.Create(
+            provider: "serverFarms",
+            getOperations: client => client.AppServicePlans,
+            getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
+            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
+            createTime: _ => 5,
+            compulsoryLocation: true);
+
+        public static ResourceConfig<AppServicePlan> CreateServerFarmConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string resourceGroupName,
+            string name) => Strategy.CreateResourceConfig(
+                resourceGroup,
+                name,
+                createModel: _ =>
+                    new AppServicePlan
+                    {
+                        Name = name,
+                        Sku = new SkuDescription { Tier = "Basic", Capacity = 1, Name = CmdletHelpers.GetSkuName("Basic", 1) }
+                    });
+
+#endif
     }
 }

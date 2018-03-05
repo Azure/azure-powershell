@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         {
             get
             {
-                return Resources.GitInstallMessage;
+                return Microsoft.Azure.Commands.WebApps.Properties.Resources.GitInstallMessage;
             }
         }
 
