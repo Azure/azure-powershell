@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: E54BFD3A-CD54-4E6B-9574-92B8D3E88FF3
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageblob
 schema: 2.0.0
@@ -14,14 +15,14 @@ Lists blobs in a container.
 
 ### BlobName (Default)
 ```
-Get-AzureStorageBlob [[-Blob] <String>] [-Container] <String> [-MaxCount <Int32>]
+Get-AzureStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
  [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### BlobPrefix
 ```
-Get-AzureStorageBlob [-Prefix <String>] [-Container] <String> [-MaxCount <Int32>]
+Get-AzureStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
  [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
@@ -38,19 +39,27 @@ PS C:\>Get-AzureStorageBlob -Container "ContainerName" -Blob blob*
 
 This command uses a blob name and wildcard to get a blob.
 
-### Example 2: Get a blob by using the pipeline
+### Example 2: Get blobs in a container by using the pipeline
 ```
-PS C:\>Get-AzureStorageContainer -Name container* | Get-AzureStorageBlob
+PS C:\>Get-AzureStorageContainer -Name container* | Get-AzureStorageBlob -IncludeDeleted
+
+   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted 
+----                 --------  ------          -----------                    ------------         ---------- ------------         --------- 
+test1                BlockBlob 403116          application/octet-stream       2017-11-08 07:53:19Z            2017-11-08 08:19:32Z True      
+test1                BlockBlob 403116          application/octet-stream       2017-11-08 09:00:29Z                                 True      
+test2                BlockBlob 403116          application/octet-stream       2017-11-08 07:53:00Z                                 False      
 ```
 
-This command uses the pipeline to get a blob.
+This command uses the pipeline to get all blobs (include blobs in Deleted status) in a container.
 
-### Example 3: Get a blob by name prefix
+### Example 3: Get blobs by name prefix
 ```
 PS C:\>Get-AzureStorageBlob -Container "ContainerName" -Prefix "blob"
 ```
 
-This command uses a name prefix to get a blob.
+This command uses a name prefix to get blobs.
 
 ### Example 4: List blobs in multiple batches
 ```
@@ -181,6 +190,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeDeleted
+Include Deleted Blob, by default get blob won't include deleted blob.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxCount
 Specifies the maximum number of objects that this cmdlet returns.
 
@@ -236,7 +260,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### IStorageContext
-
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
@@ -244,7 +267,6 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 ### AzureStorageBlob
 
 ## NOTES
-
 
 ## RELATED LINKS
 
