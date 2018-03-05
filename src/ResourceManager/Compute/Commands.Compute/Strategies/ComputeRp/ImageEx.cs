@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ImageEx
     {
+        public static int[] UpdatePorts(this OperatingSystemTypes osType, int[] ports)
+            => ports ?? (osType == OperatingSystemTypes.Windows ? new[] { 3389, 5985 } : new[] { 22 });
+
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
             this IClient client, string imageName, string location)
         {
