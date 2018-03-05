@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   name: other.Name,
                   type: other.Type,
                   tags: other.Tags,
+#if !NETSTANDARD
                   siteName: other.SiteName,
+#endif
                   state: other.State,
                   hostNames: other.HostNames,
                   repositorySiteName: other.RepositorySiteName,

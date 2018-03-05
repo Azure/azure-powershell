@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class SiteStrategy
     {
+#if !NETSTANDARD
         public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
             provider: "sites",
             getOperations: client => client.Sites,
@@ -40,5 +41,26 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                     Name = siteName,
                     ServerFarmId = engine.GetId(plan)
                 });
+#else
+        public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
+            provider: "sites",
+            getOperations: client => client.WebApps,
+            getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
+            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
+            createTime: _ => 20,
+            compulsoryLocation: true);
+
+        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup,
+            ResourceConfig<AppServicePlan> plan, string siteName) =>
+            Strategy.CreateResourceConfig(
+                resourceGroup,
+                siteName,
+            createModel: engine =>
+                new Site
+                {
+                    Name = siteName,
+                    ServerFarmId = engine.GetId(plan)
+                });
+#endif
     }
 }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
                 WorkingDirectory = PathInfo.GetUnresolvedProviderPathFromPSPath(workingDirectory);
                 if (!Directory.Exists(WorkingDirectory))
                 {
-                    throw new ArgumentOutOfRangeException(nameof(workingDirectory), string.Format(Resources.GitDirectoryDoesNotExist, workingDirectory));
+                    throw new ArgumentOutOfRangeException(nameof(workingDirectory), string.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitDirectoryDoesNotExist, workingDirectory));
                 }
             }
         }
