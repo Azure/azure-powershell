@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* New-AzureRMWebApp - added parameter set for simplified WebAPp creationm with local git repository support
+
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
