@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSRollingUpgradeStatusInfo))]
     public partial class GetAzureRmVmssRollingUpgrade : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {

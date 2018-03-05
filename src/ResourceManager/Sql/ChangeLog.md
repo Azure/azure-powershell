@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
 
 ## Version 4.2.0
 * Update the Auditing commands parameters description

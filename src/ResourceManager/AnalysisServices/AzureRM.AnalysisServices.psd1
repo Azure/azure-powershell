@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Analysis.dll'
@@ -79,14 +79,16 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
                'Remove-AzureRmAnalysisServicesServer',
                'Set-AzureRmAnalysisServicesServer', 
                'Test-AzureRmAnalysisServicesServer', 
-               'New-AzureRmAnalysisServicesServer'
+               'New-AzureRmAnalysisServicesServer',
+               'New-AzureRmAnalysisServicesFirewallRule',
+               'New-AzureRmAnalysisServicesFirewallConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Get-AzureAsGateway', 'Remove-AzureAs',
-               'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs'
+               'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs', 'New-AzureASFireRule', 'New-AzureASFireConfig'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
