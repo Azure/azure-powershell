@@ -90,10 +90,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = InputObject.ObjectId;
                 }
-
-                if (this.IsParameterBound(c => c.ApplicationId))
+                else if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
                 }
 
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters

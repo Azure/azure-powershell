@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The keyCredential Id.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The keyCredential Id.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyId, HelpMessage = "The keyCredential Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithKeyId, HelpMessage = "The keyCredential Id.")]
         [ValidateGuidNotEmpty]
         public Guid KeyId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObject, HelpMessage = "The app credential object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The application object.")]
         public PSADApplication ApplicationObject { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -58,10 +58,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = ApplicationObject.ObjectId;
                 }
-
-                if (this.IsParameterBound(c => c.ApplicationId))
+                else if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
                 }
 
                 if (this.IsParameterBound(c => c.KeyId))

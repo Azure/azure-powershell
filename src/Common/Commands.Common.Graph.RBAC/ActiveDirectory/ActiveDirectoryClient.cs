@@ -436,9 +436,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             PatchAppPasswordCredentials(appObjectId, passwordCredentials: null);
         }
 
-        public Guid GetObjectIdFromApplicationId(Guid applicationId)
+        public Guid GetAppObjectIdFromApplicationId(Guid applicationId)
         {
-            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationId.ToString());
+            var appId = applicationId.ToString();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
             var app = GetApplicationWithFilters(odataQueryFilter).SingleOrDefault();
             if (app == null)
             {
@@ -619,11 +620,12 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public PSADServicePrincipal RemoveServicePrincipal(Guid objectId)
         {
-            Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId.Equals(objectId));
+            var objId = objectId.ToString();
+            Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objId);
             PSADServicePrincipal servicePrincipal = FilterServicePrincipals(odataQuery).FirstOrDefault();
             if (servicePrincipal != null)
             {
-                GraphClient.ServicePrincipals.Delete(objectId.ToString());
+                GraphClient.ServicePrincipals.Delete(objId);
             }
             else
             {

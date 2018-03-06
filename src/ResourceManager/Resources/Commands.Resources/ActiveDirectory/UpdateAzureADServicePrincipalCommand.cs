@@ -58,12 +58,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (this.IsParameterBound(c => c.InputObject))
-                {
-                    ServicePrincipalName = InputObject.ServicePrincipalNames?.FirstOrDefault();
-                    ObjectId = InputObject.Id;
-                }
-
                 Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
                 if (this.IsParameterBound(c => c.ObjectId))
                 {
@@ -93,7 +87,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 // Get AppObjectId
-                var applicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(sp.ApplicationId);
+                var applicationObjectId = sp.Id;
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                 {
                     DisplayName = DisplayName

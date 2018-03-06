@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
                 }
 
                 WriteObject(ActiveDirectoryClient.GetAppCredentials(ObjectId), enumerateCollection: true);

@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = ServicePrincipalObject.Id;
                 }
-
-                if (this.IsParameterBound(c => c.ServicePrincipalName))
+                else if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }

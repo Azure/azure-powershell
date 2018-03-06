@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (this.IsParameterBound(c => c.ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
                 }
 
                 if (Password != null && Password.Length > 0)

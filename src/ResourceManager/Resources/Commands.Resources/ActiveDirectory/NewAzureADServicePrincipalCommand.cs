@@ -70,7 +70,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The collection of password credentials associated with the application.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordCredential,
             HelpMessage = "The collection of password credentials associated with the application.")]
-        public PSADPasswordCredential[] PasswordCredentials { get; set; }
+        [Alias("PasswordCredentials")]
+        public PSADPasswordCredential[] PasswordCredential { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
             HelpMessage = "The collection of key credentials associated with the application.")]
@@ -78,7 +79,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The collection of key credentials associated with the application.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyCredential,
             HelpMessage = "The collection of key credentials associated with the application.")]
-        public PSADKeyCredential[] KeyCredentials { get; set; }
+        [Alias("KeyCredentials")]
+        public PSADKeyCredential[] KeyCredential { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
@@ -120,9 +122,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
         public DateTime EndDate { get; set; }
 
@@ -182,9 +184,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             }
                         };
                 }
-                else if (this.IsParameterBound(c => c.PasswordCredentials))
+                else if (this.IsParameterBound(c => c.PasswordCredential))
                 {
-                    createParameters.PasswordCredentials = PasswordCredentials;
+                    createParameters.PasswordCredentials = PasswordCredential;
                 }
                 else if (this.IsParameterBound(c => c.CertValue))
                 {
@@ -199,9 +201,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             }
                         };
                 }
-                else if (this.IsParameterBound(c => c.KeyCredentials))
+                else if (this.IsParameterBound(c => c.KeyCredential))
                 {
-                    createParameters.KeyCredentials = KeyCredentials;
+                    createParameters.KeyCredentials = KeyCredential;
                 }
 
                 if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))

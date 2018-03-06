@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The service principal object id.")]
+        [ValidateNotNullOrEmpty]
         [Alias("PrincipalId", "Id")]
         public Guid ObjectId { get; set; }
 
@@ -43,7 +44,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string ServicePrincipalName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The service principal object.")]
+        [ValidateNotNullOrEmpty]
         public PSADServicePrincipal InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObject, HelpMessage = "The application object whose service principal is being removed.")]
+        [ValidateNotNullOrEmpty]
+        public PSADApplication ApplicationObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -61,16 +67,18 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = InputObject.Id;
                 }
 
-                if (this.IsParameterBound(c => c.ServicePrincipalName) || this.IsParameterBound(c => c.ApplicationId))
+                if (this.IsParameterBound(c => c.ServicePrincipalName) ||
+                    this.IsParameterBound(c => c.ApplicationId) ||
+                    this.IsParameterBound(c => c.ApplicationObject))
                 {
                     Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
                     if (this.IsParameterBound(c => c.ServicePrincipalName))
                     {
                         odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
                     }
-                    else if (this.IsParameterBound(c => c.ApplicationId))
+                    else
                     {
-                        var appId = ApplicationId.ToString();
+                        var appId = ApplicationObject == null ? ApplicationId.ToString() : ApplicationObject.ApplicationId.ToString();
                         odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
                     }
 
