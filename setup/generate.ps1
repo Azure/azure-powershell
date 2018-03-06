@@ -88,8 +88,8 @@ if ( -not (test-path $modulesDir))  {
     cmd /c dir /a/s/b "$modulesDir\psgetmoduleinfo.xml" |% {
         Write-Host -fore Gray " - Patching $_"
         (gc $_ -raw ) -replace ".*<S N=.InstalledLocation.*S>",""  | Set-Content $_
-        (gc $_ -raw ) -replace ".*<S N=.RepositorySourceLocation.*S>",'<S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2/</S>'  | Set-Content $_
-        (gc $_ -raw ) -replace ".*<S N=.Repository.*S>",'<S N="Repository">PSGallery</S>'  | Set-Content $_
+        (gc $_ -raw ) -replace ".*<S N=.RepositorySourceLocation`".*S>",'<S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2/</S>'  | Set-Content $_
+        (gc $_ -raw ) -replace ".*<S N=.Repository`".*S>",'<S N="Repository">PSGallery</S>'  | Set-Content $_
     }
 }
 
