@@ -16,11 +16,11 @@ function Test-AnalysisServicesServer
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
-		$defaultAdminCount = $env:ASAZURE_TEST_ADMUSERS.split(',').Count
+		$defaultAdminCount = 2
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator $env:ASAZURE_TEST_ADMUSERS
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@aspaas.ccsctp.net,aztest1@aspaas.ccsctp.net'
     
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -54,7 +54,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
 
-		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator $env:ASAZURE_TEST_ADMUSERS_UPDATE -PassThru
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest0@aspaas.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
@@ -150,7 +150,7 @@ function Test-AnalysisServicesServerScaleUpDown
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator $env:ASAZURE_TEST_ADMUSERS
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@aspaas.ccsctp.net,aztest1@aspaas.ccsctp.net'
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -320,7 +320,6 @@ function Test-AnalysisServicesServerScaleOutIn
 .SYNOPSIS
 Tests disable backup blob container
 In order to run this test successfully, Following environment variables need to be set.
-ASAZURE_TEST_ADMUSERS e.x. value 'asengsys@microsoft.com'
 ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
 ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
 AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest?<serviceSasToken1>'
@@ -338,7 +337,7 @@ function Test-AnalysisServicesServerDisableBackup
 		$defaultAdminCount = $env:ASAZURE_TEST_ADMUSERS.split(',').Count
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator $env:ASAZURE_TEST_ADMUSERS -BackupBlobContainerUri $backupBlobContainerUri
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@aspaas.ccsctp.net,aztest1@aspaas.ccsctp.net' -BackupBlobContainerUri $backupBlobContainerUri
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -386,7 +385,6 @@ function Test-AnalysisServicesServerDisableBackup
 <#
 .SYNOPSIS
 Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get, Delete).
-ASAZURE_TEST_ADMUSERS e.x. value 'asengsys@microsoft.com'
 ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
 ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
 #>
@@ -405,7 +403,7 @@ function Test-NegativeAnalysisServicesServer
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator $env:ASAZURE_TEST_ADMUSERS
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@aspaas.ccsctp.net,aztest1@aspaas.ccsctp.net'
 
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -423,7 +421,7 @@ function Test-NegativeAnalysisServicesServer
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
 
 		# attempt to create a server with invalid Sku
-		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'}
+		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'aztest0@aspaas.ccsctp.net,aztest1@aspaas.ccsctp.net'}
 
 		# attempt to scale a server to invalid Sku
 		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Sku $invalidSku}
