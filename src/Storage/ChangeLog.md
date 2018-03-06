@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
 
 ## Version 4.1.1
 * Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
