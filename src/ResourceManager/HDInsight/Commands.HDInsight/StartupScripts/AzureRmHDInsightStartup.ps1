@@ -16,4 +16,5 @@
     "Enable-AzureRmHDInsightOMS" = "Enable-AzureRmHDInsightOperationsManagementSuite";
     "Disable-AzureRmHDInsightOMS" = "Disable-AzureRmHDInsightOperationsManagementSuite";
 	"Get-AzureRmHDInsightOMS" = "Get-AzureRmHDInsightOperationsManagementSuite";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | `
+ForEach-Object {if (!(Get-Alias -Name $_.Name -ErrorAction Ignore)) {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global}} | Out-Null

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class AvailabilitySetStrategy
     {
         public static ResourceStrategy<AvailabilitySet> Strategy { get; }
-            = ComputePolicy.Create(
+            = ComputeStrategy.Create(
                 provider: "availabilitySets",
                 getOperations: client => client.AvailabilitySets,
                 getAsync: (o, p) => o.GetAsync(

@@ -446,6 +446,23 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRecoveryWalkResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRecoveryWalkResponse</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</TypeName>
