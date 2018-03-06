@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
+            IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             Func<ImageAndOsType> getImageAndOsType,
             string adminUsername,
             string adminPassword,
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine =>
                 {
                     var imageAndOsType = getImageAndOsType();
-                    var vmss = new VirtualMachineScaleSet()
+                    return new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations
                             ?.Select(f => f.CreateModel(engine))
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             .Where(z => z != null)
                             .ToList(),
 
-                        UpgradePolicy =new UpgradePolicy
+                        UpgradePolicy = new UpgradePolicy
                         {
                             Mode = upgradeMode ?? UpgradeMode.Manual
                         },
@@ -72,56 +73,48 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Capacity = instanceCount,
                             Name = vmSize,
                         },
-                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile()
-                    };
-
-                    vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
-                    {
-                        ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows 
-                            ? new WindowsConfiguration()
-                            : null,
-                        LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
-                            ? new LinuxConfiguration()
-                            : null,
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
-                    };
-
-                    vmss.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile
-                    {
-                        ImageReference = imageAndOsType.Image
-                    };
-
-                    var ipConfig = new VirtualMachineScaleSetIPConfiguration
-                    {
-                        Name = name,
-                        LoadBalancerBackendAddressPools = new[] 
+                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            new Azure.Management.Compute.Models.SubResource
+                            OsProfile = new VirtualMachineScaleSetOSProfile
                             {
-                                Id = engine.GetId(backendAdressPool)
-                            }
-                        },
-                        Subnet = new ApiEntityReference { Id = engine.GetId(subnet) }
-                    };
-
-
-                    vmss.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile
-                    {
-                        NetworkInterfaceConfigurations = new[]
-                        {
-                            new VirtualMachineScaleSetNetworkConfiguration
+                                ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
+                                WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                                LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                                AdminUsername = adminUsername,
+                                AdminPassword = adminPassword,
+                            },
+                            StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
-                                Name = name,
-                                IpConfigurations = new [] { ipConfig },
-                                Primary = true
+                                ImageReference = imageAndOsType.Image
+                            },
+                            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
+                            {
+                                NetworkInterfaceConfigurations = new[]
+                                {
+                                    new VirtualMachineScaleSetNetworkConfiguration
+                                    {
+                                        Name = name,
+                                        IpConfigurations = new []
+                                        {
+                                            new VirtualMachineScaleSetIPConfiguration
+                                            {
+                                                Name = name,
+                                                LoadBalancerBackendAddressPools = new [] 
+                                                {
+                                                    engine.GetReference(backendAdressPool)
+                                                },
+                                                Subnet = engine.GetReference(subnet),
+                                                LoadBalancerInboundNatPools = inboundNatPools
+                                                    .Select(engine.GetReference)
+                                                    .ToList()
+                                            }
+                                        },
+                                        Primary = true
+                                    }
+                                }
                             }
                         }
                     };
-
-
-                    return vmss;
                 });
     }
 }
