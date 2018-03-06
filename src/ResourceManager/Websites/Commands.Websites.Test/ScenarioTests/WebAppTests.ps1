@@ -531,7 +531,7 @@ function Test-CreateNewWebAppOnAse
 	$wname = Get-WebsiteName
 	$location = "West US"
 	$whpName = "travel_production_plan"
-	$aseName = "asedemo"
+	$aseName = "asedemops"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try

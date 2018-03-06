@@ -55,7 +55,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.2\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.3\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.1.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
