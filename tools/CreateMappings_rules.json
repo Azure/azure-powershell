@@ -130,5 +130,8 @@
 
     { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
     { "regex": "Kubernetes", "group": "Kubernetes", "alias": "Kubernetes" },
+
+    { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
+
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  }
 ]

@@ -100,12 +100,22 @@
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
+    <Compile Include="Models.WebApp\PSSite.cs" />
     <Compile Include="Models.WebApp\ResourceClient.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
     <Compile Include="Models.WebApp\WebAppOptionalSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
+    <Compile Include="Strategies\AppServicePolicy.cs" />
+    <Compile Include="Strategies\GitCommand.cs" />
+    <Compile Include="Strategies\ICmdletAdapter.cs" />
+    <Compile Include="Strategies\ExternalCommand.cs" />
+    <Compile Include="Strategies\PSCmdletAdapter.cs" />
+    <Compile Include="Strategies\ResourceGroupStrategy.cs" />
+    <Compile Include="Strategies\ServerFarmStrategy.cs" />
+    <Compile Include="Strategies\SiteStrategy.cs" />
+    <Compile Include="Strategies\WebClient.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\SwapWithPreviewAction.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
@@ -153,6 +163,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj">
+      <Project>{EEA69772-D41B-482A-9252-2B4595C59E53}</Project>
+      <Name>Commands.Common.Strategies</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
