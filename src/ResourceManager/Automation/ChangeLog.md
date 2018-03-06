@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 
 ## Version 4.2.1
 * Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule

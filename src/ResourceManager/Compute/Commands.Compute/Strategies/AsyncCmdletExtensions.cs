@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     static class AsyncCmdletExtensions
     {
+        public static void WriteVerbose(this IAsyncCmdlet cmdlet, string message, params object[] p)
+            => cmdlet.WriteVerbose(string.Format(message, p));
+
         /// <summary>
         /// Note: the function must be called in the main PowerShell thread.
         /// </summary>
