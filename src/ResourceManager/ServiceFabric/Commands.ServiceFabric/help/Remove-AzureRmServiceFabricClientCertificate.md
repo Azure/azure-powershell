@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricclientcertificate
 schema: 2.0.0
 ---

@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class ComputePolicy
+    static class ComputeStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string provider,
@@ -38,5 +38,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 setLocation: (config, location) => config.Location = location,
                 createTime: createTime,
                 compulsoryLocation: true);
+
+        public static string GetConnectionString(
+            this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)
+        {
+            var url = fqdn + (port == null ? string.Empty : ":" + port);
+            return imageAndOsType.OsType == OperatingSystemTypes.Windows
+                ? "mstsc /v:" + url
+                : "ssh " + user + "@" + url;
+        }
     }
 }

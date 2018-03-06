@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Reflection;
 using System.Text;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   provisioningState: cluster.ProvisioningState,
                   vmImage: cluster.VmImage,
                   diagnosticsStorageAccountConfig: cluster.DiagnosticsStorageAccountConfig,
-                  upgradeDescription: cluster.UpgradeDescription
+                  upgradeDescription: cluster.UpgradeDescription,
+                  azureActiveDirectory: cluster.AzureActiveDirectory
                 )
         {
         }
@@ -74,34 +76,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                 var value = descriptor.GetValue(objects);
                 if (value is IList)
                 {
-                    sb.AppendLine(string.Format("{0}{1} :", space, name));
+                    sb.AppendLine($"{space}{name} :");
                     var list = value as IList;
                     foreach (var item in list)
                     {
-                        var innerString = ToString(item, space + Tab);
+                        var spacing = space + Tab;
+                        if (item is NodeTypeDescription)
+                        {
+                            sb.AppendLine($"{spacing}{item.GetType().Name} :");
+                            spacing += Tab;
+                        }
+
+                        var innerString = ToString(item, spacing);
                         sb.Append(innerString);
                     }
                 }
                 else if (value is IDictionary)
                 {
-                    sb.AppendLine(string.Format("{0}{1} :", space, name));
-                    var dic = value as IDictionary;
-                    foreach (var k in dic.Keys)
+                    sb.AppendLine($"{space}{name} :");
+                    var dictionary = value as IDictionary;
+                    foreach (var k in dictionary.Keys)
                     {
-                        sb.AppendLine(string.Format("{0}{1} : {2}", space + Tab, k, dic[k]));
+                        sb.AppendLine($"{space + Tab}{k} : {dictionary[k]}");
                     }
                 }
                 else if (value is CertificateDescription ||
                          value is AzureActiveDirectory ||
                          value is DiagnosticsStorageAccountConfig ||
-                         value is ClusterUpgradePolicy)
+                         value is ClusterUpgradePolicy ||
+                         value is EndpointRangeDescription ||
+                         value is ClusterHealthPolicy ||
+                         value is ClusterUpgradeDeltaHealthPolicy ||
+                         value is NodeTypeDescription)
                 {
+                    sb.AppendLine($"{space}{name} :");
                     var innerString = ToString(value, space + Tab);
                     sb.Append(innerString);
                 }
                 else
                 {
-                    sb.AppendLine(string.Format("{0}{1} : {2}", space, name, value));
+                    sb.AppendLine($"{space}{name} : {value}");
                 }
             }
 
