@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '4.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -135,11 +135,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Enabled Azure Key Vault support for all data store linked services
-* Added license type property for Azure SSIS integration runtime
-* Added Location Completer to -Location parameters allowing tab completion through valid Locations
-* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-* Obsoleted -Tags in favor of -Tag for New-AzureRmDataFactory'
+        ReleaseNotes = '* Fix credential encryption issue that caused no meaningful error for some encryption operations
+* Enable integration runtime to be shared across data factory'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
