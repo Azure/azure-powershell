@@ -331,12 +331,10 @@ namespace Microsoft.Azure.Commands.Compute
 
             var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
 
-            // var configs = CreateResourceConfigs(imageAndOsType);
-
-            VmResourceConfigs vmConfigs = null;
+            Func<VmResourceConfigs> vmConfigs = null;
             if (DiskFile == null)
             {
-                vmConfigs = CreateVirtualMachineConfig(imageAndOsType);
+                vmConfigs = () => CreateVirtualMachineConfig(imageAndOsType);
             }
             else
             {
@@ -415,16 +413,18 @@ namespace Microsoft.Azure.Commands.Compute
                     var st2 = VhdUploaderModel.Upload(parameters);
                 }
 
-                vmConfigs = CreateVirtualMachineConfig(imageAndOsType, destinationUri);
+                vmConfigs = () => CreateVirtualMachineConfig(imageAndOsType, destinationUri);
             }
 
             var client = new Client(DefaultProfile.DefaultContext);
 
+            var getConfig = vmConfigs();
+
             // get current Azure state
-            var current = await vmConfigs.VirtualMachine.GetStateAsync(
+            var current = await getConfig.VirtualMachine.GetStateAsync(
                 client, new CancellationToken());
 
-            Location = current.UpdateLocation(Location, vmConfigs.VirtualMachine);
+            Location = current.UpdateLocation(Location, getConfig.VirtualMachine);
 
             // generate a domain name label if it's not specified.
             DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -441,26 +441,27 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // create target state
+            var updateConfig = vmConfigs();
             var engine = new SdkEngine(client.SubscriptionId);
-            var target = vmConfigs.VirtualMachine.GetTargetState(current, engine, Location);
+            var target = updateConfig.VirtualMachine.GetTargetState(current, engine, Location);
 
-            if (target.Get(vmConfigs.Configs.AvailabilitySet) != null)
+            if (target.Get(updateConfig.Configs.AvailabilitySet) != null)
             {
                 throw new InvalidOperationException("Availability set doesn't exist.");
             }
 
             // apply target state
-            var newState = await vmConfigs.VirtualMachine.UpdateStateAsync(
+            var newState = await updateConfig.VirtualMachine.UpdateStateAsync(
                 client,
                 target,
                 new CancellationToken(),
                 new ShouldProcess(asyncCmdlet),
                 asyncCmdlet.ReportTaskProgress);
 
-            var result = newState.Get(vmConfigs.VirtualMachine);
+            var result = newState.Get(updateConfig.VirtualMachine);
             if (result == null)
             {
-                result = current.Get(vmConfigs.VirtualMachine);
+                result = current.Get(updateConfig.VirtualMachine);
             }
             if (result != null)
             {
