@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
@@ -14,7 +14,9 @@ Creates a new DNS zone.
 ## SYNTAX
 
 ```
-New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+ [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,6 +38,15 @@ PS C:\>$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResou
 
 This command creates a new DNS zone named myzone.com in the specified resource group, and then
 stores it in the $Zone variable.
+
+### Example 2: Create a Private DNS zone
+```
+PS C:\>$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
+PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkIds @($ResVirtualNetworkId)
+```
+
+This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
+an associated resolution virtual network, and then stores it in the $Zone variable.
 
 ## PARAMETERS
 
@@ -60,9 +71,35 @@ Specifies the name of the DNS zone to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetworkIds
+The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworkIds
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -75,7 +112,7 @@ Specifies the resource group in which to create the zone.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,6 +130,21 @@ Key-value pairs in the form of a hash table. For example:
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZoneType
+The type of the zone, Public or Private. Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarchy. Zones with a type of Private are only visible from with the set of associated virtual networks (this feature is in preview). This property cannot be changed for a zone.
+
+```yaml
+Type: ZoneType
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
