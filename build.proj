@@ -240,6 +240,11 @@
           DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
 <!-- moved copy tasks -->
     
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryRoot)\setup\generate.ps1 -version 5.0.0 -force -repository MSIcreationrepository &quot; " Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'"/>
+    <CallTarget Targets="CodeSignInstaller"
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
+
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
@@ -411,6 +416,37 @@
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(NetCore)' == 'true' "/>
+  </Target>
+
+  <Target Name="CodeSignInstaller">
+    <PropertyGroup>
+      <!--public token associated with MSSharedLibKey.snk-->
+      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+    </PropertyGroup>
+    <GetFrameworkSdkPath>
+      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+    </GetFrameworkSdkPath>
+
+    <ItemGroup>
+      <InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
+    </ItemGroup>
+
+    <Message Importance="high" Text="$(LibraryRoot)\setup does not contains any installers to sign. Code sign will skip."
+             Condition="'@(InstallersToSign)' == ''" />
+
+    <CodeSigningTask
+      Description="Microsoft Azure PowerShell"
+      Keywords="Microsoft Azure PowerShell"
+      UnsignedFiles="@(InstallersToSign)"
+      DestinationPath="$(SignedOutputRootDir)"
+      SigningLogPath="$(LibraryRoot)\msi-signing.log"
+      Certificates="402"
+      ToolsPath="$(CIToolsPath)"
+      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
+    
+    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
+    <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+    <SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
   </Target>
 
   <!-- Run Dependecy Analyzer -->
