@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
+    // Wrapper of ServiceProperties
     public class PSSeriviceProperties
     {
         //
@@ -32,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
                 this.MinuteMetrics = properties.MinuteMetrics;
                 this.DefaultServiceVersion = properties.DefaultServiceVersion;
                 this.Cors = PSCorsRule.ParseCorsRules(properties.Cors);
+                this.DeleteRetentionPolicy = PSDeleteRetentionPolicy.ParsePSDeleteRetentionPolicy(properties.DeleteRetentionPolicy);
             }
         }
 
@@ -55,5 +57,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         // Summary:
         //     Gets or sets the default service version.
         public string DefaultServiceVersion { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the delete retention policy.
+        public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
+    }
+
+    // Wrapper of DeleteRetentionPolicy
+    public class PSDeleteRetentionPolicy
+    {
+        //
+        // Summary:
+        //     Parse DeleteRetentionPolicy object in SDK to wrapped  PSDeleteRetentionPolicy object
+        public static PSDeleteRetentionPolicy ParsePSDeleteRetentionPolicy(DeleteRetentionPolicy deleteRetentionPolicy)
+        {
+            if (deleteRetentionPolicy == null)
+            {
+                return null;
+            }
+            PSDeleteRetentionPolicy policy = new PSDeleteRetentionPolicy();
+            policy.Enabled = deleteRetentionPolicy.Enabled;
+            policy.RetentionDays = deleteRetentionPolicy.RetentionDays;
+            return policy;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the Enabled flag of the DeleteRetentionPolicy.
+        public bool Enabled { get; set; }
+        //
+        // Summary:
+        //     Gets or Sets the number of days on the DeleteRetentionPolicy.
+        public int? RetentionDays { get; set; }
     }
 }
