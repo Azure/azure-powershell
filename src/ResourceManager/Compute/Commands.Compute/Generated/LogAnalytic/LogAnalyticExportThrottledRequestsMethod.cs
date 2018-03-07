@@ -196,7 +196,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
         }
 
-
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
@@ -239,7 +238,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
         public string Location { get; set; }
 

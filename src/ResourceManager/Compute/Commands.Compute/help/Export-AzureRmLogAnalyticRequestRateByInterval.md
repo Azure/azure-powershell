@@ -12,9 +12,9 @@ Export logs that show Api requests made by this subscription in the given time w
 ## SYNTAX
 
 ```
-Export-AzureRmLogAnalyticRequestRateByInterval [-FromTime] <DateTime> [-GroupByOperationName]
- [-IntervalLength] <IntervalInMins> [-GroupByThrottlePolicy] [-BlobContainerSasUri] <String>
- [-GroupByResourceName] [-ToTime] <DateTime> [-Location] <String> [-AsJob]
+Export-AzureRmLogAnalyticRequestRateByInterval  [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
+ [-BlobContainerSasUri] <String> [-IntervalLength] <IntervalInMins>
+ [-GroupByOperationName] [-GroupByThrottlePolicy] [-GroupByResourceName] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupByOperationName
-Group query result by  by Operation Name.
+Group query result by Operation Name.
 
 ```yaml
 Type: SwitchParameter

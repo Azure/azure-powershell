@@ -16,9 +16,9 @@
 .SYNOPSIS
 Test Export Log Analytic Throttled Requests
 #>
-function Test-ExportLogAnalyticThrottledRequests
+function Test-ExportLogAnalyticThrottledRequestsNegative
 {
-    $loc = "West Central US";
+    $loc = Get-ComputeOperationLocation;
     $from = Get-Date -Year 2018 -Month 2 -Day 27 -Hour 9;
     $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
@@ -31,9 +31,9 @@ function Test-ExportLogAnalyticThrottledRequests
 .SYNOPSIS
 Test Export Log Analytic Request Rate By Interval
 #>
-function Test-ExportLogAnalyticRequestRateByInterval
+function Test-ExportLogAnalyticRequestRateByIntervalNegative
 {
-    $loc = "West Central US";
+    $loc = Get-ComputeOperationLocation;
     $from = Get-Date -Year 2018 -Month 2 -Day 27 -Hour 9;
     $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
@@ -49,22 +49,23 @@ Test Export Log Analytics positive scenario
 #>
 function Test-ExportLogAnalytics
 {
-    $rgname = "hyleelog";
-    $loc = "West Central US";   
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeOperationLocation;
     $stoname = 'sto' + $rgname;
     $stotype = 'Standard_GRS';
     $container = "test";
     $sastoken = '?fakesas'
 
-    #
-    # In order to record this test, run the following manually in a separate Azure Powershell and replace the value of SAT token.
-    #
-    #New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-    #New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    #$stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
-    #Set-AzureRmcurrentStorageAccount -ResourceGroupName $rgname -Name $stoname;
-    #New-AzureStorageContainer -Name $container;
-    #$sastoken = Get-AzureStorageContainer -Name $container | New-AzureStorageContainerSASToken -Permission rwdl;
+    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $key = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+    $context = New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey $key.Key1;
+
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        New-AzureStorageContainer -Name $container -Context $context;
+        $sastoken = Get-AzureStorageContainer -Name $container -Context $context | New-AzureStorageContainerSASToken -Permission rwdl -Context $context;
+    }
 
     try
     {
@@ -76,16 +77,26 @@ function Test-ExportLogAnalytics
         Assert-AreEqual "Succeeded" $result.Status;
         $output = $result | Out-String;
         Assert-True { $output.Contains(".csv"); }
-        #Assert-AreEqual "a" $output;
+        Assert-True { $output.Contains("RequestRateByInterval"); }
 
         $result = Export-AzureRmLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
         Assert-AreEqual "Succeeded" $result.Status;
         $output = $result | Out-String;
         Assert-True { $output.Contains(".csv"); }
+        Assert-True { $output.Contains("ThrottledRequests"); }
+
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            $blobs = Get-AzureStorageBlob -Container test -Context $context;
+            $request_blob = $blobs | where {$_.name.contains("RequestRateByInterval")};
+            $throttle_blob = $blobs | where {$_.name.contains("ThrottledRequests")};
+            Assert-NotNull $request_blob;
+            Assert-NotNull $throttle_blob;
+        }
     }
     finally
     {
         # Cleanup
-        #Clean-ResourceGroup $rgname;
+        Clean-ResourceGroup $rgname;
     }
 }
