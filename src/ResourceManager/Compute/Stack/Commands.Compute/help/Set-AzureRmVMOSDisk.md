@@ -55,7 +55,7 @@ Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <Stri
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMOSDisk** cmdlet set the operating system disk properties on a virtual machine.
+The **Set-AzureRmVMOSDisk** cmdlet sets the operating system disk properties on a virtual machine.
 
 ## EXAMPLES
 
