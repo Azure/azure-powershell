@@ -166,6 +166,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 throw new ArgumentException("Please specify Location");
             }
 
+            ValidateRegistryParameters();
+            ValidateAzureFileVolumeParameters();
+        }
+
+        private void ValidateRegistryParameters()
+        {
             if (!string.IsNullOrEmpty(this.RegistryServer))
             {
                 if (string.IsNullOrEmpty(this.RegistryUsername) || string.IsNullOrEmpty(this.RegistryPassword))
@@ -189,10 +195,23 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
 
                 this.RegistryServer = acrServer;
             }
+        }
 
-            if (!string.IsNullOrWhiteSpace(this.AzureFileVolumeMountPath) && this.AzureFileVolumeMountPath.Contains(":"))
+        private void ValidateAzureFileVolumeParameters()
+        {
+            if (!string.IsNullOrWhiteSpace(this.AzureFileVolumeMountPath))
             {
-                throw new ArgumentException("Azure File volume mount path must not contain ':'");
+                if (this.AzureFileVolumeMountPath.Contains(":"))
+                {
+                    throw new ArgumentException("Azure File volume mount path must not contain ':'");
+                }
+
+                if (string.IsNullOrWhiteSpace(this.AzureFileVolumeShareName)
+                    || string.IsNullOrWhiteSpace(this.AzureFileVolumeAccountName)
+                    || string.IsNullOrWhiteSpace(this.AzureFileVolumeAccountKey))
+                {
+                    throw new ArgumentException("Please specify 'AzureFileVolumeShareName', 'AzureFileVolumeAccountName' and 'AzureFileVolumeAccountKey' when using Azure File volume");
+                }
             }
         }
 

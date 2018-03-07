@@ -27,14 +27,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// New-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
+    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
-        protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
-        protected const string CreateContainerGroupWithRegistryParamSet = "CreateContainerGroupWithRegistryParamSet";
-        protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
-
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -60,29 +56,25 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         public string Image { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            Mandatory = false,
             HelpMessage = "The custom container registry credential.")]
         [ValidateNotNullOrEmpty]
         public PSCredential RegistryCredential { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            Mandatory = false,
             HelpMessage = "The name of the Azure File share to mount.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeShareName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            Mandatory = false,
             HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
         [ValidateNotNullOrEmpty]
         public PSCredential AzureFileVolumeAccountCredential { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            Mandatory = false,
             HelpMessage = "The mount path for the Azure File volume.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeMountPath { get; set; }
@@ -165,7 +157,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
             HelpMessage = "The custom container registry login server.")]
         [ValidateNotNullOrEmpty]
         [Alias("RegistryServer")]
