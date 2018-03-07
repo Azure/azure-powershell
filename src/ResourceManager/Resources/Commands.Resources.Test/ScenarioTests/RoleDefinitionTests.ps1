@@ -325,10 +325,10 @@ function Test-RDGetCustomRoles
 {
     # Setup
     # Basic positive case - read from file
-    $rdName = 'CustomRole Tests Role New'
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("76fd516e-7d0d-4f7f-b4f0-23c14c1c2ccc")
-    New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
-    $createdRole = Get-AzureRmRoleDefinition -Name $rdName
+    $rdName = 'Another tests role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("3d95b97a-5745-4c39-950c-0b608dea635f")
+    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     $roles = Get-AzureRmRoleDefinition -Custom 
     Assert-NotNull $roles
@@ -337,7 +337,7 @@ function Test-RDGetCustomRoles
     }
     
     # Basic positive case - read from object
-    Remove-AzureRmRoleDefinition -Id $createdRole.Id -Force
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
 }
 
 <#
@@ -449,11 +449,13 @@ function Test-RDDataActionsNegativeTestCases
 {
     # Setup
     # Basic positive case - read from file
-    $rdName = 'CustomRole Tests Role New'
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("9191ebb2-3e7e-4f88-bf20-3db25704b1c5")
-    New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+    $rdName = 'Another tests role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("3d95b97a-5745-4c39-950c-0b608dea635f")
+    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     $createdRole = Get-AzureRmRoleDefinition -Name $rdName
+    Assert-NotNull $createdRole
 
     $expectedExceptionForActions = "'Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*' does not match any of the actions supported by the providers."
     $createdRole.Actions.Add("Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*")
