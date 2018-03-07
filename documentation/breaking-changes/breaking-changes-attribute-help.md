@@ -14,7 +14,7 @@ All of the attributes have the following common traits:
   - At runtime, if the cmdlet is used, we will print out a message for each breaking change attribute present in the cmdlet and its properties.
   - We use these attributes to generate the breaking change document for the cmdlet.
 - Each attribute has two additional constructors thet take the following params in addition to the ones the attribute mentions:
-  - The "deprecatedByVersion" is theversion number the breaking change is going to be done in.
+  - The "deprecatedByVersion" is the version number the breaking change is going to be done in.
   - The "changeInEfectByDate" is the date the breaking change is goind to go in effet on. The string formati is "mm/dd/yyyy", as an example : "02/25/2018"
 - Each attribute accepts these two properties by name (you cant have one or the other, you need to speciffy both for the usage message to be generated) :
    - OldWay : The way to call the cmdlet before the breaking change takes effect
@@ -55,11 +55,11 @@ With OldWay/NewWay
 
 ## CmdletDeprecationMarkerAttribute
 
-This attribute marks a cmdlet for deprecation
+This attribute marks a cmdlet for deprecation.
 
 ### Usage
 
-When there is a replacement cmdlet for the one that is being deprecated :
+#### When there is a replacement cmdlet for the one that is being deprecated :
 ```cs
 [CmdletDeprecationMarker("Get-SomeObjectA", "Get-SomeObjectC")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
@@ -72,7 +72,7 @@ public class GetSomeObjectA : Cmdlet
 }
 ```
 
-When there is no replacement cmdlet
+#### When there is no replacement cmdlet
 ```cs
 [CmdletDeprecationMarker("Get-SomeObjectB")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectB"), OutputType(typeof(Foo))]
@@ -85,7 +85,7 @@ public class GetSomeObjectB : AzureRMCmdlet
 }
 ```
 
-When there is a deprecation in effect version specified :
+#### When there is a deprecation in effect version specified :
 ```cs
 [CmdletDeprecationMarker("Get-SomeObjectD", "Get-SomeObjectC", "5.0.0.0")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectD"), OutputType(typeof(Foo))]
@@ -98,7 +98,7 @@ public class GetSomeObjectE : Cmdlet
 }
 ```
 
-When there is a deprecation in effect version and date specified :
+#### When there is a deprecation in effect version and date specified :
 ```cs
 [CmdletDeprecationMarker("Get-SomeObjectE", "Get-SomeObjectC", "5.0.0.0", "02/13/2018")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectE"), OutputType(typeof(Foo))]
@@ -114,29 +114,30 @@ public class GetSomeObjectA : Cmdlet
 ### Effect at runtime
 
 When a cmdlet with the "CmdletDeprecationMarker" attribute added is run the following output is generated on the console at runtime :
-Attribute specified with a replacement cmdlet:
+
+#### Attribute specified with a replacement cmdlet:
 ```powershell
 Get-SomeObjectA <parms here>
 ...
 The cmdlet 'Get-SomeObjectC' is replacing the cmdlet'Get-SomeObjectA'
 ```
 
-Attribute specified without a replacement:
+#### Attribute specified without a replacement:
 ```powershell
 Get-SomeObjectB <params here>
 ...
 The cmdlet 'Get-SomeObjectB' is beind deprecated. There will be no replacement for it.
+```
 
-Attribute specified with a replacement cmdlet and a deprecation in effect version specified:
+#### Attribute specified with a replacement cmdlet and a deprecation in effect version specified:
 ```powershell
 Get-SomeObjectD <parms here>
 ...
 The cmdlet 'Get-SomeObjectC' is replacing the cmdlet'Get-SomeObjectD'
 The change is expected to take effect from the version : 5.0.0.0
 ```
-```
 
-Attribute specified with a replacement cmdlet and a deprecation in effect version and date specified:
+#### Attribute specified with a replacement cmdlet and a deprecation in effect version and date specified:
 ```powershell
 Get-SomeObjectD <parms here>
 ...
@@ -144,4 +145,76 @@ The cmdlet 'Get-SomeObjectC' is replacing the cmdlet'Get-SomeObjectD'
 NOTE : This change will take effect on '02/13/2018'
 The change is expected to take effect from the version : 5.0.0.0
 ```
+
+## CmdletMetadataChangeMarkerAttribute
+This attribute can be used to mark changes with the metadata in the cmdlet. For e.g. if a parameter set is being expired in a cmdlet.
+
+### Usage
+#### Vanilla
+```cs
+[CmdletMetadataChangeMarker("Get-SomeObjectA", "Parameterset1", "Parameterset1 is being deprecated")]
+[Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
+public class GetSomeObjectA : Cmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+
+#### When there is a deprecation in effect version specified :
+```cs
+[CmdletMetadataChangeMarker("Get-SomeObjectB", "Parameterset1", "Parameterset1 is being deprecated", "5.0.0.0")]
+[Cmdlet(VerbsCommon.Get, "SomeObjectB"), OutputType(typeof(Foo))]
+public class GetSomeObjectA : Cmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+
+#### When there is a deprecation in effect version and date specified :
+```cs
+[CmdletMetadataChangeMarker("Get-SomeObjectC", "Parameterset1", "Parameterset1 is being deprecated", "5.0.0.0", "02/13/2018")]
+[Cmdlet(VerbsCommon.Get, "SomeObjectC"), OutputType(typeof(Foo))]
+public class GetSomeObjectA : Cmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+
+### Effect at runtime
+When a cmdlet with the "CmdletMetadataChangeMarkerAttribute" attribute added is run the following output is generated on the console at runtime :
+
+#### Vanilla
+```powershell
+Get-SomeObjectA <parms here>
+...
+The cmdlet 'Get-SomeObjectA'  has the following change to the metadata  'Parameterset1' :
+    Parameterset1 is being deprecated
+```
+
+#### Attribute specified with a deprecation in effect version specified:
+```powershell
+Get-SomeObjectB <parms here>
+...
+The cmdlet 'Get-SomeObjectB'  has the following change to the metadata  'Parameterset1' :
+    Parameterset1 is being deprecated
+The change is expected to take effect from the version : 5.0.0.0
+```
+
+#### Attribute specified with a deprecation in effect version and date specified:
+```powershell
+Get-SomeObjectC <parms here>
+...
+The cmdlet 'Get-SomeObjectC'  has the following change to the metadata  'Parameterset1' :
+    Parameterset1 is being deprecated
+NOTE : This change will take effect on '02/13/2018'
+The change is expected to take effect from the version : 5.0.0.0
 ```
