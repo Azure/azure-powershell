@@ -93,12 +93,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RDGetScenario()
+        public void RDDataActionsNegativeTestCases()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDGet");
+            ResourcesController.NewInstance.RunPsTest("Test-RDDataActionsNegativeTestCases");
         }
 
-        [Fact]
+		[Fact]
+		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void RDGetScenario()
+		{
+			ResourcesController.NewInstance.RunPsTest("Test-RDGet");
+		}
+
+		[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdValidateInputParameters() 
         {

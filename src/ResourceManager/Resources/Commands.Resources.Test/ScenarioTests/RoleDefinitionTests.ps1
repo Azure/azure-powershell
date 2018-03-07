@@ -452,3 +452,38 @@ function Test-RdValidateInputParameters2 ($cmdName)
     $roleDef.AssignableScopes[0] = $scope;
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 }
+
+<#
+.SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
+function Test-RDDataActionsNegativeTestCases
+{
+    # Setup
+    # Basic positive case - read from file
+    $rdName = 'CustomRole Tests Role New'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("9020c682-9677-471d-acc3-d409c6737b13")
+    $createdRole = New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+
+    $expectedExceptionForActions = "'Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*' does not match any of the actions supported by the providers."
+    $createdRole.Actions.Add("Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*")
+    Assert-Throws { New-AzureRmRoleDefinition -Role $createdRole } $expectedExceptionForActions
+    $createdRole.Actions.Clear()
+
+    $createdRole.DataActions.Add("Microsoft.Authorization/*/read")
+    $expectedExceptionForDataActions = "The resouce provider referenced in the action has not published its operations."
+    Assert-Throws { New-AzureRmRoleDefinition -Role $createdRole} $expectedExceptionForDataActions
+    $createdRole.DataActions.Clear()
+
+    $createdRole.DataActions.Add("Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*")
+    $createdRole.NotActions.Add("Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*")
+    Assert-Throws { New-AzureRmRoleDefinition -Role $createdRole } $expectedExceptionForActions
+    $createdRole.NotActions.Clear()
+
+    $createdRole.NotDataActions.Add("Microsoft.Authorization/*/read")
+    Assert-Throws { New-AzureRmRoleDefinition -Role $createdRole } $expectedExceptionForDataActions
+    $createdRole.NotDataActions.Clear()
+
+    # Basic positive case - read from object
+    Remove-AzureRmRoleDefinition -Id $createdRole.Id -Force
+}
