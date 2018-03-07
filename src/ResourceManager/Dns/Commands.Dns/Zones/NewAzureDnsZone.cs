@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections;
-using System.Management.Automation;
+using Microsoft.Azure.Management.Dns.Models;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -35,9 +37,21 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the zone, Public or Private. This property cannot be changed for a zone.")]
+        [ValidateNotNullOrEmpty]
+        public ZoneType? ZoneType { get; set; }
+
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
+        [ValidateNotNull]
+        public List<string> RegistrationVirtualNetworkIds { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
+        [ValidateNotNull]
+        public List<string> ResolutionVirtualNetworkIds { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,9 +68,18 @@ namespace Microsoft.Azure.Commands.Dns
                 this.Name,
             () =>
             {
-                DnsZone result = this.DnsClient.CreateDnsZone(this.Name, this.ResourceGroupName, this.Tag);
+                ZoneType zoneType = this.ZoneType != null ? this.ZoneType.Value : Management.Dns.Models.ZoneType.Public;
+                DnsZone result = this.DnsClient.CreateDnsZone(
+                    this.Name,
+                    this.ResourceGroupName,
+                    this.Tag,
+                    zoneType,
+                    this.RegistrationVirtualNetworkIds,
+                    this.ResolutionVirtualNetworkIds);
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
+                this.WriteVerbose(zoneType == Management.Dns.Models.ZoneType.Private
+                    ? string.Format(ProjectResources.Success_NewPrivateZone, this.Name, this.ResourceGroupName)
+                    : string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                 this.WriteObject(result);
             });
         }

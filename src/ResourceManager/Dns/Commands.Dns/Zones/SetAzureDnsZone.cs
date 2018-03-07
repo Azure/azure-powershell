@@ -20,6 +20,8 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
@@ -39,6 +41,14 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = "Fields")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [ValidateNotNull]
+        public List<string> RegistrationVirtualNetworkIds { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [ValidateNotNull]
+        public List<string> ResolutionVirtualNetworkIds { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
@@ -55,13 +65,26 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
-                zoneToUpdate = new DnsZone
+                if (this.Name.EndsWith("."))
                 {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Etag = "*",
-                    Tags = this.Tag,
-                };
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+                }
+
+                zoneToUpdate = this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName);
+                zoneToUpdate.Etag = "*";
+                zoneToUpdate.Tags = this.Tag;
+
+                // Change mutable fields if value is passed
+                if (this.RegistrationVirtualNetworkIds != null)
+                {
+                    zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
+                }
+
+                if (this.ResolutionVirtualNetworkIds != null)
+                {
+                    zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                }
             }
             else if (this.ParameterSetName == "Object")
             {
