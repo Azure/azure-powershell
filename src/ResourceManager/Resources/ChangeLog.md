@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed issue with importing aliases
+* Add Support for DataActions and NotDataActions to be passed in roledefinition create calls
 
 ## Version 5.4.0
 * Register-AzureRmProviderFeature: Added missing example in the docs
@@ -27,7 +28,6 @@
 * Fix roleassignment get calls when there are duplicate objectIds.
 * Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
 * Fix Roleassignment get calls to be used with roledefinition ID.
-* Add Support for Dataactions and not dataactions to be passed in roledefinition create calls
 
 ## Version 5.3.0
 * Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
