@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 
 ## Version 5.4.0
 * Register-AzureRmProviderFeature: Added missing example in the docs

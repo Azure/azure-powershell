@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with importing aliases
 
 ## Version 0.2.1
 * Fixed assembly loading issue that caused some cmdlets to fail when executing

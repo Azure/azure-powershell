@@ -1239,11 +1239,38 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VM..
+        /// </summary>
+        internal static string VirtualMachineUseConnectionString {
+            get {
+                return ResourceManager.GetString("VirtualMachineUseConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
         /// </summary>
         internal static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
             get {
                 return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where {0} is in the range {1}..
+        /// </summary>
+        internal static string VmssPortRange {
+            get {
+                return ResourceManager.GetString("VmssPortRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VMSS instances..
+        /// </summary>
+        internal static string VmssUseConnectionString {
+            get {
+                return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
             }
         }
     }
