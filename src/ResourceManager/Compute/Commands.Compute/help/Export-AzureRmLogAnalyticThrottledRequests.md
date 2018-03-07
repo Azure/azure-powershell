@@ -12,9 +12,10 @@ Export logs that show total throttled Api requests for this subscription in the 
 ## SYNTAX
 
 ```
-Export-AzureRmLogAnalyticThrottledRequests [-GroupByOperationName] [-FromTime] <DateTime>
- [-GroupByThrottlePolicy] [-BlobContainerSasUri] <String> [-GroupByResourceName] [-ToTime] <DateTime>
- [-Location] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Export-AzureRmLogAnalyticThrottledRequests [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
+ [-BlobContainerSasUri] <String>
+ [-GroupByOperationName]  [-GroupByThrottlePolicy] [-GroupByResourceName] 
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupByOperationName
-Group query result by  by Operation Name.
+Group query result by Operation Name.
 
 ```yaml
 Type: SwitchParameter

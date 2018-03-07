@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportLogAnalyticThrottledRequests()
+        public void TestExportLogAnalyticThrottledRequestsNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticThrottledRequests");
+            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticThrottledRequestsNegative");
         }
 		
 		[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportLogAnalyticRequestRateByInterval()
+        public void TestExportLogAnalyticRequestRateByIntervalNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticRequestRateByInterval");
+            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticRequestRateByIntervalNegative");
         }
 
         [Fact]
