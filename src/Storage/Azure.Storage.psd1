@@ -98,7 +98,7 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
                'New-AzureStorageAccountSASToken', 'Set-AzureStorageCORSRule', 
                'Get-AzureStorageCORSRule', 
                'Get-AzureStorageServiceLoggingProperty', 
-               'Get-AzureStorageServiceMetricsProperty', 
+               'Get-AzureStorageServiceMetricsProperty',  
                'Remove-AzureStorageCORSRule', 
                'Set-AzureStorageServiceLoggingProperty', 
                'Set-AzureStorageServiceMetricsProperty', 'New-AzureStorageContext', 
@@ -116,14 +116,17 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
                'Start-AzureStorageBlobCopy', 
                'Start-AzureStorageBlobIncrementalCopy', 
                'Stop-AzureStorageBlobCopy', 'Update-AzureStorageServiceProperty', 
-               'Get-AzureStorageServiceProperty'
+               'Get-AzureStorageServiceProperty',
+               'Enable-AzureStorageDeleteRetentionPolicy', 
+               'Disable-AzureStorageDeleteRetentionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
-               'Stop-CopyAzureStorageBlob'
+               'Stop-CopyAzureStorageBlob','Enable-AzureStorageSoftDelete',
+				'Disable-AzureStorageSoftDelete'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
