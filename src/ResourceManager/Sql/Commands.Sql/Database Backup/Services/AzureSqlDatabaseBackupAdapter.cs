@@ -302,6 +302,120 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Gets a database's Long Term Retention policy.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        internal AzureSqlDatabaseLongTermRetentionPolicyModel GetDatabaseLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName)
+        {
+            Management.Sql.Models.LongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName);
+            return new AzureSqlDatabaseLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                Policy = response
+            };
+        }
+
+        /// <summary>
+        /// Sets a database's Long Term Retention policy.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="policy">The Long Term Retention policy to apply.</param>
+        internal AzureSqlDatabaseLongTermRetentionPolicyModel SetDatabaseLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            AzureSqlDatabaseLongTermRetentionPolicyModel policy)
+        {
+            Management.Sql.Models.LongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                policy.Policy);
+            return new AzureSqlDatabaseLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                Policy = response
+            };
+        }
+
+        /// <summary>
+        /// Gets the Long Term Retention backups.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        internal IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> GetDatabaseLongTermRetentionBackups(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            bool? onlyLatestPerDatabase,
+            string databaseState)
+        {
+            if (!string.IsNullOrWhiteSpace(backupName))
+            {
+                return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
+                {
+                    GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName), locationName)
+                };
+            }
+            else
+            {
+                return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState)
+                    .Select(b => GetBackupModel(b, locationName));
+            }
+        }
+
+        private AzureSqlDatabaseLongTermRetentionBackupModel GetBackupModel(Management.Sql.Models.LongTermRetentionBackup backup, string locationName)
+        {
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                BackupExpirationTime = backup.BackupExpirationTime,
+                BackupName = backup.Name,
+                BackupTime = backup.BackupTime,
+                DatabaseDeletionTime = backup.DatabaseDeletionTime,
+                DatabaseName = backup.DatabaseName,
+                LocationName = locationName,
+                ResourceId = backup.Id,
+                ServerCreateTime = backup.ServerCreateTime,
+                ServerName = backup.ServerName
+            };
+        }
+
+        /// <summary>
+        /// Removes a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        internal void RemoveDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName);
+        }
+
+        /// <summary>
         /// Get a geo backup policy for a Azure SQL Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>

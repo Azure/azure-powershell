@@ -402,4 +402,10 @@
   <data name="auditChangeGroupDeprecationMessage" xml:space="preserve">
     <value>The action group 'AUDIT_CHANGE_GROUP' is not supported. It will be removed in a future release.</value>
   </data>
+  <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
+    <value>Permanently removing the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
+  </data>
 </root>
