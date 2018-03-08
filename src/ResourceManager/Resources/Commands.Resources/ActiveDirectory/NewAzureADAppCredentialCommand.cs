@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword,
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }

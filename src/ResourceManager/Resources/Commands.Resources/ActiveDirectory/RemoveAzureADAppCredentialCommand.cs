@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateGuidNotEmpty]
         public Guid KeyId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The application object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyId, HelpMessage = "The application object.")]
         public PSADApplication ApplicationObject { get; set; }
 
         [Parameter(Mandatory = false)]

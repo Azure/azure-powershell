@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
@@ -15,17 +15,20 @@ Filters active directory groups.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADGroup -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,26 +36,36 @@ Filters active directory groups.
 
 ## EXAMPLES
 
-### Filters groups using object id
-```
-PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
-```
-
-Gets group with 85F89C90-780E-4AA6-9F4F-6F268D322EEE id
-
-### Filters groups using Search String
-```
-PS C:\> Get-AzureRmADGroup -SearchString Joe
-```
-
-Filters all ad groups that has Joe in the display name.
-
-### List AD groups
+### Example 1 - List all AD groups
 ```
 PS C:\> Get-AzureRmADGroup
 ```
 
-Gets all AD groups
+Lists all AD groups in a tenant.
+
+### Example 2 - List all AD groups using paging
+
+```
+PS C:\> Get-AzureRmADGroup -First 100
+```
+
+Lists the first 100 AD groups in a tenant.
+
+### Example 3 - Get AD group by object id
+
+```
+PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+```
+
+Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
+
+### Example 4 - List groups by search string
+
+```
+PS C:\> Get-AzureRmADGroup -SearchString Joe
+```
+
+Lists all AD groups whose display name begins with 'Joe'.
 
 ## PARAMETERS
 
@@ -63,6 +76,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+Gets the first N objects.
+
+```yaml
+Type: UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -113,14 +156,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
+
+```yaml
+Type: UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### None
+
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 
 ## NOTES
 

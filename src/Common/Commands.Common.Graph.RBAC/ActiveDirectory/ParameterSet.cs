@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string SPNWithPassword = "SPNWithPasswordParameterSet";
 
-        public const string SPNObjectWithCertValue = "SPNObjectWithCertValueParameterSet";
+        public const string ServicePrincipalObjectWithCertValue = "ServicePrincipalObjectWithCertValueParameterSet";
 
-        public const string SPNObjectWithPassword = "SPNObjectWithPasswordParameterSet";
+        public const string ServicePrincipalObjectWithPassword = "ServicePrincipalObjectWithPasswordParameterSet";
 
         public const string ObjectIdWithKeyId = "ObjectIdWithKeyIdParameterSet";
 

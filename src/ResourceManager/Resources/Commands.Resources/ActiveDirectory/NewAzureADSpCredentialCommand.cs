@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.SPNObjectWithCertValue, HelpMessage = "The service principal object.")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.SPNObjectWithPassword, HelpMessage = "The service principal object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithCertValue, HelpMessage = "The service principal object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword, HelpMessage = "The service principal object.")]
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal ServicePrincipalObject { get; set; }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.SPNObjectWithPassword,
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the servicePrincipal that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.SPNObjectWithCertValue,
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the servicePrincipal that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }

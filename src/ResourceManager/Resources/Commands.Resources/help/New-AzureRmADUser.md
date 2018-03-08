@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
@@ -15,8 +15,8 @@ Creates a new active directory user.
 
 ```
 New-AzureRmADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString>
- [-ImmutableId <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ImmutableId <String>] [-MailNickname <String>] [-ForceChangePasswordNextLogin]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,12 +25,13 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Create a new AD user
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword
 ```
 
-{{ Add example description here }}
+Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
 
 ## PARAMETERS
 
@@ -96,6 +97,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MailNickname
+The mail alias for the user.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Password
 Password for the user.
 It must meet the tenant's password complexity requirements.
@@ -145,6 +161,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -161,6 +180,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
