@@ -318,6 +318,138 @@ function Test-PrivateZoneCrudResolutionVnet
 
 <#
 .SYNOPSIS
+Full Private Zone test when virtual networks are specified as ids
+#>
+function Test-PrivateZoneCrudByVirtualNetworkIds
+{
+	$zoneName = Get-RandomZoneName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$regVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$resVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+
+	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -RegistrationVirtualNetworkIds @($regVirtualNetwork.Id) -ResolutionVirtualNetworkIds @($resVirtualNetwork.Id)
+	Assert-NotNull $createdZone
+	Assert-NotNull $createdZone.Etag
+	Assert-AreEqual $zoneName $createdZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdZone.ResourceGroupName
+	Assert-AreEqual 1 $createdZone.Tags.Count
+	Assert-AreEqual 1 $createdZone.NumberOfRecordSets
+	Assert-AreNotEqual $createdZone.NumberOfRecordSets $createdZone.MaxNumberOfRecordSets
+	Assert-AreEqual Private $createdZone.ZoneType
+	Assert-AreEqual 1 $createdZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 1 $createdZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -RegistrationVirtualNetworkIds @() -ResolutionVirtualNetworkIds @()
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 2 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 0 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 0 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2";tag3="value3"} -RegistrationVirtualNetworkIds @($regVirtualNetwork.Id) -ResolutionVirtualNetworkIds @($resVirtualNetwork.Id)
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 3 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 1 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 1 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone.RegistrationVirtualNetworkIds = @()
+	$updatedZone.ResolutionVirtualNetworkIds = @()
+	$updatedZone = $updatedZone | Set-AzureRmDnsZone
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 3 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 0 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 0 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName }
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Private Zone test when virtual networks are specified as objects
+#>
+function Test-PrivateZoneCrudByVirtualNetworkObjects
+{
+	$zoneName = Get-RandomZoneName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$regVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$resVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+
+	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ZoneType Private -RegistrationVirtualNetworks @($regVirtualNetwork) -ResolutionVirtualNetworks @($resVirtualNetwork)
+	Assert-NotNull $createdZone
+	Assert-NotNull $createdZone.Etag
+	Assert-AreEqual $zoneName $createdZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdZone.ResourceGroupName
+	Assert-AreEqual 1 $createdZone.Tags.Count
+	Assert-AreEqual 1 $createdZone.NumberOfRecordSets
+	Assert-AreNotEqual $createdZone.NumberOfRecordSets $createdZone.MaxNumberOfRecordSets
+	Assert-AreEqual Private $createdZone.ZoneType
+	Assert-AreEqual 1 $createdZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 1 $createdZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"} -RegistrationVirtualNetworks @() -ResolutionVirtualNetworks @()
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 2 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 0 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 0 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2";tag3="value3"} -RegistrationVirtualNetworks @($regVirtualNetwork) -ResolutionVirtualNetworks @($resVirtualNetwork)
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 3 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 1 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 1 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$updatedZone.RegistrationVirtualNetworkIds = @()
+	$updatedZone.ResolutionVirtualNetworkIds = @()
+	$updatedZone = $updatedZone | Set-AzureRmDnsZone
+	Assert-NotNull $updatedZone
+	Assert-NotNull $updatedZone.Etag
+	Assert-AreEqual $zoneName $updatedZone.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedZone.ResourceGroupName
+	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
+	Assert-AreEqual 3 $updatedZone.Tags.Count
+	Assert-AreEqual Private $updatedZone.ZoneType
+	Assert-AreEqual 0 $updatedZone.RegistrationVirtualNetworkIds.Count
+	Assert-AreEqual 0 $updatedZone.ResolutionVirtualNetworkIds.Count
+
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName }
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Tests that the zone cmdlets trim the terminating dot from the zone name
 #>
 function Test-ZoneCrudTrimsDot

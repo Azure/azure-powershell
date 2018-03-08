@@ -13,10 +13,19 @@ Creates a new DNS zone.
 
 ## SYNTAX
 
+### VirtualNetworkIds (Default)
 ```
 New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
  [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
  [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VirtualNetworkObjects
+```
+New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+ [-RegistrationVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-ResolutionVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,14 +48,24 @@ PS C:\>$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResou
 This command creates a new DNS zone named myzone.com in the specified resource group, and then
 stores it in the $Zone variable.
 
-### Example 2: Create a Private DNS zone
+### Example 2: Create a Private DNS zone by specifying virtual network IDs
 ```
 PS C:\>$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
 PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkIds @($ResVirtualNetworkId)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
-an associated resolution virtual network, and then stores it in the $Zone variable.
+an associated resolution virtual network (specifying its ID), and then stores it in the $Zone variable.
+
+### Example 3: Create a Private DNS zone by specifying virtual network objects
+```
+PS C:\>$ResVirtualNetwork = Get-AzureRmVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
+PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworks @($ResVirtualNetwork)
+```
+
+This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
+an associated resolution virtual network (referred to by $ResVirtualNetwork variable), and then stores it
+in the $Zone variable.
 
 ## PARAMETERS
 
@@ -83,7 +102,20 @@ Accept wildcard characters: False
 ### -RegistrationVirtualNetworkIds
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: VirtualNetworkIds
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetworks
+The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
+Parameter Sets: VirtualNetworkObjects
 Aliases:
 
 Required: False
@@ -96,7 +128,20 @@ Accept wildcard characters: False
 ### -ResolutionVirtualNetworkIds
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: VirtualNetworkIds
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworks
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
+Parameter Sets: VirtualNetworkObjects
 Aliases:
 
 Required: False
