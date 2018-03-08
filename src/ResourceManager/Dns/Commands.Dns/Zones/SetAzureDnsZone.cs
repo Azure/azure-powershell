@@ -21,39 +21,56 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 namespace Microsoft.Azure.Commands.Dns
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Azure.Commands.Network.Models;
 
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = FieldsIdsParameterSetName), OutputType(typeof(DnsZone))]
     public class SetAzureDnsZone : DnsBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
+        private const string FieldsIdsParameterSetName = "FieldsIds";
+        private const string FieldsObjectsParameterSetName = "FieldsObjects";
+        private const string ObjectParameterSetName = "Object";
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = FieldsIdsParameterSetName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = FieldsIdsParameterSetName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = FieldsIdsParameterSetName)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = FieldsObjectsParameterSetName)]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
         public List<string> RegistrationVirtualNetworkIds { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
         public List<string> ResolutionVirtualNetworkIds { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
+        [ValidateNotNull]
+        public List<PSVirtualNetwork> RegistrationVirtualNetworks { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
+        [ValidateNotNull]
+        public List<PSVirtualNetwork> ResolutionVirtualNetworks { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = ObjectParameterSetName)]
         public SwitchParameter Overwrite { get; set; }
 
         public override void ExecuteCmdlet()
@@ -63,7 +80,7 @@ namespace Microsoft.Azure.Commands.Dns
             DnsZone result = null;
             DnsZone zoneToUpdate = null;
 
-            if (this.ParameterSetName == "Fields")
+            if (this.ParameterSetName == FieldsIdsParameterSetName || this.ParameterSetName == FieldsObjectsParameterSetName)
             {
                 if (this.Name.EndsWith("."))
                 {
@@ -75,18 +92,34 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneToUpdate.Etag = "*";
                 zoneToUpdate.Tags = this.Tag;
 
-                // Change mutable fields if value is passed
-                if (this.RegistrationVirtualNetworkIds != null)
+                if (this.ParameterSetName == FieldsIdsParameterSetName)
                 {
-                    zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
-                }
+                    // Change mutable fields if value is passed
+                    if (this.RegistrationVirtualNetworkIds != null)
+                    {
+                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
+                    }
 
-                if (this.ResolutionVirtualNetworkIds != null)
+                    if (this.ResolutionVirtualNetworkIds != null)
+                    {
+                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                    }
+                }
+                else
                 {
-                    zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                    // Change mutable fields if value is passed
+                    if (this.RegistrationVirtualNetworks != null)
+                    {
+                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                    }
+
+                    if (this.ResolutionVirtualNetworks != null)
+                    {
+                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                    }
                 }
             }
-            else if (this.ParameterSetName == "Object")
+            else if (this.ParameterSetName == ObjectParameterSetName)
             {
                 if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.Overwrite.IsPresent)
                 {
@@ -106,7 +139,7 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneToUpdate.Name,
                 () =>
                 {
-                    bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
+                    bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != ObjectParameterSetName;
                     result = this.DnsClient.UpdateDnsZone(zoneToUpdate, overwrite);
 
                     WriteVerbose(ProjectResources.Success);
