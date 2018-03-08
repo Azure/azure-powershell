@@ -85,7 +85,7 @@ Following is a sample json role definition that can be provided as input
         \[
             "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
         \],
-        "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
+        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
 }
 
 ## EXAMPLES
@@ -109,7 +109,7 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
           PS C:\> $role.Actions.Add("Microsoft.Support/*")
           PS C:\> $role.AssignableScopes.Clear()
-          PS C:\> $role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
+          PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
           PS C:\> New-AzureRmRoleDefinition -Role $role
 ```
