@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
@@ -112,19 +113,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] NatBackendPort { get; set; }
 
-        async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
+        const int FirstPortRangeStart = 50000;
+
+        ResourceConfig<VirtualMachineScaleSet> CreateVmssConfig(
+            ImageAndOsType imageAndOsType)
         {
-            ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
-            VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
-            SubnetName = SubnetName ?? VMScaleSetName;
-            PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
-            LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
-            FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
-            BackendPoolName = BackendPoolName ?? VMScaleSetName;
-
-            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
-
             var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
 
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
@@ -162,9 +155,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
-            var inboundNatPools = new List<NestedResourceConfig<InboundNatPool, LoadBalancer>>();
+            NatBackendPort = imageAndOsType.OsType.UpdatePorts(NatBackendPort);
 
-            var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
+            var inboundNatPoolName = VMScaleSetName;
+            var PortRangeSize = InstanceCount * 2;
+
+            var inboundNatPools = NatBackendPort
+                .Select((port, i) => 
+                {
+                    var portRangeStart = FirstPortRangeStart + i * 2000;
+                    return loadBalancer.CreateInboundNatPool(
+                        name: inboundNatPoolName + port.ToString(),
+                        frontendIpConfiguration: frontendIpConfiguration,
+                        frontendPortRangeStart: portRangeStart,
+                        frontendPortRangeEnd: portRangeStart + PortRangeSize,
+                        backendPort: port);
+                })
+                .ToList();
+
+            return resourceGroup.CreateVirtualMachineScaleSetConfig(
                 name: VMScaleSetName,
                 subnet: subnet,
                 frontendIpConfigurations: new[] { frontendIpConfiguration },
@@ -178,33 +187,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 upgradeMode: MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                     ? UpgradePolicyMode
                     : (UpgradeMode?)null);
+        }
+
+        async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
+        {
+            ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
+            VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
+            SubnetName = SubnetName ?? VMScaleSetName;
+            PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
+            SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
+            LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
+            FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
+            BackendPoolName = BackendPoolName ?? VMScaleSetName;
+
+            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
+
+            var vmss = CreateVmssConfig(imageAndOsType);
 
             var client = new Client(DefaultProfile.DefaultContext);
 
             // get current Azure state
-            var current = await virtualMachineScaleSet.GetStateAsync(client, new CancellationToken());
+            var current = await vmss.GetStateAsync(client, new CancellationToken());
 
-            Location = current.UpdateLocation(Location, virtualMachineScaleSet);
+            Location = current.UpdateLocation(Location, vmss);
 
             imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
-
-            NatBackendPort = imageAndOsType.OsType.UpdatePorts(NatBackendPort);
-
-            var inboundNatPoolName = VMScaleSetName;
-            const int FirstPortRangeStart = 50000;
-            var portRangeStart = FirstPortRangeStart;
-            var PortRangeSize = InstanceCount * 2;
-            foreach (var natBackendPort in NatBackendPort)
-            {                
-                inboundNatPools.Add(
-                    loadBalancer.CreateInboundNatPool(
-                        name: inboundNatPoolName + natBackendPort.ToString(),
-                        frontendIpConfiguration: frontendIpConfiguration,
-                        frontendPortRangeStart: portRangeStart,
-                        frontendPortRangeEnd: portRangeStart + PortRangeSize,
-                        backendPort: natBackendPort));
-                portRangeStart += 2000;
-            }
 
             // generate a domain name label if it's not specified.
             DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -215,10 +222,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
 
-            var engine = new SdkEngine(client.SubscriptionId);
-            var target = virtualMachineScaleSet.GetTargetState(current, engine, Location);
+            vmss = CreateVmssConfig(imageAndOsType);
 
-            var newState = await virtualMachineScaleSet
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = vmss.GetTargetState(current, engine, Location);
+
+            var newState = await vmss
                .UpdateStateAsync(
                    client,
                    target,
@@ -226,10 +235,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                    new ShouldProcess(asyncCmdlet),
                    asyncCmdlet.ReportTaskProgress);
 
-            var result = newState.Get(virtualMachineScaleSet);
+            var result = newState.Get(vmss);
             if (result == null)
             {
-                result = current.Get(virtualMachineScaleSet);
+                result = current.Get(vmss);
             }
 
             if (result != null)
@@ -246,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var range =
                     FirstPortRangeStart.ToString() +
                     ".." +
-                    (FirstPortRangeStart + PortRangeSize).ToString();
+                    (FirstPortRangeStart + InstanceCount * 2).ToString();
 
                 asyncCmdlet.WriteVerbose(
                     Resources.VmssUseConnectionString,

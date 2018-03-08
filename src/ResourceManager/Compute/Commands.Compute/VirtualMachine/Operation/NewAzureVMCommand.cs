@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Compute
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
                 openPorts: OpenPorts,
-                getOsType: () => imageAndOsType.OsType);
+                osType: imageAndOsType.OsType);
 
             return new ResourceConfigs(
                 resourceGroup,
