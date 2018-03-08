@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Dns
         /// <summary>
         /// Type of this Zone
         /// </summary>
-        public ZoneType ZoneType { get; set; }
+        public ZoneType? ZoneType { get; set; }
 
         /// <summary>
         /// Virtual Networks whose names will be registered on this zone
