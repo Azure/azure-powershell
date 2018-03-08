@@ -64,24 +64,29 @@ NOTE: If a user is assigned a role that specifies an operation in NotActions and
 NotActions is not a deny rule - it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.
 
 Following is a sample json role definition that can be provided as input
-        {
-        "Name": "Contoso On-call",
-        "Description": "Can monitor compute, network and storage, and restart virtual machines",
-        "Actions": \[
-        "Microsoft.Compute/*/read",
-        "Microsoft.Compute/virtualMachines/start/action",
-        "Microsoft.Compute/virtualMachines/restart/action",
-        "Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action",
-        "Microsoft.Network/*/read",
-        "Microsoft.Storage/*/read",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Support/*"
+{
+        "Name": "Updated Role",
+        "Description": "Can monitor all resources and start and restart virtual machines",
+        "Actions":
+        \[
+            "*/read",
+            "Microsoft.ClassicCompute/virtualmachines/restart/action",
+            "Microsoft.ClassicCompute/virtualmachines/start/action"
         \],
-        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"\]
-        }
+        "NotActions":
+        \[
+            "*/write"
+        \],
+        "DataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        \],
+        "NotDataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        \],
+        "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
+}
 
 ## EXAMPLES
 

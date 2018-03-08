@@ -45,9 +45,21 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
             "*/read",
             "Microsoft.ClassicCompute/virtualmachines/restart/action",
             "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \]
+        \],
+        "NotActions":
+        \[
+            "*/write"
+        \],
+        "DataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        \],
+        "NotDataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        \],
         "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
-    }
+}
 
 ## EXAMPLES
 

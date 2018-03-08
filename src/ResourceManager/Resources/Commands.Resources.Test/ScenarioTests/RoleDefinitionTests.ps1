@@ -163,6 +163,7 @@ function Test-RDCreateFromFile
     $badScopeException = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts."
     Assert-Throws { $rd = New-AzureRmRoleDefinition -InputFile .\Resources\InvalidRoleDefinition.json } $badScopeException
 }
+
 <#
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition remove.
@@ -188,12 +189,10 @@ function Test-RDRemove
     $Rd = New-AzureRmRoleDefinition -Role $roleDef
     Assert-NotNull $Rd
 
-
     # try to delete the role definition with subscription scope - should fail
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
     Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
 
-    return
     # try to delete the role definition without specifying scope (default to subscription scope) - should fail
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
     Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException

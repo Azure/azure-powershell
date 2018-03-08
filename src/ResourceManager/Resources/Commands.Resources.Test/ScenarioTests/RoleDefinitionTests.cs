@@ -56,21 +56,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
         }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDUpdate()
-		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
-		}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDUpdate()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
+        }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDCreateFromFile()
-		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
-		}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDCreateFromFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
+        }
 
-		[Fact(Skip = "Unskip after service side change")]
+        [Fact(Skip = "Unskip after service side change")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDRemoveScenario()
         {
@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RDDataActionsNegativeTestCases");
         }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDGetScenario()
-		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDGet");
-		}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDGetScenario()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDGet");
+        }
 
-		[Fact]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdValidateInputParameters() 
         {
