@@ -352,10 +352,11 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
 
 # Publish the Netcore modules and rollup module, if specified.
 if ($scope -eq 'AzureRM.Netcore') {
-    
     Write-Host "Updating profile module"
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile.Netcore" -TemplatePath $templateLocation -IsRMModule $true
     Write-Host "Updated profile module"
+
+    $env:PSModulePath += "$([IO.Path]::PathSeparator)$resourceManagerRootFolder\AzureRM.Profile.Netcore";
 
     foreach ($module in $resourceManagerModules) {
         if (($module.Name -ne "AzureRM.Profile.Netcore")) {
