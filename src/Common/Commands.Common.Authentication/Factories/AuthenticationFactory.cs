@@ -64,22 +64,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 configuration.ValidateAuthority);
             if (account != null && account.Type == AzureAccount.AccountType.ManagedService)
             {
-                if (environment == null)
-                {
-                    throw new InvalidOperationException("Environment is required for MSI Login");
-                }
-
-                if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
-                {
-                    account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
-                }
-
-                if (string.IsNullOrWhiteSpace(tenant))
-                {
-                    tenant = environment.AdTenant ?? "Common";
-                }
-
-                token = new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
+                token = GetManagedServiceToken(account, environment, tenant, resourceId);
             }
             else if (account != null && environment != null
                 && account.Type == AzureAccount.AccountType.AccessToken)
@@ -293,33 +278,130 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 TracingAdapter.Information(Resources.UPNAuthenticationTrace,
                     context.Account.Id, context.Environment.Name, tenant);
+
+                // TODO: When we will refactor the code, need to add tracing
+                /*TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
+                    token.LoginType, token.TenantId, token.UserId);*/
+
+                var env = new ActiveDirectoryServiceSettings
+                {
+                    AuthenticationEndpoint = context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ActiveDirectory),
+                    TokenAudience = context.Environment.GetEndpointAsUri(context.Environment.GetTokenAudience(targetEndpoint)),
+                    ValidateAuthority = !context.Environment.OnPremise
+                };
+
                 var tokenCache = AzureSession.Instance.TokenCache;
-                if (context.TokenCache != null && context.TokenCache.CacheData != null && context.TokenCache.CacheData.Length > 0)
+
+                if (context.TokenCache != null)
                 {
                     tokenCache = context.TokenCache;
                 }
 
-                var token = Authenticate(
-                                context.Account,
-                                context.Environment,
+                ServiceClientCredentials result = null;
+                switch (context.Account.Type)
+                {
+                    case AzureAccount.AccountType.ManagedService:
+                        result = new RenewingTokenCredential(
+                            GetManagedServiceToken(
+                                context.Account, 
+                                context.Environment, 
+                                tenant, 
+                                context.Environment.GetTokenAudience(targetEndpoint)));
+                        break;
+                    case AzureAccount.AccountType.User:
+                        result = Rest.Azure.Authentication.UserTokenProvider.CreateCredentialsFromCache(
+                           AdalConfiguration.PowerShellClientId,
+                           tenant,
+                           context.Account.Id,
+                           env,
+                           tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
+                        break;
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        if (context.Account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+                        {
+                            result = ApplicationTokenProvider.LoginSilentAsync(
                                 tenant,
-                                null,
-                                ShowDialog.Never,
-                                null,
-                                tokenCache,
-                                context.Environment.GetTokenAudience(targetEndpoint));
-                TracingAdapter.Information(
-                    Resources.UPNAuthenticationTokenTrace,
-                    token.LoginType,
-                    token.TenantId,
-                    token.UserId);
-                return new RenewingTokenCredential(token);
+                                context.Account.Id,
+                                new CertificateApplicationCredentialProvider(
+                                    context.Account.GetThumbprint()),
+                                env,
+                                tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = ApplicationTokenProvider.LoginSilentAsync(
+                                tenant,
+                                context.Account.Id,
+                                new KeyStoreApplicationCredentialProvider(tenant),
+                                env,
+                                tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
+                        }
+                        break;
+                    default:
+                        throw new NotSupportedException(context.Account.Type.ToString());
+                }
+
+                return result;
             }
             catch (Exception ex)
             {
                 TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
                 throw new ArgumentException(Resources.InvalidArmContext, ex);
             }
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            TokenCache cache = tokenCache as TokenCache;
+            if (cache != null && account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
+            {
+                switch (account.Type)
+                {
+                    case AzureAccount.AccountType.AccessToken:
+                        account.SetProperty(AzureAccount.Property.AccessToken, null);
+                        account.SetProperty(AzureAccount.Property.GraphAccessToken, null);
+                        account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, null);
+                        break;
+                    case AzureAccount.AccountType.ManagedService:
+                        account.SetProperty(AzureAccount.Property.MSILoginUri, null);
+                        break;
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        try
+                        {
+                            ServicePrincipalKeyStore.DeleteKey(account.Id, account.GetTenants().FirstOrDefault());
+                        }
+                        catch
+                        {
+                            // make best effort to remove credentials
+                        }
+
+                        RemoveFromTokenCache(cache, account);
+                        break;
+                    case AzureAccount.AccountType.User:
+                        RemoveFromTokenCache(cache, account);
+                        break;
+                }
+            }
+        }
+
+        private IAccessToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)
+        {
+            if (environment == null)
+            {
+                throw new InvalidOperationException("Environment is required for MSI Login");
+            }
+
+            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+            {
+                account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
+            }
+
+            if (string.IsNullOrWhiteSpace(tenant))
+            {
+                tenant = environment.AdTenant ?? "Common";
+            }
+
+            return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
         }
 
         private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
@@ -376,41 +458,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
-        {
-            TokenCache cache = tokenCache as TokenCache;
-            if (cache != null && account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
-            {
-                switch (account.Type)
-                {
-                    case AzureAccount.AccountType.AccessToken:
-                        account.SetProperty(AzureAccount.Property.AccessToken, null);
-                        account.SetProperty(AzureAccount.Property.GraphAccessToken, null);
-                        account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, null);
-                        break;
-                    case AzureAccount.AccountType.ManagedService:
-                        account.SetProperty(AzureAccount.Property.MSILoginUri, null);
-                        break;
-                    case AzureAccount.AccountType.ServicePrincipal:
-                        try
-                        {
-                            ServicePrincipalKeyStore.DeleteKey(account.Id, account.GetTenants().FirstOrDefault());
-                        }
-                        catch
-                        {
-                            // make best effort to remove credentials
-                        }
-
-                        RemoveFromTokenCache(cache, account);
-                        break;
-                    case AzureAccount.AccountType.User:
-                        RemoveFromTokenCache(cache, account);
-                        break;
-                }
-            }
-        }
-
-        void RemoveFromTokenCache(TokenCache cache, IAzureAccount account)
+        private void RemoveFromTokenCache(TokenCache cache, IAzureAccount account)
         {
             if (cache != null && cache.Count > 0 && account != null && !string.IsNullOrWhiteSpace(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
             {
@@ -422,7 +470,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        bool MatchCacheItem(IAzureAccount account, TokenCacheItem item)
+        private bool MatchCacheItem(IAzureAccount account, TokenCacheItem item)
         {
             bool result = false;
             if (account != null && !string.IsNullOrWhiteSpace(account.Type) && item != null)
