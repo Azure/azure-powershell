@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fix example in New-AzureRmStorageAccount
+* Fix examples to reflect required lowercase syntax in StorageAccountName
 
 ## Version 4.2.1
 * Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
