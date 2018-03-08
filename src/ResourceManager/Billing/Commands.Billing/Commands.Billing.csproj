@@ -49,10 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\BillingPeriods\GetAzureRmBillingPeriod.cs" />
+    <Compile Include="Cmdlets\EnrollmentAccounts\GetAzureRmEnrollmentAccount.cs" />
     <Compile Include="Cmdlets\Invoices\GetAzureRmBillingInvoice.cs" />
     <Compile Include="Common\AzureBillingCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Models\PSEnrollmentAccount.cs" />
     <Compile Include="Models\PSBillingPeriod.cs" />
     <Compile Include="Models\PSInvoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
