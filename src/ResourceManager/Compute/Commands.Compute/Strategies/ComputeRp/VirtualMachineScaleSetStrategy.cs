@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
-            Func<ImageAndOsType> getImageAndOsType,
+            ImageAndOsType imageAndOsType,
             string adminUsername,
             string adminPassword,
             string vmSize,
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 name: name,
                 createModel: engine =>
                 {
-                    var imageAndOsType = getImageAndOsType();
                     return new VirtualMachineScaleSet()
                     {
                         Zones = frontendIpConfigurations

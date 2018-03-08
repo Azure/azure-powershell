@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Compute
             var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                getDomainNameLabel: () => DomainNameLabel,
+                domainNameLabel: DomainNameLabel,
                 allocationMethod: AllocationMethod);
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Compute
                 configs.ResourceGroup.CreateVirtualMachineConfig(
                     name: Name,
                     networkInterface: configs.NetworkInterface,
-                    getImageAndOsType: () => imageAndOsType,
+                    imageAndOsType: imageAndOsType,
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                     size: Size,
