@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                 name: PublicIpAddressName,
-                getDomainNameLabel: () => DomainNameLabel,
+                domainNameLabel: DomainNameLabel,
                 allocationMethod: AllocationMethod);
 
             var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 frontendIpConfigurations: new[] { frontendIpConfiguration },
                 backendAdressPool: backendAddressPool,
                 inboundNatPools: inboundNatPools,
-                getImageAndOsType: () => imageAndOsType,
+                imageAndOsType: imageAndOsType,
                 adminUsername: Credential.UserName,
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 vmSize: VmSize,

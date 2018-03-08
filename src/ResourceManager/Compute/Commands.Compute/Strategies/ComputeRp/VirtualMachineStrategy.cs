@@ -16,7 +16,6 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            Func<ImageAndOsType> getImageAndOsType,
+            ImageAndOsType imageAndOsType,
             string adminUsername,
             string adminPassword,
             string size,
@@ -48,36 +47,32 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: engine =>
+                createModel: engine => new VirtualMachine
                 {
-                    var imageAndOsType = getImageAndOsType();
-                    return new VirtualMachine
+                    OsProfile = new OSProfile
                     {
-                        OsProfile = new OSProfile
+                        ComputerName = name,
+                        WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                        LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                        AdminUsername = adminUsername,
+                        AdminPassword = adminPassword,
+                    },
+                    NetworkProfile = new NetworkProfile
+                    {
+                        NetworkInterfaces = new[]
                         {
-                            ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
-                            LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                            AdminUsername = adminUsername,
-                            AdminPassword = adminPassword,
-                        },
-                        NetworkProfile = new NetworkProfile
-                        {
-                            NetworkInterfaces = new[]
-                            {
-                                engine.GetReference(networkInterface)
-                            }
-                        },
-                        HardwareProfile = new HardwareProfile
-                        {
-                            VmSize = size
-                        },
-                        StorageProfile = new StorageProfile
-                        {
-                            ImageReference = imageAndOsType.Image
-                        },
-                        AvailabilitySet = engine.GetReference(availabilitySet)
-                    };
+                            engine.GetReference(networkInterface)
+                        }
+                    },
+                    HardwareProfile = new HardwareProfile
+                    {
+                        VmSize = size
+                    },
+                    StorageProfile = new StorageProfile
+                    {
+                        ImageReference = imageAndOsType.Image
+                    },
+                    AvailabilitySet = engine.GetReference(availabilitySet)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
