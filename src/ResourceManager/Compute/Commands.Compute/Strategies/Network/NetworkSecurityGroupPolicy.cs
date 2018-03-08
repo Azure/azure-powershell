@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 createTime: _ => 15);
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name, Func<int[]> getOpenPorts)
+            this ResourceConfig<ResourceGroup> resourceGroup, string name, int[] openPorts)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: _ => new NetworkSecurityGroup
                 {
-                    SecurityRules = getOpenPorts()
+                    SecurityRules = openPorts
                         .Select((port, index) => new SecurityRule
                         {
                             Name = name + port,
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             int[] openPorts,
-            Func<OperatingSystemTypes> getOsType)
+            OperatingSystemTypes osType)
             => resourceGroup.CreateNetworkSecurityGroupConfig(
                 name,
-                () => getOsType().UpdatePorts(openPorts));
+                osType.UpdatePorts(openPorts));
     }
 }
