@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
-            NatBackendPort = imageAndOsType.OsType.UpdatePorts(NatBackendPort);
+            NatBackendPort = imageAndOsType.UpdatePorts(NatBackendPort);
 
             var inboundNatPoolName = VMScaleSetName;
             var PortRangeSize = InstanceCount * 2;
 
             var inboundNatPools = NatBackendPort
-                .Select((port, i) => 
+                ?.Select((port, i) => 
                 {
                     var portRangeStart = FirstPortRangeStart + i * 2000;
                     return loadBalancer.CreateInboundNatPool(
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
-            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
+            ImageAndOsType imageAndOsType = null;
 
             var vmss = CreateVmssConfig(imageAndOsType);
 

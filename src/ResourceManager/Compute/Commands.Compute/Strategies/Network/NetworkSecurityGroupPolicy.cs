@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 createModel: _ => new NetworkSecurityGroup
                 {
                     SecurityRules = openPorts
-                        .Select((port, index) => new SecurityRule
+                        ?.Select((port, index) => new SecurityRule
                         {
                             Name = name + port,
                             Protocol = "Tcp",
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             int[] openPorts,
-            OperatingSystemTypes osType)
+            ImageAndOsType imageAndOsType)
             => resourceGroup.CreateNetworkSecurityGroupConfig(
                 name,
-                osType.UpdatePorts(openPorts));
+                imageAndOsType.UpdatePorts(openPorts));
     }
 }
