@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Compute
             var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                 name: SecurityGroupName,
                 openPorts: OpenPorts,
-                osType: imageAndOsType.OsType);
+                imageAndOsType: imageAndOsType);
 
             return new ResourceConfigs(
                 resourceGroup,
@@ -296,7 +296,8 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface: configs.NetworkInterface,
                     imageAndOsType: imageAndOsType,
                     adminUsername: Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
+                    adminPassword:
+                        new NetworkCredential(string.Empty, Credential.Password).Password,
                     size: Size,
                     availabilitySet: configs.AvailabilitySet));
         }
@@ -329,7 +330,7 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName ?? Name;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            var imageAndOsType = new ImageAndOsType(OperatingSystemTypes.Windows, null);
+            ImageAndOsType imageAndOsType = null;
 
             Func<VmResourceConfigs> vmConfigs = null;
             if (DiskFile == null)

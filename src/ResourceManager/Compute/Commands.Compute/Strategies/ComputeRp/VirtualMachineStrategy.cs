@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     StorageProfile = new StorageProfile
                     {
-                        ImageReference = imageAndOsType.Image
+                        ImageReference = imageAndOsType?.Image
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet)
                 });
