@@ -163,3 +163,23 @@ function Test-ProfileGetResourceUsages
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Get supported optimization types exercise
+#>
+function Test-ProfileGetSupportedOptimizationTypes
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+    
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
+
+	$supportedOptimizationTypes = Get-AzureRmCdnProfileSupportedOptimizationTypes -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $supportedOptimizationTypes
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}

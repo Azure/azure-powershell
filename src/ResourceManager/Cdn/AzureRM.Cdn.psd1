@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
@@ -82,8 +82,9 @@ CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl',
                'Start-AzureRmCdnEndpoint', 'Stop-AzureRmCdnEndpoint', 
                'Test-AzureRmCdnCustomDomain', 'Get-AzureRmCdnCustomDomain', 
                'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain', 
-               'Get-AzureRmCdnProfileResourceUsage', 
-               'Get-AzureRmCdnEndpointResourceUsage', 
+               'Enable-AzureRmCdnCustomDomain', 'Disable-AzureRmCdnCustomDomain', 
+               'Get-AzureRmCdnProfileResourceUsage', 'Confirm-AzureRmCdnEndpointProbeUrl',
+               'Get-AzureRmCdnEndpointResourceUsage', 'Get-AzureRmCdnProfileSupportedOptimizationTypes',
                'Get-AzureRmCdnSubscriptionResourceUsage', 
                'Get-AzureRmCdnEdgeNodes'
 

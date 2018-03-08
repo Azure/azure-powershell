@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 ProfileName = CdnEndpoint.ProfileName;
                 EndpointName = CdnEndpoint.Name;
             }
-
+            
             var endpointUsages = CdnManagementClient.Endpoints.ListResourceUsage(ResourceGroupName, ProfileName, EndpointName).Select(r => r.ToPsResourceUsage());
             WriteVerbose(Resources.Success);
             WriteObject(endpointUsages, true);
