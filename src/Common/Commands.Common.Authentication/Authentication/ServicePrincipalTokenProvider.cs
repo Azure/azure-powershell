@@ -15,7 +15,6 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.Azure.Authentication;
 #if NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common;
 #endif
