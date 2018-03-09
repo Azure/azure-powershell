@@ -111,7 +111,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
-            Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
@@ -724,8 +723,9 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.Sku() != null
-                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
+                    e => e.Location.Canonicalize().Equals(this.Location.Canonicalize())
+                      && e.Sku() != null
+                      && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {
