@@ -655,6 +655,10 @@ function Test-AnalysisServicesServerSynchronizeSingle
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env.ASAZURE_TESTUSER
+		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverCreated.State -like "Succeeded"}
+
 		# Check server exists.
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
