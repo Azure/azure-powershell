@@ -26,3 +26,17 @@
 -->
 
 # Upcoming Breaking Changes
+
+The following cmdlets were affected this release:
+
+**Get-AzureRmRoleDefinition**
+- Parameter "AtScopeAndBelow" is being removed.
+
+```powershell
+
+# Old
+# Get-AzureRmRoleDefinition [other required parameters] -AtScopeAndBelow
+
+# New
+# Get-AzureRmRoleDefinition [other required parameters]
+```

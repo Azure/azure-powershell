@@ -139,7 +139,7 @@ The type of identity used for the virtual machine. Currently, the only supported
 Type: ResourceIdentityType
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
-Accepted values: SystemAssigned
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
 Required: True
 Position: Named

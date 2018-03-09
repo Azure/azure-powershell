@@ -101,6 +101,9 @@
   "src/ResourceManager/MachineLearningCompute/" : [
      ".\\src\\ResourceManager\\MachineLearningCompute\\Commands.MachineLearningCompute.Test\\bin\\Debug\\Microsoft.Azure.Commands.MachineLearningCompute.Test.dll"
   ],
+  "src/ResourceManager/ManagedServiceIdentity/" : [
+    ".\\src\\ResourceManager\\ManagedServiceIdentity\\Commands.ManagedServiceIdentity.Test\\bin\\Debug\\Microsoft.Azure.Commands.ManagedServiceIdentity.Test.dll"
+ ],
   "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
     ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
   ],
