@@ -21,23 +21,32 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true)]
+    [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
+        /// <summary>
+        /// Gets or sets whether or not to use the Long Term Retention Vaults.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "Whether or not to use the legacy Long Term Retention Vaults.")]
+        public SwitchParameter Legacy { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> GetEntity()
         {
-            ICollection<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> results;
-
-            results = new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
-            results.Add(ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
-                this.ResourceGroupName, 
-                this.ServerName, 
-                this.DatabaseName));
-
-            return results;
+            return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()
+            {
+                ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    this.DatabaseName,
+                    Legacy.IsPresent)
+            };
         }
 
         /// <summary>

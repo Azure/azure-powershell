@@ -333,9 +333,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.LegacySdk.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.Database LegacyRestoreDatabase(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
         {
             return GetLegacySqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
+        }
+
+        /// <summary>
+        /// Restore a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="parameters">Parameters describing the database restore request</param>
+        /// <returns>Restored database object</returns>
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters)
+        {
+            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>

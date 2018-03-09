@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
@@ -19,6 +20,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the name of the database
         /// </summary>
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the long term retention policy of the database
+        /// </summary>
+        public LongTermRetentionPolicy Policy { get; set; }
 
         /// <summary>
         /// Gets or sets the backup archival state

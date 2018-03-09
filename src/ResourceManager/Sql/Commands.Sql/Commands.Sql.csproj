@@ -63,11 +63,8 @@
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
-    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\RemoveAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
-    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseLongTermRetentionPolicy.cs" />
-    <Compile Include="Database Backup\Cmdlet\SetAzureRmSqlDatabaseLongTermRetentionPolicy.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionPolicyModel.cs" />
     <Compile Include="Database\Cmdlet\StopAzureSqlDatabaseActivity.cs" />
