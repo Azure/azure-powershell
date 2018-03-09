@@ -194,13 +194,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = true)]
-        [AllowNull]
         public SwitchParameter Reimage { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
-        [AllowNull]
         public SwitchParameter ReimageAll { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
