@@ -16,11 +16,8 @@
 #>
 
 param(
-    [Parameter(HelpMessage="The version number for the generated MSI.")]
-    [string]$version,
-
-    [Parameter(HelpMessage="Forces a fresh installation of the Azure and AzureRm cmdlets from the gallery")]
-    [Switch]$force,
+    [Parameter(HelpMessage="The version number for the generated MSI.  This will be obtained from the AzureRM module if not specified.")]
+    [string]$version="0",
     
     [Parameter(HelpMessage="Prevent a build number from being tacked on the end of the version number.")]
     [Switch]$noBuildNumber,
@@ -35,16 +32,6 @@ if( (-not (get-command -ea 0 light)) -or (-not (get-command -ea 0 heat)) -or (-n
 }
 
 # variables 
-
-# the build number is the number of commits in this branch. 
-
-if( -not $noBuildNumber ) {
-    # useful for an ever-increasing number that can be tracked to a commit.
-    $buildNumber = git rev-list --parents HEAD --count --full-history
-
-    # tack the build number onto the version
-    $version = "$version.$buildNumber"
-}
 
 # output filename (plus '-$version-$arch.msi' )
 $outputName ="Azure-Cmdlets"
@@ -61,18 +48,18 @@ $modulesDir = "$tmp\modules"
 # archetectures supported
 $archs = @('x86','x64')
 
+$scriptLocation = (Get-Item $PSCommandPath).Directory
+
 # cleanup first
-if( $force  ) {
-    Write-Host -fore yellow "Forcing clean install"
-    $shhh = (cmd.exe /c rmdir /s /q $tmp)
-}
+Write-Host -fore yellow "Forcing clean install"
+$shhh = (cmd.exe /c rmdir /s /q $tmp)
 
 $shhh = mkdir -ea 0 "$tmp"
 erase -ea 0 "$tmp/*.wixobj"
 erase -ea 0 "$tmp/*.wxi"
 
-erase -ea 0 "$PSSCRIPTROOT/*.wixpdb"
-erase -ea 0 "$PSSCRIPTROOT/*.msi"
+erase -ea 0 "$scriptLocation/*.wixpdb"
+erase -ea 0 "$scriptLocation/*.msi"
 
 # install modules locally.
 if ( -not (test-path $modulesDir))  {
@@ -84,12 +71,29 @@ if ( -not (test-path $modulesDir))  {
     save-module azure -path $modulesDir -Repository $repository
     save-module azurerm -path $modulesDir -Repository $repository
 
+    if ($version -eq "0")
+    {
+        $version = (Get-ChildItem -Path $modulesDir\AzureRM).Name
+    }
+
     Write-Host -fore green "Tweaking Modules"
     cmd /c dir /a/s/b "$modulesDir\psgetmoduleinfo.xml" |% {
         Write-Host -fore Gray " - Patching $_"
         (gc $_ -raw ) -replace ".*<S N=.InstalledLocation.*S>",""  | Set-Content $_
         (gc $_ -raw ) -replace ".*<S N=.RepositorySourceLocation`".*S>",'<S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2/</S>'  | Set-Content $_
         (gc $_ -raw ) -replace ".*<S N=.Repository`".*S>",'<S N="Repository">PSGallery</S>'  | Set-Content $_
+    }
+}
+
+# the build number is the number of commits in this branch. 
+if( -not $noBuildNumber ) {
+    # useful for an ever-increasing number that can be tracked to a commit.
+    $buildNumber = git rev-list --parents HEAD --count --full-history
+
+    # tack the build number onto the version
+    if ($buildNumber -ne $null)
+    {
+        $version = "$version.$buildNumber"
     }
 }
 
@@ -118,7 +122,7 @@ if( $LASTEXITCODE) {
 $archs |% {
     $arch = $_
     Write-Host -fore green "Compiling Wix Script for $arch"  
-    $out = candle -arch $arch -ext WixUIExtension "-dversion=$version" -sw1118 -nologo "-I$tmp" "-dtmp=$tmp" "-dmodulesDir=$modulesDir" "-dproductName=$productName" $PSScriptRoot\azurecmd.wxs -out "$tmp\$outputName-$version-$arch.wixobj"
+    $out = candle -arch $arch -ext WixUIExtension "-dversion=$version" -sw1118 -nologo "-I$tmp" "-dtmp=$tmp" "-dmodulesDir=$modulesDir" "-dproductName=$productName" $scriptLocation\azurecmd.wxs -out "$tmp\$outputName-$version-$arch.wixobj"
     if( $LASTEXITCODE) {
         write-host -fore red "Failed to compile WiX Script for $arch"
         write-host -fore red $out        
@@ -126,14 +130,14 @@ $archs |% {
     }
 
     Write-Host -fore green "Creating installer for $arch"
-    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$PSSCRIPTROOT\$outputName-$version-$arch.msi" -sw1076 -sice:ICE80  -nologo 
+    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$scriptLocation\$outputName-$version-$arch.msi" -sw1076 -sice:ICE80  -nologo -b $scriptLocation
     if( $LASTEXITCODE) {
         write-host -fore red "ERROR: Failed to link MSI for $arch" 
         write-host -fore red $out
         break;
     }
 
-    write-host -fore cyan "Installer Created: $PSSCRIPTROOT\$outputName-$version-$arch.msi"
+    write-host -fore cyan "Installer Created: $scriptLocation\$outputName-$version-$arch.msi"
 }
 if( $LASTEXITCODE) {
     # did it fail in the loop?
