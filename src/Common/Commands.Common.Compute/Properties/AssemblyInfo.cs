@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.Common.Compute")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.Common.Compute")]
 [assembly: AssemblyDescription("Compute library generated from AutoRest")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
