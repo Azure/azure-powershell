@@ -73,27 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void Initialize(string fileName)
         {
-            lock (fileLock)
-            {
-                if (_store.FileExists(fileName))
-                {
-                    var existingData = _store.ReadFileAsBytes(fileName);
-                    if (existingData != null)
-                    {
-                        try
-                        {
-                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(fileName);
-                        }
-                    }
-                }
-                
-                // Create the file to start with
-                _store.WriteFile(CacheFileName, ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
-            }
+            ReadFileIntoCache();
 
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
@@ -113,24 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // Reload the cache from the persistent store in case it changed since the last access.
         void BeforeAccessNotification(TokenCacheNotificationArgs args)
         {
-            lock (fileLock)
-            {
-                if (_store.FileExists(CacheFileName))
-                {
-                    var existingData = _store.ReadFileAsBytes(CacheFileName);
-                    if (existingData != null)
-                    {
-                        try
-                        {
-                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(CacheFileName);
-                        }
-                    }
-                }
-            }
+            ReadFileIntoCache();
         }
 
         // Triggered right after ADAL accessed the cache.
@@ -142,16 +105,52 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void EnsureStateSaved()
         {
+            if (HasStateChanged)
+            {
+                // reflect changes in the persistent store
+                WriteCacheIntoFile();
+                // once the write operation took place, restore the HasStateChanged bit to false
+                HasStateChanged = false;
+            }
+        }
+
+        private void ReadFileIntoCache()
+        {
             lock (fileLock)
             {
-                if (HasStateChanged)
+                if (_store.FileExists(CacheFileName))
                 {
-                    // reflect changes in the persistent store
-                    _store.WriteFile(CacheFileName,
-                    ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
-                    // once the write operation took place, restore the HasStateChanged bit to false
-                    HasStateChanged = false;
+                    var existingData = _store.ReadFileAsBytes(CacheFileName);
+                    if (existingData != null)
+                    {
+#if !NETSTANDARD
+                        try
+                        {
+                            Deserialize(protectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            _store.DeleteFile(CacheFileName);
+                        }
+#else
+                        Deserialize(existingData);
+#endif
+                    }
                 }
+            }
+        }
+
+        private void WriteCacheIntoFile()
+        {
+#if !NETSTANDARD
+            var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
+#else
+            var dataToWrite = Serialize();
+#endif
+
+            lock(fileLock)
+            {
+                _store.WriteFile(CacheFileName, dataToWrite);
             }
         }
     }
