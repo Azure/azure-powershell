@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -51,10 +52,30 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         private const string GetBackupByInputObjectSet = "GetBackupByInputObject";
 
         /// <summary>
-        /// Parameter set for using a Database Input Object when getting a multiple backups.
+        /// Parameter set for using a Database Input Object when getting multiple backups.
         /// </summary>
         private const string GetBackupsByInputObjectSet = "GetBackupsByInputObject";
-        
+
+        /// <summary>
+        /// Parameter set for using a Database Resource ID when getting a single backup.
+        /// </summary>
+        private const string GetBackupByResourceIdSet = "GetBackupByResourceId";
+
+        /// <summary>
+        /// Parameter set for using a Database Resource ID when getting multiple backups.
+        /// </summary>
+        private const string GetBackupsByResourceIdSet = "GetBackupsByResourceId";
+
+        /// <summary>
+        /// The index of ServerName in the LTR Backup Resource ID.
+        /// </summary>
+        private const int ServerNameIndex = 7;
+
+        /// <summary>
+        /// The index of DatabaseName in the LTR Backup Resource ID.
+        /// </summary>
+        private const int DatabaseNameIndex = 9;
+
         /// <summary>
         /// The location the backups are in.
         /// </summary>
@@ -78,7 +99,17 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The location the backups are in.")]
-        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupByResourceIdSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The location the backups are in.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupsByResourceIdSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The location the backups are in.")]
+        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentonBackups")]
         public string LocationName { get; set; }
 
         /// <summary>
@@ -131,6 +162,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the backup.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupByResourceIdSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
 
@@ -154,6 +190,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByInputObjectSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = GetBackupsByResourceIdSet,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
@@ -183,6 +224,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = GetBackupsByResourceIdSet,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(new[] { Management.Sql.Models.DatabaseState.All, Management.Sql.Models.DatabaseState.Deleted, Management.Sql.Models.DatabaseState.Live },
             IgnoreCase = true)]
@@ -205,6 +251,21 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public AzureSqlDatabaseModel InputObject { get; set; }
 
         /// <summary>
+        /// Gets or sets the Database Resource ID to get backups for.
+        /// </summary>
+        [Parameter(ParameterSetName = GetBackupByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The Database Resource ID to get backups for.")]
+        [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The Database Resource ID to get backups for.")]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -215,6 +276,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 LocationName = InputObject.Location;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
+            }
+            else if (string.IsNullOrWhiteSpace(ResourceId))
+            {
+                string[] tokens = ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                ServerName = tokens[ServerNameIndex];
+                DatabaseName = tokens[DatabaseNameIndex];
             }
 
             return ModelAdapter.GetDatabaseLongTermRetentionBackups(
