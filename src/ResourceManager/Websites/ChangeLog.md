@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 * Fixed issue with importing aliases
 
 * New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
