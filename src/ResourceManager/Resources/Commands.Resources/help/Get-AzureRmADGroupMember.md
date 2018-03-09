@@ -13,17 +13,16 @@ Lists members of an AD group in the current tenant.
 
 ## SYNTAX
 
-### EmptyParameterSet (Default)
+### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzureRmADGroupMember [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzureRmADGroupMember [-GroupObjectId <Guid>] -GroupObject <PSADGroup>
- [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
- [<CommonParameters>]
+Get-AzureRmADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,21 +101,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -GroupObjectId
-Object id of the group.
-
-```yaml
-Type: Guid
-Parameter Sets: (All)
-Aliases: Id
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -IncludeTotalCount
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
@@ -129,6 +113,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ObjectId
+Object Id of the group.
+
+```yaml
+Type: Guid
+Parameter Sets: ObjectIdParameterSet
+Aliases: Id, GroupObjectId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

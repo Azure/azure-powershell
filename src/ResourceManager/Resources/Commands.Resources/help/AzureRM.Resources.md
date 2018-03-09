@@ -30,7 +30,7 @@ Lists existing azure active directory applications.
 Filters active directory groups.
 
 ### [Get-AzureRmADGroupMember](Get-AzureRmADGroupMember.md)
-Get a group members.
+Lists members of an AD group in the current tenant.
 
 ### [Get-AzureRmADServicePrincipal](Get-AzureRmADServicePrincipal.md)
 Filters active directory service principals.
