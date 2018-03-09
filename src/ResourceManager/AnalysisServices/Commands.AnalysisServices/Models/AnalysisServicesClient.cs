@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             GatewayDetails gatewayDetails = null;
-			if (gatewayName == "-")
-			{
-				_client.Servers.DissociateGateway(resourceGroupName, serverName);
-			}
-			else if (!string.IsNullOrEmpty(gatewayName))
+            if (gatewayName == "-")
+            {
+            	_client.Servers.DissociateGateway(resourceGroupName, serverName);
+            }
+            else if (!string.IsNullOrEmpty(gatewayName))
             {
                 gatewayDetails = getConnectionGateway(gatewayName);
             }

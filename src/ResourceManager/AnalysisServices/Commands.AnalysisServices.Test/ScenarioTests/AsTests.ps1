@@ -560,7 +560,7 @@ function Test-AnalysisServicesServerGatewayAssociation
 	try
 	{  
 		# Creating server
-		$location = "West US"
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -574,7 +574,7 @@ function Test-AnalysisServicesServerGatewayAssociation
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 
-		start-sleep -s 1
+		wait-seconds 1
 
 		# Check server was created successfully
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
@@ -601,7 +601,7 @@ function Test-AnalysisServicesServerGatewayAssociation
 		Assert-NotNull {$serverUpdated.GatewayDetails.ObjectId}
 		Assert-NotNull {$serverUpdated.GatewayDetails.DmtsClusterUri}
 
-		start-sleep -s 1
+		wait-seconds 1
 
 		# Get gateway of the server.
 		$gateway = Get-AzureRmAnalysisServicesGateway -ResourceGroupName $resourceGroupName -Name $serverName

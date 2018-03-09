@@ -127,10 +127,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-				if (DisconnectGateway.IsPresent)
-				{
-					GatewayName = "-";
-				}
+                if (DisconnectGateway.IsPresent)
+                {
+                	GatewayName = "-";
+                }
 
                 IPv4FirewallSettings setting = null;
                 if (FirewallConfig != null)
