@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Skip until necessary fixes done: https://github.com/Azure/azure-powershell/issues/5692")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestWithValidVhdDiskFile()
         {
