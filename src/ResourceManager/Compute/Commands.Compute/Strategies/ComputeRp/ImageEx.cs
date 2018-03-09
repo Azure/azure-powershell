@@ -34,10 +34,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 : null;
 
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
-            this IClient client, string imageName, string location)
+            this IClient client,
+            ImageAndOsType imageAndOsType,
+            string imageName,
+            string location)
         {
+            if (imageAndOsType != null)
+            {
+                return imageAndOsType;
+            }
+
             if (imageName.Contains(':'))
             {
+                if (location == null)
+                {
+                    return null;
+                }
+
                 var imageArray = imageName.Split(':');
                 if (imageArray.Length != 4)
                 {
