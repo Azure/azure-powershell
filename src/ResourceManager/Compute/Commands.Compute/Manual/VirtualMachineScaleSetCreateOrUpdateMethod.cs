@@ -219,9 +219,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 domainNameLabel: DomainNameLabel,
                 name: VMScaleSetName,
                 location: Location,
-                client: client);
-
-            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+                client: client);            
 
             vmss = CreateVmssConfig(imageAndOsType);
 
@@ -243,6 +241,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (result != null)
             {
+                var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+
                 var psObject = new PSVirtualMachineScaleSet();
                 ComputeAutomationAutoMapperProfile.Mapper.Map(result, psObject);
                 psObject.FullyQualifiedDomainName = fqdn;
