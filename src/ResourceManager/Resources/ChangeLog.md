@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.5.0
 * Fixed issue with importing aliases
 
 ## Version 5.4.0
