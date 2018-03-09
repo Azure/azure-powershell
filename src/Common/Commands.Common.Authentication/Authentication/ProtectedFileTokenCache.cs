@@ -73,7 +73,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void Initialize(string fileName)
         {
-            ReadFileIntoCache();
+            ReadFileIntoCache(fileName);
+
+            // Eagerly create cache file.
+            WriteCacheIntoFile(fileName);
 
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
@@ -114,13 +117,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private void ReadFileIntoCache()
+        private void ReadFileIntoCache(string cacheFileName = null)
         {
+            if(cacheFileName == null)
+                cacheFileName = ProtectedFileTokenCache.CacheFileName;
+
             lock (fileLock)
             {
-                if (_store.FileExists(CacheFileName))
+                if (_store.FileExists(cacheFileName))
                 {
-                    var existingData = _store.ReadFileAsBytes(CacheFileName);
+                    var existingData = _store.ReadFileAsBytes(cacheFileName);
                     if (existingData != null)
                     {
 #if !NETSTANDARD
@@ -130,7 +136,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         }
                         catch (CryptographicException)
                         {
-                            _store.DeleteFile(CacheFileName);
+                            _store.DeleteFile(cacheFileName);
                         }
 #else
                         Deserialize(existingData);
@@ -140,8 +146,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private void WriteCacheIntoFile()
+        private void WriteCacheIntoFile(string cacheFileName = null)
         {
+            if(cacheFileName == null)
+                cacheFileName = ProtectedFileTokenCache.CacheFileName;
+
 #if !NETSTANDARD
             var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
 #else
@@ -150,7 +159,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             lock(fileLock)
             {
-                _store.WriteFile(CacheFileName, dataToWrite);
+                _store.WriteFile(cacheFileName, dataToWrite);
             }
         }
     }
