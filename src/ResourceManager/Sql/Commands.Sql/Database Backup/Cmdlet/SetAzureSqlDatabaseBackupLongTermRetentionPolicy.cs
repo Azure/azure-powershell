@@ -161,13 +161,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     State = State,
                     RecoveryServicesBackupPolicyResourceId = ResourceId,
                     Location = model.FirstOrDefault().Location,
-                    Policy = new Management.Sql.Models.LongTermRetentionPolicy()
-                    {
-                        WeeklyRetention = WeeklyRetention,
-                        MonthlyRetention = MonthlyRetention,
-                        YearlyRetention = YearlyRetention,
-                        WeekOfYear = WeekOfYear
-                    }
+                    WeeklyRetention = WeeklyRetention,
+                    MonthlyRetention = MonthlyRetention,
+                    YearlyRetention = YearlyRetention,
+                    WeekOfYear = WeekOfYear
                 }
             };
         }

@@ -244,7 +244,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
                     DatabaseName = databaseName,
-                    Policy = response
+                    WeeklyRetention = response.WeeklyRetention,
+                    MonthlyRetention = response.MonthlyRetention,
+                    YearlyRetention = response.YearlyRetention,
+                    WeekOfYear = response.WeekOfYear
                 };
             }
         }
@@ -294,7 +297,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string databaseName,
             AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            if (model.Policy == null)
+            if (!string.IsNullOrWhiteSpace(model.RecoveryServicesBackupPolicyResourceId))
             {
                 var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
                     resourceGroup,
@@ -326,13 +329,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     resourceGroup,
                     serverName,
                     databaseName,
-                    model.Policy);
+                    new Management.Sql.Models.LongTermRetentionPolicy()
+                    {
+                        WeeklyRetention = model.WeeklyRetention,
+                        MonthlyRetention = model.MonthlyRetention,
+                        YearlyRetention = model.YearlyRetention,
+                        WeekOfYear = model.WeekOfYear
+                    });
                 return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
                     DatabaseName = databaseName,
-                    Policy = response
+                    WeeklyRetention = response.WeeklyRetention,
+                    MonthlyRetention = response.MonthlyRetention,
+                    YearlyRetention = response.YearlyRetention,
+                    WeekOfYear = response.WeekOfYear
                 };
             }
         }
