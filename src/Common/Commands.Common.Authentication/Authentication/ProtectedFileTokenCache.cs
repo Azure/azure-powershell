@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
                         try
                         {
-                            Deserialize(protectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
                         }
                         catch (CryptographicException)
                         {
