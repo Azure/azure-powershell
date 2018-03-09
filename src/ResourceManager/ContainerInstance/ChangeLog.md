@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.4
+* Fix parameter sets issue for container registry and azure file volume mount
+
 ## Version 0.2.3
 * Apply Azure Container Instance SDK 2018-02-01
     - Support DNS name label
