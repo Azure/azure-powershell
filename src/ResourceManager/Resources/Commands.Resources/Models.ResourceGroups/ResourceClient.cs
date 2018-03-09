@@ -331,9 +331,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace) =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
 
         public IPage<ProviderOperationsMetadata> ListProviderOperationsMetadata() =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.List("2015-07-01");
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.List();
     }
 }
