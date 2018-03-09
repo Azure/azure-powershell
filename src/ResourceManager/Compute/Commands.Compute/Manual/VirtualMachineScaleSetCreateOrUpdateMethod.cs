@@ -211,7 +211,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             Location = current.UpdateLocation(Location, vmss);
 
-            imageAndOsType = await client.UpdateImageAndOsTypeAsync(ImageName, Location);
+            imageAndOsType = await client.UpdateImageAndOsTypeAsync(
+                imageAndOsType, ImageName, Location);
 
             // generate a domain name label if it's not specified.
             DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -227,13 +228,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var engine = new SdkEngine(client.SubscriptionId);
             var target = vmss.GetTargetState(current, engine, Location);
 
-            var newState = await vmss
-               .UpdateStateAsync(
-                   client,
-                   target,
-                   new CancellationToken(),
-                   new ShouldProcess(asyncCmdlet),
-                   asyncCmdlet.ReportTaskProgress);
+            var newState = await vmss.UpdateStateAsync(
+                client,
+                target,
+                new CancellationToken(),
+                new ShouldProcess(asyncCmdlet),
+                asyncCmdlet.ReportTaskProgress);
 
             var result = newState.Get(vmss);
             if (result == null)

@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         {
             if (domainNameLabel == null)
             {
+                if (location == null)
+                {
+                    return null;
+                }
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {
