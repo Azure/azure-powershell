@@ -58,6 +58,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
     '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll',
     '.\Microsoft.Azure.Commands.Common.Authorization.dll',
+    '.\Microsoft.Azure.Commands.Common.Compute.dll',    
     '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
     '.\Microsoft.Azure.Commands.Common.Network.dll',
     '.\Microsoft.Azure.Commands.ResourceManager.Common.dll',
