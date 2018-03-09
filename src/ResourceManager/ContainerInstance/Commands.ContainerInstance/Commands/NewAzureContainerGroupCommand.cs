@@ -27,10 +27,13 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// New-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
+        protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
+        protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
+
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -62,19 +65,22 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         public PSCredential RegistryCredential { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The name of the Azure File share to mount.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeShareName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
         [ValidateNotNullOrEmpty]
         public PSCredential AzureFileVolumeAccountCredential { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The mount path for the Azure File volume.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeMountPath { get; set; }
