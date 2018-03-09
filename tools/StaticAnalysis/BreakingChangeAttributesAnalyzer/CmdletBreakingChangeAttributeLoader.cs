@@ -37,8 +37,9 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
     public class BreakingChangeAttributesInCmdlet
     {
+        public Type CmdletType { get; set; }
         public String CmdletName { get; set; }
-        public List<BreakingChangeBaseAttribute> BreakingChangeAttributes { get; set; }
+        public List<GenericBreakingChangeAttribute> BreakingChangeAttributes { get; set; }
     }
 
     public class CmdletBreakingChangeAttributeLoader : MarshalByRefObject
@@ -58,11 +59,12 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 foreach (var type in assembly.GetCmdletTypes())
                 {
                     var cmdlet = type.GetAttribute<CmdletAttribute>();
-                    var attributes = type.GetAttributes<BreakingChangeBaseAttribute>();
+                    var attributes = type.GetAttributes<GenericBreakingChangeAttribute>();
 
                     if (attributes != null && (attributes.Count() > 0)) { }
                     var cmdletMetadata = new BreakingChangeAttributesInCmdlet
                     {
+                        CmdletType = type,
                         CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
                         BreakingChangeAttributes = attributes.ToList()
                     };

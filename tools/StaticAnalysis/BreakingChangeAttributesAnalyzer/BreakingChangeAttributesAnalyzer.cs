@@ -200,9 +200,9 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             foreach (BreakingChangeAttributesInCmdlet cmdletData in moduleData.CmdletList)
             {
                 textForBreakingChangesInModule += String.Format(BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING, cmdletData.CmdletName);
-                foreach (BreakingChangeBaseAttribute attribute in cmdletData.BreakingChangeAttributes)
+                foreach (GenericBreakingChangeAttribute attribute in cmdletData.BreakingChangeAttributes)
                 {
-                    textForBreakingChangesInModule += attribute.getBreakingChangeTextFromAttribute() + "\n\n";
+                    textForBreakingChangesInModule += attribute.getBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
                 }
             }
 
