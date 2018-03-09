@@ -227,140 +227,89 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        sealed class ResourceConfigs
+        class Parameters : IParameters<VirtualMachine>
         {
-            public ResourceConfig<ResourceGroup> ResourceGroup { get; }
+            NewAzureVMCommand _Cmdlet { get; }
 
-            public ResourceConfig<NetworkInterface> NetworkInterface { get; }
+            Client _Client { get; }
 
-            public ResourceConfig<AvailabilitySet> AvailabilitySet { get; }
-
-            public ResourceConfigs(
-                ResourceConfig<ResourceGroup> resourceGroup,
-                ResourceConfig<NetworkInterface> networkInterface,
-                ResourceConfig<AvailabilitySet> availabilitySet)
+            public Parameters(NewAzureVMCommand cmdlet, Client client)
             {
-                ResourceGroup = resourceGroup;
-                NetworkInterface = networkInterface;
-                AvailabilitySet = availabilitySet;
+                _Cmdlet = cmdlet;
+                _Client = client;
             }
-        }
 
-        sealed class VmResourceConfigs
-        {
-            public ResourceConfigs Configs { get; }
-
-            public ResourceConfig<VirtualMachine> VirtualMachine { get; }
-
-            public VmResourceConfigs(
-                ResourceConfigs configs, ResourceConfig<VirtualMachine> virtualMachine)
-            {
-                Configs = configs;
-                VirtualMachine = virtualMachine;
-            }
-        }
-
-        async Task<ResourceConfigs> CreateResourceConfigs(Client client, ImageAndOsType imageAndOsType)
-        {
-            // generate a domain name label if it's not specified.
-            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
-                domainNameLabel: DomainNameLabel,
-                name: Name,
-                location: Location,
-                client: client);
-
-            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                name: VirtualNetworkName, addressPrefix: AddressPrefix);
-            var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
-            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
-                allocationMethod: AllocationMethod);
-            var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
-                name: SecurityGroupName,
-                openPorts: OpenPorts,
-                imageAndOsType: imageAndOsType);
-
-            return new ResourceConfigs(
-                resourceGroup,
-                resourceGroup.CreateNetworkInterfaceConfig(
-                    Name, subnet, publicIpAddress, networkSecurityGroup),
-                AvailabilitySetName == null
-                    ? null
-                    : resourceGroup.CreateAvailabilitySetConfig(name: AvailabilitySetName));
-        }
-
-        class Parameters
-        {
             public ImageAndOsType ImageAndOsType { get; set; }
 
+            public string Location
+            {
+                get { return _Cmdlet.Location; }
+                set { _Cmdlet.Location = value; }
+            }
+
             public BlobUri DestinationUri;
-        }
 
-        async Task<VmResourceConfigs> CreateVirtualMachineConfig(
-            Client client,
-            Parameters parameters)
-        {
-            if (DiskFile == null)
+            public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
-                parameters.ImageAndOsType = await client.UpdateImageAndOsTypeAsync(
-                    parameters.ImageAndOsType, ImageName, Location);
-            }
+                if (_Cmdlet.DiskFile == null)
+                {
+                    ImageAndOsType = await _Client.UpdateImageAndOsTypeAsync(
+                        ImageAndOsType, _Cmdlet.ImageName, Location);
+                }
 
-            var configs = await CreateResourceConfigs(client, parameters.ImageAndOsType);
+                _Cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _Cmdlet.DomainNameLabel,
+                    name: _Cmdlet.Name,
+                    location: Location,
+                    client: _Client);
 
-            if (DiskFile == null)
-            {
-                return new VmResourceConfigs(
-                    configs,
-                    configs.ResourceGroup.CreateVirtualMachineConfig(
-                        name: Name,
-                        networkInterface: configs.NetworkInterface,
-                        imageAndOsType: parameters.ImageAndOsType,
-                        adminUsername: Credential.UserName,
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_Cmdlet.ResourceGroupName);
+                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                    name: _Cmdlet.VirtualNetworkName, addressPrefix: _Cmdlet.AddressPrefix);
+                var subnet = virtualNetwork.CreateSubnet(_Cmdlet.SubnetName, _Cmdlet.SubnetAddressPrefix);
+                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                    name: _Cmdlet.PublicIpAddressName,
+                    domainNameLabel: _Cmdlet.DomainNameLabel,
+                    allocationMethod: _Cmdlet.AllocationMethod);
+                var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
+                    name: _Cmdlet.SecurityGroupName,
+                    openPorts: _Cmdlet.OpenPorts,
+                    imageAndOsType: ImageAndOsType);
+
+                var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
+                    _Cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
+
+                var availabilitySet = _Cmdlet.AvailabilitySetName == null
+                    ? null
+                    : resourceGroup.CreateAvailabilitySetConfig(name: _Cmdlet.AvailabilitySetName);
+
+                if (_Cmdlet.DiskFile == null)
+                {
+                    return resourceGroup.CreateVirtualMachineConfig(
+                        name: _Cmdlet.Name,
+                        networkInterface: networkInterface,
+                        imageAndOsType: ImageAndOsType,
+                        adminUsername: _Cmdlet.Credential.UserName,
                         adminPassword:
-                            new NetworkCredential(string.Empty, Credential.Password).Password,
-                        size: Size,
-                        availabilitySet: configs.AvailabilitySet));
-            }
-            else
-            {
-                var disk = configs.ResourceGroup.CreateManagedDiskConfig(
-                    name: Name,
-                    sourceUri: parameters.DestinationUri.Uri.ToString());
+                            new NetworkCredential(string.Empty, _Cmdlet.Credential.Password).Password,
+                        size: _Cmdlet.Size,
+                        availabilitySet: availabilitySet);
+                }
+                else
+                {
+                    var disk = resourceGroup.CreateManagedDiskConfig(
+                        name: _Cmdlet.Name,
+                        sourceUri: DestinationUri.Uri.ToString());
 
-                return new VmResourceConfigs(
-                    configs,
-                    configs.ResourceGroup.CreateVirtualMachineConfig(
-                        name: Name,
-                        networkInterface: configs.NetworkInterface,
-                        osType: parameters.ImageAndOsType.OsType,
+                    return resourceGroup.CreateVirtualMachineConfig(
+                        name: _Cmdlet.Name,
+                        networkInterface: networkInterface,
+                        osType: ImageAndOsType.OsType,
                         disk: disk,
-                        size: Size,
-                        availabilitySet: configs.AvailabilitySet));
+                        size: _Cmdlet.Size,
+                        availabilitySet: availabilitySet);
+                }
             }
-        }
-
-        async Task<VmResourceConfigs> CreateVirtualMachineConfig2(
-            Client client,
-            Parameters parameters)
-        {
-            var configs = await CreateResourceConfigs(client, parameters.ImageAndOsType);
-
-            var disk = configs.ResourceGroup.CreateManagedDiskConfig(
-                name: Name,
-                sourceUri: parameters.DestinationUri.Uri.ToString());
-
-            return new VmResourceConfigs(
-                configs,
-                configs.ResourceGroup.CreateVirtualMachineConfig(
-                    name: Name,
-                    networkInterface: configs.NetworkInterface,
-                    osType: parameters.ImageAndOsType.OsType,
-                    disk: disk,
-                    size: Size,
-                    availabilitySet: configs.AvailabilitySet));
         }
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
@@ -373,7 +322,7 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName ?? Name;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            var parameters = new Parameters();
+            var parameters = new Parameters(this, client);
 
             if (DiskFile != null)
             {
@@ -382,11 +331,13 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
-                    var st0 = resourceClient.ResourceGroups.CreateOrUpdate(ResourceGroupName, new ResourceGroup
-                    {
-                        Location = Location,
-                        Name = ResourceGroupName
-                    });
+                    var st0 = resourceClient.ResourceGroups.CreateOrUpdate(
+                        ResourceGroupName,
+                        new ResourceGroup
+                        {
+                            Location = Location,
+                            Name = ResourceGroupName
+                        });
                 }
                 parameters.ImageAndOsType = new ImageAndOsType(
                     Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
@@ -412,17 +363,12 @@ namespace Microsoft.Azure.Commands.Compute
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
-                    if (vds.DiskType == DiskType.Fixed)
+                    // 2 ^ 9 == 512
+                    if (vds.DiskType == DiskType.Fixed && filePath.Length % 512 != 0)
                     {
-                        long divisor = Convert.ToInt64(Math.Pow(2, 9));
-                        long rem = 0;
-                        Math.DivRem(filePath.Length, divisor, out rem);
-                        if (rem != 0)
-                        {
-                            throw new ArgumentOutOfRangeException(
-                                "filePath",
-                                string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
-                        }
+                        throw new ArgumentOutOfRangeException(
+                            "filePath",
+                            string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
@@ -453,34 +399,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            Func<Task<VmResourceConfigs>> vmConfigs = () => CreateVirtualMachineConfig(client, parameters);
+            var result = await StrategyCmdlet.RunAsync(client, parameters, asyncCmdlet, new CancellationToken());
 
-            var getConfig = await vmConfigs();
-
-            // get current Azure state
-            var current = await getConfig.VirtualMachine.GetStateAsync(
-                client, new CancellationToken());
-
-            Location = current.UpdateLocation(Location, getConfig.VirtualMachine);
-
-            // create target state
-            var updateConfig = await vmConfigs();
-            var engine = new SdkEngine(client.SubscriptionId);
-            var target = updateConfig.VirtualMachine.GetTargetState(current, engine, Location);
-
-            // apply target state
-            var newState = await updateConfig.VirtualMachine.UpdateStateAsync(
-                client,
-                target,
-                new CancellationToken(),
-                new ShouldProcess(asyncCmdlet),
-                asyncCmdlet.ReportTaskProgress);
-
-            var result = newState.Get(updateConfig.VirtualMachine);
-            if (result == null)
-            {
-                result = current.Get(updateConfig.VirtualMachine);
-            }
             if (result != null)
             {
                 var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
