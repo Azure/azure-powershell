@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
     -->";
 
-        public static void processCustomAttributesAtRuntime(Type type)
+        public static void processCustomAttributesAtRuntime(Type type, List<String> boundParameterNames)
         {
             bool emitWarningOrError = true;
 
@@ -86,9 +87,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                 return;
             }
 
-            foreach (BreakingChangeBaseAttribute attribute in getAllBreakingChangeAttributesInType(type))
+            List<GenericBreakingChangeAttribute> attributes = getAllBreakingChangeAttributesInType(type, boundParameterNames);
+
+            if (attributes != null && attributes.Count > 0)
             {
-                attribute.printCustomAttributeInfo();
+                Console.WriteLine("Breaking changes in the cmdlet : " + Utilities.getNameFromCmdletType(type) + "\n");
+            }
+
+            foreach (GenericBreakingChangeAttribute attribute in attributes)
+            {
+                attribute.printCustomAttributeInfo(type, false);
             }
         }
 
@@ -96,33 +104,45 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
         {
             List<String> messages = new List<string>();
 
-            foreach (BreakingChangeBaseAttribute attribute in getAllBreakingChangeAttributesInType(type))
+            //This is used as a migration guide, we need to process all properties/fields, moreover at this point of time we do not have a list of all the
+            //bound params anyways
+            foreach (GenericBreakingChangeAttribute attribute in getAllBreakingChangeAttributesInType(type, null))
             {
-                messages.Add(attribute.getBreakingChangeTextFromAttribute());
+                messages.Add(attribute.getBreakingChangeTextFromAttribute(type, true));
             }
 
             return messages;
         }
 
-        public static List<BreakingChangeBaseAttribute> getAllBreakingChangeAttributesInType(Type type)
+        public static List<GenericBreakingChangeAttribute> getAllBreakingChangeAttributesInType(Type type, List<String> boundParameterNames)
         {
-            List<BreakingChangeBaseAttribute> attributeList = new List<BreakingChangeBaseAttribute>();
+            List<GenericBreakingChangeAttribute> attributeList = new List<GenericBreakingChangeAttribute>();
 
-            attributeList.AddRange(type.GetCustomAttributes(typeof(BreakingChangeBaseAttribute), false).Cast<BreakingChangeBaseAttribute>());
+            attributeList.AddRange(type.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
 
             foreach (MethodInfo m in type.GetRuntimeMethods())
             {
-                attributeList.AddRange(m.GetCustomAttributes(typeof(BreakingChangeBaseAttribute), false).Cast<BreakingChangeBaseAttribute>());
+                attributeList.AddRange(m.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
             }
 
+            //Only process the fields if the bound params have the field Name in them. If the bound params is null then
+            //we do no filtering
             foreach (FieldInfo f in type.GetRuntimeFields())
             {
-                attributeList.AddRange(f.GetCustomAttributes(typeof(BreakingChangeBaseAttribute), false).Cast<BreakingChangeBaseAttribute>());
+                if ((boundParameterNames != null && boundParameterNames.Contains(f.Name)) || (boundParameterNames == null))
+                {
+                    attributeList.AddRange(f.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
+                }
             }
 
+            //Only process the property if the bound params have the prop Name in them. If the bound params is null then
+            //we do no filtering
             foreach (PropertyInfo p in type.GetRuntimeProperties())
             {
-                attributeList.AddRange(p.GetCustomAttributes(typeof(BreakingChangeBaseAttribute), false).Cast<BreakingChangeBaseAttribute>());
+                if ((boundParameterNames != null && boundParameterNames.Contains(p.Name)) || (boundParameterNames == null))
+                {
+                    attributeList.AddRange(p.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
+                }
             }
 
             return attributeList;

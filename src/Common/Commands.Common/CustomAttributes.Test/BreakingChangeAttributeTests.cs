@@ -30,18 +30,20 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testForCmdletDeprecationAttribute()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute), null);
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
 
-            String pat = @"(The cmdlet ')(.*)(' is replacing the cmdlet ')(.)*";
+            String pat = @"(The cmdlet ')(.*)(' is replacing this cmdlet)";
             Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute));
             Assert.Equal(1, messages.Count);
             Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute.CmdletName));
             Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("Change description : "));
             Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
             Assert.False(messages[0].Contains("powershell\n# Old"));
         }
@@ -50,18 +52,42 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testForCmdletDeprecationAttributeNoReplacement()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement), null);
+
+            Assert.Equal(1, attribs.Count);
+            Assert.True(attribs[0].ChangeInEfectByDateSet);
+            Assert.True(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The cmdlet is being deprecated. There will be no replacement for it.)";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement));
+            Assert.Equal(1, messages.Count);
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement.CmdletName));
+            Assert.True(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("Change description : "));
+            Assert.True(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletDeprecationAttributeWithDescription()
+        {
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription), null);
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
 
-            String pat = @"(The cmdlet ')(.*)(' is being deprecated. There will be no replacement for it.)";
+            String pat = @"(The cmdlet ')(.*)(' is replacing this cmdlet)";
             Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement));
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription));
             Assert.Equal(1, messages.Count);
             Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription.CmdletName));
             Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.True(messages[0].Contains("Change description : " + AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription.Description));
             Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
             Assert.False(messages[0].Contains("powershell\n# Old"));
         }
@@ -70,97 +96,152 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testForCmdletOutputTypeDeprecation()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange), null);
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
-            Assert.False(attribs[0].DeprecateByVersionSet);
+            Assert.True(attribs[0].DeprecateByVersionSet);
 
-            String pat = @"(The cmdlet ')(.*)('s output type is changing from : ')(.*)(' to ')(.)*";
+            String pat = @"(The output type is changing from the existing type :')(.*)(' to the new type :')(.*)(')";
             Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange));
             Assert.Equal(1, messages.Count);
             Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletWithOutputTypeChange.CmdletName));
             Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("Change description : "));
+            Assert.True(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletWithOutputTypeRemovedProperties()
+        {
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputDeprecatedProperties), null);
+            Assert.Equal(1, attribs.Count);
+            Assert.False(attribs[0].ChangeInEfectByDateSet);
+            Assert.False(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The output type ')(.*)(' is changing).*";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletWithOutputDeprecatedProperties));
+            Assert.Equal(1, messages.Count);
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletWithOutputDeprecatedProperties.CmdletName));
+            Assert.True(messages[0].Contains("The following properties in the output type are being deprecated :"));
+            Assert.False(messages[0].Contains("The following properties are being added to the output type :"));
+            Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("Change description : "));
             Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
             Assert.False(messages[0].Contains("powershell\n# Old"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testForCmdletMetadataChange()
+        public void testForCmdletWithOutputTypeAddedProperties()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithMetadataChangeAttribute));
-
-            Assert.Equal(1, attribs.Count);
-            Assert.False(attribs[0].ChangeInEfectByDateSet);
-            Assert.True(attribs[0].DeprecateByVersionSet);
-
-            String pat = @"(The cmdlet ')(.*)(' has the following change to the metadata ').*";
-            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithMetadataChangeAttribute));
-            Assert.Equal(1, messages.Count);
-            Assert.True(reg.IsMatch(messages[0]));
-            Assert.False(messages[0].Contains("This change will take effect on '"));
-            Assert.True(messages[0].Contains("The change is expected to take effect from the version"));
-            Assert.False(messages[0].Contains("powershell\n# Old"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testForCmdletWithOutputTypePropertyChanges()
-        {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTEstCmdletWithOutputPropertyChanges));
-            Assert.Equal(1, attribs.Count);
-            Assert.True(attribs[0].ChangeInEfectByDateSet);
-            Assert.True(attribs[0].DeprecateByVersionSet);
-
-            String pat = @"(The following properties in the output type ')(.*)(' in the cmdlet ')(.*)(' are changing :).*";
-            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTEstCmdletWithOutputPropertyChanges));
-            Assert.Equal(1, messages.Count);
-            Assert.True(reg.IsMatch(messages[0]));
-            Assert.True(messages[0].Contains("This change will take effect on '"));
-            Assert.True(messages[0].Contains("The change is expected to take effect from the version"));
-            Assert.False(messages[0].Contains("powershell\n# Old"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testForCmdletWithParamDeprecated()
-        {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithDeprecatedParam));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputNewProperties), null);
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
 
-            String pat = @"(The parameter ')(.*)(' is replacing ')(.*)(' in cmdlet ').*";
+            String pat = @"(The output type ')(.*)(' is changing).*";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithCmdletWithOutputNewProperties));
+            Assert.Equal(1, messages.Count);
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithCmdletWithOutputNewProperties.CmdletName));
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains("The following properties are being added to the output type :"));
+            Assert.False(messages[0].Contains("The following properties in the output type are being deprecated :"));
+            Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("Change description : "));
+            Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletWithParamDeprecatedNoReplacement()
+        {
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithDeprecatedParam), null);
+            Assert.Equal(1, attribs.Count);
+            Assert.False(attribs[0].ChangeInEfectByDateSet);
+            Assert.False(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The parameter : ')(.*)(' is changing)";
             Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithDeprecatedParam));
             Assert.Equal(1, messages.Count);
             Assert.True(reg.IsMatch(messages[0]));
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithDeprecatedParam.CmdletName));
             Assert.False(messages[0].Contains("This change will take effect on '"));
             Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
             Assert.False(messages[0].Contains("powershell\n# Old"));
+            Assert.True(messages[0].Contains("Change description : " + AzureRMTestCmdletWithDeprecatedParam.ChangeDesc));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testForCmdletWithParamBecomesMandatory()
+        public void testForCmdletWithParamDeprecatedWithReplacement()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterBecomingMandatory));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedParam), null);
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
 
-            String pat = @"(The parameter ')(.*)(' in cmdlet ')(.*)(' became mandatory now).*";
+            String pat = @"(The parameter : ')(.*)(' is being replaced by parameter : ')(.*)(')";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithReplacedParam));
+            Assert.Equal(1, messages.Count);
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithReplacedParam.CmdletName));
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+            Assert.False(messages[0].Contains("Change description : "));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletWithParamDeprecatedWithMandatoryReplacement()
+        {
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedMandatoryParam), null);
+            Assert.Equal(1, attribs.Count);
+            Assert.False(attribs[0].ChangeInEfectByDateSet);
+            Assert.False(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The parameter : ')(.*)(' is being replaced by mandatory parameter : ')(.*)(')";
+            Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithReplacedMandatoryParam));
+            Assert.Equal(1, messages.Count);
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithReplacedMandatoryParam.CmdletName));
+            Assert.True(reg.IsMatch(messages[0]));
+            Assert.False(messages[0].Contains("This change will take effect on '"));
+            Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
+            Assert.False(messages[0].Contains("powershell\n# Old"));
+            Assert.False(messages[0].Contains("Change description : "));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testForCmdletWithParamBecomingMandatory()
+        {
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterBecomingMandatory), null);
+            Assert.Equal(1, attribs.Count);
+            Assert.False(attribs[0].ChangeInEfectByDateSet);
+            Assert.False(attribs[0].DeprecateByVersionSet);
+
+            String pat = @"(The parameter : ')(.*)(' is becoming mandatory)";
             Regex reg = new Regex(pat, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithParameterBecomingMandatory));
             Assert.Equal(1, messages.Count);
+            Assert.True(messages[0].Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithParameterBecomingMandatory.CmdletName));
             Assert.True(reg.IsMatch(messages[0]));
             Assert.False(messages[0].Contains("This change will take effect on '"));
             Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
             Assert.True(messages[0].Contains("powershell\n# Old"));
+            Assert.False(messages[0].Contains("Change description : "));
         }
 
         //Multi attribute test where one attrib is on the class and the other on a property
@@ -168,22 +249,22 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testAzureRMTestCmdletWithParameterMetadataChangeAndOrderChange()
         {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndOrderChange));
+            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange), null);
             Assert.Equal(2, attribs.Count);
 
             //This gets in the weeds here a lil too much, we get two different types of attributes, we will try and cast one to each type and then check if
             //the messages look good on each
-            CmdLetParameterOrderChangeAttribute orderAttrib = null;
-            CmdletParameterMetadataChangeMarkerAttribute paramMetaAttrib = null;
+            GenericBreakingChangeAttribute genericAttrib = null;
+            CmdletParameterBreakingChangeMarkerAttribute paramMetaAttrib = null;
 
             try
             {
-                orderAttrib = (CmdLetParameterOrderChangeAttribute)attribs[0];
+                genericAttrib = (GenericBreakingChangeAttribute)attribs[0];
             } catch (InvalidCastException)
             {
                 try
                 {
-                    orderAttrib = (CmdLetParameterOrderChangeAttribute)attribs[1];
+                    genericAttrib = (GenericBreakingChangeAttribute)attribs[1];
                 } catch (InvalidCastException)
                 {
                     //this is an exception that should not happen, one of these should be of the type we are tryin to get
@@ -193,13 +274,13 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
 
             try
             {
-                paramMetaAttrib = (CmdletParameterMetadataChangeMarkerAttribute)attribs[0];
+                paramMetaAttrib = (CmdletParameterBreakingChangeMarkerAttribute)attribs[0];
             }
             catch (InvalidCastException)
             {
                 try
                 {
-                    paramMetaAttrib = (CmdletParameterMetadataChangeMarkerAttribute)attribs[1];
+                    paramMetaAttrib = (CmdletParameterBreakingChangeMarkerAttribute)attribs[1];
                 }
                 catch (InvalidCastException)
                 {
@@ -208,114 +289,50 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
                 }
             }
 
-            Assert.NotNull(orderAttrib);
+            Assert.NotNull(genericAttrib);
             Assert.NotNull(paramMetaAttrib);
 
-            String pat1 = @"(The parameter ')(.*)(' in cmdlet ')(.*)(' has the following change to the metadata ')";
+            String pat1 = @"(" + AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange.GenericChangeDesc + ")";
             Regex reg1 = new Regex(pat1, RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
-            String pat2 = @"(The position of the following positional parameters has changed in the cmdlet '(.*)(' From :))";
+            String pat2 = @"(The parameter : ')(.*)(' is changing')";
             Regex reg2 = new Regex(pat2, RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
-            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndOrderChange));
+            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange));
             Assert.Equal(2, messages.Count);
 
-            //We need to check if the patterns we are looking for are both present in messages
-            Assert.True((reg1.IsMatch(messages[0]) || reg1.IsMatch(messages[1])) && (reg2.IsMatch(messages[0]) || reg2.IsMatch(messages[1])));
+            String genericMessage = null;
+            String paramMessage = null;
+
+            if (reg1.IsMatch(messages[0]))
+            {
+                genericMessage = messages[0];
+                paramMessage = messages[1];
+            } else
+            {
+                genericMessage = messages[1];
+                paramMessage = messages[0];
+            }
+
+            Assert.NotNull(genericMessage);
+            Assert.NotNull(paramMessage);
 
             //The below check confirms that the pattterns exist in different messages 
-            Assert.False(reg1.IsMatch(messages[0]) && reg1.IsMatch(messages[1]));
-            Assert.False(reg2.IsMatch(messages[0]) && reg2.IsMatch(messages[1]));
+            Assert.False(reg1.IsMatch(paramMessage));
+            Assert.False(reg2.IsMatch(genericMessage));
 
-            Assert.False(messages[0].Contains("This change will take effect on '"));
-            Assert.False(messages[0].Contains("The change is expected to take effect from the version"));
-            Assert.False(messages[0].Contains("powershell\n# Old"));
+            Assert.False(genericMessage.Contains("This change will take effect on '"));
+            Assert.True(genericMessage.Contains("The change is expected to take effect from the version"));
+            Assert.False(genericMessage.Contains("powershell\n# Old"));
+            Assert.True(genericMessage.Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange.CmdletName));
+            Assert.False(genericMessage.Contains("Change description : "));
 
-            Assert.False(messages[1].Contains("This change will take effect on '"));
-            Assert.False(messages[1].Contains("The change is expected to take effect from the version"));
-            Assert.False(messages[1].Contains("powershell\n# Old"));
+            Assert.False(paramMessage.Contains("This change will take effect on '"));
+            Assert.True(paramMessage.Contains(" - Cmdlet : " + VerbNameHolder.CmdletNameVerb + "-" + AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange.CmdletName));
+            Assert.False(paramMessage.Contains("The change is expected to take effect from the version"));
+            Assert.False(paramMessage.Contains("powershell\n# Old"));
+            Assert.True(paramMessage.Contains("Change description : " + AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange.ParamChangeDesc));
         }
 
-        //Multi attribute test where both the attributes are on the property
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testAzureRMTestCmdletWithParamTypeChangeAndMandatoryChange()
-        {
-            List<BreakingChangeBaseAttribute> attribs = BreakingChangeAttributeHelper.getAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParamTypeChangeAndMandatoryChange));
-            Assert.Equal(2, attribs.Count);
-
-            //This gets in the weeds here a lil too much, we get two different types of attributes, we will try and cast one to each type and then check if
-            //the messages look good on each
-            CmdletParameterTypeChangeMarkerAttribute paramTypeChangeAttrib = null;
-            CmdletParameterMandatoryStatusChangeAttribute paramMandatoryStatusChange = null;
-
-            try
-            {
-                paramTypeChangeAttrib = (CmdletParameterTypeChangeMarkerAttribute)attribs[0];
-            }
-            catch (InvalidCastException)
-            {
-                try
-                {
-                    paramTypeChangeAttrib = (CmdletParameterTypeChangeMarkerAttribute)attribs[1];
-                }
-                catch (InvalidCastException)
-                {
-                    //this is an exception that should not happen, one of these should be of the type we are tryin to get
-                    Assert.False(true);
-                }
-            }
-
-            try
-            {
-                paramMandatoryStatusChange = (CmdletParameterMandatoryStatusChangeAttribute)attribs[0];
-            }
-            catch (InvalidCastException)
-            {
-                try
-                {
-                    paramMandatoryStatusChange = (CmdletParameterMandatoryStatusChangeAttribute)attribs[1];
-                }
-                catch (InvalidCastException)
-                {
-                    //this is an exception that should not happen, one of these should be of the type we are tryin to get
-                    Assert.False(true);
-                }
-            }
-
-            Assert.NotNull(paramTypeChangeAttrib);
-            Assert.NotNull(paramMandatoryStatusChange);
-
-            String pat1 = @"(The parameter )(.*)('s type is changing from ')(.*)(' to ')(.*)(' in cmdlet ')";
-            Regex reg1 = new Regex(pat1, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-
-            String pat2 = @"(The parameter ')(.*)(' in cmdlet ')(.*)(' became mandatory now).*";
-            Regex reg2 = new Regex(pat2, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-
-            List<String> messages = BreakingChangeAttributeHelper.getBreakingChangeMessagesForType(typeof(AzureRMTestCmdletWithParamTypeChangeAndMandatoryChange));
-            Assert.Equal(2, messages.Count);
-
-            //We need to check if the patterns we are looking for are both present in messages
-            Assert.True((reg1.IsMatch(messages[0]) || reg1.IsMatch(messages[1])) && (reg2.IsMatch(messages[0]) || reg2.IsMatch(messages[1])));
-
-            //The below check confirms that the pattterns exist in different messages 
-            Assert.False(reg1.IsMatch(messages[0]) && reg1.IsMatch(messages[1]));
-            Assert.False(reg2.IsMatch(messages[0]) && reg2.IsMatch(messages[1]));
-
-            foreach (String message in messages)
-            {
-                bool expected = false;
-                //only the mandatory status change attrib had the version and date specified, check for that
-                if (reg2.IsMatch(message)) {
-                    expected = true;
-                }
-
-                Assert.Equal(expected, message.Contains("This change will take effect on '"));
-                Assert.Equal(expected, message.Contains("The change is expected to take effect from the version"));
-
-                //this should be false for both
-                Assert.False(message.Contains("powershell\n# Old"));
-            }
-        }
     }
 }

@@ -23,49 +23,35 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     [AttributeUsage(
 AttributeTargets.Class,
 AllowMultiple = true)]
-    public class CmdletDeprecationMarkerAttribute : BreakingChangeBaseAttribute
+    public class CmdletDeprecationMarkerAttribute : GenericBreakingChangeAttribute
     {
-        public String DeprecatedCmdLetName { get; }
+        public String ReplacementCmdletName { get; set; }
 
-        public String ReplacementCmdletName { get; }
-
-        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName) :
-            base(getMessage(deprecatedCmdletName, null))
+        public CmdletDeprecationMarkerAttribute() :
+            base("")
         {
-            this.DeprecatedCmdLetName = deprecatedCmdletName;
             this.ReplacementCmdletName = null;
         }
 
-        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName) :
-            base(getMessage(deprecatedCmdletName, replacementCmdletName))
+        public CmdletDeprecationMarkerAttribute(String deprecateByVersione) :
+             base("", deprecateByVersione)
         {
-            this.DeprecatedCmdLetName = deprecatedCmdletName;
-            this.ReplacementCmdletName = replacementCmdletName;
         }
 
-        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersione) :
-             base(getMessage(deprecatedCmdletName, replacementCmdletName), deprecateByVersione)
+        public CmdletDeprecationMarkerAttribute(String deprecateByVersion, String changeInEfectByDate) :
+             base("", deprecateByVersion, changeInEfectByDate)
         {
-            this.DeprecatedCmdLetName = deprecatedCmdletName;
-            this.ReplacementCmdletName = replacementCmdletName;
         }
 
-        public CmdletDeprecationMarkerAttribute(String deprecatedCmdletName, String replacementCmdletName, String deprecateByVersion, String changeInEfectByDate) :
-             base(getMessage(deprecatedCmdletName, replacementCmdletName), deprecateByVersion, changeInEfectByDate)
+        protected override String getAttributeSpecificMessage()
         {
-            this.DeprecatedCmdLetName = deprecatedCmdletName;
-            this.ReplacementCmdletName = replacementCmdletName;
-        }
-
-        private static String getMessage(String deprecatedCmdletName, String replacementCmdletName)
-        {
-            if (String.IsNullOrWhiteSpace(replacementCmdletName))
+            if (String.IsNullOrWhiteSpace(ReplacementCmdletName))
             {
-                return "The cmdlet '" + deprecatedCmdletName + "' is being deprecated. There will be no replacement for it.";
+                return "The cmdlet is being deprecated. There will be no replacement for it.";
             }
             else
             {
-                return "The cmdlet '" + replacementCmdletName + "' is replacing the cmdlet '" + deprecatedCmdletName + "'";
+                return "The cmdlet '" + ReplacementCmdletName + "' is replacing this cmdlet";
             }
         }
     }
