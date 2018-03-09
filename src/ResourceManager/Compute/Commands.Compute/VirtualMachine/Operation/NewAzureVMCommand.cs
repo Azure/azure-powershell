@@ -295,40 +295,63 @@ namespace Microsoft.Azure.Commands.Compute
         class Parameters
         {
             public ImageAndOsType ImageAndOsType { get; set; }
+
+            public BlobUri DestinationUri;
         }
 
         async Task<VmResourceConfigs> CreateVirtualMachineConfig(
             Client client,
             Parameters parameters)
         {
-            parameters.ImageAndOsType = await client.UpdateImageAndOsTypeAsync(
-                parameters.ImageAndOsType, ImageName, Location);
+            if (DiskFile == null)
+            {
+                parameters.ImageAndOsType = await client.UpdateImageAndOsTypeAsync(
+                    parameters.ImageAndOsType, ImageName, Location);
+            }
 
             var configs = await CreateResourceConfigs(client, parameters.ImageAndOsType);
 
-            return new VmResourceConfigs(
-                configs,
-                configs.ResourceGroup.CreateVirtualMachineConfig(
+            if (DiskFile == null)
+            {
+                return new VmResourceConfigs(
+                    configs,
+                    configs.ResourceGroup.CreateVirtualMachineConfig(
+                        name: Name,
+                        networkInterface: configs.NetworkInterface,
+                        imageAndOsType: parameters.ImageAndOsType,
+                        adminUsername: Credential.UserName,
+                        adminPassword:
+                            new NetworkCredential(string.Empty, Credential.Password).Password,
+                        size: Size,
+                        availabilitySet: configs.AvailabilitySet));
+            }
+            else
+            {
+                var disk = configs.ResourceGroup.CreateManagedDiskConfig(
                     name: Name,
-                    networkInterface: configs.NetworkInterface,
-                    imageAndOsType: parameters.ImageAndOsType,
-                    adminUsername: Credential.UserName,
-                    adminPassword:
-                        new NetworkCredential(string.Empty, Credential.Password).Password,
-                    size: Size,
-                    availabilitySet: configs.AvailabilitySet));
+                    sourceUri: parameters.DestinationUri.Uri.ToString());
+
+                return new VmResourceConfigs(
+                    configs,
+                    configs.ResourceGroup.CreateVirtualMachineConfig(
+                        name: Name,
+                        networkInterface: configs.NetworkInterface,
+                        osType: parameters.ImageAndOsType.OsType,
+                        disk: disk,
+                        size: Size,
+                        availabilitySet: configs.AvailabilitySet));
+            }
         }
 
-        async Task<VmResourceConfigs> CreateVirtualMachineConfig(
+        async Task<VmResourceConfigs> CreateVirtualMachineConfig2(
             Client client,
-            Parameters parameters,
-            BlobUri destinationUri)
+            Parameters parameters)
         {
             var configs = await CreateResourceConfigs(client, parameters.ImageAndOsType);
 
             var disk = configs.ResourceGroup.CreateManagedDiskConfig(
                 name: Name,
-                sourceUri: destinationUri.Uri.ToString());
+                sourceUri: parameters.DestinationUri.Uri.ToString());
 
             return new VmResourceConfigs(
                 configs,
@@ -353,12 +376,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new Parameters();
 
-            Func<Task<VmResourceConfigs>> vmConfigs = null;
-            if (DiskFile == null)
-            {
-                vmConfigs = () => CreateVirtualMachineConfig(client, parameters);
-            }
-            else
+            if (DiskFile != null)
             {
                 var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
@@ -409,7 +427,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
-                BlobUri destinationUri = null;
+                // BlobUri destinationUri = null;
                 BlobUri.TryParseUri(
                     new Uri(string.Format(
                         "{0}{1}/{2}{3}",
@@ -417,14 +435,14 @@ namespace Microsoft.Azure.Commands.Compute
                         ResourceGroupName.ToLower(),
                         Name.ToLower(),
                         ".vhd")),
-                    out destinationUri);
-                if (destinationUri == null || destinationUri.Uri == null)
+                    out parameters.DestinationUri);
+                if (parameters.DestinationUri?.Uri == null)
                 {
                     throw new ArgumentNullException("destinationUri");
                 }
                 var storageCredentialsFactory = new StorageCredentialsFactory(
                     ResourceGroupName, storageClient, DefaultContext.Subscription);
-                var uploadParameters = new UploadParameters(destinationUri, null, filePath, true, 2)
+                var uploadParameters = new UploadParameters(parameters.DestinationUri, null, filePath, true, 2)
                 {
                     Cmdlet = this,
                     BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
@@ -434,9 +452,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var st2 = VhdUploaderModel.Upload(uploadParameters);
                 }
-
-                vmConfigs = () => CreateVirtualMachineConfig(client, parameters, destinationUri);
             }
+
+            Func<Task<VmResourceConfigs>> vmConfigs = () => CreateVirtualMachineConfig(client, parameters);
 
             var getConfig = await vmConfigs();
 
@@ -451,13 +469,6 @@ namespace Microsoft.Azure.Commands.Compute
             var engine = new SdkEngine(client.SubscriptionId);
             var target = updateConfig.VirtualMachine.GetTargetState(current, engine, Location);
 
-            /*
-            if (target.Get(updateConfig.Configs.AvailabilitySet) != null)
-            {
-                throw new InvalidOperationException("Availability set doesn't exist.");
-            }
-            */
-
             // apply target state
             var newState = await updateConfig.VirtualMachine.UpdateStateAsync(
                 client,
@@ -466,8 +477,6 @@ namespace Microsoft.Azure.Commands.Compute
                 new ShouldProcess(asyncCmdlet),
                 asyncCmdlet.ReportTaskProgress);
 
-            var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
-
             var result = newState.Get(updateConfig.VirtualMachine);
             if (result == null)
             {
@@ -475,11 +484,12 @@ namespace Microsoft.Azure.Commands.Compute
             }
             if (result != null)
             {
+                var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
                 var connectionString = parameters.ImageAndOsType.GetConnectionString(
                     fqdn,
-                    Credential.UserName);
+                    Credential?.UserName);
                 asyncCmdlet.WriteVerbose(
                     Resources.VirtualMachineUseConnectionString,
                     connectionString);
