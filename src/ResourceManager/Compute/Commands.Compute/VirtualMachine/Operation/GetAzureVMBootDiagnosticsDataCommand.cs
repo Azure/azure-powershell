@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute
             if (storageService != null)
             {
                 var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.Name);
-                storagekey = storageKeys.GetKey1();
+                storagekey = storageKeys.Keys[0].Value;
             }
 
             StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);

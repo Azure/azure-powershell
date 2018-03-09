@@ -110,7 +110,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
         Assert-False { $ipCfg.Primary };
 
-        $vmss = New-AzureRmVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
+        $vmss = New-AzureRmVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
@@ -175,7 +175,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $vmss.Sku.Name;
+        Assert-AreEqual 'Basic_A0' $vmss.Sku.Name;
         Assert-AreEqual 'Automatic' $vmss.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -360,7 +360,7 @@ function Test-VirtualMachineScaleSetUpdate
         $extver = '2.1';
         
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -372,7 +372,7 @@ function Test-VirtualMachineScaleSetUpdate
 
         Assert-AreEqual $loc $result.Location;
         Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $result.Sku.Name;
+        Assert-AreEqual 'Basic_A0' $result.Sku.Name;
         Assert-AreEqual 'Manual' $result.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -490,7 +490,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -504,7 +504,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
 
         Assert-AreEqual $loc $result.Location;
         Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $result.Sku.Name;
+        Assert-AreEqual 'Basic_A0' $result.Sku.Name;
         Assert-AreEqual 'Manual' $result.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -661,7 +661,7 @@ function Test-VirtualMachineScaleSetLB
         Assert-AreEqual $subnetId $ipCfg.Subnet.Id;
 
         $settingString = ‘{ “AntimalwareEnabled”: true}’;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -675,7 +675,7 @@ function Test-VirtualMachineScaleSetLB
 
         Assert-AreEqual $loc $vmss.Location;
         Assert-AreEqual 2 $vmss.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $vmss.Sku.Name;
+        Assert-AreEqual 'Standard_A1_v2' $vmss.Sku.Name;
         Assert-AreEqual 'automatic' $vmss.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -803,7 +803,7 @@ function Test-VirtualMachineScaleSetNextLink
         $vmss_number = 180;
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $vmss_number -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false -SinglePlacementGroup $false `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $vmss_number -SkuName 'Basic_A0' -UpgradePolicyMode 'Automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false -SinglePlacementGroup $false `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -867,7 +867,7 @@ function Test-VirtualMachineScaleSetBootDiagnostics
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -880,7 +880,7 @@ function Test-VirtualMachineScaleSetBootDiagnostics
 
         Assert-AreEqual $loc.Replace(" ", "") $result.Location;
         Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
+        Assert-AreEqual 'Basic_A0' $result.sku.name;
         Assert-AreEqual 'manual' $result.upgradepolicy.mode;
 
         # Boot Diagnostics Profile
@@ -977,7 +977,7 @@ function Test-VirtualMachineScaleSetIdentity
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -AssignIdentity `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -AssignIdentity `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -989,7 +989,7 @@ function Test-VirtualMachineScaleSetIdentity
 
         Assert-AreEqual $loc.Replace(" ", "") $result.Location;
         Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
+        Assert-AreEqual 'Basic_A0' $result.sku.name;
         Assert-AreEqual 'manual' $result.upgradepolicy.mode;
 
         # Validate VMSS Identity
@@ -1090,7 +1090,7 @@ function Test-VirtualMachineScaleSetUserIdentity
         $userIdentity = 'fakeidentity';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg `
             -IdentityType UserAssigned -IdentityId "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/${rgname}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${userIdentity}" `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
@@ -1154,7 +1154,7 @@ function Test-VirtualMachineScaleSetNetworking
         $dns = '10.11.12.13';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom";
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $vmss_number -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false -SinglePlacementGroup $false `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $vmss_number -SkuName 'Basic_A0' -UpgradePolicyMode 'Automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false -SinglePlacementGroup $false `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg -DnsSettingsDnsServer $dns -NetworkSecurityGroupId $nsg.Id -EnableIPForwarding `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1254,7 +1254,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
             -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
             -SubnetId $subnetId;
 
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Rolling' -NetworkInterfaceConfiguration $netCfg -HealthProbeId $expectedLb.Probes[0].Id `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Rolling' -NetworkInterfaceConfiguration $netCfg -HealthProbeId $expectedLb.Probes[0].Id `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1343,7 +1343,7 @@ function Test-VirtualMachineScaleSetPriority
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Regular' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Basic_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Regular' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `

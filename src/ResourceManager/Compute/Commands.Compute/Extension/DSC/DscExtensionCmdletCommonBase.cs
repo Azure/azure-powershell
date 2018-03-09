@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 if (keys != null)
                 {
-                    var storageAccountKey =keys.GetFirstAvailableKey();
+                    var storageAccountKey =keys.Keys[0].Value;
 
                     credentials = new StorageCredentials(storageAccountName, storageAccountKey);
                 }

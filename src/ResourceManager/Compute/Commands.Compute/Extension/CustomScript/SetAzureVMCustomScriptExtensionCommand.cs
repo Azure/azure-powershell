@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var keys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageName);
                     if (keys != null)
                     {
-                        storageKey = keys.GetFirstAvailableKey();
+                        storageKey = keys.Keys[0].Value;
                     }
                 }
             }

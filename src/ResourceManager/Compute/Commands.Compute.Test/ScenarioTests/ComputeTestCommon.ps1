@@ -107,7 +107,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
-    $vmsize = 'Standard_A2';
+    $vmsize = 'Standard_A2_v2';
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
@@ -132,7 +132,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $stotype = 'Standard_GRS';
     $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
@@ -285,7 +285,7 @@ function Get-DefaultVMSize
 
     foreach ($sz in $vmSizes)
     {
-        if ($sz.Name -eq 'Standard_A3')
+        if ($sz.Name -eq 'Standard_A2_v2')
         {
             return $sz.Name;
         }

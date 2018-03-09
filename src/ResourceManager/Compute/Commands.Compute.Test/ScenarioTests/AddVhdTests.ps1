@@ -59,9 +59,9 @@ function Test-AddVhd
               Assert-AreEqual $vhdLocalPath $vhdUploadContext.LocalFilePath.FullName;
 
               Write-Output ($vhdDestUri);
-              Write-Output ($storageKey.Key1);
+              Write-Output ($storageKey[0].Value);
 
-              $destBlobHandle = GetBlobHandle $vhdDestUri $storageKey.Key1;
+              $destBlobHandle = GetBlobHandle $vhdDestUri $storageKey[0].Value;
               Assert-True {VerifyMD5hash $destBlobHandle $testItem.md5hash};
 
               $vhdDownloadPath = $vhdLocalPath + "-download.vhd";

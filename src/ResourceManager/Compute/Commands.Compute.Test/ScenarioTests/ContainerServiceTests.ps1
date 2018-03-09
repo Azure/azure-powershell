@@ -31,7 +31,7 @@ function Test-ContainerService
         $masterDnsPrefixName = 'master' + $rgname;
         $agentPoolDnsPrefixName = 'ap' + $rgname;
         $agentPoolProfileName = 'AgentPool1';
-        $vmSize = 'Standard_A1';
+        $vmSize = 'Standard_A1_v2';
 
         $orchestratorType = 'DCOS';
         $adminUserName = 'acslinuxadmin';
@@ -104,7 +104,7 @@ function Test-ContainerServiceUpdate
         $masterDnsPrefixName = 'master' + $rgname;
         $agentPoolDnsPrefixName = 'ap' + $rgname;
         $agentPoolProfileName = 'AgentPool1';
-        $vmSize = 'Standard_A1';
+        $vmSize = 'Standard_A1_v2';
 
         $orchestratorType = 'DCOS';
         $adminUserName = 'acslinuxadmin';

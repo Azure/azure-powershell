@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (keys != null)
                     {
-                        storageKey = keys.GetFirstAvailableKey();
+                        storageKey = keys.Keys[0].Value;
                     }
                 }
             }
