@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
             }
-            else if (string.IsNullOrWhiteSpace(ResourceId))
+            else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 string[] tokens = ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 

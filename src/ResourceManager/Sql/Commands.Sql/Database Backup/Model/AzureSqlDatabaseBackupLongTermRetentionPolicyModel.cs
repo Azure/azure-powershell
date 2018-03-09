@@ -22,9 +22,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the long term retention policy of the database
+        /// Gets or sets the weekly retention
         /// </summary>
-        public LongTermRetentionPolicy Policy { get; set; }
+        public string WeeklyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the monthly retention
+        /// </summary>
+        public string MonthlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the yearly retention
+        /// </summary>
+        public string YearlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the week of year for yearly retention
+        /// </summary>
+        public int? WeekOfYear { get; set; }
 
         /// <summary>
         /// Gets or sets the backup archival state
