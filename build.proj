@@ -12,12 +12,15 @@
 
     /t:Test
       Runs tests
+    
+    /t:Publish
+      Creates local nuget packages and MSI
 
     /p:CodeSign=True
       Code sign binaries, mainly for official release. Default is false.
 
     /p:CodeSign=True;DelaySign=True
-      Test the code sign workflow locally. 
+      Test the code sign workflow locally.
 
     /p:Scope
       'ServiceManagement': service management
@@ -239,11 +242,6 @@
     <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureStack.psm1"
           DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
 <!-- moved copy tasks -->
-    
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'"/>
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryRoot)\setup\generate.ps1 -version 5.0.0 -force -repository MSIcreationrepository &quot; " Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'"/>
-    <CallTarget Targets="CodeSignInstaller"
-                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
@@ -418,6 +416,14 @@
           DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(NetCore)' == 'true' "/>
   </Target>
 
+  <Target Name="BuildInstaller">
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " Condition=" '$(Scope)' == 'all'"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; " Condition=" '$(Scope)' == 'all'"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; " Condition=" '$(Scope)' == 'all'"/>
+    <CallTarget Targets="CodeSignInstaller"
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
+  </Target>
+
   <Target Name="CodeSignInstaller">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->
@@ -474,7 +480,9 @@
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; -Profile Latest &quot; $(NuGetCommand)" Condition="'$(Latest)' == 'true' "/>
      <Message Importance="high" Text="Publishing Cmdlets using Stack profile" Condition="'$(Stack)' == 'true' "/>
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(StackPublishingSource)\&quot; -Profile Stack &quot; $(NuGetCommand)" Condition="'$(Stack)' == 'true' " />
- </Target>
+    
+    <CallTarget Targets="BuildInstaller" />
+  </Target>
 
   <PropertyGroup>
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
