@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         {
             var corruptData = new byte[] { 0, 1 };
             
-            string testFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TokenCacheTest.dat");
+            string testFileName = @"c:\foobar\TokenCache.dat";
             AzureSession.Instance.DataStore.WriteFile(testFileName, corruptData);
 
             // Should delete the file because it is corrupt and create a "good" one.
