@@ -28,6 +28,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -115,78 +116,110 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         const int FirstPortRangeStart = 50000;
 
-        ResourceConfig<VirtualMachineScaleSet> CreateVmssConfig(
-            ImageAndOsType imageAndOsType)
+        sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
-            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
+            NewAzureRmVmss _Cmdlet { get; }
 
-            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
-                allocationMethod: AllocationMethod);
+            Client _Client { get; }
 
-            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                name: VirtualNetworkName, addressPrefix: VnetAddressPrefix);
-
-            var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
-
-            var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                name: LoadBalancerName);
-
-            var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
-                name: FrontendPoolName,
-                zones: Zone,
-                publicIpAddress: publicIpAddress);
-
-            var backendAddressPool = loadBalancer.CreateBackendAddressPool(
-                name: BackendPoolName);
-
-            if (BackendPort != null)
+            public Parameters(NewAzureRmVmss cmdlet, Client client)
             {
-                var LoadBalancingRuleName = LoadBalancerName;
-                foreach (var backendPort in BackendPort)
-                {
-                    loadBalancer.CreateLoadBalancingRule(
-                        name: LoadBalancingRuleName + backendPort.ToString(),
-                        fronendIpConfiguration: frontendIpConfiguration,
-                        backendAddressPool: backendAddressPool,
-                        frontendPort: backendPort,
-                        backendPort: backendPort);
-                }
+                _Cmdlet = cmdlet;
+                _Client = client;
             }
 
-            NatBackendPort = imageAndOsType.UpdatePorts(NatBackendPort);
+            public string Location
+            {
+                get { return _Cmdlet.Location; }
+                set { _Cmdlet.Location = value; }
+            }
 
-            var inboundNatPoolName = VMScaleSetName;
-            var PortRangeSize = InstanceCount * 2;
+            public ImageAndOsType ImageAndOsType { get; set; }
 
-            var inboundNatPools = NatBackendPort
-                ?.Select((port, i) => 
+            public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
+            {
+                ImageAndOsType = await _Client.UpdateImageAndOsTypeAsync(
+                    ImageAndOsType, _Cmdlet.ImageName, Location);
+
+                // generate a domain name label if it's not specified.
+                _Cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _Cmdlet.DomainNameLabel,
+                    name: _Cmdlet.VMScaleSetName,
+                    location: Location,
+                    client: _Client);
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_Cmdlet.ResourceGroupName);
+
+                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                    name: _Cmdlet.PublicIpAddressName,
+                    domainNameLabel: _Cmdlet.DomainNameLabel,
+                    allocationMethod: _Cmdlet.AllocationMethod);
+
+                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                    name: _Cmdlet.VirtualNetworkName,
+                    addressPrefix: _Cmdlet.VnetAddressPrefix);
+
+                var subnet = virtualNetwork.CreateSubnet(
+                    _Cmdlet.SubnetName, _Cmdlet.SubnetAddressPrefix);
+
+                var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
+                    name: _Cmdlet.LoadBalancerName);
+
+                var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
+                    name: _Cmdlet.FrontendPoolName,
+                    zones: _Cmdlet.Zone,
+                    publicIpAddress: publicIpAddress);
+
+                var backendAddressPool = loadBalancer.CreateBackendAddressPool(
+                    name: _Cmdlet.BackendPoolName);
+
+                if (_Cmdlet.BackendPort != null)
                 {
-                    var portRangeStart = FirstPortRangeStart + i * 2000;
-                    return loadBalancer.CreateInboundNatPool(
-                        name: inboundNatPoolName + port.ToString(),
-                        frontendIpConfiguration: frontendIpConfiguration,
-                        frontendPortRangeStart: portRangeStart,
-                        frontendPortRangeEnd: portRangeStart + PortRangeSize,
-                        backendPort: port);
-                })
-                .ToList();
+                    var loadBalancingRuleName = _Cmdlet.LoadBalancerName;
+                    foreach (var backendPort in _Cmdlet.BackendPort)
+                    {
+                        loadBalancer.CreateLoadBalancingRule(
+                            name: loadBalancingRuleName + backendPort.ToString(),
+                            fronendIpConfiguration: frontendIpConfiguration,
+                            backendAddressPool: backendAddressPool,
+                            frontendPort: backendPort,
+                            backendPort: backendPort);
+                    }
+                }
 
-            return resourceGroup.CreateVirtualMachineScaleSetConfig(
-                name: VMScaleSetName,
-                subnet: subnet,
-                frontendIpConfigurations: new[] { frontendIpConfiguration },
-                backendAdressPool: backendAddressPool,
-                inboundNatPools: inboundNatPools,
-                imageAndOsType: imageAndOsType,
-                adminUsername: Credential.UserName,
-                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                vmSize: VmSize,
-                instanceCount: InstanceCount,
-                upgradeMode: MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
-                    ? UpgradePolicyMode
-                    : (UpgradeMode?)null);
+                _Cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_Cmdlet.NatBackendPort);
+
+                var inboundNatPoolName = _Cmdlet.VMScaleSetName;
+                var PortRangeSize = _Cmdlet.InstanceCount * 2;
+
+                var inboundNatPools = _Cmdlet.NatBackendPort
+                    ?.Select((port, i) =>
+                    {
+                        var portRangeStart = FirstPortRangeStart + i * 2000;
+                        return loadBalancer.CreateInboundNatPool(
+                            name: inboundNatPoolName + port.ToString(),
+                            frontendIpConfiguration: frontendIpConfiguration,
+                            frontendPortRangeStart: portRangeStart,
+                            frontendPortRangeEnd: portRangeStart + PortRangeSize,
+                            backendPort: port);
+                    })
+                    .ToList();
+
+                return resourceGroup.CreateVirtualMachineScaleSetConfig(
+                    name: _Cmdlet.VMScaleSetName,
+                    subnet: subnet,
+                    frontendIpConfigurations: new[] { frontendIpConfiguration },
+                    backendAdressPool: backendAddressPool,
+                    inboundNatPools: inboundNatPools,
+                    imageAndOsType: ImageAndOsType,
+                    adminUsername: _Cmdlet.Credential.UserName,
+                    adminPassword: new NetworkCredential(string.Empty, _Cmdlet.Credential.Password).Password,
+                    vmSize: _Cmdlet.VmSize,
+                    instanceCount: _Cmdlet.InstanceCount,
+                    upgradeMode: _Cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
+                        ? _Cmdlet.UpgradePolicyMode
+                        : (UpgradeMode?)null);
+            }
         }
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
@@ -200,44 +233,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
             BackendPoolName = BackendPoolName ?? VMScaleSetName;
 
-            ImageAndOsType imageAndOsType = null;
-
-            var vmss = CreateVmssConfig(imageAndOsType);
-
             var client = new Client(DefaultProfile.DefaultContext);
 
-            // get current Azure state
-            var current = await vmss.GetStateAsync(client, new CancellationToken());
+            var parameters = new Parameters(this, client);
 
-            Location = current.UpdateLocation(Location, vmss);
-
-            imageAndOsType = await client.UpdateImageAndOsTypeAsync(
-                imageAndOsType, ImageName, Location);
-
-            // generate a domain name label if it's not specified.
-            DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
-                domainNameLabel: DomainNameLabel,
-                name: VMScaleSetName,
-                location: Location,
-                client: client);            
-
-            vmss = CreateVmssConfig(imageAndOsType);
-
-            var engine = new SdkEngine(client.SubscriptionId);
-            var target = vmss.GetTargetState(current, engine, Location);
-
-            var newState = await vmss.UpdateStateAsync(
-                client,
-                target,
-                new CancellationToken(),
-                new ShouldProcess(asyncCmdlet),
-                asyncCmdlet.ReportTaskProgress);
-
-            var result = newState.Get(vmss);
-            if (result == null)
-            {
-                result = current.Get(vmss);
-            }
+            var result = await StrategyCmdlet.RunAsync(
+                client, parameters, asyncCmdlet, new CancellationToken());
 
             if (result != null)
             {
@@ -248,7 +249,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 psObject.FullyQualifiedDomainName = fqdn;
 
                 var port = "<port>";
-                var connectionString = imageAndOsType.GetConnectionString(
+                var connectionString = parameters.ImageAndOsType.GetConnectionString(
                     fqdn,
                     Credential.UserName,
                     port);
