@@ -176,7 +176,8 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Disable-AzureRmVmssDiskEncryption',
                'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption',
                'Export-AzureRmLogAnalyticRequestRateByInterval',
-               'Export-AzureRmLogAnalyticThrottledRequests'
+               'Export-AzureRmLogAnalyticThrottledRequests',
+               'Invoke-AzureRmVmssServiceFabricUDWalk'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added `Invoke-AzureRmVmssServiceFabricUDWalk` cmdlet.
 * Log analytic feature
     - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
     - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet

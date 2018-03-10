@@ -59,13 +59,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
+            var pPlatformUpdateDomain = new RuntimeDefinedParameter();
+            pPlatformUpdateDomain.Name = "PlatformUpdateDomain";
+            pPlatformUpdateDomain.ParameterType = typeof(int);
+            pPlatformUpdateDomain.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 3,
+                Mandatory = true
+            });
+            pPlatformUpdateDomain.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("PlatformUpdateDomain", pPlatformUpdateDomain);
+
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
             pArgumentList.ParameterType = typeof(object[]);
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
+                Position = 4,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -78,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            var platformUpdateDomain = new int();
+            int platformUpdateDomain = (int)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
             WriteObject(result);
@@ -97,5 +109,85 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new string[] { "ResourceGroupName", "VMScaleSetName", "PlatformUpdateDomain" },
                  new object[] { resourceGroupName, vmScaleSetName, platformUpdateDomain });
         }
+    }
+
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmVmssServiceFabricUDWalk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSRecoveryWalkResponse))]
+    public partial class InvokeAzureRmVmssServiceFabricUDWalk : ComputeAutomationBaseCmdlet
+    {
+        public override void ExecuteCmdlet()
+        {
+            ExecuteClientAction(() =>
+            {
+                if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Invoke))
+                {
+                    string resourceGroupName;
+                    string vmScaleSetName;
+                    if (this.ParameterSetName.Equals("ResourceIdParameter"))
+                    {
+                        resourceGroupName = GetResourceGroupName(this.ResourceId);
+                        vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachineScaleSets");
+                    }
+                    else if (this.ParameterSetName.Equals("ObjectParameter"))
+                    {
+                        resourceGroupName = GetResourceGroupName(this.VirtualMachineScaleSet.Id);
+                        vmScaleSetName = GetResourceName(this.VirtualMachineScaleSet.Id, "Microsoft.Compute/VirtualMachineScaleSets");
+                    }
+                    else
+                    {
+                        resourceGroupName = this.ResourceGroupName;
+                        vmScaleSetName = this.VMScaleSetName;
+                    }
+                    int platformUpdateDomain = this.PlatformUpdateDomain;
+
+                    var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
+                    var psObject = new PSRecoveryWalkResponse();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RecoveryWalkResponse, PSRecoveryWalkResponse>(result, psObject);
+                    WriteObject(psObject);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        public string VMScaleSetName { get; set; }
+
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = false)]
+        public int PlatformUpdateDomain { get; set; }
+
+        [Parameter(
+           ParameterSetName = "ResourceIdParameter",
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ValueFromPipeline = true)]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ObjectParameter",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = true)]
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

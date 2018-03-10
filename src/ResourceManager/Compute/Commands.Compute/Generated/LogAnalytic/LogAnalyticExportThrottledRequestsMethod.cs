@@ -199,7 +199,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByOperationName { get; set; }
 
         [Parameter(
@@ -211,7 +210,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByThrottlePolicy { get; set; }
 
         [Parameter(
@@ -223,7 +221,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByResourceName { get; set; }
 
         [Parameter(
