@@ -266,8 +266,6 @@
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
-    <Exec Command="dotnet restore Azure.PowerShell.Netcore.sln"/>
-    <Exec Command="dotnet build Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
     <Exec Command="dotnet publish Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
 
     <!-- Delete powershell runtime files -->
@@ -312,9 +310,9 @@
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
 
     <!-- Update module manifests. -->
-    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) AzureRM.Netcore -Profile Latest &quot; " Condition="'$(Latest)' == 'true' and '$(CodeSign)' == 'false'"/>
+    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) AzureRM.Netcore -Profile Latest &quot; " Condition="'$(Latest)' == 'true' and '$(CodeSign)' == 'false'" ContinueOnError="false" />
 
-    <!-- Generate the help. -->
+     <!-- Generate the help. -->
     <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="true" Condition=" '$(SkipHelp)' == 'false' and '$(Latest)' == 'true'"/>
 
     <!-- Cleanup extraneous files. -->
