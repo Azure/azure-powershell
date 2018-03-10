@@ -64,14 +64,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The gateway name for configuring on the server.")]
+        [ValidateNotNullOrEmpty]
+        public string GatewayName { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = true,
+		[Parameter(Mandatory = false)]
+		public SwitchParameter DisconnectGateway { get; set; }
+
+		[Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = true,
             ParameterSetName = ParamSetDisableBackup,
             HelpMessage = "The switch to turn off backup of the server.")]
         public SwitchParameter DisableBackup { get; set; }
-
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The replica count of readonly pool")]
@@ -120,6 +127,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
+                if (DisconnectGateway.IsPresent)
+                {
+                	GatewayName = "-";
+                }
+
                 IPv4FirewallSettings setting = null;
                 if (FirewallConfig != null)
                 {
@@ -147,9 +159,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = -1;
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, GatewayName, ReadonlyReplicaCount, DefaultConnectionMode, setting);
 
-                if(PassThru.IsPresent)
+				if (PassThru.IsPresent)
                 {
                     WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(updatedServer));
                 }

@@ -23,8 +23,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -63,6 +64,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string administrators = null,
             AnalysisServicesServer existingServer = null,
             string backupBlobContainerUri = null,
+            string gatewayName = null,
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
             IPv4FirewallSettings setting = null)
@@ -87,6 +89,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 }
             }
 
+            GatewayDetails gatewayDetails = null;
+            if (gatewayName == "-")
+            {
+            	_client.Servers.DissociateGateway(resourceGroupName, serverName);
+            }
+            else if (!string.IsNullOrEmpty(gatewayName))
+            {
+                gatewayDetails = getConnectionGateway(gatewayName);
+            }
+
             AnalysisServicesServer newOrUpdatedServer = null;
             if (existingServer != null)
             {
@@ -105,6 +117,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 {
                     updateParameters.BackupBlobContainerUri = backupBlobContainerUri;
                 }
+
+                if (gatewayDetails != null)
+                {
+                    updateParameters.GatewayDetails = gatewayDetails;
+                }
+
+                newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
 
                 if (ReadonlyReplicaCount != -1)
                 {
@@ -138,6 +157,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     {
                         AsAdministrators = new ServerAdministrators(adminList),
                         BackupBlobContainerUri = backupBlobContainerUri,
+                        GatewayDetails = gatewayDetails,
                         Location = location,
                         Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
                         Tags = tags,
@@ -216,6 +236,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             return _client.Servers.ListSkusForExisting(resourceGroupName, serverName);
         }
 
+        public GatewayListStatusLive GetGatewayStatus(string resourceGroupName, string serverName)
+        {
+            return _client.Servers.ListGatewayStatus(resourceGroupName, serverName);
+        }
+
         private string GetResourceGroupByServer(string serverName)
         {
             try
@@ -261,6 +286,57 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             _client.Servers.Resume(resourceGroupName, serverName);
+        }
+
+		public GatewayInfo GetGatewayInfo(string resourceId)
+		{
+			var availableGateways = getAvailableGateways();
+			foreach (var gateway in availableGateways.value)
+			{
+				if (gateway.id.Equals(resourceId))
+				{
+					return gateway;
+				}
+			}
+
+			return null;
+		}
+
+
+		private const string WebResourceProviderVersion = "api-version=2016-06-01";
+
+        private GatewayDetails getConnectionGateway(string Name)
+        {
+            var availableGateways = getAvailableGateways();
+            GatewayDetails targetGateway = null;
+            foreach( var gateway in availableGateways.value)
+            {
+                if (gateway.name.Equals(Name))
+                {
+                    targetGateway = new GatewayDetails(gateway.id);
+                }
+            }
+
+            return targetGateway;
+        }
+
+        private GatewayCollection getAvailableGateways()
+        {
+            var _baseUrl = _client.BaseUri.AbsoluteUri;
+            var _url = new Uri(new Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Web/connectionGateways").ToString();
+            _url = _url.Replace("{subscriptionId}", Uri.EscapeDataString(_client.SubscriptionId));
+            _url += "?" + WebResourceProviderVersion;
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new Uri(_url);
+            _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            _httpRequest.Headers.TryAddWithoutValidation("accept-language", _client.AcceptLanguage);
+            _client.Credentials.ProcessHttpRequestAsync(_httpRequest, new CancellationToken()).ConfigureAwait(false).GetAwaiter();
+            _httpResponse =_client.HttpClient.SendAsync(_httpRequest).ConfigureAwait(false).GetAwaiter().GetResult();
+            var jsonstring = _httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            GatewayCollection availableGateways = JsonConvert.DeserializeObject<GatewayCollection>(jsonstring);
+            return availableGateways;
         }
 
         #endregion

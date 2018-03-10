@@ -14,6 +14,9 @@ This topic displays help topics for the Azure AnalysisServices cmdlets.
 ### [Get-AzureRmAnalysisServicesServer](Get-AzureRmAnalysisServicesServer.md)
 Gets the details of an Analysis Services server.
 
+### [Get-AzureRmAnalysisServicesGateway](Get-AzureRmAnalysisServicesGateway.md)
+Gets the details of an on-premise unified gateway linked to Analysis Services server.
+
 ### [New-AzureRmAnalysisServicesServer](New-AzureRmAnalysisServicesServer.md)
 Creates a new Analysis Services server
 

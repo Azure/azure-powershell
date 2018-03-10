@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public int Capacity { get; set; }
 
-        internal static Dictionary<string, string> FromResourceSku(ResourceSku resourceSku)
+        internal static ServerSku FromResourceSku(ResourceSku resourceSku)
         {
-            Dictionary<string, string> sku = new Dictionary<string, string>();
-            sku["Name"] = resourceSku.Name;
-            sku["Tier"] = resourceSku.Tier;
-            sku["Capacity"] = resourceSku.Capacity == null ? "1" : resourceSku.Capacity.Value.ToString();
+            ServerSku sku = new ServerSku();
+            sku.Name = resourceSku.Name;
+            sku.Tier = resourceSku.Tier;
+            sku.Capacity = resourceSku.Capacity == null ? 1 : resourceSku.Capacity.Value;
             return sku;
         }
     }

@@ -93,5 +93,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");
         }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerGatewayAssociation()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerGatewayAssociation");
+        }
     }
 }

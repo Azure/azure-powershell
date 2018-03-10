@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public string BackupBlobContainerUri { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The gateway name for configuring on the server.")]
+        [ValidateNotNullOrEmpty]
+        public string GatewayName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The replica count of readonly pool")]
         [ValidateRange(0, 7)]
         public int ReadonlyReplicaCount { get; set; }
@@ -144,7 +149,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = 0;
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, GatewayName, ReadonlyReplicaCount, DefaultConnectionMode, setting);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
