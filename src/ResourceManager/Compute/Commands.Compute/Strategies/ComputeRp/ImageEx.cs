@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
             this IClient client,
             ImageAndOsType imageAndOsType,
+            string resourceGroupName,
             string imageName,
             string location)
         {
@@ -83,8 +84,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             }
             else
             {
-                // get image
-                return Images
+                var compute = client.GetClient<ComputeManagementClient>();
+
+                try
+                {
+                    var localImage = await compute.Images.GetAsync(resourceGroupName, imageName);
+                    return new ImageAndOsType(
+                        localImage.StorageProfile.OsDisk.OsType,
+                        new ImageReference { Id = localImage.Id });
+                }
+                catch
+                {
+                }
+
+                // get generic image
+                var result = Images
                     .Instance
                     .SelectMany(osAndMap => osAndMap
                         .Value
@@ -95,6 +109,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 : OperatingSystemTypes.Linux,
                             nameAndImage.Value)))
                     .FirstOrDefault();
+
+                if (result == null)
+                {
+                    // TODO: move it to resource.
+                    throw new ArgumentException("Can't find image '" + imageName + "'");
+                }
+
+                return result;
             }
         }
     }
