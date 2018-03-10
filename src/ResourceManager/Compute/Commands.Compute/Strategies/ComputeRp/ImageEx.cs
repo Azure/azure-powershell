@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 if (result == null)
                 {
                     // TODO: move it to resource.
-                    throw new ArgumentException("Can't find image '" + imageName + "'");
+                    throw new ArgumentException("Can't find the image '" + imageName + "'");
                 }
 
                 return result;
