@@ -45,7 +45,42 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 return imageAndOsType;
             }
 
-            if (imageName.Contains(':'))
+            if (imageName.Contains("/"))
+            {
+                var imageArray = imageName.Split('/');
+                if (imageArray.Length != 9)
+                {
+                    throw new ArgumentException("Invalid resource id  '" + imageName + "'.");
+                }
+                // has to be ""
+                var empty = imageArray[0];
+                // has to be "subscriptions"
+                var subscriptions = imageArray[1];
+                var subscriptionId = imageArray[2];
+                // has to be "resourceGroups"
+                var resourceGroups = imageArray[3];
+                var imageResourceGroupName = imageArray[4];
+                // has to be "providers"
+                var providers = imageArray[5];
+                // has to be "Microsoft."
+                var providerNamespace = imageArray[6];
+                // has to be "image" 
+                var provider = imageArray[7];
+                var resourceName = imageArray[8];
+
+                var compute = client.GetClient<ComputeManagementClient>();
+                if (compute.SubscriptionId != subscriptionId)
+                {
+                    throw new ArgumentException("The image subscription doesn't math the current subscription.");
+                }
+
+                var localImage = await compute.Images.GetAsync(imageResourceGroupName, resourceName);
+
+                return new ImageAndOsType(
+                    localImage.StorageProfile.OsDisk.OsType,
+                    new ImageReference { Id = localImage.Id });
+            }
+            else if (imageName.Contains(':'))
             {
                 if (location == null)
                 {
