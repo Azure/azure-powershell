@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 45B96AB0-ACE3-4754-B162-88027AC8CA41
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementauthorizationserver
 schema: 2.0.0
@@ -30,7 +31,7 @@ The **New-AzureRmApiManagementAuthorizationServer** cmdlet creates an Azure API 
 ## EXAMPLES
 
 ### Example 1: Create an authorization server
-```
+```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementAuthrizarionServer -Context $ApiMgmtContext -Name "Contoso OAuth2 server" -ClientRegistrationPageUrl "https://contoso/signup" -AuthorizationEndpointUrl "https://contoso/auth" -TokenEndpointUrl "https://contoso/token" -ClientId "clientid" -ClientSecret "e041ed1b660b4eadbad5a29d066e6e88" -AuthorizationRequestMethods @('Get', 'Post') -GrantTypes @( 'AuthorizationCode', 'Implicit', 'ResourceOwnerPassword', 'ClientCredentials') -ClientAuthenticationMethods @('Basic') -TokenBodyParameters @{'par1'='val1'; 'par2'='val2'} -AccessTokenSendingMethods @('AuthorizationHeader', 'Query') -ResourceOwnerUsername "ivan" -ResourceOwnerPassword "qwerty"
 ```
@@ -46,7 +47,7 @@ psdx_paramvalues AuthorizationHeader and Query.
 ```yaml
 Type: PsApiManagementAccessTokenSendingMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationHeader, Query
 
 Required: True
@@ -62,7 +63,7 @@ Specifies the authorization endpoint to authenticate resource owners and obtain 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -79,7 +80,7 @@ The default value is GET.
 ```yaml
 Type: PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Get, Post
 
 Required: False
@@ -96,7 +97,7 @@ psdx_paramvalues Basic and Body.
 ```yaml
 Type: PsApiManagementClientAuthenticationMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Body
 
 Required: True
@@ -112,7 +113,7 @@ Specifies the client ID of the developer console that is the client application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,7 +128,7 @@ Specifies the client registration endpoint to register clients with the authoriz
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +143,7 @@ Specifies the client secret of developer console that is the client application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -157,7 +158,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -187,7 +188,7 @@ Specifies the default scope for the authorization server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +203,7 @@ Specifies a description for an authorization server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -223,7 +224,7 @@ psdx_paramvalues
 ```yaml
 Type: PsApiManagementGrantType[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials
 
 Required: True
@@ -239,7 +240,7 @@ Specifies the name of the authorization server to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -255,7 +256,7 @@ You must specify this parameter is required if ResourceOwnerPassword is specifie
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -271,7 +272,7 @@ You must specify this parameter if ResourceOwnerPassword is specified by the *Gr
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -286,7 +287,7 @@ Specifies the ID of the authorization server to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -301,7 +302,7 @@ Indicates whether to support the *State* parameter.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -316,7 +317,7 @@ Specifies additional body parameters using **application/x-www-form-urlencoded**
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -331,7 +332,7 @@ Specifies the token endpoint URL that is used by clients to obtain access tokens
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -355,4 +356,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

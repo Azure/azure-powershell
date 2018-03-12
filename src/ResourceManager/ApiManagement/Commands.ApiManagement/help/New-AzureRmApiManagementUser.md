@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 3C467F64-7525-4420-9AFE-DCB98EF6D203
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementuser
 schema: 2.0.0
@@ -40,7 +41,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,7 +71,7 @@ Specifies the email address of the user.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +87,7 @@ This parameter must be 1 to 100 characters long.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,7 +103,7 @@ This parameter must be 1 to 100 characters long.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +120,7 @@ The default value is $Null.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,7 +136,7 @@ This parameter is required.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -152,7 +153,7 @@ The default value of this parameter is $Null.
 ```yaml
 Type: PsApiManagementUserState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Active, Blocked
 
 Required: False
@@ -170,7 +171,7 @@ If this parameter is not specified, this cmdlet generates a user ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
@@ -85,7 +85,7 @@ Specifies an instance of **PsApiManagementContext**.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -134,7 +134,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +168,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ This parameter is optional.
 ```yaml
 Type: PsApiManagementUserState
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 Accepted values: Active, Blocked
 
 Required: False
@@ -203,7 +203,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByUserId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

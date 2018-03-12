@@ -12,10 +12,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System.Collections.Generic;
-
     public class PsApiManagementBackend
     {
         public string BackendId { get; set; }
@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         public string Url { get; set; }
 
-        public IDictionary<string, object> Properties { get; set; } 
+        public IDictionary<string, object> Properties { get; set; }
 
         public PsApiManagementBackendProxy Proxy { get; set; }
 
         public PsApiManagementBackendCredential Credentials { get; set; }
+
+        public PsApiManagementServiceFabric ServiceFabricCluster { get; set; }
     }
 }

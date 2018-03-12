@@ -14,9 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Models;
     using System;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
 
     [Cmdlet(VerbsData.Import, Constants.ApiManagementApi, DefaultParameterSetName = FromLocalFile)]
     [OutputType(typeof(PsApiManagementApi))]
@@ -37,6 +38,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Identifier for importing API. This parameter is optional. If not specified the identifier will be generated.")]
         public String ApiId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the import will be " +
+            "done onto the currently active revision or a new api.")]
+        public String ApiRevision { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -90,22 +98,49 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            ApiId = ApiId ?? Guid.NewGuid().ToString("N");
+            string apiId = ApiId;
+            if (!string.IsNullOrEmpty(ApiId))
+            {
+                if (!string.IsNullOrEmpty(ApiRevision))
+                {
+                    apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+                }
+            }
+            else
+            {
+                apiId = Guid.NewGuid().ToString("N");
+            }
 
             if (ParameterSetName.Equals(FromLocalFile))
             {
-                Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path, WsdlServiceName, WsdlEndpointName, ApiType);
+                Client.ApiImportFromFile(
+                    Context,
+                    apiId,
+                    SpecificationFormat,
+                    SpecificationPath,
+                    Path,
+                    WsdlServiceName, 
+                    WsdlEndpointName,
+                    ApiType);
             }
             else if (ParameterSetName.Equals(FromUrl))
             {
-                Client.ApiImportFromUrl(Context, ApiId, SpecificationFormat, SpecificationUrl, Path, WsdlServiceName, WsdlEndpointName, ApiType);
+                Client.ApiImportFromUrl(
+                    Context,
+                    apiId,
+                    SpecificationFormat, 
+                    SpecificationUrl,
+                    Path,
+                    WsdlServiceName,
+                    WsdlEndpointName,
+                    ApiType);
             }
             else
             {
                 throw new InvalidOperationException(string.Format("ParameterSetName '{0}' not supported", ParameterSetName));
             }
 
-            var api = Client.ApiById(Context, ApiId);
+            var api = Client.ApiById(Context, apiId);
             WriteObject(api);
         }
     }

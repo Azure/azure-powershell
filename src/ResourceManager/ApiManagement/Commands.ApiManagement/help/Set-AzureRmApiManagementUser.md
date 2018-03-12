@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 562DE7FA-F2A7-49E9-9273-3C4E2BF8D4B5
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementuser
 schema: 2.0.0
@@ -24,7 +25,7 @@ The **Set-AzureRmApiManagementUser** cmdlet sets user details.
 ## EXAMPLES
 
 ### Example 1: Change a user's password, email address and state
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
 PS C:\>Set-AzureRmApiManagementUser -Context $apimContext -UserId "0123456789" -Email "patti.fuller@contoso.com" -Password $securePassword -State "Blocked"
@@ -41,7 +42,7 @@ This parameter is required.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -72,7 +73,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,7 +89,7 @@ This parameter must be 1 to 100 characters long.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +105,7 @@ This parameter is must be 1 to 100 characters long.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -121,7 +122,7 @@ The default value of this parameter is $null.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +137,7 @@ passthru
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +153,7 @@ This parameter is optional.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,7 +170,7 @@ The default value is Active.
 ```yaml
 Type: PsApiManagementUserState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Active, Blocked
 
 Required: False
@@ -186,7 +187,7 @@ This parameter is required.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

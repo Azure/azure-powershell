@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 93005775-3AB9-43C5-B353-45B82124ADB7
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementauthorizationserver
 schema: 2.0.0
@@ -46,7 +47,7 @@ psdx_paramvalues AuthorizationHeader and Query.
 ```yaml
 Type: PsApiManagementAccessTokenSendingMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationHeader, Query
 
 Required: True
@@ -62,7 +63,7 @@ Specifies the authorization endpoint to authenticate resource owners and obtain 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -79,7 +80,7 @@ The default value is GET.
 ```yaml
 Type: PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Get, Post
 
 Required: False
@@ -96,7 +97,7 @@ psdx_paramvalues Basic and Body.
 ```yaml
 Type: PsApiManagementClientAuthenticationMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Body
 
 Required: True
@@ -112,7 +113,7 @@ Specifies the client ID of the developer console that is the client application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,7 +128,7 @@ Specifies the client registration endpoint to register clients with the authoriz
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +143,7 @@ Specifies the client secret of the developer console that is the client applicat
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -157,7 +158,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -187,7 +188,7 @@ Specifies the default scope for the authorization server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +203,7 @@ Specifies a description for an authorization server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -223,7 +224,7 @@ psdx_paramvalues
 ```yaml
 Type: PsApiManagementGrantType[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials
 
 Required: True
@@ -239,7 +240,7 @@ Specifies the name of the authorization server to modify.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -254,7 +255,7 @@ passthru
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -270,7 +271,7 @@ You must specify this parameter if ResourceOwnerPassword is specified by the *Gr
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -286,7 +287,7 @@ You must specify this parameter if ResourceOwnerPassword is specified by the *Gr
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -301,7 +302,7 @@ Specifies the ID of the authorization server to modify.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -316,7 +317,7 @@ Indicates whether to support the *State* parameter.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -331,7 +332,7 @@ Specifies additional body parameters using application/x-www-form-urlencoded for
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -346,7 +347,7 @@ Specifies the token endpoint for clients to obtain access tokens in exchange for
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

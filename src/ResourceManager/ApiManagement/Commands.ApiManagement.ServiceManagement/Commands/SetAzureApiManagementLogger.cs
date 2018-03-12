@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Management.ApiManagement.SmapiModels;
+    using Management.ApiManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;    
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger)]
     [OutputType(typeof(PsApiManagementLogger))]
     public class SetAzureApiManagementLogger : AzureApiManagementCmdletBase
-    {
+    {        
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -31,24 +31,31 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
-        [Parameter(
+        [Parameter(           
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of logger to update. This parameter is mandatory.")]
         [ValidateNotNullOrEmpty]
         public String LoggerId { get; set; }
 
-        [Parameter(
+        [Parameter(     
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "EventHub Entity name. This parameter is optional.")]
         public String Name { get; set; }
 
-        [Parameter(
+        [Parameter(            
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "EventHub Connection String with Send Policy Rights. This parameter is optional.")]
         public String ConnectionString { get; set; }
+       
+        [Parameter(            
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Instrumentation Key of the application Insights. This parameter is optional.")]
+        [ValidateNotNullOrEmpty]
+        public String InstrumentationKey { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -75,19 +82,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             var credentials = new Dictionary<string, string>();
 
-            if (!string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(ConnectionString))
+            string loggerType = string.Empty;
+            if (!string.IsNullOrEmpty(ConnectionString) || !string.IsNullOrEmpty(Name))
             {
-                credentials.Add("name", Name);
-                credentials.Add("connectionString", ConnectionString);
-            }
-            else if ((string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(ConnectionString)) ||
-                (!string.IsNullOrWhiteSpace(Name) && string.IsNullOrWhiteSpace(ConnectionString)))
-            {
-                WriteWarning("When updating Logger Credentials, we need to Provide both -Name and -ConnectionString parameters");
-                return;
-            }
+                loggerType = LoggerType.AzureEventHub;
+                if (!string.IsNullOrWhiteSpace(ConnectionString))
+                {
+                    credentials.Add("connectionString", ConnectionString);
+                }
 
-            Client.LoggerSet(Context, LoggerTypeContract.AzureEventHub, LoggerId, Description, credentials, IsBuffered.IsPresent);
+                if (!string.IsNullOrWhiteSpace(Name))
+                {
+                    credentials.Add("name", Name);                    
+                }                
+            }
+            else if (!string.IsNullOrEmpty(InstrumentationKey))
+            {
+                loggerType = LoggerType.ApplicationInsights;
+                credentials.Add("instrumentationKey", InstrumentationKey);
+            }
+            
+            Client.LoggerSet(Context, loggerType, LoggerId, Description, credentials, IsBuffered.IsPresent);
 
             if (PassThru)
             {

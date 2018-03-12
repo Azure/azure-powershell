@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 56604912-53A0-496D-9BDC-472BCE45A6A2
@@ -34,14 +34,14 @@ The **Update-AzureRmApiManagementDeployment** cmdlet updates current deployments
 ## EXAMPLES
 
 ### Example 1: Update a deployment of an ApiManagement instance
-```
+```powershell
 PS C:\>Update-AzureRmApiManagementDeployment -ResourceGroupName "Contoso" -Name "ContosoApi" -Sku "Standard" -Capacity 3
 ```
 
 This command updates deployment of an API Management instance to a three unit capacity standard.
 
 ### Example 2: Get an ApiManagement instance and rescale it
-```
+```powershell
 PS C:\>$ApiManagement = Get-AzureRmApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
 PS C:\> $ApiManagement.Sku = "Premium"
 PS C:\> $ApiManagement.Capacity = 5
@@ -52,15 +52,15 @@ PS C:\> Update-AzureRmApiManagementDeployment -ApiManagement $ApiManagement
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
 
 ### Example 3: Update deployment (external VNET)
-```
-PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+```powershell
+PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
 PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "External"
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
 
 ### Example 4: Update deployment (internal VNET)
-```
+```powershell
 PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
 PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "Internal"
 ```
@@ -75,7 +75,7 @@ Specifies additional deployment regions of Azure API Management.
 ```yaml
 Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,7 +91,7 @@ Use this parameter if the instance already has all the required changes.
 ```yaml
 Type: PsApiManagement
 Parameter Sets: UpdateFromPsApiManagementInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ Specifies the SKU capacity of the master Azure API Management deployment region.
 ```yaml
 Type: Int32
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -139,7 +139,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 ```yaml
 Type: String
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -154,7 +154,7 @@ Specifies the name of API Management that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -170,7 +170,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Specifies the name of resource group under which API Management exists.
 ```yaml
 Type: String
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -206,7 +206,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: PsApiManagementSku
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 Accepted values: Developer, Standard, Premium
 
 Required: True
@@ -222,7 +222,7 @@ Specifies the Virtual Network configuration of the master Azure API Management d
 ```yaml
 Type: PsApiManagementVirtualNetwork
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -246,7 +246,7 @@ The API Management deployment has an intranet facing virtual address.
 ```yaml
 Type: PsApiManagementVpnType
 Parameter Sets: UpdateSpecificService
-Aliases: 
+Aliases:
 Accepted values: None, External, Internal
 
 Required: False

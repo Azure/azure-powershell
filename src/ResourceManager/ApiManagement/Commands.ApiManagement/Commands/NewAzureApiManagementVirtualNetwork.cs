@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Location of the virtual network.")]
         [LocationCompleter("Microsoft.ApiManagement/service")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("The location property will be deprecated in future" +
+            "breaking change release. It is no longer required.")]
         public string Location { get; set; }
 
         [Parameter(

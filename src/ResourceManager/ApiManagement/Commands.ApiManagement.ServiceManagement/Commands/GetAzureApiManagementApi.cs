@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApi, DefaultParameterSetName = AllApis)]
     [OutputType(typeof(IList<PsApiManagementApi>), ParameterSetName = new[] { AllApis, FindByName, FindByProductId })]
@@ -44,6 +45,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiId { get; set; }
 
         [Parameter(
+            ParameterSetName = FindById,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Revision Identifier of the particular Api revision. This parameter is optional.")]
+        public String ApiRevision { get; set; }
+
+        [Parameter(
             ParameterSetName = FindByName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -65,7 +73,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(FindById))
             {
-                WriteObject(Client.ApiById(Context, ApiId));
+                string id = ApiId;
+                if (ApiRevision != null)
+                {
+                    id = ApiId.ApiRevisionIdentifier(ApiRevision);
+                }
+                WriteObject(Client.ApiById(Context, id));
             }
             else if (ParameterSetName.Equals(FindByName))
             {
