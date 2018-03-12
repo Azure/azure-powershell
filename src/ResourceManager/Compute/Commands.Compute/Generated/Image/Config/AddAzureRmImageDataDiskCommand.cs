@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,

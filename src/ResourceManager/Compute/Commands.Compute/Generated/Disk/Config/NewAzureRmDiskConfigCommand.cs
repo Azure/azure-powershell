@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
-            if (this.SkuName != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
                 if (vSku == null)
                 {
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-            if (this.CreateOption.HasValue)
+            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
             {
                 if (vCreationData == null)
                 {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.CreateOption = this.CreateOption.Value;
             }
 
-            if (this.StorageAccountId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountId"))
             {
                 if (vCreationData == null)
                 {
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.StorageAccountId = this.StorageAccountId;
             }
 
-            if (this.ImageReference != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReference"))
             {
                 if (vCreationData == null)
                 {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.ImageReference = this.ImageReference;
             }
 
-            if (this.SourceUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SourceUri"))
             {
                 if (vCreationData == null)
                 {
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceUri = this.SourceUri;
             }
 
-            if (this.SourceResourceId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SourceResourceId"))
             {
                 if (vCreationData == null)
                 {
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
 
-            if (this.EncryptionSettingsEnabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
 
-            if (this.DiskEncryptionKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
-            if (this.KeyEncryptionKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -211,11 +211,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDisk = new PSDisk
             {
-                Zones = this.Zone,
-                OsType = this.OsType,
-                DiskSizeGB = this.DiskSizeGB,
-                Location = this.Location,
-                Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
+                Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
+                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?) null,
+                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null,
+                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
+                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettings = vEncryptionSettings,

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? Lun { get; set; }
+        public int Lun { get; set; }
 
         protected override void ProcessRecord()
         {

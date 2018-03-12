@@ -15,19 +15,20 @@ Manual platform update domain walk to update virtual machines in a service fabri
 ```
 Invoke-AzureRmVmssServiceFabricUDWalk [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-PlatformUpdateDomain] <Int32> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Invoke-AzureRmVmssServiceFabricUDWalk [-PlatformUpdateDomain] <Int32> -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Invoke-AzureRmVmssServiceFabricUDWalk [-PlatformUpdateDomain] <Int32>
  -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,6 @@ PS C:\> Invoke-AzureRmVmssServiceFabricUDWalk -ResourceId $resoureId  -PlatformU
 ```
 
 This invokes service fabric update walk on UD 2 for the virtual machine scale set specified by resource id.
-
 
 ## PARAMETERS
 
@@ -195,16 +195,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSRecoveryWalkResponse
-
 
 ## NOTES
 
