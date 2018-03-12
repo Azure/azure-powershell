@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 1,
                    HelpMessage = "Input file. The input file containing the backed-up blob")]
         [ValidateNotNullOrEmpty]
-        public string[] InputFile { get; set; }
+        public string InputFile { get; set; }
 
         #endregion Input Parameter Definitions
 
@@ -77,17 +77,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
             }
-
-            foreach (var file in InputFile)
+            
+            if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
             {
-                if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
-                {
-                    var filePath = ResolvePath(file);
+                var filePath = ResolvePath(InputFile);
 
-                    var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
+                var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
-                    this.WriteObject(restoredKeyBundle);
-                }
+                this.WriteObject(restoredKeyBundle);
             }
         }
 

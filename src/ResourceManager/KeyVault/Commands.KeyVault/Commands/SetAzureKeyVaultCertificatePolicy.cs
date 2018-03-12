@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ExpandedRenewNumberParameterSet,
-            HelpMessage = "Specifies the number of days after which the automatic process for the certificate renewal begins.")]
+            HelpMessage = "Specifies the number of days before expiration when automatic renewal should start.")]
         [ValidateRange(1, int.MaxValue)]
         public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
 
