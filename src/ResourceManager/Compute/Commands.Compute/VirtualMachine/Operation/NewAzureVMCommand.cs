@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
@@ -110,7 +111,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
-            Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
@@ -405,9 +405,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                 psResult.FullyQualifiedDomainName = fqdn;
-                asyncCmdlet.WriteVerbose(imageAndOsType.OsType == OperatingSystemTypes.Windows
-                    ? "Use 'mstsc /v:" + fqdn + "' to connect to the VM."
-                    : "Use 'ssh " + Credential.UserName + "@" + fqdn + "' to connect to the VM.");
+                var connectionString = imageAndOsType.GetConnectionString(
+                    fqdn,
+                    Credential.UserName);
+                asyncCmdlet.WriteVerbose(
+                    Resources.VirtualMachineUseConnectionString,
+                    connectionString);
                 asyncCmdlet.WriteObject(psResult);
             }
         }
@@ -639,8 +642,9 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.Sku() != null
-                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
+                    e => e.Location.Canonicalize().Equals(this.Location.Canonicalize())
+                      && e.Sku() != null
+                      && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {

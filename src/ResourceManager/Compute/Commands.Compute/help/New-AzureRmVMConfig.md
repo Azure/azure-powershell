@@ -124,7 +124,7 @@ The identity of the virtual machine, if configured.
 Type: ResourceIdentityType
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases: 
-Accepted values: SystemAssigned
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
 Required: True
 Position: 4
@@ -212,6 +212,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

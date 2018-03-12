@@ -32,55 +32,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
             IList<string> zones,
-            ResourceConfig<PublicIPAddress> publicIPAddress,
-            NestedResourceConfig<Subnet, VirtualNetwork> subnet)
+            ResourceConfig<PublicIPAddress> publicIpAddress)
                 => loadBalancer.CreateNested(
                     strategy: Strategy,
                     name: name,
-                    createModel: engine => CreateFrontendIpConfig(
-                        froontendPoolName: name,
-                        engine: engine,
-                        subnet: subnet,
-                        publicIpAddress: publicIPAddress,
-                        privateIpAddress: null,
-                        zones: zones));
-
-        internal static FrontendIPConfiguration CreateFrontendIpConfig(
-            string froontendPoolName,
-            IEngine engine,
-            NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            ResourceConfig<PublicIPAddress> publicIpAddress,
-            string privateIpAddress,
-            IList<string> zones)
-        {
-            var frontendIpConfig = new FrontendIPConfiguration
-            {
-                Zones = zones
-            };
-
-            if (subnet != null)
-            {
-                frontendIpConfig.Subnet = new Subnet { Id = engine.GetId(subnet) };
-
-                if (!string.IsNullOrEmpty(privateIpAddress))
-                {
-                    frontendIpConfig.PrivateIPAddress = privateIpAddress;
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Static;
-                }
-                else
-                {
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Dynamic;
-                }
-            }
-            else if (publicIpAddress != null)
-            {
-                frontendIpConfig.PublicIPAddress = new PublicIPAddress
-                {
-                    Id = engine.GetId(publicIpAddress)
-                };
-            }
-
-            return frontendIpConfig;
-        }
+                    createModel: engine => new FrontendIPConfiguration
+                    {
+                        Zones = zones,
+                        PublicIPAddress = engine.GetReference(publicIpAddress)
+                    });
     }
 }
