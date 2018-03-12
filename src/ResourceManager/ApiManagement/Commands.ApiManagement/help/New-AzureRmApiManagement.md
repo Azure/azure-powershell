@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 164C5205-01BA-47BB-B780-D0B9AE614A4B
@@ -18,7 +18,10 @@ New-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -Location <S
  -AdminEmail <String> [-Sku <PsApiManagementSku>] [-Capacity <Int32>] [-VpnType <PsApiManagementVpnType>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>]
  [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-AdditionalRegions <PsApiManagementRegion[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AdditionalRegions <PsApiManagementRegion[]>]
+ [-CustomHostnameConfiguration <PsApiManagementCustomHostNameConfiguration[]>]
+ [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>] [-AssignIdentity]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +30,7 @@ The **New-AzureRmApiManagement** cmdlet creates an API Management deployment in 
 ## EXAMPLES
 
 ### Example 1: Create a Developer tier API Management service
-```
+```powershell
 PS C:\>New-AzureRmApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com"
 ```
 
@@ -37,14 +40,14 @@ The command does not specify the *SKU* parameter.
 Therefore, the cmdlet uses the default value of Developer.
 
 ### Example 2: Create a Standard tier service that has three units
-```
+```powershell
 PS C:\>New-AzureRmApiManagement -ResourceGroupName "ContosoGroup02 -Name "ContosoApi" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com" -Sku Standard -Capacity 3
 ```
 
 This command creates a Standard tier API Management service that has three units.
 
 ### Example 3: Create an API Management service for an external virtual network
-```
+```powershell
 PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
 PS C:\> New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"
 ```
@@ -52,7 +55,7 @@ PS C:\> New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "We
 This command creates a Premium-tier API Management service in an Azure virtual network subnet having an external-facing gateway endpoint with a master region in the West US.
 
 ### Example 4: Create an API Management service for an internal virtual network
-```
+```powershell
 PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
 PS C:\> New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $virtualNetwork -VpnType "Internal" -Sku "Premium"
 ```
@@ -91,12 +94,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Capacity
 Specifies the SKU capacity of the Azure API Management service.
 The default is one (1).
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CustomHostnameConfiguration
+Custom hostname configurations. Default value is $null. Passing $null will set the default hostname.
+
+```yaml
+Type: PsApiManagementCustomHostNameConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,6 +242,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SystemCertificateConfiguration
+Certificates issued by Internal CA to be installed on the service. Default value is $null.
+
+```yaml
+Type: PsApiManagementSystemCertificate[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
 Tags dictionary.
 
@@ -277,6 +325,8 @@ This cmdlet does not accept any input.
 [Backup-AzureRmApiManagement](./Backup-AzureRmApiManagement.md)
 
 [Get-AzureRmApiManagement](./Get-AzureRmApiManagement.md)
+
+[Set-AzureRmApiManagement](./Set-AzureRmApiManagement.md)
 
 [Remove-AzureRmApiManagement](./Remove-AzureRmApiManagement.md)
 

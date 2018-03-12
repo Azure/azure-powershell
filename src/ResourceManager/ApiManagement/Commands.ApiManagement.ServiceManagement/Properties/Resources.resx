@@ -125,12 +125,36 @@
     <value>File "{0}" already exists. Override?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="ApiReleaseRemoveDescription" xml:space="preserve">
+    <value>Removing Api Release "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiReleaseRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Api Release "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ApiRemoveDescription" xml:space="preserve">
     <value>Removing API "{0}".</value>
     <comment>Process workflow</comment>
   </data>
   <data name="ApiRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove API "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiRevisionRemoveDescription" xml:space="preserve">
+    <value>Removing Api Revision '{0}';rev='{1}'.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiRevisionRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Api Revision '{0}';rev={1}</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiVersionSetRemoveDescription" xml:space="preserve">
+    <value>Removing API Version Set "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiVersionSetRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove API Version Set "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
   <data name="AuthorizationServerRemoveDescription" xml:space="preserve">
@@ -155,6 +179,18 @@
   </data>
   <data name="CertificateRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove Certificate "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CreateApiRelease" xml:space="preserve">
+    <value>Create a API Release</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CreateApiRevision" xml:space="preserve">
+    <value>Create a API Revision</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CreateApiVersionSet" xml:space="preserve">
+    <value>Create an API Version Set</value>
     <comment>Process workflow</comment>
   </data>
   <data name="CreateBackend" xml:space="preserve">
@@ -246,6 +282,18 @@
   </data>
   <data name="SaveTenantConfigurationWarning" xml:space="preserve">
     <value>Are you sure  you want to overwrite your changes in Git repository "{0}" with Configuration Database?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetApiRelease" xml:space="preserve">
+    <value>Update the Api Release</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetApiRevision" xml:space="preserve">
+    <value>Update the Api Revision</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetApiVersionSet" xml:space="preserve">
+    <value>Update Api Version Set</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SetBackend" xml:space="preserve">

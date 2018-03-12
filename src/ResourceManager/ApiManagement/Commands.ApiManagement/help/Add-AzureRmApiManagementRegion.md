@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 9D4A68A8-0A39-4C9A-8EA6-391A5E7A0E25
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/add-azurermapimanagementregion
 schema: 2.0.0
@@ -47,7 +48,7 @@ Specifies the **PsApiManagement** instance that this cmdlet adds additional depl
 ```yaml
 Type: PsApiManagement
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -62,7 +63,7 @@ Specifies the SKU capacity of the deployment region.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -95,7 +96,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +116,7 @@ Valid values are:
 ```yaml
 Type: PsApiManagementSku
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Developer, Standard, Premium
 
 Required: False
@@ -131,7 +132,7 @@ Specifies a virtual network configuration.
 ```yaml
 Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

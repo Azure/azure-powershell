@@ -15,8 +15,10 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Helpers;
     using System;
     using System.Linq;
+    using System.Collections.Generic;
 
     public class PsApiManagementRegion
     {
@@ -24,33 +26,51 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         {
         }
 
-        internal PsApiManagementRegion(AdditionalRegion regionResource)
+        internal PsApiManagementRegion(AdditionalLocation additionalLocation)
             : this()
         {
-            if (regionResource == null)
+            if (additionalLocation == null)
             {
                 throw new ArgumentNullException("regionResource");
             }
 
-            Location = regionResource.Location;
-            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(regionResource.SkuType);
-            Capacity = regionResource.SkuUnitCount ?? 1;
-            StaticIPs = regionResource.StaticIPs.ToArray();
-
-            if (regionResource.VirtualNetworkConfiguration != null)
+            Location = additionalLocation.Location;
+            Sku = Mappers.MapSku(additionalLocation.Sku.Name);
+            Capacity = additionalLocation.Sku.Capacity ?? 1;
+            RuntimeRegionalUrl = additionalLocation.GatewayRegionalUrl;
+            PublicIPAddresses = additionalLocation.PublicIPAddresses != null ? additionalLocation.PublicIPAddresses.ToArray() : null;
+            PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;
+            var staticIPList = new List<string>();
+            if (additionalLocation.PublicIPAddresses != null)
             {
-                VirtualNetwork = new PsApiManagementVirtualNetwork(regionResource.VirtualNetworkConfiguration);
+                staticIPList.AddRange(additionalLocation.PublicIPAddresses);
+            }
+            if (additionalLocation.PrivateIPAddresses != null)
+            {
+                staticIPList.AddRange(additionalLocation.PrivateIPAddresses);
+            }
+            StaticIPs = staticIPList.ToArray();
+            if (additionalLocation.VirtualNetworkConfiguration != null)
+            {
+                VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
             }
         }
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        [Obsolete("This property is deprecated and will be removed in a future release")]
         public string[] StaticIPs { get; private set; }
+
+        public string[] PublicIPAddresses { get; private set; }
+
+        public string[] PrivateIPAddresses { get; private set; }
 
         public int Capacity { get; set; }
 
         public PsApiManagementSku Sku { get; set; }
 
         public string Location { get; set; }
+
+        public string RuntimeRegionalUrl { get; set; }
     }
 }

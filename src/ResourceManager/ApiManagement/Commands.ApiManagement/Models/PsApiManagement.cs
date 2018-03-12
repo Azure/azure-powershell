@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             AdditionalRegions = new List<PsApiManagementRegion>();
         }
 
-        public PsApiManagement(ApiServiceResource apiServiceResource)
+        public PsApiManagement(ApiManagementServiceResource apiServiceResource)
             : this()
         {
             if (apiServiceResource == null)
@@ -43,61 +44,109 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
-            Capacity = apiServiceResource.SkuProperties.Capacity ?? 1;
-            ProvisioningState = apiServiceResource.Properties.ProvisioningState;
-            RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
-            PortalUrl = apiServiceResource.Properties.ManagementPortalEndpoint;
-            StaticIPs = apiServiceResource.Properties.StaticIPs.ToArray();
-            VpnType = ApiManagementClient.Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
+            Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
+            Capacity = apiServiceResource.Sku.Capacity ?? 1;
+            PublisherEmail = apiServiceResource.PublisherEmail;
+            OrganizationName = apiServiceResource.PublisherName;
+            NotificationSenderEmail = apiServiceResource.NotificationSenderEmail;
+            ProvisioningState = apiServiceResource.ProvisioningState;
+            RuntimeUrl = apiServiceResource.GatewayUrl;
+            RuntimeRegionalUrl = apiServiceResource.GatewayRegionalUrl;
+            PortalUrl = apiServiceResource.PortalUrl;
+            ManagementApiUrl = apiServiceResource.ManagementApiUrl;
+            ScmUrl = apiServiceResource.ScmUrl;
+            PublicIPAddresses = apiServiceResource.PublicIPAddresses != null ? apiServiceResource.PublicIPAddresses.ToArray() : null;
+            PrivateIPAddresses = apiServiceResource.PrivateIPAddresses != null ? apiServiceResource.PrivateIPAddresses.ToArray() : null;
+            var staticIPList = new List<string>();
+            if (apiServiceResource.PublicIPAddresses != null)
+            {
+                staticIPList.AddRange(apiServiceResource.PublicIPAddresses);
+            }
+            if (apiServiceResource.PrivateIPAddresses != null)
+            {
+                staticIPList.AddRange(apiServiceResource.PrivateIPAddresses);
+            }
+            StaticIPs = staticIPList.ToArray();
+            VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);            
 
-            if (apiServiceResource.Properties.AdditionalRegions != null)
+            if (apiServiceResource.AdditionalLocations != null)
             {
                 AdditionalRegions =
-                    apiServiceResource.Properties.AdditionalRegions
+                    apiServiceResource.AdditionalLocations
                         .Select(region => new PsApiManagementRegion(region))
                         .ToList();
             }
 
-            if (apiServiceResource.Properties.VirtualNetworkConfiguration != null)
+            if (apiServiceResource.VirtualNetworkConfiguration != null)
             {
-                VirtualNetwork = new PsApiManagementVirtualNetwork(apiServiceResource.Properties.VirtualNetworkConfiguration);
+                VirtualNetwork = new PsApiManagementVirtualNetwork(apiServiceResource.VirtualNetworkConfiguration);
             }
 
-            if (apiServiceResource.Properties.HostnameConfigurations != null)
+            if (apiServiceResource.HostnameConfigurations != null &&
+                apiServiceResource.HostnameConfigurations.Any())
             {
-                var portalHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
+                var portalHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
                     PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
+                    PortalCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(portalHostnameResource);
                 }
 
-                var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
-                if (proxyHostnameResource != null)
+                var proxyHostnameResources = apiServiceResource.HostnameConfigurations.Where(conf => conf.Type == HostnameType.Proxy);
+                if (proxyHostnameResources != null && proxyHostnameResources.Any())
                 {
-                    ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                    ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResources.First());
+                    var proxyCustomHostnameResources = new List<PsApiManagementCustomHostNameConfiguration>();
+                    foreach (var proxyHostNameResource in proxyHostnameResources)
+                    {
+                        proxyCustomHostnameResources.Add(new PsApiManagementCustomHostNameConfiguration(proxyHostNameResource));
+                    }
+
+                    ProxyCustomHostnameConfiguration = proxyCustomHostnameResources.ToArray();
                 }
 
-                var managementHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
+                var managementHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
                 if (managementHostnameResource != null)
                 {
                     ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
+                    ManagementCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(managementHostnameResource);
                 }
 
-                var scmHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Kudu);
+                var scmHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Scm);
                 if (scmHostnameResource != null)
                 {
                     ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
+                    ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
+            }
+
+            if (apiServiceResource.Certificates != null && apiServiceResource.Certificates.Any())
+            {
+                var systemCertificates = new List<PsApiManagementSystemCertificate>();
+                foreach(var certificate in apiServiceResource.Certificates)
+                {
+                    systemCertificates.Add(new PsApiManagementSystemCertificate(certificate));
+                }
+                SystemCertificates = systemCertificates.ToArray();
             }
 
             if (apiServiceResource.Tags != null)
             {
                 Tags = apiServiceResource.Tags;
             }
+
+            if (apiServiceResource.Identity != null)
+            {
+                this.Identity = new PsApiManagementServiceIdentity(apiServiceResource.Identity);
+            }
         }
 
+        [Obsolete("This property is deprecated and will be removed in a future releases.")]
         public string[] StaticIPs { get; private set; }
+
+        public string[] PublicIPAddresses { get; private set; }
+
+        public string[] PrivateIPAddresses { get; private set; }
 
         public string Id { get; private set; }
 
@@ -113,23 +162,51 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string RuntimeUrl { get; private set; }
 
+        public string RuntimeRegionalUrl { get; private set; }
+
         public string PortalUrl { get; private set; }
+
+        public string ManagementApiUrl { get; private set; }
+
+        public string ScmUrl { get; private set; }
+
+        public string PublisherEmail { get; set; }
+
+        public string OrganizationName { get; set; }
+
+        public string NotificationSenderEmail { get; set; }
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public PsApiManagementVpnType VpnType { get; set; }
 
+        [Obsolete("deprecated. Please use PortalCustomHostnameConfiguration instead.")]
         public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated. Please use ProxyCustomHostnameConfiguration instead.")]
         public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated. Please use ManagementCustomHostnameConfiguration instead.")]
         public PsApiManagementHostnameConfiguration ManagementHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated. Please use ScmCustomHostnameConfiguration instead.")]
         public PsApiManagementHostnameConfiguration ScmHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration PortalCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration[] ProxyCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration ManagementCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration ScmCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementSystemCertificate[] SystemCertificates { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
         public IList<PsApiManagementRegion> AdditionalRegions { get; private set; }
+
+        public PsApiManagementServiceIdentity Identity { get; private set; }
 
         public string ResourceGroupName
         {

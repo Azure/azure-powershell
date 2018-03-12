@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 98367100-4FFD-46F6-8974-603B32533626
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/import-azurermapimanagementhostnamecertificate
 schema: 2.0.0
@@ -59,7 +60,7 @@ Valid values are:
 ```yaml
 Type: PsApiManagementHostnameType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Proxy, Portal
 
 Required: True
@@ -75,7 +76,7 @@ Specifies the name of the API Management deployment that this cmdlet imports.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +92,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +107,7 @@ Specifies the password for the .pfx certificate file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,7 +122,7 @@ Specifies the path to a .pfx certificate file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,7 +137,7 @@ Specifies the name of the of resource group under which the API Management deplo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
