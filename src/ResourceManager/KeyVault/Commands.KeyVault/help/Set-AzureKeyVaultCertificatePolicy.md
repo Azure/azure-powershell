@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAtNumberOfDaysBeforeExpiry
-Specifies how many days before expiry the automatic notification process begins.
+Specifies the number of days before expiration when automatic renewal should start.
 
 ```yaml
 Type: Int32

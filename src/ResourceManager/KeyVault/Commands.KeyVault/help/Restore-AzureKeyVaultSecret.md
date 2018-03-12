@@ -15,13 +15,13 @@ Creates a secret in a key vault from a backed-up secret.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String[]>
+Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String[]>
+Restore-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies the input file that contains the backup of the secret to restore.
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases:
 

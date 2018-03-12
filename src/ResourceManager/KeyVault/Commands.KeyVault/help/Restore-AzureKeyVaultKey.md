@@ -15,13 +15,13 @@ Creates a key in a key vault from a backed-up key.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String[]>
+Restore-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies the input file that contains the backup of the key to restore.
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases:
 
