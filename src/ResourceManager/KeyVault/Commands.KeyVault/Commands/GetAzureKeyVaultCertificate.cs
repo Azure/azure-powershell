@@ -191,18 +191,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(deletedCert);
                 }
             }
+            else if (!string.IsNullOrEmpty(Name))
+            {
+                certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
+                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
+                this.WriteObject(certificate);
+            }
             else
             {
-                if (string.IsNullOrEmpty(Name))
-                {
-                    GetAndWriteCertificates(VaultName);
-                }
-                else
-                {
-                    certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
-                    var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
-                    this.WriteObject(certificate);
-                }
+                GetAndWriteCertificates(VaultName);
             }
         }
 

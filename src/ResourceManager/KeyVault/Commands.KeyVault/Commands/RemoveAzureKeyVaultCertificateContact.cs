@@ -59,56 +59,51 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            foreach (string email in EmailAddress)
+            if (ShouldProcess(VaultName, Properties.Resources.RemoveCertificateContact))
             {
-                if (ShouldProcess(email, Properties.Resources.RemoveCertificateContact))
+                Contacts existingContacts;
+
+                try
                 {
-                    Contacts existingContacts;
-
-                    try
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                }
+                catch (KeyVaultErrorException exception)
+                {
+                    if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                     {
-                        existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
-                    }
-                    catch (KeyVaultErrorException exception)
-                    {
-                        if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                        {
-                            throw;
-                        }
-
-                        existingContacts = null;
+                        throw;
                     }
 
-                    List<Contact> existingContactList;
+                    existingContacts = null;
+                }
 
-                    if (existingContacts == null ||
-                        existingContacts.ContactList == null)
-                    {
-                        existingContactList = new List<Contact>();
-                    }
-                    else
-                    {
-                        existingContactList = new List<Contact>(existingContacts.ContactList);
-                    }
+                List<Contact> existingContactList;
 
-                    var nContactsRemoved = existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0);
+                if (existingContacts == null ||
+                    existingContacts.ContactList == null)
+                {
+                    existingContactList = new List<Contact>();
+                }
+                else
+                {
+                    existingContactList = new List<Contact>(existingContacts.ContactList);
+                }
 
-                    if (nContactsRemoved == 0)
-                    {
-                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' is not found.", EmailAddress));
-                    }
+                foreach (var email in EmailAddress)
+                {
+                    existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0);
+                }
 
-                    if (existingContactList.Count == 0)
-                    {
-                        existingContactList = null;
-                    }
+                if (existingContactList.Count == 0)
+                {
+                    existingContactList = null;
+                }
 
-                    var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = existingContactList });
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = existingContactList });
 
-                    if (PassThru.IsPresent)
-                    {
-                        this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName));
-                    }
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName));
                 }
             }
         }

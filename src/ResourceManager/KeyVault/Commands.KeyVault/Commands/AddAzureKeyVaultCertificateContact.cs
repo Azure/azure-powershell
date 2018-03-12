@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 
 
@@ -104,52 +105,50 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = parsedResourceId.ResourceName;
             }
 
-            foreach (String email in EmailAddress)
+            if (ShouldProcess(VaultName, Properties.Resources.AddCertificateContact))
             {
-                if (ShouldProcess(email, Properties.Resources.AddCertificateContact))
+                Contacts existingContacts;
+
+                try
                 {
-                    Contacts existingContacts;
-
-                    try
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                }
+                catch (KeyVaultErrorException exception)
+                {
+                    if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                     {
-                        existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
-                    }
-                    catch (KeyVaultErrorException exception)
-                    {
-                        if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                        {
-                            throw;
-                        }
-
-                        existingContacts = null;
+                        throw;
                     }
 
-                    List<Contact> newContactList;
+                    existingContacts = null;
+                }
 
-                    if (existingContacts == null ||
-                        existingContacts.ContactList == null)
-                    {
-                        newContactList = new List<Contact>();
-                    }
-                    else
-                    {
-                        newContactList = new List<Contact>(existingContacts.ContactList);
-                    }
+                List<Contact> newContactList;
 
+                if (existingContacts == null ||
+                    existingContacts.ContactList == null)
+                {
+                    newContactList = new List<Contact>();
+                }
+                else
+                {
+                    newContactList = new List<Contact>(existingContacts.ContactList);
+                }
+                
+                foreach (var email in EmailAddress)
+                {
                     if (newContactList.FindIndex(
-                        contact => (string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0)) != -1)
+                        contact => (string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0)) == -1)
                     {
-                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' already exists.", email));
+                        newContactList.Add(new Contact { EmailAddress = email });
                     }
+                }
 
-                    newContactList.Add(new Contact { EmailAddress = email });
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = newContactList });
 
-                    var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = newContactList });
-
-                    if (PassThru.IsPresent)
-                    {
-                        this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName), true);
-                    }
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName), true);
                 }
             }
         }

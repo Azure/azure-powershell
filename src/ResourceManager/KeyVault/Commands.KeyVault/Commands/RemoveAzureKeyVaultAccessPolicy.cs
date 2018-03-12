@@ -190,11 +190,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByEmail,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the email address of the user in Azure Active Directory whose permissions should be deleted.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByEmail,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the email address of the user in Azure Active Directory whose permissions should be deleted.")]
         [ValidateNotNullOrEmpty()]
         public string EmailAddress { get; set; }
 
@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ByObjectId,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the ID of application that a user must.")]
+            HelpMessage = "Specifies the ID of application whose permissions should be removed.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByObjectId,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the ID of application that a user must.")]
+            HelpMessage = "Specifies the ID of application whose permissions should be removed.")]
         public Guid? ApplicationId { get; set; }
 
         [Parameter(Mandatory = false,
@@ -219,8 +219,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
-        [Alias("EnabledForDeployment")]
-        public SwitchParameter DisableDeployment { get; set; }
+        public SwitchParameter EnabledForDeployment { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
@@ -230,8 +229,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.")]
-        [Alias("EnabledForTemplateDeployment")]
-        public SwitchParameter DisableTemplateDeployment { get; set; }
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
@@ -241,8 +239,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.")]
-        [Alias("EnabledForDiskEncryption")]
-        public SwitchParameter DisableDiskEncryption { get; set; }
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         /// <summary>
         ///
@@ -302,9 +299,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update the vault
                 var updatedVault = KeyVaultManagementClient.UpdateVault(existingVault, updatedPolicies,
-                    DisableDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
-                    DisableTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
-                    DisableDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
+                    EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
+                    EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
+                    EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
                     ActiveDirectoryClient);
 
                 if (PassThru.IsPresent)
