@@ -46,10 +46,6 @@
     <Reference Include="Microsoft.Azure.Management.Monitor">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Collections" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>

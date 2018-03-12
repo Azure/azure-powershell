@@ -5,6 +5,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Kubernetes</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Kubernetes</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
