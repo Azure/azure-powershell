@@ -500,6 +500,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 ValidateBlobProperties(BlobProperties);
             }
 
+            // if FIPS policy is enabled, must use native MD5
+            if (FIPSEnabled)
+            {
+                CloudStorageAccount.UseV1MD5 = false;
+            }
+
             string containerName = string.Empty;
 
             switch (ParameterSetName)
