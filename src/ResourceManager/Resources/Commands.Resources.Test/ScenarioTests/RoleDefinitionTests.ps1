@@ -347,20 +347,16 @@ function Test-RDGetAtScopeFilterRoles
 {
     # Setup
     # Basic positive case - read from file
-    $rdName = 'CustomRole Tests Role New'
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("17643b76-fff5-4c48-b1a7-f4da3297a8cb")
-    New-AzureRmRoleDefinition -InputFile .\Resources\DataActionsRoleDefinition.json
+    $rdName = 'Another tests role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("3d95b97a-5745-4c39-950c-0b608dea635f")
+    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
     
     $rd = Get-AzureRmRoleDefinition -Name $rdName -AtScopeAndBelow
     Assert-AreEqual "Test role" $rd.Description 
     Assert-AreEqual $true $rd.IsCustom
-    Assert-NotNull $rd.DataActions
-    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*" $rd.DataActions[0]
-    Assert-NotNull $rd.NotDataActions
-    Assert-AreEqual "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write" $rd.NotDataActions[0]
     Assert-NotNull $rd.AssignableScopes
-    Assert-Null $rd.Actions
-    Assert-Null $rd.NotActions
+    Assert-NotNull $rd.Actions
+    Assert-NotNull $rd.NotActions
     
     # Basic positive case - read from object
     Remove-AzureRmRoleDefinition -Id $rd.Id -Force
