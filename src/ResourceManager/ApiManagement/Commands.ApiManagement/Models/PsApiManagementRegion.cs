@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using AutoMapper;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
     using System.Linq;
@@ -25,22 +24,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         {
         }
 
-        internal PsApiManagementRegion(AdditionalRegion regionResource)
+        internal PsApiManagementRegion(AdditionalLocation additionalLocation)
             : this()
         {
-            if (regionResource == null)
+            if (additionalLocation == null)
             {
                 throw new ArgumentNullException("regionResource");
             }
 
-            Location = regionResource.Location;
-            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(regionResource.SkuType);
-            Capacity = regionResource.SkuUnitCount ?? 1;
-            StaticIPs = regionResource.StaticIPs.ToArray();
+            Location = additionalLocation.Location;
+            Sku = ApiManagementClient.MapSku(additionalLocation.Sku.Name);
+            Capacity = additionalLocation.Sku.Capacity ?? 1;
+            StaticIPs = additionalLocation.PublicIPAddresses.ToArray();
 
-            if (regionResource.VirtualNetworkConfiguration != null)
+            if (additionalLocation.VirtualNetworkConfiguration != null)
             {
-                VirtualNetwork = new PsApiManagementVirtualNetwork(regionResource.VirtualNetworkConfiguration);
+                VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
             }
         }
 

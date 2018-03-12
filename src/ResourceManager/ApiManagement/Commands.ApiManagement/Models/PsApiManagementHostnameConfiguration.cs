@@ -32,11 +32,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             HostnameCertificate = new PsApiManagementHostnameCertificate(hostnameConfigurationResource.Certificate);
-            Hostname = hostnameConfigurationResource.Hostname;
+            Hostname = hostnameConfigurationResource.HostName;
+            KeyVaultId = hostnameConfigurationResource.KeyVaultId;
+            DefaultSslBinding = hostnameConfigurationResource.DefaultSslBinding;
+            NegotiateClientCertificate = hostnameConfigurationResource.NegotiateClientCertificate;
         }
 
         public PsApiManagementHostnameCertificate HostnameCertificate { get; set; }
 
         public string Hostname { get; set; }
+
+        public string KeyVaultId { get; set; }
+
+        public bool? DefaultSslBinding { get; set; }
+
+        public bool? NegotiateClientCertificate { get; set;}
     }
 }

@@ -99,7 +99,6 @@
     <Compile Include="Models\PsApiManagementHostnameCertificate.cs" />
     <Compile Include="Models\PsApiManagementHostnameConfiguration.cs" />
     <Compile Include="Models\PsApiManagementHostnameType.cs" />
-    <Compile Include="Models\ApiManagementLongRunningOperation.cs" />
     <Compile Include="Models\PsApiManagementRegion.cs" />
     <Compile Include="Models\PsApiManagementSku.cs" />
     <Compile Include="Models\PsApiManagementVirtualNetwork.cs" />

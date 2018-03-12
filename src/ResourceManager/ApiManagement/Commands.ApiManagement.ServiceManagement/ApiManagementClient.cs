@@ -14,7 +14,6 @@
 
 using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
@@ -23,7 +22,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.ApiManagement.SmapiModels;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using System;
@@ -35,6 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
+    using Microsoft.Azure.Management.ApiManagement.Models;
 
     public class ApiManagementClient
     {
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg.CreateMap<PsApiManagementRequest, RequestContract>();
                 cfg.CreateMap<PsApiManagementResponse, ResponseContract>();
                 cfg.CreateMap<PsApiManagementRepresentation, RepresentationContract>();
-                cfg.CreateMap<PsApiManagementAuthorizationHeaderCredential, AuthorizationHeaderCredentialsContract>();
+                cfg.CreateMap<PsApiManagementAuthorizationHeaderCredential, AuthorizationServerGetHeaders>();
                 cfg
                 .CreateMap<ApiContract, PsApiManagementApi>()
                 .ForMember(dest => dest.ApiId, opt => opt.MapFrom(src => src.Id))
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.CertificateId, opt => opt.MapFrom(src => src.Id));
 
                 cfg
-                    .CreateMap<OAuth2AuthorizationServerContract, PsApiManagementOAuth2AuthrozationServer>()
+                    .CreateMap<AuthorizationServerContract, PsApiManagementOAuth2AuthrozationServer>()
                     .ForMember(dest => dest.ServerId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.AccessTokenSendingMethods, opt => opt.MapFrom(src => src.BearerTokenSendingMethods))
                     .ForMember(dest => dest.TokenEndpointUrl, opt => opt.MapFrom(src => src.TokenEndpoint))
@@ -161,7 +160,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                             : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
 
                 cfg
-                    .CreateMap<LoggerGetContract, PsApiManagementLogger>()
+                    .CreateMap<LoggerContract, PsApiManagementLogger>()
                     .ForMember(dest => dest.LoggerId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                     .ForMember(dest => dest.IsBuffered, opt => opt.MapFrom(src => src.IsBuffered))
@@ -227,12 +226,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                             ? (Hashtable)null
                             : DictionaryToHashTable(src.Header));
                 cfg
-                    .CreateMap<AuthorizationHeaderCredentialsContract, PsApiManagementAuthorizationHeaderCredential>()
+                    .CreateMap<BackendAuthorizationHeaderCredentials, PsApiManagementAuthorizationHeaderCredential>()
                     .ForMember(dest => dest.Scheme, opt => opt.MapFrom(src => src.Scheme))
                     .ForMember(dest => dest.Parameter, opt => opt.MapFrom(src => src.Parameter));
 
                 cfg
-                    .CreateMap<BackendGetContract, PsApiManagementBackend>()
+                    .CreateMap<BackendContract, PsApiManagementBackend>()
                     .ForMember(dest => dest.BackendId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
                     .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
@@ -267,7 +266,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         private Management.ApiManagement.ApiManagementClient CreateClient()
         {
-            return AzureSession.Instance.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
+            return AzureSession.Instance.ClientFactory.CreateArmClient<Management.ApiManagement.ApiManagementClient>(
                 _context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
@@ -1586,7 +1585,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         public IList<PsApiManagementProperty> PropertiesList(PsApiManagementContext context)
         {
             var results = ListPagedAndMap<PsApiManagementProperty, PropertyContract>(
-                () => Client.Property.List(context.ResourceGroupName, context.ServiceName, null),
+                () => Client.Property.ListByService(context.ResourceGroupName, context.ServiceName, null),
                 nextLink => Client.Property.ListNext(nextLink));
 
             return results;
@@ -2075,7 +2074,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return result;
         }
 
-        static Hashtable DictionaryToHashTable(IDictionary<string, List<string>> dictionary)
+        static Hashtable DictionaryToHashTable(IDictionary<string, IList<string>> dictionary)
         {
             if (dictionary == null)
             {

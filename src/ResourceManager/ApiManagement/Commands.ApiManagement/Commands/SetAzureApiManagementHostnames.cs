@@ -91,9 +91,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
             }
 
-            ExecuteLongRunningCmdletWrap(
-                () => Client.BeginSetHostnames(resourceGroupName, name, portalHostName, proxyHostName),
-                PassThru.IsPresent);
+            var apiManagementResource = Client.SetHostnames(resourceGroupName, name, portalHostName, proxyHostName);
+            if (PassThru.IsPresent)
+            {
+                this.WriteObject(apiManagementResource);
+            }
         }
     }
 }

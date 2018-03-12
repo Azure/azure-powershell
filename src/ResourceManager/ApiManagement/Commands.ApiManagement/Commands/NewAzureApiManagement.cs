@@ -105,9 +105,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-#pragma warning disable CS0618
-            ExecuteLongRunningCmdletWrap(
-                () => Client.BeginCreateApiManagementService(
+            var apiManagementResource = Client.CreateApiManagementService(
                     ResourceGroupName,
                     Name,
                     Location,
@@ -118,9 +116,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     VpnType,
                     Tag,
                     VirtualNetwork,
-                    AdditionalRegions),
-                passThru: true);
-#pragma warning restore CS0618
+                    AdditionalRegions);
+
+            this.WriteObject(apiManagementResource);
         }
     }
 }

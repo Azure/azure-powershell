@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using AutoMapper;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             AdditionalRegions = new List<PsApiManagementRegion>();
         }
 
-        public PsApiManagement(ApiServiceResource apiServiceResource)
+        public PsApiManagement(ApiManagementServiceResource apiServiceResource)
             : this()
         {
             if (apiServiceResource == null)
@@ -44,48 +43,48 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = ApiManagementClient.Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
-            Capacity = apiServiceResource.SkuProperties.Capacity ?? 1;
-            ProvisioningState = apiServiceResource.Properties.ProvisioningState;
-            RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
-            PortalUrl = apiServiceResource.Properties.ManagementPortalEndpoint;
-            StaticIPs = apiServiceResource.Properties.StaticIPs.ToArray();
-            VpnType = ApiManagementClient.Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
+            Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
+            Capacity = apiServiceResource.Sku.Capacity ?? 1;
+            ProvisioningState = apiServiceResource.ProvisioningState;
+            RuntimeUrl = apiServiceResource.GatewayRegionalUrl;
+            PortalUrl = apiServiceResource.PortalUrl;
+            StaticIPs = apiServiceResource.PublicIPAddresses.ToArray();
+            VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);            
 
-            if (apiServiceResource.Properties.AdditionalRegions != null)
+            if (apiServiceResource.AdditionalLocations != null)
             {
                 AdditionalRegions =
-                    apiServiceResource.Properties.AdditionalRegions
+                    apiServiceResource.AdditionalLocations
                         .Select(region => new PsApiManagementRegion(region))
                         .ToList();
             }
 
-            if (apiServiceResource.Properties.VirtualNetworkConfiguration != null)
+            if (apiServiceResource.VirtualNetworkConfiguration != null)
             {
-                VirtualNetwork = new PsApiManagementVirtualNetwork(apiServiceResource.Properties.VirtualNetworkConfiguration);
+                VirtualNetwork = new PsApiManagementVirtualNetwork(apiServiceResource.VirtualNetworkConfiguration);
             }
 
-            if (apiServiceResource.Properties.HostnameConfigurations != null)
+            if (apiServiceResource.HostnameConfigurations != null)
             {
-                var portalHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
+                var portalHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
                     PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
                 }
 
-                var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
+                var proxyHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
                     ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
                 }
 
-                var managementHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
+                var managementHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
                 if (managementHostnameResource != null)
                 {
                     ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
                 }
 
-                var scmHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Kudu);
+                var scmHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Scm);
                 if (scmHostnameResource != null)
                 {
                     ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
@@ -115,6 +114,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public string RuntimeUrl { get; private set; }
 
         public string PortalUrl { get; private set; }
+
+        public string PublisherEmail { get; set; }
+
+        public string OrganizationName { get; set; }
+
+        public string NotificationSenderEmail { get; set; }
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
