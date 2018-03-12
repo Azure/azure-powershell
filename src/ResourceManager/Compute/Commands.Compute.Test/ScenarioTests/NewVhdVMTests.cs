@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithValidVhdDiskFile()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithValidDiskFile");
