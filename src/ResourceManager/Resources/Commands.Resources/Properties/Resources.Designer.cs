@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove group with object id &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveGroupConfirmation {
+            get {
+                return ResourceManager.GetString("RemoveGroupConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -633,6 +642,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingApplication {
             get {
                 return ResourceManager.GetString("RemovingApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing group ....
+        /// </summary>
+        internal static string RemovingGroup {
+            get {
+                return ResourceManager.GetString("RemovingGroup", resourceCulture);
             }
         }
         

@@ -14,4 +14,10 @@
 
 @{
     "Get-AzureRmResourceProviderAction" = "Get-AzureRmProviderOperation";
+	"Get-AzureRmADServicePrincipalCredential" = "Get-AzureRmADSpCredential";
+	"New-AzureRmADServicePrincipalCredential" = "New-AzureRmADSpCredential";
+	"Remove-AzureRmADServicePrincipalCredential" = "Remove-AzureRmADSpCredential";
+	"Set-AzureRmADApplication" = "Update-AzureRmADApplication";
+	"Set-AzureRmADServicePrincipal" = "Update-AzureRmADServicePrincipal";
+	"Set-AzureRmADUser" = "Update-AzureRmADUser";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null

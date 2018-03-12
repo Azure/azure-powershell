@@ -239,6 +239,16 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return FilterGroups(new ADObjectFilterOptions());
         }
 
+        public PSADGroup CreateGroup(GroupCreateParameters groupCreateParams)
+        {
+            return GraphClient.Groups.Create(groupCreateParams).ToPSADGroup();
+        }
+
+        public void RemoveGroup(string groupObjectId)
+        {
+            GraphClient.Groups.Delete(groupObjectId);
+        }
+
         public IEnumerable<PSADObject> GetGroupMembers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             return new PageEnumerable<AADObject>(
@@ -246,6 +256,16 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 {
                     return GraphClient.Groups.GetGroupMembers(options.Id);
                 }, GraphClient.Groups.GetGroupMembersNext, first, skip).Select(m => m.ToPSADObject());
+        }
+
+        public void AddGroupMember(string groupObjectId, GroupAddMemberParameters groupAddMemberParams)
+        {
+            GraphClient.Groups.AddMember(groupObjectId, groupAddMemberParams);
+        }
+
+        public void RemoveGroupMember(string groupObjectId, string memberObjectId)
+        {
+            GraphClient.Groups.RemoveMember(groupObjectId, memberObjectId);
         }
 
         public Guid GetObjectId(ADObjectFilterOptions options)
