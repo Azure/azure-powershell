@@ -482,17 +482,9 @@ function Test-RaPropertiesValidation
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("171d2453-29dc-42b4-84fc-3fd259eeaec3")
     New-AzureRmRoleDefinition -Role $roleDef
     $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Test"
-
-    # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("2fec1202-19ad-4c8b-b461-6031a1b5dce6")
-    $newAssignment = New-AzureRmRoleAssignment `
-                        -ObjectId $users[0].Id.Guid `
-                        -RoleDefinitionName $roleDef.Name `
-                        -Scope $scope 
-    $newAssignment.Scope = $scope.toUpper()
     
     $assignments = Get-AzureRmRoleAssignment
     Assert-NotNull $assignments
@@ -503,16 +495,7 @@ function Test-RaPropertiesValidation
     }
 
     # cleanup 
-    DeleteRoleAssignment $newAssignment
     Remove-AzureRmRoleDefinition -Id $rd.Id -Force
-    
-    # Assert
-    Assert-NotNull $newAssignment
-    Assert-AreEqual $roleDef.Name $newAssignment.RoleDefinitionName 
-    Assert-AreEqual $scope $newAssignment.Scope 
-    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
-    
-    VerifyRoleAssignmentDeleted $newAssignment
 }
 
 <#
