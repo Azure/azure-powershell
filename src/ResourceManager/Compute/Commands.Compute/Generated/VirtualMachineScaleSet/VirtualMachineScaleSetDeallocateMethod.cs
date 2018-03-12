@@ -205,13 +205,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "FriendMethod",
             Mandatory = false)]
-        [AllowNull]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
-        [AllowNull]
         public SwitchParameter StayProvisioned { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

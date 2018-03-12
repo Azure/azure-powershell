@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Websites.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', '.\Microsoft.Azure.Commands.Common.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
