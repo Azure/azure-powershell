@@ -20,6 +20,7 @@
 
 ## Current Release
 * Fixed issue with importing aliases
+* Fix bug to serialize and display IPTags
 
 ## Version 5.2.0
 * Added cmdlet to create a new connection monitor
