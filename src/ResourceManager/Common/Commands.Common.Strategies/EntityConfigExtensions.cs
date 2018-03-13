@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class EntityConfigExtensions
     {
+        public const string Providers = "providers";
+
         public static string IdToString(this IEnumerable<string> id)
             => "/" + string.Join("/", id);
 
@@ -40,6 +42,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         internal static IEnumerable<string> GetProvidersId(this IEntityConfig config)
-            => new[] { "providers" }.Concat(config.GetIdFromResourceGroup());
+            => new[] { Providers }.Concat(config.GetIdFromResourceGroup());
     }
 }
