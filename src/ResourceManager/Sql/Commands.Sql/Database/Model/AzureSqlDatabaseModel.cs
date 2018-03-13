@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
             CurrentServiceObjectiveName = database.ServiceLevelObjective;
-            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
+            MaxSizeBytes = database.MaxSizeBytes.Value;
             DatabaseName = database.Name;
             Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
@@ -214,18 +214,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Location = database.Location;
             ResourceId = database.Id;
             CreateMode = database.CreateMode;
-            EarliestRestoreDate = database.EarliestRestoreDate;
+            EarliestRestoreDate = null; // database.EarliestRestoreDate;
 
-            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
+            CurrentServiceObjectiveId = Guid.Empty; // database.CurrentServiceObjectiveId.Value;
 
             DatabaseId = database.DatabaseId.Value;
 
             Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
             Edition = edition;
 
-            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
+            RequestedServiceObjectiveId = null; // database.RequestedServiceObjectiveId.Value;
 
-            Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
+            //Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
 
             ZoneRedundant = database.ZoneRedundant;

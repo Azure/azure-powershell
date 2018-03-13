@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,30 +22,15 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
-namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase : 
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase :
+        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the database server to use.
+        /// Override to remove from parameters.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the Azure SQL Server the database is in.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Database to use.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Initializes the adapter

@@ -25,14 +25,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
+        DefaultParameterSetName = WeeklyRetentionRequiredSet,
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
+    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
+        /// <summary>
+        /// Parameter set name for Weekly Retention.
+        /// </summary>
+        private const string WeeklyRetentionRequiredSet = "WeeklyRetentionRequired";
+
+        /// <summary>
+        /// Parameter set name for Monthly Retention.
+        /// </summary>
+        private const string MonthlyRetentionRequiredSet = "MonthlyRetentionRequired";
+
+        /// <summary>
+        /// Parameter set name for Yearly Retention.
+        /// </summary>
+        private const string YearlyRetentionRequiredSet = "YearlyRetentionRequired";
+
+        private const string LegacySet = "Legacy";
+
         /// <summary>
         /// Gets or sets the backup long term retention state
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = LegacySet,
             HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
@@ -41,6 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the name of the backup long term retention policy
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = LegacySet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the backup long term retention policy.")]
         [ValidateNotNullOrEmpty]
@@ -48,13 +69,78 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the Weekly Retention.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = WeeklyRetentionRequiredSet,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Weekly Retention of the long term retention policy.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Weekly Retention of the long term retention policy.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Weekly Retention of the long term retention policy.")]
+        [ValidateNotNullOrEmpty]
+        public string WeeklyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Monthly Retention.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Monthly Retention of the long term retention policy.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Monthly Retention of the long term retention policy.")]
+        [ValidateNotNullOrEmpty]
+        public string MonthlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Yearly Retention.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Yearly Retention of the long term retention policy.")]
+        [ValidateNotNullOrEmpty]
+        public string YearlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Week of Year for the Yearly Retention.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Week of Year to save for the Yearly Retention.")]
+        [ValidateNotNullOrEmpty]
+        public int WeekOfYear { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>() { 
-                ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
+
+            return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()
+            {
+                ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    this.DatabaseName,
+                    ParameterSetName.Equals(LegacySet))
             };
         }
 
@@ -65,18 +151,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> model)
         {
-            List<Model.AzureSqlDatabaseBackupLongTermRetentionPolicyModel> newEntity = 
-                new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
-            newEntity.Add(new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()
             {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                DatabaseName = DatabaseName,
-                State = State,
-                RecoveryServicesBackupPolicyResourceId = ResourceId,
-                Location = model.FirstOrDefault().Location,
-            });
-            return newEntity;
+                new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+                {
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName,
+                    DatabaseName = DatabaseName,
+                    State = State,
+                    RecoveryServicesBackupPolicyResourceId = ResourceId,
+                    Location = model.FirstOrDefault().Location,
+                    WeeklyRetention = WeeklyRetention,
+                    MonthlyRetention = MonthlyRetention,
+                    YearlyRetention = YearlyRetention,
+                    WeekOfYear = WeekOfYear
+                }
+            };
         }
 
         /// <summary>
