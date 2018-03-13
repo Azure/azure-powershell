@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Commands.Compute
                 psResult.FullyQualifiedDomainName = fqdn;
                 var connectionString = imageAndOsType.GetConnectionString(
                     fqdn,
-                    Credential.UserName);
+                    Credential?.UserName);
                 asyncCmdlet.WriteVerbose(
                     Resources.VirtualMachineUseConnectionString,
                     connectionString);
