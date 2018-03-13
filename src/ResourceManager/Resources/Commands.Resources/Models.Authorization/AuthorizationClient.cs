@@ -141,10 +141,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, bool scopeAndBelow)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                    scope, scopeAndBelow ? new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>() : null)
-                .Where(r => r.RoleType == AuthorizationClientExtensions.CustomRole)
-                .Select(r => r.ToPSRoleDefinition()));
+			result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+					scope, new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole))
+				.Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
