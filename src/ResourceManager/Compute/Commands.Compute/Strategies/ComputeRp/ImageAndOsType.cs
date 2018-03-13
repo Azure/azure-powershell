@@ -22,10 +22,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
         public ImageReference Image { get; }
 
-        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image)
+        public int DataDisksCount { get; }
+
+        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image, int dataDisksCount)
         {
             OsType = osType;
             Image = image;
+            DataDisksCount = dataDisksCount;
         }
     }
 }

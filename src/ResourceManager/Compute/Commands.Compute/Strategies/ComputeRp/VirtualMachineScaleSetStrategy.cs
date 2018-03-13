@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 ?.Select((size, i) => new VirtualMachineScaleSetDataDisk
                                 {
                                     CreateOption = DiskCreateOptionTypes.Empty,
-                                    Lun = i + 1,
+                                    Lun = i + imageAndOsType.DataDisksCount,
                                     DiskSizeGB = size,
                                 })
                                 .ToList()
