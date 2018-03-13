@@ -118,20 +118,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
-            NewAzureRmVmss _Cmdlet { get; }
+            NewAzureRmVmss _cmdlet { get; }
 
-            Client _Client { get; }
+            Client _client { get; }
 
             public Parameters(NewAzureRmVmss cmdlet, Client client)
             {
-                _Cmdlet = cmdlet;
-                _Client = client;
+                _cmdlet = cmdlet;
+                _client = client;
             }
 
             public string Location
             {
-                get { return _Cmdlet.Location; }
-                set { _Cmdlet.Location = value; }
+                get { return _cmdlet.Location; }
+                set { _cmdlet.Location = value; }
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -142,41 +142,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ImageAndOsType, _Cmdlet.ResourceGroupName, _Cmdlet.ImageName, Location);
 
                 // generate a domain name label if it's not specified.
-                _Cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
-                    domainNameLabel: _Cmdlet.DomainNameLabel,
-                    name: _Cmdlet.VMScaleSetName,
+                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    name: _cmdlet.VMScaleSetName,
                     location: Location,
-                    client: _Client);
+                    client: _client);
 
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_Cmdlet.ResourceGroupName);
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                    name: _Cmdlet.PublicIpAddressName,
-                    domainNameLabel: _Cmdlet.DomainNameLabel,
-                    allocationMethod: _Cmdlet.AllocationMethod);
+                    name: _cmdlet.PublicIpAddressName,
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    allocationMethod: _cmdlet.AllocationMethod);
 
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                    name: _Cmdlet.VirtualNetworkName,
-                    addressPrefix: _Cmdlet.VnetAddressPrefix);
+                    name: _cmdlet.VirtualNetworkName,
+                    addressPrefix: _cmdlet.VnetAddressPrefix);
 
                 var subnet = virtualNetwork.CreateSubnet(
-                    _Cmdlet.SubnetName, _Cmdlet.SubnetAddressPrefix);
+                    _cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
 
                 var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                    name: _Cmdlet.LoadBalancerName);
+                    name: _cmdlet.LoadBalancerName);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
-                    name: _Cmdlet.FrontendPoolName,
-                    zones: _Cmdlet.Zone,
+                    name: _cmdlet.FrontendPoolName,
+                    zones: _cmdlet.Zone,
                     publicIpAddress: publicIpAddress);
 
                 var backendAddressPool = loadBalancer.CreateBackendAddressPool(
-                    name: _Cmdlet.BackendPoolName);
+                    name: _cmdlet.BackendPoolName);
 
-                if (_Cmdlet.BackendPort != null)
+                if (_cmdlet.BackendPort != null)
                 {
-                    var loadBalancingRuleName = _Cmdlet.LoadBalancerName;
-                    foreach (var backendPort in _Cmdlet.BackendPort)
+                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
+                    foreach (var backendPort in _cmdlet.BackendPort)
                     {
                         loadBalancer.CreateLoadBalancingRule(
                             name: loadBalancingRuleName + backendPort.ToString(),
@@ -187,12 +187,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
-                _Cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_Cmdlet.NatBackendPort);
+                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
-                var inboundNatPoolName = _Cmdlet.VMScaleSetName;
-                var PortRangeSize = _Cmdlet.InstanceCount * 2;
+                var inboundNatPoolName = _cmdlet.VMScaleSetName;
+                var PortRangeSize = _cmdlet.InstanceCount * 2;
 
-                var inboundNatPools = _Cmdlet.NatBackendPort
+                var inboundNatPools = _cmdlet.NatBackendPort
                     ?.Select((port, i) =>
                     {
                         var portRangeStart = FirstPortRangeStart + i * 2000;
@@ -206,18 +206,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     .ToList();
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
-                    name: _Cmdlet.VMScaleSetName,
+                    name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
                     frontendIpConfigurations: new[] { frontendIpConfiguration },
                     backendAdressPool: backendAddressPool,
                     inboundNatPools: inboundNatPools,
                     imageAndOsType: ImageAndOsType,
-                    adminUsername: _Cmdlet.Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, _Cmdlet.Credential.Password).Password,
-                    vmSize: _Cmdlet.VmSize,
-                    instanceCount: _Cmdlet.InstanceCount,
-                    upgradeMode: _Cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
-                        ? _Cmdlet.UpgradePolicyMode
+                    adminUsername: _cmdlet.Credential.UserName,
+                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    vmSize: _cmdlet.VmSize,
+                    instanceCount: _cmdlet.InstanceCount,
+                    upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
+                        ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null);
             }
         }
