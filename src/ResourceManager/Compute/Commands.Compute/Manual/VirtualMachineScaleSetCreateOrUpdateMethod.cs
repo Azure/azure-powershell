@@ -138,8 +138,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
-                ImageAndOsType = await _Client.UpdateImageAndOsTypeAsync(
-                    ImageAndOsType, _Cmdlet.ResourceGroupName, _Cmdlet.ImageName, Location);
+                ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
+                    ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
 
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
