@@ -84,7 +84,7 @@ CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl',
                'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain', 
                'Enable-AzureRmCdnCustomDomain', 'Disable-AzureRmCdnCustomDomain', 
                'Get-AzureRmCdnProfileResourceUsage', 'Confirm-AzureRmCdnEndpointProbeUrl',
-               'Get-AzureRmCdnEndpointResourceUsage', 'Get-AzureRmCdnProfileSupportedOptimizationTypes',
+               'Get-AzureRmCdnEndpointResourceUsage', 'Get-AzureRmCdnProfileSupportedOptimizationType',
                'Get-AzureRmCdnSubscriptionResourceUsage', 
                'Get-AzureRmCdnEdgeNodes'
 

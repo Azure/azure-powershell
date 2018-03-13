@@ -168,7 +168,7 @@ function Test-ProfileGetResourceUsages
 .SYNOPSIS
 Get supported optimization types exercise
 #>
-function Test-ProfileGetSupportedOptimizationTypes
+function Test-ProfileGetSupportedOptimizationType
 {
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
@@ -177,7 +177,7 @@ function Test-ProfileGetSupportedOptimizationTypes
     
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
 
-	$supportedOptimizationTypes = Get-AzureRmCdnProfileSupportedOptimizationTypes -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+	$supportedOptimizationTypes = Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	Assert-NotNull $supportedOptimizationTypes
 

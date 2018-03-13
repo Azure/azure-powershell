@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ProfileGetSupportedOptimizationTypes()
+        public void ProfileGetSupportedOptimizationType()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetSupportedOptimizationTypes");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetSupportedOptimizationType");
         }
     }
 }

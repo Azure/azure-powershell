@@ -107,6 +107,7 @@
     <Compile Include="Models\Endpoint\PSValidateCustomDomainOutput.cs" />
     <Compile Include="Models\Origin\PSOrigin.cs" />
     <Compile Include="Models\Origin\PSOriginResourceState.cs" />
+    <Compile Include="Models\Profile\PSOptimizationType.cs" />
     <Compile Include="Models\Profile\PSProfile.cs" />
     <Compile Include="Models\Profile\PSProfileResourceState.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="Origin\GetAzureRmCdnOrigin.cs" />
     <Compile Include="Origin\SetAzureRmCdnOrigin.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfile.cs" />
-    <Compile Include="Profile\GetAzureRmCdnProfileSupportedOptimizationTypes.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfileSupportedOptimizationType.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileSsoUrl.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileResourceUsage.cs" />
     <Compile Include="Profile\NewAzureRmCdnProfile.cs" />

@@ -25,8 +25,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSupportedOptimizationTypes", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(List<string>))]
-    public class GetAzureRmCdnProfileSupportedOptimizationTypes : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSupportedOptimizationType", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(List<PSOptimizationType>))]
+    public class GetAzureRmCdnProfileSupportedOptimizationType : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
             var supportedOptimizationTypes =
-                CdnManagementClient.Profiles.ListSupportedOptimizationTypes(ResourceGroupName, ProfileName);
+                CdnManagementClient.Profiles.ListSupportedOptimizationTypes(ResourceGroupName, ProfileName).SupportedOptimizationTypes.Select(optimizationType => new PSOptimizationType(optimizationType)).ToList();
 
             WriteVerbose(Resources.Success);
             WriteObject(supportedOptimizationTypes);
