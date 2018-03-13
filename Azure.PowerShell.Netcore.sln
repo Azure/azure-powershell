@@ -127,6 +127,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.UsageAggregates.Ne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Netcore", "src\ResourceManager\Dns\Commands.Dns\Commands.Dns.Netcore.csproj", "{535C5346-4E12-4032-9C60-7B1B9764B251}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerInstance.Netcore", "src\ResourceManager\ContainerInstance\Commands.ContainerInstance\Commands.ContainerInstance.Netcore.csproj", "{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -869,6 +871,18 @@ Global
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Release|x64.Build.0 = Release|Any CPU
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Release|x86.ActiveCfg = Release|Any CPU
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Release|x86.Build.0 = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|x64.Build.0 = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Debug|x86.Build.0 = Debug|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|x64.ActiveCfg = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|x64.Build.0 = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|x86.ActiveCfg = Release|Any CPU
+		{656C3D64-D63A-45B5-834A-7A2AD8C02FB2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
