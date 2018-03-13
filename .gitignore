@@ -215,6 +215,10 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+
+*.msi
+*.wixpdb
+
 .vscode/
 /tools/AutomationTestFramework/RunBooks
 /tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
