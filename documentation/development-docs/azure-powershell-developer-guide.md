@@ -215,13 +215,15 @@ The `Commands.ScenarioTests.Common` project can be found in `src/ResourceManager
 The following is a list of additional common code projects that can be used:
 
 - `Commands.Common.Authorization`
-    - Found in `src/ResourceManager/Common/Commands.Common.Authorization`
+    - Found in `src/Common/Commands.Common.Authorization`
+- `Commands.Common.Compute`
+    - Found in `src/Common/Commands.Common.Compute`
 - `Commands.Common.Graph.RBAC`
-    - Found in `src/ResourceManager/Common/Commands.Common.Graph.RBAC`
+    - Found in `src/Common/Commands.Common.Graph.RBAC`
 - `Commands.Common.Network`
-    - Found in `src/ResourceManager/Common/Commands.Common.Network`
+    - Found in `src/Common/Commands.Common.Network`
 - `Commands.Common.Storage`
-    - Found in `src/ResourceManager/Common/Commands.Common.Storage`
+    - Found in `src/Common/Commands.Common.Storage`
 
 # Creating Cmdlets
 
