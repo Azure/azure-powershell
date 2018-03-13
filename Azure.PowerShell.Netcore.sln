@@ -45,9 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Network.Netcore", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.KeyVault.Netcore", "src\ResourceManager\KeyVault\Commands.KeyVault\Commands.KeyVault.Netcore.csproj", "{814E7BBB-3D69-410A-81CF-374C29CC5C6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes\Commands.Kubernetes.Netcore.csproj", "{80657644-11E5-435B-A3DB-DFBB7115089F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Aks.Netcore", "src\ResourceManager\Aks\Commands.Aks\Commands.Aks.Netcore.csproj", "{80657644-11E5-435B-A3DB-DFBB7115089F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Kubernetes.Test.Netcore", "src\ResourceManager\Kubernetes\Commands.Kubernetes.Test\Commands.Kubernetes.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Aks.Test.Netcore", "src\ResourceManager\Aks\Commands.Aks.Test\Commands.Aks.Test.Netcore.csproj", "{E52DCBCD-CCEF-46E1-880B-CAE04A06804A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore", "src\ResourceManager\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj", "{77492655-0086-49E8-B941-7C3E9D5448E9}"
 EndProject
