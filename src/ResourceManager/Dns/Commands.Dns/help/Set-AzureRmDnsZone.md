@@ -143,7 +143,9 @@ Accept wildcard characters: False
 ```
 
 ### -RegistrationVirtualNetworkIds
-The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.```yaml
+The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: FieldsIds
 Aliases:
@@ -156,7 +158,9 @@ Accept wildcard characters: False
 ```
 
 ### -RegistrationVirtualNetworks
-The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.```yaml
+The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
 Parameter Sets: FieldsObjects
 Aliases:
@@ -169,7 +173,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResolutionVirtualNetworkIds
-The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: FieldsIds
 Aliases:
@@ -182,7 +188,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResolutionVirtualNetworks
-The list of virtual networks able to resolve records in this DNS zone, only available for private zones.```yaml
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
 Parameter Sets: FieldsObjects
 Aliases:
