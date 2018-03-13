@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = FieldsIdsParameterSetName), OutputType(typeof(DnsZone))]
     public class SetAzureDnsZone : DnsBaseCmdlet
     {
-        private const string FieldsIdsParameterSetName = "FieldsIds";
+        private const string FieldsIdsParameterSetName = "Fields";
         private const string FieldsObjectsParameterSetName = "FieldsObjects";
         private const string ObjectParameterSetName = "Object";
 

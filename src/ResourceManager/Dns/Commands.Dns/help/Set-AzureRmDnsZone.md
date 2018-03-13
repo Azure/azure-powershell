@@ -13,7 +13,7 @@ Updates the properties of a DNS zone.
 
 ## SYNTAX
 
-### FieldsIds (Default)
+### Fields (Default)
 ```
 Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
  [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
@@ -114,7 +114,7 @@ Specifies the name of the DNS zone to update.
 
 ```yaml
 Type: String
-Parameter Sets: FieldsIds, FieldsObjects
+Parameter Sets: Fields, FieldsObjects
 Aliases:
 
 Required: True
@@ -147,7 +147,7 @@ The list of virtual networks that will register virtual machine hostnames record
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: FieldsIds
+Parameter Sets: Fields
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ The list of virtual networks able to resolve records in this DNS zone, only avai
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: FieldsIds
+Parameter Sets: Fields
 Aliases:
 
 Required: False
@@ -210,7 +210,7 @@ Alternatively, you can specify the zone using a DnsZone object with the *Zone* p
 
 ```yaml
 Type: String
-Parameter Sets: FieldsIds, FieldsObjects
+Parameter Sets: Fields, FieldsObjects
 Aliases:
 
 Required: True
@@ -227,7 +227,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: Hashtable
-Parameter Sets: FieldsIds, FieldsObjects
+Parameter Sets: Fields, FieldsObjects
 Aliases: Tags
 
 Required: False
