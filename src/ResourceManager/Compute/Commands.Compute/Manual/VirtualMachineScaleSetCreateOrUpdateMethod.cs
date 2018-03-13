@@ -114,6 +114,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] NatBackendPort { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public int[] DataDiskSizeGb { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -205,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     })
                     .ToList();
 
-                return resourceGroup.CreateVirtualMachineScaleSetConfig(
+                var scaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _Cmdlet.VMScaleSetName,
                     subnet: subnet,
                     frontendIpConfigurations: new[] { frontendIpConfiguration },
@@ -218,7 +221,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     instanceCount: _Cmdlet.InstanceCount,
                     upgradeMode: _Cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                         ? _Cmdlet.UpgradePolicyMode
-                        : (UpgradeMode?)null);
+                        : (UpgradeMode?)null,
+                    dataDisks: _Cmdlet.DataDiskSizeGb);
+
+                return scaleSet;
             }
         }
 
