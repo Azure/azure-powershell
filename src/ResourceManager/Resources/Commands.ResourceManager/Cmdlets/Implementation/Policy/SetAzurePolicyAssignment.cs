@@ -91,6 +91,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The parameter for policy assignment. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.")]
+        [ValidateNotNullOrEmpty]
+        public string PolicyParameter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment metadata parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metadata for policy assignment. This can either be a path to a file name containing the metadata, or the metadata as string.")]
+        [ValidateNotNullOrEmpty]
+        public string Metadata { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -147,6 +161,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString()
                 }
             };
+            if (!string.IsNullOrEmpty(this.Metadata))
+            {
+                policyAssignmentObject.Properties.Metadata = JObject.Parse(GetObjectFromParameter(this.Metadata).ToString());
+            }
+            else
+            {
+                policyAssignmentObject.Properties.Metadata = resource.Properties["metaData"] == null
+                    ? null
+                    : JObject.Parse(resource.Properties["metaData"].ToString());
+            }
+            if (!string.IsNullOrEmpty(this.PolicyParameter))
+            {
+                policyAssignmentObject.Properties.Parameters = JObject.Parse(GetObjectFromParameter(this.PolicyParameter).ToString());
+            }
+            else
+            {
+                policyAssignmentObject.Properties.Parameters = resource.Properties["parameters"] == null
+                    ? null
+                    : JObject.Parse(resource.Properties["parameters"].ToString());
+            }
 
             return policyAssignmentObject.ToJToken();
         }
