@@ -229,84 +229,84 @@ namespace Microsoft.Azure.Commands.Compute
 
         class Parameters : IParameters<VirtualMachine>
         {
-            NewAzureVMCommand _Cmdlet { get; }
+            NewAzureVMCommand _cmdlet { get; }
 
-            Client _Client { get; }
+            Client _client { get; }
 
             public Parameters(NewAzureVMCommand cmdlet, Client client)
             {
-                _Cmdlet = cmdlet;
-                _Client = client;
+                _cmdlet = cmdlet;
+                _client = client;
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
             public string Location
             {
-                get { return _Cmdlet.Location; }
-                set { _Cmdlet.Location = value; }
+                get { return _cmdlet.Location; }
+                set { _cmdlet.Location = value; }
             }
 
             public BlobUri DestinationUri;
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
-                if (_Cmdlet.DiskFile == null)
+                if (_cmdlet.DiskFile == null)
                 {
-                    ImageAndOsType = await _Client.UpdateImageAndOsTypeAsync(
-                        ImageAndOsType, _Cmdlet.ResourceGroupName, _Cmdlet.ImageName, Location);
+                    ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
                 }
 
-                _Cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
-                    domainNameLabel: _Cmdlet.DomainNameLabel,
-                    name: _Cmdlet.Name,
+                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    name: _cmdlet.Name,
                     location: Location,
-                    client: _Client);
+                    client: _client);
 
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_Cmdlet.ResourceGroupName);
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                    name: _Cmdlet.VirtualNetworkName, addressPrefix: _Cmdlet.AddressPrefix);
-                var subnet = virtualNetwork.CreateSubnet(_Cmdlet.SubnetName, _Cmdlet.SubnetAddressPrefix);
+                    name: _cmdlet.VirtualNetworkName, addressPrefix: _cmdlet.AddressPrefix);
+                var subnet = virtualNetwork.CreateSubnet(_cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                    name: _Cmdlet.PublicIpAddressName,
-                    domainNameLabel: _Cmdlet.DomainNameLabel,
-                    allocationMethod: _Cmdlet.AllocationMethod);
+                    name: _cmdlet.PublicIpAddressName,
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    allocationMethod: _cmdlet.AllocationMethod);
                 var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
-                    name: _Cmdlet.SecurityGroupName,
-                    openPorts: _Cmdlet.OpenPorts,
+                    name: _cmdlet.SecurityGroupName,
+                    openPorts: _cmdlet.OpenPorts,
                     imageAndOsType: ImageAndOsType);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                    _Cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
+                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
 
-                var availabilitySet = _Cmdlet.AvailabilitySetName == null
+                var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
-                    : resourceGroup.CreateAvailabilitySetConfig(name: _Cmdlet.AvailabilitySetName);
+                    : resourceGroup.CreateAvailabilitySetConfig(name: _cmdlet.AvailabilitySetName);
 
-                if (_Cmdlet.DiskFile == null)
+                if (_cmdlet.DiskFile == null)
                 {
                     return resourceGroup.CreateVirtualMachineConfig(
-                        name: _Cmdlet.Name,
+                        name: _cmdlet.Name,
                         networkInterface: networkInterface,
                         imageAndOsType: ImageAndOsType,
-                        adminUsername: _Cmdlet.Credential.UserName,
+                        adminUsername: _cmdlet.Credential.UserName,
                         adminPassword:
-                            new NetworkCredential(string.Empty, _Cmdlet.Credential.Password).Password,
-                        size: _Cmdlet.Size,
+                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                        size: _cmdlet.Size,
                         availabilitySet: availabilitySet);
                 }
                 else
                 {
                     var disk = resourceGroup.CreateManagedDiskConfig(
-                        name: _Cmdlet.Name,
+                        name: _cmdlet.Name,
                         sourceUri: DestinationUri.Uri.ToString());
 
                     return resourceGroup.CreateVirtualMachineConfig(
-                        name: _Cmdlet.Name,
+                        name: _cmdlet.Name,
                         networkInterface: networkInterface,
                         osType: ImageAndOsType.OsType,
                         disk: disk,
-                        size: _Cmdlet.Size,
+                        size: _cmdlet.Size,
                         availabilitySet: availabilitySet);
                 }
             }
