@@ -477,23 +477,37 @@ function Test-RaPropertiesValidation
     $scope = '/subscriptions/'+$subscription[0].Id
     $roleDef = Get-AzureRmRoleDefinition -Name "User Access Administrator"
     $roleDef.Id = $null
-    $roleDef.Name = "Custom Reader Test"
+    $roleDef.Name = "Custom Reader Properties Test"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("171d2453-29dc-42b4-84fc-3fd259eeaec3")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("ff9cd1ab-d763-486f-b253-51a816c92bbf")
     New-AzureRmRoleDefinition -Role $roleDef
-    $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Test"
-    
+    $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Properties Test"
+
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("584d33a3-b14d-4eb4-863e-0df67b178389")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $roleDef.Name `
+                        -Scope $scope 
+
     $assignments = Get-AzureRmRoleAssignment
     Assert-NotNull $assignments
+
     foreach ($assignment in $assignments){
         Assert-NotNull $assignment
         Assert-NotNull $assignment.RoleDefinitionName
         Assert-AreNotEqual $assignment.RoleDefinitionName ""
     }
+    
+    DeleteRoleAssignment $newAssignment
 
+    Assert-NotNull $newAssignment
+    Assert-AreEqual $roleDef.Name $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    
+    VerifyRoleAssignmentDeleted $newAssignment
     # cleanup 
     Remove-AzureRmRoleDefinition -Id $rd.Id -Force
 }
