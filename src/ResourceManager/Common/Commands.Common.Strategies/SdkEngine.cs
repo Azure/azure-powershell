@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// </summary>
     public sealed class SdkEngine : IEngine
     {
+        public const string Subscriptions = "subscriptions";
+
         string _SubscriptionId { get; }
 
         public SdkEngine(string subscriptionId)
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public string GetId(IEntityConfig config)
-            => new[] { "subscriptions", _SubscriptionId } 
+            => new[] { Subscriptions, _SubscriptionId } 
                 .Concat(config.GetIdFromSubscription()) 
                 .IdToString();
     }
