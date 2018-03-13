@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 var imageArray = imageName.Split('/');
                 if (imageArray.Length != 9)
                 {
-                    throw new ArgumentException("Invalid resource id  '" + imageName + "'.");
+                    throw new ArgumentException("Invalid image resource id  '" + imageName + "'.");
                 }
                 // has to be ""
                 var empty = imageArray[0];
@@ -67,6 +67,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 // has to be "image" 
                 var provider = imageArray[7];
                 var resourceName = imageArray[8];
+
+                if (empty != string.Empty
+                    || subscriptions != SdkEngine.Subscriptions 
+                    || resourceGroups != ResourceType.ResourceGroups
+                    || providers != EntityConfigExtensions.Providers
+                    || providerNamespace != ComputeStrategy.Namespace
+                    || provider != "images")
+                {
+                    throw new ArgumentException("Invalid image resource id  '" + imageName + "'.");
+                }
 
                 var compute = client.GetClient<ComputeManagementClient>();
                 if (compute.SubscriptionId != subscriptionId)
