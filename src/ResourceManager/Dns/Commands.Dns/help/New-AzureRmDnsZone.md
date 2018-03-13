@@ -16,16 +16,16 @@ Creates a new DNS zone.
 ### VirtualNetworkIds (Default)
 ```
 New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
- [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
- [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
+ [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualNetworkObjects
 ```
 New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
- [-RegistrationVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
- [-ResolutionVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ stores it in the $Zone variable.
 ### Example 2: Create a Private DNS zone by specifying virtual network IDs
 ```
 PS C:\>$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
-PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkIds @($ResVirtualNetworkId)
+PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkId @($ResVirtualNetworkId)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
@@ -60,7 +60,7 @@ an associated resolution virtual network (specifying its ID), and then stores it
 ### Example 3: Create a Private DNS zone by specifying virtual network objects
 ```
 PS C:\>$ResVirtualNetwork = Get-AzureRmVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
-PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworks @($ResVirtualNetwork)
+PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetwork @($ResVirtualNetwork)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
@@ -99,7 +99,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RegistrationVirtualNetworkIds
+### -RegistrationVirtualNetworkId
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -114,7 +114,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RegistrationVirtualNetworks
+### -RegistrationVirtualNetwork
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -129,7 +129,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResolutionVirtualNetworkIds
+### -ResolutionVirtualNetworkId
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -144,7 +144,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResolutionVirtualNetworks
+### -ResolutionVirtualNetwork
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
 
 ```yaml

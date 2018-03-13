@@ -16,16 +16,16 @@ Updates the properties of a DNS zone.
 ### Fields (Default)
 ```
 Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
- [-RegistrationVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
- [-ResolutionVirtualNetworkIds <System.Collections.Generic.List`1[System.String]>]
+ [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
+ [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FieldsObjects
 ```
 Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
- [-RegistrationVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
- [-ResolutionVirtualNetworks <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ zone.
 ### Example 3: Associating a private zone with a virtual network by specifying its ID
 ```
 PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
-PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkIds @($vnet.Id)
+PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkId @($vnet.Id)
 ```
 
 This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
@@ -86,7 +86,7 @@ by specifying its ID.
 ### Example 4: Associating a private zone with a virtual network by specifying the network object.
 ```
 PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
-PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworks @($vnet)
+PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetwork @($vnet)
 ```
 
 This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
@@ -142,7 +142,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegistrationVirtualNetworkIds
+### -RegistrationVirtualNetworkId
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -157,7 +157,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RegistrationVirtualNetworks
+### -RegistrationVirtualNetwork
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -172,7 +172,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResolutionVirtualNetworkIds
+### -ResolutionVirtualNetworkId
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
 
 ```yaml
@@ -187,7 +187,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResolutionVirtualNetworks
+### -ResolutionVirtualNetwork
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
 
 ```yaml

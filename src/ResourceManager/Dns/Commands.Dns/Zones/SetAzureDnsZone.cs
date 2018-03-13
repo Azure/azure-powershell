@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Azure.Commands.Network.Models;
-
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
@@ -52,19 +51,19 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkIds { get; set; }
+        public List<string> RegistrationVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkIds { get; set; }
+        public List<string> ResolutionVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> RegistrationVirtualNetworks { get; set; }
+        public List<PSVirtualNetwork> RegistrationVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> ResolutionVirtualNetworks { get; set; }
+        public List<PSVirtualNetwork> ResolutionVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
@@ -95,27 +94,27 @@ namespace Microsoft.Azure.Commands.Dns
                 if (this.ParameterSetName == FieldsIdsParameterSetName)
                 {
                     // Change mutable fields if value is passed
-                    if (this.RegistrationVirtualNetworkIds != null)
+                    if (this.RegistrationVirtualNetworkId != null)
                     {
-                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
+                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
                     }
 
-                    if (this.ResolutionVirtualNetworkIds != null)
+                    if (this.ResolutionVirtualNetworkId != null)
                     {
-                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
                     }
                 }
                 else
                 {
                     // Change mutable fields if value is passed
-                    if (this.RegistrationVirtualNetworks != null)
+                    if (this.RegistrationVirtualNetwork != null)
                     {
-                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
                     }
 
-                    if (this.ResolutionVirtualNetworks != null)
+                    if (this.ResolutionVirtualNetwork != null)
                     {
-                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
                     }
                 }
             }
