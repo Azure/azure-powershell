@@ -115,13 +115,14 @@ namespace Microsoft.Azure.Commands.Aks
                 Location = rg.Location;
 
                 var validLocations = RmClient.Providers.Get("Microsoft.ContainerService").ResourceTypes.ToList().Find(x => x.ResourceType.Equals("managedClusters")).Locations;
+                validLocations = validLocations.Select(l => l.Replace(" ", string.Empty).Replace("-", string.Empty).ToLower()).ToList();
                 // If the ResourceGroup location name is not valid, use "East US"
                 if (!validLocations.Contains(rg.Location))
                 {
                     // Add check in case East US is removed from the list of valid locations
-                    if (validLocations.Contains("East US"))
+                    if (validLocations.Contains("eastus"))
                     {
-                        Location = "East US";
+                        Location = "eastus";
                     }
                     else
                     {

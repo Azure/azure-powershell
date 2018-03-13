@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
 Module Name: AzureRM.Aks
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/stop-azurermaksdashboard
 schema: 2.0.0
 ---
 
