@@ -62,10 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models
         /// requirements:** 3 out of 4 conditions below need to be fulfilled
         /// &lt;br&gt; Has lower characters &lt;br&gt;Has upper characters
         /// &lt;br&gt; Has a digit &lt;br&gt; Has a special character (Regex
-        /// match [\W_]) &lt;br&gt;&lt;br&gt; **Disallowed values:** "abc@123",
-        /// "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1",
-        /// "Password!", "Password1", "Password22", "iloveyou!"
-        /// &lt;br&gt;&lt;br&gt; For resetting the password, see [How to reset
+        /// match [\W_]) &lt;br&gt;&lt;br&gt;&lt;br&gt;For resetting the password, see [How to reset
         /// the Remote Desktop service or its login password in a Windows
         /// VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
         /// &lt;br&gt;&lt;br&gt; For resetting root password, see [Manage
@@ -141,10 +138,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models
         /// &amp;lt;br&amp;gt; Has lower characters &amp;lt;br&amp;gt;Has upper
         /// characters &amp;lt;br&amp;gt; Has a digit &amp;lt;br&amp;gt; Has a
         /// special character (Regex match [\W_])
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Disallowed values:**
-        /// "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
-        /// "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For resetting the password,
+        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For resetting the password,
         /// see [How to reset the Remote Desktop service or its login password
         /// in a Windows
         /// VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
