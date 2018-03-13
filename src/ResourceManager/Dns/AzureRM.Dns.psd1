@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Dns.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Dns.dll', '.\Microsoft.Azure.Commands.Network.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,10 +72,10 @@ NestedModules = @('.\Microsoft.Azure.Commands.Dns.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig', 
-               'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet', 
-               'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig', 
-               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone', 
+CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig',
+               'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet',
+               'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig',
+               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone',
                'Remove-AzureRmDnsZone', 'Set-AzureRmDnsZone', 'New-AzureRmDnsZone'
 
 # Variables to export from this module
@@ -123,7 +123,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

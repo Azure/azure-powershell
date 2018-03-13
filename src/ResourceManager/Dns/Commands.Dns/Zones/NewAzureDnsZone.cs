@@ -14,17 +14,16 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Dns.Models;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
-    using System.Linq;
-    using Microsoft.Azure.Commands.Network.Models;
-
     /// <summary>
     /// Creates a new zone.
     /// </summary>
@@ -45,6 +44,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the zone, Public or Private. This property cannot be changed for a zone.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Public", "Private")]
         public ZoneType? ZoneType { get; set; }
 
         [Alias("Tags")]
@@ -53,19 +53,19 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkIdsParameterSetName, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkIds { get; set; }
+        public List<string> RegistrationVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkIdsParameterSetName, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkIds { get; set; }
+        public List<string> ResolutionVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkObjectsParameterSetName, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> RegistrationVirtualNetworks { get; set; }
+        public List<PSVirtualNetwork> RegistrationVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkObjectsParameterSetName, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> ResolutionVirtualNetworks { get; set; }
+        public List<PSVirtualNetwork> ResolutionVirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Commands.Dns
                 {
                     ZoneType zoneType = this.ZoneType != null ? this.ZoneType.Value : Management.Dns.Models.ZoneType.Public;
 
-                    List<string> registrationVirtualNetworkIds = this.RegistrationVirtualNetworkIds;
-                    List<string> resolutionVirtualNetworkIds = this.ResolutionVirtualNetworkIds;
+                    List<string> registrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
+                    List<string> resolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
                     if (this.ParameterSetName == VirtualNetworkObjectsParameterSetName)
                     {
-                        registrationVirtualNetworkIds = this.RegistrationVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
-                        resolutionVirtualNetworkIds = this.ResolutionVirtualNetworks.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        registrationVirtualNetworkIds = this.RegistrationVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        resolutionVirtualNetworkIds = this.ResolutionVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
                     }
 
                     DnsZone result = this.DnsClient.CreateDnsZone(
