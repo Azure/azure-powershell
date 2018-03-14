@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Tests
             }
 
             [Fact]
+            [Trait(Category.RunType, Category.LiveOnly)]
             public void ListVirtualMachine()
             {
                 var vmClient = Client.VirtualMachines;
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Tests
             }
 
             [Fact]
+            [Trait(Category.RunType, Category.LiveOnly)]
             public void ListVirtualMachineSizes()
             {
                 var vmSizeClient = Client.VirtualMachineSizes;
@@ -51,6 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Tests
             }
 
             [Fact]
+            [Trait(Category.RunType, Category.LiveOnly)]
             public void ListVirtualMachineImagePublishers()
             {
                 var vmImagesClient = Client.VirtualMachineImages;
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Tests
             }
 
             [Fact]
+            [Trait(Category.RunType, Category.LiveOnly)]
             public void ListDisks()
             {
                 var disksClient = Client.Disks;
