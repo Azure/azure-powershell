@@ -56,7 +56,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         internal TenantConfigurationState ToTenantConfigurationState(AsyncOperationStatus? state)
         {
             TenantConfigurationState tenantState;
-            switch (state)
+
+            if (!state.HasValue)
+            {
+                return TenantConfigurationState.InProgress;
+            }
+
+            switch (state.Value)
             {
                 case AsyncOperationStatus.Started:
                     tenantState = TenantConfigurationState.Started;
