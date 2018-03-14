@@ -37,7 +37,7 @@ Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel i
 
 ### Start an SSH tunnel and open a browser to the Kubernetes dashboard
 ```
-PS C:\> Start-AzureRmKubernetesDashboard -ResourceGroupName group -Name myCluster
+PS C:\> Start-AzureRmAksDashboard -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Cmdlet returns the KubeTunnelJob if passed.
 
 ```yaml
 Type: SwitchParameter

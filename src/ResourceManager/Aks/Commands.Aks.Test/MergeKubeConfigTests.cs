@@ -7,7 +7,7 @@ using YamlDotNet.RepresentationModel;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 
-namespace Commands.Kubernetes.Test
+namespace Commands.Aks.Test
 {
     public class ConfigFixture
     {

@@ -59,7 +59,7 @@ namespace Commands.Aks.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.Kubernetes.psd1"),
+                    helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 

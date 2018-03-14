@@ -35,7 +35,7 @@ List Kubernetes managed clusters.
 
 ### List all Kubernetes clusters
 ```
-PS C:\> Get-AzureRmKubernetes
+PS C:\> Get-AzureRmAks
 ```
 
 ## PARAMETERS

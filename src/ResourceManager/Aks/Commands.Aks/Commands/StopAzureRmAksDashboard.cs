@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Aks.Properties;
 namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("Stop", KubeNounStr + "Dashboard")]
+    [OutputType(typeof(bool))]
     public class StopAzureRmAksDashboard : KubeCmdletBase
     {
         [Parameter(Mandatory = false)]
