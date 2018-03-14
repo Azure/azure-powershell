@@ -133,6 +133,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataMigration.Netc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeStore.Netcore", "src\ResourceManager\DataLakeStore\Commands.DataLakeStore\Commands.DataLakeStore.Netcore.csproj", "{34BF4026-40CB-4AA3-99E4-C98AD2CCA816}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Insights.Netcore", "src\ResourceManager\Insights\Commands.Insights\Commands.Insights.Netcore.csproj", "{F900B1AF-C576-4A6D-A38E-722B73C79A25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -911,6 +913,18 @@ Global
 		{34BF4026-40CB-4AA3-99E4-C98AD2CCA816}.Release|x64.Build.0 = Release|Any CPU
 		{34BF4026-40CB-4AA3-99E4-C98AD2CCA816}.Release|x86.ActiveCfg = Release|Any CPU
 		{34BF4026-40CB-4AA3-99E4-C98AD2CCA816}.Release|x86.Build.0 = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|x64.Build.0 = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Debug|x86.Build.0 = Debug|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|x64.ActiveCfg = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|x64.Build.0 = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|x86.ActiveCfg = Release|Any CPU
+		{F900B1AF-C576-4A6D-A38E-722B73C79A25}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
