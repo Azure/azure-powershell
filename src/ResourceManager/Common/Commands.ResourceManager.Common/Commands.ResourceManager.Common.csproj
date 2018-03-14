@@ -201,6 +201,7 @@
     <Compile Include="Utilities\Models\DeploymentVariable.cs" />
     <Compile Include="Utilities\Models\FilterResourcesOptions.cs" />
     <Compile Include="Utilities\Models\GenericResource.cs" />
+    <Compile Include="Utilities\Models\Location.cs" />
     <Compile Include="Utilities\Models\ResourceGroupDeployment.cs" />
     <Compile Include="Utilities\Models\ResourceIdentifier.cs" />
     <Compile Include="Utilities\ResourceManagementClientExtensions.cs" />

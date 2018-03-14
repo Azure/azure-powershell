@@ -20,10 +20,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class ComputePolicy
+    static class ComputeStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
-            string type,
             string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -31,8 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type: type,
-                providers: new[] { "Microsoft.Compute", provider },
+                type: new ResourceType("Microsoft.Compute", provider),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
@@ -40,5 +38,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 setLocation: (config, location) => config.Location = location,
                 createTime: createTime,
                 compulsoryLocation: true);
+
+        public static string GetConnectionString(
+            this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)
+        {
+            var url = fqdn + (port == null ? string.Empty : ":" + port);
+            return imageAndOsType.OsType == OperatingSystemTypes.Windows
+                ? "mstsc /v:" + url
+                : "ssh " + user + "@" + url;
+        }
     }
 }
