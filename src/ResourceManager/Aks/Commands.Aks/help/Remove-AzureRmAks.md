@@ -37,7 +37,7 @@ Delete a managed Kubernetes cluster.
 
 ### Delete an existing managed Kubernetes cluster
 ```
-PS C:\> Remove-AzureRmKubernetes -ResourceGroupName group -Name myCluster
+PS C:\> Remove-AzureRmAks -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns true if deletion is successful
 
 ```yaml
 Type: SwitchParameter
@@ -203,7 +203,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

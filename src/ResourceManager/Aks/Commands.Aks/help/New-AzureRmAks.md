@@ -27,7 +27,7 @@ Create a new managed Kubernetes cluster.
 ### Example 1
 ### Create a new managed Kubernetes cluster with default params
 ```
-PS C:\> New-AzureRmKubernetes -ResourceGroupName group -Name myCluster
+PS C:\> New-AzureRmAks -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS

@@ -43,7 +43,7 @@ Update or create a managed Kubernetes cluster.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmKubernetes -ResourceGroupName group -Name myCluster | Set-AzureRmKubernetes -NodeCount 5
+PS C:\> Get-AzureRmAks -ResourceGroupName group -Name myCluster | Set-AzureRmAks -NodeCount 5
 ```
 
 Set the number of nodes in the Kubernetes cluster to 5.
@@ -278,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-{{Fill Tag Description}}
+Hashtable of tags used to describe the Kubernetes
 
 ```yaml
 Type: Hashtable

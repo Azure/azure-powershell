@@ -37,7 +37,7 @@ Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ### Import and merge Kubectl config
 ```
-PS C:\> Import-AzureRmKubernetesCredential -ResourceGroupName group -Name myCluster
+PS C:\> Import-AzureRmAksCredential -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns true if import is successful
 
 ```yaml
 Type: SwitchParameter
