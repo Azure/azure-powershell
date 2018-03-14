@@ -19,6 +19,9 @@
 --->
 
 ## Current Release
+* Updating model types for compatibility with DNS cmdlets.
+
+## Version 5.3.0
 * Fixed issue with importing aliases
 
 ## Version 5.2.0
