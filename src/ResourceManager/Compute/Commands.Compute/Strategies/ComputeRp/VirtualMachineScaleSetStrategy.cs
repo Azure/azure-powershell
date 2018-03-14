@@ -84,14 +84,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
                             ImageReference = imageAndOsType?.Image,
-                            DataDisks = dataDisks
-                                ?.Select((size, i) => new VirtualMachineScaleSetDataDisk
-                                {
-                                    CreateOption = DiskCreateOptionTypes.Empty,
-                                    Lun = i + imageAndOsType.DataDisksCount,
-                                    DiskSizeGB = size,
-                                })
-                                .ToList()
+                            DataDisks = DataDiskStrategy.CreateVmssDataDisks(
+                                imageAndOsType?.DataDisksCount, dataDisks)
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
