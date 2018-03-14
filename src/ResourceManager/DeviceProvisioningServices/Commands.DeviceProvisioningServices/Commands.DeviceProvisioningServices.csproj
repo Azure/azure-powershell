@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3AAECB0D-386B-4C7A-B46E-4D89E36ADCDF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.DeviceProvisioningServices</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.DeviceProvisioningServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.DeviceProvisioningServices</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.DeviceProvisioningServices</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <SignAssembly>true</SignAssembly>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.DeviceProvisioningServices, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DeviceProvisioningServices.0.9.0-preview\lib\net452\Microsoft.Azure.Management.DeviceProvisioningServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.1.1.3\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cmdlet\IotDpsCertificates\AddAzureRmIotDeviceProvisioningServiceCertificate.cs" />
+    <Compile Include="Cmdlet\IotDpsCertificates\GetAzureRmIotDeviceProvisioningServiceCertificate.cs" />
+    <Compile Include="Cmdlet\IotDpsCertificates\GetAzureRmIotDeviceProvisioningServiceCertificateVerificationCode.cs" />
+    <Compile Include="Cmdlet\IotDpsCertificates\RemoveAzureRmIotDeviceProvisioningServiceCertificate.cs" />
+    <Compile Include="Cmdlet\IotDpsCertificates\SetAzureRmIotDeviceProvisioningServiceCertificate.cs" />
+    <Compile Include="Cmdlet\IotDpsLinkedHubs\AddAzureRmIotDeviceProvisioningServiceLinkedHub.cs" />
+    <Compile Include="Cmdlet\IotDpsLinkedHubs\GetAzureRmIotDeviceProvisioningServiceLinkedHub.cs" />
+    <Compile Include="Cmdlet\IotDpsLinkedHubs\RemoveAzureRmIotDeviceProvisioningServiceLinkedHub.cs" />
+    <Compile Include="Cmdlet\IotDpsLinkedHubs\UpdateAzureRmIotDeviceProvisioningServiceLinkedHub.cs" />
+    <Compile Include="Cmdlet\IotDpsSharedAccessPolicies\AddAzureRmIotDeviceProvisioningServiceAccessPolicy.cs" />
+    <Compile Include="Cmdlet\IotDpsSharedAccessPolicies\GetAzureRmIotDeviceProvisioningServiceAccessPolicy.cs" />
+    <Compile Include="Cmdlet\IotDpsSharedAccessPolicies\RemoveAzureRmIotDeviceProvisioningServiceAccessPolicy.cs" />
+    <Compile Include="Cmdlet\IotDpsSharedAccessPolicies\UpdateAzureRmIotDeviceProvisioningServiceAccessPolicy.cs" />
+    <Compile Include="Cmdlet\IotDps\UpdateAzureRmIotDeviceProvisioningService.cs" />
+    <Compile Include="Common\IotDpsBaseCmdlet.cs" />
+    <Compile Include="Common\IotDpsUtils.cs" />
+    <Compile Include="Cmdlet\IotDps\GetAzureRmIotDeviceProvisioningService.cs" />
+    <Compile Include="Cmdlet\IotDps\RemoveAzureRmIotDeviceProvisioningService.cs" />
+    <Compile Include="Models\PSAccessRightsDescription.cs" />
+    <Compile Include="Models\PSAllocationPolicy.cs" />
+    <Compile Include="Models\PSCertificate.cs" />
+    <Compile Include="Models\PSCertificateProperties.cs" />
+    <Compile Include="Models\PSCertificateResponse.cs" />
+    <Compile Include="Models\PSIotDpsPropertiesDescription.cs" />
+    <Compile Include="Models\PSIotDpsSku.cs" />
+    <Compile Include="Models\PSIotDpsSkuInfo.cs" />
+    <Compile Include="Models\PSIotHubDefinitionDescription.cs" />
+    <Compile Include="Models\PSIotHubDefinitions.cs" />
+    <Compile Include="Models\PSPage.cs" />
+    <Compile Include="Models\PSProvisioningServiceDescription.cs" />
+    <Compile Include="Models\PSProvisioningServicesDescription.cs" />
+    <Compile Include="Models\PSResource.cs" />
+    <Compile Include="Models\PSSharedAccessSignatureAuthorizationRuleAccessRights.cs" />
+    <Compile Include="Models\PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription.cs" />
+    <Compile Include="Models\PSTagsResource.cs" />
+    <Compile Include="Models\PSVerificationCodeResponse.cs" />
+    <Compile Include="Models\PSVerificationCodeResponseProperties.cs" />
+    <Compile Include="Cmdlet\IotDps\NewAzureRmIotDeviceProvisioningService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\AzureRM.DeviceProvisioningServices.psd1">
+      <Link>AzureRM.DeviceProvisioningServices.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Microsoft.Azure.Commands.DeviceProvisioningServices.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
+    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceCertificate.md" />
+    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
+    <None Include="help\AzureRM.DeviceProvisioningServices.md" />
+    <None Include="help\Get-AzureRmIotDeviceProvisioningService.md" />
+    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
+    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceCertificate.md" />
+    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceCertificateVerificationCode.md" />
+    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
+    <None Include="help\New-AzureRmIotDeviceProvisioningService.md" />
+    <None Include="help\Remove-AzureRmIotDeviceProvisioningService.md" />
+    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
+    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceCertificate.md" />
+    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
+    <None Include="help\Set-AzureRmIotDeviceProvisioningServiceCertificate.md" />
+    <None Include="help\Update-AzureRmIotDeviceProvisioningService.md" />
+    <None Include="help\Update-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
+    <None Include="help\Update-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
