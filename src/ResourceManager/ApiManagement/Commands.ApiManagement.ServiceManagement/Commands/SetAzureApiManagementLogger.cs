@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Management.ApiManagement.SmapiModels;
+    using Management.ApiManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;    
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.LoggerSet(Context, LoggerTypeContract.AzureEventHub, LoggerId, Description, credentials, IsBuffered.IsPresent);
+            Client.LoggerSet(Context, LoggerType.AzureEventHub, LoggerId, Description, credentials, IsBuffered.IsPresent);
 
             if (PassThru)
             {

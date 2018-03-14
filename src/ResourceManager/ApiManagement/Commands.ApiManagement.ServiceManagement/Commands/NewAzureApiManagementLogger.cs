@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Management.ApiManagement.SmapiModels;
+    using Management.ApiManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             var logger = Client.LoggerCreate(
                 Context,
-                LoggerTypeContract.AzureEventHub,
+                LoggerType.AzureEventHub,
                 loggerId,
                 Description,
                 credentials,
