@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-{{Fill Tag Description}}
+Tags to be applied to the resource
 
 ```yaml
 Type: Hashtable

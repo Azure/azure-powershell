@@ -278,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtable of tags used to describe the Kubernetes
+Tags to be applied to the resource
 
 ```yaml
 Type: Hashtable
