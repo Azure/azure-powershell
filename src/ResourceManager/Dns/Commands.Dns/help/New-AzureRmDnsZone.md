@@ -13,7 +13,7 @@ Creates a new DNS zone.
 
 ## SYNTAX
 
-### VirtualNetworkIds (Default)
+### Ids (Default)
 ```
 New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
  [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
@@ -21,11 +21,11 @@ New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneTy
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### VirtualNetworkObjects
+### Objects
 ```
 New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
- [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
- [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]>]
+ [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
+ [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,27 +99,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RegistrationVirtualNetworkId
-The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: VirtualNetworkIds
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -RegistrationVirtualNetwork
 The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
-Parameter Sets: VirtualNetworkObjects
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]
+Parameter Sets: Objects
 Aliases:
 
 Required: False
@@ -129,12 +114,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResolutionVirtualNetworkId
-The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
+### -RegistrationVirtualNetworkId
+The list of virtual network IDs that will register virtual machine hostnames records in this DNS zone, only available for private zones.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: VirtualNetworkIds
+Parameter Sets: Ids
 Aliases:
 
 Required: False
@@ -148,8 +133,23 @@ Accept wildcard characters: False
 The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork]
-Parameter Sets: VirtualNetworkObjects
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]
+Parameter Sets: Objects
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworkId
+The list of virtual network IDs able to resolve records in this DNS zone, only available for private zones.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Ids
 Aliases:
 
 Required: False
@@ -198,6 +198,7 @@ The type of the zone, Public or Private. Zones without a type or with a type of 
 Type: ZoneType
 Parameter Sets: (All)
 Aliases:
+Accepted values: Public, Private
 
 Required: False
 Position: Named

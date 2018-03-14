@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Internal.Network.Common;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> RegistrationVirtualNetwork { get; set; }
+        public List<IResourceReference> RegistrationVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> ResolutionVirtualNetwork { get; set; }
+        public List<IResourceReference> ResolutionVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
