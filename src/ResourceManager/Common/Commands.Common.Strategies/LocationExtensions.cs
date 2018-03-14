@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             var info = state.Get(config);
             return info != null
                 ? new DependencyLocation(
-                    config.Strategy.GetLocation(info),
+                    config.Strategy.Location.Get(info),
                     config.Strategy.CompulsoryLocation)
                 : config
                     .GetResourceDependencies()

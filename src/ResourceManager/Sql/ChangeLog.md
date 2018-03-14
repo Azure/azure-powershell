@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.3.0
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+
 ## Version 4.2.0
 * Update the Auditing commands parameters description
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

@@ -51,8 +51,8 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; }, 
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.1.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.4.0'; }, 
+               @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll', 
