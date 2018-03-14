@@ -12,19 +12,126 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 {
-    public class ScopeCompleter : PSCompleterBaseAttribute
+    using Commands.Common.Authentication;
+    using Commands.Common.Authentication.Abstractions;
+    using Management.Internal.Resources;
+    using Management.Internal.Resources.Models;
+    using Properties;
+    using Rest.Azure;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+
+    public class ScopeCompleterAttribute : PSCompleterBaseAttribute
     {
+        public static IDictionary<int, IList<string>> _scopeDictionary = new ConcurrentDictionary<int, IList<string>>();
+        private static readonly object _lock = new object();
+        public static int _timeout = 3;
+
+        protected static IList<String> Scopes
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+                    var contextHash = HashContext(context);
+                    if (!_scopeDictionary.ContainsKey(contextHash))
+                    {
+                        var tempScopeList = new List<string>();
+                        try
+                        {
+                            var instance = AzureSession.Instance;
+                            var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
+                                instance.ClientFactory.GetCustomHandlers());
+                            client.SubscriptionId = context.Subscription.Id;
+                            // Retrieve only the first page of ResourceGroups to display to the user
+                            var resourceGroups = client.ResourceGroups.ListAsync();
+                            if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
+                            {
+                                tempScopeList = CreateScopeList(resourceGroups.Result, context.Subscription.Id);
+                                _scopeDictionary[contextHash] = tempScopeList;
+                            }
+#if DEBUG
+                            else
+                            {
+                                throw new InvalidOperationException("client.ResourceGroups call timed out");
+                            }
+#endif
+                        }
+
+                        catch (Exception ex)
+                        {
+                            if (ex == null) { }
+#if DEBUG
+                            throw ex;
+#endif
+                        }
+
+                        return tempScopeList;
+                    }
+
+                    else
+                    {
+                        return _scopeDictionary[contextHash];
+                    }
+                }
+            }
+        }
+
         public override string[] GetCompleterValues()
         {
-            throw new NotImplementedException();
+            return GetScopes();
+        }
+
+        public static string[] GetScopes(int timeout)
+        {
+            _timeout = timeout;
+            return GetScopes();
+        }
+
+        public static string[] GetScopes()
+        {
+            return Scopes.ToArray();
+        }
+
+        private static ScriptBlock CreateScriptBlock()
+        {
+            string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
+                "$scopes = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetScopes()\n" +
+                "$scopes | Where-Object { $_ -Like \"$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+            ScriptBlock scriptBlock = ScriptBlock.Create(script);
+            return scriptBlock;
+        }
+
+        private static int HashContext(IAzureContext context)
+        {
+            return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
+        }
+
+        public static List<string> CreateScopeList(IPage<ResourceGroup> result, string subscriptionId)
+        {
+            var tempScopeList = new List<string> { string.Format("/subscriptions/{0}", subscriptionId) };
+            if (result != null)
+            {
+                foreach (ResourceGroup resourceGroup in result)
+                {
+                    tempScopeList.Add(string.Format("/subscriptions/{0}/resourceGroups/{1}", subscriptionId, resourceGroup.Name));
+                }
+            }
+#if DEBUG
+            else
+            {
+                throw new Exception("Result from client.ResourceGroups is null");
+            }
+#endif
+            return tempScopeList;
         }
     }
 }
