@@ -165,8 +165,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
         public static PSDeliveryRuleAction ToPsDeliveryRuleAction(this DeliveryRuleAction deliveryRuleAction)
         {
-            if (deliveryRuleAction is DeliveryRuleCacheExpirationAction deliveryRuleCacheExpirationAction)
+
+            var deliveryRuleCacheExpirationAction = deliveryRuleAction as DeliveryRuleCacheExpirationAction;
+            if (deliveryRuleCacheExpirationAction !=null)
             {
+                
                 return new PSDeliveryRuleCacheExpirationAction
                 {
                     Parameters = new PSCacheExpirationActionParameters
@@ -181,7 +184,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
         public static PSDeliveryRuleCondition ToPsDeliveryRuleCondition(this DeliveryRuleCondition deliveryRuleCondition)
         {
-            if (deliveryRuleCondition is DeliveryRuleUrlFileExtensionCondition deliveryRuleUrlFileExtensionCondition)
+            var deliveryRuleUrlFileExtensionCondition = deliveryRuleCondition as DeliveryRuleUrlFileExtensionCondition;
+            if (deliveryRuleUrlFileExtensionCondition != null)
             {
                 return new PSDeliveryRuleUrlFileExtensionCondition
                 {
@@ -192,7 +196,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 };
             }
 
-            if (deliveryRuleCondition is DeliveryRuleUrlPathCondition deliveryRuleUrlPathCondition)
+            var deliveryRuleUrlPathCondition = deliveryRuleCondition as DeliveryRuleUrlPathCondition;
+            if (deliveryRuleUrlPathCondition != null)
             {
                 return new PSDeliveryRuleUrlPathCondition
                 {
@@ -246,8 +251,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         public static DeliveryRuleCondition ToDeliveryRuleCondition(
             this PSDeliveryRuleCondition psDeliveryRuleCondition)
         {
-            if (psDeliveryRuleCondition is PSDeliveryRuleUrlFileExtensionCondition
-                psDeliveryRuleUrlFileExtensionCondition)
+            var psDeliveryRuleUrlFileExtensionCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlFileExtensionCondition;
+            if (psDeliveryRuleUrlFileExtensionCondition != null)
             {
                 return new DeliveryRuleUrlFileExtensionCondition
                 {
@@ -258,7 +263,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 };
             }
 
-            if (psDeliveryRuleCondition is PSDeliveryRuleUrlPathCondition psDeliveryRuleUrlPathCondition)
+            var psDeliveryRuleUrlPathCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlPathCondition;
+            if (psDeliveryRuleUrlPathCondition != null)
             {
                 return new DeliveryRuleUrlPathCondition
                 {
@@ -275,14 +281,15 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
         public static DeliveryRuleAction ToDeliveryRuleAction(this PSDeliveryRuleAction psDeliveryRuleAction)
         {
-            if (psDeliveryRuleAction is PSDeliveryRuleCacheExpirationAction psDeliveryRuleCacheExpiration)
+            var psDeliveryRuleCacheExpirationAction = psDeliveryRuleAction as PSDeliveryRuleCacheExpirationAction;
+            if (psDeliveryRuleCacheExpirationAction != null)
             {
                 return new DeliveryRuleCacheExpirationAction
                 {
                     Parameters = new CacheExpirationActionParameters
                     {
-                        CacheBehavior = psDeliveryRuleCacheExpiration.Parameters.CacheBehavior,
-                        CacheDuration = psDeliveryRuleCacheExpiration.Parameters.CacheDuration
+                        CacheBehavior = psDeliveryRuleCacheExpirationAction.Parameters.CacheBehavior,
+                        CacheDuration = psDeliveryRuleCacheExpirationAction.Parameters.CacheDuration
                     }
                 };
             }
