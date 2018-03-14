@@ -6,6 +6,7 @@ using Xunit;
 using YamlDotNet.RepresentationModel;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.Reflection;
 
 namespace Commands.Aks.Test
 {
@@ -15,7 +16,8 @@ namespace Commands.Aks.Test
 
         public ConfigFixture()
         {
-            var merged = ImportAzureRmAksCredential.MergeKubeConfig(File.ReadAllText("./Fixtures/config.yaml"), File.ReadAllText("./Fixtures/additional_kube_config.yaml"));
+            var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var merged = ImportAzureRmAksCredential.MergeKubeConfig(File.ReadAllText(dir + "/Fixtures/config.yaml"), File.ReadAllText(dir + "/Fixtures/additional_kube_config.yaml"));
             _rootNode = RootNodeFromString(merged);
         }
 
