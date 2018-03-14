@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminUsername,
             string adminPassword,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            IEnumerable<int> dataDisks)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -70,7 +72,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     StorageProfile = new StorageProfile
                     {
-                        ImageReference = imageAndOsType?.Image
+                        ImageReference = imageAndOsType?.Image,
+                        DataDisks = DataDiskStrategy.CreateDataDisks(
+                            imageAndOsType?.DataDisksCount, dataDisks)
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet)
                 });
@@ -82,7 +86,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            IEnumerable<int> dataDisks)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -107,7 +112,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
                             ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
-                        }
+                        },
+                        DataDisks = DataDiskStrategy.CreateDataDisks(0, dataDisks)
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet)
                 });

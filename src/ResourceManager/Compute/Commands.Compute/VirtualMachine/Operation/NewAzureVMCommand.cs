@@ -28,7 +28,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
@@ -211,6 +210,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public int[] DataDiskSizeGb { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -293,7 +296,8 @@ namespace Microsoft.Azure.Commands.Compute
                         adminPassword:
                             new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
                         size: _cmdlet.Size,
-                        availabilitySet: availabilitySet);
+                        availabilitySet: availabilitySet,
+                        dataDisks: _cmdlet.DataDiskSizeGb);
                 }
                 else
                 {
@@ -307,7 +311,8 @@ namespace Microsoft.Azure.Commands.Compute
                         osType: ImageAndOsType.OsType,
                         disk: disk,
                         size: _cmdlet.Size,
-                        availabilitySet: availabilitySet);
+                        availabilitySet: availabilitySet,
+                        dataDisks: _cmdlet.DataDiskSizeGb);
                 }
             }
         }
