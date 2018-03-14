@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private void Initialize(string fileName)
         {
             ReadFileIntoCache(fileName);
+            HasStateChanged = true;
 
             // Eagerly create cache file.
             WriteCacheIntoFile(fileName);
@@ -110,17 +111,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (HasStateChanged)
             {
-                // reflect changes in the persistent store
                 WriteCacheIntoFile();
-                // once the write operation took place, restore the HasStateChanged bit to false
-                HasStateChanged = false;
             }
         }
 
         private void ReadFileIntoCache(string cacheFileName = null)
         {
             if(cacheFileName == null)
+            {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
+            }
 
             lock (fileLock)
             {
@@ -149,7 +149,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private void WriteCacheIntoFile(string cacheFileName = null)
         {
             if(cacheFileName == null)
+            {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
+            }
 
 #if !NETSTANDARD
             var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
@@ -159,7 +161,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             lock(fileLock)
             {
-                _store.WriteFile(cacheFileName, dataToWrite);
+                if (HasStateChanged)
+                {  
+                    _store.WriteFile(cacheFileName, dataToWrite);
+                    HasStateChanged =  false;
+                }
             }
         }
     }
