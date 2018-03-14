@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 var compute = client.GetClient<ComputeManagementClient>();
                 if (compute.SubscriptionId != subscriptionId)
                 {
-                    throw new ArgumentException("The image subscription doesn't math the current subscription.");
+                    throw new ArgumentException("The image subscription doesn't match the current subscription.");
                 }
 
                 var localImage = await compute.Images.GetAsync(imageResourceGroupName, resourceName);
