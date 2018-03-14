@@ -18,8 +18,8 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Dns.Models;
+using Microsoft.Azure.Management.Internal.Network.Common;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = VirtualNetworkIdsParameterSetName), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = IdsParameterSetName), OutputType(typeof(DnsZone))]
     public class NewAzureDnsZone : DnsBaseCmdlet
     {
-        private const string VirtualNetworkIdsParameterSetName = "VirtualNetworkIds";
-        private const string VirtualNetworkObjectsParameterSetName = "VirtualNetworkObjects";
+        private const string IdsParameterSetName = "Ids";
+        private const string ObjectsParameterSetName = "Objects";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
@@ -51,21 +51,21 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkIdsParameterSetName, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = IdsParameterSetName, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
         public List<string> RegistrationVirtualNetworkId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkIdsParameterSetName, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = IdsParameterSetName, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
         public List<string> ResolutionVirtualNetworkId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkObjectsParameterSetName, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ObjectsParameterSetName, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> RegistrationVirtualNetwork { get; set; }
+        public List<IResourceReference> RegistrationVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = VirtualNetworkObjectsParameterSetName, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ObjectsParameterSetName, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.")]
         [ValidateNotNull]
-        public List<PSVirtualNetwork> ResolutionVirtualNetwork { get; set; }
+        public List<IResourceReference> ResolutionVirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Dns
 
                     List<string> registrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
                     List<string> resolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
-                    if (this.ParameterSetName == VirtualNetworkObjectsParameterSetName)
+                    if (this.ParameterSetName == ObjectsParameterSetName)
                     {
                         registrationVirtualNetworkIds = this.RegistrationVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
                         resolutionVirtualNetworkIds = this.ResolutionVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
