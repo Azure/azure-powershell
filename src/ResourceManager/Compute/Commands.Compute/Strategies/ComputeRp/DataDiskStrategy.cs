@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Management.Compute.Models;
+﻿using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +9,31 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class DataDiskStrategy
     {
         static IList<T> CreateDataDisks<T>(
-            int? offset,
+            IEnumerable<int> imageDataDiskLuns,
             IEnumerable<int> dataDiskSizes,
-            Func<DiskCreateOptionTypes, int, int, T> createDataDisk)
+            Func<DiskCreateOptionTypes, int, int?, T> createDataDisk)
         {
-            var firstDisk = offset == null ? 0 : (int)offset;
-            return dataDiskSizes
-                ?.Select((size, i) => createDataDisk(
-                    DiskCreateOptionTypes.Empty,
-                    i + firstDisk,
-                    size))
+            imageDataDiskLuns = imageDataDiskLuns.EmptyIfNull();
+            var firstLun = imageDataDiskLuns
+                .Select(v => v + 1)
+                .Concat(new[] { 0 })
+                .Max();
+            return imageDataDiskLuns
+                .Select(lun => createDataDisk(DiskCreateOptionTypes.FromImage, lun, null))
+                .Concat(dataDiskSizes
+                    .EmptyIfNull()
+                    .Select((size, i) => createDataDisk(
+                        DiskCreateOptionTypes.Empty,
+                        i + firstLun,
+                        size)))
                 .ToList();
         }
 
         public static IList<DataDisk> CreateDataDisks(
-            int? offset,
+            IEnumerable<int> imageDataDiskLuns,
             IEnumerable<int> dataDiskSizes)
             => CreateDataDisks(
-                offset,
+                imageDataDiskLuns,
                 dataDiskSizes,
                 (createOption, lun, size) => new DataDisk
                 {
@@ -35,10 +43,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 });
 
         public static IList<VirtualMachineScaleSetDataDisk> CreateVmssDataDisks(
-            int? offset,
+            IEnumerable<int> dataDisks,
             IEnumerable<int> dataDiskSizes)
             => CreateDataDisks(
-                offset,
+                dataDisks,
                 dataDiskSizes,
                 (createOption, lun, size) => new VirtualMachineScaleSetDataDisk
                 {

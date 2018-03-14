@@ -272,6 +272,7 @@
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
     <Compile Include="Strategies\ComputeRp\Images.cs" />
     <Compile Include="Strategies\ComputeRp\ApiEntityReferenceStrategy.cs" />
