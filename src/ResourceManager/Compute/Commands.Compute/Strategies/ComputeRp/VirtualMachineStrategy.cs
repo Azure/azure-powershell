@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         ImageReference = imageAndOsType?.Image,
                         DataDisks = DataDiskStrategy.CreateDataDisks(
-                            imageAndOsType?.DataDisksCount, dataDisks)
+                            imageAndOsType?.DataDiskLuns, dataDisks)
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet)
                 });
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             OsType = osType,
                             ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
                         },
-                        DataDisks = DataDiskStrategy.CreateDataDisks(0, dataDisks)
+                        DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet)
                 });

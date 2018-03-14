@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 return new ImageAndOsType(
                     imageModel.OsDiskImage.OperatingSystem,
                     image,
-                    imageModel.DataDiskImages.Count());
+                    imageModel.DataDiskImages.GetLuns());
             }
             else
             {
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 ? OperatingSystemTypes.Windows
                                 : OperatingSystemTypes.Linux,
                             nameAndImage.Value,
-                            0)))
+                            null)))
                     .FirstOrDefault();
 
                 if (result == null)
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             return new ImageAndOsType(
                 localImage.StorageProfile.OsDisk.OsType,
                 new ImageReference { Id = localImage.Id },
-                localImage.StorageProfile.DataDisks.Count());
+                localImage.StorageProfile.DataDisks.GetLuns());
         }
     }
 }

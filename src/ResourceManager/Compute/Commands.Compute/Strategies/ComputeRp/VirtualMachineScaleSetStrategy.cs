@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             ImageReference = imageAndOsType?.Image,
                             DataDisks = DataDiskStrategy.CreateVmssDataDisks(
-                                imageAndOsType?.DataDisksCount, dataDisks)
+                                imageAndOsType?.DataDiskLuns, dataDisks)
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {

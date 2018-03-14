@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.Compute
                 parameters.ImageAndOsType = new ImageAndOsType(
                     Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
                     null,
-                    0);
+                    null);
                 var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                     DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
