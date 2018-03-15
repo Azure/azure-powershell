@@ -13,6 +13,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDiskSizes,
             Func<DiskCreateOptionTypes, int, int?, T> createDataDisk)
         {
+            if (dataDiskSizes == null)
+            {
+                return null;
+            }
             imageDataDiskLuns = imageDataDiskLuns.EmptyIfNull();
             var firstLun = imageDataDiskLuns
                 .Select(v => v + 1)
@@ -20,12 +24,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 .Max();
             return imageDataDiskLuns
                 .Select(lun => createDataDisk(DiskCreateOptionTypes.FromImage, lun, null))
-                .Concat(dataDiskSizes
-                    .EmptyIfNull()
-                    .Select((size, i) => createDataDisk(
-                        DiskCreateOptionTypes.Empty,
-                        i + firstLun,
-                        size)))
+                .Concat(dataDiskSizes.Select((size, i) => createDataDisk(
+                    DiskCreateOptionTypes.Empty,
+                    i + firstLun,
+                    size)))
                 .ToList();
         }
 
