@@ -40,43 +40,43 @@ function Test-AzureIotDpsCertificateLifeCycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub Device Provisioning Service
-	$iotDps = New-AzureRmIotDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
+	$iotDps = New-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
 	Assert-True { $iotDps.Name -eq $IotDpsName }
 
 	# Add certificate to Iot Hub Device Provisioning Service
 	New-CARootCert $certificateSubject $certificatePath
-	$newCertificate = Add-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName -Path $certificatePath
+	$newCertificate = Add-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName -Path $certificatePath
 	Assert-True { $newCertificate.Properties.Subject -eq $certificateSubject }
 	Assert-False { $newCertificate.Properties.IsVerified }
 	Assert-True { $newCertificate.Type -eq $certificateType }
 	Assert-True { $newCertificate.CertificateName -eq $certificateName }
 
 	# List all certificates in Iot Hub Device Provisioning Service
-	$certificates = Get-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName
+	$certificates = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName
 	Assert-True { $certificates.Count -gt 0}
 
 	# Get certificate from Iot Hub Device Provisioning Service
-	$certificate = Get-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName
+	$certificate = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName
 	Assert-True { $certificate.Properties.Subject -eq $certificateSubject }
 	Assert-False { $certificate.Properties.IsVerified }
 	Assert-True { $certificate.Type -eq $certificateType }
 	Assert-True { $certificate.CertificateName -eq $certificateName }
 
 	# Get Verification Code
-	$certificateWithVerificationCode = Get-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Get-AzureRmIotDpsCVC
+	$certificateWithVerificationCode = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Get-AzureRmIotDpsCVC
 	Assert-True { $certificateWithVerificationCode.Properties.Subject -eq $certificateSubject }
 	Assert-NotNull { $certificateWithVerificationCode.Properties.VerificationCode }
 
 	# Proof-of-Possession
 	New-CAVerificationCert $certificateWithVerificationCode.Properties.VerificationCode $certificateSubject $verifyCertificatePath
-	$verifiedCertificate = Get-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Set-AzureRmIotDpsCertificate -Path $verifyCertificatePath
+	$verifiedCertificate = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Set-AzureRmIotDpsCertificate -Path $verifyCertificatePath
 	Assert-True { $verifiedCertificate.Properties.Subject -eq $certificateSubject }
 	Assert-True { $verifiedCertificate.Properties.IsVerified }
 	Assert-True { $verifiedCertificate.Type -eq $certificateType }
 	Assert-True { $verifiedCertificate.CertificateName -eq $certificateName }
 
 	# Remove Certificate from Iot Hub Device Provisioning Service
-	$result = Get-AzureRmIotDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Remove-AzureRmIotDpsCertificate -PassThru
+	$result = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Remove-AzureRmIotDpsCertificate -PassThru
 	Assert-True { $result }
 
 	# Remove Resource Group

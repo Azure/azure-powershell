@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotDeviceProvisioningService", DefaultParameterSetName = ListIotDpsByRGParameterSet)]
-    [Alias("Get-AzureRmIotDps")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ListIotDpsByRGParameterSet)]
+    [Alias("Get-AzureRmIoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription), typeof(List<PSProvisioningServicesDescription>))]
-    public class GetAzureRmIotDeviceProvisioningService : IotDpsBaseCmdlet
+    public class GetAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {
         private const string GetIotDpsParameterSet = "GetIotDpsByName";
         private const string ListIotDpsByRGParameterSet = "ListIotDpsByResourceGroup";
