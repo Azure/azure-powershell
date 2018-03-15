@@ -21,8 +21,8 @@
 
 ## Version 0.6.4
 * Fixed issue with importing aliases
-
 * Add support of firewall and query scaleout feature, as well as support of 2017-08-01 api version.
+* Fix unique Id is null or empty bug.
 
 ## Version 0.6.3
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'

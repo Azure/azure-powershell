@@ -112,6 +112,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ILogAnalyticsOperations LogAnalyticsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.LogAnalytics;
+            }
+        }
+
         public IResourceSkusOperations ResourceSkusClient
         {
             get

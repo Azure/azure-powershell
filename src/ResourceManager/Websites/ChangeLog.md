@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed the help for Remove-AzureRmWebAppSlot
 
 ## Version 4.2.0
 * Fixed issue with importing aliases
-
 * New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
 
 ## Version 4.1.0
