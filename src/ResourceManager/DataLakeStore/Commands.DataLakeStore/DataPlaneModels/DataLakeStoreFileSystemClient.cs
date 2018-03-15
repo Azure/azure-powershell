@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
             _adlsLoggerConfig.LoggingRules.Add(rule);
             
+            var powershellLoggingRule= new LoggingRule("adls.powershell.WebTransport", NLog.LogLevel.Debug, adlsTarget);
+            _adlsLoggerConfig.LoggingRules.Add(powershellLoggingRule);
+
             // Enable the NLog configuration to use this
             LogManager.Configuration = _adlsLoggerConfig;
         }
