@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 4.2.0
 * Fixed issue with importing aliases

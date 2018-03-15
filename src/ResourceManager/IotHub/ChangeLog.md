@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 3.1.0
 * Add Certificate support for IoTHub cmdlets
