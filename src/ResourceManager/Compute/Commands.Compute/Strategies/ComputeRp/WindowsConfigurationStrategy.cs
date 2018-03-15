@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static WindowsConfiguration CreateWindowsConfiguration(
             this ImageAndOsType imageAndOsType)
-            => imageAndOsType.OsType == OperatingSystemTypes.Windows
+            => imageAndOsType?.OsType == OperatingSystemTypes.Windows
                 ? new WindowsConfiguration()
                 : null;
     }
