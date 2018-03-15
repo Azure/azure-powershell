@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
                 return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
             }
-            if (imageName.Contains("/"))
+            else if (imageName.Contains("/"))
             {
                 var imageArray = imageName.Split('/');
                 if (imageArray.Length != 9)
                 {
-                    throw new ArgumentException("Invalid image resource id  '" + imageName + "'.");
+                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
                 // has to be ""
                 var empty = imageArray[0];
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     || providerNamespace != ComputeStrategy.Namespace
                     || provider != "images")
                 {
-                    throw new ArgumentException("Invalid image resource id '" + imageName + "'.");
+                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
 
                 if (compute.SubscriptionId != subscriptionId)
                 {
-                    throw new ArgumentException("The image subscription doesn't match the current subscription.");
+                    throw new ArgumentException(Resources.ComputeMismatchSubscription);
                 }
 
                 var localImage = await compute.Images.GetAsync(imageResourceGroupName, resourceName);
@@ -156,8 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
                 if (result == null)
                 {
-                    // TODO: move it to resource.
-                    throw new ArgumentException("Can't find the image '" + imageName + "'");
+                    throw new ArgumentException(string.Format(Resources.ComputeNoImageFound, imageName));
                 }
 
                 return result;
