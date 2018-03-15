@@ -25,7 +25,7 @@ The **Remove-AzureRmStorageAccount** cmdlet removes a Storage account from Azure
 
 ### Example 1: Remove a Storage account
 ```
-PS C:\>Remove-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
+PS C:\>Remove-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command removes the specified Storage account.
