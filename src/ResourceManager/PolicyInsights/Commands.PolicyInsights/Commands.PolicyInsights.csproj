@@ -47,6 +47,18 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\GetAzureRmPolicyEvent.cs" />
+    <Compile Include="Cmdlets\GetAzureRmPolicyState.cs" />
+    <Compile Include="Cmdlets\GetAzureRmPolicyStateSummary.cs" />
+    <Compile Include="Common\ParameterHelpMessages.cs" />
+    <Compile Include="Common\ParameterSetNames.cs" />
+    <Compile Include="Common\PolicyInsightsCmdletBase.cs" />
+    <Compile Include="Models\PolicyAssignmentSummary.cs" />
+    <Compile Include="Models\PolicyDefinitionSummary.cs" />
+    <Compile Include="Models\PolicyEvent.cs" />
+    <Compile Include="Models\PolicyState.cs" />
+    <Compile Include="Models\PolicyStateSummary.cs" />
+    <Compile Include="Models\SummaryResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +97,7 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
