@@ -13,7 +13,7 @@ Grants an access to a disk.
 ## SYNTAX
 
 ```
-Grant-AzureRmDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [[-Access] <AccessLevel>]
+Grant-AzureRmDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [-Access] <AccessLevel>
  [[-DurationInSecond] <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: None, Read
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
