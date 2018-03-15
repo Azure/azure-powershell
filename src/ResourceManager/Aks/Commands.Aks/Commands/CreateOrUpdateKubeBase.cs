@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.Aks
         {
             return AzureSession.Instance.DataStore.FileExists(AcsSpFilePath)
                 ? JsonConvert.DeserializeObject<Dictionary<string, AcsServicePrincipal>>(
-                    File.ReadAllText(AcsSpFilePath))
+                    AzureSession.Instance.DataStore.ReadFileAsText(AcsSpFilePath))
                 : null;
         }
 
