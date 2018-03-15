@@ -22,13 +22,22 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public string ResourceGroupName { get; set; }
         public string VmScaleSetName { get; set; }
-        public AzureVmssDiskEncryptionExtensionPublicSettings EncryptionSettings { get; set; }
+        public AzureVmssDiskEncryptionExtensionPublicSettings ExtensionSettings { get; set; }
         public IList<VirtualMachineStatusCodeCount> EncryptionSummary { get; set; }
-        public bool EncryptionEnabled { get; set; }
         public bool EncryptionExtensionInstalled { get; set; }
+        public IList<PSVmssDiskEncryptionDiskStatusContext> Disks { get; set; }
     }
 
     class PSVmssDiskEncryptionStatusContextList : PSVmssDiskEncryptionStatusContext
     {
+    }
+
+    class PSVmssDiskEncryptionDiskStatusContext
+    {
+        public string InstanceName { get; set; }
+        public string InstanceId { get; set; }
+        public string DiskName { get; set; }
+        public IList<DiskEncryptionSettings> EncryptionSettings { get; set; }
+        public IList<InstanceViewStatus> Statuses { get; set; }
     }
 }
