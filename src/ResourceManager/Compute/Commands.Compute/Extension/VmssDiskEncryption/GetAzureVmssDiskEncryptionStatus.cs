@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Mandatory = false,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Resource group name of the virtual machine scale set")]
+           HelpMessage = "Resource group name of the virtual machine scale set.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Mandatory = false,
            Position = 2,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+           HelpMessage = "The extension name. If this parameter is not specified, defaults to AzureDiskEncryption for Windows and AzureDiskEncryptionForLinux for Linux.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
 
@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 ResourceGroupName = rgName,
                 VmScaleSetName = vmssName,
-                EncryptionEnabled = false,
                 EncryptionExtensionInstalled = false
             };
 
@@ -132,8 +131,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 return psResult;
             }
 
+            // retrieve installation status of the extension 
             SetOSType(vmssResult.VirtualMachineProfile);
-
             try
             {
                 if (string.IsNullOrWhiteSpace(this.ExtensionName))
@@ -155,25 +154,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 return psResult;
             }
-
             psResult.EncryptionExtensionInstalled = true;
 
-            psResult.EncryptionSettings = JsonConvert.DeserializeObject<AzureVmssDiskEncryptionExtensionPublicSettings>(
+            // retrieve public configuration settings for the extension
+            psResult.ExtensionSettings = JsonConvert.DeserializeObject<AzureVmssDiskEncryptionExtensionPublicSettings>(
                 ext.Settings.ToString());
 
-            if (psResult.EncryptionSettings.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.OrdinalIgnoreCase))
-            {
-                psResult.EncryptionEnabled = true;
-            }
-
+            // retrieve any status summary for the extension 
             var vmssInstanceView = this.VirtualMachineScaleSetClient.GetInstanceView(rgName, vmssName);
-
             if (vmssInstanceView.Extensions == null
                 || vmssInstanceView.Extensions.Count == 0)
             {
                 return psResult;
             }
-
             try
             {
                 extSummary = vmssInstanceView.Extensions.First(e => e.Name.Equals(this.ExtensionName));
@@ -181,9 +174,54 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             catch (InvalidOperationException)
             {
                 return psResult;
-            }
-
+            }            
             psResult.EncryptionSummary = extSummary.StatusesSummary;
+
+            // retrieve per disk information from all vm instances in the scale set
+            try
+            {
+                // retrieve the list of vm instances in the scale set 
+                IPage<VirtualMachineScaleSetVM> instances = this.VirtualMachineScaleSetVMsClient.List(rgName, vmssName);
+                List<VirtualMachineScaleSetVM> instancesList = instances.ToList();
+                var nextPageLink = instances.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        instancesList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+
+                // retrieve encryption status of all disks in all instances
+                psResult.Disks = new List<PSVmssDiskEncryptionDiskStatusContext>();
+                foreach (VirtualMachineScaleSetVM instance in instancesList)
+                {
+                    foreach (DiskInstanceView div in instance.InstanceView.Disks)
+                    {
+                        List<InstanceViewStatus> perDiskEncryptionStatuses = new List<InstanceViewStatus>();
+                        foreach (InstanceViewStatus ivs in div.Statuses)
+                        {
+                            if (ivs.Code.StartsWith("EncryptionState")) perDiskEncryptionStatuses.Add(ivs);
+                        }
+                        // add encryption state to the per disk result 
+                        PSVmssDiskEncryptionDiskStatusContext diskStatus = new PSVmssDiskEncryptionDiskStatusContext
+                        {
+                            InstanceName = instance.Name,
+                            InstanceId = instance.Id,
+                            DiskName = div.Name,
+                            EncryptionSettings = div.EncryptionSettings,
+                            Statuses = perDiskEncryptionStatuses
+                        };
+                        psResult.Disks.Add(diskStatus);
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                return psResult;
+            }
 
             return psResult;
         }
