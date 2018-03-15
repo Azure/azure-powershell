@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated cmdlets to include piping scenarios
 * Fixed example for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 4.1.1
