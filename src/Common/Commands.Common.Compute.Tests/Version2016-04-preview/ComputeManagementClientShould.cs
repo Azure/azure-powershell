@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 
+
 namespace Microsoft.Azure.Commands.Common.Compute.Tests
 {
     using Compute.Version2016_04_preview;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using System.Linq;
 
