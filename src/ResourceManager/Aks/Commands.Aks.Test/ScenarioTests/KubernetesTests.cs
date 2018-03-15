@@ -24,8 +24,10 @@ namespace Commands.Aks.Test.ScenarioTests
                 AzureSession.Instance.DataStore = new MemoryDataStore();
                 var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                var subscription = this.currentProfile.DefaultContext.Subscription.Id;
                 AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
-                AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), dir + "/Fixtures/acsServicePrincipal.json");
+                //string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
+                //AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
             }
         }
 
