@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.Dns
                     List<string> resolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
                     if (this.ParameterSetName == ObjectsParameterSetName)
                     {
-                        registrationVirtualNetworkIds = this.RegistrationVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
-                        resolutionVirtualNetworkIds = this.ResolutionVirtualNetwork.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        registrationVirtualNetworkIds = this.RegistrationVirtualNetwork?.Select(virtualNetwork => virtualNetwork.Id).ToList();
+                        resolutionVirtualNetworkIds = this.ResolutionVirtualNetwork?.Select(virtualNetwork => virtualNetwork.Id).ToList();
                     }
 
                     DnsZone result = this.DnsClient.CreateDnsZone(
