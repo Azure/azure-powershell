@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string PsCommandParamDepth = "Depth";
 
-        public const int PsCommandValueDepth = 10;
+        public const int PsCommandValueDepth = 2;
 
         public const int JobSummaryLength = 80;
 
