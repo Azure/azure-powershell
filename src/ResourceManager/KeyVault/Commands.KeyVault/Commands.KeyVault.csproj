@@ -93,23 +93,23 @@
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
-    <Compile Include="Models\DeletedCertificateIdentityItem.cs" />
-    <Compile Include="Models\DeletedKeyVaultCertificate.cs" />
-    <Compile Include="Models\PSDeletedVault.cs" />
-    <Compile Include="Models\CertificateIdentityItem.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultCertificateIdentityItem.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultCertificate.cs" />
+    <Compile Include="Models\PSDeletedKeyVault.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateIdentityItem.cs" />
     <Compile Include="Commands\Constants.cs" />
-    <Compile Include="Models\CertificateIssuerIdentityItem.cs" />
-    <Compile Include="Models\DeletedKeyBundle.cs" />
-    <Compile Include="Models\DeletedKeyIdentityItem.cs" />
-    <Compile Include="Models\DeletedSecret.cs" />
-    <Compile Include="Models\DeletedSecretIdentityItem.cs" />
-    <Compile Include="Models\KeyVaultCertificate.cs" />
-    <Compile Include="Models\KeyVaultCertificateAdministratorDetails.cs" />
-    <Compile Include="Models\KeyVaultCertificateContact.cs" />
-    <Compile Include="Models\KeyVaultCertificateIssuer.cs" />
-    <Compile Include="Models\KeyVaultCertificateOperation.cs" />
-    <Compile Include="Models\KeyVaultCertificateOrganizationDetails.cs" />
-    <Compile Include="Models\KeyVaultCertificatePolicy.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateIssuerIdentityItem.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultKey.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultKeyIdentityItem.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultSecret.cs" />
+    <Compile Include="Models\PSDeletedKeyVaultSecretIdentityItem.cs" />
+    <Compile Include="Models\PSKeyVaultCertificate.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateAdministratorDetails.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateContact.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateIssuer.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateOperation.cs" />
+    <Compile Include="Models\PSKeyVaultCertificateOrganizationDetails.cs" />
+    <Compile Include="Models\PSKeyVaultCertificatePolicy.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccount.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountAttributes.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountListItem.cs" />
@@ -119,10 +119,10 @@
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinitiontFilterOptions.cs" />
     <Compile Include="Models\VaultManagementClient.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
-    <Compile Include="Models\PSVault.cs" />
-    <Compile Include="Models\PSVaultAccessPolicy.cs" />
+    <Compile Include="Models\PSKeyVault.cs" />
+    <Compile Include="Models\PSKeyVaultAccessPolicy.cs" />
     <Compile Include="Models\VaultCreationParameters.cs" />
-    <Compile Include="Models\PSVaultIdentityItem.cs" />
+    <Compile Include="Models\PSKeyVaultIdentityItem.cs" />
     <Compile Include="Commands\GetAzureKeyVault.cs" />
     <Compile Include="Commands\NewAzureKeyVault.cs" />
     <Compile Include="Commands\RemoveAzureKeyVault.cs" />
@@ -157,16 +157,16 @@
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />
     <Compile Include="Models\IWebKeyConverter.cs" />
-    <Compile Include="Models\KeyAttributes.cs" />
-    <Compile Include="Models\KeyBundle.cs" />
-    <Compile Include="Models\KeyIdentityItem.cs" />
+    <Compile Include="Models\PSKeyVaultKeyAttributes.cs" />
+    <Compile Include="Models\PSKeyVaultKey.cs" />
+    <Compile Include="Models\PSKeyVaultKeyIdentityItem.cs" />
     <Compile Include="Models\KeyVaultCmdletBase.cs" />
     <Compile Include="Models\KeyVaultObjectFilterOptions.cs" />
     <Compile Include="Models\ObjectIdentifier.cs" />
     <Compile Include="Models\PfxWebKeyConverter.cs" />
-    <Compile Include="Models\Secret.cs" />
-    <Compile Include="Models\SecretAttributes.cs" />
-    <Compile Include="Models\SecretIdentityItem.cs" />
+    <Compile Include="Models\PSKeyVaultSecret.cs" />
+    <Compile Include="Models\PSKeyVaultSecretAttributes.cs" />
+    <Compile Include="Models\PSKeyVaultSecretIdentityItem.cs" />
     <Compile Include="Models\SecureStringExtensions.cs" />
     <Compile Include="Models\TagsHelper.cs" />
     <Compile Include="Models\VaultUriHelper.cs" />
@@ -195,8 +195,20 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -229,13 +241,10 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
-    <ItemGroup>  
-        <OutFiles Include="$(OutDir)\**\*.*"/>  
-    </ItemGroup>  
-    <Copy  
-            SourceFiles="@(OutFiles)"  
-            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\%(RecursiveDir)%(Filename)%(Extension)')"  
-     />  
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>
