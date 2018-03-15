@@ -306,7 +306,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                         {
                             Current = new Dictionary<string, string>(),
                             Requested = new Dictionary<string, string>()
-                        }
+                        },
+                        EstimatedCompletionTime = r.EstimatedCompletionTime,
+                        Description = r.Description,
+                        IsCancellable = r.IsCancellable
                     };
                 });
 

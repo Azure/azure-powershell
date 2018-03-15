@@ -100,5 +100,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the requested storage limit in GB
         /// </summary>
         public long? RequestedStorageLimitInGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the estimated completion time of the elastic pool operation
+        /// </summary>
+        public DateTime? EstimatedCompletionTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description of the elastic pool operation
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to indicate if the elastic pool operation can be cancelled
+        /// </summary>
+        public bool? IsCancellable { get; set; }
     }
 }
