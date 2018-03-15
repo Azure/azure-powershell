@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 5.3.0
 * Fixed issue with importing aliases
