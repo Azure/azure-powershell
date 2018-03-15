@@ -20,6 +20,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6ABFB030-9CD9-4863-9A62-54C0BC738B83}"
 	ProjectSection(SolutionItems) = preProject
 		ChangeLog.md = ChangeLog.md
+		documentation\current-breaking-changes.md = documentation\current-breaking-changes.md
+		documentation\upcoming-breaking-changes.md = documentation\upcoming-breaking-changes.md
 	EndProjectSection
 EndProject
 Global
