@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.PolicyInsights
 Module Guid: B1876B47-3652-4265-9AD5-782EC3E98319
 Download Help Link: 
@@ -19,3 +19,4 @@ Gets policy compliance states for resources.
 
 ### [Get-AzureRmPolicyStateSummary](Get-AzureRmPolicyStateSummary.md)
 Gets policy compliance states summary for resources.
+
