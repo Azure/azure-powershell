@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     // This is a copy of Microsoft.PowerShell.Commands. This enum no longer exists in .NET Core.
+    // TODO: Proper fix to be done in https://github.com/Azure/azure-powershell/issues/5742
     public enum FileSystemCmdletProviderEncoding
     {
         Unknown = 0,
