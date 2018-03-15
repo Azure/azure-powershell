@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmPolicyState", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(List<PolicyState>))]
     public class GetAzureRmPolicyState : PolicyInsightsCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.PolicySetDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.PolicyDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Latest)]
-        public bool? Latest { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.PolicySetDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.PolicyDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
+        public SwitchParameter All { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ManagementGroupName)]
         [ValidateNotNullOrEmpty]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 
             RestApiModels.PolicyStatesQueryResults policyStatesQueryResults;
 
-            var policyStatesResource = !Latest.HasValue || Latest.Value
+            var policyStatesResource = !All.IsPresent
                 ? RestApiModels.PolicyStatesResource.Latest
                 : RestApiModels.PolicyStatesResource.Default;
 
