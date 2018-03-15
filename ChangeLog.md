@@ -1,4 +1,96 @@
-﻿## 5.4.1 - February 2018
+﻿## 5.5.0 - March 2018
+#### AzureRM.Profile
+* Fixed issue with importing aliases
+* Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
+
+#### Azure.Storage
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
+
+#### AzureRM.AnalysisServices
+* Fixed issue with importing aliases
+* Add support of firewall and query scaleout feature, as well as support of 2017-08-01 api version.
+
+#### AzureRM.Automation
+* Fixed issue with importing aliases
+
+#### AzureRM.Cdn
+* Fixed issue with importing aliases
+
+#### AzureRM.CognitiveServices
+* Update notice.txt and notice message.
+
+#### AzureRM.Compute
+* 'New-AzureRmVMSS' prints connection strings in verbose mode.
+* 'New-AzureRmVmss' supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+	  Set-AzureRmVMOSDisk
+	  Set-AzureRmVMDataDisk
+	  Add-AzureRmVMDataDisk
+	  Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+#### AzureRM.DataFactories
+* Fix credential encryption issue that caused no meaningful error for some encryption operations
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.DataFactoryV2
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
+* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.HDInsight
+* Fixed issue with importing aliases
+
+#### AzureRM.KeyVault
+* Fixed example for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Fixed issue with importing aliases
+
+#### AzureRM.OperationalInsights
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Fixed issue with importing aliases
+
+#### AzureRM.Resources
+* Fixed issue with importing aliases
+
+#### AzureRM.ServiceBus
+* Added EnableBatchedOperations property to Queue
+* Added DeadLetteringOnFilterEvaluationExceptions property to Subscriptions
+
+#### AzureRM.ServiceFabric
+* Service Fabric cmdlet refresh
+  - Updated ARM templates
+  - Failed operations no longer rollback
+  - Add-AzureRmServiceFabricNodeType
+    - VMs default to managed disks
+    - Existing VMSS subnet used
+    - All operations are idempotent
+  - Remove-AzureRmServiceFabricNodeType cleans up partially created VMSS and/or cluster node types
+  - Fixed output of PSCluster object for complex property types
+
+#### AzureRM.Sql
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+
+#### AzureRM.Websites
+* Fixed issue with importing aliases
+* New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
+
+## 5.4.1 - February 2018
 #### AzureRM.Profile
 * Fix concurrent module import issue in PowerShell Workflow and Azure Automation
 

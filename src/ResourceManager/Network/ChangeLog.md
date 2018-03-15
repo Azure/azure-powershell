@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 5.3.0
 * Fixed issue with importing aliases
 * Fix bug to serialize and display IPTags
 
