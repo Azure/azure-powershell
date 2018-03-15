@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Compute.Tests
             //AZURE_SERVICE_PRINCIPAL = UserId =< UserGuid >; Password =< Password >; AADTenant =< TenantGuid >; SubscriptionId =< SubscriptionId >
             var spString = Environment.GetEnvironmentVariable(envVariableName);
 
-            if (spString == null) throw new ArgumentNullException($"Failed to get {envVariableName}");
+            if (spString == null) throw new ArgumentNullException($"Failed to get environment variable {envVariableName}");
 
             var sp = new Dictionary<string, string>();
             var pairs = spString.Trim().Split(';');
