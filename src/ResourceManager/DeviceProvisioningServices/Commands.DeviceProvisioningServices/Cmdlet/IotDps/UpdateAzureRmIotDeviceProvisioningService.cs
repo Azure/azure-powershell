@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet(VerbsData.Update, "AzureRmIotDeviceProvisioningService", SupportsShouldProcess = true)]
-    [Alias("Update-AzureRmIotDps")]
+    [Cmdlet(VerbsData.Update, "AzureRmIoTDeviceProvisioningService", SupportsShouldProcess = true)]
+    [Alias("Update-AzureRmIoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription))]
-    public class UpdateAzureRmIotDeviceProvisioningService : IotDpsBaseCmdlet
+    public class UpdateAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {
         private const string InputObjectUpdateParameterSet = "InputObjectUpdateSet";
         private const string InputObjectCreateUpdateParameterSet = "InputObjectCreateUpdateSet";

@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Remove-AzureRmIotDps")]
-    public class RemoveAzureRmIotDeviceProvisioningService : IotDpsBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Alias("Remove-AzureRmIoTDps")]
+    public class RemoveAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";

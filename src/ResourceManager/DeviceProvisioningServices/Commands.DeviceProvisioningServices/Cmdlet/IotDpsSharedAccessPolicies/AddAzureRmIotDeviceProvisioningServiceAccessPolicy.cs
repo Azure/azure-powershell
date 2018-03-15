@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
     using Rest.Azure;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Add-AzureRmIotDpsAccessPolicy")]
+    [Cmdlet(VerbsCommon.Add, "AzureRmIoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Alias("Add-AzureRmIoTDpsAccessPolicy")]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription), typeof(List<PSSharedAccessSignatureAuthorizationRuleAccessRights>))]
-    public class AddAzureRmIotDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
+    public class AddAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {
         private const string ResourceParameterSet = "ResourceSet";
         private const string InputObjectParameterSet = "InputObjectSet";

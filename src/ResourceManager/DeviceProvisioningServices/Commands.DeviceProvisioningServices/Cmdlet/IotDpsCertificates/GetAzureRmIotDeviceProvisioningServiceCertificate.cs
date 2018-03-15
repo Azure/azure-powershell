@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotDeviceProvisioningServiceCertificate", SupportsShouldProcess = true)]
-    [Alias("Get-AzureRmIotDpsCertificate")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceCertificate", SupportsShouldProcess = true)]
+    [Alias("Get-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(PSCertificateResponse), typeof(List<PSCertificate>))]
-    public class GetAzureRmIotDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
+    public class GetAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";

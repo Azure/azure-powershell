@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Globalization;
     using System.Text;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Add-AzureRmIotDpsCertificate")]
+    [Cmdlet(VerbsCommon.Add, "AzureRmIoTDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Alias("Add-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(PSCertificateResponse))]
-    public class AddAzureRmIotDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
+    public class AddAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
     {
         private const string ResourceParameterSet = "ResourceSet";
         private const string InputObjectParameterSet = "InputObjectSet";

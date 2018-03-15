@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
     using Rest.Azure;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotDeviceProvisioningServiceAccessPolicy")]
-    [Alias("Get-AzureRmIotDpsAccessPolicy")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+    [Alias("Get-AzureRmIoTDpsAccessPolicy")]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription), typeof(List<PSSharedAccessSignatureAuthorizationRuleAccessRights>))]
-    public class GetAzureRmIotDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
+    public class GetAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";

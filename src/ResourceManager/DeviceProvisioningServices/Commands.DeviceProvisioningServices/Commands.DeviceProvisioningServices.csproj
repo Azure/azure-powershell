@@ -145,24 +145,6 @@
     <Content Include="Microsoft.Azure.Commands.DeviceProvisioningServices.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
-    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceCertificate.md" />
-    <None Include="help\Add-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
-    <None Include="help\AzureRM.DeviceProvisioningServices.md" />
-    <None Include="help\Get-AzureRmIotDeviceProvisioningService.md" />
-    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
-    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceCertificate.md" />
-    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceCertificateVerificationCode.md" />
-    <None Include="help\Get-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
-    <None Include="help\New-AzureRmIotDeviceProvisioningService.md" />
-    <None Include="help\Remove-AzureRmIotDeviceProvisioningService.md" />
-    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
-    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceCertificate.md" />
-    <None Include="help\Remove-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
-    <None Include="help\Set-AzureRmIotDeviceProvisioningServiceCertificate.md" />
-    <None Include="help\Update-AzureRmIotDeviceProvisioningService.md" />
-    <None Include="help\Update-AzureRmIotDeviceProvisioningServiceAccessPolicy.md" />
-    <None Include="help\Update-AzureRmIotDeviceProvisioningServiceLinkedHub.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
@@ -189,7 +171,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="help\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotDeviceProvisioningServiceLinkedHub", SupportsShouldProcess = true)]
-    [Alias("Get-AzureRmIotDpsHub")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceLinkedHub", SupportsShouldProcess = true)]
+    [Alias("Get-AzureRmIoTDpsHub")]
     [OutputType(typeof(PSIotHubDefinitionDescription), typeof(List<PSIotHubDefinitions>))]
-    public class GetAzureRmIotDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
+    public class GetAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
