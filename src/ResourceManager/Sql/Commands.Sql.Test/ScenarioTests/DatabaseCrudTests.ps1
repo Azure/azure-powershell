@@ -581,9 +581,9 @@ function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
 		# Alter all properties
 		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 			-Edition Standard -RequestedServiceObjectiveName S1
-		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
-		Assert-AreEqual $db1.Edition Standard
-		Assert-AreEqual $db1.CurrentServiceObjectiveName S1
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName 'Alter db name not equal'
+		Assert-AreEqual $db1.Edition Standard 'Alter db edition not equal'
+		Assert-AreEqual $db1.CurrentServiceObjectiveName S1 'Alter db slo not equal'
 
 		# list and cancel a database operation
 		$dbactivity = Get-AzureRmSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
@@ -598,7 +598,7 @@ function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
 		Catch
 		{
 			$ErrorMessage = $_.Exception.Message
-			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel database management operation '" + $dbactivityId + "' in the current state")
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $dbactivityId + "' in the current state")
 		}
 	}
 	finally
