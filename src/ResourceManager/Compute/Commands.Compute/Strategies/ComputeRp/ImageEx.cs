@@ -45,6 +45,45 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 return imageAndOsType;
             }
 
+            var compute = client.GetClient<ComputeManagementClient>();
+
+            if (imageName.Contains(':'))
+            {
+                if (location == null)
+                {
+                    return null;
+                }
+
+                var imageArray = imageName.Split(':');
+                if (imageArray.Length != 4)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.InvalidImageName, imageName));
+                }
+                var image = new ImageReference
+                {
+                    Publisher = imageArray[0],
+                    Offer = imageArray[1],
+                    Sku = imageArray[2],
+                    Version = imageArray[3],
+                };
+
+                if (image.Version.ToLower() == "latest")
+                {
+                    var images = await compute.VirtualMachineImages.ListAsync(
+                        location, image.Publisher, image.Offer, image.Sku);
+                    // According to Compute API: 
+                    // "The allowed formats are Major.Minor.Build or 'latest'. 
+                    //  Major, Minor, and Build are decimal numbers."
+                    image.Version = images
+                        .Select(i => ImageVersion.Parse(i.Name))
+                        .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
+                        .ToString();
+                }
+                var imageModel = await compute.VirtualMachineImages.GetAsync(
+                    location, image.Publisher, image.Offer, image.Sku, image.Version);
+                return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
+            }
             if (imageName.Contains("/"))
             {
                 var imageArray = imageName.Split('/');
@@ -69,16 +108,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 var resourceName = imageArray[8];
 
                 if (empty != string.Empty
-                    || subscriptions != SdkEngine.Subscriptions 
+                    || subscriptions != SdkEngine.Subscriptions
                     || resourceGroups != ResourceType.ResourceGroups
                     || providers != EntityConfigExtensions.Providers
                     || providerNamespace != ComputeStrategy.Namespace
                     || provider != "images")
                 {
-                    throw new ArgumentException("Invalid image resource id  '" + imageName + "'.");
+                    throw new ArgumentException("Invalid image resource id '" + imageName + "'.");
                 }
 
-                var compute = client.GetClient<ComputeManagementClient>();
                 if (compute.SubscriptionId != subscriptionId)
                 {
                     throw new ArgumentException("The image subscription doesn't match the current subscription.");
@@ -90,47 +128,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     localImage.StorageProfile.OsDisk.OsType,
                     new ImageReference { Id = localImage.Id });
             }
-            else if (imageName.Contains(':'))
-            {
-                if (location == null)
-                {
-                    return null;
-                }
-
-                var imageArray = imageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new InvalidOperationException(
-                        string.Format(Resources.InvalidImageName, imageName));
-                }
-                var image = new ImageReference
-                {
-                    Publisher = imageArray[0],
-                    Offer = imageArray[1],
-                    Sku = imageArray[2],
-                    Version = imageArray[3],
-                };
-                var compute = client.GetClient<ComputeManagementClient>();
-                if (image.Version.ToLower() == "latest")
-                {
-                    var images = await compute.VirtualMachineImages.ListAsync(
-                        location, image.Publisher, image.Offer, image.Sku);
-                    // According to Compute API: 
-                    // "The allowed formats are Major.Minor.Build or 'latest'. 
-                    //  Major, Minor, and Build are decimal numbers."
-                    image.Version = images
-                        .Select(i => ImageVersion.Parse(i.Name))
-                        .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
-                        .ToString();
-                }
-                var imageModel = await compute.VirtualMachineImages.GetAsync(
-                    location, image.Publisher, image.Offer, image.Sku, image.Version);
-                return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
-            }
             else
             {
-                var compute = client.GetClient<ComputeManagementClient>();
-
                 try
                 {
                     var localImage = await compute.Images.GetAsync(resourceGroupName, imageName);
