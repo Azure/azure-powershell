@@ -33,6 +33,6 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string To = "ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, defaults to time of request.";
         public const string Filter = "Filter expression using OData notation.";
         public const string Apply = "Apply expression for aggregations using OData notation.";
-        public const string Latest = "True, to get latest policy states; otherwise, false.";
+        public const string All = "Within the specified time interval, get all policy states instead of the latest only.";
     }
 }
