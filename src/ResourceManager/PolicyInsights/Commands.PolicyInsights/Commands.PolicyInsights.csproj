@@ -66,6 +66,10 @@
       <Link>AzureRM.PolicyInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="help\AzureRM.PolicyInsights.md" />
+    <None Include="help\Get-AzureRmPolicyEvent.md" />
+    <None Include="help\Get-AzureRmPolicyState.md" />
+    <None Include="help\Get-AzureRmPolicyStateSummary.md" />
     <None Include="Microsoft.Azure.Commands.PolicyInsights.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
