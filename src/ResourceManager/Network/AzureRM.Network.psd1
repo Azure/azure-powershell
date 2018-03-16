@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.3.0'
+ModuleVersion = '5.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -352,7 +352,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with importing aliases'
+        ReleaseNotes = '* Updating model types for compatibility with DNS cmdlets.'
 
         # Prerelease string of this module
         # Prerelease = ''
