@@ -20,7 +20,7 @@ namespace RepoTasks.RemoteWorker
     using System.Reflection;
     using System.Xml.Serialization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.Attrubutes;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class AppDomainWorker : MarshalByRefObject, IReflectionWorker
     {
@@ -218,15 +218,15 @@ namespace RepoTasks.RemoteWorker
             }
         }
 
-        internal static void Serialize(Configuration configuration, string filePath)
+        internal void Serialize(Configuration configuration, string filePath)
         {
             var xmlSerializer = new XmlSerializer(typeof(Configuration));
 
-            using (Stream filestream = File.Create(filePath))
+            using (var stream = File.Create(filePath))
             {
                 var xmlns = new XmlSerializerNamespaces();
                 xmlns.Add(string.Empty, string.Empty);
-                xmlSerializer.Serialize(filestream, configuration, xmlns);
+                xmlSerializer.Serialize(stream, configuration, xmlns);
             }
         }
     }

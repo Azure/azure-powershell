@@ -122,7 +122,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attrubutes\Ps1XmlAttribute.cs" />
+    <Compile Include="Attributes\Ps1XmlAttribute.cs" />
     <Compile Include="LongRunningJobCancelledException.cs" />
     <Compile Include="ShouldMethodInvoker.cs" />
     <Compile Include="AzureLongRunningJob.cs" />

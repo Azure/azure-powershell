@@ -42,14 +42,11 @@ namespace RepoTasks.Cmdlets
         {
             try
             {
-                if (!Path.IsPathRooted(ModulePath))
-                {
-                    ModulePath = Path.GetFullPath(ModulePath);
-                }
+                ModulePath = GetUnresolvedProviderPathFromPSPath(ModulePath);
 
                 if (!File.Exists(ModulePath))
                 {
-                    throw new ArgumentException("ModulePath doesn't exist", ModulePath);
+                    throw new ArgumentException(@"ModulePath doesn't exist", ModulePath);
                 }
 
                 if (string.IsNullOrEmpty(OutputPath))
@@ -58,14 +55,11 @@ namespace RepoTasks.Cmdlets
                 }
                 else
                 {
-                    if (!Path.IsPathRooted(OutputPath))
-                    {
-                        OutputPath = Path.GetFullPath(OutputPath);
-                    }
+                    OutputPath = GetUnresolvedProviderPathFromPSPath(OutputPath);
 
                     if (!Directory.Exists(OutputPath))
                     {
-                        throw new ArgumentException("OutputPath doesn't exist", OutputPath);
+                        throw new ArgumentException(@"OutputPath doesn't exist", OutputPath);
                     }
                 }
 
@@ -113,7 +107,7 @@ namespace RepoTasks.Cmdlets
                 var outFilename = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
                 if (string.IsNullOrEmpty(outFilename))
                 {
-                    WriteWarning("No output types found.");
+                    WriteWarning(@"No output types found.");
                     return;
                 }
 
