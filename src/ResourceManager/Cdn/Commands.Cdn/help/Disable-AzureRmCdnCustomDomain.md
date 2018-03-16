@@ -29,10 +29,12 @@ Disable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 
 ## EXAMPLES
 
-### 1:
+### Example 1
+```powershell
+Disable-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
-```
+Disable https delivery of the custom domain.
 
 ## PARAMETERS
 

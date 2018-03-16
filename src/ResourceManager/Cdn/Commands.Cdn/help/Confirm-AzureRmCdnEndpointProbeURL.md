@@ -24,10 +24,10 @@ Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl <String> [-DefaultProfile <IAzureCo
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
 ```
 
-{{ Add example description here }}
+Validates the probe url "http://www.bing.com/images"
 
 ## PARAMETERS
 

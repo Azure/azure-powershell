@@ -29,12 +29,12 @@ Enable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 
 ## EXAMPLES
 
-## EXAMPLES
-
-### 1:
+### Example 1
+```powershell
+Enable-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
-```
+Enable https delivery of the custom domain.
 
 ## PARAMETERS
 

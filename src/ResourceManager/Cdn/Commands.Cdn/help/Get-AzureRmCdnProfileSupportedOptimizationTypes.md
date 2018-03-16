@@ -29,12 +29,12 @@ Get-AzureRmCdnProfileSupportedOptimizationTypes -CdnProfile <PSProfile>
 
 ## EXAMPLES
 
-## EXAMPLES
-
-### 1:
+### Example 1
+```powershell
+PS C:\> Get-AzureRmCdnProfileSupportedOptimizationTypes -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
-```
+Get the supported optimization types for a CDN profile.
 
 ## PARAMETERS
 
