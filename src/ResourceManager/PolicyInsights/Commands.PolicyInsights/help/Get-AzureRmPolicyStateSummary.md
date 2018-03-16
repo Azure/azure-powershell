@@ -66,7 +66,7 @@ Get-AzureRmPolicyStateSummary -ResourceId <String> [-Top <Int32>] [-From <DateTi
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets a summary view of latest policy compliance state numbers at various scopes, broken down into policy assignments and policy definitions.
 
 ## EXAMPLES
 
