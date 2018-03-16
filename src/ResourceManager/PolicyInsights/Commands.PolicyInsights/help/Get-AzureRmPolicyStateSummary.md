@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmPolicyStateSummary
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets policy compliance states summary for resources.
 
 ## SYNTAX
 
