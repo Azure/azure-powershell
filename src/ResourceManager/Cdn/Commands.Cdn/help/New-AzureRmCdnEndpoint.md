@@ -93,7 +93,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeliveryPolicy
-The delivery policy for this endpoint.```yaml
+The delivery policy for this endpoint.
+
+```yaml
 Type: PSDeliveryPolicy
 Parameter Sets: (All)
 Aliases:
@@ -301,7 +303,9 @@ Accept wildcard characters: False
 ```
 
 ### -ProbePath
-Specifies the probe path for Dynamic Site Acceleration```yaml
+Specifies the probe path for Dynamic Site Acceleration
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:

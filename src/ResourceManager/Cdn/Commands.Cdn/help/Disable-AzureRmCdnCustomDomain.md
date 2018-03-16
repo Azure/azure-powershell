@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/disable-azurermcdncustomain
 schema: 2.0.0
 ---
 
@@ -29,12 +29,10 @@ Disable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### 1:
 ```
 
-{{ Add example description here }}
+```
 
 ## PARAMETERS
 
