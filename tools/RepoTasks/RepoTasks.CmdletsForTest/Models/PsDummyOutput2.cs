@@ -14,7 +14,7 @@
 
 namespace RepoTasks.CmdletsForTest.Models
 {
-    using Microsoft.WindowsAzure.Commands.Common.Attrubutes;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PsDummyOutput2
     {

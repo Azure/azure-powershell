@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 namespace RepoTasks.Cmdlets.Tests
 {
     using System;
@@ -28,6 +29,7 @@ namespace RepoTasks.Cmdlets.Tests
         private const string ExpectedAssemblyName = "RepoTasks.CmdletsForTest";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BuildPs1XmlFileAndSaveItOnDisk()
         {
             var initialSessionState = InitialSessionState.CreateDefault();
@@ -75,6 +77,7 @@ namespace RepoTasks.Cmdlets.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveOnlyMarkedPropertiesInSpecifiedViews()
         {
             var initialSessionState = InitialSessionState.CreateDefault();
@@ -104,24 +107,36 @@ namespace RepoTasks.Cmdlets.Tests
 
                     Assert.True(es.Count == 0, string.Join("\n,", es));
                     Assert.True(results.Count > 0);
-                    var filepath = results.First();
-                    Assert.NotNull(filepath);
-                    Assert.True(File.Exists(filepath));
 
-                    var xelement = XElement.Load(filepath);
-                    var config = xelement.Elements().ToList();
+                    string filepath = null;
+                    try
+                    {
+                        filepath = results.First();
+                        Assert.NotNull(filepath);
+                        Assert.True(File.Exists(filepath));
 
-                    TestXmlMaked(config,
-                        // prop name, target, label
-                        new List<Tuple<string, View, string>>
+                        var xelement = XElement.Load(filepath);
+                        var config = xelement.Elements().ToList();
+
+                        TestXmlMaked(config,
+                            // prop name, target, label
+                            new List<Tuple<string, View, string>>
+                            {
+                                new Tuple<string, View, string>("RequestId", View.None, null),
+                                new Tuple<string, View, string>("StatusCode", View.None, null),
+                                new Tuple<string, View, string>("Id", View.List, null),
+                                new Tuple<string, View, string>("Name", View.Both, null),
+                                new Tuple<string, View, string>("Type", View.Table, "PsDummyOutput1 Type"),
+                            },
+                            $"{ExpectedAssemblyName}.Models.PsDummyOutput1");
+                    }
+                    finally
+                    {
+                        if (filepath != null)
                         {
-                            new Tuple<string, View, string>("RequestId", View.None, null),
-                            new Tuple<string, View, string>("StatusCode", View.None, null),
-                            new Tuple<string, View, string>("Id", View.List, null),
-                            new Tuple<string, View, string>("Name", View.Both, null),
-                            new Tuple<string, View, string>("Type", View.Table, "PsDummyOutput1 Type"),
-                        },
-                        $"{ExpectedAssemblyName}.Models.PsDummyOutput1");
+                            File.Delete(filepath);
+                        }
+                    }
                 }
             }
         }

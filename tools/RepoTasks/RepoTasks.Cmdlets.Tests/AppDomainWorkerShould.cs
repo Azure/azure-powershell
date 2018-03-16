@@ -48,6 +48,7 @@ namespace RepoTasks.Cmdlets.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnCmdletTypesAndAssemblyNameWithCmdlets()
         {
             var cmdlets = new[] {"Test-Dummy"};
@@ -55,12 +56,14 @@ namespace RepoTasks.Cmdlets.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnCmdletTypesAndAssemblyNameWithoutCmdlets()
         {
             ReturnCmdletTypesAndAssemblyName(null);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReturnCmdletTypesAndAssemblyNameWithEmptyCmdlets()
         {
             var cmdlets = new string[] {};
@@ -68,6 +71,7 @@ namespace RepoTasks.Cmdlets.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BuildConfiguration()
         {
             var cmdlets = new[] { "Test-Dummy" };
@@ -89,6 +93,7 @@ namespace RepoTasks.Cmdlets.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoWorkRemotelyAndReturnFilname()
         {
             var assemblyFileName = Path.GetFileName(typeof(TestDummyCommand).Assembly.Location);

@@ -10,9 +10,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System;   
 
-namespace Microsoft.WindowsAzure.Commands.Common.Attrubutes
+namespace Microsoft.WindowsAzure.Commands.Common.Attributes
 {
     [Flags]
     public enum ViewControl
