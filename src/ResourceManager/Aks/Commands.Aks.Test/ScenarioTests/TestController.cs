@@ -36,11 +36,8 @@ namespace Commands.Aks.Test.ScenarioTests
 
         public void RunPowerShellTest(params string[] scripts)
         {
-            var st = new StackTrace();
-            var sf = st.GetFrame(1);
-
-            var callingClassType = sf.GetMethod().ReflectedType.ToString();
-            var mockName = st.GetFrame(2).GetMethod().Name;
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {

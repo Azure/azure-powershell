@@ -136,7 +136,7 @@
     <None Include="ScenarioTests\KubernetesTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\**\*.json">
+    <None Include="SessionRecords\Commands.Aks.Test.ScenarioTests.KubernetesTests\TestAzureKubernetes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
