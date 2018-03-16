@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.0
 * Fixed issue with importing aliases
 * Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
 

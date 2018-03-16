@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.9.2
 * Update notice.txt and notice message.
 
 ## Version 0.9.1
