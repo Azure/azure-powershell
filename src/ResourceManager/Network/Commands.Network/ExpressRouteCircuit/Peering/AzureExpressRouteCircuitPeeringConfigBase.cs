@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The PeerAsn")]
         [ValidateNotNullOrEmpty]
-        public int PeerASN { get; set; }
+        public uint PeerASN { get; set; }
 
         [Parameter(
             Mandatory = true,

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 * Support Soft-Delete feature
 	- Enable-AzureStorageDeleteRetentionPolicy
 	- Disable-AzureStorageDeleteRetentionPolicy
