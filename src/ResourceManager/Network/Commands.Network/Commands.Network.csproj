@@ -188,6 +188,12 @@
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AddAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AzureExpressRouteCircuitConnectionConfigBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\GetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\NewAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\RemoveAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\SetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitARPTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableSummaryCommand.cs" />
@@ -585,6 +591,7 @@
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
