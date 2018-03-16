@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
     /// <summary>
     /// Gets policy states
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyStateSummary", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(List<PolicyStateSummary>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyStateSummary", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyStateSummary))]
     public class GetAzureRmPolicyStateSummary : PolicyInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ManagementGroupName)]
@@ -184,7 +184,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                 return;
             }
 
-            WriteObject(summarizeResults.Value.Select(summary => new PolicyStateSummary(summary)), true);
+            var summary = summarizeResults.Value.First();
+            WriteObject(new PolicyStateSummary(summary));
         }
     }
 }
