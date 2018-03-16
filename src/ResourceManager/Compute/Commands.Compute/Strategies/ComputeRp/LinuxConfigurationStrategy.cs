@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class LinuxConfigurationStrategy
     {
         public static LinuxConfiguration CreateLinuxConfiguration(this ImageAndOsType imageAndOsType)
-            => imageAndOsType.OsType == OperatingSystemTypes.Linux
+            => imageAndOsType?.OsType == OperatingSystemTypes.Linux
                 ? new LinuxConfiguration()
                 : null;
     }

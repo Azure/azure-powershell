@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.2
 * Service Fabric cmdlet refresh
   - Updated ARM templates
   - Failed operations no longer rollback

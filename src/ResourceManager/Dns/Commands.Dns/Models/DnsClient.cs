@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Dns;
-using Microsoft.Azure.Management.Dns.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Dns.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Dns;
+using Microsoft.Azure.Management.Dns.Models;
+using Microsoft.Rest.Azure;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 using Sdk = Microsoft.Azure.Management.Dns.Models;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
-    using Common.Authentication.Abstractions;
-    using Rest.Azure;
-
     public class DnsClient
     {
         public const string DnsResourceLocation = "global";
@@ -66,7 +66,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
         public DnsZone CreateDnsZone(
             string name,
             string resourceGroupName,
-            Hashtable tags)
+            Hashtable tags,
+            ZoneType zoneType,
+            IList<string> registrationVirtualNetworks,
+            IList<string> resolutionVirtualNetworks)
         {
             var response = this.DnsManagementClient.Zones.CreateOrUpdate(
                 resourceGroupName,
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 {
                     Location = DnsResourceLocation,
                     Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
+                    ZoneType = zoneType,
+                    RegistrationVirtualNetworks = registrationVirtualNetworks.ToVirtualNetworkResources(),
+                    ResolutionVirtualNetworks = resolutionVirtualNetworks.ToVirtualNetworkResources(),
                 },
                 ifMatch: null,
                 ifNoneMatch: "*");
@@ -87,12 +93,15 @@ namespace Microsoft.Azure.Commands.Dns.Models
             var response = this.DnsManagementClient.Zones.CreateOrUpdate(
                 zone.ResourceGroupName,
                 zone.Name,
-                 new Zone
-                    {
-                        Location = DnsResourceLocation,
-                        Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
-                    },
-                ifMatch: overwrite ? "*" : zone.Etag,
+                new Zone
+                {
+                    Location = DnsResourceLocation,
+                    Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
+                    ZoneType = zone.ZoneType,
+                    RegistrationVirtualNetworks = zone.RegistrationVirtualNetworkIds.ToVirtualNetworkResources(),
+                    ResolutionVirtualNetworks = zone.ResolutionVirtualNetworkIds.ToVirtualNetworkResources(),
+                },
+                ifMatch: overwrite ? null : zone.Etag,
                 ifNoneMatch: null);
 
             return ToDnsZone(response);
@@ -105,7 +114,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
-                ifMatch: overwrite ? null : zone.Etag);
+                ifMatch: overwrite ? "*" : zone.Etag);
         }
 
         public DnsZone GetDnsZone(string name, string resourceGroupName)
@@ -125,9 +134,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 }
                 else
                 {
-                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroup(resourceGroupName);    
+                    getResponse = this.DnsManagementClient.Zones.ListByResourceGroup(resourceGroupName);
                 }
-                
+
                 results.AddRange(getResponse.Select(ToDnsZone));
             } while (getResponse != null && getResponse.NextPageLink != null);
 
@@ -201,7 +210,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             }
             else
             {
-                FillEmptyRecordsForType( properties, recordType);                
+                FillEmptyRecordsForType( properties, recordType);
             }
             return properties;
         }
@@ -357,7 +366,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 }
 
                 results.AddRange(listResponse.Select(recordSet => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSet)));
-                
+
             } while (listResponse != null && listResponse.NextPageLink != null);
 
             return results;
@@ -481,6 +490,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 NameServers = zone.NameServers != null ? zone.NameServers.ToList() : new List<string>(),
                 NumberOfRecordSets = zone.NumberOfRecordSets,
                 MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
+                ZoneType = zone.ZoneType,
+                RegistrationVirtualNetworkIds = zone.RegistrationVirtualNetworks.ToVirtualNetworkIds().ToList(),
+                ResolutionVirtualNetworkIds = zone.ResolutionVirtualNetworks.ToVirtualNetworkIds().ToList(),
             };
         }
 

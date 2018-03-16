@@ -46,6 +46,7 @@ function ServiceBusQueueTests
 	$resultGetQueue.DeadLetteringOnMessageExpiration = $True
 	$resultGetQueue.MaxDeliveryCount = 5
 	$resultGetQueue.MaxSizeInMegabytes = 1024
+	$resultGetQueue.EnableBatchedOperations = $True
 
 	$resltSetQueue = Set-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $resultGetQueue.Name -InputObject $resultGetQueue
 	Assert-AreEqual $resltSetQueue.Name $resultGetQueue.Name "In GetQueue response, QueueName not found"
