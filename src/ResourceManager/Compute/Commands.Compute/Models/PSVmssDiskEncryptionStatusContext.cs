@@ -22,22 +22,32 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public string ResourceGroupName { get; set; }
         public string VmScaleSetName { get; set; }
-        public AzureVmssDiskEncryptionExtensionPublicSettings ExtensionSettings { get; set; }
+        public AzureVmssDiskEncryptionExtensionPublicSettings EncryptionSettings { get; set; }
         public IList<VirtualMachineStatusCodeCount> EncryptionSummary { get; set; }
+        // EncryptionEnabled will be deprecated in the future and replaced with disk level granularity
+        // in a future version that accomodates breaking changes.  Currently true if any disk encrypted.
+        public bool EncryptionEnabled { get; set; }
         public bool EncryptionExtensionInstalled { get; set; }
-        public IList<PSVmssDiskEncryptionDiskStatusContext> Disks { get; set; }
+        public IList<PSVmssDiskEncryptionInstanceStatusContext> Instances { get; set; }
     }
 
     class PSVmssDiskEncryptionStatusContextList : PSVmssDiskEncryptionStatusContext
     {
     }
 
+    class PSVmssDiskEncryptionInstanceStatusContext
+    {
+        public string Name { get; set; }
+        public string Id { get; set; }
+        public IList<PSVmssDiskEncryptionDiskStatusContext> Disks { get; set; }
+    }
+
     class PSVmssDiskEncryptionDiskStatusContext
     {
-        public string InstanceName { get; set; }
-        public string InstanceId { get; set; }
-        public string DiskName { get; set; }
+        public string Name { get; set; }
+        // Per Disk Encryption settings (not to be confused with VMSS EncryptionSettings set at the extension level)
         public IList<DiskEncryptionSettings> EncryptionSettings { get; set; }
+        // Disk Instance View Statuses filtered by codes starting with "EncryptionState/" 
         public IList<InstanceViewStatus> Statuses { get; set; }
     }
 }
