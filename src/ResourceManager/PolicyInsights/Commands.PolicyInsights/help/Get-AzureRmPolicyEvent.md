@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmPolicyEvent
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets policy evaluation events generated as resources are created or updated.
 
 ## SYNTAX
 
