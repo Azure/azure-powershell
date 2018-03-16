@@ -21,6 +21,8 @@
 * Log analytic feature
     - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
     - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+
+## Version 4.4.0
 * `New-AzureRmVMSS` prints connection strings in verbose mode.
 * `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
 * WriteAccelerator feature
