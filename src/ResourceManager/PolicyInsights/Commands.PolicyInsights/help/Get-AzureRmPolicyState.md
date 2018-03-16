@@ -70,7 +70,7 @@ Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets policy compliance states for resources. Policy state records can be queried at various scopes. Based on the time interval specified (defaults to last day), either latest policy states or all policy state transitions can be queried. Results can be filtered, grouped, and group aggregations can be computed.
 
 ## EXAMPLES
 

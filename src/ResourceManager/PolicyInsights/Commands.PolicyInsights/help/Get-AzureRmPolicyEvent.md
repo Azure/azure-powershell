@@ -69,7 +69,7 @@ Get-AzureRmPolicyEvent -ResourceId <String> [-Top <Int32>] [-OrderBy <String>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets policy evaluation events generated as resources are created or updated. Policy event records can be queried at various scopes based on the time interval specified (defaults to last day). Results can be filtered, grouped, and group aggregations can be computed.
 
 ## EXAMPLES
 
