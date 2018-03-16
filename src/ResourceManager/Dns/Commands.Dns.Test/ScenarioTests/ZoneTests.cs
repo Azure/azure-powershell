@@ -33,6 +33,41 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateZoneCrud()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateZoneCrudRegistrationVirtualNetwork()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudRegistrationVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateZoneCrudResolutionVirtualNetwork()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudResolutionVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateZoneCrudByVirtualNetworkIds()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudByVirtualNetworkIds");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateZoneCrudByVirtualNetworkObjects()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudByVirtualNetworkObjects");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudTrimsDot()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudTrimsDot");

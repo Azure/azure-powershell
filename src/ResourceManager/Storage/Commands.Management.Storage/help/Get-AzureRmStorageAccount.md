@@ -32,7 +32,7 @@ The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all
 
 ### Example 1: Get a specified Storage account
 ```
-PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
+PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command gets the specified Storage account.

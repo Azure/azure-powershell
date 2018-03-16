@@ -68,6 +68,12 @@ Disables encryption on an IaaS virtual machine.
 ### [Disable-AzureRmVmssDiskEncryption](Disable-AzureRmVmssDiskEncryption.md)
 Disables disk encryption on a VM scale set.
 
+### [Export-AzureRmLogAnalyticRequestRateByInterval](Export-AzureRmLogAnalyticRequestRateByInterval.md)
+Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
+
+### [Export-AzureRmLogAnalyticThrottledRequests](Export-AzureRmLogAnalyticThrottledRequests.md)
+Export logs that show total throttled Api requests for this subscription in the given time window.
+
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
