@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrevent
@@ -92,7 +92,7 @@ Specifies AffectedObject FriendlyName for the search.
 ```yaml
 Type: String
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,7 +122,7 @@ Specifies the end time of the search window. Use this parameter to get only thos
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +137,7 @@ Filter events by the event type.
 ```yaml
 Type: String
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 Accepted values: VmHealth, ServerHealth, AgentHealth
 
 Required: False
@@ -153,7 +153,7 @@ Filter events by the specified fabric.
 ```yaml
 Type: ASRFabric
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +168,7 @@ Specifies the fabricId to filter.
 ```yaml
 Type: String
 Parameter Sets: ByFabricId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -183,7 +183,7 @@ Specifies name of the event for search.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -198,7 +198,7 @@ Specifes the event ReourceId of event.
 ```yaml
 Type: String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -213,7 +213,7 @@ Event severity to filter on.
 ```yaml
 Type: String
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 Accepted values: Critical, Warning, OK, Unknown
 
 Required: False
@@ -229,7 +229,7 @@ Specifies the start time of the search window. Use this parameter to get only th
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -252,4 +252,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

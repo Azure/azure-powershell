@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrpolicy
@@ -74,14 +74,16 @@ The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the specified Azu
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -Policy $Policy -ReplicationFrequencyInSeconds 900
 ```
 
-### Example 2
-```
-PS C:\> Update-AzureRmRecoveryServicesAsrPolicy -AzureToAzur] -InputObject $Policy -ReplicationFrequencyInSeconds 900
-```
-
 Starts the update replication policy operation using the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 2
+```
+PS C:\> Update-AzureRmRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -ReplicationFrequencyInSeconds 900
+```
+
+Starts the update azure to azure replication policy operation using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 3
 ```
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
 ```
@@ -96,7 +98,7 @@ Specifies the frequency(in hours) at which to create application consistent reco
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +113,7 @@ Specifies the type of authentication used.
 ```yaml
 Type: String
 Parameter Sets: Default, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 Accepted values: Certificate, Kerberos
 
 Required: False
@@ -127,10 +129,10 @@ Switch parameter specifying that the replication policy used to replicate Azure 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureToAzure
-Aliases: 
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,7 +144,7 @@ Switch parameter indicating that the specfied policy is used to replicate failed
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AzureToVMware
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -157,7 +159,7 @@ Specifies if compression should be enabled.
 ```yaml
 Type: String
 Parameter Sets: Default, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 Accepted values: Enable, Disable
 
 Required: False
@@ -202,7 +204,7 @@ Specifies if encryption should be enabled or disabled.
 ```yaml
 Type: String
 Parameter Sets: Default, HyperVToAzure
-Aliases: 
+Aliases:
 Accepted values: Enable, Disable
 
 Required: False
@@ -218,7 +220,7 @@ Switch parameter indicating that the specfied policy is used to replicate Hyper-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: HyperVToAzure
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -248,7 +250,7 @@ Specifies multiVm sync status for the policy.
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
-Aliases: 
+Aliases:
 Accepted values: Enable, Disable
 
 Required: False
@@ -279,7 +281,7 @@ The RPO threshold value in minutes to warn on.
 ```yaml
 Type: Int32
 Parameter Sets: VMwareToAzure, AzureToVMware
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -295,7 +297,7 @@ Specifies the Azure storage account ID of the replication target. Used as the ta
 ```yaml
 Type: String
 Parameter Sets: Default, HyperVToAzure
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -310,7 +312,7 @@ Time in hours to retain recovery points after creation.
 ```yaml
 Type: Int32
 Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -325,7 +327,7 @@ Specifies if the replica virtual machine should be deleted on disabling replicat
 ```yaml
 Type: String
 Parameter Sets: Default, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 Accepted values: Required, NotRequired
 
 Required: False
@@ -346,7 +348,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: Default, HyperVToAzure, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 Accepted values: 30, 300, 900
 
 Required: False
@@ -362,7 +364,7 @@ Specifies the replication method.
 ```yaml
 Type: String
 Parameter Sets: Default, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 Accepted values: Online, Offline
 
 Required: False
@@ -378,7 +380,7 @@ Specifies the port used for replication.
 ```yaml
 Type: UInt16
 Parameter Sets: Default, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -394,7 +396,7 @@ It must be no later than 24-hours from the start of the job.
 ```yaml
 Type: TimeSpan
 Parameter Sets: Default, HyperVToAzure, EnterpriseToEnterprise
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -409,7 +411,7 @@ Switch parameter indicating that the specfied policy is used to replicate VMware
 ```yaml
 Type: SwitchParameter
 Parameter Sets: VMwareToAzure
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -424,7 +426,7 @@ Switch parameter indicating that the specfied policy is used to replicate VMM ma
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EnterpriseToEnterprise
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -462,4 +464,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

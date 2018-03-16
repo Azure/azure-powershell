@@ -23,7 +23,7 @@ The New-AzureRmRecoveryServicesAsrProtectionContainer cmdlet creates a Protectio
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> $job = New-AzureRmRecoveryServicesAsrProtectionContainer -Name xyz -Fabric $fabric
 PS C:\> Get-ASRJob -name $job.id
 ```
@@ -62,13 +62,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Creates the replication protection container in specifed input Object (Azure Fabric).
+
+```yaml
+Type: ASRFabric
+Parameter Sets: (All)
+Aliases: Fabric
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the protection container.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,21 +104,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Creates the replication protection container in specifed input Object (Azure Fabric).
-
-```yaml
-Type: ASRFabric
-Parameter Sets: (All)
-Aliases: Fabric
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
