@@ -345,13 +345,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     A2AReplicationDetails providerSpecificDetails = (A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
-                    if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryResourceGroupId)))
                     {
                         recoveryResourceGroupId =
                             providerSpecificDetails.RecoveryAzureResourceGroupId;
                     }
 
-                    if (string.IsNullOrEmpty(this.RecoveryCloudServiceId))
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
                     {
                         recoveryCloudServiceId =
                             providerSpecificDetails.RecoveryCloudService;
@@ -447,7 +449,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            if (!nicFoundToBeUpdated) {
+            if (!nicFoundToBeUpdated)
+            {
                 throw new PSInvalidOperationException(Resources.NicNotFoundInVMForUpdateVmProperties);
             }
             return vMNicInputDetailsList;

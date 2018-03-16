@@ -72,7 +72,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    replicating to a recovery Azure region.
         /// </summary>
         [Parameter(
-            Position = 0,
             ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = false)]
         public SwitchParameter AzureToAzure { get; set; }
@@ -389,25 +388,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void VMwareToAzureReplication(EnableProtectionInput input)
         {
             var providerSettings = new InMageAzureV2EnableProtectionInput
-                {
-                    ProcessServerId = this.ProcessServer.Id,
-                    MasterTargetId =
+            {
+                ProcessServerId = this.ProcessServer.Id,
+                MasterTargetId =
                         this.ProcessServer.Id, // Assumption: PS and MT are same.
-                    RunAsAccountId = this.Account.AccountId,
-                    StorageAccountId = this.RecoveryAzureStorageAccountId,
-                    TargetAzureNetworkId = this.RecoveryAzureNetworkId,
-                    TargetAzureSubnetId = this.RecoveryAzureSubnetName,
-                    LogStorageAccountId = this.LogStorageAccountId,
-                    MultiVmGroupName = this.ReplicationGroupName,
-                    MultiVmGroupId = this.ReplicationGroupName,
-                    TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+                RunAsAccountId = this.Account.AccountId,
+                StorageAccountId = this.RecoveryAzureStorageAccountId,
+                TargetAzureNetworkId = this.RecoveryAzureNetworkId,
+                TargetAzureSubnetId = this.RecoveryAzureSubnetName,
+                LogStorageAccountId = this.LogStorageAccountId,
+                MultiVmGroupName = this.ReplicationGroupName,
+                MultiVmGroupId = this.ReplicationGroupName,
+                TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
-                    EnableRDPOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
-                    DisksToInclude = this.IncludeDiskId != null
+                EnableRDPOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
+                DisksToInclude = this.IncludeDiskId != null
                                             ? this.IncludeDiskId
                                             : null
-                };
+            };
 
             var deploymentType = Utilities.GetValueFromArmId(
                 this.RecoveryAzureStorageAccountId,
@@ -585,7 +584,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
-        
+
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
             var providerSettings = new A2AEnableProtectionInput()
@@ -601,42 +600,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             // If azureVmDisk Details are null add disk to protect
             // TODO:: item for other parameterset when customer can pass AzureVmId targetStorageAccount and RecoveryStorageAccount.
-            if (this.AzureToAzureDiskReplicationConfiguration == null)
+            // will add support when compute dependency is added in common library.
+            foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
             {
-                if (string.IsNullOrEmpty(this.LogStorageAccountId) || string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId))
+                providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
                 {
-                    throw new Exception("Log Storage account or RecoveryStorage account cann't be null.");
-                }
-            }
-            else
-            {
-                foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
-                {
-                    if (string.IsNullOrEmpty(disk.LogStorageAccountId))
-                    {
-                        throw new PSArgumentException(
-                            string.Format(
-                                Properties.Resources.InvalidPrimaryStagingAzureStorageAccountIdDiskInput,
-                                disk.VhdUri));
-                    }
-
-                    if (string.IsNullOrEmpty(disk.RecoveryAzureStorageAccountId))
-                    {
-                        throw new PSArgumentException(
-                            string.Format(
-                                Properties.Resources.InvalidRecoveryAzureStorageAccountIdDiskInput,
-                                disk.VhdUri));
-                    }
-
-                    providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
-                    {
-                        DiskUri = disk.VhdUri,
-                        RecoveryAzureStorageAccountId =
-                                disk.RecoveryAzureStorageAccountId,
-                        PrimaryStagingAzureStorageAccountId =
-                                disk.LogStorageAccountId,
-                    });
-                }
+                    DiskUri = disk.VhdUri,
+                    RecoveryAzureStorageAccountId =
+                            disk.RecoveryAzureStorageAccountId,
+                    PrimaryStagingAzureStorageAccountId =
+                            disk.LogStorageAccountId,
+                });
             }
 
             input.Properties.ProviderSpecificDetails = providerSettings;

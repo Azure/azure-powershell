@@ -66,7 +66,7 @@ Force the command to run without providing an additional warning.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

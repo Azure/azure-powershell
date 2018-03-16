@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Vault.Name,
                 VerbsCommon.Set))
             {
-                  this.SetARSVaultContext(this.Vault);
+                this.SetARSVaultContext(this.Vault);
             }
         }
 

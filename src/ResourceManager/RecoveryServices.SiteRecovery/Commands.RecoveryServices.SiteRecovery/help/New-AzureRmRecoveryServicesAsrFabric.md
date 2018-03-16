@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrfabric
@@ -34,13 +34,15 @@ The **New-AzureRmRecoveryServicesAsrFabric** cmdlet creates an Azure Site Recove
 PS C:\>  $currentJob = New-AzureRmRecoveryServicesAsrFabric -Name $FabricName
 ```
 
+Starts the fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
+
 ### Example 2
 ```
 PS C:\>  $currentJob = New-AzureRmRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
-PS C:\>  Get-ASRJob -name $job.id
+PS C:\>  Get-ASRJob -name $currentJob.id
 ```
 
-Starts the fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
+Starts the azure fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
 
 ## PARAMETERS
 
@@ -50,10 +52,10 @@ Switch parameter indicates creation of azure fabric.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Azure
-Aliases: 
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +96,7 @@ Specifies the Azure region corresponding to the Fabric object being created. The
 ```yaml
 Type: String
 Parameter Sets: Azure
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,7 +111,7 @@ Specifies the name of the Azure Site Recovery Fabric.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +126,7 @@ Specifies the Azure Site Recovery Fabric Type.
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases: 
+Aliases:
 Accepted values: HyperVSite
 
 Required: False

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrnetworkmapping
@@ -33,12 +33,16 @@ The **Get-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet gets information abo
 ```
 PS C:\> $Networkmappings = Get-AzureRmRecoveryServicesAsrNetworkMapping -Network $Network
 ```
+
+Gets all networks mappings for the passed Network.
+
 ### Example 2
 ```
+PS C:\> $primaryFabric = Get-AzureRmRecoveryServicesAsrFabric -Name xxxx
 PS C:\> $Networkmappings = Get-AzureRmRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
 ```
 
-Gets all networks mappings for the passed Network.
+Gets networks mapping with provided name in specified azure site recovery fabric.
 
 ## PARAMETERS
 
@@ -62,7 +66,7 @@ The name of the ASR network mapping object to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +81,7 @@ Get the ASR network mappings corresponding to the specified network ASR object.
 ```yaml
 Type: ASRNetwork
 Parameter Sets: ByObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,7 +96,7 @@ Get the ASR network mappings corresponding to the specified primary fabric objec
 ```yaml
 Type: ASRFabric
 Parameter Sets: ByFabricObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

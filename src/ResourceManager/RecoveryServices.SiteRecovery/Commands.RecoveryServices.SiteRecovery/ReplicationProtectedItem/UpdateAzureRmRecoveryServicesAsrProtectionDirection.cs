@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the list of virtual machine disks to replicated 
         ///     and the log storage account and recovery storage account to be used to replicate the disk.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             foreach (var replicationProvider in rp.Properties.ReplicationProviders)
             {
-                if (Constants.InMageAzureV2.Equals(replicationProvider,StringComparison.OrdinalIgnoreCase) ||
+                if (Constants.InMageAzureV2.Equals(replicationProvider, StringComparison.OrdinalIgnoreCase) ||
                     Constants.InMage.Equals(replicationProvider, StringComparison.OrdinalIgnoreCase) ||
                     Constants.A2A.Equals(replicationProvider, StringComparison.OrdinalIgnoreCase))
                 {
@@ -548,11 +548,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // and pass as input to service.
                 if (this.AzureToAzureDiskReplicationConfiguration == null || this.AzureToAzureDiskReplicationConfiguration.Length == 0)
                 {
-                    if (string.IsNullOrEmpty(this.LogStorageAccountId))
-                    {
-                        throw new ArgumentException(Resources.NullorEmptyPrimaryStagingAzureStorageAccountId);
-                    }
-
                     if (fabricFriendlyName !=
                         this.ProtectionContainerMapping.TargetFabricFriendlyName &&
                         RecoveryAzureStorageAccountId == null)

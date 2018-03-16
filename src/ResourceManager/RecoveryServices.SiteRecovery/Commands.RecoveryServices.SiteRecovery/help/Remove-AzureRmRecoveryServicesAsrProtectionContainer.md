@@ -23,11 +23,12 @@ The Remove-AzureRmRecoveryServicesAsrProtectionContainer cmdlet deletes the spec
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
+PS C:\> Get-AzureRmRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
 PS C:\> Remove-AzureRmRecoveryServicesAsrProtectionContainer -InputObject $protectionContainer
 ```
 
-Starts the deletion of specified protection container and returns the ASR job used to track the operation.
+Starts the deletion of specified protection container and returns the ASR job used to track the remove operation.
 
 ## PARAMETERS
 
