@@ -86,43 +86,22 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             }
             else if (imageName.Contains("/"))
             {
-                var imageArray = imageName.Split('/');
-                if (imageArray.Length != 9)
-                {
-                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
-                }
-                // has to be ""
-                var empty = imageArray[0];
-                // has to be "subscriptions"
-                var subscriptions = imageArray[1];
-                var subscriptionId = imageArray[2];
-                // has to be "resourceGroups"
-                var resourceGroups = imageArray[3];
-                var imageResourceGroupName = imageArray[4];
-                // has to be "providers"
-                var providers = imageArray[5];
-                // has to be "Microsoft."
-                var providerNamespace = imageArray[6];
-                // has to be "image" 
-                var provider = imageArray[7];
-                var resourceName = imageArray[8];
-
-                if (empty != string.Empty
-                    || subscriptions != SdkEngine.Subscriptions
-                    || resourceGroups != ResourceType.ResourceGroups
-                    || providers != EntityConfigExtensions.Providers
-                    || providerNamespace != ComputeStrategy.Namespace
-                    || provider != "images")
+                var resourceId = ResourceId.TryParse(imageName);
+                if (resourceId == null
+                    || resourceId.ResourceType.Namespace != ComputeStrategy.Namespace
+                    || resourceId.ResourceType.Provider != "images")
                 {
                     throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
 
-                if (compute.SubscriptionId != subscriptionId)
+                if (compute.SubscriptionId != resourceId.SubscriptionId)
                 {
                     throw new ArgumentException(Resources.ComputeMismatchSubscription);
                 }
 
-                var localImage = await compute.Images.GetAsync(imageResourceGroupName, resourceName);
+                var localImage = await compute.Images.GetAsync(
+                    resourceGroupName: resourceId.ResourceGroupName,
+                    imageName: resourceId.Name);
 
                 return new ImageAndOsType(
                     localImage.StorageProfile.OsDisk.OsType,
