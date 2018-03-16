@@ -51,13 +51,10 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.StreamAnalytics.dll', 
-               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
-               '.\Microsoft.Data.Services.Client.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.StreamAnalytics.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

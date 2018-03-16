@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestJobScheduleCRUD()
         {
             BatchController.NewInstance.RunPsTest("Test-JobScheduleCRUD");

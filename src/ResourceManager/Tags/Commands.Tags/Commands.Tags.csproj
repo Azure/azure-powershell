@@ -104,12 +104,9 @@
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
-      <OutFiles Include="$(OutDir)\**\*.*"/>
+      <OutFiles Include="$(OutDir)\**\*.*" />
     </ItemGroup>
-    <Copy
-           SourceFiles="@(OutFiles)"
-           DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Tags\%(RecursiveDir)%(Filename)%(Extension)')"
-     />
+    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Tags\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

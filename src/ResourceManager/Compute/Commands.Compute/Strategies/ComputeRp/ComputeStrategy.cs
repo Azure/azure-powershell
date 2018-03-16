@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             var url = fqdn + (port == null ? string.Empty : ":" + port);
             return imageAndOsType.OsType == OperatingSystemTypes.Windows
                 ? "mstsc /v:" + url
-                : "ssh " + user + "@" + url;
+                : "ssh " + (user == null ? string.Empty : user + "@") + url;
         }
     }
 }
