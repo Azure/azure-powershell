@@ -9,6 +9,9 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using System.Collections.Generic;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Reflection;
+using System.IO;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -62,6 +65,17 @@ namespace Commands.Aks.Test.ScenarioTests
                     helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
+
+                if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
+                {
+                    AzureSession.Instance.DataStore = new MemoryDataStore();
+                    var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                    var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                    var subscription = HttpMockServer.Variables["SubscriptionId"];
+                    AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
+                    string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
+                    AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
+                }
 
                 helper.RunPowerShellTest(scripts);
             }

@@ -324,7 +324,6 @@ namespace Microsoft.Azure.Commands.Aks
                 catch (Exception ex)
                 {
                     WriteVerbose(string.Format(Resources.RetryAfterActionError, i, actionName ?? "action", ex.Message));
-                    // AAD might puke here, so we catch it and try again until success
                     TestMockSupport.Delay(1000 * i);
                 }
             }

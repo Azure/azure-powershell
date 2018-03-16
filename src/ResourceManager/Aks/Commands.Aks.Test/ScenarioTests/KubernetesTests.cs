@@ -1,15 +1,9 @@
-using System;
-using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
-using System.Reflection;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -19,16 +13,6 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
-            {
-                AzureSession.Instance.DataStore = new MemoryDataStore();
-                var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-                var subscription = this.currentProfile.DefaultContext.Subscription.Id;
-                AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
-                //string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
-                //AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
-            }
         }
 
         [Fact]
