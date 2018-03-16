@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class DisableAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
