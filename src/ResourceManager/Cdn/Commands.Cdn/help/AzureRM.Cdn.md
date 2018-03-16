@@ -47,7 +47,7 @@ Gets the resource usage of a CDN profile.
 ### [Get-AzureRmCdnProfileSsoUrl](Get-AzureRmCdnProfileSsoUrl.md)
 Gets the single sign-on URL of a CDN profile.
 
-### [Get-AzureRmCdnProfileSupportedOptimizationTypes](Get-AzureRmCdnProfileSupportedOptimizationTypes.md)
+### [Get-AzureRmCdnProfileSupportedOptimizationType](Get-AzureRmCdnProfileSupportedOptimizationType.md)
 Gets the supported optimization types for a CDN profile.
 
 ### [Get-AzureRmCdnSubscriptionResourceUsage](Get-AzureRmCdnSubscriptionResourceUsage.md)

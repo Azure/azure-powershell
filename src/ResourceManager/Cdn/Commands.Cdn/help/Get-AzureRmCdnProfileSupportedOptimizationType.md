@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofilesupportedoptimizationtypes
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofilesupportedoptimizationtype
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnProfileSupportedOptimizationTypes
+# Get-AzureRmCdnProfileSupportedOptimizationType
 
 ## SYNOPSIS
 Gets the supported optimization types for a CDN profile.
@@ -14,13 +14,13 @@ Gets the supported optimization types for a CDN profile.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzureRmCdnProfileSupportedOptimizationTypes -ProfileName <String> -ResourceGroupName <String>
+Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzureRmCdnProfileSupportedOptimizationTypes -CdnProfile <PSProfile>
+Get-AzureRmCdnProfileSupportedOptimizationType -CdnProfile <PSProfile>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzureRmCdnProfileSupportedOptimizationTypes -CdnProfile <PSProfile>
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmCdnProfileSupportedOptimizationTypes -ProfileName $profileName -ResourceGroupName $resourceGroupName
+PS C:\> Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
 Get the supported optimization types for a CDN profile.
