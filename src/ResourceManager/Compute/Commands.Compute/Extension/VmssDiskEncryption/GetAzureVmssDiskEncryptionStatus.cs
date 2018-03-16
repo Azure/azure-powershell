@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 ResourceGroupName = rgName,
                 VmScaleSetName = vmssName,
+                EncryptionEnabled = false,
                 EncryptionExtensionInstalled = false
             };
 
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             psResult.EncryptionExtensionInstalled = true;
 
             // retrieve public configuration settings for the extension
-            psResult.ExtensionSettings = JsonConvert.DeserializeObject<AzureVmssDiskEncryptionExtensionPublicSettings>(
+            psResult.EncryptionSettings = JsonConvert.DeserializeObject<AzureVmssDiskEncryptionExtensionPublicSettings>(
                 ext.Settings.ToString());
 
             // retrieve any status summary for the extension 
@@ -195,27 +196,50 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
 
                 // retrieve encryption status of all disks in all instances
-                psResult.Disks = new List<PSVmssDiskEncryptionDiskStatusContext>();
+                psResult.Instances = new List<PSVmssDiskEncryptionInstanceStatusContext>();
                 foreach (VirtualMachineScaleSetVM instance in instancesList)
                 {
-                    foreach (DiskInstanceView div in instance.InstanceView.Disks)
+                    List<PSVmssDiskEncryptionDiskStatusContext> currentDisks = new List<PSVmssDiskEncryptionDiskStatusContext>();
+                    VirtualMachineScaleSetVMInstanceView vmiv = this.VirtualMachineScaleSetVMsClient.GetInstanceView(rgName, vmssName, instance.InstanceId);
+                    if (vmiv != null && vmiv.Disks != null)
                     {
-                        List<InstanceViewStatus> perDiskEncryptionStatuses = new List<InstanceViewStatus>();
-                        foreach (InstanceViewStatus ivs in div.Statuses)
+                        foreach (DiskInstanceView div in vmiv.Disks)
                         {
-                            if (ivs.Code.StartsWith("EncryptionState")) perDiskEncryptionStatuses.Add(ivs);
-                        }
-                        // add encryption state to the per disk result 
-                        PSVmssDiskEncryptionDiskStatusContext diskStatus = new PSVmssDiskEncryptionDiskStatusContext
-                        {
-                            InstanceName = instance.Name,
-                            InstanceId = instance.Id,
-                            DiskName = div.Name,
-                            EncryptionSettings = div.EncryptionSettings,
-                            Statuses = perDiskEncryptionStatuses
-                        };
-                        psResult.Disks.Add(diskStatus);
+                            List<InstanceViewStatus> perDiskEncryptionStatuses = new List<InstanceViewStatus>();
+                            bool isEncrypted = false;
+                            foreach (InstanceViewStatus ivs in div.Statuses)
+                            {
+                                if (ivs != null && ivs.Code != null && ivs.Code.StartsWith("EncryptionState"))
+                                {
+                                    perDiskEncryptionStatuses.Add(ivs);
+                                    if (!psResult.EncryptionEnabled)
+                                    {
+                                        // retains the state of the last status code written for this disk 
+                                        isEncrypted = ivs.Code.Equals("EncryptionState/encrypted");
+                                    }
+                                }
+                            }
+                            // EncryptionEnabled is considered deprecated, and removal would be a breaking change
+                            // This records true for "encryption enabled" if any disk is marked as encrypted 
+                            psResult.EncryptionEnabled |= isEncrypted;
+
+                            // For finer granularity, preserve and add full status for this individual disk 
+                            PSVmssDiskEncryptionDiskStatusContext diskStatus = new PSVmssDiskEncryptionDiskStatusContext
+                            {
+                                Name = div.Name,
+                                EncryptionSettings = div.EncryptionSettings,
+                                Statuses = perDiskEncryptionStatuses
+                            };
+                            currentDisks.Add(diskStatus);
+                        }                 
                     }
+                    PSVmssDiskEncryptionInstanceStatusContext currentInstance = new PSVmssDiskEncryptionInstanceStatusContext
+                    {
+                        Name = instance.Name,
+                        Id = instance.Id,
+                        Disks = currentDisks
+                    };
+                    psResult.Instances.Add(currentInstance);
                 }
             }
             catch (InvalidOperationException)

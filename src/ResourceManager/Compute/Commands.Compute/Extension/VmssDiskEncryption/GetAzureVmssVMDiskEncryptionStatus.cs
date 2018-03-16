@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             psResult.OsVolumeEncrypted = GetOsDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
-            psResult.DataVolumesEncrypted = GetDataDiskEncryptionStatus(rgName, vmssName, psResult.DiskEncryptionStatus, vmssVM.StorageProfile);
+            psResult.DataVolumesEncrypted = GetDataDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
 
             return psResult;
         }
@@ -178,44 +178,37 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, ""));
         }
 
-        private EncryptionStatus GetDataDiskEncryptionStatus(string rgName, string vmssName, string encryptionStatus, StorageProfile storage)
+        // This method is considered deprecated as it does not reflect status of all data disks  
+        // it will be removed in a future opportunity for breaking changes to be introduced
+        // Get-AzureRmVmssDiskEncryptionStatus can be used to retrieve status of all data disks
+        private EncryptionStatus GetDataDiskEncryptionStatus(List<DiskInstanceView> disks, StorageProfile storage)
         {
             if (storage == null || storage.DataDisks == null || storage.DataDisks.Count == 0)
             {
                 return EncryptionStatus.NotMounted;
             }
 
-            // Data disk does not have disk encryption extension setting.
-
-            var vmssResult = this.VirtualMachineScaleSetClient.Get(rgName, vmssName);
-            if (vmssResult.VirtualMachineProfile == null
-                || vmssResult.VirtualMachineProfile.ExtensionProfile == null
-                || vmssResult.VirtualMachineProfile.ExtensionProfile.Extensions == null
-                || vmssResult.VirtualMachineProfile.ExtensionProfile.Extensions.Count == 0)
-            {
-                return EncryptionStatus.NotEncrypted;
-            }
-
             try
             {
-                VirtualMachineScaleSetExtension ext = vmssResult.VirtualMachineProfile.ExtensionProfile.Extensions.First(
-                         e => e.Type.Equals(this.ExtensionName));
-
-                AzureVmssDiskEncryptionExtensionPublicSettings encryptionSettings = JsonConvert.DeserializeObject<AzureVmssDiskEncryptionExtensionPublicSettings>(
-                ext.Settings.ToString());
-                if (encryptionSettings.VolumeType.Equals(AzureVmssDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.OrdinalIgnoreCase)
-                    || encryptionSettings.VolumeType.Equals(AzureVmssDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.OrdinalIgnoreCase))
+                InstanceViewStatus status = null;
+                try
                 {
-                    if (encryptionSettings.EncryptionOperation.Equals(AzureDiskEncryptionExtensionConstants.enableEncryptionOperation, StringComparison.OrdinalIgnoreCase))
+                    var disk = disks.First(e => e.Name.Equals(storage.DataDisks[0].Name));
+
+                    if (disk == null)
                     {
-                        return !string.IsNullOrEmpty(encryptionStatus) &&
-                            encryptionStatus.EndsWith(AzureVmssDiskEncryptionExtensionContext.StatusSucceeded, StringComparison.OrdinalIgnoreCase)
-                            ? EncryptionStatus.Encrypted
-                            : EncryptionStatus.Unknown;
+                        return EncryptionStatus.Unknown;
                     }
+                    status = disk.Statuses.First(s => s.Code.Contains(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString));
+                }
+                catch (InvalidOperationException)
+                {
+                    return EncryptionStatus.NotEncrypted;
                 }
 
-                return EncryptionStatus.NotEncrypted;
+                return (status == null)
+                    ? EncryptionStatus.NotEncrypted
+                    : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, ""));
             }
             catch (InvalidOperationException)
             {
