@@ -20,6 +20,7 @@
 
 ## Current Release
 * Fix issue with Default Resource Group in CloudShell
+* Updating model types for compatibility with DNS cmdlets.
 
 ## Version 5.3.0
 * Fixed issue with importing aliases
