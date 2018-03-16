@@ -19,6 +19,14 @@
 -->
 ## Current Release
 * Fix issue with Default Resource Group in CloudShell
+ * Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support
 
 ## Version 4.2.0
 * Fix credential encryption issue that caused no meaningful error for some encryption operations
