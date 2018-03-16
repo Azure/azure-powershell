@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -23,6 +23,8 @@
     - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
     - Remove-AzureRmRecoveryServicesAsrProtectionContainer
     - Update-AzureRmRecoveryServicesAsrProtectionDirection
+
+## Version 0.2.2
 * Fixed issue with importing aliases
 
 ## Version 0.2.1
