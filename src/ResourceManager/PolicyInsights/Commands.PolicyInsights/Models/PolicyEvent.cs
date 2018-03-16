@@ -184,6 +184,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
             }
 
             this.AdditionalProperties = policyEvent.AdditionalProperties;
+            this.AdditionalProperties.Remove("@odata.id");
+
             this.Timestamp = policyEvent.Timestamp;
             this.ResourceId = policyEvent.ResourceId;
             this.PolicyAssignmentId = policyEvent.PolicyAssignmentId;
