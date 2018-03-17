@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmPolicyStateSummary
 
 ## SYNOPSIS
-Gets policy compliance states summary for resources.
+Gets latest policy compliance states summary for resources.
 
 ## SYNTAX
 
@@ -66,7 +66,7 @@ Get-AzureRmPolicyStateSummary -ResourceId <String> [-Top <Int32>] [-From <DateTi
 ```
 
 ## DESCRIPTION
-Gets a summary view of latest policy compliance state numbers at various scopes, broken down into policy assignments and policy definitions.
+Gets a summary view of latest policy compliance state numbers at various scopes, broken down into policy assignments and policy definitions. It includes only non-compliant policy states.
 
 ## EXAMPLES
 
@@ -266,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
@@ -275,3 +275,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmPolicyState](./Get-AzureRmPolicyState.md)
