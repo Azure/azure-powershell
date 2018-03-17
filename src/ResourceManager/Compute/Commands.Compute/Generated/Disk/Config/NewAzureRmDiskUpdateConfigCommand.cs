@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // Sku
             Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
 
-            if (this.EncryptionSettingsEnabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
 
-            if (this.DiskEncryptionKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
-            if (this.KeyEncryptionKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
             {
                 if (vEncryptionSettings == null)
                 {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
-            if (this.SkuName != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
                 if (vSku == null)
                 {
@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDiskUpdate = new PSDiskUpdate
             {
-                OsType = this.OsType,
-                DiskSizeGB = this.DiskSizeGB,
-                Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
+                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?) null,
+                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null,
+                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettings = vEncryptionSettings,
                 Sku = vSku,
             };

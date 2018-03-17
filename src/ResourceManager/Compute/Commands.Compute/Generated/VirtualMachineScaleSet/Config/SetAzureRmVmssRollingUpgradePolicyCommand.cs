@@ -44,19 +44,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        public int? MaxBatchInstancePercent { get; set; }
+        public int MaxBatchInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? MaxUnhealthyInstancePercent { get; set; }
+        public int MaxUnhealthyInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public int? MaxUnhealthyUpgradedInstancePercent { get; set; }
+        public int MaxUnhealthyUpgradedInstancePercent { get; set; }
 
         [Parameter(
             Mandatory = false,

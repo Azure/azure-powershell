@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // StorageProfile
             Microsoft.Azure.Management.Compute.Models.ImageStorageProfile vStorageProfile = null;
 
-            if (this.SourceVirtualMachineId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVirtualMachineId"))
             {
                 if (vSourceVirtualMachine == null)
                 {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSourceVirtualMachine.Id = this.SourceVirtualMachineId;
             }
 
-            if (this.OsDisk != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDisk"))
             {
                 if (vStorageProfile == null)
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vStorageProfile.OsDisk = this.OsDisk;
             }
 
-            if (this.DataDisk != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DataDisk"))
             {
                 if (vStorageProfile == null)
                 {
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vImage = new PSImage
             {
-                Location = this.Location,
-                Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
+                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
+                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,
                 StorageProfile = vStorageProfile,
             };

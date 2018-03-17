@@ -188,6 +188,9 @@ Grants an access to a snapshot.
 ### [Invoke-AzureRmVMRunCommand](Invoke-AzureRmVMRunCommand.md)
 Run command on the VM.
 
+### [Invoke-AzureRmVmssServiceFabricUDWalk](Invoke-AzureRmVmssServiceFabricUDWalk.md)
+Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
+
 ### [New-AzureRmAvailabilitySet](New-AzureRmAvailabilitySet.md)
 Creates an Azure availability set.
 

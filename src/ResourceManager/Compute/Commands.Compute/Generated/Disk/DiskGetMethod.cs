@@ -202,7 +202,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -213,7 +212,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [Alias("Name")]
-        [AllowNull]
         public string DiskName { get; set; }
     }
 }

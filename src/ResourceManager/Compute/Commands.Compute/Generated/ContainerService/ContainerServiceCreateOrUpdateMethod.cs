@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -150,7 +149,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         public string Name { get; set; }
 
         [Parameter(
@@ -159,7 +157,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSContainerService ContainerService { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -195,7 +192,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -205,7 +201,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         public string Name { get; set; }
 
         [Parameter(
@@ -214,7 +209,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSContainerService ContainerService { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

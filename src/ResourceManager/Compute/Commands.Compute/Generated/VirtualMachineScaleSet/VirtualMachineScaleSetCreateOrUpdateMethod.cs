@@ -154,7 +154,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -168,7 +167,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
@@ -177,7 +175,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

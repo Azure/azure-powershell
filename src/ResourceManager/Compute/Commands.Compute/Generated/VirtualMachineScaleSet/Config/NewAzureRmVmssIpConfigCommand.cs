@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [Alias("PublicIPAddressIdleTimeoutInMinutes")]
-        public int? PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
+        public int PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
 
         [Parameter(
             Mandatory = false,

@@ -165,7 +165,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/runCommands")]
         public string Location { get; set; }
 
@@ -175,7 +174,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         public string CommandId { get; set; }
     }
 }

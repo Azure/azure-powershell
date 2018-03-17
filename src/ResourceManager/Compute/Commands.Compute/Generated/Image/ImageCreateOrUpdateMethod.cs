@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -151,7 +150,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [Alias("Name")]
-        [AllowNull]
         public string ImageName { get; set; }
 
         [Parameter(
@@ -160,7 +158,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSImage Image { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -196,7 +193,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -207,7 +203,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [Alias("Name")]
-        [AllowNull]
         public string ImageName { get; set; }
 
         [Parameter(
@@ -216,7 +211,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSImage Image { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
