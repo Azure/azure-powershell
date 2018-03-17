@@ -18,5 +18,5 @@ Gets policy evaluation events generated as resources are created or updated.
 Gets policy compliance states for resources.
 
 ### [Get-AzureRmPolicyStateSummary](Get-AzureRmPolicyStateSummary.md)
-Gets policy compliance states summary for resources.
+Gets latest policy compliance states summary for resources.
 
