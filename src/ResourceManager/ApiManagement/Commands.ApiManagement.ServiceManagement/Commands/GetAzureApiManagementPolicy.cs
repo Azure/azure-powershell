@@ -91,31 +91,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            string format = Format ?? DefaultFormat;
-            byte[] content;
+            string policyContent;
             switch (ParameterSetName)
             {
                 case TenantLevel:
-                    content = Client.PolicyGetTenantLevel(Context, format);
+                    policyContent = Client.PolicyGetTenantLevel(Context);
                     break;
                 case ProductLevel:
-                    content = Client.PolicyGetProductLevel(Context, format, ProductId);
+                    policyContent = Client.PolicyGetProductLevel(Context, ProductId);
                     break;
                 case ApiLevel:
-                    content = Client.PolicyGetApiLevel(Context, format, ApiId);
+                    policyContent = Client.PolicyGetApiLevel(Context, ApiId);
                     break;
                 case OperationLevel:
                     if (string.IsNullOrWhiteSpace(ApiId))
                     {
                         throw new PSArgumentNullException("ApiId");
                     }
-                    content = Client.PolicyGetOperationLevel(Context, format, ApiId, OperationId);
+                    policyContent = Client.PolicyGetOperationLevel(Context, ApiId, OperationId);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
             }
 
-            if (content == null)
+            if (policyContent == null)
             {
                 return;
             }
@@ -135,22 +134,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     return;
                 }
 
-                using (var file = File.OpenWrite(SaveAs))
-                {
-                    file.Write(content, 0, content.Length);
-                    file.Flush();
-                }
+                File.WriteAllText(SaveAs, policyContent, Encoding.UTF8);
             }
             else
             {
-                string resultStr;
-                using (var memoryStream = new MemoryStream(content))
-                using (var streamReader = new StreamReader(memoryStream, Encoding.UTF8))
-                {
-                    resultStr = streamReader.ReadToEnd();
-                }
-
-                WriteObject(resultStr);
+                WriteObject(policyContent);
             }
         }
     }

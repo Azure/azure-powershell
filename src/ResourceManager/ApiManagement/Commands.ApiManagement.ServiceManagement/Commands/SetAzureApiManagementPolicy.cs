@@ -93,56 +93,46 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Stream stream = null;
-            try
+            string policyContent;
+            if (!string.IsNullOrWhiteSpace(Policy))
             {
-                if (!string.IsNullOrWhiteSpace(Policy))
-                {
-                    stream = new MemoryStream(Encoding.UTF8.GetBytes(Policy));
-                }
-                else if (!string.IsNullOrEmpty(PolicyFilePath))
-                {
-                    stream = File.OpenRead(PolicyFilePath);
-                }
-                else
-                {
-                    throw new PSInvalidOperationException("Either Policy or PolicyFilePath should be specified.");
-                }
-
-                string format = Format ?? DefaultFormat;
-                switch (ParameterSetName)
-                {
-                    case TenantLevel:
-                        Client.PolicySetTenantLevel(Context, format, stream);
-                        break;
-                    case ProductLevel:
-                        Client.PolicySetProductLevel(Context, format, stream, ProductId);
-                        break;
-                    case ApiLevel:
-                        Client.PolicySetApiLevel(Context, format, stream, ApiId);
-                        break;
-                    case OperationLevel:
-                        if (string.IsNullOrWhiteSpace(ApiId))
-                        {
-                            throw new PSArgumentNullException("ApiId");
-                        }
-                        Client.PolicySetOperationLevel(Context, format, stream, ApiId, OperationId);
-                        break;
-                    default:
-                        throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
-                }
-
-                if (PassThru)
-                {
-                    WriteObject(true);
-                }
+                policyContent = Policy;
             }
-            finally
+            else if (!string.IsNullOrEmpty(PolicyFilePath))
             {
-                if (stream != null)
-                {
-                    stream.Dispose();
-                }
+                policyContent = File.ReadAllText(PolicyFilePath);
+            }
+            else
+            {
+                throw new PSInvalidOperationException("Either Policy or PolicyFilePath should be specified.");
+            }
+
+            string format = Format ?? DefaultFormat;
+            switch (ParameterSetName)
+            {
+                case TenantLevel:
+                    Client.PolicySetTenantLevel(Context, format, policyContent);
+                    break;
+                case ProductLevel:
+                    Client.PolicySetProductLevel(Context, format, policyContent, ProductId);
+                    break;
+                case ApiLevel:
+                    Client.PolicySetApiLevel(Context, format, policyContent, ApiId);
+                    break;
+                case OperationLevel:
+                    if (string.IsNullOrWhiteSpace(ApiId))
+                    {
+                        throw new PSArgumentNullException("ApiId");
+                    }
+                    Client.PolicySetOperationLevel(Context, format, policyContent, ApiId, OperationId);
+                    break;
+                default:
+                    throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+            }
+
+            if (PassThru)
+            {
+                WriteObject(true);
             }
         }
     }

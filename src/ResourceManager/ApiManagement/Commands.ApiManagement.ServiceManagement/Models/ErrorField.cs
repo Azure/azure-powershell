@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using Management.ApiManagement.Models;
     using System;
 
     public class ErrorField
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         }
 
-        public ErrorField(ErrorField errorField)
+        public ErrorField(ErrorFieldContract errorField)
             : this()
         {
             if (errorField == null)

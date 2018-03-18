@@ -278,12 +278,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             var resultsList = new List<T>();
 
             var pagedResponse = listFirstPage();
-            resultsList.AddRange(pagedResponse.Va);
+            resultsList.AddRange(pagedResponse);
 
             while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
             {
                 pagedResponse = listNextPage(pagedResponse.NextPageLink);
-                resultsList.AddRange(pagedResponse.Values);
+                resultsList.AddRange(pagedResponse);
             }
 
             return resultsList;
@@ -460,14 +460,40 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string wsdlEndpointName,
             PsApiManagementApiType? apiType)
         {
-            string contentType = GetHeaderForApiExportImport(true, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
+            string contentFormat = GetContentFormatForApiImport(true, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
-            string apiTypeValue = GetApiTypeForImport(specificationFormat, apiType);
+            string soapApiType = GetApiTypeForImport(specificationFormat, apiType);
 
+            string contentValue;
             using (var fileStream = File.OpenRead(specificationPath))
             {
-                Client.Api.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, apiPath, wsdlServiceName, wsdlEndpointName, apiTypeValue);
+                using (var streamReader = new StreamReader(fileStream))
+                {
+                    contentValue = streamReader.ReadToEnd();
+                }
             }
+            var apiCreateOrUpdateParams = new ApiCreateOrUpdateParameter()
+            {
+                ContentFormat = contentFormat,
+                Path = apiPath,
+                ContentValue = contentValue
+            };
+
+            if (!string.IsNullOrEmpty(soapApiType))
+            {
+                apiCreateOrUpdateParams.SoapApiType = soapApiType;
+                apiCreateOrUpdateParams.WsdlSelector = new ApiCreateOrUpdatePropertiesWsdlSelector()
+                {
+                    WsdlServiceName = wsdlServiceName,
+                    WsdlEndpointName = wsdlEndpointName
+                };
+            }
+
+            Client.Api.CreateOrUpdate(
+                context.ResourceGroupName,
+                context.ServiceName,
+                apiId,
+                apiCreateOrUpdateParams);            
         }
 
         public void ApiImportFromUrl(
@@ -475,25 +501,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationUrl,
-            string urlSuffix,
+            string apiPath,
             string wsdlServiceName,
             string wsdlEndpointName,
             PsApiManagementApiType? apiType)
         {
-            string contentType = GetHeaderForApiExportImport(false, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
+            string contentFormat = GetContentFormatForApiImport(false, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
-            string apiTypeValue = GetApiTypeForImport(specificationFormat, apiType);
-
-            var jobj = JObject.FromObject(
-                new
-                {
-                    link = specificationUrl
-                });
-
-            using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(jobj.ToString(Formatting.None))))
+            string soapApiType = GetApiTypeForImport(specificationFormat, apiType);
+                       
+            var createOrUpdateContract = new ApiCreateOrUpdateParameter()
             {
-                Client.Api.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, memoryStream, urlSuffix, wsdlServiceName, wsdlEndpointName, apiTypeValue);
+                ContentFormat = contentFormat,
+                ContentValue = specificationUrl,
+                Path = apiPath
+            };
+
+            if (!string.IsNullOrEmpty(soapApiType))
+            {
+                createOrUpdateContract.SoapApiType = soapApiType;
+                createOrUpdateContract.WsdlSelector = new ApiCreateOrUpdatePropertiesWsdlSelector()
+                {
+                    WsdlServiceName = wsdlServiceName,
+                    WsdlEndpointName = wsdlEndpointName
+                };
             }
+
+            Client.Api.CreateOrUpdate(
+                context.ResourceGroupName,
+                context.ServiceName,
+                apiId,
+                createOrUpdateContract);
         }
 
         public byte[] ApiExportToFile(
@@ -502,13 +540,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementApiFormat specificationFormat,
             string saveAs)
         {
-            string acceptType = GetHeaderForApiExportImport(true, specificationFormat, string.Empty, string.Empty, false);
+            string acceptType = GetContentFormatForApiImport(true, specificationFormat, string.Empty, string.Empty, false);
 
             var response = Client.ApiExport.Get(context.ResourceGroupName, context.ServiceName, apiId, acceptType);
-            return response.Link;
+            var exportedFileContents = DownloadFileFromLink(response.Link);
+            return exportedFileContents;
         }
 
-        private string GetHeaderForApiExportImport(
+        byte[] DownloadFileFromLink(string url)
+        {
+            WebRequest request = WebRequest.Create(url);
+            using (var stream = request.GetRequestStream())
+            {
+                using (var memStream = new MemoryStream())
+                {
+                    stream.CopyTo(memStream);
+                    return memStream.ToArray();
+                }
+            }
+        }
+
+        private string GetContentFormatForApiImport(
             bool fromFile,
             PsApiManagementApiFormat specificationApiFormat, 
             string wsdlServiceName,
@@ -519,13 +571,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             switch (specificationApiFormat)
             {
                 case PsApiManagementApiFormat.Wadl:
-                    headerValue = fromFile ? "application/vnd.sun.wadl+xml" : "application/vnd.sun.wadl.link+json";
+                    headerValue = fromFile ? ContentFormat.WadlXml : ContentFormat.WadlLinkJson;
                     break;
                 case PsApiManagementApiFormat.Swagger:
-                    headerValue = fromFile ? "application/vnd.swagger.doc+json" : "application/vnd.swagger.link+json"; 
+                    headerValue = fromFile ? ContentFormat.SwaggerJson : ContentFormat.SwaggerLinkJson; 
                     break;
                 case PsApiManagementApiFormat.Wsdl:
-                    headerValue = fromFile ? "application/wsdl+xml" : "application/vnd.ms.wsdl.link+xml"; 
+                    headerValue = fromFile ? ContentFormat.Wsdl : ContentFormat.WsdlLink; 
                     if (validateWsdlParams && string.IsNullOrEmpty(wsdlServiceName))
                     {
                         throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "WsdlServiceName cannot be Empty for Format : {0}", specificationApiFormat));
@@ -550,6 +602,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (specificationFormat != PsApiManagementApiFormat.Wsdl)
             {
                 return null;
+            }
+
+            if (apiType.HasValue)
+            {
+               switch(apiType.Value)
+                {
+                    case PsApiManagementApiType.Http: return SoapApiType.SoapToRest;
+                    case PsApiManagementApiType.Soap: return SoapApiType.SoapPassThrough;
+                    default: return SoapApiType.SoapPassThrough;
+                }
             }
 
             return apiType.HasValue ? apiType.Value.ToString("g") : PsApiManagementApiType.Http.ToString("g");
@@ -618,12 +680,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 operationContract.Responses = Mapper.Map<IList<ResponseContract>>(responses);
             }
 
-            Client.ApiOperation.Create(
+            Client.ApiOperation.CreateOrUpdate(
                 context.ResourceGroupName,
                 context.ServiceName,
                 apiId,
                 operationId,
-                new OperationCreateOrUpdateParameters(operationContract));
+                operationContract);
 
             var operationContractResponse = Client.ApiOperation.Get(context.ResourceGroupName, context.ServiceName, apiId, operationId);
 
@@ -1164,13 +1226,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         #region Policy
 
-        private static byte[] PolicyGetWrap(Func<PolicyContract> getPolicyFunc)
+        private static string PolicyGetWrap(Func<PolicyContract> getPolicyFunc)
         {
             try
             {
                 var response = getPolicyFunc();
 
-                return response.PolicyBytes;
+                return response.PolicyContent;
             }
             catch (Hyak.Common.CloudException ex)
             {
@@ -1183,44 +1245,60 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
         }
 
-        public byte[] PolicyGetTenantLevel(PsApiManagementContext context, string format)
+        public string PolicyGetTenantLevel(PsApiManagementContext context)
         {
             return PolicyGetWrap(() => Client.Policy.Get(context.ResourceGroupName, context.ServiceName));
         }
 
-        public byte[] PolicyGetProductLevel(PsApiManagementContext context, string format, string productId)
+        public string PolicyGetProductLevel(PsApiManagementContext context, string productId)
         {
             return PolicyGetWrap(() => Client.ProductPolicy.Get(context.ResourceGroupName, context.ServiceName, productId));
         }
 
-        public byte[] PolicyGetApiLevel(PsApiManagementContext context, string format, string apiId)
+        public string PolicyGetApiLevel(PsApiManagementContext context, string apiId)
         {
             return PolicyGetWrap(() => Client.ApiPolicy.Get(context.ResourceGroupName, context.ServiceName, apiId));
         }
 
-        public byte[] PolicyGetOperationLevel(PsApiManagementContext context, string format, string apiId, string operationId)
+        public string PolicyGetOperationLevel(PsApiManagementContext context, string apiId, string operationId)
         {
             return PolicyGetWrap(() => Client.ApiOperationPolicy.Get(context.ResourceGroupName, context.ServiceName, apiId, operationId));
         }
 
-        public void PolicySetTenantLevel(PsApiManagementContext context, string format, Stream stream)
+        public void PolicySetTenantLevel(PsApiManagementContext context, string format, string policyContent)
         {
-            Client.Policy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, stream, "*");
+            var policyContract = new PolicyContract();
+            policyContract.PolicyContent = policyContent;
+            policyContract.ContentFormat = PolicyContentFormat.Xml;
+
+            Client.Policy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, policyContract);
         }
 
-        public void PolicySetProductLevel(PsApiManagementContext context, string format, Stream stream, string productId)
+        public void PolicySetProductLevel(PsApiManagementContext context, string format, string policyContent, string productId)
         {
-            Client.ProductPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, productId, format, stream, "*");
+            var policyContract = new PolicyContract();
+            policyContract.PolicyContent = policyContent;
+            policyContract.ContentFormat = PolicyContentFormat.Xml;
+
+            Client.ProductPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, productId, policyContract, "*");
         }
 
-        public void PolicySetApiLevel(PsApiManagementContext context, string format, Stream stream, string apiId)
+        public void PolicySetApiLevel(PsApiManagementContext context, string format, string policyContent, string apiId)
         {
-            Client.ApiPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, apiId, format, stream, "*");
+            var policyContract = new PolicyContract();
+            policyContract.PolicyContent = policyContent;
+            policyContract.ContentFormat = PolicyContentFormat.Xml;
+
+            Client.ApiPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, apiId, policyContract, "*");
         }
 
-        public void PolicySetOperationLevel(PsApiManagementContext context, string format, Stream stream, string apiId, string operationId)
+        public void PolicySetOperationLevel(PsApiManagementContext context, string format, string policyContent, string apiId, string operationId)
         {
-            Client.ApiOperationPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, apiId, operationId, format, stream, "*");
+            var policyContract = new PolicyContract();
+            policyContract.PolicyContent = policyContent;
+            policyContract.ContentFormat = PolicyContentFormat.Xml;
+
+            Client.ApiOperationPolicy.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, apiId, operationId, policyContract, "*");
         }
 
         public void PolicyRemoveTenantLevel(PsApiManagementContext context)
@@ -1360,7 +1438,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 AuthorizationMethods = Mapper.Map<IList<AuthorizationMethod?>>(authorizationRequestMethods),
                 GrantTypes = Mapper.Map<IList<string>>(grantTypes),
                 ClientAuthenticationMethod = Mapper.Map<IList<string>>(clientAuthenticationMethods),
-                SupportState = supportState ?? false,
+                SupportState = supportState ?? false, 
                 DefaultScope = defaultScope,
                 BearerTokenSendingMethods = Mapper.Map<IList<string>>(accessTokenSendingMethods),
                 ResourceOwnerUsername = resourceOwnerUsername,
