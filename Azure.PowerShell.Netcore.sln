@@ -155,6 +155,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RecoveryServices.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.SiteRecovery.Netcore", "src\ResourceManager\SiteRecovery\Commands.SiteRecovery\Commands.SiteRecovery.Netcore.csproj", "{58E066E2-0805-454A-A0A3-0E50854E6A18}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AzureBackup.Netcore", "src\ResourceManager\AzureBackup\Commands.AzureBackup\Commands.AzureBackup.Netcore.csproj", "{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1065,6 +1067,18 @@ Global
 		{58E066E2-0805-454A-A0A3-0E50854E6A18}.Release|x64.Build.0 = Release|Any CPU
 		{58E066E2-0805-454A-A0A3-0E50854E6A18}.Release|x86.ActiveCfg = Release|Any CPU
 		{58E066E2-0805-454A-A0A3-0E50854E6A18}.Release|x86.Build.0 = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|x64.Build.0 = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|x64.ActiveCfg = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|x64.Build.0 = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{032DAFFB-8F2B-4522-827D-B79E6F8E50C8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
