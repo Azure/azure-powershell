@@ -312,12 +312,6 @@
     <Compile Include="LoadBalancer\InboundNatPool\SetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\NewAzureExpressRouteCircuitCommand.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\AddAzureExpressRouteCircuitConnectionConfigCommand.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\AzureExpressRouteCircuitConnectionConfigBase.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\GetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\NewAzureExpressRouteCircuitConnectionConfigCommand.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\RemoveAzureExpressRouteCircuitConnectionConfigCommand.cs" />
-    <Compile Include="ExpressRouteCircuit\Peering\Connection\SetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Peering\AddAzureExpressRouteCircuitPeeringConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Peering\AzureExpressRouteCircuitPeeringConfigBase.cs" />
     <Compile Include="ExpressRouteCircuit\Peering\GetAzureExpressRouteCircuitPeeringConfigCommand.cs" />
