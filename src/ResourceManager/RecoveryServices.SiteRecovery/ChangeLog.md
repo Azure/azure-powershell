@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with cleaning up scripts in build
 
 ## Version 0.2.2
 * Fixed issue with importing aliases
