@@ -33,20 +33,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "Resource Id for Private Peering of Circuit Initiating the Connection")]
+            HelpMessage = "Private Peering of Circuit Initiating the Connection")]
         public PSPeering ExpressRouteCircuitPeering { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "Resource Id for Private Peering of Circuit being peered")]
+            HelpMessage = "Private Peering of Circuit being peered")]
         public PSPeering PeerExpressRouteCircuitPeering { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Private IP Addresses to create VXLAN Tunnels")]
+            HelpMessage = "Private IP Addresses to create VxLAN Tunnels")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
 

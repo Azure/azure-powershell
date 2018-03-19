@@ -228,6 +228,7 @@
     <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitConnection.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />
     <Compile Include="Models\PSPublicIpAddressSku.cs" />

@@ -20,7 +20,19 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string AuthorizationKey { get; set; }
         public string AddressPrefix { get; set; }
-        public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
-        public PSResourceId ExpressRouteCircuitPeering { get; set; }
+        public PSPeering PeerExpressRouteCircuitPeering { get; set; }
+        public PSPeering ExpressRouteCircuitPeering { get; set; }
+
+        [JsonIgnore]
+        public string ExpressRouteCircuitPeeringText
+        {
+            get { return JsonConvert.SerializeObject(ExpressRouteCircuitPeering.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PeerExpressRouteCircuitPeeringText
+        {
+            get { return JsonConvert.SerializeObject(PeerExpressRouteCircuitPeering.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
