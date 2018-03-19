@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -38,6 +40,13 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             var circuitconnection = new PSExpressRouteCircuitConnection();
+
+            if ((circuitconnection.PeerExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering) ||
+                (ExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering))
+            {
+                throw new ArgumentException("Circuit Connection can only be established between Private Peerings");
+            }
+
             circuitconnection.Name = this.Name;
             circuitconnection.AddressPrefix = this.AddressPrefix;
             circuitconnection.ExpressRouteCircuitPeering = this.ExpressRouteCircuitPeering;

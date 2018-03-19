@@ -43,7 +43,13 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connection == null)
             {
-                throw new ArgumentException("Peering with the specified name does not exist");
+                throw new ArgumentException("Circuit Connection with the specified name does not exist");
+            }
+
+            if ((connection.PeerExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering) ||
+                (ExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering))
+            {
+                throw new ArgumentException("Circuit Connection can only be established between Private Peerings");
             }
 
             connection.Name = this.Name;
