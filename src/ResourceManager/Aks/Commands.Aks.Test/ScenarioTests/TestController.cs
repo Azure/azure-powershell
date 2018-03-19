@@ -39,21 +39,22 @@ namespace Commands.Aks.Test.ScenarioTests
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>
+                {
+                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"}
+                };
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+
             using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-
-                Dictionary<string, string> d = new Dictionary<string, string>();
-                d.Add("Microsoft.Features", null);
-                d.Add("Microsoft.Authorization", null);
-                var providersToIgnore = new Dictionary<string, string>
-                {
-                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"}
-                };
-                HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
