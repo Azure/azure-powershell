@@ -563,16 +563,17 @@ function Test-CancelDatabaseOperation
 	.SYNOPSIS
 	Tests listing and cancelling a database operation
 #>
-function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
+function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
-	Assert-AreEqual $db.DatabaseName $databaseName
+	Assert-AreEqual $db.DatabaseName $databaseName 'Create database failed.'
 
 	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
 
