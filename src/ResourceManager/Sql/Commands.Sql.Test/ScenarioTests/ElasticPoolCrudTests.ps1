@@ -306,7 +306,7 @@ function Test-RemoveElasticPool
 function Test-ListAndCancelElasticPoolOperation
 {
 	# Setup
-	$location = "southeastasia";
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
