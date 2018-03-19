@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// No user input to apply to model
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
-        /// <returns>The model that wa passed in</returns>
+        /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlElasticPoolActivityModel> ApplyUserInputToModel(IEnumerable<AzureSqlElasticPoolActivityModel> model)
         {
             return model;

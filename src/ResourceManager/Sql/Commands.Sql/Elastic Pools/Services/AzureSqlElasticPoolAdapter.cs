@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Cancel teh elastic pool activity
+        /// Cancel the elastic pool activity
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database server</param>
