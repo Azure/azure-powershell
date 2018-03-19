@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
-        public int[] DataDiskSizeGb { get; set; }
+        public int[] DataDiskSizeInGb { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Compute
                             new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb);
                 }
                 else
                 {
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.Compute
                         disk: disk,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb);
                 }
             }
         }
