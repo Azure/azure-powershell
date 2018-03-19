@@ -14,9 +14,11 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.Azure;
 using System;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         DateTime _expiration = DateTime.UtcNow;
         string _accessToken;
         string _requestUri;
+        string _backupUri;
 
         public ManagedServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
         {
@@ -95,7 +98,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (_expiration - DateTime.UtcNow < TimeSpan.FromMinutes(5))
             {
-                var info = _tokenGetter.GetAsync(_requestUri, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                ManagedServiceTokenInfo info;
+                try
+                {
+                    info = _tokenGetter.GetAsync(_requestUri, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch (CloudException exception) when (exception?.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    info = _tokenGetter.GetAsync(_backupUri, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+
                 SetToken(info);
             }
         }
