@@ -22366,7 +22366,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -22375,7 +22375,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -22384,7 +22384,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>
@@ -22473,7 +22473,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -22482,7 +22482,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -22491,7 +22491,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>
@@ -22632,7 +22632,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -22641,7 +22641,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -22650,7 +22650,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>
@@ -42160,7 +42160,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -42169,7 +42169,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -42178,7 +42178,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>
@@ -42285,7 +42285,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -42294,7 +42294,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -42303,7 +42303,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>
@@ -42402,7 +42402,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>PublicConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the public configuration text.
 </maml:para>
 </maml:Description>
@@ -42411,7 +42411,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="none"><maml:name>PrivateConfiguration</maml:name>
 <maml:Description><maml:para>Specifies the private configuration text.
 </maml:para>
 </maml:Description>
@@ -42420,7 +42420,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="9" aliases="none"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Specifies the extension version.
 </maml:para>
 </maml:Description>

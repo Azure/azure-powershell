@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Change PublicConfiguration, PrivateConfiguration and Version parameters of New-AzureServiceExtensionConfig and Set-AzureServiceExtension cmdlets from mandatory to optional.
 
 ## Version 5.1.1
 * Removed AzureRemoteApp Cmdles. Following is the list of removed Cmdlets
