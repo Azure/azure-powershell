@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int[] NatBackendPort { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int[] DataDiskSizeGb { get; set; }
+        public int[] DataDiskSizeInGb { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
-                    dataDisks: _cmdlet.DataDiskSizeGb);
+                    dataDisks: _cmdlet.DataDiskSizeInGb);
 
                 return scaleSet;
             }
