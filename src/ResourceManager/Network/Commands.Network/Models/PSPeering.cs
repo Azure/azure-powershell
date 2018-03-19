@@ -96,5 +96,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(Ipv6PeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        [JsonIgnore]
+        public string ConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(Connections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

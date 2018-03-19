@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuitConnection))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
     public class AddAzureExpressRouteCircuitConnectionConfigCommand : AzureExpressRouteCircuitConnectionConfigBase
     {
         [Parameter(
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
             {
-                circuitconnection.AddressPrefix = this.AuthorizationKey;
+                circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
             this.ExpressRouteCircuitPeering.Connections.Add(circuitconnection);

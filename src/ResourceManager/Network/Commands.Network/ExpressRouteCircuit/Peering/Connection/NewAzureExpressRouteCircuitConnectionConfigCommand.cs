@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
             {
-                circuitconnection.AddressPrefix = this.AuthorizationKey;
+                circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
             this.ExpressRouteCircuitPeering.Connections.Add(circuitconnection);

@@ -13,11 +13,50 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
-namespace Microsoft.Azure.Commands.Network.ExpressRouteCircuit.Peering.Connection
+
+namespace Microsoft.Azure.Commands.Network
 {
-    class SetAzureExpressRouteCircuitConnectionConfigCommand
+    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
+    public class SetAzureExpressRouteCircuitConnectionConfigCommand : AzureExpressRouteCircuitConnectionConfigBase
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Circuit Connection")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Express Route Circuit Peering intiating connection")]
+        [ValidateNotNullOrEmpty]
+        public PSPeering ExpressRouteCircuitPeering { get; set; }
+
+        public override void Execute()
+        {
+            base.Execute();
+
+            var connection = this.ExpressRouteCircuitPeering.Connections.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+
+            if (connection == null)
+            {
+                throw new ArgumentException("Peering with the specified name does not exist");
+            }
+
+            connection.Name = this.Name;
+            connection.AddressPrefix = this.AddressPrefix;
+            connection.ExpressRouteCircuitPeering = this.ExpressRouteCircuitPeering;
+            connection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
+
+            if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
+            {
+                connection.AuthorizationKey = this.AuthorizationKey;
+            }
+
+            WriteObject(this.ExpressRouteCircuitPeering);
+        }
     }
 }
