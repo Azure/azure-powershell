@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using MNM =  Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {

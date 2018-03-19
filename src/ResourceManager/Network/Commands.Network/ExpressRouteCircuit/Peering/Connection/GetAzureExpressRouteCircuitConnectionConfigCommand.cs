@@ -26,9 +26,31 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the Peering")]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Express Route Circuit Peering intiating connection")]
+        [ValidateNotNullOrEmpty]
+        public PSPeering ExpressRouteCircuitPeering { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                var connection = this.ExpressRouteCircuitPeering.Connections.First(
+                    resource =>
+                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
+                    );
+
+                WriteObject(connection);
+            }
+            else
+            {
+                var connections = this.ExpressRouteCircuitPeering.Connections;
+                WriteObject(connections, true);
+            }
         }
     }
 }

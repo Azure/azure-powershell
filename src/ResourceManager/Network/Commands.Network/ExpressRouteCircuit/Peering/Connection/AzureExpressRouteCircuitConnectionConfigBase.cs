@@ -33,12 +33,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Private Peering of Circuit Initiating the Connection")]
-        public PSPeering ExpressRouteCircuitPeering { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Private Peering of Circuit being peered")]
         public PSPeering PeerExpressRouteCircuitPeering { get; set; }
 

@@ -28,11 +28,31 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Express Route Circuit Peering intiating connection")]
+        [ValidateNotNullOrEmpty]
+        public PSPeering ExpressRouteCircuitPeering { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            // Verify private peering exists
+            var circuitconnection = new PSExpressRouteCircuitConnection();
+            circuitconnection.Name = this.Name;
+            circuitconnection.AddressPrefix = this.AddressPrefix;
+            circuitconnection.ExpressRouteCircuitPeering = this.ExpressRouteCircuitPeering;
+            circuitconnection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
+
+            if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
+            {
+                circuitconnection.AddressPrefix = this.AuthorizationKey;
+            }
+
+            this.ExpressRouteCircuitPeering.Connections.Add(circuitconnection);
+
+            WriteObject(this.ExpressRouteCircuitPeering);
         }
     }
 }
