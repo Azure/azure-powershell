@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         RequestUris.Clear();
                         RequestUris.Enqueue(currentRequestUri);
                     }
-                    catch (CloudException)
+                    catch (CloudException) when (RequestUris.Count > 0)
                     {
                         // do nothing
                     }
@@ -132,8 +132,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void SetToken(ManagedServiceTokenInfo info)
         {
-            _expiration = DateTime.UtcNow + TimeSpan.FromSeconds(info.ExpiresIn);
-            _accessToken = info.AccessToken;
+            if (info != null)
+            {
+                _expiration = DateTime.UtcNow + TimeSpan.FromSeconds(info.ExpiresIn);
+                _accessToken = info.AccessToken;
+            }
         }
 
         static IdentityType GetIdentityType(IAzureAccount account)
@@ -160,13 +163,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             UriBuilder builder = new UriBuilder(baseUri);
             builder.Query = BuildTokenQuery(account, identityType, resourceId);
-            yield return builder.ToString();
+            yield return builder.Uri.ToString();
 
             if (identityType == IdentityType.ClientId)
             {
                 builder = new UriBuilder(baseUri);
                 builder.Query = BuildTokenQuery(account, IdentityType.ObjectId, resourceId);
-                yield return builder.ToString();
+                yield return builder.Uri.ToString();
             }
         }
 
@@ -176,13 +179,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             switch (idType)
             {
                 case IdentityType.Resource:
-                    query.Append($"&msi_res_id=${Uri.EscapeDataString(account.Id)}");
+                    query.Append($"&msi_res_id={Uri.EscapeDataString(account.Id)}");
                     break;
                 case IdentityType.ClientId:
-                    query.Append($"&client_id=${Uri.EscapeDataString(account.Id)}");
+                    query.Append($"&client_id={Uri.EscapeDataString(account.Id)}");
                     break;
                 case IdentityType.ObjectId:
-                    query.Append($"&object_id=${Uri.EscapeDataString(account.Id)}");
+                    query.Append($"&object_id={Uri.EscapeDataString(account.Id)}");
                     break;
             }
 
