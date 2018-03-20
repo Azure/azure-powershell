@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = RemoveBackupDefaultSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Server the database is in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
         public virtual string LocationName { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             {
                 if (Force.IsPresent || ShouldContinue(
                     string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName),
-                   string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName)))
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName)))
                 {
                     base.ExecuteCmdlet();
                 }

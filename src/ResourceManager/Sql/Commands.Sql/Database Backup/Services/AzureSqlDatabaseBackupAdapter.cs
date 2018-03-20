@@ -211,6 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
