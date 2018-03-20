@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.2
 * Added EnableBatchedOperations property to Queue
 * Added DeadLetteringOnFilterEvaluationExceptions property to Subscriptions
 
