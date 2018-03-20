@@ -45,6 +45,7 @@ function Invoke-SafeWebRequest{
     try
     {
         Write-Debug "Sending query to the server..."
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         $jsonResult = Invoke-WebRequest $Query -ErrorAction Stop  
     }
     catch

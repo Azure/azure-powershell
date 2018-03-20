@@ -37,11 +37,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RoleDefinitionDataActionsCreateTests()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionDataActionsCreateTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdPositiveScenarios()
@@ -49,18 +56,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
         }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDUpdate()
-		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
-		}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDUpdate()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDCreateFromFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
+        }
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDCreateFromFile()
+		public void RDFilter()
 		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
+			ResourcesController.NewInstance.RunPsTest("Test-RDFilter");
 		}
 
 		[Fact(Skip = "Unskip after service side change")]
@@ -70,7 +84,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RDRemove");
         }
 
-        [Fact(Skip = "Unskip after service side change")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDGetCustomRoles()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDGetCustomRoles");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDGetAtScopeFilterRoles()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDGetAtScopeFilterRoles");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDDataActionsNegativeTestCases()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDDataActionsNegativeTestCases");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetScenario()
         {

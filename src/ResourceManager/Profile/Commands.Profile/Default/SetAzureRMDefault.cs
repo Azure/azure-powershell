@@ -18,10 +18,10 @@ using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Default
@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Commands.Profile.Default
 
         public override void ExecuteCmdlet()
         {
+            if (Environment.GetEnvironmentVariable("ACC_CLOUD") != null)
+            {
+                throw new Exception("Default Resource Group cannot be set on CloudShell");
+            }
+
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
             IResourceManagementClient resourceManagementclient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
