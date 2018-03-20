@@ -203,12 +203,14 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 
 function Test-LongTermRetentionV2
 {
-	$resourceGroup = "Default-SQL-NorthEurope"
-	$locationName = "North Europe"
+	# Manual setup necessary since it takes about 18 hours to setup LTR for the first time.
+	$resourceGroup = "Default-SQL-WestCentralUS"
+	$locationName = "westcentralus"
 	$serverName = "trgrie-ltr-server"
-	$databaseName = "testdb"
+	$databaseName = "testdb2"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
+	$removalDatabase = "testdb"
 
 	# Basic Get Tests
 	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
@@ -233,19 +235,19 @@ function Test-LongTermRetentionV2
 	Assert-True { $backups.Count -ne 0 }
 
 	# Test Remove with Piping
-	Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
-	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $removalDatabase -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $removalDatabase | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-True { $backups.Count -eq 0 }
 
 	# Basic Policy Test
 	Set-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2
-	$policy = Get-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName
-	Assert-True { $policy.Policy.WeeklyRetention -eq $weeklyRetention2 }
+	$policy = Get-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -Current
+	Assert-True { $policy.WeeklyRetention -eq $weeklyRetention2 }
 
 	# Alias Policy Test
 	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1
-	$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName
-	Assert-True { $policy.Policy.WeeklyRetention -eq $weeklyRetention1 }
+	$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -Current
+	Assert-True { $policy.WeeklyRetention -eq $weeklyRetention1 }
 }
 
 function Test-DatabaseGeoBackupPolicy
