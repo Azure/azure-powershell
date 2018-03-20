@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -111,7 +111,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription'
+        ReleaseNotes = '* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks'
 
         # Prerelease string of this module
         # Prerelease = ''

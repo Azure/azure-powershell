@@ -99,18 +99,22 @@ function Test-AzureRmContainerGroupWithVolumeMount
     $resourceGroupName = Get-RandomResourceGroupName
     $containerGroupName = Get-RandomContainerGroupName
     $location = Get-ProviderLocation "Microsoft.ContainerInstance/ContainerGroups"
-    $image = "alpine"
+    $image = "acc.azurecr.io/alpine"
     $shareName = "acipstestshare"
     $accountName = "acipstest"
     $accountKey = "password"
     $secureAccountKey = ConvertTo-SecureString $accountKey -AsPlainText -Force
     $accountCredential = New-Object System.Management.Automation.PSCredential ($accountName, $secureAccountKey)
+    $registryUsername = "acc"
+    $registryPassword = "password"
+    $secureRegistryPassword = ConvertTo-SecureString $registryPassword -AsPlainText -Force
+    $registryCredential = New-Object System.Management.Automation.PSCredential ($registryUsername, $secureRegistryPassword)
     $mountPath = "/mnt/azfile"
 
     try
     {
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath
+        $containerGroupCreated = New-AzureRmContainerGroup -ResourceGroupName $resourceGroupName -Name $containerGroupName -Image $image -RegistryCredential $registryCredential -RestartPolicy "Never" -Command "ls $mountPath" -AzureFileVolumeShareName $shareName -AzureFileVolumeAccountCredential $accountCredential -AzureFileVolumeMountPath $mountPath
 
         Assert-NotNull $containerGroupCreated.Volumes
         Assert-NotNull $containerGroupCreated.Volumes[0].AzureFile

@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string vmSize,
             int instanceCount,
-            UpgradeMode? upgradeMode)
+            UpgradeMode? upgradeMode,
+            IEnumerable<int> dataDisks)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -82,7 +83,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
-                            ImageReference = imageAndOsType?.Image
+                            ImageReference = imageAndOsType?.Image,
+                            DataDisks = DataDiskStrategy.CreateVmssDataDisks(
+                                imageAndOsType?.DataDiskLuns, dataDisks)
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
