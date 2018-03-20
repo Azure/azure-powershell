@@ -20,6 +20,7 @@ using System.Globalization;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
@@ -40,26 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Parameter set name for remove with a resource ID.
         /// </summary>
         private const string RemoveBackupByResourceIdSet = "RemoveBackupByResourceId";
-
-        /// <summary>
-        /// The index of LocationName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int LocationNameIndex = 5;
-
-        /// <summary>
-        /// The index of ServerName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int ServerNameIndex = 7;
-
-        /// <summary>
-        /// The index of DatabaseName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int DatabaseNameIndex = 9;
-
-        /// <summary>
-        /// The index of BackupName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int BackupNameIndex = 11;
 
         /// <summary>
         /// Gets or sets the name of the location the backup is in.
@@ -135,6 +116,16 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        protected override bool WriteResult() { return PassThru; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -186,23 +177,25 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                string[] tokens = ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                LocationName = tokens[LocationNameIndex];
-                ServerName = tokens[ServerNameIndex];
-                DatabaseName = tokens[DatabaseNameIndex];
-                BackupName = tokens[BackupNameIndex];
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                BackupName = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                DatabaseName = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                ServerName = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                LocationName = identifier.ResourceName;
             }
 
-            if (!Force.IsPresent && !ShouldProcess(
-                   string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName),
-                   string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName),
-                   Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            if (ShouldProcess(this.BackupName))
             {
-                return;
+                if (Force.IsPresent || ShouldContinue(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName),
+                   string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName)))
+                {
+                    base.ExecuteCmdlet();
+                }
             }
-
-            base.ExecuteCmdlet();
         }
     }
 }

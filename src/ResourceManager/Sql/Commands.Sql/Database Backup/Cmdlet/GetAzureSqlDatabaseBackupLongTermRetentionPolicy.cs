@@ -28,10 +28,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets whether or not to use the Long Term Retention Vaults.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
             HelpMessage = "Whether or not to use the legacy Long Term Retention Vaults.")]
-        public SwitchParameter Legacy { get; set; }
+        public SwitchParameter Current { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     this.ResourceGroupName,
                     this.ServerName,
                     this.DatabaseName,
-                    Legacy.IsPresent)
+                    Current.IsPresent)
             };
         }
 

@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Sql.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '4.2.0'

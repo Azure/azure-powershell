@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 196E1AC9-A1E2-47D2-A3C1-535EFE439EE8
@@ -13,8 +13,31 @@ Sets a server long term retention policy.
 
 ## SYNTAX
 
+### WeeklyRetentionRequired (Default)
+```
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Legacy
 ```
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -State <String> -ResourceId <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### MonthlyRetentionRequired
+```
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [[-WeeklyRetention] <String>] [-MonthlyRetention] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### YearlyRetentionRequired
+```
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [[-WeeklyRetention] <String>]
+ [[-MonthlyRetention] <String>] [-YearlyRetention] <String> [-WeekOfYear] <Int32> [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -62,6 +85,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonthlyRetention
+The Monthly Retention of the long term retention policy.```yaml
+Type: String
+Parameter Sets: MonthlyRetentionRequired
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: YearlyRetentionRequired
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the database.
 
@@ -82,7 +130,7 @@ Specifies the ID of a resource.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Legacy
 Aliases: Id
 
 Required: True
@@ -112,13 +160,64 @@ Specifies a state.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Legacy
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WeeklyRetention
+The Weekly Retention of the long term retention policy.```yaml
+Type: String
+Parameter Sets: WeeklyRetentionRequired
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: MonthlyRetentionRequired, YearlyRetentionRequired
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WeekOfYear
+The Week of Year to save for the Yearly Retention.```yaml
+Type: Int32
+Parameter Sets: YearlyRetentionRequired
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -YearlyRetention
+The Yearly Retention of the long term retention policy.```yaml
+Type: String
+Parameter Sets: YearlyRetentionRequired
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
