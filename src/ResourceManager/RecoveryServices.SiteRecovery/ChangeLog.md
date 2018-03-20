@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.3
 * Fixed issue with cleaning up scripts in build
 
 ## Version 0.2.2
