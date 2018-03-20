@@ -20,6 +20,9 @@
 ## Current Release
 * Fixed issue with importing aliases
 * Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+* Added Get-AzureRmSqlDatabaseLongTermRetentionBackup and Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+* Updated Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy and Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy to work with Long Term Retention V2
+* Updated Restore-AzureRmSqlDatabase to work with Long Term Retention V2 resource IDs
 
 ## Version 4.2.0
 * Update the Auditing commands parameters description
