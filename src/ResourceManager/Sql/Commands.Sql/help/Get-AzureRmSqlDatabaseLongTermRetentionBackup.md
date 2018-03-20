@@ -97,7 +97,7 @@ ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
-This command gets all long term retention backups for the northeurope location.
+This command gets all long term retention backups for all databases (which may be alive or deleted) in northeurope.
 
 ### Example 2: Get a specific long term retention backup
 ```powershell

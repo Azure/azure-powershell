@@ -172,7 +172,9 @@ This is another way of removing the policy for database01 so it no longer saves 
 ## PARAMETERS
 
 ### -Clear
-If provided, the policy for the database will be cleared.```yaml
+If provided, the policy for the database will be cleared.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: Clear
 Aliases:
@@ -185,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-Specifies the name of the SQL Database for which this cmdlet sets a policy.
+The name of the Azure SQL Database to use.
 
 ```yaml
 Type: String
@@ -200,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -215,7 +217,11 @@ Accept wildcard characters: False
 ```
 
 ### -MonthlyRetention
-The Monthly Retention of the long term retention policy.```yaml
+The Monthly Retention.
+If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
+There is a minumum of 7 days and a maximum of 10 years.
+
+```yaml
 Type: String
 Parameter Sets: MonthlyRetentionRequired
 Aliases:
@@ -240,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the database.
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -255,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the ID of a resource.
+The Resource ID of the backup long term retention policy.
 
 ```yaml
 Type: String
@@ -270,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Specifies the server that hosts the database.
+The name of the Azure SQL Server the database is in.
 
 ```yaml
 Type: String
@@ -285,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-Specifies a state.
+The state of the long term retention backup policy, 'Enabled' or 'Disabled'
 
 ```yaml
 Type: String
@@ -300,7 +306,11 @@ Accept wildcard characters: False
 ```
 
 ### -WeeklyRetention
-The Weekly Retention of the long term retention policy.```yaml
+The Weekly Retention.
+If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
+There is a minumum of 7 days and a maximum of 10 years.
+
+```yaml
 Type: String
 Parameter Sets: WeeklyRetentionRequired
 Aliases:
@@ -325,7 +335,9 @@ Accept wildcard characters: False
 ```
 
 ### -WeekOfYear
-The Week of Year to save for the Yearly Retention.```yaml
+The Week of Year, 1 to 52, to save for the Yearly Retention.
+
+```yaml
 Type: Int32
 Parameter Sets: YearlyRetentionRequired
 Aliases:
@@ -338,7 +350,11 @@ Accept wildcard characters: False
 ```
 
 ### -YearlyRetention
-The Yearly Retention of the long term retention policy.```yaml
+The Yearly Retention.
+If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
+There is a minumum of 7 days and a maximum of 10 years.
+
+```yaml
 Type: String
 Parameter Sets: YearlyRetentionRequired
 Aliases:
@@ -382,7 +398,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -390,6 +407,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 This cmdlet does not accept any input.
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 
