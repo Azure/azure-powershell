@@ -185,7 +185,7 @@ Accept wildcard characters: False
 
 ### -LockLevel
 Specifies the level for the lock.
-Currently, valid values are CanNotDelete, ReadOnlyLock.
+Currently, valid values are CanNotDelete, ReadOnly.
 
 ```yaml
 Type: LockLevel
