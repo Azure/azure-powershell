@@ -12,25 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    /// <summary>
-    /// Engine for REST API calls using Azure SDK.
-    /// </summary>
-    public sealed class SdkEngine : IEngine
-    {        
-        string _SubscriptionId { get; }
-
-        public SdkEngine(string subscriptionId)
-        {
-            _SubscriptionId = subscriptionId;
-        }
-
-        public string GetId(IEntityConfig config)
-            => new[] { ResourceId.Subscriptions, _SubscriptionId } 
-                .Concat(config.GetIdFromSubscription()) 
-                .IdToString();
+    public interface IResourceId
+    {
+        string SubscriptionId { get; }
+        string ResourceGroupName { get; }
+        ResourceType ResourceType { get; }
+        string Name { get; }
     }
 }
