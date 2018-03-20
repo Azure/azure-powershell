@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
@@ -21,6 +22,7 @@ using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
@@ -214,9 +216,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string resourceGroup,
             string serverName,
             string databaseName,
-            bool legacy)
+            bool current)
         {
-            if (legacy)
+            if (!current)
             {
                 var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
                     resourceGroup,
@@ -235,7 +237,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             }
             else
             {
-                Management.Sql.Models.LongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
+                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName);
@@ -325,11 +327,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             }
             else
             {
-                Management.Sql.Models.LongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName,
-                    new Management.Sql.Models.LongTermRetentionPolicy()
+                    new Management.Sql.Models.BackupLongTermRetentionPolicy()
                     {
                         WeeklyRetention = model.WeeklyRetention,
                         MonthlyRetention = model.MonthlyRetention,
@@ -490,21 +492,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
-            if (model.CreateMode.Equals("RestoreLongTermRetentionBackup") && resourceId.Contains("/providers/Microsoft.Sql"))
+            if (model.CreateMode.Equals("RestoreLongTermRetentionBackup") && CultureInfo.CurrentCulture.CompareInfo.IndexOf(resourceId, "/providers/Microsoft.Sql", CompareOptions.IgnoreCase) >= 0)
             {
-                Management.Sql.Models.Database parameters = new Management.Sql.Models.Database()
-                {
-                    LongTermRetentionBackupResourceId = resourceId,
-                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                    Location = model.Location,
-                    // Edition,
-                    // ElasticPoolName
-                };
+                // LongTermRetentionV2 Restore
+                //
+                Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, resourceId, model);
 
-                return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(
-                    resourceGroup,
-                    model.ServerName,
-                    Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, parameters));
+                return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
             }
             else
             {

@@ -104,6 +104,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2Policy()
+        {
+            RunPowerShellTest("Test-LongTermRetentionV2Policy");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2Backup()
+        {
+            RunPowerShellTest("Test-LongTermRetentionV2Backup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2()
         {
             // TODO Rewrite SQL backup tests to be recordable

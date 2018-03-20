@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -41,6 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static Management.Sql.SqlManagementClient SqlClient { get; set; }
+
+        /// <summary>
+        /// The resources management client used by this communicator
+        /// </summary>
+        private static ResourceManagementClient ResourcesClient { get; set; }
 
         /// <summary>
         /// Gets or set the Azure subscription
@@ -202,12 +208,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The resource group name.</param>
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
-        public Management.Sql.Models.LongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.BackupLongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName)
         {
-            return GetCurrentSqlClient().LongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
+            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
         }
 
         /// <summary>
@@ -217,13 +223,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="policy">The Long Term Retention policy to apply.</param>
-        public Management.Sql.Models.LongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.BackupLongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName,
-            Management.Sql.Models.LongTermRetentionPolicy policy)
+            Management.Sql.Models.BackupLongTermRetentionPolicy policy)
         {
-            return GetCurrentSqlClient().LongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
         }
 
         /// <summary>
@@ -346,9 +352,30 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters)
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, string resourceId, AzureSqlDatabaseModel model)
         {
-            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
+            GenericResource database = GetCurrentResourcesClient().Resources.CreateOrUpdate(resourceGroupName, "Microsoft.Sql", string.Format("servers/{0}", serverName), "databases", databaseName, "2017-03-01-preview", new GenericResource
+            {
+                Location = model.Location,
+                Properties = new Dictionary<string, object>
+                {
+                    { "LongTermRetentionBackupResourceId", resourceId },
+                    { "Edition", model.Edition == Database.Model.DatabaseEdition.None ? null : model.Edition.ToString() },
+                    { "RequestedServiceObjectiveId", model.RequestedServiceObjectiveId },
+                    { "CreateMode", model.CreateMode },
+                    { "ElasticPoolName", model.ElasticPoolName },
+                    { "RequestedServiceObjectiveName", model.RequestedServiceObjectiveName }
+                }
+            });
+
+            if (database != null)
+            {
+                return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -379,6 +406,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             return SqlClient;
+        }
+
+        /// <summary>
+        /// Lazy creation of a single instance of a resoures client
+        /// </summary>
+        private ResourceManagementClient GetCurrentResourcesClient()
+        {
+            if (ResourcesClient == null)
+            {
+                ResourcesClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
+            return ResourcesClient;
         }
     }
 }

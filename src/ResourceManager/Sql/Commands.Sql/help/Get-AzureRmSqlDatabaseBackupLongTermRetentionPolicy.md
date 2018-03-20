@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 1C0AF5B2-7187-4BFA-8DBB-A771FD2E00A4
@@ -14,7 +14,7 @@ Gets a database long term retention policy.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-ServerName] <String> [-DatabaseName] <String>
+Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-Current] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,6 +31,19 @@ The policy is an Azure Backup resource used to define backup storage policy.
 ```
 
 ## PARAMETERS
+
+### -Current
+Whether or not to use the legacy Long Term Retention Vaults.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 Specifies the name of the SQL Database for which this cmdlet gets a policy.

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
+            Position = 1,
             HelpMessage = "The name of the Azure SQL Server the database is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database to use.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }

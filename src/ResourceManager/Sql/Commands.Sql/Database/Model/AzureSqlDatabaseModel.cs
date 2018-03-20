@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Template to generate database id
         /// </summary>
-        internal const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
+        public const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
 
         /// <summary>
         /// Gets or sets the name of the resource group
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
             CurrentServiceObjectiveName = database.ServiceLevelObjective;
-            MaxSizeBytes = database.MaxSizeBytes.Value;
+            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
             DatabaseName = database.Name;
             Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
@@ -214,18 +214,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Location = database.Location;
             ResourceId = database.Id;
             CreateMode = database.CreateMode;
-            EarliestRestoreDate = null; // database.EarliestRestoreDate;
+            EarliestRestoreDate = database.EarliestRestoreDate;
 
-            CurrentServiceObjectiveId = Guid.Empty; // database.CurrentServiceObjectiveId.Value;
+            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
 
             DatabaseId = database.DatabaseId.Value;
 
             Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
             Edition = edition;
 
-            RequestedServiceObjectiveId = null; // database.RequestedServiceObjectiveId.Value;
+            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
 
-            //Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
+            Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
 
             ZoneRedundant = database.ZoneRedundant;

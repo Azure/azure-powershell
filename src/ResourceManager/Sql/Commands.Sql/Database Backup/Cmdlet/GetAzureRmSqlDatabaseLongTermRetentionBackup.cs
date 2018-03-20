@@ -67,16 +67,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         private const string GetBackupsByResourceIdSet = "GetBackupsByResourceId";
 
         /// <summary>
-        /// The index of ServerName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int ServerNameIndex = 7;
-
-        /// <summary>
-        /// The index of DatabaseName in the LTR Backup Resource ID.
-        /// </summary>
-        private const int DatabaseNameIndex = 9;
-
-        /// <summary>
         /// The location the backups are in.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -175,28 +165,18 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = ServerNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = DatabaseNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = LocationNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByInputObjectSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByResourceIdSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter OnlyLatestPerDatabase { get; set; }
@@ -230,7 +210,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(new[] { Management.Sql.Models.DatabaseState.All, Management.Sql.Models.DatabaseState.Deleted, Management.Sql.Models.DatabaseState.Live },
+        [ValidateSet(Management.Sql.Models.LongTermRetentionDatabaseState.All, Management.Sql.Models.LongTermRetentionDatabaseState.Deleted, Management.Sql.Models.LongTermRetentionDatabaseState.Live,
             IgnoreCase = true)]
         public string DatabaseState { get; set; }
 
@@ -279,10 +259,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                string[] tokens = ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                ServerName = tokens[ServerNameIndex];
-                DatabaseName = tokens[DatabaseNameIndex];
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                DatabaseName = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                ServerName = identifier.ResourceName;
             }
 
             return ModelAdapter.GetDatabaseLongTermRetentionBackups(
