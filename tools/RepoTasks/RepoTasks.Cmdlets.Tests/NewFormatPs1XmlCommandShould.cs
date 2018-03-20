@@ -50,7 +50,7 @@ namespace RepoTasks.Cmdlets.Tests
                     var cmdlet = new Command(CmdletName);
 
                     powershell.Commands.AddCommand(cmdlet);
-                    cmdlet.Parameters.Add("ModulePath", "./Dummy.psd1");
+                    cmdlet.Parameters.Add("ModulePath", Path.Combine(Environment.CurrentDirectory, "Dummy.psd1"));
 
                     var results = powershell.Invoke<string>();
 
@@ -98,7 +98,7 @@ namespace RepoTasks.Cmdlets.Tests
                     var cmdlet = new Command(CmdletName);
 
                     powershell.Commands.AddCommand(cmdlet);
-                    cmdlet.Parameters.Add("ModulePath", "./Dummy.psd1");
+                    cmdlet.Parameters.Add("ModulePath", Path.Combine(Environment.CurrentDirectory, "Dummy.psd1"));
                     cmdlet.Parameters.Add("OnlyMarkedProperties");
 
                     var results = powershell.Invoke<string>();
