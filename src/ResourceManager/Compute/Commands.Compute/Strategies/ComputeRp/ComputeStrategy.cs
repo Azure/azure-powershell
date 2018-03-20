@@ -43,11 +43,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
         public static string GetConnectionString(
             this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)
-        {
-            var url = fqdn + (port == null ? string.Empty : ":" + port);
-            return imageAndOsType.OsType == OperatingSystemTypes.Windows
-                ? "mstsc /v:" + url
-                : "ssh " + (user == null ? string.Empty : user + "@") + url;
-        }
+            => imageAndOsType.OsType == OperatingSystemTypes.Windows
+                ? "mstsc /v:" 
+                    + fqdn 
+                    + (port == null ? string.Empty : ":" + port)
+                : "ssh " 
+                    + (user == null ? string.Empty : user + "@") 
+                    + fqdn 
+                    + (port == null ? string.Empty : " -p " + port);
     }
 }
