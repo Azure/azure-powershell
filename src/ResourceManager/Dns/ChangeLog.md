@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.1.0
 * Support for Private DNS Zones (Public Preview)
     - Adds ability to create DNS zones that are visible only to the associated virtual networks
 
