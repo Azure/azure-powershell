@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
@@ -91,7 +91,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParamet
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,7 +138,7 @@ Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSe
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
