@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.DiskFile == null)
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
-                        ImageAndOsType, _cmdlet.ImageName, Location);
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
                 }
 
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(

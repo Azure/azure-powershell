@@ -23,6 +23,7 @@
     - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
     - Remove-AzureRmRecoveryServicesAsrProtectionContainer
     - Update-AzureRmRecoveryServicesAsrProtectionDirection
+* Fixed issue with cleaning up scripts in build
 
 ## Version 0.2.2
 * Fixed issue with importing aliases

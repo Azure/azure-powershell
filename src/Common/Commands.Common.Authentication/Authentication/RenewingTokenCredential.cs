@@ -12,25 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using Microsoft.Rest;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Net.Http;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    /// <summary>
-    /// Engine for REST API calls using Azure SDK.
-    /// </summary>
-    public sealed class SdkEngine : IEngine
-    {        
-        string _SubscriptionId { get; }
+    public class RenewingTokenCredential : ServiceClientCredentials
+    {
+        private IAccessToken _token;
 
-        public SdkEngine(string subscriptionId)
+
+        public RenewingTokenCredential(IAccessToken token)
         {
-            _SubscriptionId = subscriptionId;
+            _token = token;
         }
 
-        public string GetId(IEntityConfig config)
-            => new[] { ResourceId.Subscriptions, _SubscriptionId } 
-                .Concat(config.GetIdFromSubscription()) 
-                .IdToString();
+        public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            return Task.Run( () => _token.AuthorizeRequest((type, token) => request.Headers.Authorization = new AuthenticationHeaderValue(type, token)));
+        }
+
     }
 }

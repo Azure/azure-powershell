@@ -81,19 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     }
                     catch (CloudException ex)
                     {
-                        // To Handle the case when cert is not uploaded to RecoveryServices and usage api is returning null.
-                        if (ex.Response.StatusCode.CompareTo(HttpStatusCode.NotFound) == 0)
-                        {
-                            var result = powerShell
-                                .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                                .AddParameter("Vault", arsVault)
-                                .Invoke();
-
-                            powerShell.Commands.Clear();
-                            vaultExtendedInfo = this.RecoveryServicesClient
-                                .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
-                        }
-
+                        throw new Exception(Resources.TryDownloadingVaultFile);
                     }
 
                     ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
