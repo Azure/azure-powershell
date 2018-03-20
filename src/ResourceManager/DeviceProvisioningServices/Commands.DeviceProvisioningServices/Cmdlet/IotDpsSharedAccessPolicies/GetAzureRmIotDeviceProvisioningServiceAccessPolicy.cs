@@ -19,9 +19,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
-    using Rest.Azure;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
     [Alias("Get-AzureRmIoTDpsAccessPolicy")]

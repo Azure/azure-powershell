@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DeviceProvisioningServices.Properties {
+namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DeviceProvisioningServices.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.DeviceProvisioningServices.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Commands.DeviceProvisioningServices.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

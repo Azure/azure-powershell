@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Management.Automation;
     using Azure.Management.Internal.Resources;
     using Azure.Management.Internal.Resources.Models;
-    using Microsoft.Azure.Commands.DeviceProvisioningServices.Properties;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet(VerbsCommon.New, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("New-AzureRmIoTDps")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.AddDeviceProvisioningService))
+            if (ShouldProcess(Name, DPSResources.AddDeviceProvisioningService))
             {
                 try
                 {

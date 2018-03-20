@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Management.Automation;
     using Azure.Management.IotHub;
     using Azure.Management.IotHub.Models;
-    using Microsoft.Azure.Commands.DeviceProvisioningServices.Properties;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet(VerbsCommon.Add, "AzureRmIoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Add-AzureRmIoTDpsHub")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.AddLinkedHub))
+            if (ShouldProcess(Name, DPSResources.AddLinkedHub))
             {
                 switch (ParameterSetName)
                 {

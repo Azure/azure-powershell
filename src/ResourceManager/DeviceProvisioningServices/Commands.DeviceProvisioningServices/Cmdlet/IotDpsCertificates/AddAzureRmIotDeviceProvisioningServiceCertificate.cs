@@ -15,17 +15,15 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using System.Globalization;
+    using System.IO;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.DeviceProvisioningServices.Properties;
+    using System.Text;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
-    using System.IO;
-    using System.Globalization;
-    using System.Text;
+    using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet(VerbsCommon.Add, "AzureRmIoTDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Add-AzureRmIoTDpsCertificate")]
@@ -123,7 +121,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.AddCertificate))
+            if (ShouldProcess(Name, DPSResources.AddCertificate))
             {
                 switch (ParameterSetName)
                 {

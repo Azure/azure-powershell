@@ -15,14 +15,13 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
-    using System.Management.Automation;
-    using Microsoft.Azure.Commands.DeviceProvisioningServices.Properties;
-    using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.DeviceProvisioningServices;
-    using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet(VerbsData.Update, "AzureRmIoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Update-AzureRmIoTDpsAccessPolicy")]
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.UpdateAccessPolicy))
+            if (ShouldProcess(Name, DPSResources.UpdateAccessPolicy))
             {
                 switch (ParameterSetName)
                 {
