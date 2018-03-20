@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
             this IClient client,
             ImageAndOsType imageAndOsType,
+            string resourceGroupName,
             string imageName,
             string location)
         {
@@ -43,6 +44,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             {
                 return imageAndOsType;
             }
+
+            var compute = client.GetClient<ComputeManagementClient>();
 
             if (imageName.Contains(':'))
             {
@@ -64,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Sku = imageArray[2],
                     Version = imageArray[3],
                 };
-                var compute = client.GetClient<ComputeManagementClient>();
+
                 if (image.Version.ToLower() == "latest")
                 {
                     var images = await compute.VirtualMachineImages.ListAsync(
@@ -81,10 +84,44 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
                 return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
             }
+            else if (imageName.Contains("/"))
+            {
+                var resourceId = ResourceId.TryParse(imageName);
+                if (resourceId == null
+                    || resourceId.ResourceType.Namespace != ComputeStrategy.Namespace
+                    || resourceId.ResourceType.Provider != "images")
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
+                }
+
+                if (compute.SubscriptionId != resourceId.SubscriptionId)
+                {
+                    throw new ArgumentException(Resources.ComputeMismatchSubscription);
+                }
+
+                var localImage = await compute.Images.GetAsync(
+                    resourceGroupName: resourceId.ResourceGroupName,
+                    imageName: resourceId.Name);
+
+                return new ImageAndOsType(
+                    localImage.StorageProfile.OsDisk.OsType,
+                    new ImageReference { Id = localImage.Id });
+            }
             else
             {
-                // get image
-                return Images
+                try
+                {
+                    var localImage = await compute.Images.GetAsync(resourceGroupName, imageName);
+                    return new ImageAndOsType(
+                        localImage.StorageProfile.OsDisk.OsType,
+                        new ImageReference { Id = localImage.Id });
+                }
+                catch
+                {
+                }
+
+                // get generic image
+                var result = Images
                     .Instance
                     .SelectMany(osAndMap => osAndMap
                         .Value
@@ -95,6 +132,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 : OperatingSystemTypes.Linux,
                             nameAndImage.Value)))
                     .FirstOrDefault();
+
+                if (result == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeNoImageFound, imageName));
+                }
+
+                return result;
             }
         }
     }

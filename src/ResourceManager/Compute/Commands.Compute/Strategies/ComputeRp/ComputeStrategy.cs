@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ComputeStrategy
     {
+        public const string Namespace = "Microsoft.Compute";
+
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
             string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
@@ -30,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type: new ResourceType("Microsoft.Compute", provider),
+                type: new ResourceType(Namespace, provider),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
