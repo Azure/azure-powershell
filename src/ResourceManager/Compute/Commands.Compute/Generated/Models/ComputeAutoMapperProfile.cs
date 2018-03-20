@@ -125,6 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
+                cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
+                cfg.CreateMap<TO.PSLogAnalyticsOperationResult, FROM.LogAnalyticsOperationResult>();
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
@@ -139,6 +141,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+                cfg.CreateMap<FROM.RecoveryWalkResponse, TO.PSRecoveryWalkResponse>();
+                cfg.CreateMap<TO.PSRecoveryWalkResponse, FROM.RecoveryWalkResponse>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetInstanceView, TO.PSVirtualMachineScaleSetInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetInstanceView, FROM.VirtualMachineScaleSetInstanceView>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetSku, TO.PSVirtualMachineScaleSetSku>();

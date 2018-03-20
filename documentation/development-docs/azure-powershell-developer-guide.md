@@ -103,7 +103,7 @@ Another way to build the project is by using the `Repo-Tasks` module found in th
 1. In the `tools` folder of the repository, double-click `PS-VSPrompt.lnk`
     - This opens up a terminal that acts as PowerShell and VS Developer Command Prompt
 2. Run `Import-Module .\Repo-Tasks.psd1`
-    - This imports a [module containing cmdlets and functions that help with miscellaneous environment tasks](https://github.com/Azure/azure-powershell/blob/preview/documentation/Repo-Tasks-Module.md)
+    - This imports a [module containing cmdlets and functions that help with miscellaneous environment tasks](../testing-docs/repo-tasks-module.md)
 3. Run the `Start-Build` cmdlet to do a full build of the project
     - This builds each of the individual projects in the repository
 
@@ -215,13 +215,15 @@ The `Commands.ScenarioTests.Common` project can be found in `src/ResourceManager
 The following is a list of additional common code projects that can be used:
 
 - `Commands.Common.Authorization`
-    - Found in `src/ResourceManager/Common/Commands.Common.Authorization`
+    - Found in `src/Common/Commands.Common.Authorization`
+- `Commands.Common.Compute`
+    - Found in `src/Common/Commands.Common.Compute`
 - `Commands.Common.Graph.RBAC`
-    - Found in `src/ResourceManager/Common/Commands.Common.Graph.RBAC`
+    - Found in `src/Common/Commands.Common.Graph.RBAC`
 - `Commands.Common.Network`
-    - Found in `src/ResourceManager/Common/Commands.Common.Network`
+    - Found in `src/Common/Commands.Common.Network`
 - `Commands.Common.Storage`
-    - Found in `src/ResourceManager/Common/Commands.Common.Storage`
+    - Found in `src/Common/Commands.Common.Storage`
 
 # Creating Cmdlets
 
@@ -252,7 +254,7 @@ All cmdlets that are created must have accompanying help that is displayed when 
 
 Each cmdlet has a markdown file that contains the help content that is displayed in PowerShell; these markdown files are created (and maintained) using the platyPS module.
 
-For complete documentation, see [`help-generation.md`](https://github.com/Azure/azure-powershell/blob/preview/documentation/help-generation.md) in the `documentation` folder.
+For complete documentation, see [`help-generation.md`](./help-generation.md) in the `documentation` folder.
 
 ## Updating the Installer
 
@@ -280,7 +282,7 @@ _Note_: As mentioned in the prerequisites section, set the PowerShell [execution
 
 ## Using Azure TestFramework
 
-Please see our guide on [Using Azure TestFramework](https://github.com/Azure/azure-powershell/blob/preview/documentation/Using-Azure-TestFramework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package. 
+Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package. 
 
 ## Scenario Tests
 
@@ -291,7 +293,7 @@ Please see our guide on [Using Azure TestFramework](https://github.com/Azure/azu
     - If you are setting up a new project, set the post build event to the following:
         - `xcopy "$(SolutionDir)Package\$(ConfigurationName)\*.*" $(TargetDir) /Y /E`
     - Add a reference to any project that is to be tested
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Resources/Commands.Resources.Test/ScenarioTests))
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/ResourceManager/Resources/Commands.Resources.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
@@ -374,7 +376,7 @@ Create these environment variables for the AD scenario tests:
 
 ### Recording/Running Tests 
 
-- Set up environment variables using New-TestCredential as described [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/Using-Azure-TestFramework.md)
+- Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
 - [Run the test](#running-tests) and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
     - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"

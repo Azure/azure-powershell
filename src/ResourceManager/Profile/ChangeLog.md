@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 4.4.0
+* Fixed issue with importing aliases
+* Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
+
+## Version 4.3.1
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
 ## Version 4.3.0
 * Added deprecation warning for PowerShell 3 and 4
 * 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.

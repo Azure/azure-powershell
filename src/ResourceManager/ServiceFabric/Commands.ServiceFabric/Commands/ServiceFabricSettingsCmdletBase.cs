@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
@@ -67,10 +68,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public PSSettingsSectionDescription[] SettingsSectionDescription { get; set; }
 
-        protected List<PSSettingsSectionDescription> UpdatedSettingsSectionDescriptionListList
+        protected List<PSSettingsSectionDescription> UpdatedSettingsSectionDescriptionList
         {
             get
             {
+                if (updatedSettingsSectionDescriptionList.Any())
+                {
+                    return updatedSettingsSectionDescriptionList;
+                }
+
                 switch (ParameterSetName)
                 {
                     case OneSetting:

@@ -41,7 +41,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

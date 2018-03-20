@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -42,11 +43,38 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
+        public string DefaultConnectionMode { get; set; }
+
+        public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+
         internal static AzureAnalysisServicesServerDetail FromAnalysisServicesServer(AnalysisServicesServer server)
         {
             if (server == null)
             {
                 return null;
+            }
+
+            PsAzureAnalysisServicesFirewallConfig config = null;
+
+            if (server.IpV4FirewallSettings != null)
+            {
+                List<PsAzureAnalysisServicesFirewallRule> rules = null;
+                bool enablePowerBIService = false;
+                if (server.IpV4FirewallSettings.FirewallRules != null)
+                {
+                    rules = new List<PsAzureAnalysisServicesFirewallRule>();
+                    foreach (var rule in server.IpV4FirewallSettings.FirewallRules)
+                    {
+                        rules.Add(new PsAzureAnalysisServicesFirewallRule(rule.FirewallRuleName, rule.RangeStart, rule.RangeEnd));
+                    }
+                }
+               
+                if (server.IpV4FirewallSettings.EnablePowerBIService != null)
+                {
+                    enablePowerBIService = Convert.ToBoolean(server.IpV4FirewallSettings.EnablePowerBIService);
+                }
+
+                config = new PsAzureAnalysisServicesFirewallConfig(enablePowerBIService, rules);
             }
 
             return new AzureAnalysisServicesServerDetail()
@@ -61,9 +89,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,
-                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku): new Dictionary<string, string>(),
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new Dictionary<string, string>(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
-                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
+                DefaultConnectionMode = server.QuerypoolConnectionMode.ToString(),
+                FirewallConfig = config
             };
         }
 
