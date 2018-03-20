@@ -25,14 +25,35 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ImageEx
     {
-        public static int[] UpdatePorts(this OperatingSystemTypes osType, int[] ports)
-            => ports ?? (osType == OperatingSystemTypes.Windows ? new[] { 3389, 5985 } : new[] { 22 });
+        public static int[] UpdatePorts(this ImageAndOsType imageAndOsType, int[] ports)
+            => ports ?? imageAndOsType?.OsType.CreatePorts();
+
+        private static int[] CreatePorts(this OperatingSystemTypes osType)
+            => osType == OperatingSystemTypes.Windows ? new[] { 3389, 5985 }
+                : osType == OperatingSystemTypes.Linux ? new[] { 22 }
+                : null;
 
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
-            this IClient client, string imageName, string location)
+            this IClient client,
+            ImageAndOsType imageAndOsType,
+            string resourceGroupName,
+            string imageName,
+            string location)
         {
+            if (imageAndOsType != null)
+            {
+                return imageAndOsType;
+            }
+
+            var compute = client.GetClient<ComputeManagementClient>();
+
             if (imageName.Contains(':'))
             {
+                if (location == null)
+                {
+                    return null;
+                }
+
                 var imageArray = imageName.Split(':');
                 if (imageArray.Length != 4)
                 {
@@ -46,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Sku = imageArray[2],
                     Version = imageArray[3],
                 };
-                var compute = client.GetClient<ComputeManagementClient>();
+
                 if (image.Version.ToLower() == "latest")
                 {
                     var images = await compute.VirtualMachineImages.ListAsync(
@@ -63,10 +84,44 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
                 return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
             }
+            else if (imageName.Contains("/"))
+            {
+                var resourceId = ResourceId.TryParse(imageName);
+                if (resourceId == null
+                    || resourceId.ResourceType.Namespace != ComputeStrategy.Namespace
+                    || resourceId.ResourceType.Provider != "images")
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
+                }
+
+                if (compute.SubscriptionId != resourceId.SubscriptionId)
+                {
+                    throw new ArgumentException(Resources.ComputeMismatchSubscription);
+                }
+
+                var localImage = await compute.Images.GetAsync(
+                    resourceGroupName: resourceId.ResourceGroupName,
+                    imageName: resourceId.Name);
+
+                return new ImageAndOsType(
+                    localImage.StorageProfile.OsDisk.OsType,
+                    new ImageReference { Id = localImage.Id });
+            }
             else
             {
-                // get image
-                return Images
+                try
+                {
+                    var localImage = await compute.Images.GetAsync(resourceGroupName, imageName);
+                    return new ImageAndOsType(
+                        localImage.StorageProfile.OsDisk.OsType,
+                        new ImageReference { Id = localImage.Id });
+                }
+                catch
+                {
+                }
+
+                // get generic image
+                var result = Images
                     .Instance
                     .SelectMany(osAndMap => osAndMap
                         .Value
@@ -77,6 +132,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 : OperatingSystemTypes.Linux,
                             nameAndImage.Value)))
                     .FirstOrDefault();
+
+                if (result == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeNoImageFound, imageName));
+                }
+
+                return result;
             }
         }
     }
