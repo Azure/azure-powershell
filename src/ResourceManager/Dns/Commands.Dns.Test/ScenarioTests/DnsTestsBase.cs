@@ -12,49 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Dns;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Dns;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Subscriptions;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using System;
-    using System.IO;
-    using System.Linq;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using LegacyTest = Microsoft.Azure.Test;
-    using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-    using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-
     public class DnsTestsBase : RMTestBase
     {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
-
         private readonly EnvironmentSetupHelper helper;
-
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
-
         public GalleryClient GalleryClient { get; private set; }
-
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-
         public DnsManagementClient DnsClient { get; private set; }
 
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public static DnsTestsBase NewInstance
         {
@@ -71,21 +66,22 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         }
 
 
-        protected void SetupManagementClients(MockContext context) 
+        protected void SetupManagementClients(MockContext context)
         {
             this.ResourceManagementClient = this.GetResourceManagementClient();
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
-            this.DnsClient = this.GetFeatureClient(context); 
-
+            this.DnsClient = this.GetFeatureClient(context);
+            this.NetworkManagementClient = this.GetNetworkManagementClient(context);
 
             this.helper.SetupManagementClients(
                 this.ResourceManagementClient,
                 this.SubscriptionClient,
                 this.GalleryClient,
                 this.AuthorizationManagementClient,
-                this.DnsClient);
+                this.DnsClient,
+                this.NetworkManagementClient);
         }
 
 
@@ -97,9 +93,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
             this.RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer 
+                // no custom initializer
                 null,
-                // no custom cleanup  
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -133,7 +129,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
                 }
 
 
-                this.SetupManagementClients(context); 
+                this.SetupManagementClients(context);
 
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -148,6 +144,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.Dns.psd1"),
+                    helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -178,6 +175,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
+        protected NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
@@ -193,9 +195,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private DnsManagementClient GetFeatureClient(MockContext context) 
+        private DnsManagementClient GetFeatureClient(MockContext context)
         {
-            return context.GetServiceClient<DnsManagementClient>(TestEnvironmentFactory.GetTestEnvironment()); 
+            return context.GetServiceClient<DnsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

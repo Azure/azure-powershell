@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using System;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Func<string> getDomainNameLabel,
+            string domainNameLabel,
             string allocationMethod)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = getDomainNameLabel(),
+                        DomainNameLabel = domainNameLabel,
                     }
                 });
 
@@ -58,6 +57,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         {
             if (domainNameLabel == null)
             {
+                if (location == null)
+                {
+                    return null;
+                }
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.3.0
 * Fixed issue with importing aliases
 * Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
 
