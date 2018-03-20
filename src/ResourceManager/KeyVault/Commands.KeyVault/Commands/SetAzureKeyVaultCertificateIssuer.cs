@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ExpandedParameterSet = "Expanded";
         private const string ByValueParameterSet = "ByValue";
 
-        private const string InputObjectExpandedParameterSet = "InputObjectExpanded";
-        private const string InputObjectByValueParameterSet = "InputObjectByValue";
-
         #endregion
 
         #region Input Parameter Definitions
@@ -48,32 +45,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = ByValueParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
-
-        /// <summary>
-        /// Vault object
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = InputObjectExpandedParameterSet,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Key Vault Object")]
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = InputObjectByValueParameterSet,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Key Vault Object")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Name
@@ -93,9 +68,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(ParameterSetName = ExpandedParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the type of the issuer.")]
-        [Parameter(ParameterSetName = InputObjectExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the type of the issuer.")]
         [ValidateNotNullOrEmpty]
         public string IssuerProvider { get; set; }
 
@@ -103,9 +75,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// AccountId
         /// </summary>
         [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the account id to be used with the issuer.")]
-        [Parameter(ParameterSetName = InputObjectExpandedParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the account id to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
@@ -117,9 +86,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(ParameterSetName = ExpandedParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the api key to be used with the issuer.")]
-        [Parameter(ParameterSetName = InputObjectExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the api key to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
         public SecureString ApiKey { get; set; }
 
@@ -127,9 +93,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// OrganizationDetails
         /// </summary>
         [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the organization details to be used with the issuer.")]
-        [Parameter(ParameterSetName = InputObjectExpandedParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the organization details to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
@@ -144,11 +107,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ByValueParameterSet,
-                   ValueFromPipeline = true,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the certificate issuer to set.")]
-        [Parameter(Mandatory = true,
-                   ParameterSetName = InputObjectByValueParameterSet,
                    ValueFromPipeline = true,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the certificate issuer to set.")]
@@ -167,11 +125,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-            }
-
             if (ShouldProcess(Name, Properties.Resources.SetCertificateIssuer))
             {
                 PSKeyVaultCertificateIssuer issuerToUse;
