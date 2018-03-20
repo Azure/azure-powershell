@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         {
                             var diagnosticPath =
                                 SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
-                            DataLakeStoreFileSystemClient.SetupLogging(DiagnosticLogLevel, diagnosticPath);
+                            DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
                         int threadCount;
