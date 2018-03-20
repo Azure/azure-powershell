@@ -55,24 +55,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             public bool ShouldRetry(HttpResponseMessage message)
             {
-                
-                switch(message?.StatusCode)
-                {
-                    case HttpStatusCode.Conflict:
-                    case HttpStatusCode.GatewayTimeout:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.RequestTimeout:
-                    case HttpStatusCode.ServiceUnavailable:
-                    case (HttpStatusCode)429:
-                        return _tries++ < _maxTries;
-                    default:
-                        return false;
-                }
+                return message != null && (int)message.StatusCode == 429 && _tries < _maxTries;
             }
 
             public Task WaitForRetry()
             {
-                TimeSpan waitTimeSpan = _tries > 0 ? _interval : TimeSpan.MinValue;
+                TimeSpan waitTimeSpan = _tries++ > 0 ? _interval : TimeSpan.MinValue;
                 return Task.Delay(waitTimeSpan);
             }
         }
@@ -100,24 +88,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             public bool ShouldRetry(HttpResponseMessage message)
             {
-                ++_tries;
-                switch (message?.StatusCode)
-                {
-                    case HttpStatusCode.Conflict:
-                    case HttpStatusCode.GatewayTimeout:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.RequestTimeout:
-                    case HttpStatusCode.ServiceUnavailable:
-                    case (HttpStatusCode)429:
-                        return _tries <= _maxTries;
-                    default:
-                        return false;
-                }
+                return message != null && (int)message.StatusCode == 429 && _tries < _maxTries;
             }
 
             public Task WaitForRetry()
             {
-                TimeSpan waitTimeSpan = _tries > 0 ? GetRetryInterval() : TimeSpan.MinValue;
+                TimeSpan waitTimeSpan = _tries++ > 0 ? GetRetryInterval() : TimeSpan.MinValue;
                 return Task.Delay(waitTimeSpan);
             }
         }
