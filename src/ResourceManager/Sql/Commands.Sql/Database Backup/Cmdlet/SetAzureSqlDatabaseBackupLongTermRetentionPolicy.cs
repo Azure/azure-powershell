@@ -92,17 +92,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = WeeklyRetentionRequiredSet,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Weekly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = MonthlyRetentionRequiredSet,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Weekly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = YearlyRetentionRequiredSet,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Weekly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
         public string WeeklyRetention { get; set; }
 
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = MonthlyRetentionRequiredSet,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Monthly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = YearlyRetentionRequiredSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Monthly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
         public string MonthlyRetention { get; set; }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = YearlyRetentionRequiredSet,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Yearly Retention of the long term retention policy. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+            HelpMessage = "The Yearly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
         public string YearlyRetention { get; set; }
 

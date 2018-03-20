@@ -206,15 +206,18 @@ function Test-LongTermRetentionV2
 
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
-	# Set the weekly retention on the database so that the first backup gets picked up
-	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
 	$resourceGroup = ""
 	$locationName = ""
 	$serverName = ""
 	$databaseName = ""
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
-	$removalDatabase = ""
+	$restoredDatabase = ""
+	$databaseWithRemovableBackup = "";
 
 	# Basic Get Tests
 	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
@@ -238,24 +241,14 @@ function Test-LongTermRetentionV2
 	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-True { $backups.Count -ne 0 }
 
-	# Test Remove with Piping
-	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $removalDatabase -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
-	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $removalDatabase | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
-	Assert-True { $backups.Count -eq 0 }
-
-	# Basic Policy Test
-	Set-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2
-	$policy = Get-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -Current
-	Assert-True { $policy.WeeklyRetention -eq $weeklyRetention2 }
-
-	# Alias Policy Test
-	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1
-	$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -Current
-	Assert-True { $policy.WeeklyRetention -eq $weeklyRetention1 }
-
 	# Restore Test
 	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
-	Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ServerName $serverName -TargetDatabaseName "testdb3"
+	Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ServerName $serverName -TargetDatabaseName $restoredDatabase
+
+	# Test Remove with Piping
+	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $removalDatabase -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+	Assert-True { $backups.Count -eq 0 }
 }
 
 function Test-DatabaseGeoBackupPolicy
