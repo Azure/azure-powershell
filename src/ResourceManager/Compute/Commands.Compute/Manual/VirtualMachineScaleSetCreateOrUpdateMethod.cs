@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     })
                     .ToList();
 
-                var scaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
+                return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
                     frontendIpConfigurations: new[] { frontendIpConfiguration },
@@ -223,8 +223,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb);
-
-                return scaleSet;
             }
         }
 
