@@ -25,12 +25,6 @@ Add-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
-```
-Add-AzureKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Add-AzureKeyVaultCertificateContact** cmdlet adds a contact for a key vault for certificate notifications in Azure Key Vault.
 The contact receives updates about events such as certificate close to expiry, certificate renewed, and so on.
@@ -105,21 +99,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-KeyVault Resource Id.
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases: VaultId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

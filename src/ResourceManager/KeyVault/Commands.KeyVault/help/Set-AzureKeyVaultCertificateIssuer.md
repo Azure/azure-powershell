@@ -28,21 +28,6 @@ Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectExpanded
-```
-Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [-Name] <String> [-IssuerProvider <String>]
- [-AccountId <String>] [-ApiKey <SecureString>]
- [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectByValue
-```
-Set-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [-Name] <String>
- -Issuer <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Set-AzureKeyVaultCertificateIssuer cmdlet sets a certificate issuer in a key vault.
 
@@ -62,7 +47,7 @@ Specifies the account ID for the certificate issuer.
 
 ```yaml
 Type: String
-Parameter Sets: Expanded, InputObjectExpanded
+Parameter Sets: Expanded
 Aliases:
 
 Required: False
@@ -77,7 +62,7 @@ Specifies the API key for the certificate issuer.
 
 ```yaml
 Type: SecureString
-Parameter Sets: Expanded, InputObjectExpanded
+Parameter Sets: Expanded
 Aliases:
 
 Required: False
@@ -102,27 +87,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Key Vault Object
-
-```yaml
-Type: PSKeyVault
-Parameter Sets: InputObjectExpanded, InputObjectByValue
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Issuer
 Specifies the certificate issuer to update.
 
 ```yaml
 Type: PSKeyVaultCertificateIssuerIdentityItem
-Parameter Sets: ByValue, InputObjectByValue
+Parameter Sets: ByValue
 Aliases:
 
 Required: True
@@ -137,7 +107,7 @@ Specifies the type of certificate issuer.
 
 ```yaml
 Type: String
-Parameter Sets: Expanded, InputObjectExpanded
+Parameter Sets: Expanded
 Aliases:
 
 Required: False
@@ -167,7 +137,7 @@ Organization details to be used with the issuer.
 
 ```yaml
 Type: PSKeyVaultCertificateOrganizationDetails
-Parameter Sets: Expanded, InputObjectExpanded
+Parameter Sets: Expanded
 Aliases:
 
 Required: False
@@ -198,7 +168,7 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: Expanded, ByValue
+Parameter Sets: (All)
 Aliases:
 
 Required: True

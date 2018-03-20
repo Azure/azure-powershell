@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                     Position = 0,
                     ValueFromPipelineByPropertyName = true,
+                    ValueFromPipeline = true,
                     ParameterSetName = ByKeyObjectParameterSet,
                     HelpMessage = "Key bundle to back up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]
