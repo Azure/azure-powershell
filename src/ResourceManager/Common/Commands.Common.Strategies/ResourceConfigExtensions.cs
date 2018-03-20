@@ -28,6 +28,22 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             this ResourceStrategy<TModel> strategy,
             IResourceConfig resourceGroup,
             string name,
+            Func<IEngine, TModel> createModel,
+            IEnumerable<IEntityConfig> dependencies)
+            where TModel : class
+            => new ResourceConfig<TModel>(
+                strategy,
+                resourceGroup,
+                name,
+                createModel,
+                new[] { resourceGroup }                
+                    .Concat(dependencies)
+                    .Where(v => v != null));
+
+        public static ResourceConfig<TModel> CreateResourceConfig<TModel>(
+            this ResourceStrategy<TModel> strategy,
+            IResourceConfig resourceGroup,
+            string name,
             Func<IEngine, TModel> createModel = null)
             where TModel : class, new()
         {
@@ -36,16 +52,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             var engine = new DependencyEngine();
             createModel(engine);
             //
-            return new ResourceConfig<TModel>(
-                strategy,
+            return strategy.CreateResourceConfig(
                 resourceGroup,
                 name,
                 createModel,
                 engine
                     .Dependencies
-                    .Values
-                    .Concat(new[] { resourceGroup })
-                    .Where(v => v != null));
+                    .Values);
         }
 
         public static async Task<TModel> GetAsync<TModel>(

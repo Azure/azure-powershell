@@ -455,7 +455,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <comment>{0} = exception</comment>
   </data>
   <data name="UsingExistingStorageAccountForBootDiagnostics" xml:space="preserve">
-    <value>Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics.</value>
+    <value>Since the VM is created using premium storage or managed disk, existing standard storage account, {0}, is used for boot diagnostics.</value>
     <comment>{0} = existing standard storage account name</comment>
   </data>
   <data name="EnableAzureDiskEncryptionCaption" xml:space="preserve">
@@ -582,5 +582,16 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="VmssUseConnectionString" xml:space="preserve">
     <value>Use '{0}' to connect to the VMSS instances.</value>
     <comment>{0} = connection string</comment>
+  </data>
+  <data name="ComputeInvalidImageName" xml:space="preserve">
+    <value>Invalid image resource id '{0}'.</value>
+    <comment>{0} = image resource id</comment>
+  </data>
+  <data name="ComputeMismatchSubscription" xml:space="preserve">
+    <value>The image subscription doesn't match the current subscription.</value>
+  </data>
+  <data name="ComputeNoImageFound" xml:space="preserve">
+    <value>Can't find the image '{0}'.</value>
+    <comment>{0} = image name</comment>
   </data>
 </root>
