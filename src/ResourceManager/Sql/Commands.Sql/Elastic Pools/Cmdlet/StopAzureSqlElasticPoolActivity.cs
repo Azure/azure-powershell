@@ -18,9 +18,15 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlElasticPoolActivity", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlElasticPoolActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolActivityModel))]
     public class StopAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
     {
+        /// <summary>
+        ///  Defines whether the cmdlets will successfully returned at the end of its execution
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         /// <summary>
         /// Gets elastic pool activity
         /// </summary>
@@ -49,5 +55,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         {
             return ModelAdapter.CancelElasticPoolActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.OperationId);
         }
+
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
+        protected override bool WriteResult() { return PassThru; }
     } 
 }
