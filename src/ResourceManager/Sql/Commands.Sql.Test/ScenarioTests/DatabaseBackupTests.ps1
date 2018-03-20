@@ -203,14 +203,18 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 
 function Test-LongTermRetentionV2
 {
-	# Manual setup necessary since it takes about 18 hours to setup LTR for the first time.
-	$resourceGroup = "Default-SQL-WestCentralUS"
-	$locationName = "westcentralus"
-	$serverName = "trgrie-ltr-server"
-	$databaseName = "testdb2"
+
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups
+	$resourceGroup = ""
+	$locationName = ""
+	$serverName = ""
+	$databaseName = ""
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
-	$removalDatabase = "testdb"
+	$removalDatabase = ""
 
 	# Basic Get Tests
 	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
@@ -248,6 +252,10 @@ function Test-LongTermRetentionV2
 	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1
 	$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -Current
 	Assert-True { $policy.WeeklyRetention -eq $weeklyRetention1 }
+
+	# Restore Test
+	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
+	Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ServerName $serverName -TargetDatabaseName "testdb3"
 }
 
 function Test-DatabaseGeoBackupPolicy

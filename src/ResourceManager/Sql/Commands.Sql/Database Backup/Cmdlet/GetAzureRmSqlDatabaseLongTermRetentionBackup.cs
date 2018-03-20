@@ -73,32 +73,32 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = LocationNameSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ServerNameSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = DatabaseNameSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupByResourceIdSet,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupsByResourceIdSet,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The location the backups are in.")]
+            HelpMessage = "The location of the backups' source server.")]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentonBackups")]
         public string LocationName { get; set; }
 

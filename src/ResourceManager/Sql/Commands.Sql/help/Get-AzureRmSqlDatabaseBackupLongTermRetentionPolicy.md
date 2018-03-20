@@ -25,10 +25,24 @@ The policy is an Azure Backup resource used to define backup storage policy.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get the current version of the long term retention policy
+```powershell
+PS C:\> Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -Current
+
+
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        : P2W
+MonthlyRetention                       : PT0S
+YearlyRetention                        : PT0S
+WeekOfYear                             : 0
+State                                  :
+RecoveryServicesBackupPolicyResourceId :
+Location                               :
 ```
 
-```
+This command gets the current version of the long term retention policy for database01
 
 ## PARAMETERS
 
@@ -149,6 +163,10 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSqlDatabaseLongTermRetentionBackup](./Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzureRmSqlDatabaseLongTermRetentionBackup](./Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
 
 [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
 

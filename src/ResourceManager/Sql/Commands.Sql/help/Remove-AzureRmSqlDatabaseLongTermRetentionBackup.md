@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSqlDatabaseLongTermRetentionBackup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a long term retention backup.
 
 ## SYNTAX
 
@@ -32,16 +32,55 @@ Remove-AzureRmSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmSqlDatabaseLongTermRetentionBackup** cmdlet deletes the backup specified.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete a single backup
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
+
+
+BackupExpirationTime : 3/22/2018 5:50:55 AM
+BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime           : 3/15/2018 5:50:55 AM
+DatabaseName         : database01
+DatabaseDeletionTime :
+LocationName         : northeurope
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName           : server01
+ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
-{{ Add example description here }}
+Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+
+### Example 2: Delete all backups for a location
+```powershell
+PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+
+
+BackupExpirationTime : 3/22/2018 11:43:18 PM
+BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+BackupTime           : 3/15/2018 11:43:18 PM
+DatabaseName         : database02
+DatabaseDeletionTime : 3/18/2018 4:36:00 PM
+LocationName         : northeurope
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+ServerName           : server02
+ServerCreateTime     : 2/28/2018 12:12:19 AM
+
+BackupExpirationTime : 3/22/2018 5:50:55 AM
+BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime           : 3/15/2018 5:50:55 AM
+DatabaseName         : database01
+DatabaseDeletionTime :
+LocationName         : northeurope
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName           : server01
+ServerCreateTime     : 2/29/2018 12:12:19 AM
+```
+
+This command deletes all long term retention backups for the northeurope location.
 
 ## PARAMETERS
 
@@ -211,3 +250,9 @@ Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBacku
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSqlDatabaseLongTermRetentionBackup](./Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+
+[Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
+
+[Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)

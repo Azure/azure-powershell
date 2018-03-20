@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets whether or not to use the Long Term Retention Vaults.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Whether or not to use the legacy Long Term Retention Vaults.")]
+            HelpMessage = "If not provided, the command returns the legacy Long Term Retention policy information. Otherwise, the command returns the current version of the Long Term Retention policy.")]
         public SwitchParameter Current { get; set; }
 
         /// <summary>
