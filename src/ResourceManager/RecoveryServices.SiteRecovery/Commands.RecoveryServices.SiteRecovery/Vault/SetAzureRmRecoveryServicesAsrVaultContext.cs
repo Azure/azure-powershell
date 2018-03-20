@@ -70,40 +70,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
-                using (var powerShell = System.Management.Automation.PowerShell.Create())
+                VaultExtendedInfoResource vaultExtendedInfo = null;
+
+                try
                 {
-                    VaultExtendedInfoResource vaultExtendedInfo = null;
-
-                    try
-                    {
-                        vaultExtendedInfo = this.RecoveryServicesClient
-                        .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
-                    }
-                    catch (CloudException ex)
-                    {
-                        throw new Exception(Resources.TryDownloadingVaultFile);
-                    }
-
-                    ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
-
-                    asrVaultCreds.ResourceName = this.Vault.Name;
-                    asrVaultCreds.ResourceGroupName = this.Vault.ResourceGroupName;
-                    asrVaultCreds.ChannelIntegrityKey = vaultExtendedInfo.IntegrityKey;
-
-                    asrVaultCreds.ResourceNamespace = ARMResourceTypeConstants
-                        .RecoveryServicesResourceProviderNameSpace;
-
-                    asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
-
-                    Utilities.UpdateCurrentVaultContext(asrVaultCreds);
-
-                    this.RecoveryServicesClient.ValidateVaultSettings(
-                    asrVaultCreds.ResourceName,
-                    asrVaultCreds.ResourceGroupName);
-
-                    this.WriteObject(new ASRVaultSettings(asrVaultCreds));
-                    powerShell.Commands.Clear();
+                    vaultExtendedInfo = this.RecoveryServicesClient
+                    .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
                 }
+                catch (CloudException ex)
+                {
+                    throw new Exception(Resources.TryDownloadingVaultFile);
+                }
+
+                ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
+
+                asrVaultCreds.ResourceName = this.Vault.Name;
+                asrVaultCreds.ResourceGroupName = this.Vault.ResourceGroupName;
+                asrVaultCreds.ChannelIntegrityKey = vaultExtendedInfo.IntegrityKey;
+
+                asrVaultCreds.ResourceNamespace = ARMResourceTypeConstants
+                    .RecoveryServicesResourceProviderNameSpace;
+
+                asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
+
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
+                this.RecoveryServicesClient.ValidateVaultSettings(
+                asrVaultCreds.ResourceName,
+                asrVaultCreds.ResourceGroupName);
+
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
             catch (InvalidOperationException e)
             {
