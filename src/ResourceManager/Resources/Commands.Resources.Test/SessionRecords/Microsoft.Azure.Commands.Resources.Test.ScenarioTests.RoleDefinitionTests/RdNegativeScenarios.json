@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'&api-version=2015-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zPyRmaWx0ZXI9cm9sZU5hbWUlMjBlcSUyMCdhYWFhYWFhYS1hYWFhLWFhYWEtYWFhYS1hYWFhYWFhYWFhYWEnJmFwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'&api-version=2018-01-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zPyRmaWx0ZXI9cm9sZU5hbWUlMjBlcSUyMCdhYWFhYWFhYS1hYWFhLWFhYWEtYWFhYS1hYWFhYWFhYWFhYWEnJmFwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "676b7034-c0b3-4c28-9fd1-fdf7691181b6"
+          "0f644930-acaa-43d4-aed6-ab4fda237a5e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2556.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.8.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -33,8 +33,11 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-request-charge": [
+          "1"
+        ],
         "x-ms-request-id": [
-          "6982e9a9-148b-44de-8ab6-8d76f6e5f66f"
+          "dd25ea80-2a6a-4b7f-b172-3d186e5f76fa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -43,49 +46,52 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14987"
         ],
         "x-ms-correlation-request-id": [
-          "c88765fb-9b40-43f9-8d47-cc7a3c4643c3"
+          "ae578e83-eaa8-42a4-8174-1f98661a124e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182758Z:c88765fb-9b40-43f9-8d47-cc7a3c4643c3"
+          "WESTUS2:20180312T202013Z:ae578e83-eaa8-42a4-8174-1f98661a124e"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:58 GMT"
+          "Mon, 12 Mar 2018 20:20:13 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Retry-After": [
+          "0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2015-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2018-01-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE4LTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9886fe67-aba0-4fb4-844a-db7d1856867d"
+          "2e93d985-7009-42a5-8a7e-dc2026c94409"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2556.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.8.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -103,7 +109,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21735a10-a435-4bd3-bdd0-584be7059740"
+          "5d482d76-dc97-4e81-947c-6f4ed280e575"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -112,49 +118,52 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14986"
         ],
         "x-ms-correlation-request-id": [
-          "08e5d9c4-25e5-4632-aa88-56f14f8d50b1"
+          "e1527ce9-7f00-4344-84bf-4de90f79255a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:08e5d9c4-25e5-4632-aa88-56f14f8d50b1"
+          "WESTUS2:20180312T202014Z:e1527ce9-7f00-4344-84bf-4de90f79255a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Mon, 12 Mar 2018 20:20:14 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Retry-After": [
+          "0"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2015-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2018-01-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE4LTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "06f743e2-084d-4cbd-aa6d-ebb7880a8dd3"
+          "8c541906-7a29-4077-b76f-9fe2682f99de"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2556.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.8.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -172,7 +181,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e954d8c0-70a5-4975-aad3-b890c1d4ddd7"
+          "29535bbf-8302-4145-8695-9c7b6485b41f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -181,49 +190,52 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14984"
         ],
         "x-ms-correlation-request-id": [
-          "105df3c1-ce1b-4625-9acf-27dea7ad557d"
+          "e88fdf53-945f-4a7f-944f-e74c482a75fe"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:105df3c1-ce1b-4625-9acf-27dea7ad557d"
+          "WESTUS2:20180312T202014Z:e88fdf53-945f-4a7f-944f-e74c482a75fe"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Mon, 12 Mar 2018 20:20:14 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Retry-After": [
+          "0"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups/rbactest/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2015-07-01",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9SZXNvdXJjZUdyb3Vwcy9yYmFjdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups/rbactest/providers/Microsoft.Authorization/roleDefinitions/85e460b3-89e9-48ba-9dcd-a8a99d64a674?api-version=2018-01-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9SZXNvdXJjZUdyb3Vwcy9yYmFjdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zLzg1ZTQ2MGIzLTg5ZTktNDhiYS05ZGNkLWE4YTk5ZDY0YTY3ND9hcGktdmVyc2lvbj0yMDE4LTAxLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb9a8bf6-1814-42fa-bc41-40736e8b3de8"
+          "a069881d-6fff-4dc7-9cf2-b317ecd3ac39"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2556.0",
+          "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Authorization.Version2015_07_01.AuthorizationManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.8.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleDefinitionDoesNotExist\",\r\n    \"message\": \"The specified role definition with ID '85e460b3-89e9-48ba-9dcd-a8a99d64a674' does not exist.\"\r\n  }\r\n}",
@@ -241,7 +253,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "61c7adeb-2212-41d6-9d16-1b1d3b6de7a8"
+          "6d2a5e6c-75dc-4989-9554-afdb214ad7c4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -250,28 +262,31 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14985"
         ],
         "x-ms-correlation-request-id": [
-          "f6c58ded-4470-4f66-9ca9-d48cb5599764"
+          "d191d54b-6c73-4f44-ae3e-223634a44310"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171129T182759Z:f6c58ded-4470-4f66-9ca9-d48cb5599764"
+          "WESTUS2:20180312T202014Z:d191d54b-6c73-4f44-ae3e-223634a44310"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Nov 2017 18:27:59 GMT"
+          "Mon, 12 Mar 2018 20:20:14 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Retry-After": [
+          "0"
         ]
       },
       "StatusCode": 404

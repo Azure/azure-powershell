@@ -50,7 +50,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.5.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.6.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -189,10 +189,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>

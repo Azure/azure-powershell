@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class Extensions
     {
+        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> v)
+            => v ?? Enumerable.Empty<T>();
+
         public static TValue GetOrNull<TKey, TValue>(
             this IDictionary<TKey, TValue> dictionary, TKey key)
             where TValue : class

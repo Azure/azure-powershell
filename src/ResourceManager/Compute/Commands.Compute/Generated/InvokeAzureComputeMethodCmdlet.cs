@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "ImageListByResourceGroup",
             "ImageListByResourceGroupNext",
             "ImageListNext",
+            "LogAnalyticExportRequestRateByInterval",
+            "LogAnalyticExportThrottledRequests",
             "ResourceSkuList",
             "ResourceSkuListNext",
             "SnapshotCreateOrUpdate",
@@ -261,6 +263,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "ImageListNext":
                         ExecuteImageListNextMethod(argumentList);
+                        break;
+                    case "LogAnalyticExportRequestRateByInterval":
+                        ExecuteLogAnalyticExportRequestRateByIntervalMethod(argumentList);
+                        break;
+                    case "LogAnalyticExportThrottledRequests":
+                        ExecuteLogAnalyticExportThrottledRequestsMethod(argumentList);
                         break;
                     case "ResourceSkuList":
                         ExecuteResourceSkuListMethod(argumentList);
@@ -508,6 +516,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "ImageListByResourceGroup": return CreateImageListByResourceGroupDynamicParameters();
                 case "ImageListByResourceGroupNext": return CreateImageListByResourceGroupNextDynamicParameters();
                 case "ImageListNext": return CreateImageListNextDynamicParameters();
+                case "LogAnalyticExportRequestRateByInterval": return CreateLogAnalyticExportRequestRateByIntervalDynamicParameters();
+                case "LogAnalyticExportThrottledRequests": return CreateLogAnalyticExportThrottledRequestsDynamicParameters();
                 case "ResourceSkuList": return CreateResourceSkuListDynamicParameters();
                 case "ResourceSkuListNext": return CreateResourceSkuListNextDynamicParameters();
                 case "SnapshotCreateOrUpdate": return CreateSnapshotCreateOrUpdateDynamicParameters();
