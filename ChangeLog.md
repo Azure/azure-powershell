@@ -1,4 +1,54 @@
-﻿## 5.5.0 - March 2018
+﻿## 5.6.0 - March 2018
+
+#### General
+* Fix issue with Default Resource Group in CloudShell
+* Fix issue where incorrect startup scripts were being executed during module import
+
+#### AzureRM.Profile
+* Enable MSI authentication in unsupported scenarios
+
+#### AzureRM.AnalysisServices
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Cdn
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Compute
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support data disks.
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support custom image by name or by id.
+* Log analytic feature
+    - Added 'Export-AzureRmLogAnalyticRequestRateByInterval' cmdlet
+    - Added 'Export-AzureRmLogAnalyticThrottledRequests' cmdlet
+
+#### AzureRM.ContainerInstance
+* Fix parameter sets issue for container registry and azure file volume mount
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support
+
+#### AzureRM.Dns
+* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks
+
+#### AzureRM.Network
+* Updating model types for compatibility with DNS cmdlets.
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Websites
+* Fixed the help for Remove-AzureRmWebAppSlot
+
+## 5.5.0 - March 2018
 #### AzureRM.Profile
 * Fixed issue with importing aliases
 * Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
