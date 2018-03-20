@@ -187,7 +187,7 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Stop-AzureRmSqlDatabaseActivity', 'Get-AzureRmSqlServerDnsAlias', 
                'Remove-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlServerDnsAlias', 
                'Set-AzureRmSqlServerDnsAlias',
-			   'Stop-AzureRmSqlElasticPoolActivity'
+               'Stop-AzureRmSqlElasticPoolActivity'
 
 # Variables to export from this module
 # VariablesToExport = @()

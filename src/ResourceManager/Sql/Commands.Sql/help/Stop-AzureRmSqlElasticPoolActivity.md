@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzureRmSqlElasticPoolActivity
 
 ## SYNOPSIS
-Cancels the asynchronous updates operation on the elastic pool.
+Cancels the asynchronous update operation on an elastic pool.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Stop-AzureRmSqlElasticPoolActivity [-ServerName] <String> [-ElasticPoolName] <St
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlElasticPoolActivity** cmdlet cancels the asynchronous updates operation on the elastic pool.
+The **Stop-AzureRmSqlElasticPoolActivity** cmdlet cancels the asynchronous update operation on an elastic pool.
 
 ## EXAMPLES
 
-### Example 1: Cancel the asynchronous updates operation on the elastic pool
+### Example 1: Cancel the asynchronous update operation on an elastic pool
 ```
 PS C:\> Stop-AzureRmSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 ```
