@@ -47,7 +47,8 @@ This command gets the current version of the long term retention policy for data
 ## PARAMETERS
 
 ### -Current
-Whether or not to use the legacy Long Term Retention Vaults.```yaml
+Whether or not to use the legacy Long Term Retention Vaults.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
