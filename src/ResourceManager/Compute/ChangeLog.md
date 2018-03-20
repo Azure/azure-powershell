@@ -23,6 +23,7 @@
 * Log analytic feature
     - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
     - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 4.4.0
 * `New-AzureRmVMSS` prints connection strings in verbose mode.
