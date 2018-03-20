@@ -17,34 +17,34 @@ Updates the state of a VMSS.
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
- [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
- [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>]
- [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>]
- [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>]
- [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>] [-PlanName <String>]
- [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>] [-PlanProduct <String>]
- [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>] [-LicenseType <String>]
- [-SkuName <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
- [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>]
- [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ExplicitIdentityParameterSet
-```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>]
  [-ManagedDiskStorageAccountType <StorageAccountTypes>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
  [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
  [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
  [-SinglePlacementGroup <Boolean>] [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>]
  [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
  [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
- [-PlanProduct <String>] [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>]
- [-LicenseType <String>] -IdentityType <ResourceIdentityType> [-SkuName <String>] [-PlanPromotionCode <String>]
- [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
+ [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>] [-SkuTier <String>]
+ [-EnableAutomaticUpdate <Boolean>] [-LicenseType <String>] [-SkuName <String>] [-PlanPromotionCode <String>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-OsDiskWriteAccelerator <Boolean>]
+ [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>]
+ [-ImageReferenceVersion <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>] [-IdentityId <String[]>]
+ [-ManagedDiskStorageAccountType <StorageAccountTypes>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-SinglePlacementGroup <Boolean>] [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>]
+ [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>]
+ [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>]
+ [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>] [-SkuTier <String>]
+ [-EnableAutomaticUpdate <Boolean>] [-LicenseType <String>] -IdentityType <ResourceIdentityType>
+ [-SkuName <String>] [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>]
+ [-SkuCapacity <Int32>] [-OsDiskWriteAccelerator <Boolean>] [-ImageReferenceOffer <String>]
  [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -425,6 +425,21 @@ Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
 Accepted values: None, ReadOnly, ReadWrite
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OsDiskWriteAccelerator
+Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

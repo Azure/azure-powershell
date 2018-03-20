@@ -129,6 +129,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string LicenseType { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeAuthKey)]
+        [ValidateNotNull]
+        public System.Security.SecureString AuthKey { get; set; }
+
+        [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
@@ -179,7 +185,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     }
                     else
                     {
-                        resource.Properties = new SelfHostedIntegrationRuntime();
+                        var selfHosted = new SelfHostedIntegrationRuntime();
+                        if (AuthKey != null)
+                        {
+                            var authKey = ConvertToUnsecureString(AuthKey);
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
+                        }
+
+                        resource.Properties = selfHosted;
                     }
                 }
                 else

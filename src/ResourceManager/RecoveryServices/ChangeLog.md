@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.0
+* Fixed issue with importing aliases
+
 ## Version 4.0.2
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

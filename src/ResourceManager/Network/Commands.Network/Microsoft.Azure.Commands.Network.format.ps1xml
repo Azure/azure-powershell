@@ -940,6 +940,32 @@
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>IpTags</Label>
+                <PropertyName>IpTagsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPublicIpTag</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPublicIpTag</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>IpTagType</Label>
+                <PropertyName>IpTagType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tag</Label>
+                <PropertyName>Tag</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

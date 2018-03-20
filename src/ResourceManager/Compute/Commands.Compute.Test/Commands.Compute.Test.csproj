@@ -64,7 +64,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.17.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
@@ -172,6 +172,7 @@
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DiskRPTests.cs" />
     <Compile Include="ScenarioTests\ImageTests.cs" />
+    <Compile Include="ScenarioTests\LogAnalyticTests.cs" />
     <Compile Include="ScenarioTests\NewVhdVMTests.cs" />
     <Compile Include="ScenarioTests\ResourceSkuTests.cs" />
     <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs">
@@ -211,6 +212,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
       <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
       <Name>Commands.Common.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj">
+      <Project>{eea69772-d41b-482a-9252-2b4595c59e53}</Project>
+      <Name>Commands.Common.Strategies</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
@@ -305,6 +310,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ImageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\LogAnalyticTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NewVhdVMTests.ps1">

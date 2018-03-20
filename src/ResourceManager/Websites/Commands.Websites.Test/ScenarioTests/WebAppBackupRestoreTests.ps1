@@ -70,6 +70,14 @@ function Test-CreateNewWebAppBackupPiping
         Assert-AreEqual $backupName $backup.BackupName
         Assert-NotNull $backup.StorageAccountUrl
 
+		$count = 0
+		while (($backup.BackupStatus -like "Created" -or $backup.BackupStatus -like "InProgress") -and $count -le 20)
+		{
+			Wait-Seconds 30
+		    $backup = $backup | Get-AzureRmWebAppBackup
+			$count++
+		}
+
         # Test that it's possible to modify the return value of the cmdlet to make a new backup
         $backup.BackupName = $backupName2
         $backup2 = $backup | New-AzureRmWebAppBackup

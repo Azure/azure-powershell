@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Network.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -307,7 +307,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
 'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript', 
 'New-AzureRmApplicationSecurityGroup', 
 'Remove-AzureRmApplicationSecurityGroup', 
-'Get-AzureRmApplicationSecurityGroup'
+'Get-AzureRmApplicationSecurityGroup',
+'New-AzureRmPublicIpTag'
 
 # Variables to export from this module
 # VariablesToExport = @()
