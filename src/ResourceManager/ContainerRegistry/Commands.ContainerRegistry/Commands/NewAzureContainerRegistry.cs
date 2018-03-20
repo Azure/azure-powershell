@@ -18,7 +18,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using DeploymentState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     DeploymentExtended result = ResourceManagerClient.CreateClassicRegistry(
                         ResourceGroupName, Name, Location, EnableAdminUser, tags);
 
-                    if (result.Properties.ProvisioningState == DeploymentState.Succeeded.ToString())
+                    if (result.Properties.ProvisioningState == "Succeeded")
                     {
                         var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
                         WriteObject(new PSContainerRegistry(registry));

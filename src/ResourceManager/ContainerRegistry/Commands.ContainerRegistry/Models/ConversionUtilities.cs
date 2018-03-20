@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     static class ConversionUtilities
     {
-        private readonly static string StorageResourceTypeName = "Microsoft.Storage/storageAccounts";
-        private readonly static string RegistryResourceTypeName = "Microsoft.ContainerRegistry/registries";
-        private readonly static string RegistryReplicationResourceTypeName = "Microsoft.ContainerRegistry/registries/replications";
-        private readonly static string RegistryWebhookResourceTypeName = "Microsoft.ContainerRegistry/registries/webhooks";
+        private const string StorageResourceTypeName = "Microsoft.Storage/storageAccounts";
+        private const string RegistryResourceTypeName = "Microsoft.ContainerRegistry/registries";
+        private const string RegistryReplicationResourceTypeName = "Microsoft.ContainerRegistry/registries/replications";
+        private const string RegistryWebhookResourceTypeName = "Microsoft.ContainerRegistry/registries/webhooks";
 
         public static IDictionary<string, string> ToDictionary(Hashtable ht)
         {
