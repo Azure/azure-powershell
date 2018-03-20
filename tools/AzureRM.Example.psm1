@@ -45,7 +45,7 @@ else
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 
-if ($Env:ACC_ClOUD -eq $null)
+if ($Env:ACC_CLOUD -eq $null)
 {
     $FilteredCommands | ForEach-Object {
         $global:PSDefaultParameterValues.Add($_,

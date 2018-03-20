@@ -37,11 +37,6 @@ namespace Microsoft.Azure.Commands.Profile.Default
 
         public override void ExecuteCmdlet()
         {
-            if (Environment.GetEnvironmentVariable("ACC_CLOUD") != null)
-            {
-                throw new Exception("Default Resource Group cannot be set on CloudShell");
-            }
-
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
             IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                     context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
