@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 0.3.2
 * Service Fabric cmdlet refresh
   - Updated ARM templates
   - Failed operations no longer rollback
