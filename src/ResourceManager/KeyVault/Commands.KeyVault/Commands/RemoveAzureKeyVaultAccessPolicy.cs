@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultAccessPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByUserPrincipalName,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -52,27 +51,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByServicePrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByUserPrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByEmail,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -83,27 +77,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose permissions you want to remove.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ByServicePrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose permissions you want to remove.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ByUserPrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose permissions you want to remove.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ByEmail,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose permissions you want to remove.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose permissions you want to remove.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
@@ -145,11 +134,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByServicePrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByServicePrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
         [ValidateNotNullOrEmpty()]
         [Alias("SPN")]
@@ -160,11 +147,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByUserPrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the user principal name of the user whose access you want to remove.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByUserPrincipalName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the user principal name of the user whose access you want to remove.")]
         [ValidateNotNullOrEmpty()]
         [Alias("UPN")]
@@ -175,11 +160,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
@@ -189,11 +172,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByEmail,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the email address of the user in Azure Active Directory whose permissions should be deleted.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByEmail,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the email address of the user in Azure Active Directory whose permissions should be deleted.")]
         [ValidateNotNullOrEmpty()]
         public string EmailAddress { get; set; }
@@ -203,41 +184,33 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = ByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the ID of application whose permissions should be removed.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByObjectId,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the ID of application whose permissions should be removed.")]
         public Guid? ApplicationId { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.")]
         public SwitchParameter EnabledForTemplateDeployment { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 

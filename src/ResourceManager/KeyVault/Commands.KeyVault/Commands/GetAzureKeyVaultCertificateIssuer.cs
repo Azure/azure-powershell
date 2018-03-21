@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
-        DefaultParameterSetName = ByNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByNameParameterSet,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
@@ -86,7 +83,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
                 var psissuer = PSKeyVaultCertificateIssuer.FromIssuer(issuer);
-                psissuer.VaultName = VaultName;
+                if (psissuer != null)
+                {
+                    psissuer.VaultName = VaultName;
+                }
                 this.WriteObject(psissuer);
             }
         }

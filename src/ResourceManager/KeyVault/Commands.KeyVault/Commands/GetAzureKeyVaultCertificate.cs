@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateIdentityItem>), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(List<PSDeletedKeyVaultCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -49,17 +48,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
                    ParameterSetName = ByCertificateNameandVersionParameterSet,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -87,32 +83,26 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>       
         [Parameter(Mandatory = false,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByVaultNameParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = false,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = InputObjectByVaultNameParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByCertificateNameandVersionParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    ParameterSetName = InputObjectByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
@@ -125,12 +115,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByCertificateNameandVersionParameterSet,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the version of the certificate in key vault.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the version of the certificate in key vault.")]
         [Alias("CertificateVersion")]
         public string Version { get; set; }

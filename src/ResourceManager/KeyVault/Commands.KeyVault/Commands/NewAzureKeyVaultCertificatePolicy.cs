@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = SubjectNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = SubjectNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
@@ -220,8 +219,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void ValidateBothPercentageAndNumberOfDaysAreNotPresent()
         {
-            if (RenewAtNumberOfDaysBeforeExpiry != null &&
-                RenewAtPercentageLifetime != null)
+            if (MyInvocation.BoundParameters.ContainsKey("RenewAtNumberOfDaysBeforeExpiry") &&
+                MyInvocation.BoundParameters.ContainsKey("RenewAtPercentageLifetime"))
             {
                 throw new ArgumentException("Both RenewAtNumberOfDaysBeforeExpiry and RenewAtPercentageLifetime cannot be specified.");
             }

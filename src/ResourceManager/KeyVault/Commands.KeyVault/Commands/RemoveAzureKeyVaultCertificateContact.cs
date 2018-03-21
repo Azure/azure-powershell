@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes a given certificate contact from Key Vault for certificate management
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateContact,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        SupportsShouldProcess = true)]
     [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {

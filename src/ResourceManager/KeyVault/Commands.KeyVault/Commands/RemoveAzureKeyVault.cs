@@ -23,9 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVault",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveVaultParameterSet,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = RemoveVaultParameterSet)]
     [OutputType(typeof(bool))]
     public class RemoveAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -47,12 +45,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault to remove.")]
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = RemoveDeletedVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault to remove.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -79,7 +75,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = RemoveVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of resource group for Azure key vault to remove.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
@@ -88,22 +83,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             Position = 2,
             ParameterSetName = RemoveVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = InputObjectRemoveVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = RemoveDeletedVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]

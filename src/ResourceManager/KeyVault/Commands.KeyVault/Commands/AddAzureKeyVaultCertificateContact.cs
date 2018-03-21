@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificateContact,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = InteractiveParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = InteractiveParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class AddAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = InteractiveParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the email address of the contact.")]
         [ValidateNotNullOrEmpty]
         public string[] EmailAddress { get; set; }

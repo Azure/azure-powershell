@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = InteractiveCreateParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -61,12 +60,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveCreateParameterSet,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InteractiveImportParameterSet,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -151,7 +148,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key operations 
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
         public string[] KeyOps { get; set; }
 
@@ -159,23 +155,20 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
-        public DateTime? Expires { get; set; }
+        public DateTime Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which key can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which the key can't be used. If not specified, there is no limitation.")]
-        public DateTime? NotBefore { get; set; }
+        public DateTime NotBefore { get; set; }
 
         /// <summary>
         /// Key tags
         /// </summary>
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "A hashtable representing key tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
