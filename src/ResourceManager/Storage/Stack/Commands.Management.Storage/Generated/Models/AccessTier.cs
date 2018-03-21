@@ -13,16 +13,14 @@ namespace Microsoft.Azure.Management.Storage.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for ProvisioningState.
+    /// Defines values for AccessTier.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum ProvisioningState
+    public enum AccessTier
     {
-        [EnumMember(Value = "Creating")]
-        Creating,
-        [EnumMember(Value = "ResolvingDNS")]
-        ResolvingDNS,
-        [EnumMember(Value = "Succeeded")]
-        Succeeded
+        [EnumMember(Value = "Hot")]
+        Hot,
+        [EnumMember(Value = "Cool")]
+        Cool
     }
 }

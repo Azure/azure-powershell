@@ -17,47 +17,45 @@ namespace Microsoft.Azure.Management.Storage.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// The custom domain assigned to this storage account. This can be set
-    /// via Update.
+    /// The SKU of the storage account.
     /// </summary>
-    public partial class CustomDomain
+    public partial class Sku
     {
         /// <summary>
-        /// Initializes a new instance of the CustomDomain class.
+        /// Initializes a new instance of the Sku class.
         /// </summary>
-        public CustomDomain() { }
+        public Sku() { }
 
         /// <summary>
-        /// Initializes a new instance of the CustomDomain class.
+        /// Initializes a new instance of the Sku class.
         /// </summary>
-        public CustomDomain(string name, bool? useSubDomain = default(bool?))
+        public Sku(SkuName name, SkuTier? tier = default(SkuTier?))
         {
             Name = name;
-            UseSubDomain = useSubDomain;
+            Tier = tier;
         }
 
         /// <summary>
-        /// Gets or sets the custom domain name. Name is the CNAME source.
+        /// Gets or sets the sku name. Required for account creation, optional
+        /// for update. Note that in older versions, sku name was called
+        /// accountType. Possible values include: 'Standard_LRS',
+        /// 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public SkuName Name { get; set; }
 
         /// <summary>
-        /// Indicates whether indirect CName validation is enabled. Default
-        /// value is false. This should only be set on updates
+        /// Gets the sku tier. This is based on the SKU name. Possible values
+        /// include: 'Standard', 'Premium'
         /// </summary>
-        [JsonProperty(PropertyName = "useSubDomain")]
-        public bool? UseSubDomain { get; set; }
+        [JsonProperty(PropertyName = "tier")]
+        public SkuTier? Tier { get; private set; }
 
         /// <summary>
         /// Validate the object. Throws ValidationException if validation fails.
         /// </summary>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
         }
     }
 }

@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
-            this.AccountType = storageAccount.AccountType;
+            this.Sku = storageAccount.Sku;
+            this.Encryption = storageAccount.Encryption;
+            this.Kind = storageAccount.Kind;
+            this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
@@ -53,7 +56,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Location { get; set; }
 
-        public AccountType? AccountType { get; set; }
+        public Sku Sku { get; set; }
+        public Kind? Kind { get; set; }
+        public Encryption Encryption { get; set; }
+        public AccessTier? AccessTier { get; set; }
         
         public DateTime? CreationTime { get; set; }
         
@@ -84,12 +90,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
              {
                  var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
                  return new CloudStorageAccount(credentials,
-                     storageAccount.PrimaryEndpoints.Blob, storageAccount.PrimaryEndpoints.Queue, storageAccount.PrimaryEndpoints.Table, null);
+                     new Uri(storageAccount.PrimaryEndpoints.Blob), new Uri(storageAccount.PrimaryEndpoints.Queue), new Uri(storageAccount.PrimaryEndpoints.Table), null);
                  //return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
              }, result.StorageAccountName) as AzureStorageContext; 
 
             return result;
         }
+
+
 
         private static string ParseResourceGroupFromId(string idFromServer)
         {

@@ -82,10 +82,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageProvider.cs">
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageProvider.cs">
       <Link>Common\ARMStorageProvider.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageService.cs">
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageService.cs">
       <Link>Common\ARMStorageService.cs</Link>
     </Compile>
     <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
@@ -97,34 +97,40 @@
     <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
       <Link>Common\LazyAzureStorageContext.cs</Link>
     </Compile>
-    <Compile Include="Generated\IStorageAccountOperations.cs" />
+    <Compile Include="Generated\IStorageAccountsOperations.cs" />
     <Compile Include="Generated\IStorageManagementClient.cs" />
     <Compile Include="Generated\IUsageOperations.cs" />
+    <Compile Include="Generated\Models\AccessTier.cs" />
     <Compile Include="Generated\Models\AccountStatus.cs" />
-    <Compile Include="Generated\Models\AccountType.cs" />
-    <Compile Include="Generated\Models\CheckNameAvailabilityResponse.cs" />
+    <Compile Include="Generated\Models\CheckNameAvailabilityResult.cs" />
     <Compile Include="Generated\Models\CustomDomain.cs" />
+    <Compile Include="Generated\Models\Encryption.cs" />
+    <Compile Include="Generated\Models\EncryptionService.cs" />
+    <Compile Include="Generated\Models\EncryptionServices.cs" />
     <Compile Include="Generated\Models\Endpoints.cs" />
+    <Compile Include="Generated\Models\KeyPermission.cs" />
+    <Compile Include="Generated\Models\Kind.cs" />
+    <Compile Include="Generated\Models\Page.cs" />
     <Compile Include="Generated\Models\ProvisioningState.cs" />
     <Compile Include="Generated\Models\Reason.cs" />
+    <Compile Include="Generated\Models\Resource.cs" />
+    <Compile Include="Generated\Models\Sku.cs" />
+    <Compile Include="Generated\Models\SkuName.cs" />
+    <Compile Include="Generated\Models\SkuTier.cs" />
     <Compile Include="Generated\Models\StorageAccount.cs" />
+    <Compile Include="Generated\Models\StorageAccountCheckNameAvailabilityParameters.cs" />
     <Compile Include="Generated\Models\StorageAccountCreateParameters.cs" />
-    <Compile Include="Generated\Models\StorageAccountCreateResponse.cs" />
-    <Compile Include="Generated\Models\StorageAccountGetPropertiesResponse.cs" />
-    <Compile Include="Generated\Models\StorageAccountKeys.cs" />
-    <Compile Include="Generated\Models\StorageAccountListKeysResponse.cs" />
-    <Compile Include="Generated\Models\StorageAccountListResponse.cs" />
-    <Compile Include="Generated\Models\StorageAccountRegenerateKeyResponse.cs" />
+    <Compile Include="Generated\Models\StorageAccountKey.cs" />
+    <Compile Include="Generated\Models\StorageAccountListKeysResult.cs" />
+    <Compile Include="Generated\Models\StorageAccountRegenerateKeyParameters.cs" />
     <Compile Include="Generated\Models\StorageAccountUpdateParameters.cs" />
-    <Compile Include="Generated\Models\StorageAccountUpdateResponse.cs" />
     <Compile Include="Generated\Models\Usage.cs" />
-    <Compile Include="Generated\Models\UsageListResponse.cs" />
+    <Compile Include="Generated\Models\UsageListResult.cs" />
     <Compile Include="Generated\Models\UsageName.cs" />
     <Compile Include="Generated\Models\UsageUnit.cs" />
-    <Compile Include="Generated\StorageAccountOperations.cs" />
-    <Compile Include="Generated\StorageAccountOperationsExtensions.cs" />
+    <Compile Include="Generated\StorageAccountsOperations.cs" />
+    <Compile Include="Generated\StorageAccountsOperationsExtensions.cs" />
     <Compile Include="Generated\StorageManagementClient.cs" />
-    <Compile Include="Generated\StorageManagementClientExtensions.cs" />
     <Compile Include="Generated\UsageOperations.cs" />
     <Compile Include="Generated\UsageOperationsExtensions.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
