@@ -87,7 +87,7 @@ Specifies the certificate collection to add to a key vault.
 ```yaml
 Type: X509Certificate2Collection
 Parameter Sets: ImportWithPrivateKeyFromCollection
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 2
