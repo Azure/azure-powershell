@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for user-defined Managed Service Identity
 
 ## Version 4.4.0
 * Fixed issue with importing aliases
