@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
-        public DateTime Expires { get; set; }
+        public DateTime? Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which key can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The UTC time before which the key can't be used. If not specified, there is no limitation.")]
-        public DateTime NotBefore { get; set; }
+        public DateTime? NotBefore { get; set; }
 
         /// <summary>
         /// Key tags

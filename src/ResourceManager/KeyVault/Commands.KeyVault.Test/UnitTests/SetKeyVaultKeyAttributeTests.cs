@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 DataServiceClient = keyVaultClientMock.Object,
                 VaultName = VaultName,
                 Enable = (bool)keyAttributes.Enabled,
-                Expires = keyAttributes.Expires.Value,
-                NotBefore = keyAttributes.NotBefore.Value,
+                Expires = keyAttributes.Expires,
+                NotBefore = keyAttributes.NotBefore,
                 Name = KeyName,
                 PassThru = true
             };

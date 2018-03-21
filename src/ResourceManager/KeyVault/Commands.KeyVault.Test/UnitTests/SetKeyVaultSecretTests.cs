@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         {
             base.SetupTest();
 
-            secretAttributes = new PSKeyVaultSecretAttributes(true, DateTime.UtcNow.AddYears(2), DateTime.UtcNow, "contenttype", null);
+            secretAttributes = new PSKeyVaultSecretAttributes(true, null, null, null, null);
             secureSecretValue = SecretValue.ConvertToSecureString();
             secret = new PSKeyVaultSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = secureSecretValue, Attributes = secretAttributes };
 
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Name = secret.Name,
                 SecretValue = secret.SecretValue,
                 Disable = new SwitchParameter(!(secretAttributes.Enabled.Value)),
-                Expires = secretAttributes.Expires.Value,
-                NotBefore = secretAttributes.NotBefore.Value,
+                Expires = secretAttributes.Expires,
+                NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
                 Tag = secretAttributes.Tags
             };

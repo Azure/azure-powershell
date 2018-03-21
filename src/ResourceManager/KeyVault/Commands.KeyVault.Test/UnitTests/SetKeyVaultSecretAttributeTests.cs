@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 VaultName = secret.VaultName,
                 Name = secret.Name,
                 Version = secret.Version,
-                Enable = secretAttributes.Enabled.Value,
-                Expires = secretAttributes.Expires.Value,
-                NotBefore = secretAttributes.NotBefore.Value,
+                Enable = secretAttributes.Enabled,
+                Expires = secretAttributes.Expires,
+                NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
                 Tag = secretAttributes.Tags
             };
