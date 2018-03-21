@@ -106,7 +106,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    HelpMessage = "Specifies the certificate issuer to set.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVaultCertificateIssuerIdentityItem Issuer { get; set; }
+        [Alias("Issuer")]
+        public PSKeyVaultCertificateIssuerIdentityItem InputObject { get; set; }
 
         #endregion
 
@@ -124,9 +125,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 PSKeyVaultCertificateIssuer issuerToUse;
 
-                if (Issuer != null)
+                if (InputObject != null)
                 {
-                    issuerToUse = (PSKeyVaultCertificateIssuer) Issuer;
+                    issuerToUse = (PSKeyVaultCertificateIssuer) InputObject;
                 }
                 else
                 {

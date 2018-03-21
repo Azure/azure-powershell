@@ -27,7 +27,7 @@ New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String
 ### DNSNames
 ```
 New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
- [-DnsNames] <System.Collections.Generic.List`1[System.String]> [-RenewAtNumberOfDaysBeforeExpiry <Int32>]
+ [-DnsName] <System.Collections.Generic.List`1[System.String]> [-RenewAtNumberOfDaysBeforeExpiry <Int32>]
  [-RenewAtPercentageLifetime <Int32>] [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
  [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
@@ -95,13 +95,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DnsNames
+### -DnsName
 Specifies the DNS names in the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: DNSNames
-Aliases:
+Aliases: DnsNames
 
 Required: True
 Position: 1

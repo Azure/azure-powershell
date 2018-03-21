@@ -60,7 +60,9 @@
     <Compile Include="INestedResourceConfig.cs" />
     <Compile Include="INestedResourceConfigVisitor.cs" />
     <Compile Include="INestedResourceStrategy.cs" />
+    <Compile Include="IResourceId.cs" />
     <Compile Include="Property.cs" />
+    <Compile Include="ResourceId.cs" />
     <Compile Include="ResourceType.cs" />
     <Compile Include="SdkEngine.cs" />
     <Compile Include="IEngine.cs" />
