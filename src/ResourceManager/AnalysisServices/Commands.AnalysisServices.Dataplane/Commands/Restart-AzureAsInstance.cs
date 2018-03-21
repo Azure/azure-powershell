@@ -131,7 +131,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
+#if NETSTANDARD
+                AsAzureClientSession.Instance.Login(context, null, null);
+#else
                 AsAzureClientSession.Instance.Login(context, null);
+#endif
                 string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId);
 
                 Uri restartBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
