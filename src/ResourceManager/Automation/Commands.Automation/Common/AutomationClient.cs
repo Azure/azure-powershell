@@ -30,6 +30,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
@@ -746,7 +747,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Name = variable.Name,
                 Properties = new AutomationManagement.Models.VariableCreateOrUpdateProperties()
                 {
-                    Value = PowerShellJsonConverter.Serialize(variable.Value),
+                    Value = SerializeWithTimeOut(variable.Name, variable.Value),
                     Description = variable.Description,
                     IsEncrypted = variable.Encrypted
                 }
@@ -803,7 +804,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 updateParams.Properties = new AutomationManagement.Models.VariablePatchProperties()
                 {
-                    Value = PowerShellJsonConverter.Serialize(variable.Value)
+                    Value = SerializeWithTimeOut(variable.Name, variable.Value)
                 };
             }
 
@@ -1277,7 +1278,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             if (connectionModel.Properties.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
                 connectionModel.Properties.FieldDefinitionValues[connectionFieldName] =
-                    PowerShellJsonConverter.Serialize(value);
+                    SerializeWithTimeOut(connectionFieldName, value);
             }
             else
             {
@@ -1915,6 +1916,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return (string.Equals(runbookType, RunbookTypeEnum.Graph, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(runbookType, RunbookTypeEnum.GraphPowerShell, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static string SerializeWithTimeOut(string name, object inputObject)
+        {
+            int QueryTimeOut = 30000;
+            string value = null;
+
+            ManualResetEvent wait = new ManualResetEvent(false);
+            Thread work = new Thread(new ThreadStart(() =>
+            {
+                value = PowerShellJsonConverter.Serialize(inputObject);
+                wait.Set();
+            }));
+
+            work.Start();
+            Boolean signal = wait.WaitOne(QueryTimeOut);
+            if (!signal)
+            {
+                work.Abort();
+                throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
+                    Resources.InputValueSerializationTimedOut, name));
+            }
+
+            return value;
         }
 
         #endregion

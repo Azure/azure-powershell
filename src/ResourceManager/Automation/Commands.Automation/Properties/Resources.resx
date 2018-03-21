@@ -201,6 +201,10 @@
     <value>The variable was not found. Variable name {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="InputValueSerializationTimedOut" xml:space="preserve">
+    <value>Input value cannot be serialized to json and the process timedout. Name {0}.</value>
+    <comment>Automation</comment>
+  </data>  
   <data name="RunbookHasNoPublishedVersion" xml:space="preserve">
     <value>The runbook has no published version. Runbook name {0}.</value>
     <comment>Automation</comment>

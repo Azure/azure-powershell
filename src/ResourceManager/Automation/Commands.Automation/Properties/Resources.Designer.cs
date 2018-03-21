@@ -313,6 +313,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input value cannot be serialized to json and the process timedout. Name {0}..
+        /// </summary>
+        internal static string InputValueSerializationTimedOut {
+            get {
+                return ResourceManager.GetString("InputValueSerializationTimedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid configuration parameters..
         /// </summary>
         internal static string InvalidConfigurationParameters {
