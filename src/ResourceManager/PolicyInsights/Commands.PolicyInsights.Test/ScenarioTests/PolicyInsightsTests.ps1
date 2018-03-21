@@ -14,15 +14,181 @@
 
 <#
 .SYNOPSIS
+Get policy events at management group scope
+#>
+function Get-AzureRmPolicyEvent-ManagementGroupScope
+{
+    $policyEvents = Get-AzureRmPolicyEvent -ManagementGroupName "AzGovTest1" -Top 5
+	Validate-PolicyEvents $policyEvents 5
+}
+
+<#
+.SYNOPSIS
 Get policy events at subscription scope
 #>
 function Get-AzureRmPolicyEvent-SubscriptionScope
 {
     $policyEvents = Get-AzureRmPolicyEvent -Top 5
+	Validate-PolicyEvents $policyEvents 5
+}
 
-    Assert-AreEqual 5 $policyEvents.Count
+<#
+.SYNOPSIS
+Get latest policy states at subscription scope
+#>
+function Get-AzureRmPolicyState-LatestSubscriptionScope
+{
+    $policyStates = Get-AzureRmPolicyState -Top 5
+	Validate-PolicyStates $policyStates 5
+}
+
+<#
+.SYNOPSIS
+Get all policy states at subscription scope
+#>
+function Get-AzureRmPolicyState-AllSubscriptionScope
+{
+    $policyStates = Get-AzureRmPolicyState -All -Top 5
+	Validate-PolicyStates $policyStates 5
+}
+
+<#
+.SYNOPSIS
+Get policy states summary at subscription scope
+#>
+function Get-AzureRmPolicyStateSummary-SubscriptionScope
+{
+    $policyStateSummary = Get-AzureRmPolicyStateSummary
+	Validate-PolicyStateSummary $policyStateSummary
+}
+
+<#
+.SYNOPSIS
+Validates a list of policy events
+#>
+function Validate-PolicyEvents
+{
+	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]]]$policyEvents, [int]$count)
+
+    Assert-AreEqual $count $policyEvents.Count
 	Foreach($policyEvent in $policyEvents)
 	{
-		Assert-NotNull $policyEvent
+		Validate-PolicyEvent $policyEvent
 	}
+}
+
+<#
+.SYNOPSIS
+Validates a policy event
+#>
+function Validate-PolicyEvent
+{
+	param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]$policyEvent)
+
+	Assert-NotNull $policyEvent
+
+    Assert-NotNull $policyEvent.Timestamp
+    Assert-NotNullOrEmpty $policyEvent.ResourceId
+    Assert-NotNullOrEmpty $policyEvent.PolicyAssignmentId
+    Assert-NotNullOrEmpty $policyEvent.PolicyDefinitionId
+    Assert-NotNull $policyEvent.IsCompliant
+    Assert-NotNullOrEmpty $policyEvent.SubscriptionId
+    Assert-NotNullOrEmpty $policyEvent.PolicyDefinitionAction
+    Assert-NotNullOrEmpty $policyEvent.TenantId
+    Assert-NotNullOrEmpty $policyEvent.PrincipalOid
+}
+
+<#
+.SYNOPSIS
+Validates a list of policy states
+#>
+function Validate-PolicyStates
+{
+	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
+
+    Assert-AreEqual $count $policyStates.Count
+	Foreach($policyState in $policyStates)
+	{
+		Validate-PolicyState $policyState
+	}
+}
+
+<#
+.SYNOPSIS
+Validates a policy state
+#>
+function Validate-PolicyState
+{
+	param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState)
+
+	Assert-NotNull $policyState
+
+    Assert-NotNull $policyState.Timestamp
+    Assert-NotNullOrEmpty $policyState.ResourceId
+    Assert-NotNullOrEmpty $policyState.PolicyAssignmentId
+    Assert-NotNullOrEmpty $policyState.PolicyDefinitionId
+    Assert-NotNull $policyState.IsCompliant
+    Assert-NotNullOrEmpty $policyState.SubscriptionId
+    Assert-NotNullOrEmpty $policyState.PolicyDefinitionAction
+}
+
+<#
+.SYNOPSIS
+Validates a policy state summary
+#>
+function Validate-PolicyStateSummary
+{
+	param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary]$policyStateSummary)
+
+	Assert-NotNull $policyStateSummary
+
+    Assert-NotNull $policyStateSummary.Results
+    Assert-NotNull $policyStateSummary.Results.NonCompliantResources
+    Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
+
+    Assert-NotNull $policyStateSummary.PolicyAssignments
+    Assert-AreEqual $policyStateSummary.PolicyAssignments.Count $policyStateSummary.Results.NonCompliantPolicies
+
+	Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
+	{
+		Assert-NotNull $policyAssignmentSummary
+
+		Assert-NotNullOrEmpty $policyAssignmentSummary.PolicyAssignmentId
+
+        Assert-NotNull $policyAssignmentSummary.Results
+		Assert-NotNull $policyAssignmentSummary.Results.NonCompliantResources
+		Assert-NotNull $policyAssignmentSummary.Results.NonCompliantPolicies
+
+        Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
+        Assert-AreEqual $policyAssignmentSummary.PolicyDefinitions.Count $policyAssignmentSummary.Results.NonCompliantPolicies
+
+        if ($policyAssignmentSummary.Results.NonCompliantPolicies -gt 1)
+        {
+            Assert-NotNullOrEmpty $policyAssignmentSummary.PolicySetDefinitionId
+        }
+
+		Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
+		{
+			Assert-NotNull $policyDefinitionSummary
+
+            Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
+            Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
+
+			Assert-NotNull $policyDefinitionSummary.Results
+			Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
+			Assert-Null $policyDefinitionSummary.Results.NonCompliantPolicies
+		}
+	}
+}
+
+<#
+.SYNOPSIS
+Validates a string is not null or empty
+#>
+function Assert-NotNullOrEmpty
+{
+	param([string]$value)
+
+    Assert-NotNull $value
+	Assert-AreNotEqual $value ""
 }

@@ -30,11 +30,59 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
+        #region Policy Events - Scopes
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Get_AzureRmPolicyEvent_ManagementGroupScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ManagementGroupScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Get_AzureRmPolicyEvent_SubscriptionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionScope");
         }
+
+        #endregion
+
+        #region Policy States Latest - Scopes
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Get_AzureRmPolicyState_LatestSubscriptionScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestSubscriptionScope");
+        }
+
+        #endregion
+
+        #region Policy States Default - Scopes
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Get_AzureRmPolicyState_AllSubscriptionScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllSubscriptionScope");
+        }
+
+        #endregion
+
+        #region Policy States Latest - Summarize
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Get_AzureRmPolicyStateSummary_SubscriptionScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyStateSummary-SubscriptionScope");
+        }
+
+        #endregion
+
+        #region Query options
+
+        #endregion
     }
 }
