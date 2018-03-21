@@ -24,7 +24,7 @@ Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-Issu
 ### ByValue
 ```
 Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
- -Issuer <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,13 +87,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Issuer
-Specifies the certificate issuer to update.
+### -InputObject
+Specifies the certificate issuer to set.
 
 ```yaml
 Type: PSKeyVaultCertificateIssuerIdentityItem
 Parameter Sets: ByValue
-Aliases:
+Aliases: Issuer
 
 Required: True
 Position: Named

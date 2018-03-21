@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Updated cmdlets to include piping scenarios
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.2.0
 * Fixed example for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 4.1.1
