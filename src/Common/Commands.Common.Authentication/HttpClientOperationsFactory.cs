@@ -132,8 +132,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 bool result = false;
                 value = null;
                 ICacheable cacheValue;
+                ServiceClientTracing.Information(string.Format(Resources.CacheCheck, requestUri));
                 if (_cache != null && _cache.TryGetValue(requestUri, out cacheValue))
                 {
+                    ServiceClientTracing.Information(Resources.CacheHit);
                     if (cacheValue.IsExpired())
                     {
                         _cache.TryRemove(requestUri, out cacheValue);
