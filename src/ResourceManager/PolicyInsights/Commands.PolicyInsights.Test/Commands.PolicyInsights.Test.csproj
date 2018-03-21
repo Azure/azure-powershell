@@ -186,6 +186,24 @@
     <None Include="ScenarioTests\PolicyInsightsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyEvent_ManagementGroupScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyEvent_SubscriptionScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyStateSummary_SubscriptionScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyState_AllSubscriptionScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyState_LatestSubscriptionScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyInsightsTests\Get_AzureRmPolicyState_SubscriptionScope.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
