@@ -82,8 +82,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
-                return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
-            }
+                return new ImageAndOsType(
+                    imageModel.OsDiskImage.OperatingSystem,
+                    image,
+                    imageModel.DataDiskImages.GetLuns());
+            } 
             else if (imageName.Contains("/"))
             {
                 var resourceId = ResourceId.TryParse(imageName);
@@ -99,22 +102,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     throw new ArgumentException(Resources.ComputeMismatchSubscription);
                 }
 
-                var localImage = await compute.Images.GetAsync(
-                    resourceGroupName: resourceId.ResourceGroupName,
-                    imageName: resourceId.Name);
-
-                return new ImageAndOsType(
-                    localImage.StorageProfile.OsDisk.OsType,
-                    new ImageReference { Id = localImage.Id });
+                return await compute.GetImageAndOsTypeAsync(resourceId.ResourceGroupName, resourceId.Name);
             }
             else
             {
                 try
                 {
-                    var localImage = await compute.Images.GetAsync(resourceGroupName, imageName);
-                    return new ImageAndOsType(
-                        localImage.StorageProfile.OsDisk.OsType,
-                        new ImageReference { Id = localImage.Id });
+                    return await compute.GetImageAndOsTypeAsync(resourceGroupName, imageName);
                 }
                 catch
                 {
@@ -130,7 +124,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             osAndMap.Key == "Windows" 
                                 ? OperatingSystemTypes.Windows
                                 : OperatingSystemTypes.Linux,
-                            nameAndImage.Value)))
+                            nameAndImage.Value,
+                            null)))
                     .FirstOrDefault();
 
                 if (result == null)
@@ -140,6 +135,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
                 return result;
             }
+        }
+
+        static async Task<ImageAndOsType> GetImageAndOsTypeAsync(
+            this ComputeManagementClient compute, string resourceGroupName, string name)
+        {
+            var localImage = await compute.Images.GetAsync(resourceGroupName, name);
+            return new ImageAndOsType(
+                localImage.StorageProfile.OsDisk.OsType,
+                new ImageReference { Id = localImage.Id },
+                localImage.StorageProfile.DataDisks.GetLuns());
         }
     }
 }
