@@ -1920,7 +1920,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         private static string SerializeWithTimeOut(string name, object inputObject)
         {
-            int QueryTimeOut = 30000;
+            int queryTimeOut = 15000;
             string value = null;
 
             ManualResetEvent wait = new ManualResetEvent(false);
@@ -1931,13 +1931,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }));
 
             work.Start();
-            Boolean signal = wait.WaitOne(QueryTimeOut);
+            Boolean signal = wait.WaitOne(queryTimeOut);
             if (!signal)
             {
                 work.Abort();
                 wait.Dispose();
                 throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
-                    Resources.InputValueSerializationTimedOut, name));
+                    Resources.InputValueSerializationTimedOut, queryTimeOut/1000, name));
             }
 
             return value;
