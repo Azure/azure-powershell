@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.Storage.StorageManagementClient", "2015-05-01-preview");
+            providersToIgnore.Add("Microsoft.Azure.Management.Storage.StorageManagementClient", "2016-01-01");
 
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
-            StorageClient = GetStorageManagementClient();
+            StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
@@ -164,9 +164,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private StorageManagementClient GetStorageManagementClient()
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+            //return TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<StorageManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
