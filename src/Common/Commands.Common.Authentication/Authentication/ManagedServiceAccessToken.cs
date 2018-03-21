@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 factory = HttpClientOperationsFactory.Create();
             }
 
-            _tokenGetter = factory.GetHttpOperations<ManagedServiceTokenInfo>().WithHeader("Metadata", new[] { "true" });
+            _tokenGetter = factory.GetHttpOperations<ManagedServiceTokenInfo>(true).WithHeader("Metadata", new[] { "true" });
         }
 
         public string AccessToken

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             public Task WaitForRetry()
             {
-                TimeSpan waitTimeSpan = _tries++ > 0 ? _interval : TimeSpan.MinValue;
+                TimeSpan waitTimeSpan = _tries++ > 0 ? _interval : TimeSpan.Zero;
                 return Task.Delay(waitTimeSpan);
             }
         }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             public Task WaitForRetry()
             {
-                TimeSpan waitTimeSpan = _tries++ > 0 ? GetRetryInterval() : TimeSpan.MinValue;
+                TimeSpan waitTimeSpan = _tries++ > 0 ? GetRetryInterval() : TimeSpan.Zero;
                 return Task.Delay(waitTimeSpan);
             }
         }

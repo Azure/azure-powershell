@@ -50,15 +50,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token)
         {
-            HttpResponseMessage response;
+            HttpResponseMessage response = null;
             var retry = _retry();
             do
             {
+                if (response != null)
+                {
+                    response.Dispose();
+                }
                 await retry.WaitForRetry();
-                response = await _client.SendAsync(request, token);
+                var sentRequest = CopyRequest(request);
+                response = await _client.SendAsync(sentRequest, token);
             }
-            while (response.IsSuccessStatusCode || retry.ShouldRetry(response));
+            while (!response.IsSuccessStatusCode && retry.ShouldRetry(response));
             return response;
+        }
+
+        private HttpRequestMessage CopyRequest(HttpRequestMessage request)
+        {
+            var result = new HttpRequestMessage(request.Method, request.RequestUri);
+            foreach(var header in request.Headers)
+            {
+                result.Headers.Add(header.Key, header.Value);
+            }
+
+            result.Content = request.Content;
+            return result;
         }
     }
 }
