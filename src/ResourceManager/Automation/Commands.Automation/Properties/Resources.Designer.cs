@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input value cannot be serialized to json and the process timedout. Name {0}..
+        ///   Looks up a localized string similar to Input value cannot be serialized to json and the operation had timed-out in 30 secs. Name {0}. Please execute &apos;$jsonString=ConvertTo-Json -InputObject $inputObject -Depth 4&apos; and review $jsonString, $jsonString.Length. Either the input is a complex object or length of the object is bigger..
         /// </summary>
         internal static string InputValueSerializationTimedOut {
             get {

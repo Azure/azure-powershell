@@ -1935,6 +1935,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             if (!signal)
             {
                 work.Abort();
+                wait.Dispose();
                 throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
                     Resources.InputValueSerializationTimedOut, name));
             }

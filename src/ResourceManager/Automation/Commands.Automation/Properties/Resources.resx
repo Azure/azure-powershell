@@ -202,7 +202,7 @@
     <comment>Automation</comment>
   </data>
   <data name="InputValueSerializationTimedOut" xml:space="preserve">
-    <value>Input value cannot be serialized to json and the process timedout. Name {0}.</value>
+    <value>Input value cannot be serialized to json and the operation had timed-out in 30 secs. Name {0}. Please execute '$jsonString=ConvertTo-Json -InputObject $inputObject -Depth 4' and review $jsonString, $jsonString.Length. Either the input is a complex object or length of the object is bigger.</value>
     <comment>Automation</comment>
   </data>  
   <data name="RunbookHasNoPublishedVersion" xml:space="preserve">
