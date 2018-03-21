@@ -169,6 +169,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Batch.Netcore", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactories.Netcore", "src\ResourceManager\DataFactories\Commands.DataFactories\Commands.DataFactories.Netcore.csproj", "{3E88F517-0CBD-405F-8B40-364FC8B39036}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.HDInsight.Netcore", "src\ResourceManager\HDInsight\Commands.HDInsight\Commands.HDInsight.Netcore.csproj", "{9ED4D93C-6E07-490A-B658-1B35B5115A88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1163,6 +1165,18 @@ Global
 		{3E88F517-0CBD-405F-8B40-364FC8B39036}.Release|x64.Build.0 = Release|Any CPU
 		{3E88F517-0CBD-405F-8B40-364FC8B39036}.Release|x86.ActiveCfg = Release|Any CPU
 		{3E88F517-0CBD-405F-8B40-364FC8B39036}.Release|x86.Build.0 = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|x64.Build.0 = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Debug|x86.Build.0 = Debug|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|x64.ActiveCfg = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|x64.Build.0 = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|x86.ActiveCfg = Release|Any CPU
+		{9ED4D93C-6E07-490A-B658-1B35B5115A88}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
