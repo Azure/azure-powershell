@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByNameParameterSet = "ByName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -57,6 +59,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// Vault resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByResourceIdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Name.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -73,6 +86,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName.ToString();
+            }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
             }
 
             if (string.IsNullOrEmpty(Name))

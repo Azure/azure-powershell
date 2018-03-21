@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string InteractiveParameterSet = "Interactive";
         private const string InputObjectParameterSet = "ByObject";
+        private const string ResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -62,6 +63,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// VaultResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ResourceIdParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// EmailAddress
         /// </summary>
         [Parameter(Mandatory = true,
@@ -81,6 +93,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
                 VaultName = InputObject.VaultName.ToString();
+            }
+            else if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.AddCertificateContact))

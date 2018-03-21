@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ValueFromPipeline = true,
             ParameterSetName = ByInputObjectParameterSet,
-            HelpMessage = "KeyBundle Object")]
+            HelpMessage = "Key Object")]
         [ValidateNotNullOrEmpty]
         public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 

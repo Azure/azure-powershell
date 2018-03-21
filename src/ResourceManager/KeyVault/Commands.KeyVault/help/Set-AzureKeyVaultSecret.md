@@ -13,7 +13,14 @@ Creates or updates a secret in a key vault.
 
 ## SYNTAX
 
-### Default (Default)
+### DefaultAttribute (Default)
+```
+Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Default
 ```
 Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
@@ -23,6 +30,13 @@ Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <S
 ### InputObject
 ```
 Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectAttribute
+```
+Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -81,7 +95,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,7 +119,22 @@ Indicates that this cmdlet disables a secret.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Default, InputObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Enable
+If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
+
+```yaml
+Type: Boolean
+Parameter Sets: DefaultAttribute, InputObjectAttribute
 Aliases:
 
 Required: False
@@ -128,7 +157,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,7 +166,7 @@ Secret object
 
 ```yaml
 Type: PSKeyVaultSecretIdentityItem
-Parameter Sets: InputObject
+Parameter Sets: InputObject, InputObjectAttribute
 Aliases:
 
 Required: True
@@ -154,13 +183,13 @@ your current environment.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: DefaultAttribute, Default
 Aliases: SecretName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -176,7 +205,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +216,7 @@ ConvertTo-SecureString`.
 
 ```yaml
 Type: SecureString
-Parameter Sets: (All)
+Parameter Sets: Default, InputObject
 Aliases:
 
 Required: True
@@ -210,7 +239,7 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -220,13 +249,28 @@ of a key vault based on the name that this parameter specifies and your current 
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: DefaultAttribute, Default
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
+
+```yaml
+Type: String
+Parameter Sets: DefaultAttribute, InputObjectAttribute
+Aliases: SecretVersion
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

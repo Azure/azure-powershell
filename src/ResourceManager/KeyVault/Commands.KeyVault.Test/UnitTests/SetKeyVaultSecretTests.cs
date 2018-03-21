@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 ContentType = secretAttributes.ContentType,
                 Tag = secretAttributes.Tags
             };
+            cmdlet.MyInvocation.BoundParameters.Add("SecretValue", secret.SecretValue);
         }
 
         [Fact]

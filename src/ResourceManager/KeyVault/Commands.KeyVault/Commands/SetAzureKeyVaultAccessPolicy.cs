@@ -22,6 +22,7 @@ using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissio
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -44,6 +45,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string InputObjectByUserPrincipalName = "InputObjectByUserPrincipalName";
         private const string InputObjectByEmailAddress = "InputObjectByEmailAddress";
         private const string InputObjectForVault = "InputObjectForVault";
+
+        private const string ResourceIdByObjectId = "ResourceIdByObjectId";
+        private const string ResourceIdByServicePrincipalName = "ResourceIdByServicePrincipalName";
+        private const string ResourceIdByUserPrincipalName = "ResourceIdByUserPrincipalName";
+        private const string ResourceIdByEmailAddress = "ResourceIdByEmailAddress";
+        private const string ResourceIdForVault = "ResourceIdForVault";
 
         #endregion
 
@@ -134,6 +141,37 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// Vault ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Key Vault Resource Id")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByServicePrincipalName,
+            HelpMessage = "Key Vault Resource Id")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Key Vault Resource Id")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByEmailAddress,
+            HelpMessage = "Key Vault Resource Id")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdForVault,
+            HelpMessage = "Key Vault Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Service principal name
         /// </summary>
         [Parameter(Mandatory = true,
@@ -141,6 +179,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByServicePrincipalName,
+            HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByServicePrincipalName,
             HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
         [ValidateNotNullOrEmpty()]
         [Alias("SPN")]
@@ -155,6 +196,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByUserPrincipalName,
             HelpMessage = "Specifies the user principal name of the user to whom to grant permissions. This user principal name must exist in the directory associated with the current subscription.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Specifies the user principal name of the user to whom to grant permissions. This user principal name must exist in the directory associated with the current subscription.")]
         [ValidateNotNullOrEmpty()]
         [Alias("UPN")]
         public string UserPrincipalName { get; set; }
@@ -168,6 +212,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByObjectId,
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
 
@@ -180,6 +227,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByEmailAddress,
             HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByEmailAddress,
+            HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
         [ValidateNotNullOrEmpty()]
         public string EmailAddress { get; set; }
 
@@ -191,6 +241,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies the ID of application that a user must use to grant permissions.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByObjectId,
+            HelpMessage = "Specifies the ID of application that a user must use to grant permissions.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
             HelpMessage = "Specifies the ID of application that a user must use to grant permissions.")]
         public Guid? ApplicationId { get; set; }
 
@@ -220,6 +273,18 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByEmailAddress,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByServicePrincipalName,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
         [ValidateSet("decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge")]
         public string[] PermissionsToKeys { get; set; }
@@ -251,6 +316,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByEmailAddress,
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByServicePrincipalName,
+            HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByEmailAddress,
+            HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "set", "delete", "backup", "restore", "recover", "purge")]
         public string[] PermissionsToSecrets { get; set; }
 
@@ -280,6 +357,18 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByEmailAddress,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByServicePrincipalName,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge")]
         public string[] PermissionsToCertificates { get; set; }
@@ -311,6 +400,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByEmailAddress,
             HelpMessage = "Specifies managed storage account and sas definition  operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByServicePrincipalName,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByUserPrincipalName,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByEmailAddress,
+            HelpMessage = "Specifies managed storage account and sas definition  operation permissions to grant to a user or service principal.")]
         [ValidateSet( "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas")]
         public string[] PermissionsToStorage { get; set; }
 
@@ -320,6 +421,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdForVault,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
 
         [Parameter(Mandatory = false,
@@ -328,6 +432,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdForVault,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
         public SwitchParameter EnabledForTemplateDeployment { get; set; }
 
         [Parameter(Mandatory = false,
@@ -335,6 +442,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectForVault,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdForVault,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
@@ -346,6 +456,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether the object ID needs to be validated or not.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByObjectId,
+            HelpMessage = "Specifies whether the object ID needs to be validated or not.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByObjectId,
             HelpMessage = "Specifies whether the object ID needs to be validated or not.")]
         public SwitchParameter BypassObjectIdValidation { get; set; }
 
@@ -362,6 +475,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.SetVaultAccessPolicy))
             {
                 if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&

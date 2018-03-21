@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
 using System.IO;
@@ -44,8 +45,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string InteractiveCreateParameterSet = "InteractiveCreate";
         private const string InputObjectCreateParameterSet = "InputObjectCreate";
+        private const string ResourceIdCreateParameterSet = "ResourceIdCreate";
         private const string InteractiveImportParameterSet = "InteractiveImport";
         private const string InputObjectImportParameterSet = "InputObjectImport";
+        private const string ResourceIdImportParameterSet = "ResourceIdImport";
 
         private const string HsmDestination = "HSM";
         private const string SoftwareDestination = "Software";
@@ -81,6 +84,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public PSKeyVault InputObject { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdCreateParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Vault Resource Id.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdImportParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Vault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <summary>
         /// key name
         /// </summary>
@@ -103,6 +119,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Path to the local file containing the key material to be imported.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdImportParameterSet,
+            HelpMessage = "Path to the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public string KeyFilePath { get; set; }
 
@@ -116,6 +135,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Password of the local file containing the key material to be imported.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdImportParameterSet,
+            HelpMessage = "Password of the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public SecureString KeyFilePassword { get; set; }
 
@@ -128,11 +150,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdCreateParameterSet,
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveImportParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectImportParameterSet,
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdImportParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [ValidateSet(HsmDestination, SoftwareDestination)]
         public string Destination { get; set; }
@@ -177,6 +205,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+            }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
                 PSKeyVaultKey keyBundle;

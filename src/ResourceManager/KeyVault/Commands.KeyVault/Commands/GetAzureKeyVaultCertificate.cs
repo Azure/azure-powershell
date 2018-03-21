@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -37,6 +38,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string InputObjectByVaultNameParameterSet = "ByNameInputObject";
         private const string InputObjectByCertificateNameandVersionParameterSet = "ByCertificateNameAndVersionInputObject";
         private const string InputObjectByCertificateVersionsParameterSet = "ByCertificateAllVersionsInputObject";
+
+        private const string ResourceIdByVaultNameParameterSet = "ByNameResourceId";
+        private const string ResourceIdByCertificateNameandVersionParameterSet = "ByCertificateNameAndVersionResourceId";
+        private const string ResourceIdByCertificateVersionsParameterSet = "ByCertificateAllVersionsResourceId";
 
         #endregion
 
@@ -78,6 +83,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public PSKeyVault InputObject { get; set; }
 
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ResourceIdByVaultNameParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ResourceIdByCertificateNameandVersionParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id.")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ResourceIdByCertificateVersionsParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <summary>
         /// Name
         /// </summary>       
@@ -89,6 +112,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 1,
                    ParameterSetName = InputObjectByVaultNameParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter(Mandatory = false,
+                   Position = 1,
+                   ParameterSetName = ResourceIdByVaultNameParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = ByCertificateNameandVersionParameterSet,
@@ -99,11 +126,19 @@ namespace Microsoft.Azure.Commands.KeyVault
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
+                   ParameterSetName = ResourceIdByCertificateNameandVersionParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter(Mandatory = true,
+                   Position = 1,
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = InputObjectByCertificateVersionsParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter(Mandatory = true,
+                   Position = 1,
+                   ParameterSetName = ResourceIdByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
@@ -120,6 +155,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByCertificateNameandVersionParameterSet,
             Position = 2,
             HelpMessage = "Specifies the version of the certificate in key vault.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByCertificateNameandVersionParameterSet,
+            Position = 2,
+            HelpMessage = "Specifies the version of the certificate in key vault.")]
         [Alias("CertificateVersion")]
         public string Version { get; set; }
 
@@ -128,6 +167,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByCertificateVersionsParameterSet,
+            HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByCertificateVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
@@ -140,6 +182,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
                    ParameterSetName = InputObjectByVaultNameParameterSet,
                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ResourceIdByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
         public SwitchParameter InRemovedState { get; set; }
         #endregion
 
@@ -150,6 +195,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName.ToString();
+            }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
             }
 
             if (!string.IsNullOrEmpty(Version))

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.IO;
 using System.Management.Automation;
 
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -59,6 +61,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// KeyVault ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// The input file in which the backup blob is stored
         /// </summary>
         [Parameter(Mandatory = true,
@@ -75,7 +88,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
             }
-            
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
             {
                 var filePath = ResolvePath(InputFile);
