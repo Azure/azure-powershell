@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -34,6 +35,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string InputObjectRemoveVaultParameterSet = "InputObjectByAvailableVault";
         private const string InputObjectRemoveDeletedVaultParameterSet = "InputObjectByDeletedVault";
+
+        private const string ResourceIdRemoveVaultParameterSet = "ResourceIdByAvailableVault";
+        private const string ResourceIdRemoveDeletedVaultParameterSet = "ResourceIdByDeletedVault";
 
         #endregion
 
@@ -70,6 +74,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// Vault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ResourceIdRemoveVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ResourceIdRemoveDeletedVaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Resource group to which the vault belongs.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -86,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = false,
             Position = 1,
-            ParameterSetName = InputObjectRemoveVaultParameterSet,
+            ParameterSetName = ResourceIdRemoveVaultParameterSet,
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
             Position = 1,
@@ -94,7 +114,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
+            ParameterSetName = ResourceIdRemoveDeletedVaultParameterSet,
             HelpMessage = "The location of the deleted vault.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
@@ -108,6 +128,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Remove the previously deleted vault permanently.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
+            HelpMessage = "Remove the previously deleted vault permanently.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdRemoveDeletedVaultParameterSet,
             HelpMessage = "Remove the previously deleted vault permanently.")]
         public SwitchParameter InRemovedState { get; set; }
 
@@ -133,6 +156,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
                 ResourceGroupName = InputObject.ResourceGroupName;
+                Location = InputObject.Location;
+            }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
             if (InRemovedState)

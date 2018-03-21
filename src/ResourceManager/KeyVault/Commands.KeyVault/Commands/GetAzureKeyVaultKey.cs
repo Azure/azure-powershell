@@ -1,4 +1,4 @@
-﻿ // ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -33,7 +34,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string InputObjectByVaultNameParameterSet = "ByInputObjectVaultName";
         private const string InputObjectByKeyNameParameterSet = "ByInputObjectKeyName";
-        private const string InputObjectByKeyVersionsParameterSet = "ByKInputObjecteyVersions";
+        private const string InputObjectByKeyVersionsParameterSet = "ByInputObjectKeyVersions";
+
+        private const string ResourceIdByVaultNameParameterSet = "ByResourceIdVaultName";
+        private const string ResourceIdByKeyNameParameterSet = "ByResourceIdKeyName";
+        private const string ResourceIdByKeyVersionsParameterSet = "ByResourceIdKeyVersions";
 
         #endregion
 
@@ -80,6 +85,27 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// KeyVault resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByVaultNameParameterSet,
+            HelpMessage = "KeyVault Resource Id.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByKeyNameParameterSet,
+            HelpMessage = "KeyVault Resource Id.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
+            HelpMessage = "KeyVault ResourceId.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Key name.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -88,6 +114,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByVaultNameParameterSet,
+            Position = 1,
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByVaultNameParameterSet,
             Position = 1,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
@@ -99,11 +129,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByKeyNameParameterSet,
+            Position = 1,
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             Position = 1,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByKeyVersionsParameterSet,
+            Position = 1,
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
             Position = 1,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
@@ -121,6 +159,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByKeyNameParameterSet,
             Position = 2,
             HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByKeyNameParameterSet,
+            Position = 2,
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
 
@@ -130,6 +172,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByKeyVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
+            HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
         [Parameter(Mandatory = false,
@@ -137,6 +182,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByVaultNameParameterSet,
+            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdByVaultNameParameterSet,
             HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
@@ -149,6 +197,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName.ToString();
+            }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
             }
 
             if (!string.IsNullOrEmpty(Version))

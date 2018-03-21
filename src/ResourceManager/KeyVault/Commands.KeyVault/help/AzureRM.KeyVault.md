@@ -128,9 +128,6 @@ Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key V
 ### [Set-AzureKeyVaultSecret](Set-AzureKeyVaultSecret.md)
 Creates or updates a secret in a key vault.
 
-### [Set-AzureKeyVaultSecretAttribute](Set-AzureKeyVaultSecretAttribute.md)
-Updates attributes of a secret in a key vault.
-
 ### [Set-AzureRmKeyVaultAccessPolicy](Set-AzureRmKeyVaultAccessPolicy.md)
 Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
 
