@@ -15,17 +15,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 {
     /// <summary>
-    /// Abstract interface for acquiring Http Operations
+    /// Retry algorithm for Http messages
     /// </summary>
-    public interface IHttpOperationsFactory
+    public interface IHttpRetryAlgorithm
     {
-        IHttpOperations<T> GetHttpOperations<T>() where T : class, ICacheable; 
-        IHttpOperations<T> GetHttpOperations<T>(bool useCaching) where T: class, ICacheable;
+        /// <summary>
+        /// Determine if a request should be retried
+        /// </summary>
+        /// <param name="message">The response to the request</param>
+        /// <returns>True if the request should be retried</returns>
+        bool ShouldRetry(HttpResponseMessage message);
+
+        /// <summary>
+        /// Wait for the appropriate retry interval
+        /// </summary>
+        /// <returns>A Task that dealys for the appropriate interval</returns>
+        Task WaitForRetry();
     }
 }
