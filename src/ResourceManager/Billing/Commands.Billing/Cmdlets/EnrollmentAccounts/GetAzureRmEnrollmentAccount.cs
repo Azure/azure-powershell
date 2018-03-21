@@ -20,26 +20,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
+namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(List<PSBillingPeriod>), typeof(PSBillingPeriod))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmEnrollmentAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(List<PSBillingPeriod>), typeof(PSBillingPeriod))]
     public class GetAzureRmEnrollmentAccount : AzureBillingCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name of the enrollment account to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "ObjectId of the enrollment account to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ObjectId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
             {
-                WriteObject(new PSEnrollmentAccount(BillingManagementClient.EnrollmentAccounts.Get(Name)));
+                WriteObject(new PSEnrollmentAccount(BillingManagementClient.EnrollmentAccounts.Get(ObjectId)));
             }
             else
             {
                 try
                 {
-                    WriteObject(BillingManagementClient.BillingPeriods.List().Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
+                    WriteObject(BillingManagementClient.EnrollmentAccounts.List().Value.Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
                 }
                 catch (ErrorResponseException error)
                 {

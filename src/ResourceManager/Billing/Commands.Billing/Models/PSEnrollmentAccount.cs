@@ -12,26 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using ApiEnrollmentAccount = Microsoft.Azure.Management.Billing.Models.EnrollmentAccount;
 
 namespace Microsoft.Azure.Commands.Billing.Models
 {
     public class PSEnrollmentAccount
     {
-        public string Id { get; private set; }
+        public string ObjectId { get; private set; }
 
-        public string Name { get; private set; }
-
-        public string Type { get; private set; }
-
-        public DateTime? BillingPeriodStartDate { get; private set; }
-
-        public DateTime? BillingPeriodEndDate { get; private set; }
-
-        public List<string> InvoiceNames { get; set; }
-
+        public string PrincipalName { get; private set; }
+        
         public PSEnrollmentAccount()
         {
         }
@@ -40,9 +30,8 @@ namespace Microsoft.Azure.Commands.Billing.Models
         {
             if (enrollmentAccount != null)
             {
-                this.Id = enrollmentAccount.Id;
-                this.Type = enrollmentAccount.Type;
-                this.Name = enrollmentAccount.Name;
+                this.ObjectId = enrollmentAccount.Name;
+                this.PrincipalName = enrollmentAccount.PrincipalName;
             }
         }
     }
