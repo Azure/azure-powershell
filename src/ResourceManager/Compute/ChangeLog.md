@@ -18,9 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.
+* `New-AzureRmVM` and `New-AzureRmVMSS` support custom image by name or by id.
 * Log analytic feature
     - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
     - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.4.0
 * `New-AzureRmVMSS` prints connection strings in verbose mode.
 * `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
 * WriteAccelerator feature
