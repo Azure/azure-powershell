@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class SetAzureKeyVaultCertificateAttribute : KeyVaultCmdletBase
     {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -52,7 +50,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = ByNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
@@ -75,12 +72,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             Position = 2,
             ParameterSetName = ByNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Parameter(Mandatory = false,
             Position = 1,
             ParameterSetName = ByInputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Alias("CertificateVersion")]        
         public string Version { get; set; }
@@ -98,7 +93,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Certificate tags
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.")]
         public Hashtable Tag { get; set; }
 

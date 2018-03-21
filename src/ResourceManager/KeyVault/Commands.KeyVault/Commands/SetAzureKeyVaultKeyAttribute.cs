@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Alias("Set-AzureKeyVaultKey")]
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
         SupportsShouldProcess = true, 
-        DefaultParameterSetName = DefaultParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
@@ -78,7 +75,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
@@ -96,7 +92,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a key in UTC time. If not specified, the existing expiration time of the key remains unchanged.")]
         public DateTime? Expires { get; set; }
 
@@ -104,7 +99,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// The UTC time before which key can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which key can't be used. If not specified, the existing NotBefore attribute of the key remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
@@ -112,12 +106,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key operations 
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.")]
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }

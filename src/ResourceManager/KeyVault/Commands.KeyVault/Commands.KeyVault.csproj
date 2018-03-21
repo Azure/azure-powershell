@@ -141,7 +141,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="Commands\BackupAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultKey.cs" />
@@ -152,7 +152,6 @@
     <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultKeyAttribute.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultSecretAttribute.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />

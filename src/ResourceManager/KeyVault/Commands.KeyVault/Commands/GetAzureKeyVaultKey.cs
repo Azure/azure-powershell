@@ -20,8 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultKeyIdentityItem>), typeof(PSKeyVaultKey), typeof(List<PSDeletedKeyVaultKeyIdentityItem>), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -45,17 +44,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByKeyNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
 
@@ -89,32 +85,26 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ByVaultNameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectByVaultNameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyNameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByKeyNameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByKeyVersionsParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
@@ -126,12 +116,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyNameParameterSet,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByKeyNameParameterSet,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }

@@ -21,8 +21,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType( typeof( List<ManagedStorageAccount> ), typeof( ManagedStorageAccount ) )]
     public class GetAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
