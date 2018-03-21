@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrswitchprocessserverjob
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
 
 ## SYNOPSIS
-Switch replication from one Process server to another.
+Switch replication from one Process server to another for load balancing.
 
 ## SYNTAX
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
-ASR fabric corresponding to the Configuration Server.
+Site recovery fabric corresponding to the Configuration Server.
 
 ```yaml
 Type: ASRFabric
@@ -106,7 +106,7 @@ The Process server to switch replication out from.
 ```yaml
 Type: ASRProcessServer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ The Process server to switch replication to.
 ```yaml
 Type: ASRProcessServer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -160,4 +160,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
