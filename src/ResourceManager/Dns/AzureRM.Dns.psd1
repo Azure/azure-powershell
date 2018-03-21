@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.1'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Dns.dll'
@@ -72,10 +72,10 @@ NestedModules = @('.\Microsoft.Azure.Commands.Dns.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig', 
-               'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet', 
-               'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig', 
-               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone', 
+CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig',
+               'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet',
+               'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig',
+               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone',
                'Remove-AzureRmDnsZone', 'Set-AzureRmDnsZone', 'New-AzureRmDnsZone'
 
 # Variables to export from this module
@@ -111,7 +111,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription'
+        ReleaseNotes = '* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -123,7 +124,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

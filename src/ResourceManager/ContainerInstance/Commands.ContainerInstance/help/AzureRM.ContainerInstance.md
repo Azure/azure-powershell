@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.ContainerInstance
 Module Guid: 
 Download Help Link: 
