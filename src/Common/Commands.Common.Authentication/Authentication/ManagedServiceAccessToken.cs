@@ -17,8 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
 
@@ -108,7 +106,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void GetOrRenewAuthentication()
         {
-            if (_expiration - DateTime.UtcNow < TimeSpan.FromMinutes(4))
+            if (_expiration - DateTime.UtcNow < ManagedServiceTokenInfo.TimeoutThreshold)
             {
                 ManagedServiceTokenInfo info = null;
                 while (info == null && RequestUris.Count > 0)

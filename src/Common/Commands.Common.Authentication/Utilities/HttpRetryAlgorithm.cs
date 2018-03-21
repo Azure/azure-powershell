@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             TimeSpan _interval;
             int _maxTries;
             int _tries;
+            Random _random = new Random();
 
 
             public LinearRetryAlgorithm(TimeSpan interval, int maxTries)
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             public Task WaitForRetry()
             {
-                TimeSpan waitTimeSpan = _tries++ > 0 ? _interval : TimeSpan.Zero;
+                TimeSpan waitTimeSpan = _tries++ > 0 ? _interval + TimeSpan.FromMilliseconds(_random.Next(0, 1000)) : TimeSpan.Zero;
                 return Task.Delay(waitTimeSpan);
             }
         }
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             int _multiplier;
             int _maxTries;
             int _tries = 0;
+            Random _random = new Random();
 
             public ExponentialRetryAlgorithm(TimeSpan initialInterval, int multiplier, int maxTries)
             {
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             public TimeSpan GetRetryInterval()
             {
                 var result = _currentInterval;
-                _currentInterval = TimeSpan.FromTicks(_currentInterval.Ticks * _multiplier);
+                _currentInterval = TimeSpan.FromTicks(_currentInterval.Ticks * _multiplier) + TimeSpan.FromMilliseconds(_random.Next(0, 1000));
                 return _currentInterval;
 
             }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public class ManagedServiceTokenInfo : ICacheable
     {
-        
+        public static readonly TimeSpan TimeoutThreshold = TimeSpan.FromMinutes(4);
         [JsonProperty(PropertyName ="access_token")]
         public string AccessToken { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public bool IsExpired()
         {
-            return DateTime.UtcNow - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeSpan.FromMinutes(5));
+            return DateTime.UtcNow - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeoutThreshold);
         }
     }
 }
