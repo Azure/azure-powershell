@@ -917,6 +917,71 @@
                             </Component>
                         </Directory>
                     </Directory>
+                    <Directory Id="dirBC4CA6A2C1A72FE64186836D092036C8" Name="AzureRM.PolicyInsights">
+                        <Component Id="cmp6B535740308EFD1341BC59D4B2EC7916" Guid="*">
+                            <File Id="filAC8E4D9AE27CF3CB21E341A62F08CA27" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\AzureRM.PolicyInsights.psd1" />
+                        </Component>
+                        <Component Id="cmpBBAB66ABDE216B94BCE8A1A199EB2781" Guid="*">
+                            <File Id="fil0A2E223EA5D6E9963F688B0EF5054BCA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Hyak.Common.dll" />
+                        </Component>
+                        <Component Id="cmp2F6EE3B85A33C6768408A9A92EF9B009" Guid="*">
+                            <File Id="fil581677A062A871796A180D1A027F6B9A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.ApplicationInsights.dll" />
+                        </Component>
+                        <Component Id="cmp013BE6869A57238FBB6B436903DB7F5B" Guid="*">
+                            <File Id="fil5E407D7B73E8E7A40B09BC2225D80126" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll" />
+                        </Component>
+                        <Component Id="cmpA03FB2701B2A4368E1EE240AB2CE02AA" Guid="*">
+                            <File Id="fil79F3343223B964267B70445CE74DD5B1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Commands.PolicyInsights.dll" />
+                        </Component>
+                        <Component Id="cmp58B0270BD3D8D48FF5B129B0ADAE9008" Guid="*">
+                            <File Id="fil6B0108F461849737A5EC1EED183FD82B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Commands.PolicyInsights.format.ps1xml" />
+                        </Component>
+                        <Component Id="cmp4C08DFD0E7B7CA34A1AC5BAC3821520F" Guid="*">
+                            <File Id="filA609EEC9D955C8141ACE97EEF3A75EA2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
+                        </Component>
+                        <Component Id="cmp48498A4F7800BB581F2685FE416F5A46" Guid="*">
+                            <File Id="filEEE42FF1FCFB8A3A8C7ACB222A71F086" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Common.dll" />
+                        </Component>
+                        <Component Id="cmpB805805C31B10188066EB3E0A91FDC44" Guid="*">
+                            <File Id="filEDC9E97682D083B1DA8D0FFDA37AB687" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Common.NetFramework.dll" />
+                        </Component>
+                        <Component Id="cmp39896B2CF2DECF8E80923EABCC5F6CA1" Guid="*">
+                            <File Id="filF600A55DBB9CC389175974B0DE221ACB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.KeyVault.Core.dll" />
+                        </Component>
+                        <Component Id="cmpC13BFEF4990A96E53DE79ACAA401B451" Guid="*">
+                            <File Id="filBB632277D70A9E8D6F0D5A0280715D22" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Azure.Management.PolicyInsights.dll" />
+                        </Component>
+                        <Component Id="cmpA690661FF7ED769BE1E920335CEE295F" Guid="*">
+                            <File Id="fil6BC1DCF5017237D30EE7677CB4C99FEB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Rest.ClientRuntime.Azure.dll" />
+                        </Component>
+                        <Component Id="cmp20BA39D2DD1075C8810B28AD53310A0B" Guid="*">
+                            <File Id="fil2FDF921E57B534B971E571E4CC96F97E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmpE32587C1833803D60E563DF3CD93B55A" Guid="*">
+                            <File Id="fil978C8B758AE51F819FD7C71BDD5C0FCD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp7616631E775622B32F25C0639B247082" Guid="*">
+                            <File Id="fil41D160F5408315ECEDE74F1D8FBD8C53" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp2EA0FEA8E4959B772E7D5E671EA8F98A" Guid="*">
+                            <File Id="fil27A8229AAA4B4B4C447840D88E1F23E9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmp68DC5DFAEFFCD3135CA9FB1588C48520" Guid="*">
+                            <File Id="fil2FBB023D15206D8E9860D13B50C8A055" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.WindowsAzure.Commands.Common.dll" />
+                        </Component>
+                        <Component Id="cmp859A24637D6E741EAE010A9B5311902E" Guid="*">
+                            <File Id="filE18340C2B36258C41595E6F029B56B9B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Microsoft.WindowsAzure.Management.dll" />
+                        </Component>
+                        <Component Id="cmp721BE5EE0D11880B8F20E72FC7FB3D3C" Guid="*">
+                            <File Id="filF4D8223B766E34827BB3F44EC7FE408B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\Newtonsoft.Json.dll" />
+                        </Component>
+                        <Component Id="cmp2FD4B763B98B531B5CDA6D77DB1D7871" Guid="*">
+                            <File Id="filBED249DF59ADA7758B557B70178575B2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\System.Net.Http.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmp984EFB599AB08D22B5D97B3FAE1ECFAF" Guid="*">
+                            <File Id="filC0E02CAE71843301D4045FC89A32924D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PolicyInsights\System.Net.Http.Primitives.dll" />
+                        </Component>
+                    </Directory>
                     <Directory Id="dirC613916180ACDDF6B9274AA9594F6560" Name="AzureRM.PowerBIEmbedded">
                         <Component Id="cmp07ACD4A07ADD8A358045C237522DA4C4" Guid="*">
                             <File Id="fil1326C81C058BA9B188CE068472C2DF60" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\AzureRM.PowerBIEmbedded.psd1" />
@@ -3432,6 +3497,27 @@
             <ComponentRef Id="cmpFCA52566084FFD038E15FCF00D5071BB" />
             <ComponentRef Id="cmp7AC9390DE20E61AF8CFAF02286919EA1" />
             <ComponentRef Id="cmpD9B5738661C38281559B293A829E8996" />
+            <ComponentRef Id="cmp6B535740308EFD1341BC59D4B2EC7916" />
+            <ComponentRef Id="cmpBBAB66ABDE216B94BCE8A1A199EB2781" />
+            <ComponentRef Id="cmp2F6EE3B85A33C6768408A9A92EF9B009" />
+            <ComponentRef Id="cmp013BE6869A57238FBB6B436903DB7F5B" />
+            <ComponentRef Id="cmpA03FB2701B2A4368E1EE240AB2CE02AA" />
+            <ComponentRef Id="cmp58B0270BD3D8D48FF5B129B0ADAE9008" />
+            <ComponentRef Id="cmp4C08DFD0E7B7CA34A1AC5BAC3821520F" />
+            <ComponentRef Id="cmp48498A4F7800BB581F2685FE416F5A46" />
+            <ComponentRef Id="cmpB805805C31B10188066EB3E0A91FDC44" />
+            <ComponentRef Id="cmp39896B2CF2DECF8E80923EABCC5F6CA1" />
+            <ComponentRef Id="cmpC13BFEF4990A96E53DE79ACAA401B451" />
+            <ComponentRef Id="cmpA690661FF7ED769BE1E920335CEE295F" />
+            <ComponentRef Id="cmp20BA39D2DD1075C8810B28AD53310A0B" />
+            <ComponentRef Id="cmpE32587C1833803D60E563DF3CD93B55A" />
+            <ComponentRef Id="cmp7616631E775622B32F25C0639B247082" />
+            <ComponentRef Id="cmp2EA0FEA8E4959B772E7D5E671EA8F98A" />
+            <ComponentRef Id="cmp68DC5DFAEFFCD3135CA9FB1588C48520" />
+            <ComponentRef Id="cmp859A24637D6E741EAE010A9B5311902E" />
+            <ComponentRef Id="cmp721BE5EE0D11880B8F20E72FC7FB3D3C" />
+            <ComponentRef Id="cmp2FD4B763B98B531B5CDA6D77DB1D7871" />
+            <ComponentRef Id="cmp984EFB599AB08D22B5D97B3FAE1ECFAF" />
             <ComponentRef Id="cmp07ACD4A07ADD8A358045C237522DA4C4" />
             <ComponentRef Id="cmpFDAC8616C4E824FA6880ECA8F8FF5128" />
             <ComponentRef Id="cmp0F1E11B5C6A0C1527BB960FDCC4F4F34" />
