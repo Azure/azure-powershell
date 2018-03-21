@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.2.0
 * Fixed example for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 4.1.1

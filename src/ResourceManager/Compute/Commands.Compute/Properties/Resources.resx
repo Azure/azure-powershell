@@ -583,4 +583,15 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Use '{0}' to connect to the VMSS instances.</value>
     <comment>{0} = connection string</comment>
   </data>
+  <data name="ComputeInvalidImageName" xml:space="preserve">
+    <value>Invalid image resource id '{0}'.</value>
+    <comment>{0} = image resource id</comment>
+  </data>
+  <data name="ComputeMismatchSubscription" xml:space="preserve">
+    <value>The image subscription doesn't match the current subscription.</value>
+  </data>
+  <data name="ComputeNoImageFound" xml:space="preserve">
+    <value>Can't find the image '{0}'.</value>
+    <comment>{0} = image name</comment>
+  </data>
 </root>
