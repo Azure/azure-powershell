@@ -145,7 +145,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Enable MSI authentication in unsupported scenarios'
+        ReleaseNotes = '* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity'
 
         # Prerelease string of this module
         # Prerelease = ''
