@@ -6,6 +6,7 @@
 
 #### AzureRM.Profile
 * Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
 
 #### AzureRM.AnalysisServices
 * Fixed issue with cleaning up scripts in build
@@ -39,6 +40,13 @@
 
 #### AzureRM.Network
 * Updating model types for compatibility with DNS cmdlets.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Changes for ASR Azure to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure,VMware to Azure)
+    - New-AzureRmRecoveryServicesAsrProtectionContainer
+    - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
+    - Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    - Update-AzureRmRecoveryServicesAsrProtectionDirection
 
 #### AzureRM.Storage
 * Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
