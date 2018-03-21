@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public string ElasticPoolName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the resource group
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the state
         /// </summary>
         public string State { get; set; }

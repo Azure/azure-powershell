@@ -174,6 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                        select new {
                            elasticPoolName = activity.ElasticPoolName,
                            endTime = activity.EndTime,
+                           rgName = resourceGroupName,
                            errorCode = activity.ErrorCode,
                            errorMessage = activity.ErrorMessage,
                            errorSeverity = activity.ErrorSeverity,
@@ -198,6 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 return new AzureSqlElasticPoolActivityModel()
                 {
                     ElasticPoolName = r.elasticPoolName,
+                    ResourceGroupName = r.rgName,
                     EndTime = r.endTime,
                     ErrorCode = r.errorCode,
                     ErrorMessage = r.errorMessage,
