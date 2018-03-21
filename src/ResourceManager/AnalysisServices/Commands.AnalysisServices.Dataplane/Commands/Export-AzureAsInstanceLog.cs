@@ -140,7 +140,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (ShouldProcess(Instance, Resources.ExportingLogFromAnalysisServicesServer))
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
+#if NETSTANDARD
+                AsAzureClientSession.Instance.Login(context, null, null);
+#else
                 AsAzureClientSession.Instance.Login(context, null);
+#endif
                 string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(
                     AsAzureClientSession.TokenCache, context.Account.UniqueId);
 
