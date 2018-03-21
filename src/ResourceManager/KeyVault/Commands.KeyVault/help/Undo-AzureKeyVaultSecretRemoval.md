@@ -20,7 +20,7 @@ Undo-AzureKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String>
 
 ### InputObject
 ```
-Undo-AzureKeyVaultSecretRemoval [-VaultName] <String> [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
+Undo-AzureKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,13 +92,13 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
