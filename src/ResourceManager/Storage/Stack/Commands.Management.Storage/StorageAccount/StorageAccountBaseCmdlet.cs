@@ -150,34 +150,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return accountEncryption;
         }
 
-        public static StorageCredentials GenerateStorageCredentials(IStorageManagementClient storageClient, string resourceGroupName, string accountName)
-        {
-            var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
-            return new StorageCredentials(accountName, storageKeysResponse.Keys[0].Value);
-        }
-
-        protected static CloudStorageAccount GenerateCloudStorageAccount(IStorageManagementClient storageClient, string resourceGroupName, string accountName)
-        {
-
-            var storageServiceResponse = storageClient.StorageAccounts.GetPropertiesWithHttpMessagesAsync(resourceGroupName, accountName).Result;
-            Uri blobEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Blob);
-            Uri queueEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Queue);
-            Uri tableEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.Table);
-            Uri fileEndpoint = GetUri(storageServiceResponse.Body.PrimaryEndpoints.File);
-
-            return new CloudStorageAccount(
-                GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
-                blobEndpoint,
-                queueEndpoint,
-                tableEndpoint,
-                fileEndpoint);
-        }
-
-        public static Uri GetUri(string uriString)
-        {
-            return uriString == null ? null : new Uri(uriString);
-        }
-
         protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));

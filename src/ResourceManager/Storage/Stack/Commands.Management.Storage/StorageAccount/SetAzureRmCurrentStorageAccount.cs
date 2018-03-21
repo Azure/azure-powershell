@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
+                //account = StorageUtilities.GenerateCloudStorageAccount(new ARMStorageProvider(StorageClient), ResourceGroupName, Name);
                 account = (new ARMStorageProvider(StorageClient)).GetCloudStorageAccount(Name, ResourceGroupName);
             }
 

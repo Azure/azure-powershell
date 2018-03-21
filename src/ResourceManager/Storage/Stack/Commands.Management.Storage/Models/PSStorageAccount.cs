@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Storage;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
@@ -88,10 +89,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             var result = new PSStorageAccount(storageAccount);
              result.Context = new LazyAzureStorageContext((s) => 
              {
-                 var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
-                 return new CloudStorageAccount(credentials,
-                     new Uri(storageAccount.PrimaryEndpoints.Blob), new Uri(storageAccount.PrimaryEndpoints.Queue), new Uri(storageAccount.PrimaryEndpoints.Table), null);
-                 //return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
+                 //var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+                 //var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, result.StorageAccountName);
+
+                 //return new CloudStorageAccount(credentials,
+                 //    new Uri(storageAccount.PrimaryEndpoints.Blob), new Uri(storageAccount.PrimaryEndpoints.Queue), new Uri(storageAccount.PrimaryEndpoints.Table), null);
+
+
+                 return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
              }, result.StorageAccountName) as AzureStorageContext; 
 
             return result;
