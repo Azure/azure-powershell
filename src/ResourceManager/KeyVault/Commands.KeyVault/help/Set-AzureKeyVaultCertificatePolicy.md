@@ -17,7 +17,7 @@ Creates or updates the policy for a certificate in a key vault.
 ```
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
  [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
- [-DnsNames <System.Collections.Generic.List`1[System.String]>]
+ [-DnsName <System.Collections.Generic.List`1[System.String]>]
  [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
@@ -37,7 +37,7 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 ```
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
  -RenewAtNumberOfDaysBeforeExpiry <Int32> [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>]
- [-Disabled] [-SubjectName <String>] [-DnsNames <System.Collections.Generic.List`1[System.String]>]
+ [-Disabled] [-SubjectName <String>] [-DnsName <System.Collections.Generic.List`1[System.String]>]
  [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
@@ -104,13 +104,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DnsNames
-Specifies the DNS names in the certificate.
+### -DnsName
+Specifies the subject name of the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: DnsNames
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Aliases: CertificatePolicy
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
