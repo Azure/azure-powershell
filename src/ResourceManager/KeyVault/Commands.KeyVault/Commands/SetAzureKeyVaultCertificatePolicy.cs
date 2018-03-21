@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByValueParameterSet,
             HelpMessage = "Specifies the certificate policy.")]
         [ValidateNotNull]
