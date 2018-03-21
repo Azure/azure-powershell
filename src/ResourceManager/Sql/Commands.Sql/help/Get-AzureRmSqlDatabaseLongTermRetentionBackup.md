@@ -200,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Database object to get backups for.
+The database object to get backups for.
 
 ```yaml
 Type: AzureSqlDatabaseModel
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocationName
-The location the backups are in.
+The location of the backups' source server.
 
 ```yaml
 Type: String
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Database Resource ID to get backups for.
+The database Resource ID to get backups for.
 
 ```yaml
 Type: String
@@ -307,12 +307,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-System.Management.Automation.SwitchParameter
 Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## OUTPUTS

@@ -221,12 +221,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database object to get backups for.")]
+            HelpMessage = "The database object to get backups for.")]
         [Parameter(ParameterSetName = GetBackupsByInputObjectSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database object to get backups for.")]
+            HelpMessage = "The database object to get backups for.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseModel InputObject { get; set; }
 
@@ -237,12 +237,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Resource ID to get backups for.")]
+            HelpMessage = "The database Resource ID to get backups for.")]
         [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Resource ID to get backups for.")]
+            HelpMessage = "The database Resource ID to get backups for.")]
         public string ResourceId { get; set; }
 
         /// <summary>

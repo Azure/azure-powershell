@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
-            if (model.CreateMode.Equals("RestoreLongTermRetentionBackup") && CultureInfo.CurrentCulture.CompareInfo.IndexOf(resourceId, "/providers/Microsoft.Sql", CompareOptions.IgnoreCase) >= 0)
+            if (model.CreateMode.Equals("RestoreLongTermRetentionBackup", StringComparison.OrdinalIgnoreCase) && CultureInfo.CurrentCulture.CompareInfo.IndexOf(resourceId, "/providers/Microsoft.Sql", CompareOptions.IgnoreCase) >= 0)
             {
                 // LongTermRetentionV2 Restore
                 //

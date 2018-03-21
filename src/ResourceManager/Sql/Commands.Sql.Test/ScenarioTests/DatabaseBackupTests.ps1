@@ -210,14 +210,14 @@ function Test-LongTermRetentionV2
 	# Set-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
-	$resourceGroup = ""
-	$locationName = ""
-	$serverName = ""
-	$databaseName = ""
+	$resourceGroup = "Default-SQL-WestCentralUS"
+	$locationName = "westcentralus"
+	$serverName = "trgrie-ltr-server"
+	$databaseName = "testdb2"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
-	$restoredDatabase = ""
-	$databaseWithRemovableBackup = "";
+	$restoredDatabase = "testdb3"
+	$databaseWithRemovableBackup = "testdb";
 
 	# Basic Get Tests
 	$backups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName
