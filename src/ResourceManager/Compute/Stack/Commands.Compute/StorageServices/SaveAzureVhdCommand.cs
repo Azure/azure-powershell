@@ -122,15 +122,15 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (storagekey == null)
             {
-                var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
 
                 var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
                 if (storageService != null)
                 {
-                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.StorageAccount.Name);
-                    storagekey = storageKeys.StorageAccountKeys.Key1;
+                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.Name);
+                    storagekey = !string.IsNullOrEmpty(storageKeys.Keys[0].Value) ? storageKeys.Keys[0].Value : storageKeys.Keys[1].Value;
                 }
             }
 

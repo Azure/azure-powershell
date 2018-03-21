@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             var virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext.Subscription);
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             var virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                 vmConfig.ResourceGroupName,
                 vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext.Subscription);
 

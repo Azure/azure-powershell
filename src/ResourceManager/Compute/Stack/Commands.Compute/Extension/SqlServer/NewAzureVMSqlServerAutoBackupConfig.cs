@@ -20,8 +20,10 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.Azure.Management.Storage;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = StorageUriParamSetName),
     OutputType(
         typeof(AutoBackupSettings))]
-    public class NewAzureVMSqlServerAutoBackupConfigCommand : PSCmdlet
+    public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
         protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
 
@@ -162,7 +164,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = new StorageManagementClient();
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
+                       AzureEnvironment.Endpoint.ResourceManager);
+
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
 
@@ -170,11 +174,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var keys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageName);
 
-                    if (keys != null && keys.StorageAccountKeys != null)
+                    if (keys != null && keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ? 
-                            keys.StorageAccountKeys.Key1 : 
-                            keys.StorageAccountKeys.Key2;
+                        storageKey = !string.IsNullOrEmpty(keys.Keys[0].Value) ? keys.Keys[0].Value : keys.Keys[1].Value;
                     }
                 }
             }
