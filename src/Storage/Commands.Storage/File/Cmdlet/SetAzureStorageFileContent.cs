@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             // if FIPS policy is enabled, must use native MD5
-            if (FIPSEnabled)
+            if (fipsEnabled)
             {
                 CloudStorageAccount.UseV1MD5 = false;
             }
