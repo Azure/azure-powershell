@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()
