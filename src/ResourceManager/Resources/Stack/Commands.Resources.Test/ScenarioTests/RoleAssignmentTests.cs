@@ -101,14 +101,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaById()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RaById");
-        }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScope()
@@ -122,33 +115,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaDelegation()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RaDelegation");
-        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaGetByScope()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RaGetByScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaGetByUPNWithExpandPrincipalGroups()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
