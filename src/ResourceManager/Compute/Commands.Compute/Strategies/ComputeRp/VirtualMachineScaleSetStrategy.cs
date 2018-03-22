@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             ImageAndOsType imageAndOsType,
@@ -48,18 +47,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             UpgradeMode? upgradeMode,
-            IEnumerable<int> dataDisks)
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: engine => new VirtualMachineScaleSet()
                 {
-                    Zones = frontendIpConfigurations
-                        ?.Select(f => f.CreateModel(engine))
-                        ?.Where(z => z?.Zones != null)
-                        .SelectMany(z => z.Zones)
-                        .Where(z => z != null)
-                        .ToList(),
+                    Zones = zones,
 
                     UpgradePolicy = new UpgradePolicy
                     {
