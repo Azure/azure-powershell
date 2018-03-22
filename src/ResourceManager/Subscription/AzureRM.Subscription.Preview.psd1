@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Subscription.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmSubscriptionDefinition', 'New-AzureRmSubscriptionDefinition'
+CmdletsToExport = 'New-AzureRmSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ARM','Subscription','SubscriptionDefinition'
+        Tags = 'Azure','ARM','Subscription'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

@@ -2,25 +2,19 @@
 <Configuration>
   <ViewDefinitions>
 	<View>
-      <Name>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition</Name>
+      <Name>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionCreationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionCreationResult</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SubscriptionName</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>SubscriptionId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>SubscriptionDisplayName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>OfferType</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

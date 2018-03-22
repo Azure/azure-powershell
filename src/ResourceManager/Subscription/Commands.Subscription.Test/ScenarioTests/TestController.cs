@@ -26,7 +26,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SubscriptionDefinitionClient = Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
@@ -46,9 +45,7 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
         public GalleryClient GalleryClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public SubscriptionDefinitionClient SubscriptionDefinitionClient { get; private set; }
-
+        
         public static TestController NewInstance
         {
             get
@@ -68,14 +65,12 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            SubscriptionDefinitionClient = GetSubscriptionDefinitionManagementClient(context);
-
+            
             _helper.SetupManagementClients(
                 ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                AuthorizationManagementClient,
-                SubscriptionDefinitionClient);
+                AuthorizationManagementClient);
         }
 
         public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -174,11 +169,6 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
-        }
-
-        private SubscriptionDefinitionClient GetSubscriptionDefinitionManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SubscriptionDefinitionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

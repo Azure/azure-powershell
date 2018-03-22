@@ -50,17 +50,19 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\NewAzureRmSubscriptionDefinition.cs" />
-    <Compile Include="Cmdlets\GetAzureRmSubscriptionDefinition.cs" />
-    <Compile Include="Common\AzureSubscriptionDefinitionCmdletBase.cs" />
+    <Compile Include="Cmdlets\NewAzureRmSubscription.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Models\PSSubscriptionDefinition.cs" />
+    <Compile Include="Models\PSSubscriptionCreationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4AEF-B5BD-DB9186B8184B}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
+      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
+      <Name>Commands.Common.Graph.RBAC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
