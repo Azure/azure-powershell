@@ -88,6 +88,6 @@ Get policy events at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName cheggpolicy -PolicyAssignmentName d620f2d1462b4426a6b499fc -From "2018-03-20 00:00:00Z" -To "2018-03-22 00:00:00Z" -Top 1
+    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName cheggpolicy -PolicyAssignmentName d620f2d1462b4426a6b499fc -Top 1
 	Validate-PolicyEvents $policyEvents 1
 }
