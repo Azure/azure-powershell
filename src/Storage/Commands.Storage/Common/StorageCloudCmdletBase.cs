@@ -626,28 +626,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// true if FIPS policy is enabled on the current machine
         /// </summary>
-        protected static bool FIPSEnabled
-        {
-            get
-            {
-                if (fIPSEnabled.HasValue)
-                {
-                    return fIPSEnabled.Value;
-                }
+        public static bool fipsEnabled { get; } = IsFIPSEnabled();
 
-                try
-                {
-                    System.Security.Cryptography.MD5.Create();
-                }
-                catch (System.Reflection.TargetInvocationException)
-                {
-                    fIPSEnabled = true;
-                    return true;
-                }
-                fIPSEnabled = false;
+        internal static bool IsFIPSEnabled()
+        {
+            try
+            {
+                System.Security.Cryptography.MD5.Create();
                 return false;
             }
+            catch (System.Reflection.TargetInvocationException)
+            {
+                return true;
+            }
         }
-        private static bool? fIPSEnabled = null;
     }
 }
