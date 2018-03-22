@@ -23,6 +23,8 @@
     - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
 * `New-AzureRmVMSS` prints connection strings in verbose mode.
 * `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
+* `Get-AzureRmVmssDiskEncryptionStatus` reports encryption state of scale set using disk metadata
+* `Get-AzureRmVmssVmDiskEncryptionStatus` reports encryption state of all disks in instance using disk metadata
 * WriteAccelerator feature
     - Added WriteAccelerator switch parameter to the following cmdlets:
           Set-AzureRmVMOSDisk
