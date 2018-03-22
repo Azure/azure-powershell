@@ -146,10 +146,6 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowDelegation { get; set; }
-
         public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
@@ -171,7 +167,6 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString(),
                 },
-                //CanDelegate = AllowDelegation.IsPresent ? true : false,
             };
 
             AuthorizationClient.ValidateScope(parameters.Scope, false);
