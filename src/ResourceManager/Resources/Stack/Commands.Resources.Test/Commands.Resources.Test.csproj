@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}</ProjectGuid>
+    <ProjectGuid>{80E89BCC-0EB1-4BB6-8309-9ED4AA12849E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Resources.Test</RootNamespace>

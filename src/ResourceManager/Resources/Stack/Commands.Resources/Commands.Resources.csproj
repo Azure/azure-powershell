@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1F5201D-6067-430E-B303-4E367652991B}</ProjectGuid>
+    <ProjectGuid>{5C4D1066-26E5-41E3-8590-273D3E5D0F9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Resources</RootNamespace>
@@ -163,7 +163,7 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
       <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
       <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
