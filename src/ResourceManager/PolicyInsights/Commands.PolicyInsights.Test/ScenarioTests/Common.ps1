@@ -14,56 +14,6 @@
 
 <#
 .SYNOPSIS
-Get policy events at management group scope
-#>
-function Get-AzureRmPolicyEvent-ManagementGroupScope
-{
-    $policyEvents = Get-AzureRmPolicyEvent -ManagementGroupName "AzGovTest1" -Top 5
-	Validate-PolicyEvents $policyEvents 5
-}
-
-<#
-.SYNOPSIS
-Get policy events at subscription scope
-#>
-function Get-AzureRmPolicyEvent-SubscriptionScope
-{
-    $policyEvents = Get-AzureRmPolicyEvent -Top 5
-	Validate-PolicyEvents $policyEvents 5
-}
-
-<#
-.SYNOPSIS
-Get latest policy states at subscription scope
-#>
-function Get-AzureRmPolicyState-LatestSubscriptionScope
-{
-    $policyStates = Get-AzureRmPolicyState -Top 5
-	Validate-PolicyStates $policyStates 5
-}
-
-<#
-.SYNOPSIS
-Get all policy states at subscription scope
-#>
-function Get-AzureRmPolicyState-AllSubscriptionScope
-{
-    $policyStates = Get-AzureRmPolicyState -All -Top 5
-	Validate-PolicyStates $policyStates 5
-}
-
-<#
-.SYNOPSIS
-Get policy states summary at subscription scope
-#>
-function Get-AzureRmPolicyStateSummary-SubscriptionScope
-{
-    $policyStateSummary = Get-AzureRmPolicyStateSummary
-	Validate-PolicyStateSummary $policyStateSummary
-}
-
-<#
-.SYNOPSIS
 Validates a list of policy events
 #>
 function Validate-PolicyEvents
