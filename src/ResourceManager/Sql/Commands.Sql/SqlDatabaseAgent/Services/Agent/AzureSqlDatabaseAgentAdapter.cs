@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Model;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
 {
@@ -40,10 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
             Communicator = new AzureSqlDatabaseAgentCommunicator(Context);
         }
 
-        #region Agent APIs
-
         /// <summary>
-        /// Upserts an Azure SQL Database Agent to a server
+        /// PUT: Upserts an Azure SQL Database Agent
         /// </summary>
         /// <param name="model"></param>
         /// <returns>The upserted Azure SQL Database Agent</returns>
@@ -63,13 +62,24 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
                 DatabaseId = databaseId
             };
 
-            if (model.WorkerCount.HasValue)
-            {
-                var skuName = "Agent_" + model.WorkerCount.ToString();
-                param.Sku.Name = skuName;
-            }
-
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.AgentName, param);
+
+            return CreateAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        /// <summary>
+        /// PATCH: Updates an Azure SQL Database Agent (Mainly used for updating tags)
+        /// </summary>
+        /// <param name="model">The existing agent entity</param>
+        /// <returns>The updated agent entity</returns>
+        public AzureSqlDatabaseAgentModel UpdateSqlDatabaseAgent(AzureSqlDatabaseAgentModel model)
+        {
+            var param = new Management.Sql.Models.JobAgentUpdate
+            {
+                Tags = model.Tags
+            };
+
+            var resp = Communicator.Update(model.ResourceGroupName, model.ServerName, model.AgentName, param);
 
             return CreateAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -93,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agents are in</param>
         /// <returns>The converted agent model(s)</returns>
-        public List<AzureSqlDatabaseAgentModel> GetSqlDatabaseAgent(string resourceGroupName, string serverName)
+        public IEnumerable<AzureSqlDatabaseAgentModel> GetSqlDatabaseAgent(string resourceGroupName, string serverName)
         {
             var resp = Communicator.List(resourceGroupName, serverName);
             return resp.Select(agent => CreateAgentModelFromResponse(resourceGroupName, serverName, agent)).ToList();
@@ -110,10 +120,6 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
             Communicator.Remove(resourceGroupName, serverName, agentName);
         }
 
-        #endregion
-
-        #region Agent Helpers
-
         /// <summary>
         /// Convert a Management.Sql.Models.JobAgent to AzureSqlDatabaseAgentModel
         /// </summary>
@@ -127,9 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
             // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
             int lastSlashIndex = resp.DatabaseId.LastIndexOf('/');
             string databaseName = resp.DatabaseId.Substring(lastSlashIndex + 1);
-
-            // TODO: Change this when sku capacity updates in API are updated in production.
-            int workerCount = int.Parse(resp.Sku.Name.Substring(6));
+            int? workerCount = resp.Sku.Capacity;
 
             AzureSqlDatabaseAgentModel agent = new AzureSqlDatabaseAgentModel
             {
@@ -138,14 +142,17 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
                 AgentName = resp.Name,
                 Location = resp.Location,
                 DatabaseName = databaseName,
-                WorkerCount = workerCount // This should be resp.Sku.Capacity.Value
+                WorkerCount = workerCount,
+                ResourceId = resp.Id,
+                Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
+                DatabaseId = resp.DatabaseId
             };
 
             return agent;
         }
 
         /// <summary>
-        /// Gets the Location of the server. Throws an exception if the server does not support job accounts.
+        /// Gets the Location of the server. Throws an exception if the server does not support Azure SQL Database Agents.
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
@@ -160,7 +167,5 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
             var server = serverCommunicator.Get(resourceGroupName, serverName);
             return server.Location;
         }
-
-        #endregion
     }
 }

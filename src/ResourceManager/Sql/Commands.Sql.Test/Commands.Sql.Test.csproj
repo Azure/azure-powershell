@@ -194,6 +194,9 @@
     <Compile Include="ScenarioTests\ServerDnsAliasTests.cs" />
     <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
     <Compile Include="ScenarioTests\SqlDatabaseAgentCrudTests.cs" />
+    <Compile Include="ScenarioTests\SqlDatabaseAgentJobCredentialCrudTests.cs" />
+    <Compile Include="ScenarioTests\SqlDatabaseAgentTargetGroupCrudTests.cs" />
+    <Compile Include="ScenarioTests\SqlDatabaseAgentTargetCrudTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
     <Compile Include="ScenarioTests\DatabaseActivationTests.cs" />
@@ -238,6 +241,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\SqlDatabaseAgentCrudTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SqlDatabaseAgentJobCredentialCrudTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SqlDatabaseAgentTargetGroupCrudTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SqlDatabaseAgentTargetCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ThreatDetectionClassicStorageTests.ps1">

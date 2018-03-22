@@ -20,9 +20,9 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class SqlDatabaseAgentCrudTests : SqlTestsBase
+    public class SqlDatabaseAgentJobCredentialCrudTests : SqlTestsBase
     {
-        public SqlDatabaseAgentCrudTests(ITestOutputHelper output) : base(output)
+        public SqlDatabaseAgentJobCredentialCrudTests(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentCreate()
+        public void TestJobCredentialCreate()
         {
-            RunPowerShellTest("Test-CreateAgent");
+            RunPowerShellTest("Test-CreateJobCredential");
         }
 
         #endregion
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentUpdate()
+        public void TestJobCredentialUpdate()
         {
-            RunPowerShellTest("Test-UpdateAgent");
+            RunPowerShellTest("Test-UpdateJobCredential");
         }
 
         #endregion
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentGet()
+        public void TestJobCredentialGet()
         {
-            RunPowerShellTest("Test-GetAgent");
+            RunPowerShellTest("Test-GetJobCredential");
         }
 
         #endregion
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentRemove()
+        public void TestJobCredentialRemove()
         {
-            RunPowerShellTest("Test-RemoveAgent");
+            RunPowerShellTest("Test-RemoveJobCredential");
         }
 
         #endregion

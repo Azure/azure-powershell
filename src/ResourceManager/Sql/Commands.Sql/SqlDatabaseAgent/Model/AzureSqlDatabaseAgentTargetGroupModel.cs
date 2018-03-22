@@ -17,14 +17,10 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Model
 {
     /// <summary>
-    /// Represents the core properties of an Azure Sql Database Agent model
+    /// Represents the core properties of a target group
     /// </summary>
-    public class AzureSqlDatabaseAgentModel
+    public class AzureSqlDatabaseAgentTargetGroupModel
     {
-        public AzureSqlDatabaseAgentModel()
-        {
-        }
-
         /// <summary>
         /// Gets or sets the name of the resource group name
         /// </summary>
@@ -36,38 +32,23 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Model
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the agent name
+        /// Gets or sets the name of the azure sql database agent name
         /// </summary>
         public string AgentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the location the sql database agent is in
+        /// Gets or sets the target group name
         /// </summary>
-        public string Location { get; set; }
+        public string TargetGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the database name for the sql database agent name.
-        /// </summary>
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// The SQL Database Agent Resource Id
+        /// Gets or sets the target group resource id
         /// </summary>
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///  The SQL Database Agent Control Database Id
+        /// Gets or sets the target group members
         /// </summary>
-        public string DatabaseId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent's number of workers.
-        /// </summary>
-        public int? WorkerCount { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags associated with the server.
-        /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public IList<Management.Sql.Models.JobTarget> Members { get; set; }
     }
 }

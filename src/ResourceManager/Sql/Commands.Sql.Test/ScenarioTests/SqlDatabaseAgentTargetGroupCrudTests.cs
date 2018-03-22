@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class SqlDatabaseAgentCrudTests : SqlTestsBase
+    public class SqlDatabaseAgentTargetGroupCrudTests : SqlTestsBase
     {
-        public SqlDatabaseAgentCrudTests(ITestOutputHelper output) : base(output)
+        public SqlDatabaseAgentTargetGroupCrudTests(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -30,20 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentCreate()
+        public void TestTargetGroupCreate()
         {
-            RunPowerShellTest("Test-CreateAgent");
-        }
-
-        #endregion
-
-        #region Update Tests
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentUpdate()
-        {
-            RunPowerShellTest("Test-UpdateAgent");
+            RunPowerShellTest("Test-CreateTargetGroup");
         }
 
         #endregion
@@ -52,9 +40,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentGet()
+        public void TestTargetGroupGet()
         {
-            RunPowerShellTest("Test-GetAgent");
+            RunPowerShellTest("Test-GetTargetGroup");
         }
 
         #endregion
@@ -63,9 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentRemove()
+        public void TestTargetGroupRemove()
         {
-            RunPowerShellTest("Test-RemoveAgent");
+            RunPowerShellTest("Test-RemoveTargetGroup");
         }
 
         #endregion

@@ -13,61 +13,44 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class SqlDatabaseAgentCrudTests : SqlTestsBase
+    public class SqlDatabaseAgentTargetCrudTests : SqlTestsBase
     {
-        public SqlDatabaseAgentCrudTests(ITestOutputHelper output) : base(output)
+        public SqlDatabaseAgentTargetCrudTests(ITestOutputHelper output) : base(output)
         {
         }
-
-        #region Create Tests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentCreate()
+        public void TestTargetDatabase()
         {
-            RunPowerShellTest("Test-CreateAgent");
+            RunPowerShellTest("Test-DatabaseTarget");
         }
-
-        #endregion
-
-        #region Update Tests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentUpdate()
+        public void TestTargetServer()
         {
-            RunPowerShellTest("Test-UpdateAgent");
+            RunPowerShellTest("Test-ServerTarget");
         }
-
-        #endregion
-
-        #region Get Tests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentGet()
+        public void TestTargetElasticPool()
         {
-            RunPowerShellTest("Test-GetAgent");
+            RunPowerShellTest("Test-ElasticPoolTarget");
         }
-
-        #endregion
-
-        #region Remove Tests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAgentRemove()
+        public void TestTargetShardMap()
         {
-            RunPowerShellTest("Test-RemoveAgent");
+            RunPowerShellTest("Test-ShardMapTarget");
         }
-
-        #endregion
     }
 }

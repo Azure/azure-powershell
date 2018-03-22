@@ -16,12 +16,42 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services;
 using Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Model;
-using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Cmdlet
 {
-    public abstract class AzureSqlDatabaseAgentCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseAgentModel>, AzureSqlDatabaseAgentAdapter>
+    public abstract class AzureSqlDatabaseAgentCmdletBase : AzureSqlCmdletBase<AzureSqlDatabaseAgentModel, AzureSqlDatabaseAgentAdapter>
     {
+        /// <summary>
+        /// Parameter sets
+        /// </summary>
+        protected const string DefaultParameterSet = "Agent Default Parameter Set";
+        protected const string InputObjectParameterSet = "Agent Input Object Parameter Set";
+        protected const string ResourceIdParameterSet = "Agent Resource Id Parameter Set";
+
+        /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The Agent Resource Group Name")]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent server name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The Agent Server Name")]
+        [Alias("AgentServerName")]
+        public virtual string ServerName { get; set; }
+
         /// <summary>
         /// Intializes the model adapter
         /// </summary>

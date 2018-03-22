@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
         }
 
         /// <summary>
-        /// Creates an Azure SQL Database Agent
+        /// PUT: Creates an Azure SQL Database Agent
         /// </summary>
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
@@ -58,6 +58,19 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Services
         public Management.Sql.Models.JobAgent CreateOrUpdate(string resourceGroupName, string serverName, string agentName, Management.Sql.Models.JobAgent parameters)
         {
             return GetCurrentSqlClient().JobAgents.CreateOrUpdate(resourceGroupName, serverName, agentName, parameters);
+        }
+
+        /// <summary>
+        /// PATCH: Updates an Azure SQL Database Agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="parameters">The newly created agent</param>
+        /// <returns></returns>
+        public Management.Sql.Models.JobAgent Update(string resourceGroupName, string serverName, string agentName, Management.Sql.Models.JobAgentUpdate parameters)
+        {
+            return GetCurrentSqlClient().JobAgents.Update(resourceGroupName, serverName, agentName, parameters);
         }
 
         /// <summary>

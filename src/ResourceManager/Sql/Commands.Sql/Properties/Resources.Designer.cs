@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure SQL Database Agent with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;.
+        ///   Looks up a localized string similar to SQL Database Agent with name &apos;{0}&apos; already exists in server &apos;{1}&apos;.
         /// </summary>
         internal static string AzureSqlDatabaseAgentExists {
             get {
@@ -115,11 +115,47 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SQL Database Agent &apos;{0}&apos; does not exist with in server &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentJobCredentialExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentJobCredentialExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentJobCredentialNotExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentJobCredentialNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQL Database Agent &apos;{0}&apos; does not exist in server &apos;{1}&apos;.
         /// </summary>
         internal static string AzureSqlDatabaseAgentNotExists {
             get {
                 return ResourceManager.GetString("AzureSqlDatabaseAgentNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentTargetGroupExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentTargetGroupExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentTargetGroupNotExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentTargetGroupNotExists", resourceCulture);
             }
         }
         
@@ -673,7 +709,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Database agent &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Permanently removing the agent &apos;{0}&apos; from server &apos;{1}&apos;.
         /// </summary>
         internal static string RemoveSqlDatabaseAgentDescription {
             get {
@@ -682,7 +718,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database agent &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Permanently removing target group &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSqlDatabaseAgentTargetGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveSqlDatabaseAgentTargetGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveSqlDatabaseAgentTargetGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveSqlDatabaseAgentTargetGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the agent &apos;{0}&apos; from server &apos;{1}&apos;?.
         /// </summary>
         internal static string RemoveSqlDatabaseAgentWarning {
             get {
