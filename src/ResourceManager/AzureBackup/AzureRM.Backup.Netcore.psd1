@@ -55,7 +55,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.BackupServicesManagement.dll', 
-    '.\Microsoft.WindowsAzure.Management.Common.dll', 
     '.\Microsoft.WindowsAzure.Management.Scheduler.dll', 
     '.\Security.Cryptography.dll'
 
