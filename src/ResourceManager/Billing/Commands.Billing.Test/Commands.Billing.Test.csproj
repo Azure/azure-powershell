@@ -185,6 +185,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\TestListInvoicesWithMaxCount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.EnrollmentAccountTests\TestGetEnrollmentAccountWithName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.EnrollmentAccountTests\TestListEnrollmentAccounts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
