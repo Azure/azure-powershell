@@ -121,6 +121,9 @@
   "src/ResourceManager/OperationalInsights/": [
     ".\\src\\ResourceManager\\OperationalInsights\\Commands.OperationalInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.OperationalInsights.Test.dll"
   ],
+  "src/ResourceManager/PolicyInsights/": [
+    ".\\src\\ResourceManager\\PolicyInsights\\Commands.PolicyInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.PolicyInsights.Test.dll"
+  ],
   "src/ResourceManager/PowerBIEmbedded/": [
     ".\\src\\ResourceManager\\PowerBIEmbedded\\Commands.PowerBIEmbedded.Test\\bin\\Debug\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"
   ],
