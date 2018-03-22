@@ -13,13 +13,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytic.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytic.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics.Netcore\</OutputPath>
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>

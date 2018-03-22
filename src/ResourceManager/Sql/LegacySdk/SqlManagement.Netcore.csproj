@@ -23,7 +23,7 @@
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 

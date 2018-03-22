@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Dn.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Dns.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
