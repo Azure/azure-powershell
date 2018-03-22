@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.PolicyInsights.psd1"),
+                    "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
