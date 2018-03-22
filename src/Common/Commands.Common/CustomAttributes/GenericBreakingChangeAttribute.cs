@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +33,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
      */ 
     public class GenericBreakingChangeAttribute : System.Attribute
     {
-        private String _message;
+        private string _message;
         //A dexcription of what the change is about, non mandatory
-        public String ChangeDescription { get; set; } = null;
+        public string ChangeDescription { get; set; } = null;
 
         //The version the change is effective from, non mandatory
-        public String DeprecateByVersion { get; }
+        public string DeprecateByVersion { get; }
         public bool DeprecateByVersionSet { get; } = false;
 
         //The date on which the change comes in effect
@@ -45,23 +46,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
         public bool ChangeInEfectByDateSet { get; } = false;
 
         //Old way of calling the cmdlet
-        public String OldWay { get; set; }
+        public string OldWay { get; set; }
         //New way fo calling the cmdlet
-        public String NewWay { get; set; }
+        public string NewWay { get; set; }
 
-        public GenericBreakingChangeAttribute(String message)
+        public GenericBreakingChangeAttribute(string message)
         {
             _message = message;
         }
 
-        public GenericBreakingChangeAttribute(String message, String deprecateByVersion)
+        public GenericBreakingChangeAttribute(string message, string deprecateByVersion)
         {
             _message = message;
             this.DeprecateByVersion = deprecateByVersion;
             this.DeprecateByVersionSet = true;
         }
 
-        public GenericBreakingChangeAttribute(String message, String deprecateByVersion, String changeInEfectByDate)
+        public GenericBreakingChangeAttribute(string message, string deprecateByVersion, string changeInEfectByDate)
         {
             _message = message;
             this.DeprecateByVersion = deprecateByVersion;
@@ -76,79 +77,87 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             return this.ChangeInEfectByDate.Date;
         }
 
-        public String getBreakingChangeTextFromAttribute(Type type, bool withCmdletName)
+        /**
+         * This function returns the breaking change text for the attribute
+         * If the withCmdletName is true we return the message with the cmdlet name in it otherwse not
+         *
+         * We get the cmdlet name from the passed in Type (it is expected to have the CMdlet attribute decorated on the class)
+         */
+        public string GetBreakingChangeTextFromAttribute(Type type, bool withCmdletName)
         {
-            String breakingChangeMessage = null;
-            String attributeMessage = getAttributeSpecificMessage();
+            string breakingChangeMessage = null;
 
             if (!withCmdletName)
             {
-                breakingChangeMessage = " - " + getAttributeSpecificMessage() + "\n\n";
+                breakingChangeMessage = string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage());
             } else
             {
-                breakingChangeMessage = " - Cmdlet : " + Utilities.getNameFromCmdletType(type) + " \n - " + getAttributeSpecificMessage() + "\n\n";
+                
+                breakingChangeMessage = string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage());
             }
 
-            if (!String.IsNullOrWhiteSpace(ChangeDescription))
+            if (!string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                breakingChangeMessage += "\tChange description : " + ChangeDescription + "\n";
+                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription);
             }
 
             if (ChangeInEfectByDateSet)
             {
-                breakingChangeMessage += "\tNOTE : This change will take effect on '" + this.ChangeInEfectByDate.Date + "'\n";
+                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate);
             }
 
             if (DeprecateByVersionSet)
             {
-                breakingChangeMessage += "\tThe change is expected to take effect from the version : " + DeprecateByVersion + "\n\n";
+                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion);
             }
 
-            if (!String.IsNullOrWhiteSpace(OldWay) && !String.IsNullOrWhiteSpace(NewWay))
+            if (!string.IsNullOrWhiteSpace(OldWay) && !string.IsNullOrWhiteSpace(NewWay))
             {
-                breakingChangeMessage += "```powershell\n# Old\n" + OldWay + "\n\n# New\n" + NewWay + "\n```\n\n";
+                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesUsageChangeMessage, OldWay, NewWay);
             }
 
             return breakingChangeMessage;
         }
 
-        public void printCustomAttributeInfo(Type type, Boolean withCmdletName)
+         /**
+         * This function prints out the breaking change message for the attribute on the cmdline
+         * If the "withCmdletName" is specified, the message is printed out with the cmdlet name in it
+         * otherwise not
+         * 
+         * We get the cmdlet name from the passed in Type (it is expected to have the CMdlet attribute decorated on the class)
+         * */
+        public void PrintCustomAttributeInfo(Type type, Boolean withCmdletName)
         {
-            String attributeMessage = getAttributeSpecificMessage();
-
-            if (withCmdletName) {
-                Console.WriteLine(String.Format(" - Cmdlet {0} :", Utilities.getNameFromCmdletType(type)));
+            if (!withCmdletName) {
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage()));
+            } else
+            {
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage()));
             }
 
-            if (!String.IsNullOrWhiteSpace(attributeMessage))
-            {
-                Console.WriteLine("\t" + attributeMessage);
-            }
 
-            if (!String.IsNullOrWhiteSpace(ChangeDescription))
+            if (!string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                Console.WriteLine("\tChange description : " + ChangeDescription);
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription));
             }
 
             if (ChangeInEfectByDateSet)
             {
-                Console.WriteLine("\tNOTE : This change will take effect on '" + this.ChangeInEfectByDate.Date);
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate));
             }
 
             if (DeprecateByVersionSet)
             {
-                Console.WriteLine("\tThe change is expected to take effect from the version : " + DeprecateByVersion);
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
             }
 
             if (OldWay != null && NewWay != null)
             {
-                Console.WriteLine("Cmdlet invocation changes :");
-                Console.WriteLine("\tOld : " + OldWay);
-                Console.WriteLine("\tNew : " + NewWay);
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesUsageChangeMessageConsole, OldWay, NewWay));
             }
         }
 
-        protected virtual String getAttributeSpecificMessage()
+        protected virtual string GetAttributeSpecificMessage()
         {
             return _message;
         }

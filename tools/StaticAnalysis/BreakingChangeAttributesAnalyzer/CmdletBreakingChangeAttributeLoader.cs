@@ -26,7 +26,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 {
     public class BreakingChangeAttributesInModule
     {
-        public String ModuleName { get; set; }
+        public string ModuleName { get; set; }
         public List<BreakingChangeAttributesInCmdlet> CmdletList { get; set; }
 
         public void FilterCmdlets(Func<string, bool> cmdletFilter)
@@ -38,7 +38,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
     public class BreakingChangeAttributesInCmdlet
     {
         public Type CmdletType { get; set; }
-        public String CmdletName { get; set; }
+        public string CmdletName { get; set; }
         public List<GenericBreakingChangeAttribute> BreakingChangeAttributes { get; set; }
     }
 

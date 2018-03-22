@@ -93,7 +93,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
                     foreach (var directory in probingDirectories)
                     {
-                        IEnumerable<String> cmdlets = GetCmdletsFilesInFolder(directory);
+                        IEnumerable<string> cmdlets = GetCmdletsFilesInFolder(directory);
                         if (cmdlets.Any())
                         {
                             foreach (var cmdletFileName in cmdlets)
@@ -159,7 +159,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         }
 
         //Gets the list of all modules in a folder
-        static IEnumerable<String> GetCmdletsFilesInFolder(String folderName)
+        static IEnumerable<string> GetCmdletsFilesInFolder(string folderName)
         {
             var service = Path.GetFileName(folderName);
 
@@ -189,20 +189,20 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             return cmdletResult.Select(c => c.ToString().Substring(2));
         }
 
-        const String BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING = @"## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
-        const String BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING = @"**{0}**\n";
+        const string BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING = @"## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
+        const string BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING = @"**{0}**\n";
 
         //Logs all the breaking changes in a module as a unit (all cmdlets in the same module appear contigously)
         private void LogBreakingChangesInModule(BreakingChangeAttributesInModule moduleData, TextFileLogger logger)
         {
-            String textForBreakingChangesInModule = String.Format(BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING, Path.GetFileName(moduleData.ModuleName));
+            string textForBreakingChangesInModule = string.Format(BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING, Path.GetFileName(moduleData.ModuleName));
 
             foreach (BreakingChangeAttributesInCmdlet cmdletData in moduleData.CmdletList)
             {
-                textForBreakingChangesInModule += String.Format(BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING, cmdletData.CmdletName);
+                textForBreakingChangesInModule += string.Format(BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING, cmdletData.CmdletName);
                 foreach (GenericBreakingChangeAttribute attribute in cmdletData.BreakingChangeAttributes)
                 {
-                    textForBreakingChangesInModule += attribute.getBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
+                    textForBreakingChangesInModule += attribute.GetBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
                 }
             }
 

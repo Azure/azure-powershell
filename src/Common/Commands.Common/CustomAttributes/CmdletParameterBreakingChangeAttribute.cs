@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,57 +25,55 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 AttributeTargets.Property |
 AttributeTargets.Field,
 AllowMultiple = true)]
-    public class CmdletParameterBreakingChangeMarkerAttribute : GenericBreakingChangeAttribute
+    public class CmdletParameterBreakingChangeAttribute : GenericBreakingChangeAttribute
     {
-        public String NameOfParameterChanging { get; }
+        public string NameOfParameterChanging { get; }
 
-        public String ReplaceMentCmdletParameterName { get; set; } = null;
+        public string ReplaceMentCmdletParameterName { get; set; } = null;
 
         public bool IsBecomingMandatory { get; set; } = false;
 
-        public CmdletParameterBreakingChangeMarkerAttribute(String nameOfParameterChanging) :
+        public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging) :
             base("")
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
-        public CmdletParameterBreakingChangeMarkerAttribute(String nameOfParameterChanging, String deprecateByVersion) :
+        public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion) :
              base("", deprecateByVersion)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
-        public CmdletParameterBreakingChangeMarkerAttribute(String nameOfParameterChanging, String deprecateByVersion, String changeInEfectByDate) :
+        public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion, string changeInEfectByDate) :
              base("", deprecateByVersion, changeInEfectByDate)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
-        protected override String getAttributeSpecificMessage()
+        protected override string GetAttributeSpecificMessage()
         {
-            string message = "The parameter : '" + NameOfParameterChanging + "' is";
-
-            if (!String.IsNullOrWhiteSpace(ReplaceMentCmdletParameterName))
+           if (!string.IsNullOrWhiteSpace(ReplaceMentCmdletParameterName))
             {
-                message += " being replaced by";
                 if (IsBecomingMandatory)
                 {
-                    message += " mandatory";
+                    return string.Format(Resources.BreakingChangeAttributeParameterReplacedMandatory, NameOfParameterChanging, ReplaceMentCmdletParameterName);
                 }
-
-                message += " parameter : '" + ReplaceMentCmdletParameterName + "'";
+                else
+                {
+                    return string.Format(Resources.BreakingChangeAttributeParameterReplaced, NameOfParameterChanging, ReplaceMentCmdletParameterName);
+                }
             } else
             {
                 if (IsBecomingMandatory)
                 {
-                    message += " becoming mandatory";
+                    return string.Format(Resources.BreakingChangeAttributeParameterMandatoryNow, NameOfParameterChanging);
                 } else
                 {
-                    message += " changing";
+                    return string.Format(Resources.BreakingChangeAttributeParameterDeprecation, NameOfParameterChanging);
                 }
             }
 
-            return message;
         }
     }
 }

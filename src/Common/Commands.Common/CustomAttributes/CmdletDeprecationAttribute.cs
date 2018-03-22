@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,35 +24,35 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     [AttributeUsage(
 AttributeTargets.Class,
 AllowMultiple = true)]
-    public class CmdletDeprecationMarkerAttribute : GenericBreakingChangeAttribute
+    public class CmdletDeprecationAttribute : GenericBreakingChangeAttribute
     {
-        public String ReplacementCmdletName { get; set; }
+        public string ReplacementCmdletName { get; set; }
 
-        public CmdletDeprecationMarkerAttribute() :
+        public CmdletDeprecationAttribute() :
             base("")
         {
             this.ReplacementCmdletName = null;
         }
 
-        public CmdletDeprecationMarkerAttribute(String deprecateByVersione) :
+        public CmdletDeprecationAttribute(string deprecateByVersione) :
              base("", deprecateByVersione)
         {
         }
 
-        public CmdletDeprecationMarkerAttribute(String deprecateByVersion, String changeInEfectByDate) :
+        public CmdletDeprecationAttribute(string deprecateByVersion, string changeInEfectByDate) :
              base("", deprecateByVersion, changeInEfectByDate)
         {
         }
 
-        protected override String getAttributeSpecificMessage()
+        protected override string GetAttributeSpecificMessage()
         {
-            if (String.IsNullOrWhiteSpace(ReplacementCmdletName))
+            if (string.IsNullOrWhiteSpace(ReplacementCmdletName))
             {
-                return "The cmdlet is being deprecated. There will be no replacement for it.";
+                return Resources.BreakingChangesAttributesCmdLetDeprecationMessageNoReplacement;
             }
             else
             {
-                return "The cmdlet '" + ReplacementCmdletName + "' is replacing this cmdlet";
+                return string.Format(Resources.BreakingChangesAttributesCmdLetDeprecationMessageWithReplacement, ReplacementCmdletName);
             }
         }
     }
