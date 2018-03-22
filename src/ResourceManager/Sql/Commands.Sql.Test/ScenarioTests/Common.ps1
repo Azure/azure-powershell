@@ -453,6 +453,33 @@ function Create-ServerForTest ($resourceGroup, $location = "Japan East")
 
 <#
 	.SYNOPSIS
+	Creates a database with test params
+#>
+function Create-DatabaseForTest ($resourceGroup, $server, $dbName)
+{
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $resourceGroup.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dbName `
+            -Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	return $db
+}
+
+<#
+	.SYNOPSIS
+	Creates an Azure SQL Database Agent with test params
+#>
+function Create-AgentForTest ($resourceGroup, $server, $db, $agentName, $workerCount = $null)
+{
+    if ($workerCount)
+    {
+        return New-AzureRmSqlDatabaseAgent -ResourceGroupName $resourceGroup.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName -WorkerCount $workerCount
+    }
+    else
+    {
+    	return New-AzureRmSqlDatabaseAgent -ResourceGroupName $resourceGroup.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName
+    }
+}
+
+<#
+	.SYNOPSIS
 	Remove a server that is no longer needed for tests
 #>
 function Remove-ServerForTest ($server)

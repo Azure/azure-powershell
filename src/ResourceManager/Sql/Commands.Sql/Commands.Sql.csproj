@@ -196,6 +196,16 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="SqlDatabaseAgent\Cmdlet\AzureSqlDatabaseAgentCmdletBase.cs" />
+    <Compile Include="SqlDatabaseAgent\Cmdlet\GetAzureSqlDatabaseAgent.cs" />
+    <Compile Include="SqlDatabaseAgent\Cmdlet\NewAzureSqlDatabaseAgent.cs" />
+    <Compile Include="SqlDatabaseAgent\Cmdlet\RemoveAzureSqlDatabaseAgent.cs" />
+    <Compile Include="SqlDatabaseAgent\Cmdlet\SetAzureSqlDatabaseAgent.cs" />
+    <Compile Include="SqlDatabaseAgent\Model\AzureSqlDatabaseAgentJobExecutionModel.cs" />
+    <Compile Include="SqlDatabaseAgent\Model\AzureSqlDatabaseAgentJobModel.cs" />
+    <Compile Include="SqlDatabaseAgent\Model\AzureSqlDatabaseAgentModel.cs" />
+    <Compile Include="SqlDatabaseAgent\Services\AzureSqlDatabaseAgentAdapter.cs" />
+    <Compile Include="SqlDatabaseAgent\Services\AzureSqlDatabaseAgentCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -450,7 +460,7 @@
     <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>C:\Users\joke\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

@@ -186,7 +186,10 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Remove-AzureRmSqlServerVirtualNetworkRule', 
                'Stop-AzureRmSqlDatabaseActivity', 'Get-AzureRmSqlServerDnsAlias', 
                'Remove-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlServerDnsAlias', 
-               'Set-AzureRmSqlServerDnsAlias'
+               'Set-AzureRmSqlServerDnsAlias',
+               'New-AzureRmSqlDatabaseAgent',
+               'Remove-AzureRmSqlDatabaseAgent',
+               'Get-AzureRmSqlDatabaseAgent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -199,7 +202,7 @@ AliasesToExport = 'Get-AzureRmSqlDatabaseServerAuditingPolicy',
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
-
+    
 # List of all modules packaged with this module
 # ModuleList = @()
 

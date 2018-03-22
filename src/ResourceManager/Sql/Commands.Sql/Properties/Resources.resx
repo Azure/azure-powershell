@@ -402,4 +402,20 @@
   <data name="auditChangeGroupDeprecationMessage" xml:space="preserve">
     <value>The action group 'AUDIT_CHANGE_GROUP' is not supported. It will be removed in a future release.</value>
   </data>
+  <data name="AzureSqlDatabaseAgentExists" xml:space="preserve">
+    <value>Azure SQL Database Agent with name: '{0}' already exists in server '{1}'</value>
+    <comment>Azure SQL Database Agent</comment>
+  </data>
+  <data name="RemoveSqlDatabaseAgentDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database agent '{0}'</value>
+    <comment>Azure SQL Database Agent</comment>
+  </data>
+  <data name="RemoveSqlDatabaseAgentWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database agent '{0}'</value>
+    <comment>Azure SQL Database Agent</comment>
+  </data>
+  <data name="AzureSqlDatabaseAgentNotExists" xml:space="preserve">
+    <value>SQL Database Agent '{0}' does not exist with in server '{1}'</value>
+    <comment>Azure SQL Database Agent</comment>
+  </data>
 </root>

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -102,6 +102,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string AuditingIsTurnedOff {
             get {
                 return ResourceManager.GetString("AuditingIsTurnedOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure SQL Database Agent with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQL Database Agent &apos;{0}&apos; does not exist with in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureSqlDatabaseAgentNotExists {
+            get {
+                return ResourceManager.GetString("AzureSqlDatabaseAgentNotExists", resourceCulture);
             }
         }
         
@@ -651,6 +669,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database agent &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveSqlDatabaseAgentDescription {
+            get {
+                return ResourceManager.GetString("RemoveSqlDatabaseAgentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database agent &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveSqlDatabaseAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveSqlDatabaseAgentWarning", resourceCulture);
             }
         }
         

@@ -78,7 +78,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>C:\Users\joke\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -193,6 +193,7 @@
     <Compile Include="ScenarioTests\DatabaseCrudStretchTests.cs" />
     <Compile Include="ScenarioTests\ServerDnsAliasTests.cs" />
     <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
+    <Compile Include="ScenarioTests\SqlDatabaseAgentCrudTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
     <Compile Include="ScenarioTests\DatabaseActivationTests.cs" />
@@ -234,6 +235,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServerUpgradeTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SqlDatabaseAgentCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ThreatDetectionClassicStorageTests.ps1">
