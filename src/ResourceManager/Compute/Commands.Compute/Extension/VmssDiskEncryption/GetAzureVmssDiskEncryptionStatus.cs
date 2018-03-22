@@ -175,32 +175,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             catch (InvalidOperationException)
             {
                 return psResult;
-            }            
+            }
             psResult.EncryptionSummary = extSummary.StatusesSummary;
 
-            // retrieve per disk information from all vm instances in the scale set
-            try
-            {
-                // retrieve the list of vm instances in the scale set 
-                IPage<VirtualMachineScaleSetVM> instances = this.VirtualMachineScaleSetVMsClient.List(rgName, vmssName);
-                List<VirtualMachineScaleSetVM> instancesList = instances.ToList();
-                var nextPageLink = instances.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
+            // check if encryption is enabled on any disk in the scale set 
+            // stop evaluation at the first occurrence of an encrypted disk 
+            var page = this.VirtualMachineScaleSetVMsClient.List(rgName, vmssName);
+            while (!psResult.EncryptionEnabled && page!=null)
+            { 
+                foreach (var pageItem in page)
                 {
-                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        instancesList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-
-                // retrieve encryption status of all disks in all instances
-                psResult.Instances = new List<PSVmssDiskEncryptionInstanceStatusContext>();
-                foreach (VirtualMachineScaleSetVM instance in instancesList)
-                {
-                    List<PSVmssDiskEncryptionDiskStatusContext> currentDisks = new List<PSVmssDiskEncryptionDiskStatusContext>();
-                    VirtualMachineScaleSetVMInstanceView vmiv = this.VirtualMachineScaleSetVMsClient.GetInstanceView(rgName, vmssName, instance.InstanceId);
+                    if (psResult.EncryptionEnabled) break;
+                    VirtualMachineScaleSetVMInstanceView vmiv = this.VirtualMachineScaleSetVMsClient.GetInstanceView(rgName, vmssName, pageItem.InstanceId);
                     if (vmiv != null && vmiv.Disks != null)
                     {
                         foreach (DiskInstanceView div in vmiv.Disks)
@@ -211,40 +197,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             {
                                 if (ivs != null && ivs.Code != null && ivs.Code.StartsWith("EncryptionState"))
                                 {
-                                    perDiskEncryptionStatuses.Add(ivs);
                                     if (!psResult.EncryptionEnabled)
                                     {
-                                        // retains the state of the last status code written for this disk 
                                         isEncrypted = ivs.Code.Equals("EncryptionState/encrypted");
                                     }
                                 }
                             }
-                            // EncryptionEnabled is considered deprecated, and removal would be a breaking change
-                            // This records true for "encryption enabled" if any disk is marked as encrypted 
-                            psResult.EncryptionEnabled |= isEncrypted;
-
-                            // For finer granularity, preserve and add full status for this individual disk 
-                            PSVmssDiskEncryptionDiskStatusContext diskStatus = new PSVmssDiskEncryptionDiskStatusContext
+                            if (isEncrypted)
                             {
-                                Name = div.Name,
-                                EncryptionSettings = div.EncryptionSettings,
-                                Statuses = perDiskEncryptionStatuses
-                            };
-                            currentDisks.Add(diskStatus);
-                        }                 
+                                psResult.EncryptionEnabled = true;
+                                break;
+                            }
+                        }
                     }
-                    PSVmssDiskEncryptionInstanceStatusContext currentInstance = new PSVmssDiskEncryptionInstanceStatusContext
-                    {
-                        Name = instance.Name,
-                        Id = instance.Id,
-                        Disks = currentDisks
-                    };
-                    psResult.Instances.Add(currentInstance);
                 }
-            }
-            catch (InvalidOperationException)
-            {
-                return psResult;
+                // advance to the next page as needed
+                page = (page.NextPageLink != null) ? VirtualMachineScaleSetVMsClient.ListNext(page.NextPageLink) : null;
             }
 
             return psResult;

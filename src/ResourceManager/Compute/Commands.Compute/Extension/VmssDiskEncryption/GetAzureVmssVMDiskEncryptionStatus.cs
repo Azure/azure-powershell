@@ -128,20 +128,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 psResult.Disks.Add(disk);
             }
 
-            try
-            {
-                psResult.Extension = vmssVMInstanceView.Extensions.First(e => e.Name.Equals(this.ExtensionName));
-            }
-            catch (InvalidOperationException)
-            {
-                psResult.DiskEncryptionStatus = string.Format("The Extension, {0}, is not installed.", this.ExtensionName);
-            }
+            psResult.Extension = null;
+            psResult.DiskEncryptionStatus = string.Format("The Extension, {0}, is not installed.", this.ExtensionName);
 
-            if (psResult.Extension != null
-            && psResult.Extension.Statuses != null
-            && psResult.Extension.Statuses.Count > 0)
+            // replace defaults with extension and status data for the instance if found 
+            if (vmssVMInstanceView != null && vmssVMInstanceView.Extensions != null)
             {
-                psResult.DiskEncryptionStatus = psResult.Extension.Statuses[0].DisplayStatus;
+                psResult.Extension = vmssVMInstanceView.Extensions.DefaultIfEmpty(null).FirstOrDefault(e => e.Name.Equals(this.ExtensionName));
+                if (psResult.Extension != null
+                    && psResult.Extension.Statuses != null
+                    && psResult.Extension.Statuses.Count > 0)
+                {
+                    psResult.DiskEncryptionStatus = psResult.Extension.Statuses[0].DisplayStatus;
+                }
             }
 
             psResult.OsVolumeEncrypted = GetOsDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
@@ -178,9 +177,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 : ConvertToEncryptionStatus(status.Code.Replace(AzureVmssDiskEncryptionExtensionContext.EncryptionStateString, ""));
         }
 
-        // This method is considered deprecated as it does not reflect status of all data disks  
-        // it will be removed in a future opportunity for breaking changes to be introduced
-        // Get-AzureRmVmssDiskEncryptionStatus can be used to retrieve status of all data disks
         private EncryptionStatus GetDataDiskEncryptionStatus(List<DiskInstanceView> disks, StorageProfile storage)
         {
             if (storage == null || storage.DataDisks == null || storage.DataDisks.Count == 0)
