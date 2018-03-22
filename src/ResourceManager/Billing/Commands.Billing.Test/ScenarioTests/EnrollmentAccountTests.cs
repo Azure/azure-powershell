@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListEnrollmentAccount()
+        public void TestListEnrollmentAccounts()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListEnrollmentAccount");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListEnrollmentAccounts");
         }
 
         [Fact]

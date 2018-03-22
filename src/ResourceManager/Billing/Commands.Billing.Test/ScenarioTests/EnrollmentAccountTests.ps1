@@ -31,7 +31,7 @@ Get billing period with specified name
 #>
 function Test-GetEnrollmentAccountWithName
 {
-	$enrollmentAccountObjectId = "5479d56f-1390-4c3c-877d-fc4933baba21"
+	$enrollmentAccountObjectId = "c8a9f59a-2d9b-4086-91c8-8988cae3bec3"
     $enrollmentAccount = Get-AzureRmEnrollmentAccount -ObjectId $enrollmentAccountObjectId
 
 	Assert-AreEqual $enrollmentAccountObjectId $enrollmentAccount.ObjectId
