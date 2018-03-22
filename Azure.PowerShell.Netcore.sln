@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Netcore"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Netcore", "src\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj", "{6B91BCDC-5031-4A7A-A566-83308FF997C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\ResourceManager\Storage\Commands.Management.Storage\Commands.Storage.Netcore.csproj", "{6878D60B-AD5B-4D37-8B84-5D529090FBAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Storage.Netcore", "src\ResourceManager\Storage\Commands.Management.Storage\Commands.Management.Storage.Netcore.csproj", "{6878D60B-AD5B-4D37-8B84-5D529090FBAC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Websites.Netcore", "src\ResourceManager\Websites\Commands.Websites\Commands.Websites.Netcore.csproj", "{59581DCA-1726-4EE2-A665-0112E681C35C}"
 EndProject
