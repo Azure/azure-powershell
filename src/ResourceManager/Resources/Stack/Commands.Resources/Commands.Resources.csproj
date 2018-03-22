@@ -54,9 +54,6 @@
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <!--<Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.Authorization.2.6.0-preview\lib\net452\Microsoft.Azure.Management.Authorization.dll</HintPath>
-    </Reference> -->
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +197,6 @@
     <ItemGroup>
       <OutFiles Include="$(OutDir)\**\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>
