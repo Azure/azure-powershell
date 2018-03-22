@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
@@ -155,28 +155,28 @@ Use the IncludeClassicAdministrators switch to also display the subscription adm
 
 ## EXAMPLES
 
-### Example 1
+### --------------------------  Example 1  --------------------------
 ```
 PS C:\> Get-AzureRmRoleAssignment
 ```
 
 List all role assignments in the subscription
 
-### Example 2
+### --------------------------  Example 2  --------------------------
 ```
-PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
+PS C:\> Get-AzureRmRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com -ExpandPrincipalGroups
 ```
 
 Gets all role assignments made to user john.doe@contoso.com, and the groups of which he is member, at the testRG scope or above.
 
-### Example 3
+### --------------------------  Example 3  --------------------------
 ```
 PS C:\> Get-AzureRmRoleAssignment -ServicePrincipalName "http://testapp1.com"
 ```
 
 Gets all role assignments of the specified service principal
 
-### Example 4
+### --------------------------  Example 4  --------------------------
 ```
 PS C:\> Get-AzureRmRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
@@ -207,7 +207,7 @@ Supported only for a user principal.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ObjectIdParameterSet, SignInNameParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -222,7 +222,7 @@ If specified, also lists subscription classic administrators (co-admins, service
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -266,7 +266,7 @@ Must be used in conjunction with ResourceGroupName, ResourceType, and ResourceNa
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -283,7 +283,7 @@ When used in conjunction with ResourceName, ResourceType, and ParentResource par
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -301,7 +301,7 @@ Must be used in conjunction with ResourceGroupName, ResourceType, and (optionall
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -319,7 +319,7 @@ Must be used in conjunction with ResourceGroupName, ResourceName, and (optionall
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -334,7 +334,7 @@ Id of the Role that is assigned to the principal.
 ```yaml
 Type: Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -350,7 +350,7 @@ Reader, Contributor, Virtual Network Administrator, etc.
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -370,7 +370,7 @@ The command filters all assignments that are effective at that scope.
 ```yaml
 Type: String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet, ScopeParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -382,7 +382,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
