@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.15.0
 * New Cmdlet Get-AzureRmEnrollmentAccount
   - cmdlet to retrieve enrollment accounts
 
