@@ -22,7 +22,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             public int NumberOfReferences { get; set; } = 0;
         }
 
-        public String LogFileName { get; protected set; }
+        public string LogFileName { get; protected set; }
 
         private FileStream file = null;
 
@@ -40,7 +40,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         }
 
         //Get an instance of a logger for a file name
-        public static TextFileLogger GetTextFileLogger(String fileName, bool overriteExisting)
+        public static TextFileLogger GetTextFileLogger(string fileName, bool overriteExisting)
         {
             TextFileLogger loggerToReturn = null;
             lock (loggerTable)
@@ -55,7 +55,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 {
                     TextFileLogger logger = new TextFileLogger();
                     logger.LogFileName = fileName;
-                    logger.init(overriteExisting);
+                    logger.Init(overriteExisting);
 
                     TextLoggerData loggerData = new TextLoggerData();
                     loggerData.NumberOfReferences = 1;
@@ -69,7 +69,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         }
 
         //Close the instance of the logger, make sure to call this otherwise we leak an instance
-        public static void CloseLogger(String fileName)
+        public static void CloseLogger(string fileName)
         {
             lock (loggerTable)
             {
@@ -79,7 +79,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                     data.NumberOfReferences -= 1;
                     if (data.NumberOfReferences == 0)
                     {
-                        data.LoggerInstance.closeLog();
+                        data.LoggerInstance.CloseLog();
                         //remove references
                         data.LoggerInstance = null;
                         data = null;
@@ -91,31 +91,31 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             }
         }
 
-        public void LogError(String message)
+        public void LogError(string message)
         {
-            String messageToLog = "Error : " + message;
+            string messageToLog = "Error : " + message;
             LogMessage(messageToLog);
         }
 
-        public void LogWarning(String message)
+        public void LogWarning(string message)
         {
-            String messageToLog = "Warning : " + message;
+            string messageToLog = "Warning : " + message;
             LogMessage(messageToLog);
         }
 
-        public void LogInfo(String message)
+        public void LogInfo(string message)
         {
-            String messageToLog = "Info : " + message;
+            string messageToLog = "Info : " + message;
             LogMessage(messageToLog);
         }
 
-        public void LogDebug(String message)
+        public void LogDebug(string message)
         {
-            String messageToLog = "Debug : " + message;
+            string messageToLog = "Debug : " + message;
             LogMessage(messageToLog);
         }
 
-        public void LogMessage(String message)
+        public void LogMessage(string message)
         {
             if (file != null)
             {
@@ -130,7 +130,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             }
         }
 
-        private void init(bool overriteExisting)
+        private void Init(bool overriteExisting)
         {
             FileMode fMode = FileMode.Append;
             if (overriteExisting)
@@ -141,7 +141,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             file = File.Open(LogFileName, fMode);
         }
 
-        private void closeLog()
+        private void CloseLog()
         {
             if (file != null)
             {

@@ -114,9 +114,9 @@
     <Compile Include="CustomAttributes\GenericBreakingChangeAttribute.cs" />
     <Compile Include="CustomAttributes\BreakingChangeAttributeHelper.cs" />
     <Compile Include="CustomAttributes\Utilities.cs" />
-    <Compile Include="CustomAttributes\CmdletDeprecationMarkerAttribute.cs" />
-    <Compile Include="CustomAttributes\CmdletOutputBreakingChangeMarkerAttribute.cs" />
-    <Compile Include="CustomAttributes\CmdletParameterBreakingChangeMarkerAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletDeprecationAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletOutputBreakingChangeAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletParameterBreakingChangeAttribute.cs" />
     <Compile Include="LongRunningJobCancelledException.cs" />
     <Compile Include="ShouldMethodInvoker.cs" />
     <Compile Include="AzureLongRunningJob.cs" />

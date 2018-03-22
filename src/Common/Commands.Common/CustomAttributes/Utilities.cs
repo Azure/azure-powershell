@@ -9,9 +9,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     class Utilities
     {
-        public static String getNameFromCmdletType(Type type)
+        public static string GetNameFromCmdletType(Type type)
         {
-            String cmdletName = null;
+            string cmdletName = null;
             CmdletAttribute cmdletAttrib = (CmdletAttribute)type.GetCustomAttributes(typeof(CmdletAttribute), false).FirstOrDefault();
 
             if (cmdletAttrib != null)

@@ -14,6 +14,7 @@
 
 #undef DEBUG
 
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     public class BreakingChangeAttributeHelper
     {
-        public const String SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
+        public const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
-        public const String BREAKING_CHANGE_DOCUMENTATION_HEADER = @"<!--
+        public const string BREAKING_CHANGE_DOCUMENTATION_HEADER = @"<!--
     Please leave this section at the top of the breaking change documentation.
 
     New breaking changes should go under the section titled 'Current Breaking Changes', and should adhere to the following format:
@@ -68,7 +69,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
     -->";
 
-        public static void processCustomAttributesAtRuntime(Type type, List<String> boundParameterNames)
+        /**
+         * This functiontakesn ina Type (expected to be a derevative of the AzurePSCmdlet)
+         * And reads all the deprecation attributes attached to it
+         * Prints a message on the cmdline For each of the attribute found
+         * 
+         * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
+         * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
+         * */
+        public static void ProcessCustomAttributesAtRuntime(Type type, List<string> boundParameterNames)
         {
             bool emitWarningOrError = true;
 
@@ -87,34 +96,47 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                 return;
             }
 
-            List<GenericBreakingChangeAttribute> attributes = getAllBreakingChangeAttributesInType(type, boundParameterNames);
+            List<GenericBreakingChangeAttribute> attributes = GetAllBreakingChangeAttributesInType(type, boundParameterNames);
 
             if (attributes != null && attributes.Count > 0)
             {
-                Console.WriteLine("Breaking changes in the cmdlet : " + Utilities.getNameFromCmdletType(type) + "\n");
+                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesHeaderMessage, Utilities.GetNameFromCmdletType(type)));
             }
 
             foreach (GenericBreakingChangeAttribute attribute in attributes)
             {
-                attribute.printCustomAttributeInfo(type, false);
+                attribute.PrintCustomAttributeInfo(type, false);
             }
         }
 
-        public static List<String> getBreakingChangeMessagesForType(Type type)
+        /**
+         * Takes in atype which is expected to be derived from AzurePScmdlet and gathers all the breaking change attributes on it
+         * Runs through the list of attributes and returns the deprecation messages for each of the attributes. 
+         * This function is sued from the static analysis tools to generate the breaking change guide 
+         **/
+        public static List<string> GetBreakingChangeMessagesForType(Type type)
         {
-            List<String> messages = new List<string>();
+            List<string> messages = new List<string>();
 
             //This is used as a migration guide, we need to process all properties/fields, moreover at this point of time we do not have a list of all the
             //bound params anyways
-            foreach (GenericBreakingChangeAttribute attribute in getAllBreakingChangeAttributesInType(type, null))
+            foreach (GenericBreakingChangeAttribute attribute in GetAllBreakingChangeAttributesInType(type, null))
             {
-                messages.Add(attribute.getBreakingChangeTextFromAttribute(type, true));
+                messages.Add(attribute.GetBreakingChangeTextFromAttribute(type, true));
             }
 
             return messages;
         }
 
-        public static List<GenericBreakingChangeAttribute> getAllBreakingChangeAttributesInType(Type type, List<String> boundParameterNames)
+        /**
+         * This functiontakesn in a Type (expected to be a derevative of the AzurePSCmdlet)
+         * And returns all the deprecation attributes attached to it
+         * 
+         * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
+         * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
+         * */
+        **/
+        public static List<GenericBreakingChangeAttribute> GetAllBreakingChangeAttributesInType(Type type, List<string> boundParameterNames)
         {
             List<GenericBreakingChangeAttribute> attributeList = new List<GenericBreakingChangeAttribute>();
 
