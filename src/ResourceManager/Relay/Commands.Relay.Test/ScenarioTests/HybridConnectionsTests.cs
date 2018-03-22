@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void HybridConnectionsCRUD()
         {
             RelayController.NewInstance.RunPsTest("HybridConnectionsTests");

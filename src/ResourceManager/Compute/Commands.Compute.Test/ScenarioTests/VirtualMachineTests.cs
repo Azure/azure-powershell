@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
@@ -187,6 +189,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineWithBYOL()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithBYOL");

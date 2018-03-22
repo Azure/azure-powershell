@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestStreamingAnalyticsE2E()
         {
             RunPowerShellTest("Test-TestStreamingAnalyticsE2E");

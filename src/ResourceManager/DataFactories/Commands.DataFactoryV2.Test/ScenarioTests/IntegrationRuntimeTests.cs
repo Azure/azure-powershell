@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSsisAzureIntegrationRuntime()
         {
             RunPowerShellTest("Test-SsisAzure-IntegrationRuntime");

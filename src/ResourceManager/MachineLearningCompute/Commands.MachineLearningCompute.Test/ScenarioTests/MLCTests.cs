@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewGetRemove()
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-NewGetRemove");
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestUpdateSystemServices()
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateSystemServices");

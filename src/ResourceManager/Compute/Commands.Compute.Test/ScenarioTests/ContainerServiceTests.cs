@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestContainerService()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-ContainerService");
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestContainerServiceUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-ContainerServiceUpdate");

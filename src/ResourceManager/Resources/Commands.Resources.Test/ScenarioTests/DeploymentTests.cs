@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCrossResourceGroupDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CrossResourceGroupDeploymentFromTemplateFile");
@@ -79,6 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithParameterObject()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithParameterObject");
@@ -86,6 +89,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithDynamicParameters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithDynamicParameters");

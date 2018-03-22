@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricNodeType");

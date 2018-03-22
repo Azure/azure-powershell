@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestWebAppRegularSlotSwap()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
@@ -114,6 +115,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestWebAppSwapWithPreviewCompleteSlotSwap()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewCompleteSlotSwap");

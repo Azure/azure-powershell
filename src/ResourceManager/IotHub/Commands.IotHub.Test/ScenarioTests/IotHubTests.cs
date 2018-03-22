@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubCertificateLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
