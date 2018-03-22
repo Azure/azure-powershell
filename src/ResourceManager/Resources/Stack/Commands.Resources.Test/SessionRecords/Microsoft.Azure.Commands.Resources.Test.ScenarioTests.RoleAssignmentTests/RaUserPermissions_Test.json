@@ -1,0 +1,154 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/csmrg4264?api-version=2014-04-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264\",\r\n  \"name\": \"csmrg4264\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "179"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31987"
+        ],
+        "x-ms-request-id": [
+          "ce1da67f-bff3-4749-a211-806458b4d76f"
+        ],
+        "x-ms-correlation-request-id": [
+          "ce1da67f-bff3-4749-a211-806458b4d76f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150128T010145Z:ce1da67f-bff3-4749-a211-806458b4d76f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 28 Jan 2015 01:01:44 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264/resources?api-version=2014-04-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264/providers/Microsoft.ClassicStorage/storageAccounts/teststoragecsmrg4264\",\r\n      \"name\": \"teststoragecsmrg4264\",\r\n      \"type\": \"Microsoft.ClassicStorage/storageAccounts\",\r\n      \"location\": \"southcentralus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "277"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31986"
+        ],
+        "x-ms-request-id": [
+          "3620a386-d63c-4402-a91d-d144c397375f"
+        ],
+        "x-ms-correlation-request-id": [
+          "3620a386-d63c-4402-a91d-d144c397375f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150128T010145Z:3620a386-d63c-4402-a91d-d144c397375f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 28 Jan 2015 01:01:44 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/csmrg4264/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*/read\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "50"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:a91e1400-fee2-4d46-b317-13e382b41fd5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31993"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b8e6f6e-b043-4d62-a9dd-ce6476e8079a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150128T010145Z:8b8e6f6e-b043-4d62-a9dd-ce6476e8079a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 28 Jan 2015 01:01:45 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3ca49042-782a-4cc9-89b5-ee1b487fe115",
+    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0",
+    "Domain": "rbactest.onmicrosoft.com"
+  }
+}
