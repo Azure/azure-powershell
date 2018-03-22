@@ -26,7 +26,6 @@ The **Stop-AzureRmSqlElasticPoolActivity** cmdlet cancels the asynchronous updat
 ### Example 1: Cancel the asynchronous update operation on an elastic pool
 ```
 PS C:\> Stop-AzureRmSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
-```
 
 OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
 ServerName      : Server01
