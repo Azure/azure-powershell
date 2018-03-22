@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveService()
         {
             DataMigrationTestController.NewInstance.RunPsTest("Test-RemoveService");
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestStopStartService()
         {
             DataMigrationTestController.NewInstance.RunPsTest("Test-StopStartDataMigrationService");

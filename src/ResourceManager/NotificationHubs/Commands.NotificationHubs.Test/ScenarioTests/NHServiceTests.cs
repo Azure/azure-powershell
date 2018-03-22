@@ -41,6 +41,7 @@ namespace Commands.NotificationHubs.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCRUDNotificationHub()
         {
             RunPowerShellTest("Test-CRUDNotificationHub");
@@ -48,6 +49,7 @@ namespace Commands.NotificationHubs.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCRUDNHAuth()
         {
             RunPowerShellTest("Test-CRUDNHAuth");

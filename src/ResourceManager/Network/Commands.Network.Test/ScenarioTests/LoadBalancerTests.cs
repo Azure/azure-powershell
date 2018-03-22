@@ -161,6 +161,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDPublicStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicStandardSku");
@@ -168,6 +169,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStandardSku");
@@ -182,6 +184,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestLoadBalancerCRUDInternalHighlyAvailableStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalHighlyAvailableStandardSku");

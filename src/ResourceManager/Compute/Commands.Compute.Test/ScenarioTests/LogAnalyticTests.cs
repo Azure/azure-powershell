@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticThrottledRequestsNegative");
         }
-		
+
 		[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportLogAnalyticRequestRateByIntervalNegative()
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestExportLogAnalytics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalytics");
