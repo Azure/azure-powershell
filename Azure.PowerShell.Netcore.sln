@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Authentication.Abstr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.Authentication.Netcore", "src\ResourceManager\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj", "{AF50ACE6-9A6A-4A18-8140-B6C5BDD0EFD6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Compute.Netcore", "src\ResourceManager\Compute\Commands.Compute\Commands.Compute.Netcore.csproj", "{7B61AB3B-9F62-4B96-BCED-13920B56CD3C}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Netcore", "src\ResourceManager\Network\Commands.Network\Commands.Network.Netcore.csproj", "{40ACDC82-5A87-4D52-83B5-ED21274363A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4B187BE1-F8C4-4658-AD17-98AA087482AA}"
