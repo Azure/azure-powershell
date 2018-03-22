@@ -12,6 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# NOTE: This test requires manual setup in your current environment. The following is required:
+# 1. An enrollment account in EA. Please go to http://ea.azure.com/ to add and manage enrollment accounts.
+# 2. Run your test as either a user with an enrollment in EA.
+#    2b. Alternatively, you can grant a service principal access to your enrollment account using RBAC by running the following:
+#           New-AzureRmRoleAssignment -Scope /providers/Microsoft.Billing/enrollmentAccounts/<object id of the user with an enrollment in EA> -RoleDefinitionName Contributor -ServicePrincipalName <SPN>
+#        You can then run the tests below using this service principal.
+
 <#
 .SYNOPSIS
 List billing periods
@@ -31,7 +38,9 @@ Get billing period with specified name
 #>
 function Test-GetEnrollmentAccountWithName
 {
-	$enrollmentAccountObjectId = "c8a9f59a-2d9b-4086-91c8-8988cae3bec3"
+    $enrollmentAccounts = @(Get-AzureRmEnrollmentAccount)
+
+	$enrollmentAccountObjectId = $enrollmentAccounts[0].ObjectId
     $enrollmentAccount = Get-AzureRmEnrollmentAccount -ObjectId $enrollmentAccountObjectId
 
 	Assert-AreEqual $enrollmentAccountObjectId $enrollmentAccount.ObjectId
