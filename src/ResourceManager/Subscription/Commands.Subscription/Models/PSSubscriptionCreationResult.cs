@@ -12,33 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using ApiSubscriptionDefinition = Microsoft.Azure.Management.Subscription.Models.SubscriptionDefinition;
+//using ApiSubscriptionCreationResult = Microsoft.Azure.Management.Subscription.Models.SubscriptionCreationResult;
 
 namespace Microsoft.Azure.Commands.Subscription.Models
 {
-    public class PSSubscriptionDefinition
+    public class PSSubscriptionCreationResult
     {
-        public string Name { get; private set; }
-
         public string SubscriptionId { get; private set; }
         
-        public string SubscriptionDisplayName { get; private set; }
-
-        public string OfferType { get; private set; }
+        public string SubscriptionName { get; private set; }
         
-        public PSSubscriptionDefinition()
+        public PSSubscriptionCreationResult()
         {
         }
 
-        public PSSubscriptionDefinition(ApiSubscriptionDefinition subscriptionDefinition)
-        {
-            if (subscriptionDefinition != null)
-            {
-                this.Name = subscriptionDefinition.Name;
-                this.SubscriptionId = subscriptionDefinition.SubscriptionId;
-                this.SubscriptionDisplayName = subscriptionDefinition.SubscriptionDisplayName;
-                this.OfferType = subscriptionDefinition.OfferType;
-            }
-        }
+        //public PSSubscriptionCreationResult(ApiSubscriptionCreationResult result)
+        //{
+        //    if (result != null)
+        //    {
+        //        this.SubscriptionId = result.SubscriptionId;
+        //        this.SubscriptionName = result.DisplayName;
+        //    }
+        //}
     }
 }
