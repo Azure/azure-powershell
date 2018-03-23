@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Add, "AzureRmKeyVaultNetworkRuleSet",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class AddAzureKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
     {
         #region Input Parameter Definitions
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 base.ValidateArrayInputs();
 
-                PSVault existingVault = base.GetCurrentVault(this.VaultName, this.ResourceGroupName);
+                PSKeyVault existingVault = base.GetCurrentVault(this.VaultName, this.ResourceGroupName);
 
                 IList<string> ipAddressRanges = existingVault.NetworkAcls.IpAddressRanges;
                 if (isIpAddressRangeSpecified)
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
 
-                PSVaultNetworkRuleSet updatedNetworkAcls = new PSVaultNetworkRuleSet(
+                PSKeyVaultNetworkRuleSet updatedNetworkAcls = new PSKeyVaultNetworkRuleSet(
                     existingVault.NetworkAcls.DefaultAction, existingVault.NetworkAcls.Bypass, ipAddressRanges, virtualNetworkResourceId);
 
                 // Update the vault
-                PSVault updatedVault = UpdateCurrentVault(existingVault, updatedNetworkAcls);
+                PSKeyVault updatedVault = UpdateCurrentVault(existingVault, updatedNetworkAcls);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsData.Update, "AzureRmKeyVaultNetworkRuleSet",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class UpdateAzureKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
     {
         #region Input Parameter Definitions
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies default action of network rule.")]
-        public PSNetWorkRuleDefaultActionEnum? DefaultAction { get; set; }
+        public PSKeyVaultNetworkRuleDefaultActionEnum? DefaultAction { get; set; }
 
         /// <summary>
         /// Bypass for network rule set
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies bypass of network rule.")]
-        public PSNetWorkRuleBypassEnum? Bypass { get; set; }
+        public PSKeyVaultNetworkRuleBypassEnum? Bypass { get; set; }
         #endregion
 
 
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 base.ValidateArrayInputs();
 
-                PSVault existingVault = base.GetCurrentVault(this.VaultName, this.ResourceGroupName);
+                PSKeyVault existingVault = base.GetCurrentVault(this.VaultName, this.ResourceGroupName);
 
-                PSVaultNetworkRuleSet updatedNetworkAcls = ConvertInputToRuleSet(
+                PSKeyVaultNetworkRuleSet updatedNetworkAcls = ConvertInputToRuleSet(
                     existingVault.NetworkAcls, isIpAddressRangeSpecified, isVirtualNetResIdSpecified);
 
                 // Update the vault
-                PSVault updatedVault = UpdateCurrentVault(existingVault, updatedNetworkAcls);
+                PSKeyVault updatedVault = UpdateCurrentVault(existingVault, updatedNetworkAcls);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);
@@ -97,16 +97,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private PSVaultNetworkRuleSet ConvertInputToRuleSet(
-            PSVaultNetworkRuleSet existingNetworkRuleSet, bool isIpAddressRangeSpecified, bool isVirtualNetworkResourceIdSpecified)
+        private PSKeyVaultNetworkRuleSet ConvertInputToRuleSet(
+            PSKeyVaultNetworkRuleSet existingNetworkRuleSet, bool isIpAddressRangeSpecified, bool isVirtualNetworkResourceIdSpecified)
         {
-            PSNetWorkRuleDefaultActionEnum defaultAct = existingNetworkRuleSet.DefaultAction;
+            PSKeyVaultNetworkRuleDefaultActionEnum defaultAct = existingNetworkRuleSet.DefaultAction;
             if (this.DefaultAction.HasValue)
             {
                 defaultAct = this.DefaultAction.Value;
             }
 
-            PSNetWorkRuleBypassEnum bypass = existingNetworkRuleSet.Bypass;
+            PSKeyVaultNetworkRuleBypassEnum bypass = existingNetworkRuleSet.Bypass;
             if (this.Bypass.HasValue)
             {
                 bypass = this.Bypass.Value;
@@ -124,18 +124,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                 virtualNetworkResourceId = this.VirtualNetworkResourceId == null ? null : new List<string>(this.VirtualNetworkResourceId);
             }
 
-            return new PSVaultNetworkRuleSet(defaultAct, bypass, ipAddressRanges, virtualNetworkResourceId);
+            return new PSKeyVaultNetworkRuleSet(defaultAct, bypass, ipAddressRanges, virtualNetworkResourceId);
         }
 
-        private void WriteDisabledWarning(PSVaultNetworkRuleSet existingRuleSet, PSVaultNetworkRuleSet updatedRuleSet)
+        private void WriteDisabledWarning(PSKeyVaultNetworkRuleSet existingRuleSet, PSKeyVaultNetworkRuleSet updatedRuleSet)
         {
-            if (existingRuleSet.DefaultAction != PSNetWorkRuleDefaultActionEnum.Deny)
+            if (existingRuleSet.DefaultAction != PSKeyVaultNetworkRuleDefaultActionEnum.Deny)
                 return;
 
-            PSNetWorkRuleDefaultActionEnum updatedDefaultAction = 
-                updatedRuleSet == null ? PSNetWorkRuleDefaultActionEnum.Allow : updatedRuleSet.DefaultAction;
+            PSKeyVaultNetworkRuleDefaultActionEnum updatedDefaultAction = 
+                updatedRuleSet == null ? PSKeyVaultNetworkRuleDefaultActionEnum.Allow : updatedRuleSet.DefaultAction;
 
-            if (updatedDefaultAction == PSNetWorkRuleDefaultActionEnum.Allow)
+            if (updatedDefaultAction == PSKeyVaultNetworkRuleDefaultActionEnum.Allow)
             {
                 WriteWarning(Properties.Resources.UpdateNetworkRuleWarning);
             }

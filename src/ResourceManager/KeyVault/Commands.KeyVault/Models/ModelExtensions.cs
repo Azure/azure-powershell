@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return sb.ToString();
         }
 
-        public static string ConstructNetworkRuleSet(PSModels.PSVaultNetworkRuleSet ruleSet)
+        public static string ConstructNetworkRuleSet(PSModels.PSKeyVaultNetworkRuleSet ruleSet)
         {
             StringBuilder sb = new StringBuilder();
 

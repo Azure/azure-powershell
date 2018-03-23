@@ -17,20 +17,20 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public enum PSNetWorkRuleDefaultActionEnum { Allow = 0, Deny }
+    public enum PSKeyVaultNetworkRuleDefaultActionEnum { Allow = 0, Deny }
 
-    public enum PSNetWorkRuleBypassEnum { None = 0, AzureServices }
+    public enum PSKeyVaultNetworkRuleBypassEnum { None = 0, AzureServices }
 
-    public class PSVaultNetworkRuleSet
+    public class PSKeyVaultNetworkRuleSet
     {
-        public PSVaultNetworkRuleSet()
-            : this(PSNetWorkRuleDefaultActionEnum.Allow, PSNetWorkRuleBypassEnum.AzureServices, null, null)
+        public PSKeyVaultNetworkRuleSet()
+            : this(PSKeyVaultNetworkRuleDefaultActionEnum.Allow, PSKeyVaultNetworkRuleBypassEnum.AzureServices, null, null)
         {
         }
 
-        public PSVaultNetworkRuleSet(
-            PSNetWorkRuleDefaultActionEnum defaultAction,
-            PSNetWorkRuleBypassEnum bypass,
+        public PSKeyVaultNetworkRuleSet(
+            PSKeyVaultNetworkRuleDefaultActionEnum defaultAction,
+            PSKeyVaultNetworkRuleBypassEnum bypass,
             IList<string> ipAddressRanges,
             IList<string> virtualNetworkResourceId)
         {
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.VirtualNetworkResourceIds = virtualNetworkResourceId;
         }
 
-        public PSNetWorkRuleDefaultActionEnum DefaultAction { get; private set; }
+        public PSKeyVaultNetworkRuleDefaultActionEnum DefaultAction { get; private set; }
 
-        public PSNetWorkRuleBypassEnum Bypass { get; private set; }
+        public PSKeyVaultNetworkRuleBypassEnum Bypass { get; private set; }
 
         public IList<string> IpAddressRanges { get; private set; }
 

@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        protected PSVault GetCurrentVault(string vaultName, string resourceGroupName)
+        protected PSKeyVault GetCurrentVault(string vaultName, string resourceGroupName)
         {
             string resGroupName = resourceGroupName;
             if (string.IsNullOrWhiteSpace(resGroupName))
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // Get the existing vault
-            PSVault vault = null;
+            PSKeyVault vault = null;
             if (!string.IsNullOrWhiteSpace(resGroupName))
             {
                 vault = KeyVaultManagementClient.GetVault(vaultName, resGroupName);
@@ -102,16 +102,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // When rules are not specified, take them from the existing values if available
-            PSVaultNetworkRuleSet existingNetworkAcls = vault.NetworkAcls;
+            PSKeyVaultNetworkRuleSet existingNetworkAcls = vault.NetworkAcls;
             if (existingNetworkAcls == null)
             {
-                existingNetworkAcls = new PSVaultNetworkRuleSet();
+                existingNetworkAcls = new PSKeyVaultNetworkRuleSet();
             }
 
             return vault;
         }
 
-        protected PSVault UpdateCurrentVault(PSVault existingVault, PSVaultNetworkRuleSet updatedNetworkAcls)
+        protected PSKeyVault UpdateCurrentVault(PSKeyVault existingVault, PSKeyVaultNetworkRuleSet updatedNetworkAcls)
         {
             return KeyVaultManagementClient.UpdateVault(
                 existingVault,
@@ -119,6 +119,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 existingVault.EnabledForDeployment,
                 existingVault.EnabledForTemplateDeployment,
                 existingVault.EnabledForDiskEncryption,
+                existingVault.EnableSoftDelete,
+                existingVault.EnablePurgeProtection,
                 updatedNetworkAcls,
                 ActiveDirectoryClient);
         }
