@@ -12,27 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSDeletedVault : PSVault
+    public class PSDeletedKeyVaultKeyIdentityItem : PSKeyVaultKeyIdentityItem
     {
-        internal PSDeletedVault(DeletedVault vault)
+        public PSDeletedKeyVaultKeyIdentityItem()
+        { }
+
+        internal PSDeletedKeyVaultKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper) : base(keyItem, vaultUriHelper)
         {
-            Id = vault.Id;
-            VaultName = vault.Name;
-            ResourceId = vault.Properties.VaultId;
-            Location = vault.Properties.Location;
-            DeletionDate = vault.Properties.DeletionDate;
-            ScheduledPurgeDate = vault.Properties.ScheduledPurgeDate;
-            Tags = vault.Properties.Tags?.ConvertToHashtable();
+            ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
+            DeletedDate = keyItem.DeletedDate;
         }
-        public string Id { get; private set; }
 
-        public DateTime? DeletionDate { get; private set; }
+        public DateTime? ScheduledPurgeDate { get; set; }
 
-        public DateTime? ScheduledPurgeDate { get; private set; }
+        public DateTime? DeletedDate { get; set; }
+
     }
 }

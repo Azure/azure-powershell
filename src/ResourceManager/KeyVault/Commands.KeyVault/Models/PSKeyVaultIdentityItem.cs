@@ -20,13 +20,13 @@ using ResourceManagement = Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSVaultIdentityItem
+    public class PSKeyVaultIdentityItem
     {
-        public PSVaultIdentityItem()
+        public PSKeyVaultIdentityItem()
         {
 
         }
-        public PSVaultIdentityItem(ResourceManagement.GenericResource resource)
+        public PSKeyVaultIdentityItem(ResourceManagement.GenericResource resource)
         {
             ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
             VaultName = identifier.ResourceName;

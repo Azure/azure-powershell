@@ -17,27 +17,30 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificateContact
+    public class PSKeyVaultCertificateContact
     {
         public string Email { get; set; }
 
-        internal static KeyVaultCertificateContact FromKVCertificateContact(Contact contact)
+        public string VaultName { get; set; }
+
+        internal static PSKeyVaultCertificateContact FromKVCertificateContact(Contact contact, string vaultName)
         {
-            return new KeyVaultCertificateContact
+            return new PSKeyVaultCertificateContact
             {
+                VaultName = vaultName,
                 Email = contact.EmailAddress,
             };
         }
 
-        internal static List<KeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts)
+        internal static List<PSKeyVaultCertificateContact> FromKVCertificateContacts(Contacts contacts, string vaultName)
         {
-            var result = new List<KeyVaultCertificateContact>();
+            var result = new List<PSKeyVaultCertificateContact>();
 
             if (contacts != null && contacts.ContactList != null)
             {
                 foreach (var contact in contacts.ContactList)
                 {
-                    result.Add(FromKVCertificateContact(contact));
+                    result.Add(FromKVCertificateContact(contact, vaultName));
                 }
             }
 

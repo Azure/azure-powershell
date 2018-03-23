@@ -18,9 +18,12 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyIdentityItem : ObjectIdentifier
+    public class PSKeyVaultKeyIdentityItem : ObjectIdentifier
     {
-        internal KeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper)
+        public PSKeyVaultKeyIdentityItem()
+        { }
+
+        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
         }
 
-        internal KeyIdentityItem(KeyBundle keyBundle)
+        internal PSKeyVaultKeyIdentityItem(PSKeyVaultKey keyBundle)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
@@ -64,14 +67,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? NotBefore { get; set; }
 
-        public DateTime? Created { get; private set; }
+        public DateTime? Created { get; protected set; }
 
-        public DateTime? Updated { get; private set; }
+        public DateTime? Updated { get; protected set; }
 
         [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
-        public bool PurgeDisabled { get; private set; }
+        public bool PurgeDisabled { get; protected set; }
 
-        public string RecoveryLevel { get; private set; }
+        public string RecoveryLevel { get; protected set; }
 
         public Hashtable Tags { get; set; }
 

@@ -23,9 +23,9 @@ using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSVaultAccessPolicy
+    public class PSKeyVaultAccessPolicy
     {
-        public PSVaultAccessPolicy( Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates, string[] permissionsToStorage )
+        public PSKeyVaultAccessPolicy( Guid tenantId, string objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates, string[] permissionsToStorage )
         {
             TenantId = tenantId;
             ObjectId = objectId;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToStorage = permissionsToStorage == null ? new List<string>() : new List<string>( permissionsToStorage );
         }
 
-        public PSVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
+        public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
         {
             ObjectId = s.ObjectId;
             DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, adClient);
