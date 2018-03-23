@@ -19,7 +19,7 @@ Get-AzureRmEnrollmentAccount [-DefaultProfile <IAzureContextContainer>] [<Common
 
 ### Single
 ```
-Get-AzureRmEnrollmentAccount -Name <System.String>
+Get-AzureRmEnrollmentAccount -ObjectId <System.String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,16 +31,25 @@ The **Get-AzureRmEnrollmentAccount** cmdlet gets enrollment accounts.
 ### Example 1
 ```
 PS C:\> Get-AzureRmEnrollmentAccount
+
+ObjectId      : dbd8453d-071f-4fb4-8e01-c99f5b067649
+PrincipalName : jason@contoso.onmicrosoft.com
+
+ObjectId      : 7ff524ac-a0de-4402-876f-934ccee3b601
+PrincipalName : carol@contoso.onmicrosoft.com
 ```
 
 Get all available enrollment accounts.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEnrollmentAccount -Name 91825d71-02bd-46e2-95e2-b26369ade34b
+PS C:\> Get-AzureRmEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
+
+ObjectId      : dbd8453d-071f-4fb4-8e01-c99f5b067649
+PrincipalName : jason@contoso.onmicrosoft.com
 ```
 
-Get the enrollment account with the specified name.
+Get the enrollment account with the specified object id.
 
 ## PARAMETERS
 
@@ -59,8 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of a specific enrollment account to get.
+### -ObjectId
+ObjectId of a specific enrollment account to get.
 
 ```yaml
 Type: System.String
