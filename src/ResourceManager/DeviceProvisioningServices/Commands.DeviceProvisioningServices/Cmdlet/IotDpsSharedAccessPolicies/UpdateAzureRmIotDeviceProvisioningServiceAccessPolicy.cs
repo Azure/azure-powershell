@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "IoT Device Provisioning Service Object")]
+            HelpMessage = "IoT Device Provisioning Service Access Policy Object")]
         [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
+        public PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription InputObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -69,12 +69,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IoT Device Provisioning Service access policy key name")]
         [Parameter(
             Position = 1,
             Mandatory = true,
@@ -109,7 +103,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy permissions")]
         [ValidateNotNullOrEmpty]
-        public string Permissions { get; set; }
+        [ValidateSet(new string[] { "ServiceConfig", "EnrollmentRead", "EnrollmentWrite", "DeviceConnect", "RegistrationStatusRead", "RegistrationStatusWrite" }, IgnoreCase = true)]
+        public string[] Permissions { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -120,6 +115,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     case InputObjectParameterSet:
                         this.ResourceGroupName = this.InputObject.ResourceGroupName;
                         this.Name = this.InputObject.Name;
+                        this.KeyName = this.InputObject.KeyName;
                         this.UpdateIotDpsAccessPolicy();
                         break;
 
@@ -141,11 +137,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void UpdateIotDpsAccessPolicy()
         {
-            string[] permissions = this.Permissions.Split(',');
             ArrayList accessRights = new ArrayList();
             PSAccessRightsDescription psAccessRightsDescription;
 
-            foreach (string permission in permissions)
+            foreach (string permission in this.Permissions)
             {
                 if (!Enum.TryParse<PSAccessRightsDescription>(permission.Trim(), true, out psAccessRightsDescription))
                 {
@@ -175,7 +170,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 provisioningServiceDescription.Properties.AuthorizationPolicies = iotDpsAccessPolicyList;
                 IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
 
-                this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName)), false);
+                this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName), this.ResourceGroupName, this.Name), false);
             }
             catch (Exception ex)
             {

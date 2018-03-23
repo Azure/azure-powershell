@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "IoT Device Provisioning Service Object")]
+            HelpMessage = "IoT Device Provisioning Service Access Policy Object")]
         [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
+        public PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription InputObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -71,11 +71,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "IoT Device Provisioning Service access policy key name")]
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "IoT Device Provisioning Service access policy key name")]
         [Parameter(
@@ -98,6 +93,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 {
                     this.ResourceGroupName = this.InputObject.ResourceGroupName;
                     this.Name = this.InputObject.Name;
+                    this.KeyName = this.InputObject.KeyName;
                 }
 
                 if (ParameterSetName.Equals(ResourceIdParameterSet))

@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void WritePSObject(IotHubDefinitionDescription iotDpsHub)
         {
-            this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(iotDpsHub), false);
+            this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(iotDpsHub, this.ResourceGroupName, this.Name), false);
         }
 
         private void WritePSObjects(IList<IotHubDefinitionDescription> iotDpsHubs)

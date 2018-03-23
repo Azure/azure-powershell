@@ -12,6 +12,12 @@ List all or show details of shared access policies in an Azure IoT Hub device pr
 
 ## SYNTAX
 
+### ResourceSet (Default)
+```
+Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
+ [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### InputObjectSet
 ```
 Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioningServiceDescription>
@@ -22,12 +28,6 @@ Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioni
 ```
 Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceSet
-```
-Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
- [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,10 +51,12 @@ List all shared access policies in "myiotdps".
 ```
 PS C:\> Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy"
 
-KeyName      : mypolicy
-PrimaryKey   : hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey : vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights       : ServiceConfig, DeviceConnect, EnrollmentWrite
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 
 Show details of shared access policy "mypolicy" in an Azure IoT Hub device provisioning service.

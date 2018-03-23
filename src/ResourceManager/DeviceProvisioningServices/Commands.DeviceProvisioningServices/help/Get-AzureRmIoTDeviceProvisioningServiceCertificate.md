@@ -12,6 +12,13 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ## SYNTAX
 
+### ResourceSet (Default)
+```
+Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
+ [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### InputObjectSet
 ```
 Get-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSProvisioningServiceDescription>
@@ -23,13 +30,6 @@ Get-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSProvisionin
 ```
 Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceSet
-```
-Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION

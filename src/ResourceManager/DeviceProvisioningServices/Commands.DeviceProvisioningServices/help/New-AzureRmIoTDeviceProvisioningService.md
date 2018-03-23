@@ -29,6 +29,7 @@ PS C:\> New-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegr
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
+Location					: westus
 Type						: Microsoft.Devices/provisioningServices
 ServiceOperationsHostName	: myiotdps.azure-devices-provisioning.net
 IotHubs						: 0
@@ -44,10 +45,11 @@ Create an Azure IoT Hub device provisioning service with the standard pricing ti
 
 ### Example 2
 ```
-PS C:\> New-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Location "East US"
+PS C:\> New-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Location "eastus"
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
+Location					: eastus
 Type						: Microsoft.Devices/provisioningServices
 ServiceOperationsHostName	: myiotdps.azure-devices-provisioning.net
 IotHubs						: 0

@@ -18,18 +18,6 @@ Get-AzureRmIoTDeviceProvisioningService [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### InputObjectSet
-```
-Get-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceIdSet
-```
-Get-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### GetIotDpsByName
 ```
 Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName <String> [-Name] <String>
@@ -45,11 +33,11 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ```
 PS C:\> Get-AzureRmIoTDeviceProvisioningService
 
-ResourceGroupName	Name		ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
------------------	----        -------------------------					------- ----------------	----	-----	
-myresourcegroup0	myiotdps0	myiotdps0.azure-devices-provisioning.net	0       Static				0		Active
-myresourcegroup1    myiotdps1	myiotdps1.azure-devices-provisioning.net	4       Hashed				0		Active
-myresourcegroup1    myiotdps2	myiotdps2.azure-devices-provisioning.net	4       GeoLatency			0		Active
+ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
+-----------------	----		--------	-------------------------					------- ----------------	----	-----	
+myresourcegroup0	myiotdps0	eastus		myiotdps0.azure-devices-provisioning.net	0       Static				0		Active
+myresourcegroup1    myiotdps1	eastus		myiotdps1.azure-devices-provisioning.net	4       Hashed				0		Active
+myresourcegroup1    myiotdps2	westus		myiotdps2.azure-devices-provisioning.net	4       GeoLatency			0		Active
 ```
 
 List all Azure IoT Hub device provisioning services in a subscription.
@@ -58,10 +46,10 @@ List all Azure IoT Hub device provisioning services in a subscription.
 ```
 PS C:\> Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup"
 
-ResourceGroupName	Name		ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
------------------	----        -------------------------					------- ----------------	----	-----
-myresourcegroup		myiotdps1	myiotdps1.azure-devices-provisioning.net	1       Hashed				0		Active
-myresourcegroup     myiotdps2	myiotdps2.azure-devices-provisioning.net	4       GeoLatency			0		Active
+ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
+-----------------	----		--------	-------------------------					------- ----------------	----	-----
+myresourcegroup		myiotdps1	eastus		myiotdps1.azure-devices-provisioning.net	1       Hashed				0		Active
+myresourcegroup     myiotdps2	westus		myiotdps2.azure-devices-provisioning.net	4       GeoLatency			0		Active
 ```
 
 List all Azure IoT Hub device provisioning services in the resource group 'myresourcegroup'.
@@ -72,6 +60,7 @@ PS C:\> Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegr
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
+Location					: eastus
 Type						: Microsoft.Devices/provisioningServices
 ServiceOperationsHostName	: myiotdps.azure-devices-provisioning.net
 IotHubs						: 0
@@ -99,21 +88,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-IoT Device Provisioning Service Object
-
-```yaml
-Type: PSProvisioningServiceDescription
-Parameter Sets: InputObjectSet
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -154,21 +128,6 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-IoT Device Provisioning Service Resource Id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
