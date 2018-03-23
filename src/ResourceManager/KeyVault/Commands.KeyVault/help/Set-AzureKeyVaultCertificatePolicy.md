@@ -18,7 +18,7 @@ Creates or updates the policy for a certificate in a key vault.
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
  [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
  [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
+ [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
  [-KeyType <String>] [-KeyNotExportable] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -38,7 +38,7 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
  -RenewAtNumberOfDaysBeforeExpiry <Int32> [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>]
  [-Disabled] [-SubjectName <String>] [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
+ [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
  [-KeyType <String>] [-KeyNotExportable] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -233,9 +233,10 @@ Accept wildcard characters: False
 Specifies the key usages in the certificate.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
 Aliases:
+Accepted values: None, EncipherOnly, CrlSign, KeyCertSign, KeyAgreement, DataEncipherment, KeyEncipherment, NonRepudiation, DigitalSignature, DecipherOnly
 
 Required: False
 Position: Named

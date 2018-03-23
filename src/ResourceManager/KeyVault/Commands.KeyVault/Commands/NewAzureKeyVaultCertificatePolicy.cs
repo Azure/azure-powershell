@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, 
                    ValueFromPipelineByPropertyName = true,            
                    HelpMessage = "Specifies the key usages in the certificate.")]
-        public List<string> KeyUsage { get; set; }
+        public List<X509KeyUsageFlags> KeyUsage { get; set; }
 
         /// <summary>
         /// Ekus
@@ -190,14 +190,19 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // Validate input parameters
                 ValidateSubjectName();
                 ValidateDnsNames();
-                ValidateKeyUsage();
                 ValidateEkus();
                 ValidateBothPercentageAndNumberOfDaysAreNotPresent();
+
+                var convertedKeyUsage = new List<string>();
+                foreach (var key in KeyUsage)
+                {
+                    convertedKeyUsage.Add(key.ToString());
+                }
 
                 var policy = new PSKeyVaultCertificatePolicy
                 {
                     DnsNames = DnsName,
-                    KeyUsage = KeyUsage,
+                    KeyUsage = convertedKeyUsage,
                     Ekus = Ekus,
                     Enabled = !Disabled.IsPresent,
                     IssuerName = IssuerName,
@@ -224,26 +229,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 MyInvocation.BoundParameters.ContainsKey("RenewAtPercentageLifetime"))
             {
                 throw new ArgumentException("Both RenewAtNumberOfDaysBeforeExpiry and RenewAtPercentageLifetime cannot be specified.");
-            }
-        }
-
-        private void ValidateKeyUsage()
-        {
-            if (KeyUsage != null)
-            {
-                foreach (var usage in KeyUsage)
-                {
-                    if (string.IsNullOrWhiteSpace(usage))
-                    {
-                        throw new ArgumentException("One of the Key Usage provided is empty.");
-                    }
-
-                    X509KeyUsageFlags parsedUsage;
-                    if (!Enum.TryParse(usage, true, out parsedUsage))
-                    {
-                        throw new ArgumentException(string.Format("Key Usage {0} is invalid.", usage));
-                    }
-                }
             }
         }
 
