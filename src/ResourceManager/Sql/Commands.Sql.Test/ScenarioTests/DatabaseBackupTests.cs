@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
             }
         }
-        [Fact]
+        [Fact(Skip = "Needs re-recording.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseBackupLongTermRetentionPolicy()
         {
