@@ -360,12 +360,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Properties = new Dictionary<string, object>
                 {
                     { "LongTermRetentionBackupResourceId", resourceId },
-                    { "Edition", model.Edition == Database.Model.DatabaseEdition.None ? null : model.Edition.ToString() },
-                    { "RequestedServiceObjectiveId", model.RequestedServiceObjectiveId },
                     { "CreateMode", model.CreateMode },
                     { "ElasticPoolName", model.ElasticPoolName },
-                    { "RequestedServiceObjectiveName", model.RequestedServiceObjectiveName }
-                }
+                },
+                Sku = new Sku(model.RequestedServiceObjectiveName, model.Edition == Database.Model.DatabaseEdition.None ? null : model.Edition.ToString())
             });
 
             if (database != null)
